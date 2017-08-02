@@ -35,6 +35,7 @@ This is my first serious Android App.
 - spend monero - not so difficult with wallet api
 - figure out how to make it all flow better (loading/saving takes forever and does not run in background)
 - currently loading in background thread produces segfaults in JNI
+- check licenses of included libraries
 
 ### Issues
 - occasional crashes ...
