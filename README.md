@@ -40,6 +40,10 @@ This is my first serious Android App.
 - occasional crashes ...
 
 ### HOW TO BUILD
+No need to build. Binaries are included:
+
 - openssl-1.0.2l
 - monero-v0.10.3.1 + pull requests #2238 & #2239
 - boost_1_64_0
+
+If you want to build - fire up Android Studio and build. Also you can rebuild all of the above.
