@@ -1,5 +1,5 @@
 # Monerujo
-An Android Monero Wallet
+Another Android Monero Wallet
 
 ### QUICKSTART
 - Download app-debug.apk and install it
