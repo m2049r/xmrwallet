@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Monerujo</string>
+    <string name="login_activity_name">Select Wallet</string>
+    <string name="wallet_activity_name">Wallet</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_daemon">Daemon Address</string>
+    <string name="prompt_mainnet">Net Selection</string>
+    <string name="connect_testnet">TestNet</string>
+    <string name="connect_mainnet">MainNet</string>
+    <string name="status_walletlist_loading">Loading Wallet List</string>
+    <string name="status_wallet_loading">Loading Wallet &#8230;</string>
+    <string name="status_wallet_unloading">Saving Wallet</string>
+    <string name="prompt_password">Password for</string>
+    <string name="bad_password">Bad password!</string>
+    <string name="prompt_daemon_missing">Daemon address must be set!</string>
+    <string name="prompt_wrong_net">Daemon does not fit wallet!</string>
+
+    <string name="title_amount">Amount</string>
+    <string name="title_date">Date</string>
+    <string name="label_balance">Balance</string>
+    <string name="label_unlockedBalance">Available</string>
+    <string name="label_transactions">Transactions</string>
+    <string name="text_daemonConnected">Daemon connected!</string>
+
+    <string name="service_description">Monerujo Service</string>
+    <string name="local_service_started">Monerujo Service Running</string>
+    <string name="local_service_stopped">Monerujo Service Stopped</string>
+    <string name="local_service_label">Monerujo Service</string>
+    <string name="local_service_connected">Monerujo Service Connected</string>
+    <string name="local_service_disconnected">Monerujo Service Disconnected</string>
+
+    <string name="status_synced">Synced</string>
+    <string name="status_remaining">Blocks remaining</string>
+    <string name="status_syncing">Syncing:</string>
+
+    <string name="prompt_problems">Problems</string>
+    <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
+    <string name="message_strorage_not_permitted">External Storage permission not granted! Panic!</string>
+
+</resources>
