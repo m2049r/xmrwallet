@@ -5,6 +5,7 @@ Another Android Monero Wallet
 - Download APK (Release) and install it
 - Copy over synced wallet (all three files) onto sdcard in directory Monerujo (created first time app is started)
 - Start app (again)
+- see the [FAQ](doc/FAQ.md)
 
 ### Disclaimer
 This is my first serious Android App.
