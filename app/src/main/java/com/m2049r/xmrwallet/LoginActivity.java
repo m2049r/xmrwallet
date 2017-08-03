@@ -70,17 +70,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 boolean mainnet = ((ToggleButton) v).isChecked();  // current state
                 Log.d(TAG, "CLICK NET! mainnet=" + mainnet);
-                // save the daemon address for the net
-                EditText etDaemonAddress = (EditText) findViewById(R.id.etDaemonAddress);
-                // save PREVIOUS state & load CURRENT state
-                if (mainnet) {
-                    daemonTestNet = etDaemonAddress.getText().toString();
-                    etDaemonAddress.setText(daemonMainNet);
-                } else {
-                    daemonMainNet = etDaemonAddress.getText().toString();
-                    etDaemonAddress.setText(daemonTestNet);
-                }
-                savePrefs(); // prefs changed
+                savePrefs(true); // use previous state as we just clicked it
                 filterList();
                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
             }
@@ -201,7 +191,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
-        savePrefs();
+        savePrefs(false);
         super.onPause();
     }
 
@@ -235,10 +225,20 @@ public class LoginActivity extends Activity {
         }
     }
 
-    void savePrefs() {
+    void savePrefs(boolean usePreviousState) {
+        // save the daemon address for the net
+        boolean mainnet = getMainNetSetting() ^ usePreviousState;
+        EditText etDaemonAddress = (EditText) findViewById(R.id.etDaemonAddress);
+        if (mainnet) {
+            daemonMainNet = etDaemonAddress.getText().toString();
+            etDaemonAddress.setText(daemonTestNet);
+        } else {
+            daemonTestNet = etDaemonAddress.getText().toString();
+            etDaemonAddress.setText(daemonMainNet);
+        }
+
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        boolean mainnet = getMainNetSetting();
         editor.putBoolean(PREF_MAINNET, mainnet);
         editor.putString(PREF_DAEMON_MAINNET, daemonMainNet);
         editor.putString(PREF_DAEMON_TESTNET, daemonTestNet);
@@ -247,7 +247,7 @@ public class LoginActivity extends Activity {
 
     void startWallet(String walletName, String walletPassword) {
         Log.d(TAG, "startWallet()");
-        savePrefs();
+        savePrefs(false);
         EditText tvDaemonAddress = (EditText) findViewById(R.id.etDaemonAddress);
         boolean testnet = !getMainNetSetting();
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
