@@ -1,2 +1,3 @@
 h
-![Wallet Selection](A-wallet_selection.png?raw=true | width=100)
+
+<img src="url" alt="alt text" width="A-wallet_selection.png" height="100">
