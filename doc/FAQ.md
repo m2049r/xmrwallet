@@ -2,15 +2,15 @@
 
 ## Do you have any screenshots of what it looks like and how it works?
 
-### [Select Wallet](A-wallet_selection.png)
+### [Select Wallet](images/A-wallet_selection.png)
 
 Here you see a list of installed wallets and an entry field at the top to enter the daemon address. To the right there is a pushbutton to change between testnet and mainnet. The entered daemon is saved and displayed according to the state of this button.
 
-### [Wallet Password](B-enter_password.png)
+### [Wallet Password](images/B-enter_password.png)
 
 After selecting the wallet, the password is entered.
 
-### [Wallet Syncing](C-wallet_syncing.png)
+### [Wallet Syncing](images/C-wallet_syncing.png)
 
 After some seconds the wallet is displyed with it's last known state and synced to the network. If it says "disconnected" or takes forever to show this screen then the entered daemon is wrong or unreachable. (Yes, I need to check the daemon availability on the login screen ...) Go back, and check that.
 
@@ -18,7 +18,7 @@ During syncing, the number of remaining blocks is displayed - when this reaches 
 
 The balance is updated during sync.
 
-### [Wallet Synced](D-wallet_synced.png)
+### [Wallet Synced](images/D-wallet_synced.png)
 
 When the blockchain is synced, the screen shows "Synced" and the current blockchain height. When new blocks become available they are also synced and new transactions are displayed.
 
