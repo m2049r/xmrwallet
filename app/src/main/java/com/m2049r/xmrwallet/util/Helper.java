@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2017 m2049r
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,8 +28,8 @@ import com.m2049r.xmrwallet.R;
 import java.io.File;
 
 public class Helper {
-    static final String TAG = "Helper";
-    static final String WALLET_DIR = "Monerujo";
+    private static final String TAG = "Helper";
+    private static final String WALLET_DIR = "Monerujo";
 
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
@@ -79,10 +79,7 @@ public class Helper {
     /* Checks if external storage is available for read and write */
     static public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 
 }

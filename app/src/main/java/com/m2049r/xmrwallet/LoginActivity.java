@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2017 m2049r
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,6 +25,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -46,11 +47,19 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LoginActivity extends Activity {
     static final String TAG = "LoginActivity";
+
+    static final int MIN_DAEMON_VERSION = 65544;
+    static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
+
     ListView listView;
     List<String> walletList = new ArrayList<>();
     List<String> displayedList = new ArrayList<>();
@@ -124,9 +133,17 @@ public class LoginActivity extends Activity {
 
                 final int preambleLength = "[123456] ".length();
                 if (itemValue.length() <= (preambleLength)) {
-                    Toast.makeText(LoginActivity.this, "something's wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.panic), Toast.LENGTH_LONG).show();
                     return;
                 }
+                setWalletDaemon();
+                if (!checkWalletDaemon()) {
+                    Toast.makeText(LoginActivity.this, getString(R.string.warn_daemon_unavailable), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // looking good
+                savePrefs(false);
 
                 String wallet = itemValue.substring(preambleLength);
                 promptPassword(wallet);
@@ -200,6 +217,32 @@ public class LoginActivity extends Activity {
         }
     }
 
+    private boolean checkWalletDaemon() {
+//        if (android.os.Build.VERSION.SDK_INT > 9) {
+        StrictMode.ThreadPolicy prevPolicy = StrictMode.getThreadPolicy();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder(prevPolicy).permitNetwork().build();
+        StrictMode.setThreadPolicy(policy);
+        String d[] = WalletManager.getInstance().getDaemonAddress().split(":");
+        String host = d[0];
+        int port = Integer.parseInt(d[1]);
+        Socket socket = new Socket();
+        long a = new Date().getTime();
+        try {
+            socket.connect(new InetSocketAddress(host, port), DAEMON_TIMEOUT);
+            socket.close();
+        } catch (IOException ex) {
+            Log.d(TAG, "Cannot reach daemon " + host + ":" + port + " because " + ex.getLocalizedMessage());
+            return false;
+        } finally {
+            StrictMode.setThreadPolicy(prevPolicy);
+        }
+        long b = new Date().getTime();
+        Log.d(TAG, "Daemon is " + (b - a) + "ms away.");
+        int version = WalletManager.getInstance().getDaemonVersion();
+        Log.d(TAG, "Daemon is v" + version);
+        return (version >= MIN_DAEMON_VERSION);
+    }
+
     private boolean checkWalletPassword(String walletName, String password) {
         String walletPath = new File(Helper.getStorageRoot(getApplicationContext()),
                 walletName + ".keys").getAbsolutePath();
@@ -207,12 +250,17 @@ public class LoginActivity extends Activity {
         return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
     }
 
-
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
         savePrefs(false);
         super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume()");
     }
 
     boolean isMainNet() {
@@ -275,19 +323,20 @@ public class LoginActivity extends Activity {
         editor.apply();
     }
 
-    void startWallet(String walletName, String walletPassword) {
-        Log.d(TAG, "startWallet()");
-        savePrefs(false);
+    private void setWalletDaemon() {
         boolean testnet = !isMainNet();
         String daemon = getDaemon();
 
-        Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         if (!daemon.contains(":")) {
             daemon = daemon + (testnet ? ":28081" : ":18081");
         }
 
         WalletManager.getInstance().setDaemon(daemon, testnet);
+    }
 
+    void startWallet(String walletName, String walletPassword) {
+        Log.d(TAG, "startWallet()");
+        Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
         startActivity(intent);
@@ -332,7 +381,7 @@ public class LoginActivity extends Activity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],@NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult()");
         switch (requestCode) {
             case Helper.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE:

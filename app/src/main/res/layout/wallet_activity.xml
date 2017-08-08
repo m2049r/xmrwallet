@@ -62,7 +62,7 @@
             android:textSize="10sp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Connecting..."
+            android:text="Loading..."
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,7 +73,7 @@
             android:textSize="10sp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Connecting..."
+            android:text="Loading..."
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvConnectionStatus" />
 
@@ -81,8 +81,8 @@
 
     <LinearLayout
         android:id="@+id/llProgress"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone" >
@@ -94,7 +94,7 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Connecting..." />
+            android:text="Loading..." />
 
         <ProgressBar
             android:id="@+id/pbProgress"
