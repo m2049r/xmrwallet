@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2017 m2049r
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,10 +38,10 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-    static final String TAG = "TransactionInfoAdapter";
+    private static final String TAG = "TransactionInfoAdapter";
 
-    static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
-    static final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss");
+    private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss");
 
     static final int TX_RED = Color.rgb(255, 79, 65);
     static final int TX_GREEN = Color.rgb(54, 176, 91);
@@ -100,15 +100,15 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final TextView tvAmount;
-        public final TextView tvAmountPoint;
-        public final TextView tvAmountDecimal;
-        public final TextView tvDate;
-        public final TextView tvTime;
-        public TransactionInfo infoItem;
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        final TextView tvAmount;
+        final TextView tvAmountPoint;
+        final TextView tvAmountDecimal;
+        final TextView tvDate;
+        final TextView tvTime;
+        TransactionInfo infoItem;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             this.tvAmount = (TextView) itemView.findViewById(R.id.tx_amount);
             // I know this is stupid but can't be bothered to align decimals otherwise

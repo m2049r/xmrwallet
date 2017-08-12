@@ -386,8 +386,9 @@ Java_com_m2049r_xmrwallet_model_WalletManager_setDaemonAddressJ(JNIEnv *env, job
     env->ReleaseStringUTFChars(address, _address);
 }
 
+// returns whether the daemon can be reached, and its version number
 JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_WalletManager_getConnectedDaemonVersion(JNIEnv *env,
+Java_com_m2049r_xmrwallet_model_WalletManager_getDaemonVersion(JNIEnv *env,
                                                                         jobject instance) {
     uint32_t version;
     bool isConnected =

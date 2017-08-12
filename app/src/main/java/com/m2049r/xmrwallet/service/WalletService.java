@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2017 m2049r
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,9 +16,7 @@
 
 package com.m2049r.xmrwallet.service;
 
-import android.app.ProgressDialog;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
@@ -27,10 +25,8 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.os.PowerManager;
 import android.os.Process;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -47,10 +43,11 @@ import com.m2049r.xmrwallet.util.Helper;
 public class WalletService extends Service {
     final static String TAG = "WalletService";
 
-    public static final String REQUEST = "request";
     public static final String REQUEST_WALLET = "wallet";
+    public static final String REQUEST = "request";
     public static final String REQUEST_CMD_LOAD = "load";
     public static final String REQUEST_CMD_LOAD_PW = "walletPassword";
+    public static final String REQUEST_CMD_STORE = "store";
 
     public static final int START_SERVICE = 1;
     public static final int STOP_SERVICE = 2;
@@ -70,7 +67,7 @@ public class WalletService extends Service {
             this.wallet = aWallet;
         }
 
-        public void start() {
+        void start() {
             Log.d(TAG, "MyWalletListener.start()");
             if (wallet == null) throw new IllegalStateException("No wallet!");
             //acquireWakeLock();
@@ -78,7 +75,7 @@ public class WalletService extends Service {
             wallet.startRefresh();
         }
 
-        public void stop() {
+        void stop() {
             Log.d(TAG, "MyWalletListener.stop()");
             if (wallet == null) throw new IllegalStateException("No wallet!");
             wallet.pauseRefresh();
@@ -178,7 +175,7 @@ public class WalletService extends Service {
 
     // Handler that receives messages from the thread
     private final class ServiceHandler extends Handler {
-        public ServiceHandler(Looper looper) {
+        ServiceHandler(Looper looper) {
             super(looper);
         }
 
@@ -188,11 +185,19 @@ public class WalletService extends Service {
             switch (msg.arg2) {
                 case START_SERVICE: {
                     Bundle extras = msg.getData();
-                    String walletId = extras.getString(REQUEST_WALLET, null);
-                    String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
-                    Log.d(TAG, "LOAD wallet " + walletId);// + ":" + walletPw);
-                    if (walletId != null) {
-                        start(walletId, walletPw); // TODO What if this fails?
+                    String cmd = extras.getString(REQUEST, null);
+                    if (cmd.equals(REQUEST_CMD_LOAD)) {
+                        String walletId = extras.getString(REQUEST_WALLET, null);
+                        String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
+                        Log.d(TAG, "LOAD wallet " + walletId);// + ":" + walletPw);
+                        if (walletId != null) {
+                            start(walletId, walletPw); // TODO What if this fails?
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_STORE)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "storing wallet: " + myWallet.getName());
+                        getWallet().store();
+                        Log.d(TAG, "wallet stored: " + myWallet.getName());
                     }
                 }
                 break;
@@ -251,7 +256,6 @@ public class WalletService extends Service {
         // this should not matter since the old activity is not getting updates
         // and the new one is not listening yet (although it will be bound)
         Log.d(TAG, "onStartCommand()");
-        //acquireWakeLock(); // we want to be awake for the fun stuff
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
         Message msg = mServiceHandler.obtainMessage();
@@ -293,6 +297,11 @@ public class WalletService extends Service {
             showProgress(95);
         }
         Log.d(TAG, "start() done");
+        if (observer != null) {
+            Wallet myWallet = getWallet();
+            myWallet.getHistory().refresh();
+            observer.onRefreshed(myWallet, true);
+        }
     }
 
     public void stop() {

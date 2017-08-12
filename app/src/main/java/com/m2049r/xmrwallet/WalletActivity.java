@@ -1,12 +1,12 @@
-/**
+/*
  * Copyright (c) 2017 m2049r
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -97,6 +97,7 @@ public class WalletActivity extends AppCompatActivity
         Log.d(TAG, "onStop()");
         releaseWakeLock();
         disconnectWalletService();
+        this.synced = false;
         super.onStop();
     }
 
@@ -145,6 +146,7 @@ public class WalletActivity extends AppCompatActivity
         balanceView.setText(Wallet.getDisplayAmount(wallet.getBalance()));
         unlockedView.setText(Wallet.getDisplayAmount(wallet.getUnlockedBalance()));
         String sync = "";
+        // TODO: getConnectionStatus() blocks as it tries to connect - this is bad in the UI thread!
         if (wallet.getConnectionStatus() == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             if (!wallet.isSynchronized()) {
                 long n = wallet.getDaemonBlockChainHeight() - wallet.getBlockChainHeight();
@@ -160,13 +162,19 @@ public class WalletActivity extends AppCompatActivity
                 sync = getString(R.string.status_synced) + ": " + wallet.getBlockChainHeight();
                 if (!synced) {
                     hideProgress();
+                    saveWallet(); // save ONLY on first sync
+                    // the usual use case is:
+                    // open the wallet, wait for sync, check balance, close app
+                    // even if we wait for new transactions, they will be synced and saved next time
+                    // the advantage here is that we are storing the state while the app is open
+                    // and don't get into timing issues
                     synced = true;
                 }
             }
         }
-        String t = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
+        String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
         syncProgressView.setText(sync);
-        connectionStatusView.setText(t + " " + wallet.getConnectionStatus().toString().substring(17));
+        connectionStatusView.setText(net + " " + wallet.getConnectionStatus().toString().substring(17));
     }
 
     @Override
@@ -241,8 +249,19 @@ public class WalletActivity extends AppCompatActivity
             mBoundService.setObserver(null);
             unbindService(mConnection);
             mIsBound = false;
-            Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
             Log.d(TAG, "UNBOUND");
+        }
+    }
+
+    void saveWallet() {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
+            startService(intent);
+            Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
+            Log.d(TAG, "STORE request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
         }
     }
 
@@ -279,6 +298,7 @@ public class WalletActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
+        //saveWallet(); //TODO: do it here if we really need to ...
         super.onPause();
     }
 
