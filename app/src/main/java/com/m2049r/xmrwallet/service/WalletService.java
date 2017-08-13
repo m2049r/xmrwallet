@@ -21,15 +21,14 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.TransactionHistory;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -131,12 +130,19 @@ public class WalletService extends Service {
 
         public void refreshed() {
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            Log.d(TAG, "refreshed() " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + " with observer " + observer);
+            Log.d(TAG, "refreshed() " + wallet.getName() + " " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + " with observer " + observer);
             if (updated) {
                 if (observer != null) {
+                    Log.d(TAG, "refreshed() A");
                     updateDaemonState(wallet, 0);
-                    wallet.getHistory().refresh();
+                    Log.d(TAG, "refreshed() B");
+                    TransactionHistory history = wallet.getHistory();
+                    Log.d(TAG, "refreshed() C " + history.getCount());
+                    history.refresh();
+                    Log.d(TAG, "refreshed() D " + history.getCount());
+                    Log.d(TAG, "refreshed() E");
                     observer.onRefreshed(wallet, true);
+                    Log.d(TAG, "refreshed() D");
                     updated = false;
                 }
             }
@@ -267,7 +273,7 @@ public class WalletService extends Service {
 
         // We are using a HandlerThread and a Looper to avoid loading and closing
         // concurrency
-        HandlerThread thread = new HandlerThread("WalletService",
+        MoneroHandlerThread thread = new MoneroHandlerThread("WalletService",
                 Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
 
@@ -344,19 +350,12 @@ public class WalletService extends Service {
             Wallet aWallet = loadWallet(walletName, walletPassword);
             listener = new MyWalletListener(aWallet);
             listener.start();
-            showProgress(95);
+            showProgress(100);
         }
-        Log.d(TAG, "start() notify obeserver first time");
-        if (observer != null) {
-            Wallet myWallet = getWallet();
-            showProgress(getString(R.string.status_wallet_connecting));
-            showProgress(-1);
-            updateDaemonState(myWallet, 0);
-            myWallet.getHistory().refresh();
-            if (observer != null) { // TODO this could still happen - need to sync threads
-                observer.onRefreshed(myWallet, true);
-            }
-        }
+        showProgress(getString(R.string.status_wallet_connecting));
+        showProgress(-1);
+        // if we try to refresh the history here we get occasional segfaults!
+        // doesnt matter since we update as soon as we get a new block anyway
         Log.d(TAG, "start() done");
     }
 
