@@ -27,6 +27,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -97,15 +98,27 @@ public class WalletService extends Service {
         }
 
         long lastBlockTime = 0;
+        int lastTxCount = 0;
 
         public void newBlock(long height) {
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
-                Log.d(TAG, "newBlock() @" + height + "with observer " + observer);
+                Log.d(TAG, "newBlock() @" + height + " with observer " + observer);
                 lastBlockTime = System.currentTimeMillis();
                 if (observer != null) {
-                    observer.onRefreshed(wallet, false);
+                    boolean fullRefresh = false;
+                    updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
+                    if (!wallet.isSynchronized()) {
+                        // we want to see our transactions as they come in
+                        wallet.getHistory().refresh();
+                        int txCount = wallet.getHistory().getCount();
+                        if (txCount > lastTxCount) {
+                            lastTxCount = txCount;
+                            fullRefresh = true;
+                        }
+                    }
+                    observer.onRefreshed(wallet, fullRefresh);
                 }
             }
         }
@@ -118,15 +131,52 @@ public class WalletService extends Service {
 
         public void refreshed() {
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            Log.d(TAG, "refreshed() " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + "with observer " + observer);
+            Log.d(TAG, "refreshed() " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + " with observer " + observer);
             if (updated) {
                 if (observer != null) {
+                    updateDaemonState(wallet, 0);
                     wallet.getHistory().refresh();
                     observer.onRefreshed(wallet, true);
                     updated = false;
                 }
             }
         }
+    }
+
+    private long lastDaemonStatusUpdate = 0;
+    private long daemonHeight = 0;
+    private Wallet.ConnectionStatus connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
+    private static final long STATUS_UPDATE_INTERVAL = 120000; // 120s (blocktime)
+
+    private void updateDaemonState(Wallet wallet, long height) {
+        long t = System.currentTimeMillis();
+        if (height > 0) { // if we get a height, we are connected
+            daemonHeight = height;
+            connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Connected;
+            lastDaemonStatusUpdate = t;
+        } else {
+            if (t - lastDaemonStatusUpdate > STATUS_UPDATE_INTERVAL) {
+                lastDaemonStatusUpdate = t;
+                // these calls really connect to the daemon - wasting time
+                daemonHeight = wallet.getDaemonBlockChainHeight();
+                if (daemonHeight > 0) {
+                    // if we get a valid height, the obviously we are connected
+                    connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Connected;
+                } else {
+                    // TODO: or connectionStatus = wallet.getConnectionStatus(); ?
+                    connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
+                }
+            }
+        }
+        //Log.d(TAG, "updated daemon status: " + daemonHeight + "/" + connectionStatus.toString());
+    }
+
+    public long getDaemonHeight() {
+        return this.daemonHeight;
+    }
+
+    public Wallet.ConnectionStatus getConnectionStatus() {
+        return this.connectionStatus;
     }
 
     /////////////////////////////////////////////
@@ -296,12 +346,18 @@ public class WalletService extends Service {
             listener.start();
             showProgress(95);
         }
-        Log.d(TAG, "start() done");
+        Log.d(TAG, "start() notify obeserver first time");
         if (observer != null) {
             Wallet myWallet = getWallet();
+            showProgress(getString(R.string.status_wallet_connecting));
+            showProgress(-1);
+            updateDaemonState(myWallet, 0);
             myWallet.getHistory().refresh();
-            observer.onRefreshed(myWallet, true);
+            if (observer != null) { // TODO this could still happen - need to sync threads
+                observer.onRefreshed(myWallet, true);
+            }
         }
+        Log.d(TAG, "start() done");
     }
 
     public void stop() {
@@ -309,8 +365,13 @@ public class WalletService extends Service {
         setObserver(null); // in case it was not reset already
         if (listener != null) {
             listener.stop();
+            Wallet myWallet = getWallet();
+//            if (!myWallet.isSynchronized()) { // save only if NOT synced (to continue later)
+//                Log.d(TAG, "stop() saving");
+//                myWallet.store();
+//            }
             Log.d(TAG, "stop() closing");
-            listener.getWallet().close();
+            myWallet.close();
             Log.d(TAG, "stop() closed");
             listener = null;
         }

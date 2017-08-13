@@ -11,11 +11,12 @@
     <string name="status_walletlist_loading">Loading Wallet List</string>
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>
+    <string name="status_wallet_connecting">Connecting &#8230;</string>
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
     <string name="prompt_wrong_net">Daemon type does not fit to wallet!</string>
-    <string name="warn_daemon_unavailable">Warning: cannot reach daemon!</string>
+    <string name="warn_daemon_unavailable">Cannot connect to daemon!</string>
     <string name="panic">Something\'s wrong!</string>
 
     <string name="title_amount">Amount</string>
