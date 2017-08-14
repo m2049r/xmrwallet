@@ -58,6 +58,10 @@ public class WalletActivity extends AppCompatActivity
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart()");
+        this.synced = false; // init syncing logic
+    }
+
+    private void startWalletService() {
         acquireWakeLock();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -67,6 +71,8 @@ public class WalletActivity extends AppCompatActivity
         } else {
             throw new IllegalStateException("No extras passed! Panic!");
         }
+
+        onProgress(getString(R.string.status_wallet_loading));
         showProgress();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -75,7 +81,11 @@ public class WalletActivity extends AppCompatActivity
                 onProgress(10); // look like we are working!
             }
         }, 250);
-        //Log.d(TAG, "onStart() done.");
+    }
+
+    private void stopWalletService() {
+        releaseWakeLock();
+        disconnectWalletService();
     }
 
     private String title = null;
@@ -95,15 +105,13 @@ public class WalletActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         Log.d(TAG, "onStop()");
-        releaseWakeLock();
-        disconnectWalletService();
-        this.synced = false;
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy()");
+        stopWalletService();
         super.onDestroy();
     }
 
@@ -129,6 +137,7 @@ public class WalletActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
 
         setTitle(getString(R.string.status_wallet_loading));
+        startWalletService();
         //Log.d(TAG, "onCreate() done.");
     }
 
@@ -136,33 +145,34 @@ public class WalletActivity extends AppCompatActivity
     private boolean synced = false;
 
     private void updateStatus(Wallet wallet) {
+        Log.d(TAG, "updateStatus()");
         setActivityTitle(wallet);
         final TextView balanceView = (TextView) findViewById(R.id.tvBalance);
         final TextView unlockedView = (TextView) findViewById(R.id.tvUnlockedBalance);
         final TextView syncProgressView = (TextView) findViewById(R.id.tvBlockHeightProgress);
         final TextView connectionStatusView = (TextView) findViewById(R.id.tvConnectionStatus);
-
-        //Wallet wallet = getWallet();
         balanceView.setText(Wallet.getDisplayAmount(wallet.getBalance()));
         unlockedView.setText(Wallet.getDisplayAmount(wallet.getUnlockedBalance()));
         String sync = "";
-        // TODO: getConnectionStatus() blocks as it tries to connect - this is bad in the UI thread!
-        if (wallet.getConnectionStatus() == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
+        if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
+        Wallet.ConnectionStatus daemonConnected = mBoundService.getConnectionStatus();
+        if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
+            long daemonHeight = mBoundService.getDaemonHeight();
             if (!wallet.isSynchronized()) {
-                long n = wallet.getDaemonBlockChainHeight() - wallet.getBlockChainHeight();
+                long n = daemonHeight - wallet.getBlockChainHeight();
                 sync = n + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
                     firstBlock = wallet.getBlockChainHeight();
                 }
-                int x = 100 - Math.round(100f * n / (1f * wallet.getDaemonBlockChainHeight() - firstBlock));
-                //Log.d(TAG, n + "/" + (wallet.getDaemonBlockChainHeight() - firstBlock));
+                int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
                 onProgress(getString(R.string.status_syncing) + " " + sync);
+                if (x == 0) x = -1;
                 onProgress(x);
             } else {
                 sync = getString(R.string.status_synced) + ": " + wallet.getBlockChainHeight();
                 if (!synced) {
                     hideProgress();
-                    saveWallet(); // save ONLY on first sync
+                    saveWallet(); // save on first sync
                     // the usual use case is:
                     // open the wallet, wait for sync, check balance, close app
                     // even if we wait for new transactions, they will be synced and saved next time
@@ -174,7 +184,7 @@ public class WalletActivity extends AppCompatActivity
         }
         String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
         syncProgressView.setText(sync);
-        connectionStatusView.setText(net + " " + wallet.getConnectionStatus().toString().substring(17));
+        connectionStatusView.setText(net + " " + daemonConnected.toString().substring(17));
     }
 
     @Override
@@ -364,7 +374,12 @@ public class WalletActivity extends AppCompatActivity
         runOnUiThread(new Runnable() {
             public void run() {
                 ProgressBar progress = (ProgressBar) findViewById(R.id.pbProgress);
-                progress.setProgress(n);
+                if (n >= 0) {
+                    progress.setIndeterminate(false);
+                    progress.setProgress(n);
+                } else {
+                    progress.setIndeterminate(true);
+                }
             }
         });
     }
