@@ -34,12 +34,6 @@ import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
-// Bind / Unbind
-// Activity onCreate() / onDestroy()
-// or
-// Activity onStart() / onStop()
-
-
 public class WalletService extends Service {
     final static String TAG = "WalletService";
 
@@ -133,16 +127,10 @@ public class WalletService extends Service {
             Log.d(TAG, "refreshed() " + wallet.getName() + " " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + " with observer " + observer);
             if (updated) {
                 if (observer != null) {
-                    Log.d(TAG, "refreshed() A");
                     updateDaemonState(wallet, 0);
-                    Log.d(TAG, "refreshed() B");
                     TransactionHistory history = wallet.getHistory();
-                    Log.d(TAG, "refreshed() C " + history.getCount());
                     history.refresh();
-                    Log.d(TAG, "refreshed() D " + history.getCount());
-                    Log.d(TAG, "refreshed() E");
                     observer.onRefreshed(wallet, true);
-                    Log.d(TAG, "refreshed() D");
                     updated = false;
                 }
             }
@@ -418,4 +406,3 @@ public class WalletService extends Service {
         return wallet;
     }
 }
-
