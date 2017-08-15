@@ -245,8 +245,8 @@ public class LoginFragment extends Fragment {
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         boolean mainnet = sharedPref.getBoolean(PREF_MAINNET, false);
-        daemonMainNet = sharedPref.getString(PREF_DAEMON_MAINNET, "localhost:18081");
-        daemonTestNet = sharedPref.getString(PREF_DAEMON_TESTNET, "localhost:28081");
+        daemonMainNet = sharedPref.getString(PREF_DAEMON_MAINNET, "");
+        daemonTestNet = sharedPref.getString(PREF_DAEMON_TESTNET, "");
 
         setMainNet(mainnet);
         if (mainnet) {
