@@ -57,7 +57,7 @@ public class WalletManager {
 
     private void manageWallet(String walletId, Wallet wallet) {
         if (getWallet(walletId) != null) {
-            throw new IllegalStateException("Wallet already under management!");
+            throw new IllegalStateException(walletId + " already under management!");
         }
         Log.d(TAG, "Managing " + walletId);
         managedWallets.put(walletId, wallet);
@@ -65,7 +65,7 @@ public class WalletManager {
 
     private void unmanageWallet(String walletId) {
         if (getWallet(walletId) == null) {
-            throw new IllegalStateException("Wallet not under management!");
+            throw new IllegalStateException(walletId + " not under management!");
         }
         Log.d(TAG, "Unmanaging " + walletId);
         managedWallets.remove(walletId);

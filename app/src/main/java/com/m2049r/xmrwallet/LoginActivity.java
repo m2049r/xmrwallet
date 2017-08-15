@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,12 +37,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 
-public class LoginActivity extends Activity implements LoginFragment.LoginFragmentListener {
+public class LoginActivity extends Activity
+        implements LoginFragment.Listener, GenerateFragment.Listener {
     static final String TAG = "LoginActivity";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
@@ -62,7 +66,15 @@ public class LoginActivity extends Activity implements LoginFragment.LoginFragme
 
     // adapted from http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
     @Override
-    public void promptPassword(final String wallet) {
+    public void onWalletSelected(final String wallet) {
+        if (wallet.toLowerCase().startsWith("test")) {
+            startGenerateFragment();
+        } else {
+            promptPassword(wallet);
+        }
+    }
+
+    void promptPassword(final String wallet) {
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.prompt_password, null);
@@ -130,7 +142,7 @@ public class LoginActivity extends Activity implements LoginFragment.LoginFragme
     }
 
     ////////////////////////////////////////
-    // LoginFragment.LoginFragmentListener
+    // LoginFragment.Listener
     ////////////////////////////////////////
     @Override
     public SharedPreferences getPrefs() {
@@ -190,6 +202,126 @@ public class LoginActivity extends Activity implements LoginFragment.LoginFragme
         Fragment fragment = new LoginFragment();
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment).commit();
-        Log.d(TAG, "fragment added");
+        Log.d(TAG, "LoginFragment added");
+    }
+
+    void startGenerateFragment() {
+        replaceFragment(new GenerateFragment());
+        Log.d(TAG, "GenerateFragment placed");
+    }
+
+    void replaceFragment(Fragment newFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    //////////////////////////////////////////
+    // GenerateFragment.Listener
+    //////////////////////////////////////////
+    static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
+
+    @Override
+    public void onGenerate(final String name, final String password) {
+        final GenerateFragment genFragment = (GenerateFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
+        File newWalletFolder = new File(getStorageRoot(), ".new");
+        if (!newWalletFolder.exists()) {
+            if (!newWalletFolder.mkdir()) {
+                Log.e(TAG, "Cannot create new wallet dir " + newWalletFolder.getAbsolutePath());
+                genFragment.showMnemonic("");
+                return;
+            }
+        }
+        if (!newWalletFolder.isDirectory()) {
+            Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+            genFragment.showMnemonic("");
+            return;
+        }
+        File cache = new File(newWalletFolder, name);
+        cache.delete();
+        File keys = new File(newWalletFolder, name + ".keys");
+        keys.delete();
+        File address = new File(newWalletFolder, name + ".address.txt");
+        address.delete();
+
+        if (cache.exists() || keys.exists() || address.exists()) {
+            Log.e(TAG, "Cannot remove all old wallet files: " + cache.getAbsolutePath());
+            genFragment.showMnemonic("");
+            return;
+        }
+
+        final String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
+        new Thread(null,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "creating wallet " + newWalletPath);
+                        Wallet newWallet = WalletManager.getInstance()
+                                .createWallet(newWalletPath, password, MNEMONIC_LANGUAGE);
+                        Log.d(TAG, "wallet created");
+                        Log.d(TAG, "Created " + newWallet.getAddress());
+                        Log.d(TAG, "Seed " + newWallet.getSeed() + ".");
+                        final String mnemonic = newWallet.getSeed();
+                        newWallet.close();
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                genFragment.showMnemonic(mnemonic);
+                            }
+                        });
+                    }
+                }
+                , "CreateWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
+    }
+
+    @Override
+    public void onAccept(final String name, final String password) {
+        File newWalletFolder = new File(getStorageRoot(), ".new");
+        if (!newWalletFolder.isDirectory()) {
+            Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+            return;
+        }
+        final String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
+        new Thread(null,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "opening wallet " + newWalletPath);
+                        Wallet newWallet = WalletManager.getInstance()
+                                .openWallet(newWalletPath, password);
+                        Wallet.Status status = newWallet.getStatus();
+                        Log.d(TAG, "wallet opened " + newWallet.getStatus());
+                        if (status != Wallet.Status.Status_Ok) {
+                            Log.e(TAG, "New wallet is " + status.toString());
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    Toast.makeText(LoginActivity.this,
+                                            getString(R.string.generate_wallet_create_failed), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            return;
+                        }
+                        final String walletPath = new File(getStorageRoot(), name).getAbsolutePath();
+                        final boolean rc = newWallet.store(walletPath);
+                        Log.d(TAG, "wallet stored with rc=" + rc);
+                        newWallet.close();
+                        Log.d(TAG, "wallet closed");
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                if (rc) {
+                                    getFragmentManager().popBackStack();
+                                    Toast.makeText(LoginActivity.this,
+                                            getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Log.e(TAG, "Wallet store failed to " + walletPath);
+                                    Toast.makeText(LoginActivity.this,
+                                            getString(R.string.generate_wallet_create_failed), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+                , "AcceptWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
     }
 }

@@ -43,4 +43,14 @@
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
 
+    <string name="generate_title">Generate Wallet</string>
+    <string name="generate_name">Wallet Name</string>
+    <string name="generate_password">Wallet Password</string>
+    <string name="generate_buttonGenerate">Do it already!</string>
+    <string name="generate_seed">Mnemonic Seed</string>
+    <string name="generate_buttonAccept">I have noted this mnemonic seed\nNow, I want to loose all my money!</string>
+    <string name="generate_wallet_exists">Wallet exists!\nChoose another name</string>
+    <string name="generate_wallet_created">Wallet created</string>
+    <string name="generate_wallet_create_failed">Wallet create failed</string>
+
 </resources>

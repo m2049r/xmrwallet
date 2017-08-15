@@ -45,38 +45,49 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class LoginFragment extends Fragment {
     private static final String TAG = "LoginFragment";
+    public static final int WALLETNAME_PREAMBLE_LENGTH = "[123456] ".length();
+
 
     ListView listView;
-    List<String> walletList = new ArrayList<>();
+    Set<String> walletList = new TreeSet<>(new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase()
+                    .compareTo(o2.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase());
+        }
+    });
     List<String> displayedList = new ArrayList<>();
 
     ToggleButton tbMainNet;
     EditText etDaemonAddress;
 
-    LoginFragment.LoginFragmentListener activityCallback;
+    Listener activityCallback;
 
     // Container Activity must implement this interface
-    public interface LoginFragmentListener {
+    public interface Listener {
         SharedPreferences getPrefs();
 
         File getStorageRoot();
 
-        void promptPassword(final String wallet);
+        void onWalletSelected(final String wallet);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof LoginFragment.LoginFragmentListener) {
-            this.activityCallback = (LoginFragment.LoginFragmentListener) context;
+        if (context instanceof Listener) {
+            this.activityCallback = (Listener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement WalletFragmentListener");
+                    + " must implement Listener");
         }
     }
 
@@ -148,14 +159,13 @@ public class LoginFragment extends Fragment {
                 }
 
                 String itemValue = (String) listView.getItemAtPosition(position);
-                if ((isMainNet() && itemValue.charAt(1) != '4')
-                        || (!isMainNet() && itemValue.charAt(1) != '9')) {
+                String x = isMainNet() ? "4" : "9A";
+                if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                final int preambleLength = "[123456] ".length();
-                if (itemValue.length() <= (preambleLength)) {
+                if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
                     Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -167,8 +177,8 @@ public class LoginFragment extends Fragment {
                 // looking good
                 savePrefs(false);
 
-                String wallet = itemValue.substring(preambleLength);
-                activityCallback.promptPassword(wallet);
+                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+                activityCallback.onWalletSelected(wallet);
             }
         });
         loadList();
@@ -177,9 +187,10 @@ public class LoginFragment extends Fragment {
 
     private void filterList() {
         displayedList.clear();
-        char x = isMainNet() ? '4' : '9';
+        String x = isMainNet() ? "4" : "9A";
         for (String s : walletList) {
-            if (s.charAt(1) == x) displayedList.add(s);
+            Log.d(TAG, "filtering " + s);
+            if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
     }
 

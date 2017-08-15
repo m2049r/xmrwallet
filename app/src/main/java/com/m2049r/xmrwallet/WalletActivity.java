@@ -31,7 +31,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
 
-public class WalletActivity extends Activity implements WalletFragment.WalletFragmentListener,
+public class WalletActivity extends Activity implements WalletFragment.Listener,
         WalletService.Observer {
     private static final String TAG = "WalletActivity";
 
@@ -212,7 +212,7 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
     }
 
     //////////////////////////////////////////
-    // WalletFragment.WalletFragmentListener
+    // WalletFragment.Listener
     //////////////////////////////////////////
 
     @Override

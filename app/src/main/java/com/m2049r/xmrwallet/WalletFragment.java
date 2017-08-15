@@ -188,10 +188,10 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         connectionStatusView.setText(net + " " + daemonConnected.toString().substring(17));
     }
 
-    WalletFragmentListener activityCallback;
+    Listener activityCallback;
 
     // Container Activity must implement this interface
-    public interface WalletFragmentListener {
+    public interface Listener {
         boolean hasBoundService();
 
         Wallet.ConnectionStatus getConnectionStatus();
@@ -205,15 +205,11 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof WalletFragmentListener) {
-            this.activityCallback = (WalletFragmentListener) context;
+        if (context instanceof Listener) {
+            this.activityCallback = (Listener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement WalletFragmentListener");
+                    + " must implement Listener");
         }
-    }
-
-    private void runOnUiThread(Runnable runnable) {
-        if (isAdded()) getActivity().runOnUiThread(runnable);
     }
 }
