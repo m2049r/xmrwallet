@@ -67,7 +67,8 @@ public class LoginActivity extends Activity
     // adapted from http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
     @Override
     public void onWalletSelected(final String wallet) {
-        if (wallet.toLowerCase().startsWith("test")) {
+        Log.d(TAG, "selected wallet is ." + wallet + ".");
+        if (wallet.equals(getString(R.string.generate_title))) {
             startGenerateFragment();
         } else {
             promptPassword(wallet);

@@ -95,6 +95,7 @@ public class GenerateFragment extends Fragment {
         bGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                 // TODO make keyboard go away
                 generateWallet();
             }
         });
@@ -105,6 +106,7 @@ public class GenerateFragment extends Fragment {
                 acceptWallet();
             }
         });
+
         bAccept.setEnabled(false);
 
         return view;
@@ -116,6 +118,7 @@ public class GenerateFragment extends Fragment {
         File walletFile = new File(activityCallback.getStorageRoot(), name + ".keys");
         if (walletFile.exists()) {
             Toast.makeText(getActivity(), getString(R.string.generate_wallet_exists), Toast.LENGTH_LONG).show();
+            etWalletName.requestFocus();
             return;
         }
         String password = etWalletPassword.getText().toString();

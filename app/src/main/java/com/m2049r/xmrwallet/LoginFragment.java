@@ -53,7 +53,8 @@ import java.util.TreeSet;
 
 public class LoginFragment extends Fragment {
     private static final String TAG = "LoginFragment";
-    public static final int WALLETNAME_PREAMBLE_LENGTH = "[123456] ".length();
+    public static final String WALLETNAME_PREAMBLE = "[------] ";
+    public static final int WALLETNAME_PREAMBLE_LENGTH = WALLETNAME_PREAMBLE.length();
 
 
     ListView listView;
@@ -159,16 +160,18 @@ public class LoginFragment extends Fragment {
                 }
 
                 String itemValue = (String) listView.getItemAtPosition(position);
-                String x = isMainNet() ? "4" : "9A";
-                if (x.indexOf(itemValue.charAt(1)) < 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-                    return;
-                }
 
                 if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
                     Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                String x = isMainNet() ? "4-" : "9A-";
+                if (x.indexOf(itemValue.charAt(1)) < 0) {
+                    Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
                     Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_LONG).show();
                     return;
@@ -192,6 +195,7 @@ public class LoginFragment extends Fragment {
             Log.d(TAG, "filtering " + s);
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
+        displayedList.add(WALLETNAME_PREAMBLE + getString(R.string.generate_title));
     }
 
     private void loadList() {
