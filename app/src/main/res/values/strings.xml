@@ -12,6 +12,8 @@
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
+    <string name="status_working">Working on it &#8230;</string>
+
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
@@ -39,6 +41,6 @@
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">External Storage permission not granted! Panic!</string>
+    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
 
 </resources>
