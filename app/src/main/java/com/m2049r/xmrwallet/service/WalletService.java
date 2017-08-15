@@ -193,16 +193,29 @@ public class WalletService extends Service {
         void onProgress(int n);
     }
 
+    String progressText = null;
+    int progressValue = -1;
+
     private void showProgress(String text) {
+        progressText = text;
         if (observer != null) {
             observer.onProgress(text);
         }
     }
 
     private void showProgress(int n) {
+        progressValue = n;
         if (observer != null) {
             observer.onProgress(n);
         }
+    }
+
+    public String getProgressText() {
+        return progressText;
+    }
+
+    public int getProgressValue() {
+        return progressValue;
     }
 
     //
@@ -235,6 +248,8 @@ public class WalletService extends Service {
                         String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
                         Log.d(TAG, "LOAD wallet " + walletId);// + ":" + walletPw);
                         if (walletId != null) {
+                            showProgress(getString(R.string.status_wallet_loading));
+                            showProgress(10);
                             start(walletId, walletPw); // TODO What if this fails?
                         }
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {

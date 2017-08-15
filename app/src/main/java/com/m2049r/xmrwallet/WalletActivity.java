@@ -16,43 +16,29 @@
 
 package com.m2049r.xmrwallet;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
-import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
 
-import java.util.List;
-
-public class WalletActivity extends AppCompatActivity
-        implements TransactionInfoAdapter.OnInteractionListener, WalletService.Observer {
+public class WalletActivity extends Activity implements WalletFragment.WalletFragmentListener,
+        WalletService.Observer {
     private static final String TAG = "WalletActivity";
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
 
-    TransactionInfoAdapter adapter;
+    private boolean synced = false;
 
     @Override
     protected void onStart() {
@@ -71,16 +57,6 @@ public class WalletActivity extends AppCompatActivity
         } else {
             throw new IllegalStateException("No extras passed! Panic!");
         }
-
-        onProgress(getString(R.string.status_wallet_loading));
-        showProgress();
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                onProgress(10); // look like we are working!
-            }
-        }, 250);
     }
 
     private void stopWalletService() {
@@ -88,19 +64,8 @@ public class WalletActivity extends AppCompatActivity
         disconnectWalletService();
     }
 
-    private String title = null;
+//    private String title = null;
 
-    void setActivityTitle(Wallet wallet) {
-        if ((wallet == null) || (title != null)) return;
-        String shortName = wallet.getName();
-        if (shortName.length() > 16) {
-            shortName = shortName.substring(0, 14) + "...";
-        }
-        this.title = "[" + wallet.getAddress().substring(0, 6) + "] " + shortName;
-        setTitle(this.title);
-        onProgress(100);
-        Log.d(TAG, "wallet title is " + this.title);
-    }
 
     @Override
     protected void onStop() {
@@ -121,89 +86,41 @@ public class WalletActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wallet_activity);
 
+        // Check that the activity is using the layout version with
+        // the fragment_container FrameLayout
+        if (findViewById(R.id.fragment_container) != null) {
+            Log.d(TAG, "fragment_container not null");
+            // However, if we're being restored from a previous state,
+            // then we don't need to do anything and should return or else
+            // we could end up with overlapping fragments.
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            // Create a new Fragment to be placed in the activity layout
+            Fragment firstFragment = new WalletFragment();
+
+            // In case this activity was started with special instructions from an
+            // Intent, pass the Intent's extras to the fragment as arguments
+            firstFragment.setArguments(getIntent().getExtras());
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, firstFragment).commit();
+            Log.d(TAG, "fragment added");
+        }
+
+
         // TODO do stuff with savedInstanceState
         if (savedInstanceState != null) {
             return;
         }
         //Log.d(TAG, "no savedInstanceState");
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
-
-        RecyclerView.ItemDecoration itemDecoration = new
-                DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
-
-        this.adapter = new TransactionInfoAdapter(this);
-        recyclerView.setAdapter(adapter);
-
-        setTitle(getString(R.string.status_wallet_loading));
         startWalletService();
         //Log.d(TAG, "onCreate() done.");
     }
 
-    private long firstBlock = 0;
-    private boolean synced = false;
-
-    private void updateStatus(Wallet wallet) {
-        Log.d(TAG, "updateStatus()");
-        setActivityTitle(wallet);
-        final TextView balanceView = (TextView) findViewById(R.id.tvBalance);
-        final TextView unlockedView = (TextView) findViewById(R.id.tvUnlockedBalance);
-        final TextView syncProgressView = (TextView) findViewById(R.id.tvBlockHeightProgress);
-        final TextView connectionStatusView = (TextView) findViewById(R.id.tvConnectionStatus);
-        balanceView.setText(Wallet.getDisplayAmount(wallet.getBalance()));
-        unlockedView.setText(Wallet.getDisplayAmount(wallet.getUnlockedBalance()));
-        String sync = "";
-        if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
-        Wallet.ConnectionStatus daemonConnected = mBoundService.getConnectionStatus();
-        if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
-            long daemonHeight = mBoundService.getDaemonHeight();
-            if (!wallet.isSynchronized()) {
-                long n = daemonHeight - wallet.getBlockChainHeight();
-                sync = n + " " + getString(R.string.status_remaining);
-                if (firstBlock == 0) {
-                    firstBlock = wallet.getBlockChainHeight();
-                }
-                int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
-                onProgress(getString(R.string.status_syncing) + " " + sync);
-                if (x == 0) x = -1;
-                onProgress(x);
-            } else {
-                sync = getString(R.string.status_synced) + ": " + wallet.getBlockChainHeight();
-                if (!synced) {
-                    hideProgress();
-                    saveWallet(); // save on first sync
-                    // the usual use case is:
-                    // open the wallet, wait for sync, check balance, close app
-                    // even if we wait for new transactions, they will be synced and saved next time
-                    // the advantage here is that we are storing the state while the app is open
-                    // and don't get into timing issues
-                    synced = true;
-                }
-            }
-        }
-        String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
-        syncProgressView.setText(sync);
-        connectionStatusView.setText(net + " " + daemonConnected.toString().substring(17));
-    }
-
-    @Override
-    public void onRefreshed(final Wallet wallet, final boolean full) {
-        Log.d(TAG, "onRefreshed()");
-        if (wallet.isSynchronized()) {
-            releaseWakeLock(); // the idea is to stay awake until synced
-        }
-        runOnUiThread(new Runnable() {
-            public void run() {
-                if (full) {
-                    List<TransactionInfo> list = wallet.getHistory().getAll();
-                    adapter.setInfos(list);
-                    adapter.notifyDataSetChanged();
-                }
-                updateStatus(wallet);
-            }
-        });
-    }
 
     Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
@@ -223,6 +140,7 @@ public class WalletActivity extends AppCompatActivity
             mBoundService = ((WalletService.WalletServiceBinder) service).getService();
             //Log.d(TAG, "setting observer of " + mBoundService);
             mBoundService.setObserver(WalletActivity.this);
+            updateProgress();
             //TODO show current progress (eg. if the service is already busy saving last wallet)
             Log.d(TAG, "CONNECTED");
         }
@@ -263,48 +181,6 @@ public class WalletActivity extends AppCompatActivity
         }
     }
 
-    void saveWallet() {
-        if (mIsBound) { // no point in talking to unbound service
-            Intent intent = new Intent(getApplicationContext(), WalletService.class);
-            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
-            startService(intent);
-            Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
-            Log.d(TAG, "STORE request sent");
-        } else {
-            Log.e(TAG, "Service not bound");
-        }
-    }
-
-    // Callbacks from TransactionInfoAdapter
-    @Override
-    public void onInteraction(final View view, final TransactionInfo infoItem) {
-        final Context ctx = view.getContext();
-        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle("Transaction details");
-
-        builder.setNegativeButton("Copy TX ID", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ClipboardManager clipboardManager = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("TX", infoItem.getHash());
-                clipboardManager.setPrimaryClip(clip);
-            }
-        });
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        builder.setMessage("TX ID: " + infoItem.getHash() +
-                "\nPayment ID: " + infoItem.getPaymentId() +
-                "\nBlockHeight: " + infoItem.getBlockHeight() +
-                "\nAmount: " + Wallet.getDisplayAmount(infoItem.getAmount()) +
-                "\nFee: " + Wallet.getDisplayAmount(infoItem.getFee()));
-        AlertDialog alert1 = builder.create();
-        alert1.show();
-    }
-
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
@@ -334,53 +210,107 @@ public class WalletActivity extends AppCompatActivity
         }
     }
 
-    void releaseWakeLock() {
+    public void releaseWakeLock() {
         if ((wl == null) || !wl.isHeld()) return;
         wl.release();
         wl = null;
         Log.d(TAG, "WakeLock released");
     }
 
-    private void showProgress() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                LinearLayout llProgress = (LinearLayout) findViewById(R.id.llProgress);
-                llProgress.setVisibility(View.VISIBLE);
-            }
-        });
+    public void saveWallet() {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
+            startService(intent);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
+                }
+            });
+            Log.d(TAG, "STORE request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
+        }
     }
 
-    private void hideProgress() {
+    //////////////////////////////////////////
+    // WalletFragment.WalletFragmentListener
+    //////////////////////////////////////////
+
+    @Override
+    public boolean hasBoundService() {
+        return mBoundService != null;
+    }
+
+    @Override
+    public Wallet.ConnectionStatus getConnectionStatus() {
+        return mBoundService.getConnectionStatus();
+    }
+
+    @Override
+    public long getDaemonHeight() {
+        return mBoundService.getDaemonHeight();
+    }
+
+    @Override
+    public void setTitle(String title) {
+        super.setTitle(title);
+    }
+
+    ///////////////////////////
+    // WalletService.Observer
+    ///////////////////////////
+    @Override
+    public void onRefreshed(final Wallet wallet, final boolean full) {
+        Log.d(TAG, "onRefreshed()");
+        if (wallet.isSynchronized()) {
+            releaseWakeLock(); // the idea is to stay awake until synced
+            if (!synced) {
+                onProgress(null);
+                saveWallet(); // save on first sync
+                synced = true;
+            }
+        }
+        // TODO check which fragment is loaded
+        final WalletFragment walletFragment = (WalletFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
         runOnUiThread(new Runnable() {
             public void run() {
-                LinearLayout llProgress = (LinearLayout) findViewById(R.id.llProgress);
-                llProgress.setVisibility(View.GONE);
+                walletFragment.onRefreshed(wallet, full);
             }
         });
     }
 
     @Override
     public void onProgress(final String text) {
+        Log.d(TAG, "PROGRESS: " + text);
+        // TODO check which fragment is loaded
+        final WalletFragment walletFragment = (WalletFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
         runOnUiThread(new Runnable() {
             public void run() {
-                TextView progressText = (TextView) findViewById(R.id.tvProgress);
-                progressText.setText(text);
+                walletFragment.onProgress(text);
             }
         });
     }
 
     @Override
     public void onProgress(final int n) {
+        // TODO check which fragment is loaded
+        final WalletFragment walletFragment = (WalletFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
         runOnUiThread(new Runnable() {
             public void run() {
-                ProgressBar progress = (ProgressBar) findViewById(R.id.pbProgress);
-                if (n >= 0) {
-                    progress.setIndeterminate(false);
-                    progress.setProgress(n);
-                } else {
-                    progress.setIndeterminate(true);
-                }
+                walletFragment.onProgress(n);
             }
         });
+    }
+
+    private void updateProgress() {
+        // TODO maybe show real state of WalletService (like "still closing previous wallet")
+        if (hasBoundService()) {
+            onProgress(mBoundService.getProgressText());
+            onProgress(mBoundService.getProgressValue());
+        }
     }
 }

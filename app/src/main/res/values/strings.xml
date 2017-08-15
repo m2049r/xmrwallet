@@ -12,6 +12,8 @@
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
+    <string name="status_working">Working on it &#8230;</string>
+
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
