@@ -35,6 +35,8 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
         WalletService.Observer {
     private static final String TAG = "WalletActivity";
 
+    static final int MIN_DAEMON_VERSION = 65544;
+
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
 
@@ -283,7 +285,7 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
 
     @Override
     public void onProgress(final String text) {
-        Log.d(TAG, "PROGRESS: " + text);
+        //Log.d(TAG, "PROGRESS: " + text);
         // TODO check which fragment is loaded
         final WalletFragment walletFragment = (WalletFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_container);
