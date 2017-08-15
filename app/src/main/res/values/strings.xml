@@ -41,6 +41,6 @@
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">External Storage permission not granted! Panic!</string>
+    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
 
 </resources>

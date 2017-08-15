@@ -66,9 +66,6 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
         disconnectWalletService();
     }
 
-//    private String title = null;
-
-
     @Override
     protected void onStop() {
         Log.d(TAG, "onStop()");
@@ -88,39 +85,18 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wallet_activity);
 
-        // Check that the activity is using the layout version with
-        // the fragment_container FrameLayout
-        if (findViewById(R.id.fragment_container) != null) {
-            Log.d(TAG, "fragment_container not null");
-            // However, if we're being restored from a previous state,
-            // then we don't need to do anything and should return or else
-            // we could end up with overlapping fragments.
-            if (savedInstanceState != null) {
-                return;
-            }
+        Fragment walletFragment = new WalletFragment();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, walletFragment).commit();
+        Log.d(TAG, "fragment added");
 
-            // Create a new Fragment to be placed in the activity layout
-            Fragment firstFragment = new WalletFragment();
-
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            firstFragment.setArguments(getIntent().getExtras());
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, firstFragment).commit();
-            Log.d(TAG, "fragment added");
-        }
-
-
-        // TODO do stuff with savedInstanceState
+        // TODO do stuff with savedInstanceState ?
         if (savedInstanceState != null) {
             return;
         }
-        //Log.d(TAG, "no savedInstanceState");
 
         startWalletService();
-        //Log.d(TAG, "onCreate() done.");
+        Log.d(TAG, "onCreate() done.");
     }
 
 

@@ -19,7 +19,6 @@ package com.m2049r.xmrwallet;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -40,7 +39,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 import java.io.IOException;

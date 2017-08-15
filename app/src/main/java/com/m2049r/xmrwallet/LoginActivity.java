@@ -24,9 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -34,23 +32,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class LoginActivity extends Activity implements LoginFragment.LoginFragmentListener {
     static final String TAG = "LoginActivity";
@@ -189,7 +178,8 @@ public class LoginActivity extends Activity implements LoginFragment.LoginFragme
                 } else {
                     String msg = getString(R.string.message_strorage_not_permitted);
                     Log.e(TAG, msg);
-                    throw new IllegalStateException(msg);
+                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                    //throw new IllegalStateException(msg);
                 }
                 break;
             default:
@@ -197,14 +187,7 @@ public class LoginActivity extends Activity implements LoginFragment.LoginFragme
     }
 
     void startLoginFragment() {
-        // Create a new Fragment to be placed in the activity layout
         Fragment fragment = new LoginFragment();
-
-        // In case this activity was started with special instructions from an
-        // Intent, pass the Intent's extras to the fragment as arguments
-        //firstFragment.setArguments(getIntent().getExtras());
-
-        // Add the fragment to the 'fragment_container' FrameLayout
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment).commit();
         Log.d(TAG, "fragment added");
