@@ -191,6 +191,8 @@ public class WalletService extends Service {
         void onProgress(String text);
 
         void onProgress(int n);
+
+        void onWalletStored();
     }
 
     String progressText = null;
@@ -257,6 +259,7 @@ public class WalletService extends Service {
                         Log.d(TAG, "storing wallet: " + myWallet.getName());
                         getWallet().store();
                         Log.d(TAG, "wallet stored: " + myWallet.getName());
+                        if (observer != null) observer.onWalletStored();
                     }
                 }
                 break;

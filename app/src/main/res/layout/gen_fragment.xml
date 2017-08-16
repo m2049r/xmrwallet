@@ -52,7 +52,7 @@
         android:id="@+id/bGenerate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
@@ -68,6 +68,21 @@
         android:visibility="visible">
 
         <TextView
+            android:id="@+id/tvWalletAddress"
+            android:textIsSelectable="true"
+            android:selectAllOnFocus="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/generate_address_placeholder"
+            android:textAlignment="center"
+            android:textColor="@color/menu_background_color"
+            android:textSize="12sp" />
+
+        <TextView
             android:id="@+id/tvWalletMnemonic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,10 +90,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/generate_seed"
+            android:text="@string/generate_mnemonic_placeholder"
             android:textAlignment="center"
             android:textColor="@color/menu_background_color"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/bAccept"

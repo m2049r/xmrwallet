@@ -18,10 +18,13 @@ package com.m2049r.xmrwallet.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.util.Log;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
 
@@ -82,4 +85,26 @@ public class Helper {
         return Environment.MEDIA_MOUNTED.equals(state);
     }
 
+    static public void showKeyboard(Activity act) {
+        InputMethodManager imm = (InputMethodManager) act.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(act.getCurrentFocus(), InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    static public void hideKeyboard(Activity act) {
+        if (act.getCurrentFocus() == null) {
+            act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        } else {
+            InputMethodManager imm = (InputMethodManager) act.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow((null == act.getCurrentFocus()) ? null : act.getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    static public void showKeyboard(Dialog dialog) {
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+    }
+
+    static public void hideKeyboardAlways(Activity act) {
+        act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 }

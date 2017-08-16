@@ -11,13 +11,15 @@
     <string name="status_walletlist_loading">Loading Wallet List</string>
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>
+    <string name="status_wallet_unloaded">Wallet saved</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
     <string name="status_working">Working on it &#8230;</string>
 
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
+    <string name="bad_wallet">Wallet does not exists!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
-    <string name="prompt_wrong_net">Daemon type does not fit to wallet!</string>
+    <string name="prompt_wrong_net">Wallet does not match selected net</string>
     <string name="warn_daemon_unavailable">Cannot connect to daemon! Try again.</string>
     <string name="panic">Something\'s wrong!</string>
 
@@ -49,8 +51,11 @@
     <string name="generate_buttonGenerate">Do it already!</string>
     <string name="generate_seed">Mnemonic Seed</string>
     <string name="generate_buttonAccept">I have noted this mnemonic seed\nNow, I want to loose all my money!</string>
-    <string name="generate_wallet_exists">Wallet exists!\nChoose another name</string>
+    <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
     <string name="generate_wallet_created">Wallet created</string>
-    <string name="generate_wallet_create_failed">Wallet create failed</string>
+    <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>
+    <string name="generate_wallet_create_failed_2">Wallet create failed (2/2)</string>
+    <string name="generate_address_placeholder">9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8</string>
+    <string name="generate_mnemonic_placeholder">camp feline inflamed memoir afloat eight alerts females gutter cogs menu waveform gather tawny judge gusts yahoo doctor females biscuit alchemy reef agony austere camp</string>
 
 </resources>

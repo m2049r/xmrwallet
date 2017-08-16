@@ -200,11 +200,6 @@ public class WalletActivity extends Activity implements WalletFragment.Listener,
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
             startService(intent);
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
-                }
-            });
             Log.d(TAG, "STORE request sent");
         } else {
             Log.e(TAG, "Service not bound");
@@ -255,6 +250,15 @@ public class WalletActivity extends Activity implements WalletFragment.Listener,
         runOnUiThread(new Runnable() {
             public void run() {
                 walletFragment.onRefreshed(wallet, full);
+            }
+        });
+    }
+
+    @Override
+    public void onWalletStored() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
             }
         });
     }

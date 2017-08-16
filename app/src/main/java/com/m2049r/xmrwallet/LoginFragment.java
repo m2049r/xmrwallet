@@ -26,9 +26,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -39,6 +37,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 import java.io.IOException;
@@ -108,19 +107,18 @@ public class LoginFragment extends Fragment {
         tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
         etDaemonAddress = (EditText) view.findViewById(R.id.etDaemonAddress);
 
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        Helper.hideKeyboard(getActivity());
 
         etDaemonAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(etDaemonAddress, InputMethodManager.SHOW_IMPLICIT);
+                Helper.showKeyboard(getActivity());
             }
         });
         etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                    Helper.hideKeyboard(getActivity());
                     return false;
                 }
                 return false;
@@ -155,7 +153,9 @@ public class LoginFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EditText tvDaemonAddress = (EditText) getView().findViewById(R.id.etDaemonAddress);
                 if (tvDaemonAddress.getText().toString().length() == 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
+                    tvDaemonAddress.requestFocus();
+                    Helper.showKeyboard(getActivity());
                     return;
                 }
 
@@ -173,7 +173,7 @@ public class LoginFragment extends Fragment {
                 }
 
                 if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
-                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -181,6 +181,7 @@ public class LoginFragment extends Fragment {
                 savePrefs(false);
 
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+                if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
                 activityCallback.onWalletSelected(wallet);
             }
         });

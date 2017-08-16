@@ -33,6 +33,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,18 +65,26 @@ public class LoginActivity extends Activity
         }
     }
 
-    // adapted from http://www.mkyong.com/android/android-prompt-user-input-dialog-example/
     @Override
-    public void onWalletSelected(final String wallet) {
-        Log.d(TAG, "selected wallet is ." + wallet + ".");
-        if (wallet.equals(getString(R.string.generate_title))) {
+    public void onWalletSelected(final String walletName) {
+        Log.d(TAG, "selected wallet is ." + walletName + ".");
+        if (walletName.equals(':' + getString(R.string.generate_title))) {
             startGenerateFragment();
         } else {
-            promptPassword(wallet);
+            // now it's getting real, check if wallet exists
+            String walletPath = Helper.getWalletPath(this, walletName);
+            if (WalletManager.getInstance().walletExists(walletPath)) {
+                promptPassword(walletName);
+            } else { // this cannot really happen as we prefilter choices
+                Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
+    AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
+
     void promptPassword(final String wallet) {
+        if (passwordDialog != null) return; // we are already asking for password
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.prompt_password, null);
@@ -94,37 +103,40 @@ public class LoginActivity extends Activity
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                                Helper.hideKeyboardAlways(LoginActivity.this);
                                 String pass = etPassword.getText().toString();
                                 processPasswordEntry(wallet, pass);
+                                passwordDialog = null;
                             }
                         })
                 .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                                Helper.hideKeyboardAlways(LoginActivity.this);
                                 dialog.cancel();
+                                passwordDialog = null;
                             }
                         });
 
-        final AlertDialog alertDialog = alertDialogBuilder.create();
-        // request keyboard
-        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        passwordDialog = alertDialogBuilder.create();
+        Helper.showKeyboard(passwordDialog);
+
         // accept keyboard "ok"
         etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                    Helper.hideKeyboardAlways(LoginActivity.this);
                     String pass = etPassword.getText().toString();
-                    alertDialog.cancel();
+                    passwordDialog.cancel();
                     processPasswordEntry(wallet, pass);
+                    passwordDialog = null;
                     return false;
                 }
                 return false;
             }
         });
 
-        alertDialog.show();
+        passwordDialog.show();
     }
 
     private boolean checkWalletPassword(String walletName, String password) {
@@ -191,7 +203,7 @@ public class LoginActivity extends Activity
                 } else {
                     String msg = getString(R.string.message_strorage_not_permitted);
                     Log.e(TAG, msg);
-                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     //throw new IllegalStateException(msg);
                 }
                 break;
@@ -298,9 +310,10 @@ public class LoginActivity extends Activity
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     Toast.makeText(LoginActivity.this,
-                                            getString(R.string.generate_wallet_create_failed), Toast.LENGTH_SHORT).show();
+                                            getString(R.string.generate_wallet_create_failed_1), Toast.LENGTH_LONG).show();
                                 }
                             });
+                            newWallet.close();
                             return;
                         }
                         final String walletPath = new File(getStorageRoot(), name).getAbsolutePath();
@@ -317,7 +330,7 @@ public class LoginActivity extends Activity
                                 } else {
                                     Log.e(TAG, "Wallet store failed to " + walletPath);
                                     Toast.makeText(LoginActivity.this,
-                                            getString(R.string.generate_wallet_create_failed), Toast.LENGTH_SHORT).show();
+                                            getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -325,4 +338,5 @@ public class LoginActivity extends Activity
                 }
                 , "AcceptWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
     }
+
 }
