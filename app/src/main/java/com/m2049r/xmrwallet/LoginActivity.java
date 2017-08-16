@@ -280,7 +280,8 @@ public class LoginActivity extends Activity
                         newWallet.close();
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                genFragment.showMnemonic(mnemonic);
+                                if (genFragment.isAdded())
+                                    genFragment.showMnemonic(mnemonic);
                             }
                         });
                     }
@@ -290,6 +291,8 @@ public class LoginActivity extends Activity
 
     @Override
     public void onAccept(final String name, final String password) {
+        final GenerateFragment genFragment = (GenerateFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
         File newWalletFolder = new File(getStorageRoot(), ".new");
         if (!newWalletFolder.isDirectory()) {
             Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
@@ -324,7 +327,8 @@ public class LoginActivity extends Activity
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 if (rc) {
-                                    getFragmentManager().popBackStack();
+                                    if (genFragment.isAdded())
+                                        getFragmentManager().popBackStack();
                                     Toast.makeText(LoginActivity.this,
                                             getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
                                 } else {
