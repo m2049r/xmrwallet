@@ -46,7 +46,6 @@
         android:hint="@string/generate_mnemonic_hint"
         android:imeOptions="actionNext"
         android:inputType="text"
-        android:scrollHorizontally="false"
         android:textAlignment="center"
         android:textSize="16sp" />
 
@@ -72,7 +71,6 @@
             android:id="@+id/etWalletViewKey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:hint="@string/generate_viewkey_hint"
             android:imeOptions="actionNext"
             android:inputType="text"
@@ -111,12 +109,4 @@
         android:enabled="false"
         android:text="@string/generate_buttonGenerate" />
 
-    <!--    <Button
-            android:id="@+id/bReset"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/generate_button_reset" />
-    -->
 </LinearLayout>
