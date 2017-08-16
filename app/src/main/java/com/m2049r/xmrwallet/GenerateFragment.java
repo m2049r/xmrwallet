@@ -20,7 +20,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -178,8 +177,10 @@ public class GenerateFragment extends Fragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (etWalletAddress.length() == 0) {
-                        Helper.hideKeyboard(getActivity());
-                        generateWallet();
+                        if (bGenerate.getVisibility() == View.VISIBLE) {
+                            Helper.hideKeyboard(getActivity());
+                            generateWallet();
+                        }
                     } else if (addressOk()) {
                         etWalletViewKey.requestFocus();
                     } else {
@@ -247,8 +248,10 @@ public class GenerateFragment extends Fragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (spendKeyOk()) {
-                        Helper.hideKeyboard(getActivity());
-                        generateWallet();
+                        if (bGenerate.getVisibility() == View.VISIBLE) {
+                            Helper.hideKeyboard(getActivity());
+                            generateWallet();
+                        }
                     } else {
                         Toast.makeText(getActivity(), getString(R.string.generate_check_key), Toast.LENGTH_LONG).show();
                     }
@@ -267,8 +270,10 @@ public class GenerateFragment extends Fragment {
         etWalletRestoreHeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
-                    Helper.hideKeyboard(getActivity());
-                    generateWallet();
+                    if (bGenerate.getVisibility() == View.VISIBLE) {
+                        Helper.hideKeyboard(getActivity());
+                        generateWallet();
+                    }
                     return true;
                 }
                 return false;
@@ -324,8 +329,6 @@ public class GenerateFragment extends Fragment {
         try {
             height = Long.parseLong(etWalletRestoreHeight.getText().toString());
         } catch (NumberFormatException ex) {
-            Log.e(TAG, "Cannot parse " + etWalletRestoreHeight.getText().toString());
-            Log.e(TAG, ex.getLocalizedMessage());
             height = 0; // Keep calm and carry on!
         }
 

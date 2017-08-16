@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -44,7 +45,7 @@ import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 
-public class LoginActivity extends Activity
+public class LoginActivity extends AppCompatActivity
         implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
     static final String TAG = "LoginActivity";
 
@@ -164,6 +165,11 @@ public class LoginActivity extends Activity
     @Override
     public File getStorageRoot() {
         return Helper.getStorageRoot(getApplicationContext());
+    }
+
+    @Override
+    public void setTitle(String title) {
+        super.setTitle(title);
     }
 
     ////////////////////////////////////////

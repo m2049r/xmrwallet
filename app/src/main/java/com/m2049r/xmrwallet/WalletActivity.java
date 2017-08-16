@@ -25,13 +25,14 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
 
-public class WalletActivity extends Activity implements WalletFragment.Listener,
+public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
         WalletService.Observer {
     private static final String TAG = "WalletActivity";
 

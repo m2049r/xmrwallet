@@ -78,6 +78,8 @@ public class LoginFragment extends Fragment {
         File getStorageRoot();
 
         void onWalletSelected(final String wallet);
+
+        void setTitle(String title);
     }
 
     @Override
@@ -135,6 +137,8 @@ public class LoginFragment extends Fragment {
                 } else {
                     setDaemon(daemonTestNet);
                 }
+                activityCallback.setTitle(getString(R.string.app_name) + " " +
+                        getString(mainnet ? R.string.connect_mainnet : R.string.connect_testnet));
                 filterList();
                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
             }
@@ -185,6 +189,10 @@ public class LoginFragment extends Fragment {
                 activityCallback.onWalletSelected(wallet);
             }
         });
+
+        activityCallback.setTitle(getString(R.string.app_name) + " " +
+                getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
+
         loadList();
         return view;
     }

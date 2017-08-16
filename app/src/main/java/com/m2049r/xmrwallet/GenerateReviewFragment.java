@@ -27,8 +27,6 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.WalletManager;
 
-import java.text.NumberFormat;
-
 // TODO: somehow show which net we are generating for
 
 public class GenerateReviewFragment extends Fragment {
@@ -93,7 +91,6 @@ public class GenerateReviewFragment extends Fragment {
         tvWalletMnemonic.setText(seed);
         tvWalletViewKey.setText(view);
         tvWalletSpendKey.setText(spend);
-        NumberFormat formatter = NumberFormat.getInstance();
         bAccept.setEnabled(true);
     }
 
