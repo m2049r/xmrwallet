@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,9 +32,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +45,7 @@ import com.m2049r.xmrwallet.util.Helper;
 import java.io.File;
 
 public class LoginActivity extends Activity
-        implements LoginFragment.Listener, GenerateFragment.Listener {
+        implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
     static final String TAG = "LoginActivity";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
@@ -219,14 +218,22 @@ public class LoginActivity extends Activity
     }
 
     void startGenerateFragment() {
-        replaceFragment(new GenerateFragment());
+        replaceFragment(new GenerateFragment(), "gen", null);
         Log.d(TAG, "GenerateFragment placed");
     }
 
-    void replaceFragment(Fragment newFragment) {
+    void startReviewFragment(Bundle extras) {
+        replaceFragment(new GenerateReviewFragment(), null, extras);
+        Log.d(TAG, "GenerateReviewFragment placed");
+    }
+
+    void replaceFragment(Fragment newFragment, String name, Bundle extras) {
+        if (extras != null) {
+            newFragment.setArguments(extras);
+        }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, newFragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack(name);
         transaction.commit();
     }
 
@@ -235,33 +242,33 @@ public class LoginActivity extends Activity
     //////////////////////////////////////////
     static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
 
-    @Override
-    public void onGenerate(final String name, final String password) {
+    public void createWallet(final String name, final String password, final WalletCreator walletCreator) {
         final GenerateFragment genFragment = (GenerateFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_container);
         File newWalletFolder = new File(getStorageRoot(), ".new");
         if (!newWalletFolder.exists()) {
             if (!newWalletFolder.mkdir()) {
                 Log.e(TAG, "Cannot create new wallet dir " + newWalletFolder.getAbsolutePath());
-                genFragment.showMnemonic("");
+                genFragment.walletGenerateError();
                 return;
             }
         }
         if (!newWalletFolder.isDirectory()) {
             Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
-            genFragment.showMnemonic("");
+            genFragment.walletGenerateError();
             return;
         }
-        File cache = new File(newWalletFolder, name);
-        cache.delete();
-        File keys = new File(newWalletFolder, name + ".keys");
-        keys.delete();
-        File address = new File(newWalletFolder, name + ".address.txt");
-        address.delete();
+        File cacheFile = new File(newWalletFolder, name);
+        cacheFile.delete();
+        File keysFile = new File(newWalletFolder, name + ".keys");
+        keysFile.delete();
+        final File addressFile = new File(newWalletFolder, name + ".address.txt");
+        addressFile.delete();
 
-        if (cache.exists() || keys.exists() || address.exists()) {
-            Log.e(TAG, "Cannot remove all old wallet files: " + cache.getAbsolutePath());
-            genFragment.showMnemonic("");
+        if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
+            Log.e(TAG, "Cannot remove all old wallet files: " + cacheFile.getAbsolutePath());
+            genFragment.walletGenerateError();
+            ;
             return;
         }
 
@@ -271,17 +278,25 @@ public class LoginActivity extends Activity
                     @Override
                     public void run() {
                         Log.d(TAG, "creating wallet " + newWalletPath);
-                        Wallet newWallet = WalletManager.getInstance()
-                                .createWallet(newWalletPath, password, MNEMONIC_LANGUAGE);
-                        Log.d(TAG, "wallet created");
-                        Log.d(TAG, "Created " + newWallet.getAddress());
-                        Log.d(TAG, "Seed " + newWallet.getSeed() + ".");
-                        final String mnemonic = newWallet.getSeed();
+                        Wallet newWallet = walletCreator.createWallet(newWalletPath, password);
+                        final String seed = newWallet.getSeed();
+                        final String address = newWallet.getAddress();
+                        final String view = newWallet.getSecretViewKey();
+                        final long height = newWallet.getBlockChainHeight();
+                        final String spend = "not available - use seed for recovery"; //TODO
                         newWallet.close();
+                        Log.d(TAG, "Created " + address);
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                if (genFragment.isAdded())
-                                    genFragment.showMnemonic(mnemonic);
+                                Bundle b = new Bundle();
+                                b.putString("name", name);
+                                b.putString("password", password);
+                                b.putString("seed", seed);
+                                b.putString("address", address);
+                                b.putString("viewkey", view);
+                                b.putString("spendkey", spend);
+                                b.putLong("restoreHeight", height);
+                                startReviewFragment(b);
                             }
                         });
                     }
@@ -289,10 +304,54 @@ public class LoginActivity extends Activity
                 , "CreateWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
     }
 
+    interface WalletCreator {
+        Wallet createWallet(String path, String password);
+    }
+
+    @Override
+    public void onGenerate(String name, String password) {
+        createWallet(name, password,
+                new WalletCreator() {
+                    public Wallet createWallet(String path, String password) {
+                        return WalletManager.getInstance()
+                                .createWallet(path, password, MNEMONIC_LANGUAGE);
+
+                    }
+                });
+    }
+
+    @Override
+    public void onGenerate(String name, String password, final String seed, final long restoreHeight) {
+        createWallet(name, password,
+                new WalletCreator() {
+                    public Wallet createWallet(String path, String password) {
+                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(path, seed, restoreHeight);
+                        newWallet.setPassword(password);
+                        newWallet.store();
+                        return newWallet;
+                    }
+                });
+    }
+
+    @Override
+    public void onGenerate(String name, String password,
+                           final String address, final String viewKey, final String spendKey, final long restoreHeight) {
+        createWallet(name, password,
+                new WalletCreator() {
+                    public Wallet createWallet(String path, String password) {
+                        Wallet newWallet = WalletManager.getInstance()
+                                .createWalletFromKeys(path, MNEMONIC_LANGUAGE, restoreHeight,
+                                        address, viewKey, spendKey);
+                        newWallet.setPassword(password);
+                        newWallet.store();
+                        return newWallet;
+                    }
+                });
+    }
+
+
     @Override
     public void onAccept(final String name, final String password) {
-        final GenerateFragment genFragment = (GenerateFragment)
-                getFragmentManager().findFragmentById(R.id.fragment_container);
         File newWalletFolder = new File(getStorageRoot(), ".new");
         if (!newWalletFolder.isDirectory()) {
             Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
@@ -327,8 +386,8 @@ public class LoginActivity extends Activity
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 if (rc) {
-                                    if (genFragment.isAdded())
-                                        getFragmentManager().popBackStack();
+                                    getFragmentManager().popBackStack("gen",
+                                            FragmentManager.POP_BACK_STACK_INCLUSIVE);
                                     Toast.makeText(LoginActivity.this,
                                             getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
                                 } else {

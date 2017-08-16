@@ -78,12 +78,16 @@ public class WalletManager {
         return wallet;
     }
 
+    private native long createWalletJ(String path, String password, String language, boolean isTestNet);
+
     public Wallet openWallet(String path, String password) {
         long walletHandle = openWalletJ(path, password, isTestNet());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet.getName(), wallet);
         return wallet;
     }
+
+    private native long openWalletJ(String path, String password, boolean isTestNet);
 
     public Wallet recoveryWallet(String path, String mnemonic) {
         Wallet wallet = recoveryWallet(path, mnemonic, 0);
@@ -98,11 +102,16 @@ public class WalletManager {
         return wallet;
     }
 
-    private native long createWalletJ(String path, String password, String language, boolean isTestNet);
-
-    private native long openWalletJ(String path, String password, boolean isTestNet);
-
     private native long recoveryWalletJ(String path, String mnemonic, boolean isTestNet, long restoreHeight);
+
+    public Wallet createWalletFromKeys(String path, String language, long restoreHeight,
+                                       String addressString, String viewKeyString, String spendKeyString) {
+        long walletHandle = createWalletFromKeysJ(path, language, isTestNet(), restoreHeight,
+                addressString, viewKeyString, spendKeyString);
+        Wallet wallet = new Wallet(walletHandle);
+        manageWallet(wallet.getName(), wallet);
+        return wallet;
+    }
 
     private native long createWalletFromKeysJ(String path, String language,
                                               boolean isTestNet,

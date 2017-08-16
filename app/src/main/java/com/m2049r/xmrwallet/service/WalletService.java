@@ -419,6 +419,7 @@ public class WalletService extends Service {
                 WalletManager.getInstance().close(wallet); // TODO close() failed?
                 wallet = null;
                 // TODO what do we do with the progress??
+                // TODO tell the activity this failed
             }
         }
         return wallet;

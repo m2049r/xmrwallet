@@ -193,7 +193,7 @@ public class LoginFragment extends Fragment {
         displayedList.clear();
         String x = isMainNet() ? "4" : "9A";
         for (String s : walletList) {
-            Log.d(TAG, "filtering " + s);
+            // Log.d(TAG, "filtering " + s);
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
         displayedList.add(WALLETNAME_PREAMBLE + getString(R.string.generate_title));
@@ -206,7 +206,7 @@ public class LoginFragment extends Fragment {
 
         walletList.clear();
         for (WalletManager.WalletInfo walletInfo : walletInfos) {
-            Log.d(TAG, walletInfo.address);
+            // Log.d(TAG, walletInfo.address);
             String displayAddress = walletInfo.address;
             if (displayAddress.length() == 95) {
                 displayAddress = walletInfo.address.substring(0, 6);
