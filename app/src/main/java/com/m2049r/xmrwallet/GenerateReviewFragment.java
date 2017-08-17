@@ -29,6 +29,8 @@ import com.m2049r.xmrwallet.model.WalletManager;
 
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
+    static final public String VIEW_DETAILS = "details";
+    static final public String VIEW_ACCEPT = "accept";
 
     TextView tvWalletName;
     TextView tvWalletPassword;
@@ -93,7 +95,14 @@ public class GenerateReviewFragment extends Fragment {
         } else {
             tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
         }
-        bAccept.setEnabled(true);
+
+        String type = b.getString("view");
+        if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
+            bAccept.setVisibility(View.VISIBLE);
+            bAccept.setEnabled(true);
+        } else {
+            bAccept.setVisibility(View.GONE);
+        }
     }
 
     GenerateReviewFragment.Listener activityCallback;
