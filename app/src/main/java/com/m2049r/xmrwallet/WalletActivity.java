@@ -25,13 +25,14 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
 
-public class WalletActivity extends Activity implements WalletFragment.WalletFragmentListener,
+public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
         WalletService.Observer {
     private static final String TAG = "WalletActivity";
 
@@ -200,11 +201,6 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
             startService(intent);
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    Toast.makeText(getApplicationContext(), getString(R.string.status_wallet_unloading), Toast.LENGTH_LONG).show();
-                }
-            });
             Log.d(TAG, "STORE request sent");
         } else {
             Log.e(TAG, "Service not bound");
@@ -212,7 +208,7 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
     }
 
     //////////////////////////////////////////
-    // WalletFragment.WalletFragmentListener
+    // WalletFragment.Listener
     //////////////////////////////////////////
 
     @Override
@@ -255,6 +251,15 @@ public class WalletActivity extends Activity implements WalletFragment.WalletFra
         runOnUiThread(new Runnable() {
             public void run() {
                 walletFragment.onRefreshed(wallet, full);
+            }
+        });
+    }
+
+    @Override
+    public void onWalletStored() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
             }
         });
     }

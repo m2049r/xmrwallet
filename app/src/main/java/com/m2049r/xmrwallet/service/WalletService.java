@@ -111,7 +111,8 @@ public class WalletService extends Service {
                             fullRefresh = true;
                         }
                     }
-                    observer.onRefreshed(wallet, fullRefresh);
+                    if (observer != null)
+                        observer.onRefreshed(wallet, fullRefresh);
                 }
             }
         }
@@ -191,6 +192,8 @@ public class WalletService extends Service {
         void onProgress(String text);
 
         void onProgress(int n);
+
+        void onWalletStored();
     }
 
     String progressText = null;
@@ -257,6 +260,7 @@ public class WalletService extends Service {
                         Log.d(TAG, "storing wallet: " + myWallet.getName());
                         getWallet().store();
                         Log.d(TAG, "wallet stored: " + myWallet.getName());
+                        if (observer != null) observer.onWalletStored();
                     }
                 }
                 break;
@@ -351,6 +355,7 @@ public class WalletService extends Service {
         if (listener == null) {
             Log.d(TAG, "start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
+            // TODO check aWallet and die gracefully if neccessary
             listener = new MyWalletListener(aWallet);
             listener.start();
             showProgress(100);
@@ -416,6 +421,8 @@ public class WalletService extends Service {
                 WalletManager.getInstance().close(wallet); // TODO close() failed?
                 wallet = null;
                 // TODO what do we do with the progress??
+                // TODO tell the activity this failed
+                // this crashes in MyWalletListener(Wallet aWallet) as wallet == null
             }
         }
         return wallet;

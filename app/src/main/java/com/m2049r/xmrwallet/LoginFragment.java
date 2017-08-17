@@ -26,9 +26,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -39,44 +37,59 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class LoginFragment extends Fragment {
     private static final String TAG = "LoginFragment";
+    public static final String WALLETNAME_PREAMBLE = "[------] ";
+    public static final int WALLETNAME_PREAMBLE_LENGTH = WALLETNAME_PREAMBLE.length();
+
 
     ListView listView;
-    List<String> walletList = new ArrayList<>();
+    Set<String> walletList = new TreeSet<>(new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase()
+                    .compareTo(o2.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase());
+        }
+    });
     List<String> displayedList = new ArrayList<>();
 
     ToggleButton tbMainNet;
     EditText etDaemonAddress;
 
-    LoginFragment.LoginFragmentListener activityCallback;
+    Listener activityCallback;
 
     // Container Activity must implement this interface
-    public interface LoginFragmentListener {
+    public interface Listener {
         SharedPreferences getPrefs();
 
         File getStorageRoot();
 
-        void promptPassword(final String wallet);
+        void onWalletSelected(final String wallet);
+
+        void setTitle(String title);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof LoginFragment.LoginFragmentListener) {
-            this.activityCallback = (LoginFragment.LoginFragmentListener) context;
+        if (context instanceof Listener) {
+            this.activityCallback = (Listener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement WalletFragmentListener");
+                    + " must implement Listener");
         }
     }
 
@@ -96,19 +109,18 @@ public class LoginFragment extends Fragment {
         tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
         etDaemonAddress = (EditText) view.findViewById(R.id.etDaemonAddress);
 
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        Helper.hideKeyboard(getActivity());
 
         etDaemonAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(etDaemonAddress, InputMethodManager.SHOW_IMPLICIT);
+                Helper.showKeyboard(getActivity());
             }
         });
         etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                    Helper.hideKeyboard(getActivity());
                     return false;
                 }
                 return false;
@@ -125,6 +137,8 @@ public class LoginFragment extends Fragment {
                 } else {
                     setDaemon(daemonTestNet);
                 }
+                activityCallback.setTitle(getString(R.string.app_name) + " " +
+                        getString(mainnet ? R.string.connect_mainnet : R.string.connect_testnet));
                 filterList();
                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
             }
@@ -143,44 +157,54 @@ public class LoginFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EditText tvDaemonAddress = (EditText) getView().findViewById(R.id.etDaemonAddress);
                 if (tvDaemonAddress.getText().toString().length() == 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
+                    tvDaemonAddress.requestFocus();
+                    Helper.showKeyboard(getActivity());
                     return;
                 }
 
                 String itemValue = (String) listView.getItemAtPosition(position);
-                if ((isMainNet() && itemValue.charAt(1) != '4')
-                        || (!isMainNet() && itemValue.charAt(1) != '9')) {
+
+                if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
+                    Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                String x = isMainNet() ? "4-" : "9A-";
+                if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                final int preambleLength = "[123456] ".length();
-                if (itemValue.length() <= (preambleLength)) {
-                    Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-                    return;
-                }
                 if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
-                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // looking good
                 savePrefs(false);
 
-                String wallet = itemValue.substring(preambleLength);
-                activityCallback.promptPassword(wallet);
+                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+                if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
+                activityCallback.onWalletSelected(wallet);
             }
         });
+
+        activityCallback.setTitle(getString(R.string.app_name) + " " +
+                getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
+
         loadList();
         return view;
     }
 
     private void filterList() {
         displayedList.clear();
-        char x = isMainNet() ? '4' : '9';
+        String x = isMainNet() ? "4" : "9A";
         for (String s : walletList) {
-            if (s.charAt(1) == x) displayedList.add(s);
+            // Log.d(TAG, "filtering " + s);
+            if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
+        displayedList.add(WALLETNAME_PREAMBLE + getString(R.string.generate_title));
     }
 
     private void loadList() {
@@ -190,7 +214,7 @@ public class LoginFragment extends Fragment {
 
         walletList.clear();
         for (WalletManager.WalletInfo walletInfo : walletInfos) {
-            Log.d(TAG, walletInfo.address);
+            // Log.d(TAG, walletInfo.address);
             String displayAddress = walletInfo.address;
             if (displayAddress.length() == 95) {
                 displayAddress = walletInfo.address.substring(0, 6);
@@ -230,8 +254,8 @@ public class LoginFragment extends Fragment {
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         boolean mainnet = sharedPref.getBoolean(PREF_MAINNET, false);
-        daemonMainNet = sharedPref.getString(PREF_DAEMON_MAINNET, "localhost:18081");
-        daemonTestNet = sharedPref.getString(PREF_DAEMON_TESTNET, "localhost:28081");
+        daemonMainNet = sharedPref.getString(PREF_DAEMON_MAINNET, "");
+        daemonTestNet = sharedPref.getString(PREF_DAEMON_TESTNET, "");
 
         setMainNet(mainnet);
         if (mainnet) {

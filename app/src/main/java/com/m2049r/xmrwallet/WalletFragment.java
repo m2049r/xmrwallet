@@ -37,11 +37,13 @@ import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class WalletFragment extends Fragment implements TransactionInfoAdapter.OnInteractionListener {
     private static final String TAG = "WalletFragment";
     private TransactionInfoAdapter adapter;
+    private NumberFormat formatter = NumberFormat.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -171,7 +173,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
             long daemonHeight = activityCallback.getDaemonHeight();
             if (!wallet.isSynchronized()) {
                 long n = daemonHeight - wallet.getBlockChainHeight();
-                sync = n + " " + getString(R.string.status_remaining);
+                sync = formatter.format(n) + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
                     firstBlock = wallet.getBlockChainHeight();
                 }
@@ -180,7 +182,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
                 if (x == 0) x = -1;
                 onProgress(x);
             } else {
-                sync = getString(R.string.status_synced) + ": " + wallet.getBlockChainHeight();
+                sync = getString(R.string.status_synced) + ": " + formatter.format(wallet.getBlockChainHeight());
             }
         }
         String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
@@ -188,10 +190,10 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         connectionStatusView.setText(net + " " + daemonConnected.toString().substring(17));
     }
 
-    WalletFragmentListener activityCallback;
+    Listener activityCallback;
 
     // Container Activity must implement this interface
-    public interface WalletFragmentListener {
+    public interface Listener {
         boolean hasBoundService();
 
         Wallet.ConnectionStatus getConnectionStatus();
@@ -205,15 +207,11 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof WalletFragmentListener) {
-            this.activityCallback = (WalletFragmentListener) context;
+        if (context instanceof Listener) {
+            this.activityCallback = (Listener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement WalletFragmentListener");
+                    + " must implement Listener");
         }
-    }
-
-    private void runOnUiThread(Runnable runnable) {
-        if (isAdded()) getActivity().runOnUiThread(runnable);
     }
 }
