@@ -53,6 +53,8 @@
     <string name="generate_button_accept">I have noted the mnemonic seed\nNow, I want to loose all my money!</string>
     <string name="generate_button_reset">I\'m confused - Let me start again!</string>
 
+    <string name="generate_wallet_watchonly">&lt;Watch Only Wallet&gt;</string>
+
     <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>

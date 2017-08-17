@@ -111,7 +111,8 @@ public class WalletService extends Service {
                             fullRefresh = true;
                         }
                     }
-                    observer.onRefreshed(wallet, fullRefresh);
+                    if (observer != null)
+                        observer.onRefreshed(wallet, fullRefresh);
                 }
             }
         }
@@ -354,6 +355,7 @@ public class WalletService extends Service {
         if (listener == null) {
             Log.d(TAG, "start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
+            // TODO check aWallet and die gracefully if neccessary
             listener = new MyWalletListener(aWallet);
             listener.start();
             showProgress(100);
@@ -420,6 +422,7 @@ public class WalletService extends Service {
                 wallet = null;
                 // TODO what do we do with the progress??
                 // TODO tell the activity this failed
+                // this crashes in MyWalletListener(Wallet aWallet) as wallet == null
             }
         }
         return wallet;

@@ -21,7 +21,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +36,6 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
-
-// TODO: somehow show which net we are generating for
 
 public class GenerateFragment extends Fragment {
     static final String TAG = "GenerateFragment";
@@ -119,7 +116,11 @@ public class GenerateFragment extends Fragment {
         etWalletPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
-                    etWalletMnemonic.requestFocus();
+                    if (etWalletAddress.length() > 0) {
+                        etWalletAddress.requestFocus();
+                    } else {
+                        etWalletMnemonic.requestFocus();
+                    }
                     return true;
                 }
                 return false;
@@ -141,39 +142,45 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletMnemonic.setOnClickListener(new View.OnClickListener() {
+        etWalletMnemonic.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
                 Helper.showKeyboard(getActivity());
             }
         });
-        etWalletMnemonic.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (etWalletMnemonic.length() > 0) {
-                    etWalletRestoreHeight.setVisibility(View.VISIBLE);
-                    etWalletAddress.setVisibility(View.INVISIBLE);
-                } else {
-                    etWalletAddress.setVisibility(View.VISIBLE);
-                    if (etWalletAddress.length() == 0) {
-                        etWalletRestoreHeight.setVisibility(View.INVISIBLE);
-                    } else {
-                        etWalletRestoreHeight.setVisibility(View.VISIBLE);
-                    }
+        etWalletMnemonic.addTextChangedListener(new
 
-                }
-            }
+                                                        TextWatcher() {
+                                                            @Override
+                                                            public void afterTextChanged(Editable editable) {
+                                                                if (etWalletMnemonic.length() > 0) {
+                                                                    etWalletRestoreHeight.setVisibility(View.VISIBLE);
+                                                                    etWalletAddress.setVisibility(View.INVISIBLE);
+                                                                } else {
+                                                                    etWalletAddress.setVisibility(View.VISIBLE);
+                                                                    if (etWalletAddress.length() == 0) {
+                                                                        etWalletRestoreHeight.setVisibility(View.INVISIBLE);
+                                                                    } else {
+                                                                        etWalletRestoreHeight.setVisibility(View.VISIBLE);
+                                                                    }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+                                                                }
+                                                            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
+                                                            @Override
+                                                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                                            }
 
-        etWalletAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                                                            @Override
+                                                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                            }
+                                                        });
+
+        etWalletAddress.setOnEditorActionListener(new TextView.OnEditorActionListener()
+
+        {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (etWalletAddress.length() == 0) {
@@ -191,40 +198,46 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletAddress.setOnClickListener(new View.OnClickListener() {
+        etWalletAddress.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
                 Helper.showKeyboard(getActivity());
             }
         });
-        etWalletAddress.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (etWalletAddress.length() > 0) {
-                    llRestoreKeys.setVisibility(View.VISIBLE);
-                    etWalletMnemonic.setVisibility(View.INVISIBLE);
-                    etWalletRestoreHeight.setVisibility(View.VISIBLE);
-                } else {
-                    llRestoreKeys.setVisibility(View.INVISIBLE);
-                    etWalletMnemonic.setVisibility(View.VISIBLE);
-                    if (etWalletMnemonic.length() == 0) {
-                        etWalletRestoreHeight.setVisibility(View.INVISIBLE);
-                    } else {
-                        etWalletRestoreHeight.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
+        etWalletAddress.addTextChangedListener(new
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+                                                       TextWatcher() {
+                                                           @Override
+                                                           public void afterTextChanged(Editable editable) {
+                                                               if (etWalletAddress.length() > 0) {
+                                                                   llRestoreKeys.setVisibility(View.VISIBLE);
+                                                                   etWalletMnemonic.setVisibility(View.INVISIBLE);
+                                                                   etWalletRestoreHeight.setVisibility(View.VISIBLE);
+                                                               } else {
+                                                                   llRestoreKeys.setVisibility(View.INVISIBLE);
+                                                                   etWalletMnemonic.setVisibility(View.VISIBLE);
+                                                                   if (etWalletMnemonic.length() == 0) {
+                                                                       etWalletRestoreHeight.setVisibility(View.INVISIBLE);
+                                                                   } else {
+                                                                       etWalletRestoreHeight.setVisibility(View.VISIBLE);
+                                                                   }
+                                                               }
+                                                           }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
+                                                           @Override
+                                                           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                                           }
 
-        etWalletViewKey.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                                                           @Override
+                                                           public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                           }
+                                                       });
+
+        etWalletViewKey.setOnEditorActionListener(new TextView.OnEditorActionListener()
+
+        {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (viewKeyOk()) {
@@ -237,21 +250,22 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletViewKey.setOnClickListener(new View.OnClickListener() {
+        etWalletViewKey.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
                 Helper.showKeyboard(getActivity());
             }
         });
 
-        etWalletSpendKey.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        etWalletSpendKey.setOnEditorActionListener(new TextView.OnEditorActionListener()
+
+        {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (spendKeyOk()) {
-                        if (bGenerate.getVisibility() == View.VISIBLE) {
-                            Helper.hideKeyboard(getActivity());
-                            generateWallet();
-                        }
+                        etWalletRestoreHeight.requestFocus();
                     } else {
                         Toast.makeText(getActivity(), getString(R.string.generate_check_key), Toast.LENGTH_LONG).show();
                     }
@@ -260,14 +274,18 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletSpendKey.setOnClickListener(new View.OnClickListener() {
+        etWalletSpendKey.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
                 Helper.showKeyboard(getActivity());
             }
         });
 
-        etWalletRestoreHeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        etWalletRestoreHeight.setOnEditorActionListener(new TextView.OnEditorActionListener()
+
+        {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (bGenerate.getVisibility() == View.VISIBLE) {
@@ -280,7 +298,9 @@ public class GenerateFragment extends Fragment {
             }
         });
 
-        bGenerate.setOnClickListener(new View.OnClickListener() {
+        bGenerate.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());

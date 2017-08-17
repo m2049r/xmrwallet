@@ -27,8 +27,6 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.WalletManager;
 
-// TODO: somehow show which net we are generating for
-
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
 
@@ -84,13 +82,17 @@ public class GenerateReviewFragment extends Fragment {
         String seed = b.getString("seed");
         String view = b.getString("viewkey");
         String spend = b.getString("spendkey");
-        long height = b.getLong("restoreHeight");
+
         tvWalletName.setText(name);
         tvWalletPassword.setText(password);
         tvWalletAddress.setText(address);
         tvWalletMnemonic.setText(seed);
         tvWalletViewKey.setText(view);
-        tvWalletSpendKey.setText(spend);
+        if (spend.length() > 0) { // should be == 64, but spendkey is not in the API yet
+            tvWalletSpendKey.setText(spend);
+        } else {
+            tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+        }
         bAccept.setEnabled(true);
     }
 
