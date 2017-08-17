@@ -18,6 +18,7 @@
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
     <string name="bad_wallet">Wallet does not exists!</string>
+    <string name="error_not_wallet">This is not a wallet!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
     <string name="prompt_wrong_net">Wallet does not match selected net</string>
     <string name="warn_daemon_unavailable">Cannot connect to daemon! Try again.</string>

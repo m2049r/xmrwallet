@@ -79,16 +79,37 @@ public class LoginActivity extends AppCompatActivity
             // now it's getting real, check if wallet exists
             String walletPath = Helper.getWalletPath(this, walletName);
             if (WalletManager.getInstance().walletExists(walletPath)) {
-                promptPassword(walletName);
+                promptPassword(walletName, new PasswordAction() {
+                    @Override
+                    public void action(String walletName, String password) {
+                        startWallet(walletName, password);
+                    }
+                });
             } else { // this cannot really happen as we prefilter choices
                 Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    @Override
+    public void onWalletDetails(final String walletName) {
+        Log.d(TAG, "details for wallet ." + walletName + ".");
+        String walletPath = Helper.getWalletPath(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletPath)) {
+            promptPassword(walletName, new PasswordAction() {
+                @Override
+                public void action(String walletName, String password) {
+                    startDetails(walletName, password);
+                }
+            });
+        } else { // this cannot really happen as we prefilter choices
+            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
 
-    void promptPassword(final String wallet) {
+    void promptPassword(final String wallet, final PasswordAction action) {
         if (passwordDialog != null) return; // we are already asking for password
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
@@ -110,7 +131,7 @@ public class LoginActivity extends AppCompatActivity
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
                                 String pass = etPassword.getText().toString();
-                                processPasswordEntry(wallet, pass);
+                                processPasswordEntry(wallet, pass, action);
                                 passwordDialog = null;
                             }
                         })
@@ -133,7 +154,7 @@ public class LoginActivity extends AppCompatActivity
                     Helper.hideKeyboardAlways(LoginActivity.this);
                     String pass = etPassword.getText().toString();
                     passwordDialog.cancel();
-                    processPasswordEntry(wallet, pass);
+                    processPasswordEntry(wallet, pass, action);
                     passwordDialog = null;
                     return false;
                 }
@@ -151,9 +172,13 @@ public class LoginActivity extends AppCompatActivity
         return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
     }
 
-    private void processPasswordEntry(String walletName, String pass) {
+    interface PasswordAction {
+        void action(String walletName, String password);
+    }
+
+    private void processPasswordEntry(String walletName, String pass, PasswordAction action) {
         if (checkWalletPassword(walletName, pass)) {
-            startWallet(walletName, pass);
+            action.action(walletName, pass);
         } else {
             Toast.makeText(this, getString(R.string.bad_password), Toast.LENGTH_SHORT).show();
         }
@@ -200,6 +225,34 @@ public class LoginActivity extends AppCompatActivity
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
         startActivity(intent);
     }
+
+    void startDetails(final String walletName, final String password) {
+        Log.d(TAG, "startDetails()");
+        new Thread(null,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        String path = Helper.getWalletPath(getApplicationContext(), walletName);
+                        Wallet wallet = WalletManager.getInstance().openWallet(path, password);
+                        final String seed = wallet.getSeed();
+                        final String address = wallet.getAddress();
+                        final String view = wallet.getSecretViewKey();
+                        final String spend = wallet.isWatchOnly() ? "" : "not available - use seed for recovery";
+                        wallet.close();
+                        Bundle b = new Bundle();
+                        b.putString("name", walletName);
+                        b.putString("password", password);
+                        b.putString("seed", seed);
+                        b.putString("address", address);
+                        b.putString("viewkey", view);
+                        b.putString("spendkey", spend);
+                        b.putString("view", GenerateReviewFragment.VIEW_DETAILS);
+                        startReviewFragment(b);
+                    }
+                }
+                , "DetailsWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -296,6 +349,7 @@ public class LoginActivity extends AppCompatActivity
                         final String spend = newWallet.isWatchOnly() ? "" : "not available - use seed for recovery";
                         newWallet.close();
                         Log.d(TAG, "Created " + address);
+                        //TODO: is runOnUiThread needed?
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 Bundle b = new Bundle();
@@ -305,6 +359,7 @@ public class LoginActivity extends AppCompatActivity
                                 b.putString("address", address);
                                 b.putString("viewkey", view);
                                 b.putString("spendkey", spend);
+                                b.putString("view", GenerateReviewFragment.VIEW_ACCEPT);
                                 startReviewFragment(b);
                             }
                         });

@@ -79,6 +79,8 @@ public class LoginFragment extends Fragment {
 
         void onWalletSelected(final String wallet);
 
+        void onWalletDetails(final String wallet);
+
         void setTitle(String title);
     }
 
@@ -190,6 +192,44 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                EditText tvDaemonAddress = (EditText) getView().findViewById(R.id.etDaemonAddress);
+                if (tvDaemonAddress.getText().toString().length() == 0) {
+                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
+                    tvDaemonAddress.requestFocus();
+                    Helper.showKeyboard(getActivity());
+                    return true;
+                }
+
+                String itemValue = (String) listView.getItemAtPosition(position);
+
+                if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
+                    Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                String x = isMainNet() ? "4-" : "9A-";
+                if (x.indexOf(itemValue.charAt(1)) < 0) {
+                    Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
+                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                // looking good
+                savePrefs(false);
+
+                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+                if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
+                activityCallback.onWalletDetails(wallet);
+                return true;
+            }
+        });
         activityCallback.setTitle(getString(R.string.app_name) + " " +
                 getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
 
