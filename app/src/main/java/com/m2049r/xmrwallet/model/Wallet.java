@@ -28,8 +28,7 @@ public class Wallet {
     static final String TAG = "Wallet";
 
     public String getName() {
-        String p = getPath();
-        return new File(p).getName();
+        return new File(getPath()).getName();
     }
 
     private long handle = 0;
@@ -83,7 +82,7 @@ public class Wallet {
     public native String getSecretViewKey();
 
     public boolean store() {
-        return store(this.getPath());
+        return store("");
     }
 
     public native boolean store(String path);

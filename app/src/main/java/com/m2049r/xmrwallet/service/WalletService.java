@@ -131,7 +131,7 @@ public class WalletService extends Service {
                     updateDaemonState(wallet, 0);
                     TransactionHistory history = wallet.getHistory();
                     history.refresh();
-                    observer.onRefreshed(wallet, true);
+                    if (observer != null) observer.onRefreshed(wallet, true);
                     updated = false;
                 }
             }
@@ -193,7 +193,7 @@ public class WalletService extends Service {
 
         void onProgress(int n);
 
-        void onWalletStored();
+        void onWalletStored(boolean success);
     }
 
     String progressText = null;
@@ -258,9 +258,12 @@ public class WalletService extends Service {
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
                         Log.d(TAG, "storing wallet: " + myWallet.getName());
-                        getWallet().store();
-                        Log.d(TAG, "wallet stored: " + myWallet.getName());
-                        if (observer != null) observer.onWalletStored();
+                        boolean rc = myWallet.store();
+                        Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                        if (!rc) {
+                            Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                        }
+                        if (observer != null) observer.onWalletStored(rc);
                     }
                 }
                 break;
@@ -387,7 +390,7 @@ public class WalletService extends Service {
     }
 
     private Wallet loadWallet(String walletName, String walletPassword) {
-        String path = Helper.getWalletPath(getApplicationContext(), walletName);
+        //String path = Helper.getWalletPath(getApplicationContext(), walletName);
         //Log.d(TAG, "open wallet " + path);
         Wallet wallet = openWallet(walletName, walletPassword);
         //Log.d(TAG, "wallet opened: " + wallet);

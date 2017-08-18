@@ -579,6 +579,9 @@ Java_com_m2049r_xmrwallet_model_Wallet_store(JNIEnv *env, jobject instance,
     const char *_path = env->GetStringUTFChars(path, JNI_FALSE);
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
     bool success = wallet->store(std::string(_path));
+    if (!success) {
+        LOGE("store() %s", wallet->errorString().c_str());
+    }
     env->ReleaseStringUTFChars(path, _path);
     return success;
 }

@@ -79,16 +79,37 @@ public class LoginActivity extends AppCompatActivity
             // now it's getting real, check if wallet exists
             String walletPath = Helper.getWalletPath(this, walletName);
             if (WalletManager.getInstance().walletExists(walletPath)) {
-                promptPassword(walletName);
+                promptPassword(walletName, new PasswordAction() {
+                    @Override
+                    public void action(String walletName, String password) {
+                        startWallet(walletName, password);
+                    }
+                });
             } else { // this cannot really happen as we prefilter choices
                 Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    @Override
+    public void onWalletDetails(final String walletName) {
+        Log.d(TAG, "details for wallet ." + walletName + ".");
+        final String walletPath = Helper.getWalletPath(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletPath)) {
+            promptPassword(walletName, new PasswordAction() {
+                @Override
+                public void action(String walletName, String password) {
+                    startDetails(walletPath, password, GenerateReviewFragment.VIEW_DETAILS);
+                }
+            });
+        } else { // this cannot really happen as we prefilter choices
+            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
 
-    void promptPassword(final String wallet) {
+    void promptPassword(final String wallet, final PasswordAction action) {
         if (passwordDialog != null) return; // we are already asking for password
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
@@ -110,7 +131,7 @@ public class LoginActivity extends AppCompatActivity
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
                                 String pass = etPassword.getText().toString();
-                                processPasswordEntry(wallet, pass);
+                                processPasswordEntry(wallet, pass, action);
                                 passwordDialog = null;
                             }
                         })
@@ -133,7 +154,7 @@ public class LoginActivity extends AppCompatActivity
                     Helper.hideKeyboardAlways(LoginActivity.this);
                     String pass = etPassword.getText().toString();
                     passwordDialog.cancel();
-                    processPasswordEntry(wallet, pass);
+                    processPasswordEntry(wallet, pass, action);
                     passwordDialog = null;
                     return false;
                 }
@@ -151,9 +172,13 @@ public class LoginActivity extends AppCompatActivity
         return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
     }
 
-    private void processPasswordEntry(String walletName, String pass) {
+    interface PasswordAction {
+        void action(String walletName, String password);
+    }
+
+    private void processPasswordEntry(String walletName, String pass, PasswordAction action) {
         if (checkWalletPassword(walletName, pass)) {
-            startWallet(walletName, pass);
+            action.action(walletName, pass);
         } else {
             Toast.makeText(this, getString(R.string.bad_password), Toast.LENGTH_SHORT).show();
         }
@@ -200,6 +225,16 @@ public class LoginActivity extends AppCompatActivity
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
         startActivity(intent);
     }
+
+    void startDetails(final String walletPath, final String password, String type) {
+        Log.d(TAG, "startDetails()");
+        Bundle b = new Bundle();
+        b.putString("name", walletPath);
+        b.putString("password", password);
+        b.putString("type", type);
+        startReviewFragment(b);
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -279,51 +314,36 @@ public class LoginActivity extends AppCompatActivity
         if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
             Log.e(TAG, "Cannot remove all old wallet files: " + cacheFile.getAbsolutePath());
             genFragment.walletGenerateError();
-            ;
             return;
         }
 
-        final String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
-        new Thread(null,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d(TAG, "creating wallet " + newWalletPath);
-                        Wallet newWallet = walletCreator.createWallet(newWalletPath, password);
-                        final String seed = newWallet.getSeed();
-                        final String address = newWallet.getAddress();
-                        final String view = newWallet.getSecretViewKey();
-                        final String spend = newWallet.isWatchOnly() ? "" : "not available - use seed for recovery";
-                        newWallet.close();
-                        Log.d(TAG, "Created " + address);
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                Bundle b = new Bundle();
-                                b.putString("name", name);
-                                b.putString("password", password);
-                                b.putString("seed", seed);
-                                b.putString("address", address);
-                                b.putString("viewkey", view);
-                                b.putString("spendkey", spend);
-                                startReviewFragment(b);
-                            }
-                        });
-                    }
-                }
-                , "CreateWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
+        String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
+        boolean success = walletCreator.createWallet(newWalletPath, password);
+        if (success) {
+            startDetails(newWalletPath, password, GenerateReviewFragment.VIEW_ACCEPT);
+        } else {
+            Toast.makeText(LoginActivity.this,
+                    getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Could not create new wallet in " + newWalletPath);
+
+        }
     }
 
     interface WalletCreator {
-        Wallet createWallet(String path, String password);
+        boolean createWallet(String path, String password);
     }
 
     @Override
     public void onGenerate(String name, String password) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public Wallet createWallet(String path, String password) {
-                        return WalletManager.getInstance()
+                    public boolean createWallet(String path, String password) {
+                        Wallet newWallet = WalletManager.getInstance()
                                 .createWallet(path, password, MNEMONIC_LANGUAGE);
+                        boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
+                        if (!success) Log.e(TAG, newWallet.getErrorString());
+                        newWallet.close();
+                        return success;
                     }
                 });
     }
@@ -332,11 +352,14 @@ public class LoginActivity extends AppCompatActivity
     public void onGenerate(String name, String password, final String seed, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public Wallet createWallet(String path, String password) {
+                    public boolean createWallet(String path, String password) {
                         Wallet newWallet = WalletManager.getInstance().recoveryWallet(path, seed, restoreHeight);
+                        boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
+                        if (!success) Log.e(TAG, newWallet.getErrorString());
                         newWallet.setPassword(password);
-                        newWallet.store();
-                        return newWallet;
+                        success = success && newWallet.store();
+                        newWallet.close();
+                        return success;
                     }
                 });
     }
@@ -346,13 +369,16 @@ public class LoginActivity extends AppCompatActivity
                            final String address, final String viewKey, final String spendKey, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public Wallet createWallet(String path, String password) {
+                    public boolean createWallet(String path, String password) {
                         Wallet newWallet = WalletManager.getInstance()
                                 .createWalletFromKeys(path, MNEMONIC_LANGUAGE, restoreHeight,
                                         address, viewKey, spendKey);
+                        boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
+                        if (!success) Log.e(TAG, newWallet.getErrorString());
                         newWallet.setPassword(password);
-                        newWallet.store();
-                        return newWallet;
+                        success = success && newWallet.store();
+                        newWallet.close();
+                        return success;
                     }
                 });
     }
@@ -362,31 +388,20 @@ public class LoginActivity extends AppCompatActivity
     public void onAccept(final String name, final String password) {
         final File newWalletFolder = new File(getStorageRoot(), ".new");
         final File walletFolder = getStorageRoot();
-        new Thread(null,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        final String walletPath = new File(walletFolder, name).getAbsolutePath();
-                        final boolean rc = copyWallet(walletFolder, newWalletFolder, name)
-                                &&
-                                (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                if (rc) {
-                                    getFragmentManager().popBackStack("gen",
-                                            FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                    Toast.makeText(LoginActivity.this,
-                                            getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Log.e(TAG, "Wallet store failed to " + walletPath);
-                                    Toast.makeText(LoginActivity.this,
-                                            getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
-                    }
-                }
-                , "AcceptWallet", MoneroHandlerThread.THREAD_STACK_SIZE).start();
+        final String walletPath = new File(walletFolder, name).getAbsolutePath();
+        final boolean rc = copyWallet(walletFolder, newWalletFolder, name)
+                &&
+                (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
+        if (rc) {
+            getFragmentManager().popBackStack("gen",
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            Toast.makeText(LoginActivity.this,
+                    getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
+        } else {
+            Log.e(TAG, "Wallet store failed to " + walletPath);
+            Toast.makeText(LoginActivity.this,
+                    getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
+        }
     }
 
     Wallet.Status testWallet(String path, String password) {
@@ -403,6 +418,7 @@ public class LoginActivity extends AppCompatActivity
         boolean success = false;
         try {
             // TODO: the cache is corrupt if we recover (!!)
+            // TODO: the cache is ok if we immediately to a full refresh()
             // TODO recoveryheight is ignored but not on watchonly wallet ?! - find out why
             //copyFile(dstDir, srcDir, name);
             copyFile(dstDir, srcDir, name + ".keys");
