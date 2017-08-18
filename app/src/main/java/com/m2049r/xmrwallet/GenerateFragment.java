@@ -20,6 +20,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -65,6 +66,11 @@ public class GenerateFragment extends Fragment {
         etWalletSpendKey = (EditText) view.findViewById(R.id.etWalletSpendKey);
         etWalletRestoreHeight = (EditText) view.findViewById(R.id.etWalletRestoreHeight);
         bGenerate = (Button) view.findViewById(R.id.bGenerate);
+
+        etWalletMnemonic.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        etWalletAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        etWalletViewKey.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        etWalletSpendKey.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         boolean testnet = WalletManager.getInstance().isTestNet();
         etWalletMnemonic.setTextIsSelectable(testnet);
@@ -318,6 +324,7 @@ public class GenerateFragment extends Fragment {
 
     private boolean addressOk() {
         String address = etWalletAddress.getText().toString();
+        // TODO only accept address from the correct net
         return ((address.length() == 95) && ("49A".indexOf(address.charAt(0)) >= 0));
     }
 

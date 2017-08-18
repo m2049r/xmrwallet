@@ -389,7 +389,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_setDaemonAddressJ(JNIEnv *env, job
 // returns whether the daemon can be reached, and its version number
 JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_getDaemonVersion(JNIEnv *env,
-                                                                        jobject instance) {
+                                                               jobject instance) {
     uint32_t version;
     bool isConnected =
             Bitmonero::WalletManagerFactory::getWalletManager()->connected(&version);
@@ -597,7 +597,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_getFilename(JNIEnv *env, jobject instance
 JNIEXPORT jboolean JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
                                              jstring daemon_address,
-                                             long upper_transaction_size_limit) {
+                                             jlong upper_transaction_size_limit) {
 //          const std::string &daemon_username = "", const std::string &daemon_password = "") = 0;
     const char *_daemon_address = env->GetStringUTFChars(daemon_address, JNI_FALSE);
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
@@ -757,16 +757,44 @@ Java_com_m2049r_xmrwallet_model_Wallet_refreshAsync(JNIEnv *env, jobject instanc
 //TODO virtual void setAutoRefreshInterval(int millis) = 0;
 //TODO virtual int autoRefreshInterval() const = 0;
 
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject instance,
+                                                          jstring dst_addr, jstring payment_id,
+                                                          jlong amount, jint mixin_count,
+                                                          jint priority) {
 
-//virtual PendingTransaction * createTransaction(const std::string &dst_addr, const std::string &payment_id,
-//                                               optional<uint64_t> tvAmount, uint32_t mixin_count,
-//                                               PendingTransaction::Priority = PendingTransaction::Priority_Low) = 0;
+    const char *_dst_addr = env->GetStringUTFChars(dst_addr, JNI_FALSE);
+    const char *_payment_id = env->GetStringUTFChars(payment_id, JNI_FALSE);
+    Bitmonero::PendingTransaction::Priority _priority =
+            static_cast<Bitmonero::PendingTransaction::Priority>(priority);
+
+    LOGD("Priority_Last is %i", static_cast<int>(Bitmonero::PendingTransaction::Priority_Last));
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+
+    Bitmonero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
+                                                                  amount, mixin_count,
+                                                                  _priority);
+
+    env->ReleaseStringUTFChars(dst_addr, _dst_addr);
+    env->ReleaseStringUTFChars(payment_id, _payment_id);
+    return reinterpret_cast<jlong>(tx);
+}
 
 //virtual PendingTransaction * createSweepUnmixableTransaction() = 0;
 
 //virtual UnsignedTransaction * loadUnsignedTx(const std::string &unsigned_filename) = 0;
 //virtual bool submitTransaction(const std::string &fileName) = 0;
-//virtual void disposeTransaction(PendingTransaction * t) = 0;
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_disposeTransaction(JNIEnv *env, jobject instance,
+                                                          jobject pendingTransaction) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    Bitmonero::PendingTransaction *_pendingTransaction =
+            getHandle<Bitmonero::PendingTransaction>(env, pendingTransaction);
+    wallet->disposeTransaction(_pendingTransaction);
+}
+
 //virtual bool exportKeyImages(const std::string &filename) = 0;
 //virtual bool importKeyImages(const std::string &filename) = 0;
 
@@ -999,6 +1027,64 @@ JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_TransactionInfo_getTransferCount(JNIEnv *env, jobject instance) {
     Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
     return info->transfers().size();
+}
+
+
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getStatusJ(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return tx->status();
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getErrorString(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return env->NewStringUTF(tx->errorString().c_str());
+}
+
+// commit transaction or save to file if filename is provided.
+JNIEXPORT jboolean JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_commit(JNIEnv *env, jobject instance,
+                                                          jstring filename, jboolean overwrite) {
+
+    const char *_filename = env->GetStringUTFChars(filename, JNI_FALSE);
+
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    bool success = tx->commit(_filename, overwrite);
+
+    env->ReleaseStringUTFChars(filename, _filename);
+    return success;
+}
+
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getAmount(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return tx->amount();
+}
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getDust(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return tx->dust();
+}
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getFee(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return tx->fee();
+}
+
+/* this returns a vector of strings - deal with this later
+JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxId(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return env->NewStringUTF(tx->txid().c_str());
+}
+*/
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobject instance) {
+    Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
+    return tx->txCount();
 }
 
 

@@ -18,6 +18,8 @@ package com.m2049r.xmrwallet;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -29,11 +31,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
-        WalletService.Observer {
+        WalletService.Observer, SendFragment.Listener {
     private static final String TAG = "WalletActivity";
 
     static final int MIN_DAEMON_VERSION = 65544;
@@ -101,7 +105,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
 
-    Wallet getWallet() {
+    public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
         return mBoundService.getWallet();
     }
@@ -120,7 +124,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             //Log.d(TAG, "setting observer of " + mBoundService);
             mBoundService.setObserver(WalletActivity.this);
             updateProgress();
-            //TODO show current progress (eg. if the service is already busy saving last wallet)
+            //TODO show current pbProgress (eg. if the service is already busy saving last wallet)
             Log.d(TAG, "CONNECTED");
         }
 
@@ -231,6 +235,20 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         super.setTitle(title);
     }
 
+    @Override
+    public void onSendRequest() {
+        replaceFragment(new SendFragment(), null, null);
+    }
+
+    @Override
+    public void forceUpdate() {
+        try {
+            onRefreshed(getWallet(), true);
+        } catch (IllegalStateException ex) {
+            Log.e(TAG, ex.getLocalizedMessage());
+        }
+    }
+
     ///////////////////////////
     // WalletService.Observer
     ///////////////////////////
@@ -260,10 +278,37 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         runOnUiThread(new Runnable() {
             public void run() {
                 if (success) {
+                    // TODO signal so we can show/enable send button
                     Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unload_failed), Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+
+    @Override
+    public void onCreatedTransaction(final PendingTransaction pendingTransaction) {
+        // TODO check which fragment is loaded
+        final SendFragment sendFragment = (SendFragment)
+                getFragmentManager().findFragmentById(R.id.fragment_container);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                sendFragment.onCreatedTransaction(pendingTransaction);
+            }
+        });
+    }
+
+    @Override
+    public void onSentTransaction(final boolean success) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (success) {
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_sent), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_failed), Toast.LENGTH_SHORT).show();
+                }
+                popFragmentStack(null);
             }
         });
     }
@@ -299,5 +344,53 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             onProgress(mBoundService.getProgressText());
             onProgress(mBoundService.getProgressValue());
         }
+    }
+
+    ///////////////////////////
+    // SendFragment.Listener
+    ///////////////////////////
+
+    @Override
+    public void onSend() {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SEND);
+            startService(intent);
+            Log.d(TAG, "SEND TX request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
+        }
+
+    }
+
+    @Override
+    public void onPrepareSend(TxData txData) {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_TX);
+            intent.putExtra(WalletService.REQUEST_CMD_TX_DATA, txData);
+            startService(intent);
+            Log.d(TAG, "CREATE TX request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
+        }
+    }
+
+    void popFragmentStack(String name) {
+        if (name == null) {
+            getFragmentManager().popBackStack();
+        } else {
+            getFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+    }
+
+    void replaceFragment(Fragment newFragment, String name, Bundle extras) {
+        if (extras != null) {
+            newFragment.setArguments(extras);
+        }
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(name);
+        transaction.commit();
     }
 }

@@ -3,7 +3,6 @@
     <string name="login_activity_name">Select Wallet</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <!-- Strings related to login -->
     <string name="prompt_daemon">Daemon Address</string>
     <string name="prompt_mainnet">Net Selection</string>
     <string name="connect_testnet">TestNet</string>
@@ -16,6 +15,9 @@
     <string name="status_wallet_connecting">Connecting &#8230;</string>
     <string name="status_working">Working on it &#8230;</string>
 
+    <string name="status_transaction_sent">Transaction sent!</string>
+    <string name="status_transaction_failed">Transaction failed!</string>
+
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>
     <string name="bad_wallet">Wallet does not exists!</string>
@@ -24,6 +26,8 @@
     <string name="prompt_wrong_net">Wallet does not match selected net</string>
     <string name="warn_daemon_unavailable">Cannot connect to daemon! Try again.</string>
     <string name="panic">Something\'s wrong!</string>
+
+    <string name="wallet_send_hint">Send some</string>
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
@@ -88,4 +92,32 @@
     <string name="generate_check_mnemonic">Check your mnemonic seed!</string>
     <string name="generate_check_something">Check your entry!</string>
 
+    <string name="send_address_hint">Receiver\'s Address</string>
+    <string name="send_paymentid_hint">Payment ID (optional)</string>
+    <string name="send_amount_hint">Amount</string>
+    <string name="send_notes_hint">Private Notes (optional)</string>
+    <string name="send_priority_hint">Tx Priority</string>
+    <string name="send_mixin_hint">Mixin</string>
+    <string name="send_sweep_hint">Sweep</string>
+    <string name="send_generate_paymentid_hint">Generate</string>
+    <string name="send_send_hint">Get rid of my monero!</string>
+
+    <string name="send_amount_label">Amount</string>
+    <string name="send_fee_label">Fee</string>
+    <string name="send_dust_label">Dust</string>
+    <string name="big_amount">999999.999999999999</string>
+
+    <string-array name="mixin">
+        <item>Mixin 4</item>
+        <item>Mixin 6</item>
+        <item>Mixin 8</item>
+        <item>Mixin 10</item>
+        <item>Mixin 13</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>Low Priority</item>
+        <item>Medium Priority</item>
+        <item>High  Priority</item>
+    </string-array>
 </resources>

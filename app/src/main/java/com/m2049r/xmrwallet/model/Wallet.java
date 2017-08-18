@@ -88,6 +88,7 @@ public class Wallet {
     public native boolean store(String path);
 
     public boolean close() {
+        disposePendingTransaction();
         return WalletManager.getInstance().close(this);
     }
 
@@ -161,15 +162,40 @@ public class Wallet {
 //TODO virtual int autoRefreshInterval() const = 0;
 
 
-//virtual PendingTransaction * createTransaction(const std::string &dst_addr, const std::string &payment_id,
-//                                               optional<uint64_t> tvAmount, uint32_t mixin_count,
-//                                               PendingTransaction::Priority = PendingTransaction::Priority_Low) = 0;
+    // TODO - good place to keep this ?
+    private PendingTransaction pendingTransaction = null;
+
+    public PendingTransaction getPendingTransaction() {
+        return pendingTransaction;
+    }
+
+    public void disposePendingTransaction() {
+        if (pendingTransaction != null) {
+            disposeTransaction(pendingTransaction);
+            pendingTransaction = null;
+        }
+    }
+
+    public PendingTransaction createTransaction(String dst_addr, String payment_id,
+                                                long amount, int mixin_count,
+                                                PendingTransaction.Priority priority) {
+        disposePendingTransaction();
+        long txHandle = createTransactionJ(dst_addr, payment_id, amount, mixin_count, priority);
+        pendingTransaction = new PendingTransaction(txHandle);
+        return pendingTransaction;
+    }
+
+    private native long createTransactionJ(String dst_addr, String payment_id,
+                                           long mount, int mixin_count,
+                                           PendingTransaction.Priority priority);
 
 //virtual PendingTransaction * createSweepUnmixableTransaction() = 0;
 
 //virtual UnsignedTransaction * loadUnsignedTx(const std::string &unsigned_filename) = 0;
 //virtual bool submitTransaction(const std::string &fileName) = 0;
-//virtual void disposeTransaction(PendingTransaction * t) = 0;
+
+    public native void disposeTransaction(PendingTransaction pendingTransaction);
+
 //virtual bool exportKeyImages(const std::string &filename) = 0;
 //virtual bool importKeyImages(const std::string &filename) = 0;
 

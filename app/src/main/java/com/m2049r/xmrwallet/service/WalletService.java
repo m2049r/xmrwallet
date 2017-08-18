@@ -28,20 +28,29 @@ import android.os.Process;
 import android.util.Log;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionHistory;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletService extends Service {
     final static String TAG = "WalletService";
 
     public static final String REQUEST_WALLET = "wallet";
     public static final String REQUEST = "request";
+
     public static final String REQUEST_CMD_LOAD = "load";
     public static final String REQUEST_CMD_LOAD_PW = "walletPassword";
+
     public static final String REQUEST_CMD_STORE = "store";
+
+    public static final String REQUEST_CMD_TX = "createTX";
+    public static final String REQUEST_CMD_TX_DATA = "data";
+
+    public static final String REQUEST_CMD_SEND = "send";
 
     public static final int START_SERVICE = 1;
     public static final int STOP_SERVICE = 2;
@@ -194,6 +203,10 @@ public class WalletService extends Service {
         void onProgress(int n);
 
         void onWalletStored(boolean success);
+
+        void onCreatedTransaction(PendingTransaction pendingTransaction);
+
+        void onSentTransaction(boolean success);
     }
 
     String progressText = null;
@@ -264,6 +277,33 @@ public class WalletService extends Service {
                             Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
                         }
                         if (observer != null) observer.onWalletStored(rc);
+                    } else if (cmd.equals(REQUEST_CMD_TX)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "creating tx for wallet: " + myWallet.getName());
+                        TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
+                        PendingTransaction pendingTransaction = myWallet.createTransaction(
+                                txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
+                        PendingTransaction.Status status = pendingTransaction.getStatus();
+                        Log.d(TAG, "transaction status " + status);
+                        Log.d(TAG, "transaction amount " + pendingTransaction.getAmount());
+                        Log.d(TAG, "transaction fee    " + pendingTransaction.getFee());
+                        if (status != PendingTransaction.Status.Status_Ok) {
+                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                        }
+                        // TODO myWallet.disposeTransaction(pendingTransaction); later
+                        if (observer != null) observer.onCreatedTransaction(pendingTransaction);
+                    } else if (cmd.equals(REQUEST_CMD_SEND)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "send tx for wallet: " + myWallet.getName());
+                        PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
+                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
+                            Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());
+                            myWallet.disposePendingTransaction(); // it's broken anyway
+                            return;
+                        }
+                        boolean success = pendingTransaction.commit("", true);
+                        myWallet.disposePendingTransaction();
+                        if (observer != null) observer.onSentTransaction(success);
                     }
                 }
                 break;

@@ -283,6 +283,10 @@ public class LoginActivity extends AppCompatActivity
         transaction.commit();
     }
 
+    void popFragmentStack(String name) {
+        getFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
     //////////////////////////////////////////
     // GenerateFragment.Listener
     //////////////////////////////////////////
@@ -393,8 +397,7 @@ public class LoginActivity extends AppCompatActivity
                 &&
                 (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
         if (rc) {
-            getFragmentManager().popBackStack("gen",
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            popFragmentStack("gen");
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {

@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:id="@+id/tvBalanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
             android:text="@string/label_balance"
+            android:textSize="10sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvBalance"
             app:layout_constraintRight_toLeftOf="@+id/tvBalance" />
 
@@ -24,7 +27,7 @@
             android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:text="00000000.000000000000"
             app:layout_constraintRight_toRightOf="parent"
@@ -34,9 +37,9 @@
             android:id="@+id/tvUnlockedBalanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
             android:text="@string/label_unlockedBalance"
+            android:textSize="10sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvUnlockedBalance"
             app:layout_constraintRight_toLeftOf="@+id/tvUnlockedBalance" />
 
@@ -53,10 +56,10 @@
             android:id="@+id/tvConnectionStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
             android:text="Loading..."
+            android:textSize="10sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,10 +67,10 @@
             android:id="@+id/tvBlockHeightProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
             android:text="Loading..."
+            android:textSize="10sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvConnectionStatus" />
 
@@ -77,37 +80,56 @@
         android:id="@+id/llProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tvProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="Loading..." />
+            android:text="Loading..."
+            android:textSize="16sp" />
 
         <ProgressBar
             android:id="@+id/pbProgress"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:progress="0"/>
+            android:progress="0" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="8dp"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/transaction_item" />
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/bSend"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/transaction_item" />
+
+        <Button
+            android:id="@+id/bSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"
+            android:enabled="true"
+            android:text="@string/wallet_send_hint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>
