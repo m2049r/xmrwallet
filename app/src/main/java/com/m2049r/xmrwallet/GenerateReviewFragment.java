@@ -25,7 +25,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
@@ -65,7 +67,12 @@ public class GenerateReviewFragment extends Fragment {
             }
         });
 
-        showDetails();
+        Bundle b = getArguments();
+        String name = b.getString("name");
+        String password = b.getString("password");
+        String type = b.getString("type");
+        show(name, password, type);
+
         return view;
     }
 
@@ -76,33 +83,41 @@ public class GenerateReviewFragment extends Fragment {
         activityCallback.onAccept(name, password);
     }
 
-    public void showDetails() {
-        Bundle b = getArguments();
-        String name = b.getString("name");
-        String password = b.getString("password");
-        String address = b.getString("address");
-        String seed = b.getString("seed");
-        String view = b.getString("viewkey");
-        String spend = b.getString("spendkey");
+    private void show(final String walletPath, final String password, final String type) {
+        new Thread(null,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
+                        final String name = wallet.getName();
+                        final String seed = wallet.getSeed();
+                        final String address = wallet.getAddress();
+                        final String view = wallet.getSecretViewKey();
+                        final String spend = wallet.isWatchOnly() ? "" : "not available - use seed for recovery";
+                        wallet.close();
 
-        tvWalletName.setText(name);
-        tvWalletPassword.setText(password);
-        tvWalletAddress.setText(address);
-        tvWalletMnemonic.setText(seed);
-        tvWalletViewKey.setText(view);
-        if (spend.length() > 0) { // should be == 64, but spendkey is not in the API yet
-            tvWalletSpendKey.setText(spend);
-        } else {
-            tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
-        }
+                        getActivity().runOnUiThread(new Runnable() {
+                            public void run() {
+                                if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
+                                    tvWalletPassword.setText(password);
+                                    bAccept.setVisibility(View.VISIBLE);
+                                    bAccept.setEnabled(true);
+                                }
+                                tvWalletName.setText(name);
+                                tvWalletAddress.setText(address);
+                                tvWalletMnemonic.setText(seed);
+                                tvWalletViewKey.setText(view);
+                                if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
+                                    tvWalletSpendKey.setText(spend);
+                                } else {
+                                    tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+                                }
+                            }
+                        });
+                    }
+                }
+                , "DetailsReview", MoneroHandlerThread.THREAD_STACK_SIZE).start();
 
-        String type = b.getString("view");
-        if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
-            bAccept.setVisibility(View.VISIBLE);
-            bAccept.setEnabled(true);
-        } else {
-            bAccept.setVisibility(View.GONE);
-        }
     }
 
     GenerateReviewFragment.Listener activityCallback;

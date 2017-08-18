@@ -12,6 +12,7 @@
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>
     <string name="status_wallet_unloaded">Wallet saved</string>
+    <string name="status_wallet_unload_failed">Wallet save failed!</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
     <string name="status_working">Working on it &#8230;</string>
 
@@ -58,6 +59,7 @@
 
     <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
     <string name="generate_wallet_created">Wallet created</string>
+    <string name="generate_wallet_create_failed">Wallet create failed</string>
     <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>
     <string name="generate_wallet_create_failed_2">Wallet create failed (2/2)</string>
     <string name="generate_address_placeholder">9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8</string>

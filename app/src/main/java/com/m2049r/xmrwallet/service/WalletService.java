@@ -193,7 +193,7 @@ public class WalletService extends Service {
 
         void onProgress(int n);
 
-        void onWalletStored();
+        void onWalletStored(boolean success);
     }
 
     String progressText = null;
@@ -258,9 +258,12 @@ public class WalletService extends Service {
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
                         Log.d(TAG, "storing wallet: " + myWallet.getName());
-                        myWallet.store();
-                        Log.d(TAG, "wallet stored: " + myWallet.getName());
-                        if (observer != null) observer.onWalletStored();
+                        boolean rc = myWallet.store();
+                        Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                        if (!rc) {
+                            Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                        }
+                        if (observer != null) observer.onWalletStored(rc);
                     }
                 }
                 break;

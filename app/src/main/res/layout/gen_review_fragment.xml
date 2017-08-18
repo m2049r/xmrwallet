@@ -34,8 +34,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <TextView
@@ -43,7 +43,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/generate_name_hint"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
@@ -53,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/generate_password_hint"
+            android:text="***"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
@@ -72,7 +71,6 @@
         android:id="@+id/tvWalletMnemonic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/generate_mnemonic_placeholder"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
@@ -92,7 +90,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:selectAllOnFocus="true"
-        android:text="@string/generate_address_placeholder"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
@@ -113,7 +110,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:selectAllOnFocus="true"
-        android:text="@string/generate_viewkey_placeholder"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
@@ -134,7 +130,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:selectAllOnFocus="true"
-        android:text="@string/generate_spendkey_placeholder"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
@@ -146,6 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
-        android:text="@string/generate_button_accept" />
+        android:text="@string/generate_button_accept"
+        android:visibility="gone" />
 
 </LinearLayout>

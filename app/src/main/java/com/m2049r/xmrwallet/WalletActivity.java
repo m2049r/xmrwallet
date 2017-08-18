@@ -256,10 +256,14 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public void onWalletStored() {
+    public void onWalletStored(final boolean success) {
         runOnUiThread(new Runnable() {
             public void run() {
-                Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
+                if (success) {
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unload_failed), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
