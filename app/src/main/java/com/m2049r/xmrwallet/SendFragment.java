@@ -19,7 +19,9 @@ package com.m2049r.xmrwallet;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -53,6 +56,7 @@ public class SendFragment extends Fragment {
     TextView tvTxFee;
     TextView tvTxDust;
     Button bSend;
+    ProgressBar pbProgress;
 
     final static int Mixins[] = {4, 6, 8, 10, 13}; // must match the layout XML
     final static PendingTransaction.Priority Priorities[] =
@@ -80,6 +84,8 @@ public class SendFragment extends Fragment {
         tvTxDust = (TextView) view.findViewById(R.id.tvTxDust);
         bSend = (Button) view.findViewById(R.id.bSend);
 
+        pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
+
         etAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
         etPaymentId.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
@@ -100,11 +106,22 @@ public class SendFragment extends Fragment {
                 return false;
             }
         });
-
-        etPaymentId.setOnClickListener(new View.OnClickListener() {
+        etAddress.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
+            public void afterTextChanged(Editable editable) {
+                if (addressOk() && amountOk()) {
+                    bPrepareSend.setEnabled(true);
+                } else {
+                    bPrepareSend.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
         etPaymentId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -130,8 +147,26 @@ public class SendFragment extends Fragment {
                 return false;
             }
         });
+        etAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (addressOk() && amountOk()) {
+                    bPrepareSend.setEnabled(true);
+                } else {
+                    bPrepareSend.setEnabled(false);
+                }
+            }
 
-        bPrepareSend.setEnabled(true); // TODO need clever logic here
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
+        setPrepareButtonState();
         bPrepareSend.setOnClickListener(new View.OnClickListener()
 
         {
@@ -154,16 +189,26 @@ public class SendFragment extends Fragment {
         return view;
     }
 
+    private void setPrepareButtonState() {
+        if (addressOk() && amountOk() && (bSend.getVisibility() != View.VISIBLE)) {
+            bPrepareSend.setEnabled(true);
+        } else {
+            bPrepareSend.setEnabled(false);
+        }
+    }
+
     private boolean addressOk() {
         String address = etAddress.getText().toString();
-        // TODO only accept address from the correct net
-        return ((address.length() == 95) && ("49A".indexOf(address.charAt(0)) >= 0));
+        if (WalletManager.getInstance().isTestNet()) {
+            return ((address.length() == 95) && ("9A".indexOf(address.charAt(0)) >= 0));
+        } else {
+            return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
+        }
     }
 
     private boolean amountOk() {
-        String amount = etAmount.getText().toString();
-        // TODO decimal separator
-        return ((amount.length() > 0) && (amount.matches("^[0-9]+([,.][0-9]+)?$")));
+        long amount = Wallet.getAmountFromString(etAmount.getText().toString());
+        return (amount > 0);
     }
 
     private boolean paymentIdOk() {
@@ -186,6 +231,12 @@ public class SendFragment extends Fragment {
                 mixin,
                 priority);
 
+        disableEdit();
+        showProgress();
+        activityCallback.onPrepareSend(txData);
+    }
+
+    private void disableEdit() {
         sMixin.setEnabled(false);
         sPriority.setEnabled(false);
         etAddress.setEnabled(false);
@@ -193,8 +244,16 @@ public class SendFragment extends Fragment {
         etAmount.setEnabled(false);
         bSweep.setEnabled(false);
         bPrepareSend.setEnabled(false);
+    }
 
-        activityCallback.onPrepareSend(txData);
+    private void enableEdit() {
+        sMixin.setEnabled(true);
+        sPriority.setEnabled(true);
+        etAddress.setEnabled(true);
+        etPaymentId.setEnabled(true);
+        etAmount.setEnabled(true);
+        bSweep.setEnabled(true);
+        bPrepareSend.setEnabled(true);
     }
 
     private void send() {
@@ -222,20 +281,24 @@ public class SendFragment extends Fragment {
     }
 
     public void onCreatedTransaction(PendingTransaction pendingTransaction) {
-        PendingTransaction.Status status = pendingTransaction.getStatus();
-        if (status != PendingTransaction.Status.Status_Ok) {
-            Log.d(TAG, "Wallet store failed: " + pendingTransaction.getErrorString());
+        hideProgress();
+        if (pendingTransaction == null) {
+            enableEdit();
+            return;
         }
-        /*
-        Log.d(TAG, "transaction amount " + pendingTransaction.getAmount());
-        Log.d(TAG, "transaction fee    " + pendingTransaction.getFee());
-        Log.d(TAG, "transaction dust   " + pendingTransaction.getDust());
-        Log.d(TAG, "transactions       " + pendingTransaction.getTxCount());
-        */
         llConfirmSend.setVisibility(View.VISIBLE);
         tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getAmount()));
         tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
         tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
         bSend.setEnabled(true);
+    }
+
+    public void showProgress() {
+        pbProgress.setIndeterminate(true);
+        pbProgress.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        pbProgress.setVisibility(View.GONE);
     }
 }

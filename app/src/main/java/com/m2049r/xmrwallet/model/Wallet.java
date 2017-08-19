@@ -204,11 +204,8 @@ public class Wallet {
     private TransactionHistory history = null;
 
     public TransactionHistory getHistory() {
-        Log.d(TAG, "A");
         if (history == null) {
-            Log.d(TAG, "B");
             history = new TransactionHistory(getHistoryJ());
-            Log.d(TAG, "C");
         }
         return history;
     }
@@ -228,9 +225,9 @@ public class Wallet {
 
     public native void setDefaultMixin(int mixin);
 
-//virtual bool setUserNote(const std::string &txid, const std::string &note) = 0;
+    //virtual bool setUserNote(const std::string &txid, const std::string &note) = 0;
 //virtual std::string getUserNote(const std::string &txid) const = 0;
-//virtual std::string getTxKey(const std::string &txid) const = 0;
+    public native String getTxKey(String txid);
 
 //virtual std::string signMessage(const std::string &message) = 0;
 //virtual bool verifySignedMessage(const std::string &message, const std::string &addres, const std::string &signature) const = 0;

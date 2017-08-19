@@ -23,8 +23,6 @@ public class Transfer {
     public String address;
 
     public Transfer(long amount, String address) {
-        Log.d("Transfer", address + "/" + amount);
-        //Log.d("Transfer", "/" + amount);
         this.amount = amount;
         this.address = address;
     }

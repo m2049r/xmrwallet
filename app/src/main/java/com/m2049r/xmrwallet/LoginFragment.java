@@ -98,7 +98,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onPause() {
         Log.d(TAG, "onPause()");
-        savePrefs(false);
+        savePrefs();
         super.onPause();
     }
 
@@ -184,7 +184,7 @@ public class LoginFragment extends Fragment {
                 }
 
                 // looking good
-                savePrefs(false);
+                savePrefs();
 
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
                 if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
@@ -195,14 +195,7 @@ public class LoginFragment extends Fragment {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                EditText tvDaemonAddress = (EditText) getView().findViewById(R.id.etDaemonAddress);
-                if (tvDaemonAddress.getText().toString().length() == 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
-                    tvDaemonAddress.requestFocus();
-                    Helper.showKeyboard(getActivity());
-                    return true;
-                }
-
+                // Difference to opening wallet is that we don't need a daemon set
                 String itemValue = (String) listView.getItemAtPosition(position);
 
                 if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
@@ -210,26 +203,28 @@ public class LoginFragment extends Fragment {
                     return true;
                 }
 
-                String x = isMainNet() ? "4-" : "9A-";
+                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+                if (itemValue.charAt(1) == '-') {
+                    Toast.makeText(getActivity(), getString(R.string.bad_wallet), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                String x = isMainNet() ? "4" : "9A";
                 if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return true;
                 }
 
-                if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
+                if (!checkAndSetWalletDaemon("", !isMainNet())) {
                     Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
-                // looking good
-                savePrefs(false);
-
-                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
-                if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
                 activityCallback.onWalletDetails(wallet);
                 return true;
             }
         });
+
         activityCallback.setTitle(getString(R.string.app_name) + " " +
                 getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
 
@@ -305,6 +300,10 @@ public class LoginFragment extends Fragment {
         }
     }
 
+    void savePrefs() {
+        savePrefs(false);
+    }
+
     void savePrefs(boolean usePreviousState) {
         // save the daemon address for the net
         boolean mainnet = isMainNet() ^ usePreviousState;
@@ -324,42 +323,47 @@ public class LoginFragment extends Fragment {
     }
 
     private boolean checkAndSetWalletDaemon(String daemonAddress, boolean testnet) {
-        String d[] = daemonAddress.split(":");
-        if (d.length > 2) return false;
-        if (d.length < 1) return false;
-        String host = d[0];
-        int port;
-        if (d.length == 2) {
-            try {
-                port = Integer.parseInt(d[1]);
-            } catch (NumberFormatException ex) {
-                return false;
+        if (!daemonAddress.isEmpty()) {
+            String d[] = daemonAddress.split(":");
+            if (d.length > 2) return false;
+            if (d.length < 1) return false;
+            String host = d[0];
+            int port;
+            if (d.length == 2) {
+                try {
+                    port = Integer.parseInt(d[1]);
+                } catch (NumberFormatException ex) {
+                    return false;
+                }
+            } else {
+                port = (testnet ? 28081 : 18081);
             }
-        } else {
-            port = (testnet ? 28081 : 18081);
-        }
 //        if (android.os.Build.VERSION.SDK_INT > 9) {
-        StrictMode.ThreadPolicy prevPolicy = StrictMode.getThreadPolicy();
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder(prevPolicy).permitNetwork().build();
-        StrictMode.setThreadPolicy(policy);
-        Socket socket = new Socket();
-        long a = new Date().getTime();
-        try {
-            socket.connect(new InetSocketAddress(host, port), LoginActivity.DAEMON_TIMEOUT);
-            socket.close();
-        } catch (IOException ex) {
-            Log.d(TAG, "Cannot reach daemon " + host + ":" + port + " because " + ex.getLocalizedMessage());
-            return false;
-        } finally {
-            StrictMode.setThreadPolicy(prevPolicy);
+            StrictMode.ThreadPolicy prevPolicy = StrictMode.getThreadPolicy();
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder(prevPolicy).permitNetwork().build();
+            StrictMode.setThreadPolicy(policy);
+            Socket socket = new Socket();
+            long a = new Date().getTime();
+            try {
+                socket.connect(new InetSocketAddress(host, port), LoginActivity.DAEMON_TIMEOUT);
+                socket.close();
+            } catch (IOException ex) {
+                Log.d(TAG, "Cannot reach daemon " + host + ":" + port + " because " + ex.getLocalizedMessage());
+                return false;
+            } finally {
+                StrictMode.setThreadPolicy(prevPolicy);
+            }
+            long b = new Date().getTime();
+            Log.d(TAG, "Daemon is " + (b - a) + "ms away.");
         }
-        long b = new Date().getTime();
-        Log.d(TAG, "Daemon is " + (b - a) + "ms away.");
-
         WalletManager mgr = WalletManager.getInstance();
         mgr.setDaemon(daemonAddress, testnet);
-        int version = mgr.getDaemonVersion();
-        Log.d(TAG, "Daemon is v" + version);
-        return (version >= WalletActivity.MIN_DAEMON_VERSION);
+        if (!daemonAddress.isEmpty()) {
+            int version = mgr.getDaemonVersion();
+            Log.d(TAG, "Daemon is v" + version);
+            return (version >= WalletActivity.MIN_DAEMON_VERSION);
+        } else {
+            return true;
+        }
     }
 }

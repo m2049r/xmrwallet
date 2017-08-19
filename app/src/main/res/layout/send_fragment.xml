@@ -106,6 +106,13 @@
         android:enabled="false"
         android:text="@string/send_prepare_hint" />
 
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/llConfirmSend"
         android:layout_width="match_parent"
@@ -123,8 +130,8 @@
                 android:id="@+id/tvTxAmountLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="8dp"
+                android:layout_weight="1"
                 android:text="@string/send_amount_label"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorAccent"
@@ -134,8 +141,8 @@
                 android:id="@+id/tvTxAmount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="2"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -150,8 +157,8 @@
                 android:id="@+id/tvTxFeeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="8dp"
+                android:layout_weight="1"
                 android:text="@string/send_fee_label"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorAccent"
@@ -161,8 +168,8 @@
                 android:id="@+id/tvTxFee"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="2"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -177,22 +184,24 @@
                 android:id="@+id/tvTxDustLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="8dp"
+                android:layout_weight="1"
                 android:text="@string/send_dust_label"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
- c
+            c
+
             <TextView
                 android:id="@+id/tvTxDust"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="2"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>
+
         <Button
             android:id="@+id/bSend"
             android:layout_width="match_parent"

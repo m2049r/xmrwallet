@@ -73,9 +73,8 @@ public class GenerateFragment extends Fragment {
         etWalletSpendKey.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         boolean testnet = WalletManager.getInstance().isTestNet();
-        etWalletMnemonic.setTextIsSelectable(testnet);
+        //etWalletMnemonic.setTextIsSelectable(testnet);
 
-        etWalletName.requestFocus();
         Helper.showKeyboard(getActivity());
         etWalletName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,12 +94,6 @@ public class GenerateFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-        etWalletName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
         etWalletName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -113,12 +106,6 @@ public class GenerateFragment extends Fragment {
             }
         });
 
-        etWalletPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
         etWalletPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -146,14 +133,6 @@ public class GenerateFragment extends Fragment {
                     return true;
                 }
                 return false;
-            }
-        });
-        etWalletMnemonic.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
             }
         });
         etWalletMnemonic.addTextChangedListener(new
@@ -204,14 +183,6 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletAddress.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
         etWalletAddress.addTextChangedListener(new
 
                                                        TextWatcher() {
@@ -256,15 +227,6 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletViewKey.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
-
         etWalletSpendKey.setOnEditorActionListener(new TextView.OnEditorActionListener()
 
         {
@@ -280,23 +242,16 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
-        etWalletSpendKey.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
-
         etWalletRestoreHeight.setOnEditorActionListener(new TextView.OnEditorActionListener()
 
         {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     if (bGenerate.getVisibility() == View.VISIBLE) {
                         Helper.hideKeyboard(getActivity());
                         generateWallet();
+                    } else {
+                        Toast.makeText(getActivity(), getString(R.string.generate_check_something), Toast.LENGTH_LONG).show();
                     }
                     return true;
                 }
@@ -314,6 +269,7 @@ public class GenerateFragment extends Fragment {
             }
         });
 
+        etWalletName.requestFocus();
         return view;
     }
 

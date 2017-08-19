@@ -47,8 +47,19 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     private boolean synced = false;
 
+    @Override
     public boolean isSynced() {
         return synced;
+    }
+
+    @Override
+    public boolean isWatchOnly() {
+        return getWallet().isWatchOnly();
+    }
+
+    @Override
+    public String getTxKey(String txId) {
+        return getWallet().getTxKey(txId);
     }
 
     @Override
@@ -99,7 +110,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 .add(R.id.fragment_container, walletFragment).commit();
         Log.d(TAG, "fragment added");
 
-        // TODO do stuff with savedInstanceState ?
         if (savedInstanceState != null) {
             return;
         }
@@ -171,7 +181,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
-        //saveWallet(); //TODO: do it here if we really need to ...
         super.onPause();
     }
 
@@ -260,7 +269,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Log.d(TAG, "onRefreshed()");
-        // TODO check which fragment is loaded
         try {
             final WalletFragment walletFragment = (WalletFragment)
                     getFragmentManager().findFragmentById(R.id.fragment_container);
@@ -295,7 +303,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         runOnUiThread(new Runnable() {
             public void run() {
                 if (success) {
-                    // TODO signal so we can show/enable send button
                     Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unload_failed), Toast.LENGTH_LONG).show();
@@ -306,14 +313,28 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public void onCreatedTransaction(final PendingTransaction pendingTransaction) {
-        // TODO check which fragment is loaded
-        final SendFragment sendFragment = (SendFragment)
-                getFragmentManager().findFragmentById(R.id.fragment_container);
-        runOnUiThread(new Runnable() {
-            public void run() {
-                sendFragment.onCreatedTransaction(pendingTransaction);
-            }
-        });
+        final PendingTransaction.Status status = pendingTransaction.getStatus();
+        if (status != PendingTransaction.Status.Status_Ok) {
+            getWallet().disposePendingTransaction();
+        }
+        try {
+            final SendFragment sendFragment = (SendFragment)
+                    getFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if (status != PendingTransaction.Status.Status_Ok) {
+                        Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_prepare_failed), Toast.LENGTH_LONG).show();
+                        sendFragment.onCreatedTransaction(null);
+                    } else {
+                        sendFragment.onCreatedTransaction(pendingTransaction);
+                    }
+                }
+            });
+        } catch (ClassCastException ex) {
+            // not in spend fragment
+            // don't need the transaction any more
+            getWallet().disposePendingTransaction();
+        }
     }
 
     @Override
@@ -332,27 +353,34 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public void onProgress(final String text) {
-        //Log.d(TAG, "PROGRESS: " + text);
-        // TODO check which fragment is loaded
-        final WalletFragment walletFragment = (WalletFragment)
-                getFragmentManager().findFragmentById(R.id.fragment_container);
-        runOnUiThread(new Runnable() {
-            public void run() {
-                walletFragment.onProgress(text);
-            }
-        });
+        try {
+            final WalletFragment walletFragment = (WalletFragment)
+                    getFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    walletFragment.onProgress(text);
+                }
+            });
+        } catch (ClassCastException ex) {
+            // not in wallet fragment (probably send monero)
+            // keep calm and carry on
+        }
     }
 
     @Override
     public void onProgress(final int n) {
-        // TODO check which fragment is loaded
-        final WalletFragment walletFragment = (WalletFragment)
-                getFragmentManager().findFragmentById(R.id.fragment_container);
-        runOnUiThread(new Runnable() {
-            public void run() {
-                walletFragment.onProgress(n);
-            }
-        });
+        try {
+            final WalletFragment walletFragment = (WalletFragment)
+                    getFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    walletFragment.onProgress(n);
+                }
+            });
+        } catch (ClassCastException ex) {
+            // not in wallet fragment (probably send monero)
+            // keep calm and carry on
+        }
     }
 
     private void updateProgress() {

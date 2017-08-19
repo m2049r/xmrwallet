@@ -40,6 +40,8 @@ public class TransactionInfo {
     public long confirmations;
     public List<Transfer> transfers;
 
+    public String txKey;
+
     public TransactionInfo(
             int direction,
             boolean isPending,

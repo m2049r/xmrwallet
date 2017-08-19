@@ -23,17 +23,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 
+import java.io.File;
+
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
     static final public String VIEW_DETAILS = "details";
     static final public String VIEW_ACCEPT = "accept";
 
+    ProgressBar pbProgress;
     TextView tvWalletName;
     TextView tvWalletPassword;
     TextView tvWalletAddress;
@@ -48,6 +52,7 @@ public class GenerateReviewFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.gen_review_fragment, container, false);
 
+        pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         tvWalletName = (TextView) view.findViewById(R.id.tvWalletName);
         tvWalletPassword = (TextView) view.findViewById(R.id.tvWalletPassword);
         tvWalletAddress = (TextView) view.findViewById(R.id.tvWalletAddress);
@@ -67,10 +72,13 @@ public class GenerateReviewFragment extends Fragment {
             }
         });
 
+        showProgress();
+
         Bundle b = getArguments();
         String name = b.getString("name");
         String password = b.getString("password");
         String type = b.getString("type");
+        tvWalletName.setText(new File(name).getName());
         show(name, password, type);
 
         return view;
@@ -112,6 +120,7 @@ public class GenerateReviewFragment extends Fragment {
                                 } else {
                                     tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
                                 }
+                                hideProgress();
                             }
                         });
                     }
@@ -135,5 +144,14 @@ public class GenerateReviewFragment extends Fragment {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+    }
+
+    public void showProgress() {
+        pbProgress.setIndeterminate(true);
+        pbProgress.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        pbProgress.setVisibility(View.INVISIBLE);
     }
 }

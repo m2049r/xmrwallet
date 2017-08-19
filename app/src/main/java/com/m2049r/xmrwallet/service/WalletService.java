@@ -290,8 +290,11 @@ public class WalletService extends Service {
                         if (status != PendingTransaction.Status.Status_Ok) {
                             Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
                         }
-                        // TODO myWallet.disposeTransaction(pendingTransaction); later
-                        if (observer != null) observer.onCreatedTransaction(pendingTransaction);
+                        if (observer != null) {
+                            observer.onCreatedTransaction(pendingTransaction);
+                        } else {
+                            myWallet.disposePendingTransaction();
+                        }
                     } else if (cmd.equals(REQUEST_CMD_SEND)) {
                         Wallet myWallet = getWallet();
                         Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
@@ -304,6 +307,15 @@ public class WalletService extends Service {
                         boolean success = pendingTransaction.commit("", true);
                         myWallet.disposePendingTransaction();
                         if (observer != null) observer.onSentTransaction(success);
+
+                        if (success) {
+                            boolean rc = myWallet.store();
+                            Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                            if (!rc) {
+                                Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                            }
+                            if (observer != null) observer.onWalletStored(rc);
+                        }
                     }
                 }
                 break;

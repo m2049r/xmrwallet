@@ -489,15 +489,13 @@ Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instan
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getSeed(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    const char *address = wallet->seed().c_str();
-    return env->NewStringUTF(address);
+    return env->NewStringUTF(wallet->seed().c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getSeedLanguage(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    const char *address = wallet->getSeedLanguage().c_str();
-    return env->NewStringUTF(address);
+    return env->NewStringUTF(wallet->getSeedLanguage().c_str());
 }
 
 JNIEXPORT void JNICALL
@@ -541,8 +539,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_getAddress(JNIEnv *env, jobject instance)
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getPath(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    const char *path = wallet->path().c_str();
-    return env->NewStringUTF(path);
+    return env->NewStringUTF(wallet->path().c_str());
 }
 
 JNIEXPORT jboolean JNICALL
@@ -839,7 +836,21 @@ Java_com_m2049r_xmrwallet_model_Wallet_setDefaultMixin(JNIEnv *env, jobject inst
 
 //virtual bool setUserNote(const std::string &txid, const std::string &note) = 0;
 //virtual std::string getUserNote(const std::string &txid) const = 0;
-//virtual std::string getTxKey(const std::string &txid) const = 0;
+
+JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getTxKey(JNIEnv *env, jobject instance,
+                                                          jstring txid) {
+
+    const char *_txid = env->GetStringUTFChars(txid, JNI_FALSE);
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+
+    std::string txKey = wallet->getTxKey(_txid);
+
+    env->ReleaseStringUTFChars(txid, _txid);
+    return env->NewStringUTF(txKey.c_str());
+}
+
 
 //virtual std::string signMessage(const std::string &message) = 0;
 //virtual bool verifySignedMessage(const std::string &message, const std::string &addres, const std::string &signature) const = 0;
@@ -854,28 +865,6 @@ Java_com_m2049r_xmrwallet_model_TransactionHistory_getCount(JNIEnv *env, jobject
     Bitmonero::TransactionHistory *history = getHandle<Bitmonero::TransactionHistory>(env,
                                                                                       instance);
     return history->count();
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionHistory_getTransactionByIndexJ(JNIEnv *env,
-                                                                          jobject instance,
-                                                                          jint i) {
-    Bitmonero::TransactionHistory *history = getHandle<Bitmonero::TransactionHistory>(env,
-                                                                                      instance);
-    Bitmonero::TransactionInfo *info = history->transaction(i);
-    return reinterpret_cast<jlong>(info);
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionHistory_getTransactionByIdJ(JNIEnv *env,
-                                                                       jobject instance,
-                                                                       jstring id) {
-    const char *_id = env->GetStringUTFChars(id, JNI_FALSE);
-    Bitmonero::TransactionHistory *history = getHandle<Bitmonero::TransactionHistory>(env,
-                                                                                      instance);
-    Bitmonero::TransactionInfo *info = history->transaction(std::string(_id));
-    env->ReleaseStringUTFChars(id, _id);
-    return reinterpret_cast<jlong>(info);
 }
 
 jobject newTransferInstance(JNIEnv *env, uint64_t amount, const std::string &address) {
@@ -896,7 +885,6 @@ jobject newTransferList(JNIEnv *env, Bitmonero::TransactionInfo *info) {
                                                          "(Ljava/lang/Object;)Z");
     jobject result = env->NewObject(class_ArrayList, java_util_ArrayList_, transfers.size());
     // create Transfer objects and stick them in the List
-    LOGD("size %i", transfers.size());
     for (const Bitmonero::TransactionInfo::Transfer &s: transfers) {
         jobject element = newTransferInstance(env, s.amount, s.address);
         env->CallBooleanMethod(result, java_util_ArrayList_add, element);
@@ -908,8 +896,6 @@ jobject newTransferList(JNIEnv *env, Bitmonero::TransactionInfo *info) {
 jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     jmethodID c = env->GetMethodID(class_TransactionInfo, "<init>",
                                    "(IZZJJJLjava/lang/String;JLjava/lang/String;JLjava/util/List;)V");
-    //"(IZZJJJLjava/lang/String;JLjava/lang/String;J)V");
-    LOGD("newTransactionInfo %s", info->hash().c_str());
     jobject transfers = newTransferList(env, info);
     jstring _hash = env->NewStringUTF(info->hash().c_str());
     jstring _paymentId = env->NewStringUTF(info->paymentId().c_str());
@@ -928,7 +914,6 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     env->DeleteLocalRef(transfers);
     env->DeleteLocalRef(_hash);
     env->DeleteLocalRef(_paymentId);
-    LOGD("newTransactionInfo X");
     return result;
 }
 
@@ -940,9 +925,11 @@ jobject cpp2java(JNIEnv *env, std::vector<Bitmonero::TransactionInfo *> vector) 
     jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",
                                                          "(Ljava/lang/Object;)Z");
 
-    LOGD("%s", std::to_string(vector.size()).c_str());
     jobject arrayList = env->NewObject(class_ArrayList, java_util_ArrayList_, vector.size());
     for (Bitmonero::TransactionInfo *s: vector) {
+        if (s->fee()>1) {
+            LOGE("TX %s %" PRIu64 " %" PRIu64, s->hash().c_str(), s->fee(), s->amount());
+        }
         jobject info = newTransactionInfo(env, s);
         env->CallBooleanMethod(arrayList, java_util_ArrayList_add, info);
         env->DeleteLocalRef(info);
@@ -954,79 +941,11 @@ JNIEXPORT jobject JNICALL
 Java_com_m2049r_xmrwallet_model_TransactionHistory_refreshJ(JNIEnv *env, jobject instance) {
     Bitmonero::TransactionHistory *history = getHandle<Bitmonero::TransactionHistory>(env,
                                                                                       instance);
-    LOGD("history->refresh()");
     history->refresh();
-    LOGD("history->refresh() done");
     return cpp2java(env, history->getAll());
 }
 
-// TransactionInfo
-JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getDirectionJ(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->direction();
-}
-
-JNIEXPORT jboolean JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_isPending(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->isPending();
-}
-
-JNIEXPORT jboolean JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_isFailed(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->isFailed();
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getAmount(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->amount();
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getFee(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->fee();
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getBlockHeight(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->blockHeight();
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getConfirmations(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->confirmations();
-}
-//TODO remove all these
-JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getHash(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return env->NewStringUTF(info->hash().c_str());
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getTimestamp(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->timestamp();
-}
-
-JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getPaymentId(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return env->NewStringUTF(info->paymentId().c_str());
-}
-
-JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionInfo_getTransferCount(JNIEnv *env, jobject instance) {
-    Bitmonero::TransactionInfo *info = getHandle<Bitmonero::TransactionInfo>(env, instance);
-    return info->transfers().size();
-}
-
+// TransactionInfo is implemented in Java - no need here
 
 JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getStatusJ(JNIEnv *env, jobject instance) {
@@ -1071,7 +990,7 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getFee(JNIEnv *env, jobject i
     return tx->fee();
 }
 
-/* this returns a vector of strings - deal with this later
+/* TODO this returns a vector of strings - deal with this later
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxId(JNIEnv *env, jobject instance) {
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
