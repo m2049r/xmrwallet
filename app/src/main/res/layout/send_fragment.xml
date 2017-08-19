@@ -104,7 +104,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:enabled="false"
-        android:text="@string/send_send_hint" />
+        android:text="@string/send_prepare_hint" />
 
     <LinearLayout
         android:id="@+id/llConfirmSend"
@@ -136,7 +136,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginLeft="8dp"
-                android:text="@string/big_amount"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -164,7 +163,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginLeft="8dp"
-                android:text="@string/big_amount"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -192,7 +190,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginLeft="8dp"
-                android:text="@string/big_amount"
                 android:textAlignment="textEnd"
                 android:textSize="20sp" />
         </LinearLayout>

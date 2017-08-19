@@ -41,8 +41,6 @@ import com.m2049r.xmrwallet.util.TxData;
 public class SendFragment extends Fragment {
     static final String TAG = "GenerateFragment";
 
-    static final public String ARG_WALLETID = "walletId";
-
     EditText etAddress;
     EditText etPaymentId;
     EditText etAmount;
@@ -56,11 +54,11 @@ public class SendFragment extends Fragment {
     TextView tvTxDust;
     Button bSend;
 
-    final static int Mixins[] = {4, 6, 8, 10, 13}; // must macth the layout
+    final static int Mixins[] = {4, 6, 8, 10, 13}; // must match the layout XML
     final static PendingTransaction.Priority Priorities[] =
             {PendingTransaction.Priority.Priority_Low,
                     PendingTransaction.Priority.Priority_Medium,
-                    PendingTransaction.Priority.Priority_High}; // must macth the layout
+                    PendingTransaction.Priority.Priority_High}; // must match the layout XML
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,12 +85,12 @@ public class SendFragment extends Fragment {
 
         etAddress.setText("9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8");
         boolean testnet = WalletManager.getInstance().isTestNet();
-        // TODO die if NOT testnet
+        if (!testnet) throw new IllegalStateException("Sending TX only on testnet. sorry.");
+
         Helper.showKeyboard(getActivity());
         etAddress.requestFocus();
         etAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                Log.d(TAG, actionId + "/" + (event == null ? null : event.toString()));
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (addressOk()) {
                         etPaymentId.requestFocus();
@@ -180,7 +178,7 @@ public class SendFragment extends Fragment {
         int mixin = Mixins[sMixin.getSelectedItemPosition()];
         int priorityIndex = sPriority.getSelectedItemPosition();
         PendingTransaction.Priority priority = Priorities[priorityIndex];
-        Log.d(TAG, dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
+        //Log.d(TAG, dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
         TxData txData = new TxData(
                 dst_addr,
                 paymentId,
@@ -198,6 +196,7 @@ public class SendFragment extends Fragment {
 
         activityCallback.onPrepareSend(txData);
     }
+
     private void send() {
         activityCallback.onSend();
     }
@@ -227,11 +226,12 @@ public class SendFragment extends Fragment {
         if (status != PendingTransaction.Status.Status_Ok) {
             Log.d(TAG, "Wallet store failed: " + pendingTransaction.getErrorString());
         }
+        /*
         Log.d(TAG, "transaction amount " + pendingTransaction.getAmount());
         Log.d(TAG, "transaction fee    " + pendingTransaction.getFee());
         Log.d(TAG, "transaction dust   " + pendingTransaction.getDust());
         Log.d(TAG, "transactions       " + pendingTransaction.getTxCount());
-
+        */
         llConfirmSend.setVisibility(View.VISIBLE);
         tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getAmount()));
         tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));

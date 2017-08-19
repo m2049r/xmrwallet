@@ -113,10 +113,12 @@ public class WalletService extends Service {
                     updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
                     if (!wallet.isSynchronized()) {
                         // we want to see our transactions as they come in
+                        Log.d(TAG, "newBlock() refresh history");
                         wallet.getHistory().refresh();
+                        Log.d(TAG, "newBlock() history refreshed");
                         int txCount = wallet.getHistory().getCount();
                         if (txCount > lastTxCount) {
-                            lastTxCount = txCount;
+                            lastTxCount = txCount; // TODO maybe do this later
                             fullRefresh = true;
                         }
                     }
@@ -138,10 +140,10 @@ public class WalletService extends Service {
             if (updated) {
                 if (observer != null) {
                     updateDaemonState(wallet, 0);
-                    TransactionHistory history = wallet.getHistory();
-                    history.refresh();
-                    if (observer != null) observer.onRefreshed(wallet, true);
-                    updated = false;
+                    wallet.getHistory().refresh();
+                    if (observer != null) {
+                        updated = !observer.onRefreshed(wallet, true);
+                    }
                 }
             }
         }
@@ -196,7 +198,7 @@ public class WalletService extends Service {
     }
 
     public interface Observer {
-        void onRefreshed(Wallet wallet, boolean full);
+        boolean onRefreshed(Wallet wallet, boolean full);
 
         void onProgress(String text);
 
@@ -262,7 +264,7 @@ public class WalletService extends Service {
                     if (cmd.equals(REQUEST_CMD_LOAD)) {
                         String walletId = extras.getString(REQUEST_WALLET, null);
                         String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
-                        Log.d(TAG, "LOAD wallet " + walletId);// + ":" + walletPw);
+                        Log.d(TAG, "LOAD wallet " + walletId);
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
@@ -270,7 +272,7 @@ public class WalletService extends Service {
                         }
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "storing wallet: " + myWallet.getName());
+                        Log.d(TAG, "STORE wallet: " + myWallet.getName());
                         boolean rc = myWallet.store();
                         Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                         if (!rc) {
@@ -279,14 +281,12 @@ public class WalletService extends Service {
                         if (observer != null) observer.onWalletStored(rc);
                     } else if (cmd.equals(REQUEST_CMD_TX)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "creating tx for wallet: " + myWallet.getName());
+                        Log.d(TAG, "CREATE TX for wallet: " + myWallet.getName());
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
                         PendingTransaction pendingTransaction = myWallet.createTransaction(
                                 txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Log.d(TAG, "transaction status " + status);
-                        Log.d(TAG, "transaction amount " + pendingTransaction.getAmount());
-                        Log.d(TAG, "transaction fee    " + pendingTransaction.getFee());
                         if (status != PendingTransaction.Status.Status_Ok) {
                             Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
                         }
@@ -294,7 +294,7 @@ public class WalletService extends Service {
                         if (observer != null) observer.onCreatedTransaction(pendingTransaction);
                     } else if (cmd.equals(REQUEST_CMD_SEND)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "send tx for wallet: " + myWallet.getName());
+                        Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
                         if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
                             Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());

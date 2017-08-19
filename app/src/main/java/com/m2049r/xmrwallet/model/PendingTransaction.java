@@ -37,7 +37,7 @@ public class PendingTransaction {
         Priority_Low(1),
         Priority_Medium(2),
         Priority_High(3),
-        Priority_Last(4); // TODO is this true?
+        Priority_Last(4);
 
         private int value;
 

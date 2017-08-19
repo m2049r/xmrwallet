@@ -47,6 +47,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     private boolean synced = false;
 
+    public boolean isSynced() {
+        return synced;
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -187,8 +191,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             wl.acquire();
             Log.d(TAG, "WakeLock acquired");
         } catch (SecurityException ex) {
-            Log.d(TAG, "WakeLock NOT acquired");
-            Log.d(TAG, ex.getLocalizedMessage());
+            Log.d(TAG, "WakeLock NOT acquired: " + ex.getLocalizedMessage());
             wl = null;
         }
     }
@@ -252,25 +255,39 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     ///////////////////////////
     // WalletService.Observer
     ///////////////////////////
+
+    // refresh and return if successful
     @Override
-    public void onRefreshed(final Wallet wallet, final boolean full) {
+    public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Log.d(TAG, "onRefreshed()");
-        if (wallet.isSynchronized()) {
-            releaseWakeLock(); // the idea is to stay awake until synced
-            if (!synced) {
-                onProgress(null);
-                saveWallet(); // save on first sync
-                synced = true;
-            }
-        }
         // TODO check which fragment is loaded
-        final WalletFragment walletFragment = (WalletFragment)
-                getFragmentManager().findFragmentById(R.id.fragment_container);
-        runOnUiThread(new Runnable() {
-            public void run() {
-                walletFragment.onRefreshed(wallet, full);
+        try {
+            final WalletFragment walletFragment = (WalletFragment)
+                    getFragmentManager().findFragmentById(R.id.fragment_container);
+            if (wallet.isSynchronized()) {
+                releaseWakeLock(); // the idea is to stay awake until synced
+                if (!synced) {
+                    onProgress(null);
+                    saveWallet(); // save on first sync
+                    synced = true;
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            walletFragment.onSynced();
+                        }
+                    });
+                }
             }
-        });
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    walletFragment.onRefreshed(wallet, full);
+                }
+            });
+            return true;
+        } catch (ClassCastException ex) {
+            // not in wallet fragment (probably send monero)
+            // keep calm and carry on
+        }
+        return false;
     }
 
     @Override

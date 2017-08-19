@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionHistory {
@@ -29,6 +30,7 @@ public class TransactionHistory {
         this.handle = handle;
     }
 
+    /*
     public TransactionInfo getTransaction(int i) {
         long infoHandle = getTransactionByIndexJ(i);
         return new TransactionInfo(infoHandle);
@@ -38,7 +40,7 @@ public class TransactionHistory {
         long infoHandle = getTransactionByIdJ(id);
         return new TransactionInfo(infoHandle);
     }
-
+    */
     /*
         public List<TransactionInfo> getAll() {
             List<Long> handles = getAllJ();
@@ -51,12 +53,20 @@ public class TransactionHistory {
     */
     public native int getCount();
 
-    private native long getTransactionByIndexJ(int i);
+    //private native long getTransactionByIndexJ(int i);
 
-    private native long getTransactionByIdJ(String id);
+    //private native long getTransactionByIdJ(String id);
 
-    public native List<TransactionInfo> getAll();
+    public List<TransactionInfo> getAll() {
+        return transactions;
+    }
 
-    public native void refresh();
+    private List<TransactionInfo> transactions = new ArrayList<>();
+
+    public void refresh() {
+        transactions = refreshJ();
+    }
+
+    private native List<TransactionInfo> refreshJ();
 
 }

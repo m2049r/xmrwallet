@@ -53,6 +53,7 @@ import java.nio.channels.FileChannel;
 public class LoginActivity extends AppCompatActivity
         implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
     static final String TAG = "LoginActivity";
+    private static final String GENERATE_STACK = "gen";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
@@ -264,7 +265,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     void startGenerateFragment() {
-        replaceFragment(new GenerateFragment(), "gen", null);
+        replaceFragment(new GenerateFragment(), GENERATE_STACK, null);
         Log.d(TAG, "GenerateFragment placed");
     }
 
@@ -397,7 +398,7 @@ public class LoginActivity extends AppCompatActivity
                 &&
                 (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
         if (rc) {
-            popFragmentStack("gen");
+            popFragmentStack(GENERATE_STACK);
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {

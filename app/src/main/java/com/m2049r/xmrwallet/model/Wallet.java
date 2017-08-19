@@ -162,7 +162,6 @@ public class Wallet {
 //TODO virtual int autoRefreshInterval() const = 0;
 
 
-    // TODO - good place to keep this ?
     private PendingTransaction pendingTransaction = null;
 
     public PendingTransaction getPendingTransaction() {
@@ -205,8 +204,11 @@ public class Wallet {
     private TransactionHistory history = null;
 
     public TransactionHistory getHistory() {
+        Log.d(TAG, "A");
         if (history == null) {
+            Log.d(TAG, "B");
             history = new TransactionHistory(getHistoryJ());
+            Log.d(TAG, "C");
         }
         return history;
     }

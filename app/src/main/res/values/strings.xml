@@ -100,7 +100,8 @@
     <string name="send_mixin_hint">Mixin</string>
     <string name="send_sweep_hint">Sweep</string>
     <string name="send_generate_paymentid_hint">Generate</string>
-    <string name="send_send_hint">Get rid of my monero!</string>
+    <string name="send_prepare_hint">Prepare</string>
+    <string name="send_send_hint">Get rid of my Monero!</string>
 
     <string name="send_amount_label">Amount</string>
     <string name="send_fee_label">Fee</string>

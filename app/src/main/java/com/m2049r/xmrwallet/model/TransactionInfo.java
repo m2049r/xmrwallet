@@ -16,79 +16,57 @@
 
 package com.m2049r.xmrwallet.model;
 
+import java.util.List;
+
+// this is not the TransactionInfo from the API as that is owned by the TransactionHistory
+// this is a POJO for the TransactionInfoAdapter
 public class TransactionInfo {
-    static {
-        System.loadLibrary("monerujo");
-    }
-
-    public long handle;
-
-    TransactionInfo(long handle) {
-        this.handle = handle;
-    }
+    static final String TAG = "TransactionInfo";
 
     public enum Direction {
         Direction_In,
         Direction_Out
     }
 
-    public class Transfer {
-        long amount;
-        String address;
+    public Direction direction;
+    public boolean isPending;
+    public boolean isFailed;
+    public long amount;
+    public long fee;
+    public long blockheight;
+    public String hash;
+    public long timestamp;
+    public String paymentId;
+    public long confirmations;
+    public List<Transfer> transfers;
 
-        public Transfer(long amount, String address) {
-            this.amount = amount;
-            this.address = address;
-        }
-
-        public long getAmount() {
-            return amount;
-        }
-
-        public String getAddress() {
-            return address;
-        }
+    public TransactionInfo(
+            int direction,
+            boolean isPending,
+            boolean isFailed,
+            long amount,
+            long fee,
+            long blockheight,
+            String hash,
+            long timestamp,
+            String paymentId,
+            long confirmations,
+            List<Transfer> transfers) {
+        this.direction = Direction.values()[direction];
+        this.isPending = isPending;
+        this.isFailed = isFailed;
+        this.amount = amount;
+        this.fee = fee;
+        this.blockheight = blockheight;
+        this.hash = hash;
+        this.timestamp = timestamp;
+        this.paymentId = paymentId;
+        this.confirmations = confirmations;
+        this.transfers = transfers;
     }
 
     public String toString() {
-        return getDirection() + "@" + getBlockHeight() + " " + getAmount();
+        return direction + "@" + blockheight + " " + amount;
     }
-
-    public Direction getDirection() {
-        return TransactionInfo.Direction.values()[getDirectionJ()];
-    }
-
-    public native int getDirectionJ();
-
-    public native boolean isPending();
-
-    public native boolean isFailed();
-
-    public native long getAmount();
-
-    public native long getFee();
-
-    public native long getBlockHeight();
-
-    public native long getConfirmations();
-
-    public native String getHash();
-
-    public native long getTimestamp();
-
-    public native String getPaymentId();
-
-/*
-    private List<Transfer> transfers;
-
-    public List<Transfer> getTransfers() { // not threadsafe
-        if (this.transfers == null) {
-            this.transfers = getTransfersJ();
-        }
-        return this.transfers;
-    }
-
-    private native List<Transfer> getTransfersJ();
-*/
 
 }

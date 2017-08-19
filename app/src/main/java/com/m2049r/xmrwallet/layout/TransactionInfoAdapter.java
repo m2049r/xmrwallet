@@ -88,8 +88,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             Collections.sort(data, new Comparator<TransactionInfo>() {
                 @Override
                 public int compare(TransactionInfo o1, TransactionInfo o2) {
-                    long b1 = o1.getBlockHeight();
-                    long b2 = o2.getBlockHeight();
+                    long b1 = o1.blockheight;
+                    long b2 = o2.blockheight;
                     return (b1 > b2) ? -1 : (b1 < b2) ? 1 : 0;
                 }
             });
@@ -134,20 +134,20 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         void bind(int position) {
             this.infoItem = infoItems.get(position);
-            String displayAmount = Wallet.getDisplayAmount(infoItem.getAmount());
+            String displayAmount = Wallet.getDisplayAmount(infoItem.amount);
             // TODO fix this with i8n code
             String amountParts[] = displayAmount.split("\\.");
             // TODO what if there is no decimal point?
 
             this.tvAmount.setText(amountParts[0]);
             this.tvAmountDecimal.setText(amountParts[1]);
-            if (infoItem.getDirection() == TransactionInfo.Direction.Direction_In) {
+            if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(TX_GREEN);
             } else {
                 setTxColour(TX_RED);
             }
-            this.tvDate.setText(getDate(infoItem.getTimestamp()));
-            this.tvTime.setText(getTime(infoItem.getTimestamp()));
+            this.tvDate.setText(getDate(infoItem.timestamp));
+            this.tvTime.setText(getTime(infoItem.timestamp));
 
             itemView.setOnClickListener(this);
         }

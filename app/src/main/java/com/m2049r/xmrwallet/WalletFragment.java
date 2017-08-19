@@ -36,6 +36,7 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
+import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
 
 import java.text.NumberFormat;
@@ -53,6 +54,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     LinearLayout llProgress;
     TextView tvProgress;
     ProgressBar pbProgress;
+    Button bSend;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,7 +68,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         tvUnlockedBalance = (TextView) view.findViewById(R.id.tvUnlockedBalance);
         tvBlockHeightProgress = (TextView) view.findViewById(R.id.tvBlockHeightProgress);
         tvConnectionStatus = (TextView) view.findViewById(R.id.tvConnectionStatus);
-        Button bSend = (Button) view.findViewById(R.id.bSend);
+
+        bSend = (Button) view.findViewById(R.id.bSend);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         RecyclerView.ItemDecoration itemDecoration = new
@@ -85,12 +88,17 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
             }
         });
 
-        activityCallback.setTitle(getString(R.string.status_wallet_loading));
+        if (activityCallback.isSynced()) {
+            onSynced();
+        }
+
+//        activityCallback.setTitle(getString(R.string.status_wallet_loading));
 
         activityCallback.forceUpdate();
 
         return view;
     }
+
 
     // Callbacks from TransactionInfoAdapter
     @Override
@@ -103,7 +111,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ClipboardManager clipboardManager = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("TX", infoItem.getHash());
+                ClipData clip = ClipData.newPlainText("TX", infoItem.hash);
                 clipboardManager.setPrimaryClip(clip);
             }
         });
@@ -113,11 +121,25 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-        builder.setMessage("TX ID: " + infoItem.getHash() +
-                "\nPayment ID: " + infoItem.getPaymentId() +
-                "\nBlockHeight: " + infoItem.getBlockHeight() +
-                "\nAmount: " + Wallet.getDisplayAmount(infoItem.getAmount()) +
-                "\nFee: " + Wallet.getDisplayAmount(infoItem.getFee()));
+        // TODO use strings.xml
+        StringBuffer sb = new StringBuffer();
+        sb.append("TX ID: ").append(infoItem.hash);
+        sb.append("\nPayment ID: ").append(infoItem.paymentId);
+        sb.append("\nBlockHeight: ").append(infoItem.blockheight);
+        sb.append("\nAmount: ");
+        sb.append(infoItem.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
+        sb.append(Wallet.getDisplayAmount(infoItem.amount));
+        sb.append("\nFee: ").append(Wallet.getDisplayAmount(infoItem.fee));
+        sb.append("\nTransfers:");
+        if (infoItem.transfers.size() > 0) {
+            for (Transfer transfer : infoItem.transfers) {
+                sb.append("\n[").append(transfer.address.substring(0, 6)).append("] ");
+                sb.append(Wallet.getDisplayAmount(transfer.amount));
+            }
+        } else {
+            sb.append("-");
+        }
+        builder.setMessage(sb.toString());
         AlertDialog alert1 = builder.create();
         alert1.show();
     }
@@ -131,6 +153,11 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
             adapter.notifyDataSetChanged();
         }
         updateStatus(wallet);
+    }
+
+    public void onSynced() { // TODO watchonly
+        bSend.setVisibility(View.VISIBLE);
+        bSend.setEnabled(true);
     }
 
     public void onProgress(final String text) {
@@ -225,6 +252,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
 
         void onSendRequest();
 
+        boolean isSynced();
     }
 
     @Override
