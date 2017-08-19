@@ -51,6 +51,7 @@ public class SendFragment extends Fragment {
     Spinner sMixin;
     Spinner sPriority;
     Button bPrepareSend;
+    Button bPaymentId;
     LinearLayout llConfirmSend;
     TextView tvTxAmount;
     TextView tvTxFee;
@@ -77,6 +78,7 @@ public class SendFragment extends Fragment {
         etAmount = (EditText) view.findViewById(R.id.etAmount);
         bSweep = (Button) view.findViewById(R.id.bSweep);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
+        bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
 
         llConfirmSend = (LinearLayout) view.findViewById(R.id.llConfirmSend);
         tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
@@ -177,6 +179,22 @@ public class SendFragment extends Fragment {
             }
         });
 
+        bPaymentId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etPaymentId.setText((activityCallback.generatePaymentId()));
+            }
+        });
+
+        bSweep.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                Helper.hideKeyboard(getActivity());
+                prepareSweep();
+            }
+        });
 
         bSend.setOnClickListener(new View.OnClickListener()
 
@@ -212,8 +230,8 @@ public class SendFragment extends Fragment {
     }
 
     private boolean paymentIdOk() {
-        String spendKey = etPaymentId.getText().toString();
-        return ((spendKey.length() == 0) || ((spendKey.length() == 64) && (spendKey.matches("^[0-9a-fA-F]+$"))));
+        String paymentId = etPaymentId.getText().toString();
+        return paymentId.isEmpty() || activityCallback.isPaymentIdValid(paymentId);
     }
 
     private void prepareSend() {
@@ -236,12 +254,22 @@ public class SendFragment extends Fragment {
         activityCallback.onPrepareSend(txData);
     }
 
+    private void prepareSweep() {
+        etAddress.setText(activityCallback.getWalletAddress());
+        etPaymentId.setText("");
+        etAmount.setText("");
+        disableEdit();
+        showProgress();
+        activityCallback.onPrepareSweep();
+    }
+
     private void disableEdit() {
         sMixin.setEnabled(false);
         sPriority.setEnabled(false);
         etAddress.setEnabled(false);
         etPaymentId.setEnabled(false);
         etAmount.setEnabled(false);
+        bPaymentId.setEnabled(false);
         bSweep.setEnabled(false);
         bPrepareSend.setEnabled(false);
     }
@@ -252,11 +280,13 @@ public class SendFragment extends Fragment {
         etAddress.setEnabled(true);
         etPaymentId.setEnabled(true);
         etAmount.setEnabled(true);
+        bPaymentId.setEnabled(true);
         bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
     }
 
     private void send() {
+        disableEdit(); // prevent this being sent more than once
         activityCallback.onSend();
     }
 
@@ -265,7 +295,15 @@ public class SendFragment extends Fragment {
     public interface Listener {
         void onPrepareSend(TxData data);
 
+        void onPrepareSweep();
+
         void onSend();
+
+        String generatePaymentId();
+
+        boolean isPaymentIdValid(String paymentId);
+
+        String getWalletAddress();
 
     }
 

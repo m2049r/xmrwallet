@@ -66,7 +66,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart()");
-        this.synced = false; // init syncing logic
     }
 
     private void startWalletService() {
@@ -137,6 +136,13 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             mBoundService = ((WalletService.WalletServiceBinder) service).getService();
             //Log.d(TAG, "setting observer of " + mBoundService);
             mBoundService.setObserver(WalletActivity.this);
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                String walletId = extras.getString(REQUEST_ID);
+                if (walletId != null) {
+                    setTitle(walletId);
+                }
+            }
             updateProgress();
             //TODO show current pbProgress (eg. if the service is already busy saving last wallet)
             Log.d(TAG, "CONNECTED");
@@ -419,6 +425,33 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         } else {
             Log.e(TAG, "Service not bound");
         }
+    }
+
+    @Override
+    public void onPrepareSweep() {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SWEEP);
+            startService(intent);
+            Log.d(TAG, "SWEEP TX request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
+        }
+    }
+
+    @Override
+    public String generatePaymentId() {
+        return getWallet().generatePaymentId();
+    }
+
+    @Override
+    public boolean isPaymentIdValid(String paymentId) {
+        return getWallet().isPaymentIdValid(paymentId);
+    }
+
+    @Override
+    public String getWalletAddress() {
+        return getWallet().getAddress();
     }
 
     void popFragmentStack(String name) {

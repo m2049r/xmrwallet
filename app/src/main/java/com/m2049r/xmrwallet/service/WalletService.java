@@ -50,6 +50,8 @@ public class WalletService extends Service {
     public static final String REQUEST_CMD_TX = "createTX";
     public static final String REQUEST_CMD_TX_DATA = "data";
 
+    public static final String REQUEST_CMD_SWEEP = "sweepTX";
+
     public static final String REQUEST_CMD_SEND = "send";
 
     public static final int START_SERVICE = 1;
@@ -285,6 +287,20 @@ public class WalletService extends Service {
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
                         PendingTransaction pendingTransaction = myWallet.createTransaction(
                                 txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
+                        PendingTransaction.Status status = pendingTransaction.getStatus();
+                        Log.d(TAG, "transaction status " + status);
+                        if (status != PendingTransaction.Status.Status_Ok) {
+                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                        }
+                        if (observer != null) {
+                            observer.onCreatedTransaction(pendingTransaction);
+                        } else {
+                            myWallet.disposePendingTransaction();
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_SWEEP)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "SWEEP TX for wallet: " + myWallet.getName());
+                        PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Log.d(TAG, "transaction status " + status);
                         if (status != PendingTransaction.Status.Status_Ok) {

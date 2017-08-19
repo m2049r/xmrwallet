@@ -40,7 +40,7 @@ public class TransactionInfo {
     public long confirmations;
     public List<Transfer> transfers;
 
-    public String txKey;
+    public String txKey = null;
 
     public TransactionInfo(
             int direction,

@@ -106,7 +106,9 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
         builder.setTitle("Transaction details");
 
-        infoItem.txKey = activityCallback.getTxKey(infoItem.hash);
+        if (infoItem.txKey == null) {
+            infoItem.txKey = activityCallback.getTxKey(infoItem.hash);
+        }
 
         builder.setPositiveButton("Copy TX ID", new DialogInterface.OnClickListener() {
             @Override

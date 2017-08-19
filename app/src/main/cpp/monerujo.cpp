@@ -773,7 +773,12 @@ Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject i
     return reinterpret_cast<jlong>(tx);
 }
 
-//virtual PendingTransaction * createSweepUnmixableTransaction() = 0;
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_createSweepUnmixableTransactionJ(JNIEnv *env, jobject instance) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    Bitmonero::PendingTransaction *tx = wallet->createSweepUnmixableTransaction();
+    return reinterpret_cast<jlong>(tx);
+}
 
 //virtual UnsignedTransaction * loadUnsignedTx(const std::string &unsigned_filename) = 0;
 //virtual bool submitTransaction(const std::string &fileName) = 0;

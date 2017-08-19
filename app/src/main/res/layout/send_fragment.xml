@@ -63,7 +63,8 @@
             android:layout_marginTop="8dp"
             android:layout_weight="2"
             android:background="@color/colorPrimary"
-            android:enabled="false"
+            android:enabled="true"
+            android:textSize="12sp"
             android:text="@string/send_generate_paymentid_hint" />
     </LinearLayout>
 
@@ -92,7 +93,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="2"
             android:background="@color/colorPrimary"
-            android:enabled="false"
+            android:enabled="true"
             android:text="@string/send_sweep_hint" />
     </LinearLayout>
 

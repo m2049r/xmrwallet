@@ -188,7 +188,15 @@ public class Wallet {
                                            long mount, int mixin_count,
                                            PendingTransaction.Priority priority);
 
-//virtual PendingTransaction * createSweepUnmixableTransaction() = 0;
+
+    public PendingTransaction createSweepUnmixableTransaction() {
+        disposePendingTransaction();
+        long txHandle = createSweepUnmixableTransactionJ();
+        pendingTransaction = new PendingTransaction(txHandle);
+        return pendingTransaction;
+    }
+
+    private native long createSweepUnmixableTransactionJ();
 
 //virtual UnsignedTransaction * loadUnsignedTx(const std::string &unsigned_filename) = 0;
 //virtual bool submitTransaction(const std::string &fileName) = 0;
