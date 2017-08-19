@@ -40,8 +40,8 @@ import java.util.TimeZone;
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
     private static final String TAG = "TransactionInfoAdapter";
 
-    private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
-    private static final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss");
+    private final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
+    private final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss");
 
     static final int TX_RED = Color.rgb(255, 79, 65);
     static final int TX_GREEN = Color.rgb(54, 176, 91);

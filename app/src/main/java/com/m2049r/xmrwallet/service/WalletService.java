@@ -53,6 +53,11 @@ public class WalletService extends Service {
     public static final String REQUEST_CMD_SWEEP = "sweepTX";
 
     public static final String REQUEST_CMD_SEND = "send";
+    public static final String REQUEST_CMD_SEND_NOTES = "notes";
+
+    public static final String REQUEST_CMD_SETNOTE = "setnote";
+    public static final String REQUEST_CMD_SETNOTE_TX = "tx";
+    public static final String REQUEST_CMD_SETNOTE_NOTES = "notes";
 
     public static final int START_SERVICE = 1;
     public static final int STOP_SERVICE = 2;
@@ -211,6 +216,8 @@ public class WalletService extends Service {
         void onCreatedTransaction(PendingTransaction pendingTransaction);
 
         void onSentTransaction(boolean success);
+
+        void onSetNotes(boolean success);
     }
 
     String progressText = null;
@@ -320,17 +327,41 @@ public class WalletService extends Service {
                             myWallet.disposePendingTransaction(); // it's broken anyway
                             return;
                         }
+                        String txid = pendingTransaction.getFirstTxId();
                         boolean success = pendingTransaction.commit("", true);
                         myWallet.disposePendingTransaction();
                         if (observer != null) observer.onSentTransaction(success);
-
                         if (success) {
+                            String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
+                            if ((notes != null) && (!notes.isEmpty())) {
+                                myWallet.setUserNote(txid, notes);
+                            }
                             boolean rc = myWallet.store();
                             Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                             if (!rc) {
                                 Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
                             }
                             if (observer != null) observer.onWalletStored(rc);
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "SET NOTE for wallet: " + myWallet.getName());
+                        String txId = extras.getString(REQUEST_CMD_SETNOTE_TX);
+                        String notes = extras.getString(REQUEST_CMD_SETNOTE_NOTES);
+                        if ((txId != null) && (notes != null)) {
+                            boolean success = myWallet.setUserNote(txId, notes);
+                            if (!success) {
+                                Log.e(TAG, myWallet.getErrorString());
+                            }
+                            if (observer != null) observer.onSetNotes(success);
+                            if (success) {
+                                boolean rc = myWallet.store();
+                                Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                                if (!rc) {
+                                    Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                }
+                                if (observer != null) observer.onWalletStored(rc);
+                            }
                         }
                     }
                 }

@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -274,13 +273,13 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG, "GenerateReviewFragment placed");
     }
 
-    void replaceFragment(Fragment newFragment, String name, Bundle extras) {
+    void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
         if (extras != null) {
             newFragment.setArguments(extras);
         }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, newFragment);
-        transaction.addToBackStack(name);
+        transaction.addToBackStack(stackName);
         transaction.commit();
     }
 

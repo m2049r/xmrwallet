@@ -39,16 +39,6 @@ public class PendingTransaction {
         Priority_High(3),
         Priority_Last(4);
 
-        private int value;
-
-        Priority(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
         public static Priority fromInteger(int n) {
             switch (n) {
                 case 1:
@@ -60,6 +50,18 @@ public class PendingTransaction {
             }
             return null;
         }
+
+        public int getValue() {
+            return value;
+        }
+
+        private int value;
+
+        Priority(int value) {
+            this.value = value;
+        }
+
+
     }
 
     public Status getStatus() {
@@ -79,7 +81,7 @@ public class PendingTransaction {
 
     public native long getFee();
 
-    //public native String getTxId();
+    public native String getFirstTxId();
 
     public native long getTxCount();
 

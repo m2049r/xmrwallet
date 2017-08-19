@@ -24,10 +24,10 @@ import com.m2049r.xmrwallet.model.PendingTransaction;
 // https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 public class TxData implements Parcelable {
     public TxData(String dst_addr,
-           String paymentId,
-           long amount,
-           int mixin,
-           PendingTransaction.Priority priority) {
+                  String paymentId,
+                  long amount,
+                  int mixin,
+                  PendingTransaction.Priority priority) {
         this.dst_addr = dst_addr;
         this.paymentId = paymentId;
         this.amount = amount;
@@ -41,13 +41,6 @@ public class TxData implements Parcelable {
     public int mixin;
     public PendingTransaction.Priority priority;
 
-    // 99.9% of the time you can just ignore this
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    // write your object's data to the passed-in Parcel
     @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(dst_addr);
@@ -68,7 +61,6 @@ public class TxData implements Parcelable {
         }
     };
 
-    // example constructor that takes a Parcel and gives you an object populated with it's values
     private TxData(Parcel in) {
         dst_addr = in.readString();
         paymentId = in.readString();
@@ -77,4 +69,10 @@ public class TxData implements Parcelable {
         priority = PendingTransaction.Priority.fromInteger(in.readInt());
 
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
 }

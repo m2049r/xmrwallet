@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -39,7 +39,7 @@
         android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -69,7 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -94,6 +94,7 @@
             android:layout_weight="2"
             android:background="@color/colorPrimary"
             android:enabled="true"
+            android:visibility="invisible"
             android:text="@string/send_sweep_hint" />
     </LinearLayout>
 
@@ -110,7 +111,7 @@
     <ProgressBar
         android:id="@+id/pbProgress"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:visibility="gone"
         android:layout_height="wrap_content" />
 
@@ -122,7 +123,7 @@
         android:visibility="gone">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -149,7 +150,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -176,7 +177,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -191,7 +192,6 @@
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
-            c
 
             <TextView
                 android:id="@+id/tvTxDust"
@@ -203,6 +203,17 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/etNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/send_notes_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/bSend"
             android:layout_width="match_parent"
@@ -212,6 +223,7 @@
             android:background="@color/colorPrimary"
             android:enabled="false"
             android:text="@string/send_send_hint" />
+
     </LinearLayout>
 
 </LinearLayout>

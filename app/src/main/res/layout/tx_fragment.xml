@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:shrinkColumns="1">
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_id"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxId"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_key"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxKey"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_paymentId"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxPaymentId"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:selectAllOnFocus="true"
+                    android:text="@string/tx_amount"
+                    android:textColor="@color/colorAccent"
+                    android:textIsSelectable="true" />
+
+                <TextView
+                    android:id="@+id/tvTxAmount"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_fee"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxFee"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_notes"
+                    android:textColor="@color/colorAccent" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:id="@+id/etTxNotes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:hint="@string/tx_notes_hint"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/bTxNotes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="2"
+                        android:background="@color/colorPrimary"
+                        android:enabled="true"
+                        android:text="@string/tx_button_notes"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_timestamp"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxTimestamp"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_blockheight"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxBlockheight"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
+                    android:text="@string/tx_transfers"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvTxTransfers"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/bCopy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:enabled="false"
+            android:text="@string/tx_button_copy" />
+
+    </LinearLayout>
+</ScrollView>

@@ -17,8 +17,12 @@
 package com.m2049r.xmrwallet;
 
 import android.app.Fragment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -36,6 +40,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
+import com.m2049r.xmrwallet.model.TransactionInfo;
+import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -56,6 +62,7 @@ public class SendFragment extends Fragment {
     TextView tvTxAmount;
     TextView tvTxFee;
     TextView tvTxDust;
+    EditText etNotes;
     Button bSend;
     ProgressBar pbProgress;
 
@@ -84,12 +91,14 @@ public class SendFragment extends Fragment {
         tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
         tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
         tvTxDust = (TextView) view.findViewById(R.id.tvTxDust);
+        etNotes = (EditText) view.findViewById(R.id.etNotes);
         bSend = (Button) view.findViewById(R.id.bSend);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
 
         etAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
         etPaymentId.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        etNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         etAddress.setText("9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8");
         boolean testnet = WalletManager.getInstance().isTestNet();
@@ -143,6 +152,8 @@ public class SendFragment extends Fragment {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     if (amountOk()) {
                         Helper.hideKeyboard(getActivity());
+                        disableEdit();
+                        prepareSend();
                     }
                     return true;
                 }
@@ -175,6 +186,7 @@ public class SendFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());
+                disableEdit();
                 prepareSend();
             }
         });
@@ -196,11 +208,22 @@ public class SendFragment extends Fragment {
             }
         });
 
-        bSend.setOnClickListener(new View.OnClickListener()
+        etNotes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    if (amountOk()) {
+                        Helper.hideKeyboard(getActivity());
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
-        {
+        bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bSend.setEnabled(false);
                 send();
             }
         });
@@ -248,8 +271,6 @@ public class SendFragment extends Fragment {
                 amount,
                 mixin,
                 priority);
-
-        disableEdit();
         showProgress();
         activityCallback.onPrepareSend(txData);
     }
@@ -286,8 +307,9 @@ public class SendFragment extends Fragment {
     }
 
     private void send() {
-        disableEdit(); // prevent this being sent more than once
-        activityCallback.onSend();
+        etNotes.setEnabled(false);
+        String notes = etNotes.getText().toString();
+        activityCallback.onSend(notes);
     }
 
     SendFragment.Listener activityCallback;
@@ -297,7 +319,7 @@ public class SendFragment extends Fragment {
 
         void onPrepareSweep();
 
-        void onSend();
+        void onSend(String notes);
 
         String generatePaymentId();
 
@@ -329,6 +351,21 @@ public class SendFragment extends Fragment {
         tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
         tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
         bSend.setEnabled(true);
+    }
+
+    public void onCreatedTransactionFailed(String errorText) {
+        hideProgress();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(getString(R.string.send_error_title));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                enableEdit();
+            }
+        });
+        builder.setMessage(errorText);
+        builder.create().show();
     }
 
     public void showProgress() {

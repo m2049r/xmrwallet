@@ -32,12 +32,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
+import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
-        WalletService.Observer, SendFragment.Listener {
+        WalletService.Observer, SendFragment.Listener, TxFragment.Listener {
     private static final String TAG = "WalletActivity";
 
     static final int MIN_DAEMON_VERSION = 65544;
@@ -60,6 +61,11 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     @Override
     public String getTxKey(String txId) {
         return getWallet().getTxKey(txId);
+    }
+
+    @Override
+    public String getTxNotes(String txId) {
+        return getWallet().getUserNote(txId);
     }
 
     @Override
@@ -259,6 +265,13 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
+    public void onTxDetailsRequest(TransactionInfo info) {
+        Bundle args = new Bundle();
+        args.putParcelable(TxFragment.ARG_INFO, info);
+        replaceFragment(new TxFragment(), null, args);
+    }
+
+    @Override
     public void forceUpdate() {
         try {
             onRefreshed(getWallet(), true);
@@ -299,6 +312,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             return true;
         } catch (ClassCastException ex) {
             // not in wallet fragment (probably send monero)
+            Log.d(TAG, ex.getLocalizedMessage());
             // keep calm and carry on
         }
         return false;
@@ -319,18 +333,16 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public void onCreatedTransaction(final PendingTransaction pendingTransaction) {
-        final PendingTransaction.Status status = pendingTransaction.getStatus();
-        if (status != PendingTransaction.Status.Status_Ok) {
-            getWallet().disposePendingTransaction();
-        }
         try {
             final SendFragment sendFragment = (SendFragment)
                     getFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
+                    PendingTransaction.Status status = pendingTransaction.getStatus();
                     if (status != PendingTransaction.Status.Status_Ok) {
-                        Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_prepare_failed), Toast.LENGTH_LONG).show();
-                        sendFragment.onCreatedTransaction(null);
+                        String errorText = pendingTransaction.getErrorString();
+                        getWallet().disposePendingTransaction();
+                        sendFragment.onCreatedTransactionFailed(errorText);
                     } else {
                         sendFragment.onCreatedTransaction(pendingTransaction);
                     }
@@ -338,6 +350,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             });
         } catch (ClassCastException ex) {
             // not in spend fragment
+            Log.d(TAG, ex.getLocalizedMessage());
             // don't need the transaction any more
             getWallet().disposePendingTransaction();
         }
@@ -358,6 +371,26 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
+    public void onSetNotes(final boolean success) {
+        try {
+            final TxFragment txFragment = (TxFragment)
+                    getFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if (!success) {
+                        Toast.makeText(WalletActivity.this, getString(R.string.tx_notes_set_failed), Toast.LENGTH_LONG).show();
+                    }
+                    txFragment.onNotesSet(success);
+                }
+            });
+        } catch (ClassCastException ex) {
+            // not in tx fragment
+            Log.d(TAG, ex.getLocalizedMessage());
+            // never min
+        }
+    }
+
+    @Override
     public void onProgress(final String text) {
         try {
             final WalletFragment walletFragment = (WalletFragment)
@@ -369,6 +402,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             });
         } catch (ClassCastException ex) {
             // not in wallet fragment (probably send monero)
+            Log.d(TAG, ex.getLocalizedMessage());
             // keep calm and carry on
         }
     }
@@ -385,6 +419,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             });
         } catch (ClassCastException ex) {
             // not in wallet fragment (probably send monero)
+            Log.d(TAG, ex.getLocalizedMessage());
             // keep calm and carry on
         }
     }
@@ -402,12 +437,28 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     ///////////////////////////
 
     @Override
-    public void onSend() {
+    public void onSend(String notes) {
         if (mIsBound) { // no point in talking to unbound service
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SEND);
+            intent.putExtra(WalletService.REQUEST_CMD_SEND_NOTES, notes);
             startService(intent);
             Log.d(TAG, "SEND TX request sent");
+        } else {
+            Log.e(TAG, "Service not bound");
+        }
+
+    }
+
+    @Override
+    public void onSetNote(String txId, String notes) {
+        if (mIsBound) { // no point in talking to unbound service
+            Intent intent = new Intent(getApplicationContext(), WalletService.class);
+            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SETNOTE);
+            intent.putExtra(WalletService.REQUEST_CMD_SETNOTE_TX, txId);
+            intent.putExtra(WalletService.REQUEST_CMD_SETNOTE_NOTES, notes);
+            startService(intent);
+            Log.d(TAG, "SET NOTE request sent");
         } else {
             Log.e(TAG, "Service not bound");
         }
@@ -462,13 +513,13 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         }
     }
 
-    void replaceFragment(Fragment newFragment, String name, Bundle extras) {
+    void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
         if (extras != null) {
             newFragment.setArguments(extras);
         }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, newFragment);
-        transaction.addToBackStack(name);
+        transaction.addToBackStack(stackName);
         transaction.commit();
     }
 }

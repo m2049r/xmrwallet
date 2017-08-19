@@ -233,8 +233,9 @@ public class Wallet {
 
     public native void setDefaultMixin(int mixin);
 
-    //virtual bool setUserNote(const std::string &txid, const std::string &note) = 0;
-//virtual std::string getUserNote(const std::string &txid) const = 0;
+    public native boolean setUserNote(String txid, String note);
+    public native String getUserNote(String txid);
+
     public native String getTxKey(String txid);
 
 //virtual std::string signMessage(const std::string &message) = 0;

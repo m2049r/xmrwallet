@@ -102,61 +102,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     // Callbacks from TransactionInfoAdapter
     @Override
     public void onInteraction(final View view, final TransactionInfo infoItem) {
-        final Context ctx = view.getContext();
-        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle("Transaction details");
-
-        if (infoItem.txKey == null) {
-            infoItem.txKey = activityCallback.getTxKey(infoItem.hash);
-        }
-
-        builder.setPositiveButton("Copy TX ID", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ClipboardManager clipboardManager = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("TXID", infoItem.hash);
-                clipboardManager.setPrimaryClip(clip);
-            }
-        });
-
-        if (!infoItem.txKey.isEmpty()) {
-            builder.setNegativeButton("Copy TX Key", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ClipboardManager clipboardManager = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("TXKEY", infoItem.txKey);
-                    clipboardManager.setPrimaryClip(clip);
-                }
-            });
-        }
-
-        // TODO use strings.xml
-        StringBuffer sb = new StringBuffer();
-        sb.append("TX ID:  ").append(infoItem.hash);
-        sb.append("\nTX Key: ");
-        if (!infoItem.txKey.isEmpty()) {
-            sb.append(infoItem.txKey);
-        } else {
-            sb.append(" -");
-        }
-        sb.append("\nPayment ID: ").append(infoItem.paymentId);
-        sb.append("\nBlockHeight: ").append(infoItem.blockheight);
-        sb.append("\nAmount: ");
-        sb.append(infoItem.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
-        sb.append(Wallet.getDisplayAmount(infoItem.amount));
-        sb.append("\nFee: ").append(Wallet.getDisplayAmount(infoItem.fee));
-        sb.append("\nTransfers:");
-        if (infoItem.transfers.size() > 0) {
-            for (Transfer transfer : infoItem.transfers) {
-                sb.append("\n[").append(transfer.address.substring(0, 6)).append("] ");
-                sb.append(Wallet.getDisplayAmount(transfer.amount));
-            }
-        } else {
-            sb.append(" -");
-        }
-        builder.setMessage(sb.toString());
-        AlertDialog alert1 = builder.create();
-        alert1.show();
+        activityCallback.onTxDetailsRequest(infoItem);
     }
 
     // called from activity
@@ -211,7 +157,9 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         if (shortName.length() > 16) {
             shortName = shortName.substring(0, 14) + "...";
         }
-        String title = (wallet.isWatchOnly() ? "X " : "") + "[" + wallet.getAddress().substring(0, 6) + "] " + shortName;
+        String title = "[" + wallet.getAddress().substring(0, 6) + "] "
+                + shortName
+                + (wallet.isWatchOnly() ? " " + getString(R.string.watchonly_label) : "");
         activityCallback.setTitle(title);
         Log.d(TAG, "wallet title is " + title);
         return title;
@@ -268,6 +216,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         void setTitle(String title);
 
         void onSendRequest();
+
+        void onTxDetailsRequest(TransactionInfo info);
 
         boolean isSynced();
 
