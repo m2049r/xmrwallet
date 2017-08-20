@@ -11,12 +11,16 @@
 - View transactions inlcuding details and copy to clipboard
 - Spend Moneroj (only on testnet - someone will loose money and want to blame me. No thanks!)
 - Manually import existing wallet (by copying them to the Monerujo folder)
+- Background updating (make sure you exit the wallet to stop updating to save some battery)
 
 ## I sent a transaction but it's not in my transactions list!
-Pending transactions are not displayed. Wait for the block to be mined.
+Don't worry. Received transactions which are not mined yet disappear after the wallet is saved -
+I blame this on the monero code. Wait for the block to be mined.
 
 ## Do you have any screenshots of what it looks like and how it works?
-Here are some old screenshots
+Here are some old screenshots with a bit of description.
+I will be removing them soon. Just check out the App.
+
 #### [Select Wallet](images/A-wallet_selection.png)
 
 Here you see a list of installed wallets and an entry field at the top to enter the daemon address. To the right there is a pushbutton to change between testnet and mainnet. The entered daemon is saved and displayed according to the state of this button.

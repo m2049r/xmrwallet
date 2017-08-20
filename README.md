@@ -32,7 +32,7 @@ You may loose all your Moneroj if you use this App.
 - ~~spend monero - not so difficult with wallet api~~
 
 ### Issues
-none :)
+- Pending incoming transactions disappear after reload
 
 ### HOW TO BUILD
 No need to build. Binaries are included:
