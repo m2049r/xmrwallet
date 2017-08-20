@@ -43,3 +43,6 @@ No need to build. Binaries are included:
 If you want to build them yourself (recommended) check out [the instructions](doc/BUILDING-external-libs.md)
 
 Then, fire up Android Studio and build the APK.
+
+### Donations
+4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk
