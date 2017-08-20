@@ -28,23 +28,29 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
-        WalletService.Observer, SendFragment.Listener, TxFragment.Listener {
+        WalletService.Observer, SendFragment.Listener, TxFragment.Listener, GenerateReviewFragment.ListenerWithWallet {
     private static final String TAG = "WalletActivity";
 
     static final int MIN_DAEMON_VERSION = 65544;
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
+
+    Toolbar tbWallet;
 
     private boolean synced = false;
 
@@ -109,20 +115,28 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wallet_activity);
+        if (savedInstanceState != null) {
+            return;
+        }
+
+        tbWallet = (Toolbar) findViewById(R.id.tbWallet);
+        tbWallet.setTitle(R.string.app_name);
+        setSupportActionBar(tbWallet);
+        tbWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onWalletDetails();
+            }
+        });
 
         Fragment walletFragment = new WalletFragment();
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, walletFragment).commit();
         Log.d(TAG, "fragment added");
 
-        if (savedInstanceState != null) {
-            return;
-        }
-
         startWalletService();
         Log.d(TAG, "onCreate() done.");
     }
-
 
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
@@ -256,7 +270,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public void setTitle(String title) {
-        super.setTitle(title);
+        tbWallet.setTitle(title);
     }
 
     @Override
@@ -521,5 +535,14 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         transaction.replace(R.id.fragment_container, newFragment);
         transaction.addToBackStack(stackName);
         transaction.commit();
+    }
+
+    private void onWalletDetails() {
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment instanceof WalletFragment) {
+            Bundle extras = new Bundle();
+            extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
+            replaceFragment(new GenerateReviewFragment(), null, extras);
+        }
     }
 }

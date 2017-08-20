@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/etWalletViewKey"
@@ -92,7 +92,7 @@
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="16sp"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/bGenerate"

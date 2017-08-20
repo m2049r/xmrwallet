@@ -36,6 +36,7 @@ public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
     static final public String VIEW_DETAILS = "details";
     static final public String VIEW_ACCEPT = "accept";
+    static final public String VIEW_WALLET = "wallet";
 
     ProgressBar pbProgress;
     TextView tvWalletName;
@@ -75,12 +76,15 @@ public class GenerateReviewFragment extends Fragment {
         showProgress();
 
         Bundle b = getArguments();
-        String name = b.getString("name");
-        String password = b.getString("password");
         String type = b.getString("type");
-        tvWalletName.setText(new File(name).getName());
-        show(name, password, type);
-
+        if (!type.equals(VIEW_WALLET)) {
+            String name = b.getString("name");
+            String password = b.getString("password");
+            tvWalletName.setText(new File(name).getName());
+            show(name, password, type);
+        } else {
+                show(walletCallback.getWallet(), null, type);
+        }
         return view;
     }
 
@@ -88,7 +92,7 @@ public class GenerateReviewFragment extends Fragment {
         String name = tvWalletName.getText().toString();
         String password = tvWalletPassword.getText().toString();
         bAccept.setEnabled(false);
-        activityCallback.onAccept(name, password);
+        acceptCallback.onAccept(name, password);
     }
 
     private void show(final String walletPath, final String password, final String type) {
@@ -96,50 +100,55 @@ public class GenerateReviewFragment extends Fragment {
                 new Runnable() {
                     @Override
                     public void run() {
-                        Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
-                        final String name = wallet.getName();
-                        final String seed = wallet.getSeed();
-                        final String address = wallet.getAddress();
-                        final String view = wallet.getSecretViewKey();
-                        final String spend = wallet.isWatchOnly() ? "" : "not available - use seed for recovery";
-                        wallet.close();
-
+                        final Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
                         getActivity().runOnUiThread(new Runnable() {
                             public void run() {
-                                if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
-                                    tvWalletPassword.setText(password);
-                                    bAccept.setVisibility(View.VISIBLE);
-                                    bAccept.setEnabled(true);
-                                }
-                                tvWalletName.setText(name);
-                                tvWalletAddress.setText(address);
-                                tvWalletMnemonic.setText(seed);
-                                tvWalletViewKey.setText(view);
-                                if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
-                                    tvWalletSpendKey.setText(spend);
-                                } else {
-                                    tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
-                                }
-                                hideProgress();
+                                show(wallet, password, type);
                             }
                         });
+                        wallet.close();
                     }
                 }
                 , "DetailsReview", MoneroHandlerThread.THREAD_STACK_SIZE).start();
-
     }
 
-    GenerateReviewFragment.Listener activityCallback;
+    private void show(final Wallet wallet, final String password, final String type) {
+        if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
+            tvWalletPassword.setText(password);
+            bAccept.setVisibility(View.VISIBLE);
+            bAccept.setEnabled(true);
+        }
+        tvWalletName.setText(wallet.getName());
+        tvWalletAddress.setText(wallet.getAddress());
+        tvWalletMnemonic.setText(wallet.getSeed());
+        tvWalletViewKey.setText(wallet.getSecretViewKey());
+        String spend = wallet.isWatchOnly() ? "" : "not available - use seed for recovery";
+        if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
+            tvWalletSpendKey.setText(spend);
+        } else {
+            tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+        }
+        hideProgress();
+    }
+
+    GenerateReviewFragment.Listener acceptCallback = null;
+    GenerateReviewFragment.ListenerWithWallet walletCallback = null;
 
     public interface Listener {
         void onAccept(String name, String password);
+    }
+
+    public interface ListenerWithWallet {
+        Wallet getWallet();
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof GenerateReviewFragment.Listener) {
-            this.activityCallback = (GenerateReviewFragment.Listener) context;
+            this.acceptCallback = (GenerateReviewFragment.Listener) context;
+        } else if (context instanceof GenerateReviewFragment.ListenerWithWallet) {
+            this.walletCallback = (GenerateReviewFragment.ListenerWithWallet) context;
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");

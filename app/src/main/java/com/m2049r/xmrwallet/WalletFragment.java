@@ -116,7 +116,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         updateStatus(wallet);
     }
 
-    public void onSynced() { // TODO watchonly
+    public void onSynced() {
         if (!activityCallback.isWatchOnly()) {
             bSend.setVisibility(View.VISIBLE);
             bSend.setEnabled(true);

@@ -142,11 +142,11 @@ public class GenerateFragment extends Fragment {
                                                             public void afterTextChanged(Editable editable) {
                                                                 if (etWalletMnemonic.length() > 0) {
                                                                     etWalletRestoreHeight.setVisibility(View.VISIBLE);
-                                                                    etWalletAddress.setVisibility(View.INVISIBLE);
+                                                                    etWalletAddress.setVisibility(View.GONE);
                                                                 } else {
                                                                     etWalletAddress.setVisibility(View.VISIBLE);
                                                                     if (etWalletAddress.length() == 0) {
-                                                                        etWalletRestoreHeight.setVisibility(View.INVISIBLE);
+                                                                        etWalletRestoreHeight.setVisibility(View.GONE);
                                                                     } else {
                                                                         etWalletRestoreHeight.setVisibility(View.VISIBLE);
                                                                     }
@@ -193,10 +193,10 @@ public class GenerateFragment extends Fragment {
                                                                    etWalletMnemonic.setVisibility(View.INVISIBLE);
                                                                    etWalletRestoreHeight.setVisibility(View.VISIBLE);
                                                                } else {
-                                                                   llRestoreKeys.setVisibility(View.INVISIBLE);
+                                                                   llRestoreKeys.setVisibility(View.GONE);
                                                                    etWalletMnemonic.setVisibility(View.VISIBLE);
                                                                    if (etWalletMnemonic.length() == 0) {
-                                                                       etWalletRestoreHeight.setVisibility(View.INVISIBLE);
+                                                                       etWalletRestoreHeight.setVisibility(View.GONE);
                                                                    } else {
                                                                        etWalletRestoreHeight.setVisibility(View.VISIBLE);
                                                                    }
@@ -280,8 +280,8 @@ public class GenerateFragment extends Fragment {
 
     private boolean addressOk() {
         String address = etWalletAddress.getText().toString();
-        // TODO only accept address from the correct net
-        return ((address.length() == 95) && ("49A".indexOf(address.charAt(0)) >= 0));
+        boolean testnet = WalletManager.getInstance().isTestNet();
+        return ((address.length() == 95) && ((testnet ? "9A" : "4").indexOf(address.charAt(0)) >= 0));
     }
 
     private boolean viewKeyOk() {
@@ -318,19 +318,19 @@ public class GenerateFragment extends Fragment {
         // figure out how we want to create this wallet
         // A. from scratch
         if ((seed.length() == 0) && (address.length() == 0)) {
-            bGenerate.setVisibility(View.INVISIBLE);
+            bGenerate.setVisibility(View.GONE);
             activityCallback.onGenerate(name, password);
         } else
             // B. from seed
             if (mnemonicOk()) {
-                bGenerate.setVisibility(View.INVISIBLE);
+                bGenerate.setVisibility(View.GONE);
                 activityCallback.onGenerate(name, password, seed, height);
             } else
                 // C. from keys
                 if (addressOk() && viewKeyOk() && (spendKeyOk())) {
                     String viewKey = etWalletViewKey.getText().toString();
                     String spendKey = etWalletSpendKey.getText().toString();
-                    bGenerate.setVisibility(View.INVISIBLE);
+                    bGenerate.setVisibility(View.GONE);
                     activityCallback.onGenerate(name, password, address, viewKey, spendKey, height);
                 } else
                 // D. none of the above :)

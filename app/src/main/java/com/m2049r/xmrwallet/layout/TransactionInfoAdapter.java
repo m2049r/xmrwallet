@@ -81,6 +81,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     public void setInfos(List<TransactionInfo> data) {
         // TODO do stuff with data so we can really recycle elements (i.e. add only new tx)
+        // as the TransactionInfo items are always recreated, we cannot recycle
         this.infoItems.clear();
         if (data != null) {
             Log.d(TAG, "setInfos " + data.size());
@@ -135,9 +136,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         void bind(int position) {
             this.infoItem = infoItems.get(position);
             String displayAmount = Wallet.getDisplayAmount(infoItem.amount);
-            // TODO fix this with i8n code
+            // TODO fix this with i8n code but cryptonote::print_money always uses '.' for decimal point
             String amountParts[] = displayAmount.split("\\.");
-            // TODO what if there is no decimal point?
 
             this.tvAmount.setText(amountParts[0]);
             this.tvAmountDecimal.setText(amountParts[1]);

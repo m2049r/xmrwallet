@@ -16,7 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -29,6 +28,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -40,7 +40,6 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
@@ -63,6 +62,11 @@ public class LoginActivity extends AppCompatActivity
         if (savedInstanceState != null) {
             return;
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tbLogin);
+        toolbar.setTitle(R.string.login_activity_name);
+        setSupportActionBar(toolbar);
+
         if (Helper.getWritePermission(this)) {
             startLoginFragment();
         } else {
@@ -234,7 +238,6 @@ public class LoginActivity extends AppCompatActivity
         b.putString("type", type);
         startReviewFragment(b);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -420,9 +423,10 @@ public class LoginActivity extends AppCompatActivity
     boolean copyWallet(File dstDir, File srcDir, String name) {
         boolean success = false;
         try {
-            // TODO: the cache is corrupt if we recover (!!)
-            // TODO: the cache is ok if we immediately to a full refresh()
-            // TODO recoveryheight is ignored but not on watchonly wallet ?! - find out why
+            // the cache is corrupt if we recover (!!)
+            // the cache is ok if we immediately do a full refresh()
+            // recoveryheight is ignored but not on watchonly wallet ?! - find out why
+            // so we just ignore the cache file and rebuild it on first sync
             //copyFile(dstDir, srcDir, name);
             copyFile(dstDir, srcDir, name + ".keys");
             copyFile(dstDir, srcDir, name + ".address.txt");

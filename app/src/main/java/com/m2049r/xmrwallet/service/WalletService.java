@@ -120,12 +120,11 @@ public class WalletService extends Service {
                     updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
                     if (!wallet.isSynchronized()) {
                         // we want to see our transactions as they come in
-                        Log.d(TAG, "newBlock() refresh history");
                         wallet.getHistory().refresh();
-                        Log.d(TAG, "newBlock() history refreshed");
                         int txCount = wallet.getHistory().getCount();
                         if (txCount > lastTxCount) {
-                            lastTxCount = txCount; // TODO maybe do this later
+                            // update the transaction list only if we have more than before
+                            lastTxCount = txCount;
                             fullRefresh = true;
                         }
                     }
@@ -173,10 +172,9 @@ public class WalletService extends Service {
                 // these calls really connect to the daemon - wasting time
                 daemonHeight = wallet.getDaemonBlockChainHeight();
                 if (daemonHeight > 0) {
-                    // if we get a valid height, the obviously we are connected
+                    // if we get a valid height, then obviously we are connected
                     connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Connected;
                 } else {
-                    // TODO: or connectionStatus = wallet.getConnectionStatus(); ?
                     connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
                 }
             }
@@ -485,7 +483,6 @@ public class WalletService extends Service {
             listener = null;
         }
         stopSelf();
-        // TODO ensure the Looper & thread actually stop and go away?
     }
 
     private Wallet loadWallet(String walletName, String walletPassword) {

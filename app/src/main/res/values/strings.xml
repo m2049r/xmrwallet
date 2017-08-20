@@ -57,7 +57,7 @@
     <string name="generate_title">Generate Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Password</string>
-    <string name="generate_buttonGenerate">Do it already!</string>
+    <string name="generate_buttonGenerate">Make me a wallet already!</string>
     <string name="generate_seed">Mnemonic Seed</string>
     <string name="generate_button_accept">I have noted the above\nNow, I want to loose all my money!</string>
 
