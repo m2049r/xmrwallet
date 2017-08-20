@@ -38,7 +38,7 @@ public class WalletManager {
     // no need to keep a reference to the REAL WalletManager (we get it every tvTime we need it)
     private static WalletManager Instance = null;
 
-    public static WalletManager getInstance() { // TODO not threadsafe
+    public static synchronized WalletManager getInstance() {
         if (WalletManager.Instance == null) {
             WalletManager.Instance = new WalletManager();
         }

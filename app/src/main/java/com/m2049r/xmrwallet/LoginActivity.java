@@ -16,7 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -27,9 +26,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -41,7 +40,6 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
@@ -53,6 +51,7 @@ import java.nio.channels.FileChannel;
 public class LoginActivity extends AppCompatActivity
         implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
     static final String TAG = "LoginActivity";
+    private static final String GENERATE_STACK = "gen";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
@@ -63,6 +62,11 @@ public class LoginActivity extends AppCompatActivity
         if (savedInstanceState != null) {
             return;
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tbLogin);
+        toolbar.setTitle(R.string.login_activity_name);
+        setSupportActionBar(toolbar);
+
         if (Helper.getWritePermission(this)) {
             startLoginFragment();
         } else {
@@ -235,7 +239,6 @@ public class LoginActivity extends AppCompatActivity
         startReviewFragment(b);
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult()");
@@ -264,7 +267,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     void startGenerateFragment() {
-        replaceFragment(new GenerateFragment(), "gen", null);
+        replaceFragment(new GenerateFragment(), GENERATE_STACK, null);
         Log.d(TAG, "GenerateFragment placed");
     }
 
@@ -273,14 +276,18 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG, "GenerateReviewFragment placed");
     }
 
-    void replaceFragment(Fragment newFragment, String name, Bundle extras) {
+    void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
         if (extras != null) {
             newFragment.setArguments(extras);
         }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, newFragment);
-        transaction.addToBackStack(name);
+        transaction.addToBackStack(stackName);
         transaction.commit();
+    }
+
+    void popFragmentStack(String name) {
+        getFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     //////////////////////////////////////////
@@ -393,8 +400,7 @@ public class LoginActivity extends AppCompatActivity
                 &&
                 (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
         if (rc) {
-            getFragmentManager().popBackStack("gen",
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            popFragmentStack(GENERATE_STACK);
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {
@@ -417,9 +423,10 @@ public class LoginActivity extends AppCompatActivity
     boolean copyWallet(File dstDir, File srcDir, String name) {
         boolean success = false;
         try {
-            // TODO: the cache is corrupt if we recover (!!)
-            // TODO: the cache is ok if we immediately to a full refresh()
-            // TODO recoveryheight is ignored but not on watchonly wallet ?! - find out why
+            // the cache is corrupt if we recover (!!)
+            // the cache is ok if we immediately do a full refresh()
+            // recoveryheight is ignored but not on watchonly wallet ?! - find out why
+            // so we just ignore the cache file and rebuild it on first sync
             //copyFile(dstDir, srcDir, name);
             copyFile(dstDir, srcDir, name + ".keys");
             copyFile(dstDir, srcDir, name + ".address.txt");

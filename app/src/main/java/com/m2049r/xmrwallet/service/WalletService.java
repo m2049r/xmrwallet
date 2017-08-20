@@ -28,20 +28,36 @@ import android.os.Process;
 import android.util.Log;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionHistory;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletService extends Service {
     final static String TAG = "WalletService";
 
     public static final String REQUEST_WALLET = "wallet";
     public static final String REQUEST = "request";
+
     public static final String REQUEST_CMD_LOAD = "load";
     public static final String REQUEST_CMD_LOAD_PW = "walletPassword";
+
     public static final String REQUEST_CMD_STORE = "store";
+
+    public static final String REQUEST_CMD_TX = "createTX";
+    public static final String REQUEST_CMD_TX_DATA = "data";
+
+    public static final String REQUEST_CMD_SWEEP = "sweepTX";
+
+    public static final String REQUEST_CMD_SEND = "send";
+    public static final String REQUEST_CMD_SEND_NOTES = "notes";
+
+    public static final String REQUEST_CMD_SETNOTE = "setnote";
+    public static final String REQUEST_CMD_SETNOTE_TX = "tx";
+    public static final String REQUEST_CMD_SETNOTE_NOTES = "notes";
 
     public static final int START_SERVICE = 1;
     public static final int STOP_SERVICE = 2;
@@ -107,6 +123,7 @@ public class WalletService extends Service {
                         wallet.getHistory().refresh();
                         int txCount = wallet.getHistory().getCount();
                         if (txCount > lastTxCount) {
+                            // update the transaction list only if we have more than before
                             lastTxCount = txCount;
                             fullRefresh = true;
                         }
@@ -129,10 +146,10 @@ public class WalletService extends Service {
             if (updated) {
                 if (observer != null) {
                     updateDaemonState(wallet, 0);
-                    TransactionHistory history = wallet.getHistory();
-                    history.refresh();
-                    if (observer != null) observer.onRefreshed(wallet, true);
-                    updated = false;
+                    wallet.getHistory().refresh();
+                    if (observer != null) {
+                        updated = !observer.onRefreshed(wallet, true);
+                    }
                 }
             }
         }
@@ -155,10 +172,9 @@ public class WalletService extends Service {
                 // these calls really connect to the daemon - wasting time
                 daemonHeight = wallet.getDaemonBlockChainHeight();
                 if (daemonHeight > 0) {
-                    // if we get a valid height, the obviously we are connected
+                    // if we get a valid height, then obviously we are connected
                     connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Connected;
                 } else {
-                    // TODO: or connectionStatus = wallet.getConnectionStatus(); ?
                     connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
                 }
             }
@@ -187,13 +203,19 @@ public class WalletService extends Service {
     }
 
     public interface Observer {
-        void onRefreshed(Wallet wallet, boolean full);
+        boolean onRefreshed(Wallet wallet, boolean full);
 
         void onProgress(String text);
 
         void onProgress(int n);
 
         void onWalletStored(boolean success);
+
+        void onCreatedTransaction(PendingTransaction pendingTransaction);
+
+        void onSentTransaction(boolean success);
+
+        void onSetNotes(boolean success);
     }
 
     String progressText = null;
@@ -249,7 +271,7 @@ public class WalletService extends Service {
                     if (cmd.equals(REQUEST_CMD_LOAD)) {
                         String walletId = extras.getString(REQUEST_WALLET, null);
                         String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
-                        Log.d(TAG, "LOAD wallet " + walletId);// + ":" + walletPw);
+                        Log.d(TAG, "LOAD wallet " + walletId);
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
@@ -257,13 +279,94 @@ public class WalletService extends Service {
                         }
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "storing wallet: " + myWallet.getName());
+                        Log.d(TAG, "STORE wallet: " + myWallet.getName());
                         boolean rc = myWallet.store();
                         Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                         if (!rc) {
                             Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
                         }
                         if (observer != null) observer.onWalletStored(rc);
+                    } else if (cmd.equals(REQUEST_CMD_TX)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "CREATE TX for wallet: " + myWallet.getName());
+                        TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
+                        PendingTransaction pendingTransaction = myWallet.createTransaction(
+                                txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
+                        PendingTransaction.Status status = pendingTransaction.getStatus();
+                        Log.d(TAG, "transaction status " + status);
+                        if (status != PendingTransaction.Status.Status_Ok) {
+                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                        }
+                        if (observer != null) {
+                            observer.onCreatedTransaction(pendingTransaction);
+                        } else {
+                            myWallet.disposePendingTransaction();
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_SWEEP)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "SWEEP TX for wallet: " + myWallet.getName());
+                        PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
+                        PendingTransaction.Status status = pendingTransaction.getStatus();
+                        Log.d(TAG, "transaction status " + status);
+                        if (status != PendingTransaction.Status.Status_Ok) {
+                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                        }
+                        if (observer != null) {
+                            observer.onCreatedTransaction(pendingTransaction);
+                        } else {
+                            myWallet.disposePendingTransaction();
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_SEND)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
+                        if (!myWallet.isTestNet()) {
+                            Log.e(TAG, "Sending transactions only on testnet");
+                            throw new IllegalStateException("Sending transactions only in testnet");
+                        }
+                        PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
+                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
+                            Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());
+                            myWallet.disposePendingTransaction(); // it's broken anyway
+                            if (observer != null) observer.onSentTransaction(false);
+                            return;
+                        }
+                        String txid = pendingTransaction.getFirstTxId();
+                        boolean success = pendingTransaction.commit("", true);
+                        myWallet.disposePendingTransaction();
+                        if (observer != null) observer.onSentTransaction(success);
+                        if (success) {
+                            String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
+                            if ((notes != null) && (!notes.isEmpty())) {
+                                myWallet.setUserNote(txid, notes);
+                            }
+                            boolean rc = myWallet.store();
+                            Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                            if (!rc) {
+                                Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                            }
+                            if (observer != null) observer.onWalletStored(rc);
+                            listener.updated = true;
+                        }
+                    } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
+                        Wallet myWallet = getWallet();
+                        Log.d(TAG, "SET NOTE for wallet: " + myWallet.getName());
+                        String txId = extras.getString(REQUEST_CMD_SETNOTE_TX);
+                        String notes = extras.getString(REQUEST_CMD_SETNOTE_NOTES);
+                        if ((txId != null) && (notes != null)) {
+                            boolean success = myWallet.setUserNote(txId, notes);
+                            if (!success) {
+                                Log.e(TAG, myWallet.getErrorString());
+                            }
+                            if (observer != null) observer.onSetNotes(success);
+                            if (success) {
+                                boolean rc = myWallet.store();
+                                Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                                if (!rc) {
+                                    Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                }
+                                if (observer != null) observer.onWalletStored(rc);
+                            }
+                        }
                     }
                 }
                 break;
@@ -386,7 +489,6 @@ public class WalletService extends Service {
             listener = null;
         }
         stopSelf();
-        // TODO ensure the Looper & thread actually stop and go away?
     }
 
     private Wallet loadWallet(String walletName, String walletPassword) {

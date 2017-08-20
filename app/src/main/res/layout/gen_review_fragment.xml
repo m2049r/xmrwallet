@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
@@ -56,6 +56,20 @@
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <TextView
@@ -89,10 +103,10 @@
         android:id="@+id/tvWalletAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
+        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <TextView
@@ -109,10 +123,10 @@
         android:id="@+id/tvWalletViewKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
+        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <TextView
@@ -129,10 +143,10 @@
         android:id="@+id/tvWalletSpendKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
+        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <Button
@@ -144,4 +158,42 @@
         android:text="@string/generate_button_accept"
         android:visibility="gone" />
 
+    <LinearLayout
+        android:id="@+id/llFunctions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dip"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/bBackup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/generate_button_backup" />
+
+        <Button
+            android:id="@+id/bExport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/generate_button_export" />
+
+        <Button
+            android:id="@+id/bDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@color/colorAccent"
+            android:text="@string/generate_button_delete" />
+
+    </LinearLayout>
 </LinearLayout>

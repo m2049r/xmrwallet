@@ -46,7 +46,7 @@ public class Helper {
             dir.mkdirs(); // try to make it
         }
         if (!dir.isDirectory()) {
-            String msg = "Directory " + dir.getAbsolutePath() + " does not exists.";
+            String msg = "Directory " + dir.getAbsolutePath() + " does not exist.";
             Log.e(TAG, msg);
             throw new IllegalStateException(msg);
         }
@@ -59,7 +59,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+                Log.d(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
                 return false;

@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/generate_mnemonic_hint"
         android:imeOptions="actionNext"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:textAlignment="center"
         android:textSize="16sp" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/generate_address_hint"
         android:imeOptions="actionNext"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:textAlignment="center"
         android:textSize="16sp" />
 
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/etWalletViewKey"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/generate_viewkey_hint"
             android:imeOptions="actionNext"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/generate_spendkey_hint"
             android:imeOptions="actionNext"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:textAlignment="center"
             android:textSize="16sp" />
     </LinearLayout>
@@ -88,11 +88,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/generate_restoreheight_hint"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionDone"
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="16sp"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/bGenerate"
