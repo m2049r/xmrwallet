@@ -345,6 +345,7 @@ public class WalletService extends Service {
                                 Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
                             }
                             if (observer != null) observer.onWalletStored(rc);
+                            listener.updated = true;
                         }
                     } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
                         Wallet myWallet = getWallet();

@@ -45,6 +45,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     static final int TX_RED = Color.rgb(255, 79, 65);
     static final int TX_GREEN = Color.rgb(54, 176, 91);
+    static final int TX_PENDING = Color.rgb(72, 53, 176);
+    static final int TX_FAILED = Color.rgb(208, 0, 255);
 
     public interface OnInteractionListener {
         void onInteraction(View view, TransactionInfo item);
@@ -89,6 +91,13 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             Collections.sort(data, new Comparator<TransactionInfo>() {
                 @Override
                 public int compare(TransactionInfo o1, TransactionInfo o2) {
+                    if ((o1.isPending) && (o2.isPending)) {
+                        long b1 = o1.timestamp;
+                        long b2 = o2.timestamp;
+                        return (b1 > b2) ? -1 : (b1 < b2) ? 1 : 0;
+                    }
+                    if (o1.isPending) return -1;
+                    if (o2.isPending) return 1;
                     long b1 = o1.blockheight;
                     long b2 = o2.blockheight;
                     return (b1 > b2) ? -1 : (b1 < b2) ? 1 : 0;
@@ -141,7 +150,16 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
             this.tvAmount.setText(amountParts[0]);
             this.tvAmountDecimal.setText(amountParts[1]);
-            if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
+            if (infoItem.isPending) {
+                setTxColour(TX_PENDING);
+                if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
+                    this.tvAmount.setText('-' + amountParts[0]);
+                }
+            } else if (infoItem.isFailed) {
+                this.tvAmount.setText('(' + amountParts[0]);
+                this.tvAmountDecimal.setText(amountParts[1] + ')');
+                setTxColour(TX_FAILED);
+            } else if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(TX_GREEN);
             } else {
                 setTxColour(TX_RED);

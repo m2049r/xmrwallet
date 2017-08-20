@@ -21,6 +21,7 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.List;
+import java.util.Random;
 
 // this is not the TransactionInfo from the API as that is owned by the TransactionHistory
 // this is a POJO for the TransactionInfoAdapter
@@ -91,6 +92,7 @@ public class TransactionInfo implements Parcelable {
         this.confirmations = confirmations;
         this.transfers = transfers;
     }
+    Random rnd = new Random();
 
     public String toString() {
         return direction + "@" + blockheight + " " + amount;

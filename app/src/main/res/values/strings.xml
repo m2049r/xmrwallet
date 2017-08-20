@@ -135,6 +135,9 @@
     <string name="tx_notes_set">Notes saved</string>
     <string name="tx_notes_set_failed">Notes saved failed</string>
 
+    <string name="tx_pending">PENDING</string>
+    <string name="tx_failed">FAILED</string>
+
     <string name="big_amount">999999.999999999999</string>
 
     <string-array name="mixin">

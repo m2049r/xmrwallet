@@ -132,6 +132,7 @@ public class TxFragment extends Fragment {
         sb.append(getString(R.string.tx_paymentId)).append(": ");
         sb.append(info.paymentId).append("\n");
         sb.append(getString(R.string.tx_amount)).append(": ");
+        sb.append((info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-"));
         sb.append(Wallet.getDisplayAmount(info.amount)).append("\n");
         sb.append(getString(R.string.tx_fee)).append(": ");
         sb.append(Wallet.getDisplayAmount(info.fee)).append("\n");
@@ -141,7 +142,13 @@ public class TxFragment extends Fragment {
         sb.append(getString(R.string.tx_timestamp)).append(": ");
         sb.append(TS_FORMATTER.format(new Date(info.timestamp * 1000))).append("\n");
         sb.append(getString(R.string.tx_blockheight)).append(": ");
-        sb.append(info.blockheight).append("\n");
+        if (info.isPending) {
+            sb.append(getString(R.string.tx_pending)).append("\n");
+        } else if (info.isFailed) {
+            sb.append(getString(R.string.tx_failed)).append("\n");
+        } else {
+            sb.append(info.blockheight).append("\n");
+        }
         sb.append(getString(R.string.tx_transfers)).append(": ");
         if (info.transfers != null) {
             boolean comma = false;
@@ -162,7 +169,7 @@ public class TxFragment extends Fragment {
         ClipData clip = ClipData.newPlainText(getString(R.string.tx_copy_label), sb.toString());
         clipboardManager.setPrimaryClip(clip);
         Toast.makeText(getActivity(), getString(R.string.tx_copy_message), Toast.LENGTH_SHORT).show();
-        Log.d(TAG, sb.toString());
+        //Log.d(TAG, sb.toString());
     }
 
     TransactionInfo info = null;
@@ -185,8 +192,15 @@ public class TxFragment extends Fragment {
         tvTxId.setText(info.hash);
         tvTxKey.setText(info.txKey.isEmpty() ? "-" : info.txKey);
         tvTxPaymentId.setText(info.paymentId);
-        tvTxBlockheight.setText("" + info.blockheight);
-        tvTxAmount.setText(Wallet.getDisplayAmount(info.amount));
+        if (info.isPending) {
+            tvTxBlockheight.setText(getString(R.string.tx_pending));
+        } else if (info.isFailed) {
+            tvTxBlockheight.setText(getString(R.string.tx_failed));
+        } else {
+            tvTxBlockheight.setText("" + info.blockheight);
+        }
+        String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
+        tvTxAmount.setText(sign + Wallet.getDisplayAmount(info.amount));
         tvTxFee.setText(Wallet.getDisplayAmount(info.fee));
         StringBuffer sb = new StringBuffer();
         if (info.transfers != null) {
