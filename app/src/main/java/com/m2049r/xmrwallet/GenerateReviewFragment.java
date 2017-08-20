@@ -104,9 +104,9 @@ public class GenerateReviewFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             public void run() {
                                 show(wallet, password, type);
+                                wallet.close();
                             }
                         });
-                        wallet.close();
                     }
                 }
                 , "DetailsReview", MoneroHandlerThread.THREAD_STACK_SIZE).start();

@@ -12,6 +12,9 @@
 - Spend Moneroj (only on testnet - someone will loose money and want to blame me. No thanks!)
 - Manually import existing wallet (by copying them to the Monerujo folder)
 
+## I sent a transaction but it's not in my transactions list!
+Pending transactions are not displayed. Wait for the block to be mined.
+
 ## Do you have any screenshots of what it looks like and how it works?
 Here are some old screenshots
 #### [Select Wallet](images/A-wallet_selection.png)

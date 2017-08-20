@@ -22,6 +22,7 @@ You may loose all your Moneroj if you use this App.
 - Monerujo means "Monero Wallet" according to https://www.reddit.com/r/Monero/comments/3exy7t/esperanto_corner/
 
 ### TODO
+- Display outgoing pending transactions
 - wallet backup functions
 - adjust layout so we can use bigger font sizes (maybe show only 5 decimal places instead of 12 in main view)
 - review visibility of methods/classes

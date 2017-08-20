@@ -963,12 +963,6 @@ jobject cpp2java(JNIEnv *env, std::vector<Bitmonero::TransactionInfo *> vector) 
 
     jobject arrayList = env->NewObject(class_ArrayList, java_util_ArrayList_, vector.size());
     for (Bitmonero::TransactionInfo *s: vector) {
-        if (s->fee() > 1) {
-            LOGE("TX %s %"
-                         PRIu64
-                         " %"
-                         PRIu64, s->hash().c_str(), s->fee(), s->amount());
-        }
         jobject info = newTransactionInfo(env, s);
         env->CallBooleanMethod(arrayList, java_util_ArrayList_add, info);
         env->DeleteLocalRef(info);
@@ -1033,13 +1027,7 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getFee(JNIEnv *env, jobject i
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getFirstTxId(JNIEnv *env, jobject instance) {
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
-
     std::vector<std::string> txids = tx->txid();
-
-    for (std::string &s: txids) {
-        LOGD("TX %s", s.c_str());
-    }
-
     return env->NewStringUTF(txids.front().c_str());
 }
 

@@ -145,16 +145,15 @@ public class TxFragment extends Fragment {
         sb.append(getString(R.string.tx_transfers)).append(": ");
         if (info.transfers != null) {
             boolean comma = false;
-            for (int i = 0; i < 10; i++)
-                for (Transfer transfer : info.transfers) {
-                    if (comma) {
-                        sb.append(",");
-                    } else {
-                        comma = true;
-                    }
-                    sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
-                    sb.append(Wallet.getDisplayAmount(transfer.amount));
+            for (Transfer transfer : info.transfers) {
+                if (comma) {
+                    sb.append(",");
+                } else {
+                    comma = true;
                 }
+                sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
+                sb.append(Wallet.getDisplayAmount(transfer.amount));
+            }
         } else {
             sb.append("-");
         }
@@ -192,16 +191,15 @@ public class TxFragment extends Fragment {
         StringBuffer sb = new StringBuffer();
         if (info.transfers != null) {
             boolean newline = false;
-            for (int i = 0; i < 10; i++)
-                for (Transfer transfer : info.transfers) {
-                    if (newline) {
-                        sb.append("\n");
-                    } else {
-                        newline = true;
-                    }
-                    sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
-                    sb.append(Wallet.getDisplayAmount(transfer.amount));
+            for (Transfer transfer : info.transfers) {
+                if (newline) {
+                    sb.append("\n");
+                } else {
+                    newline = true;
                 }
+                sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
+                sb.append(Wallet.getDisplayAmount(transfer.amount));
+            }
         } else {
             sb.append("-");
         }
