@@ -19,6 +19,7 @@
             android:name=".WalletActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/wallet_activity_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
