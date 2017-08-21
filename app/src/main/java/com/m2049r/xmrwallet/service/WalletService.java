@@ -16,8 +16,13 @@
 
 package com.m2049r.xmrwallet.service;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,9 +30,11 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.WalletActivity;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionHistory;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -38,6 +45,7 @@ import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletService extends Service {
     final static String TAG = "WalletService";
+    final static int NOTIFICATION_ID = 2049;
 
     public static final String REQUEST_WALLET = "wallet";
     public static final String REQUEST = "request";
@@ -432,7 +440,7 @@ public class WalletService extends Service {
         msg.setData(intent.getExtras());
         mServiceHandler.sendMessage(msg);
         //Log.d(TAG, "onStartCommand() message sent");
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     @Override
@@ -454,6 +462,7 @@ public class WalletService extends Service {
     }
 
     private void start(String walletName, String walletPassword) {
+        startNotfication();
         // if there is an listener it is always started / syncing
         Log.d(TAG, "start()");
         showProgress(getString(R.string.status_wallet_loading));
@@ -488,6 +497,7 @@ public class WalletService extends Service {
             Log.d(TAG, "stop() closed");
             listener = null;
         }
+        stopForeground(true);
         stopSelf();
     }
 
@@ -531,5 +541,17 @@ public class WalletService extends Service {
             }
         }
         return wallet;
+    }
+
+    private void startNotfication() {
+        Intent notificationIntent = new Intent(this, WalletActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        Notification notification = new Notification.Builder(this)
+                .setContentTitle(getString(R.string.service_description))
+                .setSmallIcon(R.drawable.ic_notification_sync_32_32)
+                .setContentIntent(pendingIntent)
+                .build();
+        startForeground(NOTIFICATION_ID, notification);
+
     }
 }
