@@ -38,6 +38,7 @@ import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -117,7 +118,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     }
 
     public void onSynced() {
-        if (!activityCallback.isWatchOnly()) {
+        if (!activityCallback.isWatchOnly() && WalletManager.getInstance().isTestNet()) {
             bSend.setVisibility(View.VISIBLE);
             bSend.setEnabled(true);
         }
