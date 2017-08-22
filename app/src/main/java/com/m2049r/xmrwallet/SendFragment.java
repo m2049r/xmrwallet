@@ -17,8 +17,6 @@
 package com.m2049r.xmrwallet;
 
 import android.app.Fragment;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -26,7 +24,6 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +37,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
-import com.m2049r.xmrwallet.model.TransactionInfo;
-import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -57,6 +52,7 @@ public class SendFragment extends Fragment {
     Spinner sMixin;
     Spinner sPriority;
     Button bPrepareSend;
+    Button bDispose;
     Button bPaymentId;
     LinearLayout llConfirmSend;
     TextView tvTxAmount;
@@ -86,6 +82,7 @@ public class SendFragment extends Fragment {
         bSweep = (Button) view.findViewById(R.id.bSweep);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
+        bDispose = (Button) view.findViewById(R.id.bDispose);
 
         llConfirmSend = (LinearLayout) view.findViewById(R.id.llConfirmSend);
         tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
@@ -188,6 +185,14 @@ public class SendFragment extends Fragment {
                 Helper.hideKeyboard(getActivity());
                 disableEdit();
                 prepareSend();
+            }
+        });
+
+        bDispose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activityCallback.onDisposeRequest();
+                enableEdit();
             }
         });
 
@@ -304,6 +309,7 @@ public class SendFragment extends Fragment {
         bPaymentId.setEnabled(true);
         bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
+        llConfirmSend.setVisibility(View.GONE);
     }
 
     private void send() {
@@ -326,6 +332,8 @@ public class SendFragment extends Fragment {
         boolean isPaymentIdValid(String paymentId);
 
         String getWalletAddress();
+
+        void onDisposeRequest();
 
     }
 
@@ -350,7 +358,6 @@ public class SendFragment extends Fragment {
         tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getAmount()));
         tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
         tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
-        bSend.setEnabled(true);
     }
 
     public void onCreatedTransactionFailed(String errorText) {

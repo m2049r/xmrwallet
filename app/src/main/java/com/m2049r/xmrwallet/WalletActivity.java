@@ -16,7 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -36,9 +35,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
@@ -544,5 +541,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
             replaceFragment(new GenerateReviewFragment(), null, extras);
         }
+    }
+
+    @Override
+    public void onDisposeRequest() {
+        getWallet().disposePendingTransaction();
     }
 }
