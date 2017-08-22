@@ -41,6 +41,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TimeZone;
 
 public class TxFragment extends Fragment {
@@ -60,6 +62,7 @@ public class TxFragment extends Fragment {
     TextView tvTxTimestamp;
     TextView tvTxId;
     TextView tvTxKey;
+    TextView tvDestination;
     TextView tvTxPaymentId;
     TextView tvTxBlockheight;
     TextView tvTxAmount;
@@ -78,6 +81,7 @@ public class TxFragment extends Fragment {
         tvTxTimestamp = (TextView) view.findViewById(R.id.tvTxTimestamp);
         tvTxId = (TextView) view.findViewById(R.id.tvTxId);
         tvTxKey = (TextView) view.findViewById(R.id.tvTxKey);
+        tvDestination = (TextView) view.findViewById(R.id.tvDestination);
         tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
         tvTxBlockheight = (TextView) view.findViewById(R.id.tvTxBlockheight);
         tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
@@ -154,11 +158,11 @@ public class TxFragment extends Fragment {
             boolean comma = false;
             for (Transfer transfer : info.transfers) {
                 if (comma) {
-                    sb.append(",");
+                    sb.append(", ");
                 } else {
                     comma = true;
                 }
-                sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
+                sb.append(transfer.address).append(": ");
                 sb.append(Wallet.getDisplayAmount(transfer.amount));
             }
         } else {
@@ -202,10 +206,13 @@ public class TxFragment extends Fragment {
         String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
         tvTxAmount.setText(sign + Wallet.getDisplayAmount(info.amount));
         tvTxFee.setText(Wallet.getDisplayAmount(info.fee));
+        Set<String> destinations = new HashSet<>();
         StringBuffer sb = new StringBuffer();
+        StringBuffer dstSb = new StringBuffer();
         if (info.transfers != null) {
             boolean newline = false;
             for (Transfer transfer : info.transfers) {
+                destinations.add(transfer.address);
                 if (newline) {
                     sb.append("\n");
                 } else {
@@ -214,10 +221,21 @@ public class TxFragment extends Fragment {
                 sb.append("[").append(transfer.address.substring(0, 6)).append("] ");
                 sb.append(Wallet.getDisplayAmount(transfer.amount));
             }
+            newline = false;
+            for (String dst : destinations) {
+                if (newline) {
+                    dstSb.append("\n");
+                } else {
+                    newline = true;
+                }
+                dstSb.append(dst);
+            }
         } else {
             sb.append("-");
+            dstSb.append(info.direction == TransactionInfo.Direction.Direction_In ? activityCallback.getWalletAddress() : "-");
         }
         tvTxTransfers.setText(sb.toString());
+        tvDestination.setText(dstSb.toString());
         this.info = info;
         bCopy.setEnabled(true);
     }

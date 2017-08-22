@@ -122,6 +122,7 @@
     <string name="tx_timestamp">Timestamp</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX Key</string>
+    <string name="tx_destination">Destination</string>
     <string name="tx_paymentId">Payment ID</string>
     <string name="tx_blockheight">Block</string>
     <string name="tx_amount">Amount</string>
