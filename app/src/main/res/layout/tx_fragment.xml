@@ -51,6 +51,22 @@
                 <TextView
                     android:gravity="right"
                     android:padding="8dp"
+                    android:text="@string/tx_destination"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tvDestination"
+                    android:gravity="left"
+                    android:padding="8dip"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
                     android:text="@string/tx_paymentId"
                     android:textColor="@color/colorAccent" />
 
