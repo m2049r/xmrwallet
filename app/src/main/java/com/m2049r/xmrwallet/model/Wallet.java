@@ -179,14 +179,15 @@ public class Wallet {
                                                 long amount, int mixin_count,
                                                 PendingTransaction.Priority priority) {
         disposePendingTransaction();
-        long txHandle = createTransactionJ(dst_addr, payment_id, amount, mixin_count, priority);
+        int _priority = priority.getValue();
+        long txHandle = createTransactionJ(dst_addr, payment_id, amount, mixin_count, _priority);
         pendingTransaction = new PendingTransaction(txHandle);
         return pendingTransaction;
     }
 
     private native long createTransactionJ(String dst_addr, String payment_id,
-                                           long mount, int mixin_count,
-                                           PendingTransaction.Priority priority);
+                                           long amount, int mixin_count,
+                                           int priority);
 
 
     public PendingTransaction createSweepUnmixableTransaction() {
