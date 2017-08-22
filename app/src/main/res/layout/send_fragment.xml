@@ -64,8 +64,8 @@
             android:layout_weight="2"
             android:background="@color/colorPrimary"
             android:enabled="true"
-            android:textSize="12sp"
-            android:text="@string/send_generate_paymentid_hint" />
+            android:text="@string/send_generate_paymentid_hint"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -94,8 +94,8 @@
             android:layout_weight="2"
             android:background="@color/colorPrimary"
             android:enabled="true"
-            android:visibility="invisible"
-            android:text="@string/send_sweep_hint" />
+            android:text="@string/send_sweep_hint"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <Button
@@ -112,8 +112,8 @@
         android:id="@+id/pbProgress"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/llConfirmSend"
@@ -121,6 +121,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone">
+
+        <Button
+            android:id="@+id/bDispose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/send_dispose_hint" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -221,7 +231,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:background="@color/colorPrimary"
-            android:enabled="false"
             android:text="@string/send_send_hint" />
 
     </LinearLayout>

@@ -75,4 +75,19 @@ public class TxData implements Parcelable {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("dst_addr:");
+        sb.append(dst_addr);
+        sb.append(",paymentId:");
+        sb.append(paymentId);
+        sb.append(",amount:");
+        sb.append(amount);
+        sb.append(",mixin:");
+        sb.append(mixin);
+        sb.append(",priority:");
+        sb.append(priority.toString());
+        return sb.toString();
+    }
 }
