@@ -11,4 +11,7 @@
     <color name="tx_red">#ff4f41</color>
     <color name="tx_pending">#FF4081</color>
 
+    <color name="moneroOrange">#fa6600</color>
+    <color name="white">#ffffff</color>
+
 </resources>
