@@ -224,6 +224,8 @@ public class WalletService extends Service {
         void onSentTransaction(boolean success);
 
         void onSetNotes(boolean success);
+
+        void onWalletStarted(boolean success);
     }
 
     String progressText = null;
@@ -263,6 +265,8 @@ public class WalletService extends Service {
     private Looper mServiceLooper;
     private WalletService.ServiceHandler mServiceHandler;
 
+    private boolean errorState = false;
+
     // Handler that receives messages from the thread
     private final class ServiceHandler extends Handler {
         ServiceHandler(Looper looper) {
@@ -272,6 +276,11 @@ public class WalletService extends Service {
         @Override
         public void handleMessage(Message msg) {
             Log.d(TAG, "Handling " + msg.arg2);
+            if (errorState) {
+                Log.i(TAG, "In error state.");
+                // also, we have already stopped ourselves
+                return;
+            }
             switch (msg.arg2) {
                 case START_SERVICE: {
                     Bundle extras = msg.getData();
@@ -283,7 +292,12 @@ public class WalletService extends Service {
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
-                            start(walletId, walletPw); // TODO What if this fails?
+                            boolean success = start(walletId, walletPw);
+                            if (observer != null) observer.onWalletStarted(success);
+                            if (!success) {
+                                errorState = true;
+                                stop();
+                            }
                         }
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
@@ -461,7 +475,7 @@ public class WalletService extends Service {
         return true; // true is important so that onUnbind is also called next time
     }
 
-    private void start(String walletName, String walletPassword) {
+    private boolean start(String walletName, String walletPassword) {
         startNotfication();
         // if there is an listener it is always started / syncing
         Log.d(TAG, "start()");
@@ -470,7 +484,10 @@ public class WalletService extends Service {
         if (listener == null) {
             Log.d(TAG, "start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
-            // TODO check aWallet and die gracefully if neccessary
+            if ((aWallet == null) || (aWallet.getConnectionStatus() != Wallet.ConnectionStatus.ConnectionStatus_Connected)) {
+                if (aWallet != null) aWallet.close();
+                return false;
+            }
             listener = new MyWalletListener(aWallet);
             listener.start();
             showProgress(100);
@@ -480,6 +497,7 @@ public class WalletService extends Service {
         // if we try to refresh the history here we get occasional segfaults!
         // doesnt matter since we update as soon as we get a new block anyway
         Log.d(TAG, "start() done");
+        return true;
     }
 
     public void stop() {
@@ -512,7 +530,7 @@ public class WalletService extends Service {
             showProgress(55);
             wallet.init(0);
             showProgress(90);
-            Log.d(TAG, wallet.getConnectionStatus().toString());
+            //Log.d(TAG, wallet.getConnectionStatus().toString());
         }
         return wallet;
     }

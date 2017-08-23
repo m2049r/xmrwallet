@@ -197,9 +197,12 @@ public class WalletManager {
         return testnet;
     }
 
-    public void setDaemon(String address, boolean testnet) {
+    public void setDaemon(String address, boolean testnet, String username, String password) {
+        //Log.d(TAG, "SETDAEMON " + username + "/" + password + "/" + address);
         this.daemonAddress = address;
         this.testnet = testnet;
+        this.daemonUsername = username;
+        this.daemonPassword = password;
         setDaemonAddressJ(address);
     }
 
@@ -212,6 +215,18 @@ public class WalletManager {
     }
 
     private native void setDaemonAddressJ(String address);
+
+    String daemonUsername = "";
+
+    public String getDaemonUsername() {
+        return daemonUsername;
+    }
+
+    String daemonPassword = "";
+
+    public String getDaemonPassword() {
+        return daemonPassword;
+    }
 
     public native int getDaemonVersion();
 

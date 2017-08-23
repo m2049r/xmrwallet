@@ -96,10 +96,13 @@ public class Wallet {
 
     //    virtual std::string keysFilename() const = 0;
     public boolean init(long upper_transaction_size_limit) {
-        return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit);
+        return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit,
+                WalletManager.getInstance().getDaemonUsername(),
+                WalletManager.getInstance().getDaemonPassword());
     }
 
-    private native boolean initJ(String daemon_address, long upper_transaction_size_limit);
+    private native boolean initJ(String daemon_address, long upper_transaction_size_limit,
+                                 String daemon_username, String daemon_password);
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;

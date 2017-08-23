@@ -592,12 +592,16 @@ Java_com_m2049r_xmrwallet_model_Wallet_getFilename(JNIEnv *env, jobject instance
 JNIEXPORT jboolean JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
                                              jstring daemon_address,
-                                             jlong upper_transaction_size_limit) {
-//          const std::string &daemon_username = "", const std::string &daemon_password = "") = 0;
+                                             jlong upper_transaction_size_limit,
+                                             jstring daemon_username, jstring daemon_password) {
     const char *_daemon_address = env->GetStringUTFChars(daemon_address, JNI_FALSE);
+    const char *_daemon_username = env->GetStringUTFChars(daemon_username, JNI_FALSE);
+    const char *_daemon_password = env->GetStringUTFChars(daemon_password, JNI_FALSE);
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    bool status = wallet->init(_daemon_address, upper_transaction_size_limit);
+    bool status = wallet->init(_daemon_address, upper_transaction_size_limit, _daemon_username, _daemon_password);
     env->ReleaseStringUTFChars(daemon_address, _daemon_address);
+    env->ReleaseStringUTFChars(daemon_username, _daemon_username);
+    env->ReleaseStringUTFChars(daemon_password, _daemon_password);
     return status;
 }
 
