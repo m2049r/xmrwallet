@@ -42,8 +42,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener, GenerateReviewFragment.ListenerWithWallet {
     private static final String TAG = "WalletActivity";
 
-    static final int MIN_DAEMON_VERSION = 65544;
-
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
 
@@ -340,6 +338,20 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 }
             }
         });
+    }
+
+    @Override
+    public void onWalletStarted(final boolean success) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (!success) {
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        if (!success) {
+            finish();
+        }
     }
 
     @Override

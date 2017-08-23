@@ -322,48 +322,58 @@ public class LoginFragment extends Fragment {
         editor.apply();
     }
 
-    private boolean checkAndSetWalletDaemon(String daemonAddress, boolean testnet) {
-        if (!daemonAddress.isEmpty()) {
-            String d[] = daemonAddress.split(":");
-            if (d.length > 2) return false;
-            if (d.length < 1) return false;
-            String host = d[0];
+    private boolean checkAndSetWalletDaemon(String daemon, boolean testnet) {
+        String daemonAddress = "";
+        String username = "";
+        String password = "";
+        if (!daemon.isEmpty()) { // no actual daemon is also fine
+            String a[] = daemon.split("@");
+            if (a.length == 1) { // no credentials
+                daemonAddress = a[0];
+            } else if (a.length == 2) { // credentials
+                String up[] = a[0].split(":");
+                if (up.length != 2) return false;
+                username = up[0];
+                if (!username.isEmpty()) password = up[1];
+                daemonAddress = a[1];
+            } else {
+                return false;
+            }
+
+            String da[] = daemonAddress.split(":");
+            if ((da.length > 2) || (da.length < 1)) return false;
+            String host = da[0];
             int port;
-            if (d.length == 2) {
+            if (da.length == 2) {
                 try {
-                    port = Integer.parseInt(d[1]);
+                    port = Integer.parseInt(da[1]);
                 } catch (NumberFormatException ex) {
                     return false;
                 }
             } else {
                 port = (testnet ? 28081 : 18081);
             }
+            //Log.d(TAG, "DAEMON " + username + "/" + password + "/" + host + "/" + port);
 //        if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy prevPolicy = StrictMode.getThreadPolicy();
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder(prevPolicy).permitNetwork().build();
             StrictMode.setThreadPolicy(policy);
             Socket socket = new Socket();
-            long a = new Date().getTime();
+            long timeA = new Date().getTime();
             try {
                 socket.connect(new InetSocketAddress(host, port), LoginActivity.DAEMON_TIMEOUT);
                 socket.close();
             } catch (IOException ex) {
-                Log.d(TAG, "Cannot reach daemon " + host + ":" + port + " because " + ex.getLocalizedMessage());
+                Log.d(TAG, "Cannot reach daemon " + host + "/" + port + " because " + ex.getLocalizedMessage());
                 return false;
             } finally {
                 StrictMode.setThreadPolicy(prevPolicy);
             }
-            long b = new Date().getTime();
-            Log.d(TAG, "Daemon is " + (b - a) + "ms away.");
+            long timeB = new Date().getTime();
+            Log.d(TAG, "Daemon is " + (timeB - timeA) + "ms away.");
         }
         WalletManager mgr = WalletManager.getInstance();
-        mgr.setDaemon(daemonAddress, testnet);
-        if (!daemonAddress.isEmpty()) {
-            int version = mgr.getDaemonVersion();
-            Log.d(TAG, "Daemon is v" + version);
-            return (version >= WalletActivity.MIN_DAEMON_VERSION);
-        } else {
-            return true;
-        }
+        mgr.setDaemon(daemonAddress, testnet, username, password);
+        return true;
     }
 }
