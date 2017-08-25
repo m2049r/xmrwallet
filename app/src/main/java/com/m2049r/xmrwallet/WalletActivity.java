@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.TxData;
 
@@ -156,6 +157,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 String walletId = extras.getString(REQUEST_ID);
                 if (walletId != null) {
                     setTitle(walletId);
+                    setSubtitle("");
                 }
             }
             updateProgress();
@@ -170,6 +172,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             // see this happen.
             mBoundService = null;
             setTitle(getString(R.string.wallet_activity_name));
+            setSubtitle("");
             Log.d(TAG, "DISCONNECTED");
         }
     };
@@ -266,6 +269,11 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     @Override
     public void setTitle(String title) {
         tbWallet.setTitle(title);
+    }
+
+    @Override
+    public void setSubtitle(String subtitle) {
+        tbWallet.setSubtitle(subtitle);
     }
 
     @Override

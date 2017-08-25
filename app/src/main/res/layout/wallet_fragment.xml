@@ -5,111 +5,121 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
-
-        <TextView
-            android:id="@+id/tvBalanceLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:text="@string/label_balance"
-            android:textSize="10sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tvBalance"
-            app:layout_constraintRight_toLeftOf="@+id/tvBalance" />
-
-        <TextView
-            android:id="@+id/tvBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="00000000.000000000000"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvUnlockedBalanceLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:text="@string/label_unlockedBalance"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tvUnlockedBalance"
-            app:layout_constraintRight_toLeftOf="@+id/tvUnlockedBalance" />
-
-        <TextView
-            android:id="@+id/tvUnlockedBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="00000000.000000000000"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintRight_toRightOf="@+id/tvBalance"
-            app:layout_constraintTop_toBottomOf="@+id/tvBalance" />
-
-        <TextView
-            android:id="@+id/tvConnectionStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Loading..."
-            android:textSize="10sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tvBalance" />
+        android:layout_marginBottom="4sp"
+        android:layout_marginLeft="4sp"
+        android:layout_marginRight="4sp">
 
         <TextView
             android:id="@+id/tvBlockHeightProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="Loading..."
-            android:textSize="10sp"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/clProgress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tvUnlockedBalance"/>
+            app:layout_constraintRight_toRightOf="parent">
 
-    </android.support.constraint.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/pbProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:progress="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/llProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tvProgress"
+        <LinearLayout
+            android:id="@+id/llBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading..."
-            android:textSize="16sp" />
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBlockHeightProgress">
 
-        <ProgressBar
-            android:id="@+id/pbProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00000000.000000000000"
+                android:textColor="@color/moneroOrange"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4sp"
+                android:text="@string/label_xmr"
+                android:textColor="@color/moneroOrange"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llUnconfirmedAmount"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:progress="0" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llBalance">
 
-    <android.support.constraint.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4sp"
+                android:text="+"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvUnconfirmedAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00000000.000000000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4sp"
+                android:text="@string/label_unconfirmed_alance"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/list"
             android:layout_width="0dp"
@@ -125,7 +135,6 @@
             android:id="@+id/bSend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:background="@color/colorPrimary"
             android:enabled="true"
             android:text="@string/wallet_send_hint"
@@ -133,5 +142,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
+
 </LinearLayout>

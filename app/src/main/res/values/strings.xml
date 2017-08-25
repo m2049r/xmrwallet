@@ -35,7 +35,9 @@
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
-    <string name="label_balance">Balance</string>
+    <string name="label_balance">Unconfirmed</string>
+    <string name="label_unconfirmed_alance">unconfirmed</string>
+    <string name="label_xmr">XMR</string>
     <string name="label_unlockedBalance">Available</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Daemon connected!</string>

@@ -7,6 +7,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
 
@@ -58,20 +72,6 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/pbProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/tvWalletMnemonicLabel"
         android:layout_width="match_parent"
@@ -103,10 +103,10 @@
         android:id="@+id/tvWalletAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
-        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <TextView
@@ -123,10 +123,10 @@
         android:id="@+id/tvWalletViewKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
-        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <TextView
@@ -143,10 +143,10 @@
         android:id="@+id/tvWalletSpendKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
-        android:selectAllOnFocus="true"
         android:textSize="16sp" />
 
     <Button

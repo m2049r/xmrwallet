@@ -22,6 +22,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -49,10 +51,10 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     private NumberFormat formatter = NumberFormat.getInstance();
 
     TextView tvBalance;
-    TextView tvUnlockedBalance;
+    LinearLayout llUnconfirmedAmount;
+    TextView tvUnconfirmedAmount;
     TextView tvBlockHeightProgress;
-    TextView tvConnectionStatus;
-    LinearLayout llProgress;
+    ConstraintLayout clProgress;
     TextView tvProgress;
     ProgressBar pbProgress;
     Button bSend;
@@ -64,11 +66,13 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
 
         tvProgress = (TextView) view.findViewById(R.id.tvProgress);
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
-        llProgress = (LinearLayout) view.findViewById(R.id.llProgress);
+        clProgress = (ConstraintLayout) view.findViewById(R.id.clProgress);
+        llUnconfirmedAmount = (LinearLayout) view.findViewById(R.id.llUnconfirmedAmount);
         tvBalance = (TextView) view.findViewById(R.id.tvBalance);
-        tvUnlockedBalance = (TextView) view.findViewById(R.id.tvUnlockedBalance);
+        tvBalance.setText(getDisplayAmount(0));
+        tvUnconfirmedAmount = (TextView) view.findViewById(R.id.tvUnconfirmedAmount);
+        tvUnconfirmedAmount.setText(getDisplayAmount(0));
         tvBlockHeightProgress = (TextView) view.findViewById(R.id.tvBlockHeightProgress);
-        tvConnectionStatus = (TextView) view.findViewById(R.id.tvConnectionStatus);
 
         bSend = (Button) view.findViewById(R.id.bSend);
 
@@ -145,11 +149,11 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     }
 
     public void showProgress() {
-        llProgress.setVisibility(View.VISIBLE);
+        clProgress.setVisibility(View.VISIBLE);
     }
 
     public void hideProgress() {
-        llProgress.setVisibility(View.GONE);
+        clProgress.setVisibility(View.GONE);
     }
 
     String setActivityTitle(Wallet wallet) {
@@ -158,10 +162,12 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         if (shortName.length() > 16) {
             shortName = shortName.substring(0, 14) + "...";
         }
-        String title = "[" + wallet.getAddress().substring(0, 6) + "] "
-                + shortName
-                + (wallet.isWatchOnly() ? " " + getString(R.string.watchonly_label) : "");
+        String title = "[" + wallet.getAddress().substring(0, 6) + "] " + shortName;
         activityCallback.setTitle(title);
+
+        String watchOnly = (wallet.isWatchOnly() ? " " + getString(R.string.watchonly_label) : "");
+        String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
+        activityCallback.setSubtitle(net + " " + watchOnly);
         Log.d(TAG, "wallet title is " + title);
         return title;
     }
@@ -169,14 +175,39 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     private long firstBlock = 0;
     private String walletTitle = null;
 
+    private String getDisplayAmount(long amount) {
+        String s = Wallet.getDisplayAmount(amount);
+        int lastZero = 0;
+        int decimal = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if ((lastZero == 0) && (s.charAt(i) != '0')) lastZero = i + 1;
+            // TODO i18n
+            if (s.charAt(i) == '.') {
+                decimal = i;
+                break;
+            }
+        }
+        //Log.d(TAG, decimal + "/" + lastZero + "/" + s);
+        int cutoff = Math.max(lastZero, decimal + 2);
+        return s.substring(0, cutoff);
+    }
+
     private void updateStatus(Wallet wallet) {
         Log.d(TAG, "updateStatus()");
         if (walletTitle == null) {
             walletTitle = setActivityTitle(wallet);
             onProgress(100); // of loading
         }
-        tvBalance.setText(Wallet.getDisplayAmount(wallet.getBalance()));
-        tvUnlockedBalance.setText(Wallet.getDisplayAmount(wallet.getUnlockedBalance()));
+        long balance = wallet.getBalance();
+        long unlockedBalance = wallet.getUnlockedBalance();
+        tvBalance.setText(getDisplayAmount(unlockedBalance));
+        tvUnconfirmedAmount.setText(getDisplayAmount(balance - unlockedBalance));
+        // balance cannot be less than unlockedBalance
+        /*if (balance != unlockedBalance) {
+            llPendingAmount.setVisibility(View.VISIBLE);
+        } else {
+            llPendingAmount.setVisibility(View.INVISIBLE);
+        }*/
         String sync = "";
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");
@@ -197,9 +228,10 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
                 sync = getString(R.string.status_synced) + ": " + formatter.format(wallet.getBlockChainHeight());
             }
         }
-        String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
         tvBlockHeightProgress.setText(sync);
-        tvConnectionStatus.setText(net + " " + daemonConnected.toString().substring(17));
+        //String net = (wallet.isTestNet() ? getString(R.string.connect_testnet) : getString(R.string.connect_mainnet));
+        //activityCallback.setSubtitle(net + " " + daemonConnected.toString().substring(17));
+        // TODO show connected status somewhere
     }
 
     Listener activityCallback;
@@ -215,6 +247,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         long getDaemonHeight(); //mBoundService.getDaemonHeight();
 
         void setTitle(String title);
+
+        void setSubtitle(String subtitle);
 
         void onSendRequest();
 
