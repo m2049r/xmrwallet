@@ -27,6 +27,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -55,6 +56,8 @@ public class LoginActivity extends AppCompatActivity
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +66,7 @@ public class LoginActivity extends AppCompatActivity
             return;
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tbLogin);
-        toolbar.setTitle(R.string.login_activity_name);
+        toolbar = (Toolbar) findViewById(R.id.tbLogin);
         setSupportActionBar(toolbar);
 
         if (Helper.getWritePermission(this)) {
@@ -77,21 +79,17 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletSelected(final String walletName) {
         Log.d(TAG, "selected wallet is ." + walletName + ".");
-        if (walletName.equals(':' + getString(R.string.generate_title))) {
-            startGenerateFragment();
-        } else {
-            // now it's getting real, check if wallet exists
-            String walletPath = Helper.getWalletPath(this, walletName);
-            if (WalletManager.getInstance().walletExists(walletPath)) {
-                promptPassword(walletName, new PasswordAction() {
-                    @Override
-                    public void action(String walletName, String password) {
-                        startWallet(walletName, password);
-                    }
-                });
-            } else { // this cannot really happen as we prefilter choices
-                Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
-            }
+        // now it's getting real, check if wallet exists
+        String walletPath = Helper.getWalletPath(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletPath)) {
+            promptPassword(walletName, new PasswordAction() {
+                @Override
+                public void action(String walletName, String password) {
+                    startWallet(walletName, password);
+                }
+            });
+        } else { // this cannot really happen as we prefilter choices
+            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -109,6 +107,11 @@ public class LoginActivity extends AppCompatActivity
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onAddWallet() {
+        startGenerateFragment();
     }
 
     AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
@@ -203,9 +206,13 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void setTitle(String title) {
-        super.setTitle(title);
+        toolbar.setTitle(title);
     }
 
+    @Override
+    public void setSubtitle(String subtitle) {
+        toolbar.setSubtitle(subtitle);
+    }
     ////////////////////////////////////////
     ////////////////////////////////////////
 

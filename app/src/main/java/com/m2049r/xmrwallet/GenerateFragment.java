@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -344,6 +345,13 @@ public class GenerateFragment extends Fragment {
         bGenerate.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onPause()");
+        activityCallback.setTitle(getString(R.string.generate_title));
+    }
+
     GenerateFragment.Listener activityCallback;
 
     public interface Listener {
@@ -354,6 +362,9 @@ public class GenerateFragment extends Fragment {
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
 
         File getStorageRoot();
+
+        void setTitle(String title);
+
     }
 
     @Override

@@ -57,7 +57,7 @@
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
 
-    <string name="generate_title">Generate Wallet</string>
+    <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Password</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
