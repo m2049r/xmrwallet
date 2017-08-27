@@ -17,7 +17,7 @@
             android:textOff="@string/connect_testnet"
             android:textOn="@string/connect_mainnet"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ToggleButton>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/etDaemonAddress"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16sp"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@drawable/ic_add_black_24dp"
             app:elevation="6dp"
             app:fabSize="auto"
             app:pressedTranslationZ="12dp" />
