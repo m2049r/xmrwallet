@@ -17,35 +17,49 @@
             android:textOff="@string/connect_testnet"
             android:textOn="@string/connect_mainnet"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </ToggleButton>
+            app:layout_constraintTop_toTopOf="parent"></ToggleButton>
 
         <EditText
             android:id="@+id/etDaemonAddress"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:gravity="center"
-            android:hint="@string/prompt_daemon"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:clickable="true"
+            android:gravity="center"
+            android:hint="@string/prompt_daemon"
+            android:imeOptions="actionDone"
             android:inputType="text"
+            android:maxLines="1"
             android:textIsSelectable="true"
             android:textSize="15sp"
-            android:maxLines="1"
-            android:imeOptions="actionDone"
             app:layout_constraintBaseline_toBaselineOf="@+id/tbMainNet"
-            app:layout_constraintRight_toLeftOf="@+id/tbMainNet"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tbMainNet" />
 
     </android.support.constraint.ConstraintLayout>
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_height="wrap_content"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="4dp">
-    </ListView>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"/>
+
+        <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16sp"
+            android:src="@android:drawable/ic_input_add"
+            app:elevation="6dp"
+            app:fabSize="auto"
+            app:pressedTranslationZ="12dp" />
+    </FrameLayout>
 
 </LinearLayout>

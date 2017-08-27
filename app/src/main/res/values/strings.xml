@@ -3,7 +3,7 @@
     <string name="login_activity_name">Select Wallet</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="prompt_daemon">Daemon Address</string>
+    <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemonhost&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
@@ -57,7 +57,7 @@
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
 
-    <string name="generate_title">Generate Wallet</string>
+    <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Password</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>

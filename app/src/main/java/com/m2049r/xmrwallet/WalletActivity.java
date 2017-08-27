@@ -35,7 +35,6 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.TxData;
 
@@ -46,7 +45,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
 
-    Toolbar tbWallet;
+    Toolbar toolbar;
 
     private boolean synced = false;
 
@@ -115,10 +114,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             return;
         }
 
-        tbWallet = (Toolbar) findViewById(R.id.tbWallet);
-        tbWallet.setTitle(R.string.app_name);
-        setSupportActionBar(tbWallet);
-        tbWallet.setOnClickListener(new View.OnClickListener() {
+        toolbar = (Toolbar) findViewById(R.id.tbWallet);
+        toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(toolbar);
+        toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onWalletDetails();
@@ -268,12 +267,12 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public void setTitle(String title) {
-        tbWallet.setTitle(title);
+        toolbar.setTitle(title);
     }
 
     @Override
     public void setSubtitle(String subtitle) {
-        tbWallet.setSubtitle(subtitle);
+        toolbar.setSubtitle(subtitle);
     }
 
     @Override

@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -68,6 +69,7 @@ public class LoginFragment extends Fragment {
 
     ToggleButton tbMainNet;
     EditText etDaemonAddress;
+    FloatingActionButton fabAdd;
 
     Listener activityCallback;
 
@@ -81,7 +83,12 @@ public class LoginFragment extends Fragment {
 
         void onWalletDetails(final String wallet);
 
+        void onAddWallet();
+
         void setTitle(String title);
+
+        void setSubtitle(String subtitle);
+
     }
 
     @Override
@@ -103,6 +110,13 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onPause()");
+        activityCallback.setTitle(getString(R.string.login_activity_name));
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -110,6 +124,16 @@ public class LoginFragment extends Fragment {
 
         tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
         etDaemonAddress = (EditText) view.findViewById(R.id.etDaemonAddress);
+
+
+        fabAdd = (FloatingActionButton) view.findViewById(R.id.fabAdd);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAndSetWalletDaemon("", !isMainNet());
+                activityCallback.onAddWallet();
+            }
+        });
 
         Helper.hideKeyboard(getActivity());
 
@@ -139,14 +163,14 @@ public class LoginFragment extends Fragment {
                 } else {
                     setDaemon(daemonTestNet);
                 }
-                activityCallback.setTitle(getString(R.string.app_name) + " " +
-                        getString(mainnet ? R.string.connect_mainnet : R.string.connect_testnet));
+                activityCallback.setSubtitle(getString(mainnet ? R.string.connect_mainnet : R.string.connect_testnet));
                 filterList();
                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
             }
         });
 
         loadPrefs();
+        activityCallback.setSubtitle(getString(isMainNet()? R.string.connect_mainnet : R.string.connect_testnet));
 
         listView = (ListView) view.findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
@@ -187,7 +211,6 @@ public class LoginFragment extends Fragment {
                 savePrefs();
 
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
-                if (itemValue.charAt(1) == '-') wallet = ':' + wallet;
                 activityCallback.onWalletSelected(wallet);
             }
         });
@@ -204,30 +227,18 @@ public class LoginFragment extends Fragment {
                 }
 
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
-                if (itemValue.charAt(1) == '-') {
-                    Toast.makeText(getActivity(), getString(R.string.bad_wallet), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-
                 String x = isMainNet() ? "4" : "9A";
                 if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return true;
                 }
 
-                if (!checkAndSetWalletDaemon("", !isMainNet())) {
-                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
-                    return true;
-                }
+                checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
                 activityCallback.onWalletDetails(wallet);
                 return true;
             }
         });
-
-        activityCallback.setTitle(getString(R.string.app_name) + " " +
-                getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
-
         loadList();
         return view;
     }
@@ -239,7 +250,6 @@ public class LoginFragment extends Fragment {
             // Log.d(TAG, "filtering " + s);
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
-        displayedList.add(WALLETNAME_PREAMBLE + getString(R.string.generate_title));
     }
 
     private void loadList() {
@@ -260,7 +270,6 @@ public class LoginFragment extends Fragment {
         ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
 
     }
-
 
     boolean isMainNet() {
         return tbMainNet.isChecked();
