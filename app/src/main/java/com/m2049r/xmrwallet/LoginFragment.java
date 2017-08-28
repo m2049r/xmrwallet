@@ -23,8 +23,11 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -88,6 +91,8 @@ public class LoginFragment extends Fragment {
         void setTitle(String title);
 
         void setSubtitle(String subtitle);
+
+        void setTestNet(boolean testnet);
 
     }
 
@@ -157,6 +162,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean mainnet = ((ToggleButton) v).isChecked();  // current state
+                activityCallback.setTestNet(!mainnet);
                 savePrefs(true); // use previous state as we just clicked it
                 if (mainnet) {
                     setDaemon(daemonMainNet);
@@ -177,6 +183,7 @@ public class LoginFragment extends Fragment {
                 android.R.layout.simple_list_item_1, android.R.id.text1, this.displayedList);
 
         listView.setAdapter(adapter);
+        registerForContextMenu(listView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -215,7 +222,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+/*        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 // Difference to opening wallet is that we don't need a daemon set
@@ -239,6 +246,7 @@ public class LoginFragment extends Fragment {
                 return true;
             }
         });
+*/
         loadList();
         return view;
     }
@@ -277,6 +285,8 @@ public class LoginFragment extends Fragment {
 
     void setMainNet(boolean mainnet) {
         tbMainNet.setChecked(mainnet);
+        activityCallback.setTestNet(!mainnet);
+
     }
 
     String getDaemon() {
@@ -384,6 +394,46 @@ public class LoginFragment extends Fragment {
         }
         WalletManager mgr = WalletManager.getInstance();
         mgr.setDaemon(daemonAddress, testnet, username, password);
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.list_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                String listItem = (String) listView.getItemAtPosition(info.position);
+                return showInfo(listItem);
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private boolean showInfo(String listItem) {
+
+        if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
+            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
+        String x = isMainNet() ? "4" : "9A";
+        if (x.indexOf(listItem.charAt(1)) < 0) {
+            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
+
+        activityCallback.onWalletDetails(wallet);
         return true;
     }
 }
