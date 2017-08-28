@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.TxData;
 
@@ -140,6 +141,12 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
+        boolean testnet = WalletManager.getInstance().isTestNet();
+        if (testnet) {
+            toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+        } else {
+            toolbar.setBackgroundResource(R.color.moneroOrange);
+        }
 
         Fragment walletFragment = new WalletFragment();
         getFragmentManager().beginTransaction()

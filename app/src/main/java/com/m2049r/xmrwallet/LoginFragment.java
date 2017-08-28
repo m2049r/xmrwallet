@@ -92,6 +92,8 @@ public class LoginFragment extends Fragment {
 
         void setSubtitle(String subtitle);
 
+        void setTestNet(boolean testnet);
+
     }
 
     @Override
@@ -160,6 +162,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean mainnet = ((ToggleButton) v).isChecked();  // current state
+                activityCallback.setTestNet(!mainnet);
                 savePrefs(true); // use previous state as we just clicked it
                 if (mainnet) {
                     setDaemon(daemonMainNet);
@@ -282,6 +285,8 @@ public class LoginFragment extends Fragment {
 
     void setMainNet(boolean mainnet) {
         tbMainNet.setChecked(mainnet);
+        activityCallback.setTestNet(!mainnet);
+
     }
 
     String getDaemon() {

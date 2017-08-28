@@ -27,7 +27,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -212,6 +211,15 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void setSubtitle(String subtitle) {
         toolbar.setSubtitle(subtitle);
+    }
+
+    @Override
+    public void setTestNet(boolean testnet) {
+        if (testnet) {
+            toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+        } else {
+            toolbar.setBackgroundResource(R.color.moneroOrange);
+        }
     }
     ////////////////////////////////////////
     ////////////////////////////////////////
