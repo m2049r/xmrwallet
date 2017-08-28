@@ -29,7 +29,9 @@ import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
@@ -106,6 +108,27 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!haveWallet) return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.wallet_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                onWalletDetails();
+                break;
+            default:
+                break;
+        }
+
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
@@ -114,15 +137,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             return;
         }
 
-        toolbar = (Toolbar) findViewById(R.id.tbWallet);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
-        toolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onWalletDetails();
-            }
-        });
 
         Fragment walletFragment = new WalletFragment();
         getFragmentManager().beginTransaction()
@@ -347,6 +364,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         });
     }
 
+    boolean haveWallet = false;
+
     @Override
     public void onWalletStarted(final boolean success) {
         runOnUiThread(new Runnable() {
@@ -358,6 +377,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         });
         if (!success) {
             finish();
+        } else {
+            haveWallet = true;
+            invalidateOptionsMenu();
         }
     }
 
@@ -555,7 +577,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     private void onWalletDetails() {
         Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_container);
-        if (fragment instanceof WalletFragment) {
+        if (!(fragment instanceof GenerateReviewFragment)) {
             Bundle extras = new Bundle();
             extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
             replaceFragment(new GenerateReviewFragment(), null, extras);

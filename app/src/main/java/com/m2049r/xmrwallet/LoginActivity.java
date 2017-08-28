@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity
             return;
         }
 
-        toolbar = (Toolbar) findViewById(R.id.tbLogin);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         if (Helper.getWritePermission(this)) {
