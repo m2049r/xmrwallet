@@ -6,7 +6,7 @@
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info_black_24dp"
         android:orderInCategory="100"
-        android:title="Info"
+        android:title="@string/menu_info"
         app:showAsAction="always" />
 
 </menu>

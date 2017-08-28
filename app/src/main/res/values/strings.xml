@@ -3,7 +3,7 @@
     <string name="login_activity_name">Select Wallet</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="menu_info">Info</string>
+    <string name="menu_info">Details</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemonhost&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
