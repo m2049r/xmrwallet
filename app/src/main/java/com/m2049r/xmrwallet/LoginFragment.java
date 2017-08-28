@@ -170,7 +170,7 @@ public class LoginFragment extends Fragment {
         });
 
         loadPrefs();
-        activityCallback.setSubtitle(getString(isMainNet()? R.string.connect_mainnet : R.string.connect_testnet));
+        activityCallback.setSubtitle(getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
 
         listView = (ListView) view.findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
@@ -361,6 +361,7 @@ public class LoginFragment extends Fragment {
                 }
             } else {
                 port = (testnet ? 28081 : 18081);
+                daemonAddress = daemonAddress + ":" + port;
             }
             //Log.d(TAG, "DAEMON " + username + "/" + password + "/" + host + "/" + port);
 //        if (android.os.Build.VERSION.SDK_INT > 9) {
