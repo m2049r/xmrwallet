@@ -8,12 +8,11 @@ Another Android Monero Wallet
 - see the [FAQ](doc/FAQ.md)
 
 ### Disclaimer
-You may loose all your Moneroj if you use this App.
+You may loose all your Moneroj if you use this App. Be cautious when spending on mainnet.
 
 ### Random Notes
 - Based off monero v0.10.3.1 with pull requests #2238, #2239 and #2289 applied => so can be used in mainnet!
-- currently only android32
-- ~~currently only use is checking incoming/outgoing transactions~~
+- currently only android32 (runs on 64-bit as well)
 - works in testnet & mainnet
 - takes forever to sync due to 32-bit architecture
 - use your own daemon - it's easy
@@ -23,15 +22,12 @@ You may loose all your Moneroj if you use this App.
 
 ### TODO
 - wallet backup functions
-- adjust layout so we can use bigger font sizes (maybe show only 5 decimal places instead of 12 in main view)
 - review visibility of methods/classes
-- more sensible error dialogs ~~(e.g. when no write permissions granted) instead of just crashing on purpose~~
+- more sensible error dialogs
 - check licenses of included libraries; License Dialog
-- ~~make it pretty~~ (decided to go with "form follows function")
-- ~~spend monero - not so difficult with wallet api~~
 
 ### Issues
-- Pending incoming transactions disappear after reload
+- Pending incoming transactions disappear after reload (and appear after being mined)
 
 ### HOW TO BUILD
 No need to build. Binaries are included:
@@ -45,4 +41,5 @@ If you want to build them yourself (recommended) check out [the instructions](do
 Then, fire up Android Studio and build the APK.
 
 ### Donations
-4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk
+- Address: 4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk
+- Viewkey: b1aff2a12191723da0afbe75516f94dd8b068215f6e847d8da57aca5f1f98e0c

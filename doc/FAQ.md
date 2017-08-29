@@ -4,44 +4,30 @@
 
 - Testnet and Mainnet
 - Generate new wallets
-- Recover wallets form nmemonic seed or from keys
+- Recover wallets form mnemonic seed or from keys
 - Create Watch Only wallets from address + viewkey
 - Multiple wallets
 - View wallet details (address, keys, etc.)
-- View transactions inlcuding details and copy to clipboard
-- Spend Moneroj (only on testnet - someone will loose money and want to blame me. No thanks!)
+- View transactions including details and copy to clipboard
+- Spend Moneroj (handle with care on mainnet!)
 - Manually import existing wallet (by copying them to the Monerujo folder)
 - Background updating (make sure you exit the wallet to stop updating to save some battery)
+- Access to daemon with username/password and nonstandard port
+- Only 5 decimal places shown in transactions (full amount in details - click on transaction)
+- All significant figures shown balance
 
-## I sent a transaction but it's not in my transactions list!
+## I cannot select and copy the mnemonic seed
+Copying anything to the clipboard on Android exposes it to any other App running. So this
+is a security measure to keep your seed safe(r). 
+
+## I sent a transaction but it's not in my received transactions list!
 Don't worry. Received transactions which are not mined yet disappear after the wallet is saved -
 I blame this on the monero code. Wait for the block to be mined.
 
 ## Do you have any screenshots of what it looks like and how it works?
-Here are some old screenshots with a bit of description.
-I will be removing them soon. Just check out the App.
+No, but it looks fantastic. Just check it out.
 
-#### [Select Wallet](images/A-wallet_selection.png)
-
-Here you see a list of installed wallets and an entry field at the top to enter the daemon address. To the right there is a pushbutton to change between testnet and mainnet. The entered daemon is saved and displayed according to the state of this button.
-
-#### [Wallet Password](images/B-enter_password.png)
-
-After selecting the wallet, the password is entered.
-
-#### [Wallet Syncing](images/C-wallet_syncing.png)
-
-After some seconds the wallet is displyed with it's last known state and synced to the network. If it says "disconnected" or takes forever to show this screen then the entered daemon is wrong or unreachable. (Yes, I need to check the daemon availability on the login screen ...) Go back, and check that.
-
-During syncing, the number of remaining blocks is displayed - when this reaches 0 the blockchain is fully synced.
-
-The balance is updated during sync.
-
-### [Wallet Synced](images/D-wallet_synced.png)
-
-When the blockchain is synced, the screen shows "Synced" and the current blockchain height. When new blocks become available they are also synced and new transactions are displayed.
-
-## What files do I need to copy?
+## Can I use existing wallet files?
 
 If you want to use existing wallet files, you need to copy the wallet files from you current Monero client. These are:
 ```
