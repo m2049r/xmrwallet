@@ -40,8 +40,7 @@ import java.util.TimeZone;
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
     private static final String TAG = "TransactionInfoAdapter";
 
-    private final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
-    private final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss");
+    private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     static final int TX_RED = Color.rgb(255, 79, 65);
     static final int TX_GREEN = Color.rgb(54, 176, 91);
@@ -60,8 +59,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         this.listener = listener;
         Calendar cal = Calendar.getInstance();
         TimeZone tz = cal.getTimeZone(); //get the local time zone.
-        DATE_FORMATTER.setTimeZone(tz);
-        TIME_FORMATTER.setTimeZone(tz);
+        DATETIME_FORMATTER.setTimeZone(tz);
     }
 
     @Override
@@ -93,9 +91,9 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 public int compare(TransactionInfo o1, TransactionInfo o2) {
                     long b1 = o1.timestamp;
                     long b2 = o2.timestamp;
-                    if (b1>b2) {
+                    if (b1 > b2) {
                         return -1;
-                    } else if (b1<b2) {
+                    } else if (b1 < b2) {
                         return 1;
                     } else {
                         return o1.hash.compareTo(o2.hash);
@@ -113,8 +111,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         final TextView tvAmount;
         final TextView tvAmountPoint;
         final TextView tvAmountDecimal;
-        final TextView tvDate;
-        final TextView tvTime;
+        final TextView tvPaymentId;
+        final TextView tvDateTime;
         TransactionInfo infoItem;
 
         ViewHolder(View itemView) {
@@ -123,16 +121,12 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             // I know this is stupid but can't be bothered to align decimals otherwise
             this.tvAmountPoint = (TextView) itemView.findViewById(R.id.tx_amount_point);
             this.tvAmountDecimal = (TextView) itemView.findViewById(R.id.tx_amount_decimal);
-            this.tvDate = (TextView) itemView.findViewById(R.id.tx_date);
-            this.tvTime = (TextView) itemView.findViewById(R.id.tx_time);
+            this.tvPaymentId = (TextView) itemView.findViewById(R.id.tx_paymentid);
+            this.tvDateTime = (TextView) itemView.findViewById(R.id.tx_datetime);
         }
 
-        private String getDate(long time) {
-            return DATE_FORMATTER.format(new Date(time * 1000));
-        }
-
-        private String getTime(long time) {
-            return TIME_FORMATTER.format(new Date(time * 1000));
+        private String getDateTime(long time) {
+            return DATETIME_FORMATTER.format(new Date(time * 1000));
         }
 
         private void setTxColour(int clr) {
@@ -146,6 +140,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             String displayAmount = Wallet.getDisplayAmount(infoItem.amount);
             // TODO fix this with i8n code but cryptonote::print_money always uses '.' for decimal point
             String amountParts[] = displayAmount.split("\\.");
+            amountParts[1] = amountParts[1].substring(0,5);
 
             this.tvAmount.setText(amountParts[0]);
             this.tvAmountDecimal.setText(amountParts[1]);
@@ -163,8 +158,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             } else {
                 setTxColour(TX_RED);
             }
-            this.tvDate.setText(getDate(infoItem.timestamp));
-            this.tvTime.setText(getTime(infoItem.timestamp));
+            this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000")?"":infoItem.paymentId);
+            this.tvDateTime.setText(getDateTime(infoItem.timestamp));
 
             itemView.setOnClickListener(this);
         }

@@ -50,7 +50,7 @@ public class TxFragment extends Fragment {
 
     static public final String ARG_INFO = "info";
 
-    private final SimpleDateFormat TS_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final SimpleDateFormat TS_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
 
     public TxFragment() {
         super();
@@ -146,10 +146,10 @@ public class TxFragment extends Fragment {
         sb.append(getString(R.string.tx_timestamp)).append(": ");
         sb.append(TS_FORMATTER.format(new Date(info.timestamp * 1000))).append("\n");
         sb.append(getString(R.string.tx_blockheight)).append(": ");
-        if (info.isPending) {
-            sb.append(getString(R.string.tx_pending)).append("\n");
-        } else if (info.isFailed) {
+        if (info.isFailed) {
             sb.append(getString(R.string.tx_failed)).append("\n");
+        } else if (info.isPending) {
+            sb.append(getString(R.string.tx_pending)).append("\n");
         } else {
             sb.append(info.blockheight).append("\n");
         }
@@ -196,10 +196,10 @@ public class TxFragment extends Fragment {
         tvTxId.setText(info.hash);
         tvTxKey.setText(info.txKey.isEmpty() ? "-" : info.txKey);
         tvTxPaymentId.setText(info.paymentId);
-        if (info.isPending) {
-            tvTxBlockheight.setText(getString(R.string.tx_pending));
-        } else if (info.isFailed) {
+        if (info.isFailed) {
             tvTxBlockheight.setText(getString(R.string.tx_failed));
+        } else if (info.isPending) {
+            tvTxBlockheight.setText(getString(R.string.tx_pending));
         } else {
             tvTxBlockheight.setText("" + info.blockheight);
         }

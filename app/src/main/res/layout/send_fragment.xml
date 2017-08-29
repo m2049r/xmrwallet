@@ -1,238 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/sMixin"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:entries="@array/mixin"
-            android:textAlignment="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <Spinner
-            android:id="@+id/sPriority"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:entries="@array/priority"
-            android:textAlignment="center" />
+            <Spinner
+                android:id="@+id/sMixin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/mixin"
+                android:textAlignment="center" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/sPriority"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:entries="@array/priority"
+                android:textAlignment="center" />
 
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/send_address_hint"
-        android:imeOptions="actionNext"
-        android:inputType="textMultiLine"
-        android:textAlignment="center"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        </LinearLayout>
 
         <EditText
-            android:id="@+id/etPaymentId"
-            android:layout_width="0dp"
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:hint="@string/send_paymentid_hint"
+            android:hint="@string/send_address_hint"
             android:imeOptions="actionNext"
             android:inputType="textMultiLine"
             android:textAlignment="center"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/bPaymentId"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="2"
-            android:background="@color/colorPrimary"
-            android:enabled="true"
-            android:text="@string/send_generate_paymentid_hint"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <EditText
-            android:id="@+id/etAmount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:hint="@string/send_amount_hint"
-            android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/bSweep"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="2"
-            android:background="@color/colorPrimary"
-            android:enabled="true"
-            android:text="@string/send_sweep_hint"
-            android:visibility="invisible" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/bPrepareSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        android:enabled="false"
-        android:text="@string/send_prepare_hint" />
-
-    <ProgressBar
-        android:id="@+id/pbProgress"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:id="@+id/llConfirmSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/bDispose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/send_dispose_hint" />
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="10">
 
-            <TextView
-                android:id="@+id/tvTxAmountLabel"
+            <EditText
+                android:id="@+id/etPaymentId"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:text="@string/send_amount_label"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
+                android:layout_weight="8"
+                android:hint="@string/send_paymentid_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tvTxAmount"
+            <Button
+                android:id="@+id/bPaymentId"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_weight="2"
-                android:textAlignment="textEnd"
-                android:textSize="20sp" />
+                android:background="@color/colorPrimary"
+                android:enabled="true"
+                android:text="@string/send_generate_paymentid_hint"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="10">
 
-            <TextView
-                android:id="@+id/tvTxFeeLabel"
+            <EditText
+                android:id="@+id/etAmount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:text="@string/send_fee_label"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
+                android:layout_weight="8"
+                android:hint="@string/send_amount_hint"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tvTxFee"
+            <Button
+                android:id="@+id/bSweep"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_weight="2"
-                android:textAlignment="textEnd"
-                android:textSize="20sp" />
+                android:background="@color/colorPrimary"
+                android:enabled="true"
+                android:text="@string/send_sweep_hint"
+                android:visibility="invisible" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <TextView
-                android:id="@+id/tvTxDustLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:text="@string/send_dust_label"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tvTxDust"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="2"
-                android:textAlignment="textEnd"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/etNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/send_notes_hint"
-            android:imeOptions="actionDone"
-            android:inputType="textMultiLine"
-            android:textAlignment="center"
-            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/bSend"
+            android:id="@+id/bPrepareSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:background="@color/colorPrimary"
-            android:text="@string/send_send_hint" />
+            android:enabled="false"
+            android:text="@string/send_prepare_hint" />
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/llConfirmSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/bDispose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/send_dispose_hint" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tvTxAmountLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/send_amount_label"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTxAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="2"
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tvTxFeeLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/send_fee_label"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTxFee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="2"
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tvTxDustLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/send_dust_label"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTxDust"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="2"
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/send_notes_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/bSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/send_send_hint" />
+
+            <Button
+                android:id="@+id/bReallySend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/moneroOrange"
+                android:text="@string/send_really_send_hint"
+                android:visibility="gone" />
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

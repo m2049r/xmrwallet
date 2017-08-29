@@ -332,6 +332,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             final WalletFragment walletFragment = (WalletFragment)
                     getFragmentManager().findFragmentById(R.id.fragment_container);
             if (wallet.isSynchronized()) {
+                Log.d(TAG, "onRefreshed() synced");
                 releaseWakeLock(); // the idea is to stay awake until synced
                 if (!synced) {
                     onProgress(null);
