@@ -233,6 +233,14 @@
             android:background="@color/colorPrimary"
             android:text="@string/send_send_hint" />
 
+        <Button
+            android:id="@+id/bSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/send_send_hint" />
     </LinearLayout>
 
 </LinearLayout>

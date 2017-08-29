@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loading..."
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4sp"
+                android:textColor="@color/tx_pending"
                 android:text="+"
                 android:textSize="16sp" />
 
@@ -103,6 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00000000.000000000000"
+                android:textColor="@color/tx_pending"
                 android:textSize="16sp" />
 
             <TextView
@@ -110,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4sp"
                 android:text="@string/label_unconfirmed_alance"
+                android:textColor="@color/tx_pending"
                 android:textSize="16sp" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

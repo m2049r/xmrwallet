@@ -65,6 +65,7 @@ public class GenerateReviewFragment extends Fragment {
 
         boolean testnet = WalletManager.getInstance().isTestNet();
         tvWalletMnemonic.setTextIsSelectable(testnet);
+        tvWalletSpendKey.setTextIsSelectable(testnet);
 
         bAccept.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,7 +30,7 @@
             android:gravity="center"
             android:hint="@string/prompt_daemon"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textWebEmailAddress|textNoSuggestions"
             android:maxLines="1"
             android:textIsSelectable="true"
             android:textSize="15sp"
