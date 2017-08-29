@@ -60,6 +60,7 @@ public class SendFragment extends Fragment {
     TextView tvTxDust;
     EditText etNotes;
     Button bSend;
+    Button bReallySend;
     ProgressBar pbProgress;
 
     final static int Mixins[] = {4, 6, 8, 10, 13}; // must match the layout XML
@@ -90,6 +91,7 @@ public class SendFragment extends Fragment {
         tvTxDust = (TextView) view.findViewById(R.id.tvTxDust);
         etNotes = (EditText) view.findViewById(R.id.etNotes);
         bSend = (Button) view.findViewById(R.id.bSend);
+        bReallySend = (Button) view.findViewById(R.id.bReallySend);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
 
@@ -229,6 +231,19 @@ public class SendFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bSend.setEnabled(false);
+                boolean testnet = WalletManager.getInstance().isTestNet();
+                if (testnet) {
+                    send();
+                } else {
+                    bReallySend.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        bReallySend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bReallySend.setEnabled(false);
                 send();
             }
         });
@@ -310,6 +325,7 @@ public class SendFragment extends Fragment {
         bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
         llConfirmSend.setVisibility(View.GONE);
+        bReallySend.setVisibility(View.GONE);
     }
 
     private void send() {
