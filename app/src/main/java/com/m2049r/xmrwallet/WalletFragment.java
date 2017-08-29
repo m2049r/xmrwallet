@@ -122,7 +122,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     }
 
     public void onSynced() {
-        if (!activityCallback.isWatchOnly() && WalletManager.getInstance().isTestNet()) {
+        if (!activityCallback.isWatchOnly()) {
             bSend.setVisibility(View.VISIBLE);
             bSend.setEnabled(true);
         }

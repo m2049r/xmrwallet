@@ -99,10 +99,6 @@ public class SendFragment extends Fragment {
         etPaymentId.setRawInputType(InputType.TYPE_CLASS_TEXT);
         etNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
-//        etAddress.setText("9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8");
-        boolean testnet = WalletManager.getInstance().isTestNet();
-        if (!testnet) throw new IllegalStateException("Sending TX only on testnet. sorry.");
-
         Helper.showKeyboard(getActivity());
         etAddress.requestFocus();
         etAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
