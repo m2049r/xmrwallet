@@ -341,10 +341,6 @@ public class WalletService extends Service {
                     } else if (cmd.equals(REQUEST_CMD_SEND)) {
                         Wallet myWallet = getWallet();
                         Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
-                        if (!myWallet.isTestNet()) {
-                            Log.e(TAG, "Sending transactions only on testnet");
-                            throw new IllegalStateException("Sending transactions only in testnet");
-                        }
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
                         if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
                             Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());
