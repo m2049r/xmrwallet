@@ -23,9 +23,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -39,10 +41,14 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.BarcodeData;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
-        WalletService.Observer, SendFragment.Listener, TxFragment.Listener, GenerateReviewFragment.ListenerWithWallet {
+        WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
+        GenerateReviewFragment.ListenerWithWallet,
+        ScannerFragment.Listener {
     private static final String TAG = "WalletActivity";
 
     public static final String REQUEST_ID = "id";
@@ -596,4 +602,60 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public void onDisposeRequest() {
         getWallet().disposePendingTransaction();
     }
+
+
+    private void startScanFragment() {
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment instanceof SendFragment) {
+            Bundle extras = new Bundle();
+            replaceFragment(new ScannerFragment(), null, extras);
+        }
+    }
+
+    /// QR scanner callbacks
+    @Override
+    public void onScanAddress() {
+        if (Helper.getCameraPermission(this)) {
+            startScanFragment();
+        } else {
+            Log.i(TAG, "Waiting for permissions");
+        }
+
+    }
+
+    private BarcodeData scannedData = null;
+
+    @Override
+    public void onAddressScanned(String address, String paymentId) {
+        // Log.d(TAG, "got " + address);
+        scannedData = new BarcodeData(address, paymentId);
+        popFragmentStack(null);
+    }
+
+    @Override
+    public BarcodeData getScannedData() {
+        BarcodeData data = scannedData;
+        scannedData = null;
+        return data;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult()");
+        switch (requestCode) {
+            case Helper.PERMISSIONS_REQUEST_CAMERA:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startScanFragment();
+                } else {
+                    String msg = getString(R.string.message_camera_not_permitted);
+                    Log.e(TAG, msg);
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+        }
+    }
+
 }

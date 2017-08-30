@@ -27,6 +27,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
 
@@ -62,6 +63,24 @@ public class Helper {
                 Log.d(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    public static final int PERMISSIONS_REQUEST_CAMERA = 1;
+
+    static public boolean getCameraPermission(Activity context) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (context.checkSelfPermission(Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_DENIED) {
+                Log.d(TAG, "Permission denied for CAMERA - requesting it");
+                String[] permissions = {Manifest.permission.CAMERA};
+                context.requestPermissions(permissions, PERMISSIONS_REQUEST_CAMERA);
                 return false;
             } else {
                 return true;
@@ -107,4 +126,14 @@ public class Helper {
     static public void hideKeyboardAlways(Activity act) {
         act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
+    static public boolean isAddressOk(String address, boolean testnet) {
+        if (address == null) return false;
+        if (testnet) {
+            return ((address.length() == 95) && ("9A".indexOf(address.charAt(0)) >= 0));
+        } else {
+            return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
+        }
+    }
+
 }
