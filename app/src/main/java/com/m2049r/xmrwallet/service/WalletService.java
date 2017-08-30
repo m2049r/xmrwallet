@@ -127,6 +127,7 @@ public class WalletService extends Service {
                     boolean fullRefresh = false;
                     updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
                     if (!wallet.isSynchronized()) {
+                        updated = true;
                         // we want to see our transactions as they come in
                         wallet.getHistory().refresh();
                         int txCount = wallet.getHistory().getCount();

@@ -20,10 +20,12 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,14 +42,16 @@ import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class SendFragment extends Fragment {
-    static final String TAG = "GenerateFragment";
+    static final String TAG = "SendFragment";
 
     EditText etAddress;
     EditText etPaymentId;
     EditText etAmount;
+    Button bAddress;
     Button bSweep;
     Spinner sMixin;
     Spinner sPriority;
@@ -80,6 +84,7 @@ public class SendFragment extends Fragment {
         etAddress = (EditText) view.findViewById(R.id.etAddress);
         etPaymentId = (EditText) view.findViewById(R.id.etPaymentId);
         etAmount = (EditText) view.findViewById(R.id.etAmount);
+        bAddress = (Button) view.findViewById(R.id.bAddress);
         bSweep = (Button) view.findViewById(R.id.bSweep);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
@@ -194,6 +199,13 @@ public class SendFragment extends Fragment {
             }
         });
 
+        bAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activityCallback.onScanAddress();
+            }
+        });
+
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,7 +243,14 @@ public class SendFragment extends Fragment {
                 if (testnet) {
                     send();
                 } else {
-                    bReallySend.setVisibility(View.VISIBLE);
+                    etNotes.setEnabled(false);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bReallySend.setVisibility(View.VISIBLE);
+                        }
+                    }, 1000);
                 }
             }
         });
@@ -256,11 +275,7 @@ public class SendFragment extends Fragment {
 
     private boolean addressOk() {
         String address = etAddress.getText().toString();
-        if (WalletManager.getInstance().isTestNet()) {
-            return ((address.length() == 95) && ("9A".indexOf(address.charAt(0)) >= 0));
-        } else {
-            return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
-        }
+        return Helper.isAddressOk(address, WalletManager.getInstance().isTestNet());
     }
 
     private boolean amountOk() {
@@ -321,6 +336,8 @@ public class SendFragment extends Fragment {
         bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
         llConfirmSend.setVisibility(View.GONE);
+        bSend.setEnabled(true);
+        etNotes.setEnabled(true);
         bReallySend.setVisibility(View.GONE);
     }
 
@@ -347,6 +364,35 @@ public class SendFragment extends Fragment {
 
         void onDisposeRequest();
 
+        void onScanAddress();
+
+        BarcodeData getScannedData();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BarcodeData data = activityCallback.getScannedData();
+        if (data != null) {
+            String scannedAddress = data.address;
+            if (scannedAddress != null) {
+                etAddress.setText(scannedAddress);
+            }
+            String scannedPaymenId = data.paymentId;
+            if (scannedPaymenId != null) {
+                etPaymentId.setText(scannedPaymenId);
+            }
+        }
+        // jump to first empty field
+        if (etAddress.getText().toString().isEmpty()) {
+            etAddress.requestFocus();
+        } else if (etPaymentId.getText().toString().isEmpty()) {
+            etPaymentId.requestFocus();
+        } else {
+            etAmount.requestFocus();
+        }
+        Log.d(TAG, "onResume");
     }
 
     @Override
