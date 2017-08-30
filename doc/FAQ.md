@@ -14,7 +14,9 @@
 - Background updating (make sure you exit the wallet to stop updating to save some battery)
 - Access to daemon with username/password and nonstandard port
 - Only 5 decimal places shown in transactions (full amount in details - click on transaction)
-- All significant figures shown balance
+- All significant figures shown in balance
+- QR Code scanning incl. payment ID - make sure to *ALWAYS* verify
+the scanned code is what it is advertised to be!
 
 ## I cannot select and copy the mnemonic seed
 Copying anything to the clipboard on Android exposes it to any other App running. So this
