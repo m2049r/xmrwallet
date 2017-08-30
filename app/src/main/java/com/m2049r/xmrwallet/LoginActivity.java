@@ -40,6 +40,7 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
@@ -77,6 +78,10 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onWalletSelected(final String walletName) {
+        if (WalletService.Running) {
+            Toast.makeText(this, getString(R.string.service_busy), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Log.d(TAG, "selected wallet is ." + walletName + ".");
         // now it's getting real, check if wallet exists
         String walletPath = Helper.getWalletPath(this, walletName);
