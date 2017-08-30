@@ -16,21 +16,16 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.Fragment;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -38,9 +33,7 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
-import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.text.NumberFormat;
 import java.util.List;
