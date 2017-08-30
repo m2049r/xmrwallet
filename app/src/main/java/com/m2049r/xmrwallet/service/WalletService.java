@@ -19,10 +19,7 @@ package com.m2049r.xmrwallet.service;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,13 +27,11 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
 import com.m2049r.xmrwallet.model.PendingTransaction;
-import com.m2049r.xmrwallet.model.TransactionHistory;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -44,6 +39,8 @@ import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class WalletService extends Service {
+    public static boolean Running = false;
+
     final static String TAG = "WalletService";
     final static int NOTIFICATION_ID = 2049;
 
@@ -400,9 +397,6 @@ public class WalletService extends Service {
 
     @Override
     public void onCreate() {
-        //mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        //showNotification();
-
         // We are using a HandlerThread and a Looper to avoid loading and closing
         // concurrency
         MoneroHandlerThread thread = new MoneroHandlerThread("WalletService",
@@ -419,8 +413,6 @@ public class WalletService extends Service {
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy()");
-        // Cancel the persistent notification.
-        //mNM.cancel(NOTIFICATION);
         if (this.listener != null) {
             Log.w(TAG, "onDestroy() with active listener");
             // no need to stop() here because the wallet closing should have been triggered
@@ -438,7 +430,8 @@ public class WalletService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // when the activity satrts the service, it expects to start it for a new wallet
+        Running = true;
+        // when the activity starts the service, it expects to start it for a new wallet
         // the service is possibly still occupied with saving the last opened wallet
         // so we queue the open request
         // this should not matter since the old activity is not getting updates
@@ -514,6 +507,7 @@ public class WalletService extends Service {
         }
         stopForeground(true);
         stopSelf();
+        Running = false;
     }
 
     private Wallet loadWallet(String walletName, String walletPassword) {
