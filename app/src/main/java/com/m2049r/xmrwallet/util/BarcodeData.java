@@ -19,10 +19,11 @@ package com.m2049r.xmrwallet.util;
 public class BarcodeData {
     public String address = null;
     public String paymentId = null;
-    //String amount = null:
+    public long amount = -1;
 
-    public BarcodeData(String address, String paymentId) {
+    public BarcodeData(String address, String paymentId, long amount) {
         this.address = address;
         this.paymentId = paymentId;
+        this.amount = amount;
     }
 }

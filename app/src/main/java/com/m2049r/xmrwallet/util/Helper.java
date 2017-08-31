@@ -27,6 +27,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
@@ -135,5 +136,20 @@ public class Helper {
             return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
         }
     }
-
+    static public String getDisplayAmount(long amount) {
+        String s = Wallet.getDisplayAmount(amount);
+        int lastZero = 0;
+        int decimal = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if ((lastZero == 0) && (s.charAt(i) != '0')) lastZero = i + 1;
+            // TODO i18n
+            if (s.charAt(i) == '.') {
+                decimal = i;
+                break;
+            }
+        }
+        //Log.d(TAG, decimal + "/" + lastZero + "/" + s);
+        int cutoff = Math.max(lastZero, decimal + 2);
+        return s.substring(0, cutoff);
+    }
 }
