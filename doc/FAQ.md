@@ -2,6 +2,7 @@
 
 ## What features does it have?
 
+- Support for Android >= 5.0 with ARM processor
 - Testnet and Mainnet
 - Generate new wallets
 - Recover wallets form mnemonic seed or from keys
@@ -15,8 +16,7 @@
 - Access to daemon with username/password and nonstandard port
 - Only 5 decimal places shown in transactions (full amount in details - click on transaction)
 - All significant figures shown in balance
-- QR Code scanning incl. payment ID - make sure to *ALWAYS* verify
-the scanned code is what it is advertised to be!
+- QR Code scanning - make sure to *ALWAYS* verify the scanned code is what it is advertised to be!
 
 ## I cannot select and copy the mnemonic seed
 Copying anything to the clipboard on Android exposes it to any other App running. So this
