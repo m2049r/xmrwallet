@@ -34,6 +34,7 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -62,9 +63,9 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         clProgress = (ConstraintLayout) view.findViewById(R.id.clProgress);
         llUnconfirmedAmount = (LinearLayout) view.findViewById(R.id.llUnconfirmedAmount);
         tvBalance = (TextView) view.findViewById(R.id.tvBalance);
-        tvBalance.setText(getDisplayAmount(0));
+        tvBalance.setText(Helper.getDisplayAmount(0));
         tvUnconfirmedAmount = (TextView) view.findViewById(R.id.tvUnconfirmedAmount);
-        tvUnconfirmedAmount.setText(getDisplayAmount(0));
+        tvUnconfirmedAmount.setText(Helper.getDisplayAmount(0));
         tvBlockHeightProgress = (TextView) view.findViewById(R.id.tvBlockHeightProgress);
 
         bSend = (Button) view.findViewById(R.id.bSend);
@@ -168,23 +169,6 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     private long firstBlock = 0;
     private String walletTitle = null;
 
-    private String getDisplayAmount(long amount) {
-        String s = Wallet.getDisplayAmount(amount);
-        int lastZero = 0;
-        int decimal = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if ((lastZero == 0) && (s.charAt(i) != '0')) lastZero = i + 1;
-            // TODO i18n
-            if (s.charAt(i) == '.') {
-                decimal = i;
-                break;
-            }
-        }
-        //Log.d(TAG, decimal + "/" + lastZero + "/" + s);
-        int cutoff = Math.max(lastZero, decimal + 2);
-        return s.substring(0, cutoff);
-    }
-
     private void updateStatus(Wallet wallet) {
         Log.d(TAG, "updateStatus()");
         if (walletTitle == null) {
@@ -193,8 +177,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         }
         long balance = wallet.getBalance();
         long unlockedBalance = wallet.getUnlockedBalance();
-        tvBalance.setText(getDisplayAmount(unlockedBalance));
-        tvUnconfirmedAmount.setText(getDisplayAmount(balance - unlockedBalance));
+        tvBalance.setText(Helper.getDisplayAmount(unlockedBalance));
+        tvUnconfirmedAmount.setText(Helper.getDisplayAmount(balance - unlockedBalance));
         // balance cannot be less than unlockedBalance
         /*if (balance != unlockedBalance) {
             llPendingAmount.setVisibility(View.VISIBLE);

@@ -21,6 +21,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -44,6 +46,9 @@ import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
@@ -563,7 +568,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     @Override
     public boolean isPaymentIdValid(String paymentId) {
-        return getWallet().isPaymentIdValid(paymentId);
+        return Wallet.isPaymentIdValid(paymentId);
     }
 
     @Override
@@ -573,9 +578,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
     void popFragmentStack(String name) {
         if (name == null) {
-            getFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
         } else {
-            getFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
     }
 
@@ -626,11 +631,60 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     private BarcodeData scannedData = null;
 
     @Override
-    public void onAddressScanned(String address, String paymentId) {
-        // Log.d(TAG, "got " + address);
-        scannedData = new BarcodeData(address, paymentId);
-        popFragmentStack(null);
+    public boolean onAddressScanned(String uri) {
+        BarcodeData bcData = parseMoneroUri(uri);
+        if (bcData != null) {
+            this.scannedData = bcData;
+            popFragmentStack(null);
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    /**
+     * Parse and decode a monero scheme string. It is here because it needs to validate the data.
+     *
+     * @param uri String containing a monero URL
+     * @return BarcodeData object or null if uri not valid
+     */
+    public BarcodeData parseMoneroUri(String uri) {
+        if (uri == null) return null;
+
+        if (!uri.startsWith(ScannerFragment.QR_SCHEME)) return null;
+
+        String noScheme = uri.substring(ScannerFragment.QR_SCHEME.length());
+        Uri monero = Uri.parse(noScheme);
+        Map<String, String> parms = new HashMap<>();
+        String query = monero.getQuery();
+        if (query != null) {
+            String[] args = query.split("&");
+            for (String arg : args) {
+                String[] namevalue = arg.split("=");
+                if (namevalue.length == 0) {
+                    continue;
+                }
+                parms.put(Uri.decode(namevalue[0]).toLowerCase(),
+                        namevalue.length > 1 ? Uri.decode(namevalue[1]) : null);
+            }
+        }
+        String address = monero.getPath();
+        String paymentId = parms.get(ScannerFragment.QR_PAYMENTID);
+        String amountString = parms.get(ScannerFragment.QR_AMOUNT);
+        long amount = -1;
+        if (amountString != null) {
+            amount = Wallet.getAmountFromString(amountString);
+        }
+        if ((paymentId != null) && !Wallet.isPaymentIdValid(paymentId)) {
+            address = null;
+        }
+
+        if (Helper.isAddressOk(address, WalletManager.getInstance().isTestNet())) {
+            return new BarcodeData(address, paymentId, amount);
+        }
+        return null;
+    }
+
 
     @Override
     public BarcodeData getScannedData() {
@@ -640,7 +694,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult()");
         switch (requestCode) {
             case Helper.PERMISSIONS_REQUEST_CAMERA:

@@ -28,8 +28,7 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.BarcodeData;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -39,9 +38,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     Listener activityCallback;
 
     public interface Listener {
-        void onAddressScanned(String address, String paymentId);
-
-        boolean isPaymentIdValid(String paymentId);
+        boolean onAddressScanned(String uri);
     }
 
     private ZXingScannerView mScannerView;
@@ -61,32 +58,16 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         mScannerView.startCamera();
     }
 
-    static final String URI_PREFIX = "monero:";
-    static final String PAYMENTID_STRING = "?tx_payment_id=";
+    static final String QR_SCHEME = "monero:";
+    static final String QR_PAYMENTID = "tx_payment_id";
+    static final String QR_AMOUNT = "tx_amount";
 
     @Override
     public void handleResult(Result rawResult) {
-        Log.d(TAG, rawResult.getBarcodeFormat().toString() + "/" + rawResult.getText());
-        String text = rawResult.getText();
+        //Log.d(TAG, rawResult.getBarcodeFormat().toString() + "/" + rawResult.getText());
         if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE) &&
-                (text.startsWith(URI_PREFIX))) {
-            String address = null;
-            String paymentId = null;
-            String s = text.substring(URI_PREFIX.length());
-            if (s.length() == 95) {
-                address = s;
-            } else {
-                int i = s.indexOf(PAYMENTID_STRING);
-                if ((i == 95) && (s.length() == (95 + PAYMENTID_STRING.length() + 16))) {
-                    address = s.substring(0, 95);
-                    paymentId = s.substring(95 + PAYMENTID_STRING.length());
-                    if (!activityCallback.isPaymentIdValid(paymentId)) {
-                        address = null;
-                    }
-                }
-            }
-            if (Helper.isAddressOk(address, WalletManager.getInstance().isTestNet())) {
-                activityCallback.onAddressScanned(address, paymentId);
+                (rawResult.getText().startsWith(QR_SCHEME))) {
+            if (activityCallback.onAddressScanned(rawResult.getText())) {
                 return;
             } else {
                 Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
@@ -120,7 +101,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(TAG, "attaching scan");
+        //Log.d(TAG, "attaching scan");
         if (context instanceof Listener) {
             this.activityCallback = (Listener) context;
         } else {

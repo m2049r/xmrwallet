@@ -373,26 +373,40 @@ public class SendFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume");
         BarcodeData data = activityCallback.getScannedData();
         if (data != null) {
             String scannedAddress = data.address;
             if (scannedAddress != null) {
                 etAddress.setText(scannedAddress);
+            } else {
+                etAddress.getText().clear();
             }
             String scannedPaymenId = data.paymentId;
             if (scannedPaymenId != null) {
                 etPaymentId.setText(scannedPaymenId);
+            } else {
+                etPaymentId.getText().clear();
+            }
+            if (data.amount >= 0) {
+                String scannedAmount = Helper.getDisplayAmount(data.amount);
+                etAmount.setText(scannedAmount);
+            } else {
+                etAmount.getText().clear();
+            }
+            etAmount.requestFocus();
+            etAmount.setSelection(etAmount.getText().length());
+        } else { // no scan data
+            // jump to first empty field
+            if (etAddress.getText().toString().isEmpty()) {
+                etAddress.requestFocus();
+            } else if (etPaymentId.getText().toString().isEmpty()) {
+                etPaymentId.requestFocus();
+            } else {
+                etAmount.requestFocus();
+                etAmount.setSelection(etAmount.getText().length());
             }
         }
-        // jump to first empty field
-        if (etAddress.getText().toString().isEmpty()) {
-            etAddress.requestFocus();
-        } else if (etPaymentId.getText().toString().isEmpty()) {
-            etPaymentId.requestFocus();
-        } else {
-            etAmount.requestFocus();
-        }
-        Log.d(TAG, "onResume");
     }
 
     @Override

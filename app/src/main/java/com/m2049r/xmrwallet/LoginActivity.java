@@ -308,7 +308,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     void popFragmentStack(String name) {
-        getFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        getSupportFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     //////////////////////////////////////////
