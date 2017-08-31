@@ -52,7 +52,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/bAddress"
+                android:id="@+id/bScan"
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

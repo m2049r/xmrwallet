@@ -51,7 +51,7 @@ public class SendFragment extends Fragment {
     EditText etAddress;
     EditText etPaymentId;
     EditText etAmount;
-    Button bAddress;
+    Button bScan;
     Button bSweep;
     Spinner sMixin;
     Spinner sPriority;
@@ -84,7 +84,7 @@ public class SendFragment extends Fragment {
         etAddress = (EditText) view.findViewById(R.id.etAddress);
         etPaymentId = (EditText) view.findViewById(R.id.etPaymentId);
         etAmount = (EditText) view.findViewById(R.id.etAmount);
-        bAddress = (Button) view.findViewById(R.id.bAddress);
+        bScan = (Button) view.findViewById(R.id.bScan);
         bSweep = (Button) view.findViewById(R.id.bSweep);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
@@ -199,7 +199,7 @@ public class SendFragment extends Fragment {
             }
         });
 
-        bAddress.setOnClickListener(new View.OnClickListener() {
+        bScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activityCallback.onScanAddress();
@@ -321,6 +321,7 @@ public class SendFragment extends Fragment {
         etAddress.setEnabled(false);
         etPaymentId.setEnabled(false);
         etAmount.setEnabled(false);
+        bScan.setEnabled(false);
         bPaymentId.setEnabled(false);
         bSweep.setEnabled(false);
         bPrepareSend.setEnabled(false);
@@ -332,6 +333,7 @@ public class SendFragment extends Fragment {
         etAddress.setEnabled(true);
         etPaymentId.setEnabled(true);
         etAmount.setEnabled(true);
+        bScan.setEnabled(true);
         bPaymentId.setEnabled(true);
         bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
