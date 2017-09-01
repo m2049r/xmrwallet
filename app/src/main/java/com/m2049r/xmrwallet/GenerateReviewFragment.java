@@ -79,10 +79,10 @@ public class GenerateReviewFragment extends Fragment {
         Bundle b = getArguments();
         String type = b.getString("type");
         if (!type.equals(VIEW_WALLET)) {
-            String name = b.getString("name");
+            String path = b.getString("path");
             String password = b.getString("password");
-            tvWalletName.setText(new File(name).getName());
-            show(name, password, type);
+            tvWalletName.setText(new File(path).getName());
+            show(path, password, type);
         } else {
                 show(walletCallback.getWallet(), null, type);
         }

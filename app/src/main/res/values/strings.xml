@@ -4,6 +4,7 @@
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_info">Details</string>
+    <string name="menu_receive">Receive</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
@@ -150,6 +151,10 @@
 
     <string name="tx_pending">PENDING</string>
     <string name="tx_failed">FAILED</string>
+
+    <string name="receive_generate_hint">Generate QR Code</string>
+    <string name="receive_paymentid_button">Generate</string>
+    <string name="receive_paymentid_hint">PaymentID</string>
 
     <string name="big_amount">999999.999999999999</string>
 

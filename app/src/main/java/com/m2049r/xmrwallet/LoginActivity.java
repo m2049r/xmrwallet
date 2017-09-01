@@ -85,8 +85,8 @@ public class LoginActivity extends AppCompatActivity
         }
         Log.d(TAG, "selected wallet is ." + walletName + ".");
         // now it's getting real, check if wallet exists
-        String walletPath = Helper.getWalletPath(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletPath)) {
+        File walletFile = Helper.getWalletFile(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
             promptPassword(walletName, new PasswordAction() {
                 @Override
                 public void action(String walletName, String password) {
@@ -101,14 +101,26 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletDetails(final String walletName) {
         Log.d(TAG, "details for wallet ." + walletName + ".");
-        final String walletPath = Helper.getWalletPath(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletPath)) {
+        final File walletFile = Helper.getWalletFile(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
             promptPassword(walletName, new PasswordAction() {
                 @Override
                 public void action(String walletName, String password) {
-                    startDetails(walletPath, password, GenerateReviewFragment.VIEW_DETAILS);
+                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_DETAILS);
                 }
             });
+        } else { // this cannot really happen as we prefilter choices
+            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onWalletReceive(final String walletName) {
+        Log.d(TAG, "receive for wallet ." + walletName + ".");
+        final File walletFile = Helper.getWalletFile(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
+            String address = WalletManager.getInstance().getWalletInfo(walletFile).address;
+            startReceive(address);
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
@@ -251,13 +263,20 @@ public class LoginActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    void startDetails(final String walletPath, final String password, String type) {
+    void startDetails(final File walletFile, final String password, String type) {
         Log.d(TAG, "startDetails()");
         Bundle b = new Bundle();
-        b.putString("name", walletPath);
+        b.putString("path", walletFile.getAbsolutePath());
         b.putString("password", password);
         b.putString("type", type);
         startReviewFragment(b);
+    }
+
+    void startReceive(String address) {
+        Log.d(TAG, "startReceive()");
+        Bundle b = new Bundle();
+        b.putString("address", address);
+        startReceiveFragment(b);
     }
 
     @Override
@@ -295,6 +314,11 @@ public class LoginActivity extends AppCompatActivity
     void startReviewFragment(Bundle extras) {
         replaceFragment(new GenerateReviewFragment(), null, extras);
         Log.d(TAG, "GenerateReviewFragment placed");
+    }
+
+    void startReceiveFragment(Bundle extras) {
+        replaceFragment(new ReceiveFragment(), null, extras);
+        Log.d(TAG, "ReceiveFragment placed");
     }
 
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
@@ -345,29 +369,29 @@ public class LoginActivity extends AppCompatActivity
             return;
         }
 
-        String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
-        boolean success = walletCreator.createWallet(newWalletPath, password);
+        File newWalletFile = new File(newWalletFolder, name);
+        boolean success = walletCreator.createWallet(newWalletFile, password);
         if (success) {
-            startDetails(newWalletPath, password, GenerateReviewFragment.VIEW_ACCEPT);
+            startDetails(newWalletFile, password, GenerateReviewFragment.VIEW_ACCEPT);
         } else {
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
-            Log.e(TAG, "Could not create new wallet in " + newWalletPath);
+            Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
 
         }
     }
 
     interface WalletCreator {
-        boolean createWallet(String path, String password);
+        boolean createWallet(File aFile, String password);
     }
 
     @Override
     public void onGenerate(String name, String password) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
+                    public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWallet(path, password, MNEMONIC_LANGUAGE);
+                                .createWallet(aFile, password, MNEMONIC_LANGUAGE);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) Log.e(TAG, newWallet.getErrorString());
                         newWallet.close();
@@ -380,8 +404,8 @@ public class LoginActivity extends AppCompatActivity
     public void onGenerate(String name, String password, final String seed, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
-                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(path, seed, restoreHeight);
+                    public boolean createWallet(File aFile, String password) {
+                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(aFile, seed, restoreHeight);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) Log.e(TAG, newWallet.getErrorString());
                         newWallet.setPassword(password);
@@ -397,9 +421,9 @@ public class LoginActivity extends AppCompatActivity
                            final String address, final String viewKey, final String spendKey, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
+                    public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWalletFromKeys(path, MNEMONIC_LANGUAGE, restoreHeight,
+                                .createWalletFromKeys(aFile, MNEMONIC_LANGUAGE, restoreHeight,
                                         address, viewKey, spendKey);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) Log.e(TAG, newWallet.getErrorString());

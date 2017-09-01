@@ -562,16 +562,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public String generatePaymentId() {
-        return getWallet().generatePaymentId();
-    }
-
-    @Override
-    public boolean isPaymentIdValid(String paymentId) {
-        return Wallet.isPaymentIdValid(paymentId);
-    }
-
-    @Override
     public String getWalletAddress() {
         return getWallet().getAddress();
     }

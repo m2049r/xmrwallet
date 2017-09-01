@@ -86,6 +86,8 @@ public class LoginFragment extends Fragment {
 
         void onWalletDetails(final String wallet);
 
+        void onWalletReceive(final String wallet);
+
         void onAddWallet();
 
         void setTitle(String title);
@@ -408,17 +410,18 @@ public class LoginFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String listItem = (String) listView.getItemAtPosition(info.position);
         switch (item.getItemId()) {
             case R.id.action_info:
-                String listItem = (String) listView.getItemAtPosition(info.position);
                 return showInfo(listItem);
+            case R.id.action_receive:
+                return showReceive(listItem);
             default:
                 return super.onContextItemSelected(item);
         }
     }
 
     private boolean showInfo(String listItem) {
-
         if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
             Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
             return true;
@@ -434,6 +437,23 @@ public class LoginFragment extends Fragment {
         checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
         activityCallback.onWalletDetails(wallet);
+        return true;
+    }
+
+    private boolean showReceive(String listItem) {
+        if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
+            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
+        String x = isMainNet() ? "4" : "9A";
+        if (x.indexOf(listItem.charAt(1)) < 0) {
+            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        activityCallback.onWalletReceive(wallet);
         return true;
     }
 }
