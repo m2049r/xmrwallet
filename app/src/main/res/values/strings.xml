@@ -154,7 +154,10 @@
 
     <string name="receive_generate_hint">Generate QR Code</string>
     <string name="receive_paymentid_button">Generate</string>
-    <string name="receive_paymentid_hint">PaymentID</string>
+    <string name="receive_paymentid_label">PaymentID</string>
+    <string name="receive_paymentid_hint">(optional)</string>
+    <string name="receive_amount_label">Amount</string>
+    <string name="receive_amount_hint">(optional)</string>
 
     <string name="big_amount">999999.999999999999</string>
 

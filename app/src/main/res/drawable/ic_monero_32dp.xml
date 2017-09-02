@@ -3,12 +3,6 @@
     android:height="32dp"
     android:viewportHeight="75.0"
     android:viewportWidth="75.0">
-    <path
-        android:fillColor="#ffffff"
-        android:pathData=" M 37.3, 37.3
-        m -36.9, 0
-        a 36.9,36.9 0 1,0 73.8,0
-        a 36.9,36.9 0 1,0 -73.8,0" />
 
     <path
         android:fillColor="#ff6600"

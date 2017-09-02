@@ -345,7 +345,7 @@ public class GenerateFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onPause()");
+        Log.d(TAG, "onResume()");
         activityCallback.setTitle(getString(R.string.generate_title));
     }
 

@@ -230,6 +230,7 @@ public class ReceiveFragment extends Fragment {
         return null;
     }
 
+    // TODO check if we can sensibly cache some of this
     private Bitmap addLogo(Bitmap qrBitmap) {
         Bitmap logo = getMoneroLogo();
         int qrWidth = qrBitmap.getWidth();
