@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onWalletDetails(final String walletName) {
+    public void onWalletDetails(String walletName) {
         Log.d(TAG, "details for wallet ." + walletName + ".");
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
@@ -115,12 +115,16 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onWalletReceive(final String walletName) {
+    public void onWalletReceive(String walletName) {
         Log.d(TAG, "receive for wallet ." + walletName + ".");
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
-            String address = WalletManager.getInstance().getWalletInfo(walletFile).address;
-            startReceive(address);
+            promptPassword(walletName, new PasswordAction() {
+                @Override
+                public void action(String walletName, String password) {
+                    startReceive(walletFile, password);
+                }
+            });
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
@@ -263,7 +267,7 @@ public class LoginActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    void startDetails(final File walletFile, final String password, String type) {
+    void startDetails(File walletFile, String password, String type) {
         Log.d(TAG, "startDetails()");
         Bundle b = new Bundle();
         b.putString("path", walletFile.getAbsolutePath());
@@ -272,10 +276,11 @@ public class LoginActivity extends AppCompatActivity
         startReviewFragment(b);
     }
 
-    void startReceive(String address) {
+    void startReceive(File walletFile, String password) {
         Log.d(TAG, "startReceive()");
         Bundle b = new Bundle();
-        b.putString("address", address);
+        b.putString("path", walletFile.getAbsolutePath());
+        b.putString("password", password);
         startReceiveFragment(b);
     }
 

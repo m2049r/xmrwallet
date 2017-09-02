@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8sp"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/tvAddress"
         android:layout_width="match_parent"
@@ -36,6 +44,7 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
+            android:enabled="false"
             android:hint="@string/receive_paymentid_hint"
             android:imeOptions="actionNext"
             android:inputType="textMultiLine"
@@ -49,7 +58,7 @@
             android:layout_gravity="center"
             android:layout_weight="2"
             android:background="@color/colorPrimary"
-            android:enabled="true"
+            android:enabled="false"
             android:minHeight="36sp"
             android:text="@string/receive_paymentid_button"
             android:textSize="12sp" />
@@ -58,9 +67,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
+        android:orientation="horizontal"
         android:weightSum="10">
 
         <TextView
@@ -76,10 +85,11 @@
             android:id="@+id/etAmount"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:enabled="false"
             android:hint="@string/receive_amount_hint"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
-            android:layout_weight="7"
             android:textAlignment="textStart"
             android:textSize="24sp" />
     </LinearLayout>
@@ -90,16 +100,21 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
-        android:minHeight="36sp"
         android:background="@color/colorPrimary"
+        android:enabled="false"
+        android:minHeight="36sp"
         android:text="@string/receive_generate_hint" />
 
     <ImageView
         android:id="@+id/qrCode"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_margin="16sp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_monero_32dp" />
+        android:adjustViewBounds="true" />
+
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0sp"
+        android:layout_height="0sp" />
 
 </LinearLayout>

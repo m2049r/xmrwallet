@@ -23,6 +23,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
@@ -40,6 +42,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.HashMap;
@@ -48,12 +52,14 @@ import java.util.Map;
 public class ReceiveFragment extends Fragment {
     static final String TAG = "ReceiveFragment";
 
+    ProgressBar pbProgress;
     TextView tvAddress;
     EditText etPaymentId;
     EditText etAmount;
     Button bPaymentId;
     Button bGenerate;
     ImageView qrCode;
+    EditText etDummy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,14 +67,17 @@ public class ReceiveFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.receive_fragment, container, false);
 
+        pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
         etPaymentId = (EditText) view.findViewById(R.id.etPaymentId);
         etAmount = (EditText) view.findViewById(R.id.etAmount);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         qrCode = (ImageView) view.findViewById(R.id.qrCode);
         bGenerate = (Button) view.findViewById(R.id.bGenerate);
+        etDummy = (EditText) view.findViewById(R.id.etDummy);
 
         etPaymentId.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         Helper.showKeyboard(getActivity());
         etPaymentId.requestFocus();
@@ -86,7 +95,7 @@ public class ReceiveFragment extends Fragment {
         etPaymentId.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
-                qrCode.setImageBitmap(null);
+                qrCode.setImageBitmap(getMoneroLogo());
                 if (paymentIdOk() && amountOk()) {
                     bGenerate.setEnabled(true);
                 } else {
@@ -118,7 +127,7 @@ public class ReceiveFragment extends Fragment {
         etAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
-                qrCode.setImageBitmap(null);
+                qrCode.setImageBitmap(getMoneroLogo());
                 if (paymentIdOk() && amountOk()) {
                     bGenerate.setEnabled(true);
                 } else {
@@ -156,10 +165,56 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
+        showProgress();
+        qrCode.setImageBitmap(getMoneroLogo());
+
         Bundle b = getArguments();
-        String address = b.getString("address", "");
-        tvAddress.setText(address);
+        String address = b.getString("address");
+        if (address == null) {
+            String path = b.getString("path");
+            String password = b.getString("password");
+            show(path, password);
+        } else {
+            show(address);
+        }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume()");
+        if (paymentIdOk() && amountOk() && tvAddress.getText().length() > 0) {
+            generateQr();
+        }
+    }
+
+
+    private void show(String address) {
+        tvAddress.setText(address);
+        etPaymentId.setEnabled(true);
+        etAmount.setEnabled(true);
+        bPaymentId.setEnabled(true);
+        bGenerate.setEnabled(true);
+        hideProgress();
+        generateQr();
+    }
+
+    private void show(final String walletPath, final String password) {
+        new Thread(null,
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        final Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
+                        getActivity().runOnUiThread(new Runnable() {
+                            public void run() {
+                                show(wallet.getAddress());
+                                wallet.close();
+                            }
+                        });
+                    }
+                }
+                , "Receive", MoneroHandlerThread.THREAD_STACK_SIZE).start();
     }
 
     private boolean amountOk() {
@@ -179,7 +234,7 @@ public class ReceiveFragment extends Fragment {
         String paymentId = etPaymentId.getText().toString();
         String enteredAmount = etAmount.getText().toString();
         // that's a lot of converting ...
-        String amount = (enteredAmount.isEmpty()?enteredAmount:Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount)));
+        String amount = (enteredAmount.isEmpty() ? enteredAmount : Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount)));
         StringBuffer sb = new StringBuffer();
         sb.append(ScannerFragment.QR_SCHEME).append(address);
         boolean first = true;
@@ -201,7 +256,9 @@ public class ReceiveFragment extends Fragment {
         String text = sb.toString();
         Bitmap qr = generate(text, 500, 500);
         if (qr != null) {
+            etAmount.setText(amount);
             qrCode.setImageBitmap(qr);
+            etDummy.requestFocus();
         }
     }
 
@@ -261,6 +318,15 @@ public class ReceiveFragment extends Fragment {
             logo = Helper.getBitmap(getContext(), R.drawable.ic_monero_qr);
         }
         return logo;
+    }
+
+    public void showProgress() {
+        pbProgress.setIndeterminate(true);
+        pbProgress.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        pbProgress.setVisibility(View.GONE);
     }
 
 }

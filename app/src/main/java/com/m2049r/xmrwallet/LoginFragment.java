@@ -119,7 +119,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onPause()");
+        Log.d(TAG, "onResume()");
         activityCallback.setTitle(getString(R.string.login_activity_name));
     }
 
@@ -452,6 +452,8 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
             return true;
         }
+
+        checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
         activityCallback.onWalletReceive(wallet);
         return true;
