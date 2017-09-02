@@ -9,4 +9,11 @@
         android:title="@string/menu_info"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_receive"
+        android:icon="@drawable/ic_monero_qr_24dp"
+        android:orderInCategory="100"
+        android:title="@string/menu_receive"
+        app:showAsAction="always" />
+
 </menu>

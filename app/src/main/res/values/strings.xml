@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Monerujo</string>
-    <string name="login_activity_name">Select Wallet</string>
+    <string name="login_activity_name">Monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_info">Details</string>
+    <string name="menu_receive">Receive</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
@@ -150,6 +151,13 @@
 
     <string name="tx_pending">PENDING</string>
     <string name="tx_failed">FAILED</string>
+
+    <string name="receive_generate_hint">Show me the QR Code</string>
+    <string name="receive_paymentid_button">Generate</string>
+    <string name="receive_paymentid_label">PaymentID</string>
+    <string name="receive_paymentid_hint">(optional)</string>
+    <string name="receive_amount_label">Amount</string>
+    <string name="receive_amount_hint">(optional)</string>
 
     <string name="big_amount">999999.999999999999</string>
 

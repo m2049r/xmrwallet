@@ -47,6 +47,7 @@ import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -120,11 +121,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!haveWallet) return true;
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.wallet_menu, menu);
-        return true;
+    public boolean hasWallet() {
+        return haveWallet;
     }
 
     @Override
@@ -132,13 +130,15 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         switch (item.getItemId()) {
             case R.id.action_info:
                 onWalletDetails();
-                break;
+                return true;
+            case R.id.action_receive:
+                onWalletReceive();
+                return true;
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-
-        return true;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -562,16 +562,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public String generatePaymentId() {
-        return getWallet().generatePaymentId();
-    }
-
-    @Override
-    public boolean isPaymentIdValid(String paymentId) {
-        return Wallet.isPaymentIdValid(paymentId);
-    }
-
-    @Override
     public String getWalletAddress() {
         return getWallet().getAddress();
     }
@@ -595,12 +585,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     private void onWalletDetails() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (!(fragment instanceof GenerateReviewFragment)) {
-            Bundle extras = new Bundle();
-            extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
-            replaceFragment(new GenerateReviewFragment(), null, extras);
-        }
+        Bundle extras = new Bundle();
+        extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
+        replaceFragment(new GenerateReviewFragment(), null, extras);
     }
 
     @Override
@@ -610,11 +597,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
 
     private void startScanFragment() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (fragment instanceof SendFragment) {
-            Bundle extras = new Bundle();
-            replaceFragment(new ScannerFragment(), null, extras);
-        }
+        Bundle extras = new Bundle();
+        replaceFragment(new ScannerFragment(), null, extras);
     }
 
     /// QR scanner callbacks
@@ -711,6 +695,23 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 break;
             default:
         }
+    }
+
+    @Override
+    public void onWalletReceive() {
+        startReceive(getWalletAddress());
+    }
+
+    void startReceive(String address) {
+        Log.d(TAG, "startReceive()");
+        Bundle b = new Bundle();
+        b.putString("address", address);
+        startReceiveFragment(b);
+    }
+
+    void startReceiveFragment(Bundle extras) {
+        replaceFragment(new ReceiveFragment(), null, extras);
+        Log.d(TAG, "ReceiveFragment placed");
     }
 
 }
