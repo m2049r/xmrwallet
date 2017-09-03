@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -89,6 +90,10 @@ public class LoginFragment extends Fragment {
         void onWalletReceive(String wallet);
 
         void onWalletRename(String name);
+
+        boolean onWalletBackup(String name);
+
+        void onWalletArchive(String walletName);
 
         void onAddWallet();
 
@@ -389,20 +394,25 @@ public class LoginFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String listItem = (String) listView.getItemAtPosition(info.position);
+        String name = nameFromListItem(listItem, !isMainNet());
+        if (name == null) {
+            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+        }
         switch (item.getItemId()) {
             case R.id.action_info:
-                showInfo(listItem);
+                showInfo(name);
                 break;
             case R.id.action_receive:
-                showReceive(listItem);
+                showReceive(name);
                 break;
             case R.id.action_rename:
-                String name = nameFromListItem(listItem, !isMainNet());
-                if (name != null) {
-                    activityCallback.onWalletRename(name);
-                } else {
-                    // TODO do we say something here?
-                }
+                activityCallback.onWalletRename(name);
+                break;
+            case R.id.action_backup:
+                activityCallback.onWalletBackup(name);
+                break;
+            case R.id.action_archive:
+                activityCallback.onWalletArchive(name);
                 break;
             default:
                 return super.onContextItemSelected(item);
@@ -410,37 +420,16 @@ public class LoginFragment extends Fragment {
         return true;
     }
 
-    private void showInfo(String listItem) {
-        if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
-            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-        }
-
-        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
-        String x = isMainNet() ? "4" : "9A";
-        if (x.indexOf(listItem.charAt(1)) < 0) {
-            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-        }
-
+    private void showInfo(@NonNull String name) {
         checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
-        activityCallback.onWalletDetails(wallet);
+        activityCallback.onWalletDetails(name);
     }
 
-    private boolean showReceive(String listItem) {
-        if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
-            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-            return true;
-        }
-
-        String wallet = nameFromListItem(listItem, !isMainNet());
-        if (wallet == null) {
-            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-            return true;
-        }
-
+    private boolean showReceive(@NonNull String name) {
         checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
-        activityCallback.onWalletReceive(wallet);
+        activityCallback.onWalletReceive(name);
         return true;
     }
 

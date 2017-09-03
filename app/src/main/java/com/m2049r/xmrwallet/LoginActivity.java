@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletRename(String walletName) {
         Log.d(TAG, "rename for wallet ." + walletName + ".");
-        final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+        final File walletFile = Helper.getWalletFile(this, walletName);
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt_rename, null);
 
@@ -174,7 +174,9 @@ public class LoginActivity extends AppCompatActivity
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
                                 String newName = etRename.getText().toString();
-                                renameWallet(walletFile, newName); //TODO error
+                                if (!renameWallet(walletFile, newName)) {
+                                    Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
+                                }
                                 reloadWalletList();
                             }
                         })
@@ -196,7 +198,9 @@ public class LoginActivity extends AppCompatActivity
                     Helper.hideKeyboardAlways(LoginActivity.this);
                     String newName = etRename.getText().toString();
                     dialog.cancel();
-                    renameWallet(walletFile, newName); //TODO error
+                    if (!renameWallet(walletFile, newName)) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
+                    }
                     reloadWalletList();
                     return false;
                 }
@@ -205,6 +209,63 @@ public class LoginActivity extends AppCompatActivity
         });
 
         dialog.show();
+    }
+
+    @Override
+    public boolean onWalletBackup(String walletName) {
+        Log.d(TAG, "backup for wallet ." + walletName + ".");
+        File backupFolder = new File(getStorageRoot(), ".backups");
+        if (!backupFolder.exists()) {
+            if (!backupFolder.mkdir()) {
+                Log.e(TAG, "Cannot create backup dir " + backupFolder.getAbsolutePath());
+                return false;
+            }
+        }
+        File walletFile = Helper.getWalletFile(this, walletName);
+        File backupFile = new File(backupFolder, walletName);
+        Log.d(TAG, "backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+        if (copyWallet(walletFile, backupFile, true)) {
+            Toast.makeText(this, getString(R.string.backup_success), Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    @Override
+    public void onWalletArchive(final String walletName) {
+        Log.d(TAG, "archive for wallet ." + walletName + ".");
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        if (onWalletBackup(walletName)) {
+                            if (deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                                Toast.makeText(LoginActivity.this, getString(R.string.archive_success), Toast.LENGTH_SHORT).show();
+                                reloadWalletList();
+                            } else {
+                                Toast.makeText(LoginActivity.this, getString(R.string.delete_failed), Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+                        }
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.archive_alert_message))
+                .setTitle(walletName)
+                .setPositiveButton(getString(R.string.archive_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.archive_alert_no), dialogClickListener)
+                .show();
     }
 
     void reloadWalletList() {
@@ -532,7 +593,7 @@ public class LoginActivity extends AppCompatActivity
         final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         final File walletFolder = getStorageRoot();
         final File walletFile = new File(walletFolder, name);
-        final boolean rc = copyWallet(newWalletFile, walletFile)
+        final boolean rc = copyWallet(newWalletFile, walletFile, false)
                 &&
                 (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
         if (rc) {
@@ -557,7 +618,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName))) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
             deleteWallet(walletFile);
             return true;
         } else {
@@ -565,7 +626,20 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet) {
+    boolean walletExists(File walletFile) {
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        boolean exists = new File(dir, name).exists();
+        exists = new File(dir, name + ".keys").exists() && exists;
+        exists = new File(dir, name + ".address.txt").exists() && exists;
+        return exists;
+    }
+
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
+        Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
+        if (walletExists(dstWallet) && !overwrite) return false;
+        if (!walletExists(srcWallet)) return false;
+
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
         String srcName = srcWallet.getName();
@@ -586,6 +660,7 @@ public class LoginActivity extends AppCompatActivity
 
     // do our best to delete as much as possible of the wallet files
     boolean deleteWallet(File walletFile) {
+        Log.d(TAG, "deleteWallet " + walletFile.getAbsolutePath());
         if (!walletFile.isFile()) return false;
         File dir = walletFile.getParentFile();
         String name = walletFile.getName();
@@ -596,12 +671,6 @@ public class LoginActivity extends AppCompatActivity
     }
 
     void copyFile(File src, File dst) throws IOException {
-        if (dst.exists()) {
-            throw new IOException("Destination exists!");
-        }
-        if (!src.exists()) {
-            throw new IOException("Source does not exist!");
-        }
         FileChannel inChannel = new FileInputStream(src).getChannel();
         FileChannel outChannel = new FileOutputStream(dst).getChannel();
         try {

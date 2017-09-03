@@ -90,7 +90,7 @@
             android:layout_weight="7"
             android:enabled="false"
             android:hint="@string/receive_amount_hint"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="numberDecimal"
             android:textAlignment="textStart"
             android:textSize="24sp" />

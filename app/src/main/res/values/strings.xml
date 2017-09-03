@@ -4,8 +4,16 @@
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_info">Details</string>
-    <string name="menu_receive">Receive</string>
+    <string name="menu_receive">QR Receive</string>
     <string name="menu_rename">Rename</string>
+    <string name="menu_archive">Archive</string>
+    <string name="menu_backup">Backup</string>
+
+    <string name="backup_success">Backup successful</string>
+    <string name="backup_failed">Backup failed!</string>
+    <string name="archive_success">Archive successful</string>
+    <string name="delete_failed">Delete failed!</string>
+    <string name="rename_failed">Rename failed!</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
@@ -165,6 +173,10 @@
     <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
     <string name="details_alert_yes">I\'m safe</string>
     <string name="details_alert_no">Take me back!</string>
+
+    <string name="archive_alert_message">The wallet will be backuped up and then deleted!</string>
+    <string name="archive_alert_yes">Yes, do that!</string>
+    <string name="archive_alert_no">No thanks!</string>
 
     <string name="big_amount">999999.999999999999</string>
 
