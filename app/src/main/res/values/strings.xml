@@ -5,6 +5,7 @@
 
     <string name="menu_info">Details</string>
     <string name="menu_receive">Receive</string>
+    <string name="menu_rename">Rename</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
@@ -24,6 +25,8 @@
     <string name="status_transaction_prepare_failed">Could not create transaction!</string>
 
     <string name="service_busy">I am still busy with your last wallet &#8230;</string>
+
+    <string name="prompt_rename">Rename</string>
 
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Bad password!</string>

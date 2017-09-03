@@ -152,6 +152,71 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
+    public void onWalletRename(String walletName) {
+        Log.d(TAG, "rename for wallet ." + walletName + ".");
+        final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.prompt_rename, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+
+        tvRenameLabel.setText(getString(R.string.prompt_rename) + " " + walletFile.getName());
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(LoginActivity.this);
+                                String newName = etRename.getText().toString();
+                                renameWallet(walletFile, newName); //TODO error
+                                reloadWalletList();
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(LoginActivity.this);
+                                dialog.cancel();
+                            }
+                        });
+
+        final AlertDialog dialog = alertDialogBuilder.create();
+        Helper.showKeyboard(dialog);
+
+        // accept keyboard "ok"
+        etRename.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Helper.hideKeyboardAlways(LoginActivity.this);
+                    String newName = etRename.getText().toString();
+                    dialog.cancel();
+                    renameWallet(walletFile, newName); //TODO error
+                    reloadWalletList();
+                    return false;
+                }
+                return false;
+            }
+        });
+
+        dialog.show();
+    }
+
+    void reloadWalletList() {
+        try {
+            LoginFragment loginFragment = (LoginFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            loginFragment.loadList();
+        } catch (ClassCastException ex) {
+        }
+    }
+
+    @Override
     public void onAddWallet() {
         startGenerateFragment();
     }
@@ -464,18 +529,18 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onAccept(final String name, final String password) {
-        final File newWalletFolder = new File(getStorageRoot(), ".new");
+        final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         final File walletFolder = getStorageRoot();
-        final String walletPath = new File(walletFolder, name).getAbsolutePath();
-        final boolean rc = copyWallet(walletFolder, newWalletFolder, name)
+        final File walletFile = new File(walletFolder, name);
+        final boolean rc = copyWallet(newWalletFile, walletFile)
                 &&
-                (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
+                (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
         if (rc) {
             popFragmentStack(GENERATE_STACK);
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {
-            Log.e(TAG, "Wallet store failed to " + walletPath);
+            Log.e(TAG, "Wallet store failed to " + walletFile.getAbsolutePath());
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
         }
@@ -491,30 +556,54 @@ public class LoginActivity extends AppCompatActivity
         return status;
     }
 
-    boolean copyWallet(File dstDir, File srcDir, String name) {
+    boolean renameWallet(File walletFile, String newName) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName))) {
+            deleteWallet(walletFile);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    boolean copyWallet(File srcWallet, File dstWallet) {
         boolean success = false;
+        File srcDir = srcWallet.getParentFile();
+        String srcName = srcWallet.getName();
+        File dstDir = dstWallet.getParentFile();
+        String dstName = dstWallet.getName();
         try {
-            // the cache is corrupt if we recover (!!)
-            // the cache is ok if we immediately do a full refresh()
-            // recoveryheight is ignored but not on watchonly wallet ?! - find out why
-            // so we just ignore the cache file and rebuild it on first sync
-            //copyFile(dstDir, srcDir, name);
-            copyFile(dstDir, srcDir, name + ".keys");
-            copyFile(dstDir, srcDir, name + ".address.txt");
+            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
+            copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;
         } catch (IOException ex) {
             Log.e(TAG, "wallet copy failed: " + ex.getMessage());
             // try to rollback
-            new File(dstDir, name).delete();
-            new File(dstDir, name + ".keys").delete();
-            new File(dstDir, name + ".address.txt").delete();
+            deleteWallet(dstWallet);
         }
         return success;
     }
 
-    void copyFile(File dstDir, File srcDir, String name) throws IOException {
-        FileChannel inChannel = new FileInputStream(new File(srcDir, name)).getChannel();
-        FileChannel outChannel = new FileOutputStream(new File(dstDir, name)).getChannel();
+    // do our best to delete as much as possible of the wallet files
+    boolean deleteWallet(File walletFile) {
+        if (!walletFile.isFile()) return false;
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        boolean success = new File(dir, name).delete();
+        success = new File(dir, name + ".keys").delete() && success;
+        success = new File(dir, name + ".address.txt").delete() && success;
+        return success;
+    }
+
+    void copyFile(File src, File dst) throws IOException {
+        if (dst.exists()) {
+            throw new IOException("Destination exists!");
+        }
+        if (!src.exists()) {
+            throw new IOException("Source does not exist!");
+        }
+        FileChannel inChannel = new FileInputStream(src).getChannel();
+        FileChannel outChannel = new FileOutputStream(dst).getChannel();
         try {
             inChannel.transferTo(0, inChannel.size(), outChannel);
         } finally {

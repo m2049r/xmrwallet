@@ -4,24 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp" >
 
     <TextView
-        android:id="@+id/tvPasswordLabel"
+        android:id="@+id/tvRenameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@+id/etPassword"
-        android:text="@string/prompt_password"
+        android:text="@string/prompt_rename"
+        android:labelFor="@+id/etRename"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etRename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="normal"
-        android:inputType="textPassword">
-
-
-    </EditText>
+        android:inputType="text" />
 
 </LinearLayout>

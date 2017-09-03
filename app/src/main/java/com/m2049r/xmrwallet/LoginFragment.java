@@ -82,11 +82,13 @@ public class LoginFragment extends Fragment {
 
         File getStorageRoot();
 
-        void onWalletSelected(final String wallet);
+        void onWalletSelected(String wallet);
 
-        void onWalletDetails(final String wallet);
+        void onWalletDetails(String wallet);
 
-        void onWalletReceive(final String wallet);
+        void onWalletReceive(String wallet);
+
+        void onWalletRename(String name);
 
         void onAddWallet();
 
@@ -126,7 +128,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.login_fragment, container, false);
 
         tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
@@ -224,31 +226,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-/*        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                // Difference to opening wallet is that we don't need a daemon set
-                String itemValue = (String) listView.getItemAtPosition(position);
-
-                if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
-                    Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-
-                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
-                String x = isMainNet() ? "4" : "9A";
-                if (x.indexOf(itemValue.charAt(1)) < 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-
-                checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
-
-                activityCallback.onWalletDetails(wallet);
-                return true;
-            }
-        });
-*/
         loadList();
         return view;
     }
@@ -262,7 +239,8 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    private void loadList() {
+    public void loadList() {
+        Log.d(TAG, "loadList()");
         WalletManager mgr = WalletManager.getInstance();
         List<WalletManager.WalletInfo> walletInfos =
                 mgr.findWallets(activityCallback.getStorageRoot());
@@ -413,31 +391,39 @@ public class LoginFragment extends Fragment {
         String listItem = (String) listView.getItemAtPosition(info.position);
         switch (item.getItemId()) {
             case R.id.action_info:
-                return showInfo(listItem);
+                showInfo(listItem);
+                break;
             case R.id.action_receive:
-                return showReceive(listItem);
+                showReceive(listItem);
+                break;
+            case R.id.action_rename:
+                String name = nameFromListItem(listItem, !isMainNet());
+                if (name != null) {
+                    activityCallback.onWalletRename(name);
+                } else {
+                    // TODO do we say something here?
+                }
+                break;
             default:
                 return super.onContextItemSelected(item);
         }
+        return true;
     }
 
-    private boolean showInfo(String listItem) {
+    private void showInfo(String listItem) {
         if (listItem.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
             Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-            return true;
         }
 
         String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
         String x = isMainNet() ? "4" : "9A";
         if (x.indexOf(listItem.charAt(1)) < 0) {
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-            return true;
         }
 
         checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
 
         activityCallback.onWalletDetails(wallet);
-        return true;
     }
 
     private boolean showReceive(String listItem) {
@@ -446,9 +432,8 @@ public class LoginFragment extends Fragment {
             return true;
         }
 
-        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
-        String x = isMainNet() ? "4" : "9A";
-        if (x.indexOf(listItem.charAt(1)) < 0) {
+        String wallet = nameFromListItem(listItem, !isMainNet());
+        if (wallet == null) {
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
             return true;
         }
@@ -457,5 +442,14 @@ public class LoginFragment extends Fragment {
 
         activityCallback.onWalletReceive(wallet);
         return true;
+    }
+
+    private String nameFromListItem(String listItem, boolean testnet) {
+        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
+        String x = testnet ? "9A" : "4";
+        if (x.indexOf(listItem.charAt(1)) < 0) {
+            return null;
+        }
+        return wallet;
     }
 }

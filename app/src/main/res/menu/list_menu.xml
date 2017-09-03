@@ -9,4 +9,8 @@
         android:id="@+id/action_receive"
         android:title="@string/menu_receive" />
 
+    <item
+        android:id="@+id/action_rename"
+        android:title="@string/menu_rename" />
+
 </menu>
