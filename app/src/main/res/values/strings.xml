@@ -11,12 +11,14 @@
 
     <string name="backup_progress">Backup in progress</string>
     <string name="archive_progress">Archive in progress</string>
+    <string name="rename_progress">Rename in progress</string>
 
-    <string name="service_progress">Wrapping things up &#8230;</string>
+    <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
     <string name="backup_success">Backup successful</string>
     <string name="backup_failed">Backup failed!</string>
     <string name="archive_success">Archive successful</string>
+    <string name="archive_failed">Archive failed!</string>
     <string name="delete_failed">Delete failed!</string>
     <string name="rename_failed">Rename failed!</string>
 
@@ -93,6 +95,7 @@
     <string name="generate_wallet_watchonly">&lt;Watch Only Wallet&gt;</string>
 
     <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
+    <string name="generate_wallet_dot">Wallet name may not begin with \'.\'</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
     <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>

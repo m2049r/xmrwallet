@@ -161,11 +161,51 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
+    private class AsyncRename extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.rename_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 2) return false;
+            File walletFile = Helper.getWalletFile(LoginActivity.this, params[0]);
+            String newName = params[1];
+            return renameWallet(walletFile, newName);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (result) {
+                reloadWalletList();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
+        }
+    }
+
+    // copy + delete seems safer than rename bevause we call rollback easily
+    boolean renameWallet(File walletFile, String newName) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
+            deleteWallet(walletFile);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
-    public void onWalletRename(String walletName) {
+    public void onWalletRename(final String walletName) {
         Log.d(TAG, "rename for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
-        final File walletFile = Helper.getWalletFile(this, walletName);
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt_rename, null);
 
@@ -175,7 +215,7 @@ public class LoginActivity extends AppCompatActivity
         final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
         final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
 
-        tvRenameLabel.setText(getString(R.string.prompt_rename) + " " + walletFile.getName());
+        tvRenameLabel.setText(getString(R.string.prompt_rename) + " " + walletName);
 
         // set dialog message
         alertDialogBuilder
@@ -185,10 +225,7 @@ public class LoginActivity extends AppCompatActivity
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
                                 String newName = etRename.getText().toString();
-                                if (!renameWallet(walletFile, newName)) {
-                                    Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
-                                }
-                                reloadWalletList();
+                                new AsyncRename().execute(walletName, newName);
                             }
                         })
                 .setNegativeButton("Cancel",
@@ -209,10 +246,7 @@ public class LoginActivity extends AppCompatActivity
                     Helper.hideKeyboardAlways(LoginActivity.this);
                     String newName = etRename.getText().toString();
                     dialog.cancel();
-                    if (!renameWallet(walletFile, newName)) {
-                        Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
-                    }
-                    reloadWalletList();
+                    new AsyncRename().execute(walletName, newName);
                     return false;
                 }
                 return false;
@@ -261,6 +295,9 @@ public class LoginActivity extends AppCompatActivity
         File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
         File backupFile = new File(backupFolder, walletName);
         Log.d(TAG, "backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+        // TODO probably better to copy to a new file and then rename
+        // then if something fails we have the old backup at least
+        // or just create a new backup every time and keep n old backups
         return copyWallet(walletFile, backupFile, true);
     }
 
@@ -298,7 +335,7 @@ public class LoginActivity extends AppCompatActivity
             if (result) {
                 reloadWalletList();
             } else {
-                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, getString(R.string.archive_failed), Toast.LENGTH_LONG).show();
             }
             LoginActivity.this.asyncWaitTask = null;
         }
@@ -740,29 +777,24 @@ public class LoginActivity extends AppCompatActivity
         return status;
     }
 
-    // TODO use move
-    boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
-            deleteWallet(walletFile);
-            return true;
+    boolean walletExists(File walletFile, boolean any) {
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        if (any) {
+            return new File(dir, name).exists()
+                    || new File(dir, name + ".keys").exists()
+                    || new File(dir, name + ".address.txt").exists();
         } else {
-            return false;
+            return new File(dir, name).exists()
+                    && new File(dir, name + ".keys").exists()
+                    && new File(dir, name + ".address.txt").exists();
         }
     }
 
-    boolean walletExists(File walletFile) {
-        File dir = walletFile.getParentFile();
-        String name = walletFile.getName();
-        boolean exists = new File(dir, name).exists();
-        exists = new File(dir, name + ".keys").exists() && exists;
-        exists = new File(dir, name + ".address.txt").exists() && exists;
-        return exists;
-    }
-
     boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
-        Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
-        if (walletExists(dstWallet) && !overwrite) return false;
-        if (!walletExists(srcWallet)) return false;
+        //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
+        if (walletExists(dstWallet, true) && !overwrite) return false;
+        if (!walletExists(srcWallet, false)) return false;
 
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
