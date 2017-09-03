@@ -159,6 +159,10 @@
     <string name="receive_amount_label">Amount</string>
     <string name="receive_amount_hint">(optional)</string>
 
+    <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
+    <string name="details_alert_yes">I\'m safe</string>
+    <string name="details_alert_no">Take me back!</string>
+
     <string name="big_amount">999999.999999999999</string>
 
     <string-array name="mixin">

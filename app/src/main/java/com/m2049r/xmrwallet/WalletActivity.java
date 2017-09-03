@@ -16,8 +16,10 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
@@ -585,9 +587,27 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     private void onWalletDetails() {
-        Bundle extras = new Bundle();
-        extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
-        replaceFragment(new GenerateReviewFragment(), null, extras);
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Bundle extras = new Bundle();
+                        extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
+                        replaceFragment(new GenerateReviewFragment(), null, extras);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
     }
 
     @Override
