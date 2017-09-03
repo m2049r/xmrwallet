@@ -16,12 +16,15 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -77,12 +80,18 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onWalletSelected(final String walletName) {
+    boolean checkServiceRunning() {
         if (WalletService.Running) {
             Toast.makeText(this, getString(R.string.service_busy), Toast.LENGTH_SHORT).show();
-            return;
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    @Override
+    public void onWalletSelected(final String walletName) {
+        if (checkServiceRunning()) return;
         Log.d(TAG, "selected wallet is ." + walletName + ".");
         // now it's getting real, check if wallet exists
         File walletFile = Helper.getWalletFile(this, walletName);
@@ -101,7 +110,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletDetails(final String walletName) {
         Log.d(TAG, "details for wallet ." + walletName + ".");
-
+        if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -138,6 +147,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletReceive(String walletName) {
         Log.d(TAG, "receive for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
             promptPassword(walletName, new PasswordAction() {
@@ -154,6 +164,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletRename(String walletName) {
         Log.d(TAG, "rename for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt_rename, null);
@@ -211,9 +222,35 @@ public class LoginActivity extends AppCompatActivity
         dialog.show();
     }
 
-    @Override
-    public boolean onWalletBackup(String walletName) {
-        Log.d(TAG, "backup for wallet ." + walletName + ".");
+
+    private class AsyncBackup extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.backup_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            return backupWallet(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (!result) {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
+        }
+    }
+
+    private boolean backupWallet(String walletName) {
         File backupFolder = new File(getStorageRoot(), ".backups");
         if (!backupFolder.exists()) {
             if (!backupFolder.mkdir()) {
@@ -221,37 +258,62 @@ public class LoginActivity extends AppCompatActivity
                 return false;
             }
         }
-        File walletFile = Helper.getWalletFile(this, walletName);
+        File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
         File backupFile = new File(backupFolder, walletName);
         Log.d(TAG, "backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
-        if (copyWallet(walletFile, backupFile, true)) {
-            Toast.makeText(this, getString(R.string.backup_success), Toast.LENGTH_SHORT).show();
-            return true;
-        } else {
-            Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
-            return false;
+        return copyWallet(walletFile, backupFile, true);
+    }
+
+    @Override
+    public void onWalletBackup(String walletName) {
+        Log.d(TAG, "backup for wallet ." + walletName + ".");
+        new AsyncBackup().execute(walletName);
+    }
+
+    private class AsyncArchive extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.archive_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            String walletName = params[0];
+            if (backupWallet(walletName) && deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (result) {
+                reloadWalletList();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
         }
     }
 
     @Override
     public void onWalletArchive(final String walletName) {
         Log.d(TAG, "archive for wallet ." + walletName + ".");
-
+        if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        if (onWalletBackup(walletName)) {
-                            if (deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
-                                Toast.makeText(LoginActivity.this, getString(R.string.archive_success), Toast.LENGTH_SHORT).show();
-                                reloadWalletList();
-                            } else {
-                                Toast.makeText(LoginActivity.this, getString(R.string.delete_failed), Toast.LENGTH_LONG).show();
-                            }
-                        } else {
-                            Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
-                        }
+                        new AsyncArchive().execute(walletName);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         // do nothing
@@ -279,6 +341,7 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onAddWallet() {
+        if (checkServiceRunning()) return;
         startGenerateFragment();
     }
 
@@ -399,10 +462,64 @@ public class LoginActivity extends AppCompatActivity
         super.onPause();
     }
 
+    AsyncTask asyncWaitTask = null;
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
+        if (WalletService.Running && (asyncWaitTask == null)) {
+            Log.d(TAG, "new process dialog");
+            new AsyncWaitForService().execute();
+        }
+    }
+
+
+    private class MyProgressDialog extends ProgressDialog {
+        Activity activity;
+
+        public MyProgressDialog(Activity activity, int msgId) {
+            super(activity);
+            this.activity = activity;
+            setCancelable(false);
+            setMessage(activity.getString(msgId));
+        }
+
+        @Override
+        public void onBackPressed() {
+            //activity.finish();
+        }
+    }
+
+
+    private class AsyncWaitForService extends AsyncTask<Void, Void, Void> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.service_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                while (WalletService.Running & !isCancelled()) {
+                    Thread.sleep(250);
+                }
+            } catch (InterruptedException ex) {
+                // oh well ...
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            LoginActivity.this.asyncWaitTask = null;
+        }
     }
 
 
@@ -529,7 +646,7 @@ public class LoginActivity extends AppCompatActivity
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
             Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
-
+            genFragment.walletGenerateError();
         }
     }
 
@@ -559,9 +676,12 @@ public class LoginActivity extends AppCompatActivity
                     public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance().recoveryWallet(aFile, seed, restoreHeight);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (!success) Log.e(TAG, newWallet.getErrorString());
-                        newWallet.setPassword(password);
-                        success = success && newWallet.store();
+                        if (success) {
+                            newWallet.setPassword(password);
+                            success = success && newWallet.store();
+                        } else {
+                            Log.e(TAG, newWallet.getErrorString());
+                        }
                         newWallet.close();
                         return success;
                     }
@@ -578,9 +698,12 @@ public class LoginActivity extends AppCompatActivity
                                 .createWalletFromKeys(aFile, MNEMONIC_LANGUAGE, restoreHeight,
                                         address, viewKey, spendKey);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (!success) Log.e(TAG, newWallet.getErrorString());
-                        newWallet.setPassword(password);
-                        success = success && newWallet.store();
+                        if (success) {
+                            newWallet.setPassword(password);
+                            success = success && newWallet.store();
+                        } else {
+                            Log.e(TAG, newWallet.getErrorString());
+                        }
                         newWallet.close();
                         return success;
                     }
@@ -617,6 +740,7 @@ public class LoginActivity extends AppCompatActivity
         return status;
     }
 
+    // TODO use move
     boolean renameWallet(File walletFile, String newName) {
         if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
             deleteWallet(walletFile);

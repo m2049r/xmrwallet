@@ -9,6 +9,11 @@
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
 
+    <string name="backup_progress">Backup in progress</string>
+    <string name="archive_progress">Archive in progress</string>
+
+    <string name="service_progress">Wrapping things up &#8230;</string>
+
     <string name="backup_success">Backup successful</string>
     <string name="backup_failed">Backup failed!</string>
     <string name="archive_success">Archive successful</string>

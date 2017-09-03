@@ -91,7 +91,7 @@ public class LoginFragment extends Fragment {
 
         void onWalletRename(String name);
 
-        boolean onWalletBackup(String name);
+        void onWalletBackup(String name);
 
         void onWalletArchive(String walletName);
 
