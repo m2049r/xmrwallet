@@ -99,19 +99,40 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onWalletDetails(String walletName) {
+    public void onWalletDetails(final String walletName) {
         Log.d(TAG, "details for wallet ." + walletName + ".");
-        final File walletFile = Helper.getWalletFile(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletFile)) {
-            promptPassword(walletName, new PasswordAction() {
-                @Override
-                public void action(String walletName, String password) {
-                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_DETAILS);
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+                        if (WalletManager.getInstance().walletExists(walletFile)) {
+                            promptPassword(walletName, new PasswordAction() {
+                                @Override
+                                public void action(String walletName, String password) {
+                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_DETAILS);
+                                }
+                            });
+                        } else { // this cannot really happen as we prefilter choices
+                            Log.e(TAG, "Wallet missing: " + walletName);
+                            Toast.makeText(LoginActivity.this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
                 }
-            });
-        } else { // this cannot really happen as we prefilter choices
-            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
-        }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
     }
 
     @Override
