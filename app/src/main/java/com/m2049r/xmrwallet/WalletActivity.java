@@ -612,6 +612,16 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         getWallet().disposePendingTransaction();
     }
 
+    private boolean startScanFragment = false;
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        if (startScanFragment) {
+            startScanFragment();
+            startScanFragment = false;
+        }
+    }
 
     private void startScanFragment() {
         Bundle extras = new Bundle();
@@ -703,7 +713,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startScanFragment();
+                    startScanFragment = true;
                 } else {
                     String msg = getString(R.string.message_camera_not_permitted);
                     Log.e(TAG, msg);
