@@ -17,10 +17,26 @@
 - Only 5 decimal places shown in transactions (full amount in details - click on transaction)
 - All significant figures shown in balance
 - QR Code scanning - make sure to *ALWAYS* verify the scanned code is what it is advertised to be!
+- QR Code for receiving
+- Backup wallets to ```.backups``` folder in main wallet folder (old backups are overwritten)
+- Rename wallets
+- Archive (=Backup and delete)
 
 ## I cannot select and copy the mnemonic seed
 Copying anything to the clipboard on Android exposes it to any other App running. So this
 is a security measure to keep your seed safe(r). 
+
+## My storage is getting full
+Newly generated wallets are stored in ```.new``` in the main wallet folder.
+They are never erased (for now). You can delete this whole folder from time to time.
+
+Also, the backup folder ```.backups``` is never automatically cleaned up.
+You may want to do housekeeping manually with a file browser.
+
+All wallet files (```testnet``` and ```mainnet```) are stored in the main ```Monerujo``` folder.
+So be careful erasing stuff. One of the future releases will split the wallets and move ```testnet```
+ wallets out of there.
+
 
 ## I sent a transaction but it's not in my received transactions list!
 Don't worry. Received transactions which are not mined yet disappear after the wallet is saved -
