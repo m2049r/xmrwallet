@@ -593,7 +593,7 @@ public class LoginActivity extends AppCompatActivity
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startLoginFragment();
+                    startLoginFragment = true;
                 } else {
                     String msg = getString(R.string.message_strorage_not_permitted);
                     Log.e(TAG, msg);
@@ -602,6 +602,17 @@ public class LoginActivity extends AppCompatActivity
                 }
                 break;
             default:
+        }
+    }
+
+    private boolean startLoginFragment = false;
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        if (startLoginFragment) {
+            startLoginFragment();
+            startLoginFragment = false;
         }
     }
 
