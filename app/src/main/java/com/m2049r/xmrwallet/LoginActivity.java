@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity
                             promptPassword(walletName, new PasswordAction() {
                                 @Override
                                 public void action(String walletName, String password) {
-                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_DETAILS);
+                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
                                 }
                             });
                         } else { // this cannot really happen as we prefilter choices
@@ -646,6 +646,7 @@ public class LoginActivity extends AppCompatActivity
     //////////////////////////////////////////
     static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
 
+    // TODO make this an AsyncTask?
     public void createWallet(final String name, final String password, final WalletCreator walletCreator) {
         final GenerateFragment genFragment = (GenerateFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -666,7 +667,7 @@ public class LoginActivity extends AppCompatActivity
         cacheFile.delete();
         File keysFile = new File(newWalletFolder, name + ".keys");
         keysFile.delete();
-        final File addressFile = new File(newWalletFolder, name + ".address.txt");
+        File addressFile = new File(newWalletFolder, name + ".address.txt");
         addressFile.delete();
 
         if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
@@ -678,7 +679,7 @@ public class LoginActivity extends AppCompatActivity
         File newWalletFile = new File(newWalletFolder, name);
         boolean success = walletCreator.createWallet(newWalletFile, password);
         if (success) {
-            startDetails(newWalletFile, password, GenerateReviewFragment.VIEW_ACCEPT);
+            startDetails(newWalletFile, password, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
         } else {
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();

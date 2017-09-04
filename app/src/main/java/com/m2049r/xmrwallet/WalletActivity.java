@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -35,8 +34,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -49,7 +46,6 @@ import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -594,7 +590,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         Bundle extras = new Bundle();
-                        extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
+                        extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
                         replaceFragment(new GenerateReviewFragment(), null, extras);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:

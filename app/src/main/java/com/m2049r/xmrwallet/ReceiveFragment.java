@@ -18,6 +18,7 @@ package com.m2049r.xmrwallet;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -34,6 +35,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -43,8 +45,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.service.MoneroHandlerThread;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -187,37 +189,49 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-    private void show(final String address) {
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                tvAddress.setText(address);
-                etPaymentId.setEnabled(true);
-                etAmount.setEnabled(true);
-                bPaymentId.setEnabled(true);
-                bGenerate.setEnabled(true);
-                hideProgress();
-                generateQr();
-            }
-        });
+    private void show(String address) {
+        tvAddress.setText(address);
+        etPaymentId.setEnabled(true);
+        etAmount.setEnabled(true);
+        bPaymentId.setEnabled(true);
+        bGenerate.setEnabled(true);
+        hideProgress();
+        generateQr();
     }
 
-    private void show(final String walletPath, final String password) {
-        new Thread(null,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        final Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
-                        getActivity().runOnUiThread(new Runnable() {
-                            public void run() {
-                                String address = wallet.getAddress();
-                                wallet.close();
-                                show(address);
-                            }
-                        });
-                    }
-                }
-                , "Receive", MoneroHandlerThread.THREAD_STACK_SIZE).start();
+    private void show(String walletPath, String password) {
+        new ReceiveFragment.AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
+                walletPath, password);
     }
+
+    private class AsyncShow extends AsyncTask<String, Void, Boolean> {
+        String password;
+
+        String address;
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 2) return false;
+            String walletPath = params[0];
+            password = params[1];
+            Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
+            address = wallet.getAddress();
+            wallet.close();
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (result) {
+                show(address);
+            } else {
+                Toast.makeText(getActivity(), getString(R.string.receive_cannot_open), Toast.LENGTH_LONG).show();
+                hideProgress();
+            }
+        }
+    }
+
 
     private boolean amountOk() {
         String amountEntry = etAmount.getText().toString();
