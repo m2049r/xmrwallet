@@ -177,6 +177,7 @@
     <string name="receive_paymentid_hint">(optional)</string>
     <string name="receive_amount_label">Amount</string>
     <string name="receive_amount_hint">(optional)</string>
+    <string name="receive_cannot_open">Could not open wallet!</string>
 
     <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
     <string name="details_alert_yes">I\'m safe</string>
