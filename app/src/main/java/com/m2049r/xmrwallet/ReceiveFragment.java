@@ -79,8 +79,6 @@ public class ReceiveFragment extends Fragment {
         etPaymentId.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        Helper.showKeyboard(getActivity());
-        etPaymentId.requestFocus();
         etPaymentId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -114,7 +112,7 @@ public class ReceiveFragment extends Fragment {
 
         etAmount.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     if (paymentIdOk() && amountOk()) {
                         Helper.hideKeyboard(getActivity());
                         generateQr();
@@ -189,15 +187,18 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-
-    private void show(String address) {
-        tvAddress.setText(address);
-        etPaymentId.setEnabled(true);
-        etAmount.setEnabled(true);
-        bPaymentId.setEnabled(true);
-        bGenerate.setEnabled(true);
-        hideProgress();
-        generateQr();
+    private void show(final String address) {
+        getActivity().runOnUiThread(new Runnable() {
+            public void run() {
+                tvAddress.setText(address);
+                etPaymentId.setEnabled(true);
+                etAmount.setEnabled(true);
+                bPaymentId.setEnabled(true);
+                bGenerate.setEnabled(true);
+                hideProgress();
+                generateQr();
+            }
+        });
     }
 
     private void show(final String walletPath, final String password) {
@@ -208,8 +209,9 @@ public class ReceiveFragment extends Fragment {
                         final Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
                         getActivity().runOnUiThread(new Runnable() {
                             public void run() {
-                                show(wallet.getAddress());
+                                String address = wallet.getAddress();
                                 wallet.close();
+                                show(address);
                             }
                         });
                     }
@@ -259,6 +261,7 @@ public class ReceiveFragment extends Fragment {
             etAmount.setText(amount);
             qrCode.setImageBitmap(qr);
             etDummy.requestFocus();
+            bGenerate.setEnabled(false);
         }
     }
 

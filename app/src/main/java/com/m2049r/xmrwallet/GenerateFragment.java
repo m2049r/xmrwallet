@@ -295,6 +295,10 @@ public class GenerateFragment extends Fragment {
     private void generateWallet() {
         String name = etWalletName.getText().toString();
         if (name.length() == 0) return;
+        if (name.charAt(0)=='.') {
+            Toast.makeText(getActivity(), getString(R.string.generate_wallet_dot), Toast.LENGTH_LONG).show();
+            etWalletName.requestFocus();
+        }
         File walletFile = Helper.getWalletFile(getActivity(), name);
         if (WalletManager.getInstance().walletExists(walletFile)) {
             Toast.makeText(getActivity(), getString(R.string.generate_wallet_exists), Toast.LENGTH_LONG).show();

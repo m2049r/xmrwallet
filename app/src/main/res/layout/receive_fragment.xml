@@ -18,6 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
+        android:textIsSelectable="true"
+        android:selectAllOnFocus="true"
         android:hint="@string/send_address_hint"
         android:textAlignment="center"
         android:textSize="16sp" />
@@ -88,7 +90,7 @@
             android:layout_weight="7"
             android:enabled="false"
             android:hint="@string/receive_amount_hint"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="numberDecimal"
             android:textAlignment="textStart"
             android:textSize="24sp" />

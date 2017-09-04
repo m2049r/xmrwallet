@@ -93,20 +93,21 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     private void startWalletService() {
-        acquireWakeLock();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             String walletPassword = extras.getString(REQUEST_PW);
             connectWalletService(walletId, walletPassword);
         } else {
-            throw new IllegalStateException("No extras passed! Panic!");
+            finish();
+            //throw new IllegalStateException("No extras passed! Panic!");
         }
     }
 
     private void stopWalletService() {
-        releaseWakeLock();
         disconnectWalletService();
+        releaseWakeLock();
     }
 
     @Override
