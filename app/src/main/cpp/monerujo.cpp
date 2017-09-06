@@ -465,7 +465,7 @@ JNIEXPORT jboolean JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instance,
                                                      jobject walletInstance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, walletInstance);
-    bool closeSuccess = Bitmonero::WalletManagerFactory::getWalletManager()->closeWallet(wallet, false);
+    bool closeSuccess = Bitmonero::WalletManagerFactory::getWalletManager()->closeWallet(wallet);
     if (closeSuccess) {
         MyWalletListener *walletListener = getHandle<MyWalletListener>(env, walletInstance,
                                                                        "listenerHandle");
@@ -563,13 +563,8 @@ Java_com_m2049r_xmrwallet_model_Wallet_getIntegratedAddress(JNIEnv *env, jobject
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getSecretViewKey(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return env->NewStringUTF(wallet->secretViewKey().c_str());
-}
-
-JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getSecretSpendKey(JNIEnv *env, jobject instance) {
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return env->NewStringUTF(wallet->secretSpendKey().c_str());
+    //return env->NewStringUTF(wallet->secretViewKey().c_str()); // changed in head
+    return env->NewStringUTF(wallet->privateViewKey().c_str());
 }
 
 JNIEXPORT jboolean JNICALL

@@ -67,10 +67,9 @@ public class SendFragment extends Fragment {
     Button bReallySend;
     ProgressBar pbProgress;
 
-    final static int Mixins[] = {4, 7, 12, 25}; // must match the layout XML
+    final static int Mixins[] = {4, 6, 8, 10, 13}; // must match the layout XML
     final static PendingTransaction.Priority Priorities[] =
-            {PendingTransaction.Priority.Priority_Default,
-                    PendingTransaction.Priority.Priority_Low,
+            {PendingTransaction.Priority.Priority_Low,
                     PendingTransaction.Priority.Priority_Medium,
                     PendingTransaction.Priority.Priority_High}; // must match the layout XML
 
@@ -444,7 +443,6 @@ public class SendFragment extends Fragment {
             }
         });
         builder.setMessage(errorText);
-        builder.setCancelable(false);
         builder.create().show();
     }
 

@@ -511,6 +511,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
+
     private class MyProgressDialog extends ProgressDialog {
         Activity activity;
 
