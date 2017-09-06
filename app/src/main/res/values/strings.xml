@@ -190,14 +190,14 @@
     <string name="big_amount">999999.999999999999</string>
 
     <string-array name="mixin">
-        <item>Mixin 4</item>
-        <item>Mixin 6</item>
-        <item>Mixin 8</item>
-        <item>Mixin 10</item>
-        <item>Mixin 13</item>
+        <item>Ring Size 5</item>
+        <item>Ring Size 8</item>
+        <item>Ring Size 13</item>
+        <item>Ring Size 26</item>
     </string-array>
 
     <string-array name="priority">
+        <item>Default Priority</item>
         <item>Low Priority</item>
         <item>Medium Priority</item>
         <item>High  Priority</item>
