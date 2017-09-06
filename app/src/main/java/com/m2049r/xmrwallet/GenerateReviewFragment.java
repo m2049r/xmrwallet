@@ -100,7 +100,6 @@ public class GenerateReviewFragment extends Fragment {
         String address;
         String seed;
         String viewKey;
-        String spendKey;
         boolean isWatchOnly;
 
         @Override
@@ -124,7 +123,6 @@ public class GenerateReviewFragment extends Fragment {
             address = wallet.getAddress();
             seed = wallet.getSeed();
             viewKey = wallet.getSecretViewKey();
-            spendKey = isWatchOnly ? getActivity().getString(R.string.watchonly_label) : wallet.getSecretSpendKey();
             isWatchOnly = wallet.isWatchOnly();
             if (closeWallet) wallet.close();
             return true;
@@ -143,7 +141,12 @@ public class GenerateReviewFragment extends Fragment {
                 tvWalletAddress.setText(address);
                 tvWalletMnemonic.setText(seed);
                 tvWalletViewKey.setText(viewKey);
-                tvWalletSpendKey.setText(spendKey);
+                String spend = isWatchOnly ? "" : "not available - use seed for recovery";
+                if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
+                    tvWalletSpendKey.setText(spend);
+                } else {
+                    tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+                }
             }
             hideProgress();
         }

@@ -156,7 +156,6 @@ struct TransactionInfo
     virtual uint64_t fee() const = 0;
     virtual uint64_t blockHeight() const = 0;
     virtual uint64_t confirmations() const = 0;
-    virtual uint64_t unlockTime() const = 0;
     //! transaction_id
     virtual std::string hash() const = 0;
     virtual std::time_t timestamp() const = 0;
@@ -313,28 +312,10 @@ struct Wallet
     virtual std::string integratedAddress(const std::string &payment_id) const = 0;
     
    /*!
-    * \brief secretViewKey     - returns secret view key
-    * \return                  - secret view key
+    * \brief privateViewKey    - returns private view key
+    * \return                  - private view key
     */
-    virtual std::string secretViewKey() const = 0;
-
-   /*!
-    * \brief publicViewKey     - returns public view key
-    * \return                  - public view key
-    */
-    virtual std::string publicViewKey() const = 0;
-
-   /*!
-    * \brief secretSpendKey    - returns secret spend key
-    * \return                  - secret spend key
-    */
-    virtual std::string secretSpendKey() const = 0;
-
-   /*!
-    * \brief publicSpendKey    - returns public spend key
-    * \return                  - public spend key
-    */
-    virtual std::string publicSpendKey() const = 0;
+    virtual std::string privateViewKey() const = 0;
 
     /*!
      * \brief store - stores wallet to file.
@@ -379,12 +360,6 @@ struct Wallet
     * \param refresh_from_block_height - blockchain start height
     */
     virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
-
-   /*!
-    * \brief getRestoreHeight - get wallet creation height
-    *
-    */
-    virtual uint64_t getRefreshFromBlockHeight() const = 0;
 
    /*!
     * \brief setRecoveringFromSeed - set state recover form seed
@@ -596,9 +571,6 @@ struct Wallet
     virtual bool verifySignedMessage(const std::string &message, const std::string &addres, const std::string &signature) const = 0;
 
     virtual bool parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error) = 0;
-
-    virtual std::string getDefaultDataDir() const = 0;
-   
    /*
     * \brief rescanSpent - Rescan spent outputs - Can only be used with trusted daemon
     * \return true on success
@@ -663,7 +635,7 @@ struct WalletManager
      * \param wallet        previously opened / created wallet instance
      * \return              None
      */
-    virtual bool closeWallet(Wallet *wallet, bool store = false) = 0;
+    virtual bool closeWallet(Wallet *wallet) = 0;
 
     /*
      * ! checks if wallet with the given name already exists
@@ -672,7 +644,7 @@ struct WalletManager
     /*!
      * @brief TODO: delme walletExists - check if the given filename is the wallet
      * @param path - filename
-     * @return - true if wallet exists
+     * @return
      */
     virtual bool walletExists(const std::string &path) = 0;
 
@@ -681,9 +653,9 @@ struct WalletManager
      * @param keys_file_name - location of keys file
      * @param password - password to verify
      * @param watch_only - verify only view keys?
-     * @return - true if password is correct
+     * @return
      */
-    virtual bool verifyWalletPassword(const std::string &keys_file_name, const std::string &password, bool watch_only) const = 0;
+    virtual bool verifyWalletPassword(const std::string &keys_file_name, const std::string &password, const bool watch_only) = 0;
 
     /*!
      * \brief findWallets - searches for the wallet files by given path name recursively

@@ -147,7 +147,7 @@ target_link_libraries(  monerujo
 
                         blockchain_db
                         lmdb
-                        easylogging
+                        #easylogging # not for 0.10.3.1
                         unbound
                         p2p
 
