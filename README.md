@@ -2,7 +2,7 @@
 Another Android Monero Wallet
 
 ### QUICKSTART
-- Download APK (Release) and install it
+- Download APK (Release) and install it [here](https://github.com/m2049r/xmrwallet/releases)
 - Run the App and select "Generate Wallet" to create a new wallet or recover a wallet
 - Advanced users could copy over synced wallet files (all files) onto sdcard in directory Monerujo (created first time App is started)
 - see the [FAQ](doc/FAQ.md)
