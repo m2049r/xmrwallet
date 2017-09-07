@@ -71,8 +71,8 @@ public class WalletManager {
         managedWallets.remove(walletId);
     }
 
-    public Wallet createWallet(String path, String password, String language) {
-        long walletHandle = createWalletJ(path, password, language, isTestNet());
+    public Wallet createWallet(File aFile, String password, String language) {
+        long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, isTestNet());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet.getName(), wallet);
         return wallet;
@@ -89,14 +89,14 @@ public class WalletManager {
 
     private native long openWalletJ(String path, String password, boolean isTestNet);
 
-    public Wallet recoveryWallet(String path, String mnemonic) {
-        Wallet wallet = recoveryWallet(path, mnemonic, 0);
+    public Wallet recoveryWallet(File aFile, String mnemonic) {
+        Wallet wallet = recoveryWallet(aFile, mnemonic, 0);
         manageWallet(wallet.getName(), wallet);
         return wallet;
     }
 
-    public Wallet recoveryWallet(String path, String mnemonic, long restoreHeight) {
-        long walletHandle = recoveryWalletJ(path, mnemonic, isTestNet(), restoreHeight);
+    public Wallet recoveryWallet(File aFile, String mnemonic, long restoreHeight) {
+        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), mnemonic, isTestNet(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet.getName(), wallet);
         return wallet;
@@ -104,9 +104,9 @@ public class WalletManager {
 
     private native long recoveryWalletJ(String path, String mnemonic, boolean isTestNet, long restoreHeight);
 
-    public Wallet createWalletFromKeys(String path, String language, long restoreHeight,
+    public Wallet createWalletFromKeys(File aFile, String language, long restoreHeight,
                                        String addressString, String viewKeyString, String spendKeyString) {
-        long walletHandle = createWalletFromKeysJ(path, language, isTestNet(), restoreHeight,
+        long walletHandle = createWalletFromKeysJ(aFile.getAbsolutePath(), language, isTestNet(), restoreHeight,
                 addressString, viewKeyString, spendKeyString);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet.getName(), wallet);
@@ -134,6 +134,10 @@ public class WalletManager {
         return closed;
     }
 
+    public boolean walletExists(File aFile) {
+        return walletExists(aFile.getAbsolutePath());
+    }
+
     public native boolean walletExists(String path);
 
     public native boolean verifyWalletPassword(String keys_file_name, String password, boolean watch_only);
@@ -146,6 +150,31 @@ public class WalletManager {
         public String address;
     }
 
+    public WalletInfo getWalletInfo(File wallet) {
+        WalletInfo info = new WalletInfo();
+        info.path = wallet.getParentFile();
+        info.name = wallet.getName();
+        File addressFile = new File(info.path, info.name + ".address.txt");
+        //Log.d(TAG, addressFile.getAbsolutePath());
+        info.address = "??????";
+        BufferedReader addressReader = null;
+        try {
+            addressReader = new BufferedReader(new FileReader(addressFile));
+            info.address = addressReader.readLine();
+        } catch (IOException ex) {
+            Log.d(TAG, ex.getLocalizedMessage());
+        } finally {
+            if (addressReader != null) {
+                try {
+                    addressReader.close();
+                } catch (IOException ex) {
+                    // that's just too bad
+                }
+            }
+        }
+        return info;
+    }
+
     public List<WalletInfo> findWallets(File path) {
         List<WalletInfo> wallets = new ArrayList<>();
         Log.d(TAG, "Scanning: " + path.getAbsolutePath());
@@ -155,29 +184,9 @@ public class WalletManager {
             }
         });
         for (int i = 0; i < found.length; i++) {
-            WalletInfo info = new WalletInfo();
-            info.path = path;
             String filename = found[i].getName();
-            info.name = filename.substring(0, filename.length() - 5); // 5 is length of ".keys"+1
-            File addressFile = new File(path, info.name + ".address.txt");
-            //Log.d(TAG, addressFile.getAbsolutePath());
-            info.address = "??????";
-            BufferedReader addressReader = null;
-            try {
-                addressReader = new BufferedReader(new FileReader(addressFile));
-                info.address = addressReader.readLine();
-            } catch (IOException ex) {
-                Log.d(TAG, ex.getLocalizedMessage());
-            } finally {
-                if (addressReader != null) {
-                    try {
-                        addressReader.close();
-                    } catch (IOException ex) {
-                        // that's just too bad
-                    }
-                }
-            }
-            wallets.add(info);
+            File f = new File(found[i].getParent(), filename.substring(0, filename.length() - 5)); // 5 is length of ".keys"+1
+            wallets.add(getWalletInfo(f));
         }
         return wallets;
     }

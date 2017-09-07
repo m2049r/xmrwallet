@@ -21,7 +21,14 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -91,12 +98,16 @@ public class Helper {
         }
     }
 
-    static public String getWalletPath(Context context, String aWalletName) {
+//    static public String getWalletPath(Context context, String aWalletName) {
+//        return getWalletFile(context, aWalletName).getAbsolutePath();
+//    }
+
+    static public File getWalletFile(Context context, String aWalletName) {
         File walletDir = getStorageRoot(context);
         //d(TAG, "walletdir=" + walletDir.getAbsolutePath());
         File f = new File(walletDir, aWalletName);
         Log.d(TAG, "wallet = " + f.getAbsolutePath() + " size=" + f.length());
-        return f.getAbsolutePath();
+        return f;
     }
 
     /* Checks if external storage is available for read and write */
@@ -136,6 +147,7 @@ public class Helper {
             return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
         }
     }
+
     static public String getDisplayAmount(long amount) {
         String s = Wallet.getDisplayAmount(amount);
         int lastZero = 0;
@@ -152,4 +164,25 @@ public class Helper {
         int cutoff = Math.max(lastZero, decimal + 2);
         return s.substring(0, cutoff);
     }
+
+    public static Bitmap getBitmap(Context context, int drawableId) {
+        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
+        if (drawable instanceof BitmapDrawable) {
+            return BitmapFactory.decodeResource(context.getResources(), drawableId);
+        } else if (drawable instanceof VectorDrawable) {
+            return getBitmap((VectorDrawable) drawable);
+        } else {
+            throw new IllegalArgumentException("unsupported drawable type");
+        }
+    }
+
+    private static Bitmap getBitmap(VectorDrawable vectorDrawable) {
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
+                vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        vectorDrawable.draw(canvas);
+        return bitmap;
+    }
+
 }

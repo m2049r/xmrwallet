@@ -1,9 +1,26 @@
 <resources>
     <string name="app_name">Monerujo</string>
-    <string name="login_activity_name">Select Wallet</string>
+    <string name="login_activity_name">Monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_info">Details</string>
+    <string name="menu_receive">QR Receive</string>
+    <string name="menu_rename">Rename</string>
+    <string name="menu_archive">Archive</string>
+    <string name="menu_backup">Backup</string>
+
+    <string name="backup_progress">Backup in progress</string>
+    <string name="archive_progress">Archive in progress</string>
+    <string name="rename_progress">Rename in progress</string>
+
+    <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
+
+    <string name="backup_success">Backup successful</string>
+    <string name="backup_failed">Backup failed!</string>
+    <string name="archive_success">Archive successful</string>
+    <string name="archive_failed">Archive failed!</string>
+    <string name="delete_failed">Delete failed!</string>
+    <string name="rename_failed">Rename failed!</string>
 
     <string name="prompt_daemon">[&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
@@ -23,6 +40,8 @@
     <string name="status_transaction_prepare_failed">Could not create transaction!</string>
 
     <string name="service_busy">I am still busy with your last wallet &#8230;</string>
+
+    <string name="prompt_rename">Rename</string>
 
     <string name="prompt_password">Password for</string>
     <string name="bad_password">Incorrect password!</string>
@@ -76,6 +95,7 @@
     <string name="generate_wallet_watchonly">&lt;Watch Only Wallet&gt;</string>
 
     <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
+    <string name="generate_wallet_dot">Wallet name may not begin with \'.\'</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
     <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>
@@ -150,6 +170,22 @@
 
     <string name="tx_pending">PENDING</string>
     <string name="tx_failed">FAILED</string>
+
+    <string name="receive_generate_hint">Show me the QR Code</string>
+    <string name="receive_paymentid_button">Generate</string>
+    <string name="receive_paymentid_label">PaymentID</string>
+    <string name="receive_paymentid_hint">(optional)</string>
+    <string name="receive_amount_label">Amount</string>
+    <string name="receive_amount_hint">XMR (optional)</string>
+    <string name="receive_cannot_open">Could not open wallet!</string>
+
+    <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
+    <string name="details_alert_yes">I\'m safe</string>
+    <string name="details_alert_no">Take me back!</string>
+
+    <string name="archive_alert_message">The wallet will be backuped up and then deleted!</string>
+    <string name="archive_alert_yes">Yes, do that!</string>
+    <string name="archive_alert_no">No thanks!</string>
 
     <string name="big_amount">999999.999999999999</string>
 

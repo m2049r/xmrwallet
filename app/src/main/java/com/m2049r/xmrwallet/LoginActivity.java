@@ -16,12 +16,15 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -77,16 +80,22 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onWalletSelected(final String walletName) {
+    boolean checkServiceRunning() {
         if (WalletService.Running) {
             Toast.makeText(this, getString(R.string.service_busy), Toast.LENGTH_SHORT).show();
-            return;
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    @Override
+    public void onWalletSelected(final String walletName) {
+        if (checkServiceRunning()) return;
         Log.d(TAG, "selected wallet is ." + walletName + ".");
         // now it's getting real, check if wallet exists
-        String walletPath = Helper.getWalletPath(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletPath)) {
+        File walletFile = Helper.getWalletFile(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
             promptPassword(walletName, new PasswordAction() {
                 @Override
                 public void action(String walletName, String password) {
@@ -101,12 +110,50 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void onWalletDetails(final String walletName) {
         Log.d(TAG, "details for wallet ." + walletName + ".");
-        final String walletPath = Helper.getWalletPath(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletPath)) {
+        if (checkServiceRunning()) return;
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+                        if (WalletManager.getInstance().walletExists(walletFile)) {
+                            promptPassword(walletName, new PasswordAction() {
+                                @Override
+                                public void action(String walletName, String password) {
+                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
+                                }
+                            });
+                        } else { // this cannot really happen as we prefilter choices
+                            Log.e(TAG, "Wallet missing: " + walletName);
+                            Toast.makeText(LoginActivity.this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
+    }
+
+    @Override
+    public void onWalletReceive(String walletName) {
+        Log.d(TAG, "receive for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
+        final File walletFile = Helper.getWalletFile(this, walletName);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
             promptPassword(walletName, new PasswordAction() {
                 @Override
                 public void action(String walletName, String password) {
-                    startDetails(walletPath, password, GenerateReviewFragment.VIEW_DETAILS);
+                    startReceive(walletFile, password);
                 }
             });
         } else { // this cannot really happen as we prefilter choices
@@ -114,8 +161,224 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
+    private class AsyncRename extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.rename_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 2) return false;
+            File walletFile = Helper.getWalletFile(LoginActivity.this, params[0]);
+            String newName = params[1];
+            return renameWallet(walletFile, newName);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (result) {
+                reloadWalletList();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
+        }
+    }
+
+    // copy + delete seems safer than rename bevause we call rollback easily
+    boolean renameWallet(File walletFile, String newName) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
+            deleteWallet(walletFile);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void onWalletRename(final String walletName) {
+        Log.d(TAG, "rename for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.prompt_rename, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+
+        tvRenameLabel.setText(getString(R.string.prompt_rename) + " " + walletName);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(LoginActivity.this);
+                                String newName = etRename.getText().toString();
+                                new AsyncRename().execute(walletName, newName);
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(LoginActivity.this);
+                                dialog.cancel();
+                            }
+                        });
+
+        final AlertDialog dialog = alertDialogBuilder.create();
+        Helper.showKeyboard(dialog);
+
+        // accept keyboard "ok"
+        etRename.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Helper.hideKeyboardAlways(LoginActivity.this);
+                    String newName = etRename.getText().toString();
+                    dialog.cancel();
+                    new AsyncRename().execute(walletName, newName);
+                    return false;
+                }
+                return false;
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    private class AsyncBackup extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.backup_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            return backupWallet(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (!result) {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
+        }
+    }
+
+    private boolean backupWallet(String walletName) {
+        File backupFolder = new File(getStorageRoot(), ".backups");
+        if (!backupFolder.exists()) {
+            if (!backupFolder.mkdir()) {
+                Log.e(TAG, "Cannot create backup dir " + backupFolder.getAbsolutePath());
+                return false;
+            }
+        }
+        File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+        File backupFile = new File(backupFolder, walletName);
+        Log.d(TAG, "backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+        // TODO probably better to copy to a new file and then rename
+        // then if something fails we have the old backup at least
+        // or just create a new backup every time and keep n old backups
+        return copyWallet(walletFile, backupFile, true);
+    }
+
+    @Override
+    public void onWalletBackup(String walletName) {
+        Log.d(TAG, "backup for wallet ." + walletName + ".");
+        new AsyncBackup().execute(walletName);
+    }
+
+    private class AsyncArchive extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.archive_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            String walletName = params[0];
+            if (backupWallet(walletName) && deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            if (result) {
+                reloadWalletList();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.archive_failed), Toast.LENGTH_LONG).show();
+            }
+            LoginActivity.this.asyncWaitTask = null;
+        }
+    }
+
+    @Override
+    public void onWalletArchive(final String walletName) {
+        Log.d(TAG, "archive for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        new AsyncArchive().execute(walletName);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.archive_alert_message))
+                .setTitle(walletName)
+                .setPositiveButton(getString(R.string.archive_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.archive_alert_no), dialogClickListener)
+                .show();
+    }
+
+    void reloadWalletList() {
+        try {
+            LoginFragment loginFragment = (LoginFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            loginFragment.loadList();
+        } catch (ClassCastException ex) {
+        }
+    }
+
     @Override
     public void onAddWallet() {
+        if (checkServiceRunning()) return;
         startGenerateFragment();
     }
 
@@ -236,10 +499,64 @@ public class LoginActivity extends AppCompatActivity
         super.onPause();
     }
 
+    AsyncTask asyncWaitTask = null;
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
+        if (WalletService.Running && (asyncWaitTask == null)) {
+            Log.d(TAG, "new process dialog");
+            new AsyncWaitForService().execute();
+        }
+    }
+
+
+    private class MyProgressDialog extends ProgressDialog {
+        Activity activity;
+
+        public MyProgressDialog(Activity activity, int msgId) {
+            super(activity);
+            this.activity = activity;
+            setCancelable(false);
+            setMessage(activity.getString(msgId));
+        }
+
+        @Override
+        public void onBackPressed() {
+            //activity.finish();
+        }
+    }
+
+
+    private class AsyncWaitForService extends AsyncTask<Void, Void, Void> {
+        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.service_progress);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+            LoginActivity.this.asyncWaitTask = this;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                while (WalletService.Running & !isCancelled()) {
+                    Thread.sleep(250);
+                }
+            } catch (InterruptedException ex) {
+                // oh well ...
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            LoginActivity.this.asyncWaitTask = null;
+        }
     }
 
 
@@ -251,13 +568,21 @@ public class LoginActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    void startDetails(final String walletPath, final String password, String type) {
+    void startDetails(File walletFile, String password, String type) {
         Log.d(TAG, "startDetails()");
         Bundle b = new Bundle();
-        b.putString("name", walletPath);
+        b.putString("path", walletFile.getAbsolutePath());
         b.putString("password", password);
         b.putString("type", type);
         startReviewFragment(b);
+    }
+
+    void startReceive(File walletFile, String password) {
+        Log.d(TAG, "startReceive()");
+        Bundle b = new Bundle();
+        b.putString("path", walletFile.getAbsolutePath());
+        b.putString("password", password);
+        startReceiveFragment(b);
     }
 
     @Override
@@ -268,7 +593,7 @@ public class LoginActivity extends AppCompatActivity
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startLoginFragment();
+                    startLoginFragment = true;
                 } else {
                     String msg = getString(R.string.message_strorage_not_permitted);
                     Log.e(TAG, msg);
@@ -277,6 +602,17 @@ public class LoginActivity extends AppCompatActivity
                 }
                 break;
             default:
+        }
+    }
+
+    private boolean startLoginFragment = false;
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        if (startLoginFragment) {
+            startLoginFragment();
+            startLoginFragment = false;
         }
     }
 
@@ -295,6 +631,11 @@ public class LoginActivity extends AppCompatActivity
     void startReviewFragment(Bundle extras) {
         replaceFragment(new GenerateReviewFragment(), null, extras);
         Log.d(TAG, "GenerateReviewFragment placed");
+    }
+
+    void startReceiveFragment(Bundle extras) {
+        replaceFragment(new ReceiveFragment(), null, extras);
+        Log.d(TAG, "ReceiveFragment placed");
     }
 
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
@@ -316,6 +657,7 @@ public class LoginActivity extends AppCompatActivity
     //////////////////////////////////////////
     static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
 
+    // TODO make this an AsyncTask?
     public void createWallet(final String name, final String password, final WalletCreator walletCreator) {
         final GenerateFragment genFragment = (GenerateFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -336,7 +678,7 @@ public class LoginActivity extends AppCompatActivity
         cacheFile.delete();
         File keysFile = new File(newWalletFolder, name + ".keys");
         keysFile.delete();
-        final File addressFile = new File(newWalletFolder, name + ".address.txt");
+        File addressFile = new File(newWalletFolder, name + ".address.txt");
         addressFile.delete();
 
         if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
@@ -345,29 +687,29 @@ public class LoginActivity extends AppCompatActivity
             return;
         }
 
-        String newWalletPath = new File(newWalletFolder, name).getAbsolutePath();
-        boolean success = walletCreator.createWallet(newWalletPath, password);
+        File newWalletFile = new File(newWalletFolder, name);
+        boolean success = walletCreator.createWallet(newWalletFile, password);
         if (success) {
-            startDetails(newWalletPath, password, GenerateReviewFragment.VIEW_ACCEPT);
+            startDetails(newWalletFile, password, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
         } else {
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
-            Log.e(TAG, "Could not create new wallet in " + newWalletPath);
-
+            Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
+            genFragment.walletGenerateError();
         }
     }
 
     interface WalletCreator {
-        boolean createWallet(String path, String password);
+        boolean createWallet(File aFile, String password);
     }
 
     @Override
     public void onGenerate(String name, String password) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
+                    public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWallet(path, password, MNEMONIC_LANGUAGE);
+                                .createWallet(aFile, password, MNEMONIC_LANGUAGE);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) Log.e(TAG, newWallet.getErrorString());
                         newWallet.close();
@@ -380,12 +722,15 @@ public class LoginActivity extends AppCompatActivity
     public void onGenerate(String name, String password, final String seed, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
-                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(path, seed, restoreHeight);
+                    public boolean createWallet(File aFile, String password) {
+                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(aFile, seed, restoreHeight);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (!success) Log.e(TAG, newWallet.getErrorString());
-                        newWallet.setPassword(password);
-                        success = success && newWallet.store();
+                        if (success) {
+                            newWallet.setPassword(password);
+                            success = success && newWallet.store();
+                        } else {
+                            Log.e(TAG, newWallet.getErrorString());
+                        }
                         newWallet.close();
                         return success;
                     }
@@ -397,14 +742,17 @@ public class LoginActivity extends AppCompatActivity
                            final String address, final String viewKey, final String spendKey, final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
-                    public boolean createWallet(String path, String password) {
+                    public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWalletFromKeys(path, MNEMONIC_LANGUAGE, restoreHeight,
+                                .createWalletFromKeys(aFile, MNEMONIC_LANGUAGE, restoreHeight,
                                         address, viewKey, spendKey);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (!success) Log.e(TAG, newWallet.getErrorString());
-                        newWallet.setPassword(password);
-                        success = success && newWallet.store();
+                        if (success) {
+                            newWallet.setPassword(password);
+                            success = success && newWallet.store();
+                        } else {
+                            Log.e(TAG, newWallet.getErrorString());
+                        }
                         newWallet.close();
                         return success;
                     }
@@ -414,18 +762,18 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onAccept(final String name, final String password) {
-        final File newWalletFolder = new File(getStorageRoot(), ".new");
+        final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         final File walletFolder = getStorageRoot();
-        final String walletPath = new File(walletFolder, name).getAbsolutePath();
-        final boolean rc = copyWallet(walletFolder, newWalletFolder, name)
+        final File walletFile = new File(walletFolder, name);
+        final boolean rc = copyWallet(newWalletFile, walletFile, false)
                 &&
-                (testWallet(walletPath, password) == Wallet.Status.Status_Ok);
+                (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
         if (rc) {
             popFragmentStack(GENERATE_STACK);
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {
-            Log.e(TAG, "Wallet store failed to " + walletPath);
+            Log.e(TAG, "Wallet store failed to " + walletFile.getAbsolutePath());
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
         }
@@ -441,30 +789,58 @@ public class LoginActivity extends AppCompatActivity
         return status;
     }
 
-    boolean copyWallet(File dstDir, File srcDir, String name) {
+    boolean walletExists(File walletFile, boolean any) {
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        if (any) {
+            return new File(dir, name).exists()
+                    || new File(dir, name + ".keys").exists()
+                    || new File(dir, name + ".address.txt").exists();
+        } else {
+            return new File(dir, name).exists()
+                    && new File(dir, name + ".keys").exists()
+                    && new File(dir, name + ".address.txt").exists();
+        }
+    }
+
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
+        //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
+        if (walletExists(dstWallet, true) && !overwrite) return false;
+        if (!walletExists(srcWallet, false)) return false;
+
         boolean success = false;
+        File srcDir = srcWallet.getParentFile();
+        String srcName = srcWallet.getName();
+        File dstDir = dstWallet.getParentFile();
+        String dstName = dstWallet.getName();
         try {
-            // the cache is corrupt if we recover (!!)
-            // the cache is ok if we immediately do a full refresh()
-            // recoveryheight is ignored but not on watchonly wallet ?! - find out why
-            // so we just ignore the cache file and rebuild it on first sync
-            //copyFile(dstDir, srcDir, name);
-            copyFile(dstDir, srcDir, name + ".keys");
-            copyFile(dstDir, srcDir, name + ".address.txt");
+            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
+            copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;
         } catch (IOException ex) {
             Log.e(TAG, "wallet copy failed: " + ex.getMessage());
             // try to rollback
-            new File(dstDir, name).delete();
-            new File(dstDir, name + ".keys").delete();
-            new File(dstDir, name + ".address.txt").delete();
+            deleteWallet(dstWallet);
         }
         return success;
     }
 
-    void copyFile(File dstDir, File srcDir, String name) throws IOException {
-        FileChannel inChannel = new FileInputStream(new File(srcDir, name)).getChannel();
-        FileChannel outChannel = new FileOutputStream(new File(dstDir, name)).getChannel();
+    // do our best to delete as much as possible of the wallet files
+    boolean deleteWallet(File walletFile) {
+        Log.d(TAG, "deleteWallet " + walletFile.getAbsolutePath());
+        if (!walletFile.isFile()) return false;
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        boolean success = new File(dir, name).delete();
+        success = new File(dir, name + ".keys").delete() && success;
+        success = new File(dir, name + ".address.txt").delete() && success;
+        return success;
+    }
+
+    void copyFile(File src, File dst) throws IOException {
+        FileChannel inChannel = new FileInputStream(src).getChannel();
+        FileChannel outChannel = new FileOutputStream(dst).getChannel();
         try {
             inChannel.transferTo(0, inChannel.size(), outChannel);
         } finally {

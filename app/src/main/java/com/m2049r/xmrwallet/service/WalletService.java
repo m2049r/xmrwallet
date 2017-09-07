@@ -527,7 +527,7 @@ public class WalletService extends Service {
     }
 
     private Wallet openWallet(String walletName, String walletPassword) {
-        String path = Helper.getWalletPath(getApplicationContext(), walletName);
+        String path = Helper.getWalletFile(getApplicationContext(), walletName).getAbsolutePath();
         showProgress(20);
         Wallet wallet = null;
         WalletManager walletMgr = WalletManager.getInstance();
@@ -557,7 +557,7 @@ public class WalletService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification = new Notification.Builder(this)
                 .setContentTitle(getString(R.string.service_description))
-                .setSmallIcon(R.drawable.ic_notification_sync_32_32)
+                .setSmallIcon(R.drawable.ic_monero_32dp)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(NOTIFICATION_ID, notification);

@@ -100,8 +100,8 @@ public class SendFragment extends Fragment {
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
 
-        etAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etPaymentId.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        etAddress.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etPaymentId.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         Helper.showKeyboard(getActivity());
@@ -209,7 +209,8 @@ public class SendFragment extends Fragment {
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etPaymentId.setText((activityCallback.generatePaymentId()));
+                etPaymentId.setText((Wallet.generatePaymentId()));
+                etPaymentId.setSelection(etPaymentId.getText().length());
             }
         });
 
@@ -285,7 +286,7 @@ public class SendFragment extends Fragment {
 
     private boolean paymentIdOk() {
         String paymentId = etPaymentId.getText().toString();
-        return paymentId.isEmpty() || activityCallback.isPaymentIdValid(paymentId);
+        return paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
     }
 
     private void prepareSend() {
@@ -357,10 +358,6 @@ public class SendFragment extends Fragment {
         void onPrepareSweep();
 
         void onSend(String notes);
-
-        String generatePaymentId();
-
-        boolean isPaymentIdValid(String paymentId);
 
         String getWalletAddress();
 

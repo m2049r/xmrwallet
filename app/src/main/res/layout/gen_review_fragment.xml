@@ -4,19 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8sp"
-        android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/pbProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-    </LinearLayout>
+        android:visibility="invisible" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,7 +137,6 @@
         android:id="@+id/tvWalletSpendKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"

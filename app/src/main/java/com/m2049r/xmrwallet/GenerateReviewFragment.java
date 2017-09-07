@@ -17,8 +17,10 @@
 package com.m2049r.xmrwallet;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +30,13 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.service.MoneroHandlerThread;
-
-import java.io.File;
+import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
-    static final public String VIEW_DETAILS = "details";
-    static final public String VIEW_ACCEPT = "accept";
-    static final public String VIEW_WALLET = "wallet";
+    static final public String VIEW_TYPE_DETAILS = "details";
+    static final public String VIEW_TYPE_ACCEPT = "accept";
+    static final public String VIEW_TYPE_WALLET = "wallet";
 
     ProgressBar pbProgress;
     TextView tvWalletName;
@@ -76,16 +76,12 @@ public class GenerateReviewFragment extends Fragment {
 
         showProgress();
 
-        Bundle b = getArguments();
-        String type = b.getString("type");
-        if (!type.equals(VIEW_WALLET)) {
-            String name = b.getString("name");
-            String password = b.getString("password");
-            tvWalletName.setText(new File(name).getName());
-            show(name, password, type);
-        } else {
-                show(walletCallback.getWallet(), null, type);
-        }
+        Bundle args = getArguments();
+        String path = args.getString("path");
+        String password = args.getString("password");
+        String type = args.getString("type");
+        new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
+                path, password, type);
         return view;
     }
 
@@ -96,40 +92,64 @@ public class GenerateReviewFragment extends Fragment {
         acceptCallback.onAccept(name, password);
     }
 
-    private void show(final String walletPath, final String password, final String type) {
-        new Thread(null,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        final Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
-                        getActivity().runOnUiThread(new Runnable() {
-                            public void run() {
-                                show(wallet, password, type);
-                                wallet.close();
-                            }
-                        });
-                    }
-                }
-                , "DetailsReview", MoneroHandlerThread.THREAD_STACK_SIZE).start();
-    }
+    private class AsyncShow extends AsyncTask<String, Void, Boolean> {
+        String type;
+        String password;
 
-    private void show(final Wallet wallet, final String password, final String type) {
-        if (type.equals(GenerateReviewFragment.VIEW_ACCEPT)) {
-            tvWalletPassword.setText(password);
-            bAccept.setVisibility(View.VISIBLE);
-            bAccept.setEnabled(true);
+        String name;
+        String address;
+        String seed;
+        String viewKey;
+        boolean isWatchOnly;
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 3) return false;
+            String walletPath = params[0];
+            password = params[1];
+            type = params[2];
+
+            Wallet wallet;
+            boolean closeWallet;
+            if (type.equals(GenerateReviewFragment.VIEW_TYPE_WALLET)) {
+                wallet = GenerateReviewFragment.this.walletCallback.getWallet();
+                closeWallet = false;
+            } else {
+                wallet = WalletManager.getInstance().openWallet(walletPath, password);
+                closeWallet = true;
+            }
+            if (wallet.getStatus() != Wallet.Status.Status_Ok) return false;
+            name = wallet.getName();
+            address = wallet.getAddress();
+            seed = wallet.getSeed();
+            viewKey = wallet.getSecretViewKey();
+            isWatchOnly = wallet.isWatchOnly();
+            if (closeWallet) wallet.close();
+            return true;
         }
-        tvWalletName.setText(wallet.getName());
-        tvWalletAddress.setText(wallet.getAddress());
-        tvWalletMnemonic.setText(wallet.getSeed());
-        tvWalletViewKey.setText(wallet.getSecretViewKey());
-        String spend = wallet.isWatchOnly() ? "" : "not available - use seed for recovery";
-        if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
-            tvWalletSpendKey.setText(spend);
-        } else {
-            tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (result) {
+                if (type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT)) {
+                    tvWalletPassword.setText(password);
+                    bAccept.setVisibility(View.VISIBLE);
+                    bAccept.setEnabled(true);
+                }
+                tvWalletName.setText(name);
+                tvWalletAddress.setText(address);
+                tvWalletMnemonic.setText(seed);
+                tvWalletViewKey.setText(viewKey);
+                String spend = isWatchOnly ? "" : "not available - use seed for recovery";
+                if (spend.length() > 0) { //TODO should be == 64, but spendkey is not in the API yet
+                    tvWalletSpendKey.setText(spend);
+                } else {
+                    tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
+                }
+            }
+            hideProgress();
         }
-        hideProgress();
     }
 
     GenerateReviewFragment.Listener acceptCallback = null;
@@ -141,6 +161,7 @@ public class GenerateReviewFragment extends Fragment {
 
     public interface ListenerWithWallet {
         Wallet getWallet();
+
     }
 
     @Override

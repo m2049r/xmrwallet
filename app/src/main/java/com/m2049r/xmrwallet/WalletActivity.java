@@ -16,13 +16,14 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -33,8 +34,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -90,20 +89,21 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     private void startWalletService() {
-        acquireWakeLock();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             String walletPassword = extras.getString(REQUEST_PW);
             connectWalletService(walletId, walletPassword);
         } else {
-            throw new IllegalStateException("No extras passed! Panic!");
+            finish();
+            //throw new IllegalStateException("No extras passed! Panic!");
         }
     }
 
     private void stopWalletService() {
-        releaseWakeLock();
         disconnectWalletService();
+        releaseWakeLock();
     }
 
     @Override
@@ -120,11 +120,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!haveWallet) return true;
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.wallet_menu, menu);
-        return true;
+    public boolean hasWallet() {
+        return haveWallet;
     }
 
     @Override
@@ -132,13 +129,15 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         switch (item.getItemId()) {
             case R.id.action_info:
                 onWalletDetails();
-                break;
+                return true;
+            case R.id.action_receive:
+                onWalletReceive();
+                return true;
             default:
-                break;
+                return super.onOptionsItemSelected(item);
         }
-
-        return true;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -562,16 +561,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public String generatePaymentId() {
-        return getWallet().generatePaymentId();
-    }
-
-    @Override
-    public boolean isPaymentIdValid(String paymentId) {
-        return Wallet.isPaymentIdValid(paymentId);
-    }
-
-    @Override
     public String getWalletAddress() {
         return getWallet().getAddress();
     }
@@ -595,12 +584,27 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     private void onWalletDetails() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (!(fragment instanceof GenerateReviewFragment)) {
-            Bundle extras = new Bundle();
-            extras.putString("type", GenerateReviewFragment.VIEW_WALLET);
-            replaceFragment(new GenerateReviewFragment(), null, extras);
-        }
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Bundle extras = new Bundle();
+                        extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
+                        replaceFragment(new GenerateReviewFragment(), null, extras);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
     }
 
     @Override
@@ -608,13 +612,20 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         getWallet().disposePendingTransaction();
     }
 
+    private boolean startScanFragment = false;
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        if (startScanFragment) {
+            startScanFragment();
+            startScanFragment = false;
+        }
+    }
 
     private void startScanFragment() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (fragment instanceof SendFragment) {
-            Bundle extras = new Bundle();
-            replaceFragment(new ScannerFragment(), null, extras);
-        }
+        Bundle extras = new Bundle();
+        replaceFragment(new ScannerFragment(), null, extras);
     }
 
     /// QR scanner callbacks
@@ -702,7 +713,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startScanFragment();
+                    startScanFragment = true;
                 } else {
                     String msg = getString(R.string.message_camera_not_permitted);
                     Log.e(TAG, msg);
@@ -711,6 +722,23 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 break;
             default:
         }
+    }
+
+    @Override
+    public void onWalletReceive() {
+        startReceive(getWalletAddress());
+    }
+
+    void startReceive(String address) {
+        Log.d(TAG, "startReceive()");
+        Bundle b = new Bundle();
+        b.putString("address", address);
+        startReceiveFragment(b);
+    }
+
+    void startReceiveFragment(Bundle extras) {
+        replaceFragment(new ReceiveFragment(), null, extras);
+        Log.d(TAG, "ReceiveFragment placed");
     }
 
 }

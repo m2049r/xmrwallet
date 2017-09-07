@@ -238,6 +238,7 @@ public class Wallet {
     public native void setDefaultMixin(int mixin);
 
     public native boolean setUserNote(String txid, String note);
+
     public native String getUserNote(String txid);
 
     public native String getTxKey(String txid);

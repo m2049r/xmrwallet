@@ -69,12 +69,9 @@ public class GenerateFragment extends Fragment {
         bGenerate = (Button) view.findViewById(R.id.bGenerate);
 
         etWalletMnemonic.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etWalletAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etWalletViewKey.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etWalletSpendKey.setRawInputType(InputType.TYPE_CLASS_TEXT);
-
-        boolean testnet = WalletManager.getInstance().isTestNet();
-        //etWalletMnemonic.setTextIsSelectable(testnet);
+        etWalletAddress.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etWalletViewKey.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etWalletSpendKey.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         Helper.showKeyboard(getActivity());
         etWalletName.addTextChangedListener(new TextWatcher() {
@@ -298,8 +295,12 @@ public class GenerateFragment extends Fragment {
     private void generateWallet() {
         String name = etWalletName.getText().toString();
         if (name.length() == 0) return;
-        String walletPath = Helper.getWalletPath(getActivity(), name);
-        if (WalletManager.getInstance().walletExists(walletPath)) {
+        if (name.charAt(0)=='.') {
+            Toast.makeText(getActivity(), getString(R.string.generate_wallet_dot), Toast.LENGTH_LONG).show();
+            etWalletName.requestFocus();
+        }
+        File walletFile = Helper.getWalletFile(getActivity(), name);
+        if (WalletManager.getInstance().walletExists(walletFile)) {
             Toast.makeText(getActivity(), getString(R.string.generate_wallet_exists), Toast.LENGTH_LONG).show();
             etWalletName.requestFocus();
             return;
@@ -348,7 +349,7 @@ public class GenerateFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onPause()");
+        Log.d(TAG, "onResume()");
         activityCallback.setTitle(getString(R.string.generate_title));
     }
 
