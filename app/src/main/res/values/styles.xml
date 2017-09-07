@@ -1,11 +1,60 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base" />
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat">
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MoneroLabel" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:textColor">?colorAccent</item>
+    </style>
+
+    <style name="MoneroText" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textColorHint">?colorPrimaryDark</item>
+    </style>
+
+    <style name="MoneroButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:background">?colorPrimary</item>
+        <item name="android:textAppearance">@style/MoneroLabel</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="MoneroButton.Small">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="MoneroButton.Alert">
+        <item name="android:textColor">@color/moneroBlack</item>
+        <item name="android:background">@color/moneroOrange</item>
+    </style>
+
+    <style name="MoneroEdit" parent="MoneroText">
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textColorHint">?colorPrimaryDark</item>
+        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="android:foregroundTint">@color/moneroWhite</item>
+    </style>
+
+    <style name="MoneroProgress" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:progressTint">?colorPrimaryDark</item>
+        <item name="android:progressBackgroundTint">?colorPrimary</item>
+    </style>
+
+    <style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
+        <!--item name="android:backgroundTint">@color/moneroWhite</item-->
+    </style>
+
+    <style name="MoneroListView" parent="@android:style/Widget.ListView">
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
     </style>
 
 </resources>

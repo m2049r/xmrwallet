@@ -101,6 +101,7 @@ public class GenerateReviewFragment extends Fragment {
         String seed;
         String viewKey;
         boolean isWatchOnly;
+        Wallet.Status status;
 
         @Override
         protected Boolean doInBackground(String... params) {
@@ -118,8 +119,13 @@ public class GenerateReviewFragment extends Fragment {
                 wallet = WalletManager.getInstance().openWallet(walletPath, password);
                 closeWallet = true;
             }
-            if (wallet.getStatus() != Wallet.Status.Status_Ok) return false;
             name = wallet.getName();
+            status = wallet.getStatus();
+            if (status != Wallet.Status.Status_Ok) {
+                if (closeWallet) wallet.close();
+                return false;
+            }
+
             address = wallet.getAddress();
             seed = wallet.getSeed();
             viewKey = wallet.getSecretViewKey();
@@ -131,13 +137,13 @@ public class GenerateReviewFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            tvWalletName.setText(name);
             if (result) {
                 if (type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT)) {
                     tvWalletPassword.setText(password);
                     bAccept.setVisibility(View.VISIBLE);
                     bAccept.setEnabled(true);
                 }
-                tvWalletName.setText(name);
                 tvWalletAddress.setText(address);
                 tvWalletMnemonic.setText(seed);
                 tvWalletViewKey.setText(viewKey);
@@ -147,6 +153,13 @@ public class GenerateReviewFragment extends Fragment {
                 } else {
                     tvWalletSpendKey.setText(getString(R.string.generate_wallet_watchonly));
                 }
+            } else {
+                // TODO show proper error message
+                // TODO end the fragment
+                tvWalletAddress.setText(status.toString());
+                tvWalletMnemonic.setText(status.toString());
+                tvWalletViewKey.setText(status.toString());
+                tvWalletSpendKey.setText(status.toString());
             }
             hideProgress();
         }
