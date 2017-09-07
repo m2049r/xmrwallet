@@ -2,18 +2,18 @@
 Another Android Monero Wallet
 
 ### QUICKSTART
-- Download APK (Release) and install it
+- Download the APK for the most current release [here](https://github.com/m2049r/xmrwallet/releases) and install it
 - Run the App and select "Generate Wallet" to create a new wallet or recover a wallet
-- Advanced users could copy over synced wallet files (all files) onto sdcard in directory Monerujo (created first time App is started)
-- see the [FAQ](doc/FAQ.md)
+- Advanced users can copy over synced wallet files (all files) onto sdcard in directory Monerujo (created first time App is started)
+- See the [FAQ](doc/FAQ.md)
 
 ### Disclaimer
-You may loose all your Moneroj if you use this App. Be cautious when spending on mainnet.
+You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
 
 ### Random Notes
-- Based off monero v0.10.3.1 with pull requests #2238, #2239 and #2289 applied => so can be used in mainnet!
+- Based off monero v0.10.3.1 with pull requests #2238, #2239 and #2289 applied => so can it be used on the mainnet!
 - currently only android32 (runs on 64-bit as well)
-- works in testnet & mainnet
+- works on the testnet & mainnet
 - takes forever to sync due to 32-bit architecture
 - use your own daemon - it's easy
 - screen stays on until first sync is complete
