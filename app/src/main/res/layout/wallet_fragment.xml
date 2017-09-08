@@ -1,121 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/moneroBlack"
     android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4sp"
-        android:layout_marginLeft="4sp"
-        android:layout_marginRight="4sp">
-
-        <TextView
-            android:id="@+id/tvBlockHeightProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loading..."
-            android:textSize="12sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/moneroOrange"
+        android:orientation="vertical"
+        android:paddingBottom="8sp">
 
         <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/clProgress"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ProgressBar
                 android:id="@+id/pbProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="0dp"
+                style="@style/MoneroProgress"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:progress="0"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tvProgress"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvProgress" />
 
             <TextView
                 android:id="@+id/tvProgress"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Loading..."
+                android:textColor="@color/moneroWhite"
                 android:textSize="16sp"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/llBalance"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvBlockHeightProgress"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvBlockHeightProgress">
+            android:gravity="right"
+            android:text="Loading..."
+            android:textSize="12sp"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tvBalance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00000000.000000000000"
-                android:textColor="@color/tx_green"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4sp"
-                android:text="@string/label_xmr"
-                android:textColor="@color/tx_green"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llUnconfirmedAmount"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvBalance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="visible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llBalance">
+            android:gravity="center"
+            android:text="00000000.000000000000 XMR"
+            android:textColor="@color/tx_green"
+            android:textSize="24sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4sp"
-                android:textColor="@color/tx_pending"
-                android:text="+"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvUnconfirmedAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00000000.000000000000"
-                android:textColor="@color/tx_pending"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4sp"
-                android:text="@string/label_unconfirmed_alance"
-                android:textColor="@color/tx_pending"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvUnconfirmedAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="+00000000.000000000000 unconfirmed"
+            android:textColor="@color/tx_pending"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -136,9 +94,9 @@
 
         <Button
             android:id="@+id/bSend"
+            style="@style/MoneroButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:enabled="true"
             android:text="@string/wallet_send_hint"
             android:visibility="gone"
