@@ -41,9 +41,9 @@
 
     <string name="service_busy">I am still busy with your last wallet &#8230;</string>
 
-    <string name="prompt_rename">Rename</string>
+    <string name="prompt_rename">Rename %1$s</string>
 
-    <string name="prompt_password">Password for</string>
+    <string name="prompt_password">Password for %1$s</string>
     <string name="bad_password">Incorrect password!</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="error_not_wallet">This is not a wallet!</string>
@@ -58,10 +58,8 @@
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
-    <string name="label_balance">Unconfirmed</string>
-    <string name="label_unconfirmed_alance">unconfirmed</string>
-    <string name="label_xmr">XMR</string>
-    <string name="label_unlockedBalance">Available</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s unconfirmed</string>
+    <string name="xmr_balance">%1$s XMR</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Daemon connected!</string>
 
@@ -147,7 +145,12 @@
     <string name="send_fee_label">Fee</string>
     <string name="send_dust_label">Dust</string>
 
-    <string name="send_error_title">Trasaction Error</string>
+    <string name="send_error_title">Transaction Error</string>
+
+    <string name="tx_list_fee_pending">incl. %1$s fee</string>
+    <string name="tx_list_fee">+ %1$s fee</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_negative">-%1$s</string>
 
     <string name="tx_address">Address</string>
     <string name="tx_timestamp">Timestamp</string>
