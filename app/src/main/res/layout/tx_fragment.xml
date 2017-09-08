@@ -17,15 +17,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_id"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxId"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -33,15 +35,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_key"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxKey"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -49,15 +53,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_destination"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvDestination"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -65,15 +71,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_paymentId"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxPaymentId"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -81,8 +89,9 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:text="@string/tx_amount"
                     android:textColor="@color/colorAccent"
@@ -90,8 +99,9 @@
 
                 <TextView
                     android:id="@+id/tvTxAmount"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -99,15 +109,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_fee"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxFee"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -115,8 +127,9 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_notes"
                     android:textColor="@color/colorAccent" />
 
@@ -129,25 +142,24 @@
 
                     <EditText
                         android:id="@+id/etTxNotes"
-                        android:layout_width="0dp"
+                        style="@style/MoneroEdit"
+                        android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
                         android:hint="@string/tx_notes_hint"
                         android:inputType="textMultiLine"
-                        android:textAlignment="textStart"
-                        android:textSize="14sp" />
+                        android:textAlignment="textStart"/>
 
                     <Button
                         android:id="@+id/bTxNotes"
-                        android:layout_width="0dp"
+                        style="@style/MoneroButton.Small"
+                        android:layout_width="0sp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8sp"
+                        android:layout_marginTop="8sp"
                         android:layout_weight="2"
-                        android:background="@color/colorPrimary"
                         android:enabled="true"
-                        android:text="@string/tx_button_notes"
-                        android:textSize="8sp" />
+                        android:text="@string/tx_button_notes"/>
                 </LinearLayout>
 
             </TableRow>
@@ -155,15 +167,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_timestamp"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxTimestamp"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -172,15 +186,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_blockheight"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxBlockheight"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
             </TableRow>
@@ -188,15 +204,17 @@
             <TableRow>
 
                 <TextView
+                    style="@style/MoneroLabel"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="8sp"
                     android:text="@string/tx_transfers"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTxTransfers"
+                    style="@style/MoneroText"
                     android:gravity="left"
-                    android:padding="8dip"
+                    android:padding="8sp"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true" />
 
@@ -206,10 +224,10 @@
 
         <Button
             android:id="@+id/bCopy"
+            style="@style/MoneroButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/colorPrimary"
+            android:layout_marginTop="8sp"
             android:enabled="false"
             android:text="@string/tx_button_copy" />
 
