@@ -81,6 +81,8 @@ public class Wallet {
 
     public native String getSecretViewKey();
 
+    public native String getSecretSpendKey();
+
     public boolean store() {
         return store("");
     }
