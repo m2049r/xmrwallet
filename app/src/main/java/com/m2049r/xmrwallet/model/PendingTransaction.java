@@ -34,6 +34,7 @@ public class PendingTransaction {
     }
 
     public enum Priority {
+        Priority_Default(0),
         Priority_Low(1),
         Priority_Medium(2),
         Priority_High(3),
@@ -41,6 +42,8 @@ public class PendingTransaction {
 
         public static Priority fromInteger(int n) {
             switch (n) {
+                case 0:
+                    return Priority_Default;
                 case 1:
                     return Priority_Low;
                 case 2:
