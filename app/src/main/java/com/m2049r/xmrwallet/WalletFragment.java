@@ -194,7 +194,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         long balance = wallet.getBalance();
         long unlockedBalance = wallet.getUnlockedBalance();
         tvBalance.setText(getResources().getString(R.string.xmr_balance, Helper.getDisplayAmount(unlockedBalance)));
-        tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_balance, Helper.getDisplayAmount(balance - unlockedBalance)));
+        tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, Helper.getDisplayAmount(balance - unlockedBalance)));
         String sync = "";
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");
