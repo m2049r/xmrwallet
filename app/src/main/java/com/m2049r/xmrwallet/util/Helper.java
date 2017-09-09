@@ -37,6 +37,14 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class Helper {
     static private final String TAG = "Helper";
