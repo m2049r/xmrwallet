@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/moneroBlack"
     android:orientation="vertical">
 
     <ProgressBar
@@ -10,19 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8sp"
+        android:progressBackgroundTint="@color/colorPrimaryDark"
+        android:progressTint="@color/colorPrimary"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/tvAddress"
+        style="@style/MoneroText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
-        android:textIsSelectable="true"
-        android:selectAllOnFocus="true"
         android:hint="@string/send_address_hint"
+        android:selectAllOnFocus="true"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textIsSelectable="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,16 +36,17 @@
         android:weightSum="10">
 
         <TextView
+            style="@style/MoneroText"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8sp"
             android:layout_weight="3"
             android:text="@string/receive_paymentid_label"
-            android:textAlignment="textEnd"
-            android:textSize="16sp" />
+            android:textAlignment="textEnd" />
 
         <EditText
             android:id="@+id/etPaymentId"
+            style="@style/MoneroEdit"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
@@ -50,20 +54,18 @@
             android:hint="@string/receive_paymentid_hint"
             android:imeOptions="actionNext"
             android:inputType="textMultiLine"
-            android:textAlignment="textStart"
-            android:textSize="16sp" />
+            android:textAlignment="textStart" />
 
         <Button
             android:id="@+id/bPaymentId"
+            style="@style/MoneroButton.Small"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="2"
-            android:background="@color/colorPrimary"
             android:enabled="false"
             android:minHeight="36sp"
-            android:text="@string/receive_paymentid_button"
-            android:textSize="12sp" />
+            android:text="@string/receive_paymentid_button" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,16 +77,17 @@
         android:weightSum="10">
 
         <TextView
+            style="@style/MoneroText"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8sp"
             android:layout_weight="3"
             android:text="@string/send_amount_label"
-            android:textAlignment="textEnd"
-            android:textSize="24sp" />
+            android:textAlignment="textEnd" />
 
         <EditText
             android:id="@+id/etAmount"
+            style="@style/MoneroEdit"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
@@ -92,17 +95,16 @@
             android:hint="@string/receive_amount_hint"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
-            android:textAlignment="textStart"
-            android:textSize="24sp" />
+            android:textAlignment="textStart" />
     </LinearLayout>
 
     <Button
         android:id="@+id/bGenerate"
+        style="@style/MoneroButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
-        android:background="@color/colorPrimary"
         android:enabled="false"
         android:minHeight="36sp"
         android:text="@string/receive_generate_hint" />

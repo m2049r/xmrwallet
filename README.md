@@ -11,7 +11,7 @@ Another Android Monero Wallet
 You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
 
 ### Random Notes
-- Based off monero v0.10.3.1 with pull requests #2238, #2239 and #2289 applied => so can it be used on the mainnet!
+- Based off monero v0.11.0.0 with PR #2289 applied
 - currently only android32 (runs on 64-bit as well)
 - works on the testnet & mainnet
 - takes forever to sync due to 32-bit architecture

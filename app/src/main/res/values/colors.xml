@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="tx_green">#5C8447</color>
+    <color name="tx_red">#AC2527</color>
+    <color name="tx_pending">#4c4c4c</color>
+    <color name="tx_failed">#FF80AB</color>
 
-    <color name="main_background">#f0eeef</color>
-    <color name="menu_background_color">#1c1c1c</color>
+    <color name="moneroOrange">#ff6600</color>
+    <color name="moneroWhite">#ffffff</color>
+    <color name="moneroBlack">#000000</color>
+    <color name="moneroGray">#4c4c4c</color>
 
-    <color name="tx_green">#36b05b</color>
-    <color name="tx_red">#ff4f41</color>
-    <color name="tx_pending">#4835b0</color>
-    <color name="tx_failed">#d000ff</color>
+    <color name="colorPrimary">#ff6600</color>
+    <color name="colorPrimaryDark">#61221A</color>
+    <color name="textColorPrimary">#dcdcdc</color>
+    <color name="windowBackground">#ffffff</color>
+    <color name="navigationBarColor">#2B4868</color>
+    <color name="colorAccent">#009ADA</color>
 
-    <color name="moneroOrange">#fa6600</color>
-    <color name="white">#ffffff</color>
-
+    <color name="anotherColor">#F8CC5A</color>
 </resources>

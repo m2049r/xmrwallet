@@ -49,7 +49,6 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     private NumberFormat formatter = NumberFormat.getInstance();
 
     TextView tvBalance;
-    LinearLayout llUnconfirmedAmount;
     TextView tvUnconfirmedAmount;
     TextView tvBlockHeightProgress;
     ConstraintLayout clProgress;
@@ -66,7 +65,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if (activityCallback.hasWallet())
-        inflater.inflate(R.menu.wallet_menu, menu);
+            inflater.inflate(R.menu.wallet_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -78,21 +77,17 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         tvProgress = (TextView) view.findViewById(R.id.tvProgress);
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         clProgress = (ConstraintLayout) view.findViewById(R.id.clProgress);
-        llUnconfirmedAmount = (LinearLayout) view.findViewById(R.id.llUnconfirmedAmount);
         tvBalance = (TextView) view.findViewById(R.id.tvBalance);
-        tvBalance.setText(Helper.getDisplayAmount(0));
+        tvBalance.setText(getResources().getString(R.string.xmr_balance, Helper.getDisplayAmount(0)));
         tvUnconfirmedAmount = (TextView) view.findViewById(R.id.tvUnconfirmedAmount);
-        tvUnconfirmedAmount.setText(Helper.getDisplayAmount(0));
+        tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, Helper.getDisplayAmount(0)));
         tvBlockHeightProgress = (TextView) view.findViewById(R.id.tvBlockHeightProgress);
 
         bSend = (Button) view.findViewById(R.id.bSend);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-        RecyclerView.ItemDecoration itemDecoration = new
-                DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
 
-        this.adapter = new TransactionInfoAdapter(this);
+        this.adapter = new TransactionInfoAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
 
         bSend.setOnClickListener(new View.OnClickListener()
@@ -161,10 +156,12 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
 
     public void showProgress() {
         clProgress.setVisibility(View.VISIBLE);
+        tvBlockHeightProgress.setVisibility(View.GONE);
     }
 
     public void hideProgress() {
         clProgress.setVisibility(View.GONE);
+        tvBlockHeightProgress.setVisibility(View.VISIBLE);
     }
 
     String setActivityTitle(Wallet wallet) {
@@ -173,6 +170,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         if (shortName.length() > 16) {
             shortName = shortName.substring(0, 14) + "...";
         }
+        // TODO very very rarely this craches because getAddress returns "" or so ...
+        // maybe because this runs in the ui thread and not in a 5MB thread
         String title = "[" + wallet.getAddress().substring(0, 6) + "] " + shortName;
         activityCallback.setTitle(title);
 
@@ -194,14 +193,8 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
         }
         long balance = wallet.getBalance();
         long unlockedBalance = wallet.getUnlockedBalance();
-        tvBalance.setText(Helper.getDisplayAmount(unlockedBalance));
-        tvUnconfirmedAmount.setText(Helper.getDisplayAmount(balance - unlockedBalance));
-        // balance cannot be less than unlockedBalance
-        /*if (balance != unlockedBalance) {
-            llPendingAmount.setVisibility(View.VISIBLE);
-        } else {
-            llPendingAmount.setVisibility(View.INVISIBLE);
-        }*/
+        tvBalance.setText(getResources().getString(R.string.xmr_balance, Helper.getDisplayAmount(unlockedBalance)));
+        tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, Helper.getDisplayAmount(balance - unlockedBalance)));
         String sync = "";
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");

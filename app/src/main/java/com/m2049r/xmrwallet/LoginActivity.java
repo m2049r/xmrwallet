@@ -192,7 +192,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    // copy + delete seems safer than rename bevause we call rollback easily
+    // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
         if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
             deleteWallet(walletFile);
@@ -215,7 +215,7 @@ public class LoginActivity extends AppCompatActivity
         final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
         final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
 
-        tvRenameLabel.setText(getString(R.string.prompt_rename) + " " + walletName);
+        tvRenameLabel.setText(getString(R.string.prompt_rename, walletName));
 
         // set dialog message
         alertDialogBuilder
@@ -396,7 +396,7 @@ public class LoginActivity extends AppCompatActivity
         final EditText etPassword = (EditText) promptsView.findViewById(R.id.etPassword);
         final TextView tvPasswordLabel = (TextView) promptsView.findViewById(R.id.tvPasswordLabel);
 
-        tvPasswordLabel.setText(LoginActivity.this.getString(R.string.prompt_password) + " " + wallet);
+        tvPasswordLabel.setText(LoginActivity.this.getString(R.string.prompt_password, wallet));
 
         // set dialog message
         alertDialogBuilder
@@ -510,7 +510,6 @@ public class LoginActivity extends AppCompatActivity
             new AsyncWaitForService().execute();
         }
     }
-
 
     private class MyProgressDialog extends ProgressDialog {
         Activity activity;
