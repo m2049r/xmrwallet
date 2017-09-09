@@ -58,7 +58,7 @@
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s unconfirmed</string>
+    <string name="xmr_unconfirmed_amount">p+ %1$s unconfirmed</string>
     <string name="xmr_balance">%1$s XMR</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Daemon connected!</string>

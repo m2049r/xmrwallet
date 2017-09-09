@@ -38,10 +38,18 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class Helper {
-    private static final String TAG = "Helper";
-    private static final String WALLET_DIR = "Monerujo";
+    static private final String TAG = "Helper";
+    static private final String WALLET_DIR = "Monerujo";
 
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
@@ -62,7 +70,7 @@ public class Helper {
         return dir;
     }
 
-    public static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+    static public final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
 
     static public boolean getWritePermission(Activity context) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -80,7 +88,7 @@ public class Helper {
         }
     }
 
-    public static final int PERMISSIONS_REQUEST_CAMERA = 1;
+    static public final int PERMISSIONS_REQUEST_CAMERA = 1;
 
     static public boolean getCameraPermission(Activity context) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -165,7 +173,7 @@ public class Helper {
         return s.substring(0, cutoff);
     }
 
-    public static Bitmap getBitmap(Context context, int drawableId) {
+    static public Bitmap getBitmap(Context context, int drawableId) {
         Drawable drawable = ContextCompat.getDrawable(context, drawableId);
         if (drawable instanceof BitmapDrawable) {
             return BitmapFactory.decodeResource(context.getResources(), drawableId);
@@ -176,7 +184,7 @@ public class Helper {
         }
     }
 
-    private static Bitmap getBitmap(VectorDrawable vectorDrawable) {
+    static private Bitmap getBitmap(VectorDrawable vectorDrawable) {
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
                 vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
