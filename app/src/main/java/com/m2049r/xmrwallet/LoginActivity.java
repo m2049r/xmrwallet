@@ -196,7 +196,7 @@ public class LoginActivity extends AppCompatActivity
 
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
             deleteWallet(walletFile);
             return true;
         } else {
@@ -300,7 +300,7 @@ public class LoginActivity extends AppCompatActivity
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
-        return copyWallet(walletFile, backupFile, true);
+        return copyWallet(walletFile, backupFile, true, true);
     }
 
     @Override
@@ -767,7 +767,7 @@ public class LoginActivity extends AppCompatActivity
         final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         final File walletFolder = getStorageRoot();
         final File walletFile = new File(walletFolder, name);
-        final boolean rc = copyWallet(newWalletFile, walletFile, false)
+        final boolean rc = copyWallet(newWalletFile, walletFile, false, false)
                 &&
                 (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
         if (rc) {
@@ -811,7 +811,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite, boolean full) {
         //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
         if (walletExists(dstWallet, true) && !overwrite) return false;
         if (!walletExists(srcWallet, false)) return false;
@@ -822,7 +822,13 @@ public class LoginActivity extends AppCompatActivity
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            if (full) {
+                // the cache is corrupt if we recover (!!) from seed
+                // the cache is ok if we immediately do a full refresh()
+                // recoveryheight is ignored but not on watchonly wallet ?! - find out why
+                // so we just ignore the cache file and rebuild it on first sync
+                copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            }
             copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
             copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;

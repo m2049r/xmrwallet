@@ -95,7 +95,6 @@ public class ReceiveFragment extends Fragment implements AsyncExchangeRate.Liste
             // losing precision using double here doesn't matter
             double amountA = Double.parseDouble(enteredAmount);
             double amountB = amountA * rate;
-            Log.d(TAG, "exchange A=" + amountA + " B=" + amountB);
             if (enteredCurrencyA.equals("XMR")) {
                 String validatedAmountA = Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount));
                 xmrAmount = validatedAmountA; // take what was entered in XMR
@@ -352,12 +351,8 @@ public class ReceiveFragment extends Fragment implements AsyncExchangeRate.Liste
     }
 
     private void generateQr(String xmrAmount) {
-        Log.d(TAG, "AMOUNT=" + xmrAmount);
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getText().toString();
-//        String enteredAmount = etAmount.getText().toString();
-        // that's a lot of converting ...
-        //String amount = (xmrAmount.isEmpty() ? xmrAmount : Helper.getDisplayAmount(Wallet.getAmountFromString(xmrAmount)));
         StringBuffer sb = new StringBuffer();
         sb.append(ScannerFragment.QR_SCHEME).append(address);
         boolean first = true;
