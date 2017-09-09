@@ -58,7 +58,7 @@
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
-    <string name="xmr_unconfirmed_amount">p+ %1$s unconfirmed</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s unconfirmed</string>
     <string name="xmr_balance">%1$s XMR</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Daemon connected!</string>
@@ -177,9 +177,9 @@
     <string name="receive_generate_hint">Show me the QR Code</string>
     <string name="receive_paymentid_button">Generate</string>
     <string name="receive_paymentid_label">PaymentID</string>
-    <string name="receive_paymentid_hint">(optional)</string>
-    <string name="receive_amount_label">Amount</string>
-    <string name="receive_amount_hint">XMR (optional)</string>
+    <string name="receive_paymentid_hint">Payment ID (optional)</string>
+    <string name="receive_amount_hint">Amount</string>
+    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
 
     <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
@@ -204,5 +204,11 @@
         <item>Low Priority</item>
         <item>Medium Priority</item>
         <item>High  Priority</item>
+    </string-array>
+
+    <string-array name="currency">
+        <item>XMR</item>
+        <item>EUR</item>
+        <item>USD</item>
     </string-array>
 </resources>

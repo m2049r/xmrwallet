@@ -17,7 +17,7 @@
 
     <style name="MoneroText" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textColor">?colorPrimary</item>
-        <item name="android:textColorHint">?colorPrimaryDark</item>
+        <item name="android:textColorHint">@color/moneroGray</item>
     </style>
 
     <style name="MoneroButton" parent="@style/Widget.AppCompat.Button">
@@ -38,7 +38,6 @@
 
     <style name="MoneroEdit" parent="MoneroText">
         <item name="android:textColor">?colorPrimary</item>
-        <item name="android:textColorHint">?colorPrimaryDark</item>
         <item name="android:backgroundTint">?colorPrimary</item>
         <item name="android:foregroundTint">@color/moneroWhite</item>
     </style>
@@ -48,13 +47,16 @@
         <item name="android:progressBackgroundTint">?colorPrimary</item>
     </style>
 
-    <style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
-        <!--item name="android:backgroundTint">@color/moneroWhite</item-->
-    </style>
+    <!--style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
+    </style-->
 
     <style name="MoneroListView" parent="@android:style/Widget.ListView">
         <item name="android:divider">@null</item>
         <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:background">@android:drawable/screen_background_dark_transparent</item>
     </style>
 
 </resources>

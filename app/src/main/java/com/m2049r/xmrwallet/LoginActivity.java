@@ -45,6 +45,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
@@ -54,7 +55,8 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 public class LoginActivity extends AppCompatActivity
-        implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
+        implements LoginFragment.Listener, GenerateFragment.Listener,
+        GenerateReviewFragment.Listener, ReceiveFragment.Listener {
     static final String TAG = "LoginActivity";
     private static final String GENERATE_STACK = "gen";
 
@@ -700,6 +702,7 @@ public class LoginActivity extends AppCompatActivity
 
     interface WalletCreator {
         boolean createWallet(File aFile, String password);
+
     }
 
     @Override
@@ -777,6 +780,12 @@ public class LoginActivity extends AppCompatActivity
                     getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB) {
+        new AsyncExchangeRate(listener).execute(currencyA, currencyB);
+    }
+
 
     Wallet.Status testWallet(String path, String password) {
         Log.d(TAG, "testing wallet " + path);
