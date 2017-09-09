@@ -1,3 +1,9 @@
 .gradle
-build
-local.properties
+/build
+*.iml
+/.idea/libraries
+/.idea/workspace.xml
+/local.properties
+/captures
+.externalNativeBuild
+.DS_Store
