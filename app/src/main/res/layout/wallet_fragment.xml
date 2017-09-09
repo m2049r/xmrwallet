@@ -51,10 +51,11 @@
             android:id="@+id/tvBlockHeightProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8sp"
             android:gravity="right"
             android:text="Loading..."
             android:textSize="12sp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/tvBalance"

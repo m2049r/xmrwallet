@@ -45,6 +45,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
@@ -54,7 +55,8 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 public class LoginActivity extends AppCompatActivity
-        implements LoginFragment.Listener, GenerateFragment.Listener, GenerateReviewFragment.Listener {
+        implements LoginFragment.Listener, GenerateFragment.Listener,
+        GenerateReviewFragment.Listener, ReceiveFragment.Listener {
     static final String TAG = "LoginActivity";
     private static final String GENERATE_STACK = "gen";
 
@@ -194,7 +196,7 @@ public class LoginActivity extends AppCompatActivity
 
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
             deleteWallet(walletFile);
             return true;
         } else {
@@ -298,7 +300,7 @@ public class LoginActivity extends AppCompatActivity
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
-        return copyWallet(walletFile, backupFile, true);
+        return copyWallet(walletFile, backupFile, true, true);
     }
 
     @Override
@@ -700,6 +702,7 @@ public class LoginActivity extends AppCompatActivity
 
     interface WalletCreator {
         boolean createWallet(File aFile, String password);
+
     }
 
     @Override
@@ -764,7 +767,7 @@ public class LoginActivity extends AppCompatActivity
         final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         final File walletFolder = getStorageRoot();
         final File walletFile = new File(walletFolder, name);
-        final boolean rc = copyWallet(newWalletFile, walletFile, false)
+        final boolean rc = copyWallet(newWalletFile, walletFile, false, false)
                 &&
                 (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
         if (rc) {
@@ -777,6 +780,12 @@ public class LoginActivity extends AppCompatActivity
                     getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB) {
+        new AsyncExchangeRate(listener).execute(currencyA, currencyB);
+    }
+
 
     Wallet.Status testWallet(String path, String password) {
         Log.d(TAG, "testing wallet " + path);
@@ -802,7 +811,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite, boolean full) {
         //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
         if (walletExists(dstWallet, true) && !overwrite) return false;
         if (!walletExists(srcWallet, false)) return false;
@@ -813,7 +822,13 @@ public class LoginActivity extends AppCompatActivity
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            if (full) {
+                // the cache is corrupt if we recover (!!) from seed
+                // the cache is ok if we immediately do a full refresh()
+                // recoveryheight is ignored but not on watchonly wallet ?! - find out why
+                // so we just ignore the cache file and rebuild it on first sync
+                copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            }
             copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
             copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;

@@ -35,26 +35,17 @@
         android:orientation="horizontal"
         android:weightSum="10">
 
-        <TextView
-            style="@style/MoneroText"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8sp"
-            android:layout_weight="3"
-            android:text="@string/receive_paymentid_label"
-            android:textAlignment="textEnd" />
-
         <EditText
             android:id="@+id/etPaymentId"
             style="@style/MoneroEdit"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="8"
             android:enabled="false"
             android:hint="@string/receive_paymentid_hint"
             android:imeOptions="actionNext"
             android:inputType="textMultiLine"
-            android:textAlignment="textStart" />
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/bPaymentId"
@@ -73,29 +64,43 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4sp"
         android:layout_marginTop="4sp"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <TextView
-            style="@style/MoneroText"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8sp"
-            android:layout_weight="3"
-            android:text="@string/send_amount_label"
-            android:textAlignment="textEnd" />
+        android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/etAmount"
+            android:id="@+id/etAmountA"
             style="@style/MoneroEdit"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:enabled="false"
+            android:layout_weight="1"
             android:hint="@string/receive_amount_hint"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
-            android:textAlignment="textStart" />
+            android:textAlignment="textEnd" />
+
+        <Spinner
+            android:id="@+id/sCurrencyA"
+            style="@style/MoneroSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/currency"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvAmountB"
+            style="@style/MoneroText"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd" />
+
+        <Spinner
+            android:id="@+id/sCurrencyB"
+            style="@style/MoneroSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/currency"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <Button

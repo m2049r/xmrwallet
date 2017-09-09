@@ -38,9 +38,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -192,4 +190,30 @@ public class Helper {
         return bitmap;
     }
 
+    static public String getUrl(String httpsUrl) {
+        HttpsURLConnection urlConnection = null;
+        try {
+            URL url = new URL(httpsUrl);
+            urlConnection = (HttpsURLConnection) url.openConnection();
+            InputStreamReader in = new InputStreamReader(urlConnection.getInputStream());
+            StringBuffer sb = new StringBuffer();
+            final int BUFFER_SIZE = 512;
+            char[] buffer = new char[BUFFER_SIZE];
+            int length = in.read(buffer, 0, BUFFER_SIZE);
+            while (length >= 0) {
+                sb.append(buffer, 0, length);
+                length = in.read(buffer, 0, BUFFER_SIZE);
+            }
+            return sb.toString();
+        } catch (MalformedURLException ex) {
+            Log.e(TAG, "A " + ex.getLocalizedMessage());
+        } catch (IOException ex) {
+            Log.e(TAG, "B " + ex.getLocalizedMessage());
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+        }
+        return null;
+    }
 }

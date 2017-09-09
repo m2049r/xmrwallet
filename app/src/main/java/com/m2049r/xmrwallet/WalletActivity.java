@@ -17,6 +17,7 @@
 package com.m2049r.xmrwallet;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,6 +25,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -42,17 +44,22 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
-        ScannerFragment.Listener {
+        ScannerFragment.Listener, ReceiveFragment.Listener {
     private static final String TAG = "WalletActivity";
 
     public static final String REQUEST_ID = "id";
@@ -741,4 +748,8 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         Log.d(TAG, "ReceiveFragment placed");
     }
 
+    @Override
+    public void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB) {
+        new AsyncExchangeRate(listener).execute(currencyA, currencyB);
+    }
 }

@@ -16,10 +16,13 @@
 
 package com.m2049r.xmrwallet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
@@ -30,10 +33,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,23 +50,71 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class ReceiveFragment extends Fragment {
+public class ReceiveFragment extends Fragment implements AsyncExchangeRate.Listener {
     static final String TAG = "ReceiveFragment";
 
     ProgressBar pbProgress;
     TextView tvAddress;
     EditText etPaymentId;
     EditText etAmount;
+    TextView tvAmountB;
     Button bPaymentId;
     Button bGenerate;
     ImageView qrCode;
     EditText etDummy;
+
+    Spinner sCurrencyA;
+    Spinner sCurrencyB;
+
+    public interface Listener {
+        void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB);
+    }
+
+    @Override
+    public void exchange(String currencyA, String currencyB, double rate) {
+        // first, make sure this is what we want
+        String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
+        String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
+        if (!currencyA.equals(enteredCurrencyA) || !currencyB.equals(enteredCurrencyB)) {
+            // something's wrong
+            Log.e(TAG, "Currencies don't match!");
+            tvAmountB.setText("");
+            return;
+        }
+        String enteredAmount = etAmount.getText().toString();
+        String xmrAmount = "";
+        if (!enteredAmount.isEmpty()) {
+            // losing precision using double here doesn't matter
+            double amountA = Double.parseDouble(enteredAmount);
+            double amountB = amountA * rate;
+            if (enteredCurrencyA.equals("XMR")) {
+                String validatedAmountA = Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount));
+                xmrAmount = validatedAmountA; // take what was entered in XMR
+                etAmount.setText(xmrAmount); // display what we stick into the QR code
+                String displayB = String.format(Locale.US, "%.2f", amountB);
+                tvAmountB.setText(displayB);
+            } else if (enteredCurrencyB.equals("XMR")) {
+                xmrAmount = Wallet.getDisplayAmount(Wallet.getAmountFromDouble(amountB));
+                // cut off at 5 decimals
+                xmrAmount = xmrAmount.substring(0, xmrAmount.length() - (12 - 5));
+                tvAmountB.setText(xmrAmount);
+            } else { // no XMR currency
+                tvAmountB.setText("");
+                return; // and no qr code
+            }
+        } else {
+            tvAmountB.setText("");
+        }
+        generateQr(xmrAmount);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,14 +125,20 @@ public class ReceiveFragment extends Fragment {
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
         etPaymentId = (EditText) view.findViewById(R.id.etPaymentId);
-        etAmount = (EditText) view.findViewById(R.id.etAmount);
+        etAmount = (EditText) view.findViewById(R.id.etAmountA);
+        tvAmountB = (TextView) view.findViewById(R.id.tvAmountB);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         qrCode = (ImageView) view.findViewById(R.id.qrCode);
         bGenerate = (Button) view.findViewById(R.id.bGenerate);
         etDummy = (EditText) view.findViewById(R.id.etDummy);
 
+        sCurrencyA = (Spinner) view.findViewById(R.id.sCurrencyA);
+        sCurrencyB = (Spinner) view.findViewById(R.id.sCurrencyB);
+
         etPaymentId.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
+        loadPrefs();
 
         etPaymentId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -117,7 +176,7 @@ public class ReceiveFragment extends Fragment {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     if (paymentIdOk() && amountOk()) {
                         Helper.hideKeyboard(getActivity());
-                        generateQr();
+                        startExchange();
                     }
                     return true;
                 }
@@ -127,6 +186,7 @@ public class ReceiveFragment extends Fragment {
         etAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
+                tvAmountB.setText("");
                 qrCode.setImageBitmap(getMoneroLogo());
                 if (paymentIdOk() && amountOk()) {
                     bGenerate.setEnabled(true);
@@ -150,7 +210,7 @@ public class ReceiveFragment extends Fragment {
                 etPaymentId.setText((Wallet.generatePaymentId()));
                 etPaymentId.setSelection(etPaymentId.getText().length());
                 if (paymentIdOk() && amountOk()) {
-                    generateQr();
+                    startExchange();
                 }
             }
         });
@@ -160,8 +220,39 @@ public class ReceiveFragment extends Fragment {
             public void onClick(View v) {
                 if (paymentIdOk() && amountOk()) {
                     Helper.hideKeyboard(getActivity());
-                    generateQr();
+                    startExchange();
                 }
+            }
+        });
+
+        sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position != 0) {
+                    sCurrencyB.setSelection(0, true);
+                }
+                startExchange();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // nothing (yet?)
+            }
+        });
+
+        sCurrencyB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position != 0) {
+                    sCurrencyA.setSelection(0, true);
+                }
+                tvAmountB.setText("");
+                startExchange();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // nothing (yet?)
             }
         });
 
@@ -180,12 +271,26 @@ public class ReceiveFragment extends Fragment {
         return view;
     }
 
+    void startExchange() {
+        if (paymentIdOk() && amountOk() && tvAddress.getText().length() > 0) {
+            String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
+            String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
+            String enteredAmount = etAmount.getText().toString();
+            tvAmountB.setText("");
+            if (!enteredAmount.isEmpty()) { // start conversion
+                listenerCallback.onExchange(ReceiveFragment.this, enteredCurrencyA, enteredCurrencyB);
+            } else {
+                generateQr("");
+            }
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
         if (paymentIdOk() && amountOk() && tvAddress.getText().length() > 0) {
-            generateQr();
+            startExchange();
         }
     }
 
@@ -196,7 +301,7 @@ public class ReceiveFragment extends Fragment {
         bPaymentId.setEnabled(true);
         bGenerate.setEnabled(true);
         hideProgress();
-        generateQr();
+        startExchange();
     }
 
     private void show(String walletPath, String password) {
@@ -245,12 +350,9 @@ public class ReceiveFragment extends Fragment {
         return paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
     }
 
-    private void generateQr() {
+    private void generateQr(String xmrAmount) {
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getText().toString();
-        String enteredAmount = etAmount.getText().toString();
-        // that's a lot of converting ...
-        String amount = (enteredAmount.isEmpty() ? enteredAmount : Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount)));
         StringBuffer sb = new StringBuffer();
         sb.append(ScannerFragment.QR_SCHEME).append(address);
         boolean first = true;
@@ -261,18 +363,17 @@ public class ReceiveFragment extends Fragment {
             }
             sb.append(ScannerFragment.QR_PAYMENTID).append('=').append(paymentId);
         }
-        if (!amount.isEmpty()) {
+        if (!xmrAmount.isEmpty()) {
             if (first) {
                 sb.append("?");
             } else {
                 sb.append("&");
             }
-            sb.append(ScannerFragment.QR_AMOUNT).append('=').append(amount);
+            sb.append(ScannerFragment.QR_AMOUNT).append('=').append(xmrAmount);
         }
         String text = sb.toString();
         Bitmap qr = generate(text, 500, 500);
         if (qr != null) {
-            etAmount.setText(amount);
             qrCode.setImageBitmap(qr);
             etDummy.requestFocus();
             bGenerate.setEnabled(false);
@@ -346,4 +447,52 @@ public class ReceiveFragment extends Fragment {
         pbProgress.setVisibility(View.GONE);
     }
 
+    Listener listenerCallback = null;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Listener) {
+            this.listenerCallback = (Listener) context;
+        } else {
+            throw new ClassCastException(context.toString()
+                    + " must implement Listener");
+        }
+    }
+
+    static final String PREF_CURRENCY_A = "PREF_CURRENCY_A";
+    static final String PREF_CURRENCY_B = "PREF_CURRENCY_B";
+
+    void loadPrefs() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        int currencyA = sharedPreferences.getInt(PREF_CURRENCY_A, 0);
+        int currencyB = sharedPreferences.getInt(PREF_CURRENCY_B, 0);
+
+        if (currencyA * currencyB != 0) { // make sure one of them is 0 (=XMR)
+            currencyA = 0;
+        }
+        // in case we change the currency lists in the future
+        if (currencyA >= sCurrencyA.getCount()) currencyA = 0;
+        if (currencyB >= sCurrencyB.getCount()) currencyB = 0;
+        sCurrencyA.setSelection(currencyA);
+        sCurrencyB.setSelection(currencyB);
+    }
+
+    void savePrefs() {
+        int currencyA = sCurrencyA.getSelectedItemPosition();
+        int currencyB = sCurrencyB.getSelectedItemPosition();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(PREF_CURRENCY_A, currencyA);
+        editor.putInt(PREF_CURRENCY_B, currencyB);
+        editor.apply();
+    }
+
+    @Override
+    public void onPause() {
+        Log.d(TAG, "onPause()");
+        savePrefs();
+        super.onPause();
+    }
 }
