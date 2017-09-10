@@ -47,6 +47,7 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -196,7 +197,7 @@ public class LoginActivity extends AppCompatActivity
 
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
             deleteWallet(walletFile);
             return true;
         } else {
@@ -300,7 +301,7 @@ public class LoginActivity extends AppCompatActivity
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
-        return copyWallet(walletFile, backupFile, true, true);
+        return copyWallet(walletFile, backupFile, true);
     }
 
     @Override
@@ -501,14 +502,15 @@ public class LoginActivity extends AppCompatActivity
         super.onPause();
     }
 
-    AsyncTask asyncWaitTask = null;
+    AsyncTask asyncWaitTask = null; // TODO should this really be set from all AsyncTasks here?
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
+        // wait for WalletService to finish
         if (WalletService.Running && (asyncWaitTask == null)) {
-            Log.d(TAG, "new process dialog");
+            // and show a progress dialog, but only if there isn't one already
             new AsyncWaitForService().execute();
         }
     }
@@ -658,45 +660,87 @@ public class LoginActivity extends AppCompatActivity
     //////////////////////////////////////////
     static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
 
-    // TODO make this an AsyncTask?
-    public void createWallet(final String name, final String password, final WalletCreator walletCreator) {
-        final GenerateFragment genFragment = (GenerateFragment)
-                getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        File newWalletFolder = new File(getStorageRoot(), ".new");
-        if (!newWalletFolder.exists()) {
-            if (!newWalletFolder.mkdir()) {
-                Log.e(TAG, "Cannot create new wallet dir " + newWalletFolder.getAbsolutePath());
-                genFragment.walletGenerateError();
-                return;
+
+    private class AsyncCreateWallet extends AsyncTask<Void, Void, Boolean> {
+        String walletName;
+        String walletPassword;
+        WalletCreator walletCreator;
+
+        File newWalletFile;
+
+        public AsyncCreateWallet(String name, String password, WalletCreator walletCreator) {
+            super();
+            this.walletName = name;
+            this.walletPassword = password;
+            this.walletCreator = walletCreator;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            File newWalletFolder = new File(getStorageRoot(), ".new");
+            if (!newWalletFolder.exists()) {
+                if (!newWalletFolder.mkdir()) {
+                    Log.e(TAG, "Cannot create new wallet dir " + newWalletFolder.getAbsolutePath());
+                    return false;
+                }
+            }
+            if (!newWalletFolder.isDirectory()) {
+                Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+                return false;
+            }
+            File cacheFile = new File(newWalletFolder, walletName);
+            cacheFile.delete();
+            File keysFile = new File(newWalletFolder, walletName + ".keys");
+            keysFile.delete();
+            File addressFile = new File(newWalletFolder, walletName + ".address.txt");
+            addressFile.delete();
+
+            if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
+                Log.e(TAG, "Cannot remove all old wallet files: " + cacheFile.getAbsolutePath());
+                return false;
+            }
+
+            newWalletFile = new File(newWalletFolder, walletName);
+            boolean success = walletCreator.createWallet(newWalletFile, walletPassword);
+            if (success) {
+                return true;
+            } else {
+                Toast.makeText(LoginActivity.this,
+                        getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
+                return false;
             }
         }
-        if (!newWalletFolder.isDirectory()) {
-            Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
-            genFragment.walletGenerateError();
-            return;
-        }
-        File cacheFile = new File(newWalletFolder, name);
-        cacheFile.delete();
-        File keysFile = new File(newWalletFolder, name + ".keys");
-        keysFile.delete();
-        File addressFile = new File(newWalletFolder, name + ".address.txt");
-        addressFile.delete();
 
-        if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
-            Log.e(TAG, "Cannot remove all old wallet files: " + cacheFile.getAbsolutePath());
-            genFragment.walletGenerateError();
-            return;
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (result) {
+                startDetails(newWalletFile, walletPassword, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
+            } else {
+                walletGenerateError();
+            }
+            LoginActivity.this.asyncWaitTask = null;
         }
+    }
 
-        File newWalletFile = new File(newWalletFolder, name);
-        boolean success = walletCreator.createWallet(newWalletFile, password);
-        if (success) {
-            startDetails(newWalletFile, password, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
-        } else {
-            Toast.makeText(LoginActivity.this,
-                    getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
-            Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
+    public void createWallet(String name, String password, WalletCreator walletCreator) {
+        new AsyncCreateWallet(name, password, walletCreator)
+                .executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+    }
+
+    void walletGenerateError() {
+        try {
+            GenerateFragment genFragment = (GenerateFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             genFragment.walletGenerateError();
+        } catch (ClassCastException ex) {
+            Log.e(TAG, "walletGenerateError() but not in GenerateFragment");
         }
     }
 
@@ -761,15 +805,18 @@ public class LoginActivity extends AppCompatActivity
                 });
     }
 
-
     @Override
     public void onAccept(final String name, final String password) {
-        final File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
-        final File walletFolder = getStorageRoot();
-        final File walletFile = new File(walletFolder, name);
-        final boolean rc = copyWallet(newWalletFile, walletFile, false, false)
-                &&
-                (testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok);
+        File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
+        File walletFolder = getStorageRoot();
+        File walletFile = new File(walletFolder, name);
+        boolean rc = copyWallet(newWalletFile, walletFile, false);
+        if (rc) {
+            walletFile.delete(); // when recovering wallets, the cache seems corrupt
+            // TODO: figure out why this is so? Only for a private testnet?
+            rc = testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok;
+        }
+
         if (rc) {
             popFragmentStack(GENERATE_STACK);
             Toast.makeText(LoginActivity.this,
@@ -811,7 +858,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite, boolean full) {
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
         //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
         if (walletExists(dstWallet, true) && !overwrite) return false;
         if (!walletExists(srcWallet, false)) return false;
@@ -822,13 +869,7 @@ public class LoginActivity extends AppCompatActivity
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            if (full) {
-                // the cache is corrupt if we recover (!!) from seed
-                // the cache is ok if we immediately do a full refresh()
-                // recoveryheight is ignored but not on watchonly wallet ?! - find out why
-                // so we just ignore the cache file and rebuild it on first sync
-                copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
-            }
+            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
             copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
             copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;

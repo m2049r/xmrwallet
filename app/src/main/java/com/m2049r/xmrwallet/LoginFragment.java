@@ -239,7 +239,6 @@ public class LoginFragment extends Fragment {
         displayedList.clear();
         String x = isMainNet() ? "4" : "9A";
         for (String s : walletList) {
-            // Log.d(TAG, "filtering " + s);
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
     }
@@ -252,12 +251,14 @@ public class LoginFragment extends Fragment {
 
         walletList.clear();
         for (WalletManager.WalletInfo walletInfo : walletInfos) {
-            // Log.d(TAG, walletInfo.address);
+            // ONCE the walletInfo.address was null - because the address.txt was empty
+            // this was before the wallet generation was in its own therad with huge stack
+            // TODO: keep an eye on Wallet.getAddress() returning empty
             String displayAddress = walletInfo.address;
-            if (displayAddress.length() == 95) {
+            if ((displayAddress != null) && displayAddress.length() == 95) {
                 displayAddress = walletInfo.address.substring(0, 6);
+                walletList.add("[" + displayAddress + "] " + walletInfo.name);
             }
-            walletList.add("[" + displayAddress + "] " + walletInfo.name);
         }
         filterList();
         ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
