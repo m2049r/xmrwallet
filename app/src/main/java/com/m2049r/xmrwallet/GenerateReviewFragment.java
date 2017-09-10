@@ -79,11 +79,13 @@ public class GenerateReviewFragment extends Fragment {
         Bundle args = getArguments();
         String path = args.getString("path");
         String password = args.getString("password");
-        String type = args.getString("type");
+        this.type = args.getString("type");
         new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
-                path, password, type);
+                path, password);
         return view;
     }
+
+    String type;
 
     private void acceptWallet() {
         String name = tvWalletName.getText().toString();
@@ -93,7 +95,6 @@ public class GenerateReviewFragment extends Fragment {
     }
 
     private class AsyncShow extends AsyncTask<String, Void, Boolean> {
-        String type;
         String password;
 
         String name;
@@ -106,10 +107,9 @@ public class GenerateReviewFragment extends Fragment {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            if (params.length != 3) return false;
+            if (params.length != 2) return false;
             String walletPath = params[0];
             password = params[1];
-            type = params[2];
 
             Wallet wallet;
             boolean closeWallet;
@@ -194,5 +194,9 @@ public class GenerateReviewFragment extends Fragment {
 
     public void hideProgress() {
         pbProgress.setVisibility(View.INVISIBLE);
+    }
+
+    boolean backOk() {
+        return !type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT);
     }
 }

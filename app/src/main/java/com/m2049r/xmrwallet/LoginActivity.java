@@ -905,4 +905,16 @@ public class LoginActivity extends AppCompatActivity
                 outChannel.close();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (f instanceof GenerateReviewFragment) {
+            if (((GenerateReviewFragment) f).backOk()) {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
