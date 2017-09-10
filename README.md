@@ -25,8 +25,10 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 - more sensible error dialogs
 - check licenses of included libraries; License Dialog
 
-### Issues
-- Pending incoming transactions disappear after reload (and appear after being mined)
+### Issues / Pitfalls
+- Created wallets on a private testnet are unusable because the restore height is set to that
+of the "real" testnet.  After creating a new wallet, make a **new** one by recovering from the seed.
+The official monero client shows the same behaviour.
 
 ### HOW TO BUILD
 No need to build. Binaries are included:

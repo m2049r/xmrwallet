@@ -710,8 +710,6 @@ public class LoginActivity extends AppCompatActivity
             if (success) {
                 return true;
             } else {
-                Toast.makeText(LoginActivity.this,
-                        getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
                 Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
                 return false;
             }
@@ -723,6 +721,8 @@ public class LoginActivity extends AppCompatActivity
             if (result) {
                 startDetails(newWalletFile, walletPassword, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
             } else {
+                Toast.makeText(LoginActivity.this,
+                        getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
                 walletGenerateError();
             }
             LoginActivity.this.asyncWaitTask = null;

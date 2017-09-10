@@ -18,4 +18,6 @@
     <color name="colorAccent">#009ADA</color>
 
     <color name="anotherColor">#F8CC5A</color>
+
+    <color name="white">#ffffff</color>
 </resources>
