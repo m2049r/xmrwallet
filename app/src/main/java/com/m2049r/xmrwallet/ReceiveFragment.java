@@ -305,7 +305,7 @@ public class ReceiveFragment extends Fragment implements AsyncExchangeRate.Liste
     }
 
     private void show(String walletPath, String password) {
-        new ReceiveFragment.AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
+        new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
                 walletPath, password);
     }
 
