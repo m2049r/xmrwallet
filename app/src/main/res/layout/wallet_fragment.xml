@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="00000000.000000000000 XMR"
-            android:textColor="@color/tx_green"
+            android:textColor="@color/white"
             android:textSize="24sp" />
 
         <TextView
