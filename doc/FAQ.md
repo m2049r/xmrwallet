@@ -2,6 +2,7 @@
 
 ## What features does it have?
 
+- Uses monero v0.11.0.0
 - Support for Android >= 5.0 with ARM processor
 - Testnet and Mainnet
 - Generate new wallets
@@ -17,7 +18,7 @@
 - Only 5 decimal places shown in transactions (full amount in details - click on transaction)
 - All significant figures shown in balance
 - QR Code scanning - make sure to *ALWAYS* verify the scanned code is what it is advertised to be!
-- QR Code for receiving
+- QR Code for receiving with conversion of XMR to USD/EUR and back through kraken API
 - Backup wallets to ```.backups``` folder in main wallet folder (old backups are overwritten)
 - Rename wallets
 - Archive (=Backup and delete)
@@ -36,11 +37,6 @@ You may want to do housekeeping manually with a file browser.
 All wallet files (```testnet``` and ```mainnet```) are stored in the main ```Monerujo``` folder.
 So be careful erasing stuff. One of the future releases will split the wallets and move ```testnet```
  wallets out of there.
-
-
-## I sent a transaction but it's not in my received transactions list!
-Don't worry. Received transactions which are not mined yet disappear after the wallet is saved -
-I blame this on the monero code. Wait for the block to be mined.
 
 ## Do you have any screenshots of what it looks like and how it works?
 No, but it looks fantastic. Just check it out.
