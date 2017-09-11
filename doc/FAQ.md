@@ -1,5 +1,8 @@
 # FAQ
 
+## What is it?
+- A Monero lightwallet for Android. You get to choose what remote node you want to connect to. No need to download the blockchain.
+
 ## What features does it have?
 
 - Uses monero v0.11.0.0
