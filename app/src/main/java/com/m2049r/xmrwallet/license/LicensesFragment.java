@@ -25,7 +25,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 //TODO If you don't support Android 2.x, you should use the non-support version!
@@ -33,11 +32,9 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -154,16 +151,6 @@ public class LicensesFragment extends DialogFragment {
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-/*
-        TextView title = new TextView(getContext());
-        title.setText(R.string.about_title);
-        title.setBackgroundColor(Color.DKGRAY);
-        title.setPadding(10, 10, 10, 10);
-        title.setGravity(Gravity.CENTER);
-        title.setTextColor(Color.WHITE);
-        title.setTextSize(20);
-        builder.setCustomTitle(title);
-*/
         TextView text = (TextView) content.findViewById(R.id.text);
         text.setText(getString(R.string.about_text, versionName, versionCode));
 
