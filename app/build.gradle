@@ -43,7 +43,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:25.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
-    compile('de.psdev.licensesdialog:licensesdialog:1.8.3')
 }
 
 dependencyVerification {
@@ -55,7 +54,6 @@ dependencyVerification {
             'com.android.support:cardview-v7:f3fbbe1fcfdbec7333c6a2c516c5fd511a909d1975271818e268d6fe297d8c70',
             'com.android.support.constraint:constraint-layout:b0c688cc2b7172608f8153a689d746da40f71e52d7e2fe2bfd9df2f92db77085',
             'me.dm7.barcodescanner:zxing:d43973c9527c23fa8e6d338c6a2c458e373ce1ac6bcaa3bc41d11ae49116000d',
-            'de.psdev.licensesdialog:licensesdialog:ac6e0be89323b993eb7c732a882278f2cb08c4e525062affa1bc4a1344e4ecf3',
             'com.android.support:support-annotations:a774272036941b4e912eb426d70c848bde7f06a3bf5fb491f75a427dc6595270',
             'com.android.support:support-vector-drawable:077009d13882ee96f061e4bc2dbe7cce7ae1762d8297592a787ff741afbfb1f2',
             'com.android.support:animated-vector-drawable:628ab1d56a6ee4cbedf32617af8b2a1fe02964ed0628e8f898cc09ddba6e1835',
@@ -68,6 +66,5 @@ dependencyVerification {
             'com.android.support.constraint:constraint-layout-solver:8c62525a9bc5cff5633a96cb9b32fffeccaf41b8841aa87fc22607070dea9b8d',
             'me.dm7.barcodescanner:core:a5c8a704089b58029db166172ed8e55d756877d010a85a0b1c94fdc96ffb8f9a',
             'com.google.zxing:core:bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d',
-            'com.google.code.findbugs:jsr305:c885ce34249682bc0236b4a7d56efcc12048e6135a5baf7a9cde8ad8cda13fcd',
     ]
 }
