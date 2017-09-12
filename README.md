@@ -23,7 +23,6 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 ### TODO
 - review visibility of methods/classes
 - more sensible error dialogs
-- check licenses of included libraries; License Dialog
 
 ### Issues / Pitfalls
 - Created wallets on a private testnet are unusable because the restore height is set to that
@@ -34,7 +33,7 @@ The official monero client shows the same behaviour.
 No need to build. Binaries are included:
 
 - openssl-1.0.2l
-- monero-v0.10.3.1 + pull requests #2238, #2239 and #2289
+- monero-v0.11.0.0 + pull requests #2289
 - boost_1_64_0
 
 If you want to build them yourself (recommended) check out [the instructions](doc/BUILDING-external-libs.md)
