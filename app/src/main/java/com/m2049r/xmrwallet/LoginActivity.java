@@ -36,12 +36,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.license.LicensesFragment;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
@@ -917,4 +919,16 @@ public class LoginActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_lincense_info:
+                LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
