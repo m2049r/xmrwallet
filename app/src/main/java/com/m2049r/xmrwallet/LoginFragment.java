@@ -43,8 +43,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.m2049r.xmrwallet.layout.InstantAutoComplete;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.NodeList;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +76,9 @@ public class LoginFragment extends Fragment {
     List<String> displayedList = new ArrayList<>();
 
     ToggleButton tbMainNet;
-    EditText etDaemonAddress;
+    InstantAutoComplete etDaemonAddress;
+    ArrayAdapter<String> nodeAdapter;
+
     FloatingActionButton fabAdd;
 
     Listener activityCallback;
@@ -139,8 +143,9 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
 
         tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
-        etDaemonAddress = (EditText) view.findViewById(R.id.etDaemonAddress);
-
+        etDaemonAddress = (InstantAutoComplete) view.findViewById(R.id.etDaemonAddress);
+        nodeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
+        etDaemonAddress.setAdapter(nodeAdapter);
 
         fabAdd = (FloatingActionButton) view.findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -281,23 +286,34 @@ public class LoginFragment extends Fragment {
         return etDaemonAddress.getText().toString();
     }
 
-    void setDaemon(String address) {
-        etDaemonAddress.setText(address);
+    void setDaemon(NodeList nodeList) {
+        Log.d(TAG, "setDaemon() " + nodeList.toString());
+        String[] nodes = nodeList.getNodes().toArray(new String[0]);
+        nodeAdapter.clear();
+        nodeAdapter.addAll(nodes);
+        etDaemonAddress.getText().clear();
+        if (nodes.length > 0) {
+            etDaemonAddress.setText(nodes[0]);
+        }
+        etDaemonAddress.dismissDropDown();
     }
 
     private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
     private static final String PREF_MAINNET = "mainnet";
 
-    private String daemonTestNet;
-    private String daemonMainNet;
+    private static final String PREF_DAEMONLIST_MAINNET =
+            "node.moneroworld.com:18089;node.xmrbackb.one:18081;node.xmr.be:18081";
+
+    private NodeList daemonTestNet;
+    private NodeList daemonMainNet;
 
     void loadPrefs() {
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         boolean mainnet = sharedPref.getBoolean(PREF_MAINNET, false);
-        daemonMainNet = sharedPref.getString(PREF_DAEMON_MAINNET, "");
-        daemonTestNet = sharedPref.getString(PREF_DAEMON_TESTNET, "");
+        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
+        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, ""));
 
         setMainNet(mainnet);
         if (mainnet) {
@@ -316,16 +332,16 @@ public class LoginFragment extends Fragment {
         boolean mainnet = isMainNet() ^ usePreviousState;
         String daemon = getDaemon();
         if (mainnet) {
-            daemonMainNet = daemon;
+            daemonMainNet.setRecent(daemon);
         } else {
-            daemonTestNet = daemon;
+            daemonTestNet.setRecent(daemon);
         }
 
         SharedPreferences sharedPref = activityCallback.getPrefs();
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(PREF_MAINNET, mainnet);
-        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet);
-        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet);
+        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
+        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
         editor.apply();
     }
 
