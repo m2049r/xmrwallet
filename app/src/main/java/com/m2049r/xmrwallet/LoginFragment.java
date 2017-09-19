@@ -19,42 +19,31 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.m2049r.xmrwallet.layout.InstantAutoComplete;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.NodeList;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -74,10 +63,6 @@ public class LoginFragment extends Fragment {
         }
     });
     List<String> displayedList = new ArrayList<>();
-
-    ToggleButton tbMainNet;
-    InstantAutoComplete etDaemonAddress;
-    ArrayAdapter<String> nodeAdapter;
 
     FloatingActionButton fabAdd;
 
@@ -103,11 +88,7 @@ public class LoginFragment extends Fragment {
 
         void onAddWallet();
 
-        void setTitle(String title);
-
-        void setSubtitle(String subtitle);
-
-        void setTestNet(boolean testnet);
+        boolean isTestnet();
 
     }
 
@@ -125,7 +106,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onPause() {
         Log.d(TAG, "onPause()");
-        savePrefs();
         super.onPause();
     }
 
@@ -133,7 +113,6 @@ public class LoginFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
-        activityCallback.setTitle(getString(R.string.login_activity_name));
     }
 
     @Override
@@ -142,76 +121,23 @@ public class LoginFragment extends Fragment {
         Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.login_fragment, container, false);
 
-        tbMainNet = (ToggleButton) view.findViewById(R.id.tbMainNet);
-        etDaemonAddress = (InstantAutoComplete) view.findViewById(R.id.etDaemonAddress);
-        nodeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
-        etDaemonAddress.setAdapter(nodeAdapter);
-
         fabAdd = (FloatingActionButton) view.findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAndSetWalletDaemon("", !isMainNet());
                 activityCallback.onAddWallet();
             }
         });
 
-        Helper.hideKeyboard(getActivity());
-
-        etDaemonAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.showKeyboard(getActivity());
-            }
-        });
-        etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Helper.hideKeyboard(getActivity());
-                    return false;
-                }
-                return false;
-            }
-        });
-
-        tbMainNet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean mainnet = ((ToggleButton) v).isChecked();  // current state
-                activityCallback.setTestNet(!mainnet);
-                savePrefs(true); // use previous state as we just clicked it
-                if (mainnet) {
-                    setDaemon(daemonMainNet);
-                } else {
-                    setDaemon(daemonTestNet);
-                }
-                activityCallback.setSubtitle(getString(mainnet ? R.string.connect_mainnet : R.string.connect_testnet));
-                filterList();
-                ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
-            }
-        });
-
-        loadPrefs();
-        activityCallback.setSubtitle(getString(isMainNet() ? R.string.connect_mainnet : R.string.connect_testnet));
-
         listView = (ListView) view.findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, this.displayedList);
-
         listView.setAdapter(adapter);
         registerForContextMenu(listView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                EditText tvDaemonAddress = (EditText) getView().findViewById(R.id.etDaemonAddress);
-                if (tvDaemonAddress.getText().toString().length() == 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
-                    tvDaemonAddress.requestFocus();
-                    Helper.showKeyboard(getActivity());
-                    return;
-                }
-
                 String itemValue = (String) listView.getItemAtPosition(position);
 
                 if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
@@ -219,21 +145,14 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
-                String x = isMainNet() ? "4-" : "9A-";
+                String x = activityCallback.isTestnet() ? "9A-" : "4-";
                 if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if (!checkAndSetWalletDaemon(getDaemon(), !isMainNet())) {
-                    Toast.makeText(getActivity(), getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // looking good
-                savePrefs();
-
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
+
                 activityCallback.onWalletSelected(wallet);
             }
         });
@@ -244,7 +163,7 @@ public class LoginFragment extends Fragment {
 
     private void filterList() {
         displayedList.clear();
-        String x = isMainNet() ? "4" : "9A";
+        String x = activityCallback.isTestnet() ? "9A" : "4";
         for (String s : walletList) {
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
@@ -252,6 +171,7 @@ public class LoginFragment extends Fragment {
 
     public void loadList() {
         Log.d(TAG, "loadList()");
+        // TODO this should probably be in LoginActivity
         WalletManager mgr = WalletManager.getInstance();
         List<WalletManager.WalletInfo> walletInfos =
                 mgr.findWallets(activityCallback.getStorageRoot());
@@ -272,135 +192,6 @@ public class LoginFragment extends Fragment {
 
     }
 
-    boolean isMainNet() {
-        return tbMainNet.isChecked();
-    }
-
-    void setMainNet(boolean mainnet) {
-        tbMainNet.setChecked(mainnet);
-        activityCallback.setTestNet(!mainnet);
-
-    }
-
-    String getDaemon() {
-        return etDaemonAddress.getText().toString();
-    }
-
-    void setDaemon(NodeList nodeList) {
-        Log.d(TAG, "setDaemon() " + nodeList.toString());
-        String[] nodes = nodeList.getNodes().toArray(new String[0]);
-        nodeAdapter.clear();
-        nodeAdapter.addAll(nodes);
-        etDaemonAddress.getText().clear();
-        if (nodes.length > 0) {
-            etDaemonAddress.setText(nodes[0]);
-        }
-        etDaemonAddress.dismissDropDown();
-    }
-
-    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
-    private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    private static final String PREF_MAINNET = "mainnet";
-
-    private static final String PREF_DAEMONLIST_MAINNET =
-            "node.moneroworld.com:18089;node.xmrbackb.one:18081;node.xmr.be:18081";
-
-    private NodeList daemonTestNet;
-    private NodeList daemonMainNet;
-
-    void loadPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-
-        boolean mainnet = sharedPref.getBoolean(PREF_MAINNET, false);
-        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
-        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, ""));
-
-        setMainNet(mainnet);
-        if (mainnet) {
-            setDaemon(daemonMainNet);
-        } else {
-            setDaemon(daemonTestNet);
-        }
-    }
-
-    void savePrefs() {
-        savePrefs(false);
-    }
-
-    void savePrefs(boolean usePreviousState) {
-        // save the daemon address for the net
-        boolean mainnet = isMainNet() ^ usePreviousState;
-        String daemon = getDaemon();
-        if (mainnet) {
-            daemonMainNet.setRecent(daemon);
-        } else {
-            daemonTestNet.setRecent(daemon);
-        }
-
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(PREF_MAINNET, mainnet);
-        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
-        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
-        editor.apply();
-    }
-
-    private boolean checkAndSetWalletDaemon(String daemon, boolean testnet) {
-        String daemonAddress = "";
-        String username = "";
-        String password = "";
-        if (!daemon.isEmpty()) { // no actual daemon is also fine
-            String a[] = daemon.split("@");
-            if (a.length == 1) { // no credentials
-                daemonAddress = a[0];
-            } else if (a.length == 2) { // credentials
-                String up[] = a[0].split(":");
-                if (up.length != 2) return false;
-                username = up[0];
-                if (!username.isEmpty()) password = up[1];
-                daemonAddress = a[1];
-            } else {
-                return false;
-            }
-
-            String da[] = daemonAddress.split(":");
-            if ((da.length > 2) || (da.length < 1)) return false;
-            String host = da[0];
-            int port;
-            if (da.length == 2) {
-                try {
-                    port = Integer.parseInt(da[1]);
-                } catch (NumberFormatException ex) {
-                    return false;
-                }
-            } else {
-                port = (testnet ? 28081 : 18081);
-                daemonAddress = daemonAddress + ":" + port;
-            }
-            //Log.d(TAG, "DAEMON " + username + "/" + password + "/" + host + "/" + port);
-//        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy prevPolicy = StrictMode.getThreadPolicy();
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder(prevPolicy).permitNetwork().build();
-            StrictMode.setThreadPolicy(policy);
-            Socket socket = new Socket();
-            long timeA = new Date().getTime();
-            try {
-                socket.connect(new InetSocketAddress(host, port), LoginActivity.DAEMON_TIMEOUT);
-                socket.close();
-            } catch (IOException ex) {
-                Log.d(TAG, "Cannot reach daemon " + host + "/" + port + " because " + ex.getLocalizedMessage());
-                return false;
-            } finally {
-                StrictMode.setThreadPolicy(prevPolicy);
-            }
-            long timeB = new Date().getTime();
-            Log.d(TAG, "Daemon is " + (timeB - timeA) + "ms away.");
-        }
-        WalletManager mgr = WalletManager.getInstance();
-        mgr.setDaemon(daemonAddress, testnet, username, password);
-        return true;
-    }
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
@@ -413,7 +204,7 @@ public class LoginFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String listItem = (String) listView.getItemAtPosition(info.position);
-        String name = nameFromListItem(listItem, !isMainNet());
+        String name = nameFromListItem(listItem, activityCallback.isTestnet());
         if (name == null) {
             Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
         }
@@ -440,14 +231,10 @@ public class LoginFragment extends Fragment {
     }
 
     private void showInfo(@NonNull String name) {
-        checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
-
         activityCallback.onWalletDetails(name);
     }
 
     private boolean showReceive(@NonNull String name) {
-        checkAndSetWalletDaemon("", !isMainNet()); // just set selected net
-
         activityCallback.onWalletReceive(name);
         return true;
     }

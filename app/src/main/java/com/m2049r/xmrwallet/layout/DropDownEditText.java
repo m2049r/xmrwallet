@@ -23,17 +23,17 @@ import android.graphics.Rect;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 
-public class InstantAutoComplete extends AppCompatAutoCompleteTextView {
+public class DropDownEditText extends AppCompatAutoCompleteTextView {
 
-    public InstantAutoComplete(Context context) {
+    public DropDownEditText(Context context) {
         super(context);
     }
 
-    public InstantAutoComplete(Context arg0, AttributeSet arg1) {
+    public DropDownEditText(Context arg0, AttributeSet arg1) {
         super(arg0, arg1);
     }
 
-    public InstantAutoComplete(Context arg0, AttributeSet arg1, int arg2) {
+    public DropDownEditText(Context arg0, AttributeSet arg1, int arg2) {
         super(arg0, arg1, arg2);
     }
 
@@ -47,7 +47,7 @@ public class InstantAutoComplete extends AppCompatAutoCompleteTextView {
                                   Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
         if (focused && getAdapter() != null) {
-            performFiltering(getText(), 0);
+            performFiltering("", 0);
         }
     }
 
