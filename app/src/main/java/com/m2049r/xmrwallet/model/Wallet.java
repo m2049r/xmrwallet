@@ -68,7 +68,16 @@ public class Wallet {
 
     public native boolean setPassword(String password);
 
-    public native String getAddress();
+    public String getAddress() {
+        String address = getAddressJ();
+        if (!Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
+            // just die!
+            throw new IllegalStateException("Wallet returned invalid address!");
+        }
+        return address;
+    }
+
+    private native String getAddressJ();
 
     public native String getPath();
 

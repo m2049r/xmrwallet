@@ -144,15 +144,6 @@ public class Helper {
         act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-    static public boolean isAddressOk(String address, boolean testnet) {
-        if (address == null) return false;
-        if (testnet) {
-            return ((address.length() == 95) && ("9A".indexOf(address.charAt(0)) >= 0));
-        } else {
-            return ((address.length() == 95) && ("4".indexOf(address.charAt(0)) >= 0));
-        }
-    }
-
     static public String getDisplayAmount(long amount) {
         String s = Wallet.getDisplayAmount(amount);
         int lastZero = 0;

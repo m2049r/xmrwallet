@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
@@ -278,8 +279,7 @@ public class GenerateFragment extends Fragment {
 
     private boolean addressOk() {
         String address = etWalletAddress.getText().toString();
-        boolean testnet = WalletManager.getInstance().isTestNet();
-        return ((address.length() == 95) && ((testnet ? "9A" : "4").indexOf(address.charAt(0)) >= 0));
+        return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
     }
 
     private boolean viewKeyOk() {
@@ -295,7 +295,7 @@ public class GenerateFragment extends Fragment {
     private void generateWallet() {
         String name = etWalletName.getText().toString();
         if (name.length() == 0) return;
-        if (name.charAt(0)=='.') {
+        if (name.charAt(0) == '.') {
             Toast.makeText(getActivity(), getString(R.string.generate_wallet_dot), Toast.LENGTH_LONG).show();
             etWalletName.requestFocus();
         }

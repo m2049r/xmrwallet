@@ -697,7 +697,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             address = null;
         }
 
-        if (Helper.isAddressOk(address, WalletManager.getInstance().isTestNet())) {
+        if (Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             return new BarcodeData(address, paymentId, amount);
         }
         return null;

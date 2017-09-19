@@ -277,7 +277,7 @@ public class SendFragment extends Fragment {
 
     private boolean addressOk() {
         String address = etAddress.getText().toString();
-        return Helper.isAddressOk(address, WalletManager.getInstance().isTestNet());
+        return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
     }
 
     private boolean amountOk() {
