@@ -3,9 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_testnet"
+        android:checkable="true"
+        android:orderInCategory="100"
+        android:title="@string/menu_testnet"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_lincense_info"
         android:icon="@drawable/ic_info_black_24dp"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/menu_about"
         app:showAsAction="never" />
 

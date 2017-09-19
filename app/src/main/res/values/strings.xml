@@ -3,6 +3,7 @@
     <string name="login_activity_name">Monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
+    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">About &#8230;</string>
 
     <string name="menu_info">Details</string>
