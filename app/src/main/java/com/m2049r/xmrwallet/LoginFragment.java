@@ -25,21 +25,26 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.layout.DropDownEditText;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.NodeList;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,6 +69,9 @@ public class LoginFragment extends Fragment {
     });
     List<String> displayedList = new ArrayList<>();
 
+    EditText etDummy;
+    DropDownEditText etDaemonAddress;
+    ArrayAdapter<String> nodeAdapter;
     FloatingActionButton fabAdd;
 
     Listener activityCallback;
@@ -74,11 +82,11 @@ public class LoginFragment extends Fragment {
 
         File getStorageRoot();
 
-        void onWalletSelected(String wallet);
+        boolean onWalletSelected(String daemon, String wallet, boolean testnet);
 
-        void onWalletDetails(String wallet);
+        void onWalletDetails(String wallet, boolean testnet);
 
-        void onWalletReceive(String wallet);
+        void onWalletReceive(String wallet, boolean testnet);
 
         void onWalletRename(String name);
 
@@ -86,10 +94,9 @@ public class LoginFragment extends Fragment {
 
         void onWalletArchive(String walletName);
 
-        void onAddWallet();
+        void onAddWallet(boolean testnet);
 
-        boolean isTestnet();
-
+        void showNet(boolean testnet);
     }
 
     @Override
@@ -106,6 +113,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onPause() {
         Log.d(TAG, "onPause()");
+        savePrefs();
         super.onPause();
     }
 
@@ -125,7 +133,7 @@ public class LoginFragment extends Fragment {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activityCallback.onAddWallet();
+                activityCallback.onAddWallet(isTestnet());
             }
         });
 
@@ -145,7 +153,7 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
-                String x = activityCallback.isTestnet() ? "9A-" : "4-";
+                String x = isTestnet() ? "9A-" : "4-";
                 if (x.indexOf(itemValue.charAt(1)) < 0) {
                     Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
                     return;
@@ -153,17 +161,56 @@ public class LoginFragment extends Fragment {
 
                 String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
 
-                activityCallback.onWalletSelected(wallet);
+                if (activityCallback.onWalletSelected(getDaemon(), wallet, isTestnet())) {
+                    savePrefs();
+                }
             }
         });
 
-        loadList();
+        etDummy = (EditText) view.findViewById(R.id.etDummy);
+        etDaemonAddress = (DropDownEditText) view.findViewById(R.id.etDaemonAddress);
+        nodeAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_dropdown_item_1line);
+        etDaemonAddress.setAdapter(nodeAdapter);
+
+        Helper.hideKeyboard(getActivity());
+
+        etDaemonAddress.setThreshold(0);
+        etDaemonAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etDaemonAddress.showDropDown();
+                Helper.showKeyboard(getActivity());
+            }
+        });
+
+        etDaemonAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    etDaemonAddress.showDropDown();
+                    Helper.showKeyboard(getActivity());
+                }
+            }
+        });
+
+        etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Helper.hideKeyboard(getActivity());
+                    etDummy.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        loadPrefs();
         return view;
     }
 
     private void filterList() {
         displayedList.clear();
-        String x = activityCallback.isTestnet() ? "9A" : "4";
+        String x = isTestnet() ? "9A" : "4";
         for (String s : walletList) {
             if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
         }
@@ -204,7 +251,7 @@ public class LoginFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String listItem = (String) listView.getItemAtPosition(info.position);
-        String name = nameFromListItem(listItem, activityCallback.isTestnet());
+        String name = nameFromListItem(listItem, isTestnet());
         if (name == null) {
             Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
         }
@@ -231,11 +278,11 @@ public class LoginFragment extends Fragment {
     }
 
     private void showInfo(@NonNull String name) {
-        activityCallback.onWalletDetails(name);
+        activityCallback.onWalletDetails(name, isTestnet());
     }
 
     private boolean showReceive(@NonNull String name) {
-        activityCallback.onWalletReceive(name);
+        activityCallback.onWalletReceive(name, isTestnet());
         return true;
     }
 
@@ -248,7 +295,6 @@ public class LoginFragment extends Fragment {
         return wallet;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -258,6 +304,92 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
+        menu.findItem(R.id.action_testnet).setChecked(isTestnet());
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    boolean testnet = false;
+
+    boolean isTestnet() {
+        return testnet;
+    }
+
+    public boolean onTestnetMenuItem() {
+        boolean lastState = testnet;//item.isChecked();
+        setNet(!lastState, true); // set and save
+        return !lastState;
+    }
+
+    public void setNet(boolean testnet, boolean save) {
+        this.testnet = testnet;
+        activityCallback.showNet(testnet);
+        if (save) {
+            savePrefs(true); // use previous state as we just clicked it
+        }
+        if (testnet) {
+            setDaemon(daemonTestNet);
+        } else {
+            setDaemon(daemonMainNet);
+        }
+        loadList();
+    }
+
+    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
+    private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
+    //private static final String PREF_TESTNET = "testnet";
+
+    private static final String PREF_DAEMONLIST_MAINNET =
+            "node.moneroworld.com:18089;node.xmrbackb.one:18081;node.xmr.be:18081";
+
+    private NodeList daemonTestNet;
+    private NodeList daemonMainNet;
+
+    void loadPrefs() {
+        SharedPreferences sharedPref = activityCallback.getPrefs();
+
+        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
+        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, ""));
+        setNet(isTestnet(), false);
+    }
+
+    void savePrefs() {
+        savePrefs(false);
+    }
+
+    void savePrefs(boolean usePreviousState) {
+        Log.d(TAG, "SAVE / " + usePreviousState);
+        // save the daemon address for the net
+        boolean testnet = isTestnet() ^ usePreviousState;
+        String daemon = getDaemon();
+        if (testnet) {
+            daemonTestNet.setRecent(daemon);
+        } else {
+            daemonMainNet.setRecent(daemon);
+        }
+
+        SharedPreferences sharedPref = activityCallback.getPrefs();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        //editor.putBoolean(PREF_TESTNET, testnet);
+        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
+        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
+        editor.apply();
+    }
+
+    String getDaemon() {
+        return etDaemonAddress.getText().toString();
+    }
+
+    void setDaemon(NodeList nodeList) {
+        Log.d(TAG, "setDaemon() " + nodeList.toString());
+        String[] nodes = nodeList.getNodes().toArray(new String[0]);
+        nodeAdapter.clear();
+        nodeAdapter.addAll(nodes);
+        etDaemonAddress.getText().clear();
+        if (nodes.length > 0) {
+            etDaemonAddress.setText(nodes[0]);
+        }
+        etDaemonAddress.dismissDropDown();
+        etDummy.requestFocus();
+        Helper.hideKeyboard(getActivity());
     }
 }
