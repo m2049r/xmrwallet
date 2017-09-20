@@ -73,9 +73,6 @@ public class LoginActivity extends AppCompatActivity
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
     Toolbar toolbar;
-    EditText etDummy;
-    DropDownEditText etDaemonAddress;
-    ArrayAdapter<String> nodeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,45 +84,6 @@ public class LoginActivity extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        etDummy = (EditText) findViewById(R.id.etDummy);
-        etDaemonAddress = (DropDownEditText) findViewById(R.id.etDaemonAddress);
-        nodeAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line);
-        etDaemonAddress.setAdapter(nodeAdapter);
-
-        Helper.hideKeyboard(this);
-
-        etDaemonAddress.setThreshold(0);
-        etDaemonAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etDaemonAddress.showDropDown();
-                Helper.showKeyboard(LoginActivity.this);
-            }
-        });
-
-        etDaemonAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    etDaemonAddress.showDropDown();
-                    Helper.showKeyboard(LoginActivity.this);
-                }
-            }
-        });
-
-        etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Helper.hideKeyboard(LoginActivity.this);
-                    etDummy.requestFocus();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        loadPrefs();
 
         if (Helper.getWritePermission(this)) {
             startLoginFragment();
@@ -144,24 +102,18 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onWalletSelected(final String walletName) {
-        String daemon = getDaemon();
+    public boolean onWalletSelected(String daemon, final String walletName, boolean testnet) {
         if (daemon.length() == 0) {
             Toast.makeText(this, getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
-            etDaemonAddress.requestFocus();
-            Helper.showKeyboard(this);
-            return;
+            return false;
         }
 
-        if (!checkAndSetWalletDaemon(getDaemon(), isTestnet())) {
+        if (!checkAndSetWalletDaemon(daemon, testnet)) {
             Toast.makeText(this, getString(R.string.warn_daemon_unavailable), Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
 
-        // looking good
-        savePrefs();
-
-        if (checkServiceRunning()) return;
+        if (checkServiceRunning()) return true;
         Log.d(TAG, "selected wallet is ." + walletName + ".");
         // now it's getting real, check if wallet exists
         File walletFile = Helper.getWalletFile(this, walletName);
@@ -175,11 +127,12 @@ public class LoginActivity extends AppCompatActivity
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
+        return true;
     }
 
     @Override
-    public void onWalletDetails(final String walletName) {
-        checkAndSetWalletDaemon("", isTestnet()); // just set selected net
+    public void onWalletDetails(final String walletName, boolean testnet) {
+        checkAndSetWalletDaemon("", testnet); // just set selected net
         Log.d(TAG, "details for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -216,8 +169,8 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onWalletReceive(String walletName) {
-        checkAndSetWalletDaemon("", isTestnet()); // just set selected net
+    public void onWalletReceive(String walletName, boolean testnet) {
+        checkAndSetWalletDaemon("", testnet); // just set selected net
         Log.d(TAG, "receive for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
@@ -440,6 +393,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     void reloadWalletList() {
+        Log.d(TAG, "reloadWalletList()");
         try {
             LoginFragment loginFragment = (LoginFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -451,8 +405,8 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onAddWallet() {
-        checkAndSetWalletDaemon("", isTestnet());
+    public void onAddWallet(boolean testnet) {
+        checkAndSetWalletDaemon("", testnet);
         if (checkServiceRunning()) return;
         startGenerateFragment();
     }
@@ -558,6 +512,7 @@ public class LoginActivity extends AppCompatActivity
         toolbar.setSubtitle(subtitle);
     }
 
+    @Override
     public void showNet(boolean testnet) {
         if (testnet) {
             toolbar.setBackgroundResource(R.color.colorPrimaryDark);
@@ -570,7 +525,6 @@ public class LoginActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause()");
-        savePrefs();
         super.onPause();
     }
 
@@ -991,13 +945,6 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean testnet = false;
-
-    @Override
-    public boolean isTestnet() {
-        return testnet;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -1005,90 +952,16 @@ public class LoginActivity extends AppCompatActivity
                 LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
                 return true;
             case R.id.action_testnet:
-                boolean lastState = testnet;//item.isChecked();
-                item.setChecked(!lastState);
-                setNet(!lastState, true); // set and save
+                try {
+                    LoginFragment loginFragment = (LoginFragment)
+                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                    item.setChecked(loginFragment.onTestnetMenuItem());
+                } catch (ClassCastException ex) {
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void setNet(boolean testnet, boolean save) {
-        this.testnet = testnet;
-        showNet(testnet);
-        if (save) {
-            savePrefs(true); // use previous state as we just clicked it
-        }
-        if (testnet) {
-            setDaemon(daemonTestNet);
-        } else {
-            setDaemon(daemonMainNet);
-        }
-        etDummy.requestFocus();
-        Helper.hideKeyboard(this);
-        reloadWalletList();
-    }
-
-    String getDaemon() {
-        return etDaemonAddress.getText().toString();
-    }
-
-    void setDaemon(NodeList nodeList) {
-        Log.d(TAG, "setDaemon() " + nodeList.toString());
-        String[] nodes = nodeList.getNodes().toArray(new String[0]);
-        nodeAdapter.clear();
-        nodeAdapter.addAll(nodes);
-        etDaemonAddress.getText().clear();
-        if (nodes.length > 0) {
-            etDaemonAddress.setText(nodes[0]);
-        }
-        etDaemonAddress.dismissDropDown();
-    }
-
-    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
-    private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    private static final String PREF_TESTNET = "testnet";
-
-    private static final String PREF_DAEMONLIST_MAINNET =
-            "node.moneroworld.com:18089;node.xmrbackb.one:18081;node.xmr.be:18081";
-
-    private NodeList daemonTestNet;
-    private NodeList daemonMainNet;
-
-    void loadPrefs() {
-        SharedPreferences sharedPref = getPrefs();
-
-        boolean testnet = sharedPref.getBoolean(PREF_TESTNET, false);
-        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
-        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, ""));
-//############### ignore last net state - always start in mainnet (like other clients)
-//        MenuItem net = (MenuItem) getView().findViewById(R.id.action_testnet);
-//        net.setChecked(!mainnet);
-        setNet(testnet, false);
-    }
-
-    void savePrefs() {
-        savePrefs(false);
-    }
-
-    void savePrefs(boolean usePreviousState) {
-        Log.d(TAG, "SAVE / " + usePreviousState);
-        // save the daemon address for the net
-        boolean testnet = isTestnet() ^ usePreviousState;
-        String daemon = getDaemon();
-        if (testnet) {
-            daemonTestNet.setRecent(daemon);
-        } else {
-            daemonMainNet.setRecent(daemon);
-        }
-
-        SharedPreferences sharedPref = getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        //editor.putBoolean(PREF_TESTNET, testnet);
-        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
-        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
-        editor.apply();
     }
 
     private boolean checkAndSetWalletDaemon(String daemon, boolean testnet) {

@@ -4,6 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0sp"
+        android:layout_height="0sp" />
+
+    <com.m2049r.xmrwallet.layout.DropDownEditText
+        android:id="@+id/etDaemonAddress"
+        style="@style/MoneroEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/prompt_daemon"
+        android:imeOptions="actionDone"
+        android:inputType="textWebEmailAddress|textNoSuggestions"
+        android:maxLines="1"
+        android:textIsSelectable="true" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
