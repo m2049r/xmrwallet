@@ -46,7 +46,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Helper {
     static private final String TAG = "Helper";
-    static private final String WALLET_DIR = "Monerujo";
+    static private final String WALLET_DIR = "monerujo";
 
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
