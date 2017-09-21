@@ -323,7 +323,9 @@ public class LoginActivity extends AppCompatActivity
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
-        return copyWallet(walletFile, backupFile, true);
+        boolean success = copyWallet(walletFile, backupFile, true);
+        Log.d(TAG, "copyWallet is " + success);
+        return success;
     }
 
     @Override
@@ -885,18 +887,24 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite) {
-        //Log.d(TAG, "src=" + srcWallet.exists() + " dst=" + dstWallet.exists());
-        if (walletExists(dstWallet, true) && !overwrite) return false;
-        if (!walletExists(srcWallet, false)) return false;
-
+    boolean copyWallet(File srcWallet, File dstWallet, boolean backupMode) {
+        if (walletExists(dstWallet, true) && !backupMode) return false;
+        Log.d(TAG, "B " + backupMode);
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
         String srcName = srcWallet.getName();
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            Log.d(TAG, "C " + backupMode);
+            try {
+                copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+            } catch (IOException ex) {
+                Log.d(TAG, "CACHE " + backupMode);
+                if (!backupMode) { // ignore cache backup error if backing up (can be resynced)
+                    throw ex;
+                }
+            }
             copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
             copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;
@@ -911,12 +919,19 @@ public class LoginActivity extends AppCompatActivity
     // do our best to delete as much as possible of the wallet files
     boolean deleteWallet(File walletFile) {
         Log.d(TAG, "deleteWallet " + walletFile.getAbsolutePath());
-        if (!walletFile.isFile()) return false;
         File dir = walletFile.getParentFile();
         String name = walletFile.getName();
-        boolean success = new File(dir, name).delete();
+        boolean success = true;
+        File cacheFile = new File(dir, name);
+        if (cacheFile.exists()) {
+            success = cacheFile.delete();
+        }
         success = new File(dir, name + ".keys").delete() && success;
-        success = new File(dir, name + ".address.txt").delete() && success;
+        File addressFile = new File(dir, name + ".address.txt");
+        if (addressFile.exists()) {
+            success = addressFile.delete() && success;
+        }
+        Log.d(TAG, "deleteWallet is " + success);
         return success;
     }
 
