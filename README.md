@@ -28,6 +28,8 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 - Created wallets on a private testnet are unusable because the restore height is set to that
 of the "real" testnet.  After creating a new wallet, make a **new** one by recovering from the seed.
 The official monero client shows the same behaviour.
+- In rare occasions the monero core code returns a wallet address with corrupted characters -
+in these cases Monerujo crashes on purpose to make sure nothing bad happens
 
 ### HOW TO BUILD
 No need to build. Binaries are included:
