@@ -8,7 +8,7 @@ replacing "32" with "64".
 ## Prepare Ubuntu environment
 
 ```
-sudo apt-install build-essential cmake tofrodos
+sudo apt-get install build-essential cmake tofrodos
 sudo mkdir /opt/android
 sudo chown $LOGNAME /opt/android
 ```
