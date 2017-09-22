@@ -70,7 +70,7 @@ ln -s ../../../../openssl/android-21/lib/libcrypto.so
 ## Build Boost
 ```
 cd /opt/android
-https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.gz/download -O boost_1_64_0.tar.gz
+wget https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.gz/download -O boost_1_64_0.tar.gz
 tar xfz boost_1_64_0.tar.gz
 (cd boost_1_64_0; ./bootstrap.sh)
 ```
