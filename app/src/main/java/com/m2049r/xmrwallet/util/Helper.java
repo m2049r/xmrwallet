@@ -156,7 +156,6 @@ public class Helper {
                 break;
             }
         }
-        //Log.d(TAG, decimal + "/" + lastZero + "/" + s);
         int cutoff = Math.max(lastZero, decimal + 2);
         return s.substring(0, cutoff);
     }

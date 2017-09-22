@@ -25,6 +25,7 @@
 - Backup wallets to ```.backups``` folder in main wallet folder (old backups are overwritten)
 - Rename wallets
 - Archive (=Backup and delete)
+- 3 Default nodes + History of last 5 used nodes
 
 ## Backup / Archive says "Backup/Archive failed"
 You need to have synced at least once for these functions to work as the cache file must have been created.
