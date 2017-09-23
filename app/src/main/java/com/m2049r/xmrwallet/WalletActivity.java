@@ -150,14 +150,16 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.wallet_activity);
         if (savedInstanceState != null) {
-            return;
+            // we don't store anything ourselves
         }
 
+        setContentView(R.layout.wallet_activity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
+
+        toolbar.setTitle(R.string.app_name);
+
         boolean testnet = WalletManager.getInstance().isTestNet();
         if (testnet) {
             toolbar.setBackgroundResource(R.color.colorPrimaryDark);
