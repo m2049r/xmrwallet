@@ -36,6 +36,7 @@ public class Wallet {
 
     Wallet(long handle) {
         this.handle = handle;
+        getAddress(); // cache address for later
     }
 
     public enum Status {
@@ -49,8 +50,6 @@ public class Wallet {
         ConnectionStatus_Connected,
         ConnectionStatus_WrongVersion
     }
-
-    //public native long createWalletListenerJ();
 
     public native String getSeed();
 
@@ -68,11 +67,15 @@ public class Wallet {
 
     public native boolean setPassword(String password);
 
+    private String address = null;
+
     public String getAddress() {
-        String address = getAddressJ();
+        if (address == null) {
+            address = getAddressJ();
+        }
         if (!Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             // just die!
-            throw new IllegalStateException("Wallet returned invalid address!");
+            throw new IllegalStateException("Wallet returned invalid address: " + address);
         }
         return address;
     }

@@ -75,13 +75,13 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-        setContentView(R.layout.login_activity);
         if (savedInstanceState != null) {
-            return;
+            // we don't store anything ourselves
         }
 
+        setContentView(R.layout.login_activity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
