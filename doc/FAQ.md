@@ -27,9 +27,6 @@
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
 
-## Backup / Archive says "Backup/Archive failed"
-You need to have synced at least once for these functions to work as the cache file must have been created.
-
 ## I cannot select and copy the mnemonic seed
 Copying anything to the clipboard on Android exposes it to any other App running. So this
 is a security measure to keep your seed safe(r). 
