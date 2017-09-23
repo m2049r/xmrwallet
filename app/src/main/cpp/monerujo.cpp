@@ -531,8 +531,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_setPassword(JNIEnv *env, jobject instance
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getAddressJ(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    const char *address = wallet->address().c_str();
-    return env->NewStringUTF(address);
+    return env->NewStringUTF(wallet->address().c_str());
 }
 
 JNIEXPORT jstring JNICALL

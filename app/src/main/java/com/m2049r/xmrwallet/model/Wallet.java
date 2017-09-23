@@ -36,7 +36,6 @@ public class Wallet {
 
     Wallet(long handle) {
         this.handle = handle;
-        getAddress(); // cache address for later
     }
 
     public enum Status {
@@ -72,10 +71,6 @@ public class Wallet {
     public String getAddress() {
         if (address == null) {
             address = getAddressJ();
-        }
-        if (!Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
-            // just die!
-            throw new IllegalStateException("Wallet returned invalid address: " + address);
         }
         return address;
     }
