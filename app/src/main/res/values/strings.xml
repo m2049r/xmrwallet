@@ -97,6 +97,7 @@
 
     <string name="generate_wallet_exists">Wallet exists! Choose another name</string>
     <string name="generate_wallet_dot">Wallet name may not begin with \'.\'</string>
+    <string name="generate_wallet_creating">Creating wallet</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
     <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>

@@ -40,7 +40,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +76,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.login_activity);
         setContentView(R.layout.login_activity);
         if (savedInstanceState != null) {
             return;
@@ -187,13 +187,10 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private class AsyncRename extends AsyncTask<String, Void, Boolean> {
-        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.rename_progress);
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
-            LoginActivity.this.asyncWaitTask = this;
+            showProgressDialog(R.string.rename_progress);
         }
 
         @Override
@@ -207,13 +204,15 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            progressDialog.dismiss();
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
             if (result) {
                 reloadWalletList();
             } else {
                 Toast.makeText(LoginActivity.this, getString(R.string.rename_failed), Toast.LENGTH_LONG).show();
             }
-            LoginActivity.this.asyncWaitTask = null;
         }
     }
 
@@ -283,13 +282,10 @@ public class LoginActivity extends AppCompatActivity
 
 
     private class AsyncBackup extends AsyncTask<String, Void, Boolean> {
-        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.backup_progress);
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
-            LoginActivity.this.asyncWaitTask = this;
+            showProgressDialog(R.string.backup_progress);
         }
 
         @Override
@@ -301,11 +297,13 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            progressDialog.dismiss();
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
             if (!result) {
                 Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
             }
-            LoginActivity.this.asyncWaitTask = null;
         }
     }
 
@@ -335,13 +333,10 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private class AsyncArchive extends AsyncTask<String, Void, Boolean> {
-        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.archive_progress);
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
-            LoginActivity.this.asyncWaitTask = this;
+            showProgressDialog(R.string.archive_progress);
         }
 
         @Override
@@ -358,13 +353,15 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            progressDialog.dismiss();
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
             if (result) {
                 reloadWalletList();
             } else {
                 Toast.makeText(LoginActivity.this, getString(R.string.archive_failed), Toast.LENGTH_LONG).show();
             }
-            LoginActivity.this.asyncWaitTask = null;
         }
     }
 
@@ -530,7 +527,26 @@ public class LoginActivity extends AppCompatActivity
         super.onPause();
     }
 
-    AsyncTask asyncWaitTask = null; // TODO should this really be set from all AsyncTasks here?
+    ProgressDialog progressDialog = null;
+
+    private void showProgressDialog(int msgId) {
+        dismissProgressDialog(); // just in case
+        progressDialog = new MyProgressDialog(LoginActivity.this, msgId);
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+        progressDialog = null;
+    }
+
+    @Override
+    protected void onDestroy() {
+        dismissProgressDialog();
+        super.onDestroy();
+    }
 
     @Override
     protected void onResume() {
@@ -538,7 +554,7 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG, "onResume()");
         setTitle(getString(R.string.login_activity_name));
         // wait for WalletService to finish
-        if (WalletService.Running && (asyncWaitTask == null)) {
+        if (WalletService.Running && (progressDialog == null)) {
             // and show a progress dialog, but only if there isn't one already
             new AsyncWaitForService().execute();
         }
@@ -562,13 +578,10 @@ public class LoginActivity extends AppCompatActivity
 
 
     private class AsyncWaitForService extends AsyncTask<Void, Void, Void> {
-        ProgressDialog progressDialog = new MyProgressDialog(LoginActivity.this, R.string.service_progress);
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
-            LoginActivity.this.asyncWaitTask = this;
+            showProgressDialog(R.string.service_progress);
         }
 
         @Override
@@ -586,11 +599,12 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            progressDialog.dismiss();
-            LoginActivity.this.asyncWaitTask = null;
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
         }
     }
-
 
     void startWallet(String walletName, String walletPassword) {
         Log.d(TAG, "startWallet()");
@@ -707,6 +721,7 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            showProgressDialog(R.string.generate_wallet_creating);
         }
 
         @Override
@@ -747,6 +762,10 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
             if (result) {
                 startDetails(newWalletFile, walletPassword, GenerateReviewFragment.VIEW_TYPE_ACCEPT);
             } else {
@@ -754,7 +773,6 @@ public class LoginActivity extends AppCompatActivity
                         getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
                 walletGenerateError();
             }
-            LoginActivity.this.asyncWaitTask = null;
         }
     }
 
