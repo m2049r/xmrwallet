@@ -471,8 +471,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instan
                                                                        "listenerHandle");
         if (walletListener != nullptr) {
             walletListener->deleteGlobalJavaRef(env);
+            delete walletListener;
         }
-        delete walletListener;
     }
     LOGD("wallet closed");
     return closeSuccess;
