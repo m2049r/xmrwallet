@@ -144,7 +144,7 @@ public class LicensesFragment extends DialogFragment {
         mWebView = (WebView) content.findViewById(R.id.licensesFragmentWebView);
         mIndeterminateProgress = (ProgressBar) content.findViewById(R.id.licensesFragmentIndeterminateProgress);
 
-        boolean showCloseButton = false;
+        boolean showCloseButton = true;
         Bundle arguments = getArguments();
         if (arguments != null) {
             showCloseButton = arguments.getBoolean(KEY_SHOW_CLOSE_BUTTON);
