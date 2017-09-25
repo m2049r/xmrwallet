@@ -39,6 +39,8 @@ static jclass class_WalletListener;
 static jclass class_TransactionInfo;
 static jclass class_Transfer;
 
+std::mutex _listenerMutex;
+
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     cachedJVM = jvm;
     LOGI("JNI_OnLoad");
@@ -101,6 +103,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
     };
 
     void deleteGlobalJavaRef(JNIEnv *env) {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         env->DeleteGlobalRef(jlistener);
         jlistener = nullptr;
     }
@@ -109,6 +112,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
  * @brief updated  - generic callback, called when any event (sent/received/block reveived/etc) happened with the wallet;
  */
     void updated() {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         LOGD("updated");
         JNIEnv *jenv;
@@ -128,6 +132,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
      * @param amount     - amount
      */
     void moneySpent(const std::string &txId, uint64_t amount) {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         LOGD("moneySpent %"
                      PRIu64, amount);
@@ -139,6 +144,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
      * @param amount        - amount
      */
     void moneyReceived(const std::string &txId, uint64_t amount) {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         LOGD("moneyReceived %"
                      PRIu64, amount);
@@ -150,6 +156,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
      * @param amount        - amount
      */
     void unconfirmedMoneyReceived(const std::string &txId, uint64_t amount) {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         LOGD("unconfirmedMoneyReceived %"
                      PRIu64, amount);
@@ -160,6 +167,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
      * @param height        - block height
      */
     void newBlock(uint64_t height) {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         //LOGD("newBlock");
         JNIEnv *jenv;
@@ -178,6 +186,7 @@ struct MyWalletListener : Bitmonero::WalletListener {
  * @brief refreshed - called when wallet refreshed by background thread or explicitly refreshed by calling "refresh" synchronously
  */
     void refreshed() {
+        std::lock_guard<std::mutex> lock(_listenerMutex);
         if (jlistener == nullptr) return;
         LOGD("refreshed");
         JNIEnv *jenv;
@@ -465,7 +474,8 @@ JNIEXPORT jboolean JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instance,
                                                      jobject walletInstance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, walletInstance);
-    bool closeSuccess = Bitmonero::WalletManagerFactory::getWalletManager()->closeWallet(wallet, false);
+    bool closeSuccess = Bitmonero::WalletManagerFactory::getWalletManager()->closeWallet(wallet,
+                                                                                         false);
     if (closeSuccess) {
         MyWalletListener *walletListener = getHandle<MyWalletListener>(env, walletInstance,
                                                                        "listenerHandle");
@@ -601,7 +611,8 @@ Java_com_m2049r_xmrwallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
     const char *_daemon_username = env->GetStringUTFChars(daemon_username, JNI_FALSE);
     const char *_daemon_password = env->GetStringUTFChars(daemon_password, JNI_FALSE);
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    bool status = wallet->init(_daemon_address, upper_transaction_size_limit, _daemon_username, _daemon_password);
+    bool status = wallet->init(_daemon_address, upper_transaction_size_limit, _daemon_username,
+                               _daemon_password);
     env->ReleaseStringUTFChars(daemon_address, _daemon_address);
     env->ReleaseStringUTFChars(daemon_username, _daemon_username);
     env->ReleaseStringUTFChars(daemon_password, _daemon_password);
@@ -919,7 +930,7 @@ jobject newTransferInstance(JNIEnv *env, uint64_t amount, const std::string &add
 
 jobject newTransferList(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     const std::vector<Bitmonero::TransactionInfo::Transfer> &transfers = info->transfers();
-    if (transfers.size()==0) { // don't create empty Lists
+    if (transfers.size() == 0) { // don't create empty Lists
         return nullptr;
     }
     // make new ArrayList
