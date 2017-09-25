@@ -186,7 +186,7 @@ public class LoginFragment extends Fragment {
         etDaemonAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
+                if (hasFocus && !getActivity().isFinishing()) {
                     etDaemonAddress.showDropDown();
                     Helper.showKeyboard(getActivity());
                 }
