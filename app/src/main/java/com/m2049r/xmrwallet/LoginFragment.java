@@ -376,7 +376,7 @@ public class LoginFragment extends Fragment {
     }
 
     String getDaemon() {
-        return etDaemonAddress.getText().toString();
+        return etDaemonAddress.getText().toString().trim();
     }
 
     void setDaemon(NodeList nodeList) {
