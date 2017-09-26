@@ -27,6 +27,11 @@
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
 
+## After installing from Google Play the wallet list is empty!
+Sorry about that.  The folder for the wallets was renamed from "Monerujo" to "monerujo".
+On most devices this does not matter (they don't care about upper/lower case). Yours does.
+If you use a file explorer (e.g. es file explorer) you can find the Monerujo folder and rename it to "monerujo".
+
 ## I cannot select and copy the mnemonic seed
 Copying anything to the clipboard on Android exposes it to any other App running. So this
 is a security measure to keep your seed safe(r). 
