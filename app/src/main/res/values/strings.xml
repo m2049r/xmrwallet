@@ -100,8 +100,6 @@
     <string name="generate_wallet_creating">Creating wallet</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
-    <string name="generate_wallet_create_failed_1">Wallet create failed (1/2)</string>
-    <string name="generate_wallet_create_failed_2">Wallet create failed (2/2)</string>
     <string name="generate_address_placeholder">9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8</string>
     <string name="generate_viewkey_placeholder">e2b99f4cc3d644774c4b118db05f8aa9967583a01ca4d47058c3860af10bd306</string>
     <string name="generate_spendkey_placeholder">300a54208ab0a638a8407a12e3de946da76f5a9ded303338452332ec7755210d</string>

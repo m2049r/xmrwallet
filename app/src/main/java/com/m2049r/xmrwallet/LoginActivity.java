@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaScannerConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -308,12 +309,14 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private boolean backupWallet(String walletName) {
-        File backupFolder = new File(getStorageRoot(), ".backups");
+        File backupFolder = new File(getStorageRoot(), "backups");
         if (!backupFolder.exists()) {
             if (!backupFolder.mkdir()) {
                 Log.e(TAG, "Cannot create backup dir " + backupFolder.getAbsolutePath());
                 return false;
             }
+            // make folder visible over USB/MTP
+            MediaScannerConnection.scanFile(this, new String[]{backupFolder.toString()}, null, null);
         }
         File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
         File backupFile = new File(backupFolder, walletName);
@@ -726,26 +729,17 @@ public class LoginActivity extends AppCompatActivity
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            File newWalletFolder = new File(getStorageRoot(), ".new");
-            if (!newWalletFolder.exists()) {
-                if (!newWalletFolder.mkdir()) {
-                    Log.e(TAG, "Cannot create new wallet dir " + newWalletFolder.getAbsolutePath());
-                    return false;
-                }
-            }
+            File newWalletFolder = getStorageRoot();
             if (!newWalletFolder.isDirectory()) {
-                Log.e(TAG, "New wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+                Log.e(TAG, "Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
                 return false;
             }
             File cacheFile = new File(newWalletFolder, walletName);
-            cacheFile.delete();
             File keysFile = new File(newWalletFolder, walletName + ".keys");
-            keysFile.delete();
             File addressFile = new File(newWalletFolder, walletName + ".address.txt");
-            addressFile.delete();
 
             if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
-                Log.e(TAG, "Cannot remove all old wallet files: " + cacheFile.getAbsolutePath());
+                Log.e(TAG, "Some wallet files already exist for " + cacheFile.getAbsolutePath());
                 return false;
             }
 
@@ -854,15 +848,11 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onAccept(final String name, final String password) {
-        File newWalletFile = new File(new File(getStorageRoot(), ".new"), name);
         File walletFolder = getStorageRoot();
         File walletFile = new File(walletFolder, name);
-        boolean rc = copyWallet(newWalletFile, walletFile, false);
-        if (rc) {
-            walletFile.delete(); // when recovering wallets, the cache seems corrupt
-            // TODO: figure out why this is so? Only for a private testnet?
-            rc = testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok;
-        }
+        walletFile.delete(); // when recovering wallets, the cache seems corrupt
+        // TODO: figure out why this is so? Only for a private testnet?
+        boolean rc = testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok;
 
         if (rc) {
             popFragmentStack(GENERATE_STACK);
@@ -871,7 +861,7 @@ public class LoginActivity extends AppCompatActivity
         } else {
             Log.e(TAG, "Wallet store failed to " + walletFile.getAbsolutePath());
             Toast.makeText(LoginActivity.this,
-                    getString(R.string.generate_wallet_create_failed_2), Toast.LENGTH_LONG).show();
+                    getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
         }
     }
 
