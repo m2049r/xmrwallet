@@ -94,7 +94,7 @@ make
 make install
 
 git clone https://github.com/zeromq/cppzmq.git
- cp cppzmq/*.hpp zeromq/include/
+cp cppzmq/*.hpp zeromq/include/
 ```
 
 ## And finally: Build Monero
