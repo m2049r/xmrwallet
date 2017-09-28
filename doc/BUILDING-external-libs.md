@@ -84,6 +84,7 @@ export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bi
 ```
 
 ## Build & prepare zeromq
+Only needed for zeromq versions (>v0.11.0.0).
 ```
 cd /opt/android
 wget git clone https://github.com/zeromq/zeromq3-x.git
@@ -105,7 +106,7 @@ cd monero
 ```
 ```
 # <patch monero code as needed>
-# also, don't abort on warnings:
+# also, don't abort on warnings (this is only an issue >v0.11.0.0):
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 1f74f59..2c791c0 100644
 --- a/CMakeLists.txt
@@ -127,7 +128,12 @@ cd build/release.android32
 # only if not set already set
 export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH
 
+# for zeromq versions (>v0.11.0.0).
 CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -D ZMQ_INCLUDE_PATH=/opt/android/zeromq/include -D ZMQ_LIB=/opt/android/zeromq/lib/libzmq.a ../..
+
+# for pre-zeromq versions (<=v0.11.0.0).
+CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
+
 make
 
 find . -name '*.a' -exec cp '{}' lib \;
