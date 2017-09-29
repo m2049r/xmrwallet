@@ -45,15 +45,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.layout.DropDownEditText;
-import com.m2049r.xmrwallet.license.LicensesFragment;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.dialog.LicensesFragment;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
-import com.m2049r.xmrwallet.util.NodeList;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -971,6 +970,9 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_create_help:
+                HelpFragment.displayHelp(getSupportFragmentManager(),R.raw.help_create);
+                return true;
             case R.id.action_lincense_info:
                 LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
                 return true;
