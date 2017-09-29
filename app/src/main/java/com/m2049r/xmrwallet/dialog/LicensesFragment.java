@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.license;
+package com.m2049r.xmrwallet.dialog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,8 +51,7 @@ public class LicensesFragment extends DialogFragment {
 
     private AsyncTask<Void, Void, String> mLicenseLoader;
 
-    private static final String FRAGMENT_TAG = "nz.net.speakman.androidlicensespage.LicensesFragment";
-    private static final String KEY_SHOW_CLOSE_BUTTON = "keyShowCloseButton";
+    private static final String FRAGMENT_TAG = "com.m2049r.xmrwalelt.dialog.LicensesFragment";
 
     /**
      * Creates a new instance of LicensesFragment with no Close button.
@@ -61,22 +60,6 @@ public class LicensesFragment extends DialogFragment {
      */
     public static LicensesFragment newInstance() {
         return new LicensesFragment();
-    }
-
-    /**
-     * Creates a new instance of LicensesFragment with an optional Close button.
-     *
-     * @param showCloseButton Whether to show a Close button at the bottom of the dialog.
-     * @return A new licenses fragment.
-     */
-    public static LicensesFragment newInstance(boolean showCloseButton) {
-        LicensesFragment fragment = new LicensesFragment();
-
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(KEY_SHOW_CLOSE_BUTTON, showCloseButton);
-        fragment.setArguments(bundle);
-
-        return fragment;
     }
 
     /**
@@ -96,27 +79,6 @@ public class LicensesFragment extends DialogFragment {
 
         // Create and show the dialog.
         DialogFragment newFragment = LicensesFragment.newInstance();
-        newFragment.show(ft, FRAGMENT_TAG);
-    }
-
-    /**
-     * Builds and displays a licenses fragment with or without a Close button.
-     * Requires "/res/raw/licenses.html" and "/res/layout/licenses_fragment.xml"
-     * to be present.
-     *
-     * @param fm              A fragment manager instance used to display this LicensesFragment.
-     * @param showCloseButton Whether to show a Close button at the bottom of the dialog.
-     */
-    public static void displayLicensesFragment(FragmentManager fm, boolean showCloseButton) {
-        FragmentTransaction ft = fm.beginTransaction();
-        Fragment prev = fm.findFragmentByTag(FRAGMENT_TAG);
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        DialogFragment newFragment = LicensesFragment.newInstance(showCloseButton);
         newFragment.show(ft, FRAGMENT_TAG);
     }
 
@@ -144,26 +106,18 @@ public class LicensesFragment extends DialogFragment {
         mWebView = (WebView) content.findViewById(R.id.licensesFragmentWebView);
         mIndeterminateProgress = (ProgressBar) content.findViewById(R.id.licensesFragmentIndeterminateProgress);
 
-        boolean showCloseButton = true;
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            showCloseButton = arguments.getBoolean(KEY_SHOW_CLOSE_BUTTON);
-        }
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        TextView text = (TextView) content.findViewById(R.id.text);
+        TextView text = (TextView) content.findViewById(R.id.licensesFragmentText);
         text.setText(getString(R.string.about_text, versionName, versionCode));
 
         builder.setView(content);
-        if (showCloseButton) {
-            builder.setNegativeButton(R.string.about_close,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    });
-        }
+        builder.setNegativeButton(R.string.about_close,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
         return builder.create();
     }

@@ -6,6 +6,7 @@
     <string name="menu_testnet">Testnet</string>
     <string name="menu_about">About &#8230;</string>
 
+    <string name="menu_help">Help</string>
     <string name="menu_info">Details</string>
     <string name="menu_receive">QR Receive</string>
     <string name="menu_rename">Rename</string>
@@ -81,6 +82,9 @@
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
     <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
+
+    <string name="message_noselect_seed">Selecting seed disabled for security reasons!</string>
+    <string name="message_noselect_key">Selecting spend key disabled for security reasons!</string>
 
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>

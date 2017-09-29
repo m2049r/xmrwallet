@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -66,6 +67,20 @@ public class GenerateReviewFragment extends Fragment {
         boolean testnet = WalletManager.getInstance().isTestNet();
         tvWalletMnemonic.setTextIsSelectable(testnet);
         tvWalletSpendKey.setTextIsSelectable(testnet);
+        if (!testnet) {
+            tvWalletMnemonic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), getString(R.string.message_noselect_seed), Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvWalletSpendKey.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), getString(R.string.message_noselect_key), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         bAccept.setOnClickListener(new View.OnClickListener() {
             @Override
