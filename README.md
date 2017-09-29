@@ -14,7 +14,7 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 - Based off monero v0.11.0.0 with PR #2289 applied
 - currently only android32 (runs on 64-bit as well)
 - works on the testnet & mainnet
-- takes forever to sync due to 32-bit architecture
+- sync is slow due to 32-bit architecture
 - use your own daemon - it's easy
 - screen stays on until first sync is complete
 - saves wallet only on first sync and when sending transactions or editing notes
