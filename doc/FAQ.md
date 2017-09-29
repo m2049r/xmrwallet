@@ -22,7 +22,7 @@
 - All significant figures shown in balance
 - QR Code scanning - make sure to *ALWAYS* verify the scanned code is what it is advertised to be!
 - QR Code for receiving with conversion of XMR to USD/EUR and back through kraken API
-- Backup wallets to ```.backups``` folder in main wallet folder (old backups are overwritten)
+- Backup wallets to ```backups``` folder in main wallet folder (old backups are overwritten)
 - Rename wallets
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
