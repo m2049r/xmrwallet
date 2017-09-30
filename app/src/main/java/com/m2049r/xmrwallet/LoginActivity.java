@@ -973,6 +973,9 @@ public class LoginActivity extends AppCompatActivity
             case R.id.action_create_help:
                 HelpFragment.displayHelp(getSupportFragmentManager(),R.raw.help_create);
                 return true;
+            case R.id.action_details_help:
+                HelpFragment.displayHelp(getSupportFragmentManager(),R.raw.help_details);
+                return true;
             case R.id.action_lincense_info:
                 LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
                 return true;

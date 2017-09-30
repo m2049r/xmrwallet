@@ -19,9 +19,12 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -213,5 +216,16 @@ public class GenerateReviewFragment extends Fragment {
 
     boolean backOk() {
         return !type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.wallet_details_menu, menu);
     }
 }
