@@ -70,20 +70,11 @@ public class WalletService extends Service {
     private MyWalletListener listener = null;
 
     private class MyWalletListener implements WalletListener {
-        private Wallet wallet;
         boolean updated = true;
-
-        Wallet getWallet() {
-            return wallet;
-        }
-
-        MyWalletListener(Wallet aWallet) {
-            if (aWallet == null) throw new IllegalArgumentException("Cannot open wallet!");
-            this.wallet = aWallet;
-        }
 
         void start() {
             Log.d(TAG, "MyWalletListener.start()");
+            Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             //acquireWakeLock();
             wallet.setListener(this);
@@ -92,6 +83,7 @@ public class WalletService extends Service {
 
         void stop() {
             Log.d(TAG, "MyWalletListener.stop()");
+            Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             wallet.pauseRefresh();
             wallet.setListener(null);
@@ -115,6 +107,7 @@ public class WalletService extends Service {
         int lastTxCount = 0;
 
         public void newBlock(long height) {
+            Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
@@ -141,14 +134,16 @@ public class WalletService extends Service {
         }
 
         public void updated() {
-            Log.d(TAG, "updated() " + wallet.getBalance());
+            Log.d(TAG, "updated()");
+            Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             updated = true;
         }
 
         public void refreshed() {
+            Log.d(TAG, "refreshed()");
+            Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            Log.d(TAG, "refreshed() " + wallet.getName() + " " + wallet.getBalance() + " sync=" + wallet.isSynchronized() + " with observer " + observer);
             if (updated) {
                 if (observer != null) {
                     updateDaemonState(wallet, 0);
@@ -253,8 +248,7 @@ public class WalletService extends Service {
 
     //
     public Wallet getWallet() {
-        if (listener == null) throw new IllegalStateException("no listener");
-        return listener.getWallet();
+        return WalletManager.getInstance().getWallet();
     }
 
     /////////////////////////////////////////////
@@ -478,7 +472,7 @@ public class WalletService extends Service {
                 if (aWallet != null) aWallet.close();
                 return false;
             }
-            listener = new MyWalletListener(aWallet);
+            listener = new MyWalletListener();
             listener.start();
             showProgress(100);
         }
@@ -496,10 +490,6 @@ public class WalletService extends Service {
         if (listener != null) {
             listener.stop();
             Wallet myWallet = getWallet();
-//            if (!myWallet.isSynchronized()) { // save only if NOT synced (to continue later)
-//                Log.d(TAG, "stop() saving");
-//                myWallet.store();
-//            }
             Log.d(TAG, "stop() closing");
             myWallet.close();
             Log.d(TAG, "stop() closed");
