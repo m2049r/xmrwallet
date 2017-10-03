@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.model;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -45,36 +46,36 @@ public class WalletManager {
         return WalletManager.Instance;
     }
 
-    private WalletManager() {
-        this.managedWallets = new HashMap<>();
+    //private Map<String, Wallet> managedWallets;
+    private Wallet managedWallet = null;
+
+    public Wallet getWallet() {
+        return managedWallet;
     }
 
-    private Map<String, Wallet> managedWallets;
-
-    public Wallet getWallet(String walletId) {
-        return managedWallets.get(walletId);
+    private void manageWallet(Wallet wallet) {
+        Log.d(TAG, "Managing " + wallet.getName());
+        managedWallet = wallet;
     }
 
-    private void manageWallet(String walletId, Wallet wallet) {
-        if (getWallet(walletId) != null) {
-            throw new IllegalStateException(walletId + " already under management!");
+    private void unmanageWallet(Wallet wallet) {
+        if (wallet == null) {
+            throw new IllegalArgumentException("Cannot unmanage null!");
         }
-        Log.d(TAG, "Managing " + walletId);
-        managedWallets.put(walletId, wallet);
-    }
-
-    private void unmanageWallet(String walletId) {
-        if (getWallet(walletId) == null) {
-            throw new IllegalStateException(walletId + " not under management!");
+        if (getWallet() == null) {
+            throw new IllegalStateException("No wallet under management!");
         }
-        Log.d(TAG, "Unmanaging " + walletId);
-        managedWallets.remove(walletId);
+        if (getWallet() != wallet) {
+            throw new IllegalStateException(wallet.getName() + " not under management!");
+        }
+        Log.d(TAG, "Unmanaging " + managedWallet.getName());
+        managedWallet = null;
     }
 
     public Wallet createWallet(File aFile, String password, String language) {
         long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, isTestNet());
         Wallet wallet = new Wallet(walletHandle);
-        manageWallet(wallet.getName(), wallet);
+        manageWallet(wallet);
         return wallet;
     }
 
@@ -83,7 +84,7 @@ public class WalletManager {
     public Wallet openWallet(String path, String password) {
         long walletHandle = openWalletJ(path, password, isTestNet());
         Wallet wallet = new Wallet(walletHandle);
-        manageWallet(wallet.getName(), wallet);
+        manageWallet(wallet);
         return wallet;
     }
 
@@ -91,14 +92,14 @@ public class WalletManager {
 
     public Wallet recoveryWallet(File aFile, String mnemonic) {
         Wallet wallet = recoveryWallet(aFile, mnemonic, 0);
-        manageWallet(wallet.getName(), wallet);
+        manageWallet(wallet);
         return wallet;
     }
 
     public Wallet recoveryWallet(File aFile, String mnemonic, long restoreHeight) {
         long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), mnemonic, isTestNet(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
-        manageWallet(wallet.getName(), wallet);
+        manageWallet(wallet);
         return wallet;
     }
 
@@ -109,7 +110,7 @@ public class WalletManager {
         long walletHandle = createWalletFromKeysJ(aFile.getAbsolutePath(), language, isTestNet(), restoreHeight,
                 addressString, viewKeyString, spendKeyString);
         Wallet wallet = new Wallet(walletHandle);
-        manageWallet(wallet.getName(), wallet);
+        manageWallet(wallet);
         return wallet;
     }
 
@@ -123,13 +124,12 @@ public class WalletManager {
     public native boolean closeJ(Wallet wallet);
 
     public boolean close(Wallet wallet) {
-        String walletId = new File(wallet.getFilename()).getName();
-        unmanageWallet(walletId);
+        unmanageWallet(wallet);
         boolean closed = closeJ(wallet);
         if (!closed) {
             // in case we could not close it
-            // we unmanage it
-            manageWallet(walletId, wallet);
+            // we manage it again
+            manageWallet(wallet);
         }
         return closed;
     }

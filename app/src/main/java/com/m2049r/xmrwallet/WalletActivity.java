@@ -151,7 +151,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         Log.d(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-            // we don't store anything ourselves
+            // activity restarted
+            // we don't want that - finish it and fall back to previous activity
+            finish();
+            return;
         }
 
         setContentView(R.layout.wallet_activity);
