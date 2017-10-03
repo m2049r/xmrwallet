@@ -186,6 +186,7 @@ public class WalletFragment extends Fragment implements TransactionInfoAdapter.O
     private String walletTitle = null;
 
     private void updateStatus(Wallet wallet) {
+        if (!isAdded()) return;
         Log.d(TAG, "updateStatus()");
         if (walletTitle == null) {
             walletTitle = setActivityTitle(wallet);
