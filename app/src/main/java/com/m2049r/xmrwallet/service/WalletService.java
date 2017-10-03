@@ -435,10 +435,15 @@ public class WalletService extends Service {
         // start ID so we know which request we're stopping when we finish the job
         Message msg = mServiceHandler.obtainMessage();
         msg.arg2 = START_SERVICE;
-        msg.setData(intent.getExtras());
-        mServiceHandler.sendMessage(msg);
-        //Log.d(TAG, "onStartCommand() message sent");
-        return START_STICKY;
+        if (intent != null) {
+            msg.setData(intent.getExtras());
+            mServiceHandler.sendMessage(msg);
+            return START_STICKY;
+        } else {
+            // process restart - don't do anything - let system kill it again
+            stop();
+            return START_NOT_STICKY;
+        }
     }
 
     @Override
@@ -460,9 +465,8 @@ public class WalletService extends Service {
     }
 
     private boolean start(String walletName, String walletPassword) {
-        startNotfication();
-        // if there is an listener it is always started / syncing
         Log.d(TAG, "start()");
+        startNotfication();
         showProgress(getString(R.string.status_wallet_loading));
         showProgress(10);
         if (listener == null) {
@@ -551,6 +555,5 @@ public class WalletService extends Service {
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(NOTIFICATION_ID, notification);
-
     }
 }
