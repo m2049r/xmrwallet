@@ -192,7 +192,7 @@
     <string name="details_alert_yes">I\'m safe</string>
     <string name="details_alert_no">Take me back!</string>
 
-    <string name="archive_alert_message">The wallet will be backuped up and then deleted!</string>
+    <string name="archive_alert_message">The wallet will be backed up and then deleted!</string>
     <string name="archive_alert_yes">Yes, do that!</string>
     <string name="archive_alert_no">No thanks!</string>
 
