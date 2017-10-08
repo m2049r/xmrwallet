@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.m2049r.xmrwallet.util.BarcodeData;
+import com.squareup.leakcanary.RefWatcher;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -108,5 +108,12 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

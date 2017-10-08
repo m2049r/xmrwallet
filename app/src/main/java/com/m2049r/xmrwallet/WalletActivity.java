@@ -17,7 +17,6 @@
 package com.m2049r.xmrwallet;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,7 +24,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -34,11 +32,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -49,16 +47,13 @@ import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
+        GenerateReviewFragment.Listener,
         ScannerFragment.Listener, ReceiveFragment.Listener {
     private static final String TAG = "WalletActivity";
 
@@ -66,6 +61,27 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public static final String REQUEST_PW = "pw";
 
     Toolbar toolbar;
+
+    @Override
+    public void setToolbarButton(int type) {
+        toolbar.setButton(type);
+    }
+
+    @Override
+    public void setTitle(String title, String subtitle) {
+        toolbar.setTitle(title, subtitle);
+    }
+
+    @Override
+    public void setTitle(String title) {
+        Log.d(TAG, "setTitle:" + title + ".");
+        toolbar.setTitle(title);
+    }
+
+    @Override
+    public void setSubtitle(String subtitle) {
+        toolbar.setSubtitle(subtitle);
+    }
 
     private boolean synced = false;
 
@@ -137,8 +153,11 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             case R.id.action_info:
                 onWalletDetails();
                 return true;
-            case R.id.action_receive:
-                onWalletReceive();
+            case R.id.action_donate:
+                onWalletDetails();
+                return true;
+            case R.id.action_share:
+                onShareTxInfo();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -157,17 +176,35 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             return;
         }
 
-        setContentView(R.layout.wallet_activity);
+        setContentView(R.layout.activity_wallet);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setTitle(R.string.app_name);
+        toolbar.setOnButtonListener(new Toolbar.OnButtonListener() {
+            @Override
+            public void onButton(int type) {
+                switch (type) {
+                    case Toolbar.BUTTON_BACK:
+                        onBackPressed();
+                        break;
+                    case Toolbar.BUTTON_CLOSE:
+                        finish();
+                        break;
+                    case Toolbar.BUTTON_DONATE:
+                        Toast.makeText(WalletActivity.this, getString(R.string.label_donate), Toast.LENGTH_SHORT).show();
+                    case Toolbar.BUTTON_NONE:
+                    default:
+                        Log.e(TAG, "Button " + type + "pressed - how can this be?");
+                }
+            }
+        });
 
         boolean testnet = WalletManager.getInstance().isTestNet();
         if (testnet) {
             toolbar.setBackgroundResource(R.color.colorPrimaryDark);
         } else {
-            toolbar.setBackgroundResource(R.color.moneroOrange);
+            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
         }
 
         Fragment walletFragment = new WalletFragment();
@@ -201,8 +238,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             if (extras != null) {
                 String walletId = extras.getString(REQUEST_ID);
                 if (walletId != null) {
-                    setTitle(walletId);
-                    setSubtitle("");
+                    setTitle(walletId, getString(R.string.status_wallet_connecting));
                 }
             }
             updateProgress();
@@ -216,8 +252,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             // Because it is running in our same process, we should never
             // see this happen.
             mBoundService = null;
-            setTitle(getString(R.string.wallet_activity_name));
-            setSubtitle("");
+            setTitle(getString(R.string.wallet_activity_name), getString(R.string.status_wallet_disconnected));
             Log.d(TAG, "DISCONNECTED");
         }
     };
@@ -292,9 +327,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         }
     }
 
-    //////////////////////////////////////////
-    // WalletFragment.Listener
-    //////////////////////////////////////////
+//////////////////////////////////////////
+// WalletFragment.Listener
+//////////////////////////////////////////
 
     @Override
     public boolean hasBoundService() {
@@ -309,16 +344,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     @Override
     public long getDaemonHeight() {
         return mBoundService.getDaemonHeight();
-    }
-
-    @Override
-    public void setTitle(String title) {
-        toolbar.setTitle(title);
-    }
-
-    @Override
-    public void setSubtitle(String subtitle) {
-        toolbar.setSubtitle(subtitle);
     }
 
     @Override
@@ -342,9 +367,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         }
     }
 
-    ///////////////////////////
-    // WalletService.Observer
-    ///////////////////////////
+///////////////////////////
+// WalletService.Observer
+///////////////////////////
 
     // refresh and return if successful
     @Override
@@ -514,9 +539,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         }
     }
 
-    ///////////////////////////
-    // SendFragment.Listener
-    ///////////////////////////
+///////////////////////////
+// SendFragment.Listener
+///////////////////////////
 
     @Override
     public void onSend(String notes) {
@@ -561,20 +586,13 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     }
 
     @Override
-    public void onPrepareSweep() {
-        if (mIsBound) { // no point in talking to unbound service
-            Intent intent = new Intent(getApplicationContext(), WalletService.class);
-            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SWEEP);
-            startService(intent);
-            Log.d(TAG, "SWEEP TX request sent");
-        } else {
-            Log.e(TAG, "Service not bound");
-        }
+    public String getWalletAddress() {
+        return getWallet().getAddress();
     }
 
     @Override
-    public String getWalletAddress() {
-        return getWallet().getAddress();
+    public String getWalletName() {
+        return getWallet().getName();
     }
 
     void popFragmentStack(String name) {
@@ -617,6 +635,18 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
                 .show();
+    }
+
+    void onShareTxInfo() {
+        try {
+            TxFragment fragment = (TxFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            fragment.shareTxInfo();
+        } catch (ClassCastException ex) {
+            // not in wallet fragment
+            Log.e(TAG, ex.getLocalizedMessage());
+            // keep calm and carry on
+        }
     }
 
     @Override
@@ -710,7 +740,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
 
     @Override
-    public BarcodeData getScannedData() {
+    public BarcodeData popScannedData() {
         BarcodeData data = scannedData;
         scannedData = null;
         return data;
@@ -745,6 +775,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         Log.d(TAG, "startReceive()");
         Bundle b = new Bundle();
         b.putString("address", address);
+        b.putString("name", getWalletName());
         startReceiveFragment(b);
     }
 

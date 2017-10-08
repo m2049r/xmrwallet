@@ -17,7 +17,6 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,6 +28,7 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         outboundColour = ContextCompat.getColor(context, R.color.tx_red);
         pendingColour = ContextCompat.getColor(context, R.color.tx_pending);
         failedColour = ContextCompat.getColor(context, R.color.tx_failed);
-        this.infoItems = new ArrayList<>();
+        infoItems = new ArrayList<>();
         this.listener = listener;
         Calendar cal = Calendar.getInstance();
         TimeZone tz = cal.getTimeZone(); //get the local time zone.
@@ -79,7 +79,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.transaction_item, parent, false);
+                .inflate(R.layout.item_transaction, parent, false);
         return new ViewHolder(view);
     }
 
@@ -99,22 +99,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         this.infoItems.clear();
         if (data != null) {
             Log.d(TAG, "setInfos " + data.size());
-            // sort by block height
-            Collections.sort(data, new Comparator<TransactionInfo>() {
-                @Override
-                public int compare(TransactionInfo o1, TransactionInfo o2) {
-                    long b1 = o1.timestamp;
-                    long b2 = o2.timestamp;
-                    if (b1 > b2) {
-                        return -1;
-                    } else if (b1 < b2) {
-                        return 1;
-                    } else {
-                        return o1.hash.compareTo(o2.hash);
-                    }
-                }
-            });
-            this.infoItems.addAll(data);
+            infoItems.addAll(data);
+            Collections.sort(infoItems);
         } else {
             Log.d(TAG, "setInfos null");
         }
@@ -147,36 +133,41 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         void bind(int position) {
             this.infoItem = infoItems.get(position);
-            String displayAmount = Wallet.getDisplayAmount(infoItem.amount);
-            // TODO fix this with i8n code but cryptonote::print_money always uses '.' for decimal point
-            String amount = displayAmount.substring(0, displayAmount.length() - (12 - 5));
-            this.tvAmount.setText(amount);
+
+            long realAmount = infoItem.amount;
+            if (infoItem.isPending) {
+                realAmount = realAmount - infoItem.fee;
+            }
+
+            String displayAmount = Helper.getDisplayAmount(realAmount, Helper.DISPLAY_DIGITS_INFO);
+            if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
+                this.tvAmount.setText(context.getString(R.string.tx_list_amount_negative, displayAmount));
+            } else {
+                this.tvAmount.setText(context.getString(R.string.tx_list_amount_positive, displayAmount));
+            }
 
             if ((infoItem.fee > 0)) {
-                String feeAmount = Wallet.getDisplayAmount(infoItem.fee);
-                String fee = feeAmount.substring(0, feeAmount.length() - (12 - 5));
-                if (infoItem.isPending) {
-                    this.tvFee.setText(context.getString(R.string.tx_list_fee_pending, fee));
-                } else {
-                    this.tvFee.setText(context.getString(R.string.tx_list_fee, fee));
-                }
+                String fee = Helper.getDisplayAmount(infoItem.fee, 5);
+                this.tvFee.setText(context.getString(R.string.tx_list_fee, fee));
             } else {
                 this.tvFee.setText("");
             }
             if (infoItem.isFailed) {
-                this.tvAmount.setText(context.getString(R.string.tx_list_amount_failed, amount));
+                this.tvAmount.setText(context.getString(R.string.tx_list_amount_failed, displayAmount));
+                this.tvFee.setText(context.getString(R.string.tx_list_failed_text));
                 setTxColour(failedColour);
             } else if (infoItem.isPending) {
                 setTxColour(pendingColour);
-                if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
-                    this.tvAmount.setText(context.getString(R.string.tx_list_amount_negative, amount));
-                }
             } else if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(inboundColour);
             } else {
                 setTxColour(outboundColour);
             }
-            this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ? "" : infoItem.paymentId);
+            if ((infoItem.notes == null) || (infoItem.notes.isEmpty())) {
+                this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ? "" : infoItem.paymentId);
+            } else {
+                this.tvPaymentId.setText(infoItem.notes);
+            }
             this.tvDateTime.setText(getDateTime(infoItem.timestamp));
 
             itemView.setOnClickListener(this);

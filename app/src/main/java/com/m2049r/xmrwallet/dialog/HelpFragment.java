@@ -67,7 +67,6 @@ public class HelpFragment extends DialogFragment {
         if (prev != null) {
             ft.remove(prev);
         }
-        ft.addToBackStack(null);
 
         // Create and show the dialog.
         DialogFragment newFragment = HelpFragment.newInstance(helpResourceId);
@@ -100,7 +99,7 @@ public class HelpFragment extends DialogFragment {
     @SuppressLint("InflateParams")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View content = LayoutInflater.from(getActivity()).inflate(R.layout.help_fragment, null);
+        View content = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_help, null);
         webView = (WebView) content.findViewById(R.id.helpFragmentWebView);
         progress = (ProgressBar) content.findViewById(R.id.helpFragmentProgress);
 

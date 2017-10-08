@@ -28,19 +28,27 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.squareup.leakcanary.RefWatcher;
 
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
     static final public String VIEW_TYPE_DETAILS = "details";
     static final public String VIEW_TYPE_ACCEPT = "accept";
     static final public String VIEW_TYPE_WALLET = "wallet";
+
+    ScrollView scrollview;
 
     ProgressBar pbProgress;
     TextView tvWalletName;
@@ -49,14 +57,18 @@ public class GenerateReviewFragment extends Fragment {
     TextView tvWalletMnemonic;
     TextView tvWalletViewKey;
     TextView tvWalletSpendKey;
+    ImageButton bCopyAddress;
+    LinearLayout llAdvancedInfo;
+    Button bAdvancedInfo;
     Button bAccept;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.gen_review_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_review, container, false);
 
+        scrollview = (ScrollView) view.findViewById(R.id.scrollview);
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         tvWalletName = (TextView) view.findViewById(R.id.tvWalletName);
         tvWalletPassword = (TextView) view.findViewById(R.id.tvWalletPassword);
@@ -64,31 +76,50 @@ public class GenerateReviewFragment extends Fragment {
         tvWalletViewKey = (TextView) view.findViewById(R.id.tvWalletViewKey);
         tvWalletSpendKey = (TextView) view.findViewById(R.id.tvWalletSpendKey);
         tvWalletMnemonic = (TextView) view.findViewById(R.id.tvWalletMnemonic);
+        bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
+        bAdvancedInfo = (Button) view.findViewById(R.id.bAdvancedInfo);
+        llAdvancedInfo = (LinearLayout) view.findViewById(R.id.llAdvancedInfo);
 
         bAccept = (Button) view.findViewById(R.id.bAccept);
 
         boolean testnet = WalletManager.getInstance().isTestNet();
         tvWalletMnemonic.setTextIsSelectable(testnet);
         tvWalletSpendKey.setTextIsSelectable(testnet);
-        if (!testnet) {
-            tvWalletMnemonic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getActivity(), getString(R.string.message_noselect_seed), Toast.LENGTH_SHORT).show();
-                }
-            });
-            tvWalletSpendKey.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getActivity(), getString(R.string.message_noselect_key), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
 
         bAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 acceptWallet();
+            }
+        });
+        view.findViewById(R.id.bCopyViewKey).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyViewKey();
+            }
+        });
+        bCopyAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyAddress();
+            }
+        });
+        view.findViewById(R.id.bCopySeed).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nocopy();
+            }
+        });
+        view.findViewById(R.id.bCopySepndKey).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nocopy();
+            }
+        });
+        view.findViewById(R.id.bAdvancedInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAdvancedInfo();
             }
         });
 
@@ -101,6 +132,31 @@ public class GenerateReviewFragment extends Fragment {
         new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
                 path, password);
         return view;
+    }
+
+    void copyViewKey() {
+        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_viewkey), tvWalletViewKey.getText().toString());
+        Toast.makeText(getActivity(), getString(R.string.message_copy_viewkey), Toast.LENGTH_SHORT).show();
+    }
+
+    void copyAddress() {
+        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_address), tvWalletAddress.getText().toString());
+        Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
+    }
+
+    void nocopy() {
+        Toast.makeText(getActivity(), getString(R.string.message_nocopy), Toast.LENGTH_SHORT).show();
+    }
+
+    void showAdvancedInfo() {
+        llAdvancedInfo.setVisibility(View.VISIBLE);
+        bAdvancedInfo.setVisibility(View.GONE);
+        scrollview.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
     String type;
@@ -148,7 +204,7 @@ public class GenerateReviewFragment extends Fragment {
             address = wallet.getAddress();
             seed = wallet.getSeed();
             viewKey = wallet.getSecretViewKey();
-            spendKey = isWatchOnly ? getActivity().getString(R.string.watchonly_label) : wallet.getSecretSpendKey();
+            spendKey = isWatchOnly ? getActivity().getString(R.string.label_watchonly) : wallet.getSecretSpendKey();
             isWatchOnly = wallet.isWatchOnly();
             if (closeWallet) wallet.close();
             return true;
@@ -157,6 +213,7 @@ public class GenerateReviewFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            if (!isAdded()) return; // never mind
             tvWalletName.setText(name);
             if (result) {
                 if (type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT)) {
@@ -168,6 +225,12 @@ public class GenerateReviewFragment extends Fragment {
                 tvWalletMnemonic.setText(seed);
                 tvWalletViewKey.setText(viewKey);
                 tvWalletSpendKey.setText(spendKey);
+                bAdvancedInfo.setVisibility(View.VISIBLE);
+                bCopyAddress.setEnabled(true);
+                bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
+                activityCallback.setTitle(name, getString(R.string.details_title));
+                activityCallback.setToolbarButton(
+                        GenerateReviewFragment.VIEW_TYPE_ACCEPT.equals(type) ? Toolbar.BUTTON_NONE : Toolbar.BUTTON_BACK);
             } else {
                 // TODO show proper error message
                 // TODO end the fragment
@@ -180,38 +243,55 @@ public class GenerateReviewFragment extends Fragment {
         }
     }
 
-    GenerateReviewFragment.Listener acceptCallback = null;
-    GenerateReviewFragment.ListenerWithWallet walletCallback = null;
+    Listener activityCallback = null;
+    AcceptListener acceptCallback = null;
+    ListenerWithWallet walletCallback = null;
 
     public interface Listener {
+        void setTitle(String title, String subtitle);
+
+        void setToolbarButton(int type);
+    }
+
+    public interface AcceptListener {
         void onAccept(String name, String password);
     }
 
     public interface ListenerWithWallet {
         Wallet getWallet();
-
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof GenerateReviewFragment.Listener) {
-            this.acceptCallback = (GenerateReviewFragment.Listener) context;
-        } else if (context instanceof GenerateReviewFragment.ListenerWithWallet) {
-            this.walletCallback = (GenerateReviewFragment.ListenerWithWallet) context;
-        } else {
-            throw new ClassCastException(context.toString()
-                    + " must implement Listener");
+        if (context instanceof Listener) {
+            this.activityCallback = (Listener) context;
+        }
+        if (context instanceof AcceptListener) {
+            this.acceptCallback = (AcceptListener) context;
+        }
+        if (context instanceof ListenerWithWallet) {
+            this.walletCallback = (ListenerWithWallet) context;
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume()");
+        String name = tvWalletName.getText().toString();
+        if (name.isEmpty()) name = null;
+        activityCallback.setTitle(name, getString(R.string.details_title));
+        activityCallback.setToolbarButton(
+                GenerateReviewFragment.VIEW_TYPE_ACCEPT.equals(type) ? Toolbar.BUTTON_NONE : Toolbar.BUTTON_BACK);
+    }
+
     public void showProgress() {
-        pbProgress.setIndeterminate(true);
         pbProgress.setVisibility(View.VISIBLE);
     }
 
     public void hideProgress() {
-        pbProgress.setVisibility(View.INVISIBLE);
+        pbProgress.setVisibility(View.GONE);
     }
 
     boolean backOk() {
@@ -227,5 +307,12 @@ public class GenerateReviewFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.wallet_details_menu, menu);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

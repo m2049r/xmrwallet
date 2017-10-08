@@ -144,10 +144,20 @@ public class WalletManager {
 
     //public native List<String> findWallets(String path); // this does not work - some error in boost
 
-    public class WalletInfo {
+    public class WalletInfo implements Comparable<WalletInfo> {
         public File path;
         public String name;
         public String address;
+
+        @Override
+        public int compareTo(WalletInfo another) {
+            int n = name.toLowerCase().compareTo(another.name.toLowerCase());
+            if (n != 0) {
+                return n;
+            } else { // wallet names are the same
+                return address.compareTo(another.address);
+            }
+        }
     }
 
     public WalletInfo getWalletInfo(File wallet) {

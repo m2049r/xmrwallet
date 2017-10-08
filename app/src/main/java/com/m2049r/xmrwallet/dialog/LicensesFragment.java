@@ -102,7 +102,7 @@ public class LicensesFragment extends DialogFragment {
     @SuppressLint("InflateParams")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View content = LayoutInflater.from(getActivity()).inflate(R.layout.licenses_fragment, null);
+        View content = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_licenses, null);
         mWebView = (WebView) content.findViewById(R.id.licensesFragmentWebView);
         mIndeterminateProgress = (ProgressBar) content.findViewById(R.id.licensesFragmentIndeterminateProgress);
 

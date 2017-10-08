@@ -18,13 +18,15 @@ package com.m2049r.xmrwallet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,47 +34,43 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.layout.DropDownEditText;
+import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.NodeList;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInteractionListener,
+        View.OnClickListener {
     private static final String TAG = "LoginFragment";
-    public static final String WALLETNAME_PREAMBLE = "[------] ";
-    public static final int WALLETNAME_PREAMBLE_LENGTH = WALLETNAME_PREAMBLE.length();
 
+    private WalletInfoAdapter adapter;
 
-    ListView listView;
-    Set<String> walletList = new TreeSet<>(new Comparator<String>() {
-        @Override
-        public int compare(String o1, String o2) {
-            return o1.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase()
-                    .compareTo(o2.substring(WALLETNAME_PREAMBLE_LENGTH).toLowerCase());
-        }
-    });
-    List<String> displayedList = new ArrayList<>();
+    List<WalletManager.WalletInfo> walletList = new ArrayList<>();
+    List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
 
+    ImageView ivGuntherWallets;
     EditText etDummy;
     DropDownEditText etDaemonAddress;
     ArrayAdapter<String> nodeAdapter;
-    FloatingActionButton fabAdd;
 
     Listener activityCallback;
 
@@ -82,7 +80,7 @@ public class LoginFragment extends Fragment {
 
         File getStorageRoot();
 
-        boolean onWalletSelected(String daemon, String wallet, boolean testnet);
+        boolean onWalletSelected(String wallet, String daemon, boolean testnet);
 
         void onWalletDetails(String wallet, boolean testnet);
 
@@ -94,9 +92,14 @@ public class LoginFragment extends Fragment {
 
         void onWalletArchive(String walletName);
 
-        void onAddWallet(boolean testnet);
+        void onAddWallet(boolean testnet, String type);
 
         void showNet(boolean testnet);
+
+        void setToolbarButton(int type);
+
+        void setTitle(String title);
+
     }
 
     @Override
@@ -121,55 +124,52 @@ public class LoginFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
+        activityCallback.setTitle(null);
+        activityCallback.setToolbarButton(Toolbar.BUTTON_DONATE);
+        activityCallback.showNet(isTestnet());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
-        View view = inflater.inflate(R.layout.login_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        fabAdd = (FloatingActionButton) view.findViewById(R.id.fabAdd);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activityCallback.onAddWallet(isTestnet());
-            }
-        });
+        ivGuntherWallets = (ImageView) view.findViewById(R.id.ivGuntherWallets);
 
-        listView = (ListView) view.findViewById(R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, this.displayedList);
-        listView.setAdapter(adapter);
-        registerForContextMenu(listView);
+        fabScreen = (FrameLayout) view.findViewById(R.id.fabScreen);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fabNew = (FloatingActionButton) view.findViewById(R.id.fabNew);
+        fabView = (FloatingActionButton) view.findViewById(R.id.fabView);
+        fabKey = (FloatingActionButton) view.findViewById(R.id.fabKey);
+        fabSeed = (FloatingActionButton) view.findViewById(R.id.fabSeed);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String itemValue = (String) listView.getItemAtPosition(position);
+        fabNewL = (RelativeLayout) view.findViewById(R.id.fabNewL);
+        fabViewL = (RelativeLayout) view.findViewById(R.id.fabViewL);
+        fabKeyL = (RelativeLayout) view.findViewById(R.id.fabKeyL);
+        fabSeedL = (RelativeLayout) view.findViewById(R.id.fabSeedL);
 
-                if (itemValue.length() <= (WALLETNAME_PREAMBLE_LENGTH)) {
-                    Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
-                    return;
-                }
+        fab_open_screen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open_screen);
+        fab_close_screen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close_screen);
+        fab_open = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
+        fab.setOnClickListener(this);
+        fabNew.setOnClickListener(this);
+        fabView.setOnClickListener(this);
+        fabKey.setOnClickListener(this);
+        fabSeed.setOnClickListener(this);
+        fabScreen.setOnClickListener(this);
 
-                String x = isTestnet() ? "9A-" : "4-";
-                if (x.indexOf(itemValue.charAt(1)) < 0) {
-                    Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                String wallet = itemValue.substring(WALLETNAME_PREAMBLE_LENGTH);
-
-                if (activityCallback.onWalletSelected(getDaemon(), wallet, isTestnet())) {
-                    savePrefs();
-                }
-            }
-        });
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        registerForContextMenu(recyclerView);
+        this.adapter = new WalletInfoAdapter(getActivity(), this);
+        recyclerView.setAdapter(adapter);
 
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         etDaemonAddress = (DropDownEditText) view.findViewById(R.id.etDaemonAddress);
-        nodeAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_dropdown_item_1line);
+        nodeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line);
         etDaemonAddress.setAdapter(nodeAdapter);
 
         Helper.hideKeyboard(getActivity());
@@ -204,15 +204,78 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        etDaemonAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos, long id) {
+                Helper.hideKeyboard(getActivity());
+                etDummy.requestFocus();
+
+            }
+        });
+
         loadPrefs();
         return view;
+    }
+
+    void showGunther() {
+        ivGuntherWallets.setImageResource(R.drawable.gunther_wallets);
+        final AnimationDrawable guntherWalletsAnim = (AnimationDrawable) ivGuntherWallets.getDrawable();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                guntherWalletsAnim.start();
+            }
+        }, getResources().getInteger(R.integer.gunther_wallets_delay));
+    }
+
+    void normalGunther() {
+        ivGuntherWallets.setImageResource(R.drawable.gunther_wallets_00);
+    }
+
+    // Callbacks from WalletInfoAdapter
+    @Override
+    public void onInteraction(final View view, final WalletManager.WalletInfo infoItem) {
+        String x = isTestnet() ? "9A-" : "4-";
+        if (x.indexOf(infoItem.address.charAt(0)) < 0) {
+            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (activityCallback.onWalletSelected(infoItem.name, getDaemon(), isTestnet())) {
+            savePrefs();
+        }
+    }
+
+    @Override
+    public boolean onContextInteraction(MenuItem item, WalletManager.WalletInfo listItem) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                showInfo(listItem.name);
+                break;
+            case R.id.action_receive:
+                showReceive(listItem.name);
+                break;
+            case R.id.action_rename:
+                activityCallback.onWalletRename(listItem.name);
+                break;
+            case R.id.action_backup:
+                activityCallback.onWalletBackup(listItem.name);
+                break;
+            case R.id.action_archive:
+                activityCallback.onWalletArchive(listItem.name);
+                break;
+            default:
+                return super.onContextItemSelected(item);
+        }
+        return true;
     }
 
     private void filterList() {
         displayedList.clear();
         String x = isTestnet() ? "9A" : "4";
-        for (String s : walletList) {
-            if (x.indexOf(s.charAt(1)) >= 0) displayedList.add(s);
+        for (WalletManager.WalletInfo s : walletList) {
+            if (x.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
         }
     }
 
@@ -222,59 +285,16 @@ public class LoginFragment extends Fragment {
         WalletManager mgr = WalletManager.getInstance();
         List<WalletManager.WalletInfo> walletInfos =
                 mgr.findWallets(activityCallback.getStorageRoot());
-
         walletList.clear();
-        for (WalletManager.WalletInfo walletInfo : walletInfos) {
-            // ONCE the walletInfo.address was null - because the address.txt was empty
-            // this was before the wallet generation was in its own therad with huge stack
-            // TODO: keep an eye on Wallet.getAddress() returning empty
-            String displayAddress = walletInfo.address;
-            if ((displayAddress != null) && displayAddress.length() == 95) {
-                displayAddress = walletInfo.address.substring(0, 6);
-                walletList.add("[" + displayAddress + "] " + walletInfo.name);
-            }
-        }
+        walletList.addAll(walletInfos);
         filterList();
-        ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
-
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.list_context_menu, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        String listItem = (String) listView.getItemAtPosition(info.position);
-        String name = nameFromListItem(listItem, isTestnet());
-        if (name == null) {
-            Toast.makeText(getActivity(), getString(R.string.panic), Toast.LENGTH_LONG).show();
+        adapter.setInfos(displayedList);
+        adapter.notifyDataSetChanged();
+        if (displayedList.isEmpty()) {
+            showGunther();
+        } else {
+            normalGunther();
         }
-        switch (item.getItemId()) {
-            case R.id.action_info:
-                showInfo(name);
-                break;
-            case R.id.action_receive:
-                showReceive(name);
-                break;
-            case R.id.action_rename:
-                activityCallback.onWalletRename(name);
-                break;
-            case R.id.action_backup:
-                activityCallback.onWalletBackup(name);
-                break;
-            case R.id.action_archive:
-                activityCallback.onWalletArchive(name);
-                break;
-            default:
-                return super.onContextItemSelected(item);
-        }
-        return true;
     }
 
     private void showInfo(@NonNull String name) {
@@ -284,15 +304,6 @@ public class LoginFragment extends Fragment {
     private boolean showReceive(@NonNull String name) {
         activityCallback.onWalletReceive(name, isTestnet());
         return true;
-    }
-
-    private String nameFromListItem(String listItem, boolean testnet) {
-        String wallet = listItem.substring(WALLETNAME_PREAMBLE_LENGTH);
-        String x = testnet ? "9A" : "4";
-        if (x.indexOf(listItem.charAt(1)) < 0) {
-            return null;
-        }
-        return wallet;
     }
 
     @Override
@@ -391,5 +402,83 @@ public class LoginFragment extends Fragment {
         etDaemonAddress.dismissDropDown();
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());
+    }
+
+    private boolean isFabOpen = false;
+    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed;
+    private FrameLayout fabScreen;
+    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward, fab_open_screen, fab_close_screen;
+
+    public boolean isFabOpen() {
+        return isFabOpen;
+    }
+
+    public void animateFAB() {
+        if (isFabOpen) {
+            fabScreen.setVisibility(View.INVISIBLE);
+            fabScreen.setClickable(false);
+            fabScreen.startAnimation(fab_close_screen);
+            fab.startAnimation(rotate_backward);
+            fabNewL.startAnimation(fab_close);
+            fabNew.setClickable(false);
+            fabViewL.startAnimation(fab_close);
+            fabView.setClickable(false);
+            fabKeyL.startAnimation(fab_close);
+            fabKey.setClickable(false);
+            fabSeedL.startAnimation(fab_close);
+            fabSeed.setClickable(false);
+            isFabOpen = false;
+        } else {
+            fabScreen.setClickable(true);
+            fabScreen.startAnimation(fab_open_screen);
+            fab.startAnimation(rotate_forward);
+            fabNewL.startAnimation(fab_open);
+            fabNew.setClickable(true);
+            fabViewL.startAnimation(fab_open);
+            fabView.setClickable(true);
+            fabKeyL.startAnimation(fab_open);
+            fabKey.setClickable(true);
+            fabSeedL.startAnimation(fab_open);
+            fabSeed.setClickable(true);
+            isFabOpen = true;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab:
+                animateFAB();
+                break;
+            case R.id.fabNew:
+                fabScreen.setVisibility(View.INVISIBLE);
+                isFabOpen = false;
+                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_NEW);
+                break;
+            case R.id.fabView:
+                animateFAB();
+                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_VIEWONLY);
+                break;
+            case R.id.fabKey:
+                animateFAB();
+                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_KEY);
+                break;
+            case R.id.fabSeed:
+                animateFAB();
+                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_SEED);
+                break;
+            case R.id.fabScreen:
+                animateFAB();
+                break;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

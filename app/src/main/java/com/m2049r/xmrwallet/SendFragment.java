@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -35,24 +36,37 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.layout.ExchangeView;
+import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.TxData;
+import com.squareup.leakcanary.RefWatcher;
 
 public class SendFragment extends Fragment {
     static final String TAG = "SendFragment";
 
-    EditText etAddress;
-    EditText etPaymentId;
-    EditText etAmount;
+    EditText etDummy;
+
+    ScrollView scrollview;
+
+    TextInputLayout etAddress;
+    TextInputLayout etPaymentId;
+    //TextInputLayout etAmount;
+    ExchangeView evAmount;
+    TextView tvAmountB;
+    Spinner sCurrencyA;
+    Spinner sCurrencyB;
+
     Button bScan;
-    Button bSweep;
     Spinner sMixin;
     Spinner sPriority;
     Button bPrepareSend;
@@ -61,7 +75,8 @@ public class SendFragment extends Fragment {
     LinearLayout llConfirmSend;
     TextView tvTxAmount;
     TextView tvTxFee;
-    TextView tvTxDust;
+    //TextView tvTxDust;
+    TextView tvTxTotal;
     EditText etNotes;
     Button bSend;
     Button bReallySend;
@@ -78,15 +93,23 @@ public class SendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.send_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_send, container, false);
+
+        etDummy = (EditText) view.findViewById(R.id.etDummy);
+        etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+
+        scrollview = (ScrollView) view.findViewById(R.id.scrollview);
 
         sMixin = (Spinner) view.findViewById(R.id.sMixin);
         sPriority = (Spinner) view.findViewById(R.id.sPriority);
-        etAddress = (EditText) view.findViewById(R.id.etAddress);
-        etPaymentId = (EditText) view.findViewById(R.id.etPaymentId);
-        etAmount = (EditText) view.findViewById(R.id.etAmount);
+        etAddress = (TextInputLayout) view.findViewById(R.id.etAddress);
+        etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
+        evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
+        tvAmountB = (TextView) view.findViewById(R.id.tvAmountB);
+        sCurrencyA = (Spinner) view.findViewById(R.id.sCurrencyA);
+        sCurrencyB = (Spinner) view.findViewById(R.id.sCurrencyB);
+
         bScan = (Button) view.findViewById(R.id.bScan);
-        bSweep = (Button) view.findViewById(R.id.bSweep);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         bDispose = (Button) view.findViewById(R.id.bDispose);
@@ -94,101 +117,64 @@ public class SendFragment extends Fragment {
         llConfirmSend = (LinearLayout) view.findViewById(R.id.llConfirmSend);
         tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
         tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
-        tvTxDust = (TextView) view.findViewById(R.id.tvTxDust);
+        //tvTxDust = (TextView) view.findViewById(R.id.tvTxDust);
+        tvTxTotal = (TextView) view.findViewById(R.id.tvTxTotal);
         etNotes = (EditText) view.findViewById(R.id.etNotes);
         bSend = (Button) view.findViewById(R.id.bSend);
         bReallySend = (Button) view.findViewById(R.id.bReallySend);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
 
-        etAddress.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        etPaymentId.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         Helper.showKeyboard(getActivity());
-        etAddress.requestFocus();
-        etAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        etAddress.getEditText().requestFocus();
+        etAddress.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
-                    if (addressOk()) {
+                    if (checkAddress()) {
+                        evAmount.focus();
+                    } // otherwise ignore
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
+            @Override
+            public void onNewAmount(String xmr) {
+                if ((xmr != null)) {
+                    // stupid workaround to not show error on open of screen
+                    if ((checkAddressNoError() && checkAmountWithError()) || checkAmount()) {
                         etPaymentId.requestFocus();
-                    } // otherwise ignore
-                    return true;
+                    }
                 }
-                return false;
-            }
-        });
-        etAddress.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (addressOk() && amountOk()) {
-                    bPrepareSend.setEnabled(true);
-                } else {
-                    bPrepareSend.setEnabled(false);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-        etPaymentId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
-                    if (paymentIdOk()) {
-                        etAmount.requestFocus();
-                    } // otherwise ignore
-                    return true;
-                }
-                return false;
             }
         });
 
-        etAmount.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    if (amountOk()) {
+                    if (checkPaymentId()) {
+                        etDummy.requestFocus();
                         Helper.hideKeyboard(getActivity());
-                        disableEdit();
-                        prepareSend();
                     }
                     return true;
                 }
                 return false;
             }
         });
-        etAmount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (addressOk() && amountOk()) {
-                    bPrepareSend.setEnabled(true);
-                } else {
-                    bPrepareSend.setEnabled(false);
-                }
-            }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-
-        setPrepareButtonState();
-        bPrepareSend.setOnClickListener(new View.OnClickListener()
-
-        {
+        bPrepareSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Helper.hideKeyboard(getActivity());
-                disableEdit();
-                prepareSend();
+                if (checkAddress() && checkAmountWithError() && checkPaymentId()) {
+                    Helper.hideKeyboard(getActivity());
+                    prepareSend();
+                }
             }
         });
 
@@ -210,27 +196,15 @@ public class SendFragment extends Fragment {
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etPaymentId.setText((Wallet.generatePaymentId()));
-                etPaymentId.setSelection(etPaymentId.getText().length());
-            }
-        });
-
-        bSweep.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick(View v) {
-                Helper.hideKeyboard(getActivity());
-                prepareSweep();
+                etPaymentId.getEditText().setText((Wallet.generatePaymentId()));
+                etPaymentId.getEditText().setSelection(etPaymentId.getEditText().getText().length());
             }
         });
 
         etNotes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    if (amountOk()) {
-                        Helper.hideKeyboard(getActivity());
-                    }
+                    Helper.hideKeyboard(getActivity());
                     return true;
                 }
                 return false;
@@ -242,8 +216,8 @@ public class SendFragment extends Fragment {
             public void onClick(View v) {
                 bSend.setEnabled(false);
                 boolean testnet = WalletManager.getInstance().isTestNet();
-                if (testnet) {
-                    send();
+                if (!testnet) {
+                    //send();
                 } else {
                     etNotes.setEnabled(false);
                     Handler handler = new Handler();
@@ -251,6 +225,13 @@ public class SendFragment extends Fragment {
                         @Override
                         public void run() {
                             bReallySend.setVisibility(View.VISIBLE);
+                            bReallySend.setEnabled(true);
+                            scrollview.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                                }
+                            });
                         }
                     }, 1000);
                 }
@@ -264,36 +245,60 @@ public class SendFragment extends Fragment {
                 send();
             }
         });
+
+        etDummy.requestFocus();
+        Helper.hideKeyboard(getActivity());
+
         return view;
     }
 
-    private void setPrepareButtonState() {
-        if (addressOk() && amountOk() && (bSend.getVisibility() != View.VISIBLE)) {
-            bPrepareSend.setEnabled(true);
-        } else {
-            bPrepareSend.setEnabled(false);
-        }
-    }
-
-    private boolean addressOk() {
-        String address = etAddress.getText().toString();
+    private boolean checkAddressNoError() {
+        String address = etAddress.getEditText().getText().toString();
         return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
     }
 
-    private boolean amountOk() {
-        long amount = Wallet.getAmountFromString(etAmount.getText().toString());
-        return (amount > 0);
+    private boolean checkAddress() {
+        boolean ok = checkAddressNoError();
+        if (!ok) {
+            etAddress.setError(getString(R.string.send_qr_address_invalid));
+        } else {
+            etAddress.setError(null);
+        }
+        return ok;
     }
 
-    private boolean paymentIdOk() {
-        String paymentId = etPaymentId.getText().toString();
-        return paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
+    private boolean checkAmount() {
+        String xmr = evAmount.getAmount();
+        return (xmr != null) && (Wallet.getAmountFromString(xmr) > 0);
+    }
+
+    private boolean checkAmountWithError() {
+        boolean ok = checkAmount();
+        if (!ok) {
+            evAmount.setError(getString(R.string.receive_amount_empty));
+        } else {
+            evAmount.setError(null);
+        }
+        return ok;
+    }
+
+    private boolean checkPaymentId() {
+        String paymentId = etPaymentId.getEditText().getText().toString();
+        boolean ok = paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
+        if (!ok) {
+            etPaymentId.setError(getString(R.string.receive_paymentid_invalid));
+        } else {
+            etPaymentId.setError(null);
+        }
+        return ok;
     }
 
     private void prepareSend() {
-        String dst_addr = etAddress.getText().toString();
-        String paymentId = etPaymentId.getText().toString();
-        long amount = Wallet.getAmountFromString(etAmount.getText().toString());
+        etDummy.requestFocus();
+        disableEdit();
+        String dst_addr = etAddress.getEditText().getText().toString();
+        String paymentId = etPaymentId.getEditText().getText().toString();
+        long amount = Wallet.getAmountFromString(evAmount.getAmount());
         int mixin = Mixins[sMixin.getSelectedItemPosition()];
         int priorityIndex = sPriority.getSelectedItemPosition();
         PendingTransaction.Priority priority = Priorities[priorityIndex];
@@ -308,104 +313,105 @@ public class SendFragment extends Fragment {
         activityCallback.onPrepareSend(txData);
     }
 
-    private void prepareSweep() {
-        etAddress.setText(activityCallback.getWalletAddress());
-        etPaymentId.setText("");
-        etAmount.setText("");
-        disableEdit();
-        showProgress();
-        activityCallback.onPrepareSweep();
-    }
-
     private void disableEdit() {
         sMixin.setEnabled(false);
         sPriority.setEnabled(false);
-        etAddress.setEnabled(false);
-        etPaymentId.setEnabled(false);
-        etAmount.setEnabled(false);
+        etAddress.getEditText().setEnabled(false);
+        etPaymentId.getEditText().setEnabled(false);
+        evAmount.enable(false);
         bScan.setEnabled(false);
         bPaymentId.setEnabled(false);
-        bSweep.setEnabled(false);
         bPrepareSend.setEnabled(false);
+        bPrepareSend.setVisibility(View.GONE);
     }
 
     private void enableEdit() {
         sMixin.setEnabled(true);
         sPriority.setEnabled(true);
-        etAddress.setEnabled(true);
-        etPaymentId.setEnabled(true);
-        etAmount.setEnabled(true);
+        etAddress.getEditText().setEnabled(true);
+        etPaymentId.getEditText().setEnabled(true);
+        evAmount.enable(true);
         bScan.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bSweep.setEnabled(true);
         bPrepareSend.setEnabled(true);
+        bPrepareSend.setVisibility(View.VISIBLE);
+
         llConfirmSend.setVisibility(View.GONE);
-        bSend.setEnabled(true);
         etNotes.setEnabled(true);
+        bSend.setEnabled(false);
         bReallySend.setVisibility(View.GONE);
+        bReallySend.setEnabled(false);
+        etDummy.requestFocus();
     }
 
     private void send() {
         etNotes.setEnabled(false);
+        etDummy.requestFocus();
         String notes = etNotes.getText().toString();
         activityCallback.onSend(notes);
     }
 
-    SendFragment.Listener activityCallback;
+    Listener activityCallback;
 
     public interface Listener {
         void onPrepareSend(TxData data);
-
-        void onPrepareSweep();
 
         void onSend(String notes);
 
         String getWalletAddress();
 
+        String getWalletName();
+
         void onDisposeRequest();
 
         void onScanAddress();
 
-        BarcodeData getScannedData();
+        BarcodeData popScannedData();
 
+        void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB);
+
+        void setSubtitle(String subtitle);
+
+        void setToolbarButton(int type);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
-        BarcodeData data = activityCallback.getScannedData();
+        activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+        activityCallback.setSubtitle(getString(R.string.send_title));
+        BarcodeData data = activityCallback.popScannedData();
         if (data != null) {
+            Log.d(TAG, "GOT DATA");
             String scannedAddress = data.address;
             if (scannedAddress != null) {
-                etAddress.setText(scannedAddress);
+                etAddress.getEditText().setText(scannedAddress);
+                checkAddress();
             } else {
-                etAddress.getText().clear();
+                etAddress.getEditText().getText().clear();
+                etAddress.setError(null);
             }
             String scannedPaymenId = data.paymentId;
             if (scannedPaymenId != null) {
-                etPaymentId.setText(scannedPaymenId);
+                etPaymentId.getEditText().setText(scannedPaymenId);
+                checkPaymentId();
             } else {
-                etPaymentId.getText().clear();
+                etPaymentId.getEditText().getText().clear();
+                etPaymentId.setError(null);
             }
-            if (data.amount >= 0) {
+            if (data.amount > 0) {
                 String scannedAmount = Helper.getDisplayAmount(data.amount);
-                etAmount.setText(scannedAmount);
+                evAmount.setAmount(scannedAmount);
             } else {
-                etAmount.getText().clear();
+                evAmount.setAmount("");
             }
-            etAmount.requestFocus();
-            etAmount.setSelection(etAmount.getText().length());
-        } else { // no scan data
-            // jump to first empty field
-            if (etAddress.getText().toString().isEmpty()) {
-                etAddress.requestFocus();
-            } else if (etPaymentId.getText().toString().isEmpty()) {
-                etPaymentId.requestFocus();
-            } else {
-                etAmount.requestFocus();
-                etAmount.setSelection(etAmount.getText().length());
-            }
+        }
+        if ((data != null) && (data.amount <= 0)) {
+            evAmount.focus();
+        } else {
+            etDummy.requestFocus();
+            Helper.hideKeyboard(getActivity());
         }
     }
 
@@ -427,9 +433,18 @@ public class SendFragment extends Fragment {
             return;
         }
         llConfirmSend.setVisibility(View.VISIBLE);
+        bSend.setEnabled(true);
         tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getAmount()));
         tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
-        tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
+        //tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
+        tvTxTotal.setText(Wallet.getDisplayAmount(
+                pendingTransaction.getFee() + pendingTransaction.getAmount()));
+        scrollview.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
     public void onCreatedTransactionFailed(String errorText) {
@@ -455,5 +470,12 @@ public class SendFragment extends Fragment {
 
     public void hideProgress() {
         pbProgress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

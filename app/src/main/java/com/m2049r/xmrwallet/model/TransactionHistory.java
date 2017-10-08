@@ -30,6 +30,12 @@ public class TransactionHistory {
         this.handle = handle;
     }
 
+    public void loadNotes(Wallet wallet) {
+        for (TransactionInfo info : transactions) {
+            info.notes = wallet.getUserNote(info.hash);
+        }
+    }
+
     public native int getCount();
 
     //private native long getTransactionByIndexJ(int i);
@@ -41,6 +47,11 @@ public class TransactionHistory {
     }
 
     private List<TransactionInfo> transactions = new ArrayList<>();
+
+    public void refreshWithNotes(Wallet wallet) {
+        refresh();
+        loadNotes(wallet);
+    }
 
     public void refresh() {
         transactions = refreshJ();

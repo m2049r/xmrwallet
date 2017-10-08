@@ -25,7 +25,7 @@ import java.util.Random;
 
 // this is not the TransactionInfo from the API as that is owned by the TransactionHistory
 // this is a POJO for the TransactionInfoAdapter
-public class TransactionInfo implements Parcelable {
+public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> {
     static final String TAG = "TransactionInfo";
 
     public enum Direction {
@@ -92,7 +92,6 @@ public class TransactionInfo implements Parcelable {
         this.confirmations = confirmations;
         this.transfers = transfers;
     }
-    Random rnd = new Random();
 
     public String toString() {
         return direction + "@" + blockheight + " " + amount;
@@ -144,6 +143,19 @@ public class TransactionInfo implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    @Override
+    public int compareTo(TransactionInfo another) {
+        long b1 = this.timestamp;
+        long b2 = another.timestamp;
+        if (b1 > b2) {
+            return -1;
+        } else if (b1 < b2) {
+            return 1;
+        } else {
+            return this.hash.compareTo(another.hash);
+        }
     }
 
 }

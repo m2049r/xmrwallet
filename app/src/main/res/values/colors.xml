@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="tx_green">#5C8447</color>
-    <color name="tx_red">#AC2527</color>
-    <color name="tx_pending">#e2e2e2</color>
-    <color name="tx_failed">#FF80AB</color>
+    <color name="tx_green">@color/take</color>
+    <color name="tx_red">@color/give</color>
+    <color name="tx_pending">@color/gradientPink</color>
+    <color name="tx_failed">@color/moneroFab</color>
+
+    <color name="gradientOrange">#FFFF6105</color>
+    <color name="gradientPink">#FFF0006B</color>
+
+    <color name="trafficGray">#9B9B9B</color>
+
+    <color name="take">#FF417505</color>
+    <color name="give">#FFFF6105</color>
 
     <color name="moneroOrange">#cc5100</color>
     <color name="moneroWhite">#e2e2e2</color>
     <color name="moneroBlack">#000000</color>
-    <color name="moneroGray">#4c4c4c</color>
+    <color name="moneroGray">#FD9B9B9B</color>
+
+    <color name="moneroFab">#61000000</color>
+    <color name="moneroText">#FF616161</color>
+
 
     <color name="colorPrimary">#cc5100</color>
     <color name="colorPrimaryDark">#61221A</color>
     <color name="textColorPrimary">#dcdcdc</color>
     <color name="windowBackground">#ffffff</color>
     <color name="navigationBarColor">#2B4868</color>
-    <color name="colorAccent">#009ADA</color>
+    <!--color name="colorAccent">#009ADA</color-->
+    <color name="colorAccent">@color/gradientPink</color>
 
     <color name="anotherColor">#F8CC5A</color>
 

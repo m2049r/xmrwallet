@@ -147,7 +147,7 @@ public class WalletService extends Service {
             if (updated) {
                 if (observer != null) {
                     updateDaemonState(wallet, 0);
-                    wallet.getHistory().refresh();
+                    wallet.getHistory().refreshWithNotes(wallet);
                     if (observer != null) {
                         updated = !observer.onRefreshed(wallet, true);
                     }
