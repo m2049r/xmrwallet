@@ -699,7 +699,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             amount = Wallet.getAmountFromString(amountString);
         }
         if ((paymentId != null) && !Wallet.isPaymentIdValid(paymentId)) {
-            address = null;
+            return null;
         }
 
         if (Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
