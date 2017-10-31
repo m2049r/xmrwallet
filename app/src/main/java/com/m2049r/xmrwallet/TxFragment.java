@@ -29,7 +29,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.layout.Toolbar;
@@ -182,7 +181,6 @@ public class TxFragment extends Fragment {
     void loadNotes(TransactionInfo info) {
         if (info.notes == null) {
             info.notes = activityCallback.getTxNotes(info.hash);
-            //Log.d(TAG, "NOTES:" + info.notes + ":");
         }
         etTxNotes.setText(info.notes);
     }
@@ -195,7 +193,6 @@ public class TxFragment extends Fragment {
     private void show(TransactionInfo info) {
         if (info.txKey == null) {
             info.txKey = activityCallback.getTxKey(info.hash);
-            //Log.d(TAG, "TXKEY:" + info.txKey + ":");
         }
         loadNotes(info);
 

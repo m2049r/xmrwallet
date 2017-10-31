@@ -59,11 +59,8 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
 
     void setXmr(String xmr) {
         xmrAmount = xmr;
-        Log.d(TAG, "cleanAmount A= " + xmr);
         if (onNewAmountListener != null) {
-            Log.d(TAG, "cleanAmount B= " + xmr);
             onNewAmountListener.onNewAmount(xmr);
-            Log.d(TAG, "cleanAmount C= " + xmr);
         }
     }
 

@@ -26,6 +26,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -43,6 +44,7 @@ import java.io.InputStreamReader;
  * http://speakman.net.nz
  */
 public class HelpFragment extends DialogFragment {
+    static final String TAG = "HelpFragment";
     private static final String FRAGMENT_TAG = "com.m2049r.xmrwallet.dialog.HelpFragment";
     private static final String HELP_ID = "HELP_ID";
 
@@ -135,8 +137,8 @@ public class HelpFragment extends DialogFragment {
                         sb.append("\n");
                     }
                     bufferedReader.close();
-                } catch (IOException e) {
-                    // TODO You may want to include some logging here.
+                } catch (IOException ex) {
+                    Log.e(TAG, ex.getLocalizedMessage());
                 }
 
                 return sb.toString();

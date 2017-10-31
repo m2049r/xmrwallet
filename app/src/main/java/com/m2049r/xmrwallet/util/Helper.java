@@ -80,7 +80,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.d(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+                Log.w(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
                 return false;
@@ -98,7 +98,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.d(TAG, "Permission denied for CAMERA - requesting it");
+                Log.w(TAG, "Permission denied for CAMERA - requesting it");
                 String[] permissions = {Manifest.permission.CAMERA};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_CAMERA);
                 return false;
@@ -110,13 +110,8 @@ public class Helper {
         }
     }
 
-//    static public String getWalletPath(Context context, String aWalletName) {
-//        return getWalletFile(context, aWalletName).getAbsolutePath();
-//    }
-
     static public File getWalletFile(Context context, String aWalletName) {
         File walletDir = getStorageRoot(context);
-        //d(TAG, "walletdir=" + walletDir.getAbsolutePath());
         File f = new File(walletDir, aWalletName);
         Log.d(TAG, "wallet = " + f.getAbsolutePath() + " size=" + f.length());
         return f;

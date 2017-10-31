@@ -280,7 +280,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     public void loadList() {
         Log.d(TAG, "loadList()");
-        // TODO this should probably be in LoginActivity
         WalletManager mgr = WalletManager.getInstance();
         List<WalletManager.WalletInfo> walletInfos =
                 mgr.findWallets(activityCallback.getStorageRoot());

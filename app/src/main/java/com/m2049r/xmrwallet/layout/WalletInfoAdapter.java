@@ -98,7 +98,6 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         notifyDataSetChanged();
     }
 
-    //TODO static
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView tvName;
         final TextView tvAddress;

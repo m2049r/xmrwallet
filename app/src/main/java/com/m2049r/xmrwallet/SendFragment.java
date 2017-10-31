@@ -23,9 +23,7 @@ import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -46,8 +44,8 @@ import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.AsyncExchangeRate;
-import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.BarcodeData;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
 public class SendFragment extends Fragment {
@@ -301,7 +299,7 @@ public class SendFragment extends Fragment {
         int mixin = Mixins[sMixin.getSelectedItemPosition()];
         int priorityIndex = sPriority.getSelectedItemPosition();
         PendingTransaction.Priority priority = Priorities[priorityIndex];
-        //Log.d(TAG, dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
+        Log.d(TAG, dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
         TxData txData = new TxData(
                 dst_addr,
                 paymentId,

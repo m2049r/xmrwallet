@@ -19,34 +19,15 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.m2049r.xmrwallet.LoginActivity;
 import com.m2049r.xmrwallet.R;
-import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.Helper;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
-import java.util.Locale;
 
 public class Toolbar extends android.support.v7.widget.Toolbar {
     static final String TAG = "Toolbar";

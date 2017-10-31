@@ -231,8 +231,7 @@ public class GenerateReviewFragment extends Fragment {
                 activityCallback.setToolbarButton(
                         GenerateReviewFragment.VIEW_TYPE_ACCEPT.equals(type) ? Toolbar.BUTTON_NONE : Toolbar.BUTTON_BACK);
             } else {
-                // TODO show proper error message
-                // TODO end the fragment
+                // TODO show proper error message and/or end the fragment?
                 tvWalletAddress.setText(status.toString());
                 tvWalletMnemonic.setText(status.toString());
                 tvWalletViewKey.setText(status.toString());

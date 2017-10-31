@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity
             WalletNode aWalletNode = new WalletNode(walletName, daemon, testnet);
             new AsyncOpenWallet().execute(aWalletNode);
         } catch (IllegalArgumentException ex) {
-            Log.d(TAG, ex.getLocalizedMessage());
+            Log.e(TAG, ex.getLocalizedMessage());
             Toast.makeText(this, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -971,14 +971,12 @@ public class LoginActivity extends AppCompatActivity
 
     boolean copyWallet(File srcWallet, File dstWallet, boolean backupMode) {
         if (walletExists(dstWallet, true) && !backupMode) return false;
-        Log.d(TAG, "B " + backupMode);
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
         String srcName = srcWallet.getName();
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            Log.d(TAG, "C " + backupMode);
             try {
                 copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
             } catch (IOException ex) {

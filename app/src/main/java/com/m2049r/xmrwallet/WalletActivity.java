@@ -232,7 +232,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             // service that we know is running in our own process, we can
             // cast its IBinder to a concrete class and directly access it.
             mBoundService = ((WalletService.WalletServiceBinder) service).getService();
-            //Log.d(TAG, "setting observer of " + mBoundService);
             mBoundService.setObserver(WalletActivity.this);
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -242,7 +241,6 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 }
             }
             updateProgress();
-            //TODO show current pbProgress (eg. if the service is already busy saving last wallet)
             Log.d(TAG, "CONNECTED");
         }
 
@@ -304,7 +302,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             wl.acquire();
             Log.d(TAG, "WakeLock acquired");
         } catch (SecurityException ex) {
-            Log.d(TAG, "WakeLock NOT acquired: " + ex.getLocalizedMessage());
+            Log.w(TAG, "WakeLock NOT acquired: " + ex.getLocalizedMessage());
             wl = null;
         }
     }

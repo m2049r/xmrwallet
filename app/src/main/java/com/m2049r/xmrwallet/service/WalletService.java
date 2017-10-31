@@ -297,7 +297,7 @@ public class WalletService extends Service {
                         boolean rc = myWallet.store();
                         Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                         if (!rc) {
-                            Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                            Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
                         }
                         if (observer != null) observer.onWalletStored(rc);
                     } else if (cmd.equals(REQUEST_CMD_TX)) {
@@ -309,7 +309,7 @@ public class WalletService extends Service {
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Log.d(TAG, "transaction status " + status);
                         if (status != PendingTransaction.Status.Status_Ok) {
-                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                            Log.w(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
                             observer.onCreatedTransaction(pendingTransaction);
@@ -323,7 +323,7 @@ public class WalletService extends Service {
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Log.d(TAG, "transaction status " + status);
                         if (status != PendingTransaction.Status.Status_Ok) {
-                            Log.d(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                            Log.w(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
                             observer.onCreatedTransaction(pendingTransaction);
@@ -352,7 +352,7 @@ public class WalletService extends Service {
                             boolean rc = myWallet.store();
                             Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                             if (!rc) {
-                                Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
                             }
                             if (observer != null) observer.onWalletStored(rc);
                             listener.updated = true;
@@ -372,7 +372,7 @@ public class WalletService extends Service {
                                 boolean rc = myWallet.store();
                                 Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
                                 if (!rc) {
-                                    Log.d(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                    Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
                                 }
                                 if (observer != null) observer.onWalletStored(rc);
                             }
@@ -505,17 +505,12 @@ public class WalletService extends Service {
     }
 
     private Wallet loadWallet(String walletName, String walletPassword) {
-        //String path = Helper.getWalletPath(getApplicationContext(), walletName);
-        //Log.d(TAG, "open wallet " + path);
         Wallet wallet = openWallet(walletName, walletPassword);
-        //Log.d(TAG, "wallet opened: " + wallet);
         if (wallet != null) {
-            //Log.d(TAG, wallet.getStatus().toString());
             Log.d(TAG, "Using daemon " + WalletManager.getInstance().getDaemonAddress());
             showProgress(55);
             wallet.init(0);
             showProgress(90);
-            //Log.d(TAG, wallet.getConnectionStatus().toString());
         }
         return wallet;
     }

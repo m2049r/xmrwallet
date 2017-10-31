@@ -17,12 +17,10 @@
 package com.m2049r.xmrwallet;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -291,7 +289,7 @@ public class ReceiveFragment extends Fragment {
         Log.d(TAG, xmrAmount + "/" + paymentId + "/" + address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             clearQR();
-            Log.d(TAG, "CLEAR");
+            Log.d(TAG, "CLEARQR");
             return;
         }
         StringBuffer sb = new StringBuffer();
@@ -316,7 +314,7 @@ public class ReceiveFragment extends Fragment {
         Bitmap qr = generate(text, 500, 500);
         if (qr != null) {
             setQR(qr);
-            Log.d(TAG, "SET");
+            Log.d(TAG, "SETQR");
             etDummy.requestFocus();
             Helper.hideKeyboard(getActivity());
         }

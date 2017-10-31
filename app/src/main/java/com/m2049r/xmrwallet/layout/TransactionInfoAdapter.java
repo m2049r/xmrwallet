@@ -27,14 +27,12 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.TransactionInfo;
-import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;

@@ -282,10 +282,6 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkMnemonic() {
         String seed = etWalletMnemonic.getEditText().getText().toString();
-        if (seed.length() == 0) {
-            seed = "algebra tilt ulcers ouch zones sincerely bailed dwindling rodent click saga jackets lush tether akin omnibus butter maps illness splendid moisture sizes cafe devoid maps";
-            etWalletMnemonic.getEditText().setText(seed);
-        }
         boolean ok = (seed.split("\\s").length == 25); // 25 words
         if (!ok) {
             etWalletMnemonic.setError(getString(R.string.generate_check_mnemonic));
@@ -297,10 +293,6 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkAddress() {
         String address = etWalletAddress.getEditText().getText().toString();
-        if (address.length() == 0) {
-            address = "49FKQvHgsEdKiVaHNHKoPoaTPneW49nokjP6haQcQCmQdwC7aRadXV7hKkjrS83UZnEdDJg99CUDafFMtgqT14ms2oJBCnB";
-            etWalletAddress.getEditText().setText(address);
-        }
         boolean ok = Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
         if (!ok) {
             etWalletAddress.setError(getString(R.string.generate_check_address));
@@ -312,10 +304,6 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkViewKey() {
         String viewKey = etWalletViewKey.getEditText().getText().toString();
-        if (viewKey.length() == 0) {
-            viewKey = "756a3efec938a6f93541e7b8faf58ea09c9619af45aa97100ccb75f500fcdb05";
-            etWalletViewKey.getEditText().setText(viewKey);
-        }
         boolean ok = (viewKey.length() == 64) && (viewKey.matches("^[0-9a-fA-F]+$"));
         if (!ok) {
             etWalletViewKey.setError(getString(R.string.generate_check_key));
@@ -327,10 +315,6 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkSpendKey() {
         String spendKey = etWalletSpendKey.getEditText().getText().toString();
-        if (spendKey.length() == 0) {
-            spendKey = "b93ef4081c2b68c75ddd9c80b5321eb0a1817c2f4484ad6359ec38bcde3e3d0e";
-            etWalletSpendKey.getEditText().setText(spendKey);
-        }
         boolean ok = ((spendKey.length() == 0) || ((spendKey.length() == 64) && (spendKey.matches("^[0-9a-fA-F]+$"))));
         if (!ok) {
             etWalletSpendKey.setError(getString(R.string.generate_check_key));
@@ -373,7 +357,6 @@ public class GenerateFragment extends Fragment {
             }
         }
     }
-
 
     public void walletGenerateError() {
         bGenerate.setEnabled(true);
