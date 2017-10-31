@@ -34,7 +34,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class ScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
     static final String TAG = "ScannerFragment";
 
-    Listener activityCallback;
+    private Listener activityCallback;
 
     public interface Listener {
         boolean onAddressScanned(String uri);

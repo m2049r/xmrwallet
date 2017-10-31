@@ -31,9 +31,9 @@ import android.os.Process;
 public class MoneroHandlerThread extends Thread {
     // from src/cryptonote_config.h
     static public final long THREAD_STACK_SIZE = 5 * 1024 * 1024;
-    int mPriority;
-    int mTid = -1;
-    Looper mLooper;
+    private int mPriority;
+    private int mTid = -1;
+    private Looper mLooper;
 
     public MoneroHandlerThread(String name) {
         super(null, null, name, THREAD_STACK_SIZE);
@@ -47,7 +47,7 @@ public class MoneroHandlerThread extends Thread {
      * @param priority The priority to run the thread at. The value supplied must be from
      *                 {@link android.os.Process} and not from java.lang.Thread.
      */
-    public MoneroHandlerThread(String name, int priority) {
+    MoneroHandlerThread(String name, int priority) {
         super(null, null, name, THREAD_STACK_SIZE);
         mPriority = priority;
     }
@@ -57,7 +57,7 @@ public class MoneroHandlerThread extends Thread {
      * setup before Looper loops.
      */
 
-    protected void onLooperPrepared() {
+    private void onLooperPrepared() {
     }
 
     @Override
@@ -81,7 +81,7 @@ public class MoneroHandlerThread extends Thread {
      *
      * @return The looper.
      */
-    public Looper getLooper() {
+    Looper getLooper() {
         if (!isAlive()) {
             return null;
         }

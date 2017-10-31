@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
     static final int DAEMON_DNS_TIMEOUT = 5000; // how long to wait for DNS resolver
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     public void setToolbarButton(int type) {

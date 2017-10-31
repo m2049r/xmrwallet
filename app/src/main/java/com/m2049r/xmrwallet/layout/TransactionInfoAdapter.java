@@ -47,10 +47,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     //static final int TX_PENDING = Color.rgb(72, 53, 176);
     //static final int TX_FAILED = Color.rgb(208, 0, 255);
 
-    int outboundColour;
-    int inboundColour;
-    int pendingColour;
-    int failedColour;
+    private int outboundColour;
+    private int inboundColour;
+    private int pendingColour;
+    private int failedColour;
 
     public interface OnInteractionListener {
         void onInteraction(View view, TransactionInfo item);
@@ -59,7 +59,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     private final List<TransactionInfo> infoItems;
     private final OnInteractionListener listener;
 
-    Context context;
+    private Context context;
 
     public TransactionInfoAdapter(Context context, OnInteractionListener listener) {
         this.context = context;

@@ -254,7 +254,6 @@ public class WalletService extends Service {
     /////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    private Looper mServiceLooper;
     private WalletService.ServiceHandler mServiceHandler;
 
     private boolean errorState = false;
@@ -398,8 +397,8 @@ public class WalletService extends Service {
         thread.start();
 
         // Get the HandlerThread's Looper and use it for our Handler
-        mServiceLooper = thread.getLooper();
-        mServiceHandler = new WalletService.ServiceHandler(mServiceLooper);
+        final Looper serviceLooper = thread.getLooper();
+        mServiceHandler = new WalletService.ServiceHandler(serviceLooper);
 
         Log.d(TAG, "Service created");
     }

@@ -22,9 +22,9 @@ import java.util.List;
 
 public class NodeList {
     static private final String TAG = "NodeList";
-    static public final int MAX_SIZE = 5;
+    private static final int MAX_SIZE = 5;
 
-    List<String> nodes = new ArrayList<>();
+    private List<String> nodes = new ArrayList<>();
 
     public List<String> getNodes() {
         return nodes;

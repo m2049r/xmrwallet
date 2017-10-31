@@ -24,19 +24,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AsyncExchangeRate extends AsyncTask<String, Void, Boolean> {
-    static final String TAG = "AsyncGetExchangeRate";
+    private static final String TAG = "AsyncGetExchangeRate";
 
-    static final long TIME_REFRESH_INTERVAL = 60000; // refresh exchange rate max every minute
+    private static final long TIME_REFRESH_INTERVAL = 60000; // refresh exchange rate max every minute
 
-    static protected long RateTime = 0;
-    static protected double Rate = 0;
-    static protected String Fiat = null;
+    private static long RateTime = 0;
+    private static double Rate = 0;
+    private static String Fiat = null;
 
     public interface Listener {
         void exchange(String currencyA, String currencyB, double rate);
     }
 
-    Listener listener;
+    private Listener listener;
 
     public AsyncExchangeRate(Listener listener) {
         super();
@@ -49,9 +49,9 @@ public class AsyncExchangeRate extends AsyncTask<String, Void, Boolean> {
         super.onPreExecute();
     }
 
-    boolean inverse = false;
-    String currencyA = null;
-    String currencyB = null;
+    private boolean inverse = false;
+    private String currencyA = null;
+    private String currencyB = null;
 
     @Override
     protected Boolean doInBackground(String... params) {
@@ -125,7 +125,7 @@ public class AsyncExchangeRate extends AsyncTask<String, Void, Boolean> {
         }
     }
 
-    String getExchangeRate(String fiat) {
+    private String getExchangeRate(String fiat) {
         String jsonResponse =
                 Helper.getUrl("https://api.kraken.com/0/public/Ticker?pair=XMR" + fiat);
         if (jsonResponse == null) return null;

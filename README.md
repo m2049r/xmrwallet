@@ -21,7 +21,6 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 - Monerujo means "Monero Wallet" according to https://www.reddit.com/r/Monero/comments/3exy7t/esperanto_corner/
 
 ### TODO
-- review visibility of methods/classes
 - more sensible error dialogs
 
 ### Issues / Pitfalls
