@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.m2049r.xmrwallet.layout.CTextInputLayout
+        android:id="@+id/etAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        app:counterEnabled="false"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            style="@style/MoneroEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:hint="@string/receive_amount_hint"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            tools:text="87.00000" />
+
+    </com.m2049r.xmrwallet.layout.CTextInputLayout>
+
+    <Spinner
+        android:id="@+id/sCurrencyA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:entries="@array/currency"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textAlignment="center" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="0sp"
+        android:layout_marginStart="8sp">
+
+        <ImageView
+            android:id="@+id/evExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_traffic" />
+
+        <ProgressBar
+            android:id="@+id/pbExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvAmountB"
+        style="@style/MoneroText"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:layout_weight="3"
+        android:singleLine="true"
+        android:text="--"
+        android:textAlignment="textEnd"
+        tools:text="87.00000" />
+
+    <Spinner
+        android:id="@+id/sCurrencyB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:entries="@array/currency"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textAlignment="center" />
+
+</merge>
+

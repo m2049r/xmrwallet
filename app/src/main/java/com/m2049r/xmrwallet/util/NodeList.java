@@ -16,8 +16,6 @@
 
 package com.m2049r.xmrwallet.util;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

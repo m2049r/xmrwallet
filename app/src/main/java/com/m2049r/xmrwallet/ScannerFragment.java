@@ -28,7 +28,6 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.m2049r.xmrwallet.util.BarcodeData;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -64,7 +63,6 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result rawResult) {
-        //Log.d(TAG, rawResult.getBarcodeFormat().toString() + "/" + rawResult.getText());
         if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE) &&
                 (rawResult.getText().startsWith(QR_SCHEME))) {
             if (activityCallback.onAddressScanned(rawResult.getText())) {
@@ -101,7 +99,6 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        //Log.d(TAG, "attaching scan");
         if (context instanceof Listener) {
             this.activityCallback = (Listener) context;
         } else {

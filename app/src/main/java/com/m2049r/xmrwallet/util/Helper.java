@@ -19,6 +19,8 @@ package com.m2049r.xmrwallet.util;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -40,13 +42,18 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class Helper {
     static private final String TAG = "Helper";
     static private final String WALLET_DIR = "monerujo";
+
+    static public int DISPLAY_DIGITS_INFO = 5;
+    static public int DISPLAY_DIGITS_SHORT = 5;
 
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
@@ -73,7 +80,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.d(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+                Log.w(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
                 return false;
@@ -91,7 +98,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.d(TAG, "Permission denied for CAMERA - requesting it");
+                Log.w(TAG, "Permission denied for CAMERA - requesting it");
                 String[] permissions = {Manifest.permission.CAMERA};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_CAMERA);
                 return false;
@@ -103,13 +110,8 @@ public class Helper {
         }
     }
 
-//    static public String getWalletPath(Context context, String aWalletName) {
-//        return getWalletFile(context, aWalletName).getAbsolutePath();
-//    }
-
     static public File getWalletFile(Context context, String aWalletName) {
         File walletDir = getStorageRoot(context);
-        //d(TAG, "walletdir=" + walletDir.getAbsolutePath());
         File f = new File(walletDir, aWalletName);
         Log.d(TAG, "wallet = " + f.getAbsolutePath() + " size=" + f.length());
         return f;
@@ -127,6 +129,7 @@ public class Helper {
     }
 
     static public void hideKeyboard(Activity act) {
+        if (act == null) return;
         if (act.getCurrentFocus() == null) {
             act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         } else {
@@ -145,19 +148,38 @@ public class Helper {
     }
 
     static public String getDisplayAmount(long amount) {
-        String s = Wallet.getDisplayAmount(amount);
+        return getDisplayAmount(amount, 20);
+    }
+
+    static public String getDisplayAmount(long amount, int maxDecimals) {
+        return getDisplayAmount(Wallet.getDisplayAmount(amount), maxDecimals);
+    }
+
+    // amountString must have '.' as decimal point
+    static public String getDisplayAmount(String amountString, int maxDecimals) {
         int lastZero = 0;
         int decimal = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if ((lastZero == 0) && (s.charAt(i) != '0')) lastZero = i + 1;
+        for (int i = amountString.length() - 1; i >= 0; i--) {
+            if ((lastZero == 0) && (amountString.charAt(i) != '0')) lastZero = i + 1;
             // TODO i18n
-            if (s.charAt(i) == '.') {
-                decimal = i;
+            if (amountString.charAt(i) == '.') {
+                decimal = i + 1;
                 break;
             }
         }
-        int cutoff = Math.max(lastZero, decimal + 2);
-        return s.substring(0, cutoff);
+        int cutoff = Math.min(Math.max(lastZero, decimal + 2), decimal + maxDecimals);
+        return amountString.substring(0, cutoff);
+    }
+
+    static public String getFormattedAmount(double amount, boolean isXmr) {
+        // at this point selection is XMR in case of error
+        String displayB;
+        if (isXmr) { // not XMR
+            displayB = String.format(Locale.US, "%,.5f", amount);
+        } else { // XMR
+            displayB = String.format(Locale.US, "%,.2f", amount);
+        }
+        return displayB;
     }
 
     static public Bitmap getBitmap(Context context, int drawableId) {
@@ -180,11 +202,15 @@ public class Helper {
         return bitmap;
     }
 
+    static final int HTTP_TIMEOUT = 5000;
+
     static public String getUrl(String httpsUrl) {
         HttpsURLConnection urlConnection = null;
         try {
             URL url = new URL(httpsUrl);
             urlConnection = (HttpsURLConnection) url.openConnection();
+            urlConnection.setConnectTimeout(HTTP_TIMEOUT);
+            urlConnection.setReadTimeout(HTTP_TIMEOUT);
             InputStreamReader in = new InputStreamReader(urlConnection.getInputStream());
             StringBuffer sb = new StringBuffer();
             final int BUFFER_SIZE = 512;
@@ -195,6 +221,8 @@ public class Helper {
                 length = in.read(buffer, 0, BUFFER_SIZE);
             }
             return sb.toString();
+        } catch (SocketTimeoutException ex) {
+            Log.w(TAG, "C " + ex.getLocalizedMessage());
         } catch (MalformedURLException ex) {
             Log.e(TAG, "A " + ex.getLocalizedMessage());
         } catch (IOException ex) {
@@ -205,5 +233,11 @@ public class Helper {
             }
         }
         return null;
+    }
+
+    static public void clipBoardCopy(Context context, String label, String text) {
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(label, text);
+        clipboardManager.setPrimaryClip(clip);
     }
 }

@@ -16,22 +16,17 @@
 
 package com.m2049r.xmrwallet.dialog;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-//TODO If you don't support Android 2.x, you should use the non-support version!
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -41,11 +36,17 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * Created by Adam Speakman on 24/09/13.
  * http://speakman.net.nz
  */
 public class LicensesFragment extends DialogFragment {
+    static final String TAG = "LicensesFragment";
     int versionCode = BuildConfig.VERSION_CODE;
     String versionName = BuildConfig.VERSION_NAME;
 
@@ -102,7 +103,7 @@ public class LicensesFragment extends DialogFragment {
     @SuppressLint("InflateParams")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View content = LayoutInflater.from(getActivity()).inflate(R.layout.licenses_fragment, null);
+        View content = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_licenses, null);
         mWebView = (WebView) content.findViewById(R.id.licensesFragmentWebView);
         mIndeterminateProgress = (ProgressBar) content.findViewById(R.id.licensesFragmentIndeterminateProgress);
 
@@ -140,8 +141,8 @@ public class LicensesFragment extends DialogFragment {
                         sb.append("\n");
                     }
                     bufferedReader.close();
-                } catch (IOException e) {
-                    // TODO You may want to include some logging here.
+                } catch (IOException ex) {
+                    Log.e(TAG, ex.getLocalizedMessage());
                 }
 
                 return sb.toString();

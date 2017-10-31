@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top_first"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/generate_wallet_label"
+                android:textAlignment="center" />
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/generate_password_label"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/data_top"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvWalletName"
+                style="@style/MoneroText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvWalletPassword"
+                style="@style/MoneroText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="***"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/generate_address_label" />
+
+            <ImageButton
+                android:id="@+id/bCopyAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="80dp"
+                android:background="?android:selectableItemBackground"
+                android:enabled="false"
+                android:src="@drawable/ic_content_nocopy_black_24dp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvWalletAddress"
+            style="@style/MoneroText.Monospace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/data_top"
+            android:textAlignment="center" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/generate_mnemonic_label" />
+
+            <ImageButton
+                android:id="@+id/bCopySeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="80dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_content_nocopy_black_24dp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvWalletMnemonic"
+            style="@style/MoneroText.Monospace.Mnemonic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/data_top"
+            android:background="@drawable/backgound_seed"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/bAccept"
+            style="@style/MoneroButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/section_top"
+            android:text="@string/generate_button_accept"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/bAdvancedInfo"
+            style="@style/MoneroFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/section_top"
+            android:background="?android:selectableItemBackground"
+            android:drawablePadding="4sp"
+            android:drawableStart="@drawable/ic_add_circle_outline"
+            android:text="@string/label_wallet_advanced_details"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/llAdvancedInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/section_top"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/MoneroLabel.Heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/generate_viewkey_label" />
+
+                <ImageButton
+                    android:id="@+id/bCopyViewKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="80dp"
+                    android:background="?android:selectableItemBackground"
+                    android:src="@drawable/ic_content_copy_black_24dp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvWalletViewKey"
+                style="@style/MoneroText.Monospace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/data_top"
+                android:textAlignment="center" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/header_top">
+
+                <TextView
+                    style="@style/MoneroLabel.Heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/generate_spendkey_label" />
+
+                <ImageButton
+                    android:id="@+id/bCopySepndKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="80dp"
+                    android:background="?android:selectableItemBackground"
+                    android:src="@drawable/ic_content_nocopy_black_24dp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvWalletSpendKey"
+                style="@style/MoneroText.Monospace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/data_top"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

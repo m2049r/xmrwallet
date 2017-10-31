@@ -16,19 +16,22 @@
 
 package com.m2049r.xmrwallet;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -64,14 +67,13 @@ public class TxFragment extends Fragment {
     TextView tvTxFee;
     TextView tvTxTransfers;
     TextView etTxNotes;
-    Button bCopy;
     Button bTxNotes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.tx_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_tx_info, container, false);
 
         tvTxTimestamp = (TextView) view.findViewById(R.id.tvTxTimestamp);
         tvTxId = (TextView) view.findViewById(R.id.tvTxId);
@@ -83,17 +85,9 @@ public class TxFragment extends Fragment {
         tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
         tvTxTransfers = (TextView) view.findViewById(R.id.tvTxTransfers);
         etTxNotes = (TextView) view.findViewById(R.id.etTxNotes);
-        bCopy = (Button) view.findViewById(R.id.bCopy);
         bTxNotes = (Button) view.findViewById(R.id.bTxNotes);
 
         etTxNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
-
-        bCopy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                copyToClipboard();
-            }
-        });
 
         bTxNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,28 +113,35 @@ public class TxFragment extends Fragment {
         }
     }
 
-    void copyToClipboard() {
+    void shareTxInfo() {
         if (this.info == null) return;
         StringBuffer sb = new StringBuffer();
-        sb.append(getString(R.string.tx_address)).append(": ");
-        sb.append(activityCallback.getWalletAddress()).append("\n");
-        sb.append(getString(R.string.tx_id)).append(": ");
-        sb.append(info.hash).append("\n");
-        sb.append(getString(R.string.tx_key)).append(": ");
-        sb.append(info.txKey.isEmpty() ? "-" : info.txKey).append("\n");
-        sb.append(getString(R.string.tx_paymentId)).append(": ");
-        sb.append(info.paymentId).append("\n");
-        sb.append(getString(R.string.tx_amount)).append(": ");
+
+        sb.append(getString(R.string.tx_timestamp)).append(":\n");
+        sb.append(TS_FORMATTER.format(new Date(info.timestamp * 1000))).append("\n\n");
+
+        sb.append(getString(R.string.tx_amount)).append(":\n");
         sb.append((info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-"));
         sb.append(Wallet.getDisplayAmount(info.amount)).append("\n");
-        sb.append(getString(R.string.tx_fee)).append(": ");
-        sb.append(Wallet.getDisplayAmount(info.fee)).append("\n");
-        sb.append(getString(R.string.tx_notes)).append(": ");
+        sb.append(getString(R.string.tx_fee)).append(":\n");
+        sb.append(Wallet.getDisplayAmount(info.fee)).append("\n\n");
+
+        sb.append(getString(R.string.tx_notes)).append(":\n");
         String oneLineNotes = info.notes.replace("\n", " ; ");
-        sb.append(oneLineNotes.isEmpty() ? "-" : oneLineNotes).append("\n");
-        sb.append(getString(R.string.tx_timestamp)).append(": ");
-        sb.append(TS_FORMATTER.format(new Date(info.timestamp * 1000))).append("\n");
-        sb.append(getString(R.string.tx_blockheight)).append(": ");
+        sb.append(oneLineNotes.isEmpty() ? "-" : oneLineNotes).append("\n\n");
+
+        sb.append(getString(R.string.tx_destination)).append(":\n");
+        sb.append(tvDestination.getText()).append("\n\n");
+
+        sb.append(getString(R.string.tx_paymentId)).append(":\n");
+        sb.append(info.paymentId).append("\n\n");
+
+        sb.append(getString(R.string.tx_id)).append(":\n");
+        sb.append(info.hash).append("\n");
+        sb.append(getString(R.string.tx_key)).append(":\n");
+        sb.append(info.txKey.isEmpty() ? "-" : info.txKey).append("\n\n");
+
+        sb.append(getString(R.string.tx_blockheight)).append(":\n");
         if (info.isFailed) {
             sb.append(getString(R.string.tx_failed)).append("\n");
         } else if (info.isPending) {
@@ -148,7 +149,9 @@ public class TxFragment extends Fragment {
         } else {
             sb.append(info.blockheight).append("\n");
         }
-        sb.append(getString(R.string.tx_transfers)).append(": ");
+        sb.append("\n");
+
+        sb.append(getString(R.string.tx_transfers)).append(":\n");
         if (info.transfers != null) {
             boolean comma = false;
             for (Transfer transfer : info.transfers) {
@@ -163,12 +166,14 @@ public class TxFragment extends Fragment {
         } else {
             sb.append("-");
         }
-        sb.append("\n");
-        ClipboardManager clipboardManager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText(getString(R.string.tx_copy_label), sb.toString());
-        clipboardManager.setPrimaryClip(clip);
-        Toast.makeText(getActivity(), getString(R.string.tx_copy_message), Toast.LENGTH_SHORT).show();
-        //Log.d(TAG, sb.toString());
+        sb.append("\n\n");
+        //Helper.clipBoardCopy(getActivity(), getString(R.string.tx_copy_label), sb.toString());
+        //Toast.makeText(getActivity(), getString(R.string.tx_copy_message), Toast.LENGTH_SHORT).show();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, null));
     }
 
     TransactionInfo info = null;
@@ -176,17 +181,24 @@ public class TxFragment extends Fragment {
     void loadNotes(TransactionInfo info) {
         if (info.notes == null) {
             info.notes = activityCallback.getTxNotes(info.hash);
-            //Log.d(TAG, "NOTES:" + info.notes + ":");
         }
         etTxNotes.setText(info.notes);
+    }
+
+    private void setTxColour(int clr) {
+        tvTxAmount.setTextColor(clr);
+        tvTxFee.setTextColor(clr);
     }
 
     private void show(TransactionInfo info) {
         if (info.txKey == null) {
             info.txKey = activityCallback.getTxKey(info.hash);
-            //Log.d(TAG, "TXKEY:" + info.txKey + ":");
         }
         loadNotes(info);
+
+        activityCallback.setSubtitle(getString(R.string.tx_title));
+        activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+
         tvTxTimestamp.setText(TS_FORMATTER.format(new Date(info.timestamp * 1000)));
         tvTxId.setText(info.hash);
         tvTxKey.setText(info.txKey.isEmpty() ? "-" : info.txKey);
@@ -199,8 +211,30 @@ public class TxFragment extends Fragment {
             tvTxBlockheight.setText("" + info.blockheight);
         }
         String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
+
         tvTxAmount.setText(sign + Wallet.getDisplayAmount(info.amount));
-        tvTxFee.setText(Wallet.getDisplayAmount(info.fee));
+        if ((info.fee > 0)) {
+            String fee = Wallet.getDisplayAmount(info.fee);
+            if (info.isPending) {
+                tvTxFee.setText(getString(R.string.tx_list_fee_pending, fee));
+            } else {
+                tvTxFee.setText(getString(R.string.tx_list_fee, fee));
+            }
+        } else {
+            tvTxFee.setText(null);
+            tvTxFee.setVisibility(View.GONE);
+        }
+        if (info.isFailed) {
+            tvTxAmount.setText(getString(R.string.tx_list_amount_failed, Wallet.getDisplayAmount(info.amount)));
+            tvTxFee.setText(getString(R.string.tx_list_failed_text));
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_failed));
+        } else if (info.isPending) {
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_pending));
+        } else if (info.direction == TransactionInfo.Direction.Direction_In) {
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_green));
+        } else {
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_red));
+        }
         Set<String> destinations = new HashSet<>();
         StringBuffer sb = new StringBuffer();
         StringBuffer dstSb = new StringBuffer();
@@ -232,10 +266,21 @@ public class TxFragment extends Fragment {
         tvTxTransfers.setText(sb.toString());
         tvDestination.setText(dstSb.toString());
         this.info = info;
-        bCopy.setEnabled(true);
     }
 
-    TxFragment.Listener activityCallback;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.tx_info_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    Listener activityCallback;
 
     public interface Listener {
         String getWalletAddress();
@@ -245,6 +290,10 @@ public class TxFragment extends Fragment {
         String getTxNotes(String hash);
 
         void onSetNote(String txId, String notes);
+
+        void setToolbarButton(int type);
+
+        void setSubtitle(String subtitle);
 
     }
 

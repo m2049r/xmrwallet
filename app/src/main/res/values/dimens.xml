@@ -1,6 +1,16 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_drawer_width">260dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="event_title_text_size">@dimen/abc_text_size_title_material_toolbar</dimen>
+
+    <dimen name="header_top_first">12sp</dimen>
+    <dimen name="header_top">16sp</dimen>
+    <dimen name="section_top">24sp</dimen>
+    <dimen name="data_top">8sp</dimen>
+
 </resources>

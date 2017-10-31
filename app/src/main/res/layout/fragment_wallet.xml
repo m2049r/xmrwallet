@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8sp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/flExchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="0sp"
+                android:layout_marginStart="8sp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_traffic" />
+
+                <ProgressBar
+                    android:id="@+id/pbExchange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvBalance"
+                style="@style/MoneroText.Balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="visible"
+                tools:text="1099700.23001" />
+
+            <Spinner
+                android:id="@+id/sCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:entries="@array/currency"
+                android:gravity="center"
+                android:paddingBottom="0dp"
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+                android:paddingTop="0dp"
+                tools:listitem="@layout/item_spinner" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvUnconfirmedAmount"
+            style="@style/MoneroText.Unconfirmed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            tools:text="+ 0.00 unconfirmed" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top_first"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivSynced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8sp"
+                android:src="@drawable/ic_done_all"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                style="@style/MoneroText.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                tools:text="Synced 1 410 674 blocks" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="72dp"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_transaction" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="4dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/bReceive"
+                style="@style/MoneroButton.Take"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_hand"
+                android:enabled="true"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/label_wallet_receive"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/bSend"
+                style="@style/MoneroButton.Give"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_send"
+                android:enabled="true"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/label_wallet_send"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

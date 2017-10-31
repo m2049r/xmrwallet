@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="4dp"
+    card_view:cardCornerRadius="1dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="11"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tx_amount"
+                style="@style/MoneroText.PosAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                tools:text="999999.99999" />
+
+            <TextView
+                android:id="@+id/tx_fee"
+                style="@style/MoneroText.PosFee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                tools:text="Fee 0.06817" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tx_paymentid"
+            style="@style/MoneroText.PosNote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="16sp"
+            android:layout_marginStart="16sp"
+            android:layout_weight="13"
+            android:gravity="start"
+            android:text="0123456789abcdef" />
+
+        <TextView
+            android:id="@+id/tx_datetime"
+            style="@style/MoneroText.PosDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="2017-05-22 21:32" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_navigate_next_black_24dp" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
