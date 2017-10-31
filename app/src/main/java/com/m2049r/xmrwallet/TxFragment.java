@@ -36,7 +36,6 @@ import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -310,12 +309,5 @@ public class TxFragment extends Fragment {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
     }
 }

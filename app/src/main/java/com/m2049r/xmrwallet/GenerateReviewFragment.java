@@ -40,7 +40,6 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
-import com.squareup.leakcanary.RefWatcher;
 
 public class GenerateReviewFragment extends Fragment {
     static final String TAG = "GenerateReviewFragment";
@@ -307,12 +306,5 @@ public class GenerateReviewFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.wallet_details_menu, menu);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
     }
 }

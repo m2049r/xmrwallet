@@ -36,7 +36,6 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 
@@ -420,12 +419,5 @@ public class GenerateFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.create_wallet_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
     }
 }

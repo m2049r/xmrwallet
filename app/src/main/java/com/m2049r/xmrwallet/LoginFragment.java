@@ -52,7 +52,6 @@ import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.NodeList;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -473,12 +472,5 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 animateFAB();
                 break;
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
     }
 }

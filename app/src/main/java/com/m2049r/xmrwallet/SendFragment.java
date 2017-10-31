@@ -49,7 +49,6 @@ import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.TxData;
-import com.squareup.leakcanary.RefWatcher;
 
 public class SendFragment extends Fragment {
     static final String TAG = "SendFragment";
@@ -472,10 +471,4 @@ public class SendFragment extends Fragment {
         pbProgress.setVisibility(View.GONE);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
-    }
 }

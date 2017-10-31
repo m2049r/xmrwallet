@@ -54,7 +54,6 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -409,12 +408,5 @@ public class ReceiveFragment extends Fragment {
     public void onPause() {
         Log.d(TAG, "onPause()");
         super.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RefWatcher refWatcher = MonerujoApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
     }
 }
