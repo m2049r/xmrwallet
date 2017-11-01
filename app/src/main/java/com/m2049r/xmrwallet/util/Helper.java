@@ -118,7 +118,7 @@ public class Helper {
     }
 
     /* Checks if external storage is available for read and write */
-    static public boolean isExternalStorageWritable() {
+    private static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
     }
@@ -156,7 +156,7 @@ public class Helper {
     }
 
     // amountString must have '.' as decimal point
-    static public String getDisplayAmount(String amountString, int maxDecimals) {
+    private static String getDisplayAmount(String amountString, int maxDecimals) {
         int lastZero = 0;
         int decimal = 0;
         for (int i = amountString.length() - 1; i >= 0; i--) {

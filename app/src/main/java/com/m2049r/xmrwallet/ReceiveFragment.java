@@ -59,15 +59,15 @@ import java.util.Map;
 public class ReceiveFragment extends Fragment {
     static final String TAG = "ReceiveFragment";
 
-    ProgressBar pbProgress;
-    TextView tvAddress;
-    TextInputLayout etPaymentId;
-    ExchangeView evAmount;
-    Button bPaymentId;
-    Button bGenerate;
-    ImageView qrCode;
-    EditText etDummy;
-    ImageButton bCopyAddress;
+    private ProgressBar pbProgress;
+    private TextView tvAddress;
+    private TextInputLayout etPaymentId;
+    private ExchangeView evAmount;
+    private Button bPaymentId;
+    private Button bGenerate;
+    private ImageView qrCode;
+    private EditText etDummy;
+    private ImageButton bCopyAddress;
 
     //String name;
 

@@ -51,33 +51,33 @@ import com.m2049r.xmrwallet.util.TxData;
 public class SendFragment extends Fragment {
     static final String TAG = "SendFragment";
 
-    EditText etDummy;
+    private EditText etDummy;
 
-    ScrollView scrollview;
+    private ScrollView scrollview;
 
-    TextInputLayout etAddress;
-    TextInputLayout etPaymentId;
+    private TextInputLayout etAddress;
+    private TextInputLayout etPaymentId;
     //TextInputLayout etAmount;
-    ExchangeView evAmount;
-    TextView tvAmountB;
-    Spinner sCurrencyA;
-    Spinner sCurrencyB;
+    private ExchangeView evAmount;
+    private TextView tvAmountB;
+    private Spinner sCurrencyA;
+    private Spinner sCurrencyB;
 
-    Button bScan;
-    Spinner sMixin;
-    Spinner sPriority;
-    Button bPrepareSend;
-    Button bDispose;
-    Button bPaymentId;
-    LinearLayout llConfirmSend;
-    TextView tvTxAmount;
-    TextView tvTxFee;
+    private Button bScan;
+    private Spinner sMixin;
+    private Spinner sPriority;
+    private Button bPrepareSend;
+    private Button bDispose;
+    private Button bPaymentId;
+    private LinearLayout llConfirmSend;
+    private TextView tvTxAmount;
+    private TextView tvTxFee;
     //TextView tvTxDust;
-    TextView tvTxTotal;
-    EditText etNotes;
-    Button bSend;
-    Button bReallySend;
-    ProgressBar pbProgress;
+    private TextView tvTxTotal;
+    private EditText etNotes;
+    private Button bSend;
+    private Button bReallySend;
+    private ProgressBar pbProgress;
 
     final static int Mixins[] = {4, 7, 12, 25}; // must match the layout XML
     final static PendingTransaction.Priority Priorities[] =

@@ -57,17 +57,17 @@ public class TxFragment extends Fragment {
         TS_FORMATTER.setTimeZone(tz);
     }
 
-    TextView tvTxTimestamp;
-    TextView tvTxId;
-    TextView tvTxKey;
-    TextView tvDestination;
-    TextView tvTxPaymentId;
-    TextView tvTxBlockheight;
-    TextView tvTxAmount;
-    TextView tvTxFee;
-    TextView tvTxTransfers;
-    TextView etTxNotes;
-    Button bTxNotes;
+    private TextView tvTxTimestamp;
+    private TextView tvTxId;
+    private TextView tvTxKey;
+    private TextView tvDestination;
+    private TextView tvTxPaymentId;
+    private TextView tvTxBlockheight;
+    private TextView tvTxAmount;
+    private TextView tvTxFee;
+    private TextView tvTxTransfers;
+    private TextView etTxNotes;
+    private Button bTxNotes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
