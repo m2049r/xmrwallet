@@ -116,6 +116,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MoneroLabel.Heading.Donation">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gradientPink</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="MoneroFab" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/moneroFab</item>
@@ -192,10 +198,12 @@
     </style>
 
     <style name="MoneroButton.Take">
+        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/take</item>
     </style>
 
     <style name="MoneroButton.Give">
+        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/give</item>
     </style>
 

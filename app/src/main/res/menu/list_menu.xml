@@ -10,10 +10,15 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_lincense_info"
-        android:icon="@drawable/ic_info_white_24dp"
+        android:id="@+id/action_license_info"
         android:orderInCategory="200"
         android:title="@string/menu_about"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_privacy_policy"
+        android:orderInCategory="200"
+        android:title="@string/menu_privacy"
         app:showAsAction="never" />
 
 </menu>

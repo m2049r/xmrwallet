@@ -3,4 +3,59 @@
     <string name="about_title">About</string>
     <string name="about_close">Close</string>
     <string name="about_text">I am monerujo %1$s (%2$d)</string>
+
+    <string name="donation_text">
+        \"Donate you ungrateful bastards!\"
+    </string>
+
+    <string name="donation_address_label">Donations Address</string>
+    <string name="donation_address">4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk</string>
+
+    <string name="donation_credits"><![CDATA[
+        <b>Credits</b>
+        <br/>
+        m2049r, baltsar777, rehrar, anhdres,
+        keejef, TheMonera
+        <br/><br/>
+        <a href="www.xmrujo.com">www.xmrujo.com</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Privacy Policy</h1>
+        <p>This page informs you of our policies regarding the collection,
+        use and disclosure of personal information we receive from users of our
+        app (monerujo: Monero Wallet).
+        </p>
+        <p>By using the app, you agree to the collection and use of information in
+        accordance with this policy.
+        </p>
+        <h2>Data Collected</h2>
+        <p>Personal data is any kind of data that could identify an individual.
+        </p>
+        <p>Monero keys and public addresses are collected and processed by the app locally
+        for the purpose of processing transactions and transmitted into the Monero Network
+        in encrypted form.
+        </p>
+        <p>Other personal data is not collected.</p>
+        <h2>App Permissions</h2>
+        <ul>
+        <li>INTERNET : Connect to the Monero Network via a Monero Daemon Node</li>
+        <li>READ_EXTERNAL_STORAGE : Read wallet files stored on the device</li>
+        <li>WRITE_EXTERNAL_STORAGE : Write wallet files stored on the device</li>
+        <li>WAKE_LOCK : Keep device awake while syncing</li>
+        <li>CAMERA : Scan QR Codes for receiving Monero</li>
+        </ul>
+        <h2>Changes to this Privacy Policy</h2>
+        <p>We may update this privacy policy from time to time. We will notify
+        you of any changes by posting the new privacy policy in the app and on the
+        website (www.xmrujo.com)
+        You are advised to review this privacy policy periodically for any changes.
+        <p>This Privacy Policy was last updated: 2nd November, 2017.
+        </p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about our privacy policy,
+        or how your data is being collected and processed,
+        please e-mail privacy@xmrujo.com.
+        </p>
+        ]]></string>
 </resources>

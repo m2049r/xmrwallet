@@ -47,8 +47,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.LicensesFragment;
+import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -120,7 +122,8 @@ public class LoginActivity extends AppCompatActivity
                         finish();
                         break;
                     case Toolbar.BUTTON_DONATE:
-                        Toast.makeText(LoginActivity.this, getString(R.string.label_donate), Toast.LENGTH_SHORT).show();
+                        DonationFragment.display(getSupportFragmentManager());
+                        break;
                     case Toolbar.BUTTON_NONE:
                     default:
                         Log.e(TAG, "Button " + type + "pressed - how can this be?");
@@ -1056,8 +1059,11 @@ public class LoginActivity extends AppCompatActivity
             case R.id.action_details_help:
                 HelpFragment.displayHelp(getSupportFragmentManager(), R.raw.help_details);
                 return true;
-            case R.id.action_lincense_info:
+            case R.id.action_license_info:
                 LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
+                return true;
+            case R.id.action_privacy_policy:
+                PrivacyFragment.display(getSupportFragmentManager());
                 return true;
             case R.id.action_testnet:
                 try {

@@ -5,6 +5,7 @@
 
     <string name="menu_testnet">Testnet</string>
     <string name="menu_about">About &#8230;</string>
+    <string name="menu_privacy">Privacy Policy &#8230;</string>
 
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
@@ -71,7 +72,7 @@
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Take</string>
+    <string name="label_wallet_receive">Receive</string>
     <string name="label_wallet_send">Give</string>
 
     <string name="title_amount">Amount</string>
@@ -89,9 +90,9 @@
     <string name="local_service_connected">monerujo Service Connected</string>
     <string name="local_service_disconnected">monerujo Service Disconnected</string>
 
-    <string name="status_synced">Synced</string>
+    <string name="status_synced">Synced:</string>
     <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Syncing:</string>
+    <string name="status_syncing">Scanning:</string>
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
@@ -258,5 +259,5 @@
     <string name="fab_create_new">Create new wallet</string>
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
-    <string name="fab_restore_seed">Restore wallet 25 words seed</string>
+    <string name="fab_restore_seed">Restore wallet 25 word seed</string>
 </resources>

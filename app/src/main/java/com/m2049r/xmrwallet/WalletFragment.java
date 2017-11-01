@@ -305,17 +305,17 @@ public class WalletFragment extends Fragment
             long daemonHeight = activityCallback.getDaemonHeight();
             if (!wallet.isSynchronized()) {
                 long n = daemonHeight - wallet.getBlockChainHeight();
-                sync = formatter.format(n) + " " + getString(R.string.status_remaining);
+                sync = getString(R.string.status_syncing) + " " + formatter.format(n) + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
                     firstBlock = wallet.getBlockChainHeight();
                 }
                 int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
-                onProgress(getString(R.string.status_syncing) + " " + sync);
+                //onProgress(getString(R.string.status_syncing) + " " + sync);
                 if (x == 0) x = -1;
                 onProgress(x);
                 ivSynced.setVisibility(View.GONE);
             } else {
-                sync = getString(R.string.status_synced) + ": " + formatter.format(wallet.getBlockChainHeight());
+                sync = getString(R.string.status_synced) + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
             }
         }

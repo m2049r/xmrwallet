@@ -67,6 +67,7 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
     public void setAmount(String xmrAmount) {
         if (xmrAmount != null) {
             setCurrencyA(0);
+            etAmount.getEditText().setText(xmrAmount);
             setXmr(xmrAmount);
             this.notXmrAmount = null;
             doExchange();

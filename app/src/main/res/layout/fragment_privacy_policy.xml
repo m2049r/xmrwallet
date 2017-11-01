@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8sp"
+    android:paddingEnd="16sp"
+    android:paddingStart="16sp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:src="@drawable/ic_eye_black_24dp" />
+
+        <TextView
+            android:id="@+id/tvCredits"
+            style="@style/MoneroText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top"
+            android:autoLink="web"
+            android:gravity="start"
+            android:text="@string/privacy_policy"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>
