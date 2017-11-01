@@ -18,9 +18,7 @@ package com.m2049r.xmrwallet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -66,7 +64,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     List<WalletManager.WalletInfo> walletList = new ArrayList<>();
     List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
 
-    ImageView ivGuntherWallets;
     EditText etDummy;
     DropDownEditText etDaemonAddress;
     ArrayAdapter<String> nodeAdapter;
@@ -133,8 +130,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-
-        ivGuntherWallets = (ImageView) view.findViewById(R.id.ivGuntherWallets);
 
         fabScreen = (FrameLayout) view.findViewById(R.id.fabScreen);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
@@ -216,22 +211,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         return view;
     }
 
-    void showGunther() {
-        ivGuntherWallets.setImageResource(R.drawable.gunther_wallets);
-        final AnimationDrawable guntherWalletsAnim = (AnimationDrawable) ivGuntherWallets.getDrawable();
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                guntherWalletsAnim.start();
-            }
-        }, getResources().getInteger(R.integer.gunther_wallets_delay));
-    }
-
-    void normalGunther() {
-        ivGuntherWallets.setImageResource(R.drawable.gunther_wallets_00);
-    }
-
     // Callbacks from WalletInfoAdapter
     @Override
     public void onInteraction(final View view, final WalletManager.WalletInfo infoItem) {
@@ -288,11 +267,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         filterList();
         adapter.setInfos(displayedList);
         adapter.notifyDataSetChanged();
-        if (displayedList.isEmpty()) {
-            showGunther();
-        } else {
-            normalGunther();
-        }
     }
 
     private void showInfo(@NonNull String name) {
