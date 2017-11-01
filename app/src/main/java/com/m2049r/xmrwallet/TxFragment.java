@@ -212,18 +212,20 @@ public class TxFragment extends Fragment {
         }
         String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
 
-        tvTxAmount.setText(sign + Wallet.getDisplayAmount(info.amount));
+        long realAmount = info.amount;
+        if (info.isPending) {
+            realAmount = realAmount - info.fee;
+        }
+        tvTxAmount.setText(sign + Wallet.getDisplayAmount(realAmount));
+
         if ((info.fee > 0)) {
             String fee = Wallet.getDisplayAmount(info.fee);
-            if (info.isPending) {
-                tvTxFee.setText(getString(R.string.tx_list_fee_pending, fee));
-            } else {
-                tvTxFee.setText(getString(R.string.tx_list_fee, fee));
-            }
+            tvTxFee.setText(getString(R.string.tx_list_fee, fee));
         } else {
             tvTxFee.setText(null);
             tvTxFee.setVisibility(View.GONE);
         }
+
         if (info.isFailed) {
             tvTxAmount.setText(getString(R.string.tx_list_amount_failed, Wallet.getDisplayAmount(info.amount)));
             tvTxFee.setText(getString(R.string.tx_list_failed_text));
