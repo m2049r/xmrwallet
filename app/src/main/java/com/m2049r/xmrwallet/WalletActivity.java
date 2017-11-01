@@ -60,7 +60,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     public void setToolbarButton(int type) {

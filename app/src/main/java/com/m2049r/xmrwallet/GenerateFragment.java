@@ -48,16 +48,16 @@ public class GenerateFragment extends Fragment {
     static final String TYPE_SEED = "seed";
     static final String TYPE_VIEWONLY = "view";
 
-    TextInputLayout etWalletName;
-    TextInputLayout etWalletPassword;
-    TextInputLayout etWalletAddress;
-    TextInputLayout etWalletMnemonic;
-    TextInputLayout etWalletViewKey;
-    TextInputLayout etWalletSpendKey;
-    TextInputLayout etWalletRestoreHeight;
-    Button bGenerate;
+    private TextInputLayout etWalletName;
+    private TextInputLayout etWalletPassword;
+    private TextInputLayout etWalletAddress;
+    private TextInputLayout etWalletMnemonic;
+    private TextInputLayout etWalletViewKey;
+    private TextInputLayout etWalletSpendKey;
+    private TextInputLayout etWalletRestoreHeight;
+    private Button bGenerate;
 
-    String type = null;
+    private String type = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

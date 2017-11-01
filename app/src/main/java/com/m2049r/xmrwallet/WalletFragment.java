@@ -53,16 +53,16 @@ public class WalletFragment extends Fragment
     private TransactionInfoAdapter adapter;
     private NumberFormat formatter = NumberFormat.getInstance();
 
-    FrameLayout flExchange;
-    TextView tvBalance;
-    TextView tvUnconfirmedAmount;
-    TextView tvProgress;
-    ImageView ivSynced;
-    ProgressBar pbProgress;
-    Button bReceive;
-    Button bSend;
+    private FrameLayout flExchange;
+    private TextView tvBalance;
+    private TextView tvUnconfirmedAmount;
+    private TextView tvProgress;
+    private ImageView ivSynced;
+    private ProgressBar pbProgress;
+    private Button bReceive;
+    private Button bSend;
 
-    Spinner sCurrency;
+    private Spinner sCurrency;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

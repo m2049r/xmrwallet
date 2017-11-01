@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     public void setToolbarButton(int type) {
