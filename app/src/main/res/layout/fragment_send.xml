@@ -47,10 +47,10 @@
             <Button
                 android:id="@+id/bScan"
                 style="@style/MoneroText.Button"
-                android:layout_width="56sp"
-                android:layout_height="56sp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="8sp"
+                android:layout_marginStart="16sp"
                 android:background="@drawable/ic_scan"
                 android:text="@string/send_qr_hint" />
         </LinearLayout>
