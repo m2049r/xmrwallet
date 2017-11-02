@@ -192,6 +192,15 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
             }
         });
 
+        etAmount.getEditText().setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    doExchange();
+                }
+            }
+        });
+
         etAmount.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {

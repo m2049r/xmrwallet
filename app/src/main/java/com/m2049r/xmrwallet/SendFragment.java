@@ -134,23 +134,6 @@ public class SendFragment extends Fragment {
             }
         });
 
-        evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
-            @Override
-            public void onNewAmount(String xmr) {
-                if ((xmr != null)) {
-                    // stupid workaround to not show error on open of screen
-                    if ((checkAddressNoError() && checkAmountWithError()) || checkAmount()) {
-                        if (etPaymentId.getEditText().getText().toString().isEmpty()) {
-                            etPaymentId.requestFocus();
-                        } else {
-                            etDummy.requestFocus();
-                            Helper.hideKeyboard(getActivity());
-                        }
-                    }
-                }
-            }
-        });
-
         etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
