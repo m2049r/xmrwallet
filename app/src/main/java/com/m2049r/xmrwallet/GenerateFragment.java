@@ -367,9 +367,25 @@ public class GenerateFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
-        activityCallback.setTitle(getString(R.string.generate_title));
+        activityCallback.setTitle(getString(R.string.generate_title) + " - " + getType());
         activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
 
+    }
+
+    String getType() {
+        switch (type) {
+            case TYPE_KEY:
+                return getString(R.string.generate_wallet_type_key);
+            case TYPE_NEW:
+                return getString(R.string.generate_wallet_type_new);
+            case TYPE_SEED:
+                return getString(R.string.generate_wallet_type_seed);
+            case TYPE_VIEWONLY:
+                return getString(R.string.generate_wallet_type_view);
+            default:
+                Log.e(TAG, "unknown type " + type);
+                return "?";
+        }
     }
 
     GenerateFragment.Listener activityCallback;
