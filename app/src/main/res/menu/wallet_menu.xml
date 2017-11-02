@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_favorite_white_24dp"
         android:orderInCategory="10"
         android:title="@string/label_donate"
-        app:showAsAction="always|withText" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_info"

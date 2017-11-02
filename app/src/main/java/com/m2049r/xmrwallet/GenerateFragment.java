@@ -33,6 +33,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -366,7 +367,25 @@ public class GenerateFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
-        activityCallback.setTitle(getString(R.string.generate_title));
+        activityCallback.setTitle(getString(R.string.generate_title) + " - " + getType());
+        activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+
+    }
+
+    String getType() {
+        switch (type) {
+            case TYPE_KEY:
+                return getString(R.string.generate_wallet_type_key);
+            case TYPE_NEW:
+                return getString(R.string.generate_wallet_type_new);
+            case TYPE_SEED:
+                return getString(R.string.generate_wallet_type_seed);
+            case TYPE_VIEWONLY:
+                return getString(R.string.generate_wallet_type_view);
+            default:
+                Log.e(TAG, "unknown type " + type);
+                return "?";
+        }
     }
 
     GenerateFragment.Listener activityCallback;
@@ -379,6 +398,9 @@ public class GenerateFragment extends Fragment {
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
 
         void setTitle(String title);
+
+        void setToolbarButton(int type);
+
     }
 
     @Override

@@ -57,11 +57,8 @@ public class SendFragment extends Fragment {
 
     private TextInputLayout etAddress;
     private TextInputLayout etPaymentId;
-    //TextInputLayout etAmount;
+
     private ExchangeView evAmount;
-    private TextView tvAmountB;
-    private Spinner sCurrencyA;
-    private Spinner sCurrencyB;
 
     private Button bScan;
     private Spinner sMixin;
@@ -102,9 +99,6 @@ public class SendFragment extends Fragment {
         etAddress = (TextInputLayout) view.findViewById(R.id.etAddress);
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
-        tvAmountB = (TextView) view.findViewById(R.id.tvAmountB);
-        sCurrencyA = (Spinner) view.findViewById(R.id.sCurrencyA);
-        sCurrencyB = (Spinner) view.findViewById(R.id.sCurrencyB);
 
         bScan = (Button) view.findViewById(R.id.bScan);
         bPrepareSend = (Button) view.findViewById(R.id.bPrepareSend);
@@ -137,18 +131,6 @@ public class SendFragment extends Fragment {
                     return true;
                 }
                 return false;
-            }
-        });
-
-        evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
-            @Override
-            public void onNewAmount(String xmr) {
-                if ((xmr != null)) {
-                    // stupid workaround to not show error on open of screen
-                    if ((checkAddressNoError() && checkAmountWithError()) || checkAmount()) {
-                        etPaymentId.requestFocus();
-                    }
-                }
             }
         });
 
@@ -406,9 +388,6 @@ public class SendFragment extends Fragment {
         }
         if ((data != null) && (data.amount <= 0)) {
             evAmount.focus();
-        } else {
-            etDummy.requestFocus();
-            Helper.hideKeyboard(getActivity());
         }
     }
 

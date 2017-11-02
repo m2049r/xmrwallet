@@ -143,6 +143,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabKeyL = (RelativeLayout) view.findViewById(R.id.fabKeyL);
         fabSeedL = (RelativeLayout) view.findViewById(R.id.fabSeedL);
 
+        fab_pulse = AnimationUtils.loadAnimation(getContext(), R.anim.fab_pulse);
         fab_open_screen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open_screen);
         fab_close_screen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close_screen);
         fab_open = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
@@ -208,6 +209,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         });
 
         loadPrefs();
+
         return view;
     }
 
@@ -267,6 +269,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         filterList();
         adapter.setInfos(displayedList);
         adapter.notifyDataSetChanged();
+        if (displayedList.isEmpty()) {
+            fab.startAnimation(fab_pulse);
+        } else {
+            fab.clearAnimation();
+        }
     }
 
     private void showInfo(@NonNull String name) {
@@ -381,6 +388,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private FrameLayout fabScreen;
     private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward, fab_open_screen, fab_close_screen;
+    private Animation fab_pulse;
 
     public boolean isFabOpen() {
         return isFabOpen;

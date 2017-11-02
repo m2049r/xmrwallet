@@ -5,6 +5,7 @@
 
     <string name="menu_testnet">Testnet</string>
     <string name="menu_about">About &#8230;</string>
+    <string name="menu_privacy">Privacy Policy &#8230;</string>
 
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
@@ -71,7 +72,7 @@
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Take</string>
+    <string name="label_wallet_receive">Receive</string>
     <string name="label_wallet_send">Give</string>
 
     <string name="title_amount">Amount</string>
@@ -89,9 +90,9 @@
     <string name="local_service_connected">monerujo Service Connected</string>
     <string name="local_service_disconnected">monerujo Service Disconnected</string>
 
-    <string name="status_synced">Synced</string>
+    <string name="status_synced">Synced:</string>
     <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Syncing:</string>
+    <string name="status_syncing">Scanning:</string>
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
@@ -132,6 +133,11 @@
     <string name="generate_spendkey_placeholder">300a54208ab0a638a8407a12e3de946da76f5a9ded303338452332ec7755210d</string>
     <string name="generate_mnemonic_placeholder">camp feline inflamed memoir afloat eight alerts females gutter cogs menu waveform gather tawny judge gusts yahoo doctor females biscuit alchemy reef agony austere camp</string>
     <string name="generate_restoreheight_placeholder">1307882</string>
+
+    <string name="generate_wallet_type_key">Keys</string>
+    <string name="generate_wallet_type_new">New</string>
+    <string name="generate_wallet_type_seed">Seed</string>
+    <string name="generate_wallet_type_view">View</string>
 
     <string name="generate_address_hint">Public Address</string>
     <string name="generate_viewkey_hint">View Key</string>
@@ -258,5 +264,5 @@
     <string name="fab_create_new">Create new wallet</string>
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
-    <string name="fab_restore_seed">Restore wallet 25 words seed</string>
+    <string name="fab_restore_seed">Restore wallet 25 word seed</string>
 </resources>
