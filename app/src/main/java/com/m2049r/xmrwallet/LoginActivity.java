@@ -250,7 +250,7 @@ public class LoginActivity extends AppCompatActivity
 
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
-        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false)) {
+        if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
             deleteWallet(walletFile);
             return true;
         } else {
@@ -355,7 +355,7 @@ public class LoginActivity extends AppCompatActivity
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
-        boolean success = copyWallet(walletFile, backupFile, true);
+        boolean success = copyWallet(walletFile, backupFile, true, true);
         Log.d(TAG, "copyWallet is " + success);
         return success;
     }
@@ -970,8 +970,8 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean backupMode) {
-        if (walletExists(dstWallet, true) && !backupMode) return false;
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite, boolean ignoreCacheError) {
+        if (walletExists(dstWallet, true) && !overwrite) return false;
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
         String srcName = srcWallet.getName();
@@ -981,8 +981,8 @@ public class LoginActivity extends AppCompatActivity
             try {
                 copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
             } catch (IOException ex) {
-                Log.d(TAG, "CACHE " + backupMode);
-                if (!backupMode) { // ignore cache backup error if backing up (can be resynced)
+                Log.d(TAG, "CACHE " + ignoreCacheError);
+                if (!ignoreCacheError) { // ignore cache backup error if backing up (can be resynced)
                     throw ex;
                 }
             }
