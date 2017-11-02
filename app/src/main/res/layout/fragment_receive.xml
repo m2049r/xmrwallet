@@ -50,13 +50,15 @@
         android:id="@+id/evAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16sp" />
+        android:layout_marginBottom="16sp"
+        android:layout_marginTop="16sp"
+        android:orientation="vertical"
+        android:paddingEnd="56dp"
+        android:paddingStart="56dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4sp"
-        android:layout_marginTop="8sp"
         android:orientation="horizontal"
         android:weightSum="10">
 
