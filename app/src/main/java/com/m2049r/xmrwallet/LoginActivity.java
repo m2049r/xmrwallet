@@ -49,7 +49,6 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.dialog.BetterHelpFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
-import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.LicensesFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
@@ -1066,7 +1065,6 @@ public class LoginActivity extends AppCompatActivity
             case R.id.action_create_help_seed:
                 BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_seed);
                 return true;
-
             case R.id.action_details_help:
                 BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_details);
                 return true;

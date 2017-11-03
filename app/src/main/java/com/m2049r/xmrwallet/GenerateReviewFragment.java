@@ -103,18 +103,6 @@ public class GenerateReviewFragment extends Fragment {
                 copyAddress();
             }
         });
-        view.findViewById(R.id.bCopySeed).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nocopy();
-            }
-        });
-        view.findViewById(R.id.bCopySepndKey).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nocopy();
-            }
-        });
         view.findViewById(R.id.bAdvancedInfo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
