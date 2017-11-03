@@ -164,6 +164,9 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             case R.id.action_help_tx_info:
                 BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_tx_details);
                 return true;
+            case R.id.action_help_sync:
+                BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_sync);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

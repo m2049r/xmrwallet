@@ -16,4 +16,12 @@
         android:title="@string/menu_info"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_help_sync"
+        android:icon="@drawable/ic_help_white_24dp"
+        android:orderInCategory="200"
+        android:title="@string/menu_help"
+        app:showAsAction="ifRoom" />
+
+
 </menu>
