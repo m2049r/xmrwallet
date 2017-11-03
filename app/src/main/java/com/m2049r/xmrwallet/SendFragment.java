@@ -195,8 +195,8 @@ public class SendFragment extends Fragment {
             public void onClick(View v) {
                 bSend.setEnabled(false);
                 boolean testnet = WalletManager.getInstance().isTestNet();
-                if (!testnet) {
-                    //send();
+                if (testnet) {
+                    send();
                 } else {
                     etNotes.setEnabled(false);
                     Handler handler = new Handler();
