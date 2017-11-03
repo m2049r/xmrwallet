@@ -194,6 +194,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             public void onButton(int type) {
                 switch (type) {
                     case Toolbar.BUTTON_BACK:
+                        onDisposeRequest();
                         onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
