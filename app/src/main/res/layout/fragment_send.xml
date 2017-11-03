@@ -20,7 +20,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4sp"
             android:layout_marginTop="4sp"
             android:orientation="horizontal"
             android:weightSum="10">
@@ -59,14 +58,16 @@
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4sp"
-            android:layout_marginTop="4sp" />
+            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16sp"
+            android:orientation="vertical"
+            android:paddingEnd="56dp"
+            android:paddingStart="56dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4sp"
-            android:layout_marginTop="4sp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -109,7 +110,7 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/MoneroLabel.Caps.Stealth.Small"
+                style="@style/MoneroLabel.Caps.Gray.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
@@ -119,6 +120,7 @@
 
             <Spinner
                 android:id="@+id/sMixin"
+                style="@style/MoneroSpinnerGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8sp"
@@ -128,6 +130,7 @@
 
             <Spinner
                 android:id="@+id/sPriority"
+                style="@style/MoneroSpinnerGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
