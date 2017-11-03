@@ -30,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,7 +44,6 @@ import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
@@ -195,8 +195,8 @@ public class SendFragment extends Fragment {
             public void onClick(View v) {
                 bSend.setEnabled(false);
                 boolean testnet = WalletManager.getInstance().isTestNet();
-                if (!testnet) {
-                    //send();
+                if (testnet) {
+                    send();
                 } else {
                     etNotes.setEnabled(false);
                     Handler handler = new Handler();
@@ -224,6 +224,30 @@ public class SendFragment extends Fragment {
                 send();
             }
         });
+
+        sMixin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // nothing (yet?)
+            }
+        });
+        sPriority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // nothing (yet?)
+            }
+        });
+
 
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());
@@ -347,8 +371,6 @@ public class SendFragment extends Fragment {
 
         BarcodeData popScannedData();
 
-        void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB);
-
         void setSubtitle(String subtitle);
 
         void setToolbarButton(int type);
@@ -388,6 +410,9 @@ public class SendFragment extends Fragment {
         }
         if ((data != null) && (data.amount <= 0)) {
             evAmount.focus();
+        } else {
+            etDummy.requestFocus();
+            Helper.hideKeyboard(getActivity());
         }
     }
 

@@ -36,6 +36,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
@@ -160,6 +161,12 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             case R.id.action_share:
                 onShareTxInfo();
                 return true;
+            case R.id.action_help_tx_info:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_tx_details);
+                return true;
+            case R.id.action_help_sync:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_sync);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -187,6 +194,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
             public void onButton(int type) {
                 switch (type) {
                     case Toolbar.BUTTON_BACK:
+                        onDisposeRequest();
                         onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
@@ -781,10 +789,5 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     void startReceiveFragment(Bundle extras) {
         replaceFragment(new ReceiveFragment(), null, extras);
         Log.d(TAG, "ReceiveFragment placed");
-    }
-
-    @Override
-    public void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB) {
-        new AsyncExchangeRate(listener).execute(currencyA, currencyB);
     }
 }

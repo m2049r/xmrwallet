@@ -47,9 +47,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.AboutFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
-import com.m2049r.xmrwallet.dialog.LicensesFragment;
+import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -1053,14 +1053,23 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_create_help:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.raw.help_create);
+            case R.id.action_create_help_new:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_new);
+                return true;
+            case R.id.action_create_help_keys:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_keys);
+                return true;
+            case R.id.action_create_help_view:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_view);
+                return true;
+            case R.id.action_create_help_seed:
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_seed);
                 return true;
             case R.id.action_details_help:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.raw.help_details);
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_details);
                 return true;
             case R.id.action_license_info:
-                LicensesFragment.displayLicensesFragment(getSupportFragmentManager());
+                AboutFragment.displayHelp(getSupportFragmentManager(), R.string.about_licenses);
                 return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());

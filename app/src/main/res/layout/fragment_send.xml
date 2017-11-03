@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16sp"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="0sp"
             android:orientation="vertical"
             android:paddingEnd="56dp"
             android:paddingStart="56dp" />
@@ -87,6 +87,7 @@
                     android:layout_weight="10"
                     android:hint="@string/send_paymentid_hint"
                     android:imeOptions="actionDone"
+                    android:backgroundTint="@color/moneroGray"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart" />
             </android.support.design.widget.TextInputLayout>
@@ -100,7 +101,8 @@
                 android:layout_marginStart="8sp"
                 android:background="?android:selectableItemBackground"
                 android:drawableTop="@drawable/ic_settings_orange_24dp"
-                android:text="@string/send_generate_paymentid_hint" />
+                android:text="@string/send_generate_paymentid_hint"
+                android:textColor="@color/moneroGray" />
         </LinearLayout>
 
         <LinearLayout

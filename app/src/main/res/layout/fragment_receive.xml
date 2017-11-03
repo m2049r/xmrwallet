@@ -92,6 +92,7 @@
             android:background="?android:selectableItemBackground"
             android:drawableTop="@drawable/ic_settings_orange_24dp"
             android:text="@string/send_generate_paymentid_hint"
+            android:textColor="@color/moneroGray"
             android:visibility="visible" />
 
     </LinearLayout>

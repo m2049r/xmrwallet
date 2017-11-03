@@ -29,14 +29,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
-public class HelpFragment extends DialogFragment {
+public class AboutFragment extends DialogFragment {
     static final String TAG = "HelpFragment";
     private static final String HELP_ID = "HELP_ID";
 
-    public static HelpFragment newInstance(int helpResourceId) {
-        HelpFragment fragment = new HelpFragment();
+    public static AboutFragment newInstance(int helpResourceId) {
+        AboutFragment fragment = new AboutFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(HELP_ID, helpResourceId);
         fragment.setArguments(bundle);
@@ -50,21 +51,25 @@ public class HelpFragment extends DialogFragment {
             ft.remove(prev);
         }
 
-        DialogFragment helpFragment = HelpFragment.newInstance(helpResourceId);
+        DialogFragment helpFragment = AboutFragment.newInstance(helpResourceId);
         helpFragment.show(ft, TAG);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_help, null);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_about, null);
 
         int helpId = 0;
         Bundle arguments = getArguments();
         if (arguments != null) {
             helpId = arguments.getInt(HELP_ID);
         }
-        if (helpId > 0)
+        if (helpId > 0) {
             ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getString(helpId)));
+        }
+
+        TextView text = (TextView) view.findViewById(R.id.tvVersion);
+        text.setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);

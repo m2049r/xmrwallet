@@ -183,6 +183,7 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
                 if (position != 0) { // if not XMR, select XMR on other
                     sCurrencyA.setSelection(0, true);
                 }
+                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
                 doExchange();
             }
 
@@ -263,10 +264,6 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
             etAmount.setError(null);
         }
         return ok;
-    }
-
-    int selectedNotXmrCurrency() {
-        return Math.max(getCurrencyA(), getCurrencyB());
     }
 
     public void doExchange() {
@@ -351,7 +348,9 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
     public void exchangeFailed() {
         hideProgress();
         exchange(0);
-        // TODO Toast it failed - I think this happens elsewhere already
+        if (onFailedExchangeListener != null) {
+            onFailedExchangeListener.onFailedExchange();
+        }
     }
 
     // callback from AsyncExchangeRate when we have a rate

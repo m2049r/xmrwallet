@@ -4,14 +4,14 @@
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_testnet">Testnet</string>
-    <string name="menu_about">About &#8230;</string>
-    <string name="menu_privacy">Privacy Policy &#8230;</string>
+    <string name="menu_about">About</string>
+    <string name="menu_privacy">Privacy Policy</string>
 
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
     <string name="menu_info">Details</string>
-    <string name="menu_receive">QR Receive</string>
-    <string name="menu_rename">Rename</string>
+    <string name="menu_receive">Receive</string>
+    <string name="menu_rename">Rename &#8230;</string>
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
 
@@ -49,9 +49,6 @@
     <string name="status_wallet_connect_timeout">Daemon connection timed out!\nTry again or another!</string>
     <string name="status_working">Working on it &#8230;</string>
     <string name="status_wallet_disconnected">Disconnected</string>
-
-
-    <string name="status_exchanging">&#8230;</string>
 
     <string name="status_transaction_sent">Transaction sent!</string>
     <string name="status_transaction_failed">Transaction failed!</string>
@@ -216,7 +213,7 @@
 
     <string name="receive_generate_hint">Show me the QR Code</string>
     <string name="receive_paymentid_button">Generate</string>
-    <string name="receive_paymentid_hint">Payment ID</string>
+    <string name="receive_paymentid_hint">Payment ID (optional)</string>
     <string name="receive_amount_hint">Amount</string>
     <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Could not open wallet!</string>

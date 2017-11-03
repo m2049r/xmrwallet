@@ -422,7 +422,21 @@ public class GenerateFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.create_wallet_menu, menu);
+        switch (type) {
+            case TYPE_KEY:
+                inflater.inflate(R.menu.create_wallet_keys, menu);
+                break;
+            case TYPE_NEW:
+                inflater.inflate(R.menu.create_wallet_new, menu);
+                break;
+            case TYPE_SEED:
+                inflater.inflate(R.menu.create_wallet_seed, menu);
+                break;
+            case TYPE_VIEWONLY:
+                inflater.inflate(R.menu.create_wallet_view, menu);
+                break;
+            default:
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 }

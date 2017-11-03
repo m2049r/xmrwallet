@@ -19,6 +19,7 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -79,6 +80,12 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     protected void onFinishInflate() {
         super.onFinishInflate();
         toolbarImage = (ImageView) findViewById(R.id.toolbarImage);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            // the vector image does not work well for androis < Nougat
+            toolbarImage.getLayoutParams().width = (int) getResources().getDimension(R.dimen.logo_width);
+            toolbarImage.setImageResource(R.drawable.logo_horizontol_xmrujo);
+        }
+
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
         toolbarSubtitle = (TextView) findViewById(R.id.toolbarSubtitle);
         bDonate = (Button) findViewById(R.id.bDonate);

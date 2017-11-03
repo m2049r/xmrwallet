@@ -6,7 +6,14 @@
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/menu_help"
+        android:title="@string/menu_share"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_help_tx_info"
+        android:icon="@drawable/ic_help_white_24dp"
+        android:orderInCategory="200"
+        android:title="@string/menu_help"
+        app:showAsAction="ifRoom" />
 
 </menu>
