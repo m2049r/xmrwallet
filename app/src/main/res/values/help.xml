@@ -86,10 +86,10 @@
         You can use a Payment ID to identify the reason you sent Monero between two parties this is
         fully optional and private. For example it can allow a Business to reconcile your transaction
         with an item you bought.
-        <h2>TXID</h2>
+        <h2>TX ID</h2>
         This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
         Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TXKEY / Transaction Private Key</h2>
+        <h2>TX KEY (Transaction Key)</h2>
         This is your transaction private key, keep this safe as revealing this to a third party
         reveals which signature in a ring is yours, thereby making your transaction transparent.
         <h2>Block</h2>
