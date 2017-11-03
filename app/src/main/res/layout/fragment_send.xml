@@ -87,6 +87,7 @@
                     android:layout_weight="10"
                     android:hint="@string/send_paymentid_hint"
                     android:imeOptions="actionDone"
+                    android:backgroundTint="@color/moneroGray"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart" />
             </android.support.design.widget.TextInputLayout>

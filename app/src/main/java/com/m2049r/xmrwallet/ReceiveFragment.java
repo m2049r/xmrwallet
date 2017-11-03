@@ -112,13 +112,6 @@ public class ReceiveFragment extends Fragment {
                 generateQr();
             }
         });
-/*
-        evAmount.setOnAmountInvalidatedListener(new ExchangeView.OnAmountInvalidatedListener() {
-            @Override
-            public void onAmountInvalidated() {
-                clearQR();
-            }
-        });
 
         evAmount.setOnFailedExchangeListener(new ExchangeView.OnFailedExchangeListener() {
             @Override
@@ -126,7 +119,7 @@ public class ReceiveFragment extends Fragment {
                 Toast.makeText(getActivity(), getString(R.string.message_exchange_failed), Toast.LENGTH_LONG).show();
             }
         });
-*/
+
         etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
