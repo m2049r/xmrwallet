@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Create Wallet - New</h1>
+        <p>You need a new Monero Address - great!</p>
+        <p>Enter a unique wallet name and password.
+        The password is used for securing your wallet data on the device. Use a strong password -
+        even better use a passphrase.</p>
+        <h2>Note your Mnemonic Seed!</h3>
+        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
+        This is the only data needed to recover your wallet at a later point
+        and gain full access to your funds.
+        Keeping this secure and private is very important, as it gives <em>anyone</em>
+        full access to your funds!</p>
+        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
+        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
+        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
+        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
+        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
+        and secure places.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Create Wallet - Seed</h1>
+        <p>You already have a Monero Address and want to recover the transactions from the blockchain.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.</p>
+        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Create Wallet - Keys</h1>
+        <p>You are recovering your wallet using your keys.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.<p>
+        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Create Wallet - View</h1>
+        <p>You just want to monitor incoming transactions to a wallet.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.<p>
+        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Wallet Details</h1>
+        <h2>Public address</h2>
+        Your public address is like your bank account number you can share this with anyone without
+        having to fear losing your Monero. People will send Monero to your wallet using this address.
+        <h2>Mnemonic Seed</h2>
+        This is the only data needed to recover your wallet at a later point and gain full access to
+        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
+        access to your Monero! If you haven’t written this down somewhere safe please do!
+        <h2>View key</h2>
+        Your view key can be used to monitor incoming transactions to your wallet without giving
+        permission to spend the funds inside your wallet.
+        <h2>Spend key</h2>
+        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
+        anyone this key, keep it safe like your Mnemonic Seed.
+    ]]></string>
+
+    <string name="help_sync"><![CDATA[
+        <h1>Scanning</h1>
+        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
+        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
+        stores information to your phone which belongs to your wallet. Sometimes it can take a while
+        because you haven’t synced in a long time.
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Transaction Details</h1>
+        <h2>Destination</h2>
+        This is the public address of the wallet you sent Monero to
+        <h2>PaymentID</h2>
+        You can use a Payment ID to identify the reason you sent Monero between two parties this is
+        fully optional and private. For example it can allow a Business to reconcile your transaction
+        with an item you bought.
+        <h2>TXID</h2>
+        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
+        Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>TXKEY / Transaction Private Key</h2>
+        This is your transaction private key, keep this safe as revealing this to a third party
+        reveals which signature in a ring is yours, thereby making your transaction transparent.
+        <h2>Block</h2>
+        This was the block your transaction was included in.
+    ]]></string>
+
+</resources>
