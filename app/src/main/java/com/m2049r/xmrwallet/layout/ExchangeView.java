@@ -284,6 +284,7 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
 
     public void exchange(double rate) {
         if (getCurrencyA() == 0) {
+            if (xmrAmount == null) return;
             if (!xmrAmount.isEmpty() && (rate > 0)) {
                 double amountB = rate * Double.parseDouble(xmrAmount);
                 notXmrAmount = Helper.getFormattedAmount(amountB, getCurrencyB() == 0);
@@ -292,6 +293,7 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
             }
             tvAmountB.setText(notXmrAmount);
         } else if (getCurrencyB() == 0) {
+            if (notXmrAmount == null) return;
             if (!notXmrAmount.isEmpty() && (rate > 0)) {
                 double amountB = rate * Double.parseDouble(notXmrAmount);
                 setXmr(Helper.getFormattedAmount(amountB, true));
