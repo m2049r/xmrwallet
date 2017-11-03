@@ -790,9 +790,4 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         replaceFragment(new ReceiveFragment(), null, extras);
         Log.d(TAG, "ReceiveFragment placed");
     }
-
-    @Override
-    public void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB) {
-        new AsyncExchangeRate(listener).execute(currencyA, currencyB);
-    }
 }

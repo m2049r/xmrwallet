@@ -347,8 +347,6 @@ public class SendFragment extends Fragment {
 
         BarcodeData popScannedData();
 
-        void onExchange(AsyncExchangeRate.Listener listener, String currencyA, String currencyB);
-
         void setSubtitle(String subtitle);
 
         void setToolbarButton(int type);
