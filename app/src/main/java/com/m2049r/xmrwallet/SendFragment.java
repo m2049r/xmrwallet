@@ -388,6 +388,9 @@ public class SendFragment extends Fragment {
         }
         if ((data != null) && (data.amount <= 0)) {
             evAmount.focus();
+        } else {
+            etDummy.requestFocus();
+            Helper.hideKeyboard(getActivity());
         }
     }
 
