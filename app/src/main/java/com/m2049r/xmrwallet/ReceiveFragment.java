@@ -366,7 +366,7 @@ public class ReceiveFragment extends Fragment {
 
     private Bitmap getMoneroLogo() {
         if (logo == null) {
-            logo = Helper.getBitmap(getContext(), R.drawable.ic_monero_qr);
+            logo = Helper.getBitmap(getContext(), R.drawable.ic_monero_logo_b);
         }
         return logo;
     }
