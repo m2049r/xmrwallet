@@ -18,14 +18,21 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/about_version" />
+
+        <TextView
             android:id="@+id/tvHelp"
             style="@style/MoneroText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/header_top"
-            android:autoLink="web"
+            android:layout_marginBottom="@dimen/header_top"
             android:gravity="start"
-            android:textSize="14sp"
+            android:textSize="10sp"
             tools:text="@string/menu_help" />
 
     </LinearLayout>

@@ -16,37 +16,28 @@
 
 package com.m2049r.xmrwallet.dialog;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-public class BetterHelpFragment extends DialogFragment {
-    static final String TAG = "BetterHelpFragment";
+public class AboutFragment extends DialogFragment {
+    static final String TAG = "HelpFragment";
     private static final String HELP_ID = "HELP_ID";
 
-    public static BetterHelpFragment newInstance(int helpResourceId) {
-        BetterHelpFragment fragment = new BetterHelpFragment();
+    public static AboutFragment newInstance(int helpResourceId) {
+        AboutFragment fragment = new AboutFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(HELP_ID, helpResourceId);
         fragment.setArguments(bundle);
@@ -60,21 +51,25 @@ public class BetterHelpFragment extends DialogFragment {
             ft.remove(prev);
         }
 
-        DialogFragment helpFragment = BetterHelpFragment.newInstance(helpResourceId);
+        DialogFragment helpFragment = AboutFragment.newInstance(helpResourceId);
         helpFragment.show(ft, TAG);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_better_help, null);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_about, null);
 
         int helpId = 0;
         Bundle arguments = getArguments();
         if (arguments != null) {
             helpId = arguments.getInt(HELP_ID);
         }
-        if (helpId > 0)
+        if (helpId > 0) {
             ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getString(helpId)));
+        }
+
+        TextView text = (TextView) view.findViewById(R.id.tvVersion);
+        text.setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);

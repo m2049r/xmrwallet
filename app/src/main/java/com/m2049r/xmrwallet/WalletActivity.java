@@ -36,7 +36,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.dialog.BetterHelpFragment;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
@@ -162,10 +162,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 onShareTxInfo();
                 return true;
             case R.id.action_help_tx_info:
-                BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_tx_details);
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_tx_details);
                 return true;
             case R.id.action_help_sync:
-                BetterHelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_sync);
+                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_sync);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
