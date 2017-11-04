@@ -179,11 +179,16 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
 
         sCurrencyB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onItemSelected(final AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position != 0) { // if not XMR, select XMR on other
                     sCurrencyA.setSelection(0, true);
                 }
-                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                parentView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                    }
+                });
                 doExchange();
             }
 

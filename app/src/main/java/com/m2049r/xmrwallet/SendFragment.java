@@ -227,8 +227,13 @@ public class SendFragment extends Fragment {
 
         sMixin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+            public void onItemSelected(final AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                parentView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                    }
+                });
             }
 
             @Override
@@ -238,8 +243,13 @@ public class SendFragment extends Fragment {
         });
         sPriority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+            public void onItemSelected(final AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                parentView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                    }
+                });
             }
 
             @Override
