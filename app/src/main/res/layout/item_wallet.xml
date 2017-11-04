@@ -13,8 +13,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_login"
-        android:orientation="horizontal">
+        android:background="@drawable/selector_login">
 
             <TextView
                 android:id="@+id/tvName"
