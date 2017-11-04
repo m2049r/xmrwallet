@@ -5,7 +5,7 @@
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8sp">
+    android:layout_margin="8dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4sp"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -44,7 +44,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="16sp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/ic_scan"
                 android:text="@string/send_qr_hint" />
         </LinearLayout>
@@ -53,8 +53,8 @@
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16sp"
-            android:layout_marginTop="0sp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:paddingEnd="56dp"
             android:paddingStart="56dp" />
@@ -62,7 +62,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4sp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -91,9 +91,9 @@
                 android:id="@+id/bPaymentId"
                 style="@style/MoneroText.Button.Small"
                 android:layout_width="56dp"
-                android:layout_height="56sp"
+                android:layout_height="56dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="8sp"
+                android:layout_marginStart="8dp"
                 android:background="?android:selectableItemBackground"
                 android:drawableTop="@drawable/ic_settings_orange_24dp"
                 android:text="@string/send_generate_paymentid_hint"
@@ -102,8 +102,8 @@
 
         <EditText
             android:id="@+id/etDummy"
-            android:layout_width="0sp"
-            android:layout_height="0sp" />
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:layout_marginEnd="8sp"
+                android:layout_marginEnd="8dp"
                 android:text="Advanced:"
                 android:textAlignment="textEnd" />
 
@@ -125,7 +125,7 @@
                 style="@style/MoneroSpinnerGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8sp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:entries="@array/mixin"
                 android:textAlignment="center" />
@@ -146,10 +146,10 @@
             style="@style/MoneroButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4sp"
-            android:layout_marginTop="4sp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:enabled="true"
-            android:minHeight="36sp"
+            android:minHeight="36dp"
             android:text="@string/send_prepare_hint" />
 
         <ProgressBar
@@ -164,8 +164,8 @@
             android:id="@+id/llConfirmSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4sp"
-            android:layout_marginTop="4sp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -174,8 +174,8 @@
                 style="@style/MoneroButton.Alert"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4sp"
-                android:minHeight="36sp"
+                android:layout_marginBottom="4dp"
+                android:minHeight="36dp"
                 android:text="@string/send_dispose_hint" />
 
             <LinearLayout
@@ -187,9 +187,9 @@
                 <TextView
                     android:id="@+id/tvTxAmountLabel"
                     style="@style/MoneroLabel.Caps"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8sp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:text="@string/send_amount_label"
                     android:textAlignment="textEnd" />
@@ -197,9 +197,9 @@
                 <TextView
                     android:id="@+id/tvTxAmount"
                     style="@style/MoneroText"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8sp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="2"
                     android:textAlignment="textEnd"
                     tools:text="143.008000000000" />
@@ -214,9 +214,9 @@
                 <TextView
                     android:id="@+id/tvTxFeeLabel"
                     style="@style/MoneroLabel.Caps.Gray"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4sp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:text="@string/send_fee_label"
                     android:textAlignment="textEnd" />
@@ -224,9 +224,9 @@
                 <TextView
                     android:id="@+id/tvTxFee"
                     style="@style/MoneroText.Gray"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8sp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="2"
                     android:textAlignment="textEnd"
                     tools:text="0.006817000000" />
@@ -241,9 +241,9 @@
                 <TextView
                     android:id="@+id/tvTxTotalLabel"
                     style="@style/MoneroLabel.Caps.Black"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8sp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:text="@string/send_total_label"
                     android:textAlignment="textEnd" />
@@ -251,9 +251,9 @@
                 <TextView
                     android:id="@+id/tvTxTotal"
                     style="@style/MoneroText.Black"
-                    android:layout_width="0sp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8sp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="2"
                     android:textAlignment="textEnd"
                     tools:text="143.014817000000" />
@@ -264,7 +264,7 @@
                 style="@style/MoneroEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4sp"
+                android:layout_marginTop="4dp"
                 android:backgroundTint="@color/moneroGray"
                 android:hint="@string/send_notes_hint"
                 android:imeOptions="actionDone"
@@ -276,10 +276,10 @@
                 style="@style/MoneroButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4sp"
-                android:layout_marginTop="4sp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
                 android:enabled="false"
-                android:minHeight="36sp"
+                android:minHeight="36dp"
                 android:text="@string/send_send_hint" />
 
             <Button
@@ -287,8 +287,8 @@
                 style="@style/MoneroButton.ReallySend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8sp"
-                android:layout_marginTop="16sp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
                 android:enabled="false"
                 android:padding="8dp"
                 android:text="@string/send_really_send_hint"

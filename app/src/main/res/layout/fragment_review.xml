@@ -3,7 +3,7 @@
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8sp">
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -137,7 +137,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/section_top"
             android:background="?android:selectableItemBackground"
-            android:drawablePadding="4sp"
+            android:drawablePadding="4dp"
             android:drawableStart="@drawable/ic_add_circle_outline"
             android:text="@string/label_wallet_advanced_details"
             android:visibility="gone" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -9,35 +10,30 @@
     card_view:cardCornerRadius="1dp"
     card_view:cardElevation="8dp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_login"
         android:orientation="horizontal">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:orientation="vertical"
-            android:padding="16dp">
-
             <TextView
                 android:id="@+id/tvName"
+                android:layout_marginStart="32dp"
+                android:layout_toStartOf="@+id/ibOptions"
                 style="@style/MoneroText.Label"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="My Wallet" />
+                tools:text="My Wallet" />
 
             <TextView
+                android:layout_toStartOf="@+id/ibOptions"
                 android:id="@+id/tvAddress"
+                android:layout_marginStart="32dp"
                 style="@style/MoneroText.Small"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvName"
-                android:text="4AdkPJox...g3viqCuk" />
-        </RelativeLayout>
+                tools:text="4AdkPJox...g3viqCuk" />
 
         <ImageButton
             android:id="@+id/ibOptions"

@@ -6,13 +6,13 @@
 
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="logo_width">129dp</dimen>
+    <dimen name="logo_width">128dp</dimen>
 
     <dimen name="event_title_text_size">@dimen/abc_text_size_title_material_toolbar</dimen>
 
-    <dimen name="header_top_first">12sp</dimen>
-    <dimen name="header_top">16sp</dimen>
-    <dimen name="section_top">24sp</dimen>
-    <dimen name="data_top">8sp</dimen>
+    <dimen name="header_top_first">12dp</dimen>
+    <dimen name="header_top">16dp</dimen>
+    <dimen name="section_top">24dp</dimen>
+    <dimen name="data_top">8dp</dimen>
 
 </resources>

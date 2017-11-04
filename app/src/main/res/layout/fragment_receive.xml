@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8sp"
+    android:layout_margin="8dp"
     android:orientation="vertical">
 
     <ProgressBar
@@ -12,7 +12,7 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4sp"
+        android:layout_marginBottom="4dp"
         android:indeterminate="true"
         android:visibility="gone" />
 
@@ -103,10 +103,10 @@
         style="@style/MoneroButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4sp"
-        android:layout_marginTop="4sp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:enabled="false"
-        android:minHeight="36sp"
+        android:minHeight="36dp"
         android:text="@string/receive_generate_hint" />
 
     <ImageView
@@ -117,7 +117,7 @@
 
     <EditText
         android:id="@+id/etDummy"
-        android:layout_width="0sp"
-        android:layout_height="0sp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 </LinearLayout>

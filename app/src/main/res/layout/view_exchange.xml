@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="LinearLayout"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -11,7 +12,7 @@
 
         <Spinner
             android:id="@+id/sCurrencyA"
-            android:layout_width="56sp"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"
