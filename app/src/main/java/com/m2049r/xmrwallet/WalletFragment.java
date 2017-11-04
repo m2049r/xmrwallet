@@ -244,6 +244,20 @@ public class WalletFragment extends Fragment
         }
     }
 
+    boolean walletLoaded = false;
+
+    public void onLoaded() {
+        walletLoaded = true;
+        showReceive();
+    }
+
+    private void showReceive() {
+        if (walletLoaded) {
+            bReceive.setVisibility(View.VISIBLE);
+            bReceive.setEnabled(true);
+        }
+    }
+
     public void setProgressText(final String text) {
         tvProgress.setText(text);
     }
@@ -373,5 +387,6 @@ public class WalletFragment extends Fragment
         Log.d(TAG, "onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE);
+        showReceive();
     }
 }

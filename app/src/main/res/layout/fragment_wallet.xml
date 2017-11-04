@@ -137,11 +137,11 @@
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_hand"
-                android:enabled="true"
+                android:enabled="false"
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:text="@string/label_wallet_receive"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/bSend"
@@ -151,7 +151,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_send"
-                android:enabled="true"
+                android:enabled="false"
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:text="@string/label_wallet_send"

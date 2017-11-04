@@ -447,6 +447,16 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         } else {
             haveWallet = true;
             invalidateOptionsMenu();
+
+            final WalletFragment walletFragment = (WalletFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if (walletFragment != null) {
+                        walletFragment.onLoaded();
+                    }
+                }
+            });
         }
     }
 
