@@ -1,70 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8sp"
-    android:orientation="vertical">
+    android:layout_margin="8sp">
 
-    <EditText
-        android:id="@+id/etDummy"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/label_daemon">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.m2049r.xmrwallet.layout.DropDownEditText
-            android:id="@+id/etDaemonAddress"
-            style="@style/MoneroEdit.Small"
+        <EditText
+            android:id="@+id/etDummy"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:hint="@string/prompt_daemon"
-            android:imeOptions="actionDone"
-            android:inputType="textWebEmailAddress|textNoSuggestions"
-            android:maxLines="1"
-            android:textIsSelectable="true" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_margin="16dp"
+            android:hint="@string/label_daemon">
 
-    <TextView
-        style="@style/MoneroLabel.Heading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8sp"
-        android:text="@string/label_login_wallets" />
+            <com.m2049r.xmrwallet.layout.DropDownEditText
+                android:id="@+id/etDaemonAddress"
+                style="@style/MoneroEdit.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:hint="@string/prompt_daemon"
+                android:imeOptions="actionDone"
+                android:inputType="textWebEmailAddress|textNoSuggestions"
+                android:maxLines="1"
+                android:textIsSelectable="true" />
+        </android.support.design.widget.TextInputLayout>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ScrollView
+        <TextView
+            style="@style/MoneroLabel.Heading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8sp"
+            android:text="@string/label_login_wallets" />
 
-            <ImageView
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:padding="48dp"
-                android:src="@drawable/gunther_desaturated" />
-        </ScrollView>
+                android:fillViewport="true">
 
-        <android.support.v7.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="72dp"
-            app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/item_wallet" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:padding="48dp"
+                    android:src="@drawable/gunther_desaturated" />
+            </ScrollView>
 
-        <include layout="@layout/layout_fabmenu" />
-    </FrameLayout>
-</LinearLayout>
+            <android.support.v7.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="72dp"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/item_wallet" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <include layout="@layout/layout_fabmenu" />
+</FrameLayout>
