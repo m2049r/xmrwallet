@@ -333,7 +333,8 @@ public class WalletService extends Service {
                         Wallet myWallet = getWallet();
                         Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
-                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
+                        if ((pendingTransaction == null)
+                                || (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok)) {
                             Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());
                             myWallet.disposePendingTransaction(); // it's broken anyway
                             if (observer != null) observer.onSentTransaction(false);
