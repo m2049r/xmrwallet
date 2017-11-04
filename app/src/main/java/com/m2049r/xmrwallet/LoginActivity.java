@@ -1054,22 +1054,22 @@ public class LoginActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_help_new:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_new);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_create_new);
                 return true;
             case R.id.action_create_help_keys:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_keys);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_create_keys);
                 return true;
             case R.id.action_create_help_view:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_view);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_create_view);
                 return true;
             case R.id.action_create_help_seed:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_create_seed);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_create_seed);
                 return true;
             case R.id.action_details_help:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_details);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_details);
                 return true;
             case R.id.action_license_info:
-                AboutFragment.displayHelp(getSupportFragmentManager(), R.string.about_licenses);
+                AboutFragment.display(getSupportFragmentManager());
                 return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());

@@ -44,7 +44,6 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.AsyncExchangeRate;
 import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
@@ -162,10 +161,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
                 onShareTxInfo();
                 return true;
             case R.id.action_help_tx_info:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_tx_details);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_tx_details);
                 return true;
             case R.id.action_help_sync:
-                HelpFragment.displayHelp(getSupportFragmentManager(), R.string.help_sync);
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_sync);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -14,13 +14,8 @@
  * limitations under the License.
  */
 
-/**
- * Based on work by Adam Speakman http://speakman.net.nz
- */
-
 package com.m2049r.xmrwallet.dialog;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -32,47 +27,27 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
-import com.m2049r.xmrwallet.util.Helper;
 
 public class PrivacyFragment extends DialogFragment {
     static final String TAG = "PrivacyFragment";
-    private static final String FRAGMENT_TAG = "com.m2049r.xmrwalelt.dialog.PrivacyFragment";
 
-    /**
-     * Creates a new instance of LicensesFragment with no Close button.
-     *
-     * @return A new licenses fragment.
-     */
     public static PrivacyFragment newInstance() {
         return new PrivacyFragment();
     }
 
-    /**
-     * Builds and displays a licenses fragment with no Close button. Requires
-     * "/res/raw/licenses.html" and "/res/layout/licenses_fragment.xml" to be
-     * present.
-     *
-     * @param fm A fragment manager instance used to display this LicensesFragment.
-     */
     public static void display(FragmentManager fm) {
         FragmentTransaction ft = fm.beginTransaction();
-        Fragment prev = fm.findFragmentByTag(FRAGMENT_TAG);
+        Fragment prev = fm.findFragmentByTag(TAG);
         if (prev != null) {
             ft.remove(prev);
         }
-        ft.addToBackStack(null);
 
-        // Create and show the dialog.
-        DialogFragment newFragment = PrivacyFragment.newInstance();
-        newFragment.show(ft, FRAGMENT_TAG);
+        PrivacyFragment.newInstance().show(ft, TAG);
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_privacy_policy, null);

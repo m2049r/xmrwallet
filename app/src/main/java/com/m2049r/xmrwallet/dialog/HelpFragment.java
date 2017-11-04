@@ -43,15 +43,14 @@ public class HelpFragment extends DialogFragment {
         return fragment;
     }
 
-    public static void displayHelp(FragmentManager fm, int helpResourceId) {
+    public static void display(FragmentManager fm, int helpResourceId) {
         FragmentTransaction ft = fm.beginTransaction();
         Fragment prev = fm.findFragmentByTag(TAG);
         if (prev != null) {
             ft.remove(prev);
         }
 
-        DialogFragment helpFragment = HelpFragment.newInstance(helpResourceId);
-        helpFragment.show(ft, TAG);
+        HelpFragment.newInstance(helpResourceId).show(ft, TAG);
     }
 
     @Override
