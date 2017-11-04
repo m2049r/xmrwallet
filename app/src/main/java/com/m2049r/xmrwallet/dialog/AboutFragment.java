@@ -33,43 +33,27 @@ import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
 public class AboutFragment extends DialogFragment {
-    static final String TAG = "HelpFragment";
-    private static final String HELP_ID = "HELP_ID";
+    static final String TAG = "AboutFragment";
 
-    public static AboutFragment newInstance(int helpResourceId) {
-        AboutFragment fragment = new AboutFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(HELP_ID, helpResourceId);
-        fragment.setArguments(bundle);
-        return fragment;
+    public static AboutFragment newInstance() {
+        return new AboutFragment();
     }
 
-    public static void displayHelp(FragmentManager fm, int helpResourceId) {
+    public static void display(FragmentManager fm) {
         FragmentTransaction ft = fm.beginTransaction();
         Fragment prev = fm.findFragmentByTag(TAG);
         if (prev != null) {
             ft.remove(prev);
         }
 
-        DialogFragment helpFragment = AboutFragment.newInstance(helpResourceId);
-        helpFragment.show(ft, TAG);
+        AboutFragment.newInstance().show(ft, TAG);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_about, null);
-
-        int helpId = 0;
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            helpId = arguments.getInt(HELP_ID);
-        }
-        if (helpId > 0) {
-            ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getString(helpId)));
-        }
-
-        TextView text = (TextView) view.findViewById(R.id.tvVersion);
-        text.setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
+        ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getString(R.string.about_licenses)));
+        ((TextView) view.findViewById(R.id.tvVersion)).setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
