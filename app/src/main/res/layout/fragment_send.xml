@@ -12,11 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etDummy"
-            android:layout_width="0sp"
-            android:layout_height="0sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,9 +80,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
+                    android:backgroundTint="@color/moneroGray"
                     android:hint="@string/send_paymentid_hint"
                     android:imeOptions="actionDone"
-                    android:backgroundTint="@color/moneroGray"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart" />
             </android.support.design.widget.TextInputLayout>
@@ -104,6 +99,11 @@
                 android:text="@string/send_generate_paymentid_hint"
                 android:textColor="@color/moneroGray" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/etDummy"
+            android:layout_width="0sp"
+            android:layout_height="0sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
