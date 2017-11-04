@@ -2,9 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8sp"
-    android:paddingEnd="16sp"
-    android:paddingStart="16sp">
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100sp"
+            android:layout_height="100dp"
             android:src="@drawable/gunther_donate" />
 
         <TextView

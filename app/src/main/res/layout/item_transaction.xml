@@ -46,11 +46,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="16sp"
-            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="13"
             android:gravity="start"
-            android:text="0123456789abcdef" />
+            tools:text="0123456789abcdef" />
 
         <TextView
             android:id="@+id/tx_datetime"
@@ -60,7 +60,7 @@
             android:layout_gravity="center"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="2017-05-22 21:32" />
+            tools:text="2017-05-22 21:32" />
 
         <ImageView
             android:layout_width="wrap_content"
