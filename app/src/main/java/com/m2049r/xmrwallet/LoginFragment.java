@@ -65,6 +65,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
 
     EditText etDummy;
+    ImageView ivGunther;
     DropDownEditText etDaemonAddress;
     ArrayAdapter<String> nodeAdapter;
 
@@ -131,6 +132,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        ivGunther = (ImageView) view.findViewById(R.id.ivGunther);
         fabScreen = (FrameLayout) view.findViewById(R.id.fabScreen);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fabNew = (FloatingActionButton) view.findViewById(R.id.fabNew);
@@ -269,10 +271,18 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         filterList();
         adapter.setInfos(displayedList);
         adapter.notifyDataSetChanged();
+
+        // deal with Gunther & FAB animation
         if (displayedList.isEmpty()) {
             fab.startAnimation(fab_pulse);
+            if (ivGunther.getDrawable() == null) {
+                ivGunther.setImageResource(R.drawable.gunther_desaturated);
+            }
         } else {
             fab.clearAnimation();
+            if (ivGunther.getDrawable() != null) {
+                ivGunther.setImageDrawable(null);
+            }
         }
     }
 

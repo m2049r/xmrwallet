@@ -53,11 +53,11 @@
                 android:fillViewport="true">
 
                 <ImageView
+                    android:id="@+id/ivGunther"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:padding="48dp"
-                    android:src="@drawable/gunther_desaturated" />
+                    android:padding="48dp" />
             </ScrollView>
 
             <android.support.v7.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
