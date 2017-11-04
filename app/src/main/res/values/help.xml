@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Create Wallet - New</h1>
-        <p>You need a new Monero Address - great!</p>
+        <p>If you need a new Monero Address!</p>
         <p>Enter a unique wallet name and password.
         The password is used for securing your wallet data on the device. Use a strong password -
         even better use a passphrase.</p>
@@ -22,7 +22,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Create Wallet - Seed</h1>
-        <p>You already have a Monero Address and want to recover the transactions from the blockchain.</p>
+        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.</p>
         <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
@@ -33,7 +33,7 @@
 
     <string name="help_create_keys"><![CDATA[
         <h1>Create Wallet - Keys</h1>
-        <p>You are recovering your wallet using your keys.</p>
+        <p>If you are recovering your wallet using your keys!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.<p>
         <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
@@ -44,7 +44,7 @@
 
     <string name="help_create_view"><![CDATA[
         <h1>Create Wallet - View</h1>
-        <p>You just want to monitor incoming transactions to a wallet.</p>
+        <p>If you just want to monitor incoming transactions to a wallet!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.<p>
         <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
@@ -70,12 +70,44 @@
         anyone this key, keep it safe like your Mnemonic Seed.
     ]]></string>
 
-    <string name="help_sync"><![CDATA[
-        <h1>Scanning</h1>
+    <string name="help_list"><![CDATA[
+        <h1>Wallet List</h1>
+        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
+        in the internal storage of your device. You can use a file explorer app to see them.
+        You should make backups of this folder on a regular basis to off-device storage in
+        case your device explodes or gets stolen.</p>
+        <p>Select a wallet to open it or press the \"+\" to create a new one.
+        Or select one of the wallet operations:</p>
+        <h2>Details</h2>
+        <p>Show the wallet details, seed &amp; keys.</p>
+        <h2>Receive</h2>
+        <p>Make a QR code for receiving Moneroj.</p>
+        <h2>Rename</h2>
+        <p>Rename the wallet. Backups are not renamed.</p>
+        <h2>Backup</h2>
+        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
+        overwriting previous copies there.</p>
+        <h2>Archive</h2>
+        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
+        folder. If you no longer need your backups you should delete them with a file explorer or
+        secure delete app.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>The Wallet</h1>
+        <h2>Scanning</h2>
         Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
         scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
         stores information to your phone which belongs to your wallet. Sometimes it can take a while
         because you haven’t synced in a long time.
+        <h2>The Balance</h2>
+        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
+        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
+        as unconfirmed.
+        This happens as a result of how Monero is exchanged on the blockchain and how change works.
+        Read more about change at https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaction List</h2>
+        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
@@ -94,6 +126,30 @@
         reveals which signature in a ring is yours, thereby making your transaction transparent.
         <h2>Block</h2>
         This was the block your transaction was included in.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Send</h1>
+        <h2>Receiver’s address</h2>
+        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
+        your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
+        ensure you aren’t sending coins to the wrong address.</p>
+        <h2>Payment ID</h2>
+        <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
+        is fully optional and private. For example it can allow a business to reconcile your
+        transaction with an item you bought.<p>
+        <h2>Ring size</h2>
+        <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
+        we recommend you stick with a ring size of 5. Increasing the ring size above 5 increases
+        the amount of signers in a ring signature, theoretically providing increased plausible
+        deniability. However setting high ring sizes can also make your transaction stand out on
+        the blockchain.</p>
+        <h2>Priority</h2>
+        <p>This setting determines the speed at which your transaction will be included in the
+        blockchain. A high priority setting will correlate directly with a higher transaction fee
+        and the inverse is true for a low priority. Please note that if you set your transaction to
+        a low priority it can be hours before it is included on the blockchain. The default priority
+        is \"Medium\".</p>
     ]]></string>
 
 </resources>

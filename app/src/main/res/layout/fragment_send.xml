@@ -265,6 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4sp"
+                android:backgroundTint="@color/moneroGray"
                 android:hint="@string/send_notes_hint"
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
@@ -283,7 +284,7 @@
 
             <Button
                 android:id="@+id/bReallySend"
-                style="@style/MoneroButton.Alert"
+                style="@style/MoneroButton.ReallySend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8sp"
