@@ -85,6 +85,7 @@
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
+                        android:backgroundTint="@color/moneroGray"
                         android:hint="@string/tx_notes_hint"
                         android:inputType="textMultiLine"
                         android:textAlignment="textStart" />

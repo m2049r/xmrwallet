@@ -17,8 +17,15 @@
 
     <item
         android:id="@+id/action_privacy_policy"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         android:title="@string/menu_privacy"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_help_list"
+        android:icon="@drawable/ic_help_white_24dp"
+        android:orderInCategory="400"
+        android:title="@string/menu_help"
+        app:showAsAction="ifRoom" />
 
 </menu>

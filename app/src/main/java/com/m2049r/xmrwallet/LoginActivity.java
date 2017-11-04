@@ -1071,6 +1071,9 @@ public class LoginActivity extends AppCompatActivity
             case R.id.action_license_info:
                 AboutFragment.display(getSupportFragmentManager());
                 return true;
+            case R.id.action_help_list:
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_list);
+                return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
                 return true;
