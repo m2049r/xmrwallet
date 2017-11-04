@@ -72,22 +72,28 @@
 
     <string name="help_list"><![CDATA[
         <h1>Wallet List</h1>
+        <h2>Node</h2>
+        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
+        to download and store a copy of the whole blockchain itself. You can find a list of popular
+        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
+        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
+        <h2>Wallets</h2>
         <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
         in the internal storage of your device. You can use a file explorer app to see them.
         You should make backups of this folder on a regular basis to off-device storage in
         case your device explodes or gets stolen.</p>
         <p>Select a wallet to open it or press the \"+\" to create a new one.
         Or select one of the wallet operations:</p>
-        <h2>Details</h2>
+        <h3>Details</h3>
         <p>Show the wallet details, seed &amp; keys.</p>
-        <h2>Receive</h2>
+        <h3>Receive</h3>
         <p>Make a QR code for receiving Moneroj.</p>
-        <h2>Rename</h2>
+        <h3>Rename</h3>
         <p>Rename the wallet. Backups are not renamed.</p>
-        <h2>Backup</h2>
+        <h3>Backup</h3>
         <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
         overwriting previous copies there.</p>
-        <h2>Archive</h2>
+        <h3>Archive</h3>
         <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
         folder. If you no longer need your backups you should delete them with a file explorer or
         secure delete app.</p>
