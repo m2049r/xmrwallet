@@ -339,7 +339,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     //private static final String PREF_TESTNET = "testnet";
 
     private static final String PREF_DAEMONLIST_MAINNET =
-            "node.moneroworld.com:18089;node.xmrbackb.one:18081;node.xmr.be:18081";
+            "node.moneroworld.com:18089;node.xmrbackb.one;node.xmr.be";
+
+    private static final String PREF_DAEMONLIST_TESTNET =
+            "testnet.xmrchain.net";
 
     private NodeList daemonTestNet;
     private NodeList daemonMainNet;
@@ -348,7 +351,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
-        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, ""));
+        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
         setNet(isTestnet(), false);
     }
 
