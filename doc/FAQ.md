@@ -5,12 +5,12 @@
 
 ## What features does it have?
 
-- Uses monero v0.11.0.0
+- Uses Monero v0.11.0.0
 - Support for Android >= 5.0 with ARM processor
 - Testnet and Mainnet
 - Generate new wallets
-- Recover wallets form mnemonic seed or from keys
-- Create Watch Only wallets from address + viewkey
+- Recover wallets from mnemonic seed or from keys
+- Create *Watch Only* wallets from address + viewkey
 - Multiple wallets
 - View wallet details (address, keys, etc.)
 - View transactions including details and copy to clipboard
@@ -21,15 +21,15 @@
 - Only 5 decimal places shown in transactions (full amount in details - click on transaction)
 - All significant figures shown in balance
 - QR Code scanning - make sure to *ALWAYS* verify the scanned code is what it is advertised to be!
-- QR Code for receiving with conversion of XMR to USD/EUR and back through kraken API
+- QR Code for receiving with conversion of XMR to USD/EUR and back through Kraken API
 - Backup wallets to `backups` folder in main wallet folder (old backups are overwritten)
 - Rename wallets
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
 
 ## My new testnet wallet does not update
-Since testnet block times are very variable, the algorithm calculating block height does not
-produce good results - so in general you testnet wallet will not work out of the box.
+Since testnet block times are highly variable, the algorithm calculating block height does not
+produce good results - so in general your testnet wallet will not work out of the box.
 
 The remedy is simple: restore from seed and the correct / current block height. Take the block number
 of your first transaction or the current block height from the
@@ -64,7 +64,13 @@ WalletName.keys
 
 ### From where?
 
-This depends on your installation - you could search for them in your home directory or check the settings of your current client. Places to try are `C:\Users\<YOURUSERNAME>\Documents\Monero\wallets` for Windows or `~/.bitmonero/wallet` in Linux. Or just search for `WalletName.keys`.
+This depends on your installation - you could search for them in your home directory or check the settings of your current client. Places to try are:
+
+- Windows: `%USERPROFILE%\Documents\Monero\wallets`
+- Mac: `~/Monero/wallets` (for the GUI) or `~/.bitmonero/wallets` for the daemon.
+- Linux: `~/.bitmonero/wallet`
+
+...or just search for `WalletName.keys`.
 
 ### What if don't have these files?
 
