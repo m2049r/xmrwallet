@@ -15,24 +15,26 @@
         android:layout_height="wrap_content"
         android:background="@drawable/selector_login">
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_marginStart="32dp"
-                android:layout_toStartOf="@+id/ibOptions"
-                style="@style/MoneroText.Label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="My Wallet" />
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/MoneroText.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_toStartOf="@+id/ibOptions"
+            tools:text="My Wallet" />
 
-            <TextView
-                android:layout_toStartOf="@+id/ibOptions"
-                android:id="@+id/tvAddress"
-                android:layout_marginStart="32dp"
-                style="@style/MoneroText.Small"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvName"
-                tools:text="4AdkPJox...g3viqCuk" />
+        <TextView
+            android:id="@+id/tvAddress"
+            style="@style/MoneroText.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvName"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="48dp"
+            android:layout_toStartOf="@+id/ibOptions"
+            tools:text="4AdkPJox...g3viqCuk" />
 
         <ImageButton
             android:id="@+id/ibOptions"
