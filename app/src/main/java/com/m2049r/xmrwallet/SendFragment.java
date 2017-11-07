@@ -234,7 +234,8 @@ public class SendFragment extends Fragment {
                 parentView.post(new Runnable() {
                     @Override
                     public void run() {
-                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                        if (isAdded())
+                            ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
                     }
                 });
             }
@@ -250,7 +251,8 @@ public class SendFragment extends Fragment {
                 parentView.post(new Runnable() {
                     @Override
                     public void run() {
-                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                        if (isAdded())
+                            ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
                     }
                 });
             }
