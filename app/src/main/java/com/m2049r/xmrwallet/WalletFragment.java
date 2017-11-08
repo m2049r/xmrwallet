@@ -49,7 +49,7 @@ import java.util.List;
 public class WalletFragment extends Fragment
         implements TransactionInfoAdapter.OnInteractionListener,
         AsyncExchangeRate.Listener {
-    private static final String TAG = "WalletFragment";
+    public static final String TAG = "WalletFragment";
     private TransactionInfoAdapter adapter;
     private NumberFormat formatter = NumberFormat.getInstance();
 
@@ -258,27 +258,26 @@ public class WalletFragment extends Fragment
         }
     }
 
-    public void setProgressText(final String text) {
+    private String syncText = null;
+
+    public void setProgress(final String text) {
+        syncText = text;
         tvProgress.setText(text);
     }
 
-    public void onProgress(final String text) {
-        if (text != null) {
-            setProgressText(text);
-            pbProgress.setVisibility(View.VISIBLE);
-        } else {
-            pbProgress.setVisibility(View.INVISIBLE);
-            setProgressText(getString(R.string.status_working));
-            onProgress(-1);
-        }
-    }
+    private int syncProgress = -1;
 
-    public void onProgress(final int n) {
-        if (n >= 0) {
+    public void setProgress(final int n) {
+        syncProgress = n;
+        if (n > 100) {
+            pbProgress.setIndeterminate(true);
+            pbProgress.setVisibility(View.VISIBLE);
+        } else if (n >= 0) {
             pbProgress.setIndeterminate(false);
             pbProgress.setProgress(n);
-        } else {
-            pbProgress.setIndeterminate(true);
+            pbProgress.setVisibility(View.VISIBLE);
+        } else { // <0
+            pbProgress.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -301,7 +300,6 @@ public class WalletFragment extends Fragment
         Log.d(TAG, "updateStatus()");
         if (walletTitle == null) {
             setActivityTitle(wallet);
-            onProgress(100); // of loading
         }
         long balance = wallet.getBalance();
         unlockedBalance = wallet.getUnlockedBalance();
@@ -309,8 +307,6 @@ public class WalletFragment extends Fragment
         double amountXmr = Double.parseDouble(Helper.getDisplayAmount(balance - unlockedBalance)); // assume this cannot fail!
         String unconfirmed = Helper.getFormattedAmount(amountXmr, true);
         tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, unconfirmed));
-        //tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount,
-        //        Helper.getDisplayAmount(balance - unlockedBalance, Helper.DISPLAY_DIGITS_SHORT)));
         String sync = "";
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");
@@ -324,16 +320,18 @@ public class WalletFragment extends Fragment
                     firstBlock = wallet.getBlockChainHeight();
                 }
                 int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
-                //onProgress(getString(R.string.status_syncing) + " " + sync);
-                if (x == 0) x = -1;
-                onProgress(x);
+                if (x == 0) x = 101; // indeterminate
+                setProgress(x);
                 ivSynced.setVisibility(View.GONE);
             } else {
                 sync = getString(R.string.status_synced) + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
             }
+        } else {
+            sync = getString(R.string.status_wallet_connecting);
+            setProgress(101);
         }
-        setProgressText(sync);
+        setProgress(sync);
         // TODO show connected status somewhere
     }
 
@@ -387,6 +385,8 @@ public class WalletFragment extends Fragment
         Log.d(TAG, "onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE);
+        setProgress(syncProgress);
+        setProgress(syncText);
         showReceive();
     }
 }

@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity
         });
 
         if (Helper.getWritePermission(this)) {
-            startLoginFragment();
+            if (savedInstanceState == null) startLoginFragment();
         } else {
             Log.i(TAG, "Waiting for permissions");
         }
