@@ -36,8 +36,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -223,7 +223,7 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
 
         Fragment walletFragment = new WalletFragment();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, walletFragment).commit();
+                .add(R.id.fragment_container, walletFragment, WalletFragment.TAG).commit();
         Log.d(TAG, "fragment added");
 
         startWalletService();
@@ -389,12 +389,12 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
         Log.d(TAG, "onRefreshed()");
         try {
             final WalletFragment walletFragment = (WalletFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                    getSupportFragmentManager().findFragmentByTag(WalletFragment.TAG);
             if (wallet.isSynchronized()) {
                 Log.d(TAG, "onRefreshed() synced");
                 releaseWakeLock(); // the idea is to stay awake until synced
-                if (!synced) {
-                    onProgress(null);
+                if (!synced) { // first sync
+                    onProgress(-1);
                     saveWallet(); // save on first sync
                     synced = true;
                     runOnUiThread(new Runnable() {
@@ -523,10 +523,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public void onProgress(final String text) {
         try {
             final WalletFragment walletFragment = (WalletFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                    getSupportFragmentManager().findFragmentByTag(WalletFragment.TAG);
             runOnUiThread(new Runnable() {
                 public void run() {
-                    walletFragment.onProgress(text);
+                    walletFragment.setProgress(text);
                 }
             });
         } catch (ClassCastException ex) {
@@ -540,10 +540,10 @@ public class WalletActivity extends AppCompatActivity implements WalletFragment.
     public void onProgress(final int n) {
         try {
             final WalletFragment walletFragment = (WalletFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                    getSupportFragmentManager().findFragmentByTag(WalletFragment.TAG);
             runOnUiThread(new Runnable() {
                 public void run() {
-                    walletFragment.onProgress(n);
+                    walletFragment.setProgress(n);
                 }
             });
         } catch (ClassCastException ex) {
