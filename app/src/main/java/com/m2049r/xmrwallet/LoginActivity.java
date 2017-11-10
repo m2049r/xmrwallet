@@ -48,8 +48,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.dialog.AboutFragment;
-import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -1145,7 +1145,11 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    private class AsyncOpenWallet extends AsyncTask<WalletNode, Void, Boolean> {
+    private class AsyncOpenWallet extends AsyncTask<WalletNode, Void, Integer> {
+        final static int OK = 0;
+        final static int TIMEOUT = 1;
+        final static int INVALID = 2;
+        final static int IOEX = 3;
 
         WalletNode walletNode;
 
@@ -1156,45 +1160,57 @@ public class LoginActivity extends AppCompatActivity
         }
 
         @Override
-        protected Boolean doInBackground(WalletNode... params) {
-            if (params.length != 1) return false;
+        protected Integer doInBackground(WalletNode... params) {
+            if (params.length != 1) return INVALID;
             this.walletNode = params[0];
-            if (!walletNode.isValid()) return false;
+            if (!walletNode.isValid()) return INVALID;
 
             Log.d(TAG, "checking " + walletNode.getAddress());
 
-            long timeDA = new Date().getTime();
-            SocketAddress address = new InetSocketAddress(walletNode.host, walletNode.port);
-            long timeDB = new Date().getTime();
-            Log.d(TAG, "Resolving " + walletNode.host + " took " + (timeDB - timeDA) + "ms.");
-            Socket socket = new Socket();
-            long timeA = new Date().getTime();
             try {
+                long timeDA = new Date().getTime();
+                SocketAddress address = new InetSocketAddress(walletNode.host, walletNode.port);
+                long timeDB = new Date().getTime();
+                Log.d(TAG, "Resolving " + walletNode.host + " took " + (timeDB - timeDA) + "ms.");
+                Socket socket = new Socket();
+                long timeA = new Date().getTime();
                 socket.connect(address, LoginActivity.DAEMON_TIMEOUT);
                 socket.close();
+                long timeB = new Date().getTime();
+                long time = timeB - timeA;
+                Log.d(TAG, "Daemon " + walletNode.host + " is " + time + "ms away.");
+                return (time < LoginActivity.DAEMON_TIMEOUT ? OK : TIMEOUT);
             } catch (IOException ex) {
                 Log.d(TAG, "Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
-                return false;
+                return IOEX;
+            } catch (IllegalArgumentException ex) {
+                Log.d(TAG, "Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
+                return INVALID;
             }
-            long timeB = new Date().getTime();
-            long time = timeB - timeA;
-            Log.d(TAG, "Daemon " + walletNode.host + " is " + time + "ms away.");
-            return time < LoginActivity.DAEMON_TIMEOUT;
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(Integer result) {
             super.onPostExecute(result);
             if (isDestroyed()) {
                 return;
             }
             dismissProgressDialog();
-            if (result) {
-                Log.d(TAG, "selected wallet is ." + walletNode.name + ".");
-                // now it's getting real, check if wallet exists
-                promptAndStart(walletNode);
-            } else {
-                Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_timeout), Toast.LENGTH_LONG).show();
+            switch (result) {
+                case OK:
+                    Log.d(TAG, "selected wallet is ." + walletNode.name + ".");
+                    // now it's getting real, check if wallet exists
+                    promptAndStart(walletNode);
+                    break;
+                case TIMEOUT:
+                    Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_timeout), Toast.LENGTH_LONG).show();
+                    break;
+                case INVALID:
+                    Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_node_invalid), Toast.LENGTH_LONG).show();
+                    break;
+                case IOEX:
+                    Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_ioex), Toast.LENGTH_LONG).show();
+                    break;
             }
         }
     }
