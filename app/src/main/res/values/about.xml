@@ -14,10 +14,10 @@
     <string name="donation_credits"><![CDATA[
         <b>Credits</b>
         <br/>
-        m2049r, baltsar777, rehrar, anhdres,
-        keejef, TheMonera, EarlOfEgo
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
         <br/><br/>
-        <a href="www.xmrujo.com">www.xmrujo.com</a>
+        <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
 
     <string name="privacy_policy"><![CDATA[
@@ -53,14 +53,14 @@
         <h2>Changes to this Privacy Policy</h2>
         <p>We may update this privacy policy from time to time. We will notify
         you of any changes by posting the new privacy policy in the app and on the
-        website (www.xmrujo.com)
+        website (www.monerujo.io)
         You are advised to review this privacy policy periodically for any changes.
-        <p>This Privacy Policy was last updated: 2nd November, 2017.
+        <p>This Privacy Policy was last updated: 10th November, 2017.
         </p>
         <h2>Contact Us</h2>
         <p>If you have any questions about our privacy policy,
         or how your data is being collected and processed,
-        please e-mail privacy@xmrujo.com.
+        please e-mail privacy@monerujo.io.
         </p>
         ]]></string>
 
