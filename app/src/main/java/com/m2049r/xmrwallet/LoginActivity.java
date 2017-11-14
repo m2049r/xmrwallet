@@ -33,7 +33,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -68,7 +67,7 @@ import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
 import java.util.Date;
 
-public class LoginActivity extends AppCompatActivity
+public class LoginActivity extends SecureActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
         GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, ReceiveFragment.Listener {
     static final String TAG = "LoginActivity";

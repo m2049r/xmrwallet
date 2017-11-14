@@ -31,7 +31,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -51,7 +50,7 @@ import com.m2049r.xmrwallet.util.TxData;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WalletActivity extends AppCompatActivity implements WalletFragment.Listener,
+public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
         GenerateReviewFragment.Listener,
