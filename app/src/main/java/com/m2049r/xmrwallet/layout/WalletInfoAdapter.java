@@ -103,6 +103,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         final TextView tvAddress;
         final ImageButton ibOptions;
         WalletManager.WalletInfo infoItem;
+        boolean popupOpen = false;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -112,10 +113,12 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
             ibOptions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if (popupOpen) return;
                     //creating a popup menu
                     PopupMenu popup = new PopupMenu(context, ibOptions);
                     //inflating menu from xml resource
                     popup.inflate(R.menu.list_context_menu);
+                    popupOpen = true;
                     //adding click listener
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
@@ -128,6 +131,12 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
                     });
                     //displaying the popup
                     popup.show();
+                    popup.setOnDismissListener(new PopupMenu.OnDismissListener() {
+                        @Override
+                        public void onDismiss(PopupMenu menu) {
+                            popupOpen = false;
+                        }
+                    });
 
                 }
             });

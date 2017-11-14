@@ -179,7 +179,7 @@
 
     <style name="MoneroButton" parent="@style/Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_selector</item>
-        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColor">@color/moneroWhite</item>
         <item name="android:textAppearance">@style/MoneroLabel</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -194,16 +194,13 @@
     </style>
 
     <style name="MoneroButton.ReallySend">
-        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="MoneroButton.Take">
-        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/take</item>
     </style>
 
     <style name="MoneroButton.Give">
-        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/give</item>
     </style>
 

@@ -116,8 +116,10 @@ public class ReceiveFragment extends Fragment {
         evAmount.setOnFailedExchangeListener(new ExchangeView.OnFailedExchangeListener() {
             @Override
             public void onFailedExchange() {
-                clearQR();
-                Toast.makeText(getActivity(), getString(R.string.message_exchange_failed), Toast.LENGTH_LONG).show();
+                if (isAdded()) {
+                    clearQR();
+                    Toast.makeText(getActivity(), getString(R.string.message_exchange_failed), Toast.LENGTH_LONG).show();
+                }
             }
         });
 

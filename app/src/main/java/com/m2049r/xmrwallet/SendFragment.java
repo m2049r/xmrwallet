@@ -24,7 +24,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -137,6 +139,21 @@ public class SendFragment extends Fragment {
             }
         });
 
+        etAddress.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                etAddress.setError(null);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
         etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
@@ -147,6 +164,21 @@ public class SendFragment extends Fragment {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        etPaymentId.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                etPaymentId.setError(null);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
 
@@ -234,7 +266,8 @@ public class SendFragment extends Fragment {
                 parentView.post(new Runnable() {
                     @Override
                     public void run() {
-                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                        if (isAdded())
+                            ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
                     }
                 });
             }
@@ -250,7 +283,8 @@ public class SendFragment extends Fragment {
                 parentView.post(new Runnable() {
                     @Override
                     public void run() {
-                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
+                        if (isAdded())
+                            ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
                     }
                 });
             }

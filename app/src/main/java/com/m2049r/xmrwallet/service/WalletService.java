@@ -481,7 +481,7 @@ public class WalletService extends Service {
             showProgress(100);
         }
         showProgress(getString(R.string.status_wallet_connecting));
-        showProgress(-1);
+        showProgress(101);
         // if we try to refresh the history here we get occasional segfaults!
         // doesnt matter since we update as soon as we get a new block anyway
         Log.d(TAG, "start() done");
