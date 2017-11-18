@@ -46,15 +46,13 @@
         android:textAlignment="center"
         tools:text="9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
 
-    <com.m2049r.xmrwallet.layout.ExchangeView
-        android:id="@+id/evAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16sp"
-        android:layout_marginTop="16sp"
-        android:orientation="vertical"
-        android:paddingEnd="56dp"
-        android:paddingStart="56dp" />
+        <com.m2049r.xmrwallet.layout.ExchangeView
+            android:id="@+id/evAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,22 +96,30 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bGenerate"
-        style="@style/MoneroButton"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
-        android:enabled="false"
-        android:minHeight="36dp"
-        android:text="@string/receive_generate_hint" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/qrCode"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:adjustViewBounds="true" />
+        <TextView
+            android:id="@+id/tvQrCode"
+            style="@style/MoneroFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_info_outline_gray_24dp"
+            android:text="@string/label_receive_gen_qr_code"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/qrCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="#00000000" />
+
+    </FrameLayout>
 
     <EditText
         android:id="@+id/etDummy"

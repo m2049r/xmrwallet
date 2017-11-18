@@ -64,8 +64,8 @@ public class ReceiveFragment extends Fragment {
     private TextInputLayout etPaymentId;
     private ExchangeView evAmount;
     private Button bPaymentId;
-    private Button bGenerate;
-    private ImageView qrCode;
+    private TextView tvQrCode;
+    private ImageButton qrCode;
     private EditText etDummy;
     private ImageButton bCopyAddress;
 
@@ -90,8 +90,8 @@ public class ReceiveFragment extends Fragment {
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
-        qrCode = (ImageView) view.findViewById(R.id.qrCode);
-        bGenerate = (Button) view.findViewById(R.id.bGenerate);
+        qrCode = (ImageButton) view.findViewById(R.id.qrCode);
+        tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
 
@@ -160,7 +160,7 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        bGenerate.setOnClickListener(new View.OnClickListener() {
+        qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkPaymentId()) {
@@ -195,14 +195,16 @@ public class ReceiveFragment extends Fragment {
 
     void clearQR() {
         if (qrValid) {
-            qrCode.setImageBitmap(getMoneroLogo());
+            qrCode.setImageBitmap(null);
             qrValid = false;
+            tvQrCode.setVisibility(View.VISIBLE);
         }
     }
 
     void setQR(Bitmap qr) {
         qrCode.setImageBitmap(qr);
         qrValid = true;
+        tvQrCode.setVisibility(View.INVISIBLE);
         Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
     }
@@ -221,9 +223,7 @@ public class ReceiveFragment extends Fragment {
         listenerCallback.setTitle(name);
         tvAddress.setText(address);
         etPaymentId.setEnabled(true);
-        //etAmount.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bGenerate.setEnabled(true);
         bCopyAddress.setEnabled(true);
         bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
         hideProgress();
@@ -307,7 +307,8 @@ public class ReceiveFragment extends Fragment {
             sb.append(ScannerFragment.QR_AMOUNT).append('=').append(xmrAmount);
         }
         String text = sb.toString();
-        Bitmap qr = generate(text, 500, 500);
+        int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
+        Bitmap qr = generate(text, size, size);
         if (qr != null) {
             setQR(qr);
             Log.d(TAG, "SETQR");

@@ -55,9 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="0dp"
-            android:orientation="vertical"
-            android:paddingEnd="56dp"
-            android:paddingStart="56dp" />
+            android:orientation="vertical" />
 
         <LinearLayout
             android:layout_width="match_parent"
