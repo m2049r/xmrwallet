@@ -114,22 +114,30 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bGenerate"
-        style="@style/MoneroButton"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
-        android:enabled="false"
-        android:minHeight="36dp"
-        android:text="@string/receive_generate_hint" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/qrCode"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:adjustViewBounds="true" />
+        <TextView
+            android:id="@+id/tvQrCode"
+            style="@style/MoneroFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_info_outline_gray_24dp"
+            android:text="@string/label_receive_gen_qr_code"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/qrCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="#00000000" />
+
+    </FrameLayout>
 
     <EditText
         android:id="@+id/etDummy"

@@ -20,6 +20,8 @@
     <string name="label_close">Close</string>
     <string name="label_wallet_advanced_details">Touch for detailed information</string>
 
+    <string name="label_receive_gen_qr_code">Touch for QR Code</string>
+
     <string name="backup_progress">Backup in progress</string>
     <string name="archive_progress">Archive in progress</string>
     <string name="rename_progress">Rename in progress</string>
