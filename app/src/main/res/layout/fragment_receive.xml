@@ -46,15 +46,31 @@
         android:textAlignment="center"
         tools:text="9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
 
-    <com.m2049r.xmrwallet.layout.ExchangeView
-        android:id="@+id/evAmount"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16sp"
-        android:layout_marginTop="16sp"
-        android:orientation="vertical"
-        android:paddingEnd="56dp"
-        android:paddingStart="56dp" />
+        android:orientation="horizontal"
+        android:weightSum="12">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.m2049r.xmrwallet.layout.ExchangeView
+            android:id="@+id/evAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="10"
+            android:orientation="vertical" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
