@@ -49,7 +49,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/generate_password_hint"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textVisiblePassword"
                     android:textAlignment="textStart" />
 
             </android.support.design.widget.TextInputLayout>
