@@ -27,7 +27,9 @@ public abstract class SecureActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // set FLAG_SECURE to prevent screenshots
-        getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
+        // set FLAG_SECURE to prevent screenshots in Release Mode
+        if (!BuildConfig.DEBUG) {
+            getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
+        }
     }
 }
