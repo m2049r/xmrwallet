@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -65,7 +66,8 @@ public class ReceiveFragment extends Fragment {
     private ExchangeView evAmount;
     private Button bPaymentId;
     private TextView tvQrCode;
-    private ImageButton qrCode;
+    private ImageView qrCode;
+    private ImageView qrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
 
@@ -90,8 +92,9 @@ public class ReceiveFragment extends Fragment {
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
-        qrCode = (ImageButton) view.findViewById(R.id.qrCode);
+        qrCode = (ImageView) view.findViewById(R.id.qrCode);
         tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
+        qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
 
@@ -163,9 +166,20 @@ public class ReceiveFragment extends Fragment {
         qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPaymentId()) {
+                if (qrValid) {
+                    qrCodeFull.setImageBitmap(((BitmapDrawable) qrCode.getDrawable()).getBitmap());
+                    qrCodeFull.setVisibility(View.VISIBLE);
+                } else if (checkPaymentId()) {
                     evAmount.doExchange();
                 }
+            }
+        });
+
+        qrCodeFull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qrCodeFull.setImageBitmap(null);
+                qrCodeFull.setVisibility(View.GONE);
             }
         });
 
@@ -197,7 +211,8 @@ public class ReceiveFragment extends Fragment {
         if (qrValid) {
             qrCode.setImageBitmap(null);
             qrValid = false;
-            tvQrCode.setVisibility(View.VISIBLE);
+            if (isLoaded)
+                tvQrCode.setVisibility(View.VISIBLE);
         }
     }
 
@@ -218,8 +233,11 @@ public class ReceiveFragment extends Fragment {
         generateQr();
     }
 
+    private boolean isLoaded = false;
+
     private void show(String name, String address) {
         Log.d(TAG, "name=" + name);
+        isLoaded = true;
         listenerCallback.setTitle(name);
         tvAddress.setText(address);
         etPaymentId.setEnabled(true);
