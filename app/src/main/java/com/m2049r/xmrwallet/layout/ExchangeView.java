@@ -19,6 +19,8 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,11 +39,17 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.Locale;
 
-public class ExchangeView extends LinearLayout implements AsyncExchangeRate.Listener {
+import okhttp3.OkHttpClient;
+
+public class ExchangeView extends LinearLayout {
     static final String TAG = "ExchangeView";
 
     public boolean focus() {
@@ -277,11 +285,36 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
         startExchange();
     }
 
+    private final ExchangeApi exchangeApi = new ExchangeApiImpl(Helper.getOkHttpClient());
+
     void startExchange() {
         showProgress();
         String currencyA = (String) sCurrencyA.getSelectedItem();
         String currencyB = (String) sCurrencyB.getSelectedItem();
-        new AsyncExchangeRate(this).execute(currencyA, currencyB);
+        exchangeApi.queryExchangeRate(currencyA, currencyB,
+                new ExchangeCallback() {
+                    @Override
+                    public void onSuccess(final ExchangeRate exchangeRate) {
+                        if (isAttachedToWindow())
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    exchange(exchangeRate);
+                                }
+                            });
+                    }
+
+                    @Override
+                    public void onError(final Exception e) {
+                        Log.e(TAG, e.getLocalizedMessage());
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                exchangeFailed();
+                            }
+                        });
+                    }
+                });
     }
 
     public void exchange(double rate) {
@@ -349,7 +382,6 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
         }
     }
 
-    // callback from AsyncExchangeRate when it failed getting a rate
     public void exchangeFailed() {
         hideProgress();
         exchange(0);
@@ -358,19 +390,19 @@ public class ExchangeView extends LinearLayout implements AsyncExchangeRate.List
         }
     }
 
-    // callback from AsyncExchangeRate when we have a rate
-    public void exchange(String currencyA, String currencyB, double rate) {
+    public void exchange(ExchangeRate exchangeRate) {
         hideProgress();
         // first, make sure this is what we want
         String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
         String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
-        if (!currencyA.equals(enteredCurrencyA) || !currencyB.equals(enteredCurrencyB)) {
+        if (!exchangeRate.getBaseCurrency().equals(enteredCurrencyA)
+                || !exchangeRate.getQuoteCurrency().equals(enteredCurrencyB)) {
             // something's wrong
             Log.e(TAG, "Currencies don't match!");
             return;
         }
         if (prepareExchange()) {
-            exchange(rate);
+            exchange(exchangeRate.getRate());
         }
     }
 
