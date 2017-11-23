@@ -18,6 +18,8 @@ package com.m2049r.xmrwallet;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -36,19 +38,24 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.layout.AsyncExchangeRate;
 import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.text.NumberFormat;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+
 public class WalletFragment extends Fragment
-        implements TransactionInfoAdapter.OnInteractionListener,
-        AsyncExchangeRate.Listener {
+        implements TransactionInfoAdapter.OnInteractionListener {
     public static final String TAG = "WalletFragment";
     private TransactionInfoAdapter adapter;
     private NumberFormat formatter = NumberFormat.getInstance();
@@ -141,8 +148,24 @@ public class WalletFragment extends Fragment
         return view;
     }
 
+    void updateBalance() {
+        if (isExchanging) return; // wait for exchange to finish - it will fire this itself then.
+        // at this point selection is XMR in case of error
+        String displayB;
+        double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // crash if this fails!
+        if (!"XMR".equals(balanceCurrency)) { // not XMR
+            double amountB = amountA * balanceRate;
+            displayB = Helper.getFormattedAmount(amountB, false);
+        } else { // XMR
+            displayB = Helper.getFormattedAmount(amountA, true);
+        }
+        tvBalance.setText(displayB);
+    }
+
     String balanceCurrency = "XMR";
     double balanceRate = 1.0;
+
+    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
 
     void refreshBalance() {
         if (sCurrency.getSelectedItemPosition() == 0) { // XMR
@@ -152,9 +175,33 @@ public class WalletFragment extends Fragment
             String currency = (String) sCurrency.getSelectedItem();
             if (!currency.equals(balanceCurrency) || (balanceRate <= 0)) {
                 showExchanging();
-                new AsyncExchangeRate(this).execute("XMR", currency);
+                exchangeApi.queryExchangeRate("XMR", currency,
+                        new ExchangeCallback() {
+                            @Override
+                            public void onSuccess(final ExchangeRate exchangeRate) {
+                                if (isAdded())
+                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            exchange(exchangeRate);
+                                        }
+                                    });
+                            }
+
+                            @Override
+                            public void onError(final Exception e) {
+                                Log.e(TAG, e.getLocalizedMessage());
+                                if (isAdded())
+                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            exchangeFailed();
+                                        }
+                                    });
+                            }
+                        });
             } else {
-                exchange("XMR", balanceCurrency, balanceRate);
+                updateBalance();
             }
         }
     }
@@ -165,17 +212,16 @@ public class WalletFragment extends Fragment
         isExchanging = true;
         tvBalance.setVisibility(View.GONE);
         flExchange.setVisibility(View.VISIBLE);
+        sCurrency.setEnabled(false);
     }
 
     void hideExchanging() {
         isExchanging = false;
         tvBalance.setVisibility(View.VISIBLE);
         flExchange.setVisibility(View.GONE);
+        sCurrency.setEnabled(true);
     }
 
-    // Callbacks from AsyncExchangeRate
-
-    // callback from AsyncExchangeRate when it can't get exchange rate
     public void exchangeFailed() {
         sCurrency.setSelection(0, true); // default to XMR
         double amountXmr = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // assume this cannot fail!
@@ -183,38 +229,23 @@ public class WalletFragment extends Fragment
         hideExchanging();
     }
 
-    void updateBalance() {
-        if (isExchanging) return; // wait for exchange to finish - it will fire this itself then.
-        // at this point selection is XMR in case of error
-        String displayB;
-        double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // assume this cannot fail!
-        if (!"XMR".equals(balanceCurrency)) { // not XMR
-            double amountB = amountA * balanceRate;
-            displayB = Helper.getFormattedAmount(amountB, false);
-        } else { // XMR
-            displayB = Helper.getFormattedAmount(amountA, true);
-        }
-        tvBalance.setText(displayB);
-    }
-
-    // callback from AsyncExchangeRate when we have a rate
-    public void exchange(String currencyA, String currencyB, double rate) {
+    public void exchange(final ExchangeRate exchangeRate) {
         hideExchanging();
-        if (!"XMR".equals(currencyA)) {
+        if (!"XMR".equals(exchangeRate.getBaseCurrency())) {
             Log.e(TAG, "Not XMR");
             sCurrency.setSelection(0, true);
             balanceCurrency = "XMR";
             balanceRate = 1.0;
         } else {
-            int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(currencyB);
+            int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());
             if (spinnerPosition < 0) { // requested currency not in list
-                Log.e(TAG, "Requested currency not in list " + currencyB);
+                Log.e(TAG, "Requested currency not in list " + exchangeRate.getQuoteCurrency());
                 sCurrency.setSelection(0, true);
             } else {
                 sCurrency.setSelection(spinnerPosition, true);
             }
-            balanceCurrency = currencyB;
-            balanceRate = rate;
+            balanceCurrency = exchangeRate.getQuoteCurrency();
+            balanceRate = exchangeRate.getRate();
         }
         updateBalance();
     }

@@ -57,7 +57,7 @@
                 android:layout_marginStart="8dp"
                 android:entries="@array/currency"
                 android:gravity="center"
-                android:paddingBottom="0dp"
+                android:paddingBottom="2dp"
                 android:paddingEnd="4dp"
                 android:paddingStart="4dp"
                 android:paddingTop="0dp"

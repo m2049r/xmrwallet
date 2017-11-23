@@ -48,6 +48,8 @@ import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import okhttp3.OkHttpClient;
+
 public class Helper {
     static private final String TAG = "Helper";
     static private final String WALLET_DIR = "monerujo";
@@ -240,4 +242,5 @@ public class Helper {
         ClipData clip = ClipData.newPlainText(label, text);
         clipboardManager.setPrimaryClip(clip);
     }
+
 }
