@@ -23,7 +23,6 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,11 +51,10 @@ import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 import java.text.NumberFormat;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
+import timber.log.Timber;
 
 public class WalletFragment extends Fragment
         implements TransactionInfoAdapter.OnInteractionListener {
-    public static final String TAG = "WalletFragment";
     private TransactionInfoAdapter adapter;
     private NumberFormat formatter = NumberFormat.getInstance();
 
@@ -190,7 +188,7 @@ public class WalletFragment extends Fragment
 
                             @Override
                             public void onError(final Exception e) {
-                                Log.e(TAG, e.getLocalizedMessage());
+                                Timber.e(e.getLocalizedMessage());
                                 if (isAdded())
                                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                                         @Override
@@ -232,14 +230,14 @@ public class WalletFragment extends Fragment
     public void exchange(final ExchangeRate exchangeRate) {
         hideExchanging();
         if (!"XMR".equals(exchangeRate.getBaseCurrency())) {
-            Log.e(TAG, "Not XMR");
+            Timber.e("Not XMR");
             sCurrency.setSelection(0, true);
             balanceCurrency = "XMR";
             balanceRate = 1.0;
         } else {
             int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());
             if (spinnerPosition < 0) { // requested currency not in list
-                Log.e(TAG, "Requested currency not in list " + exchangeRate.getQuoteCurrency());
+                Timber.e("Requested currency not in list %s", exchangeRate.getQuoteCurrency());
                 sCurrency.setSelection(0, true);
             } else {
                 sCurrency.setSelection(spinnerPosition, true);
@@ -259,7 +257,7 @@ public class WalletFragment extends Fragment
     // called from activity
 
     public void onRefreshed(final Wallet wallet, final boolean full) {
-        Log.d(TAG, "onRefreshed()");
+        Timber.d("onRefreshed()");
         if (full) {
             List<TransactionInfo> list = wallet.getHistory().getAll();
             adapter.setInfos(list);
@@ -318,7 +316,7 @@ public class WalletFragment extends Fragment
         String watchOnly = (wallet.isWatchOnly() ? getString(R.string.label_watchonly) : "");
         walletSubtitle = wallet.getAddress().substring(0, 16) + "…" + watchOnly;
         activityCallback.setTitle(walletTitle, walletSubtitle);
-        Log.d(TAG, "wallet title is " + walletTitle);
+        Timber.d("wallet title is %s", walletTitle);
     }
 
     private long firstBlock = 0;
@@ -328,7 +326,7 @@ public class WalletFragment extends Fragment
 
     private void updateStatus(Wallet wallet) {
         if (!isAdded()) return;
-        Log.d(TAG, "updateStatus()");
+        Timber.d("updateStatus()");
         if (walletTitle == null) {
             setActivityTitle(wallet);
         }
@@ -413,7 +411,7 @@ public class WalletFragment extends Fragment
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE);
         setProgress(syncProgress);

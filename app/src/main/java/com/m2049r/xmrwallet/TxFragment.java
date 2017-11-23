@@ -44,7 +44,6 @@ import java.util.Set;
 import java.util.TimeZone;
 
 public class TxFragment extends Fragment {
-    static final String TAG = "TxFragment";
 
     static public final String ARG_INFO = "info";
 

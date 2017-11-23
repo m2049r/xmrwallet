@@ -19,7 +19,6 @@ package com.m2049r.xmrwallet.layout;
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,8 +37,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import timber.log.Timber;
+
 public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.ViewHolder> {
-    private static final String TAG = "WalletInfoAdapter";
 
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -89,11 +89,11 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         // as the WalletInfo items are always recreated, we cannot recycle
         infoItems.clear();
         if (data != null) {
-            Log.d(TAG, "setInfos " + data.size());
+            Timber.d("setInfos %s", data.size());
             infoItems.addAll(data);
             Collections.sort(infoItems);
         } else {
-            Log.d(TAG, "setInfos null");
+            Timber.d("setInfos null");
         }
         notifyDataSetChanged();
     }

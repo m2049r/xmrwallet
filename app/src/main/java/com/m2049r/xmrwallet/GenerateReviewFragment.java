@@ -21,7 +21,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,8 +40,9 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
+import timber.log.Timber;
+
 public class GenerateReviewFragment extends Fragment {
-    static final String TAG = "GenerateReviewFragment";
     static final public String VIEW_TYPE_DETAILS = "details";
     static final public String VIEW_TYPE_ACCEPT = "accept";
     static final public String VIEW_TYPE_WALLET = "wallet";
@@ -264,7 +264,7 @@ public class GenerateReviewFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         String name = tvWalletName.getText().toString();
         if (name.isEmpty()) name = null;
         activityCallback.setTitle(name, getString(R.string.details_title));

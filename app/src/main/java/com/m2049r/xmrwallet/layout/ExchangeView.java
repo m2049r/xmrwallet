@@ -25,7 +25,6 @@ import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,10 +47,9 @@ import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.util.Locale;
 
-import okhttp3.OkHttpClient;
+import timber.log.Timber;
 
 public class ExchangeView extends LinearLayout {
-    static final String TAG = "ExchangeView";
 
     public boolean focus() {
         return etAmount.requestFocus();
@@ -254,7 +252,7 @@ public class ExchangeView extends LinearLayout {
 
     public boolean checkEnteredAmount() {
         boolean ok = true;
-        Log.d(TAG, "checkEnteredAmount");
+        Timber.d("checkEnteredAmount");
         String amountEntry = etAmount.getEditText().getText().toString();
         if (!amountEntry.isEmpty()) {
             try {
@@ -307,7 +305,7 @@ public class ExchangeView extends LinearLayout {
 
                     @Override
                     public void onError(final Exception e) {
-                        Log.e(TAG, e.getLocalizedMessage());
+                        Timber.e(e.getLocalizedMessage());
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
@@ -338,7 +336,7 @@ public class ExchangeView extends LinearLayout {
             }
             tvAmountB.setText(xmrAmount);
         } else { // no XMR currency - cannot happen!
-            Log.e(TAG, "No XMR currency!");
+            Timber.e("No XMR currency!");
             setXmr(null);
             notXmrAmount = null;
             return;
@@ -346,7 +344,7 @@ public class ExchangeView extends LinearLayout {
     }
 
     boolean prepareExchange() {
-        Log.d(TAG, "prepareExchange()");
+        Timber.d("prepareExchange()");
         if (checkEnteredAmount()) {
             String enteredAmount = etAmount.getEditText().getText().toString();
             if (!enteredAmount.isEmpty()) {
@@ -356,7 +354,7 @@ public class ExchangeView extends LinearLayout {
                     cleanAmount = Helper.getDisplayAmount(Wallet.getAmountFromString(enteredAmount));
                     setXmr(cleanAmount);
                     notXmrAmount = null;
-                    Log.d(TAG, "cleanAmount = " + cleanAmount);
+                    Timber.d("cleanAmount = %s", cleanAmount);
                 } else if (getCurrencyB() == 0) { // we use B & 0 here for the else below ...
                     // sanitize the input
                     double amountA = Double.parseDouble(enteredAmount);
@@ -364,12 +362,12 @@ public class ExchangeView extends LinearLayout {
                     setXmr(null);
                     notXmrAmount = cleanAmount;
                 } else { // no XMR currency - cannot happen!
-                    Log.e(TAG, "No XMR currency!");
+                    Timber.e("No XMR currency!");
                     setXmr(null);
                     notXmrAmount = null;
                     return false;
                 }
-                Log.d(TAG, "prepareExchange() " + cleanAmount);
+                Timber.d("prepareExchange() %s", cleanAmount);
                 //etAmount.getEditText().setText(cleanAmount); // display what we use
             } else {
                 setXmr("");
@@ -399,7 +397,7 @@ public class ExchangeView extends LinearLayout {
         if (!exchangeRate.getBaseCurrency().equals(enteredCurrencyA)
                 || !exchangeRate.getQuoteCurrency().equals(enteredCurrencyB)) {
             // something's wrong
-            Log.e(TAG, "Currencies don't match!");
+            Timber.e("Currencies don't match!");
             return;
         }
         if (prepareExchange()) {

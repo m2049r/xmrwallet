@@ -27,7 +27,6 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,8 +52,9 @@ import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
+import timber.log.Timber;
+
 public class SendFragment extends Fragment {
-    static final String TAG = "SendFragment";
 
     private EditText etDummy;
 
@@ -352,7 +352,7 @@ public class SendFragment extends Fragment {
         int mixin = Mixins[sMixin.getSelectedItemPosition()];
         int priorityIndex = sPriority.getSelectedItemPosition();
         PendingTransaction.Priority priority = Priorities[priorityIndex];
-        Log.d(TAG, dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
+        Timber.d(dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
         TxData txData = new TxData(
                 dst_addr,
                 paymentId,
@@ -426,12 +426,12 @@ public class SendFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume");
+        Timber.d("onResume");
         activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
         activityCallback.setSubtitle(getString(R.string.send_title));
         BarcodeData data = activityCallback.popScannedData();
         if (data != null) {
-            Log.d(TAG, "GOT DATA");
+            Timber.d("GOT DATA");
             String scannedAddress = data.address;
             if (scannedAddress != null) {
                 etAddress.getEditText().setText(scannedAddress);

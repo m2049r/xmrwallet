@@ -27,7 +27,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.util.Log;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
@@ -38,10 +37,11 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.TxData;
 
+import timber.log.Timber;
+
 public class WalletService extends Service {
     public static boolean Running = false;
 
-    final static String TAG = "WalletService";
     final static int NOTIFICATION_ID = 2049;
 
     public static final String REQUEST_WALLET = "wallet";
@@ -73,7 +73,7 @@ public class WalletService extends Service {
         boolean updated = true;
 
         void start() {
-            Log.d(TAG, "MyWalletListener.start()");
+            Timber.d("MyWalletListener.start()");
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             //acquireWakeLock();
@@ -82,7 +82,7 @@ public class WalletService extends Service {
         }
 
         void stop() {
-            Log.d(TAG, "MyWalletListener.stop()");
+            Timber.d("MyWalletListener.stop()");
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             wallet.pauseRefresh();
@@ -92,15 +92,15 @@ public class WalletService extends Service {
 
         // WalletListener callbacks
         public void moneySpent(String txId, long amount) {
-            Log.d(TAG, "moneySpent() " + amount + " @ " + txId);
+            Timber.d("moneySpent() " + amount + " @ " + txId);
         }
 
         public void moneyReceived(String txId, long amount) {
-            Log.d(TAG, "moneyReceived() " + amount + " @ " + txId);
+            Timber.d("moneyReceived() " + amount + " @ " + txId);
         }
 
         public void unconfirmedMoneyReceived(String txId, long amount) {
-            Log.d(TAG, "unconfirmedMoneyReceived() " + amount + " @ " + txId);
+            Timber.d("unconfirmedMoneyReceived() " + amount + " @ " + txId);
         }
 
         long lastBlockTime = 0;
@@ -111,7 +111,7 @@ public class WalletService extends Service {
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
-                Log.d(TAG, "newBlock() @" + height + " with observer " + observer);
+                Timber.d("newBlock() @" + height + " with observer " + observer);
                 lastBlockTime = System.currentTimeMillis();
                 if (observer != null) {
                     boolean fullRefresh = false;
@@ -134,14 +134,14 @@ public class WalletService extends Service {
         }
 
         public void updated() {
-            Log.d(TAG, "updated()");
+            Timber.d("updated()");
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             updated = true;
         }
 
         public void refreshed() {
-            Log.d(TAG, "refreshed()");
+            Timber.d("refreshed()");
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             if (updated) {
@@ -180,7 +180,7 @@ public class WalletService extends Service {
                 }
             }
         }
-        //Log.d(TAG, "updated daemon status: " + daemonHeight + "/" + connectionStatus.toString());
+        //Timber.d("updated daemon status: " + daemonHeight + "/" + connectionStatus.toString());
     }
 
     public long getDaemonHeight() {
@@ -200,7 +200,7 @@ public class WalletService extends Service {
 
     public void setObserver(Observer anObserver) {
         observer = anObserver;
-        Log.d(TAG, "setObserver " + observer);
+        Timber.d("setObserver %s", observer);
     }
 
     public interface Observer {
@@ -266,9 +266,9 @@ public class WalletService extends Service {
 
         @Override
         public void handleMessage(Message msg) {
-            Log.d(TAG, "Handling " + msg.arg2);
+            Timber.d("Handling %s", msg.arg2);
             if (errorState) {
-                Log.i(TAG, "In error state.");
+                Timber.i("In error state.");
                 // also, we have already stopped ourselves
                 return;
             }
@@ -279,7 +279,7 @@ public class WalletService extends Service {
                     if (cmd.equals(REQUEST_CMD_LOAD)) {
                         String walletId = extras.getString(REQUEST_WALLET, null);
                         String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
-                        Log.d(TAG, "LOAD wallet " + walletId);
+                        Timber.d("LOAD wallet %s", walletId);
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
@@ -292,23 +292,23 @@ public class WalletService extends Service {
                         }
                     } else if (cmd.equals(REQUEST_CMD_STORE)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "STORE wallet: " + myWallet.getName());
+                        Timber.d("STORE wallet: %s", myWallet.getName());
                         boolean rc = myWallet.store();
-                        Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                        Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
                         if (!rc) {
-                            Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                            Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                         }
                         if (observer != null) observer.onWalletStored(rc);
                     } else if (cmd.equals(REQUEST_CMD_TX)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "CREATE TX for wallet: " + myWallet.getName());
+                        Timber.d("CREATE TX for wallet: %s", myWallet.getName());
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
                         PendingTransaction pendingTransaction = myWallet.createTransaction(
                                 txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
                         PendingTransaction.Status status = pendingTransaction.getStatus();
-                        Log.d(TAG, "transaction status " + status);
+                        Timber.d("transaction status %s", status);
                         if (status != PendingTransaction.Status.Status_Ok) {
-                            Log.w(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                            Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
                             observer.onCreatedTransaction(pendingTransaction);
@@ -317,12 +317,12 @@ public class WalletService extends Service {
                         }
                     } else if (cmd.equals(REQUEST_CMD_SWEEP)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "SWEEP TX for wallet: " + myWallet.getName());
+                        Timber.d("SWEEP TX for wallet: %s", myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
                         PendingTransaction.Status status = pendingTransaction.getStatus();
-                        Log.d(TAG, "transaction status " + status);
+                        Timber.d("transaction status %s", status);
                         if (status != PendingTransaction.Status.Status_Ok) {
-                            Log.w(TAG, "Create Transaction failed: " + pendingTransaction.getErrorString());
+                            Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
                             observer.onCreatedTransaction(pendingTransaction);
@@ -331,11 +331,11 @@ public class WalletService extends Service {
                         }
                     } else if (cmd.equals(REQUEST_CMD_SEND)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "SEND TX for wallet: " + myWallet.getName());
+                        Timber.d("SEND TX for wallet: %s", myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
                         if ((pendingTransaction == null)
                                 || (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok)) {
-                            Log.e(TAG, "PendingTransaction is " + pendingTransaction.getStatus());
+                            Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
                             myWallet.disposePendingTransaction(); // it's broken anyway
                             if (observer != null) observer.onSentTransaction(false);
                             return;
@@ -350,29 +350,29 @@ public class WalletService extends Service {
                                 myWallet.setUserNote(txid, notes);
                             }
                             boolean rc = myWallet.store();
-                            Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                            Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
                             if (!rc) {
-                                Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                             }
                             if (observer != null) observer.onWalletStored(rc);
                             listener.updated = true;
                         }
                     } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
                         Wallet myWallet = getWallet();
-                        Log.d(TAG, "SET NOTE for wallet: " + myWallet.getName());
+                        Timber.d("SET NOTE for wallet: %s", myWallet.getName());
                         String txId = extras.getString(REQUEST_CMD_SETNOTE_TX);
                         String notes = extras.getString(REQUEST_CMD_SETNOTE_NOTES);
                         if ((txId != null) && (notes != null)) {
                             boolean success = myWallet.setUserNote(txId, notes);
                             if (!success) {
-                                Log.e(TAG, myWallet.getErrorString());
+                                Timber.e(myWallet.getErrorString());
                             }
                             if (observer != null) observer.onSetNotes(success);
                             if (success) {
                                 boolean rc = myWallet.store();
-                                Log.d(TAG, "wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                                Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
                                 if (!rc) {
-                                    Log.w(TAG, "Wallet store failed: " + myWallet.getErrorString());
+                                    Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                                 }
                                 if (observer != null) observer.onWalletStored(rc);
                             }
@@ -384,7 +384,7 @@ public class WalletService extends Service {
                     stop();
                     break;
                 default:
-                    Log.e(TAG, "UNKNOWN " + msg.arg2);
+                    Timber.e("UNKNOWN %s", msg.arg2);
             }
         }
     }
@@ -401,14 +401,14 @@ public class WalletService extends Service {
         final Looper serviceLooper = thread.getLooper();
         mServiceHandler = new WalletService.ServiceHandler(serviceLooper);
 
-        Log.d(TAG, "Service created");
+        Timber.d("Service created");
     }
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "onDestroy()");
+        Timber.d("onDestroy()");
         if (this.listener != null) {
-            Log.w(TAG, "onDestroy() with active listener");
+            Timber.w("onDestroy() with active listener");
             // no need to stop() here because the wallet closing should have been triggered
             // through onUnbind() already
         }
@@ -430,7 +430,7 @@ public class WalletService extends Service {
         // so we queue the open request
         // this should not matter since the old activity is not getting updates
         // and the new one is not listening yet (although it will be bound)
-        Log.d(TAG, "onStartCommand()");
+        Timber.d("onStartCommand()");
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
         Message msg = mServiceHandler.obtainMessage();
@@ -449,28 +449,28 @@ public class WalletService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // Very first client binds
-        Log.d(TAG, "onBind()");
+        Timber.d("onBind()");
         return mBinder;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnbind()");
+        Timber.d("onUnbind()");
         // All clients have unbound with unbindService()
         Message msg = mServiceHandler.obtainMessage();
         msg.arg2 = STOP_SERVICE;
         mServiceHandler.sendMessage(msg);
-        Log.d(TAG, "onUnbind() message sent");
+        Timber.d("onUnbind() message sent");
         return true; // true is important so that onUnbind is also called next time
     }
 
     private boolean start(String walletName, String walletPassword) {
-        Log.d(TAG, "start()");
+        Timber.d("start()");
         startNotfication();
         showProgress(getString(R.string.status_wallet_loading));
         showProgress(10);
         if (listener == null) {
-            Log.d(TAG, "start() loadWallet");
+            Timber.d("start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
             if ((aWallet == null) || (aWallet.getConnectionStatus() != Wallet.ConnectionStatus.ConnectionStatus_Connected)) {
                 if (aWallet != null) aWallet.close();
@@ -484,19 +484,19 @@ public class WalletService extends Service {
         showProgress(101);
         // if we try to refresh the history here we get occasional segfaults!
         // doesnt matter since we update as soon as we get a new block anyway
-        Log.d(TAG, "start() done");
+        Timber.d("start() done");
         return true;
     }
 
     public void stop() {
-        Log.d(TAG, "stop()");
+        Timber.d("stop()");
         setObserver(null); // in case it was not reset already
         if (listener != null) {
             listener.stop();
             Wallet myWallet = getWallet();
-            Log.d(TAG, "stop() closing");
+            Timber.d("stop() closing");
             myWallet.close();
-            Log.d(TAG, "stop() closed");
+            Timber.d("stop() closed");
             listener = null;
         }
         stopForeground(true);
@@ -507,7 +507,7 @@ public class WalletService extends Service {
     private Wallet loadWallet(String walletName, String walletPassword) {
         Wallet wallet = openWallet(walletName, walletPassword);
         if (wallet != null) {
-            Log.d(TAG, "Using daemon " + WalletManager.getInstance().getDaemonAddress());
+            Timber.d("Using daemon %s", WalletManager.getInstance().getDaemonAddress());
             showProgress(55);
             wallet.init(0);
             showProgress(90);
@@ -520,17 +520,17 @@ public class WalletService extends Service {
         showProgress(20);
         Wallet wallet = null;
         WalletManager walletMgr = WalletManager.getInstance();
-        Log.d(TAG, "WalletManager testnet=" + walletMgr.isTestNet());
+        Timber.d("WalletManager testnet=%s", walletMgr.isTestNet());
         showProgress(30);
         if (walletMgr.walletExists(path)) {
-            Log.d(TAG, "open wallet " + path);
+            Timber.d("open wallet %s", path);
             wallet = walletMgr.openWallet(path, walletPassword);
             showProgress(60);
-            Log.d(TAG, "wallet opened");
+            Timber.d("wallet opened");
             Wallet.Status status = wallet.getStatus();
-            Log.d(TAG, "wallet status is " + status);
+            Timber.d("wallet status is %s", status);
             if (status != Wallet.Status.Status_Ok) {
-                Log.d(TAG, "wallet status is " + status);
+                Timber.d("wallet status is %s", status);
                 WalletManager.getInstance().close(wallet); // TODO close() failed?
                 wallet = null;
                 // TODO what do we do with the progress??
