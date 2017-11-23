@@ -243,16 +243,4 @@ public class Helper {
         clipboardManager.setPrimaryClip(clip);
     }
 
-    static private OkHttpClient OkHttpClientSingleton;
-
-    static public final OkHttpClient getOkHttpClient() {
-        if (OkHttpClientSingleton == null) {
-            synchronized (Helper.class) {
-                if (OkHttpClientSingleton == null) {
-                    OkHttpClientSingleton = new OkHttpClient();
-                }
-            }
-        }
-        return OkHttpClientSingleton;
-    }
 }

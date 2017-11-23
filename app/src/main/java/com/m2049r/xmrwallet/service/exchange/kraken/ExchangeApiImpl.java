@@ -22,6 +22,7 @@ import android.support.annotation.VisibleForTesting;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +36,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ExchangeApiImpl implements ExchangeApi, ExchangeApiCall {
+public class ExchangeApiImpl implements ExchangeApi {
 
     @NonNull
     private final OkHttpClient okHttpClient;
@@ -57,11 +58,31 @@ public class ExchangeApiImpl implements ExchangeApi, ExchangeApiCall {
     @Override
     public void queryExchangeRate(@NonNull final String baseCurrency, @NonNull final String quoteCurrency,
                                   @NonNull final ExchangeCallback callback) {
-        ExchangeRateImpl.call(this, baseCurrency, quoteCurrency, callback);
-    }
 
-    @Override
-    public void call(@NonNull final String fiat, @NonNull final NetworkCallback callback) {
+        if (baseCurrency.equals(quoteCurrency)) {
+            callback.onSuccess(new ExchangeRateImpl(baseCurrency, quoteCurrency, 1.0));
+            return;
+        }
+
+        boolean inverse = false;
+        String fiat = null;
+
+        if (baseCurrency.equals("XMR")) {
+            fiat = quoteCurrency;
+            inverse = false;
+        }
+
+        if (quoteCurrency.equals("XMR")) {
+            fiat = baseCurrency;
+            inverse = true;
+        }
+
+        if (fiat == null) {
+            callback.onError(new IllegalArgumentException("no fiat specified"));
+            return;
+        }
+
+        final boolean swapAssets = inverse;
 
         final HttpUrl url = baseUrl.newBuilder()
                 .addQueryParameter("pair", "XMR" + fiat)
@@ -86,7 +107,7 @@ public class ExchangeApiImpl implements ExchangeApi, ExchangeApiCall {
                             callback.onError(new ExchangeException(response.code(), errorMsg));
                         } else {
                             final JSONObject jsonResult = json.getJSONObject("result");
-                            callback.onSuccess(jsonResult);
+                            reportSuccess(jsonResult, swapAssets, callback);
                         }
                     } catch (JSONException ex) {
                         callback.onError(new ExchangeException(ex.getLocalizedMessage()));
@@ -97,6 +118,18 @@ public class ExchangeApiImpl implements ExchangeApi, ExchangeApiCall {
             }
         });
     }
+
+    void reportSuccess(JSONObject jsonObject, boolean swapAssets, ExchangeCallback callback) {
+        try {
+            final ExchangeRate exchangeRate = new ExchangeRateImpl(jsonObject, swapAssets);
+            callback.onSuccess(exchangeRate);
+        } catch (JSONException ex) {
+            callback.onError(new ExchangeException(ex.getLocalizedMessage()));
+        } catch (ExchangeException ex) {
+            callback.onError(ex);
+        }
+    }
+
 
     private Request createHttpRequest(final HttpUrl url) {
         return new Request.Builder()

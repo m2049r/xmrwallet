@@ -17,7 +17,7 @@
 package com.m2049r.xmrwallet.service.exchange.api;
 
 public class ExchangeException extends Exception {
-    private int code;
+    private final int code;
     private final String errorMsg;
 
     public String getErrorMsg() {

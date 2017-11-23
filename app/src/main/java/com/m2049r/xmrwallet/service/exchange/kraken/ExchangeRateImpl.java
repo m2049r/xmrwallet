@@ -63,14 +63,14 @@ class ExchangeRateImpl implements ExchangeRate {
         this.rate = rate;
     }
 
-    ExchangeRateImpl(final JSONObject jsonObject) throws JSONException, ExchangeException {
+    ExchangeRateImpl(final JSONObject jsonObject, final boolean swapAssets) throws JSONException, ExchangeException {
         try {
             final String key = jsonObject.keys().next(); // we expect only one
             Pattern pattern = Pattern.compile("^X(.*?)Z(.*?)$");
             Matcher matcher = pattern.matcher(key);
             if (matcher.find()) {
-                this.baseCurrency = matcher.group(1);
-                this.quoteCurrency = matcher.group(2);
+                this.baseCurrency = swapAssets ? matcher.group(2) : matcher.group(1);
+                this.quoteCurrency = swapAssets ? matcher.group(1) : matcher.group(2);
             } else {
                 throw new ExchangeException("no pair returned!");
             }
@@ -80,7 +80,8 @@ class ExchangeRateImpl implements ExchangeRate {
             String closePrice = close.getString(0);
             if (closePrice != null) {
                 try {
-                    this.rate = Double.parseDouble(closePrice);
+                    double rate = Double.parseDouble(closePrice);
+                    this.rate = swapAssets ? (1 / rate) : rate;
                 } catch (NumberFormatException ex) {
                     throw new ExchangeException(ex.getLocalizedMessage());
                 }
@@ -91,52 +92,4 @@ class ExchangeRateImpl implements ExchangeRate {
             throw new ExchangeException(ex.getLocalizedMessage());
         }
     }
-
-    public static void call(@NonNull final ExchangeApiCall api,
-                            @NonNull final String baseCurrency, @NonNull final String quoteCurrency,
-                            @NonNull final ExchangeCallback callback) {
-
-        if (baseCurrency.equals(quoteCurrency)) {
-            callback.onSuccess(new ExchangeRateImpl(baseCurrency, quoteCurrency, 1.0));
-            return;
-        }
-
-        boolean inverse = false;
-        String fiat = null;
-
-        if (baseCurrency.equals("XMR")) {
-            fiat = quoteCurrency;
-            inverse = false;
-        }
-
-        if (quoteCurrency.equals("XMR")) {
-            fiat = baseCurrency;
-            inverse = true;
-        }
-
-        if (fiat == null) {
-            callback.onError(new IllegalArgumentException("no fiat specified"));
-            return;
-        }
-
-        api.call(fiat, new NetworkCallback() {
-            @Override
-            public void onSuccess(JSONObject jsonObject) {
-                try {
-                    final ExchangeRate exchangeRate = new ExchangeRateImpl(jsonObject);
-                    callback.onSuccess(exchangeRate);
-                } catch (JSONException ex) {
-                    callback.onError(new ExchangeException(ex.getLocalizedMessage()));
-                } catch (ExchangeException ex) {
-                    callback.onError(ex);
-                }
-            }
-
-            @Override
-            public void onError(Exception ex) {
-                callback.onError(ex);
-            }
-        });
-    }
-
 }

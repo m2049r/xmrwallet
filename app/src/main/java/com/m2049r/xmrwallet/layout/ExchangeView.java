@@ -44,6 +44,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.util.Locale;
 
@@ -285,7 +286,7 @@ public class ExchangeView extends LinearLayout {
         startExchange();
     }
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(Helper.getOkHttpClient());
+    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
 
     void startExchange() {
         showProgress();

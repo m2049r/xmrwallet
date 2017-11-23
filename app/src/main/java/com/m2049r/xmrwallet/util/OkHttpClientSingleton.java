@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017 m2049r
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,21 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.service.exchange.kraken;
+package com.m2049r.xmrwallet.util;
 
-import android.support.annotation.NonNull;
+import okhttp3.OkHttpClient;
 
-interface ExchangeApiCall {
+public class OkHttpClientSingleton {
+    static private OkHttpClient Singleton;
 
-    void call(@NonNull final String fiat, @NonNull final NetworkCallback callback);
+    static public final OkHttpClient getOkHttpClient() {
+        if (Singleton == null) {
+            synchronized (com.m2049r.xmrwallet.util.OkHttpClientSingleton.class) {
+                if (Singleton == null) {
+                    Singleton = new OkHttpClient();
+                }
+            }
+        }
+        return Singleton;
+    }
 }

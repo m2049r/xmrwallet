@@ -47,6 +47,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -151,7 +152,7 @@ public class WalletFragment extends Fragment
         if (isExchanging) return; // wait for exchange to finish - it will fire this itself then.
         // at this point selection is XMR in case of error
         String displayB;
-        double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // assume this cannot fail!
+        double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // crash if this fails!
         if (!"XMR".equals(balanceCurrency)) { // not XMR
             double amountB = amountA * balanceRate;
             displayB = Helper.getFormattedAmount(amountB, false);
@@ -164,7 +165,7 @@ public class WalletFragment extends Fragment
     String balanceCurrency = "XMR";
     double balanceRate = 1.0;
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(Helper.getOkHttpClient());
+    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
 
     void refreshBalance() {
         if (sCurrency.getSelectedItemPosition() == 0) { // XMR
