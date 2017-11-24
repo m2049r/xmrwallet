@@ -113,7 +113,7 @@ public class Helper {
     static public File getWalletFile(Context context, String aWalletName) {
         File walletDir = getStorageRoot(context);
         File f = new File(walletDir, aWalletName);
-        Timber.d("wallet = " + f.getAbsolutePath() + " size=" + f.length());
+        Timber.d("wallet= %s size= %d", f.getAbsolutePath(), f.length());
         return f;
     }
 

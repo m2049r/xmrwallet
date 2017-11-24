@@ -92,15 +92,15 @@ public class WalletService extends Service {
 
         // WalletListener callbacks
         public void moneySpent(String txId, long amount) {
-            Timber.d("moneySpent() " + amount + " @ " + txId);
+            Timber.d("moneySpent() %d @ %s", amount, txId);
         }
 
         public void moneyReceived(String txId, long amount) {
-            Timber.d("moneyReceived() " + amount + " @ " + txId);
+            Timber.d("moneyReceived() %d @ %s",amount, txId);
         }
 
         public void unconfirmedMoneyReceived(String txId, long amount) {
-            Timber.d("unconfirmedMoneyReceived() " + amount + " @ " + txId);
+            Timber.d("unconfirmedMoneyReceived() %d @ %s", amount, txId);
         }
 
         long lastBlockTime = 0;
@@ -111,7 +111,7 @@ public class WalletService extends Service {
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
-                Timber.d("newBlock() @" + height + " with observer " + observer);
+                Timber.d("newBlock() @ %d with observer %s", height, observer);
                 lastBlockTime = System.currentTimeMillis();
                 if (observer != null) {
                     boolean fullRefresh = false;
@@ -294,7 +294,7 @@ public class WalletService extends Service {
                         Wallet myWallet = getWallet();
                         Timber.d("STORE wallet: %s", myWallet.getName());
                         boolean rc = myWallet.store();
-                        Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                        Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
                         if (!rc) {
                             Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                         }
@@ -350,7 +350,7 @@ public class WalletService extends Service {
                                 myWallet.setUserNote(txid, notes);
                             }
                             boolean rc = myWallet.store();
-                            Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                            Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
                             if (!rc) {
                                 Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                             }
@@ -370,7 +370,7 @@ public class WalletService extends Service {
                             if (observer != null) observer.onSetNotes(success);
                             if (success) {
                                 boolean rc = myWallet.store();
-                                Timber.d("wallet stored: " + myWallet.getName() + " with rc=" + rc);
+                                Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
                                 if (!rc) {
                                     Timber.w("Wallet store failed: %s", myWallet.getErrorString());
                                 }

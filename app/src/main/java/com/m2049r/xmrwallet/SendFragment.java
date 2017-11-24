@@ -352,7 +352,7 @@ public class SendFragment extends Fragment {
         int mixin = Mixins[sMixin.getSelectedItemPosition()];
         int priorityIndex = sPriority.getSelectedItemPosition();
         PendingTransaction.Priority priority = Priorities[priorityIndex];
-        Timber.d(dst_addr + "/" + paymentId + "/" + amount + "/" + mixin + "/" + priority.toString());
+        Timber.d("%s/%s/%d/%d/%s", dst_addr, paymentId, amount, mixin, priority.toString());
         TxData txData = new TxData(
                 dst_addr,
                 paymentId,

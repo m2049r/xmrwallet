@@ -189,7 +189,7 @@ public class ReceiveFragment extends Fragment {
         Bundle b = getArguments();
         String address = b.getString("address");
         String walletName = b.getString("name");
-        Timber.d("address=" + address + "/name=" + walletName);
+        Timber.d("%s/%s",address, walletName);
         if (address == null) {
             String path = b.getString("path");
             String password = b.getString("password");
@@ -300,7 +300,7 @@ public class ReceiveFragment extends Fragment {
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Timber.d(xmrAmount + "/" + paymentId + "/" + address);
+        Timber.d("%s/%s/%s",xmrAmount, paymentId, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             clearQR();
             Timber.d("CLEARQR");
@@ -352,7 +352,7 @@ public class ReceiveFragment extends Fragment {
                 }
             }
             Bitmap bitmap = Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.RGB_565);
-            bitmap = addTimbero(bitmap);
+            bitmap = addLogo(bitmap);
             return bitmap;
         } catch (WriterException e) {
             e.printStackTrace();
@@ -361,8 +361,8 @@ public class ReceiveFragment extends Fragment {
     }
 
     // TODO check if we can sensibly cache some of this
-    private Bitmap addTimbero(Bitmap qrBitmap) {
-        Bitmap logo = getMoneroTimbero();
+    private Bitmap addLogo(Bitmap qrBitmap) {
+        Bitmap logo = getMoneroLogo();
         int qrWidth = qrBitmap.getWidth();
         int qrHeight = qrBitmap.getHeight();
         int logoWidth = logo.getWidth();
@@ -386,7 +386,7 @@ public class ReceiveFragment extends Fragment {
 
     private Bitmap logo = null;
 
-    private Bitmap getMoneroTimbero() {
+    private Bitmap getMoneroLogo() {
         if (logo == null) {
             logo = Helper.getBitmap(getContext(), R.drawable.ic_monero_logo_b);
         }

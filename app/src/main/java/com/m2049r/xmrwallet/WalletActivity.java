@@ -74,7 +74,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void setTitle(String title) {
-        Timber.d("setTitle:" + title + ".");
+        Timber.d("setTitle:%s.", title);
         toolbar.setTitle(title);
     }
 
