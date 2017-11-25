@@ -16,21 +16,17 @@
 
 package com.m2049r.xmrwallet.model;
 
-import android.support.annotation.NonNull;
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import timber.log.Timber;
 
 public class WalletManager {
-    private final static String TAG = "WalletManager";
 
     static {
         System.loadLibrary("monerujo");
@@ -54,7 +50,7 @@ public class WalletManager {
     }
 
     private void manageWallet(Wallet wallet) {
-        Log.d(TAG, "Managing " + wallet.getName());
+        Timber.d("Managing %s", wallet.getName());
         managedWallet = wallet;
     }
 
@@ -68,7 +64,7 @@ public class WalletManager {
         if (getWallet() != wallet) {
             throw new IllegalStateException(wallet.getName() + " not under management!");
         }
-        Log.d(TAG, "Unmanaging " + managedWallet.getName());
+        Timber.d("Unmanaging %s", managedWallet.getName());
         managedWallet = null;
     }
 
@@ -165,14 +161,14 @@ public class WalletManager {
         info.path = wallet.getParentFile();
         info.name = wallet.getName();
         File addressFile = new File(info.path, info.name + ".address.txt");
-        //Log.d(TAG, addressFile.getAbsolutePath());
+        //Timber.d(addressFile.getAbsolutePath());
         info.address = "??????";
         BufferedReader addressReader = null;
         try {
             addressReader = new BufferedReader(new FileReader(addressFile));
             info.address = addressReader.readLine();
         } catch (IOException ex) {
-            Log.d(TAG, ex.getLocalizedMessage());
+            Timber.d(ex.getLocalizedMessage());
         } finally {
             if (addressReader != null) {
                 try {
@@ -187,7 +183,7 @@ public class WalletManager {
 
     public List<WalletInfo> findWallets(File path) {
         List<WalletInfo> wallets = new ArrayList<>();
-        Log.d(TAG, "Scanning: " + path.getAbsolutePath());
+        Timber.d("Scanning: %s", path.getAbsolutePath());
         File[] found = path.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String filename) {
                 return filename.endsWith(".keys");
@@ -217,7 +213,7 @@ public class WalletManager {
     }
 
     public void setDaemon(String address, boolean testnet, String username, String password) {
-        //Log.d(TAG, "SETDAEMON " + username + "/" + password + "/" + address);
+        //Timber.d("SETDAEMON " + username + "/" + password + "/" + address);
         this.daemonAddress = address;
         this.testnet = testnet;
         this.daemonUsername = username;

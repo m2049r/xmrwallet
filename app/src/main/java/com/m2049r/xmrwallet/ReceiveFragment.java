@@ -27,7 +27,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,8 +56,9 @@ import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import java.util.HashMap;
 import java.util.Map;
 
+import timber.log.Timber;
+
 public class ReceiveFragment extends Fragment {
-    static final String TAG = "ReceiveFragment";
 
     private ProgressBar pbProgress;
     private TextView tvAddress;
@@ -111,7 +111,7 @@ public class ReceiveFragment extends Fragment {
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
             public void onNewAmount(String xmr) {
-                Log.d(TAG, "new amount = " + xmr);
+                Timber.d("new amount = %s", xmr);
                 generateQr();
             }
         });
@@ -189,7 +189,7 @@ public class ReceiveFragment extends Fragment {
         Bundle b = getArguments();
         String address = b.getString("address");
         String walletName = b.getString("name");
-        Log.d(TAG, "address=" + address + "/name=" + walletName);
+        Timber.d("%s/%s",address, walletName);
         if (address == null) {
             String path = b.getString("path");
             String password = b.getString("password");
@@ -227,7 +227,7 @@ public class ReceiveFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         listenerCallback.setToolbarButton(Toolbar.BUTTON_BACK);
         listenerCallback.setSubtitle(getString(R.string.receive_title));
         generateQr();
@@ -236,7 +236,7 @@ public class ReceiveFragment extends Fragment {
     private boolean isLoaded = false;
 
     private void show(String name, String address) {
-        Log.d(TAG, "name=" + name);
+        Timber.d("name=%s", name);
         isLoaded = true;
         listenerCallback.setTitle(name);
         tvAddress.setText(address);
@@ -296,14 +296,14 @@ public class ReceiveFragment extends Fragment {
     }
 
     private void generateQr() {
-        Log.d(TAG, "GENQR");
+        Timber.d("GENQR");
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Log.d(TAG, xmrAmount + "/" + paymentId + "/" + address);
+        Timber.d("%s/%s/%s",xmrAmount, paymentId, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             clearQR();
-            Log.d(TAG, "CLEARQR");
+            Timber.d("CLEARQR");
             return;
         }
         StringBuffer sb = new StringBuffer();
@@ -329,7 +329,7 @@ public class ReceiveFragment extends Fragment {
         Bitmap qr = generate(text, size, size);
         if (qr != null) {
             setQR(qr);
-            Log.d(TAG, "SETQR");
+            Timber.d("SETQR");
             etDummy.requestFocus();
             Helper.hideKeyboard(getActivity());
         }
@@ -419,7 +419,7 @@ public class ReceiveFragment extends Fragment {
 
     @Override
     public void onPause() {
-        Log.d(TAG, "onPause()");
+        Timber.d("onPause()");
         super.onPause();
     }
 }

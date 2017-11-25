@@ -24,7 +24,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,9 +54,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInteractionListener,
         View.OnClickListener {
-    private static final String TAG = "LoginFragment";
 
     private WalletInfoAdapter adapter;
 
@@ -112,7 +112,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     @Override
     public void onPause() {
-        Log.d(TAG, "onPause()");
+        Timber.d("onPause()");
         savePrefs();
         super.onPause();
     }
@@ -120,7 +120,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         activityCallback.setTitle(null);
         activityCallback.setToolbarButton(Toolbar.BUTTON_DONATE);
         activityCallback.showNet(isTestnet());
@@ -129,7 +129,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView");
+        Timber.d("onCreateView");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         ivGunther = (ImageView) view.findViewById(R.id.ivGunther);
@@ -262,7 +262,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     public void loadList() {
-        Log.d(TAG, "loadList()");
+        Timber.d("loadList()");
         WalletManager mgr = WalletManager.getInstance();
         List<WalletManager.WalletInfo> walletInfos =
                 mgr.findWallets(activityCallback.getStorageRoot());
@@ -360,7 +360,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     void savePrefs(boolean usePreviousState) {
-        Log.d(TAG, "SAVE / " + usePreviousState);
+        Timber.d("SAVE / %s", usePreviousState);
         // save the daemon address for the net
         boolean testnet = isTestnet() ^ usePreviousState;
         String daemon = getDaemon();
@@ -383,7 +383,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     void setDaemon(NodeList nodeList) {
-        Log.d(TAG, "setDaemon() " + nodeList.toString());
+        Timber.d("setDaemon() %s", nodeList.toString());
         String[] nodes = nodeList.getNodes().toArray(new String[0]);
         nodeAdapter.clear();
         nodeAdapter.addAll(nodes);

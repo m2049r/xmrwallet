@@ -35,7 +35,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -67,10 +66,11 @@ import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
 import java.util.Date;
 
+import timber.log.Timber;
+
 public class LoginActivity extends SecureActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
         GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, ReceiveFragment.Listener {
-    static final String TAG = "LoginActivity";
     private static final String GENERATE_STACK = "gen";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
@@ -99,7 +99,7 @@ public class LoginActivity extends SecureActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate()");
+        Timber.d("onCreate()");
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             // we don't store anything ourselves
@@ -125,7 +125,7 @@ public class LoginActivity extends SecureActivity
                         break;
                     case Toolbar.BUTTON_NONE:
                     default:
-                        Log.e(TAG, "Button " + type + "pressed - how can this be?");
+                        Timber.e("Button " + type + "pressed - how can this be?");
                 }
             }
         });
@@ -133,7 +133,7 @@ public class LoginActivity extends SecureActivity
         if (Helper.getWritePermission(this)) {
             if (savedInstanceState == null) startLoginFragment();
         } else {
-            Log.i(TAG, "Waiting for permissions");
+            Timber.i("Waiting for permissions");
         }
     }
 
@@ -157,7 +157,7 @@ public class LoginActivity extends SecureActivity
             WalletNode aWalletNode = new WalletNode(walletName, daemon, testnet);
             new AsyncOpenWallet().execute(aWalletNode);
         } catch (IllegalArgumentException ex) {
-            Log.e(TAG, ex.getLocalizedMessage());
+            Timber.e(ex.getLocalizedMessage());
             Toast.makeText(this, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -167,7 +167,7 @@ public class LoginActivity extends SecureActivity
     @Override
     public void onWalletDetails(final String walletName, boolean testnet) {
         setNet(testnet);
-        Log.d(TAG, "details for wallet ." + walletName + ".");
+        Timber.d("details for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -183,7 +183,7 @@ public class LoginActivity extends SecureActivity
                                 }
                             });
                         } else { // this cannot really happen as we prefilter choices
-                            Log.e(TAG, "Wallet missing: " + walletName);
+                            Timber.e("Wallet missing: %s", walletName);
                             Toast.makeText(LoginActivity.this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -205,7 +205,7 @@ public class LoginActivity extends SecureActivity
     @Override
     public void onWalletReceive(String walletName, boolean testnet) {
         setNet(testnet);
-        Log.d(TAG, "receive for wallet ." + walletName + ".");
+        Timber.d("receive for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
@@ -262,7 +262,7 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public void onWalletRename(final String walletName) {
-        Log.d(TAG, "rename for wallet ." + walletName + ".");
+        Timber.d("rename for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt_rename, null);
@@ -345,7 +345,7 @@ public class LoginActivity extends SecureActivity
         File backupFolder = new File(getStorageRoot(), "backups");
         if (!backupFolder.exists()) {
             if (!backupFolder.mkdir()) {
-                Log.e(TAG, "Cannot create backup dir " + backupFolder.getAbsolutePath());
+                Timber.e("Cannot create backup dir %s", backupFolder.getAbsolutePath());
                 return false;
             }
             // make folder visible over USB/MTP
@@ -353,18 +353,18 @@ public class LoginActivity extends SecureActivity
         }
         File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
         File backupFile = new File(backupFolder, walletName);
-        Log.d(TAG, "backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+        Timber.d("backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
         // TODO probably better to copy to a new file and then rename
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
         boolean success = copyWallet(walletFile, backupFile, true, true);
-        Log.d(TAG, "copyWallet is " + success);
+        Timber.d("copyWallet is %s", success);
         return success;
     }
 
     @Override
     public void onWalletBackup(String walletName) {
-        Log.d(TAG, "backup for wallet ." + walletName + ".");
+        Timber.d("backup for wallet ." + walletName + ".");
         new AsyncBackup().execute(walletName);
     }
 
@@ -403,7 +403,7 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public void onWalletArchive(final String walletName) {
-        Log.d(TAG, "archive for wallet ." + walletName + ".");
+        Timber.d("archive for wallet ." + walletName + ".");
         if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -428,7 +428,7 @@ public class LoginActivity extends SecureActivity
     }
 
     void reloadWalletList() {
-        Log.d(TAG, "reloadWalletList()");
+        Timber.d("reloadWalletList()");
         try {
             LoginFragment loginFragment = (LoginFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -585,7 +585,7 @@ public class LoginActivity extends SecureActivity
 
     @Override
     protected void onPause() {
-        Log.d(TAG, "onPause()");
+        Timber.d("onPause()");
         super.onPause();
     }
 
@@ -626,7 +626,7 @@ public class LoginActivity extends SecureActivity
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         // wait for WalletService to finish
         if (WalletService.Running && (progressDialog == null)) {
             // and show a progress dialog, but only if there isn't one already
@@ -681,7 +681,7 @@ public class LoginActivity extends SecureActivity
     }
 
     void startWallet(String walletName, String walletPassword) {
-        Log.d(TAG, "startWallet()");
+        Timber.d("startWallet()");
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
@@ -689,7 +689,7 @@ public class LoginActivity extends SecureActivity
     }
 
     void startDetails(File walletFile, String password, String type) {
-        Log.d(TAG, "startDetails()");
+        Timber.d("startDetails()");
         Bundle b = new Bundle();
         b.putString("path", walletFile.getAbsolutePath());
         b.putString("password", password);
@@ -698,7 +698,7 @@ public class LoginActivity extends SecureActivity
     }
 
     void startReceive(File walletFile, String password) {
-        Log.d(TAG, "startReceive()");
+        Timber.d("startReceive()");
         Bundle b = new Bundle();
         b.putString("path", walletFile.getAbsolutePath());
         b.putString("password", password);
@@ -707,7 +707,7 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        Log.d(TAG, "onRequestPermissionsResult()");
+        Timber.d("onRequestPermissionsResult()");
         switch (requestCode) {
             case Helper.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE:
                 // If request is cancelled, the result arrays are empty.
@@ -716,7 +716,7 @@ public class LoginActivity extends SecureActivity
                     startLoginFragment = true;
                 } else {
                     String msg = getString(R.string.message_strorage_not_permitted);
-                    Log.e(TAG, msg);
+                    Timber.e(msg);
                     Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     //throw new IllegalStateException(msg);
                 }
@@ -740,24 +740,24 @@ public class LoginActivity extends SecureActivity
         Fragment fragment = new LoginFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment).commit();
-        Log.d(TAG, "LoginFragment added");
+        Timber.d("LoginFragment added");
     }
 
     void startGenerateFragment(String type) {
         Bundle extras = new Bundle();
         extras.putString(GenerateFragment.TYPE, type);
         replaceFragment(new GenerateFragment(), GENERATE_STACK, extras);
-        Log.d(TAG, "GenerateFragment placed");
+        Timber.d("GenerateFragment placed");
     }
 
     void startReviewFragment(Bundle extras) {
         replaceFragment(new GenerateReviewFragment(), null, extras);
-        Log.d(TAG, "GenerateReviewFragment placed");
+        Timber.d("GenerateReviewFragment placed");
     }
 
     void startReceiveFragment(Bundle extras) {
         replaceFragment(new ReceiveFragment(), null, extras);
-        Log.d(TAG, "ReceiveFragment placed");
+        Timber.d("ReceiveFragment placed");
     }
 
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
@@ -803,7 +803,7 @@ public class LoginActivity extends SecureActivity
         protected Boolean doInBackground(Void... params) {
             File newWalletFolder = getStorageRoot();
             if (!newWalletFolder.isDirectory()) {
-                Log.e(TAG, "Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+                Timber.e("Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
                 return false;
             }
             File cacheFile = new File(newWalletFolder, walletName);
@@ -811,7 +811,7 @@ public class LoginActivity extends SecureActivity
             File addressFile = new File(newWalletFolder, walletName + ".address.txt");
 
             if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
-                Log.e(TAG, "Some wallet files already exist for " + cacheFile.getAbsolutePath());
+                Timber.e("Some wallet files already exist for %s", cacheFile.getAbsolutePath());
                 return false;
             }
 
@@ -820,7 +820,7 @@ public class LoginActivity extends SecureActivity
             if (success) {
                 return true;
             } else {
-                Log.e(TAG, "Could not create new wallet in " + newWalletFile.getAbsolutePath());
+                Timber.e("Could not create new wallet in %s", newWalletFile.getAbsolutePath());
                 return false;
             }
         }
@@ -851,7 +851,7 @@ public class LoginActivity extends SecureActivity
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             genFragment.walletGenerateError();
         } catch (ClassCastException ex) {
-            Log.e(TAG, "walletGenerateError() but not in GenerateFragment");
+            Timber.e("walletGenerateError() but not in GenerateFragment");
         }
     }
 
@@ -869,7 +869,7 @@ public class LoginActivity extends SecureActivity
                                 .createWallet(aFile, password, MNEMONIC_LANGUAGE);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) {
-                            Log.e(TAG, newWallet.getErrorString());
+                            Timber.e(newWallet.getErrorString());
                             toast(newWallet.getErrorString());
                         }
                         newWallet.close();
@@ -889,7 +889,7 @@ public class LoginActivity extends SecureActivity
                             newWallet.setPassword(password);
                             success = success && newWallet.store();
                         } else {
-                            Log.e(TAG, newWallet.getErrorString());
+                            Timber.e(newWallet.getErrorString());
                             toast(newWallet.getErrorString());
                         }
                         newWallet.close();
@@ -912,7 +912,7 @@ public class LoginActivity extends SecureActivity
                             newWallet.setPassword(password);
                             success = success && newWallet.store();
                         } else {
-                            Log.e(TAG, newWallet.getErrorString());
+                            Timber.e(newWallet.getErrorString());
                             toast(newWallet.getErrorString());
                         }
                         newWallet.close();
@@ -943,17 +943,17 @@ public class LoginActivity extends SecureActivity
             Toast.makeText(LoginActivity.this,
                     getString(R.string.generate_wallet_created), Toast.LENGTH_SHORT).show();
         } else {
-            Log.e(TAG, "Wallet store failed to " + walletFile.getAbsolutePath());
+            Timber.e("Wallet store failed to %s", walletFile.getAbsolutePath());
             Toast.makeText(LoginActivity.this, getString(R.string.generate_wallet_create_failed), Toast.LENGTH_LONG).show();
         }
     }
 
     Wallet.Status testWallet(String path, String password) {
-        Log.d(TAG, "testing wallet " + path);
+        Timber.d("testing wallet %s", path);
         Wallet aWallet = WalletManager.getInstance().openWallet(path, password);
         if (aWallet == null) return Wallet.Status.Status_Error; // does this ever happen?
         Wallet.Status status = aWallet.getStatus();
-        Log.d(TAG, "wallet tested " + aWallet.getStatus());
+        Timber.d("wallet tested %s", aWallet.getStatus());
         aWallet.close();
         return status;
     }
@@ -983,7 +983,7 @@ public class LoginActivity extends SecureActivity
             try {
                 copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
             } catch (IOException ex) {
-                Log.d(TAG, "CACHE " + ignoreCacheError);
+                Timber.d("CACHE %s", ignoreCacheError);
                 if (!ignoreCacheError) { // ignore cache backup error if backing up (can be resynced)
                     throw ex;
                 }
@@ -992,7 +992,7 @@ public class LoginActivity extends SecureActivity
             copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;
         } catch (IOException ex) {
-            Log.e(TAG, "wallet copy failed: " + ex.getMessage());
+            Timber.e("wallet copy failed: %s", ex.getMessage());
             // try to rollback
             deleteWallet(dstWallet);
         }
@@ -1001,7 +1001,7 @@ public class LoginActivity extends SecureActivity
 
     // do our best to delete as much as possible of the wallet files
     boolean deleteWallet(File walletFile) {
-        Log.d(TAG, "deleteWallet " + walletFile.getAbsolutePath());
+        Timber.d("deleteWallet %s", walletFile.getAbsolutePath());
         File dir = walletFile.getParentFile();
         String name = walletFile.getName();
         boolean success = true;
@@ -1014,7 +1014,7 @@ public class LoginActivity extends SecureActivity
         if (addressFile.exists()) {
             success = addressFile.delete() && success;
         }
-        Log.d(TAG, "deleteWallet is " + success);
+        Timber.d("deleteWallet is %s", success);
         return success;
     }
 
@@ -1164,26 +1164,26 @@ public class LoginActivity extends SecureActivity
             this.walletNode = params[0];
             if (!walletNode.isValid()) return INVALID;
 
-            Log.d(TAG, "checking " + walletNode.getAddress());
+            Timber.d("checking %s", walletNode.getAddress());
 
             try {
                 long timeDA = new Date().getTime();
                 SocketAddress address = new InetSocketAddress(walletNode.host, walletNode.port);
                 long timeDB = new Date().getTime();
-                Log.d(TAG, "Resolving " + walletNode.host + " took " + (timeDB - timeDA) + "ms.");
+                Timber.d("Resolving " + walletNode.host + " took " + (timeDB - timeDA) + "ms.");
                 Socket socket = new Socket();
                 long timeA = new Date().getTime();
                 socket.connect(address, LoginActivity.DAEMON_TIMEOUT);
                 socket.close();
                 long timeB = new Date().getTime();
                 long time = timeB - timeA;
-                Log.d(TAG, "Daemon " + walletNode.host + " is " + time + "ms away.");
+                Timber.d("Daemon " + walletNode.host + " is " + time + "ms away.");
                 return (time < LoginActivity.DAEMON_TIMEOUT ? OK : TIMEOUT);
             } catch (IOException ex) {
-                Log.d(TAG, "Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
+                Timber.d("Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
                 return IOEX;
             } catch (IllegalArgumentException ex) {
-                Log.d(TAG, "Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
+                Timber.d("Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
                 return INVALID;
             }
         }
@@ -1197,7 +1197,7 @@ public class LoginActivity extends SecureActivity
             dismissProgressDialog();
             switch (result) {
                 case OK:
-                    Log.d(TAG, "selected wallet is ." + walletNode.name + ".");
+                    Timber.d("selected wallet is ." + walletNode.name + ".");
                     // now it's getting real, check if wallet exists
                     promptAndStart(walletNode);
                     break;

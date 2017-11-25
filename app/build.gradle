@@ -45,6 +45,7 @@ dependencies {
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
 
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
+    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"

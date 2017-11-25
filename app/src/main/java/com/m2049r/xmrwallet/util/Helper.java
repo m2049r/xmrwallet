@@ -31,7 +31,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
@@ -48,10 +47,9 @@ import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import okhttp3.OkHttpClient;
+import timber.log.Timber;
 
 public class Helper {
-    static private final String TAG = "Helper";
     static private final String WALLET_DIR = "monerujo";
 
     static public int DISPLAY_DIGITS_INFO = 5;
@@ -60,17 +58,17 @@ public class Helper {
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
             String msg = context.getString(R.string.message_strorage_not_writable);
-            Log.e(TAG, msg);
+            Timber.e(msg);
             throw new IllegalStateException(msg);
         }
         File dir = new File(Environment.getExternalStorageDirectory(), WALLET_DIR);
         if (!dir.exists()) {
-            Log.i(TAG, "Creating " + dir.getAbsolutePath());
+            Timber.i("Creating %s", dir.getAbsolutePath());
             dir.mkdirs(); // try to make it
         }
         if (!dir.isDirectory()) {
             String msg = "Directory " + dir.getAbsolutePath() + " does not exist.";
-            Log.e(TAG, msg);
+            Timber.e(msg);
             throw new IllegalStateException(msg);
         }
         return dir;
@@ -82,7 +80,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.w(TAG, "Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+                Timber.w("Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
                 return false;
@@ -100,7 +98,7 @@ public class Helper {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_DENIED) {
-                Log.w(TAG, "Permission denied for CAMERA - requesting it");
+                Timber.w("Permission denied for CAMERA - requesting it");
                 String[] permissions = {Manifest.permission.CAMERA};
                 context.requestPermissions(permissions, PERMISSIONS_REQUEST_CAMERA);
                 return false;
@@ -115,7 +113,7 @@ public class Helper {
     static public File getWalletFile(Context context, String aWalletName) {
         File walletDir = getStorageRoot(context);
         File f = new File(walletDir, aWalletName);
-        Log.d(TAG, "wallet = " + f.getAbsolutePath() + " size=" + f.length());
+        Timber.d("wallet= %s size= %d", f.getAbsolutePath(), f.length());
         return f;
     }
 
@@ -224,11 +222,11 @@ public class Helper {
             }
             return sb.toString();
         } catch (SocketTimeoutException ex) {
-            Log.w(TAG, "C " + ex.getLocalizedMessage());
+            Timber.w("C %s", ex.getLocalizedMessage());
         } catch (MalformedURLException ex) {
-            Log.e(TAG, "A " + ex.getLocalizedMessage());
+            Timber.e("A %s", ex.getLocalizedMessage());
         } catch (IOException ex) {
-            Log.e(TAG, "B " + ex.getLocalizedMessage());
+            Timber.e("B %s", ex.getLocalizedMessage());
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();

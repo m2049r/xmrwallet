@@ -20,7 +20,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +29,9 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import timber.log.Timber;
 
 public class ScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
-    static final String TAG = "ScannerFragment";
 
     private Listener activityCallback;
 
@@ -44,7 +43,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView");
+        Timber.d("onCreateView");
         mScannerView = new ZXingScannerView(getActivity());
         return mScannerView;
     }
@@ -52,7 +51,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume");
+        Timber.d("onResume");
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
@@ -91,7 +90,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public void onPause() {
-        Log.d(TAG, "onPause");
+        Timber.d("onPause");
         mScannerView.stopCamera();
         super.onPause();
     }
