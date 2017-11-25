@@ -16,7 +16,7 @@
 
 // based on https://code.tutsplus.com/tutorials/creating-compound-views-on-android--cms-22889
 
-package com.m2049r.xmrwallet.layout;
+package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
 import android.os.Handler;
@@ -49,7 +49,14 @@ import java.util.Locale;
 
 import timber.log.Timber;
 
-public class ExchangeView extends LinearLayout {
+// TODO combine this with ExchangeTextView
+
+public class ExchangeView extends LinearLayout
+        implements NumberPadView.NumberPadListener {
+
+    public void enableSoftKeyboard(final boolean isEnabled) {
+        etAmount.getEditText().setShowSoftInputOnFocus(isEnabled);
+    }
 
     public boolean focus() {
         return etAmount.requestFocus();
@@ -201,7 +208,7 @@ public class ExchangeView extends LinearLayout {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // nothing (yet?)
+                // nothing
             }
         });
 
@@ -229,11 +236,7 @@ public class ExchangeView extends LinearLayout {
             @Override
             public void afterTextChanged(Editable editable) {
                 etAmount.setError(null);
-                if ((xmrAmount != null) || (notXmrAmount != null)) {
-                    tvAmountB.setText("--");
-                    setXmr(null);
-                    notXmrAmount = null;
-                }
+                //doExchange();
             }
 
             @Override
@@ -280,8 +283,31 @@ public class ExchangeView extends LinearLayout {
 
     public void doExchange() {
         tvAmountB.setText("--");
-        // TODO cache & use cached exchange rate here
-        startExchange();
+        // use cached exchange rate if we have it
+        if (!isExchangeInProgress()) {
+            String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
+            String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
+            if ((enteredCurrencyA + enteredCurrencyB).equals(assetPair)) {
+                if (prepareExchange()) {
+                    exchange(assetRate);
+                } else {
+                    clearAmounts();
+                }
+            } else {
+                clearAmounts();
+                startExchange();
+            }
+        } else {
+            clearAmounts();
+        }
+    }
+
+    private void clearAmounts() {
+        if ((xmrAmount != null) || (notXmrAmount != null)) {
+            tvAmountB.setText("--");
+            setXmr(null);
+            notXmrAmount = null;
+        }
     }
 
     private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
@@ -368,7 +394,6 @@ public class ExchangeView extends LinearLayout {
                     return false;
                 }
                 Timber.d("prepareExchange() %s", cleanAmount);
-                //etAmount.getEditText().setText(cleanAmount); // display what we use
             } else {
                 setXmr("");
                 notXmrAmount = "";
@@ -389,6 +414,9 @@ public class ExchangeView extends LinearLayout {
         }
     }
 
+    String assetPair = null;
+    double assetRate = 0;
+
     public void exchange(ExchangeRate exchangeRate) {
         hideProgress();
         // first, make sure this is what we want
@@ -400,6 +428,8 @@ public class ExchangeView extends LinearLayout {
             Timber.e("Currencies don't match!");
             return;
         }
+        assetPair = enteredCurrencyA + enteredCurrencyB;
+        assetRate = exchangeRate.getRate();
         if (prepareExchange()) {
             exchange(exchangeRate.getRate());
         }
@@ -407,6 +437,10 @@ public class ExchangeView extends LinearLayout {
 
     private void showProgress() {
         pbExchange.setVisibility(View.VISIBLE);
+    }
+
+    private boolean isExchangeInProgress() {
+        return pbExchange.getVisibility() == View.VISIBLE;
     }
 
     private void hideProgress() {
@@ -442,5 +476,32 @@ public class ExchangeView extends LinearLayout {
 
     public void setOnFailedExchangeListener(OnFailedExchangeListener listener) {
         onFailedExchangeListener = listener;
+    }
+
+    @Override
+    public void onDigitPressed(final int digit) {
+        etAmount.getEditText().append(String.valueOf(digit));
+    }
+
+    @Override
+    public void onPointPressed() {
+        //TODO locale?
+        if (etAmount.getEditText().getText().toString().indexOf('.') == -1) {
+            etAmount.getEditText().append(".");
+        }
+    }
+
+    @Override
+    public void onBackSpacePressed() {
+        Editable editable = etAmount.getEditText().getText();
+        int length = editable.length();
+        if (length > 0) {
+            editable.delete(length - 1, length);
+        }
+    }
+
+    @Override
+    public void onClearAll() {
+        etAmount.getEditText().getText().clear();
     }
 }

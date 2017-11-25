@@ -42,11 +42,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    //static final int TX_RED = Color.rgb(255, 79, 65);
-    //static final int TX_GREEN = Color.rgb(54, 176, 91);
-    //static final int TX_PENDING = Color.rgb(72, 53, 176);
-    //static final int TX_FAILED = Color.rgb(208, 0, 255);
-
     private int outboundColour;
     private int inboundColour;
     private int pendingColour;

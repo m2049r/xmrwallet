@@ -32,6 +32,8 @@ import android.graphics.drawable.VectorDrawable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
@@ -53,7 +55,6 @@ public class Helper {
     static private final String WALLET_DIR = "monerujo";
 
     static public int DISPLAY_DIGITS_INFO = 5;
-    static public int DISPLAY_DIGITS_SHORT = 5;
 
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
@@ -92,7 +93,7 @@ public class Helper {
         }
     }
 
-    static public final int PERMISSIONS_REQUEST_CAMERA = 1;
+    static public final int PERMISSIONS_REQUEST_CAMERA = 7;
 
     static public boolean getCameraPermission(Activity context) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -174,9 +175,14 @@ public class Helper {
     static public String getFormattedAmount(double amount, boolean isXmr) {
         // at this point selection is XMR in case of error
         String displayB;
-        if (isXmr) { // not XMR
-            displayB = String.format(Locale.US, "%,.5f", amount);
-        } else { // XMR
+        if (isXmr) { // XMR
+            long xmr = Wallet.getAmountFromDouble(amount);
+            if ((xmr > 0) || (amount == 0)) {
+                displayB = String.format(Locale.US, "%,.5f", amount);
+            } else {
+                displayB = null;
+            }
+        } else { // not XMR
             displayB = String.format(Locale.US, "%,.2f", amount);
         }
         return displayB;
@@ -239,6 +245,19 @@ public class Helper {
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText(label, text);
         clipboardManager.setPrimaryClip(clip);
+    }
+
+    static private Animation ShakeAnimation;
+
+    static public Animation getShakeAnimation(Context context) {
+        if (ShakeAnimation == null) {
+            synchronized (Helper.class) {
+                if (ShakeAnimation == null) {
+                    ShakeAnimation = AnimationUtils.loadAnimation(context, R.anim.shake);
+                }
+            }
+        }
+        return ShakeAnimation;
     }
 
 }

@@ -46,12 +46,12 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.m2049r.xmrwallet.layout.ExchangeView;
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.ExchangeView;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,8 +70,6 @@ public class ReceiveFragment extends Fragment {
     private ImageView qrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
-
-    //String name;
 
     public interface Listener {
         void setToolbarButton(int type);
@@ -151,7 +149,6 @@ public class ReceiveFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,7 +186,7 @@ public class ReceiveFragment extends Fragment {
         Bundle b = getArguments();
         String address = b.getString("address");
         String walletName = b.getString("name");
-        Timber.d("%s/%s",address, walletName);
+        Timber.d("%s/%s", address, walletName);
         if (address == null) {
             String path = b.getString("path");
             String password = b.getString("password");
@@ -300,7 +297,7 @@ public class ReceiveFragment extends Fragment {
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Timber.d("%s/%s/%s",xmrAmount, paymentId, address);
+        Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             clearQR();
             Timber.d("CLEARQR");
@@ -360,7 +357,6 @@ public class ReceiveFragment extends Fragment {
         return null;
     }
 
-    // TODO check if we can sensibly cache some of this
     private Bitmap addLogo(Bitmap qrBitmap) {
         Bitmap logo = getMoneroLogo();
         int qrWidth = qrBitmap.getWidth();
@@ -413,9 +409,6 @@ public class ReceiveFragment extends Fragment {
                     + " must implement Listener");
         }
     }
-
-    static final String PREF_CURRENCY_A = "PREF_CURRENCY_A";
-    static final String PREF_CURRENCY_B = "PREF_CURRENCY_B";
 
     @Override
     public void onPause() {

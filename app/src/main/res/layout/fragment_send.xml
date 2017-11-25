@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp">
@@ -49,7 +48,7 @@
                 android:text="@string/send_qr_hint" />
         </LinearLayout>
 
-        <com.m2049r.xmrwallet.layout.ExchangeView
+        <com.m2049r.xmrwallet.widget.ExchangeView
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

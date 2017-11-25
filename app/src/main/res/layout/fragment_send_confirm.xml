@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/MoneroText.Confirm.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_send_address"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/tvTxAddress"
+        style="@style/MoneroText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textStart"
+        tools:text="4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/MoneroText.Confirm.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_send_payment_id"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/tvTxPaymentId"
+            style="@style/MoneroText.Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAlignment="textStart"
+            tools:text="d666a38d4a28fb38" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/MoneroText.Confirm.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_send_notes"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/tvTxNotes"
+            style="@style/MoneroText.Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAlignment="textStart"
+            tools:text="gunegugumobil" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/llConfirmSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTxAmountLabel"
+                style="@style/MoneroLabel.Gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/send_amount_label"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/tvTxAmount"
+                style="@style/MoneroText.Gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAlignment="textEnd"
+                tools:text="143.008000000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tvTxFeeLabel"
+                style="@style/MoneroLabel.Gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/send_fee_label"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/tvTxFee"
+                style="@style/MoneroText.Gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAlignment="textEnd"
+                tools:text="0.006817000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tvTxTotalLabel"
+                style="@style/MoneroLabel.Caps.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/send_total_label"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/tvTxTotal"
+                style="@style/MoneroText.Black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAlignment="textEnd"
+                tools:text="143.014817000000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bSend"
+            style="@style/MoneroButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:enabled="true"
+            android:padding="8dp"
+            android:text="@string/send_send_hint" />
+
+        <ProgressBar
+            android:id="@+id/pbProgressSend"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+</LinearLayout>

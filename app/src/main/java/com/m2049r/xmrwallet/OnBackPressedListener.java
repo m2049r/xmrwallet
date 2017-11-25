@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017 m2049r
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-
-import android.app.Application;
-
-import timber.log.Timber;
-
-public class XmrWalletApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
-    }
+public interface OnBackPressedListener {
+    boolean onBackPressed();
 }

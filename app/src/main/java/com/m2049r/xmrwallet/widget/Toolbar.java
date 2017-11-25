@@ -16,12 +16,11 @@
 
 // based on https://code.tutsplus.com/tutorials/creating-compound-views-on-android--cms-22889
 
-package com.m2049r.xmrwallet.layout;
+package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -30,9 +29,9 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
 
-public class Toolbar extends android.support.v7.widget.Toolbar {
-    static final String TAG = "Toolbar";
+import timber.log.Timber;
 
+public class Toolbar extends android.support.v7.widget.Toolbar {
     public interface OnButtonListener {
         void onButton(int type);
     }
@@ -124,26 +123,26 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     public void setButton(int type) {
         switch (type) {
             case BUTTON_BACK:
-                Log.d(TAG, "BUTTON_BACK");
+                Timber.d("BUTTON_BACK");
                 bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back_white_24dp, 0, 0, 0);
                 bDonate.setText(null);
                 bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CLOSE:
-                Log.d(TAG, "BUTTON_CLOSE");
+                Timber.d("BUTTON_CLOSE");
                 bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
                 bDonate.setText(R.string.label_close);
                 bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_DONATE:
-                Log.d(TAG, "BUTTON_DONATE");
+                Timber.d("BUTTON_DONATE");
                 bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_favorite_white_24dp, 0, 0, 0);
                 bDonate.setText(R.string.label_donate);
                 bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_NONE:
             default:
-                Log.d(TAG, "BUTTON_NONE");
+                Timber.d("BUTTON_NONE");
                 bDonate.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 bDonate.setText(null);
                 bDonate.setVisibility(View.INVISIBLE);

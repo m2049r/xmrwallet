@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16sp"
+        android:layout_marginTop="16sp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/MoneroLabel.Caps.Gray.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="8dp"
+            android:text="Advanced:"
+            android:textAlignment="textEnd" />
+
+        <Spinner
+            android:id="@+id/sMixin"
+            style="@style/MoneroSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:entries="@array/mixin"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/sPriority"
+            style="@style/MoneroSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/priority"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/MoneroFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:gravity="center"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_info_outline_gray_24dp"
+        android:text="@string/label_send_info_fees" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp">
+
+        <EditText
+            android:id="@+id/etNotes"
+            style="@style/MoneroEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/send_notes_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:textAlignment="textStart" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

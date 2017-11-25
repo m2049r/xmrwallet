@@ -3,6 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -49,7 +54,7 @@
             android:textAlignment="center"
             tools:text="9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
 
-        <com.m2049r.xmrwallet.layout.ExchangeView
+        <com.m2049r.xmrwallet.widget.ExchangeView
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,10 +116,10 @@
                 android:layout_gravity="center"
                 android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_info_outline_gray_24dp"
-                android:text="@string/label_receive_gen_qr_code"
+                android:text="@string/label_receive_info_gen_qr_code"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/qrCode"
@@ -124,11 +129,6 @@
                 android:background="#00000000" />
 
         </FrameLayout>
-
-        <EditText
-            android:id="@+id/etDummy"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
     </LinearLayout>
 
     <ImageView

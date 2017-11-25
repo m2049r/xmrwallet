@@ -34,7 +34,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;

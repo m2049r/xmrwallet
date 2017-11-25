@@ -33,10 +33,10 @@ import timber.log.Timber;
 
 public class ScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
 
-    private Listener activityCallback;
+    private OnScannedListener onScannedListener;
 
-    public interface Listener {
-        boolean onAddressScanned(String uri);
+    public interface OnScannedListener {
+        boolean onScanned(String uri);
     }
 
     private ZXingScannerView mScannerView;
@@ -64,7 +64,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     public void handleResult(Result rawResult) {
         if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE) &&
                 (rawResult.getText().startsWith(QR_SCHEME))) {
-            if (activityCallback.onAddressScanned(rawResult.getText())) {
+            if (onScannedListener.onScanned(rawResult.getText())) {
                 return;
             } else {
                 Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
@@ -98,8 +98,8 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Listener) {
-            this.activityCallback = (Listener) context;
+        if (context instanceof OnScannedListener) {
+            this.onScannedListener = (OnScannedListener) context;
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");

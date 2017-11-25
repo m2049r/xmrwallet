@@ -49,12 +49,12 @@ import com.m2049r.xmrwallet.dialog.AboutFragment;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -314,7 +314,6 @@ public class LoginActivity extends SecureActivity
         dialog.show();
     }
 
-
     private class AsyncBackup extends AsyncTask<String, Void, Boolean> {
         @Override
         protected void onPreExecute() {
@@ -503,9 +502,9 @@ public class LoginActivity extends SecureActivity
                     public void onClick(View view) {
                         String pass = etPassword.getEditText().getText().toString();
                         if (processPasswordEntry(wallet, pass, action)) {
+                            Helper.hideKeyboardAlways(LoginActivity.this);
                             passwordDialog.dismiss();
                             passwordDialog = null;
-                            Helper.hideKeyboardAlways(LoginActivity.this);
                         } else {
                             etPassword.setError(getString(R.string.bad_password));
                         }
@@ -520,10 +519,10 @@ public class LoginActivity extends SecureActivity
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Helper.hideKeyboardAlways(LoginActivity.this);
                     String pass = etPassword.getEditText().getText().toString();
                     if (processPasswordEntry(wallet, pass, action)) {
-                        passwordDialog.cancel();
+                        Helper.hideKeyboardAlways(LoginActivity.this);
+                        passwordDialog.dismiss();
                         passwordDialog = null;
                     } else {
                         etPassword.setError(getString(R.string.bad_password));
@@ -646,7 +645,7 @@ public class LoginActivity extends SecureActivity
 
         @Override
         public void onBackPressed() {
-            //activity.finish();
+            // prevent back button
         }
     }
 
@@ -718,7 +717,6 @@ public class LoginActivity extends SecureActivity
                     String msg = getString(R.string.message_strorage_not_permitted);
                     Timber.e(msg);
                     Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-                    //throw new IllegalStateException(msg);
                 }
                 break;
             default:
@@ -1198,7 +1196,7 @@ public class LoginActivity extends SecureActivity
             switch (result) {
                 case OK:
                     Timber.d("selected wallet is ." + walletNode.name + ".");
-                    // now it's getting real, check if wallet exists
+                    // now it's getting real, onValidateFields if wallet exists
                     promptAndStart(walletNode);
                     break;
                 case TIMEOUT:

@@ -16,7 +16,7 @@
 
 // https://stackoverflow.com/questions/2126717/android-autocompletetextview-show-suggestions-when-no-text-entered
 
-package com.m2049r.xmrwallet.layout;
+package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
 import android.graphics.Rect;

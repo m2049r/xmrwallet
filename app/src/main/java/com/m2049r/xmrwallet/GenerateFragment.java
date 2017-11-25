@@ -32,7 +32,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;

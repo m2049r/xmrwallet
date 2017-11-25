@@ -31,10 +31,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -166,8 +166,7 @@ public class TxFragment extends Fragment {
             sb.append("-");
         }
         sb.append("\n\n");
-        //Helper.clipBoardCopy(getActivity(), getString(R.string.tx_copy_label), sb.toString());
-        //Toast.makeText(getActivity(), getString(R.string.tx_copy_message), Toast.LENGTH_SHORT).show();
+
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
