@@ -16,7 +16,7 @@
 
 // based on from https://stackoverflow.com/a/45325876 (which did not work for me)
 
-package com.m2049r.xmrwallet.layout;
+package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;

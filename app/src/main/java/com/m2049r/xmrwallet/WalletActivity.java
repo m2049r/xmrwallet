@@ -34,28 +34,30 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.BarcodeData;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.TxData;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
 
 public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
-        WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
+        WalletService.Observer, SendFragmentNew.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
         GenerateReviewFragment.Listener,
-        ScannerFragment.Listener, ReceiveFragment.Listener {
+        ScannerFragment.OnScannedListener, ReceiveFragment.Listener,
+        SendAddressWizardFragment.OnScanListener {
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
@@ -108,7 +110,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     protected void onStart() {
         super.onStart();
-        Timber.d( "onStart()");
+        Timber.d("onStart()");
     }
 
     private void startWalletService() {
@@ -175,7 +177,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,7 +255,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 }
             }
             updateProgress();
-            Timber.d( "CONNECTED");
+            Timber.d("CONNECTED");
         }
 
         public void onServiceDisconnected(ComponentName className) {
@@ -264,7 +265,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             // see this happen.
             mBoundService = null;
             setTitle(getString(R.string.wallet_activity_name), getString(R.string.status_wallet_disconnected));
-            Timber.d( "DISCONNECTED");
+            Timber.d("DISCONNECTED");
         }
     };
 
@@ -280,7 +281,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         startService(intent);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
-        Timber.d( "BOUND");
+        Timber.d("BOUND");
     }
 
     void disconnectWalletService() {
@@ -289,20 +290,20 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             mBoundService.setObserver(null);
             unbindService(mConnection);
             mIsBound = false;
-            Timber.d( "UNBOUND");
+            Timber.d("UNBOUND");
         }
     }
 
     @Override
     protected void onPause() {
-        Timber.d( "onPause()");
+        Timber.d("onPause()");
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Timber.d( "onResume()");
+        Timber.d("onResume()");
     }
 
     private PowerManager.WakeLock wl = null;
@@ -313,9 +314,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         this.wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, getString(R.string.app_name));
         try {
             wl.acquire();
-            Timber.d( "WakeLock acquired");
+            Timber.d("WakeLock acquired");
         } catch (SecurityException ex) {
-            Timber.w( "WakeLock NOT acquired: %s", ex.getLocalizedMessage());
+            Timber.w("WakeLock NOT acquired: %s", ex.getLocalizedMessage());
             wl = null;
         }
     }
@@ -324,7 +325,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         if ((wl == null) || !wl.isHeld()) return;
         wl.release();
         wl = null;
-        Timber.d( "WakeLock released");
+        Timber.d("WakeLock released");
     }
 
     public void saveWallet() {
@@ -332,9 +333,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_STORE);
             startService(intent);
-            Timber.d( "STORE request sent");
+            Timber.d("STORE request sent");
         } else {
-            Timber.e( "Service not bound");
+            Timber.e("Service not bound");
         }
     }
 
@@ -359,7 +360,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onSendRequest() {
-        replaceFragment(new SendFragment(), null, null);
+        replaceFragment(new SendFragmentNew(), null, null);
     }
 
     @Override
@@ -374,7 +375,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         try {
             onRefreshed(getWallet(), true);
         } catch (IllegalStateException ex) {
-            Timber.e( ex.getLocalizedMessage());
+            Timber.e(ex.getLocalizedMessage());
         }
     }
 
@@ -382,10 +383,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 // WalletService.Observer
 ///////////////////////////
 
-    // refresh and return if successful
+    // refresh and return true if successful
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
-        Timber.d( "onRefreshed()");
+        Timber.d("onRefreshed()");
         try {
             final WalletFragment walletFragment = (WalletFragment)
                     getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
@@ -460,9 +461,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     @Override
-    public void onCreatedTransaction(final PendingTransaction pendingTransaction) {
+    public void onTransactionCreated(final PendingTransaction pendingTransaction) {
         try {
-            final SendFragment sendFragment = (SendFragment)
+            final SendFragmentNew sendFragment = (SendFragmentNew)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -470,9 +471,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     if (status != PendingTransaction.Status.Status_Ok) {
                         String errorText = pendingTransaction.getErrorString();
                         getWallet().disposePendingTransaction();
-                        sendFragment.onCreatedTransactionFailed(errorText);
+                        sendFragment.onCreateTransactionFailed(errorText);
                     } else {
-                        sendFragment.onCreatedTransaction(pendingTransaction);
+                        sendFragment.onTransactionCreated(pendingTransaction);
                     }
                 }
             });
@@ -485,17 +486,35 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     @Override
-    public void onSentTransaction(final boolean success) {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                if (success) {
-                    Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_sent), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(WalletActivity.this, getString(R.string.status_transaction_failed), Toast.LENGTH_SHORT).show();
+    public void onSendTransactionFailed(final String error) {
+        try {
+            final SendFragmentNew sendFragment = (SendFragmentNew)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    sendFragment.onSendTransactionFailed(error);
                 }
-                popFragmentStack(null);
-            }
-        });
+            });
+        } catch (ClassCastException ex) {
+            // not in spend fragment
+            Timber.d(ex.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public void onTransactionSent(final String txId) {
+        try {
+            final SendFragmentNew sendFragment = (SendFragmentNew)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    sendFragment.onTransactionSent(txId);
+                }
+            });
+        } catch (ClassCastException ex) {
+            // not in spend fragment
+            Timber.d(ex.getLocalizedMessage());
+        }
     }
 
     @Override
@@ -514,7 +533,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         } catch (ClassCastException ex) {
             // not in tx fragment
             Timber.d(ex.getLocalizedMessage());
-            // never min
+            // never mind
         }
     }
 
@@ -611,7 +630,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         return getWallet().getAddress();
     }
 
-    @Override
     public String getWalletName() {
         return getWallet().getName();
     }
@@ -693,7 +711,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     /// QR scanner callbacks
     @Override
-    public void onScanAddress() {
+    public void onScan() {
         if (Helper.getCameraPermission(this)) {
             startScanFragment();
         } else {
@@ -705,7 +723,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     private BarcodeData scannedData = null;
 
     @Override
-    public boolean onAddressScanned(String uri) {
+    public boolean onScanned(String uri) {
         BarcodeData bcData = parseMoneroUri(uri);
         if (bcData != null) {
             this.scannedData = bcData;
@@ -759,7 +777,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         return null;
     }
 
-
     @Override
     public BarcodeData popScannedData() {
         BarcodeData data = scannedData;
@@ -793,7 +810,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     void startReceive(String address) {
-        Timber.d( "startReceive()");
+        Timber.d("startReceive()");
         Bundle b = new Bundle();
         b.putString("address", address);
         b.putString("name", getWalletName());
@@ -802,6 +819,35 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     void startReceiveFragment(Bundle extras) {
         replaceFragment(new ReceiveFragment(), null, extras);
-        Timber.d( "ReceiveFragment placed");
+        Timber.d("ReceiveFragment placed");
+    }
+
+    @Override
+    public long getTotalFunds() {
+        return getWallet().getUnlockedBalance();
+    }
+
+    @Override
+    public boolean verifyWalletPassword(String password) {
+        String walletPath = new File(Helper.getStorageRoot(this),
+                getWalletName() + ".keys").getAbsolutePath();
+        return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment instanceof OnBackPressedListener) {
+            if (!((OnBackPressedListener) fragment).onBackPressed()) {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onFragmentDone() {
+        popFragmentStack(null);
     }
 }

@@ -35,7 +35,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.TxData;
+import com.m2049r.xmrwallet.data.TxData;
 
 import timber.log.Timber;
 
@@ -76,7 +76,6 @@ public class WalletService extends Service {
             Timber.d("MyWalletListener.start()");
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            //acquireWakeLock();
             wallet.setListener(this);
             wallet.startRefresh();
         }
@@ -87,7 +86,6 @@ public class WalletService extends Service {
             if (wallet == null) throw new IllegalStateException("No wallet!");
             wallet.pauseRefresh();
             wallet.setListener(null);
-            //releaseWakeLock();
         }
 
         // WalletListener callbacks
@@ -96,7 +94,7 @@ public class WalletService extends Service {
         }
 
         public void moneyReceived(String txId, long amount) {
-            Timber.d("moneyReceived() %d @ %s",amount, txId);
+            Timber.d("moneyReceived() %d @ %s", amount, txId);
         }
 
         public void unconfirmedMoneyReceived(String txId, long amount) {
@@ -180,7 +178,6 @@ public class WalletService extends Service {
                 }
             }
         }
-        //Timber.d("updated daemon status: " + daemonHeight + "/" + connectionStatus.toString());
     }
 
     public long getDaemonHeight() {
@@ -212,9 +209,11 @@ public class WalletService extends Service {
 
         void onWalletStored(boolean success);
 
-        void onCreatedTransaction(PendingTransaction pendingTransaction);
+        void onTransactionCreated(PendingTransaction pendingTransaction);
 
-        void onSentTransaction(boolean success);
+        void onTransactionSent(String txid);
+
+        void onSendTransactionFailed(String error);
 
         void onSetNotes(boolean success);
 
@@ -303,15 +302,14 @@ public class WalletService extends Service {
                         Wallet myWallet = getWallet();
                         Timber.d("CREATE TX for wallet: %s", myWallet.getName());
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
-                        PendingTransaction pendingTransaction = myWallet.createTransaction(
-                                txData.dst_addr, txData.paymentId, txData.amount, txData.mixin, txData.priority);
+                        PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Timber.d("transaction status %s", status);
                         if (status != PendingTransaction.Status.Status_Ok) {
                             Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
-                            observer.onCreatedTransaction(pendingTransaction);
+                            observer.onTransactionCreated(pendingTransaction);
                         } else {
                             myWallet.disposePendingTransaction();
                         }
@@ -325,7 +323,7 @@ public class WalletService extends Service {
                             Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
-                            observer.onCreatedTransaction(pendingTransaction);
+                            observer.onTransactionCreated(pendingTransaction);
                         } else {
                             myWallet.disposePendingTransaction();
                         }
@@ -336,14 +334,15 @@ public class WalletService extends Service {
                         if ((pendingTransaction == null)
                                 || (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok)) {
                             Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
+                            final String error = pendingTransaction.getErrorString();
                             myWallet.disposePendingTransaction(); // it's broken anyway
-                            if (observer != null) observer.onSentTransaction(false);
+                            if (observer != null) observer.onSendTransactionFailed(error);
                             return;
                         }
-                        String txid = pendingTransaction.getFirstTxId();
+                        final String txid = pendingTransaction.getFirstTxId();
                         boolean success = pendingTransaction.commit("", true);
                         myWallet.disposePendingTransaction();
-                        if (observer != null) observer.onSentTransaction(success);
+                        if (observer != null) observer.onTransactionSent(txid);
                         if (success) {
                             String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
                             if ((notes != null) && (!notes.isEmpty())) {

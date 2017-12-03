@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.model;
 
-import android.util.Log;
+import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
 
@@ -185,6 +185,15 @@ public class Wallet {
             disposeTransaction(pendingTransaction);
             pendingTransaction = null;
         }
+    }
+
+    public PendingTransaction createTransaction(TxData txData) {
+        return createTransaction(
+                txData.getDestinationAddress(),
+                txData.getPaymentId(),
+                txData.getAmount(),
+                txData.getMixin(),
+                txData.getPriority());
     }
 
     public PendingTransaction createTransaction(String dst_addr, String payment_id,

@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.util;
+package com.m2049r.xmrwallet;
 
-public class BarcodeData {
-    public String address = null;
-    public String paymentId = null;
-    public long amount = -1;
+import android.support.v4.app.Fragment;
 
-    public BarcodeData(String address, String paymentId, long amount) {
-        this.address = address;
-        this.paymentId = paymentId;
-        this.amount = amount;
+import com.m2049r.xmrwallet.layout.SpendViewPager;
+
+abstract public class SendWizardFragment extends Fragment
+        implements SpendViewPager.OnValidateFieldsListener {
+
+    @Override
+    public boolean onValidateFields() {
+        return true;
+    }
+
+    public void onPauseFragment() {
+    }
+
+    public void onResumeFragment() {
     }
 }

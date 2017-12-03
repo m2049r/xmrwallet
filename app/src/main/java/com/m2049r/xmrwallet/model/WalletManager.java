@@ -206,8 +206,9 @@ public class WalletManager {
 
     public boolean isTestNet() {
         if (daemonAddress == null) {
+            return true;
             // assume testnet not explicitly initialised
-            throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
+            //throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
         }
         return testnet;
     }

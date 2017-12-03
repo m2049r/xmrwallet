@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.util;
+package com.m2049r.xmrwallet.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -23,6 +23,15 @@ import com.m2049r.xmrwallet.model.PendingTransaction;
 
 // https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 public class TxData implements Parcelable {
+
+    public TxData(TxData txData) {
+        this.dst_addr = txData.dst_addr;
+        this.paymentId = txData.paymentId;
+        this.amount = txData.amount;
+        this.mixin = txData.mixin;
+        this.priority = txData.priority;
+    }
+
     public TxData(String dst_addr,
                   String paymentId,
                   long amount,
@@ -35,11 +44,35 @@ public class TxData implements Parcelable {
         this.priority = priority;
     }
 
-    public String dst_addr;
-    public String paymentId;
-    public long amount;
-    public int mixin;
-    public PendingTransaction.Priority priority;
+    public long getFee() {
+        return 0L;
+    }
+
+    public String getDestinationAddress() {
+        return dst_addr;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public long getAmount() {
+        return amount;
+    }
+
+    public int getMixin() {
+        return mixin;
+    }
+
+    public PendingTransaction.Priority getPriority() {
+        return priority;
+    }
+
+    final private String dst_addr;
+    final private String paymentId;
+    final private long amount;
+    final private int mixin;
+    final private PendingTransaction.Priority priority;
 
     @Override
     public void writeToParcel(Parcel out, int flags) {
@@ -87,7 +120,7 @@ public class TxData implements Parcelable {
         sb.append(",mixin:");
         sb.append(mixin);
         sb.append(",priority:");
-        sb.append(priority.toString());
+        sb.append(String.valueOf(priority));
         return sb.toString();
     }
 }

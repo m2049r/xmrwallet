@@ -18,6 +18,8 @@
     <color name="moneroBlack">#000000</color>
     <color name="moneroGray">#FD9B9B9B</color>
 
+    <color name="dotGray">#FF4A4A4A</color>
+
     <color name="moneroFab">#61000000</color>
     <color name="moneroText">#FF616161</color>
 

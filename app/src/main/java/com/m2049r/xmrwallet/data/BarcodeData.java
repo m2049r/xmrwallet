@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017 m2049r
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,16 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.data;
 
+public class BarcodeData {
+    public String address = null;
+    public String paymentId = null;
+    public long amount = -1;
 
-import android.app.Application;
-
-import timber.log.Timber;
-
-public class XmrWalletApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
+    public BarcodeData(String address, String paymentId, long amount) {
+        this.address = address;
+        this.paymentId = paymentId;
+        this.amount = amount;
     }
 }

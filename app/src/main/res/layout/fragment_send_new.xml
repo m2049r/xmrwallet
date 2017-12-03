@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <com.m2049r.xmrwallet.layout.SpendViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llNavBar"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:id="@+id/llNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bPrev"
+            style="@style/MoneroButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_navigate_prev_white_24dp"
+            tools:text="Back" />
+
+        <com.m2049r.xmrwallet.widget.DotBar
+            android:id="@+id/dotBar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/gradientOrange"
+            app:activeColor="@color/white"
+            app:activeDot="0"
+            app:dotSize="12dp"
+            app:inactiveColor="@color/dotGray"
+            app:numberDots="4" />
+
+        <Button
+            android:id="@+id/bNext"
+            style="@style/MoneroButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableEnd="@drawable/ic_navigate_next_white_24dp"
+            tools:text="Next" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bDone"
+        style="@style/MoneroButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:text="@string/label_send_done"
+        android:visibility="gone" />
+
+</RelativeLayout>

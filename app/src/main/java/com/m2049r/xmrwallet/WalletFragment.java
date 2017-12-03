@@ -37,7 +37,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -47,6 +46,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -135,7 +135,6 @@ public class WalletFragment extends Fragment
                 // nothing (yet?)
             }
         });
-
 
         if (activityCallback.isSynced()) {
             onSynced();

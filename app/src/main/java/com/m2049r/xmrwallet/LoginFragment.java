@@ -43,12 +43,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.layout.DropDownEditText;
-import com.m2049r.xmrwallet.layout.Toolbar;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.NodeList;
+import com.m2049r.xmrwallet.widget.DropDownEditText;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -315,7 +315,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     public boolean onTestnetMenuItem() {
-        boolean lastState = testnet;//item.isChecked();
+        boolean lastState = testnet;
         setNet(!lastState, true); // set and save
         return !lastState;
     }
@@ -336,7 +336,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    //private static final String PREF_TESTNET = "testnet";
 
     private static final String PREF_DAEMONLIST_MAINNET =
             "node.moneroworld.com:18089;node.xmrbackb.one;node.xmr.be";
@@ -372,7 +371,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         SharedPreferences sharedPref = activityCallback.getPrefs();
         SharedPreferences.Editor editor = sharedPref.edit();
-        //editor.putBoolean(PREF_TESTNET, testnet);
         editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
         editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
         editor.apply();
