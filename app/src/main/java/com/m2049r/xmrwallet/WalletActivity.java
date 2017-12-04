@@ -53,7 +53,7 @@ import java.util.Map;
 import timber.log.Timber;
 
 public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
-        WalletService.Observer, SendFragmentNew.Listener, TxFragment.Listener,
+        WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
         GenerateReviewFragment.Listener,
         ScannerFragment.OnScannedListener, ReceiveFragment.Listener,
@@ -360,7 +360,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onSendRequest() {
-        replaceFragment(new SendFragmentNew(), null, null);
+        replaceFragment(new SendFragment(), null, null);
     }
 
     @Override
@@ -463,7 +463,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     public void onTransactionCreated(final PendingTransaction pendingTransaction) {
         try {
-            final SendFragmentNew sendFragment = (SendFragmentNew)
+            final SendFragment sendFragment = (SendFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -488,7 +488,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     public void onSendTransactionFailed(final String error) {
         try {
-            final SendFragmentNew sendFragment = (SendFragmentNew)
+            final SendFragment sendFragment = (SendFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -504,7 +504,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     public void onTransactionSent(final String txId) {
         try {
-            final SendFragmentNew sendFragment = (SendFragmentNew)
+            final SendFragment sendFragment = (SendFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {

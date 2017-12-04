@@ -41,6 +41,8 @@ import timber.log.Timber;
 
 public class SendAddressWizardFragment extends SendWizardFragment {
 
+    static final int INTEGRATED_ADDRESS_LENGTH = 106;
+
     public static SendAddressWizardFragment newInstance(Listener listener) {
         SendAddressWizardFragment instance = new SendAddressWizardFragment();
         instance.setSendListener(listener);
@@ -67,6 +69,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private TextInputLayout etPaymentId;
     private Button bPaymentId;
     private CardView cvScan;
+    private View tvPaymentIdIntegrated;
+    private View llPaymentId;
 
     private String scannedAmount = null;
 
@@ -85,8 +89,50 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
         View view = inflater.inflate(R.layout.fragment_send_address, container, false);
 
+        tvPaymentIdIntegrated = view.findViewById(R.id.tvPaymentIdIntegrated);
+        llPaymentId = view.findViewById(R.id.llPaymentId);
+
         etAddress = (TextInputLayout) view.findViewById(R.id.etAddress);
         etAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        etAddress.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if (checkAddress()) {
+                        if (llPaymentId.getVisibility() == View.VISIBLE) {
+                            etPaymentId.requestFocus();
+                        } else {
+                            etDummy.requestFocus();
+                            Helper.hideKeyboard(getActivity());
+                        }
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+        etAddress.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if ((etAddress.getEditText().getText().toString().length() == INTEGRATED_ADDRESS_LENGTH) &&
+                        checkAddressNoError()) { // we have an integrated address
+                    etPaymentId.getEditText().getText().clear();
+                    llPaymentId.setVisibility(View.GONE);
+                    tvPaymentIdIntegrated.setVisibility(View.VISIBLE);
+                } else { // we don't
+                    llPaymentId.setVisibility(View.VISIBLE);
+                    tvPaymentIdIntegrated.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
 
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
         etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -157,13 +203,24 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         return ok;
     }
 
+    private boolean isIntegratedAddress() {
+        String address = etAddress.getEditText().getText().toString();
+        return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())
+                && address.length() == 106;
+    }
+
     private boolean checkPaymentId() {
         String paymentId = etPaymentId.getEditText().getText().toString();
         boolean ok = paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
         if (!ok) {
             etPaymentId.setError(getString(R.string.receive_paymentid_invalid));
         } else {
-            etPaymentId.setError(null);
+            if (!paymentId.isEmpty() && isIntegratedAddress()) {
+                ok = false;
+                etPaymentId.setError(getString(R.string.receive_integrated_paymentid_invalid));
+            } else {
+                etPaymentId.setError(null);
+            }
         }
         return ok;
     }

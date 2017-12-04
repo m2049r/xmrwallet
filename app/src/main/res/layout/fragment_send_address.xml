@@ -26,45 +26,65 @@
             android:textAlignment="textStart" />
     </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="96dp"
+        android:layout_marginBottom="4dp">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/etPaymentId"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvPaymentIdIntegrated"
+            style="@style/MoneroText.Info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
-            app:counterEnabled="true"
-            app:counterMaxLength="16"
-            app:errorEnabled="true">
+            android:layout_gravity="start|center_vertical"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_check_gray_24dp"
+            android:gravity="center"
+            android:text="@string/info_paymentid_intergrated"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
-            <android.support.design.widget.TextInputEditText
-                style="@style/MoneroEdit"
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/llPaymentId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="10">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/etPaymentId"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:hint="@string/send_paymentid_hint"
-                android:imeOptions="actionDone"
-                android:inputType="textMultiLine"
-                android:textAlignment="textStart" />
-        </android.support.design.widget.TextInputLayout>
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+                app:errorEnabled="true">
 
-        <Button
-            android:id="@+id/bPaymentId"
-            style="@style/MoneroText.Button.Small"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:background="?android:selectableItemBackground"
-            android:drawableTop="@drawable/ic_settings_orange_24dp"
-            android:text="@string/send_generate_paymentid_hint" />
-    </LinearLayout>
+                <android.support.design.widget.TextInputEditText
+                    style="@style/MoneroEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:hint="@string/send_paymentid_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
 
+            <Button
+                android:id="@+id/bPaymentId"
+                style="@style/MoneroText.Button.Small"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:background="?android:selectableItemBackground"
+                android:drawableTop="@drawable/ic_settings_orange_24dp"
+                android:text="@string/send_generate_paymentid_hint" />
+        </LinearLayout>
+    </FrameLayout>
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/bScan"
