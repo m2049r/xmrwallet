@@ -58,6 +58,11 @@ public class ExchangeTextView extends LinearLayout
     }
 
     public boolean validate(double max) {
+        Timber.d("inProgress=%b", isExchangeInProgress());
+        if (isExchangeInProgress()) {
+            shakeExchangeField();
+            return false;
+        }
         boolean ok = true;
         if (xmrAmount != null) {
             try {
@@ -84,6 +89,10 @@ public class ExchangeTextView extends LinearLayout
 
     void shakeAmountField() {
         tvAmountA.startAnimation(Helper.getShakeAnimation(getContext()));
+    }
+
+    void shakeExchangeField() {
+        tvAmountB.startAnimation(Helper.getShakeAnimation(getContext()));
     }
 
     public void setAmount(String xmrAmount) {

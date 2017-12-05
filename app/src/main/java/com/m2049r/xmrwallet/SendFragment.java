@@ -198,10 +198,10 @@ public class SendFragment extends Fragment
         super.onResume();
         Timber.d("onResume");
         activityCallback.setSubtitle(getString(R.string.send_title));
-        if (getConfirmFragment() != null) {
+        if (spendViewPager.getCurrentItem() == SpendPagerAdapter.POS_SUCCESS) {
             activityCallback.setToolbarButton(Toolbar.BUTTON_NONE);
         } else {
-            activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+            activityCallback.setToolbarButton(Toolbar.BUTTON_CANCEL);
         }
     }
 
