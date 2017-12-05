@@ -202,6 +202,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                         onDisposeRequest();
                         onBackPressed();
                         break;
+                    case Toolbar.BUTTON_CANCEL:
+                        onDisposeRequest();
+                        WalletActivity.super.onBackPressed();
+                        break;
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;

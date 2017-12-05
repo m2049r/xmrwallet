@@ -18,6 +18,7 @@
     <string name="label_login_wallets">Wallets</string>
     <string name="label_donate">Donate</string>
     <string name="label_close">Close</string>
+    <string name="label_cancel">Cancel</string>
     <string name="label_wallet_advanced_details">Touch for detailed information</string>
 
     <string name="label_send_success">Success!</string>

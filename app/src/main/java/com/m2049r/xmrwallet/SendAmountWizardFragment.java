@@ -115,10 +115,11 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         Timber.d("onResumeFragment()");
         Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
-        maxFunds = funds / 1000000000000L;
+        maxFunds = 1.0 * funds / 1000000000000L;
         tvFunds.setText(getString(R.string.send_available,
                 Wallet.getDisplayAmount(funds)));
-        if (evAmount.getAmount().isEmpty()) {
+        // getAmount is null if exchange is in progress
+        if ((evAmount.getAmount() != null) && evAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
             if ((data != null) && (data.amount > 0)) {
                 evAmount.setAmount(Wallet.getDisplayAmount(data.amount));
