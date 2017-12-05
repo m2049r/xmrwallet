@@ -115,7 +115,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         Timber.d("onResumeFragment()");
         Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
-        maxFunds = funds / 1000000000000L;
+        maxFunds = 1.0 * funds / 1000000000000L;
         tvFunds.setText(getString(R.string.send_available,
                 Wallet.getDisplayAmount(funds)));
         // getAmount is null if exchange is in progress
