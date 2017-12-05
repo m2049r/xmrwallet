@@ -24,7 +24,10 @@
     <string name="label_send_done">Done</string>
 
     <string name="label_receive_info_gen_qr_code">Touch for QR Code</string>
-    <string name="label_send_info_fees">Higher Priority = Higher Fees</string>
+    <string name="info_send_prio_fees">Higher Priority = Higher Fees</string>
+
+    <string name="info_paymentid_intergrated">Payment ID integrated</string>
+    <string name="info_prepare_tx">Preparing your transaction</string>
 
     <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
 
@@ -204,7 +207,7 @@
     <string name="send_dust_label">Dust</string>
     <string name="send_total_label">Total</string>
 
-    <string name="send_error_title">Transaction Error</string>
+    <string name="send_create_tx_error_title">Create Transaction Error</string>
 
     <string name="tx_list_fee_pending">incl. %1$s fee</string>
     <string name="tx_list_fee">- Fee %1$s</string>
@@ -242,7 +245,8 @@
     <string name="receive_amount_hint">Amount</string>
     <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
-    <string name="receive_paymentid_invalid">Must be 16 Hex characters</string>
+    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0-9,a-f)</string>
+    <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
     <string name="receive_amount_invalid">Must be > 0</string>
 
     <string name="receive_amount_empty">Enter value</string>

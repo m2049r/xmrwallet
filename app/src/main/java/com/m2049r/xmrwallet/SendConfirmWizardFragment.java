@@ -53,7 +53,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
     }
 
     interface Listener {
-        SendFragmentNew.Listener getActivityCallback();
+        SendFragment.Listener getActivityCallback();
 
         TxData getTxData();
 
@@ -70,7 +70,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
     private TextView tvTxAmount;
     private TextView tvTxFee;
     private TextView tvTxTotal;
-    private View pbProgress;
+    private View llProgress;
     private View bSend;
     private View llConfirmSend;
     private View pbProgressSend;
@@ -91,7 +91,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
         tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
         tvTxTotal = (TextView) view.findViewById(R.id.tvTxTotal);
 
-        pbProgress = view.findViewById(R.id.pbProgress);
+        llProgress = view.findViewById(R.id.llProgress);
         pbProgressSend = view.findViewById(R.id.pbProgressSend);
         llConfirmSend = view.findViewById(R.id.llConfirmSend);
 
@@ -111,12 +111,12 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
     boolean inProgress = false;
 
     public void hideProgress() {
-        pbProgress.setVisibility(View.INVISIBLE);
+        llProgress.setVisibility(View.INVISIBLE);
         inProgress = false;
     }
 
     public void showProgress() {
-        pbProgress.setVisibility(View.VISIBLE);
+        llProgress.setVisibility(View.VISIBLE);
         inProgress = true;
     }
 
@@ -300,7 +300,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
         getActivityCallback().onPrepareSend(txData);
     }
 
-    SendFragmentNew.Listener getActivityCallback() {
+    SendFragment.Listener getActivityCallback() {
         return sendListener.getActivityCallback();
     }
 }

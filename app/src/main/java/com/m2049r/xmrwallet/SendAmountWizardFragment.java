@@ -46,7 +46,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     }
 
     interface Listener {
-        SendFragmentNew.Listener getActivityCallback();
+        SendFragment.Listener getActivityCallback();
 
         void setAmount(final long amount);
 

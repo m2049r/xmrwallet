@@ -21,9 +21,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.m2049r.xmrwallet.SendFragmentNew;
-
-import timber.log.Timber;
+import com.m2049r.xmrwallet.SendFragment;
 
 public class SpendViewPager extends ViewPager {
 
@@ -57,7 +55,7 @@ public class SpendViewPager extends ViewPager {
     }
 
     public boolean validateFields(int position) {
-        OnValidateFieldsListener c = ((SendFragmentNew.SpendPagerAdapter) getAdapter()).getFragment(position);
+        OnValidateFieldsListener c = ((SendFragment.SpendPagerAdapter) getAdapter()).getFragment(position);
         return c.onValidateFields();
     }
 

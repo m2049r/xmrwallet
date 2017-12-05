@@ -49,7 +49,7 @@ import java.lang.ref.WeakReference;
 
 import timber.log.Timber;
 
-public class SendFragmentNew extends Fragment
+public class SendFragment extends Fragment
         implements SendAddressWizardFragment.Listener,
         SendAmountWizardFragment.Listener,
         SendSettingsWizardFragment.Listener,
@@ -281,15 +281,15 @@ public class SendFragmentNew extends Fragment
             Timber.d("getItem(%d) CREATE", position);
             switch (position) {
                 case POS_ADDRESS:
-                    return SendAddressWizardFragment.newInstance(SendFragmentNew.this);
+                    return SendAddressWizardFragment.newInstance(SendFragment.this);
                 case POS_AMOUNT:
-                    return SendAmountWizardFragment.newInstance(SendFragmentNew.this);
+                    return SendAmountWizardFragment.newInstance(SendFragment.this);
                 case POS_SETTINGS:
-                    return SendSettingsWizardFragment.newInstance(SendFragmentNew.this);
+                    return SendSettingsWizardFragment.newInstance(SendFragment.this);
                 case POS_CONFIRM:
-                    return SendConfirmWizardFragment.newInstance(SendFragmentNew.this);
+                    return SendConfirmWizardFragment.newInstance(SendFragment.this);
                 case POS_SUCCESS:
-                    return SendSuccessWizardFragment.newInstance(SendFragmentNew.this);
+                    return SendSuccessWizardFragment.newInstance(SendFragment.this);
                 default:
                     throw new IllegalArgumentException("no such send position(" + position + ")");
             }
@@ -448,8 +448,8 @@ public class SendFragmentNew extends Fragment
             confirmFragment.hideProgress();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setCancelable(false).
-                    setTitle(getString(R.string.send_error_title)).
+            builder.setCancelable(true).
+                    setTitle(getString(R.string.send_create_tx_error_title)).
                     setMessage(errorText).
                     create().
                     show();
@@ -482,5 +482,17 @@ public class SendFragmentNew extends Fragment
         if (fragment != null) {
             fragment.sendFailed();
         }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.send_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

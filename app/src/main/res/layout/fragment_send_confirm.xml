@@ -68,14 +68,28 @@
             tools:text="gunegugumobil" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/pbProgress"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    <LinearLayout
+        android:id="@+id/llProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:indeterminate="true"
-        android:visibility="invisible" />
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+        <TextView
+            android:id="@+id/tvPaymentIdIntegrated"
+            style="@style/MoneroText.Info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/info_prepare_tx" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llConfirmSend"
