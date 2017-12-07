@@ -846,6 +846,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 super.onBackPressed();
             }
         } else {
+            if (!isSynced()) {
+                saveWallet();
+            }
             super.onBackPressed();
         }
     }
