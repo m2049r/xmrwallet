@@ -799,20 +799,26 @@ public class LoginActivity extends SecureActivity
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            File newWalletFolder = getStorageRoot();
-            if (!newWalletFolder.isDirectory()) {
-                Timber.e("Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+            // check if the wallet we want to create already exists
+            File walletFolder = getStorageRoot();
+            if (!walletFolder.isDirectory()) {
+                Timber.e("Wallet dir " + walletFolder.getAbsolutePath() + "is not a directory");
                 return false;
             }
-            File cacheFile = new File(newWalletFolder, walletName);
-            File keysFile = new File(newWalletFolder, walletName + ".keys");
-            File addressFile = new File(newWalletFolder, walletName + ".address.txt");
+            File cacheFile = new File(walletFolder, walletName);
+            File keysFile = new File(walletFolder, walletName + ".keys");
+            File addressFile = new File(walletFolder, walletName + ".address.txt");
 
             if (cacheFile.exists() || keysFile.exists() || addressFile.exists()) {
                 Timber.e("Some wallet files already exist for %s", cacheFile.getAbsolutePath());
                 return false;
             }
 
+            File newWalletFolder = Helper.getNewWalletDir(getApplicationContext());
+            if (!newWalletFolder.isDirectory()) {
+                Timber.e("New Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
+                return false;
+            }
             newWalletFile = new File(newWalletFolder, walletName);
             boolean success = walletCreator.createWallet(newWalletFile, walletPassword);
             if (success) {
@@ -930,10 +936,17 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public void onAccept(final String name, final String password) {
-        File walletFolder = getStorageRoot();
-        File walletFile = new File(walletFolder, name);
-        walletFile.delete(); // when recovering wallets, the cache seems corrupt
+        File newWalletFile = new File(Helper.getNewWalletDir(getApplicationContext()), name);
+        Timber.d("New Wallet %s", newWalletFile.getAbsolutePath());
+        newWalletFile.delete(); // when recovering wallets, the cache seems corrupt
         // TODO: figure out why this is so? Only for a private testnet?
+
+        // now copy the new wallet to the wallet folder
+        File walletFile = new File(getStorageRoot(), name);
+        Timber.d("Wallet %s", walletFile.getAbsolutePath());
+        copyWallet(newWalletFile, walletFile, false, true);
+        deleteWallet(newWalletFile); // delete it no matter what (can't recover from this anyway)
+
         boolean rc = testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok;
 
         if (rc) {
