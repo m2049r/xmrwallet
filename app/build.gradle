@@ -9,7 +9,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 48
-        versionName "1.2.8-alpha"
+        versionName "1.2.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
