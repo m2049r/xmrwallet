@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -22,9 +22,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -36,12 +35,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.OnBackPressedListener;
+import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -62,11 +65,11 @@ public class SendFragment extends Fragment
     public interface Listener {
         long getTotalFunds();
 
-        void onPrepareSend(TxData data);
+        void onPrepareSend(String tag, TxData data);
 
         boolean verifyWalletPassword(String password);
 
-        void onSend(String notes);
+        void onSend(UserNotes notes);
 
         void onDisposeRequest();
 
@@ -231,7 +234,42 @@ public class SendFragment extends Fragment
         }
     }
 
-    public class SpendPagerAdapter extends FragmentPagerAdapter {
+    enum Mode {
+        XMR, BTC
+    }
+
+    Mode mode = Mode.XMR;
+
+    @Override
+    public void setMode(Mode aMode) {
+        if (mode != aMode) {
+            mode = aMode;
+            switch (aMode) {
+                case XMR:
+                    txData = new TxData();
+                    break;
+                case BTC:
+                    txData = new TxDataBtc();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Mode " + String.valueOf(aMode) + " unknown!");
+            }
+            getView().post(new Runnable() {
+                @Override
+                public void run() {
+                    pagerAdapter.notifyDataSetChanged();
+                }
+            });
+            Timber.d("New Mode = " + mode.toString());
+        }
+    }
+
+    @Override
+    public Mode getMode() {
+        return mode;
+    }
+
+    public class SpendPagerAdapter extends FragmentStatePagerAdapter {
         private static final int POS_ADDRESS = 0;
         private static final int POS_AMOUNT = 1;
         private static final int POS_SETTINGS = 2;
@@ -257,6 +295,7 @@ public class SendFragment extends Fragment
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
+            Timber.d("instantiateItem %d", position);
             SendWizardFragment fragment = (SendWizardFragment) super.instantiateItem(container, position);
             myFragments.put(position, new WeakReference<>(fragment));
             return fragment;
@@ -264,6 +303,7 @@ public class SendFragment extends Fragment
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
+            Timber.d("destroyItem %d", position);
             myFragments.remove(position);
             super.destroyItem(container, position, object);
         }
@@ -279,19 +319,39 @@ public class SendFragment extends Fragment
         @Override
         public SendWizardFragment getItem(int position) {
             Timber.d("getItem(%d) CREATE", position);
-            switch (position) {
-                case POS_ADDRESS:
-                    return SendAddressWizardFragment.newInstance(SendFragment.this);
-                case POS_AMOUNT:
-                    return SendAmountWizardFragment.newInstance(SendFragment.this);
-                case POS_SETTINGS:
-                    return SendSettingsWizardFragment.newInstance(SendFragment.this);
-                case POS_CONFIRM:
-                    return SendConfirmWizardFragment.newInstance(SendFragment.this);
-                case POS_SUCCESS:
-                    return SendSuccessWizardFragment.newInstance(SendFragment.this);
-                default:
-                    throw new IllegalArgumentException("no such send position(" + position + ")");
+            Timber.d("Mode=" + mode.toString());
+            if (mode == Mode.XMR) {
+                switch (position) {
+                    case POS_ADDRESS:
+                        return SendAddressWizardFragment.newInstance(SendFragment.this);
+                    case POS_AMOUNT:
+                        return SendAmountWizardFragment.newInstance(SendFragment.this);
+                    case POS_SETTINGS:
+                        return SendSettingsWizardFragment.newInstance(SendFragment.this);
+                    case POS_CONFIRM:
+                        return SendConfirmWizardFragment.newInstance(SendFragment.this);
+                    case POS_SUCCESS:
+                        return SendSuccessWizardFragment.newInstance(SendFragment.this);
+                    default:
+                        throw new IllegalArgumentException("no such send position(" + position + ")");
+                }
+            } else if (mode == Mode.BTC) {
+                switch (position) {
+                    case POS_ADDRESS:
+                        return SendAddressWizardFragment.newInstance(SendFragment.this);
+                    case POS_AMOUNT:
+                        return SendBtcAmountWizardFragment.newInstance(SendFragment.this);
+                    case POS_SETTINGS:
+                        return SendSettingsWizardFragment.newInstance(SendFragment.this);
+                    case POS_CONFIRM:
+                        return SendBtcConfirmWizardFragment.newInstance(SendFragment.this);
+                    case POS_SUCCESS:
+                        return SendBtcSuccessWizardFragment.newInstance(SendFragment.this);
+                    default:
+                        throw new IllegalArgumentException("no such send position(" + position + ")");
+                }
+            } else {
+                throw new IllegalStateException("Unknown mode!");
             }
         }
 
@@ -314,24 +374,25 @@ public class SendFragment extends Fragment
                     return null;
             }
         }
+
+        @Override
+        public int getItemPosition(Object object) {
+            Timber.d("getItemPosition %s", String.valueOf(object));
+            if ((object instanceof SendAddressWizardFragment) || (object instanceof SendSettingsWizardFragment)) {
+                return POSITION_UNCHANGED;
+            } else {
+                return POSITION_NONE;
+            }
+        }
     }
 
     @Override
     public TxData getTxData() {
-        return new TxData(sendAddress, sendPaymentId, sendAmount, sendMixin, sendPriority);
+        return txData;
     }
 
-    @Override
-    public String getNotes() {
-        return sendNotes;
-    }
+    private TxData txData = new TxData();
 
-    private String sendAddress;
-    private String sendPaymentId;
-    private long sendAmount;
-    private PendingTransaction.Priority sendPriority;
-    private int sendMixin;
-    private String sendNotes;
     private BarcodeData barcodeData;
 
     // Listeners
@@ -345,36 +406,6 @@ public class SendFragment extends Fragment
         BarcodeData data = barcodeData;
         barcodeData = null;
         return data;
-    }
-
-    @Override
-    public void setAddress(final String address) {
-        sendAddress = address;
-    }
-
-    @Override
-    public void setPaymentId(final String paymentId) {
-        sendPaymentId = paymentId;
-    }
-
-    @Override
-    public void setAmount(final long amount) {
-        sendAmount = amount;
-    }
-
-    @Override
-    public void setPriority(final PendingTransaction.Priority priority) {
-        sendPriority = priority;
-    }
-
-    @Override
-    public void setMixin(final int mixin) {
-        sendMixin = mixin;
-    }
-
-    @Override
-    public void setNotes(final String notes) {
-        sendNotes = notes;
     }
 
     boolean isComitted() {
@@ -391,9 +422,9 @@ public class SendFragment extends Fragment
 
     @Override
     public void commitTransaction() {
-        Timber.d("REALLY SEND A %s", getNotes());
+        Timber.d("REALLY SEND");
         disableNavigation(); // committed - disable all navigation
-        activityCallback.onSend(getNotes());
+        activityCallback.onSend(txData.getUserNotes());
         committedTx = pendingTx;
     }
 
@@ -418,12 +449,11 @@ public class SendFragment extends Fragment
 
     // callbacks from send service
 
-    public void onTransactionCreated(PendingTransaction pendingTransaction) {
-        //public void onTransactionCreated(TestTransaction pendingTransaction) {
-        final SendConfirmWizardFragment confirmFragment = getConfirmFragment();
-        if (confirmFragment != null) {
+    public void onTransactionCreated(final String txTag, final PendingTransaction pendingTransaction) {
+        final SendConfirm confirm = getSendConfirm();
+        if (confirm != null) {
             pendingTx = new PendingTx(pendingTransaction);
-            confirmFragment.transactionCreated(pendingTransaction);
+            confirm.transactionCreated(txTag, pendingTransaction);
         } else {
             // not in confirm fragment => dispose & move on
             disposeTransaction();
@@ -443,23 +473,16 @@ public class SendFragment extends Fragment
     }
 
     public void onCreateTransactionFailed(String errorText) {
-        final SendConfirmWizardFragment confirmFragment = getConfirmFragment();
-        if (confirmFragment != null) {
-            confirmFragment.hideProgress();
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setCancelable(true).
-                    setTitle(getString(R.string.send_create_tx_error_title)).
-                    setMessage(errorText).
-                    create().
-                    show();
+        final SendConfirm confirm = getSendConfirm();
+        if (confirm != null) {
+            confirm.createTransactionFailed(errorText);
         }
     }
 
-    SendConfirmWizardFragment getConfirmFragment() {
+    SendConfirm getSendConfirm() {
         final SendWizardFragment fragment = pagerAdapter.getFragment(SpendPagerAdapter.POS_CONFIRM);
-        if (fragment instanceof SendConfirmWizardFragment) {
-            return (SendConfirmWizardFragment) fragment;
+        if (fragment instanceof SendConfirm) {
+            return (SendConfirm) fragment;
         } else {
             return null;
         }
@@ -469,8 +492,8 @@ public class SendFragment extends Fragment
         Timber.d("txid=%s", txId);
         pagerAdapter.addSuccess();
         Timber.d("numPages=%d", spendViewPager.getAdapter().getCount());
-        spendViewPager.setCurrentItem(SpendPagerAdapter.POS_SUCCESS);
         activityCallback.setToolbarButton(Toolbar.BUTTON_NONE);
+        spendViewPager.setCurrentItem(SpendPagerAdapter.POS_SUCCESS);
     }
 
     public void onSendTransactionFailed(final String error) {
@@ -478,7 +501,7 @@ public class SendFragment extends Fragment
         committedTx = null;
         Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_SHORT).show();
         enableNavigation();
-        final SendConfirmWizardFragment fragment = getConfirmFragment();
+        final SendConfirm fragment = getSendConfirm();
         if (fragment != null) {
             fragment.sendFailed();
         }

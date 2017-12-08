@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.os.Bundle;
 import android.text.InputType;
@@ -27,8 +27,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.UserNotes;
 
 import timber.log.Timber;
 
@@ -48,12 +51,7 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
     }
 
     interface Listener {
-
-        void setPriority(final PendingTransaction.Priority priority);
-
-        void setMixin(final int mixin);
-
-        void setNotes(final String notes);
+        TxData getTxData();
     }
 
     final static int Mixins[] = {4, 7, 12, 25}; // must match the layout XML
@@ -103,13 +101,10 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
     @Override
     public boolean onValidateFields() {
         if (sendListener != null) {
-            int mixin = Mixins[sMixin.getSelectedItemPosition()];
-            int priorityIndex = sPriority.getSelectedItemPosition();
-            PendingTransaction.Priority priority = Priorities[priorityIndex];
-            sendListener.setPriority(priority);
-            sendListener.setMixin(mixin);
-            String notes = etNotes.getText().toString();
-            sendListener.setNotes(notes);
+            TxData txData = sendListener.getTxData();
+            txData.setPriority(Priorities[sPriority.getSelectedItemPosition()]);
+            txData.setMixin(Mixins[sMixin.getSelectedItemPosition()]);
+            txData.setUserNotes(new UserNotes(etNotes.getText().toString()));
         }
         return true;
     }

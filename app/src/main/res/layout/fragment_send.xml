@@ -277,7 +277,7 @@
                 android:layout_marginTop="4dp"
                 android:enabled="false"
                 android:minHeight="36dp"
-                android:text="@string/send_send_hint" />
+                android:text="@string/send_send_label" />
 
             <Button
                 android:id="@+id/bReallySend"

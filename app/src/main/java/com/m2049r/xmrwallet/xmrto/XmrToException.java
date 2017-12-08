@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r
+ * Copyright (c) 2017 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,29 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.xmrto;
 
-import android.support.v4.app.Fragment;
+public class XmrToException extends Exception {
+    private int code;
+    private XmrToError error;
 
-import com.m2049r.xmrwallet.layout.SpendViewPager;
-
-abstract public class SendWizardFragment extends Fragment
-        implements SpendViewPager.OnValidateFieldsListener {
-
-    @Override
-    public boolean onValidateFields() {
-        return true;
+    public XmrToException(final int code) {
+        super();
+        this.code = code;
+        this.error = null;
     }
 
-    public void onPauseFragment() {
+    public XmrToException(final int code, final XmrToError error) {
+        super();
+        this.code = code;
+        this.error = error;
     }
 
-    public void onResumeFragment() {
+    public int getCode() {
+        return code;
+    }
+
+    public XmrToError getError() {
+        return error;
     }
 }

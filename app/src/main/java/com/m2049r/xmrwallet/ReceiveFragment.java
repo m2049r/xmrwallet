@@ -46,6 +46,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -304,14 +305,14 @@ public class ReceiveFragment extends Fragment {
             return;
         }
         StringBuffer sb = new StringBuffer();
-        sb.append(ScannerFragment.QR_SCHEME).append(address);
+        sb.append(BarcodeData.XMR_SCHEME).append(address);
         boolean first = true;
         if (!paymentId.isEmpty()) {
             if (first) {
                 sb.append("?");
                 first = false;
             }
-            sb.append(ScannerFragment.QR_PAYMENTID).append('=').append(paymentId);
+            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
         }
         if (!xmrAmount.isEmpty()) {
             if (first) {
@@ -319,7 +320,7 @@ public class ReceiveFragment extends Fragment {
             } else {
                 sb.append("&");
             }
-            sb.append(ScannerFragment.QR_AMOUNT).append('=').append(xmrAmount);
+            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(xmrAmount);
         }
         String text = sb.toString();
         int size = Math.min(qrCode.getHeight(), qrCode.getWidth());

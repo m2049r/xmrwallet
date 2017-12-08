@@ -182,7 +182,6 @@
     <string name="send_qr_hint">Escanear</string>
     <string name="send_prepare_hint">Preparar</string>
     <string name="send_dispose_hint">Disponer (Deshacer)</string>
-    <string name="send_send_hint">Gastar mis dulces Moneroj</string>
     <string name="send_really_send_hint">Último Paso - ¡Confirma!</string>
     <string name="send_qr_invalid">No es un Código QR de monero</string>
     <string name="send_qr_address_invalid">Dirección de Monero inválida</string>
@@ -215,10 +214,10 @@
     <string name="tx_timestamp">Marca de tiempo</string>
     <string name="tx_id">ID de Transacción</string>
     <string name="tx_key">Clave de Transacción</string>
-    <string name="tx_destination">Destinatario</string>
+    <string name="tx_destination">Destino</string>
     <string name="tx_paymentId">ID de Pago</string>
     <string name="tx_blockheight">Bloque</string>
-    <string name="tx_amount">Cantidad</string>
+    <string name="tx_amount">Monto</string>
     <string name="tx_fee">Comisión</string>
     <string name="tx_transfers">Transferencias</string>
     <string name="tx_notes">Notas</string>
@@ -271,4 +270,67 @@
     <string name="fab_restore_viewonly">Restaurar cartera de sólo vista</string>
     <string name="fab_restore_key">Restaurar cartera con claves privadas</string>
     <string name="fab_restore_seed">Resturar cartera con semilla de 25 palabras</string>
+    <string name="info_xmrto"><![CDATA[
+        <b>Ingresaste una dirección Bitcoin</b><br/>
+        <i>Vas a enviar XMR y el destinatario recibirá BTC usando el servicio <b>XMR.TO</b>.</i>
+    ]]></string>
+    <string name="info_send_xmrto_success_sending">Enviando</string>
+    <string name="info_send_xmrto_success_status_label">Estado:</string>
+    <string name="info_send_xmrto_success_status">%1$s es %1$s (#%1$d)</string>
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_txdetails_xmrto_key">Clave:</string>
+    <string name="info_txdetails_xmrto_address">Dirección:</string>
+    <string name="info_txdetails_xmrto_status">Estado:</string>
+    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
+    <string name="info_send_xmrto_paid">Confirmación pendiente</string>
+    <string name="info_send_xmrto_unpaid">Pago pendiente</string>
+    <string name="info_send_xmrto_error">Error de XMR.TO (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC Enviados!</string>
+    <string name="info_send_xmrto_query">Consultando &#8230;</string>
+    <string name="info_send_xmrto_parms"><![CDATA[
+         <b>Puedes enviar %1$s &#8212; %2$s BTC</b>.<br/>
+         <i><b>XMR.TO</b> está ofreciendo una tasa de cambio de <b>%3$s BTC</b> <u>en este momento</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>Montos hasta <b>%1$s BTC</b> serán enviados <u>en el momento</u>!</i>
+    ]]></string>
+    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
+    <string name="label_send_progress_xmrto_create">Creando orden XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">Consultando orden XMR.TO</string>
+    <string name="label_send_progress_create_tx">Preparando transacción Monero</string>
+    <string name="label_send_progress_queryparms">Consultando parámetros XMR.TO</string>
+    <string name="label_generic_xmrto_error">ERROR XMR.TO</string>
+    <string name="text_generic_xmrto_error">Código: %1$d</string>
+    <string name="text_retry">Toca para reintentar</string>
+    <string name="text_noretry_monero">Parece que estamos atascados!</string>
+    <string name="text_noretry">Oh-oh, parece que XMR.TO no está disponible ahora!</string>
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Cambio: %1$s BTC/XMR)</string>
+    <string name="label_send_btc_details">Click para más detalles</string>
+    <string name="label_send_btc_xmrto_info">Visita https://xmr.to para soporte y rastreo</string>
+    <string name="label_send_txinfo">Mira en los datos de la TX para más detalles</string>
+    <string name="label_send_btc_xmrto_key_lb">Clave secreta\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">Clave secreta XMR.TO</string>
+    <string name="label_send_btc_address">Dirección BTC destino</string>
+    <string name="label_send_btc_amount">Cantidad</string>
+    <string name="label_send_btc_create_order">Creando orden XMR.TO</string>
+    <string name="label_send_btc_retry">Toca para reintentar</string>
+    <string name="send_xmrto_timeout">Oye, esperaste demasiado!</string>
+    <string name="label_copy_xmrtokey">Clave XMR.TO</string>
+    <string name="message_copy_xmrtokey">¡Clave XMR.TO copiada al portapapeles!</string>
+    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
+    <string name="send_send_label">Gastar mis preciados moneroj</string>
+    <string name="send_send_timed_label">Gastar mis preciados moneroj (%1$s)</string>
+    <string name="send_address_invalid">No es una dirección válida</string>
+    <string name="send_fee_btc_label">Comisión (XMR)</string>
+    <string name="send_total_btc_label">Total (XMR)</string>
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s Comisión</string>
+    <string name="tx_status_btc">Estado</string>
+    <string name="tx_id_btc">TX ID\n(BTC)</string>
+    <string name="tx_destination_btc">Destino\n(BTC)</string>
+    <string name="tx_amount_btc">Monto\n(BTC)</string>
+    <string name="receive_bitcoin_paymentid_invalid">Debe quedar vacío con una dirección Bitcoin</string>
+    <string name="about_whoami">Soy monerujo</string>
+    <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
 </resources>

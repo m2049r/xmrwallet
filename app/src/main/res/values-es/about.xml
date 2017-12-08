@@ -2,7 +2,7 @@
 <resources>
     <string name="about_title">Acerca De</string>
     <string name="about_close">Cerrar</string>
-    <string name="about_version">Soy monerujo %1$s (%2$d)</string>
+    <string name="about_version">Versión %1$s (%2$d)</string>
 
     <string name="donation_text">
         \"¡Donar, bastardos ingratos!\"

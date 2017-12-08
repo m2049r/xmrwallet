@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -32,9 +33,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.Helper;
 
 import timber.log.Timber;
@@ -56,12 +61,12 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         return this;
     }
 
-    interface Listener {
-        void setAddress(final String address);
-
-        void setPaymentId(final String paymentId);
-
+    public interface Listener {
         void setBarcodeData(BarcodeData data);
+
+        void setMode(SendFragment.Mode mode);
+
+        TxData getTxData();
     }
 
     private EditText etDummy;
@@ -71,6 +76,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private CardView cvScan;
     private View tvPaymentIdIntegrated;
     private View llPaymentId;
+    private TextView tvXmrTo;
+    private View llXmrTo;
 
     OnScanListener onScanListener;
 
@@ -89,6 +96,9 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
         tvPaymentIdIntegrated = view.findViewById(R.id.tvPaymentIdIntegrated);
         llPaymentId = view.findViewById(R.id.llPaymentId);
+        llXmrTo = view.findViewById(R.id.llXmrTo);
+        tvXmrTo = (TextView) view.findViewById(R.id.tvXmrTo);
+        tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto)));
 
         etAddress = (TextInputLayout) view.findViewById(R.id.etAddress);
         etAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -113,12 +123,25 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             public void afterTextChanged(Editable editable) {
                 etAddress.setError(null);
                 if (isIntegratedAddress()) {
+                    Timber.d("isIntegratedAddress");
                     etPaymentId.getEditText().getText().clear();
-                    llPaymentId.setVisibility(View.GONE);
+                    llPaymentId.setVisibility(View.INVISIBLE);
                     tvPaymentIdIntegrated.setVisibility(View.VISIBLE);
-                } else { // we don't
+                    llXmrTo.setVisibility(View.INVISIBLE);
+                    sendListener.setMode(SendFragment.Mode.XMR);
+                } else if (isBitcoinAddress()) {
+                    Timber.d("isBitcoinAddress");
+                    etPaymentId.getEditText().getText().clear();
+                    llPaymentId.setVisibility(View.INVISIBLE);
+                    tvPaymentIdIntegrated.setVisibility(View.INVISIBLE);
+                    llXmrTo.setVisibility(View.VISIBLE);
+                    sendListener.setMode(SendFragment.Mode.BTC);
+                } else {
+                    Timber.d("isStandardAddress");
                     llPaymentId.setVisibility(View.VISIBLE);
-                    tvPaymentIdIntegrated.setVisibility(View.GONE);
+                    tvPaymentIdIntegrated.setVisibility(View.INVISIBLE);
+                    llXmrTo.setVisibility(View.INVISIBLE);
+                    sendListener.setMode(SendFragment.Mode.XMR);
                 }
             }
 
@@ -188,13 +211,14 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean checkAddressNoError() {
         String address = etAddress.getEditText().getText().toString();
-        return Wallet.isAddressValid(address);
+        return Wallet.isAddressValid(address)
+                || BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet());
     }
 
     private boolean checkAddress() {
         boolean ok = checkAddressNoError();
         if (!ok) {
-            etAddress.setError(getString(R.string.send_qr_address_invalid));
+            etAddress.setError(getString(R.string.send_address_invalid));
         } else {
             etAddress.setError(null);
         }
@@ -203,7 +227,16 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean isIntegratedAddress() {
         String address = etAddress.getEditText().getText().toString();
-        return (address.length() == INTEGRATED_ADDRESS_LENGTH) && Wallet.isAddressValid(address);
+        return (address.length() == INTEGRATED_ADDRESS_LENGTH)
+                && Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
+    }
+
+    private boolean isBitcoinAddress() {
+        String address = etAddress.getEditText().getText().toString();
+        if ((address.length() >= 27) && (address.length() <= 34))
+            return BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet());
+        else
+            return false;
     }
 
     private boolean checkPaymentId() {
@@ -235,8 +268,15 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         }
         if (!ok) return false;
         if (sendListener != null) {
-            sendListener.setAddress(etAddress.getEditText().getText().toString());
-            sendListener.setPaymentId(etPaymentId.getEditText().getText().toString());
+            TxData txData = sendListener.getTxData();
+            if (isBitcoinAddress()) {
+                ((TxDataBtc) txData).setBtcAddress(etAddress.getEditText().getText().toString());
+                txData.setDestinationAddress(null);
+                txData.setPaymentId("");
+            } else {
+                txData.setDestinationAddress(etAddress.getEditText().getText().toString());
+                txData.setPaymentId(etPaymentId.getEditText().getText().toString());
+            }
         }
         return true;
     }

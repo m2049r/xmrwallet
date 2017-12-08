@@ -36,7 +36,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     private OnScannedListener onScannedListener;
 
     public interface OnScannedListener {
-        boolean onScanned(String uri);
+        boolean onScanned(String qrCode);
     }
 
     private ZXingScannerView mScannerView;
@@ -55,10 +55,6 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
-
-    static final String QR_SCHEME = "monero:";
-    static final String QR_PAYMENTID = "tx_payment_id";
-    static final String QR_AMOUNT = "tx_amount";
 
     @Override
     public void handleResult(Result rawResult) {

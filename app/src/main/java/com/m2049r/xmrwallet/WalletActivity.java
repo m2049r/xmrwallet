@@ -23,7 +23,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -38,17 +37,18 @@ import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.dialog.DonationFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
+import com.m2049r.xmrwallet.fragment.send.SendFragment;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import timber.log.Timber;
 
@@ -465,7 +465,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     @Override
-    public void onTransactionCreated(final PendingTransaction pendingTransaction) {
+    public void onTransactionCreated(final String txTag, final PendingTransaction pendingTransaction) {
         try {
             final SendFragment sendFragment = (SendFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -477,7 +477,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                         getWallet().disposePendingTransaction();
                         sendFragment.onCreateTransactionFailed(errorText);
                     } else {
-                        sendFragment.onTransactionCreated(pendingTransaction);
+                        sendFragment.onTransactionCreated(txTag, pendingTransaction);
                     }
                 }
             });
@@ -588,11 +588,11 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 ///////////////////////////
 
     @Override
-    public void onSend(String notes) {
+    public void onSend(UserNotes notes) {
         if (mIsBound) { // no point in talking to unbound service
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SEND);
-            intent.putExtra(WalletService.REQUEST_CMD_SEND_NOTES, notes);
+            intent.putExtra(WalletService.REQUEST_CMD_SEND_NOTES, notes.txNotes);
             startService(intent);
             Timber.d("SEND TX request sent");
         } else {
@@ -617,11 +617,12 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     @Override
-    public void onPrepareSend(TxData txData) {
+    public void onPrepareSend(final String tag, final TxData txData) {
         if (mIsBound) { // no point in talking to unbound service
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
             intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_TX);
             intent.putExtra(WalletService.REQUEST_CMD_TX_DATA, txData);
+            intent.putExtra(WalletService.REQUEST_CMD_TX_TAG, tag);
             startService(intent);
             Timber.d("CREATE TX request sent");
         } else {
@@ -694,6 +695,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onDisposeRequest() {
+        //TODO consider doing this through the WalletService to avoid concurrency issues
         getWallet().disposePendingTransaction();
     }
 
