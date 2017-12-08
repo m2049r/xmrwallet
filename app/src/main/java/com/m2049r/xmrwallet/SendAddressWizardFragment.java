@@ -72,8 +72,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private View tvPaymentIdIntegrated;
     private View llPaymentId;
 
-    private String scannedAmount = null;
-
     OnScanListener onScanListener;
 
     public interface OnScanListener {
@@ -113,6 +111,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etAddress.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
+                etAddress.setError(null);
                 if ((etAddress.getEditText().getText().toString().length() == INTEGRATED_ADDRESS_LENGTH) &&
                         checkAddressNoError()) { // we have an integrated address
                     etPaymentId.getEditText().getText().clear();
