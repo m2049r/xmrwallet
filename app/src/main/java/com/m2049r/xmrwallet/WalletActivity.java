@@ -727,8 +727,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     private BarcodeData scannedData = null;
 
     @Override
-    public boolean onScanned(String uri) {
-        BarcodeData bcData = parseMoneroUri(uri);
+    public boolean onScanned(String qrCode) {
+        // #gurke
+        BarcodeData bcData = BarcodeData.fromQrCode(qrCode);
         if (bcData != null) {
             this.scannedData = bcData;
             popFragmentStack(null);
@@ -736,49 +737,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         } else {
             return false;
         }
-    }
-
-    /**
-     * Parse and decode a monero scheme string. It is here because it needs to validate the data.
-     *
-     * @param uri String containing a monero URL
-     * @return BarcodeData object or null if uri not valid
-     */
-    public BarcodeData parseMoneroUri(String uri) {
-        if (uri == null) return null;
-
-        if (!uri.startsWith(ScannerFragment.QR_SCHEME)) return null;
-
-        String noScheme = uri.substring(ScannerFragment.QR_SCHEME.length());
-        Uri monero = Uri.parse(noScheme);
-        Map<String, String> parms = new HashMap<>();
-        String query = monero.getQuery();
-        if (query != null) {
-            String[] args = query.split("&");
-            for (String arg : args) {
-                String[] namevalue = arg.split("=");
-                if (namevalue.length == 0) {
-                    continue;
-                }
-                parms.put(Uri.decode(namevalue[0]).toLowerCase(),
-                        namevalue.length > 1 ? Uri.decode(namevalue[1]) : null);
-            }
-        }
-        String address = monero.getPath();
-        String paymentId = parms.get(ScannerFragment.QR_PAYMENTID);
-        String amountString = parms.get(ScannerFragment.QR_AMOUNT);
-        long amount = -1;
-        if (amountString != null) {
-            amount = Wallet.getAmountFromString(amountString);
-        }
-        if ((paymentId != null) && !Wallet.isPaymentIdValid(paymentId)) {
-            return null;
-        }
-
-        if (Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
-            return new BarcodeData(address, paymentId, amount);
-        }
-        return null;
     }
 
     @Override

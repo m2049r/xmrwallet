@@ -121,8 +121,8 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         // getAmount is null if exchange is in progress
         if ((evAmount.getAmount() != null) && evAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
-            if ((data != null) && (data.amount > 0)) {
-                evAmount.setAmount(Wallet.getDisplayAmount(data.amount));
+            if ((data != null) && (data.amount != null)) {
+                evAmount.setAmount(data.amount);
             }
         }
     }
