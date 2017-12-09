@@ -8,7 +8,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/numberPad1"
@@ -18,7 +20,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="1"
             android:text="1" />
 
@@ -30,7 +31,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="2"
             android:text="2" />
 
@@ -42,14 +42,16 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="3"
             android:text="3" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:gravity="center">
 
         <TextView
             android:id="@+id/numberPad4"
@@ -59,7 +61,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="4"
             android:text="4" />
 
@@ -71,7 +72,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="5"
             android:text="5" />
 
@@ -83,14 +83,15 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="6"
             android:text="6" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/numberPad7"
@@ -100,7 +101,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="7"
             android:text="7" />
 
@@ -112,7 +112,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="8"
             android:text="8" />
 
@@ -124,14 +123,15 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="9"
             android:text="9" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/numberPadPoint"
@@ -141,7 +141,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:text="." />
 
         <TextView
@@ -152,18 +151,16 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:padding="8dp"
             android:tag="0"
             android:text="0" />
 
         <ImageView
             android:id="@+id/numberPadBackSpace"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="36sp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:padding="16dp"
             android:src="@drawable/ic_backspace_black_36dp" />
     </LinearLayout>
 

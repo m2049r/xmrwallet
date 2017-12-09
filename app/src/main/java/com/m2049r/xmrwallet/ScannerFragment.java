@@ -62,8 +62,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result rawResult) {
-        if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE) &&
-                (rawResult.getText().startsWith(QR_SCHEME))) {
+        if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE)) {
             if (onScannedListener.onScanned(rawResult.getText())) {
                 return;
             } else {

@@ -154,6 +154,10 @@ public class Wallet {
 
     public static native boolean isPaymentIdValid(String payment_id);
 
+    public static boolean isAddressValid(String address) {
+        return isAddressValid(address, WalletManager.getInstance().isTestNet());
+    }
+
     public static native boolean isAddressValid(String address, boolean isTestNet);
 
 //TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);

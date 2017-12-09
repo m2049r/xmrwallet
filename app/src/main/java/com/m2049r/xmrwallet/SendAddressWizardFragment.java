@@ -72,8 +72,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private View tvPaymentIdIntegrated;
     private View llPaymentId;
 
-    private String scannedAmount = null;
-
     OnScanListener onScanListener;
 
     public interface OnScanListener {
@@ -113,8 +111,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etAddress.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
-                if ((etAddress.getEditText().getText().toString().length() == INTEGRATED_ADDRESS_LENGTH) &&
-                        checkAddressNoError()) { // we have an integrated address
+                etAddress.setError(null);
+                if (isIntegratedAddress()) {
                     etPaymentId.getEditText().getText().clear();
                     llPaymentId.setVisibility(View.GONE);
                     tvPaymentIdIntegrated.setVisibility(View.VISIBLE);
@@ -190,7 +188,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean checkAddressNoError() {
         String address = etAddress.getEditText().getText().toString();
-        return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
+        return Wallet.isAddressValid(address);
     }
 
     private boolean checkAddress() {
@@ -205,8 +203,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean isIntegratedAddress() {
         String address = etAddress.getEditText().getText().toString();
-        return Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())
-                && address.length() == 106;
+        return (address.length() == INTEGRATED_ADDRESS_LENGTH) && Wallet.isAddressValid(address);
     }
 
     private boolean checkPaymentId() {
