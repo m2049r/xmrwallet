@@ -5,7 +5,7 @@
 
 ## What features does it have?
 
-- Uses Monero v0.11.0.0
+- Uses Monero v0.11.1.0
 - Support for Android >= 5.0 with ARM processor
 - Testnet and Mainnet
 - Generate new wallets
