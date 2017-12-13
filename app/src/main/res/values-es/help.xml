@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Crear Cartera - Nueva</h1>
+        <p>¡Si necesitas una nueva dirección de Monero!</p>
+        <p>Introduce un nombre de carterá único y una contraseña.
+        La contraseña es utilizada para proteger los datos de tu cartera en el dispositivo.
+        Utiliza una contraseña fuerte - incluso mejor utilizar una frase de contraseña.</p>
+        <h2>¡Apunta tu semilla mnemotécnica!</h2>
+        <p>En la siguiente pantalla encontrarás tu \"Semilla Mnemotécnica\" de 25 palabras.
+        Este dato es solamente necesario para recuperar tu cartera en un futuro y obtener acceso
+        completo a tus fondos.
+        ¡Mantenerla segura y privada es muy importante, ya que puede otorgar a <em>cualquiera</em>
+        acceso completo a tus fondos!</p>
+        <p>Si pierdes la contraseña de tu cartera, todavía puedes recuperar tu cartera con la
+        semilla mnemotécnica.</p>
+        <p>No hay forma de recuperar tu semilla mnemotécnica, ¡si la pierdes todos tus fondos se
+        perderán! La semilla mnemotécnica no se puede cambiar nunca, y si es robada o comprometida
+        de alguna otra manera, tendrás que mover todos tus fondos a una nueva cartera (con una
+        nueva semilla mnemotécnica). Por tanto, es mejor si haces una copia de tu semilla
+        mnemotécnica apuntándola y guardándola en <em>múltiples</em> lugares seguros y
+        protegidos.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Crear Cartera - Semilla</h1>
+        <p>¡Si ya tienes una dirección de Monero y quieres recuperar las transacciones desde la
+        cadena de bloques!</p>
+        <p>Introduce un nombre de cartera único y una contraseña. La contraseña es utilizada para
+        proteger los datos de tu cartera en el dispositivo. Utiliza una contraseña fuerte - incluso
+        mejor utilizar una frase de contraseña.</p>
+        <p>Introduce tu semilla en el campo \"Semilla Mnemotécnica\".</p>
+        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
+        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
+        cadana de bloques <em>entera</em> en busca de transacciones que pertenecen a tu dirección.
+        Esto puede llevar <em>bastante</em> tiempo.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Crear Cartera - Claves</h1>
+        <p>¡Si vas a recuperar tu cartera usando tus claves!</p>
+        <p>Introduce un nombre de cartera único y una contraseña. La contraseña es utilizada para
+        proteger los datos de tu cartera en el dispositivo. Utiliza una contraseña fuerte - incluso
+        mejor utilizar una frase de contraseña.</p>
+        <p>Introduce tu dirección de Monero en el campo \"Dirección Pública\" y cumplimenta
+        \"Clave de Vista\" y \"Clave de Gasto\".</p>
+        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
+        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
+        cadana de bloques <em>entera</em> en busca de transacciones que pertenecen a tu dirección.
+        Esto puede llevar <em>bastante</em> tiempo.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Crear Cartera - Vista</h1>
+        <p>¡Si solamente quieres monitorizar las transacciones entrantes!</p>
+        <p>Introduce un nombre de cartera único y una contraseña. La contraseña es utilizada para
+        proteger los datos de tu cartera en el dispositivo. Utiliza una contraseña fuerte - incluso
+        mejor utilizar una frase de contraseña.</p>
+        <p>Introduce tu dirección de Monero en el campo \"Dirección Pública\" y cumplimenta
+        \"Clave de Vista\".</p>
+        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
+        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
+        cadana de bloques <em>entera</em> en busca de transacciones que pertenecen a tu dirección.
+        Esto puede llevar <em>bastante</em> tiempo.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Detalles de la cartera</h1>
+        <h2>Dirección pública</h2>
+        Tu dirección pública es como el número de tu cuenta bancaria que puedes compartir con
+        cualquiera sin miedo a perder tus Monero. La gente enviará Monero a tu cartera usando esta
+        dirección.
+        <h2>Semilla Mnemotécnica</h2>
+        Este dato es solamente necesario para recuperar tu cartera en un futuro y obtener acceso
+        completo a tus fondos.
+        ¡Mantenerla segura y privada es muy importante, ya que puede otorgar a <em>cualquiera</em>
+        acceso completo a tus fondos! Si no la has apuntado en un lugar seguro, ¡por favor hazlo!
+        <h2>Clave de vista</h2>
+        Tu clave de vista puede ser utilizada para monitorizar las transacciones entrantes de tu
+        cartera sin otorgar permiso para gastar los fondos guardados en ella.
+        <h2>Clave de gasto</h2>
+        Tu clave de gasto permite a cualquiera gastar los Monero asociados a tu cartera, de modo
+        que no digas a nadie esta clave, mantenla segura como tu semilla mnemotécnica.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Lista de Carteras</h1>
+        <h2>Nodo</h2>
+        <p>Monerujo utiliza un nodo remoto para comunicarse con la red de Monero sin tener que
+        descargar y almacenar una copia completa de la cadena de bloques. Puedes encontrar una lista
+        de nodos remotos populares o aprender como montar tu propio nodo remoto aquí https://moneroworld.com</p>
+        <p>Monerujo viene con un nodo remoto ya preconfigurado. También recuerda los últimos cinco
+        nodos utilizados.</p>
+        <h2>Carteras</h2>
+        <p>Aquí puedes ver tus carteras. Están ubicadas en el directorio <tt>monerujo</tt> del
+        almacenamiento interno de tu dispositivo. Puedes utilizar un explorador de ficheros
+        para verlas. Deberás hacer copias de seguridad de este directorio de forma regular en
+        almacenamientos fuera del dispositivo por si tu dispositivo explota o es robado.</p>
+        <p>Selecciona una cartera para abrirla o pulsa en \"+\" para crear una nueva. O selecciona
+        una de las operaciones de cartera:</p>
+        <h3>Detalles</h3>
+        <p>Muestra los detalles de la caretera, la semilla y las claves.</p>
+        <h3>Recibir</h3>
+        <p>Crea un código QR para recibir Moneroj.</p>
+        <h3>Renombrar</h3>
+        <p>Renombra la cartera. Las copias de seguridad no son renombradas.</p>
+        <h3>Copia de seguridad</h3>
+        <p>Crea una copia de tu cartera en el directorio <tt>backups</tt> que se encuentra dentro
+        de <tt>monerujo</tt> sobreescribiendo cualquier copia previa existente.</p>
+        <h3>Archivar</h3>
+        <p>Crea una copia de seguridad y borra la cartera inmediatamente después. La copia
+        permanece en el directorio <tt>backups</tt>. Si no necesitas más tus copias de seguridad
+        deberás borrarlas con un explorador de ficheros o una app de borrado seguro.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>La Cartera</h1>
+        <h2>Escaneo</h2>
+        Como a Monero le gusta mantener las cosas privadas, cada vez que abres una cartera de
+        Monerujo tenemos que escanear la cadena de bloques para ver si nuevos Moneroj han sido
+        enviados a tu cartera. Esto solo almacena información en tu teléfono que pertenece a tu
+        cartera. En ocasiones esto puede llevar un rato si no has sincronizado por bastante tiempo.
+        <h2>El Saldo</h2>
+        <p><b>¡Ayuda! ¡El saldo de mi cartera ha desaparecido o está sin confirmar!</b><br/>
+        ¡No entres en pánico! Cuando envias fondos a tu cartera, parte de tu saldo se mostrará
+        temporalmente como sin confirmar.
+        Esto sucede debido a como los Monero son intercambiados en la cadena de bloques y como
+        funciona este cambio.
+        Lee más al respecto en https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de Transacciones</h2>
+        <p>Una lista con las transacciones de la cartera. En carteras de solo vista, únicamente se
+        mostrarán las transacciones entrantes.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Detalles de la Transacción</h1>
+        <h2>Destinatario</h2>
+        Esta es la dirección pública de la cartera a la que has enviado Monero
+        <h2>ID de Pago</h2>
+        Puedes usar un ID de Pago para identificar la razón por la cual has enviado Monero entre
+        dos partes. Esto es completamente opcional y privado. Por ejemplo, esto permitiría que un
+        negocio pueda asociar una transacción con un producto que has comprado.
+        <h2>ID de Transacción</h2>
+        Este es el ID de tu transacción que puede ser utilizado para identificar tu transacción
+        ofuscada en un explorador de la cadena de bloques de Monero como <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>Clave de Transacción</h2>
+        Esta es la clave privada de tu transacción, mantenla segura ya que revelarla a un tercero
+        desvela que firma en un anillo es tuya, por tanto haciendo tus transacciones transparentes.
+        <h2>Bloque</h2>
+        Este es el bloque en el que tu transacción fue incluída.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Enviar</h1>
+        <h2>Dirección del receptor</h2>
+        <p>Esta es la dirección pública de la cartera a la que vas a enviar Moneroj. Puedes copiarla
+        desde tu portapapeles, escanear un código QR o introducirla manualmente. Asegúrate de
+        comprobarla varias veces para confirmar que no envias las monedas a la dirección equivocada.</p>
+        <h2>ID de Pago</h2>
+        <p>Puedes usar un ID de Pago para identificar la razón por la cual has enviado Monero entre
+        dos partes. Esto es completamente opcional y privado. Por ejemplo, esto permitiría que un
+        negocio pueda asociar una transacción con un producto que has comprado.</p>
+        <h2>Tamaño del anillo</h2>
+        <p>Hay un cantidad de tamaños de anillo (ring size) para elegir en Monerujo. Si eres un
+        usuario principiante te recomendamos que simplemente utilices un tamaño de anillo de 5.
+        Aumentar el tamaño de anillo por encima de 5 incrementa el número de firmantes en una firma
+        de anillo, lo cual teóricamente proporciona una mayor negación plausible. Pero configurar
+        tamaños de anillo altos también puede provocar que tu transacción se quede fuera de la
+        cadena de bloques.</p>
+        <h2>Prioridad</h2>
+        <p>Este ajuste determina la velocidad a la que tu transacción será incluída en la cadena
+        de bloques. Una configuración de alta prioridad tendrá una correlación directa con una
+        comisión de transacción mayor, y lo opuesto en el caso de baja prioridad. Por favor,
+        ten en cuenta que si configuras tu transacción con una baja prioridad puede llevar horas
+        hasta que sea incluída en la cadena de bloques. La prioridad por defecto es \"Media\".</p>
+    ]]></string>
+
+</resources>
