@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,10 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
-import com.m2049r.xmrwallet.widget.ExchangeTextView;
+import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.widget.ExchangeTextView;
 import com.m2049r.xmrwallet.widget.NumberPadView;
 
 import timber.log.Timber;
@@ -48,7 +50,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     interface Listener {
         SendFragment.Listener getActivityCallback();
 
-        void setAmount(final long amount);
+        TxData getTxData();
 
         BarcodeData popBarcodeData();
     }
@@ -99,9 +101,9 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         if (sendListener != null) {
             String xmr = evAmount.getAmount();
             if (xmr != null) {
-                sendListener.setAmount(Wallet.getAmountFromString(xmr));
+                sendListener.getTxData().setAmount(Wallet.getAmountFromString(xmr));
             } else {
-                sendListener.setAmount(0L);
+                sendListener.getTxData().setAmount(0L);
             }
         }
         return true;

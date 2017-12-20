@@ -38,6 +38,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +50,7 @@ import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
@@ -160,7 +162,7 @@ public class Helper {
     }
 
     static public String getDisplayAmount(long amount) {
-        return getDisplayAmount(amount, 20);
+        return getDisplayAmount(amount, 12);
     }
 
     static public String getDisplayAmount(long amount, int maxDecimals) {
@@ -271,4 +273,11 @@ public class Helper {
         return ShakeAnimation;
     }
 
+    static public HttpUrl getXmrToBaseUrl() {
+        if ((WalletManager.getInstance() == null) || WalletManager.getInstance().isTestNet()) {
+            return HttpUrl.parse("https://test.xmr.to/api/v2/xmr2btc/");
+        } else {
+            return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
+        }
+    }
 }

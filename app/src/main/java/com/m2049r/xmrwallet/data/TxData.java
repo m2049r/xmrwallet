@@ -20,36 +20,38 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
+import com.m2049r.xmrwallet.util.UserNotes;
+
+import timber.log.Timber;
 
 // https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 public class TxData implements Parcelable {
 
+    public TxData() {
+    }
+
     public TxData(TxData txData) {
-        this.dst_addr = txData.dst_addr;
+        this.dstAddr = txData.dstAddr;
         this.paymentId = txData.paymentId;
         this.amount = txData.amount;
         this.mixin = txData.mixin;
         this.priority = txData.priority;
     }
 
-    public TxData(String dst_addr,
+    public TxData(String dstAddr,
                   String paymentId,
                   long amount,
                   int mixin,
                   PendingTransaction.Priority priority) {
-        this.dst_addr = dst_addr;
+        this.dstAddr = dstAddr;
         this.paymentId = paymentId;
         this.amount = amount;
         this.mixin = mixin;
         this.priority = priority;
     }
 
-    public long getFee() {
-        return 0L;
-    }
-
     public String getDestinationAddress() {
-        return dst_addr;
+        return dstAddr;
     }
 
     public String getPaymentId() {
@@ -68,15 +70,45 @@ public class TxData implements Parcelable {
         return priority;
     }
 
-    final private String dst_addr;
-    final private String paymentId;
-    final private long amount;
-    final private int mixin;
-    final private PendingTransaction.Priority priority;
+    public void setDestinationAddress(String dstAddr) {
+        this.dstAddr = dstAddr;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public void setMixin(int mixin) {
+        this.mixin = mixin;
+    }
+
+    public void setPriority(PendingTransaction.Priority priority) {
+        this.priority = priority;
+    }
+
+    public UserNotes getUserNotes() {
+        return userNotes;
+    }
+
+    public void setUserNotes(UserNotes userNotes) {
+        this.userNotes = userNotes;
+    }
+
+    private String dstAddr;
+    private String paymentId;
+    private long amount;
+    private int mixin;
+    private PendingTransaction.Priority priority;
+
+    private UserNotes userNotes;
 
     @Override
     public void writeToParcel(Parcel out, int flags) {
-        out.writeString(dst_addr);
+        out.writeString(dstAddr);
         out.writeString(paymentId);
         out.writeLong(amount);
         out.writeInt(mixin);
@@ -94,8 +126,8 @@ public class TxData implements Parcelable {
         }
     };
 
-    private TxData(Parcel in) {
-        dst_addr = in.readString();
+    protected TxData(Parcel in) {
+        dstAddr = in.readString();
         paymentId = in.readString();
         amount = in.readLong();
         mixin = in.readInt();
@@ -111,8 +143,8 @@ public class TxData implements Parcelable {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append("dst_addr:");
-        sb.append(dst_addr);
+        sb.append("dstAddr:");
+        sb.append(dstAddr);
         sb.append(",paymentId:");
         sb.append(paymentId);
         sb.append(",amount:");

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,10 +24,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.util.Helper;
 
 import timber.log.Timber;
 
@@ -47,23 +47,21 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
     }
 
     interface Listener {
-        String getNotes();
-
         TxData getTxData();
 
         PendingTx getCommittedTx();
 
         void enableDone();
+
+        SendFragment.Mode getMode();
     }
 
-    ImageButton bCopyAddress;
+    ImageButton bCopyTxId;
     private TextView tvTxId;
     private TextView tvTxAddress;
     private TextView tvTxPaymentId;
-    private TextView tvTxNotes;
     private TextView tvTxAmount;
     private TextView tvTxFee;
-    private TextView tvTxTotal;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,21 +72,20 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         View view = inflater.inflate(
                 R.layout.fragment_send_success, container, false);
 
-        bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
-        bCopyAddress.setOnClickListener(new View.OnClickListener() {
+        bCopyTxId = (ImageButton) view.findViewById(R.id.bCopyTxId);
+        bCopyTxId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copyAddress();
+                Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
+                Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
             }
         });
 
         tvTxId = (TextView) view.findViewById(R.id.tvTxId);
         tvTxAddress = (TextView) view.findViewById(R.id.tvTxAddress);
         tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
-        tvTxNotes = (TextView) view.findViewById(R.id.tvTxNotes);
         tvTxAmount = ((TextView) view.findViewById(R.id.tvTxAmount));
         tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
-        tvTxTotal = (TextView) view.findViewById(R.id.tvTxTotal);
 
         return view;
     }
@@ -117,30 +114,15 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         } else {
             tvTxPaymentId.setText("-");
         }
-        String notes = sendListener.getNotes();
-        if ((notes != null) && (!notes.isEmpty())) {
-            tvTxNotes.setText(sendListener.getNotes());
-        } else {
-            tvTxNotes.setText("-");
-        }
 
         final PendingTx committedTx = sendListener.getCommittedTx();
         if (committedTx != null) {
             tvTxId.setText(committedTx.txId);
-            bCopyAddress.setEnabled(true);
-            bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
-            tvTxAmount.setText(Wallet.getDisplayAmount(committedTx.amount));
-            tvTxFee.setText(Wallet.getDisplayAmount(committedTx.fee));
-            //tvTxDust.setText(Wallet.getDisplayAmount(pendingTransaction.getDust()));
-            tvTxTotal.setText(Wallet.getDisplayAmount(
-                    committedTx.fee + committedTx.amount));
+            bCopyTxId.setEnabled(true);
+            bCopyTxId.setImageResource(R.drawable.ic_content_copy_black_24dp);
+            tvTxAmount.setText(getString(R.string.send_amount, Helper.getDisplayAmount(committedTx.amount)));
+            tvTxFee.setText(getString(R.string.send_fee, Helper.getDisplayAmount(committedTx.fee)));
         }
         sendListener.enableDone();
     }
-
-    void copyAddress() {
-        Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
-        Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
-    }
-
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -28,8 +29,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginBottom="4dp">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp">
 
         <TextView
             android:id="@+id/tvPaymentIdIntegrated"
@@ -37,17 +38,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
+            android:layout_margin="8dp"
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_check_gray_24dp"
             android:gravity="center"
             android:text="@string/info_paymentid_intergrated"
             android:textSize="18sp"
-            android:visibility="gone" />
+            android:visibility="invisible" />
+
+
+        <LinearLayout
+            android:id="@+id/llXmrTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingTop="8dp"
+                android:src="@drawable/gunther_24dp" />
+
+            <TextView
+                android:id="@+id/tvXmrTo"
+                style="@style/MoneroText.Info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="start|top"
+                android:singleLine="false"
+                android:textSize="18sp"
+                tools:text="@string/info_xmrto" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llPaymentId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:orientation="horizontal"
             android:visibility="visible"

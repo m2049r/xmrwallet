@@ -30,12 +30,12 @@ import android.os.Process;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
+import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.data.TxData;
 
 import timber.log.Timber;
 
@@ -54,6 +54,7 @@ public class WalletService extends Service {
 
     public static final String REQUEST_CMD_TX = "createTX";
     public static final String REQUEST_CMD_TX_DATA = "data";
+    public static final String REQUEST_CMD_TX_TAG = "tag";
 
     public static final String REQUEST_CMD_SWEEP = "sweepTX";
 
@@ -209,7 +210,7 @@ public class WalletService extends Service {
 
         void onWalletStored(boolean success);
 
-        void onTransactionCreated(PendingTransaction pendingTransaction);
+        void onTransactionCreated(String tag, PendingTransaction pendingTransaction);
 
         void onTransactionSent(String txid);
 
@@ -301,7 +302,9 @@ public class WalletService extends Service {
                     } else if (cmd.equals(REQUEST_CMD_TX)) {
                         Wallet myWallet = getWallet();
                         Timber.d("CREATE TX for wallet: %s", myWallet.getName());
+                        myWallet.disposePendingTransaction(); // remove any old pending tx
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
+                        String txTag = extras.getString(REQUEST_CMD_TX_TAG);
                         PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Timber.d("transaction status %s", status);
@@ -309,13 +312,15 @@ public class WalletService extends Service {
                             Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
-                            observer.onTransactionCreated(pendingTransaction);
+                            observer.onTransactionCreated(txTag, pendingTransaction);
                         } else {
                             myWallet.disposePendingTransaction();
                         }
                     } else if (cmd.equals(REQUEST_CMD_SWEEP)) {
                         Wallet myWallet = getWallet();
                         Timber.d("SWEEP TX for wallet: %s", myWallet.getName());
+                        myWallet.disposePendingTransaction(); // remove any old pending tx
+                        String txTag = extras.getString(REQUEST_CMD_TX_TAG);
                         PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Timber.d("transaction status %s", status);
@@ -323,7 +328,7 @@ public class WalletService extends Service {
                             Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                         }
                         if (observer != null) {
-                            observer.onTransactionCreated(pendingTransaction);
+                            observer.onTransactionCreated(txTag, pendingTransaction);
                         } else {
                             myWallet.disposePendingTransaction();
                         }

@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet;
+package com.m2049r.xmrwallet.fragment.send;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -30,14 +31,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.UserNotes;
 
 import timber.log.Timber;
 
-public class SendConfirmWizardFragment extends SendWizardFragment {
+public class SendConfirmWizardFragment extends SendWizardFragment implements SendConfirm {
 
     public static SendConfirmWizardFragment newInstance(Listener listener) {
         SendConfirmWizardFragment instance = new SendConfirmWizardFragment();
@@ -57,11 +60,11 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
 
         TxData getTxData();
 
-        String getNotes();
-
         void commitTransaction();
 
         void disposeTransaction();
+
+        SendFragment.Mode getMode();
     }
 
     private TextView tvTxAddress;
@@ -122,8 +125,11 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
 
     PendingTransaction pendingTransaction = null;
 
+    @Override
     // callback from wallet when PendingTransaction created
-    void transactionCreated(PendingTransaction pendingTransaction) {
+    public void transactionCreated(String txTag, PendingTransaction pendingTransaction) {
+        // ignore txTag - the app flow ensures this is the correct tx
+        // TODO: use the txTag
         hideProgress();
         if (isResumed) {
             this.pendingTransaction = pendingTransaction;
@@ -138,8 +144,20 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
         pbProgressSend.setVisibility(View.VISIBLE);
     }
 
-    void sendFailed() {
+    @Override
+    public void sendFailed() {
         pbProgressSend.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void createTransactionFailed(String errorText) {
+        hideProgress();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(true).
+                setTitle(getString(R.string.send_create_tx_error_title)).
+                setMessage(errorText).
+                create().
+                show();
     }
 
     @Override
@@ -173,9 +191,9 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
         } else {
             tvTxPaymentId.setText("-");
         }
-        String notes = sendListener.getNotes();
-        if ((notes != null) && (!notes.isEmpty())) {
-            tvTxNotes.setText(sendListener.getNotes());
+        UserNotes notes = sendListener.getTxData().getUserNotes();
+        if ((notes != null) && (!notes.note.isEmpty())) {
+            tvTxNotes.setText(notes.note);
         } else {
             tvTxNotes.setText("-");
         }
@@ -296,8 +314,10 @@ public class SendConfirmWizardFragment extends SendWizardFragment {
         passwordDialog.show();
     }
 
+    // creates a pending transaction and calls us back with transactionCreated()
+    // or createTransactionFailed()
     void prepareSend(TxData txData) {
-        getActivityCallback().onPrepareSend(txData);
+        getActivityCallback().onPrepareSend(null, txData);
     }
 
     SendFragment.Listener getActivityCallback() {

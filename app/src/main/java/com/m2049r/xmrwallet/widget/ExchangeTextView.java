@@ -436,6 +436,9 @@ public class ExchangeTextView extends LinearLayout
     public void onPointPressed() {
         //TODO locale?
         if (tvAmountA.getText().toString().indexOf('.') == -1) {
+            if (tvAmountA.getText().toString().isEmpty()) {
+                tvAmountA.append("0");
+            }
             tvAmountA.append(".");
         }
     }

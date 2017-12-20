@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvFunds"
+        style="@style/MoneroText.Funds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        tools:text="@string/send_available_btc" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.m2049r.xmrwallet.widget.SendProgressView
+            android:id="@+id/evXmrToParms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/llXmrToParms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingTop="8dp"
+                android:src="@drawable/ic_xmrto_32dp" />
+
+            <TextView
+                android:id="@+id/tvXmrToParms"
+                style="@style/MoneroText.Info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:singleLine="false"
+                tools:text="@string/info_send_xmrto_parms" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <com.m2049r.xmrwallet.widget.ExchangeBtcTextView
+        android:id="@+id/evAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical" />
+
+    <com.m2049r.xmrwallet.widget.NumberPadView
+        android:id="@+id/numberPad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center" />
+
+</LinearLayout>
