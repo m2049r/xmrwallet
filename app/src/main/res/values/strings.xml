@@ -17,8 +17,9 @@
 
     <string name="label_login_wallets">Wallets</string>
     <string name="label_donate">Donate</string>
-    <string name="label_close">Close</string>
+    <string name="label_ok">OK</string>
     <string name="label_cancel">Cancel</string>
+    <string name="label_close">Close</string>
     <string name="label_wallet_advanced_details">Touch for detailed information</string>
 
     <string name="label_send_success">Successfully sent</string>
@@ -200,8 +201,6 @@
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Export Keys</string>
     <string name="generate_button_delete">DELETE</string>
-
-    <string name="generate_wallet_watchonly">&lt;Watch Only Wallet&gt;</string>
 
     <string name="generate_wallet_name">Give me a name!</string>
     <string name="generate_wallet_exists">Wallet exists!</string>

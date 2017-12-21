@@ -278,7 +278,7 @@ public class LoginActivity extends SecureActivity
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK",
+                .setPositiveButton(getString(R.string.label_ok),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
@@ -286,7 +286,7 @@ public class LoginActivity extends SecureActivity
                                 new AsyncRename().execute(walletName, newName);
                             }
                         })
-                .setNegativeButton("Cancel",
+                .setNegativeButton(getString(R.string.label_cancel),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
@@ -482,8 +482,8 @@ public class LoginActivity extends SecureActivity
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK", null)
-                .setNegativeButton("Cancel",
+                .setPositiveButton(getString(R.string.label_ok), null)
+                .setNegativeButton(getString(R.string.label_cancel),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
