@@ -15,8 +15,9 @@
 
     <string name="label_login_wallets">Carteras</string>
     <string name="label_donate">Donar</string>
-    <string name="label_close">Cerrar</string>
+    <string name="label_ok">OK</string>
     <string name="label_cancel">Cancelar</string>
+    <string name="label_close">Cerrar</string>
     <string name="label_wallet_advanced_details">Toca para información más detallada</string>
 
     <string name="label_send_success">¡Éxito!</string>
@@ -133,8 +134,6 @@
     <string name="generate_button_backup">Copia de Seguridad</string>
     <string name="generate_button_export">Exportar Claves</string>
     <string name="generate_button_delete">BORRAR</string>
-
-    <string name="generate_wallet_watchonly">&lt;Cartera De Sólo Vista&gt;</string>
 
     <string name="generate_wallet_name">¡Dame un nombre!</string>
     <string name="generate_wallet_exists">¡La cartera ya existe!</string>

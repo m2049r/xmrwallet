@@ -374,7 +374,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
 
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.label_ok), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         String pass = etPassword.getEditText().getText().toString();
                         if (getActivityCallback().verifyWalletPassword(pass)) {
@@ -386,7 +386,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                         }
                     }
                 })
-                .setNegativeButton("Cancel",
+                .setNegativeButton(getString(R.string.label_cancel),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(activity);
