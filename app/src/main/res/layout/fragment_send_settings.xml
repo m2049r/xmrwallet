@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|end"
             android:layout_marginEnd="8dp"
-            android:text="Advanced:"
+            android:text="@string/label_send_settings_advanced"
             android:textAlignment="textEnd" />
 
         <Spinner
