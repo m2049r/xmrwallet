@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="gone"
             card_view:cardCornerRadius="2dp"
             card_view:cardElevation="8dp"
             card_view:contentPadding="8dp">
@@ -170,7 +171,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:stretchColumns="1">
+            android:shrinkColumns="1">
 
             <TableRow>
 
@@ -181,32 +182,33 @@
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/etTxNotes"
                         style="@style/MoneroEdit"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/bTxNotes"
                         android:backgroundTint="@color/moneroGray"
                         android:hint="@string/tx_notes_hint"
-                        android:inputType="textMultiLine"
-                        android:textAlignment="textStart" />
+                        android:inputType="textMultiLine" />
 
                     <Button
                         android:id="@+id/bTxNotes"
                         style="@style/MoneroButton.Small"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:enabled="true"
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
                         android:text="@string/tx_button_notes" />
-                </LinearLayout>
+                </RelativeLayout>
 
             </TableRow>
 
