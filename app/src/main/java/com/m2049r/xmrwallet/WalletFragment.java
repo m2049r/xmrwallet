@@ -313,7 +313,7 @@ public class WalletFragment extends Fragment
         if (wallet == null) return;
         walletTitle = wallet.getName();
         String watchOnly = (wallet.isWatchOnly() ? getString(R.string.label_watchonly) : "");
-        walletSubtitle = wallet.getAddress().substring(0, 16) + "…" + watchOnly;
+        walletSubtitle = wallet.getAddress().substring(0, 10) + "…" + watchOnly;
         activityCallback.setTitle(walletTitle, walletSubtitle);
         Timber.d("wallet title is %s", walletTitle);
     }

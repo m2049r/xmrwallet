@@ -81,6 +81,8 @@
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
 
+    <string name="label_send_settings_advanced">Advanced:</string>
+
     <string name="label_send_btc_details">Click for more details</string>
     <string name="label_send_btc_xmrto_info">Visit xmr.to for support &amp; tracking</string>
     <string name="label_send_txinfo">See TX details for more details</string>
@@ -208,11 +210,6 @@
     <string name="generate_wallet_creating">Creating wallet</string>
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
-    <string name="generate_address_placeholder">9tDC52GsMjTNt4dpnRCwAF7ekVBkbkgkXGaMKTcSTpBhGpqkPX56jCNRydLq9oGjbbAQBsZhLfgmTKsntmxRd3TaJFYM2f8</string>
-    <string name="generate_viewkey_placeholder">e2b99f4cc3d644774c4b118db05f8aa9967583a01ca4d47058c3860af10bd306</string>
-    <string name="generate_spendkey_placeholder">300a54208ab0a638a8407a12e3de946da76f5a9ded303338452332ec7755210d</string>
-    <string name="generate_mnemonic_placeholder">camp feline inflamed memoir afloat eight alerts females gutter cogs menu waveform gather tawny judge gusts yahoo doctor females biscuit alchemy reef agony austere camp</string>
-    <string name="generate_restoreheight_placeholder">1307882</string>
 
     <string name="generate_wallet_type_key">Keys</string>
     <string name="generate_wallet_type_new">New</string>
@@ -319,7 +316,7 @@
     <string name="receive_amount_hint">Amount</string>
     <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
-    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0-9,a-f)</string>
+    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
     <string name="receive_bitcoin_paymentid_invalid">Must be empty with bitcoin address</string>
     <string name="receive_amount_invalid">Must be > 0</string>
@@ -339,8 +336,6 @@
     <string name="archive_alert_message">The wallet will be backed up and then deleted!</string>
     <string name="archive_alert_yes">Yes, do that!</string>
     <string name="archive_alert_no">No thanks!</string>
-
-    <string name="big_amount" translatable="false">999999.999999999999</string>
 
     <string-array name="mixin" translatable="false">
         <item>Ringsize 5</item>

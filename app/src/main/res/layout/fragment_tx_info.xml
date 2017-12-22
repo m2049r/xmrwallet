@@ -170,7 +170,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:shrinkColumns="1">
+            android:stretchColumns="1">
 
             <TableRow>
 
@@ -184,15 +184,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/etTxNotes"
                         style="@style/MoneroEdit"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="8"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/moneroGray"
                         android:hint="@string/tx_notes_hint"
                         android:inputType="textMultiLine"
@@ -201,11 +200,10 @@
                     <Button
                         android:id="@+id/bTxNotes"
                         style="@style/MoneroButton.Small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
-                        android:layout_weight="2"
                         android:enabled="true"
                         android:text="@string/tx_button_notes" />
                 </LinearLayout>
