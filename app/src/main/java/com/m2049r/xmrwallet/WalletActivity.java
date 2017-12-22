@@ -560,19 +560,20 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onProgress(final int n) {
-        try {
-            final WalletFragment walletFragment = (WalletFragment)
-                    getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    walletFragment.setProgress(n);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    WalletFragment walletFragment = (WalletFragment)
+                            getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
+                    if (walletFragment != null)
+                        walletFragment.setProgress(n);
+                } catch (ClassCastException ex) {
+                    // not in wallet fragment (probably send monero)
+                    Timber.d(ex.getLocalizedMessage());
+                    // keep calm and carry on
                 }
-            });
-        } catch (ClassCastException ex) {
-            // not in wallet fragment (probably send monero)
-            Timber.d(ex.getLocalizedMessage());
-            // keep calm and carry on
-        }
+            }
+        });
     }
 
     private void updateProgress() {
