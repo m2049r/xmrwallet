@@ -1,252 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        card_view:cardCornerRadius="2dp"
-        card_view:cardElevation="8dp"
-        card_view:contentPadding="8dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="16dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardElevation="8dp"
+            card_view:contentPadding="8dp">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <com.m2049r.xmrwallet.widget.SendProgressView
-                    android:id="@+id/evStageA"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_height="wrap_content">
+
+                    <com.m2049r.xmrwallet.widget.SendProgressView
+                        android:id="@+id/evStageA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <LinearLayout
+                        android:id="@+id/llStageA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="invisible">
+
+                        <TextView
+                            style="@style/MoneroText.Confirm.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:drawablePadding="8dp"
+                            android:drawableStart="@drawable/ic_xmrto_32dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/label_send_btc_xmrto_key" />
+
+                        <TextView
+                            android:id="@+id/tvTxXmrToKey"
+                            style="@style/MoneroText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/dotGray"
+                            android:drawableEnd="@drawable/ic_content_copy_white_24dp"
+                            android:drawablePadding="16dp"
+                            android:paddingBottom="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingStart="24dp"
+                            android:paddingTop="8dp"
+                            android:textColor="@color/white"
+                            tools:text="XMR.TO-d2KQ" />
+
+                        <TextView
+                            style="@style/MoneroText.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/label_send_btc_xmrto_info" />
+
+                        <TextView
+                            style="@style/MoneroText.Confirm.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/label_send_btc_address"
+                            android:textAlignment="textStart" />
+
+                        <TextView
+                            android:id="@+id/tvTxBtcAddress"
+                            style="@style/MoneroText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                            tools:text="mpQ84J43EURZHkCnXbyQ4PpNDLLBqdsMW2" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/darker_gray" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.m2049r.xmrwallet.widget.SendProgressView
+                        android:id="@+id/evStageB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <LinearLayout
+                        android:id="@+id/llStageB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="invisible">
+
+                        <TextView
+                            style="@style/MoneroText.Confirm.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/label_send_btc_amount"
+                            android:textAlignment="textStart" />
+
+                        <TextView
+                            android:id="@+id/tvTxBtcAmount"
+                            style="@style/MoneroText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                            tools:text="1.75 BTC = 84.118438761777 XMR" />
+
+                        <TextView
+                            android:id="@+id/tvTxBtcRate"
+                            style="@style/MoneroLabel.Gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                            android:textSize="16sp"
+                            tools:text="(Rate: 0.020804 BTC/XMR)" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp">
+
+            <com.m2049r.xmrwallet.widget.SendProgressView
+                android:id="@+id/evStageC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                android:id="@+id/llStageC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
 
                 <LinearLayout
-                    android:id="@+id/llStageA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="invisible">
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                     <TextView
-                        style="@style/MoneroText.Confirm.Label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:drawablePadding="8dp"
-                        android:drawableStart="@drawable/ic_xmrto_32dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/label_send_btc_xmrto_key" />
-
-                    <TextView
-                        android:id="@+id/tvTxXmrToKey"
-                        style="@style/MoneroText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/dotGray"
-                        android:drawableEnd="@drawable/ic_content_copy_white_24dp"
-                        android:drawablePadding="16dp"
-                        android:paddingBottom="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingStart="24dp"
-                        android:paddingTop="8dp"
-                        android:textColor="@color/white"
-                        tools:text="XMR.TO-d2KQ" />
-
-                    <TextView
-                        style="@style/MoneroText.Medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/label_send_btc_xmrto_info" />
-
-                    <TextView
-                        style="@style/MoneroText.Confirm.Label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/label_send_btc_address"
-                        android:textAlignment="textStart" />
-
-                    <TextView
-                        android:id="@+id/tvTxBtcAddress"
-                        style="@style/MoneroText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textStart"
-                        tools:text="mpQ84J43EURZHkCnXbyQ4PpNDLLBqdsMW2" />
-                </LinearLayout>
-            </FrameLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/darker_gray" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.m2049r.xmrwallet.widget.SendProgressView
-                    android:id="@+id/evStageB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <LinearLayout
-                    android:id="@+id/llStageB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="invisible">
-
-                    <TextView
-                        style="@style/MoneroText.Confirm.Label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/label_send_btc_amount"
-                        android:textAlignment="textStart" />
-
-                    <TextView
-                        android:id="@+id/tvTxBtcAmount"
-                        style="@style/MoneroText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textStart"
-                        tools:text="1.75 BTC = 84.118438761777 XMR" />
-
-                    <TextView
-                        android:id="@+id/tvTxBtcRate"
+                        android:id="@+id/tvTxFeeLabel"
                         style="@style/MoneroLabel.Gray"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/send_fee_btc_label"
                         android:textAlignment="textStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvTxFee"
+                        style="@style/MoneroText.Gray"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textAlignment="textEnd"
                         android:textSize="16sp"
-                        tools:text="(Rate: 0.020804 BTC/XMR)" />
+                        tools:text="0.006817000000" />
                 </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-        <com.m2049r.xmrwallet.widget.SendProgressView
-            android:id="@+id/evStageC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+                    <TextView
+                        android:id="@+id/tvTxTotalLabel"
+                        style="@style/MoneroLabel.Caps.Black"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/send_total_btc_label"
+                        android:textAlignment="textStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvTxTotal"
+                        style="@style/MoneroText.Black"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textAlignment="textEnd"
+                        android:textSize="16sp"
+                        tools:text="143.014817000000" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/llStageC"
+            android:id="@+id/llConfirmSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             android:visibility="invisible">
 
-            <LinearLayout
+            <Button
+                android:id="@+id/bSend"
+                style="@style/MoneroButton.Green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_marginTop="8dp"
+                android:enabled="true"
+                android:padding="8dp"
+                android:text="@string/send_send_label" />
 
-                <TextView
-                    android:id="@+id/tvTxFeeLabel"
-                    style="@style/MoneroLabel.Gray"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/send_fee_btc_label"
-                    android:textAlignment="textStart"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvTxFee"
-                    style="@style/MoneroText.Gray"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textAlignment="textEnd"
-                    android:textSize="16sp"
-                    tools:text="0.006817000000" />
-            </LinearLayout>
-
-            <LinearLayout
+            <ProgressBar
+                android:id="@+id/pbProgressSend"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/tvTxTotalLabel"
-                    style="@style/MoneroLabel.Caps.Black"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/send_total_btc_label"
-                    android:textAlignment="textStart"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvTxTotal"
-                    style="@style/MoneroText.Black"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textAlignment="textEnd"
-                    android:textSize="16sp"
-                    tools:text="143.014817000000" />
-            </LinearLayout>
+                android:layout_marginTop="8dp"
+                android:indeterminate="true"
+                android:visibility="invisible" />
         </LinearLayout>
-    </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/llConfirmSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <Button
-            android:id="@+id/bSend"
-            style="@style/MoneroButton.Green"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:enabled="true"
-            android:padding="8dp"
-            android:text="@string/send_send_label" />
-
-        <ProgressBar
-            android:id="@+id/pbProgressSend"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:indeterminate="true"
-            android:visibility="invisible" />
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
