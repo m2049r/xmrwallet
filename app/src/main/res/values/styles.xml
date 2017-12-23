@@ -240,6 +240,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="MoneroButton.Green">
+        <item name="android:background">@drawable/button_selector_green</item>
+    </style>
+
     <style name="MoneroButton.Small">
         <item name="android:textSize">11sp</item>
     </style>
