@@ -103,6 +103,7 @@ public class GenerateReviewFragment extends Fragment {
                 copyAddress();
             }
         });
+        bCopyAddress.setClickable(false);
         view.findViewById(R.id.bAdvancedInfo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,7 +214,7 @@ public class GenerateReviewFragment extends Fragment {
                 tvWalletViewKey.setText(viewKey);
                 tvWalletSpendKey.setText(spendKey);
                 bAdvancedInfo.setVisibility(View.VISIBLE);
-                bCopyAddress.setEnabled(true);
+                bCopyAddress.setClickable(true);
                 bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
                 activityCallback.setTitle(name, getString(R.string.details_title));
                 activityCallback.setToolbarButton(
