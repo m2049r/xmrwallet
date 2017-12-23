@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="invisible">
 
                     <TextView
                         style="@style/MoneroText.Confirm.Label"
@@ -231,7 +231,7 @@
 
         <Button
             android:id="@+id/bSend"
-            style="@style/MoneroButton"
+            style="@style/MoneroButton.Green"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

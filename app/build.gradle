@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 64
-        versionName "1.3.4 'Satoshis Dream'"
+        versionCode 65
+        versionName "1.3.5 'Satoshis Dream'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
