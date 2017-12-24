@@ -5,6 +5,8 @@
 
 ## What features does it have?
 
+- Seamless XMR.TO integration - instantly pay BTC with XMR using third-party XMR.TO service
+- Speaks spanish
 - Uses Monero v0.11.1.0
 - Support for Android >= 5.0 with ARM processor
 - Testnet and Mainnet
@@ -26,6 +28,9 @@
 - Rename wallets
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
+
+## I am having problems with my BTC transaction
+Please contact the friendly people over at http://xmr.to for support - you will need your XMR.TO Secret Key.
 
 ## My new testnet wallet does not update
 Since testnet block times are highly variable, the algorithm calculating block height does not
