@@ -99,7 +99,7 @@ public class SendFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_send_new, container, false);
+        final View view = inflater.inflate(R.layout.fragment_send, container, false);
 
         llNavBar = view.findViewById(R.id.llNavBar);
         bDone = (Button) view.findViewById(R.id.bDone);
