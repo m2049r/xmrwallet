@@ -6,18 +6,18 @@
         <p>Introduce un nombre único para tu monedero y una contraseña.
         La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
         Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
-        <h2>¡Anota tu semilla mnemotécnica!</h2>
-        <p>En la siguiente pantalla encontrarás tu \"Semilla Mnemotécnica\" de 25 palabras.
+        <h2>¡Anota tu semilla!</h2>
+        <p>En la siguiente pantalla encontrarás tu \"Semilla\" de 25 palabras.
         Este es el único dato necesario para recuperar tu cartera en un futuro y obtener acceso
         completo a tus fondos.
         ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>
         acceso completo a tus fondos!</p>
         <p>Si pierdes la contraseña de tu monedero, todavía puedes recuperar acceso con la
-        semilla mnemotécnica.</p>
-        <p>No hay forma de recuperar tu semilla mnemotécnica, ¡si la pierdes todos tus fondos se
-        perderán! La semilla mnemotécnica no se puede cambiar nunca, y si es robada o comprometida
+        semilla.</p>
+        <p>No hay forma de recuperar tu semilla, ¡si la pierdes todos tus fondos se
+        perderán! La semilla no se puede cambiar nunca, y si es robada o comprometida
         de alguna manera, tendrás que mover todos tus fondos a una nuevo monedero (con una
-        nueva semilla mnemotécnica). Por tanto, es mejor si haces una copia de tu semilla
+        nueva semilla). Por tanto, es mejor si haces una copia de tu semilla
         mnemotécnica anotándola y guardándola en <em>múltiples</em> lugares seguros y
         privados.</p>
     ]]></string>
@@ -28,7 +28,7 @@
         cadena de bloques!</p>
         <p>La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
         Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
-        <p>Introduce tu semilla en el campo \"Semilla Mnemotécnica\".</p>
+        <p>Introduce tu semilla en el campo \"Semilla\".</p>
         <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
         introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
         cadana de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
@@ -45,7 +45,7 @@
         \"Clave de Vista\" y \"Clave de Gasto\".</p>
         <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
         introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
-        cadana de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
+        cadena de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
         Esto puede llevar <em>bastante</em> tiempo.</p>
     ]]></string>
 
@@ -59,7 +59,7 @@
         \"Clave de Vista\".</p>
         <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
         introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
-        cadana de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
+        cadena de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
         Esto puede llevar <em>bastante</em> tiempo.</p>
     ]]></string>
 
@@ -69,7 +69,7 @@
         Tu dirección pública es como el número de tu cuenta bancaria que puedes compartir con
         cualquiera sin miedo a perder tus fondos. La gente enviará moneroj a tu monedero usando esta
         dirección.
-        <h2>Semilla Mnemotécnica</h2>
+        <h2>Semilla</h2>
         Este es el único dato necesario para recuperar tu cartera en un futuro y obtener acceso
         completo a tus fondos.
         ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>
@@ -124,11 +124,11 @@
         <p><b>¡Ayuda! ¡El saldo de mi monedero ha desaparecido o aparece sin confirmar!</b><br/>
         ¡No entres en pánico! Cuando envias fondos a tu monedero, parte de tu saldo se mostrará
         temporalmente como sin confirmar.
-        Esto es debido a como funcionan las transacciones y su cambio asociado en Monero. Todo está bien.
+        Esto es debido a como funcionan las transacciones y su cambio en Monero. Todo está bien.
         Puedes leer más al respecto en https://getmonero.org/resources/moneropedia/change.html
         <h2>Lista de transacciones</h2>
         <p>Es una lista con las transacciones del monedero. Ten en cuenta que en monederos de solo vista, únicamente se
-        mostrarán las transacciones entrantes y no las salidas, por lo tanto la suma no es indicativa de los fondos disponibles.</p>
+        mostrarán las transacciones entrantes y no las salientes, por lo tanto la suma no es indicativa de los fondos disponibles.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
