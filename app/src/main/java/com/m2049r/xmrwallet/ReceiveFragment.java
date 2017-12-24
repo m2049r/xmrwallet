@@ -106,6 +106,7 @@ public class ReceiveFragment extends Fragment {
                 copyAddress();
             }
         });
+        bCopyAddress.setClickable(false);
 
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
@@ -240,7 +241,7 @@ public class ReceiveFragment extends Fragment {
         tvAddress.setText(address);
         etPaymentId.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bCopyAddress.setEnabled(true);
+        bCopyAddress.setClickable(true);
         bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
         hideProgress();
         generateQr();
