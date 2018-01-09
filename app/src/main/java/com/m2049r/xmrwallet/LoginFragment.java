@@ -308,7 +308,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    boolean testnet = false;
+    private boolean testnet = BuildConfig.DEBUG;
 
     boolean isTestnet() {
         return testnet;
