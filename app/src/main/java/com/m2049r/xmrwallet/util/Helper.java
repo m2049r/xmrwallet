@@ -58,17 +58,6 @@ public class Helper {
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
-    static public File getNewWalletDir(Context context) {
-        File newWalletDir = context.getDir("new", Context.MODE_PRIVATE);
-        Timber.d("new wallet directory is %s", newWalletDir.getAbsolutePath());
-        if (!newWalletDir.exists() || !newWalletDir.isDirectory()) {
-            String msg = newWalletDir.getAbsolutePath() + " is not a directory!";
-            Timber.e(msg);
-            throw new IllegalStateException(msg);
-        }
-        return newWalletDir;
-    }
-
     static public File getStorageRoot(Context context) {
         if (!isExternalStorageWritable()) {
             String msg = context.getString(R.string.message_strorage_not_writable);

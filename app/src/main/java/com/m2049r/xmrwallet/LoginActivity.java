@@ -814,12 +814,7 @@ public class LoginActivity extends SecureActivity
                 return false;
             }
 
-            File newWalletFolder = Helper.getNewWalletDir(getApplicationContext());
-            if (!newWalletFolder.isDirectory()) {
-                Timber.e("New Wallet dir " + newWalletFolder.getAbsolutePath() + "is not a directory");
-                return false;
-            }
-            newWalletFile = new File(newWalletFolder, walletName);
+            newWalletFile = new File(walletFolder, walletName);
             boolean success = walletCreator.createWallet(newWalletFile, walletPassword);
             if (success) {
                 return true;
@@ -936,16 +931,10 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public void onAccept(final String name, final String password) {
-        File newWalletFile = new File(Helper.getNewWalletDir(getApplicationContext()), name);
-        Timber.d("New Wallet %s", newWalletFile.getAbsolutePath());
-        newWalletFile.delete(); // when recovering wallets, the cache seems corrupt
-        // TODO: figure out why this is so? Only for a private testnet?
-
-        // now copy the new wallet to the wallet folder
-        File walletFile = new File(getStorageRoot(), name);
-        Timber.d("Wallet %s", walletFile.getAbsolutePath());
-        copyWallet(newWalletFile, walletFile, false, true);
-        deleteWallet(newWalletFile); // delete it no matter what (can't recover from this anyway)
+        File walletFolder = getStorageRoot();
+        File walletFile = new File(walletFolder, name);
+        Timber.d("New Wallet %s", walletFile.getAbsolutePath());
+        walletFile.delete(); // when recovering wallets, the cache seems corrupt
 
         boolean rc = testWallet(walletFile.getAbsolutePath(), password) == Wallet.Status.Status_Ok;
 
