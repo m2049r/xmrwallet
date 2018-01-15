@@ -28,6 +28,8 @@
     <string name="label_receive_info_gen_qr_code">Touch for QR Code</string>
     <string name="info_send_prio_fees">Higher Priority = Higher Fees</string>
 
+    <string name="info_xmrto_enabled">BTC payment enabled, tap for more info.</string>
+
     <string name="info_xmrto"><![CDATA[
         <b>You entered a Bitcoin address.</b><br/>
         <i>You&apos;ll send XMR and the receiver will get BTC using the <b>XMR.TO</b> service.</i>
@@ -236,7 +238,7 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicative)</string>
 
-    <string name="send_address_hint">Receiver\'s Address</string>
+    <string name="send_address_hint">Receiver\'s XMR or BTC Address</string>
     <string name="send_paymentid_hint">Payment ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>

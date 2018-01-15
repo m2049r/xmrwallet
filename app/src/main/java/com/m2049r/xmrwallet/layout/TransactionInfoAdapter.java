@@ -130,6 +130,13 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         void bind(int position) {
             this.infoItem = infoItems.get(position);
 
+            UserNotes userNotes = new UserNotes(infoItem.notes);
+            if (userNotes.xmrtoKey != null) {
+                ivTxType.setVisibility(View.VISIBLE);
+            } else {
+                ivTxType.setVisibility(View.GONE); // gives us more space for the amount
+            }
+
             long realAmount = infoItem.amount;
             if (infoItem.isPending) {
                 realAmount = realAmount - infoItem.fee;
@@ -161,13 +168,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 setTxColour(inboundColour);
             } else {
                 setTxColour(outboundColour);
-            }
-
-            UserNotes userNotes = new UserNotes(infoItem.notes);
-            if (userNotes.xmrtoKey != null) {
-                ivTxType.setVisibility(View.VISIBLE);
-            } else {
-                ivTxType.setVisibility(View.INVISIBLE);
             }
 
             if ((userNotes.note.isEmpty())) {
