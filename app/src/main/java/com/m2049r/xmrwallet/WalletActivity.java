@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -140,6 +141,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     protected void onDestroy() {
         Timber.d("onDestroy()");
+        if (!isSynced()) {
+            saveWallet();
+        }
         stopWalletService();
         super.onDestroy();
     }
@@ -807,9 +811,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 super.onBackPressed();
             }
         } else {
-            if (!isSynced()) {
-                saveWallet();
-            }
             super.onBackPressed();
         }
     }
@@ -818,4 +819,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     public void onFragmentDone() {
         popFragmentStack(null);
     }
+
+    @Override
+    public SharedPreferences getPrefs() {
+        return getPreferences(Context.MODE_PRIVATE);
+    }
+
 }

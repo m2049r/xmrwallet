@@ -17,6 +17,7 @@
 package com.m2049r.xmrwallet.fragment.send;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -41,9 +42,11 @@ import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.NodeList;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -63,6 +66,8 @@ public class SendFragment extends Fragment
     private Listener activityCallback;
 
     public interface Listener {
+        SharedPreferences getPrefs();
+
         long getTotalFunds();
 
         void onPrepareSend(String tag, TxData data);
@@ -93,6 +98,10 @@ public class SendFragment extends Fragment
 
     private Button bDone;
 
+    private View llXmrToEnabled;
+    private View ibXmrToInfoClose;
+
+
     static private int MAX_FALLBACK = Integer.MAX_VALUE;
 
     @Override
@@ -109,6 +118,28 @@ public class SendFragment extends Fragment
         bNext = (Button) view.findViewById(R.id.bNext);
         arrowPrev = getResources().getDrawable(R.drawable.ic_navigate_prev_white_24dp);
         arrowNext = getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp);
+
+        llXmrToEnabled = view.findViewById(R.id.llXmrToEnabled);
+        llXmrToEnabled.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HelpFragment.display(getChildFragmentManager(), R.string.help_xmrto);
+
+            }
+        });
+        ibXmrToInfoClose = view.findViewById(R.id.ibXmrToInfoClose);
+        ibXmrToInfoClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llXmrToEnabled.setVisibility(View.GONE);
+                showXmrtoEnabled = false;
+                saveXmrToPrefs();
+            }
+        });
+        loadPrefs();
+        if (!showXmrtoEnabled) {
+            llXmrToEnabled.setVisibility(View.GONE);
+        }
 
         spendViewPager = (SpendViewPager) view.findViewById(R.id.pager);
         pagerAdapter = new SpendPagerAdapter(getChildFragmentManager());
@@ -518,4 +549,22 @@ public class SendFragment extends Fragment
         inflater.inflate(R.menu.send_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+    // xmr.to info box
+    private static final String PREF_SHOW_XMRTO_ENABLED = "info_xmrto_enabled_send";
+
+    boolean showXmrtoEnabled = true;
+
+    void loadPrefs() {
+        SharedPreferences sharedPref = activityCallback.getPrefs();
+        showXmrtoEnabled = sharedPref.getBoolean(PREF_SHOW_XMRTO_ENABLED, true);
+    }
+
+    void saveXmrToPrefs() {
+        SharedPreferences sharedPref = activityCallback.getPrefs();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
+        editor.apply();
+    }
+
 }

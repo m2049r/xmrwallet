@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/llXmrToEnabled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/moneroBlue"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/MoneroLabel.Heading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_info_white_24dp"
+            android:gravity="start|center_vertical"
+            android:padding="8dp"
+            android:text="@string/info_xmrto_enabled"
+            android:textColor="@color/white" />
+
+        <ImageButton
+            android:id="@+id/ibXmrToInfoClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#00000000"
+            android:padding="8dp"
+            android:src="@drawable/ic_close_white_24dp" />
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/etDummy"
         android:layout_width="0dp"
@@ -16,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/llNavBar"
+        android:layout_below="@id/llXmrToEnabled"
         android:padding="8dp" />
 
     <LinearLayout

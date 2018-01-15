@@ -89,7 +89,7 @@
                 android:hint="@string/generate_address_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textMultiLine"
-                android:textAlignment="center" />
+                android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -109,7 +109,7 @@
                 android:hint="@string/generate_viewkey_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textMultiLine"
-                android:textAlignment="center" />
+                android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -128,7 +128,7 @@
                 android:hint="@string/generate_spendkey_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textMultiLine"
-                android:textAlignment="center" />
+                android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -145,7 +145,7 @@
                 android:hint="@string/generate_restoreheight_hint"
                 android:imeOptions="actionDone"
                 android:inputType="number"
-                android:textAlignment="center" />
+                android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
         <Button

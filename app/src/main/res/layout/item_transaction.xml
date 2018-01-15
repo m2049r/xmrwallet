@@ -16,36 +16,43 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/ivTxType"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_xmrto_32dp"
-            android:visibility="visible"/>
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="9"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tx_amount"
-                style="@style/MoneroText.PosAmount"
+            <ImageView
+                android:id="@+id/ivTxType"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_xmrto_32dp"
+                android:visibility="visible" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                tools:text="999.999999" />
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tx_fee"
-                style="@style/MoneroText.PosFee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                tools:text="Fee 0.06817" />
+                <TextView
+                    android:id="@+id/tx_amount"
+                    style="@style/MoneroText.PosAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    tools:text="+ 999.999999" />
+
+                <TextView
+                    android:id="@+id/tx_fee"
+                    style="@style/MoneroText.PosFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    tools:text="Fee 0.06817" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
