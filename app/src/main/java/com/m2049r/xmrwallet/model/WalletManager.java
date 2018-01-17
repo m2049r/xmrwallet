@@ -86,31 +86,33 @@ public class WalletManager {
 
     private native long openWalletJ(String path, String password, boolean isTestNet);
 
-    public Wallet recoveryWallet(File aFile, String mnemonic) {
-        Wallet wallet = recoveryWallet(aFile, mnemonic, 0);
-        manageWallet(wallet);
-        return wallet;
+    public Wallet recoveryWallet(File aFile, String password, String mnemonic) {
+        return recoveryWallet(aFile, password, mnemonic, 0);
     }
 
-    public Wallet recoveryWallet(File aFile, String mnemonic, long restoreHeight) {
-        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), mnemonic, isTestNet(), restoreHeight);
+    public Wallet recoveryWallet(File aFile, String password, String mnemonic, long restoreHeight) {
+        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), password, mnemonic,
+                isTestNet(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long recoveryWalletJ(String path, String mnemonic, boolean isTestNet, long restoreHeight);
+    private native long recoveryWalletJ(String path, String password, String mnemonic,
+                                        boolean isTestNet, long restoreHeight);
 
-    public Wallet createWalletFromKeys(File aFile, String language, long restoreHeight,
+    public Wallet createWalletWithKeys(File aFile, String password, String language, long restoreHeight,
                                        String addressString, String viewKeyString, String spendKeyString) {
-        long walletHandle = createWalletFromKeysJ(aFile.getAbsolutePath(), language, isTestNet(), restoreHeight,
+        long walletHandle = createWalletWithKeysJ(aFile.getAbsolutePath(), password,
+                language, isTestNet(), restoreHeight,
                 addressString, viewKeyString, spendKeyString);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long createWalletFromKeysJ(String path, String language,
+    private native long createWalletWithKeysJ(String path, String password,
+                                              String language,
                                               boolean isTestNet,
                                               long restoreHeight,
                                               String addressString,

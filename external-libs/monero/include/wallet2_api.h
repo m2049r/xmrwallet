@@ -632,6 +632,18 @@ struct WalletManager
     /*!
      * \brief  recovers existing wallet using memo (electrum seed)
      * \param  path           Name of wallet file to be created
+     * \param  password       Password of wallet file
+     * \param  memo           memo (25 words electrum seed)
+     * \param  testnet        testnet
+     * \param  restoreHeight  restore from start height
+     * \return                Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
+     */
+    virtual Wallet * recoveryWallet(const std::string &path, const std::string &password, const std::string &memo, bool testnet = false, uint64_t restoreHeight = 0) = 0;
+
+    /*!
+     * \deprecated this method creates a wallet WITHOUT a psssphrase, use the alternate recoverWallet() method
+     * \brief  recovers existing wallet using memo (electrum seed)
+     * \param  path           Name of wallet file to be created
      * \param  memo           memo (25 words electrum seed)
      * \param  testnet        testnet
      * \param  restoreHeight  restore from start height
@@ -639,18 +651,40 @@ struct WalletManager
      */
     virtual Wallet * recoveryWallet(const std::string &path, const std::string &memo, bool testnet = false, uint64_t restoreHeight = 0) = 0;
 
-   /*!
-    * \brief  recovers existing wallet using keys. Creates a view only wallet if spend key is omitted
-    * \param  path           Name of wallet file to be created
-    * \param  language       language
-    * \param  testnet        testnet
-    * \param  restoreHeight  restore from start height
-    * \param  addressString  public address
-    * \param  viewKeyString  view key
-    * \param  spendKeyString spend key (optional)
-    * \return                Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
-    */
-    virtual Wallet * createWalletFromKeys(const std::string &path, 
+    /*!
+     * \brief  recovers existing wallet using keys. Creates a view only wallet if spend key is omitted
+     * \param  path           Name of wallet file to be created
+     * \param  password       Password of wallet file
+     * \param  language       language
+     * \param  testnet        testnet
+     * \param  restoreHeight  restore from start height
+     * \param  addressString  public address
+     * \param  viewKeyString  view key
+     * \param  spendKeyString spend key (optional)
+     * \return                Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
+     */
+     virtual Wallet * createWalletWithKeys(const std::string &path, 
+                                                    const std::string &password,
+                                                    const std::string &language,
+                                                    bool testnet, 
+                                                    uint64_t restoreHeight,
+                                                    const std::string &addressString,
+                                                    const std::string &viewKeyString,
+                                                    const std::string &spendKeyString = "") = 0;
+
+    /*!
+     * \deprecated this method creates a wallet WITHOUT a psssphrase, use createWalletWithKeys() instead
+     * \brief  recovers existing wallet using keys. Creates a view only wallet if spend key is omitted
+     * \param  path           Name of wallet file to be created
+     * \param  language       language
+     * \param  testnet        testnet
+     * \param  restoreHeight  restore from start height
+     * \param  addressString  public address
+     * \param  viewKeyString  view key
+     * \param  spendKeyString spend key (optional)
+     * \return                Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
+     */
+     virtual Wallet * createWalletFromKeys(const std::string &path, 
                                                     const std::string &language,
                                                     bool testnet, 
                                                     uint64_t restoreHeight,
