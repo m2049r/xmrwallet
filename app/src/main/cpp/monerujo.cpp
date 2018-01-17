@@ -291,41 +291,48 @@ Java_com_m2049r_xmrwallet_model_WalletManager_openWalletJ(JNIEnv *env, jobject i
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_recoveryWalletJ(JNIEnv *env, jobject instance,
-                                                              jstring path, jstring mnemonic,
+                                                              jstring path, jstring password,
+                                                              jstring mnemonic,
                                                               jboolean isTestNet,
                                                               jlong restoreHeight) {
     const char *_path = env->GetStringUTFChars(path, NULL);
+    const char *_password = env->GetStringUTFChars(password, NULL);
     const char *_mnemonic = env->GetStringUTFChars(mnemonic, NULL);
 
     Bitmonero::Wallet *wallet =
             Bitmonero::WalletManagerFactory::getWalletManager()->recoveryWallet(
                     std::string(_path),
+                    std::string(_password),
                     std::string(_mnemonic),
                     isTestNet,
                     restoreHeight);
 
     env->ReleaseStringUTFChars(path, _path);
+    env->ReleaseStringUTFChars(password, _password);
     env->ReleaseStringUTFChars(mnemonic, _mnemonic);
     return reinterpret_cast<jlong>(wallet);
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_WalletManager_createWalletFromKeysJ(JNIEnv *env, jobject instance,
-                                                                    jstring path, jstring language,
+Java_com_m2049r_xmrwallet_model_WalletManager_createWalletWithKeysJ(JNIEnv *env, jobject instance,
+                                                                    jstring path, jstring password,
+                                                                    jstring language,
                                                                     jboolean isTestNet,
                                                                     jlong restoreHeight,
                                                                     jstring addressString,
                                                                     jstring viewKeyString,
                                                                     jstring spendKeyString) {
     const char *_path = env->GetStringUTFChars(path, NULL);
+    const char *_password = env->GetStringUTFChars(password, NULL);
     const char *_language = env->GetStringUTFChars(language, NULL);
     const char *_addressString = env->GetStringUTFChars(addressString, NULL);
     const char *_viewKeyString = env->GetStringUTFChars(viewKeyString, NULL);
     const char *_spendKeyString = env->GetStringUTFChars(spendKeyString, NULL);
 
     Bitmonero::Wallet *wallet =
-            Bitmonero::WalletManagerFactory::getWalletManager()->createWalletFromKeys(
+            Bitmonero::WalletManagerFactory::getWalletManager()->createWalletWithKeys(
                     std::string(_path),
+                    std::string(_password),
                     std::string(_language),
                     isTestNet,
                     restoreHeight,
@@ -334,6 +341,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_createWalletFromKeysJ(JNIEnv *env,
                     std::string(_spendKeyString));
 
     env->ReleaseStringUTFChars(path, _path);
+    env->ReleaseStringUTFChars(password, _password);
     env->ReleaseStringUTFChars(language, _language);
     env->ReleaseStringUTFChars(addressString, _addressString);
     env->ReleaseStringUTFChars(viewKeyString, _viewKeyString);

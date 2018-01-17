@@ -778,13 +778,14 @@ public class LoginActivity extends SecureActivity
     static final String MNEMONIC_LANGUAGE = "English"; // see mnemonics/electrum-words.cpp for more
 
     private class AsyncCreateWallet extends AsyncTask<Void, Void, Boolean> {
-        String walletName;
-        String walletPassword;
-        WalletCreator walletCreator;
+        final String walletName;
+        final String walletPassword;
+        final WalletCreator walletCreator;
 
         File newWalletFile;
 
-        public AsyncCreateWallet(String name, String password, WalletCreator walletCreator) {
+        public AsyncCreateWallet(final String name, final String password,
+                                 final WalletCreator walletCreator) {
             super();
             this.walletName = name;
             this.walletPassword = password;
@@ -839,7 +840,8 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    public void createWallet(String name, String password, WalletCreator walletCreator) {
+    public void createWallet(final String name, final String password,
+                             final WalletCreator walletCreator) {
         new AsyncCreateWallet(name, password, walletCreator)
                 .executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
     }
@@ -860,7 +862,7 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onGenerate(String name, String password) {
+    public void onGenerate(final String name, final String password) {
         createWallet(name, password,
                 new WalletCreator() {
                     public boolean createWallet(File aFile, String password) {
@@ -878,16 +880,15 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onGenerate(String name, String password, final String seed, final long restoreHeight) {
+    public void onGenerate(final String name, final String password, final String seed,
+                           final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
                     public boolean createWallet(File aFile, String password) {
-                        Wallet newWallet = WalletManager.getInstance().recoveryWallet(aFile, seed, restoreHeight);
+                        Wallet newWallet = WalletManager.getInstance().
+                                recoveryWallet(aFile, password, seed, restoreHeight);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (success) {
-                            newWallet.setPassword(password);
-                            success = success && newWallet.store();
-                        } else {
+                        if (!success) {
                             Timber.e(newWallet.getErrorString());
                             toast(newWallet.getErrorString());
                         }
@@ -898,19 +899,17 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onGenerate(String name, String password,
-                           final String address, final String viewKey, final String spendKey, final long restoreHeight) {
+    public void onGenerate(final String name, final String password,
+                           final String address, final String viewKey, final String spendKey,
+                           final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
                     public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWalletFromKeys(aFile, MNEMONIC_LANGUAGE, restoreHeight,
+                                .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight,
                                         address, viewKey, spendKey);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
-                        if (success) {
-                            newWallet.setPassword(password);
-                            success = success && newWallet.store();
-                        } else {
+                        if (!success) {
                             Timber.e(newWallet.getErrorString());
                             toast(newWallet.getErrorString());
                         }
