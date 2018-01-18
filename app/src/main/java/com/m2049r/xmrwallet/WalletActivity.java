@@ -141,7 +141,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     protected void onDestroy() {
         Timber.d("onDestroy()");
-        if (!isSynced()) {
+        if ((mBoundService != null) && !isSynced() && (getWallet() != null)) {
             saveWallet();
         }
         stopWalletService();
