@@ -19,15 +19,16 @@ package com.m2049r.xmrwallet.layout;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.UserNotes;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,15 +38,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import timber.log.Timber;
+
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-    private static final String TAG = "TransactionInfoAdapter";
 
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
-    //static final int TX_RED = Color.rgb(255, 79, 65);
-    //static final int TX_GREEN = Color.rgb(54, 176, 91);
-    //static final int TX_PENDING = Color.rgb(72, 53, 176);
-    //static final int TX_FAILED = Color.rgb(208, 0, 255);
 
     private int outboundColour;
     private int inboundColour;
@@ -96,16 +93,17 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         // as the TransactionInfo items are always recreated, we cannot recycle
         this.infoItems.clear();
         if (data != null) {
-            Log.d(TAG, "setInfos " + data.size());
+            Timber.d("setInfos %s", data.size());
             infoItems.addAll(data);
             Collections.sort(infoItems);
         } else {
-            Log.d(TAG, "setInfos null");
+            Timber.d("setInfos null");
         }
         notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        final ImageView ivTxType;
         final TextView tvAmount;
         final TextView tvFee;
         final TextView tvPaymentId;
@@ -114,10 +112,11 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         ViewHolder(View itemView) {
             super(itemView);
-            this.tvAmount = (TextView) itemView.findViewById(R.id.tx_amount);
-            this.tvFee = (TextView) itemView.findViewById(R.id.tx_fee);
-            this.tvPaymentId = (TextView) itemView.findViewById(R.id.tx_paymentid);
-            this.tvDateTime = (TextView) itemView.findViewById(R.id.tx_datetime);
+            ivTxType = (ImageView) itemView.findViewById(R.id.ivTxType);
+            tvAmount = (TextView) itemView.findViewById(R.id.tx_amount);
+            tvFee = (TextView) itemView.findViewById(R.id.tx_fee);
+            tvPaymentId = (TextView) itemView.findViewById(R.id.tx_paymentid);
+            tvDateTime = (TextView) itemView.findViewById(R.id.tx_datetime);
         }
 
         private String getDateTime(long time) {
@@ -126,11 +125,17 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         private void setTxColour(int clr) {
             tvAmount.setTextColor(clr);
-            tvFee.setTextColor(clr);
         }
 
         void bind(int position) {
             this.infoItem = infoItems.get(position);
+
+            UserNotes userNotes = new UserNotes(infoItem.notes);
+            if (userNotes.xmrtoKey != null) {
+                ivTxType.setVisibility(View.VISIBLE);
+            } else {
+                ivTxType.setVisibility(View.GONE); // gives us more space for the amount
+            }
 
             long realAmount = infoItem.amount;
             if (infoItem.isPending) {
@@ -139,20 +144,23 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
             String displayAmount = Helper.getDisplayAmount(realAmount, Helper.DISPLAY_DIGITS_INFO);
             if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
-                this.tvAmount.setText(context.getString(R.string.tx_list_amount_negative, displayAmount));
+                tvAmount.setText(context.getString(R.string.tx_list_amount_negative, displayAmount));
             } else {
-                this.tvAmount.setText(context.getString(R.string.tx_list_amount_positive, displayAmount));
+                tvAmount.setText(context.getString(R.string.tx_list_amount_positive, displayAmount));
             }
 
             if ((infoItem.fee > 0)) {
                 String fee = Helper.getDisplayAmount(infoItem.fee, 5);
-                this.tvFee.setText(context.getString(R.string.tx_list_fee, fee));
+                tvFee.setText(context.getString(R.string.tx_list_fee, fee));
+                tvFee.setVisibility(View.VISIBLE);
             } else {
-                this.tvFee.setText("");
+                tvFee.setText("");
+                tvFee.setVisibility(View.GONE);
             }
             if (infoItem.isFailed) {
                 this.tvAmount.setText(context.getString(R.string.tx_list_amount_failed, displayAmount));
                 this.tvFee.setText(context.getString(R.string.tx_list_failed_text));
+                tvFee.setVisibility(View.VISIBLE);
                 setTxColour(failedColour);
             } else if (infoItem.isPending) {
                 setTxColour(pendingColour);
@@ -161,11 +169,13 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             } else {
                 setTxColour(outboundColour);
             }
-            if ((infoItem.notes == null) || (infoItem.notes.isEmpty())) {
+
+            if ((userNotes.note.isEmpty())) {
                 this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ? "" : infoItem.paymentId);
             } else {
-                this.tvPaymentId.setText(infoItem.notes);
+                this.tvPaymentId.setText(userNotes.note);
             }
+
             this.tvDateTime.setText(getDateTime(infoItem.timestamp));
 
             itemView.setOnClickListener(this);

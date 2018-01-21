@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="LinearLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sCurrencyA"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/currency"
+            android:gravity="center"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvAmountA"
+            style="@style/MoneroText.Balance.Orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="16dp"
+            android:layout_weight="3"
+            android:hint="@string/send_amount_hint"
+            android:padding="4dp"
+            android:singleLine="true"
+            tools:text="87.00000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sCurrencyB"
+            android:layout_width="56sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/currency"
+            android:gravity="center"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvAmountB"
+            style="@style/MoneroText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="16dp"
+            android:layout_weight="3"
+            android:hint="@string/send_amount_hint"
+            android:padding="4dp"
+            android:singleLine="true"
+            tools:text="87.00000" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="0sp"
+            android:layout_marginStart="8sp">
+
+            <ImageView
+                android:id="@+id/evExchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_statsup" />
+
+            <ProgressBar
+                android:id="@+id/pbExchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</merge>
+

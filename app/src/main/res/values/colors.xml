@@ -2,11 +2,13 @@
 <resources>
     <color name="tx_green">@color/take</color>
     <color name="tx_red">@color/give</color>
-    <color name="tx_pending">@color/gradientPink</color>
-    <color name="tx_failed">@color/moneroFab</color>
+    <color name="tx_pending">@color/moneroFab</color>
+    <color name="tx_failed">@color/moneroBlack</color>
 
     <color name="gradientOrange">#FFFF6105</color>
     <color name="gradientPink">#FFF0006B</color>
+
+    <color name="xmrtoYellow">#FFFFD700</color>
 
     <color name="trafficGray">#9B9B9B</color>
 
@@ -16,7 +18,10 @@
     <color name="moneroOrange">#cc5100</color>
     <color name="moneroWhite">#ffffff</color>
     <color name="moneroBlack">#000000</color>
+    <color name="moneroBlue">#1F4E97</color>
     <color name="moneroGray">#FD9B9B9B</color>
+
+    <color name="dotGray">#FF4A4A4A</color>
 
     <color name="moneroFab">#61000000</color>
     <color name="moneroText">#FF616161</color>

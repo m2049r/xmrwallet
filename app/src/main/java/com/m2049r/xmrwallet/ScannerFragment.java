@@ -20,7 +20,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,21 +29,21 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import timber.log.Timber;
 
 public class ScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
-    static final String TAG = "ScannerFragment";
 
-    private Listener activityCallback;
+    private OnScannedListener onScannedListener;
 
-    public interface Listener {
-        boolean onAddressScanned(String uri);
+    public interface OnScannedListener {
+        boolean onScanned(String qrCode);
     }
 
     private ZXingScannerView mScannerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView");
+        Timber.d("onCreateView");
         mScannerView = new ZXingScannerView(getActivity());
         return mScannerView;
     }
@@ -52,20 +51,15 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume");
+        Timber.d("onResume");
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
 
-    static final String QR_SCHEME = "monero:";
-    static final String QR_PAYMENTID = "tx_payment_id";
-    static final String QR_AMOUNT = "tx_amount";
-
     @Override
     public void handleResult(Result rawResult) {
-        if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE) &&
-                (rawResult.getText().startsWith(QR_SCHEME))) {
-            if (activityCallback.onAddressScanned(rawResult.getText())) {
+        if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE)) {
+            if (onScannedListener.onScanned(rawResult.getText())) {
                 return;
             } else {
                 Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
@@ -91,7 +85,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public void onPause() {
-        Log.d(TAG, "onPause");
+        Timber.d("onPause");
         mScannerView.stopCamera();
         super.onPause();
     }
@@ -99,8 +93,8 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Listener) {
-            this.activityCallback = (Listener) context;
+        if (context instanceof OnScannedListener) {
+            this.onScannedListener = (OnScannedListener) context;
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");

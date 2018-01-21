@@ -19,7 +19,7 @@
             android:gravity="center"
             android:textAlignment="center" />
 
-        <com.m2049r.xmrwallet.layout.CTextInputLayout
+        <com.m2049r.xmrwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:inputType="numberDecimal"
                 tools:text="87.00000" />
 
-        </com.m2049r.xmrwallet.layout.CTextInputLayout>
+        </com.m2049r.xmrwallet.widget.CTextInputLayout>
     </LinearLayout>
 
     <LinearLayout

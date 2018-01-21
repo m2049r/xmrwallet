@@ -44,6 +44,10 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="MoneroLabel.Gray">
+        <item name="android:textColor">@color/moneroGray</item>
+    </style>
+
     <style name="MoneroLabel.Caps">
         <item name="android:textAllCaps">true</item>
     </style>
@@ -60,10 +64,25 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="MoneroText.Funds">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/moneroFab</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MoneroText.Info">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/moneroFab</item>
+    </style>
+
     <style name="MoneroText.Balance">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/moneroBlack</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MoneroText.Balance.Orange">
+        <item name="android:textColor">@color/gradientOrange</item>
     </style>
 
     <style name="MoneroText.Unconfirmed">
@@ -94,6 +113,12 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">#FF616161</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- textSize is in dp here to match the layout of the numpad-->
+    <style name="MoneroLabel.NumPad">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/moneroBlack</item>
     </style>
 
     <style name="MoneroLabel.Title">
@@ -148,29 +173,60 @@
     </style>
 
     <style name="MoneroText.Label">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MoneroText.Confirm">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="MoneroText.Confirm.Label">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MoneroText.Label.Heading">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.Label.Medium">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="MoneroText.Small">
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
     <style name="MoneroText.Medium">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MoneroText.Medium.Bold">
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.Large">
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+    <style name="MoneroText.Success">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dotGray</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MoneroText.Gray.SuccessFee">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="MoneroText.Button" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/gradientOrange</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="MoneroText.Button.Small">
@@ -184,6 +240,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="MoneroButton.Green">
+        <item name="android:background">@drawable/button_selector_green</item>
+    </style>
+
     <style name="MoneroButton.Small">
         <item name="android:textSize">11sp</item>
     </style>
@@ -193,8 +253,7 @@
         <item name="android:background">@color/gradientPink</item>
     </style>
 
-    <style name="MoneroButton.ReallySend">
-    </style>
+    <style name="MoneroButton.ReallySend"></style>
 
     <style name="MoneroButton.Take">
         <item name="android:background">@color/take</item>
@@ -208,6 +267,13 @@
         <item name="android:textColor">?colorPrimary</item>
         <item name="android:backgroundTint">@color/gradientPink</item>
     </style>
+
+    <style name="MoneroEdit.Amount">
+        <!--item name="android:textSize">32sp</item-->
+        <item name="android:textColor">@color/gradientOrange</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="MoneroEdit.Medium" parent="MoneroText.Medium">
         <item name="android:textColor">?colorPrimary</item>

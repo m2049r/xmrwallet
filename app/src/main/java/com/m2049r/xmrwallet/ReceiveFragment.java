@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -26,7 +27,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,30 +46,31 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.m2049r.xmrwallet.layout.ExchangeView;
-import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.ExchangeView;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import timber.log.Timber;
+
 public class ReceiveFragment extends Fragment {
-    static final String TAG = "ReceiveFragment";
 
     private ProgressBar pbProgress;
     private TextView tvAddress;
     private TextInputLayout etPaymentId;
     private ExchangeView evAmount;
     private Button bPaymentId;
-    private Button bGenerate;
+    private TextView tvQrCode;
     private ImageView qrCode;
+    private ImageView qrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
-
-    //String name;
 
     public interface Listener {
         void setToolbarButton(int type);
@@ -91,7 +92,8 @@ public class ReceiveFragment extends Fragment {
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
         bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         qrCode = (ImageView) view.findViewById(R.id.qrCode);
-        bGenerate = (Button) view.findViewById(R.id.bGenerate);
+        tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
+        qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
 
@@ -104,11 +106,12 @@ public class ReceiveFragment extends Fragment {
                 copyAddress();
             }
         });
+        bCopyAddress.setClickable(false);
 
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
             public void onNewAmount(String xmr) {
-                Log.d(TAG, "new amount = " + xmr);
+                Timber.d("new amount = %s", xmr);
                 generateQr();
             }
         });
@@ -148,7 +151,6 @@ public class ReceiveFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,12 +162,23 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        bGenerate.setOnClickListener(new View.OnClickListener() {
+        qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPaymentId()) {
+                if (qrValid) {
+                    qrCodeFull.setImageBitmap(((BitmapDrawable) qrCode.getDrawable()).getBitmap());
+                    qrCodeFull.setVisibility(View.VISIBLE);
+                } else if (checkPaymentId()) {
                     evAmount.doExchange();
                 }
+            }
+        });
+
+        qrCodeFull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qrCodeFull.setImageBitmap(null);
+                qrCodeFull.setVisibility(View.GONE);
             }
         });
 
@@ -175,7 +188,7 @@ public class ReceiveFragment extends Fragment {
         Bundle b = getArguments();
         String address = b.getString("address");
         String walletName = b.getString("name");
-        Log.d(TAG, "address=" + address + "/name=" + walletName);
+        Timber.d("%s/%s", address, walletName);
         if (address == null) {
             String path = b.getString("path");
             String password = b.getString("password");
@@ -195,14 +208,17 @@ public class ReceiveFragment extends Fragment {
 
     void clearQR() {
         if (qrValid) {
-            qrCode.setImageBitmap(getMoneroLogo());
+            qrCode.setImageBitmap(null);
             qrValid = false;
+            if (isLoaded)
+                tvQrCode.setVisibility(View.VISIBLE);
         }
     }
 
     void setQR(Bitmap qr) {
         qrCode.setImageBitmap(qr);
         qrValid = true;
+        tvQrCode.setVisibility(View.INVISIBLE);
         Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
     }
@@ -210,21 +226,22 @@ public class ReceiveFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         listenerCallback.setToolbarButton(Toolbar.BUTTON_BACK);
         listenerCallback.setSubtitle(getString(R.string.receive_title));
         generateQr();
     }
 
+    private boolean isLoaded = false;
+
     private void show(String name, String address) {
-        Log.d(TAG, "name=" + name);
+        Timber.d("name=%s", name);
+        isLoaded = true;
         listenerCallback.setTitle(name);
         tvAddress.setText(address);
         etPaymentId.setEnabled(true);
-        //etAmount.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bGenerate.setEnabled(true);
-        bCopyAddress.setEnabled(true);
+        bCopyAddress.setClickable(true);
         bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
         hideProgress();
         generateQr();
@@ -278,25 +295,25 @@ public class ReceiveFragment extends Fragment {
     }
 
     private void generateQr() {
-        Log.d(TAG, "GENQR");
+        Timber.d("GENQR");
         String address = tvAddress.getText().toString();
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Log.d(TAG, xmrAmount + "/" + paymentId + "/" + address);
+        Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
             clearQR();
-            Log.d(TAG, "CLEARQR");
+            Timber.d("CLEARQR");
             return;
         }
         StringBuffer sb = new StringBuffer();
-        sb.append(ScannerFragment.QR_SCHEME).append(address);
+        sb.append(BarcodeData.XMR_SCHEME).append(address);
         boolean first = true;
         if (!paymentId.isEmpty()) {
             if (first) {
                 sb.append("?");
                 first = false;
             }
-            sb.append(ScannerFragment.QR_PAYMENTID).append('=').append(paymentId);
+            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
         }
         if (!xmrAmount.isEmpty()) {
             if (first) {
@@ -304,13 +321,14 @@ public class ReceiveFragment extends Fragment {
             } else {
                 sb.append("&");
             }
-            sb.append(ScannerFragment.QR_AMOUNT).append('=').append(xmrAmount);
+            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(xmrAmount);
         }
         String text = sb.toString();
-        Bitmap qr = generate(text, 500, 500);
+        int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
+        Bitmap qr = generate(text, size, size);
         if (qr != null) {
             setQR(qr);
-            Log.d(TAG, "SETQR");
+            Timber.d("SETQR");
             etDummy.requestFocus();
             Helper.hideKeyboard(getActivity());
         }
@@ -341,7 +359,6 @@ public class ReceiveFragment extends Fragment {
         return null;
     }
 
-    // TODO check if we can sensibly cache some of this
     private Bitmap addLogo(Bitmap qrBitmap) {
         Bitmap logo = getMoneroLogo();
         int qrWidth = qrBitmap.getWidth();
@@ -395,12 +412,9 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-    static final String PREF_CURRENCY_A = "PREF_CURRENCY_A";
-    static final String PREF_CURRENCY_B = "PREF_CURRENCY_B";
-
     @Override
     public void onPause() {
-        Log.d(TAG, "onPause()");
+        Timber.d("onPause()");
         super.onPause();
     }
 }

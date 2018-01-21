@@ -19,8 +19,6 @@ package com.m2049r.xmrwallet.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.m2049r.xmrwallet.util.TxData;
-
 public class Transfer implements Parcelable {
     public long amount;
     public String address;

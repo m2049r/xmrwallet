@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NodeList {
-    static private final String TAG = "NodeList";
     private static final int MAX_SIZE = 5;
 
     private List<String> nodes = new ArrayList<>();

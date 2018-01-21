@@ -58,6 +58,115 @@
                 tools:text="2017-10-09 12:44:13 +0200" />
         </LinearLayout>
 
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cvXmrTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardElevation="8dp"
+            card_view:contentPadding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MoneroText.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@drawable/ic_xmrto_32dp"
+                    android:gravity="center"
+                    android:text="@string/label_send_btc_xmrto_info" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:shrinkColumns="1">
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/MoneroLabel.Small"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="end"
+                            android:padding="8dp"
+                            android:text="@string/tx_amount_btc" />
+
+                        <TextView
+                            android:id="@+id/tvTxAmountBtc"
+                            style="@style/MoneroText"
+                            android:gravity="start"
+                            android:padding="8dp"
+                            android:selectAllOnFocus="true"
+                            android:textColor="@color/gradientOrange"
+                            android:textIsSelectable="true"
+                            tools:text="1.008 BTC" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/labelDestinationBtc"
+                            style="@style/MoneroLabel.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:padding="8dp"
+                            android:text="@string/tx_destination_btc" />
+
+                        <TextView
+                            android:id="@+id/tvDestinationBtc"
+                            style="@style/MoneroText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="8dp"
+                            android:selectAllOnFocus="true"
+                            android:text="mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9"
+                            android:textIsSelectable="true" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/labelTxXmrToKey"
+                            style="@style/MoneroLabel.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="end"
+                            android:padding="8dp"
+                            android:text="@string/label_send_btc_xmrto_key_lb" />
+
+                        <LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTxXmrToKey"
+                                style="@style/MoneroText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/dotGray"
+                                android:drawableEnd="@drawable/ic_content_copy_white_24dp"
+                                android:drawablePadding="16dp"
+                                android:paddingBottom="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingStart="24dp"
+                                android:paddingTop="8dp"
+                                android:textColor="@color/white"
+                                tools:text="XMR.TO-d2KQ" />
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -73,34 +182,33 @@
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/etTxNotes"
                         style="@style/MoneroEdit"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="8"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/bTxNotes"
                         android:backgroundTint="@color/moneroGray"
                         android:hint="@string/tx_notes_hint"
-                        android:inputType="textMultiLine"
-                        android:textAlignment="textStart" />
+                        android:inputType="textMultiLine" />
 
                     <Button
                         android:id="@+id/bTxNotes"
                         style="@style/MoneroButton.Small"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
                         android:enabled="true"
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
                         android:text="@string/tx_button_notes" />
-                </LinearLayout>
+                </RelativeLayout>
 
             </TableRow>
 

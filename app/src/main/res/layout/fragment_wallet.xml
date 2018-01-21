@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -57,7 +57,7 @@
                 android:layout_marginStart="8dp"
                 android:entries="@array/currency"
                 android:gravity="center"
-                android:paddingBottom="0dp"
+                android:paddingBottom="2dp"
                 android:paddingEnd="4dp"
                 android:paddingStart="4dp"
                 android:paddingTop="0dp"
@@ -109,14 +109,16 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingBottom="72dp"
+            android:paddingBottom="80dp"
             app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/item_transaction" />
 
@@ -124,7 +126,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="4dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal"
             android:weightSum="2">
 

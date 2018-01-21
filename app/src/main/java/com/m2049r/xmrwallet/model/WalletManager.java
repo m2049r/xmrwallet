@@ -16,21 +16,17 @@
 
 package com.m2049r.xmrwallet.model;
 
-import android.support.annotation.NonNull;
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import timber.log.Timber;
 
 public class WalletManager {
-    private final static String TAG = "WalletManager";
 
     static {
         System.loadLibrary("monerujo");
@@ -54,7 +50,7 @@ public class WalletManager {
     }
 
     private void manageWallet(Wallet wallet) {
-        Log.d(TAG, "Managing " + wallet.getName());
+        Timber.d("Managing %s", wallet.getName());
         managedWallet = wallet;
     }
 
@@ -68,7 +64,7 @@ public class WalletManager {
         if (getWallet() != wallet) {
             throw new IllegalStateException(wallet.getName() + " not under management!");
         }
-        Log.d(TAG, "Unmanaging " + managedWallet.getName());
+        Timber.d("Unmanaging %s", managedWallet.getName());
         managedWallet = null;
     }
 
@@ -90,31 +86,33 @@ public class WalletManager {
 
     private native long openWalletJ(String path, String password, boolean isTestNet);
 
-    public Wallet recoveryWallet(File aFile, String mnemonic) {
-        Wallet wallet = recoveryWallet(aFile, mnemonic, 0);
-        manageWallet(wallet);
-        return wallet;
+    public Wallet recoveryWallet(File aFile, String password, String mnemonic) {
+        return recoveryWallet(aFile, password, mnemonic, 0);
     }
 
-    public Wallet recoveryWallet(File aFile, String mnemonic, long restoreHeight) {
-        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), mnemonic, isTestNet(), restoreHeight);
+    public Wallet recoveryWallet(File aFile, String password, String mnemonic, long restoreHeight) {
+        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), password, mnemonic,
+                isTestNet(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long recoveryWalletJ(String path, String mnemonic, boolean isTestNet, long restoreHeight);
+    private native long recoveryWalletJ(String path, String password, String mnemonic,
+                                        boolean isTestNet, long restoreHeight);
 
-    public Wallet createWalletFromKeys(File aFile, String language, long restoreHeight,
+    public Wallet createWalletWithKeys(File aFile, String password, String language, long restoreHeight,
                                        String addressString, String viewKeyString, String spendKeyString) {
-        long walletHandle = createWalletFromKeysJ(aFile.getAbsolutePath(), language, isTestNet(), restoreHeight,
+        long walletHandle = createWalletWithKeysJ(aFile.getAbsolutePath(), password,
+                language, isTestNet(), restoreHeight,
                 addressString, viewKeyString, spendKeyString);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long createWalletFromKeysJ(String path, String language,
+    private native long createWalletWithKeysJ(String path, String password,
+                                              String language,
                                               boolean isTestNet,
                                               long restoreHeight,
                                               String addressString,
@@ -165,14 +163,14 @@ public class WalletManager {
         info.path = wallet.getParentFile();
         info.name = wallet.getName();
         File addressFile = new File(info.path, info.name + ".address.txt");
-        //Log.d(TAG, addressFile.getAbsolutePath());
+        //Timber.d(addressFile.getAbsolutePath());
         info.address = "??????";
         BufferedReader addressReader = null;
         try {
             addressReader = new BufferedReader(new FileReader(addressFile));
             info.address = addressReader.readLine();
         } catch (IOException ex) {
-            Log.d(TAG, ex.getLocalizedMessage());
+            Timber.d(ex.getLocalizedMessage());
         } finally {
             if (addressReader != null) {
                 try {
@@ -187,7 +185,7 @@ public class WalletManager {
 
     public List<WalletInfo> findWallets(File path) {
         List<WalletInfo> wallets = new ArrayList<>();
-        Log.d(TAG, "Scanning: " + path.getAbsolutePath());
+        Timber.d("Scanning: %s", path.getAbsolutePath());
         File[] found = path.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String filename) {
                 return filename.endsWith(".keys");
@@ -210,14 +208,15 @@ public class WalletManager {
 
     public boolean isTestNet() {
         if (daemonAddress == null) {
+            return true;
             // assume testnet not explicitly initialised
-            throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
+            //throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
         }
         return testnet;
     }
 
     public void setDaemon(String address, boolean testnet, String username, String password) {
-        //Log.d(TAG, "SETDAEMON " + username + "/" + password + "/" + address);
+        //Timber.d("SETDAEMON " + username + "/" + password + "/" + address);
         this.daemonAddress = address;
         this.testnet = testnet;
         this.daemonUsername = username;

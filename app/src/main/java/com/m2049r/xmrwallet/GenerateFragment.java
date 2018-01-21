@@ -22,7 +22,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,15 +32,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
 
+import timber.log.Timber;
+
 public class GenerateFragment extends Fragment {
-    static final String TAG = "GenerateFragment";
 
     static final String TYPE = "type";
     static final String TYPE_NEW = "new";
@@ -366,7 +366,7 @@ public class GenerateFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         activityCallback.setTitle(getString(R.string.generate_title) + " - " + getType());
         activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
 
@@ -383,7 +383,7 @@ public class GenerateFragment extends Fragment {
             case TYPE_VIEWONLY:
                 return getString(R.string.generate_wallet_type_view);
             default:
-                Log.e(TAG, "unknown type " + type);
+                Timber.e("unknown type %s", type);
                 return "?";
         }
     }

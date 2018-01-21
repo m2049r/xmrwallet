@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.model;
 
-import android.util.Log;
+import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
 
@@ -154,6 +154,10 @@ public class Wallet {
 
     public static native boolean isPaymentIdValid(String payment_id);
 
+    public static boolean isAddressValid(String address) {
+        return isAddressValid(address, WalletManager.getInstance().isTestNet());
+    }
+
     public static native boolean isAddressValid(String address, boolean isTestNet);
 
 //TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);
@@ -185,6 +189,15 @@ public class Wallet {
             disposeTransaction(pendingTransaction);
             pendingTransaction = null;
         }
+    }
+
+    public PendingTransaction createTransaction(TxData txData) {
+        return createTransaction(
+                txData.getDestinationAddress(),
+                txData.getPaymentId(),
+                txData.getAmount(),
+                txData.getMixin(),
+                txData.getPriority());
     }
 
     public PendingTransaction createTransaction(String dst_addr, String payment_id,

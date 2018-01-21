@@ -21,7 +21,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,14 +34,15 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.layout.Toolbar;
+import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 
+import timber.log.Timber;
+
 public class GenerateReviewFragment extends Fragment {
-    static final String TAG = "GenerateReviewFragment";
     static final public String VIEW_TYPE_DETAILS = "details";
     static final public String VIEW_TYPE_ACCEPT = "accept";
     static final public String VIEW_TYPE_WALLET = "wallet";
@@ -103,6 +103,7 @@ public class GenerateReviewFragment extends Fragment {
                 copyAddress();
             }
         });
+        bCopyAddress.setClickable(false);
         view.findViewById(R.id.bAdvancedInfo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,7 +214,7 @@ public class GenerateReviewFragment extends Fragment {
                 tvWalletViewKey.setText(viewKey);
                 tvWalletSpendKey.setText(spendKey);
                 bAdvancedInfo.setVisibility(View.VISIBLE);
-                bCopyAddress.setEnabled(true);
+                bCopyAddress.setClickable(true);
                 bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
                 activityCallback.setTitle(name, getString(R.string.details_title));
                 activityCallback.setToolbarButton(
@@ -264,7 +265,7 @@ public class GenerateReviewFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume()");
+        Timber.d("onResume()");
         String name = tvWalletName.getText().toString();
         if (name.isEmpty()) name = null;
         activityCallback.setTitle(name, getString(R.string.details_title));
