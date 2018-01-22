@@ -25,6 +25,7 @@ public class BitcoinAddressValidatorTest {
 
     @Test
     public void validateBTC_shouldValidate() {
+        assertTrue(BitcoinAddressValidator.validate("2N9fzq66uZYQXp7uqrPBH6jKBhjrgTzpGCy", true));
         assertTrue(BitcoinAddressValidator.validate("1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i", false));
         assertTrue(BitcoinAddressValidator.validate("1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9", false));
         assertTrue(BitcoinAddressValidator.validate("3R2MPpTNQLCNs13qnHz89Rm82jQ27bAwft", false));
