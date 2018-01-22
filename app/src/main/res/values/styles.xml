@@ -119,6 +119,8 @@
     <style name="MoneroLabel.NumPad">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/moneroBlack</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="MoneroLabel.Title">
