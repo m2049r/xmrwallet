@@ -34,10 +34,11 @@ public class BitcoinAddressValidator {
         if (decoded == null)
             return false;
 
+        int v = decoded[0] & 0xFF;
         if (!testnet) {
-            if ((decoded[0] != 0x00) && (decoded[0] != 0x05)) return false;
+            if ((v != 0x00) && (v != 0x05)) return false;
         } else {
-            if ((decoded[0] != 0x6f) && (decoded[0] != 0xc4)) return false;
+            if ((v != 0x6f) && (v != 0xc4)) return false;
         }
 
         byte[] hash1 = sha256(Arrays.copyOfRange(decoded, 0, 21));
@@ -57,7 +58,11 @@ public class BitcoinAddressValidator {
 
         byte[] result = new byte[25];
         byte[] numBytes = num.toByteArray();
-        System.arraycopy(numBytes, 0, result, result.length - numBytes.length, numBytes.length);
+        if (num.bitLength() == 200) {
+            System.arraycopy(numBytes, 1, result, 0, 25);
+        } else {
+            System.arraycopy(numBytes, 0, result, result.length - numBytes.length, numBytes.length);
+        }
         return result;
     }
 
