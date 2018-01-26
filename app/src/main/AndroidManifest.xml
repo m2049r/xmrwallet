@@ -9,20 +9,18 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".XmrWalletApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".XmrWalletApplication"
         android:theme="@style/MyMaterialTheme">
-
         <activity
             android:name=".WalletActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/wallet_activity_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -30,6 +28,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,6 +39,7 @@
             android:exported="false"
             android:label="Monero Wallet Service" />
 
+        <activity android:name=".onboarding.OnBoardingActivity"></activity>
     </application>
 
 </manifest>
