@@ -19,7 +19,6 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
 
-        // Instantiate a ViewPager and a PagerAdapter.
         pager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
@@ -27,18 +26,19 @@ public class OnBoardingActivity extends AppCompatActivity {
 
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-        public ViewPagerAdapter(FragmentManager fm) {
+
+        ViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return new OnBoardingFragment();
+            return OnBoardingFragment.newInstance(position);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return OnBoardingScreen.values().length;
         }
     }
 }

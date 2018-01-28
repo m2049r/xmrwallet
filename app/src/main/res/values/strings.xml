@@ -363,4 +363,11 @@
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+    <string name="onboarding_security_title">Security</string>
+    <string name="onboarding_syncing_title">Syncing</string>
+    <string name="onboarding_seed_title">Seed Word</string>
+    <string name="onboarding_security_information">We take security seriously. Do not store your life savings int this app.</string>
+    <string name="onboarding_syncing_information">It takes forever bit it\'s worth it.</string>
+    <string name="onboarding_seed_information">No one can hear you scream in forgot password space.</string>
+    <string name="onboarding_button_skip">Skip</string>
 </resources>
