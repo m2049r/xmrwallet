@@ -31,4 +31,5 @@ ext {
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     timberVersion = '4.6.0'
+    supportLibraryVersion = '27.0.2'
 }
