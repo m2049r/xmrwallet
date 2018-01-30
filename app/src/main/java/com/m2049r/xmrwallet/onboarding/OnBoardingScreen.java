@@ -5,8 +5,8 @@ import com.m2049r.xmrwallet.R;
 
 enum OnBoardingScreen {
     SECURITY(R.string.onboarding_security_title, R.string.onboarding_security_information, R.drawable.ic_onboarding_security),
-    SYNCING(R.string.onboarding_syncing_title, R.string.onboarding_syncing_information, R.drawable.ic_syncing_security),
-    SEED_WORD(R.string.onboarding_seed_title, R.string.onboarding_seed_information, R.drawable.ic_seed_security);
+    SYNCING(R.string.onboarding_syncing_title, R.string.onboarding_syncing_information, R.drawable.ic_onboarding_syncing),
+    SEED_WORD(R.string.onboarding_seed_title, R.string.onboarding_seed_information, R.drawable.ic_onboarding_seed);
 
 
     private final int title;

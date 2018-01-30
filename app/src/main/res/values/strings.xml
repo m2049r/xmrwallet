@@ -370,4 +370,5 @@
     <string name="onboarding_syncing_information">It takes forever bit it\'s worth it.</string>
     <string name="onboarding_seed_information">No one can hear you scream in forgot password space.</string>
     <string name="onboarding_button_skip">Skip</string>
+    <string name="onboarding_button_next">Next</string>
 </resources>
