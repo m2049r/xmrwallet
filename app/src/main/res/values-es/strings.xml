@@ -142,6 +142,8 @@
     <string name="generate_wallet_created">Monedero creada</string>
     <string name="generate_wallet_create_failed">Creación de monedero fallida</string>
 
+    <string name="generate_restoreheight_error">Introduce un número o una fecha (AAAA-MM-DD)</string>
+
     <string name="generate_wallet_type_key">Claves</string>
     <string name="generate_wallet_type_new">Nuevo</string>
     <string name="generate_wallet_type_seed">Semilla</string>
