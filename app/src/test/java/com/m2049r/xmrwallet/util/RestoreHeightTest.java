@@ -22,6 +22,7 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertTrue;
 
+// all ranges go back 5 days
 
 public class RestoreHeightTest {
     @Rule
@@ -77,10 +78,12 @@ public class RestoreHeightTest {
         assertTrue(isInRange(getHeight("2016-03-24"), 1000414, 1007486));
         assertTrue(isInRange(getHeight("2016-03-25"), 1001800, 1008900));
         assertTrue(isInRange(getHeight("2016-03-26"), 1003243, 1009985));
+        assertTrue(isInRange(getHeight("2016-03-27"), 1004694, 1010746));
     }
 
     @Test
     public void test2014() {
+        assertTrue(isInRange(getHeight("2014-04-26"), 1, 8501));
         assertTrue(isInRange(getHeight("2014-05-09"), 20289, 28311));
         assertTrue(isInRange(getHeight("2014-05-17"), 32608, 40075));
         assertTrue(isInRange(getHeight("2014-05-30"), 52139, 59548));
@@ -110,6 +113,14 @@ public class RestoreHeightTest {
     public void post201802() {
         assertTrue(isInRange(getHeight("2018-02-19"), 1507579, 1511127));
     }
+
+    @Test
+    public void postFuture() {
+        long b_20180208 = 1504715;
+        long b_20180808 = b_20180208 + 720 * (28 + 31 + 30 + 31 + 30 + 31);
+        assertTrue(isInRange(getHeight("2018-08-08"), b_20180808 - 720 * 5, b_20180808));
+    }
+
 
     private boolean isInRange(long n, long min, long max) {
         if (n > max) return false;

@@ -213,6 +213,8 @@
     <string name="generate_wallet_created">Wallet created</string>
     <string name="generate_wallet_create_failed">Wallet create failed</string>
 
+    <string name="generate_restoreheight_error">Enter Number or Date (YYYY-MM-DD)</string>
+
     <string name="generate_wallet_type_key">Keys</string>
     <string name="generate_wallet_type_new">New</string>
     <string name="generate_wallet_type_seed">Seed</string>
@@ -222,7 +224,7 @@
     <string name="generate_viewkey_hint">View Key</string>
     <string name="generate_spendkey_hint">Spend Key</string>
     <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
-    <string name="generate_restoreheight_hint">Restore Height</string>
+    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
 
     <string name="generate_wallet_label">Wallet</string>
     <string name="generate_password_label">Password</string>

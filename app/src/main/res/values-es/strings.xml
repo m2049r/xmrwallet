@@ -151,7 +151,7 @@
     <string name="generate_viewkey_hint">Clave de Vista</string>
     <string name="generate_spendkey_hint">Clave de Gasto</string>
     <string name="generate_mnemonic_hint">Semilla Mnemotécnica de 25 Palabras</string>
-    <string name="generate_restoreheight_hint">Altura de Restauración</string>
+    <string name="generate_restoreheight_hint">Altura o Fecha (YYYY-MM-DD) de Restauración</string>
 
     <string name="generate_wallet_label">Monedero</string>
     <string name="generate_password_label">Contraseña</string>

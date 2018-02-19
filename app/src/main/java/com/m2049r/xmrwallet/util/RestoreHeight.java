@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class RestoreHeight {
     static private RestoreHeight Singleton = null;
@@ -89,29 +91,37 @@ public class RestoreHeight {
 
     public long getHeight(String date) {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        parser.setTimeZone(TimeZone.getTimeZone("UTC"));
         parser.setLenient(false);
         try {
-            Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+            cal.set(Calendar.DST_OFFSET, 0);
             cal.setTime(parser.parse(date));
-            cal.add(Calendar.DAY_OF_MONTH, -5); // give it some leeway
+            cal.add(Calendar.DAY_OF_MONTH, -4); // give it some leeway
             if (cal.get(Calendar.YEAR) < 2014)
                 return 1;
             if ((cal.get(Calendar.YEAR) == 2014) && (cal.get(Calendar.MONTH) <= 3))
                 // before May 2014
                 return 1;
 
-            int day = cal.get(Calendar.DAY_OF_MONTH);
+            Calendar query = (Calendar) cal.clone();
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
             cal.set(Calendar.DAY_OF_MONTH, 1);
-            String prevDate = formatter.format(cal.getTime());
+            long prevTime = cal.getTimeInMillis();
+            String prevDate = formatter.format(prevTime);
             // lookup blockheight at first of the month
             Long prevBc = blockheight.get(prevDate);
             if (prevBc == null) {
                 // if too recent, go back in time and find latest one we have
                 while (prevBc == null) {
                     cal.add(Calendar.MONTH, -1);
-                    prevDate = formatter.format(cal);
+                    if (cal.get(Calendar.YEAR) < 2014) {
+                        throw new IllegalStateException("endless loop looking for blockheight");
+                    }
+                    prevTime = cal.getTimeInMillis();
+                    prevDate = formatter.format(prevTime);
                     prevBc = blockheight.get(prevDate);
                 }
             }
@@ -120,18 +130,23 @@ public class RestoreHeight {
             if (date.equals(prevDate)) return height;
             // see if we have a blockheight after this date
             cal.add(Calendar.MONTH, 1);
-            String nextDate = formatter.format(cal.getTime());
+            long nextTime = cal.getTimeInMillis();
+            String nextDate = formatter.format(nextTime);
             Long nextBc = blockheight.get(nextDate);
             if (nextBc != null) { // we have a range - interpolate the blockheight we are looking for
                 long diff = nextBc - prevBc;
-                height = Math.round(prevBc + 1.0 * day * diff / 30);
+                long diffDays = TimeUnit.DAYS.convert(nextTime - prevTime, TimeUnit.MILLISECONDS);
+                long days = TimeUnit.DAYS.convert(query.getTimeInMillis() - prevTime,
+                        TimeUnit.MILLISECONDS);
+                height = Math.round(prevBc + diff * (1.0 * days / diffDays));
             } else {
-                height = Math.round(prevBc + 1.0 * day * (24 * 60 / 2));
+                long days = TimeUnit.DAYS.convert(query.getTimeInMillis() - prevTime,
+                        TimeUnit.MILLISECONDS);
+                height = Math.round(prevBc + 1.0 * days * (24 * 60 / 2));
             }
             return height;
         } catch (ParseException ex) {
             throw new IllegalArgumentException(ex);
         }
-
     }
 }
