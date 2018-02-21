@@ -15,6 +15,12 @@
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
 
+    <string name="password_weak">Weak</string>
+    <string name="password_fair">Fair</string>
+    <string name="password_good">Good</string>
+    <string name="password_strong">Strong</string>
+    <string name="password_very_strong">Very Strong</string>
+
     <string name="label_login_wallets">Wallets</string>
     <string name="label_donate">Donate</string>
     <string name="label_ok">OK</string>

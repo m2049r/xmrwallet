@@ -13,6 +13,12 @@
     <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
 
+    <string name="password_weak">Debil</string>
+    <string name="password_fair">Justa</string>
+    <string name="password_good">Buena</string>
+    <string name="password_strong">Segura</string>
+    <string name="password_very_strong">Muy segura</string>
+
     <string name="label_login_wallets">Monederos</string>
     <string name="label_donate">Donar</string>
     <string name="label_ok">Aceptar</string>
