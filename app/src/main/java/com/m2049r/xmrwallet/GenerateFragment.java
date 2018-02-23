@@ -32,12 +32,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.util.RestoreHeight;
 import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import timber.log.Timber;
 
@@ -231,9 +235,7 @@ public class GenerateFragment extends Fragment {
         }
         if (!type.equals(TYPE_NEW)) {
             etWalletRestoreHeight.setVisibility(View.VISIBLE);
-            etWalletRestoreHeight.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener()
-
-            {
+            etWalletRestoreHeight.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                         Helper.hideKeyboard(getActivity());
@@ -279,6 +281,42 @@ public class GenerateFragment extends Fragment {
             etWalletName.setError(null);
         }
         return ok;
+    }
+
+    private boolean checkHeight() {
+        long height = !type.equals(TYPE_NEW) ? getHeight() : 0;
+        boolean ok = true;
+        if (height < 0) {
+            etWalletRestoreHeight.setError(getString(R.string.generate_restoreheight_error));
+            ok = false;
+        }
+        if (ok) {
+            etWalletRestoreHeight.setError(null);
+        }
+        return ok;
+    }
+
+    private long getHeight() {
+        long height = 0;
+
+        String restoreHeight = etWalletRestoreHeight.getEditText().getText().toString().trim();
+        if (restoreHeight.isEmpty()) return -1;
+        try {
+            // is it a date?
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+            parser.setLenient(false);
+            parser.parse(restoreHeight);
+            height = RestoreHeight.getInstance().getHeight(restoreHeight);
+        } catch (ParseException exPE) {
+            try {
+                // or is it a height?
+                height = Long.parseLong(restoreHeight);
+            } catch (NumberFormatException exNFE) {
+                return -1;
+            }
+        }
+        Timber.d("Using Restore Height = %d", height);
+        return height;
     }
 
     private boolean checkMnemonic() {
@@ -327,15 +365,13 @@ public class GenerateFragment extends Fragment {
 
     private void generateWallet() {
         if (!checkName()) return;
+        if (!checkHeight()) return;
+
         String name = etWalletName.getEditText().getText().toString();
         String password = etWalletPassword.getEditText().getText().toString();
 
-        long height;
-        try {
-            height = Long.parseLong(etWalletRestoreHeight.getEditText().getText().toString());
-        } catch (NumberFormatException ex) {
-            height = 0; // Keep calm and carry on!
-        }
+        long height = getHeight();
+        if (height < 0) height = 0;
 
         if (type.equals(TYPE_NEW)) {
             bGenerate.setEnabled(false);

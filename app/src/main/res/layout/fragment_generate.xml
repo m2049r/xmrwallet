@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/generate_restoreheight_hint"
                 android:imeOptions="actionDone"
-                android:inputType="number"
+                android:inputType="date"
                 android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
