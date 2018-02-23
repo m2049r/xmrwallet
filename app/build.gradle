@@ -59,6 +59,8 @@ dependencies {
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
     compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
+    compile 'com.nulab-inc:zxcvbn:1.2.3'
+
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"

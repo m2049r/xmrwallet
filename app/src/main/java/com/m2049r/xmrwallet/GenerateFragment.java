@@ -21,7 +21,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +39,8 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.nulabinc.zxcvbn.Strength;
+import com.nulabinc.zxcvbn.Zxcvbn;
 
 import java.io.File;
 import java.text.ParseException;
@@ -129,7 +133,7 @@ public class GenerateFragment extends Fragment {
         });
 
         Helper.showKeyboard(getActivity());
-//##############
+
         etWalletName.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -256,9 +260,59 @@ public class GenerateFragment extends Fragment {
             }
         });
 
+        etWalletPassword.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkPassword();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
         etWalletName.requestFocus();
+        initZxcvbn();
 
         return view;
+    }
+
+    Zxcvbn zxcvbn = new Zxcvbn();
+
+    // initialize zxcvbn engine in background thread
+    private void initZxcvbn() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                zxcvbn.measure("");
+            }
+        }).start();
+    }
+
+    private void checkPassword() {
+        String password = etWalletPassword.getEditText().getText().toString();
+        if (!password.isEmpty()) {
+            Strength strength = zxcvbn.measure(password);
+            int msg;
+            double guessesLog10 = strength.getGuessesLog10();
+            if (guessesLog10 < 10)
+                msg = R.string.password_weak;
+            else if (guessesLog10 < 11)
+                msg = R.string.password_fair;
+            else if (guessesLog10 < 12)
+                msg = R.string.password_good;
+            else if (guessesLog10 < 13)
+                msg = R.string.password_strong;
+            else
+                msg = R.string.password_very_strong;
+            etWalletPassword.setError(getResources().getString(msg));
+        } else {
+            etWalletPassword.setError(null);
+        }
     }
 
     private boolean checkName() {
