@@ -13,11 +13,11 @@
     <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
 
-    <string name="password_weak">Debil</string>
-    <string name="password_fair">Justa</string>
-    <string name="password_good">Buena</string>
-    <string name="password_strong">Segura</string>
-    <string name="password_very_strong">Muy segura</string>
+    <string name="password_weak">Sigue escribiendo &#8230;</string>
+    <string name="password_fair">Mas o menos.</string>
+    <string name="password_good">Puedes hacerlo mejor.</string>
+    <string name="password_strong">Casi &#8230;</string>
+    <string name="password_very_strong">¡Bien ahí, hacker nivel 4!</string>
 
     <string name="label_login_wallets">Monederos</string>
     <string name="label_donate">Donar</string>
@@ -132,7 +132,7 @@
 
     <string name="generate_title">Crear monedero</string>
     <string name="generate_name_hint">Nombre del monedero</string>
-    <string name="generate_password_hint">Contraseña del monedero</string>
+    <string name="generate_password_hint">Frase de Contraseña</string>
     <string name="generate_buttonGenerate">¡Házme ya un monedero!</string>
     <string name="generate_seed">Semilla Mnemotécnica</string>
     <string name="generate_button_accept">¡He apuntado estas 25 palabras!</string>

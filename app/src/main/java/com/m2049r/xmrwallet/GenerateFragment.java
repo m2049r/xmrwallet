@@ -296,28 +296,20 @@ public class GenerateFragment extends Fragment {
         if (!password.isEmpty()) {
             Strength strength = zxcvbn.measure(password);
             int msg;
-            switch (strength.getScore()) {
-                case 0:
-                    msg = R.string.password_weak;
-                    break;
-                case 1:
-                    msg = R.string.password_fair;
-                    break;
-                case 2:
-                    msg = R.string.password_good;
-                    break;
-                case 3:
-                    msg = R.string.password_strong;
-                    break;
-                case 4:
-                    msg = R.string.password_very_strong;
-                    break;
-                default:
-                    throw new IllegalStateException("unkown password strength " + strength.getScore());
-            }
+            double guessesLog10 = strength.getGuessesLog10();
+            if (guessesLog10 < 10)
+                msg = R.string.password_weak;
+            else if (guessesLog10 < 11)
+                msg = R.string.password_fair;
+            else if (guessesLog10 < 12)
+                msg = R.string.password_good;
+            else if (guessesLog10 < 13)
+                msg = R.string.password_strong;
+            else
+                msg = R.string.password_very_strong;
             etWalletPassword.setError(getResources().getString(msg));
         } else {
-            etWalletPassword.setError(null );
+            etWalletPassword.setError(null);
         }
     }
 

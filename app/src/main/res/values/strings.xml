@@ -15,11 +15,11 @@
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
 
-    <string name="password_weak">Weak</string>
-    <string name="password_fair">Fair</string>
-    <string name="password_good">Good</string>
-    <string name="password_strong">Strong</string>
-    <string name="password_very_strong">Very Strong</string>
+    <string name="password_weak">Continue typing &#8230;</string>
+    <string name="password_fair">Meh &#8230;</string>
+    <string name="password_good">C\'mon, you can do better!</string>
+    <string name="password_strong">Getting there &#8230;</string>
+    <string name="password_very_strong">Yeah baby, h4x0r style!</string>
 
     <string name="label_login_wallets">Wallets</string>
     <string name="label_donate">Donate</string>
@@ -203,7 +203,7 @@
 
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Password</string>
+    <string name="generate_password_hint">Wallet Passphrase</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
     <string name="generate_seed">Mnemonic Seed</string>
     <string name="generate_button_accept">I have noted these 25 words!</string>
