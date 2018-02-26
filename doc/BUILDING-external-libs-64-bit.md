@@ -13,7 +13,7 @@ sudo chown $LOGNAME /opt/android
 cd /opt/android
 wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip
 unzip android-ndk-r15c-linux-x86_64.zip
-android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch aarch64 --install-dir /opt/android/tool64
+android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm64 --install-dir /opt/android/tool64
 ```
 
 ## Build OpenSSL
@@ -91,7 +91,6 @@ and ignore error about FIPS_SIG.
 ```
 wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz
 tar xfz OpenSSL_1_0_2l.tar.gz
-cd openssl-OpenSSL_1_0_2l/
 ```
 Apply patch required to build for aarch64:
 ```
@@ -118,6 +117,7 @@ Apply patch required to build for aarch64:
 
 ```
 ```
+cd openssl-OpenSSL_1_0_2l/
 perl -pi -e 's/install: all install_docs install_sw/install: install_docs install_sw/g' Makefile.org
 ./config shared no-ssl2 no-ssl3 no-comp no-hw no-engine --openssldir=/opt/android/openssl/android-21/
 make depend
@@ -140,12 +140,13 @@ ln -s ../../../../openssl/android-21/lib/libcrypto.so
 ## Build Boost
 ```
 cd /opt/android
-wget https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.gz/download -O boost_1_64_0.tar.gz
-tar xfz boost_1_64_0.tar.gz
-(cd boost_1_64_0; ./bootstrap.sh)
+wget https://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.gz/download -O boost_1_58_0.tar.gz
+tar xfz boost_1_58_0.tar.gz
+cd boost_1_58_0
+./bootstrap.sh
 ```
 The NDK r15c above gives errors about fsetpos and fgetpos not found(!?!), so we "just" comment them out in the include file:
-`nano /opt/android/tool32/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
+`nano /opt/android/tool64/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
 
 Then:
 ```
@@ -154,7 +155,7 @@ export PATH=/opt/android/tool64/aarch64-linux-android/bin:/opt/android/tool64/bi
 ```
 
 ## Build & prepare zeromq
-Only needed for zeromq versions (>v0.11.0.0).
+Only needed for zeromq versions (>v0.11.1.0).
 ```
 cd /opt/android
 git clone https://github.com/zeromq/zeromq3-x.git
@@ -171,38 +172,21 @@ cp cppzmq/*.hpp zeromq/include/
 ## And finally: Build Monero
 ```
 cd /opt/android
-git clone https://github.com/monero-project/monero
+git clone https://github.com/m2049r/monero.git
 cd monero
-```
-```
-# <patch monero code as needed>
-# also, don't abort on warnings (this is only an issue >v0.11.0.0):
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1f74f59..2c791c0 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -400,7 +400,7 @@ else()
-     set(ARCH_FLAG "-march=${ARCH}")
-   endif()
-   set(WARNINGS "-Wall -Wextra -Wpointer-arith -Wundef -Wvla -Wwrite-strings -Wno-error=extra -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-unused-variable -Wno-error=unused-variable -Wno-error=undef -Wno-error=uninitialized")
--  if(NOT MINGW)
-+  if(NOT MINGW AND NOT ANDROID)
-     set(WARNINGS_AS_ERRORS_FLAG "-Werror")
-   endif()
-   if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
-```
-```
+git checkout monerujo-v0.11.1.0
+
 mkdir -p build/release.android64
 cd build/release.android64
 
 # only if not set already set
 export PATH=/opt/android/tool64/aarch64-linux-android/bin:/opt/android/tool64/bin:$PATH
 
-# for zeromq versions (>v0.11.0.0).
+# for zeromq versions (>v0.11.1.0) - not really tested
 CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv8-a" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_64_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_64_0/android64/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -D ZMQ_INCLUDE_PATH=/opt/android/zeromq/include -D ZMQ_LIB=/opt/android/zeromq/lib/libzmq.a ../..
 
-# for pre-zeromq versions (<=v0.11.0.0).
-CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv8-a" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_64_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_64_0/android64/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
+# for pre-zeromq versions (<=v0.11.1.0).
+CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv8-a" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android64/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
 
 make
 
