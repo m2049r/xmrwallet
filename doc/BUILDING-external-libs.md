@@ -2,8 +2,11 @@
 
 Based on https://forum.getmonero.org/5/support/87643/building-monero-v0-10-3-1-for-android and the internet.
 
-Do not follow this blindly. These instructions are for 32-bit only. 64-bit building mostly involves
-replacing "32" with "64".
+Do not follow this blindly.
+
+These instructions build all supported architectures: ```'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'```.
+
+Yes, lots of copy&paste here. TODO: Script this.
 
 ## Prepare Ubuntu environment
 
@@ -19,52 +22,51 @@ cd /opt/android
 wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip
 unzip android-ndk-r15c-linux-x86_64.zip
 android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm --install-dir /opt/android/tool32
+android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm64 --install-dir /opt/android/tool64
+android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch x86 --install-dir /opt/android/toolx86
+android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch x86_64 --install-dir /opt/android/toolx86_64
 ```
 
 ## Build OpenSSL
 Best is to compile openssl from sources. Copying from your phone or elsewhere (don't!) ends up in misery.
 
-### Setup environment
+If you don't want to build for all architectures, edit ```build-all-arch.sh``` before running it (Line 12).
+
 ```
 cd /opt/android
-wget https://wiki.openssl.org/images/7/70/Setenv-android.sh
-fromdos Setenv-android.sh
-```
-
-Edit Setenv-android.sh:
-```
-_ANDROID_EABI="arm-linux-androideabi-4.9"
-_ANDROID_API="android-21"
-```
-Then:
-```
-export ANDROID_NDK_ROOT=/opt/android/android-ndk-r15c
-. ./Setenv-android.sh
-```
-and ignore error about FIPS_SIG.
-
-### Download and build OpenSSL
-```
+git clone https://github.com/m2049r/android-openssl.git
 wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz
-tar xfz OpenSSL_1_0_2l.tar.gz
-cd openssl-OpenSSL_1_0_2l/
-perl -pi -e 's/install: all install_docs install_sw/install: install_docs install_sw/g' Makefile.org
-./config shared no-ssl2 no-ssl3 no-comp no-hw no-engine --openssldir=/opt/android/openssl/android-21/
-make depend
-# Make sure we don't get versioned .so which Android can't deal with
-make CALC_VERSIONS="SHLIB_COMPAT=; SHLIB_SOVER=" MAKE="make -e" all
-mkdir -p /opt/android/openssl/android-21/lib
-echo "place-holder make target for avoiding symlinks" >> /opt/android/openssl/android-21/lib/link-shared
-make SHLIB_EXT=.so install_sw
+cd android-openssl
+tar xfz ../OpenSSL_1_0_2l.tar.gz
+export ANDROID_NDK_ROOT=/opt/android/android-ndk-r15c
+./build-all-arch.sh
 ```
 
 ### Make symlinks
 ```
 cd /opt/android/tool32/sysroot/usr/include
-ln -s ../../../../openssl/android-21/include/openssl
+ln -s ../../../../android-openssl/openssl-OpenSSL_1_0_2l/include/openssl/
 cd /opt/android/tool32/sysroot/usr/lib
-ln -s ../../../../openssl/android-21/lib/libssl.so
-ln -s ../../../../openssl/android-21/lib/libcrypto.so
+ln -s ../../../../android-openssl/prebuilt/armeabi/libssl.so
+ln -s ../../../../android-openssl/prebuilt/armeabi/libcrypto.so
+
+cd /opt/android/tool64/sysroot/usr/include
+ln -s ../../../../android-openssl/openssl-OpenSSL_1_0_2l/include/openssl/
+cd /opt/android/tool64/sysroot/usr/lib
+ln -s ../../../../android-openssl/prebuilt/arm64-v8a/libssl.so
+ln -s ../../../../android-openssl/prebuilt/arm64-v8a/libcrypto.so
+
+cd /opt/android/toolx86/sysroot/usr/include
+ln -s ../../../../android-openssl/openssl-OpenSSL_1_0_2l/include/openssl/
+cd /opt/android/toolx86/sysroot/usr/lib
+ln -s ../../../../android-openssl/prebuilt/x86/libssl.so
+ln -s ../../../../android-openssl/prebuilt/x86/libcrypto.so
+
+cd /opt/android/toolx86_64/sysroot/usr/include
+ln -s ../../../../android-openssl/openssl-OpenSSL_1_0_2l/include/openssl/
+cd /opt/android/toolx86_64/sysroot/usr/lib
+ln -s ../../../../android-openssl/prebuilt/x86_64/libssl.so
+ln -s ../../../../android-openssl/prebuilt/x86_64/libcrypto.so
 ```
 
 ## Build Boost
@@ -72,74 +74,89 @@ ln -s ../../../../openssl/android-21/lib/libcrypto.so
 cd /opt/android
 wget https://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.gz/download -O boost_1_58_0.tar.gz
 tar xfz boost_1_58_0.tar.gz
-(cd boost_1_58_0; ./bootstrap.sh)
+cd boost_1_58_0
+./bootstrap.sh
 ```
 The NDK r15c above gives errors about fsetpos and fgetpos not found(!?!), so we "just" comment them out in the include file:
-`nano /opt/android/tool32/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
+* `vi /opt/android/tool32/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
+* `vi /opt/android/tool64/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
+* `vi /opt/android/toolx86/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
+* `vi /opt/android/toolx86_64/include/c++/4.9.x/cstdio` (`//using ::fgetpos`, `//using ::fsetpos`)
 
 Then:
 ```
-export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH
-./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=android32 --stagedir=android32 toolset=clang threading=multi threadapi=pthread target-os=android stage
-```
-
-## Build & prepare zeromq
-Only needed for zeromq versions (>v0.11.0.0).
-```
-cd /opt/android
-wget git clone https://github.com/zeromq/zeromq3-x.git
-export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH
-export OUTPUT_DIR=/opt/android/zeromq
-./configure --enable-static --disable-shared --host=arm-linux-androideabi --prefix=$OUTPUT_DIR LDFLAGS="-L$OUTPUT_DIR/lib" CPPFLAGS="-isystem /opt/android/tool32/include/c++/4.9.x -fPIC -I$OUTPUT_DIR/include -Wno-error -D__ANDROID_API__=21" LIBS="-lgcc"
-make
-make install
-
-git clone https://github.com/zeromq/cppzmq.git
-cp cppzmq/*.hpp zeromq/include/
+PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=android32 --stagedir=android32 toolset=clang threading=multi threadapi=pthread target-os=android stage
+PATH=/opt/android/tool64/aarch64-linux-android/bin:/opt/android/tool64/bin:$PATH ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=android64 --stagedir=android64 toolset=clang threading=multi threadapi=pthread target-os=android stage
+PATH=/opt/android/toolx86/i686-linux-android/bin:/opt/android/toolx86/bin:$PATH ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=androidx86 --stagedir=androidx86 toolset=clang threading=multi threadapi=pthread target-os=android stage
+PATH=/opt/android/toolx86_64/x86_64-linux-android/bin:/opt/android/toolx86_64/bin:$PATH ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=androidx86_64 --stagedir=androidx86_64 toolset=clang threading=multi threadapi=pthread target-os=android stage
 ```
 
 ## And finally: Build Monero
 ```
 cd /opt/android
-git clone https://github.com/monero-project/monero
-cd monero
-```
-```
-# <patch monero code as needed>
-# also, don't abort on warnings (this is only an issue >v0.11.0.0):
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1f74f59..2c791c0 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -400,7 +400,7 @@ else()
-     set(ARCH_FLAG "-march=${ARCH}")
-   endif()
-   set(WARNINGS "-Wall -Wextra -Wpointer-arith -Wundef -Wvla -Wwrite-strings -Wno-error=extra -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-unused-variable -Wno-error=unused-variable -Wno-error=undef -Wno-error=uninitialized")
--  if(NOT MINGW)
-+  if(NOT MINGW AND NOT ANDROID)
-     set(WARNINGS_AS_ERRORS_FLAG "-Werror")
-   endif()
-   if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
-```
-```
+git clone https://github.com/m2049r/monero.git
+
+cd /opt/android/monero
 mkdir -p build/release.android32
 cd build/release.android32
-
-# only if not set already set
-export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH
-
-# for zeromq versions (>v0.11.0.0).
-CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -D ZMQ_INCLUDE_PATH=/opt/android/zeromq/include -D ZMQ_LIB=/opt/android/zeromq/lib/libzmq.a ../..
-
-# for pre-zeromq versions (<=v0.11.0.0).
-CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
-
+PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/android-openssl/openssl-OpenSSL_1_0_2l -D OPENSSL_CRYPTO_LIBRARY=/opt/android/android-openssl/prebuilt/armeabi/libcrypto.so -D OPENSSL_SSL_LIBRARY=/opt/android/android-openssl/prebuilt/armeabi/libssl.so -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
 make
+find . -name '*.a' -exec cp '{}' lib \;
 
+cd /opt/android/monero
+mkdir -p build/release.android64
+cd build/release.android64
+PATH=/opt/android/tool64/aarch64-linux-android/bin:/opt/android/tool64/bin:$PATH CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv8-a" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android64/lib  -D OPENSSL_ROOT_DIR=/opt/android/android-openssl/openssl-OpenSSL_1_0_2l -D OPENSSL_CRYPTO_LIBRARY=/opt/android/android-openssl/prebuilt/arm64-v8a/libcrypto.so -D OPENSSL_SSL_LIBRARY=/opt/android/android-openssl/prebuilt/arm64-v8a/libssl.so -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
+make
+find . -name '*.a' -exec cp '{}' lib \;
+
+cd /opt/android/monero
+mkdir -p build/release.androidx86
+cd build/release.androidx86
+PATH=/opt/android/toolx86/i686-linux-android/bin:/opt/android/toolx86/bin:$PATH CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="i686" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/androidx86/lib  -D OPENSSL_ROOT_DIR=/opt/android/android-openssl/openssl-OpenSSL_1_0_2l -D OPENSSL_CRYPTO_LIBRARY=/opt/android/android-openssl/prebuilt/x86/libcrypto.so -D OPENSSL_SSL_LIBRARY=/opt/android/android-openssl/prebuilt/x86/libssl.so -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
+make
+find . -name '*.a' -exec cp '{}' lib \;
+
+cd /opt/android/monero
+mkdir -p build/release.androidx86_64
+cd build/release.androidx86_64
+PATH=/opt/android/toolx86_64/x86_64-linux-android/bin:/opt/android/toolx86_64/bin:$PATH CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="x86-64" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/androidx86_64/lib  -D OPENSSL_ROOT_DIR=/opt/android/android-openssl/openssl-OpenSSL_1_0_2l -D OPENSSL_CRYPTO_LIBRARY=/opt/android/android-openssl/prebuilt/x86_64/libcrypto.so -D OPENSSL_SSL_LIBRARY=/opt/android/android-openssl/prebuilt/x86_64/libssl.so -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
+make
 find . -name '*.a' -exec cp '{}' lib \;
 ```
-Ignore the warning from the last command - all static libraries are now in `lib`.
+Ignore the warning from ```find``` - all monero static libraries are now in `lib`.
 
 # Bringing it all together
 - Copy all .a libraries into the appropriate `external-libs` folders.
 - Copy `/opt/android/monero/src/wallet/wallet2_api.h` into `external-libs/monero/include`
+
+If using default locations, this would mean:
+```
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/boost/lib/armeabi-v7a
+cp -a /opt/android/boost_1_58_0/android32/lib/*.a ~/StudioProjects/xmrwallet/external-libs/boost/lib/armeabi-v7a
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/openssl/lib/armeabi-v7a
+cp -a /opt/android/android-openssl/prebuilt/armeabi/*.a ~/StudioProjects/xmrwallet/external-libs/openssl/lib/armeabi-v7a
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/monero/lib/armeabi-v7a
+cp -a /opt/android/monero/build/release.android32/lib/*.a ~/StudioProjects/xmrwallet/external-libs/monero/lib/armeabi-v7a
+
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/boost/lib/arm64-v8a
+cp -a /opt/android/boost_1_58_0/android64/lib/*.a ~/StudioProjects/xmrwallet/external-libs/boost/lib/arm64-v8a
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/openssl/lib/arm64-v8a
+cp -a /opt/android/android-openssl/prebuilt/arm64-v8a/*.a ~/StudioProjects/xmrwallet/external-libs/openssl/lib/arm64-v8a
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/monero/lib/arm64-v8a
+cp -a /opt/android/monero/build/release.android64/lib/*.a ~/StudioProjects/xmrwallet/external-libs/monero/lib/arm64-v8a
+
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/boost/lib/x86
+cp -a /opt/android/boost_1_58_0/androidx86/lib/*.a ~/StudioProjects/xmrwallet/external-libs/boost/lib/x86
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/openssl/lib/x86
+cp -a /opt/android/android-openssl/prebuilt/x86/*.a ~/StudioProjects/xmrwallet/external-libs/openssl/lib/x86
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/monero/lib/x86
+cp -a /opt/android/monero/build/release.androidx86/lib/*.a ~/StudioProjects/xmrwallet/external-libs/monero/lib/x86
+
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/boost/lib/x86_64
+cp -a /opt/android/boost_1_58_0/androidx86_64/lib/*.a ~/StudioProjects/xmrwallet/external-libs/boost/lib/x86_64
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/openssl/lib/x86_64
+cp -a /opt/android/android-openssl/prebuilt/x86_64/*.a ~/StudioProjects/xmrwallet/external-libs/openssl/lib/x86_64
+mkdir -p ~/StudioProjects/xmrwallet/external-libs/monero/lib/x86_64
+cp -a /opt/android/monero/build/release.androidx86_64/lib/*.a ~/StudioProjects/xmrwallet/external-libs/monero/lib/x86_64
+```
