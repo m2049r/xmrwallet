@@ -77,7 +77,7 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
             @Override
             public void onClick(View v) {
                 Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
-                Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
             }
         });
 
