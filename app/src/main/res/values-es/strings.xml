@@ -268,7 +268,7 @@
         <item>Prioridad Alta</item>
     </string-array>
 
-    <string name="fab_create_new">Crear nueva monedero</string>
+    <string name="fab_create_new">Crear nuevo monedero</string>
     <string name="fab_restore_viewonly">Restaurar monedero de sólo vista</string>
     <string name="fab_restore_key">Restaurar monedero con claves privadas</string>
     <string name="fab_restore_seed">Restaurar monedero con semilla de 25 palabras</string>
