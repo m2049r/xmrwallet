@@ -45,7 +45,7 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     ImageView toolbarImage;
     TextView toolbarTitle;
     TextView toolbarSubtitle;
-    Button bDonate;
+    Button bCredits;
 
     public Toolbar(Context context) {
         super(context);
@@ -87,8 +87,8 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
 
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
         toolbarSubtitle = (TextView) findViewById(R.id.toolbarSubtitle);
-        bDonate = (Button) findViewById(R.id.bDonate);
-        bDonate.setOnClickListener(new View.OnClickListener() {
+        bCredits = (Button) findViewById(R.id.bCredits);
+        bCredits.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (onButtonListener != null) {
                     onButtonListener.onButton(buttonType);
@@ -116,43 +116,43 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     public final static int BUTTON_NONE = 0;
     public final static int BUTTON_BACK = 1;
     public final static int BUTTON_CLOSE = 2;
-    public final static int BUTTON_DONATE = 3;
+    public final static int BUTTON_CREDITS = 3;
     public final static int BUTTON_CANCEL = 4;
 
-    int buttonType = BUTTON_DONATE;
+    int buttonType = BUTTON_CREDITS;
 
     public void setButton(int type) {
         switch (type) {
             case BUTTON_BACK:
                 Timber.d("BUTTON_BACK");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back_white_24dp, 0, 0, 0);
-                bDonate.setText(null);
-                bDonate.setVisibility(View.VISIBLE);
+                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back_white_24dp, 0, 0, 0);
+                bCredits.setText(null);
+                bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CLOSE:
                 Timber.d("BUTTON_CLOSE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_close);
-                bDonate.setVisibility(View.VISIBLE);
+                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
+                bCredits.setText(R.string.label_close);
+                bCredits.setVisibility(View.VISIBLE);
                 break;
-            case BUTTON_DONATE:
-                Timber.d("BUTTON_DONATE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_favorite_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_donate);
-                bDonate.setVisibility(View.VISIBLE);
+            case BUTTON_CREDITS:
+                Timber.d("BUTTON_CREDITS");
+                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_favorite_white_24dp, 0, 0, 0);
+                bCredits.setText(R.string.label_credits);
+                bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CANCEL:
                 Timber.d("BUTTON_CANCEL");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_cancel);
-                bDonate.setVisibility(View.VISIBLE);
+                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
+                bCredits.setText(R.string.label_cancel);
+                bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_NONE:
             default:
                 Timber.d("BUTTON_NONE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                bDonate.setText(null);
-                bDonate.setVisibility(View.INVISIBLE);
+                bCredits.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                bCredits.setText(null);
+                bCredits.setVisibility(View.INVISIBLE);
         }
         buttonType = type;
     }

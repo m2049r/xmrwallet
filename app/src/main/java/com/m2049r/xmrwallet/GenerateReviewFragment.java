@@ -34,6 +34,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -81,7 +82,7 @@ public class GenerateReviewFragment extends Fragment {
 
         bAccept = (Button) view.findViewById(R.id.bAccept);
 
-        boolean testnet = WalletManager.getInstance().isTestNet();
+        boolean testnet = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
         tvWalletMnemonic.setTextIsSelectable(testnet);
         tvWalletSpendKey.setTextIsSelectable(testnet);
 
@@ -185,6 +186,7 @@ public class GenerateReviewFragment extends Fragment {
             name = wallet.getName();
             status = wallet.getStatus();
             if (status != Wallet.Status.Status_Ok) {
+                Timber.e(wallet.getErrorString());
                 if (closeWallet) wallet.close();
                 return false;
             }

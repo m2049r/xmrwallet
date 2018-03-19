@@ -212,7 +212,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private boolean checkAddressNoError() {
         String address = etAddress.getEditText().getText().toString();
         return Wallet.isAddressValid(address)
-                || BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet());
+                || BitcoinAddressValidator.validate(address);
     }
 
     private boolean checkAddress() {
@@ -228,13 +228,13 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private boolean isIntegratedAddress() {
         String address = etAddress.getEditText().getText().toString();
         return (address.length() == INTEGRATED_ADDRESS_LENGTH)
-                && Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
+                && Wallet.isAddressValid(address);
     }
 
     private boolean isBitcoinAddress() {
         String address = etAddress.getEditText().getText().toString();
         if ((address.length() >= 27) && (address.length() <= 34))
-            return BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet());
+            return BitcoinAddressValidator.validate(address);
         else
             return false;
     }

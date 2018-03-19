@@ -20,7 +20,7 @@
     <string name="password_very_strong">¡Bien ahí, hacker nivel 4!</string>
 
     <string name="label_login_wallets">Monederos</string>
-    <string name="label_donate">Donar</string>
+    <string name="label_credits">Créditos</string>
     <string name="label_ok">Aceptar</string>
     <string name="label_cancel">Cancelar</string>
     <string name="label_close">Cerrar</string>
@@ -59,6 +59,7 @@
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;usuario&gt;:&lt;contraseña&gt;@]&lt;daemon&gt;[:&lt;puerto&gt;])</string>
     <string name="prompt_mainnet">Selección de Red</string>
+    <string name="connect_stagenet">StageNet</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Cargando lista de monederos</string>

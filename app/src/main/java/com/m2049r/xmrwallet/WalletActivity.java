@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
-import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
@@ -159,8 +159,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             case R.id.action_info:
                 onWalletDetails();
                 return true;
-            case R.id.action_donate:
-                DonationFragment.display(getSupportFragmentManager());
+            case R.id.action_credits:
+                CreditsFragment.display(getSupportFragmentManager());
                 return true;
             case R.id.action_share:
                 onShareTxInfo();
@@ -213,21 +213,14 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_DONATE:
-                        Toast.makeText(WalletActivity.this, getString(R.string.label_donate), Toast.LENGTH_SHORT).show();
+                    case Toolbar.BUTTON_CREDITS:
+                        Toast.makeText(WalletActivity.this, getString(R.string.label_credits), Toast.LENGTH_SHORT).show();
                     case Toolbar.BUTTON_NONE:
                     default:
                         Timber.e("Button " + type + "pressed - how can this be?");
                 }
             }
         });
-
-        boolean testnet = WalletManager.getInstance().isTestNet();
-        if (testnet) {
-            toolbar.setBackgroundResource(R.color.colorPrimaryDark);
-        } else {
-            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
-        }
 
         Fragment walletFragment = new WalletFragment();
         getSupportFragmentManager().beginTransaction()
@@ -237,6 +230,23 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         startWalletService();
         Timber.d("onCreate() done.");
     }
+
+    public void showNet() {
+        switch (WalletManager.getInstance().getNetworkType()) {
+            case NetworkType_Mainnet:
+                toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
+                break;
+            case NetworkType_Testnet:
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            case NetworkType_Stagenet:
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            default:
+                throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
+        }
+    }
+
 
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
@@ -798,7 +808,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public boolean verifyWalletPassword(String password) {
-        String walletPath = new File(Helper.getStorageRoot(this),
+        String walletPath = new File(Helper.getWalletRoot(this),
                 getWalletName() + ".keys").getAbsolutePath();
         return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
     }

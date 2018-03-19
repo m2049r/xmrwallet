@@ -84,7 +84,14 @@ public class PendingTransaction {
 
     public native long getFee();
 
-    public native String getFirstTxId();
+    public String getFirstTxId() {
+        String id = getFirstTxIdJ();
+        if (id == null)
+            throw new IndexOutOfBoundsException();
+        return id;
+    }
+
+    public native String getFirstTxIdJ();
 
     public native long getTxCount();
 

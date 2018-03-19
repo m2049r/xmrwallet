@@ -31,12 +31,15 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
+import android.system.ErrnoException;
+import android.system.Os;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 
@@ -55,16 +58,21 @@ import timber.log.Timber;
 
 public class Helper {
     static private final String WALLET_DIR = "monerujo";
+    static private final String HOME_DIR = "monero";
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
-    static public File getStorageRoot(Context context) {
+    static public File getWalletRoot(Context context) {
+        return getStorage(context, WALLET_DIR);
+    }
+
+    static public File getStorage(Context context, String folderName) {
         if (!isExternalStorageWritable()) {
             String msg = context.getString(R.string.message_strorage_not_writable);
             Timber.e(msg);
             throw new IllegalStateException(msg);
         }
-        File dir = new File(Environment.getExternalStorageDirectory(), WALLET_DIR);
+        File dir = new File(Environment.getExternalStorageDirectory(), folderName);
         if (!dir.exists()) {
             Timber.i("Creating %s", dir.getAbsolutePath());
             dir.mkdirs(); // try to make it
@@ -114,9 +122,9 @@ public class Helper {
     }
 
     static public File getWalletFile(Context context, String aWalletName) {
-        File walletDir = getStorageRoot(context);
+        File walletDir = getWalletRoot(context);
         File f = new File(walletDir, aWalletName);
-        Timber.d("wallet= %s size= %d", f.getAbsolutePath(), f.length());
+        Timber.d("wallet=%s size= %d", f.getAbsolutePath(), f.length());
         return f;
     }
 
@@ -263,10 +271,20 @@ public class Helper {
     }
 
     static public HttpUrl getXmrToBaseUrl() {
-        if ((WalletManager.getInstance() == null) || WalletManager.getInstance().isTestNet()) {
+        if ((WalletManager.getInstance() == null)
+                || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
             return HttpUrl.parse("https://test.xmr.to/api/v2/xmr2btc/");
         } else {
             return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
+        }
+    }
+
+    static public void setMoneroHome(Context context) {
+        try {
+            String home = getStorage(context, HOME_DIR).getAbsolutePath();
+            Os.setenv("HOME", home, true);
+        } catch (ErrnoException ex) {
+            throw new IllegalStateException(ex);
         }
     }
 }

@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 74
-        versionName "1.3.14 'Satoshis Dream'"
+        versionCode 82
+        versionName "1.4.2 'Monero Spedner'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -42,7 +42,7 @@ android {
             enable true
             reset()
             include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-            universalApk false
+            universalApk true
         }
     }
 
@@ -104,5 +104,7 @@ dependencyVerification {
             'com.google.zxing:core:bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d',
             'com.squareup.okio:okio:734269c3ebc5090e3b23566db558f421f0b4027277c79ad5d176b8ec168bb850',
             'com.squareup.okhttp3:okhttp:7265adbd6f028aade307f58569d814835cd02bc9beffb70c25f72c9de50d61c4',
+            'com.jakewharton.timber:timber:35c22867f2673132e97e17857d36bb2fc25f5790f0425406833ed0254d62fc66',
+            'com.nulab-inc:zxcvbn:18d7862a6abd2705defec478d77dedadf8f3bb7cf811df22995494f05485785f',
     ]
 }
