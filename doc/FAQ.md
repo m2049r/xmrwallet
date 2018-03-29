@@ -7,8 +7,8 @@
 
 - Seamless XMR.TO integration - instantly pay BTC with XMR using third-party XMR.TO service
 - Speaks spanish
-- Uses Monero v0.11.1.0
-- Support for Android >= 5.0 with ARM processor
+- Uses Monero v0.12
+- Support for Android >= 5.0
 - Testnet and Mainnet
 - Generate new wallets
 - Recover wallets from mnemonic seed or from keys
@@ -80,3 +80,6 @@ This depends on your installation - you could search for them in your home direc
 ### What if don't have these files?
 
 Keep calm and make a new wallet.
+
+## Why does it make a 'monero' folder?
+This is a new feature of monero core to share certain key images with other monero forks.
