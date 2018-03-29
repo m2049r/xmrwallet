@@ -524,7 +524,7 @@ public class WalletService extends Service {
         showProgress(20);
         Wallet wallet = null;
         WalletManager walletMgr = WalletManager.getInstance();
-        Timber.d("WalletManager testnet=%s", walletMgr.isTestNet());
+        Timber.d("WalletManager network=%s", walletMgr.getNetworkType().name());
         showProgress(30);
         if (walletMgr.walletExists(path)) {
             Timber.d("open wallet %s", path);

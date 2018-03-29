@@ -18,6 +18,7 @@ package com.m2049r.xmrwallet.data;
 
 import android.net.Uri;
 
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
@@ -178,7 +179,7 @@ public class BarcodeData {
                 return null; // we have an amount but its not a number!
             }
         }
-        if (!BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet())) {
+        if (!BitcoinAddressValidator.validate(address)) {
             Timber.d("address invalid");
             return null;
         }
@@ -190,7 +191,7 @@ public class BarcodeData {
 
         if (address == null) return null;
 
-        if (!BitcoinAddressValidator.validate(address, WalletManager.getInstance().isTestNet())) {
+        if (!BitcoinAddressValidator.validate(address)) {
             Timber.d("address invalid");
             return null;
         }

@@ -300,7 +300,7 @@ public class ReceiveFragment extends Fragment {
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
         Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
-        if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
+        if ((xmrAmount == null) || !Wallet.isAddressValid(address)) {
             clearQR();
             Timber.d("CLEARQR");
             return;
