@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 82
-        versionName "1.4.2 'Monero Spedner'"
+        versionCode 83
+        versionName "1.4.3 'Monero Spedner'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
