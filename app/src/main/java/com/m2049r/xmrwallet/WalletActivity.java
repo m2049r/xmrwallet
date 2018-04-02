@@ -222,6 +222,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             }
         });
 
+        showNet();
+
         Fragment walletFragment = new WalletFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName()).commit();
