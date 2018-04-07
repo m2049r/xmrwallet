@@ -215,7 +215,7 @@ public class WalletManager {
     //public void setDaemon(String address, NetworkType networkType, String username, String password) {
     public void setDaemon(WalletNode walletNode) {
         this.daemonAddress = walletNode.getAddress();
-        this.networkType = networkType;
+        this.networkType = walletNode.getNetworkType();
         this.daemonUsername = walletNode.getUsername();
         this.daemonPassword = walletNode.getPassword();
         setDaemonAddressJ(daemonAddress);
