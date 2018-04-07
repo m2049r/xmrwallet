@@ -132,47 +132,30 @@
         <p>XMR.TO è un servizio di terze parti che funziona come cambiavaluta da Monero a Bitcoin.
         Utilizziamo le API XMR.TO per integrare pagamenti Bitcoin all'interno di Monerujo. Controlla https://xmr.to e decidi tu stesso se questa è una funzionalità che vuoi usare. Il team Monerujo non è associato in alcun modo con XMR.TO e non è in grado di aiutarti con il servizio da loro offerto.</p>
         <h2>Tasso di cambio XMR.TO<h2>
-        <p>Sulla schermata \"Ammontare\" ti verranno mostrati i parametri attuali del servizio XMR.TO. Questi parametri includono il tasso di cambio attuale oltre ai limiti massimo e minimo di BTC. Considera che il tasso che ti viene mostrato non è ancora garantito in questa fase. Vedrai inoltre l'ammontare fino al quale la transazione BTC verrà eseguita istantaneamente senza attendere conferme XMR (vedi le FAQ XMR.TO per maggiori informazioni). Considera inoltre che il servizio XMR.TO non aggiunge commissioni extra - quanto è figa questa cosa?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>Sulla schermata \"Ammontare\" ti verranno mostrati i parametri attuali del servizio XMR.TO. Questi parametri includono il tasso di cambio attuale oltre ai limiti massimo e minimo di BTC. Considera che il tasso che ti viene mostrato non è ancora garantito in questa fase. Vedrai inoltre l'ammontare fino al quale la transazione BTC verrà eseguita istantaneamente senza attendere conferme XMR (vedi le FAQ XMR.TO per maggiori informazioni). Considera inoltre che il servizio XMR.TO non aggiunge commissioni extra - bello vero?</p>
+        <h2>Ordine XMR.TO<h2>
+        <p>Sulla schermata \"Conferma\", troverai il vero ordine XMR.TO. Questo ordine è valido per un tempo limitato - potresti notare un conto alla rovescia sul pulsante \"Spendi\". Il tasso di cambio potrebbe essere diverso da quello indicativo mostrato nelle schermate precedenti.</p>
+        <h2>Chiave segreta XMR.TO<h2>
+        <p>Dal momento che Monerujo gestisce soltanto il versante Monero della tua transazione, può essere usata la chiave segreta XMR.TO per tracciare il versante Bitcoin del tuo ordine sulla homepage XMR.TO.</p>
+        <p>Considera che questa chiave segreta è valida solamente per 24 ore dall'inizio della transazione!</p>
+        <h2>Conto alla rovescia XMR.TO!</h2>
+        <p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a XMR.TO tornando indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Sending BTC</h1>
+        <h1>Inviare BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
+        <p>XMR.TO è un servizio di terze parti che funziona come cambiavaluta da Monero a Bitcoin.
+        Utilizziamo le API XMR.TO per integrare pagamenti Bitcoin all'interno di Monerujo. Controlla https://xmr.to e decidi tu stesso se questa è una funzionalità che vuoi usare. Il team Monerujo non è associato in alcun modo con XMR.TO e non è in grado di aiutarti con il servizio da loro offerto.</p>
+        <h2>Tasso di cambio XMR.TO<h2>
+        <p>Sulla schermata \"Ammontare\" ti verranno mostrati i parametri attuali del servizio XMR.TO. Questi parametri includono il tasso di cambio attuale oltre ai limiti massimo e minimo di BTC. Considera che il tasso che ti viene mostrato non è ancora garantito in questa fase. Vedrai inoltre l'ammontare fino al quale la transazione BTC verrà eseguita istantaneamente senza attendere conferme XMR (vedi le FAQ XMR.TO per maggiori informazioni). Considera inoltre che il servizio XMR.TO non aggiunge commissioni extra - bello vero?</p>
         <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>Sulla schermata \"Conferma\", troverai il vero ordine XMR.TO. Questo ordine è valido per un tempo limitato - potresti notare un conto alla rovescia sul pulsante \"Spendi\". Il tasso di cambio potrebbe essere diverso da quello indicativo mostrato nelle schermate precedenti.</p>
+        <h2>Chiave segreta XMR.TO<h2>
+        <p>Dal momento che Monerujo gestisce soltanto il versante Monero della tua transazione, può essere usata la chiave segreta XMR.TO per tracciare il versante Bitcoin del tuo ordine sulla homepage XMR.TO.</p>
+        <p>Considera che questa chiave segreta è valida solamente per 24 ore dall'inizio della transazione!</p>
+        <h2>Conto alla rovescia XMR.TO!</h2>
+        <p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a XMR.TO tornando indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
 
 </resources>
