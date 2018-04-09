@@ -1075,6 +1075,85 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobje
 }
 
 
+// these are all in Bitmonero::Wallet - which I find wrong, so they are here!
+//static void init(const char *argv0, const char *default_log_base_name);
+//static void debug(const std::string &category, const std::string &str);
+//static void info(const std::string &category, const std::string &str);
+//static void warning(const std::string &category, const std::string &str);
+//static void error(const std::string &category, const std::string &str);
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_initLogger(JNIEnv *env, jobject instance,
+                                                   jstring argv0, jstring default_log_base_name) {
+
+    const char *_argv0 = env->GetStringUTFChars(argv0, NULL);
+    const char *_default_log_base_name = env->GetStringUTFChars(default_log_base_name, NULL);
+
+    Bitmonero::Wallet::init(_argv0, _default_log_base_name);
+
+    env->ReleaseStringUTFChars(argv0, _argv0);
+    env->ReleaseStringUTFChars(default_log_base_name, _default_log_base_name);
+}
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_logDebug(JNIEnv *env, jobject instance,
+                                                       jstring category, jstring message) {
+
+    const char *_category = env->GetStringUTFChars(category, NULL);
+    const char *_message = env->GetStringUTFChars(message, NULL);
+
+    Bitmonero::Wallet::debug(_category, _message);
+
+    env->ReleaseStringUTFChars(category, _category);
+    env->ReleaseStringUTFChars(message, _message);
+}
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_logInfo(JNIEnv *env, jobject instance,
+                                                       jstring category, jstring message) {
+
+    const char *_category = env->GetStringUTFChars(category, NULL);
+    const char *_message = env->GetStringUTFChars(message, NULL);
+
+    Bitmonero::Wallet::info(_category, _message);
+
+    env->ReleaseStringUTFChars(category, _category);
+    env->ReleaseStringUTFChars(message, _message);
+}
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_logWarning(JNIEnv *env, jobject instance,
+                                                       jstring category, jstring message) {
+
+    const char *_category = env->GetStringUTFChars(category, NULL);
+    const char *_message = env->GetStringUTFChars(message, NULL);
+
+    Bitmonero::Wallet::warning(_category, _message);
+
+    env->ReleaseStringUTFChars(category, _category);
+    env->ReleaseStringUTFChars(message, _message);
+}
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_logError(JNIEnv *env, jobject instance,
+                                                       jstring category, jstring message) {
+
+    const char *_category = env->GetStringUTFChars(category, NULL);
+    const char *_message = env->GetStringUTFChars(message, NULL);
+
+    Bitmonero::Wallet::error(_category, _message);
+
+    env->ReleaseStringUTFChars(category, _category);
+    env->ReleaseStringUTFChars(message, _message);
+}
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jobject instance,
+                                                          jint level) {
+            Bitmonero::WalletManagerFactory::setLogLevel(level);
+}
+
+
+
 #ifdef __cplusplus
 }
 #endif
