@@ -95,7 +95,7 @@
     <string name="label_send_btc_xmrto_info">Visita xmr.to per il supporto e il tracciamento</string>
     <string name="label_send_txinfo">Vedi dettagli TX per più dettagli</string>
     <string name="label_send_btc_xmrto_key_lb">Chiave segreta\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">Chiave sebreta XMR.TO</string>
+    <string name="label_send_btc_xmrto_key">Chiave segreta XMR.TO</string>
     <string name="label_send_btc_address">Indirizzo BTC di destinazione</string>
     <string name="label_send_btc_amount">Ammontare</string>
     <string name="label_send_btc_create_order">Creando ordine XMR.TO</string>
