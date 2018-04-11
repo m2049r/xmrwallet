@@ -3,6 +3,7 @@ Another Android Monero Wallet
 
 ### QUICKSTART
 - Download the APK for the most current release [here](https://github.com/m2049r/xmrwallet/releases) and install it
+- Alternatively add our F-Droid repo https://f-droid.monerujo.io/fdroid/repo with fingerpint ```A8 2C 68 E1 4A F0 AA 6A 2E C2 0E 6B 27 2E FF 25 E5 A0 38 F3 F6 58 84 31 6E 0F 5E 0D 91 E7 B7 13``` to your F-Droid client
 - Run the App and select "Generate Wallet" to create a new wallet or recover a wallet
 - Advanced users can copy over synced wallet files (all files) onto sdcard in directory Monerujo (created first time App is started)
 - See the [FAQ](doc/FAQ.md)
