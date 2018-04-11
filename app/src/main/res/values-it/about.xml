@@ -32,11 +32,11 @@
         Controlla la loro politica per la privacy (in lingua inglese) su https://xmr.to/ per conoscere i dettagli. Monerujo invia a loro l'indirizzo di destinazione BTC e l'ammontare della transazione. Anche il tuo IP potrebbe essere raccolto.</p>
         <h2>Permessi app</h2>
         <ul>
-        <li>INTERNET : Connessione alla rete Monero attraverso un nodo remoto</li>
-        <li>LETTURA_UNITAMEMORIA_ESTERNA : Legge i file di portafoglio salvati all'interno del dispositivo</li>
-        <li>SCRITTURA_UNITAMEMORIA_ESTERNA : Scrive i file di portafoglio salvati all'interno del dispositivo</li>
+        <li>INTERNET : Connessione alla rete Monero attraverso un nodo </li>
+        <li>READ_EXTERNAL_STORAGE : Legge i file di portafoglio salvati all'interno del dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Scrive i file di portafoglio salvati all'interno del dispositivo</li>
         <li>WAKE_LOCK : Tiene il dispositivo sveglio durante la sincronizzazione</li>
-        <li>FOTOCAMERA : Scansione codici QR di indirizzi Monero</li>
+        <li>CAMERA : Scansione codici QR di indirizzi Monero</li>
         </ul>
         <h2>Modifica a questa Politica per la Privacy</h2>
         <p>Potremmo aggiorare questa politica per la privacy di volta in volta. Ti invieremo una notifica su ciò che è cambiato pubblicando la nuova politica per la privacy all'interno dell'app e sul sito (www.monerujo.io)
