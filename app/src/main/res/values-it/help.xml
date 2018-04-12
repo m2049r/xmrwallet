@@ -4,8 +4,7 @@
         <h1>Crea un portafoglio - Nuovo</h1>
         <p>Se hai bisogno di un nuovo indirizzo Monero!</p>
         <p>Inserisci nome e password del portafoglio.
-        La password viene usata per rendere sicuri i dati relativi al portafoglio sul tuo dispositivo. Utilizza una password efficace -
-		ancora meglio se una passphrase.</p>
+        La password viene usata per rendere sicuri i dati del portafoglio sul tuo dispositivo. Utilizza una password efficace - meglio se una passphrase.</p>
         <h2>Prendi nota del tuo Seed Mnemonico!</h3>
         <p>Sulla schermata successiva troverai il tuo \"Seed Mnemonico\" da 25 parole.
 		Questa è l'unica informazione necessaria per recuperare il tuo portafoglio d'ora in poi
@@ -35,17 +34,17 @@
         <p>Inserisci nome e password del portafoglio.
         La password viene usata per rendere sicuri i dati relativi al portafoglio sul tuo dispositivo. Utilizza una password efficace -
 		ancora meglio se una passphrase.</p>
-        <p>Inserisci il tuo indirizzo Monero nel campo \"Indirizzo Pubblico\" e riempi i campi \"Chiave di Vista\" e \"Chiave di Spesa\".</p>
+        <p>Inserisci il tuo indirizzo Monero nel campo \"Indirizzo Pubblico\" e riempi i campi \"Chiave di Visualizzazione\" e \"Chiave di Spesa\".</p>
         <p>Se conosci il numero di blocco dove si trova la prima transazione utilizzata per questo indirizzo, inseriscilo nel campo \"Altezza di Recupero\" - se lasci il campo in bianco verrà scansionata l'<em>intera</em> blockchain alla ricerca di transazioni che appartengono al tuo indirizzo. Questo processo può richiedere <em>parecchio</em> tempo.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Crea un portafoglio - Vista</h1>
+        <h1>Crea un portafoglio - Visualizzazione</h1>
         <p>Se vuoi solamente monitorare le transazioni in ingresso ad un portafoglio!</p>
         <p>Inserisci nome e password del portafoglio.
         La password viene usata per rendere sicuri i dati relativi al portafoglio sul tuo dispositivo. Utilizza una password efficace -
 		ancora meglio se una passphrase.</p>
-        <p>Inserisci il tuo indirizzo Monero nel campo \"Indirizzo Pubblico\" e riempi il campo \"Chiave di Vista\".</p>
+        <p>Inserisci il tuo indirizzo Monero nel campo \"Indirizzo Pubblico\" e riempi il campo \"Chiave di Visualizzazione\".</p>
         <p>Se conosci il numero di blocco dove si trova la prima transazione utilizzata per questo indirizzo, inseriscilo nel campo \"Altezza di Recupero\" - se lasci il campo in bianco verrà scansionata l'<em>intera</em> blockchain alla ricerca di transazioni che appartengono al tuo indirizzo. Questo processo può richiedere <em>parecchio</em> tempo.</p>
     ]]></string>
 
@@ -58,8 +57,8 @@
 		e avere pieno accesso ai tuoi fondi.
 		E' molto importante mantenerlo privato e conservarlo in un luogo sicuro, poiché può concedere a <em>chiunque</em>
 		pieno accesso ai tuoi Moneroj! Se non lo hai già fatto, annotati il Seed Mnemonico e conservalo in un luogo sicuro!
-        <h2>Chiave di Vista</h2>
-		La tua chiave di vista può essere usata per monitorare le transazioni in ingresso al tuo portafoglio senza concedere il permesso di spendere i fondi che si trovano nel tuo portafoglio.
+        <h2>Chiave di Visualizzazione</h2>
+		La tua chiave di visualizzazione può essere usata per monitorare le transazioni in ingresso al tuo portafoglio senza concedere il permesso di spendere i fondi.
         <h2>Chiave di Spesa</h2>
         La tua chiave di spesa permette a chiunque di spendere i Moneroj contenuti nel tuo portafoglio, pertanto non rivelarla a nessuno e conservala in un luogo sicuro, come fai con il tuo Seed Mnemonico.
     ]]></string>
@@ -71,9 +70,9 @@
         <p>Monerujo contiene già una lista di nodi remoti e tiene memoria degli ultimi cinque nodi utilizzati.</p>
         <h2>Portafogli</h2>
         <p>Qui trovi la lista dei portafogli. I portafogli sono fisicamente posizionati nella cartella <tt>monerujo</tt> nella memoria interna del tuo dispositivo. Puoi usare un'applicazione di file explorer per vederli. 
-        E' buona regola effettuare dei backup periodici di questa cartella su un'unità di memoria esterna al tuo dispositivo nel caso in cui il tuo dispositivo esplode o viene rubato.</p>
+        E' buona regola effettuare dei backup periodici di questa cartella su un'unità di memoria esterna al tuo dispositivo nel caso in cui il tuo dispositivo esploda o venga rubato.</p>
         <p>Seleziona un portafoglio per aprirlo o premere \"+\" per crearne uno nuovo.
-        Oppure selezionat una delle operazioni di portafoglio:</p>
+        Oppure seleziona una delle operazioni di portafoglio:</p>
         <h3>Dettagli</h3>
         <p>Mostra i dettagli del portafoglio, seed e chiavi.</p>
         <h3>Ricevi</h3>
@@ -83,7 +82,7 @@
         <h3>Backup</h3>
         <p>Fai una copia del portafoglio all'interno della cartella <tt>backups</tt>, a sua volta all'interno della cartella <tt>monerujo</tt>, sovrascrivendo eventuali copie precedenti.</p>
         <h3>Archivia</h3>
-        <p>Effettua un backup e successivamente elimina il portafoglio La copia rimane nella cartella <tt>backups</tt>. Se non hai più bisogno dei backup, è meglio cancellare i file interessati utilizzando un'applicazione di tipo file explorer o un'applicazione di rimozione dati sicura.</p>
+        <p>Effettua un backup e successivamente elimina il portafoglio. La copia rimane nella cartella <tt>backups</tt>. Se non hai più bisogno dei backup, è meglio cancellare i file interessati utilizzando un'applicazione di tipo file explorer o un'applicazione di rimozione dati sicura.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -97,7 +96,7 @@
         Ulteriori informazioni sui resti su
         https://getmonero.org/it/resources/moneropedia/change.html
         <h2>Lista delle transazioni</h2>
-        <p>Una lista delle transazioni relative al portafoglio. Nei portafogli solo-vista, vengono visualizzate solo le transazioni in ingresso.</p>
+        <p>Una lista delle transazioni relative al portafoglio. Nei portafogli solo-visualizzazione, vengono visualizzate solo le transazioni in ingresso.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[

@@ -65,7 +65,7 @@
         <i><b>XMR.TO</b> ti sta <u>attualmente</u> concedendo un tasso di cambio di <b>%3$s BTC</b></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Un ammontare fino a <b>%1$s BTC</b> sarà inviato <u>istantaneamente</u>!</i>
+        <i>Ammontare fino a <b>%1$s BTC</b> inviati <u>istantaneamente</u>!</i>
     ]]></string>
 
     <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
@@ -92,7 +92,7 @@
     <string name="label_send_settings_advanced">Avanzate:</string>
 
     <string name="label_send_btc_details">Clicca per più dettagli</string>
-    <string name="label_send_btc_xmrto_info">Visita xmr.to per il supporto e il tracciamento</string>
+    <string name="label_send_btc_xmrto_info">Visita xmr.to per supporto e tracciamento</string>
     <string name="label_send_txinfo">Vedi dettagli TX per più dettagli</string>
     <string name="label_send_btc_xmrto_key_lb">Chiave segreta\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Chiave segreta XMR.TO</string>
@@ -110,7 +110,7 @@
     <string name="backup_progress">Backup in corso</string>
     <string name="archive_progress">Archiviazione in corso</string>
     <string name="rename_progress">Rinomina in corso</string>
-    <string name="open_progress">Controllando connessione con daemon </string>
+    <string name="open_progress">Controllando connessione con daemon</string>
 
     <string name="service_progress">Rimettendo le cose a posto &#8230;\nPuò richiedere del tempo!</string>
 
@@ -133,8 +133,8 @@
     <string name="status_wallet_unloaded">Portafoglio salvato</string>
     <string name="status_wallet_unload_failed">Salvataggio portafoglio fallito!</string>
     <string name="status_wallet_connecting">In connessione &#8230;</string>
-    <string name="status_wallet_connect_failed">Connessione con il nodo fallita!\nCheck username/password</string>
-    <string name="status_wallet_connect_timeout">Connessione con il nodo scaduta!\nTry again or another.</string>
+    <string name="status_wallet_connect_failed">Connessione con il nodo fallita!\nControlla username/password</string>
+    <string name="status_wallet_connect_timeout">Connessione con il nodo scaduta!\nProva di nuovo o provane un altro.</string>
     <string name="status_wallet_node_invalid">Nodo invalido!\nProvane un altro.</string>
     <string name="status_wallet_connect_ioex">Impossibile raggiungere il nodo!\nProva di nuovo o provane un altro.</string>
 
@@ -161,7 +161,7 @@
     <string name="warn_daemon_unavailable">Impossibile connettersi al daemon! Prova di nuovo.</string>
     <string name="panic">Qualcosa è sbagliato!</string>
 
-    <string name="label_watchonly">(solo-vista)</string>
+    <string name="label_watchonly">(solo-visualizzazione)</string>
 
     <string name="label_wallet_receive">Ricevi</string>
     <string name="label_wallet_send">Invia</string>
@@ -189,10 +189,10 @@
     <string name="message_strorage_not_permitted">Abbiamo veramente bisogno di questi permessi sull'unità di memoria esterna!</string>
     <string name="message_camera_not_permitted">Nessuna telecamera = Nessuna scansione QR!</string>
 
-    <string name="label_copy_viewkey">Chiave di vista</string>
+    <string name="label_copy_viewkey">Chiave di visualizzazione</string>
     <string name="label_copy_address">Indirizzo pubblico</string>
     <string name="label_copy_xmrtokey">Chiave XMR.TO</string>
-    <string name="message_copy_viewkey">Chiave di vista copiata negli appunti!</string>
+    <string name="message_copy_viewkey">Chiave di visualizzazione copiata negli appunti!</string>
     <string name="message_copy_xmrtokey">Chiave XMR.TO copiata negli appunti!</string>
     <string name="message_copy_address">Indirizzo del portafoglio copiato negli appunti!</string>
     <string name="message_copy_txid">ID transazione copiato negli appunti!</string>
@@ -225,10 +225,10 @@
     <string name="generate_wallet_type_key">Chiavi</string>
     <string name="generate_wallet_type_new">Nuovo</string>
     <string name="generate_wallet_type_seed">Seed</string>
-    <string name="generate_wallet_type_view">Vista</string>
+    <string name="generate_wallet_type_view">Visualizzazione</string>
 
     <string name="generate_address_hint">Indirizzo pubblico</string>
-    <string name="generate_viewkey_hint">Chiave di vista</string>
+    <string name="generate_viewkey_hint">Chiave di visualizzazione</string>
     <string name="generate_spendkey_hint">Chiave di spesa</string>
     <string name="generate_mnemonic_hint">Seed mnemonico da 25 parole</string>
     <string name="generate_restoreheight_hint">Altezza o data (AAAA-MM-GG) di ripristino</string>
@@ -236,7 +236,7 @@
     <string name="generate_wallet_label">Portafoglio</string>
     <string name="generate_password_label">Password</string>
     <string name="generate_address_label">Indirizzo pubblico</string>
-    <string name="generate_viewkey_label">Chiave di vista</string>
+    <string name="generate_viewkey_label">Chiave di visualizzazione</string>
     <string name="generate_spendkey_label">Chiave di spesa</string>
     <string name="generate_mnemonic_label">Seed mnemonico</string>
     <string name="generate_restoreheight_label">Altezza di ripristino:</string>
@@ -369,7 +369,7 @@
     </string-array>
 
     <string name="fab_create_new">Crea un nuovo portafoglio</string>
-    <string name="fab_restore_viewonly">Recupera un portafoglio solo-vista</string>
+    <string name="fab_restore_viewonly">Recupera un portafoglio solo-visualizzazione</string>
     <string name="fab_restore_key">Recupera un portafoglio dalle chiavi private</string>
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
 </resources>
