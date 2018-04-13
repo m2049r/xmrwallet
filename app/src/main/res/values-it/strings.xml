@@ -145,7 +145,7 @@
     <string name="status_transaction_failed">Transazione fallita: %1$s</string>
     <string name="status_transaction_prepare_failed">Impossibile creare la transazione!</string>
 
-    <string name="send_xmrto_timeout">Amico, hai aspettato troppo a lungo!</string>
+    <string name="send_xmrto_timeout">Amico/a, hai aspettato troppo a lungo!</string>
 
     <string name="service_busy">Sono ancora occupato con il tuo ultimo portafoglio &#8230;</string>
 
@@ -311,7 +311,7 @@
     <string name="tx_notes">Note</string>
     <string name="tx_button_copy">Copia negli appunti</string>
     <string name="tx_copy_message">Copiata negli appunti</string>
-    <string name="tx_copy_label">Dettagli della transazione</string>
+    <string name="tx_copy_label">Dettagli transazione</string>
     <string name="tx_notes_hint">(opzionale)</string>
     <string name="tx_button_notes">Salva</string>
     <string name="tx_notes_set">Note salvate</string>
@@ -340,7 +340,7 @@
     <string name="receive_title">Ricevi</string>
 
     <string name="details_alert_message">Verranno ora mostrati dati sensibili.\nGuardati alle spalle!</string>
-    <string name="details_alert_yes">Sono sicuro</string>
+    <string name="details_alert_yes">Sono al sicuro</string>
     <string name="details_alert_no">Torna indietro!</string>
     <string name="details_title">Dettagli</string>
 
