@@ -1,0 +1,359 @@
+<resources>
+    <string name="wallet_activity_name">錢包</string>
+
+    <string name="menu_testnet">Testnet</string>
+    <string name="menu_about">關於</string>
+    <string name="menu_privacy">隱私權政策</string>
+
+    <string name="menu_share">分享</string>
+    <string name="menu_help">幫助</string>
+    <string name="menu_info">詳細資訊</string>
+    <string name="menu_receive">收款</string>
+    <string name="menu_rename">重新命名 &#8230;</string>
+    <string name="menu_archive">封存</string>
+    <string name="menu_backup">備份</string>
+
+    <string name="password_weak">再長一點 &#8230;</string>
+    <string name="password_fair">嗯 &#8230;</string>
+    <string name="password_good">加油, 你可以做得更好!</string>
+    <string name="password_strong">快了快了 &#8230;</string>
+    <string name="password_very_strong">厲害, h4x0r 風格!</string>
+
+    <string name="label_login_wallets">錢包</string>
+    <string name="label_credits">致謝</string>
+    <string name="label_ok">好的</string>
+    <string name="label_cancel">取消</string>
+    <string name="label_close">關閉</string>
+    <string name="label_wallet_advanced_details">點選以獲得詳細資訊</string>
+
+    <string name="label_send_success">已成功發送</string>
+    <string name="label_send_done">完成</string>
+
+    <string name="label_receive_info_gen_qr_code">點選顯示QR碼</string>
+    <string name="info_send_prio_fees">較高優先權 = 較高手續費</string>
+
+    <string name="info_xmrto_enabled">BTC付款已啟用, 點選我獲得更多資訊</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>你已輸入Bitcoin地址</b><br/>
+        <i>你將會發送XMR而收款方將會收到BTC(由<b>XMR.TO</b>提供轉換)</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO訂單</string>
+
+    <string name="info_send_xmrto_success_sending">發送中</string>
+    <string name="info_send_xmrto_success_status_label">狀態:</string>
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_status">%1$s 是 %1$s (#%1$d)</string>
+
+    <string name="info_txdetails_xmrto_key">金鑰:</string>
+    <string name="info_txdetails_xmrto_address">地址:</string>
+    <string name="info_txdetails_xmrto_status">狀態:</string>
+    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
+
+
+    <string name="info_send_xmrto_paid">等待確認中</string>
+    <string name="info_send_xmrto_unpaid">等待付款中</string>
+    <string name="info_send_xmrto_error">XMR.TO錯誤 (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC已發送!</string>
+    <string name="info_send_xmrto_query">查詢中 &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>你可發送 %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b>提供的匯率為<b>%3$s BTC</b> <u>(即時)</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>金額若小於<b>%1$s BTC</b>將可以<u>零確認發送</u>!</i>
+    ]]></string>
+
+    <string name="send_available_btc">餘額: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">付款ID已嵌入</string>
+    <string name="info_prepare_tx">正在準備你的交易</string>
+
+    <string name="label_send_progress_xmrto_create">建立 XMR.TO 訂單</string>
+    <string name="label_send_progress_xmrto_query">查詢 XMR.TO 訂單</string>
+    <string name="label_send_progress_create_tx">正在準備 Monero 交易</string>
+
+    <string name="label_send_progress_queryparms">正在查詢 xmr.to 參數</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO 錯誤</string>
+    <string name="text_generic_xmrto_error">錯誤代碼: %1$d</string>
+
+    <string name="text_retry">點選以重試</string>
+    <string name="text_noretry_monero">我們卡住了!</string>
+    <string name="text_noretry">噢不, XMR.TO 現在似乎無法提供服務!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(匯率: %1$s BTC/XMR)</string>
+
+    <string name="label_send_settings_advanced">進階選項:</string>
+
+    <string name="label_send_btc_details">點選查看詳細資訊</string>
+    <string name="label_send_btc_xmrto_info">參訪 xmr.to 以支援 &amp; 追蹤</string>
+    <string name="label_send_txinfo">查看 TX 資料以獲得更多資訊</string>
+    <string name="label_send_btc_xmrto_key_lb">私鑰\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO 私鑰</string>
+    <string name="label_send_btc_address">目的地 BTC 地址</string>
+    <string name="label_send_btc_amount">金額</string>
+    <string name="label_send_btc_create_order">建立 XMR.TO 訂單</string>
+
+    <string name="label_send_btc_retry">點選以重試</string>
+
+    <string name="label_send_txid">交易ID</string>
+    <string name="label_send_address">收款地址</string>
+    <string name="label_send_payment_id">付款ID</string>
+    <string name="label_send_notes">附註</string>
+
+    <string name="backup_progress">正在備份中</string>
+    <string name="archive_progress">正在封存中</string>
+    <string name="rename_progress">正在重新命名</string>
+    <string name="open_progress">正在檢查daemon連線</string>
+
+    <string name="service_progress">正在關閉錢包 &#8230;\n可能會花費些許時間!</string>
+
+    <string name="backup_success">備份成功</string>
+    <string name="backup_failed">備份失敗!</string>
+    <string name="archive_success">封存成功</string>
+    <string name="archive_failed">封存失敗!</string>
+    <string name="delete_failed">刪除失敗!</string>
+    <string name="rename_failed">重新命名失敗!</string>
+
+    <string name="label_daemon">節點</string>
+    <string name="prompt_daemon">([&lt;名稱&gt;:&lt;密碼&gt;@]&lt;節點&gt;[:&lt;port&gt;])</string>
+    <string name="prompt_mainnet">網路選擇</string>
+    <string name="connect_stagenet">StageNet</string>
+    <string name="connect_testnet">TestNet</string>
+    <string name="connect_mainnet">主網路</string>
+    <string name="status_walletlist_loading">載入錢包列表</string>
+    <string name="status_wallet_loading">載入錢包 &#8230;</string>
+    <string name="status_wallet_unloading">儲存錢包</string>
+    <string name="status_wallet_unloaded">錢包已儲存</string>
+    <string name="status_wallet_unload_failed">儲存錢包失敗!</string>
+    <string name="status_wallet_connecting">連接中 &#8230;</string>
+    <string name="status_wallet_connect_failed">連接至節點失敗!\n請檢查名稱/密碼。</string>
+    <string name="status_wallet_connect_timeout">節點連接逾時!\n請重試或更換節點。</string>
+    <string name="status_wallet_node_invalid">節點無效!\n請試試其他節點。</string>
+    <string name="status_wallet_connect_ioex">無法連接至節點!\n請試試其他節點。</string>
+
+    <string name="status_working">處理中 &#8230;</string>
+    <string name="status_wallet_disconnected">中斷連接</string>
+
+    <string name="status_transaction_sent">交易已發送!</string>
+    <string name="status_transaction_failed">交易失敗: %1$s</string>
+    <string name="status_transaction_prepare_failed">無法建立交易!</string>
+
+    <string name="send_xmrto_timeout">等待時間過長!</string>
+
+    <string name="service_busy">前一個錢包尚未處理完畢 &#8230;</string>
+
+    <string name="prompt_rename">重新命名 %1$s</string>
+
+    <string name="prompt_password">%1$s 的密碼</string>
+    <string name="prompt_send_password">確認密碼</string>
+    <string name="bad_password">密碼錯誤!</string>
+    <string name="bad_wallet">錢包不存在!</string>
+    <string name="error_not_wallet">這不是錢包!</string>
+    <string name="prompt_daemon_missing">必需要設定節點位置!</string>
+    <string name="prompt_wrong_net">錢包不符合選擇的網路</string>
+    <string name="warn_daemon_unavailable">無法連接至節點! 請稍後重試。</string>
+    <string name="panic">有東西出錯了!</string>
+
+    <string name="label_watchonly">(唯讀)</string>
+
+    <string name="label_wallet_receive">接收</string>
+    <string name="label_wallet_send">發送</string>
+
+    <string name="title_amount">金額</string>
+    <string name="title_date">日期</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 XMR </string>
+    <string name="label_transactions">交易</string>
+    <string name="text_daemonConnected">節點已連接!</string>
+
+    <string name="service_description">monerujo 服務</string>
+    <string name="local_service_started">monerujo 服務運行中</string>
+    <string name="local_service_stopped">monerujo 服務已終止</string>
+    <string name="local_service_label">monerujo 服務</string>
+    <string name="local_service_connected">monerujo 服務已連接</string>
+    <string name="local_service_disconnected">monerujo 服務已中斷</string>
+
+    <string name="status_synced">已同步區塊:</string>
+    <string name="status_remaining">剩餘區塊</string>
+    <string name="status_syncing">掃描中:</string>
+
+    <string name="prompt_problems">問題</string>
+    <string name="message_strorage_not_writable">外部儲存空間無法寫入!</string>
+    <string name="message_strorage_not_permitted">我們真的很需要你的外部儲存空間權限!</string>
+    <string name="message_camera_not_permitted">沒有相機 = 無法使用QR碼掃描!</string>
+
+    <string name="label_copy_viewkey">查看金鑰</string>
+    <string name="label_copy_address">公開地址</string>
+    <string name="label_copy_xmrtokey">XMR.TO 金鑰</string>
+    <string name="message_copy_viewkey">查看金鑰已複製至剪貼簿!</string>
+    <string name="message_copy_xmrtokey">XMR.TO 金鑰已複製至剪貼簿!</string>
+    <string name="message_copy_address">錢包地址已複製至剪貼簿!</string>
+    <string name="message_copy_txid">交易ID 已複製至剪貼簿!</string>
+    <string name="message_noselect_seed">選取種子碼因安全性因素已停用選取!</string>
+    <string name="message_noselect_key">花費金鑰因安全性因素已停用選取!</string>
+    <string name="message_nocopy">因安全性因素已停用複製功能!</string>
+
+    <string name="message_exchange_failed">無法取得匯率!\n使用 XMR/XMR 或重試</string>
+
+    <string name="generate_title">建立錢包</string>
+    <string name="generate_name_hint">錢包名稱</string>
+    <string name="generate_password_hint">錢包密碼</string>
+    <string name="generate_buttonGenerate">建立錢包!</string>
+    <string name="generate_seed">記憶種子碼</string>
+    <string name="generate_button_accept">我已抄寫下這25個單字!</string>
+
+    <string name="generate_button_backup">備份</string>
+    <string name="generate_button_export">匯出金鑰</string>
+    <string name="generate_button_delete">刪除</string>
+
+    <string name="generate_wallet_name">取個名稱!</string>
+    <string name="generate_wallet_exists">錢包已存在!</string>
+    <string name="generate_wallet_dot">無法使用以.作為開頭</string>
+    <string name="generate_wallet_creating">建立錢包</string>
+    <string name="generate_wallet_created">錢包已建立</string>
+    <string name="generate_wallet_create_failed">錢包建立失敗</string>
+
+    <string name="generate_restoreheight_error">輸入區塊高度或日期(YYYY-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">金鑰</string>
+    <string name="generate_wallet_type_new">新增</string>
+    <string name="generate_wallet_type_seed">種子碼</string>
+    <string name="generate_wallet_type_view">查看</string>
+
+    <string name="generate_address_hint">公開地址</string>
+    <string name="generate_viewkey_hint">查看金鑰</string>
+    <string name="generate_spendkey_hint">花費金鑰</string>
+    <string name="generate_mnemonic_hint">25字記憶種子碼</string>
+    <string name="generate_restoreheight_hint">從區塊高度或日期(YYYY-MM-DD)回復</string>
+
+    <string name="generate_wallet_label">錢包</string>
+    <string name="generate_password_label">密碼</string>
+    <string name="generate_address_label">公開地址</string>
+    <string name="generate_viewkey_label">查看金鑰</string>
+    <string name="generate_spendkey_label">花費金鑰</string>
+    <string name="generate_mnemonic_label">記憶種子碼</string>
+    <string name="generate_restoreheight_label">回復高度:</string>
+
+    <string name="generate_check_key">輸入有效的金鑰</string>
+    <string name="generate_check_address">輸入有效的地址</string>
+    <string name="generate_check_mnemonic">輸入你的25字種子碼</string>
+
+    <string name="send_amount_btc_xmr">%1$s (指示)</string>
+
+    <string name="send_address_hint">收款者的 XMR 或 BTC 地址</string>
+    <string name="send_paymentid_hint">付款ID (選填)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">註記 (選填)</string>
+    <string name="send_priority_hint">Tx優先權</string>
+    <string name="send_mixin_hint">Mixin</string>
+    <string name="send_sweep_hint">Sweep</string>
+    <string name="send_generate_paymentid_hint">產生</string>
+    <string name="send_qr_hint">掃描</string>
+    <string name="send_prepare_hint">準備</string>
+    <string name="send_dispose_hint">Dispose (復原)</string>
+    <string name="send_send_label">發送我的 Moneroj</string>
+    <string name="send_send_timed_label">發送我的 Moneroj (%1$s)</string>
+    <string name="send_really_send_hint">最後步驟 - 確認!</string>
+    <string name="send_qr_invalid">這不是QR碼</string>
+    <string name="send_qr_address_invalid">這不是有效的付款QR碼</string>
+    <string name="send_address_invalid">這不是有效的地址</string>
+    <string name="send_preparing_progress">正在準備交易</string>
+    <string name="send_title">發送</string>
+    <string name="send_available">餘額: %1$s XMR</string>
+    <string name="send_address_title">地址</string>
+    <string name="send_amount_title">金額</string>
+    <string name="send_settings_title">設定</string>
+    <string name="send_confirm_title">確認</string>
+    <string name="send_success_title">完成</string>
+    <string name="send_summary_heading">總結</string>
+    <string name="send_amount_too_large">金額 > 餘額</string>
+
+    <string name="send_amount_label">金額</string>
+    <string name="send_fee_btc_label">手續費 (XMR)</string>
+    <string name="send_fee_label">手續費</string>
+    <string name="send_dust_label">Dust</string>
+    <string name="send_total_btc_label">總計 (XMR)</string>
+    <string name="send_total_label">總計</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s 手續費</string>
+
+    <string name="send_create_tx_error_title">建立交易錯誤</string>
+
+    <string name="tx_list_fee_pending">內含 %1$s 手續費</string>
+    <string name="tx_list_fee">- 手續費 %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">失敗</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_status_btc">狀態</string>
+    <string name="tx_address">地址</string>
+    <string name="tx_timestamp">時間戳記</string>
+    <string name="tx_id">TX ID</string>
+    <string name="tx_id_btc">TX ID\n(BTC)</string>
+    <string name="tx_key">TX金鑰</string>
+    <string name="tx_destination">收款地址</string>
+    <string name="tx_destination_btc">收款地址\n(BTC)</string>
+    <string name="tx_paymentId">付款ID</string>
+    <string name="tx_blockheight">區塊</string>
+    <string name="tx_amount">金額</string>
+    <string name="tx_amount_btc">金額\n(BTC)</string>
+    <string name="tx_fee">手續費</string>
+    <string name="tx_transfers">轉帳</string>
+    <string name="tx_notes">附註</string>
+    <string name="tx_button_copy">複製至剪貼簿</string>
+    <string name="tx_copy_message">已複製至剪貼簿</string>
+    <string name="tx_copy_label">交易明細</string>
+    <string name="tx_notes_hint">(選填)</string>
+    <string name="tx_button_notes">儲存</string>
+    <string name="tx_notes_set">附註已儲存</string>
+    <string name="tx_notes_set_failed">附註儲存失敗</string>
+    <string name="tx_title">交易明細</string>
+
+    <string name="tx_pending">等待確認中</string>
+    <string name="tx_failed">失敗</string>
+
+    <string name="receive_generate_hint">顯示QR碼</string>
+    <string name="receive_paymentid_button">產生</string>
+    <string name="receive_paymentid_hint">付款ID (選填)</string>
+    <string name="receive_amount_hint">金額</string>
+    <string name="receive_amount_xmr_hint">XMR</string>
+    <string name="receive_cannot_open">無法開啟錢包!</string>
+    <string name="receive_paymentid_invalid">16 或 64 Hex 字元 (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">使用整合地址時必須為空白</string>
+    <string name="receive_bitcoin_paymentid_invalid">使用BTC地址時必須為空白</string>
+    <string name="receive_amount_invalid">必須大於0</string>
+
+    <string name="receive_amount_empty">輸入數值</string>
+    <string name="receive_amount_too_big">最大值 %1$s</string>
+    <string name="receive_amount_negative">最小值 0</string>
+    <string name="receive_amount_nan">輸入的XMR不是個數字</string>
+
+    <string name="receive_title">接收</string>
+
+    <string name="details_alert_message">將會顯示敏感資訊。\n請注意周遭安全!</string>
+    <string name="details_alert_yes">我現在很安全</string>
+    <string name="details_alert_no">不看了!</string>
+    <string name="details_title">詳細資訊</string>
+
+    <string name="archive_alert_message">錢包檔案將會被備份並且於列表中刪除!</string>
+    <string name="archive_alert_yes">好的!</string>
+    <string name="archive_alert_no">不了!</string>
+
+    <string-array name="priority">
+        <item>預設優先權</item>
+        <item>低優先權</item>
+        <item>中優先權</item>
+        <item>高優先權</item>
+    </string-array>
+
+    <string name="fab_create_new">建立新錢包</string>
+    <string name="fab_restore_viewonly">回復唯讀錢包</string>
+    <string name="fab_restore_key">從私鑰回復錢包</string>
+    <string name="fab_restore_seed">從25字種子碼恢復錢包</string>
+</resources>
