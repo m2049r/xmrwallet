@@ -6,7 +6,7 @@
         <p>Enter a unique wallet name and password.
         The password is used for securing your wallet data on the device. Use a strong password -
         even better use a passphrase.</p>
-        <h2>Note your Mnemonic Seed!</h3>
+        <h2>Note your Mnemonic Seed!</h2>
         <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
         This is the only data needed to recover your wallet at a later point
         and gain full access to your funds.
