@@ -5,7 +5,7 @@
         <p>Se hai bisogno di un nuovo indirizzo Monero!</p>
         <p>Inserisci nome e password del portafoglio.
         La password viene usata per rendere sicuri i dati del portafoglio sul tuo dispositivo. Utilizza una password efficace - meglio se una passphrase.</p>
-        <h2>Prendi nota del tuo Seed Mnemonico!</h3>
+        <h2>Prendi nota del tuo Seed Mnemonico!</h2>
         <p>Sulla schermata successiva troverai il tuo \"Seed Mnemonico\" da 25 parole.
 		Questa è l'unica informazione necessaria per recuperare il tuo portafoglio d'ora in poi
 		e avere pieno accesso ai tuoi fondi.
