@@ -743,7 +743,9 @@ public class LoginActivity extends SecureActivity
     }
 
     void startLoginFragment() {
+        // we set these here because we cannot be ceratin we have permissions for storage before
         Helper.setMoneroHome(this);
+        Helper.initLogger(this);
         Fragment fragment = new LoginFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment).commit();

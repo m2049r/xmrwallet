@@ -38,6 +38,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -286,5 +287,20 @@ public class Helper {
         } catch (ErrnoException ex) {
             throw new IllegalStateException(ex);
         }
+    }
+
+    static public void initLogger(Context context) {
+        if (BuildConfig.DEBUG) {
+            initLogger(context, WalletManager.LOGLEVEL_DEBUG);
+        }
+        // no logger if not debug
+    }
+
+    // TODO make the log levels refer to the  WalletManagerFactory::LogLevel enum ?
+    static public void initLogger(Context context, int level) {
+        String home = getStorage(context, HOME_DIR).getAbsolutePath();
+        WalletManager.initLogger(home + "/monerujo", "monerujo.log");
+        if (level >= WalletManager.LOGLEVEL_SILENT)
+            WalletManager.setLogLevel(level);
     }
 }

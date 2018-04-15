@@ -3,6 +3,8 @@
 *.iml
 /.idea/libraries
 /.idea/workspace.xml
+/.idea/caches
+/.idea/codeStyles
 /local.properties
 /captures
 .externalNativeBuild

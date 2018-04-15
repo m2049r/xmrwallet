@@ -86,6 +86,10 @@ public class WalletNode {
         return name;
     }
 
+    public NetworkType getNetworkType() {
+        return networkType;
+    }
+
     public String getAddress() {
         return host + ":" + port;
     }
