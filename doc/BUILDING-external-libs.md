@@ -64,16 +64,16 @@ ln -s /opt/android/build/openssl/include /opt/android/build/openssl/x86_64/inclu
 ```
 ```Shell
 ln -sf /opt/android/build/openssl/include /opt/android/tool/arm/sysroot/usr/include/openssl
-ln -sf /opt/android/build/openssl/lib/armeabi-v7a/*.so /opt/android/tool/arm/sysroot/usr/lib
+ln -sf /opt/android/build/openssl/arm/lib/*.so /opt/android/tool/arm/sysroot/usr/lib
 
 ln -sf /opt/android/build/openssl/include /opt/android/tool/arm64/sysroot/usr/include/openssl
-ln -sf /opt/android/build/openssl/lib/arm64-v8a/*.so /opt/android/tool/arm64/sysroot/usr/lib
+ln -sf /opt/android/build/openssl/arm64/lib/*.so /opt/android/tool/arm64/sysroot/usr/lib
 
 ln -sf /opt/android/build/openssl/include /opt/android/tool/x86/sysroot/usr/include/openssl
-ln -sf /opt/android/build/openssl/lib/x86/*.so /opt/android/tool/x86/sysroot/usr/lib
+ln -sf /opt/android/build/openssl/x86/lib/*.so /opt/android/tool/x86/sysroot/usr/lib
 
 ln -sf /opt/android/build/openssl/include /opt/android/tool/x86_64/sysroot/usr/include/openssl
-ln -sf /opt/android/build/openssl/lib/x86_64/*.so /opt/android/tool/x86_64/sysroot/usr/lib64
+ln -sf /opt/android/build/openssl/x86_64/lib/*.so /opt/android/tool/x86_64/sysroot/usr/lib64
 ```
 
 ## Build Boost
