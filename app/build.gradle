@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 86
-        versionName "1.4.6 'Monero Spedner'"
+        versionCode 87
+        versionName "1.4.7 'Monero Spedner'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -48,10 +48,14 @@ android {
     // APKs for the same app that all have the same version information.
     android.applicationVariants.all { variant ->
         // Assigns a different version code for each output APK.
-        variant.outputs.each {
+        variant.outputs.all {
             output ->
                 def abiName = output.getFilter(com.android.build.OutputFile.ABI)
                 output.versionCodeOverride = abiCodes.get(abiName, 0) + 10 * variant.versionCode
+
+                if (abiName == null) abiName = "universal"
+                def v = "${variant.versionName}".replaceFirst(" .*\$", "").replace(".", "x")
+                outputFileName = "$rootProject.ext.apkName-" + v + "_" + abiName + ".apk"
         }
     }
 }
