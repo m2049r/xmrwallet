@@ -1,5 +1,12 @@
 # Monerujo
-Another Android Monero Wallet
+Another Android Monero Wallet for Monero
+	**(not
+    Monero Classic,
+    Monero-Classic,
+    Monero Zero,
+    Monero Original,
+    Monero C,
+    Monero V)**
 
 ### QUICKSTART
 - Download the APK for the most current release [here](https://github.com/m2049r/xmrwallet/releases) and install it
