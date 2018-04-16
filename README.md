@@ -34,8 +34,8 @@ The official monero client shows the same behaviour.
 No need to build. Binaries are included:
 
 - openssl-1.0.2l
-- monero-v0.11.1.0
-- boost_1_64_0
+- monero-v0.12
+- boost_1_58_0
 
 If you want to build them yourself (recommended) check out [the instructions](doc/BUILDING-external-libs.md)
 
