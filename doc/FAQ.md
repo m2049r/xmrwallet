@@ -29,6 +29,10 @@
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
 
+## The app always crashes as soon as I open a wallet!
+Users of Zenfone MAX & Zenfone 2 Laser (possibly others) **MUST** use the armeabi-v7a APK as the arm64-v8a build uses hardware AES
+functionality these models don't have. If this does not help, please report the problem.
+
 ## I am having problems with my BTC transaction
 Please contact the friendly people over at http://xmr.to for support - you will need your XMR.TO Secret Key.
 

@@ -24,6 +24,8 @@ You may lose all your Moneroj if you use this App. Be cautious when spending on 
 - see taiga.getmonero.org & issues on github
 
 ### Issues / Pitfalls
+- Users of Zenfone MAX & Zenfone 2 Laser (possibly others) **MUST** use the armeabi-v7a APK as the arm64-v8a build uses hardware AES
+functionality these models don't have.
 - You should backup your wallet files in the "monerujo" folder periodically.
 - Also note, that on some devices the backups will only be visible on a PC over USB after a reboot of the device (it's an Android bug/feature)
 - Created wallets on a private testnet are unusable because the restore height is set to that
