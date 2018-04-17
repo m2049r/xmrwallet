@@ -145,7 +145,7 @@
     <string name="status_transaction_failed">Transaction failed: %1$s</string>
     <string name="status_transaction_prepare_failed">Could not create transaction!</string>
 
-    <string name="send_xmrto_timeout">Dude, you waited too long!</string>
+    <string name="send_xmrto_timeout">You waited too long my friend!</string>
 
     <string name="service_busy">I am still busy with your last wallet &#8230;</string>
 
