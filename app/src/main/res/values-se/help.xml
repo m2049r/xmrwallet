@@ -1,73 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
-        <h1>Create Wallet - New</h1>
-        <p>If you need a new Monero Address!</p>
-        <p>Enter a unique wallet name and password.
-        The password is used for securing your wallet data on the device. Use a strong password -
-        even better use a passphrase.</p>
-        <h2>Note your Mnemonic Seed!</h2>
-        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
-        This is the only data needed to recover your wallet at a later point
-        and gain full access to your funds.
-        Keeping this secure and private is very important, as it gives <em>anyone</em>
-        full access to your funds!</p>
-        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
-        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
-        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
-        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
-        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
-        and secure places.</p>
+        <h1>Skapa Plånbok - Ny</h1>
+        <p>Om du behöver en ny Monero-adress!</p>
+        <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.<p>
+        <h2>Anteckna ditt Mnemoniska Frö!</h2>
+        <p>På den följande skärmen kommer du att hitta ditt 25-ord \"Mnemoniska Frö\".
+        Det här är den enda datan som behövs för att återställa din plånbok i framtiden
+        och få full tillgång till dina pengar.
+        Att bevara denna data säkert och privat är väldigt viktigt, eftersom det ger <em>vem som helst</em>
+        full tillgång till dina pengar!</p>
+        <p>Om du förlorar tillgång till din plånboks lösenord, kan du fortfarande återställa din plånbok med ditt Mnemoniska Frö.</p>
+        <p>Det finns inget sätt att återställa ditt Mnemoniska Frö, om du förlorar det förlorar du alla dina pengar!
+        Det Mnemoniska Fröet kan även aldrig ändras, så om det blir stulet eller på annat sätt komprometterat,
+        måste du flytta dina pengar till en ny plånbok (med ett nytt Mnemoniskt Frö). Därför, är det bäst
+        att du bevarar ditt Mnemoniska Frö genom att skriva ner det och förvara det i <em>flera</em> säkra
+        platser.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.</p>
-        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Skapa Plånbok - Frö</h1>
+        <p>Om du redan har en Monero-adress och vill återställa dess transaktioner från blockkedjan!</p>
+        <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.</p>
+        <p>Ange ditt frö i fältet \"Mnemoniskt Frö\".<p>
+        <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
+        \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
+        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Create Wallet - Keys</h1>
-        <p>If you are recovering your wallet using your keys!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Skapa Plånbok - Nycklar</h1>
+        <p>Om du återställer en plånbok med dina nycklar!</p>
+        <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.</p>
+        <p>Ange din Monero-adress i fältet \"Offentlig Adress\" och fyll i \"Visningsnyckel\" och \"Spenderingsnyckel\".</p>
+        <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
+        \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
+        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Create Wallet - View</h1>
-        <p>If you just want to monitor incoming transactions to a wallet!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Skapa Plånbok - Visa</h1>
+        <p>Om du bara vill hålla ett öga på inkommande transaktioner till en plånbok!</p>
+        <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.</p>
+        <p>Ange din Monero-adress i fältet \"Offentlig Adress\" och fyll i \"Visningsnyckel\" och \"Spenderingsnyckel\".</p>
+        <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
+        \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
+        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
-        <h1>Wallet Details</h1>
-        <h2>Public address</h2>
-        Your public address is like your bank account number you can share this with anyone without
-        having to fear losing your Monero. People will send Monero to your wallet using this address.
-        <h2>Mnemonic Seed</h2>
-        This is the only data needed to recover your wallet at a later point and gain full access to
-        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
-        access to your Monero! If you haven’t written this down somewhere safe please do!
-        <h2>View key</h2>
-        Your view key can be used to monitor incoming transactions to your wallet without giving
-        permission to spend the funds inside your wallet.
-        <h2>Spend key</h2>
-        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
-        anyone this key, keep it safe like your Mnemonic Seed.
+        <h1>Plånboksinformation</h1>
+        <h2>Offentlig adress</h2>
+        Din offentliga adress är som ditt bankkontonummer, du kan dela det med vem som helst utan att
+        behöva oroa dig om att förlora dina Moneroj. Folk kommer skicka Monero till din plånbok med
+        den här adressen.
+        <h2>Mnemoniskt Frö</h2>
+        Det här är den enda datan som behövs för att återställa din plånbok i framtiden och få full behörighet
+        till dina pengar. Att bevara fröet säkert och privat är extremt viktigt, eftersom att det ger
+        <em>vem som helst</em> tillgång till dina Moneroj! Om du inte har skrivit ner det någonstans säkert,
+        vänligen gör det nu!
+        <h2>Visningsnyckel</h2>
+        Din visningsnyckel kan användas för att hålla ett öga på inkommande transaktioner till din
+        plånbok utan att ge behörigheten att spendera pengarna i din plånbok.
+        <h2>Spenderingsnyckel</h2>
+        Din spenderingsnyckel ger vem som helst tillgång att spendera all Monero i din plånbok, så
+        ge inte denna nyckeln till någon, förvara den säkert som ditt Mnemoniska Frö.
     ]]></string>
 
     <string name="help_list"><![CDATA[
