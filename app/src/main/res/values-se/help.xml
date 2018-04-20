@@ -72,42 +72,48 @@
     ]]></string>
 
     <string name="help_list"><![CDATA[
-        <h1>Wallet List</h1>
-        <h2>Node</h2>
-        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
-        to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
-        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
-        <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
-        in the internal storage of your device. You can use a file explorer app to see them.
-        You should make backups of this folder on a regular basis to off-device storage in
-        case your device explodes or gets stolen.</p>
+        <h1>Plånbokslista</h1>
+        <h2>Nod</h2>
+        Monerujo använder en Avlägsen Nod för att kommunicera med Monero-nätverket utan att
+        behöva ladda ner och lagra en kopia av hela blockkedjan. Du kan hitta en lista av populära
+        avlägsna noder eller lära dig hur man kör sin egen avlägsen nod här https://moneroworld.com/
+        <p>
+        <p>Monerujo kommer med några avlägsna noder inställda. Den kommer ihåg de 5 senast använda noderna.</p>
+        <h2>Plånböcker</h2>
+        <p>Här kan du se dina plånböcker. De finns i <tt>monerujo</tt> mappen på din enhets
+        interna minne. Du kan använda en filutforskar app för att se dem. Du borde
+        säkerhetskopiera den här mappen regelbundet till en extern hårddisk, ifall din
+        enhet blir stulen eller exploderar.
+        </p>
         <p>Select a wallet to open it or press the \"+\" to create a new one.
-        Or select one of the wallet operations:</p>
-        <h3>Details</h3>
-        <p>Show the wallet details, seed &amp; keys.</p>
-        <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
-        <h3>Rename</h3>
-        <p>Rename the wallet. Backups are not renamed.</p>
-        <h3>Backup</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
-        overwriting previous copies there.</p>
-        <h3>Archive</h3>
-        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
-        folder. If you no longer need your backups you should delete them with a file explorer or
-        secure delete app.</p>
+        Or select one of the wallet operations:
+
+        Välj en plånbok för att öppna det eller tryck på \"+\" för att skapa en ny.
+        Eller välj en plånboks operation:
+        </p>
+        <h3>Detaljer</h3>
+        <p>Visa plånbokens detaljer, frö &amp; nycklar.</p>
+        <h3>Mottaga</h3>
+        <p>Gör en QR kod för att ta emot Moneroj.</p>
+        <h3>Ändra namn</h3>
+        <p>Ändra namn på plånboken. Säkerhetskopior ändrar inte namn.</p>
+        <h3>Säkerhetskopiera</h3>
+        <p>Skapa en kopia av plånboken i <tt>backups</tt> mappen i <tt>monerujo</tt> som skriver
+        över tidigare kopior där.</p>
+        <h3>Arkiv</h3>
+        <p>Gör en säkerhetskopiering och ta bort den efter. Kopian är kvar i <tt>backups</tt> mappen.
+        Om du inte längre behöver dina säkerhetskopior borde du ta bort de med en filutforskare
+        eller säker databorttagnings-app.
+        </p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>The Balance</h2>
+        <h1>Plånboken</h1>
+        <h2>Inläsning</h2>
+        Eftersom Monero gillar att ha saker privat, läser Monerujo in blockkedjan för att se om du fått
+        nya Moneroj varje gång du öppnar plånboken, det lagras alltså bara information på din mobil som
+        har med din plånbok att göra. Ibland kan det ta lång tid om du inte har synkroniserat på länge.
+        <h2>The Balance</h2> 3.234162
         <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
         Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
         as unconfirmed.
