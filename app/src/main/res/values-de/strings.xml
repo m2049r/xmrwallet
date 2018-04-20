@@ -184,169 +184,169 @@
     <string name="status_remaining">Blöcke verbleibend</string>
     <string name="status_syncing">Scanne:</string>
 
-    <string name="prompt_problems">Problems</string>
-    <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
-    <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
+    <string name="prompt_problems">Probleme</string>
+    <string name="message_strorage_not_writable">Externer Speicher nicht beschreibbar! Panik!</string>
+    <string name="message_strorage_not_permitted">Wir brauchen die Zugriffsrechte auf den externen Speicher wirklich!</string>
+    <string name="message_camera_not_permitted">Keine Kamera = Kein QR scannen!</string>
 
     <string name="label_copy_viewkey">View Key</string>
-    <string name="label_copy_address">Public Address</string>
-    <string name="label_copy_xmrtokey">XMR.TO Key</string>
-    <string name="message_copy_viewkey">View Key copied to clipboard!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Key copied to clipboard!</string>
-    <string name="message_copy_address">Wallet Address copied to clipboard!</string>
-    <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
-    <string name="message_noselect_seed">Selecting seed disabled for security reasons!</string>
-    <string name="message_noselect_key">Selecting spend key disabled for security reasons!</string>
-    <string name="message_nocopy">Copy disabled for security reasons!</string>
+    <string name="label_copy_address">Öffentliche Adresse</string>
+    <string name="label_copy_xmrtokey">XMR.TO Schlüssel</string>
+    <string name="message_copy_viewkey">View Key in Zwischenablage kopiert!</string>
+    <string name="message_copy_xmrtokey">XMR.TO Schlüssel in Zwischenablage kopiert!</string>
+    <string name="message_copy_address">Wallet Adresse in Zwischenablage kopiert!</string>
+    <string name="message_copy_txid">Transaktions ID in Zwischenablage kopiert!</string>
+    <string name="message_noselect_seed">Auswahl der Wortkette aus Sicherheitsgründen deaktiviert!</string>
+    <string name="message_noselect_key">Auswahl des spend keys aus Sicherheitsgründen deaktiviert!</string>
+    <string name="message_nocopy">Kopieren aus Sicherheitsgründen deaktiviert!</string>
 
-    <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
+    <string name="message_exchange_failed">Umtausch-Rate nicht verfügbar!\nNutze XMR/XMR oder versuche es noch einmal</string>
 
-    <string name="generate_title">Create Wallet</string>
+    <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Passphrase</string>
-    <string name="generate_buttonGenerate">Make me a wallet already!</string>
-    <string name="generate_seed">Mnemonic Seed</string>
-    <string name="generate_button_accept">I have noted these 25 words!</string>
+    <string name="generate_password_hint">Wallet Passwort</string>
+    <string name="generate_buttonGenerate">Erstell mir jetzt endliche eine Wallet!</string>
+    <string name="generate_seed">Wortkette</string>
+    <string name="generate_button_accept">Ich habe mir diese 25 Wörter notiert!</string>
 
     <string name="generate_button_backup">Backup</string>
-    <string name="generate_button_export">Export Keys</string>
-    <string name="generate_button_delete">DELETE</string>
+    <string name="generate_button_export">Schlüssel exportieren</string>
+    <string name="generate_button_delete">LÖSCHEN</string>
 
-    <string name="generate_wallet_name">Give me a name!</string>
-    <string name="generate_wallet_exists">Wallet exists!</string>
-    <string name="generate_wallet_dot">Cannot begin with .</string>
-    <string name="generate_wallet_creating">Creating wallet</string>
-    <string name="generate_wallet_created">Wallet created</string>
-    <string name="generate_wallet_create_failed">Wallet create failed</string>
+    <string name="generate_wallet_name">Gib mir einen Namen!</string>
+    <string name="generate_wallet_exists">Wallet existiert bereits!</string>
+    <string name="generate_wallet_dot">Kann nicht mit einem . beginnen</string>
+    <string name="generate_wallet_creating">Erstelle Wallet</string>
+    <string name="generate_wallet_created">Wallet erstellt</string>
+    <string name="generate_wallet_create_failed">Walleterstellung fehlgeschlagen</string>
 
-    <string name="generate_restoreheight_error">Enter Number or Date (YYYY-MM-DD)</string>
+    <string name="generate_restoreheight_error">Gib eine Nummer oder ein Datum (JJJJ-MM-TT) ein</string>
 
-    <string name="generate_wallet_type_key">Keys</string>
-    <string name="generate_wallet_type_new">New</string>
-    <string name="generate_wallet_type_seed">Seed</string>
+    <string name="generate_wallet_type_key">Schlüssel</string>
+    <string name="generate_wallet_type_new">Neu</string>
+    <string name="generate_wallet_type_seed">Wortkette</string>
     <string name="generate_wallet_type_view">View</string>
 
-    <string name="generate_address_hint">Public Address</string>
+    <string name="generate_address_hint">Öffentliche Adresse</string>
     <string name="generate_viewkey_hint">View Key</string>
     <string name="generate_spendkey_hint">Spend Key</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
-    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
+    <string name="generate_mnemonic_hint">25-Wörter Wortkette</string>
+    <string name="generate_restoreheight_hint">Wiederherstellungshöhe oder Datum (JJJJ-MM-TT)</string>
 
     <string name="generate_wallet_label">Wallet</string>
-    <string name="generate_password_label">Password</string>
-    <string name="generate_address_label">Public Address</string>
+    <string name="generate_password_label">Passwort</string>
+    <string name="generate_address_label">ÖFfentliche Adresse</string>
     <string name="generate_viewkey_label">View Key</string>
     <string name="generate_spendkey_label">Spend Key</string>
-    <string name="generate_mnemonic_label">Mnemonic Seed</string>
-    <string name="generate_restoreheight_label">Restore Height:</string>
+    <string name="generate_mnemonic_label">Wortkette</string>
+    <string name="generate_restoreheight_label">Wiederherstellungshöhe:</string>
 
-    <string name="generate_check_key">Enter valid Key</string>
-    <string name="generate_check_address">Enter valid Address</string>
-    <string name="generate_check_mnemonic">Enter your 25 word seed</string>
+    <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
+    <string name="generate_check_address">Gib eine gültige Adresse ein</string>
+    <string name="generate_check_mnemonic">Gib deine 25 Wörter Wortkette ein</string>
 
     <string name="send_amount_btc_xmr">%1$s (indicative)</string>
 
-    <string name="send_address_hint">Receiver\'s XMR or BTC Address</string>
-    <string name="send_paymentid_hint">Payment ID (optional)</string>
+    <string name="send_address_hint">Empfänger XMR oder BTC Adresse</string>
+    <string name="send_paymentid_hint">Zahlungs ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
-    <string name="send_notes_hint">Private Notes (optional)</string>
-    <string name="send_priority_hint">Tx Priority</string>
+    <string name="send_notes_hint">Private Notizen (optional)</string>
+    <string name="send_priority_hint">Tx Priorität</string>
     <string name="send_mixin_hint">Mixin</string>
     <string name="send_sweep_hint">Sweep</string>
-    <string name="send_generate_paymentid_hint">Generate</string>
-    <string name="send_qr_hint">Scan</string>
-    <string name="send_prepare_hint">Prepare</string>
-    <string name="send_dispose_hint">Dispose (Undo)</string>
-    <string name="send_send_label">Spend my sweet Moneroj</string>
-    <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Last Step - Confirm!</string>
-    <string name="send_qr_invalid">Not a QR Code</string>
-    <string name="send_qr_address_invalid">Not a valid payment QR code</string>
-    <string name="send_address_invalid">Not a valid address</string>
-    <string name="send_preparing_progress">Preparing transaction</string>
-    <string name="send_title">Send</string>
-    <string name="send_available">Balance: %1$s XMR</string>
-    <string name="send_address_title">Address</string>
-    <string name="send_amount_title">Amount</string>
-    <string name="send_settings_title">Settings</string>
-    <string name="send_confirm_title">Confirm</string>
-    <string name="send_success_title">Done</string>
-    <string name="send_summary_heading">Summary</string>
-    <string name="send_amount_too_large">Amount > Funds</string>
+    <string name="send_generate_paymentid_hint">Generieren</string>
+    <string name="send_qr_hint">Scannen</string>
+    <string name="send_prepare_hint">Vorbereiten</string>
+    <string name="send_dispose_hint">Entsorgen (Rückgängig)</string>
+    <string name="send_send_label">Gib meine wertvollen Moneroj aus</string>
+    <string name="send_send_timed_label">Gib meine wertvollen Moneroj aus (%1$s)</string>
+    <string name="send_really_send_hint">Letzter Schritt - Bestätigen!</string>
+    <string name="send_qr_invalid">Kein QR Code</string>
+    <string name="send_qr_address_invalid">Kein gültiger Zahlungs QR code</string>
+    <string name="send_address_invalid">Keine gültige Adresse</string>
+    <string name="send_preparing_progress">Bereite Transaktion vor</string>
+    <string name="send_title">Senden</string>
+    <string name="send_available">Saldo: %1$s XMR</string>
+    <string name="send_address_title">Adresse</string>
+    <string name="send_amount_title">Menge</string>
+    <string name="send_settings_title">Einstellungen</string>
+    <string name="send_confirm_title">Bestätigen</string>
+    <string name="send_success_title">Fertig</string>
+    <string name="send_summary_heading">Zusammenfassung</string>
+    <string name="send_amount_too_large">Menge > Gelder</string>
 
-    <string name="send_amount_label">Amount</string>
-    <string name="send_fee_btc_label">Fee (XMR)</string>
-    <string name="send_fee_label">Fee</string>
-    <string name="send_dust_label">Dust</string>
+    <string name="send_amount_label">Menge</string>
+    <string name="send_fee_btc_label">Gebühr (XMR)</string>
+    <string name="send_fee_label">Gebühr</string>
+    <string name="send_dust_label">Staub</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Fee</string>
+    <string name="send_fee">+%1$s Gebühr</string>
 
-    <string name="send_create_tx_error_title">Create Transaction Error</string>
+    <string name="send_create_tx_error_title">Transaktionserstellungsfehler</string>
 
-    <string name="tx_list_fee_pending">incl. %1$s fee</string>
-    <string name="tx_list_fee">- Fee %1$s</string>
+    <string name="tx_list_fee_pending">inkl. %1$s Gebühr</string>
+    <string name="tx_list_fee">- Gebühr %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
-    <string name="tx_list_failed_text">failed</string>
+    <string name="tx_list_failed_text">fehlgeschlagen</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
     <string name="tx_status_btc">Status</string>
-    <string name="tx_address">Address</string>
-    <string name="tx_timestamp">Timestamp</string>
+    <string name="tx_address">Adresse</string>
+    <string name="tx_timestamp">Zeitstempel</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_id_btc">TX ID\n(BTC)</string>
-    <string name="tx_key">TX Key</string>
-    <string name="tx_destination">Destination</string>
-    <string name="tx_destination_btc">Destination\n(BTC)</string>
-    <string name="tx_paymentId">Payment ID</string>
+    <string name="tx_key">TX Schlüssel</string>
+    <string name="tx_destination">Ziel</string>
+    <string name="tx_destination_btc">Ziel\n(BTC)</string>
+    <string name="tx_paymentId">Zahlungs ID</string>
     <string name="tx_blockheight">Block</string>
-    <string name="tx_amount">Amount</string>
-    <string name="tx_amount_btc">Amount\n(BTC)</string>
-    <string name="tx_fee">Fee</string>
+    <string name="tx_amount">Menge</string>
+    <string name="tx_amount_btc">Menge\n(BTC)</string>
+    <string name="tx_fee">Gebühr</string>
     <string name="tx_transfers">Transfers</string>
-    <string name="tx_notes">Notes</string>
-    <string name="tx_button_copy">Copy to Clipboard</string>
-    <string name="tx_copy_message">Copied to Clipboard</string>
-    <string name="tx_copy_label">Transaction Details</string>
+    <string name="tx_notes">Notizen</string>
+    <string name="tx_button_copy">In Zwischenablage kopieren</string>
+    <string name="tx_copy_message">In Zwischenablage kopiert</string>
+    <string name="tx_copy_label">Transaktionsdetails</string>
     <string name="tx_notes_hint">(optional)</string>
-    <string name="tx_button_notes">Save</string>
-    <string name="tx_notes_set">Notes saved</string>
-    <string name="tx_notes_set_failed">Notes saved failed</string>
-    <string name="tx_title">Transaction Details</string>
+    <string name="tx_button_notes">Speichern</string>
+    <string name="tx_notes_set">Notizen gespeichert</string>
+    <string name="tx_notes_set_failed">Notizen speichern fehlgeschlagen</string>
+    <string name="tx_title">Transaktionsdetails</string>
 
-    <string name="tx_pending">PENDING</string>
-    <string name="tx_failed">FAILED</string>
+    <string name="tx_pending">AUSSTEHEND</string>
+    <string name="tx_failed">FEHLGESCHLAGEN</string>
 
-    <string name="receive_generate_hint">Show me the QR Code</string>
-    <string name="receive_paymentid_button">Generate</string>
-    <string name="receive_paymentid_hint">Payment ID (optional)</string>
-    <string name="receive_amount_hint">Amount</string>
+    <string name="receive_generate_hint">Zeig mir den QR Code</string>
+    <string name="receive_paymentid_button">Generieren</string>
+    <string name="receive_paymentid_hint">Zahlungs ID (optional)</string>
+    <string name="receive_amount_hint">Menge</string>
     <string name="receive_amount_xmr_hint">XMR</string>
-    <string name="receive_cannot_open">Could not open wallet!</string>
-    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
-    <string name="receive_bitcoin_paymentid_invalid">Must be empty with bitcoin address</string>
-    <string name="receive_amount_invalid">Must be > 0</string>
+    <string name="receive_cannot_open">Konnte Wallet nicht öffnen!</string>
+    <string name="receive_paymentid_invalid">16 oder 64 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">Muss bei einer integrierten Adresse leer sein</string>
+    <string name="receive_bitcoin_paymentid_invalid">Muss bei einer BTC Adresse leer sein</string>
+    <string name="receive_amount_invalid">Muss > 0 sein</string>
 
-    <string name="receive_amount_empty">Enter value</string>
+    <string name="receive_amount_empty">Wert eingeben</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR not a number</string>
+    <string name="receive_amount_nan">XMR keine Nummer</string>
 
-    <string name="receive_title">Receive</string>
+    <string name="receive_title">Empfangen</string>
 
-    <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
-    <string name="details_alert_yes">I\'m safe</string>
-    <string name="details_alert_no">Take me back!</string>
+    <string name="details_alert_message">Sensible Daten werden nicht angezeigt.\nSchau über deine Schulter!</string>
+    <string name="details_alert_yes">Ich bin sicher</string>
+    <string name="details_alert_no">Bring mich zurück!</string>
     <string name="details_title">Details</string>
 
-    <string name="archive_alert_message">The wallet will be backed up and then deleted!</string>
-    <string name="archive_alert_yes">Yes, do that!</string>
-    <string name="archive_alert_no">No thanks!</string>
+    <string name="archive_alert_message">Die Wallet wird archiviert und dann gelöscht!</string>
+    <string name="archive_alert_yes">Ja, mach das!</string>
+    <string name="archive_alert_no">Nein, danke!</string>
 
     <string-array name="mixin" translatable="false">
         <item>Ringsize 7</item>
@@ -356,10 +356,10 @@
     </string-array>
 
     <string-array name="priority">
-        <item>Priority Default</item>
-        <item>Priority Low</item>
-        <item>Priority Medium</item>
-        <item>Priority High</item>
+        <item>Priorität Standard</item>
+        <item>Priority Gering</item>
+        <item>Priority Mittel</item>
+        <item>Priority Hoch</item>
     </string-array>
 
     <string-array name="currency" translatable="false">
@@ -368,8 +368,8 @@
         <item>USD</item>
     </string-array>
 
-    <string name="fab_create_new">Create new wallet</string>
-    <string name="fab_restore_viewonly">Restore view-only wallet</string>
-    <string name="fab_restore_key">Restore wallet from private keys</string>
-    <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+    <string name="fab_create_new">Neue Wallet erstellen</string>
+    <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
+    <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
+    <string name="fab_restore_seed">Wallet mit 25 Wörter Wortkette wiederherstellen</string>
 </resources>
