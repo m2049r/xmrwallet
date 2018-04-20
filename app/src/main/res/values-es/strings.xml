@@ -12,6 +12,7 @@
     <string name="menu_rename">Renombrar &#8230;</string>
     <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
+    <string name="menu_changepw">[Change Passphrase]</string>
 
     <string name="password_weak">Sigue escribiendo &#8230;</string>
     <string name="password_fair">Mas o menos.</string>
@@ -46,6 +47,7 @@
     <string name="archive_progress">Archivado en progreso</string>
     <string name="rename_progress">Cambio de nombre en progreso</string>
     <string name="open_progress">Comprobando conexión con el daemon</string>
+    <string name="changepw_progress">[Change Password in progress]</string>
 
     <string name="service_progress">Guardando todo\n¡Puede llevar un tiempo!</string>
 
@@ -55,6 +57,8 @@
     <string name="archive_failed">¡Archivado fallido!</string>
     <string name="delete_failed">¡Borrado fallido!</string>
     <string name="rename_failed">¡Cambio de nombre fallido!</string>
+    <string name="changepw_failed">[Change Password failed!]</string>
+    <string name="changepw_success">[Password changed]</string>
 
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;usuario&gt;:&lt;contraseña&gt;@]&lt;daemon&gt;[:&lt;puerto&gt;])</string>
@@ -84,6 +88,8 @@
 
     <string name="prompt_rename">Renombrar %1$s</string>
 
+    <string name="prompt_changepw">[New Passphrase for %1$s]</string>
+    <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
     <string name="prompt_password">Contraseña para %1$s</string>
     <string name="prompt_send_password">Confirmar Contraseña</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
@@ -134,9 +140,11 @@
     <string name="generate_title">Crear monedero</string>
     <string name="generate_name_hint">Nombre del monedero</string>
     <string name="generate_password_hint">Frase de Contraseña</string>
+    <string name="generate_bad_passwordB">[Passphrases do not match]</string>
+    <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
     <string name="generate_buttonGenerate">¡Házme ya un monedero!</string>
     <string name="generate_seed">Semilla Mnemotécnica</string>
-    <string name="generate_button_accept">¡He apuntado estas 25 palabras!</string>
+    <string name="generate_button_accept">[I have noted the above info!]</string>
 
     <string name="generate_button_backup">Copia de Seguridad</string>
     <string name="generate_button_export">Exportar Claves</string>
@@ -169,6 +177,7 @@
     <string name="generate_spendkey_label">Clave de Gasto</string>
     <string name="generate_mnemonic_label">Semilla Mnemotécnica</string>
     <string name="generate_restoreheight_label">Altura de Restauración:</string>
+    <string name="generate_crazypass_label">[Wallet Files Restore Password]</string>
 
     <string name="generate_check_key">Introduce una clave válida</string>
     <string name="generate_check_address">Introduce una dirección válida</string>
@@ -278,8 +287,6 @@
         <i>Vas a enviar XMR y el destinatario recibirá BTC usando el servicio <b>XMR.TO</b>.</i>
     ]]></string>
     <string name="info_send_xmrto_success_sending">Enviando</string>
-    <string name="info_send_xmrto_success_status_label">Estado:</string>
-    <string name="info_send_xmrto_success_status">%1$s es %1$s (#%1$d)</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
     <string name="info_txdetails_xmrto_key">Clave:</string>
     <string name="info_txdetails_xmrto_address">Dirección:</string>

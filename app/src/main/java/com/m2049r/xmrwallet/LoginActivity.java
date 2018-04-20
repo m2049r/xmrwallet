@@ -54,7 +54,9 @@ import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.CrazyPassEncoder;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -71,7 +73,8 @@ import timber.log.Timber;
 
 public class LoginActivity extends SecureActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
-        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, ReceiveFragment.Listener {
+        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener,
+        GenerateReviewFragment.ProgressListener, ReceiveFragment.Listener {
     private static final String GENERATE_STACK = "gen";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
@@ -437,16 +440,30 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    public void onWalletChangePassword() {//final String walletName, final String walletPassword) {
+        try {
+            GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            AlertDialog dialog = detailsFragment.createChangePasswordDialog();
+            if (dialog != null) {
+                Helper.showKeyboard(dialog);
+                dialog.show();
+            }
+        } catch (ClassCastException ex) {
+            Timber.w("onWalletChangePassword() called, but no GenerateReviewFragment active");
+        }
+    }
+
     @Override
     public void onAddWallet(String type) {
         if (checkServiceRunning()) return;
         startGenerateFragment(type);
     }
 
-    AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
+    AlertDialog openDialog = null; // for preventing opening of multiple dialogs
 
     void promptPassword(final String wallet, final PasswordAction action) {
-        if (passwordDialog != null) return; // we are already asking for password
+        if (openDialog != null) return; // we are already asking for password
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.prompt_password, null);
@@ -486,12 +503,12 @@ public class LoginActivity extends SecureActivity
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
                                 dialog.cancel();
-                                passwordDialog = null;
+                                openDialog = null;
                             }
                         });
-        passwordDialog = alertDialogBuilder.create();
+        openDialog = alertDialogBuilder.create();
 
-        passwordDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+        openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
@@ -501,8 +518,8 @@ public class LoginActivity extends SecureActivity
                         String pass = etPassword.getEditText().getText().toString();
                         if (processPasswordEntry(wallet, pass, action)) {
                             Helper.hideKeyboardAlways(LoginActivity.this);
-                            passwordDialog.dismiss();
-                            passwordDialog = null;
+                            openDialog.dismiss();
+                            openDialog = null;
                         } else {
                             etPassword.setError(getString(R.string.bad_password));
                         }
@@ -511,8 +528,6 @@ public class LoginActivity extends SecureActivity
             }
         });
 
-        Helper.showKeyboard(passwordDialog);
-
         // accept keyboard "ok"
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -520,8 +535,8 @@ public class LoginActivity extends SecureActivity
                     String pass = etPassword.getEditText().getText().toString();
                     if (processPasswordEntry(wallet, pass, action)) {
                         Helper.hideKeyboardAlways(LoginActivity.this);
-                        passwordDialog.dismiss();
-                        passwordDialog = null;
+                        openDialog.dismiss();
+                        openDialog = null;
                     } else {
                         etPassword.setError(getString(R.string.bad_password));
                     }
@@ -531,14 +546,37 @@ public class LoginActivity extends SecureActivity
             }
         });
 
-        passwordDialog.show();
+        Helper.showKeyboard(openDialog);
+        openDialog.show();
     }
 
-    private boolean checkWalletPassword(String walletName, String password) {
+    // try to figure out what the real wallet password is given the user password
+    // which could be the actual wallet password or a (maybe malformed) CrAzYpass
+    // or the password used to derive the CrAzYpass for the wallet
+    private String getWalletPassword(String walletName, String password) {
         String walletPath = new File(Helper.getWalletRoot(getApplicationContext()),
                 walletName + ".keys").getAbsolutePath();
-        // only test view key
-        return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
+
+        // try with entered password (which could be a legacy password or a CrAzYpass)
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
+            return password;
+        }
+
+        // maybe this is a malformed CrAzYpass?
+        String possibleCrazyPass = CrazyPassEncoder.reformat(password);
+        if (possibleCrazyPass != null) { // looks like a CrAzYpass
+            if (WalletManager.getInstance().verifyWalletPassword(walletPath, possibleCrazyPass, true)) {
+                return possibleCrazyPass;
+            }
+        }
+
+        // generate & try with CrAzYpass
+        String crazyPass = KeyStoreHelper.getCrazyPass(this, password);
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
+            return crazyPass;
+        }
+
+        return null;
     }
 
     interface PasswordAction {
@@ -546,8 +584,9 @@ public class LoginActivity extends SecureActivity
     }
 
     private boolean processPasswordEntry(String walletName, String pass, PasswordAction action) {
-        if (checkWalletPassword(walletName, pass)) {
-            action.action(walletName, pass);
+        String walletPassword = getWalletPassword(walletName, pass);
+        if (walletPassword != null) {
+            action.action(walletName, walletPassword);
             return true;
         } else {
             return false;
@@ -598,7 +637,8 @@ public class LoginActivity extends SecureActivity
 
     ProgressDialog progressDialog = null;
 
-    private void showProgressDialog(int msgId) {
+    @Override
+    public void showProgressDialog(int msgId) {
         showProgressDialog(msgId, 0);
     }
 
@@ -617,7 +657,8 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    private void dismissProgressDialog() {
+    @Override
+    public void dismissProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -1076,6 +1117,9 @@ public class LoginActivity extends SecureActivity
                 return true;
             case R.id.action_details_help:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_details);
+                return true;
+            case R.id.action_details_changepw:
+                onWalletChangePassword();
                 return true;
             case R.id.action_license_info:
                 AboutFragment.display(getSupportFragmentManager());

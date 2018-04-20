@@ -9,10 +9,4 @@
         android:title="@string/menu_help"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_details_changepw"
-        android:orderInCategory="200"
-        android:title="@string/menu_changepw"
-        app:showAsAction="never" />
-
 </menu>

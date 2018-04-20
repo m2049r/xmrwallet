@@ -291,7 +291,7 @@ public class SendFragment extends Fragment
                     pagerAdapter.notifyDataSetChanged();
                 }
             });
-            Timber.d("New Mode = " + mode.toString());
+            Timber.d("New Mode = %s", mode.toString());
         }
     }
 
@@ -350,7 +350,7 @@ public class SendFragment extends Fragment
         @Override
         public SendWizardFragment getItem(int position) {
             Timber.d("getItem(%d) CREATE", position);
-            Timber.d("Mode=" + mode.toString());
+            Timber.d("Mode=%s", mode.toString());
             if (mode == Mode.XMR) {
                 switch (position) {
                     case POS_ADDRESS:

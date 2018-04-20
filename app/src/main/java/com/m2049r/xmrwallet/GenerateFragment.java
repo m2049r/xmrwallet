@@ -34,6 +34,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -424,17 +425,20 @@ public class GenerateFragment extends Fragment {
         String name = etWalletName.getEditText().getText().toString();
         String password = etWalletPassword.getEditText().getText().toString();
 
+        // create the real wallet password
+        String crazyPass = KeyStoreHelper.getCrazyPass(getActivity(), password);
+
         long height = getHeight();
         if (height < 0) height = 0;
 
         if (type.equals(TYPE_NEW)) {
             bGenerate.setEnabled(false);
-            activityCallback.onGenerate(name, password);
+            activityCallback.onGenerate(name, crazyPass);
         } else if (type.equals(TYPE_SEED)) {
             if (!checkMnemonic()) return;
             String seed = etWalletMnemonic.getEditText().getText().toString();
             bGenerate.setEnabled(false);
-            activityCallback.onGenerate(name, password, seed, height);
+            activityCallback.onGenerate(name, crazyPass, seed, height);
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             if (checkAddress() && checkViewKey() && checkSpendKey()) {
                 bGenerate.setEnabled(false);
@@ -444,7 +448,7 @@ public class GenerateFragment extends Fragment {
                 if (type.equals(TYPE_KEY)) {
                     spendKey = etWalletSpendKey.getEditText().getText().toString();
                 }
-                activityCallback.onGenerate(name, password, address, viewKey, spendKey, height);
+                activityCallback.onGenerate(name, crazyPass, address, viewKey, spendKey, height);
             }
         }
     }
