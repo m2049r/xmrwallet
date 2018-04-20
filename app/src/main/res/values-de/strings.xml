@@ -112,77 +112,77 @@
     <string name="rename_progress">Umbenennung wird ausgeführt</string>
     <string name="open_progress">Daemon Verbindung wird getestet</string>
 
-    <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
+    <string name="service_progress">Einpacken &#8230;\nDies kann einen Moment dauern!</string>
 
-    <string name="backup_success">Backup successful</string>
-    <string name="backup_failed">Backup failed!</string>
-    <string name="archive_success">Archive successful</string>
-    <string name="archive_failed">Archive failed!</string>
-    <string name="delete_failed">Delete failed!</string>
-    <string name="rename_failed">Rename failed!</string>
+    <string name="backup_success">Backup erfolgreich</string>
+    <string name="backup_failed">Backup fehlgeschlagen!</string>
+    <string name="archive_success">Archivierung erfolgreich</string>
+    <string name="archive_failed">Archivierung fehlgeschlagen!</string>
+    <string name="delete_failed">Löschen fehlgeschlagen!</string>
+    <string name="rename_failed">Umbenennen fehlgeschlagen!</string>
 
-    <string name="label_daemon">Node</string>
+    <string name="label_daemon">Knoten</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Net Selection</string>
+    <string name="prompt_mainnet">Netzwerkauswahl</string>
     <string name="connect_stagenet">StageNet</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
-    <string name="status_walletlist_loading">Loading Wallet List</string>
-    <string name="status_wallet_loading">Loading Wallet &#8230;</string>
-    <string name="status_wallet_unloading">Saving Wallet</string>
-    <string name="status_wallet_unloaded">Wallet saved</string>
-    <string name="status_wallet_unload_failed">Wallet save failed!</string>
-    <string name="status_wallet_connecting">Connecting &#8230;</string>
-    <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
-    <string name="status_wallet_connect_timeout">Node connection timed out!\nTry again or another.</string>
-    <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
-    <string name="status_wallet_connect_ioex">Cannot reach node!\nTry again or another.</string>
+    <string name="status_walletlist_loading">Lade Wallet Liste</string>
+    <string name="status_wallet_loading">Lade Wallet &#8230;</string>
+    <string name="status_wallet_unloading">Speichere Wallet</string>
+    <string name="status_wallet_unloaded">Wallet gespeichert</string>
+    <string name="status_wallet_unload_failed">Wallet Speicherung fehlgeschlagen!</string>
+    <string name="status_wallet_connecting">Verbinde &#8230;</string>
+    <string name="status_wallet_connect_failed">Knoten Verbindung fehlgeschlagen!\nPrüfe username/password</string>
+    <string name="status_wallet_connect_timeout">Knoten Verbindung Zeit überschritten!\nNochmal oder anderen Knoten versuchen.</string>
+    <string name="status_wallet_node_invalid">Knoten ungültig!\nVersuche anderen.</string>
+    <string name="status_wallet_connect_ioex">Kann Knoten nicht erreichen!\nNochmal oder anderen Knoten versuchen.</string>
 
-    <string name="status_working">Working on it &#8230;</string>
-    <string name="status_wallet_disconnected">Disconnected</string>
+    <string name="status_working">Arbeite daran &#8230;</string>
+    <string name="status_wallet_disconnected">Verbindung getrennt</string>
 
-    <string name="status_transaction_sent">Transaction sent!</string>
-    <string name="status_transaction_failed">Transaction failed: %1$s</string>
-    <string name="status_transaction_prepare_failed">Could not create transaction!</string>
+    <string name="status_transaction_sent">Transaktion gesendet!</string>
+    <string name="status_transaction_failed">Transaktion fehlgeschlagen: %1$s</string>
+    <string name="status_transaction_prepare_failed">Konnte Transaktion nicht erstellen!</string>
 
-    <string name="send_xmrto_timeout">You waited too long my friend!</string>
+    <string name="send_xmrto_timeout">Da hast du zu lange gewartet, mein Freund!</string>
 
-    <string name="service_busy">I am still busy with your last wallet &#8230;</string>
+    <string name="service_busy">Ich bin noch mit deiner letzten Wallet beschäftigt &#8230;</string>
 
-    <string name="prompt_rename">Rename %1$s</string>
+    <string name="prompt_rename">Umbenennen %1$s</string>
 
-    <string name="prompt_password">Password for %1$s</string>
-    <string name="prompt_send_password">Confirm Password</string>
-    <string name="bad_password">Incorrect password!</string>
-    <string name="bad_wallet">Wallet does not exist!</string>
-    <string name="error_not_wallet">This is not a wallet!</string>
-    <string name="prompt_daemon_missing">Daemon address must be set!</string>
-    <string name="prompt_wrong_net">Wallet does not match selected net</string>
-    <string name="warn_daemon_unavailable">Cannot connect to daemon! Try again.</string>
-    <string name="panic">Something\'s wrong!</string>
+    <string name="prompt_password">Passwort für %1$s</string>
+    <string name="prompt_send_password">Passwort bestätigen</string>
+    <string name="bad_password">Falsches Passwort!</string>
+    <string name="bad_wallet">Wallet existiert nicht!</string>
+    <string name="error_not_wallet">Das ist keine Wallet!</string>
+    <string name="prompt_daemon_missing">Daemonadresse muss gesetzt sein!</string>
+    <string name="prompt_wrong_net">Wallet entspricht nicht dem ausgewähltem Netz</string>
+    <string name="warn_daemon_unavailable">Kann nicht zum Daemon verbinden! Versuche es noch einmal.</string>
+    <string name="panic">Etwas stimmt nicht!</string>
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Receive</string>
-    <string name="label_wallet_send">Give</string>
+    <string name="label_wallet_receive">Empfangen</string>
+    <string name="label_wallet_send">Geben</string>
 
-    <string name="title_amount">Amount</string>
-    <string name="title_date">Date</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
+    <string name="title_amount">Menge</string>
+    <string name="title_date">Datum</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
     <string name="xmr" translatable="false">XMR</string>
-    <string name="label_transactions">Transactions</string>
-    <string name="text_daemonConnected">Daemon connected!</string>
+    <string name="label_transactions">Transaktionen</string>
+    <string name="text_daemonConnected">Daemon verbunden!</string>
 
     <string name="service_description">monerujo Service</string>
-    <string name="local_service_started">monerujo Service Running</string>
-    <string name="local_service_stopped">monerujo Service Stopped</string>
+    <string name="local_service_started">monerujo Service Läuft</string>
+    <string name="local_service_stopped">monerujo Service Gestoppt</string>
     <string name="local_service_label">monerujo Service</string>
-    <string name="local_service_connected">monerujo Service Connected</string>
-    <string name="local_service_disconnected">monerujo Service Disconnected</string>
+    <string name="local_service_connected">monerujo Service Verbunden</string>
+    <string name="local_service_disconnected">monerujo Service Getrennt</string>
 
-    <string name="status_synced">Synced:</string>
-    <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Scanning:</string>
+    <string name="status_synced">Synchronisiert:</string>
+    <string name="status_remaining">Blöcke verbleibend</string>
+    <string name="status_syncing">Scanne:</string>
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
