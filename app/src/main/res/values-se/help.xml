@@ -4,18 +4,18 @@
         <h1>Skapa Plånbok - Ny</h1>
         <p>Om du behöver en ny Monero-adress!</p>
         <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
-        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.<p>
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenordsfras.<p>
         <h2>Anteckna ditt Mnemoniska Frö!</h2>
-        <p>På den följande skärmen kommer du att hitta ditt 25-ord \"Mnemoniska Frö\".
-        Det här är den enda datan som behövs för att återställa din plånbok i framtiden
-        och få full tillgång till dina pengar.
-        Att bevara denna data säkert och privat är väldigt viktigt, eftersom det ger <em>vem som helst</em>
-        full tillgång till dina pengar!</p>
+        <p>På den följande skärmen kommer du att se ditt \"Mnemoniska Frö\", bestående av 25-ord.
+        Detta är allt som behövs för att återställa din plånbok i framtiden
+        och få tillgång till dina Moneroj.
+        Att bevara denna data säkert och privat är väldigt viktigt, eftersom det kan ge <em>vem som helst</em>
+        full tillgång till dina Moneroj!</p>
         <p>Om du förlorar tillgång till din plånboks lösenord, kan du fortfarande återställa din plånbok med ditt Mnemoniska Frö.</p>
-        <p>Det finns inget sätt att återställa ditt Mnemoniska Frö, om du förlorar det förlorar du alla dina pengar!
-        Det Mnemoniska Fröet kan även aldrig ändras, så om det blir stulet eller på annat sätt komprometterat,
-        måste du flytta dina pengar till en ny plånbok (med ett nytt Mnemoniskt Frö). Därför, är det bäst
-        att du bevarar ditt Mnemoniska Frö genom att skriva ner det och förvara det i <em>flera</em> säkra
+        <p>Det finns inget sätt att återställa ditt Mnemoniska Frö så om du förlorar det förlorar du även allt i din plånbok!
+        Det Mnemoniska Fröet kan inte ändras så om det blir stulet, eller på något annat sätt komprometterat,
+        bör du flytta dina pengar till en ny plånbok (med ett nytt Mnemoniskt Frö). Det är därför bäst
+        att du bevarar ditt Mnemoniska Frö genom att skriva ner det och förvara det på <em>flera</em> säkra
         platser.</p>
     ]]></string>
 
@@ -23,11 +23,11 @@
         <h1>Skapa Plånbok - Frö</h1>
         <p>Om du redan har en Monero-adress och vill återställa dess transaktioner från blockkedjan!</p>
         <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
-        Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.</p>
+        Använd ett starkt lösenord - eller ännu bättre, använd en lösenordsfras.</p>
         <p>Ange ditt frö i fältet \"Mnemoniskt Frö\".<p>
         <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
-        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
+        transaktioner som tillhör din adress skannas. Detta kan ta väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
@@ -38,7 +38,7 @@
         <p>Ange din Monero-adress i fältet \"Offentlig Adress\" och fyll i \"Visningsnyckel\" och \"Spenderingsnyckel\".</p>
         <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
-        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
+        transaktioner som tillhör din adress skannas. Detta kan ta väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
@@ -49,7 +49,7 @@
         <p>Ange din Monero-adress i fältet \"Offentlig Adress\" och fyll i \"Visningsnyckel\" och \"Spenderingsnyckel\".</p>
         <p>Om du känner till blocknumret av den första transaktionen använd för denna adress, ange det i
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
-        transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
+        transaktioner som tillhör din adress skannas. Detta kan ta väldigt lång tid.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
@@ -68,27 +68,27 @@
         plånbok utan att ge behörigheten att spendera pengarna i din plånbok.
         <h2>Spenderingsnyckel</h2>
         Din spenderingsnyckel ger vem som helst tillgång att spendera all Monero i din plånbok, så
-        ge inte denna nyckeln till någon, förvara den säkert som ditt Mnemoniska Frö.
+        ge inte denna nyckeln till någon, förvara den lika säkert som ditt Mnemoniska Frö.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Plånbokslista</h1>
         <h2>Nod</h2>
-        Monerujo använder en Avlägsen Nod för att kommunicera med Monero-nätverket utan att
+        Monerujo använder en avlägsen nod för att kommunicera med Monero-nätverket utan att
         behöva ladda ner och lagra en kopia av hela blockkedjan. Du kan hitta en lista av populära
         avlägsna noder eller lära dig hur man kör sin egen avlägsen nod här https://moneroworld.com/
         <p>
         <p>Monerujo kommer med några avlägsna noder inställda. Den kommer ihåg de 5 senast använda noderna.</p>
         <h2>Plånböcker</h2>
         <p>Här kan du se dina plånböcker. De finns i <tt>monerujo</tt> mappen på din enhets
-        interna minne. Du kan använda en filutforskar app för att se dem. Du borde
-        säkerhetskopiera den här mappen regelbundet till en extern hårddisk, ifall din
-        enhet blir stulen eller exploderar.
+        interna minne. Du kan använda en filutforskar-app för att komma åt dem. Det är rekommenderat att
+        säkerhetskopiera denna mapp regelbundet till en extern hårddisk, ifall din
+        enhet blir stulen eller går sönder.
         </p>
         <p>Select a wallet to open it or press the \"+\" to create a new one.
         Or select one of the wallet operations:
 
-        Välj en plånbok för att öppna det eller tryck på \"+\" för att skapa en ny.
+        Välj en plånbok för att öppna eller tryck på \"+\" för att skapa en ny.
         Eller välj en plånboks operation:
         </p>
         <h3>Detaljer</h3>
