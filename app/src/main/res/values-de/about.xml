@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_title">Über</string>
+    <string name="about_close">Schließen</string>
+    <string name="about_version">Version %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Credits</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Datenschutzerklärung</h1>
+        <p>Diese Seite informiert dich über unsere Richtlinien bezüglich der Sammlung,
+        Nutzung und Weitergabe persönlicher Informationen, die wir von Nutzern unserer
+        App erhalten (monerujo: Monero Wallet).
+        </p>
+        <p>Mit der Nutzung der App stimmst du der Erfassung und Nutzung von Informationen in
+        Übereinstimmung mit dieser Erklärung zu.
+        </p>
+        <h2>Gesammelte Daten</h2>
+        <p>Personenbezogene Daten sind jegliche Art von Daten, die eine Person identifizieren können.
+        </p>
+        <p>Monero-Schlüssel und öffentliche Adressen werden von der App zum Zweck der Verarbeitung 
+	von Transaktionen lokal gesammelt und verarbeitet und verschlüsselt in das Monero-Netzwerk übertragen.
+        </p>
+        <p>Andere persönliche Daten werden von der App nicht gesammelt.</p>
+        <p>Wenn du die USD/EUR Tausch-Funktion (optional) nutzt fragt Monerujo
+	den aktuellen Tausch-Kurs über die öffentliche Schnittstelle von kraken.com ab.
+        Siehe dir ihre Datenschutzerklärung unter https://www.kraken.com/legal/privacy für
+        Details darüber an, wie Daten in deinen Anfragen gesammelt werden (insbesondere der
+        Abschnitt "Information We Collect Automatically").</p>
+	<p>Wenn du die App zum Bezahlen an BTC-Adressen verwendest, verwendest du den Dienst XMR.TO.
+        Weitere Informationen findest du in den Datenschutzerklärung unter https://xmr.to/. 
+	Monerujo schickt dem Anbieter die BTC Zieladresse und den Betrag.
+	Deine IP-Adresse kann dabei aufgezeichnet werden.</p>
+        <h2>App-Berechtigungen</h2>
+        <ul>
+        <li>INTERNET : Verbinde zum Monero Netzwerk über einen Monero Daemon Knoten</li>
+        <li>READ_EXTERNAL_STORAGE : Lies die auf dem Gerät gespeicherten Wallet Dateien aus</li>
+        <li>WRITE_EXTERNAL_STORAGE : Schreibe Wallet Dateien auf das Gerät</li>
+        <li>WAKE_LOCK : Halte das Gerät während der Synchronisation wach</li>
+        <li>CAMERA : Scanne QR-Codes um Monero zu erhalten</li>
+        </ul>
+        <h2>Änderungen an dieser Datenschutzerklärung</h2>
+        <p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren.
+	Wir werden dich über jegliche Änderungen an der Datenschutzerklärung in der App und auf der
+	Website (www.monerujo.io) informieren.
+        Es wird empfohlen, diese Datenschutzerklärung regelmäßig auf Änderungen zu überprüfen.
+        <p>Diese Datenschutzerklärung wurde zuletzt geändert am: 10. November 2017.
+        </p>
+        <h2>Kontakt</h2>
+        <p>Wenn du Fragen zu unserer Datenschutzerklärung hast,
+        oder wie deine Daten gesammelt und verarbeitet werden,
+        schreibe bitte eine eMail an privacy@monerujo.io
+        </p>
+        ]]></string>
+</resources>
