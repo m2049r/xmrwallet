@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
-        <h1>Create Wallet - New</h1>
-        <p>If you need a new Monero Address!</p>
-        <p>Enter a unique wallet name and password.
-        The password is used for securing your wallet data on the device. Use a strong password -
-        even better use a passphrase.</p>
-        <h2>Note your Mnemonic Seed!</h2>
-        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
-        This is the only data needed to recover your wallet at a later point
-        and gain full access to your funds.
-        Keeping this secure and private is very important, as it gives <em>anyone</em>
-        full access to your funds!</p>
-        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
-        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
-        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
-        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
-        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
-        and secure places.</p>
+        <h1>Wallet erstellen - Neu</h1>
+        <p>Falls du eine neue Monero Adresse benötigst!</p>
+        <p>Gib einen einzigartigen Wallet Namen und Passwort ein.
+        Das Passwort schützt deine Wallet Daten auf dem Gerät. Benutze ein starkes Passwort -
+        eine Passphrase ist sogar noch besser.</p>
+        <h2>Notiere dir deinen mnemonischen Seed!</h2>
+        <p>Auf dem folgenden Bildschirm findest du deinen 25-Wort \"Mnemonischen Seed\".
+        Dies sind die einzigen Daten die du benötigst um deine Wallet an einem späteren 
+		Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
+        Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
+        vollen Zugriff auf diese Gelder geben!</p>
+        <p>Falls du dein Passwort verlierst kannst du immer noch das Wallet mit dem Mnemonischen Seed wiederherstellen.</p>
+        <p>Es gibt keine Möglichkeit den Mnemonischen Seed wiederherzustellen.
+		Wenn du ihn verlierst sind deine Gelder verloren!
+        Der Mnemonische Seed kann auch nicht geändert werden, und falls du ihn verlierst oder er anderweitig 
+		kompromittiert wird musst du deine Gelder auf ein neues Wallet transferieren, inklusive neuem Mnemonischen Seed.
+        Deshalb ist es am besten wenn du deinen Mnemonischen Seed aufschreibst 
+		und sicher und geheim an <em>mehreren</em> Orten aufbewahrst.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.</p>
-        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Wallet erstellen - Seed</h1>
+        <p>Falls du schon eine Monero Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
+        <p>Gib einen einzigartigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
+        Benutze ein starkes Passwort - noch besser ist eine Passphrase.</p>
+        <p>Trage deinen Seed in das Feld \"Mnemonischer Seed\" ein.<p>
+        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
+		\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain nach
+        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
