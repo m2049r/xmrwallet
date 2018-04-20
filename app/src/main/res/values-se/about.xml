@@ -1,63 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_title">About</string>
-    <string name="about_close">Close</string>
-    <string name="about_whoami">I am monerujo</string>
+    <string name="about_title">Om</string>
+    <string name="about_close">Stäng</string>
+    <string name="about_whoami">Jag är monerujo</string>
     <string name="about_version">Version %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
-        <b>Credits</b>
+        <b>Medverkande</b>
         <br/>
-        m2049r, baltsar777, anhdres, keejef,
+        m2049r, noxxi, baltsar777, anhdres, keejef,
         rehrar, EarlOfEgo et al.
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
 
     <string name="privacy_policy"><![CDATA[
-        <h1>Privacy Policy</h1>
+        <h1>Sekretesspolicy</h1>
         <p>This page informs you of our policies regarding the collection,
         use and disclosure of personal information we receive from users of our
         app (monerujo: Monero Wallet).
         </p>
-        <p>By using the app, you agree to the collection and use of information in
-        accordance with this policy.
+        <p>Genom att använda denna app, går du med på samling och användning av information
+        enligt denna policy.
         </p>
-        <h2>Data Collected</h2>
-        <p>Personal data is any kind of data that could identify an individual.
+        <h2>Samlad Data</h2>
+        <p>Personlig data är all data som kan identifiera en individ.
         </p>
-        <p>Monero keys and public addresses are collected and processed by the app locally
-        for the purpose of processing transactions and transmitted into the Monero Network
-        in encrypted form.
+        <p>Monero nycklar och offentliga adresser är samlade och bearbetade av appen lokalt
+        för att utföra transaktioner och skicka till Monero-nätverket i krypterad form.
         </p>
-        <p>Other personal data is not collected by the app.</p>
-        <p>If you use the USD/EUR exchange (optional) functionality, monerujo fetches the exchange
-        rate through the public API of kraken.com.
-        See their privacy policy at https://www.kraken.com/legal/privacy for
-        details on how data in your requests is collected (especially the
-        section "Information We Collect Automatically").</p>
-        <p>If you use the app to pay to BTC addresses, you will be using the XMR.TO service.
-        See their privacy policy at https://xmr.to/ for details. Monerujo send them the BTC
-        destination address and amount. Your IP will also be collectable.</p>
-        <h2>App Permissions</h2>
+        <p>Annan personlig data är inte samlad av appen.</p>
+        <p>Om du använder USD/EUR växlings (valfritt) funktionen, hämtar monerujo växlings
+        värdena genom offentliga API:n av kraken.com.
+        Visa deras sekretesspolicy vid https://www.kraken.com/legal/privacy för
+        detaljer om hur data i dina begär är samlade (speciellt
+        sektionen "Information We Collect Automatically").</p>
+        <p>Om du använder appen för att skicka pengar till BTC adresser, behöver du använda XMR.TO tjänsten.
+        Visa deras sekretesspolicy vid https://xmr.to/ för detaljer. Monerujo skickar de BTC
+        destination adressen och mängden. Din IP kan också samlas.</p>
+        <h2>App-behörigheter</h2>
         <ul>
-        <li>INTERNET : Connect to the Monero Network via a Monero Daemon Node</li>
-        <li>READ_EXTERNAL_STORAGE : Read wallet files stored on the device</li>
-        <li>WRITE_EXTERNAL_STORAGE : Write wallet files stored on the device</li>
-        <li>WAKE_LOCK : Keep device awake while syncing</li>
-        <li>CAMERA : Scan QR Codes for receiving Monero</li>
+        <li>INTERNET : Anslut till Monero-nätverket via en Monero Daemon nod</li>
+        <li>READ_EXTERNAL_STORAGE : Läs plånboksfiler lagrade på enheten</li>
+        <li>WRITE_EXTERNAL_STORAGE : Skriv till plånboksfiler lagrade på enheten</li>
+        <li>WAKE_LOCK : Behåll enheten vaken under synkronisering</li>
+        <li>CAMERA : Skanna QR-koder för att ta emot Monero</li>
         </ul>
-        <h2>Changes to this Privacy Policy</h2>
-        <p>We may update this privacy policy from time to time. We will notify
-        you of any changes by posting the new privacy policy in the app and on the
-        website (www.monerujo.io)
-        You are advised to review this privacy policy periodically for any changes.
-        <p>This Privacy Policy was last updated: 10th November, 2017.
+        <h2>Ändringar till denna Sekretesspolicy</h2>
+        <p>Vi kan uppdatera denna sekretesspolicy ibland. Vi meddelar
+        dig om alla ändringar genom att skriva om den nya sekretesspolicyn i appen
+        och på hemsidan (www.monerujo.io)
+        Vi rekommendar att du tittar på den här sekretesspolicyn ibland för ändringar.
+        <p>Denna Sekretesspolicy var senast uppdaterad den: 10 November, 2017.
         </p>
-        <h2>Contact Us</h2>
-        <p>If you have any questions about our privacy policy,
-        or how your data is being collected and processed,
-        please e-mail privacy@monerujo.io.
+        <h2>Kontakta Oss</h2>
+        <p>Om du har några frågor om våran sekretesspolicy,
+        eller om hur din data blir samlad och bearbetad,
+        vänligen skicka e-post till privacy@monerujo.io.
         </p>
         ]]></string>
 
