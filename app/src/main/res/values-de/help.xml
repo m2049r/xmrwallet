@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Create Wallet - New</h1>
+        <p>If you need a new Monero Address!</p>
+        <p>Enter a unique wallet name and password.
+        The password is used for securing your wallet data on the device. Use a strong password -
+        even better use a passphrase.</p>
+        <h2>Note your Mnemonic Seed!</h2>
+        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
+        This is the only data needed to recover your wallet at a later point
+        and gain full access to your funds.
+        Keeping this secure and private is very important, as it gives <em>anyone</em>
+        full access to your funds!</p>
+        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
+        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
+        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
+        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
+        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
+        and secure places.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Create Wallet - Seed</h1>
+        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.</p>
+        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Create Wallet - Keys</h1>
+        <p>If you are recovering your wallet using your keys!</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.<p>
+        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Create Wallet - View</h1>
+        <p>If you just want to monitor incoming transactions to a wallet!</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
+        Use a strong password - even better use a passphrase.<p>
+        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
+        <p>If you know the block number of the first transaction used for this address, enter it in the
+        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
+        transactions belonging to your address. This takes a <em>long</em> time.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Wallet Details</h1>
+        <h2>Public address</h2>
+        Your public address is like your bank account number you can share this with anyone without
+        having to fear losing your Monero. People will send Monero to your wallet using this address.
+        <h2>Mnemonic Seed</h2>
+        This is the only data needed to recover your wallet at a later point and gain full access to
+        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
+        access to your Monero! If you haven’t written this down somewhere safe please do!
+        <h2>View key</h2>
+        Your view key can be used to monitor incoming transactions to your wallet without giving
+        permission to spend the funds inside your wallet.
+        <h2>Spend key</h2>
+        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
+        anyone this key, keep it safe like your Mnemonic Seed.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Wallet List</h1>
+        <h2>Node</h2>
+        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
+        to download and store a copy of the whole blockchain itself. You can find a list of popular
+        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
+        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
+        <h2>Wallets</h2>
+        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
+        in the internal storage of your device. You can use a file explorer app to see them.
+        You should make backups of this folder on a regular basis to off-device storage in
+        case your device explodes or gets stolen.</p>
+        <p>Select a wallet to open it or press the \"+\" to create a new one.
+        Or select one of the wallet operations:</p>
+        <h3>Details</h3>
+        <p>Show the wallet details, seed &amp; keys.</p>
+        <h3>Receive</h3>
+        <p>Make a QR code for receiving Moneroj.</p>
+        <h3>Rename</h3>
+        <p>Rename the wallet. Backups are not renamed.</p>
+        <h3>Backup</h3>
+        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
+        overwriting previous copies there.</p>
+        <h3>Archive</h3>
+        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
+        folder. If you no longer need your backups you should delete them with a file explorer or
+        secure delete app.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>The Wallet</h1>
+        <h2>Scanning</h2>
+        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
+        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
+        stores information to your phone which belongs to your wallet. Sometimes it can take a while
+        because you haven’t synced in a long time.
+        <h2>The Balance</h2>
+        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
+        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
+        as unconfirmed.
+        This happens as a result of how Monero is exchanged on the blockchain and how change works.
+        Read more about change at https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaction List</h2>
+        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Transaction Details</h1>
+        <h2>Destination</h2>
+        This is the public address of the wallet you sent Monero to
+        <h2>PaymentID</h2>
+        You can use a Payment ID to identify the reason you sent Monero between two parties this is
+        fully optional and private. For example it can allow a Business to reconcile your transaction
+        with an item you bought.
+        <h2>TX ID</h2>
+        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
+        Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>TX KEY (Transaction Key)</h2>
+        This is your transaction private key, keep this safe as revealing this to a third party
+        reveals which signature in a ring is yours, thereby making your transaction transparent.
+        <h2>Block</h2>
+        This was the block your transaction was included in.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Send</h1>
+        <h2>Receiver’s address</h2>
+        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
+        your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
+        ensure you aren’t sending coins to the wrong address.</p>
+        <p>In addition to sending XMR, you can send BTC through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
+        <h2>Payment ID</h2>
+        <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
+        is fully optional and private. For example it can allow a business to reconcile your
+        transaction with an item you bought.<p>
+        <h2>Ring size</h2>
+        <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
+        we recommend you stick with a ring size of 7. Increasing the ring size above 7 increases
+        the amount of signers in a ring signature, theoretically providing increased plausible
+        deniability. However setting high ring sizes can also make your transaction stand out on
+        the blockchain.</p>
+        <h2>Priority</h2>
+        <p>This setting determines the speed at which your transaction will be included in the
+        blockchain. A high priority setting will correlate directly with a higher transaction fee
+        and the inverse is true for a low priority. Please note that if you set your transaction to
+        a low priority it can be hours before it is included on the blockchain. The default priority
+        is \"Medium\".</p>
+        <h1>Sending BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
+        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
+        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
+        Team is not associated with XMR.TO and cannot help you with their service.</p>
+        <h2>XMR.TO Exchange Rate<h2>
+        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
+        include the current exchange rate as well as upper and lower BTC limits. Note that this
+        rate is not guaranteed at this point. You will also see
+        the amount up to which the BTC transaction will be executed instantly without waiting for
+        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
+        not charge extra fees - how cool is that?</p>
+        <h2>XMR.TO Order<h2>
+        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
+        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
+        be different to the indicative one shown on previous screens.</p>
+        <h2>XMR.TO Secret Key<h2>
+        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
+        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
+        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
+        started!</p>
+        <h2>XMR.TO Countdown!</h2>
+        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
+        previous step and then coming back to the \"Confirm\" screen.</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>Sending BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
+        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
+        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
+        Team is not associated with XMR.TO and cannot help you with their service.</p>
+        <h2>XMR.TO Exchange Rate<h2>
+        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
+        include the current exchange rate as well as upper and lower BTC limits. Note that this
+        rate is not guaranteed at this point. You will also see
+        the amount up to which the BTC transaction will be executed instantly without waiting for
+        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
+        not charge extra fees - how cool is that?</p>
+        <h2>XMR.TO Order<h2>
+        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
+        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
+        be different to the indicative one shown on previous screens.</p>
+        <h2>XMR.TO Secret Key<h2>
+        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
+        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
+        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
+        started!</p>
+        <h2>XMR.TO Countdown!</h2>
+        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
+        previous step and then coming back to the \"Confirm\" screen.</p>
+    ]]></string>
+
+</resources>
