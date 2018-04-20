@@ -186,31 +186,30 @@
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Sending BTC</h1>
+        <h1>BTC senden</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
+        <p>XXMR.TO ist ein Drittanbieter-Service, der als Austausch von Monero zu Bitcoin fungiert.
+        Wir verwenden die XMR.TO API, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte sieh dir
+        https://xmr.to an und entscheide selbst, ob es etwas ist, was du verwenden möchtest. Das Monerujo
+        Team ist nicht mit XMR.TO verbunden und kann dir bei deren Service nicht helfen.</p>
+        <h2>XMR.TO Wechselkurs<h2>
+        <p>Auf dem Bildschirm \"Menge\" werden dir die aktuellen Parameter des XMR.TO-Dienstes angezeigt. Diese
+        beinhalten den aktuellen Wechselkurs sowie Ober- und Untergrenzen von BTC. Bitte beachte, dass diese Rate
+        zu diesem Zeitpunkt noch nicht garantiert werden kann. Du siehst auch den Betrag, bis zu dem die BTC-Transaktion
+        sofort ausgeführt wird, ohne auf XMR-Bestätigungen zu warten (siehe XMR.TO FAQ für weitere Details). 
+        Bitte beachte, dass XMR.TO keine zusätzlichen Gebühren berechnet - ist doch cool, oder?</p>
+        <h2>XMR.TO Auftrag<h2>
+        <p>Auf dem Bildschirm \"Bestätigen\" sehen Sie die aktuelle XMR.TO-Bestellung. Diese Bestellung ist nur für eine
+        bestimmte Zeit gültig - du wirst du vielleicht einen Countdown auf dem \"Ausgaben\"-Knopf sehen. Der Wechselkurs 
+        kann sich von dem auf den vorherigen Bildschirmen angezeigten indikativen Wechselkurs unterscheiden.</p>
+        <h2>XMR.TO Geheimschlüssel<h2>
+        <p>Da Monerujo nur den Monero Teil deiner Transaktion bearbeitet, kann dein XMR.TO Geheimschlüssel verwendet werden, 
+        um den Bitcoin Teil der Bestellung auf der XMR.TO Homepage zu verfolgen.</p>
         <p>Please note, that this secret key is only valid for 24 hours after the transaction is
         started!</p>
         <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>Sobald der Countdown Null erreicht hat, musst du ein neues Angebot von XMR.TO anfordern,
+        indem du zum vorherigen Schritt zurückgehst und dann zum Bildschirm "Bestätigen" zurückkehrst.</p>
     ]]></string>
 
 </resources>
