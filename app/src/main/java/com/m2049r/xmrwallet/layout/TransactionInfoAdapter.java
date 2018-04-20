@@ -137,12 +137,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 ivTxType.setVisibility(View.GONE); // gives us more space for the amount
             }
 
-            long realAmount = infoItem.amount;
-            if (infoItem.isPending) {
-                realAmount = realAmount - infoItem.fee;
-            }
-
-            String displayAmount = Helper.getDisplayAmount(realAmount, Helper.DISPLAY_DIGITS_INFO);
+            String displayAmount = Helper.getDisplayAmount(infoItem.amount, Helper.DISPLAY_DIGITS_INFO);
             if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
                 tvAmount.setText(context.getString(R.string.tx_list_amount_negative, displayAmount));
             } else {

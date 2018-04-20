@@ -22,7 +22,7 @@
     <string name="password_very_strong">Yeah baby, h4x0r style!</string>
 
     <string name="label_login_wallets">Wallets</string>
-    <string name="label_donate">Donate</string>
+    <string name="label_credits">Credits</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Cancel</string>
     <string name="label_close">Close</string>
@@ -124,6 +124,7 @@
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Net Selection</string>
+    <string name="connect_stagenet">StageNet</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Loading Wallet List</string>
@@ -144,7 +145,7 @@
     <string name="status_transaction_failed">Transaction failed: %1$s</string>
     <string name="status_transaction_prepare_failed">Could not create transaction!</string>
 
-    <string name="send_xmrto_timeout">Dude, you waited too long!</string>
+    <string name="send_xmrto_timeout">You waited too long my friend!</string>
 
     <string name="service_busy">I am still busy with your last wallet &#8230;</string>
 
@@ -348,8 +349,8 @@
     <string name="archive_alert_no">No thanks!</string>
 
     <string-array name="mixin" translatable="false">
-        <item>Ringsize 5</item>
-        <item>Ringsize 8</item>
+        <item>Ringsize 7</item>
+        <item>Ringsize 10</item>
         <item>Ringsize 13</item>
         <item>Ringsize 26</item>
     </string-array>

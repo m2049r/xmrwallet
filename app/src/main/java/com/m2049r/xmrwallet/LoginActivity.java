@@ -45,10 +45,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m2049r.xmrwallet.data.WalletNode;
 import com.m2049r.xmrwallet.dialog.AboutFragment;
-import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
@@ -60,7 +62,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
@@ -120,8 +121,8 @@ public class LoginActivity extends SecureActivity
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_DONATE:
-                        DonationFragment.display(getSupportFragmentManager());
+                    case Toolbar.BUTTON_CREDITS:
+                        CreditsFragment.display(getSupportFragmentManager());
                         break;
                     case Toolbar.BUTTON_NONE:
                     default:
@@ -147,14 +148,14 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public boolean onWalletSelected(String walletName, String daemon, boolean testnet) {
+    public boolean onWalletSelected(String walletName, String daemon) {
         if (daemon.length() == 0) {
             Toast.makeText(this, getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (checkServiceRunning()) return false;
         try {
-            WalletNode aWalletNode = new WalletNode(walletName, daemon, testnet);
+            WalletNode aWalletNode = new WalletNode(walletName, daemon, WalletManager.getInstance().getNetworkType());
             new AsyncOpenWallet().execute(aWalletNode);
         } catch (IllegalArgumentException ex) {
             Timber.e(ex.getLocalizedMessage());
@@ -165,9 +166,8 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onWalletDetails(final String walletName, boolean testnet) {
-        setNet(testnet);
-        Timber.d("details for wallet ." + walletName + ".");
+    public void onWalletDetails(final String walletName) {
+        Timber.d("details for wallet .%s.", walletName);
         if (checkServiceRunning()) return;
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -203,9 +203,8 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onWalletReceive(String walletName, boolean testnet) {
-        setNet(testnet);
-        Timber.d("receive for wallet ." + walletName + ".");
+    public void onWalletReceive(String walletName) {
+        Timber.d("receive for wallet .%s.", walletName);
         if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
@@ -439,8 +438,7 @@ public class LoginActivity extends SecureActivity
     }
 
     @Override
-    public void onAddWallet(boolean testnet, String type) {
-        setNet(testnet);
+    public void onAddWallet(String type) {
         if (checkServiceRunning()) return;
         startGenerateFragment(type);
     }
@@ -537,7 +535,7 @@ public class LoginActivity extends SecureActivity
     }
 
     private boolean checkWalletPassword(String walletName, String password) {
-        String walletPath = new File(Helper.getStorageRoot(getApplicationContext()),
+        String walletPath = new File(Helper.getWalletRoot(getApplicationContext()),
                 walletName + ".keys").getAbsolutePath();
         // only test view key
         return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
@@ -566,20 +564,30 @@ public class LoginActivity extends SecureActivity
 
     @Override
     public File getStorageRoot() {
-        return Helper.getStorageRoot(getApplicationContext());
+        return Helper.getWalletRoot(getApplicationContext());
     }
 
     ////////////////////////////////////////
     ////////////////////////////////////////
 
     @Override
-    public void showNet(boolean testnet) {
-        if (testnet) {
-            toolbar.setBackgroundResource(R.color.colorPrimaryDark);
-        } else {
-            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
+    public void showNet() {
+        switch (WalletManager.getInstance().getNetworkType()) {
+            case NetworkType_Mainnet:
+                toolbar.setSubtitle(getString(R.string.connect_mainnet));
+                toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
+                break;
+            case NetworkType_Testnet:
+                toolbar.setSubtitle(getString(R.string.connect_testnet));
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            case NetworkType_Stagenet:
+                toolbar.setSubtitle(getString(R.string.connect_stagenet));
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            default:
+                throw new IllegalStateException("NetworkType unknown: " + WalletManager.getInstance().getNetworkType());
         }
-        toolbar.setSubtitle(getString(testnet ? R.string.connect_testnet : R.string.connect_mainnet));
     }
 
     @Override
@@ -636,7 +644,7 @@ public class LoginActivity extends SecureActivity
     private class MyProgressDialog extends ProgressDialog {
         Activity activity;
 
-        public MyProgressDialog(Activity activity, int msgId) {
+        MyProgressDialog(Activity activity, int msgId) {
             super(activity);
             this.activity = activity;
             setCancelable(false);
@@ -735,6 +743,9 @@ public class LoginActivity extends SecureActivity
     }
 
     void startLoginFragment() {
+        // we set these here because we cannot be ceratin we have permissions for storage before
+        Helper.setMoneroHome(this);
+        Helper.initLogger(this);
         Fragment fragment = new LoginFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragment).commit();
@@ -784,8 +795,8 @@ public class LoginActivity extends SecureActivity
 
         File newWalletFile;
 
-        public AsyncCreateWallet(final String name, final String password,
-                                 final WalletCreator walletCreator) {
+        AsyncCreateWallet(final String name, final String password,
+                          final WalletCreator walletCreator) {
             super();
             this.walletName = name;
             this.walletPassword = password;
@@ -1081,6 +1092,7 @@ public class LoginActivity extends SecureActivity
                             getSupportFragmentManager().findFragmentById(R.id.fragment_container);
                     item.setChecked(loginFragment.onTestnetMenuItem());
                 } catch (ClassCastException ex) {
+                    // never mind then
                 }
                 return true;
             default:
@@ -1088,59 +1100,8 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    private void setNet(boolean testnet) {
-        WalletManager.getInstance().setDaemon("", testnet, "", "");
-    }
-
-    static class WalletNode {
-        String name = null;
-        String host = "";
-        int port = 28081;
-        String user = "";
-        String password = "";
-        boolean isTestnet;
-
-        WalletNode(String walletName, String daemon, boolean isTestnet) {
-            if ((daemon == null) || daemon.isEmpty()) return;
-            this.name = walletName;
-            String daemonAddress;
-            String a[] = daemon.split("@");
-            if (a.length == 1) { // no credentials
-                daemonAddress = a[0];
-            } else if (a.length == 2) { // credentials
-                String userPassword[] = a[0].split(":");
-                if (userPassword.length != 2)
-                    throw new IllegalArgumentException("User:Password invalid");
-                user = userPassword[0];
-                if (!user.isEmpty()) password = userPassword[1];
-                daemonAddress = a[1];
-            } else {
-                throw new IllegalArgumentException("Too many @");
-            }
-
-            String da[] = daemonAddress.split(":");
-            if ((da.length > 2) || (da.length < 1))
-                throw new IllegalArgumentException("Too many ':' or too few");
-            host = da[0];
-            if (da.length == 2) {
-                try {
-                    port = Integer.parseInt(da[1]);
-                } catch (NumberFormatException ex) {
-                    throw new IllegalArgumentException("Port not numeric");
-                }
-            } else {
-                port = (isTestnet ? 28081 : 18081);
-            }
-            this.isTestnet = isTestnet;
-        }
-
-        String getAddress() {
-            return host + ":" + port;
-        }
-
-        boolean isValid() {
-            return !host.isEmpty();
-        }
+    public void setNetworkType(NetworkType networkType) {
+        WalletManager.getInstance().setNetworkType(networkType);
     }
 
     private class AsyncOpenWallet extends AsyncTask<WalletNode, Void, Integer> {
@@ -1167,22 +1128,22 @@ public class LoginActivity extends SecureActivity
 
             try {
                 long timeDA = new Date().getTime();
-                SocketAddress address = new InetSocketAddress(walletNode.host, walletNode.port);
+                SocketAddress address = walletNode.getSocketAddress();
                 long timeDB = new Date().getTime();
-                Timber.d("Resolving " + walletNode.host + " took " + (timeDB - timeDA) + "ms.");
+                Timber.d("Resolving " + walletNode.getAddress() + " took " + (timeDB - timeDA) + "ms.");
                 Socket socket = new Socket();
                 long timeA = new Date().getTime();
                 socket.connect(address, LoginActivity.DAEMON_TIMEOUT);
                 socket.close();
                 long timeB = new Date().getTime();
                 long time = timeB - timeA;
-                Timber.d("Daemon " + walletNode.host + " is " + time + "ms away.");
+                Timber.d("Daemon " + walletNode.getAddress() + " is " + time + "ms away.");
                 return (time < LoginActivity.DAEMON_TIMEOUT ? OK : TIMEOUT);
             } catch (IOException ex) {
-                Timber.d("Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
+                Timber.d("Cannot reach daemon %s because %s", walletNode.getAddress(), ex.getMessage());
                 return IOEX;
             } catch (IllegalArgumentException ex) {
-                Timber.d("Cannot reach daemon " + walletNode.host + "/" + walletNode.port + " because " + ex.getMessage());
+                Timber.d("Cannot reach daemon %s because %s", walletNode.getAddress(), ex.getMessage());
                 return INVALID;
             }
         }
@@ -1196,7 +1157,7 @@ public class LoginActivity extends SecureActivity
             dismissProgressDialog();
             switch (result) {
                 case OK:
-                    Timber.d("selected wallet is ." + walletNode.name + ".");
+                    Timber.d("selected wallet is .%s.", walletNode.getName());
                     // now it's getting real, onValidateFields if wallet exists
                     promptAndStart(walletNode);
                     break;
@@ -1214,11 +1175,10 @@ public class LoginActivity extends SecureActivity
     }
 
     void promptAndStart(WalletNode walletNode) {
-        File walletFile = Helper.getWalletFile(this, walletNode.name);
+        File walletFile = Helper.getWalletFile(this, walletNode.getName());
         if (WalletManager.getInstance().walletExists(walletFile)) {
-            WalletManager.getInstance().
-                    setDaemon(walletNode.getAddress(), walletNode.isTestnet, walletNode.user, walletNode.password);
-            promptPassword(walletNode.name, new PasswordAction() {
+            WalletManager.getInstance().setDaemon(walletNode);
+            promptPassword(walletNode.getName(), new PasswordAction() {
                 @Override
                 public void action(String walletName, String password) {
                     startWallet(walletName, password);

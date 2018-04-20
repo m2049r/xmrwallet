@@ -18,6 +18,9 @@ package com.m2049r.xmrwallet.util;
 
 // based on https://rosettacode.org/wiki/Bitcoin/address_validation#Java
 
+import com.m2049r.xmrwallet.model.NetworkType;
+import com.m2049r.xmrwallet.model.WalletManager;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,6 +29,11 @@ import java.util.Arrays;
 public class BitcoinAddressValidator {
 
     private static final String ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
+    public static boolean validate(String addrress) {
+        return validate(addrress,
+                WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet);
+    }
 
     public static boolean validate(String addrress, boolean testnet) {
         if (addrress.length() < 26 || addrress.length() > 35)

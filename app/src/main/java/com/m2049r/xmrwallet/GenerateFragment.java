@@ -386,7 +386,7 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkAddress() {
         String address = etWalletAddress.getEditText().getText().toString();
-        boolean ok = Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
+        boolean ok = Wallet.isAddressValid(address);
         if (!ok) {
             etWalletAddress.setError(getString(R.string.generate_check_address));
         } else {

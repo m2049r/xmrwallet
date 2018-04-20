@@ -45,6 +45,7 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.NodeList;
@@ -81,11 +82,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         File getStorageRoot();
 
-        boolean onWalletSelected(String wallet, String daemon, boolean testnet);
+        boolean onWalletSelected(String wallet, String daemon);
 
-        void onWalletDetails(String wallet, boolean testnet);
+        void onWalletDetails(String wallet);
 
-        void onWalletReceive(String wallet, boolean testnet);
+        void onWalletReceive(String wallet);
 
         void onWalletRename(String name);
 
@@ -93,13 +94,15 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletArchive(String walletName);
 
-        void onAddWallet(boolean testnet, String type);
+        void onAddWallet(String type);
 
-        void showNet(boolean testnet);
+        void showNet();
 
         void setToolbarButton(int type);
 
         void setTitle(String title);
+
+        void setNetworkType(NetworkType networkType);
 
     }
 
@@ -126,8 +129,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onResume();
         Timber.d("onResume()");
         activityCallback.setTitle(null);
-        activityCallback.setToolbarButton(Toolbar.BUTTON_DONATE);
-        activityCallback.showNet(isTestnet());
+        activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
+        activityCallback.showNet();
     }
 
     @Override
@@ -244,13 +247,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     // Callbacks from WalletInfoAdapter
     @Override
     public void onInteraction(final View view, final WalletManager.WalletInfo infoItem) {
-        String x = isTestnet() ? "9A-" : "4-";
-        if (x.indexOf(infoItem.address.charAt(0)) < 0) {
+        String addressPrefix = addressPrefix();
+        if (addressPrefix.indexOf(infoItem.address.charAt(0)) < 0) {
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (activityCallback.onWalletSelected(infoItem.name, getDaemon(), isTestnet())) {
+        if (activityCallback.onWalletSelected(infoItem.name, getDaemon())) {
             savePrefs();
         }
     }
@@ -279,11 +282,24 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         return true;
     }
 
+    private String addressPrefix() {
+        switch (WalletManager.getInstance().getNetworkType()) {
+            case NetworkType_Testnet:
+                return "9A-";
+            case NetworkType_Mainnet:
+                return "4-";
+            case NetworkType_Stagenet:
+                return "5-";
+            default:
+                throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
+        }
+    }
+
     private void filterList() {
         displayedList.clear();
-        String x = isTestnet() ? "9A" : "4";
+        String addressPrefix = addressPrefix();
         for (WalletManager.WalletInfo s : walletList) {
-            if (x.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
+            if (addressPrefix.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
         }
     }
 
@@ -313,11 +329,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     private void showInfo(@NonNull String name) {
-        activityCallback.onWalletDetails(name, isTestnet());
+        activityCallback.onWalletDetails(name);
     }
 
     private void showReceive(@NonNull String name) {
-        activityCallback.onWalletReceive(name, isTestnet());
+        activityCallback.onWalletReceive(name);
     }
 
     @Override
@@ -329,29 +345,31 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
-        menu.findItem(R.id.action_testnet).setChecked(isTestnet());
+        menu.findItem(R.id.action_testnet).setChecked(testnetCheckMenu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private boolean testnet = BuildConfig.DEBUG;
+    private boolean testnetCheckMenu = BuildConfig.DEBUG;
 
-    boolean isTestnet() {
-        return testnet;
-    }
+    //boolean isTestnet() {
+    //    return testnet;
+    //}
 
     public boolean onTestnetMenuItem() {
-        boolean lastState = testnet;
+        boolean lastState = testnetCheckMenu;
         setNet(!lastState, true); // set and save
         return !lastState;
     }
 
-    public void setNet(boolean testnet, boolean save) {
-        this.testnet = testnet;
-        activityCallback.showNet(testnet);
+    public void setNet(boolean testnetChecked, boolean save) {
+        this.testnetCheckMenu = testnetChecked;
+        NetworkType net = testnetChecked ? NetworkType.NetworkType_Testnet : NetworkType.NetworkType_Mainnet;
+        activityCallback.setNetworkType(net);
+        activityCallback.showNet();
         if (save) {
             savePrefs(true); // use previous state as we just clicked it
         }
-        if (testnet) {
+        if (testnetChecked) {
             setDaemon(daemonTestNet);
         } else {
             setDaemon(daemonMainNet);
@@ -379,7 +397,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
         daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
-        setNet(isTestnet(), false);
+        setNet(testnetCheckMenu, false);
 
         showXmrtoEnabled = sharedPref.getBoolean(PREF_SHOW_XMRTO_ENABLED, true);
     }
@@ -398,7 +416,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     void savePrefs(boolean usePreviousTestnetState) {
         Timber.d("SAVE / %s", usePreviousTestnetState);
         // save the daemon address for the net
-        boolean testnet = isTestnet() ^ usePreviousTestnetState;
+        boolean testnet = testnetCheckMenu ^ usePreviousTestnetState;
         String daemon = getDaemon();
         if (testnet) {
             daemonTestNet.setRecent(daemon);
@@ -484,19 +502,19 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             case R.id.fabNew:
                 fabScreen.setVisibility(View.INVISIBLE);
                 isFabOpen = false;
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_NEW);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_NEW);
                 break;
             case R.id.fabView:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_VIEWONLY);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_VIEWONLY);
                 break;
             case R.id.fabKey:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_KEY);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_KEY);
                 break;
             case R.id.fabSeed:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_SEED);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_SEED);
                 break;
             case R.id.fabScreen:
                 animateFAB();
