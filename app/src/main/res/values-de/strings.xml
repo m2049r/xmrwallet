@@ -70,7 +70,7 @@
 
     <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Zahlungs ID integriert</string>
+    <string name="info_paymentid_intergrated">Zahlungs-ID integriert</string>
     <string name="info_prepare_tx">Bereite deine Transaktion vor</string>
 
     <string name="label_send_progress_xmrto_create">Erstelle XMR.TO Auftrag</string>
@@ -112,7 +112,7 @@
     <string name="rename_progress">Umbenennung wird ausgeführt</string>
     <string name="open_progress">Daemon Verbindung wird getestet</string>
 
-    <string name="service_progress">Einpacken &#8230;\nDies kann einen Moment dauern!</string>
+    <string name="service_progress">Fertigstellen &#8230;\nDies kann einen Moment dauern!</string>
 
     <string name="backup_success">Backup erfolgreich</string>
     <string name="backup_failed">Backup fehlgeschlagen!</string>
@@ -147,7 +147,7 @@
 
     <string name="send_xmrto_timeout">Da hast du zu lange gewartet, mein Freund!</string>
 
-    <string name="service_busy">Ich bin noch mit deiner letzten Wallet beschäftigt &#8230;</string>
+    <string name="service_busy">Ich bin noch mit deinem letzten Wallet beschäftigt &#8230;</string>
 
     <string name="prompt_rename">Umbenennen %1$s</string>
 
@@ -155,7 +155,7 @@
     <string name="prompt_send_password">Passwort bestätigen</string>
     <string name="bad_password">Falsches Passwort!</string>
     <string name="bad_wallet">Wallet existiert nicht!</string>
-    <string name="error_not_wallet">Das ist keine Wallet!</string>
+    <string name="error_not_wallet">Das ist kein Wallet!</string>
     <string name="prompt_daemon_missing">Daemonadresse muss gesetzt sein!</string>
     <string name="prompt_wrong_net">Wallet entspricht nicht dem ausgewähltem Netz</string>
     <string name="warn_daemon_unavailable">Kann nicht zum Daemon verbinden! Versuche es noch einmal.</string>
@@ -195,8 +195,8 @@
     <string name="message_copy_viewkey">View Key in Zwischenablage kopiert!</string>
     <string name="message_copy_xmrtokey">XMR.TO Schlüssel in Zwischenablage kopiert!</string>
     <string name="message_copy_address">Wallet Adresse in Zwischenablage kopiert!</string>
-    <string name="message_copy_txid">Transaktions ID in Zwischenablage kopiert!</string>
-    <string name="message_noselect_seed">Auswahl der Wortkette aus Sicherheitsgründen deaktiviert!</string>
+    <string name="message_copy_txid">Transaktions-ID in Zwischenablage kopiert!</string>
+    <string name="message_noselect_seed">Auswahl des Seeds aus Sicherheitsgründen deaktiviert!</string>
     <string name="message_noselect_key">Auswahl des spend keys aus Sicherheitsgründen deaktiviert!</string>
     <string name="message_nocopy">Kopieren aus Sicherheitsgründen deaktiviert!</string>
 
@@ -205,8 +205,8 @@
     <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Passwort</string>
-    <string name="generate_buttonGenerate">Erstell mir jetzt endliche eine Wallet!</string>
-    <string name="generate_seed">Wortkette</string>
+    <string name="generate_buttonGenerate">Erstell mir jetzt endlich ein Wallet!</string>
+    <string name="generate_seed">mnemonischer Seed</string>
     <string name="generate_button_accept">Ich habe mir diese 25 Wörter notiert!</string>
 
     <string name="generate_button_backup">Backup</string>
@@ -224,13 +224,13 @@
 
     <string name="generate_wallet_type_key">Schlüssel</string>
     <string name="generate_wallet_type_new">Neu</string>
-    <string name="generate_wallet_type_seed">Wortkette</string>
+    <string name="generate_wallet_type_seed">Seed</string>
     <string name="generate_wallet_type_view">View</string>
 
     <string name="generate_address_hint">Öffentliche Adresse</string>
     <string name="generate_viewkey_hint">View Key</string>
     <string name="generate_spendkey_hint">Spend Key</string>
-    <string name="generate_mnemonic_hint">25-Wörter Wortkette</string>
+    <string name="generate_mnemonic_hint">25-Wörter mnemonischer Seed</string>
     <string name="generate_restoreheight_hint">Wiederherstellungshöhe oder Datum (JJJJ-MM-TT)</string>
 
     <string name="generate_wallet_label">Wallet</string>
@@ -238,12 +238,12 @@
     <string name="generate_address_label">ÖFfentliche Adresse</string>
     <string name="generate_viewkey_label">View Key</string>
     <string name="generate_spendkey_label">Spend Key</string>
-    <string name="generate_mnemonic_label">Wortkette</string>
+    <string name="generate_mnemonic_label">mnemonischer Seed</string>
     <string name="generate_restoreheight_label">Wiederherstellungshöhe:</string>
 
     <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
-    <string name="generate_check_mnemonic">Gib deine 25 Wörter Wortkette ein</string>
+    <string name="generate_check_mnemonic">Gib deine 25 Wörter Seed ein</string>
 
     <string name="send_amount_btc_xmr">%1$s (indicative)</string>
 
@@ -273,7 +273,7 @@
     <string name="send_confirm_title">Bestätigen</string>
     <string name="send_success_title">Fertig</string>
     <string name="send_summary_heading">Zusammenfassung</string>
-    <string name="send_amount_too_large">Menge > Gelder</string>
+    <string name="send_amount_too_large">Menge > Guthaben</string>
 
     <string name="send_amount_label">Menge</string>
     <string name="send_fee_btc_label">Gebühr (XMR)</string>
@@ -297,12 +297,12 @@
     <string name="tx_status_btc">Status</string>
     <string name="tx_address">Adresse</string>
     <string name="tx_timestamp">Zeitstempel</string>
-    <string name="tx_id">TX ID</string>
-    <string name="tx_id_btc">TX ID\n(BTC)</string>
+    <string name="tx_id">TX-ID</string>
+    <string name="tx_id_btc">TX-ID\n(BTC)</string>
     <string name="tx_key">TX Schlüssel</string>
     <string name="tx_destination">Ziel</string>
     <string name="tx_destination_btc">Ziel\n(BTC)</string>
-    <string name="tx_paymentId">Zahlungs ID</string>
+    <string name="tx_paymentId">Zahlungs-ID</string>
     <string name="tx_blockheight">Block</string>
     <string name="tx_amount">Menge</string>
     <string name="tx_amount_btc">Menge\n(BTC)</string>
@@ -344,7 +344,7 @@
     <string name="details_alert_no">Bring mich zurück!</string>
     <string name="details_title">Details</string>
 
-    <string name="archive_alert_message">Die Wallet wird archiviert und dann gelöscht!</string>
+    <string name="archive_alert_message">Das Wallet wird archiviert und dann gelöscht!</string>
     <string name="archive_alert_yes">Ja, mach das!</string>
     <string name="archive_alert_no">Nein, danke!</string>
 
@@ -368,8 +368,8 @@
         <item>USD</item>
     </string-array>
 
-    <string name="fab_create_new">Neue Wallet erstellen</string>
+    <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
     <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
-    <string name="fab_restore_seed">Wallet mit 25 Wörter Wortkette wiederherstellen</string>
+    <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
 </resources>
