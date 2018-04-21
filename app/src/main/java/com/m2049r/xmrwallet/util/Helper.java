@@ -47,6 +47,7 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
@@ -278,6 +279,14 @@ public class Helper {
         } else {
             return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
         }
+    }
+
+    private final static char[] HexArray = "0123456789ABCDEF".toCharArray();
+
+    public static String bytesToHex(byte[] data) {
+        if ((data != null) && (data.length > 0))
+            return String.format("%0" + (data.length * 2) + "X", new BigInteger(1, data));
+        else return "";
     }
 
     static public void setMoneroHome(Context context) {

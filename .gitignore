@@ -1,10 +1,7 @@
 .gradle
 /build
 *.iml
-/.idea/libraries
-/.idea/workspace.xml
-/.idea/caches
-/.idea/codeStyles
+/.idea
 /local.properties
 /captures
 .externalNativeBuild

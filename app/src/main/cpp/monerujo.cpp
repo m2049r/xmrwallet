@@ -695,6 +695,23 @@ Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject insta
     return static_cast<jboolean>(wallet->synchronized());
 }
 
+//void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
+JNIEXPORT jbyteArray JNICALL
+Java_com_m2049r_xmrwallet_util_KeyStoreHelper_cnSlowHash(JNIEnv *env, jobject clazz,
+                                               jbyteArray data) {
+
+    jbyte *buffer = env->GetByteArrayElements(data, NULL);
+    jsize size = env->GetArrayLength(data);
+    char hash[HASH_SIZE];
+    cn_slow_hash(buffer, (size_t) size, hash);
+
+    env->ReleaseByteArrayElements(data, buffer, JNI_ABORT); // do not update java byte[]
+
+    jbyteArray result = env->NewByteArray(HASH_SIZE);
+    env->SetByteArrayRegion(result, 0, HASH_SIZE, (jbyte *) hash);
+    return result;
+}
+
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getDisplayAmount(JNIEnv *env, jobject clazz,
                                                         jlong amount) {
@@ -1083,7 +1100,8 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobje
 //static void error(const std::string &category, const std::string &str);
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_initLogger(JNIEnv *env, jobject instance,
-                                                   jstring argv0, jstring default_log_base_name) {
+                                                         jstring argv0,
+                                                         jstring default_log_base_name) {
 
     const char *_argv0 = env->GetStringUTFChars(argv0, NULL);
     const char *_default_log_base_name = env->GetStringUTFChars(default_log_base_name, NULL);
@@ -1109,7 +1127,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logDebug(JNIEnv *env, jobject inst
 
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_logInfo(JNIEnv *env, jobject instance,
-                                                       jstring category, jstring message) {
+                                                      jstring category, jstring message) {
 
     const char *_category = env->GetStringUTFChars(category, NULL);
     const char *_message = env->GetStringUTFChars(message, NULL);
@@ -1122,7 +1140,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logInfo(JNIEnv *env, jobject insta
 
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_logWarning(JNIEnv *env, jobject instance,
-                                                       jstring category, jstring message) {
+                                                         jstring category, jstring message) {
 
     const char *_category = env->GetStringUTFChars(category, NULL);
     const char *_message = env->GetStringUTFChars(message, NULL);
@@ -1149,9 +1167,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logError(JNIEnv *env, jobject inst
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jobject instance,
                                                           jint level) {
-            Bitmonero::WalletManagerFactory::setLogLevel(level);
+    Bitmonero::WalletManagerFactory::setLogLevel(level);
 }
-
 
 
 #ifdef __cplusplus

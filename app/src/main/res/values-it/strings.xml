@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Portafoglio</string>
 
     <string name="menu_testnet">Testnet</string>
@@ -14,6 +12,7 @@
     <string name="menu_rename">Rinomina &#8230;</string>
     <string name="menu_archive">Archivia</string>
     <string name="menu_backup">Backup</string>
+    <string name="menu_changepw">[Change Passphrase]</string>
 
     <string name="password_weak">Continua a scrivere &#8230;</string>
     <string name="password_fair">Mah &#8230;</string>
@@ -44,9 +43,7 @@
     <string name="info_send_xmrto_success_order_label">Ordine XMR.TO</string>
 
     <string name="info_send_xmrto_success_sending">Invio in corso</string>
-    <string name="info_send_xmrto_success_status_label">Stato:</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-    <string name="info_send_xmrto_success_status">%1$s è %1$s (#%1$d)</string>
 
     <string name="info_txdetails_xmrto_key">Chiave:</string>
     <string name="info_txdetails_xmrto_address">Indirizzo:</string>
@@ -73,8 +70,8 @@
     <string name="info_paymentid_intergrated">ID pagamento integrato</string>
     <string name="info_prepare_tx">Preparando la tua transazione</string>
 
-    <string name="label_send_progress_xmrto_create">Creando l'ordine XMR.TO</string>
-    <string name="label_send_progress_xmrto_query">Richiedendo l'ordine XMR.TO</string>
+    <string name="label_send_progress_xmrto_create">Creando l\'ordine XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">Richiedendo l\'ordine XMR.TO</string>
     <string name="label_send_progress_create_tx">Preparando la transazione Monero</string>
 
     <string name="label_send_progress_queryparms">Richiedendo i parametri XMR.TO</string>
@@ -111,6 +108,7 @@
     <string name="archive_progress">Archiviazione in corso</string>
     <string name="rename_progress">Rinomina in corso</string>
     <string name="open_progress">Controllando connessione con daemon</string>
+    <string name="changepw_progress">[Change Password in progress]</string>
 
     <string name="service_progress">Rimettendo le cose a posto &#8230;\nPuò richiedere del tempo!</string>
 
@@ -120,6 +118,8 @@
     <string name="archive_failed">Archiviazione fallita!</string>
     <string name="delete_failed">Cancellazione fallita!</string>
     <string name="rename_failed">Rinomina fallita!</string>
+    <string name="changepw_failed">[Change Password failed!]</string>
+    <string name="changepw_success">[Password changed]</string>
 
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;utente&gt;:&lt;password&gt;@]&lt;daemon&gt;[:&lt;porta&gt;])</string>
@@ -151,12 +151,14 @@
 
     <string name="prompt_rename">Rinomina %1$s</string>
 
+    <string name="prompt_changepw">[New Passphrase for %1$s]</string>
+    <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
     <string name="prompt_password">Password per %1$s</string>
     <string name="prompt_send_password">Conferma Password</string>
     <string name="bad_password">Password errata!</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
     <string name="error_not_wallet">Questo non è un portafoglio!</string>
-    <string name="prompt_daemon_missing">Deve essere impostato l'indirizzo del Daemon!</string>
+    <string name="prompt_daemon_missing">Deve essere impostato l\'indirizzo del Daemon!</string>
     <string name="prompt_wrong_net">Il portafoglio non si abbina con la rete selezionata</string>
     <string name="warn_daemon_unavailable">Impossibile connettersi al daemon! Prova di nuovo.</string>
     <string name="panic">Qualcosa è sbagliato!</string>
@@ -169,7 +171,6 @@
     <string name="title_amount">Ammontare</string>
     <string name="title_date">Data</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR non confermati</string>
-    <string name="xmr" translatable="false">XMR</string>
     <string name="label_transactions">Transazioni</string>
     <string name="text_daemonConnected">Daemon connesso!</string>
 
@@ -185,8 +186,8 @@
     <string name="status_syncing">Scansionando:</string>
 
     <string name="prompt_problems">Problemi</string>
-    <string name="message_strorage_not_writable">L'unità di memoria esterna non è scrivibile! Aiuto!</string>
-    <string name="message_strorage_not_permitted">Abbiamo veramente bisogno di questi permessi sull'unità di memoria esterna!</string>
+    <string name="message_strorage_not_writable">L\'unità di memoria esterna non è scrivibile! Aiuto!</string>
+    <string name="message_strorage_not_permitted">Abbiamo veramente bisogno di questi permessi sull\'unità di memoria esterna!</string>
     <string name="message_camera_not_permitted">Nessuna telecamera = Nessuna scansione QR!</string>
 
     <string name="label_copy_viewkey">Chiave di visualizzazione</string>
@@ -205,9 +206,11 @@
     <string name="generate_title">Crea portafoglio</string>
     <string name="generate_name_hint">Nome del portafoglio</string>
     <string name="generate_password_hint">Passphrase del portafoglio</string>
+    <string name="generate_bad_passwordB">[Passphrases do not match]</string>
+    <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
     <string name="generate_buttonGenerate">Fammi subito un portafoglio!</string>
     <string name="generate_seed">Seed mnemonico</string>
-    <string name="generate_button_accept">Ho preso nota di queste 25 parole!</string>
+    <string name="generate_button_accept">[I have noted the above info!]</string>
 
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Esporta chiavi</string>
@@ -240,6 +243,7 @@
     <string name="generate_spendkey_label">Chiave di spesa</string>
     <string name="generate_mnemonic_label">Seed mnemonico</string>
     <string name="generate_restoreheight_label">Altezza di ripristino:</string>
+    <string name="generate_crazypass_label">[Wallet Files Restore Password]</string>
 
     <string name="generate_check_key">Inserisci una chiave valida</string>
     <string name="generate_check_address">Inserisci un indirizzo valido</string>
@@ -348,24 +352,11 @@
     <string name="archive_alert_yes">Sì, procedi!</string>
     <string name="archive_alert_no">No grazie!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Priority Default</item>
         <item>Priority Bassa</item>
         <item>Priority Media</item>
         <item>Priority Alta</item>
-    </string-array>
-
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
     </string-array>
 
     <string name="fab_create_new">Crea un nuovo portafoglio</string>

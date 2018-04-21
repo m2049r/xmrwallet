@@ -14,6 +14,7 @@
     <string name="menu_rename">Rename &#8230;</string>
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
+    <string name="menu_changepw">Change Passphrase</string>
 
     <string name="password_weak">Continue typing &#8230;</string>
     <string name="password_fair">Meh &#8230;</string>
@@ -44,9 +45,7 @@
     <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
 
     <string name="info_send_xmrto_success_sending">Sending</string>
-    <string name="info_send_xmrto_success_status_label">Status:</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-    <string name="info_send_xmrto_success_status">%1$s is %1$s (#%1$d)</string>
 
     <string name="info_txdetails_xmrto_key">Key:</string>
     <string name="info_txdetails_xmrto_address">Address:</string>
@@ -111,6 +110,7 @@
     <string name="archive_progress">Archive in progress</string>
     <string name="rename_progress">Rename in progress</string>
     <string name="open_progress">Checking daemon connection</string>
+    <string name="changepw_progress">Change Password in progress</string>
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
@@ -120,6 +120,8 @@
     <string name="archive_failed">Archive failed!</string>
     <string name="delete_failed">Delete failed!</string>
     <string name="rename_failed">Rename failed!</string>
+    <string name="changepw_failed">Change Password failed!</string>
+    <string name="changepw_success">Password changed</string>
 
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
@@ -151,6 +153,8 @@
 
     <string name="prompt_rename">Rename %1$s</string>
 
+    <string name="prompt_changepw">New Passphrase for %1$s</string>
+    <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
     <string name="prompt_password">Password for %1$s</string>
     <string name="prompt_send_password">Confirm Password</string>
     <string name="bad_password">Incorrect password!</string>
@@ -205,9 +209,11 @@
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Passphrase</string>
+    <string name="generate_bad_passwordB">Passphrases do not match</string>
+    <string name="generate_empty_passwordB">Passphrase may not be empty</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
     <string name="generate_seed">Mnemonic Seed</string>
-    <string name="generate_button_accept">I have noted these 25 words!</string>
+    <string name="generate_button_accept">I have noted the mnemonic seed</string>
 
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Export Keys</string>
@@ -240,6 +246,7 @@
     <string name="generate_spendkey_label">Spend Key</string>
     <string name="generate_mnemonic_label">Mnemonic Seed</string>
     <string name="generate_restoreheight_label">Restore Height:</string>
+    <string name="generate_crazypass_label">Wallet Files Restore Password</string>
 
     <string name="generate_check_key">Enter valid Key</string>
     <string name="generate_check_address">Enter valid Address</string>

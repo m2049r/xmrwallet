@@ -174,11 +174,28 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             case R.id.action_details_help:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_details);
                 return true;
+            case R.id.action_details_changepw:
+                onWalletChangePassword();
+                return true;
             case R.id.action_help_send:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_send);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void onWalletChangePassword() {//final String walletName, final String walletPassword) {
+        try {
+            GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            AlertDialog dialog = detailsFragment.createChangePasswordDialog();
+            if (dialog != null) {
+                Helper.showKeyboard(dialog);
+                dialog.show();
+            }
+        } catch (ClassCastException ex) {
+            Timber.w("onWalletChangePassword() called, but no GenerateReviewFragment active");
         }
     }
 
@@ -682,6 +699,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     case DialogInterface.BUTTON_POSITIVE:
                         Bundle extras = new Bundle();
                         extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
+                        extras.putString("password", getIntent().getExtras().getString(REQUEST_PW));
                         replaceFragment(new GenerateReviewFragment(), null, extras);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:

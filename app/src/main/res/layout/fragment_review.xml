@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ProgressBar
@@ -17,55 +18,6 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:visibility="gone" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_top_first"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                style="@style/MoneroLabel.Heading"
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/generate_wallet_label"
-                android:textAlignment="center" />
-
-            <TextView
-                style="@style/MoneroLabel.Heading"
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/generate_password_label"
-                android:textAlignment="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/data_top"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/tvWalletName"
-                style="@style/MoneroText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/tvWalletPassword"
-                style="@style/MoneroText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="***"
-                android:textAlignment="center" />
-        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -96,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/data_top"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:text="49RBjxQ2zgf7t17w7So9ngcEY9obKzsrr6Dsah24MNSMiMBEeiYPP5CCTBq4GpZcEYN5Zf3upsLiwd5PezePE1i4Tf3rryY" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -118,7 +71,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/data_top"
             android:background="@drawable/backgound_seed"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:text="tucks slackens vehicle doctor oaks aloof balding knife rays wise haggled cuisine navy ladder suitcase dusted last thorn pixels karate ticket nibs violin zapped slackens" />
+
+        <LinearLayout
+            android:id="@+id/llPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/generate_crazypass_label" />
+
+            <TextView
+                android:id="@+id/tvWalletPassword"
+                style="@style/MoneroText.Monospace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/data_top"
+                android:textAlignment="center"
+                tools:text="2ExEN7droBLzWW2CEE2d7kv7E/iCZwNn:hKwUmg3:hg" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/bAccept"
@@ -178,20 +157,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/data_top"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="e4aba454d78799dbd8d576bf70e7f15a06e91f1ecfd404053f91519a48df2a0e" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/header_top">
-
-                <TextView
-                    style="@style/MoneroLabel.Heading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:text="@string/generate_spendkey_label" />
-            </FrameLayout>
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/header_top"
+                android:text="@string/generate_spendkey_label" />
 
             <TextView
                 android:id="@+id/tvWalletSpendKey"
@@ -199,7 +174,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/data_top"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="4925a6254d2dff71df53f13b8334f9ceda6cdd5821aa895f7de1d2640500740d" />
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
