@@ -238,7 +238,17 @@ public class LoginActivity extends SecureActivity
             if (params.length != 2) return false;
             File walletFile = Helper.getWalletFile(LoginActivity.this, params[0]);
             String newName = params[1];
-            return renameWallet(walletFile, newName);
+            boolean success = renameWallet(walletFile, newName);
+            try {
+                if (success && FingerprintHelper.isFingerprintAuthAllowed(params[0])) {
+                    String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, params[0]);
+                    KeyStoreHelper.saveWalletUserPass(LoginActivity.this, newName, savedPass);
+                    KeyStoreHelper.removeWalletUserPass(LoginActivity.this, params[0]);
+                }
+            } catch (KeyStoreException ex) {
+                ex.printStackTrace();
+            }
+            return success;
         }
 
         @Override
@@ -259,9 +269,6 @@ public class LoginActivity extends SecureActivity
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
         if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
-            String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, walletFile.getName());
-            KeyStoreHelper.saveWalletUserPass(LoginActivity.this, newName, savedPass);
-            KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletFile.getName());
             deleteWallet(walletFile);
             return true;
         } else {
