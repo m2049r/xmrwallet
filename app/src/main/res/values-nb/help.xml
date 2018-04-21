@@ -1,236 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
-        <h1>Create Wallet - New</h1>
-        <p>If you need a new Monero Address!</p>
-        <p>Enter a unique wallet name and password.
-        The password is used for securing your wallet data on the device. Use a strong password -
-        even better use a passphrase.</p>
-        <h2>Note your Mnemonic Seed!</h2>
-        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
-        This is the only data needed to recover your wallet at a later point
-        and gain full access to your funds.
-        Keeping this secure and private is very important, as it gives <em>anyone</em>
-        full access to your funds!</p>
-        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
-        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
-        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
-        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
-        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
-        and secure places.</p>
+        <h1>Lage lommebok - Ny</h1>
+        <p>Hvis du trenger en ny Monero addresse!</p>
+        <p>Skriv inn et unikt lommebok navn og passord.
+        Passordet blir brukt til å sikre lommebokdataene på enheten. Bruk et sterkt passord -
+        helst en passordfrase.</p>
+        <h2>Noter ditt mnemoniske seed!</h2>
+        <p>På neste side vil du finne ditt 25 ord lange \"Mnemonisk Seed\".
+        Dette er den eneste dataen du trenger for å gjenopprette lommeboken din senere,
+		og få tilgang til alle pengene dine.
+        Det er veldig viktig å holde dette sikkert, siden det gir <em>hvem som helst</em>
+        full tilgang på pengene dine!</p>
+        <p>Hvis du mister lommebokpassordet ditt, kan du fortsatt gjenoprette lommeboka med den mnemoniske seeden din.</p>
+        <p>Det finnes ingen måte å gjennoprette ditt mnemoniske seed, så hvis du mister det er alle pengene dine tapt.
+        Det mnemoniske seedet kan heller aldri forandres, og hvis det blir stjelt eller har blitt kompromittert,
+        må du flytte pengene dine til en ny lommebok (med et ny mnemonisk seed). Derfor er det best
+        at du backer opp ditt mnemoniske seed, ved å skrive det ned og lagre det i <em>flere</em> trygge
+        og sikre plasser.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.</p>
-        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Lage lommebook - Seed</h1>
+        <p>Hvis du allerede har en Monero addresse og vil gjennoprette transaksjonene fra blokkjeden!</p>
+        <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
+        Bruk et sterkt passord, helst en passordfrase.</p>
+        <p>Skriv inn seedet ditt i feltet \"Mnemonisk Seed\".<p>
+        <p>Hvis du kjenner til blokkhøyden til den første transaksjonen til denne addressen,
+		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
+        transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Create Wallet - Keys</h1>
-        <p>If you are recovering your wallet using your keys!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Lage lommebok - Nøkler</h1>
+        <p>Hvis du gjenoppretter lommeboka di ved hjelp av nøkler!</p>
+        <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
+        Bruk et sterkt passord, helst en passordfrase.<p>
+        <p>Skriv inn Monero-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View Key\" and \"Spend Key\".</p>
+        <p>Hvis du kjenner til blokkhøyden til den første transaksjonen til denne addressen,
+		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
+        transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.<</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Create Wallet - View</h1>
-        <p>If you just want to monitor incoming transactions to a wallet!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Lage lommebok - View</h1>
+        <p>Hvis du bare vil følge med på innkommende transaksjoner til en lommebok!</p>
+        <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
+        Bruk et sterkt passord, helst en passordfrase.<p>
+        <p>Skriv inn Monero-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View-nøkkel\".</p>
+        <p>Hvis du kjenner til blokkhøyden til den første transaksjonen til denne addressen,
+		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
+        transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
-        <h1>Wallet Details</h1>
-        <h2>Public address</h2>
-        Your public address is like your bank account number you can share this with anyone without
-        having to fear losing your Monero. People will send Monero to your wallet using this address.
-        <h2>Mnemonic Seed</h2>
-        This is the only data needed to recover your wallet at a later point and gain full access to
-        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
-        access to your Monero! If you haven’t written this down somewhere safe please do!
-        <h2>Wallet Files Recovery Password</h2>
-        Make sure you write this password down. If you reset your device or uninstall the app, you
-        will need it to access your wallet again.<br/>
+        <h1>Lommebokdetaljer</h1>
+        <h2>Offentlig nøkkel</h2>
+        Den offentlige addressen din er som bankkontonummeret ditt, som du kan dele med folk
+		uten å være redd for å miste penger. Det er denne folk sender Monero til.
+        <h2>Mnemonisk Seed</h2>
+        Dette er den eneste dataen du trenger for å gjenoprette lommeboka di senere,
+		og få full tilgang til pengene dine. Å holde denne privat er veldig viktig, siden den gir <em>hvem som helst</em> full
+        tilgang til dine moneroj! Hvis du ikke har skrevet den ned, vær så snill og gjør det!
+        <h2>Lommebokfiler gjenoprettelsespassord</h2>
+        Vær sikker på at du skriver ned dette passordet. Hvis du nullstiller enheten eller avinstallerer appen, vil
+        du trenge tilgang til lommeboka di igjen.<br/>
         <h3>CrAzYpass</h3>
-        If the password displayed here is 52 alphanumeric characters in groups of 4 - congratulations!
-        Your wallet files are secured with a 256-bit key generated by your device&apos;s security
-        features based on the passphrase you chose (on creation or by changing it). This makes it
-        extremenly difficult to hack!<br/>
-        This feature is mandatory for all newly created wallets.
-        <h3>Legacy Password</h3>
-        If you see your passphrase here, your wallet files are not as secure as when using
-        a CrAzYpass. To fix this, simply select \"Change Passphrase\" from the menu. After entering
-        a new passphrase (maybe even the same one as before) the app will generate a CrAzYpass for
-        you and secure your wallet files with it. Write it down!
-        <h3>CrAzYpass wallets</h3>
-        If you ever need to reinstall Monerujo (for example after resetting your phone or switching
-        to a new one) or you want to use your wallet files on a different device or PC, you have to
-        use this Recovery Password in order to access your wallet again.<br/>
-        By selecting \"Change Passphrase\" from the menu, you can choose another passphrase. Beware
-        that this will generate a new Recovery Password. Write it down!
-        <h2>View key</h2>
-        Your view key can be used to monitor incoming transactions to your wallet without giving
-        permission to spend the funds inside your wallet.
-        <h2>Spend key</h2>
-        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
-        anyone this key, keep it safe like your Mnemonic Seed.
+        Hvis passordet vist her er 52 alfanunmeriske karakterer i grupper av 4 - gratulerer!     
+        Lommebokfilene dine er sikret med en 256-bit nøkkel generert av enheten din sine sikkerhetsfunksjoner
+        basert på passordet du valgte (når du lagde det eller forandra det) og dette gjør det
+        utrolig vanskelig å hacke!<br/>
+        Denne funksjonen er obligatorisk for nye lommebøker.
+        <h3>Eldre passord</h3>
+        Hvis du ser passordet ditt her, er ikke lommebokfilene dine så sikre som de er ved bruk av
+        CrAzYpass. For å fikse dette, trykk på \"Change Passphrase\" fra menyen. Etter å ha skrivd inn
+        ett nytt passord (kanskje til og med det samme som før) vil appen generere et CrAzYpass for
+        deg og sikre lommebokfilene dine med det. Skriv det ned!
+        <h3>CrAzYpass lommebøker</h3>
+        Hvis du noen gang trenger å reinstallere monerujo (for eksempel etter å ha nullstilt enheten eller bytta
+        til en ny en) eller du vil bruke lommebokfilene dine på en annen enhet eller PC, må du bruke
+        dette gjenoppretelsespassordet for å få tilgang til lommeboka di igjen.<br/>
+        Ved å velge \"Change Passphrase\" fra menyen, kan du velge et annet passord. Vær oppmerksom
+        på at dette vil generere et nytt gjenoppretelsespassord. Skriv det ned!
+        <h2>View-nøkkel</h2>
+        View-nøkkelen din gir andre tilgang til å se innkommende transaksjoner, uten å gi dem
+		tilgang til å bruke penger.
+        <h2>Spend-nøkkel</h2>
+        Spend-nøkkelen gir alle tillatelse til å bruke moneroene dine, så hold den like
+		trygt som det mnemoniske seedet ditt!
     ]]></string>
 
     <string name="help_list"><![CDATA[
-        <h1>Wallet List</h1>
+        <h1>Lommebokliste</h1>
         <h2>Node</h2>
-        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
-        to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
-        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
-        <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
-        in the internal storage of your device. You can use a file explorer app to see them.
-        You should make backups of this folder on a regular basis to off-device storage in
-        case your device explodes or gets stolen.</p>
-        <p>Select a wallet to open it or press the \"+\" to create a new one.
-        Or select one of the wallet operations:</p>
-        <h3>Details</h3>
-        <p>Show the wallet details, seed &amp; keys.</p>
-        <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
-        <h3>Rename</h3>
-        <p>Rename the wallet. Backups are not renamed.</p>
+        <p>Monerujo bruker en ekstern node for å kommunisere med Monero-nettverket, uten å måtte
+        laste ned og oppbevare en kopi av blokkjeden selv. Du kan finne en liste over populære
+        eksterne noder eller lære hvordan du driver din egen eksterne node her: https://moneroworld.com/<p>
+        <p>Monerujo kommer med noen eksterne noder lagt inn. Den husker de fem siste nodene du har brukt.</p>
+        <h2>Lommebøker</h2>
+        <p>Her ser du lommebøkene dine. De ligger i <tt>monerujo</tt> mappa
+        på den interne lagringa for enheten din. Du kan bruke en filutforsker for å se dem.
+        Du burde ta backup av denne mappa en gang i blant til en ekstern enhet i tilfelle
+        enheten din eksploderer eller blir stjelt.</p>
+        <p>Velg en lommebok for å åpne den, eller trykk \"+\" for å lage en ny en.
+        Eller velg en av disse lommebokoperasjonene:</p>
+        <h3>Detaljer</h3>
+        <p>Viser lommebokdetaljene, seed og nøkler.</p>
+        <h3>Motta</h3>
+        <p>Lag en QR-kode for å motta Monero.</p>
+        <h3>Gi nytt navn</h3>
+        <p>Gi nytt navn til lommeboka. Backuper blir ikke omgjort.</p>
         <h3>Backup</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
-        overwriting previous copies there.</p>
-        <h3>Archive</h3>
-        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
-        folder. If you no longer need your backups you should delete them with a file explorer or
-        secure delete app.</p>
+        <p>Lag en kopi av lommeboka til <tt>backups</tt> mappa inni <tt>monerujo</tt>
+        og overskriv tidligere kopier.</p>
+        <h3>Arkiver</h3>
+        <p>Lag en backup og slett lommeboka etterpå. Kopien blir igjen i <tt>backups</tt>
+        mappa. Hvis du ikke lenger trenger backupsene, burde du slette dem med en filutforsker
+		eller en sikker sletteapp.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>The Balance</h2>
-        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
-        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
-        as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
-        Read more about change at https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaction List</h2>
-        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
+        <h1>Lommeboka</h1>
+        <h2>Skanning</h2>
+        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
+        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
+        lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
+		tid fordi du ikke har synkronisert på en stund.
+        <h2>Saldo</h2>
+        <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
+        Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
+		vist som ubekrefta en liten periode.
+        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
+        Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaksjonsliste</h2>
+        <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
-        <h1>Transaction Details</h1>
-        <h2>Destination</h2>
-        This is the public address of the wallet you sent Monero to
-        <h2>PaymentID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
-        fully optional and private. For example it can allow a Business to reconcile your transaction
-        with an item you bought.
-        <h2>TX ID</h2>
-        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
-        Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TX KEY (Transaction Key)</h2>
-        This is your transaction private key, keep this safe as revealing this to a third party
-        reveals which signature in a ring is yours, thereby making your transaction transparent.
-        <h2>Block</h2>
-        This was the block your transaction was included in.
+        <h1>Transaksjonsdetaljer</h1>
+        <h2>Destinasjon</h2>
+        Dette er den offentlige adressen til lommeboka du sendte Monero til.
+        <h2>Betalings-ID</h2>
+        Du kan bruke betalings-ID til å identifisere hvorfor du sendte Monero mellom to parter. Dette er
+        helt frivillig og privat. For eksempel lar det en bedrift tilknytte transaksjonen din med
+		en vare du har kjøpt.
+        <h2>TX-ID</h2>
+        Dette er transaksjons-IDen din, som du kan bruke til å identifisere transaksjonen din på den obfuskerte Monero blokkjeden, ved å bruke en
+        blokkjedeutforsker som <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>TX-nøkkel (Transaksjonsnøkkel)</h2>
+        Dette er din private transaksjonsnøkkel. Hold den privat, siden å gi den til en tredjepart
+        avslører hvilken signatur i ringen som er din, og gjør derfor transaksjonen din gjennomsiktig.
+        <h2>Blokk</h2>
+        Dette er blokka som transaksjonen din ligger i.
     ]]></string>
 
     <string name="help_send"><![CDATA[
         <h1>Send</h1>
-        <h2>Receiver’s address</h2>
-        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
-        your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
-        ensure you aren’t sending coins to the wrong address.</p>
-        <p>In addition to sending XMR, you can send BTC through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
-        <h2>Payment ID</h2>
-        <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
-        is fully optional and private. For example it can allow a business to reconcile your
-        transaction with an item you bought.<p>
-        <h2>Ring size</h2>
-        <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
-        we recommend you stick with a ring size of 7. Increasing the ring size above 7 increases
-        the amount of signers in a ring signature, theoretically providing increased plausible
-        deniability. However setting high ring sizes can also make your transaction stand out on
-        the blockchain.</p>
-        <h2>Priority</h2>
-        <p>This setting determines the speed at which your transaction will be included in the
-        blockchain. A high priority setting will correlate directly with a higher transaction fee
-        and the inverse is true for a low priority. Please note that if you set your transaction to
-        a low priority it can be hours before it is included on the blockchain. The default priority
-        is \"Medium\".</p>
-        <h1>Sending BTC</h1>
+        <h2>Mottakers adresse</h2>
+        <p>Dette er den offentlige adressen til lommeboka du skal sende moneroj til, som du kan
+		kopiere fra utklippstavla, skanne fra en QR-kode eller skrive inn manuellt. Vær sikker på at du trippelsjekker dette
+        for å forsikre deg om at du ikke sender moneroj til feil adresse.</p>
+        <p>I tillegg til å sende XMR, kan du sende BTC gjennom XMR.TO tjenesten (se https://xmr.to
+        for detaljer). Se seksjonen på å sende BTC under.</p>
+        <h2>Betalings-ID</h2>
+        <p>Du kan bruke betalings-ID til å identifisere hvorfor du sendte Monero mellom to parter. Dette er
+        helt frivillig og privat. For eksempel lar det en bedrift tilknytte transaksjonen din med
+		en vare du har kjøpt.<p>
+        <h2>Ringstørrelse</h2>
+        <p>Det er noen ringstørrelser å velge mellom i monerujo. Hvis du er en begynner
+        anbefaler vi å holde seg til en ringstørrelse av 7. Å øke størrelsen over 7 øker antallet
+        signaturer i en ringsignatur, som teoretisk sett gir mer "plausible deniability".
+		Derimot vil en større ringstørrelse gjøre at transaksjonen din blir mer synlig
+		på blokkjeden.</p>
+        <h2>Prioritet</h2>
+        <p>Denne innstillingen bestemmer hvor raskt transaksjonen din skal bli inkludert i blokkjeden.
+		En høy transaksjonsprioritet er direkte tilknytta en høy transaksjonsavgift
+        og det motsatte er sant for lav prioritet. Vær oppmerksom på at hvis du setter prioriteten
+        til lav kan det ta timer før den blir inkludert, basert på nettverkstrafikk. Standard prioritet er
+		\"Middels\".</p>
+        <h1>Å sende BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
+        Vi bruker XMR.TO-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
+        https://xmr.to og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        er ikke assosierte med XMR.TO og kan ikke hjelpe deg med deres tjeneste.</p>
+        <h2>XMR.TO vekslingskurs<h2>
+        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til XMR.TO-tjenesten. Disse
+        inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
+        kursen ikke er garantert på dette punktet. Du vil også se
+        den øvre grensa for at BTC-transaksjonen skal gå igjennom uten å vente på
+        XMR-bekreftelser (se XMR.TO-FAQen for fler detaljer). Legg merke til at XMR.TO
+        ikke har noen ekstra avgifter - hvor kult er ikke det?</p>
+        <h2>XMR.TO ordre<h2>
+        <p>På \"Bekreft\" skjermen, vil du se den faktiske XMR.TO ordren. Denne ordren er gyldig for
+        en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
+        enn den veiledende kursen vist på de tidligere skjermene.</p>
+        <h2>XMR.TO hemmelig nøkkel<h2>
+        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din XMR.TO hemmelige nøkkel
+        bli brukt til å spore BTC-transaksjonen på XMR.TO sine hjemmesider.</p>
+        <p>Vær oppmerksom på at denne nøkkelen kun er tilgjengelig for 24-timer etter transaksjonen
+		har blitt utført!</p>
+        <h2>XMR.TO nedtelling!</h2>
+        <p>Når nedtellinga når null, må du få en ny kvote fra XMR.TO ved å gå tilbake til
+        det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Sending BTC</h1>
+        <h1>Å sende BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
+        Vi bruker XMR.TO-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
+        https://xmr.to og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        er ikke assosierte med XMR.TO og kan ikke hjelpe deg med deres tjeneste.</p>
+        <h2>XMR.TO vekslingskurs<h2>
+        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til XMR.TO-tjenesten. Disse
+        inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
+        kursen ikke er garantert på dette punktet. Du vil også se
+        den øvre grensa for at BTC-transaksjonen skal gå igjennom uten å vente på
+        XMR-bekreftelser (se XMR.TO-FAQen for fler detaljer). Legg merke til at XMR.TO
+        ikke har noen ekstra avgifter - hvor kult er ikke det?</p>
+        <h2>XMR.TO ordre<h2>
+        <p>På \"Bekreft\" skjermen, vil du se den faktiske XMR.TO ordren. Denne ordren er gyldig for
+        en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
+        enn den veiledende kursen vist på de tidligere skjermene.</p>
+        <h2>XMR.TO hemmelig nøkkel<h2>
+        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din XMR.TO hemmelige nøkkel
+        bli brukt til å spore BTC-transaksjonen på XMR.TO sine hjemmesider.</p>
+        <p>Vær oppmerksom på at denne nøkkelen kun er tilgjengelig for 24-timer etter transaksjonen
+		har blitt utført!</p>
+		<h2>XMR.TO nedtelling!</h2>
+        <p>Når nedtellinga når null, må du få en ny kvote fra XMR.TO ved å gå tilbake til
+        det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 
 </resources>
