@@ -24,20 +24,20 @@
         enligt denna policy.
         </p>
         <h2>Samlad Data</h2>
-        <p>Personlig data är all data som kan identifiera en individ.
+        <p>Personlig data är all slags data som kan identifiera en individ.
         </p>
-        <p>Monero nycklar och offentliga adresser är samlade och bearbetade av appen lokalt
+        <p>Moneronycklar och offentliga adresser är samlade och bearbetade av appen lokalt
         för att utföra transaktioner och skicka till Monero-nätverket i krypterad form.
         </p>
-        <p>Annan personlig data är inte samlad av appen.</p>
-        <p>Om du använder USD/EUR växlings (valfritt) funktionen, hämtar monerujo växlings
-        värdena genom offentliga API:n av kraken.com.
-        Visa deras sekretesspolicy vid https://www.kraken.com/legal/privacy för
+        <p>Någon annan personlig data är inte samlad av appen.</p>
+        <p>Om du använder funktionen för USD/EUR växling (valfritt) så hämtar monerujo valutakurserna
+        genom offentliga API:n av kraken.com.
+        Läs deras sekretesspolicy på https://www.kraken.com/legal/privacy för
         detaljer om hur data i dina begär är samlade (speciellt
         sektionen "Information We Collect Automatically").</p>
-        <p>Om du använder appen för att skicka pengar till BTC adresser, behöver du använda XMR.TO tjänsten.
-        Visa deras sekretesspolicy vid https://xmr.to/ för detaljer. Monerujo skickar de BTC
-        destination adressen och mängden. Din IP kan också samlas.</p>
+        <p>Om du använder appen för att skicka pengar till BTC-adresser, behöver du använda tjänsten XMR.TO.
+        Läs deras sekretesspolicy för detaljer på https://xmr.to/. Monerujo skickar de BTC-
+        destination adressen och mängden. Din IP kan även samlas.</p>
         <h2>App-behörigheter</h2>
         <ul>
         <li>INTERNET : Anslut till Monero-nätverket via en Monero Daemon nod</li>
@@ -47,11 +47,11 @@
         <li>CAMERA : Skanna QR-koder för att ta emot Monero</li>
         </ul>
         <h2>Ändringar till denna Sekretesspolicy</h2>
-        <p>Vi kan uppdatera denna sekretesspolicy ibland. Vi meddelar
+        <p>Vi kan uppdatera denna sekretesspolicy. Vi meddelar
         dig om alla ändringar genom att skriva om den nya sekretesspolicyn i appen
         och på hemsidan (www.monerujo.io)
-        Vi rekommendar att du tittar på den här sekretesspolicyn ibland för ändringar.
-        <p>Denna Sekretesspolicy var senast uppdaterad den: 10 November, 2017.
+        Vi rekommendar att du läser vår sekretesspolicyn regelbundet för eventuella ändringar.
+        <p>Denna Sekretesspolicy uppdaterades senast den: 10 November, 2017.
         </p>
         <h2>Kontakta Oss</h2>
         <p>Om du har några frågor om våran sekretesspolicy,
