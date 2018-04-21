@@ -59,8 +59,8 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
-    static private final String WALLET_DIR = "monerujo";
-    static private final String HOME_DIR = "monero";
+    static private final String WALLET_DIR = "monerujo" + (BuildConfig.DEBUG ? "-debug" : "");
+    static private final String HOME_DIR = "monero" + (BuildConfig.DEBUG ? "-debug" : "");
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
