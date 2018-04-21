@@ -259,6 +259,9 @@ public class LoginActivity extends SecureActivity
     // copy + delete seems safer than rename because we call rollback easily
     boolean renameWallet(File walletFile, String newName) {
         if (copyWallet(walletFile, new File(walletFile.getParentFile(), newName), false, true)) {
+            String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, walletFile.getName());
+            KeyStoreHelper.saveWalletUserPass(LoginActivity.this, newName, savedPass);
+            KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletFile.getName());
             deleteWallet(walletFile);
             return true;
         } else {
@@ -363,9 +366,6 @@ public class LoginActivity extends SecureActivity
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
         boolean success = copyWallet(walletFile, backupFile, true, true);
-        if (success) {
-            KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletName);
-        }
         Timber.d("copyWallet is %s", success);
         return success;
     }
@@ -388,6 +388,7 @@ public class LoginActivity extends SecureActivity
             if (params.length != 1) return false;
             String walletName = params[0];
             if (backupWallet(walletName) && deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletName);
                 return true;
             } else {
                 return false;
