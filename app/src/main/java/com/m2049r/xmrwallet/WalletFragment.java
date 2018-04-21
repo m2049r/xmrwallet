@@ -352,7 +352,7 @@ public class WalletFragment extends Fragment
                 setProgress(x);
                 ivSynced.setVisibility(View.GONE);
             } else {
-                sync = getString(R.string.status_synced) + formatter.format(wallet.getBlockChainHeight());
+                sync = getString(R.string.status_synced) + " " + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
             }
         } else {
