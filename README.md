@@ -16,7 +16,7 @@ Another Android Monero Wallet for Monero
 - See the [FAQ](doc/FAQ.md)
 
 ## Translations
-help us translating Monerujo! you can find instructions [On Taiga](https://taiga.getmonero.org/project/erciccione-monero-localization/wiki/monerujo), but if you need help/support open an issue or contact the Localization Workgroup, you can find us on the freenode channel `#monero-translations`, also relayed on [MatterMost](https://mattermost.getmonero.org/monero/channels/monero-translations), and matrix/riot.
+Help us translate Monerujo! You can find instructions [On Taiga](https://taiga.getmonero.org/project/erciccione-monero-localization/wiki/monerujo), and if you need help/support, open an issue or contact the Localization Workgroup. You can find us on the freenode channel `#monero-translations`, also relayed on [MatterMost](https://mattermost.getmonero.org/monero/channels/monero-translations), and matrix/riot.
 
 ### Disclaimer
 You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
