@@ -32,21 +32,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.FingerprintHelper;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 import com.m2049r.xmrwallet.widget.Toolbar;
-import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.util.Helper;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
 
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import timber.log.Timber;
 
@@ -60,6 +62,7 @@ public class GenerateFragment extends Fragment {
 
     private TextInputLayout etWalletName;
     private TextInputLayout etWalletPassword;
+    private LinearLayout llFingerprintAuth;
     private TextInputLayout etWalletAddress;
     private TextInputLayout etWalletMnemonic;
     private TextInputLayout etWalletViewKey;
@@ -80,6 +83,7 @@ public class GenerateFragment extends Fragment {
 
         etWalletName = (TextInputLayout) view.findViewById(R.id.etWalletName);
         etWalletPassword = (TextInputLayout) view.findViewById(R.id.etWalletPassword);
+        llFingerprintAuth = (LinearLayout) view.findViewById(R.id.llFingerprintAuth);
         etWalletMnemonic = (TextInputLayout) view.findViewById(R.id.etWalletMnemonic);
         etWalletAddress = (TextInputLayout) view.findViewById(R.id.etWalletAddress);
         etWalletViewKey = (TextInputLayout) view.findViewById(R.id.etWalletViewKey);
@@ -146,6 +150,10 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
+
+        if (FingerprintHelper.isDeviceSupported(getContext())) {
+            llFingerprintAuth.setVisibility(View.VISIBLE);
+        }
 
         if (type.equals(TYPE_NEW)) {
             etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -424,6 +432,7 @@ public class GenerateFragment extends Fragment {
 
         String name = etWalletName.getEditText().getText().toString();
         String password = etWalletPassword.getEditText().getText().toString();
+        boolean fingerprintAuthAllowed = ((Switch) llFingerprintAuth.getChildAt(0)).isChecked();
 
         // create the real wallet password
         String crazyPass = KeyStoreHelper.getCrazyPass(getActivity(), password);
@@ -433,11 +442,17 @@ public class GenerateFragment extends Fragment {
 
         if (type.equals(TYPE_NEW)) {
             bGenerate.setEnabled(false);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
             activityCallback.onGenerate(name, crazyPass);
         } else if (type.equals(TYPE_SEED)) {
             if (!checkMnemonic()) return;
             String seed = etWalletMnemonic.getEditText().getText().toString();
             bGenerate.setEnabled(false);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
             activityCallback.onGenerate(name, crazyPass, seed, height);
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             if (checkAddress() && checkViewKey() && checkSpendKey()) {
@@ -447,6 +462,9 @@ public class GenerateFragment extends Fragment {
                 String spendKey = "";
                 if (type.equals(TYPE_KEY)) {
                     spendKey = etWalletSpendKey.getEditText().getText().toString();
+                }
+                if (fingerprintAuthAllowed) {
+                    KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
                 }
                 activityCallback.onGenerate(name, crazyPass, address, viewKey, spendKey, height);
             }

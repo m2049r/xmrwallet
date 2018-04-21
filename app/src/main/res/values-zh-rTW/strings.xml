@@ -154,7 +154,9 @@
     <string name="prompt_changepw">[New Passphrase for %1$s]</string>
     <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
     <string name="prompt_password">%1$s 的密碼</string>
+    <string name="prompt_fingerprint_auth">你也可以使用指紋來開啟錢包。\n請輕觸你的指紋感應器。</string>
     <string name="prompt_send_password">確認密碼</string>
+    <string name="bad_fingerprint">無法辨識的指紋，請再試一次。</string>
     <string name="bad_password">密碼錯誤!</string>
     <string name="bad_wallet">錢包不存在!</string>
     <string name="error_not_wallet">這不是錢包!</string>
@@ -206,6 +208,7 @@
     <string name="generate_title">建立錢包</string>
     <string name="generate_name_hint">錢包名稱</string>
     <string name="generate_password_hint">錢包密碼</string>
+    <string name="generate_fingerprint_hint">允許使用指紋開啟錢包</string>
     <string name="generate_bad_passwordB">[Passphrases do not match]</string>
     <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
     <string name="generate_buttonGenerate">建立錢包!</string>

@@ -154,7 +154,9 @@
     <string name="prompt_changepw">[New Passphrase for %1$s]</string>
     <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
     <string name="prompt_password">Password per %1$s</string>
+    <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
     <string name="prompt_send_password">Conferma Password</string>
+    <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
     <string name="bad_password">Password errata!</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
     <string name="error_not_wallet">Questo non è un portafoglio!</string>
@@ -206,6 +208,7 @@
     <string name="generate_title">Crea portafoglio</string>
     <string name="generate_name_hint">Nome del portafoglio</string>
     <string name="generate_password_hint">Passphrase del portafoglio</string>
+    <string name="generate_fingerprint_hint">[Allow to open wallet using fingerprint]</string>
     <string name="generate_bad_passwordB">[Passphrases do not match]</string>
     <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
     <string name="generate_buttonGenerate">Fammi subito un portafoglio!</string>

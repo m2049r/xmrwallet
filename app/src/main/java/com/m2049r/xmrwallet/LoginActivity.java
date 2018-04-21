@@ -33,6 +33,8 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
+import android.support.v4.os.CancellationSignal;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -55,6 +57,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.CrazyPassEncoder;
+import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
@@ -67,6 +70,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
+import java.security.KeyStoreException;
 import java.util.Date;
 
 import timber.log.Timber;
@@ -359,6 +363,9 @@ public class LoginActivity extends SecureActivity
         // then if something fails we have the old backup at least
         // or just create a new backup every time and keep n old backups
         boolean success = copyWallet(walletFile, backupFile, true, true);
+        if (success) {
+            KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletName);
+        }
         Timber.d("copyWallet is %s", success);
         return success;
     }
@@ -466,13 +473,27 @@ public class LoginActivity extends SecureActivity
         if (openDialog != null) return; // we are already asking for password
         Context context = LoginActivity.this;
         LayoutInflater li = LayoutInflater.from(context);
-        View promptsView = li.inflate(R.layout.prompt_password, null);
+        final View promptsView = li.inflate(R.layout.prompt_password, null);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setView(promptsView);
 
         final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
         etPassword.setHint(LoginActivity.this.getString(R.string.prompt_password, wallet));
+
+        boolean fingerprintAuthCheck;
+        try {
+            fingerprintAuthCheck = FingerprintHelper.isFingerprintAuthAllowed(wallet);
+        } catch (KeyStoreException ex) {
+            fingerprintAuthCheck = false;
+        }
+
+        final boolean fingerprintAuthAllowed = fingerprintAuthCheck;
+        final CancellationSignal cancelSignal = new CancellationSignal();
+
+        if (fingerprintAuthAllowed) {
+            promptsView.findViewById(R.id.txtFingerprintAuth).setVisibility(View.VISIBLE);
+        }
 
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {
 
@@ -502,15 +523,44 @@ public class LoginActivity extends SecureActivity
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways(LoginActivity.this);
+                                cancelSignal.cancel();
                                 dialog.cancel();
                                 openDialog = null;
                             }
                         });
         openDialog = alertDialogBuilder.create();
 
+        final FingerprintManagerCompat.AuthenticationCallback fingerprintAuthCallback = new FingerprintManagerCompat.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errMsgId, CharSequence errString) {
+                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth)).setText(errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+                String userPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, wallet);
+                if (processPasswordEntry(wallet, userPass, action)) {
+                    Helper.hideKeyboardAlways(LoginActivity.this);
+                    openDialog.dismiss();
+                    openDialog = null;
+                } else {
+                    etPassword.setError(getString(R.string.bad_password));
+                }
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth))
+                        .setText(getString(R.string.bad_fingerprint));
+            }
+        };
+
         openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
+                if (fingerprintAuthAllowed) {
+                    FingerprintHelper.authenticate(LoginActivity.this, cancelSignal, fingerprintAuthCallback);
+                }
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override

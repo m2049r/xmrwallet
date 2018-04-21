@@ -42,14 +42,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.NetworkType;
-import com.m2049r.xmrwallet.util.KeyStoreHelper;
-import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
+import java.security.KeyStoreException;
 
 import timber.log.Timber;
 
@@ -374,7 +376,15 @@ public class GenerateReviewFragment extends Fragment {
             String oldPassword = params[1];
             String userPassword = params[2];
             newPassword = KeyStoreHelper.getCrazyPass(getActivity(), userPassword);
-            return changeWalletPassword(newPassword);
+            boolean success = changeWalletPassword(newPassword);
+            try {
+                if (success && FingerprintHelper.isFingerprintAuthAllowed(walletName)) {
+                    KeyStoreHelper.saveWalletUserPass(getActivity(), walletName, userPassword);
+                }
+            } catch (KeyStoreException ex) {
+                KeyStoreHelper.removeWalletUserPass(getActivity(), walletName);
+            }
+            return success;
         }
 
         @Override
