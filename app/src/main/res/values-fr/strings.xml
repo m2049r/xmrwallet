@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Portefeuille</string>
 
     <string name="menu_testnet">Testnet</string>
@@ -169,7 +167,6 @@
     <string name="title_amount">Montant</string>
     <string name="title_date">Date</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR non confirmés</string>
-    <string name="xmr" translatable="false">XMR</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Démon connecté !</string>
 
@@ -348,24 +345,11 @@
     <string name="archive_alert_yes">Oui, procéder !</string>
     <string name="archive_alert_no">Non merci !</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Priority Défaut</item>
         <item>Priority Faible</item>
         <item>Priority Moyenne</item>
         <item>Priority Élevée</item>
-    </string-array>
-
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
     </string-array>
 
     <string name="fab_create_new">Créer un nouveau portefeuille</string>
