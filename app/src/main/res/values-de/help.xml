@@ -33,42 +33,43 @@
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Create Wallet - Keys</h1>
-        <p>If you are recovering your wallet using your keys!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Wallet erstellen - Schlüssel</h1>
+        <p>Falls du dein Wallet mit Schlüsseln wiederherstellen will!</p>
+        <p>Gib einen einzigartigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
+        Benutze ein starkes Passwort - noch besser ist eine Passphrase.<p>
+        <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
+        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
+		\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain nach
+        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Create Wallet - View</h1>
-        <p>If you just want to monitor incoming transactions to a wallet!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Wallet erstellen - View</h1>
+        <p>Falls du nur eingehende Transaktionen auf diese Wallet überwachen willst!</p>
+        <p>Gib einen einzigartigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
+        Benutze ein starkes Passwort - noch besser ist eine Passphrase.<p>
+        <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
+        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
+		\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain nach
+        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
         <h1>Wallet Details</h1>
-        <h2>Public address</h2>
-        Your public address is like your bank account number you can share this with anyone without
-        having to fear losing your Monero. People will send Monero to your wallet using this address.
-        <h2>Mnemonic Seed</h2>
-        This is the only data needed to recover your wallet at a later point and gain full access to
-        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
-        access to your Monero! If you haven’t written this down somewhere safe please do!
+        <h2>Öffentliche Adresse</h2>
+        Die öffentliche Adresse ist wie deine Kontonummer die du anderen Personen mitteilen kannst, ohne Angst zu haben dein Geld zu verlieren.
+		Andere Personen werden dir Monero an diese Adresse schicken.
+        <h2>Mnemonischer Seed</h2>
+        Dies sind die einzigen Daten die du benötigst um deine Wallet an einem späteren 
+		Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
+		Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
+        vollen Zugriff auf diese Gelder geben! Falls du ihn nicht an mehreren, sicheren Stellen aufgeschrieben hast mach dies bitte jetzt!
         <h2>View key</h2>
-        Your view key can be used to monitor incoming transactions to your wallet without giving
-        permission to spend the funds inside your wallet.
-        <h2>Spend key</h2>
-        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
-        anyone this key, keep it safe like your Mnemonic Seed.
+        Dein View Key kann benutzt werden um eingehende Transaktionen zu dieser Wallet zu überwachen ohne anderen
+        die Möglichkeit zu geben Gelder aus dieser Wallet auszugeben.
+        <h2>Spend Key</h2>
+        Der Spend Key ermöglicht jedem Monero aus dieser Wallet auszugeben, also bewahre diesen Spend Key genauso sicher
+		wie den Mnemomischen Seed auf.
     ]]></string>
 
     <string name="help_list"><![CDATA[
