@@ -37,6 +37,8 @@
 
     <string name="info_xmrto_enabled">BTC payment enabled, tap for more info.</string>
 
+    <string name="info_crazypass_enabled">CrAzYpass enabled, tap for more info.</string>
+
     <string name="info_xmrto"><![CDATA[
         <b>You entered a Bitcoin address.</b><br/>
         <i>You&apos;ll send XMR and the receiver will get BTC using the <b>XMR.TO</b> service.</i>
