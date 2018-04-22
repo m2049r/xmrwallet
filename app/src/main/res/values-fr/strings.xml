@@ -43,9 +43,7 @@
     <string name="info_send_xmrto_success_order_label">Ordres XMR.TO</string>
 
     <string name="info_send_xmrto_success_sending">Envoi</string>
-    <string name="info_send_xmrto_success_status_label">Statut :</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-    <string name="info_send_xmrto_success_status">%1$s est %1$s (#%1$d)</string>
 
     <string name="info_txdetails_xmrto_key">Clef :</string>
     <string name="info_txdetails_xmrto_address">Adresse :</string>
@@ -64,7 +62,7 @@
         <i><b>XMR.TO</b> vous donne un taux de change de <b>%3$s BTC</b> <u>actuellement</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Les montant n'excédant pas <b>%1$s BTC</b> seront envoyés <u>immédiatement</u>!</i>
+        <i>Les montant n\'excédant pas <b>%1$s BTC</b> seront envoyés <u>immédiatement</u>!</i>
     ]]></string>
 
     <string name="send_available_btc">Solde : %2$s BTC (%1$s XMR)</string>
@@ -72,8 +70,8 @@
     <string name="info_paymentid_intergrated">ID de Paiement intégré</string>
     <string name="info_prepare_tx">Préparation de votre transaction</string>
 
-    <string name="label_send_progress_xmrto_create">Création de l'ordre XMR.TO</string>
-    <string name="label_send_progress_xmrto_query">Interrogation de l'ordre XMR.TO</string>
+    <string name="label_send_progress_xmrto_create">Création de l\'ordre XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">Interrogation de l\'ordre XMR.TO</string>
     <string name="label_send_progress_create_tx">Préparation de la Transaction Monero</string>
 
     <string name="label_send_progress_queryparms">Interrogation des paramètres xmr.to</string>
@@ -83,7 +81,7 @@
 
     <string name="text_retry">Touchez pour réessayer</string>
     <string name="text_noretry_monero">Maintenant on est coincé ici !</string>
-    <string name="text_noretry">Oh-oh, XMR.TO n'a pas laire disponible pour le moment !</string>
+    <string name="text_noretry">Oh-oh, XMR.TO n\'a pas laire disponible pour le moment !</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Taux : %1$s BTC/XMR)</string>
@@ -91,13 +89,13 @@
     <string name="label_send_settings_advanced">Avancé :</string>
 
     <string name="label_send_btc_details">Cliquez pour plus d\'infos</string>
-    <string name="label_send_btc_xmrto_info">Visitez xmr.to pour l'assistance &amp; le suivi</string>
+    <string name="label_send_btc_xmrto_info">Visitez xmr.to pour l\'assistance &amp; le suivi</string>
     <string name="label_send_txinfo">Voir les détails TX pour plus d\'infos</string>
     <string name="label_send_btc_xmrto_key_lb">Clef Secrète\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Clef Secrète XMR.TO</string>
     <string name="label_send_btc_address">Adresse BTC Destination</string>
     <string name="label_send_btc_amount">Montant</string>
-    <string name="label_send_btc_create_order">Création de l'ordre XMR.TO</string>
+    <string name="label_send_btc_create_order">Création de l\'ordre XMR.TO</string>
 
     <string name="label_send_btc_retry">Touchez pour réessayer</string>
 
@@ -147,7 +145,7 @@
     <string name="status_transaction_failed">Transaction échouée : %1$s</string>
     <string name="status_transaction_prepare_failed">Impossible de créer la transaction !</string>
 
-    <string name="send_xmrto_timeout">Vous avez attendu trop longtemps l'ami !</string>
+    <string name="send_xmrto_timeout">Vous avez attendu trop longtemps l\'ami !</string>
 
     <string name="service_busy">Je suis toujours occupé avec votre dernier portefeuille &#8230;</string>
 
@@ -159,8 +157,8 @@
     <string name="prompt_send_password">Confirmez le mot de passe</string>
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
-    <string name="error_not_wallet">Ce n'est pas un portefeuille !</string>
-    <string name="prompt_daemon_missing">L'adresse du démon ne peut pas être configurée !</string>
+    <string name="error_not_wallet">Ce n\'est pas un portefeuille !</string>
+    <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
     <string name="warn_daemon_unavailable">Connexion au démon impossible ! Réessayez.</string>
     <string name="panic">Quelque chose ne va pas !</string>

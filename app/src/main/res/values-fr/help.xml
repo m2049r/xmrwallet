@@ -67,7 +67,7 @@
         vos fonds. Il est très imprtant de la garder sécurisée et confidentielle, car elle donne <em>à quiconque</em>
         le contrôle total de vos Moneroj ! Si vous ne l’avez pas écrite à un emplacement sécurisé, faites-le !
         <h2>Mdp de restauration des fichiers du Portefeuille</h2>
-        Assurez vous de noter ce mot de passe. Si vous réinitialisez votre appareil ou désinstallez l'application,
+        Assurez vous de noter ce mot de passe. Si vous réinitialisez votre appareil ou désinstallez l’application,
         vous en aurez besoin pour accéder de nouveau à votre portefeuille.<br/>
         <h3>CrAzYpass</h3>
         Si le mot de passe affiché ici comporte 52 caractères alphanumériques par groupes de 4 - félicitations !
@@ -78,12 +78,12 @@
         <h3>Mot de passe traditionnel</h3>
         Si ici vous voyez votre phrase secrète, les fichiers de votre portefeuille ne sont pas aussi sécurisés qu’en
         utilisant un CrAzYpass. Pour y remédier, choisissez simplement \"Changer la phrase secrète\" à partir du menu.
-        Après avoir renseigné une nouvelle phrase secrète (voire la même que précédemment) l'application va générer
+        Après avoir renseigné une nouvelle phrase secrète (voire la même que précédemment) l’application va générer
         un CrAzYpass pour vous et sécuriser les fichiers de votre portefeuille avec. Notez-le !
         <h3>Portefeuilles CrAzYpass</h3>
         Si vous avez un jour besoin de réinstaller Monerujo (par exemple après réinitialisation de votre téléphone, ou
         remplacement de celui-ci) ou si vous voulez utiliser vos fichiers de portefeuille sur un appareil différent ou
-        un PC, vous devrez utiliser ce Mot de Passe de Restauration adin d'accéder de nouveau à votre portefeuille.<br/>
+        un PC, vous devrez utiliser ce Mot de Passe de Restauration adin d’accéder de nouveau à votre portefeuille.<br/>
         En choisissant \"Modifier Phrase Secrète\" à partir du menu, vous pouvez choisir une nouvelle phrase secrète.
         Prenez garde, cela génèrera un nouveau Mot de Passe de Restauration. Notez-le !
         <h2>Clef d’Audit</h2>
