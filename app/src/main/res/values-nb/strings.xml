@@ -49,7 +49,6 @@
     <string name="info_txdetails_xmrto_status">Status:</string>
     <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
 
-
     <string name="info_send_xmrto_paid">Bekreftelse venter</string>
     <string name="info_send_xmrto_unpaid">Betaling venter</string>
     <string name="info_send_xmrto_error">XMR.TO error (%1$s)</string>
