@@ -152,7 +152,9 @@
 	<string name="prompt_changepw">[Nytt passord for %1$s]</string>
 	<string name="prompt_changepwB">[Gjenta passord for %1$s]</string>
     <string name="prompt_password">Passord for %1$s</string>
+    <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
     <string name="prompt_send_password">Bekreft passord</string>
+    <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
     <string name="bad_password">Feil passord!</string>
     <string name="bad_wallet">Lommebok eksisterer ikke!</string>
     <string name="error_not_wallet">Dette er ikke en lommebok!</string>
@@ -204,6 +206,11 @@
     <string name="generate_title">Lag lommebok</string>
     <string name="generate_name_hint">Lommeboknavn</string>
     <string name="generate_password_hint">Lommebokpassord</string>
+    <string name="generate_fingerprint_hint">[Allow to open wallet using fingerprint]</string>
+    <string name="generate_fingerprint_warn">[If you allow to open wallet using fingerprint, anyone
+        who can get your fingerprint will have full access to your funds.\n\nFor example, a malicious
+        user around you can unlock your wallet when you are asleep.\n\nAre you sure to enable this function?
+    ]</string>
     <string name="generate_bad_passwordB">[Passordene stemmer ikke overens]</string>
     <string name="generate_empty_passwordB">[Passord kan ikke være tomt]</string>
     <string name="generate_buttonGenerate">Lag meg en lommebok!</string>
