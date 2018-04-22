@@ -312,4 +312,32 @@ public class Helper {
         if (level >= WalletManager.LOGLEVEL_SILENT)
             WalletManager.setLogLevel(level);
     }
+
+    // try to figure out what the real wallet password is given the user password
+    // which could be the actual wallet password or a (maybe malformed) CrAzYpass
+    // or the password used to derive the CrAzYpass for the wallet
+    static public String getWalletPassword(Context context, String walletName, String password) {
+        String walletPath = new File(getWalletRoot(context), walletName + ".keys").getAbsolutePath();
+
+        // try with entered password (which could be a legacy password or a CrAzYpass)
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
+            return password;
+        }
+
+        // maybe this is a malformed CrAzYpass?
+        String possibleCrazyPass = CrazyPassEncoder.reformat(password);
+        if (possibleCrazyPass != null) { // looks like a CrAzYpass
+            if (WalletManager.getInstance().verifyWalletPassword(walletPath, possibleCrazyPass, true)) {
+                return possibleCrazyPass;
+            }
+        }
+
+        // generate & try with CrAzYpass
+        String crazyPass = KeyStoreHelper.getCrazyPass(context, password);
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
+            return crazyPass;
+        }
+
+        return null;
+    }
 }
