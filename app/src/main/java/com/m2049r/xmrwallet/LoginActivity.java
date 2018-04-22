@@ -608,41 +608,12 @@ public class LoginActivity extends SecureActivity
         openDialog.show();
     }
 
-    // try to figure out what the real wallet password is given the user password
-    // which could be the actual wallet password or a (maybe malformed) CrAzYpass
-    // or the password used to derive the CrAzYpass for the wallet
-    private String getWalletPassword(String walletName, String password) {
-        String walletPath = new File(Helper.getWalletRoot(getApplicationContext()),
-                walletName + ".keys").getAbsolutePath();
-
-        // try with entered password (which could be a legacy password or a CrAzYpass)
-        if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
-            return password;
-        }
-
-        // maybe this is a malformed CrAzYpass?
-        String possibleCrazyPass = CrazyPassEncoder.reformat(password);
-        if (possibleCrazyPass != null) { // looks like a CrAzYpass
-            if (WalletManager.getInstance().verifyWalletPassword(walletPath, possibleCrazyPass, true)) {
-                return possibleCrazyPass;
-            }
-        }
-
-        // generate & try with CrAzYpass
-        String crazyPass = KeyStoreHelper.getCrazyPass(this, password);
-        if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
-            return crazyPass;
-        }
-
-        return null;
-    }
-
     interface PasswordAction {
         void action(String walletName, String password);
     }
 
     private boolean processPasswordEntry(String walletName, String pass, PasswordAction action) {
-        String walletPassword = getWalletPassword(walletName, pass);
+        String walletPassword = Helper.getWalletPassword(getApplicationContext(), walletName, pass);
         if (walletPassword != null) {
             action.action(walletName, walletPassword);
             return true;
