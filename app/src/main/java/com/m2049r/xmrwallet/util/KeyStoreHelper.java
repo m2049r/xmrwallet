@@ -75,10 +75,11 @@ public class KeyStoreHelper {
     }
 
     public static void saveWalletUserPass(Context context, String wallet, String password) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         byte[] data = password.getBytes(StandardCharsets.UTF_8);
         try {
-            KeyStoreHelper.createKeys(context, wallet);
-            byte[] encrypted = KeyStoreHelper.encrypt(wallet, data);
+            KeyStoreHelper.createKeys(context, walletKeyAlias);
+            byte[] encrypted = KeyStoreHelper.encrypt(walletKeyAlias, data);
             context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
                     .putString(wallet, Base64.encodeToString(encrypted, Base64.DEFAULT))
                     .apply();
@@ -88,17 +89,19 @@ public class KeyStoreHelper {
     }
 
     public static String loadWalletUserPass(Context context, String wallet) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         String encoded = context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getString(wallet, "");
         byte[] data = Base64.decode(encoded, Base64.DEFAULT);
-        byte[] decrypted = KeyStoreHelper.decrypt(wallet, data);
+        byte[] decrypted = KeyStoreHelper.decrypt(walletKeyAlias, data);
 
         return new String(decrypted, StandardCharsets.UTF_8);
     }
 
     public static void removeWalletUserPass(Context context, String wallet) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         try {
-            KeyStoreHelper.deleteKeys(wallet);
+            KeyStoreHelper.deleteKeys(walletKeyAlias);
             context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
                     .remove(wallet).apply();
         } catch (Exception ex) {
@@ -275,5 +278,6 @@ public class KeyStoreHelper {
         String SIGNATURE_SHA256withRSA = "SHA256withRSA";
         String CIPHER_RSA_ECB_PKCS1 = "RSA/ECB/PKCS1Padding";
         String WALLET_PASS_PREFS_NAME = "wallet";
+        String WALLET_PASS_KEY_PREFIX = "walletKey-";
     }
 }

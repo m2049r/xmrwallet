@@ -28,7 +28,7 @@ public class FingerprintHelper {
             throw new IllegalStateException("Could not load KeyStore", ex);
         }
 
-        return keyStore.containsAlias(wallet);
+        return keyStore.containsAlias(KeyStoreHelper.SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet);
     }
 
     public static void authenticate(Context context, CancellationSignal cancelSignal,
