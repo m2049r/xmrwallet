@@ -61,7 +61,7 @@
     <string name="changepw_success">[Password changed]</string>
 
     <string name="label_daemon">Nodo</string>
-    <string name="prompt_daemon">([&lt;usuario&gt;:&lt;contraseña&gt;@]&lt;daemon&gt;[:&lt;puerto&gt;])</string>
+    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Selección de Red</string>
     <string name="connect_stagenet">StageNet</string>
     <string name="connect_testnet">TestNet</string>
@@ -345,4 +345,6 @@
     <string name="about_whoami">Soy monerujo</string>
     <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
+    <string name="menu_backup_to_file">Backup To File</string>
+    <string name="menu_backup_to_nfc">Backup To NFC</string>
 </resources>

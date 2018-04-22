@@ -90,7 +90,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletRename(String name);
 
-        void onWalletBackup(String name);
+        void onWalletBackupToFile(String name);
+
+        void onWalletBackupToNFC(String name);
 
         void onWalletArchive(String walletName);
 
@@ -270,8 +272,14 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             case R.id.action_rename:
                 activityCallback.onWalletRename(listItem.name);
                 break;
-            case R.id.action_backup:
+            /*case R.id.action_backup:
                 activityCallback.onWalletBackup(listItem.name);
+                break;*/
+            case R.id.action_backup_file:
+                activityCallback.onWalletBackupToFile(listItem.name);
+                break;
+            case R.id.action_backup_nfc: //TODO 备份到NFC
+                activityCallback.onWalletBackupToNFC(listItem.name);
                 break;
             case R.id.action_archive:
                 activityCallback.onWalletArchive(listItem.name);
