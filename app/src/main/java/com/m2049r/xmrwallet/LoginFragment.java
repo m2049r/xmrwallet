@@ -48,6 +48,7 @@ import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.NodeList;
 import com.m2049r.xmrwallet.widget.DropDownEditText;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -55,6 +56,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -325,6 +327,17 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             if (ivGunther.getDrawable() != null) {
                 ivGunther.setImageDrawable(null);
             }
+        }
+
+        // remove information of non-existent wallet
+        Set<String> removedWallets = getActivity()
+                .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
+                .getAll().keySet();
+        for (WalletManager.WalletInfo s : walletList) {
+            removedWallets.remove(s.name);
+        }
+        for (String name : removedWallets) {
+            KeyStoreHelper.removeWalletUserPass(getActivity(), name);
         }
     }
 
