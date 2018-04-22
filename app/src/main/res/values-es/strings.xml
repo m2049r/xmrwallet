@@ -84,7 +84,7 @@
     <string name="status_transaction_failed">Transacción fallida: %1$s</string>
     <string name="status_transaction_prepare_failed">¡No se pudo crear la transacción!</string>
 
-    <string name="service_busy">Todavía estoy ocupado con tu última monedero &#8230;</string>
+    <string name="service_busy">Todavía estoy ocupado con tu último monedero &#8230;</string>
 
     <string name="prompt_rename">Renombrar %1$s</string>
 
