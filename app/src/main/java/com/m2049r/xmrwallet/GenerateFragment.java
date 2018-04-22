@@ -16,7 +16,9 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -153,6 +155,26 @@ public class GenerateFragment extends Fragment {
 
         if (FingerprintHelper.isDeviceSupported(getContext())) {
             llFingerprintAuth.setVisibility(View.VISIBLE);
+
+            final Switch swFingerprintAllowed = (Switch) llFingerprintAuth.getChildAt(0);
+            swFingerprintAllowed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!swFingerprintAllowed.isChecked()) return;
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(getString(R.string.generate_fingerprint_warn))
+                            .setCancelable(false)
+                            .setPositiveButton(getString(R.string.label_ok), null)
+                            .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    swFingerprintAllowed.setChecked(false);
+                                }
+                            })
+                            .show();
+                }
+            });
         }
 
         if (type.equals(TYPE_NEW)) {

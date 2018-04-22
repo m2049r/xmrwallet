@@ -209,6 +209,9 @@
     <string name="generate_name_hint">錢包名稱</string>
     <string name="generate_password_hint">錢包密碼</string>
     <string name="generate_fingerprint_hint">允許使用指紋開啟錢包</string>
+    <string name="generate_fingerprint_warn">若您允許使用指紋來開啟錢包，任何可以取得您指紋的人都對您的錢包擁有完整的存取權。
+        \n\n例如，您周遭的惡意使用者可以趁您睡著時，使用您的指紋開啟錢包。\n\n您確定要啟用本功能嗎？
+    </string>
     <string name="generate_bad_passwordB">密碼不符</string>
     <string name="generate_empty_passwordB">密碼不得空白</string>
     <string name="generate_buttonGenerate">建立錢包!</string>

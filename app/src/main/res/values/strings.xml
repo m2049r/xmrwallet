@@ -212,6 +212,10 @@
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Passphrase</string>
     <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_fingerprint_warn">If you allow to open wallet using fingerprint, anyone
+        who can get your fingerprint will have full access to your funds.\n\nFor example, a malicious
+        user around you can unlock your wallet when you are asleep.\n\nAre you sure to enable this function?
+    </string>
     <string name="generate_bad_passwordB">Passphrases do not match</string>
     <string name="generate_empty_passwordB">Passphrase may not be empty</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
