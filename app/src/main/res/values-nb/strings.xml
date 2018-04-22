@@ -43,7 +43,6 @@
     <string name="info_send_xmrto_success_order_label">XMR.TO Ordre</string>
 
     <string name="info_send_xmrto_success_sending">Sender</string>
-    <string name="info_send_xmrto_success_status_label">Status:</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
     <string name="info_send_xmrto_success_status">%1$s er %1$s (#%1$d)</string>
 
