@@ -81,7 +81,7 @@
 
     <string name="text_retry">Touchez pour réessayer</string>
     <string name="text_noretry_monero">Maintenant on est coincé ici !</string>
-    <string name="text_noretry">Oh-oh, XMR.TO n\'a pas laire disponible pour le moment !</string>
+    <string name="text_noretry">Oh-oh, XMR.TO n\'a pas l\'air disponible pour le moment !</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Taux : %1$s BTC/XMR)</string>

@@ -46,7 +46,7 @@
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Créer un Portefeuille - Audit</h1>
+        <h1>Créer un Portefeuille d’Audit</h1>
         <p>Si vous voulez suveiller les transaction entrantes sur un portefeuille !</p>
         <p>Entrez un nom et un mot de passe unique pour le portefeuille.
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
@@ -127,7 +127,7 @@
     <string name="help_wallet"><![CDATA[
         <h1>Le Portefeuille</h1>
         <h2>Analyse</h2>
-        Comme Monero aime garder les choses confidentielles, nous devoins scanner la chaîne de blocs
+        Comme Monero aime garder les choses confidentielles, nous devons scanner la chaîne de blocs
         chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveau Moneroj ont été
         envoyés à votre portefeuille, cela ne stock sur votre appareil que les informations appartenant
         à votre portefeuille. Parfois cela peut prendre un moment si vous n’avez pas synchronisé depuis
@@ -212,7 +212,7 @@
         <p>Veuillez noter que cette clef secrète est seulement valable 24h après le lancement de la
         transaction !</p>
         <h2>Compte à Rebours XMR.TO !</h2>
-        <p>Une fois qu le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
+        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
         XMR.TO en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
     ]]></string>
 
@@ -240,7 +240,7 @@
         <p>Veuillez noter que cette clef secrète est seulement valable 24h après le lancement de la
         transaction !</p>
         <h2>Compte à Rebours XMR.TO !</h2>
-        <p>Une fois qu le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
+        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
         XMR.TO en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
     ]]></string>
 
