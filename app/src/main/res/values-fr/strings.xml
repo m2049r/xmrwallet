@@ -10,8 +10,9 @@
     <string name="menu_info">Détails</string>
     <string name="menu_receive">Recevoir</string>
     <string name="menu_rename">Renommer &#8230;</string>
-    <string name="menu_archive">Archive</string>
-    <string name="menu_backup">Sauvegarde</string>
+    <string name="menu_archive">Archiver</string>
+    <string name="menu_backup">Sauvegarder</string>
+    <string name="menu_changepw">Modifier Phrase secrète</string>
 
     <string name="password_weak">Continuez de taper &#8230;</string>
     <string name="password_fair">Bof &#8230;</string>
@@ -109,15 +110,18 @@
     <string name="archive_progress">Archivage en cours</string>
     <string name="rename_progress">Renommage en cours</string>
     <string name="open_progress">Vérification de la connexion au démon</string>
+    <string name="changepw_progress">Modification du mot de passe en cours</string>
 
     <string name="service_progress">Récapitulation &#8230;\nCela peut prendre un moment !</string>
 
-    <string name="backup_success">Sauvegarde réussi</string>
+    <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
     <string name="archive_success">Archivage réussi</string>
     <string name="archive_failed">Archivage Échouée !</string>
     <string name="delete_failed">Suppression Échouée !</string>
     <string name="rename_failed">Renommage Échoué !</string>
+    <string name="changepw_failed">Modification du mot de passe Échouée !</string>
+    <string name="changepw_success">Modification du mot de passe réussie</string>
 
     <string name="label_daemon">Nœud</string>
     <string name="prompt_daemon">([&lt;utilisateur&gt;:&lt;mdp&gt;@]&lt;démon&gt;[:&lt;port&gt;])</string>
@@ -149,6 +153,8 @@
 
     <string name="prompt_rename">Renommer %1$s</string>
 
+    <string name="prompt_changepw">Nouvelle Phase secrète pour %1$s</string>
+    <string name="prompt_changepwB">Répéter la Phase secrète pour %1$s</string>
     <string name="prompt_password">Mot de passe pour %1$s</string>
     <string name="prompt_send_password">Confirmez le mot de passe</string>
     <string name="bad_password">Mot de passe incorrect !</string>
@@ -202,6 +208,8 @@
     <string name="generate_title">Créer un Portefeuille</string>
     <string name="generate_name_hint">Nom du Portefeuille</string>
     <string name="generate_password_hint">Mot de Passe du Portefeuille</string>
+    <string name="generate_bad_passwordB">Phrases secrètes non correspondantes</string>
+    <string name="generate_empty_passwordB">La Phrase secrète ne doit pas être vide</string>
     <string name="generate_buttonGenerate">Faites moi un Portefeuille déjà !</string>
     <string name="generate_seed">Phrase Mnémonique</string>
     <string name="generate_button_accept">J\'ai noté ces 25 mots !</string>
@@ -237,6 +245,7 @@
     <string name="generate_spendkey_label">Clef de dépense</string>
     <string name="generate_mnemonic_label">Phrase Mnémonique</string>
     <string name="generate_restoreheight_label">Hauteur de restauration :</string>
+    <string name="generate_crazypass_label">Mdp de restauration des fichiers Portefeuille</string>
 
     <string name="generate_check_key">Entrez une clef valide</string>
     <string name="generate_check_address">Entrez une Adresse valide</string>
