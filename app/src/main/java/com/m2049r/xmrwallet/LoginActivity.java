@@ -176,9 +176,9 @@ public class LoginActivity extends SecureActivity
                     case DialogInterface.BUTTON_POSITIVE:
                         final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
                         if (WalletManager.getInstance().walletExists(walletFile)) {
-                            Helper.promptPassword(LoginActivity.this, walletName, new Helper.PasswordAction() {
+                            Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
                                 @Override
-                                public void action(String walletName, String password) {
+                                public void action(String walletName, String password, boolean fingerprintUsed) {
                                     startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
                                 }
                             });
@@ -208,9 +208,9 @@ public class LoginActivity extends SecureActivity
         if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
-            Helper.promptPassword(LoginActivity.this, walletName, new Helper.PasswordAction() {
+            Helper.promptPassword(LoginActivity.this, walletName, false, new Helper.PasswordAction() {
                 @Override
-                public void action(String walletName, String password) {
+                public void action(String walletName, String password, boolean fingerprintUsed) {
                     startReceive(walletFile, password);
                 }
             });
@@ -603,11 +603,12 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    void startWallet(String walletName, String walletPassword) {
+    void startWallet(String walletName, String walletPassword, boolean fingerprintUsed) {
         Timber.d("startWallet()");
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
+        intent.putExtra(WalletActivity.REQUEST_FINGERPRINT_USED, fingerprintUsed);
         startActivity(intent);
     }
 
@@ -1097,10 +1098,10 @@ public class LoginActivity extends SecureActivity
         File walletFile = Helper.getWalletFile(this, walletNode.getName());
         if (WalletManager.getInstance().walletExists(walletFile)) {
             WalletManager.getInstance().setDaemon(walletNode);
-            Helper.promptPassword(LoginActivity.this, walletNode.getName(), new Helper.PasswordAction() {
+            Helper.promptPassword(LoginActivity.this, walletNode.getName(), false, new Helper.PasswordAction() {
                 @Override
-                public void action(String walletName, String password) {
-                    startWallet(walletName, password);
+                public void action(String walletName, String password, boolean fingerprintUsed) {
+                    startWallet(walletName, password, fingerprintUsed);
                 }
             });
         } else { // this cannot really happen as we prefilter choices

@@ -357,7 +357,7 @@ public class Helper {
 
     static AlertDialog openDialog = null; // for preventing opening of multiple dialogs
 
-    static public void promptPassword(final Context context, final String wallet, final PasswordAction action) {
+    static public void promptPassword(final Context context, final String wallet, boolean fingerprintDisabled, final PasswordAction action) {
         if (openDialog != null) return; // we are already asking for password
         LayoutInflater li = LayoutInflater.from(context);
         final View promptsView = li.inflate(R.layout.prompt_password, null);
@@ -375,7 +375,7 @@ public class Helper {
             fingerprintAuthCheck = false;
         }
 
-        final boolean fingerprintAuthAllowed = fingerprintAuthCheck;
+        final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
         final CancellationSignal cancelSignal = new CancellationSignal();
 
         if (fingerprintAuthAllowed) {
@@ -426,7 +426,7 @@ public class Helper {
             @Override
             public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
                 String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
-                if (Helper.processPasswordEntry(context, wallet, userPass, action)) {
+                if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
                     Helper.hideKeyboardAlways((Activity) context);
                     openDialog.dismiss();
                     openDialog = null;
@@ -453,7 +453,7 @@ public class Helper {
                     @Override
                     public void onClick(View view) {
                         String pass = etPassword.getEditText().getText().toString();
-                        if (processPasswordEntry(context, wallet, pass, action)) {
+                        if (processPasswordEntry(context, wallet, pass, false, action)) {
                             Helper.hideKeyboardAlways((Activity) context);
                             openDialog.dismiss();
                             openDialog = null;
@@ -470,7 +470,7 @@ public class Helper {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
-                    if (processPasswordEntry(context, wallet, pass, action)) {
+                    if (processPasswordEntry(context, wallet, pass, false, action)) {
                         Helper.hideKeyboardAlways((Activity) context);
                         openDialog.dismiss();
                         openDialog = null;
@@ -488,13 +488,13 @@ public class Helper {
     }
 
     public interface PasswordAction {
-        void action(String walletName, String password);
+        void action(String walletName, String password, boolean fingerprintUsed);
     }
 
-    static private boolean processPasswordEntry(Context context, String walletName, String pass, PasswordAction action) {
+    static private boolean processPasswordEntry(Context context, String walletName, String pass, boolean fingerprintUsed, PasswordAction action) {
         String walletPassword = Helper.getWalletPassword(context, walletName, pass);
         if (walletPassword != null) {
-            action.action(walletName, walletPassword);
+            action.action(walletName, walletPassword, fingerprintUsed);
             return true;
         } else {
             return false;

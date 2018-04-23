@@ -49,8 +49,6 @@ import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
-import java.io.File;
-
 import timber.log.Timber;
 
 public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
@@ -62,8 +60,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
+    public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
 
     private Toolbar toolbar;
+    private boolean needVerifyIdentity;
 
     @Override
     public void setToolbarButton(int type) {
@@ -120,6 +120,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             String walletPassword = extras.getString(REQUEST_PW);
+            needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
             connectWalletService(walletId, walletPassword);
         } else {
             finish();
@@ -397,7 +398,17 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onSendRequest() {
-        replaceFragment(new SendFragment(), null, null);
+        if (needVerifyIdentity) {
+            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                @Override
+                public void action(String walletName, String password, boolean fingerprintUsed) {
+                    replaceFragment(new SendFragment(), null, null);
+                    needVerifyIdentity = false;
+                }
+            });
+        } else {
+            replaceFragment(new SendFragment(), null, null);
+        }
     }
 
     @Override
@@ -697,10 +708,22 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        Bundle extras = new Bundle();
+                        final Bundle extras = new Bundle();
                         extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
                         extras.putString("password", getIntent().getExtras().getString(REQUEST_PW));
-                        replaceFragment(new GenerateReviewFragment(), null, extras);
+
+                        if (needVerifyIdentity) {
+                            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                                @Override
+                                public void action(String walletName, String password, boolean fingerprintUsed) {
+                                    replaceFragment(new GenerateReviewFragment(), null, extras);
+                                    needVerifyIdentity = false;
+                                }
+                            });
+                        } else {
+                            replaceFragment(new GenerateReviewFragment(), null, extras);
+                        }
+
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         // do nothing
