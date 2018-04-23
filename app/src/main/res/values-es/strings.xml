@@ -12,7 +12,7 @@
     <string name="menu_rename">Renombrar &#8230;</string>
     <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
-    <string name="menu_changepw">[Change Passphrase]</string>
+    <string name="menu_changepw">Cambiar contraseña</string>
 
     <string name="password_weak">Sigue escribiendo &#8230;</string>
     <string name="password_fair">Mas o menos.</string>
@@ -47,7 +47,7 @@
     <string name="archive_progress">Archivado en progreso</string>
     <string name="rename_progress">Cambio de nombre en progreso</string>
     <string name="open_progress">Comprobando conexión con el daemon</string>
-    <string name="changepw_progress">[Change Password in progress]</string>
+    <string name="changepw_progress">Cambiando contraseña en progreso</string>
 
     <string name="service_progress">Guardando todo\n¡Puede llevar un tiempo!</string>
 
@@ -57,8 +57,8 @@
     <string name="archive_failed">¡Archivado fallido!</string>
     <string name="delete_failed">¡Borrado fallido!</string>
     <string name="rename_failed">¡Cambio de nombre fallido!</string>
-    <string name="changepw_failed">[Change Password failed!]</string>
-    <string name="changepw_success">[Password changed]</string>
+    <string name="changepw_failed">¡Cambio de contraseña fallido!</string>
+    <string name="changepw_success">Contraseña cambiada</string>
 
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;usuario&gt;:&lt;contraseña&gt;@]&lt;daemon&gt;[:&lt;puerto&gt;])</string>
@@ -84,12 +84,12 @@
     <string name="status_transaction_failed">Transacción fallida: %1$s</string>
     <string name="status_transaction_prepare_failed">¡No se pudo crear la transacción!</string>
 
-    <string name="service_busy">Todavía estoy ocupado con tu última monedero &#8230;</string>
+    <string name="service_busy">Todavía estoy ocupado con tu último monedero &#8230;</string>
 
     <string name="prompt_rename">Renombrar %1$s</string>
 
-    <string name="prompt_changepw">[New Passphrase for %1$s]</string>
-    <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
+    <string name="prompt_changepw">Nueva contraseña para %1$s</string>
+    <string name="prompt_changepwB">Repetir contraseña para %1$s</string>
     <string name="prompt_password">Contraseña para %1$s</string>
     <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
     <string name="prompt_send_password">Confirmar Contraseña</string>
@@ -147,11 +147,11 @@
         who can get your fingerprint will have full access to your funds.\n\nFor example, a malicious
         user around you can unlock your wallet when you are asleep.\n\nAre you sure to enable this function?
     ]</string>
-    <string name="generate_bad_passwordB">[Passphrases do not match]</string>
-    <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
+    <string name="generate_bad_passwordB">Contraseñas no coinciden</string>
+    <string name="generate_empty_passwordB">Contraseña no puede estar vacía</string>
     <string name="generate_buttonGenerate">¡Házme ya un monedero!</string>
     <string name="generate_seed">Semilla Mnemotécnica</string>
-    <string name="generate_button_accept">[I have noted the above info!]</string>
+    <string name="generate_button_accept">¡Ya anote todo!</string>
 
     <string name="generate_button_backup">Copia de Seguridad</string>
     <string name="generate_button_export">Exportar Claves</string>
@@ -184,7 +184,7 @@
     <string name="generate_spendkey_label">Clave de Gasto</string>
     <string name="generate_mnemonic_label">Semilla Mnemotécnica</string>
     <string name="generate_restoreheight_label">Altura de Restauración:</string>
-    <string name="generate_crazypass_label">[Wallet Files Restore Password]</string>
+    <string name="generate_crazypass_label">Contraseña de restauración para el archivo del monedero</string>
 
     <string name="generate_check_key">Introduce una clave válida</string>
     <string name="generate_check_address">Introduce una dirección válida</string>
