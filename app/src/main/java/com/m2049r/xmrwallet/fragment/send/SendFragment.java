@@ -47,6 +47,7 @@ import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.NodeList;
+import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -119,27 +120,8 @@ public class SendFragment extends Fragment
         arrowPrev = getResources().getDrawable(R.drawable.ic_navigate_prev_white_24dp);
         arrowNext = getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp);
 
-        llXmrToEnabled = view.findViewById(R.id.llXmrToEnabled);
-        llXmrToEnabled.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HelpFragment.display(getChildFragmentManager(), R.string.help_xmrto);
-
-            }
-        });
-        ibXmrToInfoClose = view.findViewById(R.id.ibXmrToInfoClose);
-        ibXmrToInfoClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                llXmrToEnabled.setVisibility(View.GONE);
-                showXmrtoEnabled = false;
-                saveXmrToPrefs();
-            }
-        });
-        loadPrefs();
-        if (!showXmrtoEnabled) {
-            llXmrToEnabled.setVisibility(View.GONE);
-        }
+        ViewGroup llNotice = (ViewGroup) view.findViewById(R.id.llNotice);
+        Notice.showAll(llNotice,".*_send");
 
         spendViewPager = (SpendViewPager) view.findViewById(R.id.pager);
         pagerAdapter = new SpendPagerAdapter(getChildFragmentManager());

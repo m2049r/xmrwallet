@@ -34,6 +34,7 @@
     <string name="info_send_prio_fees">Priorità più alta = Commissioni più alte</string>
 
     <string name="info_xmrto_enabled">Pagamento BTC abilitato, tocca per maggiori informazioni.</string>
+    <string name="info_crazypass_enabled">CrAzYpass abilitato, tocca per maggiori informazioni.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Hai inserito un indirizzo Bitcoin.</b><br/>
