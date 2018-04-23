@@ -6,7 +6,7 @@
     <string name="about_version">版本 %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
-        <b>致謝</b>
+        <b>感谢</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
         rehrar, EarlOfEgo et al.
@@ -15,34 +15,34 @@
         ]]></string>
 
     <string name="privacy_policy"><![CDATA[
-        <h1>隱私權政策</h1>
-        <p>本頁將協助您了解 monerujo: Monero Wallet 是如何收集、使用以及披露用戶的資料。</p>
-        <p>當您使用本 App 時，代表您已經明確同意本隱私權政策。</p>
-        <h2>資料收集方式</h2>
-        <p>個人資料為可以協助辨識個體的任意資料。</p>
-        <p>Monerujo 只會在本地端使用您的 Monero 金鑰以及公開地址執行必要的處理，並在加密後發送至
-        Monero 網路進行交易。</p>
-        <p>其餘的個人資料都不會被 monerujo 收集。</p>
-        <p>倘若您有使用 USD/EUR 匯兌的功能(可選用)，monerujo 將透過 kraken.com 的公開
-        API 抓取目前的匯率。若欲了解您要求的資料會如何被收集及使用，請至 https://www.kraken.com/legal/privacy
-        觀看他們的隱私權政策，特別是「Information We Collect Automatically」章節。</p>
-        <p>若您想使用本 App 支付款項至 BTC 位址，您將使用 XMR.TO 所提供的服務。Monerujo
-        將發送 BTC 目標位址以及金額至 XMR.TO，您的 IP 在此時也可能會被收集。詳情請至 https://xmr.to/
-        觀看他們的隱私權政策。</p>
-        <h2>應用程式權限</h2>
+        <h1>隐私政策</h1>
+        <p>本页将帮助你了解 monerujo: Monero Wallet 是如何收集、使用以及披露用户信息。</p>
+        <p>当你使用本 App 时，代表您已经明确同意本隐私政策。</p>
+        <h2>信息收集方式</h2>
+        <p>个人信息资料指：可以辨认个人信息的任意资料。</p>
+        <p>Monerujo 只会在本地端使用您的 Monero 私钥以及公开地址执行必要的处理，并在加密后发送至
+        Monero 网络进行交易。</p>
+        <p>其他个人信息都不会被 monerujo 收集。</p>
+        <p>如果你使用 USD/EUR 外汇的功能(可选用)，monerujo 將通过 kraken.com 的公开
+        API 抓取当前汇率。如果你想了解自己被收集的信息如何被使用，请访问 https://www.kraken.com/legal/privacy
+        查看他们的隐私政策，特別是「Information We Collect Automatically」章节。</p>
+        <p>如果你想使用本 App 支付款项至比特币地址，您将使用 XMR.TO 所提供的服务。Monerujo
+        将发送比特币的目标地址以及金额至 XMR.TO，您的 IP 在此时也可能会被收集。详情请至 https://xmr.to/
+        查看他们的隐私政策。</p>
+        <h2>应用程序权限</h2>
         <ul>
-        <li>INTERNET : 透過 Monero 節點連接至 Monero 網路。</li>
-        <li>READ_EXTERNAL_STORAGE : 讀取手機上的錢包資訊。</li>
-        <li>WRITE_EXTERNAL_STORAGE : 儲存錢包資訊於手機上。</li>
-        <li>WAKE_LOCK : 與遠端節點同步時，防止手機進入待命狀態。</li>
-        <li>CAMERA : 掃描 QR Code 以收取 Monero。</li>
+        <li>INTERNET : 通过 Monero 节点连接至 Monero 网络。</li>
+        <li>READ_EXTERNAL_STORAGE : 读取手机上的钱包信息。</li>
+        <li>WRITE_EXTERNAL_STORAGE : 在手机上存储钱包信息。</li>
+        <li>WAKE_LOCK : 与远程节点同步时，防止手机进入待机状态。</li>
+        <li>CAMERA : 扫描二维码以接收 Monero。</li>
         </ul>
         <h2>政策更新</h2>
-        <p>本隱私權政策可能會不定時更新。在更新的同時，我們也會在本 App 以及網站 (www.monerujo.io)
-        上公告新的隱私權政策或修改之處。但我們仍建議您定時查看本隱私權政策以即時了解任何的修改。
-        <p>本隱私權政策最後更新日期為 2017 年 11 月 10 日。
+        <p>本隐私政策可能会不定时更新。在更新的同时，我們也会在本 App 以及网站 (www.monerujo.io)
+        上公告新的隐私政策或改动条款。但我们仍建议您定时查看本隐私政策以及时了解任何的修改。
+        <p>本隐私政策最后更新日期为 2017 年 11 月 10 日。
         </p>
-        <h2>聯絡我們</h2>
-        <p>若您對於本隱私權政策或如何處理您的個人資料仍有問題，歡迎寄送電子郵件至 privacy@monerujo.io。</p>
+        <h2>联系我们</h2>
+        <p>如果您对隐私政策或个人资料处理仍有疑问，欢迎发送电子邮件至 privacy@monerujo.io。</p>
         ]]></string>
 </resources>
