@@ -58,13 +58,33 @@
         <h1>Wallet Details</h1>
         <h2>Öffentliche Adresse</h2>
         Die öffentliche Adresse ist wie deine Kontonummer die du anderen Personen mitteilen kannst, ohne Angst zu haben dein Geld zu verlieren.
-		Andere Personen werden dir Monero an diese Adresse schicken.
+	Andere Personen werden dir Monero an diese Adresse schicken.
         <h2>Mnemonischer Seed</h2>
         Dies sind die einzigen Daten die du benötigst um deine Wallet an einem späteren 
-		Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
-		Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
+	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
+	Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
         vollen Zugriff auf diese Gelder geben! Falls du ihn nicht an mehreren, sicheren Stellen aufgeschrieben hast mach dies bitte jetzt!
-        <h2>View key</h2>
+        <h2>Walletdateien Wiederherstellungspasswort</h2>
+        Stelle sicher dieses Passwort aufzuschreiben. Falls du dein Gerät auf Werkseinstellungen zurücksetzt oder
+ 	die App deinstallierst brauchst du dieses Passwort um Zugriff auf dein Wallet zu erhalten.<br/>
+        <h3>CrAzYpass</h3>
+        Falls das hier angezeigte Passwort aus 52 alphanumerischen Zeichen in 4er Gruppen besteht - Glückwunsch!
+        Deine Walletdateien sind nun durch einen 256-Bit-Schlüssel gesichert, der durch Sicherheitsfeatures
+ 	deines Gerätes aus deiner Passwortphrase erstellt wurde (bei Erstellung oder Änderung der Passwortphrase).
+	Dies macht einen Hack der Walletdateien extrem schwer!<br/>
+        Dieses Feature ist verpflichtend für alle neu erstellten Wallets.
+        <h3>Legacy-Passwort</h3>
+        Falls du hier deine Passwortphrase siehst sind deine Walletdateien nicht so gut gesichert wie 
+	bei der Benutzung von CrAzYpass. Um dies zu beheben wähle einfach \"Passwortphrase ändern\" aus dem Menü. 
+	Nachdem du eine neue Passwortphrase eingegeben hast (auch bei der gleichen wie zuvor) wird die App 
+	ein neues CrAzYpass für dich erstellen und deine Walletdateien sichern. Schreibe es auf!
+        <h3>CrAzYpass-Wallets</h3>
+        Falls du Monerujo jemals neu installieren musst (zum Beispiel nachdem du dein Gerät auf Werkseinstellungen zurückgesetzt hast
+ 	oder du ein neues Gerät besitzt) oder die Walletdateien auf einem anderen Gerät oder PC nutzen willst, dann
+ 	musst du dieses Wiederherstellungspasswort nutzen um Zugriff auf deine Wallet zu erhalten.<br/>
+        Durch die Auswahl \"Passwortphrase ändern\" aus dem Menü kannst du eine andere Passwortphrase wählen. Beachte 
+        dass dies ein neues Wiederherstellungspasswort erzeugt. Schreibe es auf!
+	<h2>View key</h2>
         Dein View Key kann benutzt werden um eingehende Transaktionen zu dieser Wallet zu überwachen ohne anderen
         die Möglichkeit zu geben Gelder aus dieser Wallet auszugeben.
         <h2>Spend Key</h2>
