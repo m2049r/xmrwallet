@@ -34,6 +34,7 @@
     <string name="info_send_prio_fees">Høyere prioritet = høyere avgifter</string>
 
     <string name="info_xmrto_enabled">BTC betaling tilgjengelig, trykk for mer info.</string>
+    <string name="info_crazypass_enabled">CrAzYpass tilgjengelig, trykk for mer info.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Du skrev inn en Bitcoin addresse.</b><br/>
