@@ -14,6 +14,7 @@
     <string name="menu_rename">Umbenennen &#8230;</string>
     <string name="menu_archive">Archivieren</string>
     <string name="menu_backup">Backup</string>
+    <string name="menu_changepw">Passphrase ändern</string>
 
     <string name="password_weak">Tippe weiter &#8230;</string>
     <string name="password_fair">Hmmm &#8230;</string>
@@ -111,6 +112,7 @@
     <string name="archive_progress">Archivierung wird ausgeführt</string>
     <string name="rename_progress">Umbenennung wird ausgeführt</string>
     <string name="open_progress">Daemon Verbindung wird getestet</string>
+    <string name="changepw_progress">Ändere Passwort</string>
 
     <string name="service_progress">Fertigstellen &#8230;\nDies kann einen Moment dauern!</string>
 
@@ -120,6 +122,8 @@
     <string name="archive_failed">Archivierung fehlgeschlagen!</string>
     <string name="delete_failed">Löschen fehlgeschlagen!</string>
     <string name="rename_failed">Umbenennen fehlgeschlagen!</string>
+    <string name="changepw_failed">Passwort ändern fehlgeschlagen!</string>
+    <string name="changepw_success">Passwort geändert</string>
 
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
@@ -151,6 +155,8 @@
 
     <string name="prompt_rename">Umbenennen %1$s</string>
 
+    <string name="prompt_changepw">Neue Passwortphrase für %1$s</string>
+    <string name="prompt_changepwB">Passwortphrase für %1$s wiederholen</string>
     <string name="prompt_password">Passwort für %1$s</string>
     <string name="prompt_send_password">Passwort bestätigen</string>
     <string name="bad_password">Falsches Passwort!</string>
@@ -205,9 +211,11 @@
     <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Passwort</string>
+    <string name="generate_bad_passwordB">Passwortphrasen stimmen nicht überein</string>
+    <string name="generate_empty_passwordB">Passwortphrase darf nicht leer sein</string>
     <string name="generate_buttonGenerate">Erstell mir jetzt endlich ein Wallet!</string>
     <string name="generate_seed">mnemonischer Seed</string>
-    <string name="generate_button_accept">Ich habe mir diese 25 Wörter notiert!</string>
+    <string name="generate_button_accept">Ich habe den Mnemonischen Seed notiert!</string>
 
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Schlüssel exportieren</string>
@@ -240,6 +248,7 @@
     <string name="generate_spendkey_label">Spend-Key</string>
     <string name="generate_mnemonic_label">mnemonischer Seed</string>
     <string name="generate_restoreheight_label">Wiederherstellungshöhe:</string>
+    <string name="generate_crazypass_label">Walletdateien Wiederherstellungspasswort</string>
 
     <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
