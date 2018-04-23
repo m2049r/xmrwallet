@@ -125,9 +125,6 @@
     <string name="label_daemon">節點</string>
     <string name="prompt_daemon">([&lt;名稱&gt;:&lt;密碼&gt;@]&lt;節點&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">網路選擇</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">主網路</string>
     <string name="status_walletlist_loading">載入錢包列表</string>
     <string name="status_wallet_loading">載入錢包 &#8230;</string>
     <string name="status_wallet_unloading">儲存錢包</string>

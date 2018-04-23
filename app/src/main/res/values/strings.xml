@@ -128,9 +128,9 @@
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Net Selection</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
+    <string name="connect_stagenet" translatable="false">Stagenet</string>
+    <string name="connect_testnet" translatable="false">Testnet</string>
+    <string name="connect_mainnet" translatable="false">Mainnet</string>
     <string name="status_walletlist_loading">Loading Wallet List</string>
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
     <string name="status_wallet_unloading">Saving Wallet</string>

@@ -124,9 +124,6 @@
     <string name="label_daemon">Nœud</string>
     <string name="prompt_daemon">([&lt;utilisateur&gt;:&lt;mdp&gt;@]&lt;démon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Sélection Réseau</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Chargement de la liste des Portefeuilles</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloading">Sauvegarde du Portefeuille</string>
