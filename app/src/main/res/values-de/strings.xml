@@ -14,7 +14,7 @@
     <string name="menu_rename">Umbenennen &#8230;</string>
     <string name="menu_archive">Archivieren</string>
     <string name="menu_backup">Backup</string>
-    <string name="menu_changepw">Passphrase ändern</string>
+    <string name="menu_changepw">Passwortphrase ändern</string>
 
     <string name="password_weak">Tippe weiter &#8230;</string>
     <string name="password_fair">Hmmm &#8230;</string>
