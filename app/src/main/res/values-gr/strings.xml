@@ -245,7 +245,7 @@
     <string name="send_amount_btc_xmr">%1$s (ενδεικτικό)</string>
 
     <string name="send_address_hint">Διεύθυνση XMR ή BTC παραλήπτη</string>
-    <string name="send_paymentid_hint">ID Πληρωμής(Payment ID) (προαιρετικό)</string>
+    <string name="send_paymentid_hint">ID Πληρωμής(Payment ID)(προαιρετικό)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Προσωπικές σημειώσεις (προαιρετικό)</string>
     <string name="send_priority_hint">Προτεραιότητα συναλλαγής</string>
@@ -332,7 +332,7 @@
     <string name="receive_amount_empty">Εισαγάγετε τιμή</string>
     <string name="receive_amount_too_big">Μέγιστο %1$s</string>
     <string name="receive_amount_negative">Ελάχιστο 0</string>
-    <string name="receive_amount_nan">XMR not a number</string>
+    <string name="receive_amount_nan">XMR δεν υπάρχει αριθμός</string>
 
     <string name="receive_title">Λήψη</string>
 
