@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_testnet">Testnet</string>
@@ -27,7 +25,7 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">Abbrechen</string>
     <string name="label_close">Schließen</string>
-    <string name="label_wallet_advanced_details">Berühren für detaillierte Informationen</string>
+    <string name="label_wallet_advanced_details">Berühren für Detailinfos</string>
 
     <string name="label_send_success">Erfolgreich gesendet</string>
     <string name="label_send_done">Fertig</string>
@@ -45,9 +43,7 @@
     <string name="info_send_xmrto_success_order_label">XMR.TO Auftrag</string>
 
     <string name="info_send_xmrto_success_sending">Sendet</string>
-    <string name="info_send_xmrto_success_status_label">Status:</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-    <string name="info_send_xmrto_success_status">%1$s ist %1$s (#%1$d)</string>
 
     <string name="info_txdetails_xmrto_key">Schlüssel:</string>
     <string name="info_txdetails_xmrto_address">Adresse:</string>
@@ -59,11 +55,11 @@
     <string name="info_send_xmrto_unpaid">Bezahlung ausstehend</string>
     <string name="info_send_xmrto_error">XMR.TO Fehler (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC Gesendet!</string>
-    <string name="info_send_xmrto_query">Frage &#8230; ab</string>
+    <string name="info_send_xmrto_query">Frage ab &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Du kannst %1$s &#8212; %2$s BTC senden</b>.<br/>
-        <i><b>XMR.TO</b> gibt dir <u>aktuell</u> einen Tausch-Kurs von <b>%3$s BTC</b></i>.
+        <i><b>XMR.TO</b> gibt dir <u>aktuell</u> einen Wechselkurs von <b>%3$s BTC</b></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Beträge bis zu <b>%1$s BTC</b> werden <u>sofort</u> versendet!</i>
@@ -246,15 +242,15 @@
     <string name="generate_address_label">Öffentliche Adresse</string>
     <string name="generate_viewkey_label">View-Key</string>
     <string name="generate_spendkey_label">Spend-Key</string>
-    <string name="generate_mnemonic_label">mnemonischer Seed</string>
-    <string name="generate_restoreheight_label">Wiederherstellungshöhe:</string>
+    <string name="generate_mnemonic_label">Mnemonischer Seed</string>
+    <string name="generate_restoreheight_label">Scan ab Blöckhöhe:</string>
     <string name="generate_crazypass_label">Walletdateien Wiederherstellungspasswort</string>
 
     <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
     <string name="generate_check_mnemonic">Gib deine 25 Wörter Seed ein</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicative)</string>
+    <string name="send_amount_btc_xmr">%1$s (Anhaltswert)</string>
 
     <string name="send_address_hint">Empfänger XMR oder BTC Adresse</string>
     <string name="send_paymentid_hint">Zahlungs-ID (optional)</string>
@@ -350,7 +346,7 @@
 
     <string name="details_alert_message">Sensible Daten werden nicht angezeigt.\nSchau über deine Schulter!</string>
     <string name="details_alert_yes">Ich bin sicher</string>
-    <string name="details_alert_no">Bring mich zurück!</string>
+    <string name="details_alert_no">Nein, doch nicht!</string>
     <string name="details_title">Details</string>
 
     <string name="archive_alert_message">Das Wallet wird archiviert und dann gelöscht!</string>
