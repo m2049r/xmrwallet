@@ -102,7 +102,7 @@
         <h2>Wallets</h2>
         <p>Hier siehst du deine Wallets. Sie befinden sich im <tt>monerujo</tt> Ordner
         im internen Speicher deines Geräts. Du kannst einen Datei-Explorer nutzen um sie zu finden.
-        Du solltest regelmäßig Backups von diesem Odner machen und diese sicher aufbewahren für den Fall,
+        Du solltest regelmäßig Backups von diesem Ordner machen und diese sicher aufbewahren für den Fall,
         dass dein Gerät EXPLODIERT oder gestohlen wird.</p>
         <p>Wähle ein Wallet um es zu öffnen oder tippe \"+\" um ein neues zu erstellen.
         Oder wähle eine der folgenden Wallet Optionen:</p>
@@ -215,7 +215,7 @@
         sofort ausgeführt wird, ohne auf XMR-Bestätigungen zu warten (siehe XMR.TO FAQ für weitere Details). 
         Bitte beachte, dass XMR.TO keine zusätzlichen Gebühren berechnet - ist doch cool, oder?</p>
         <h2>XMR.TO Auftrag<h2>
-        <p>Auf dem Bildschirm \"Bestätigen\" siehst du das aktuelle XMR.TO-Angebot. Diese Bestellung ist nur für eine
+        <p>Auf dem Bildschirm \"Bestätigen\" siehst du das aktuelle XMR.TO-Angebot. Dieses Angebot ist nur für eine
         bestimmte Zeit gültig - du wirst vielleicht einen Countdown auf dem \"Ausgeben\"-Knopf sehen. Der Wechselkurs 
         kann sich von dem auf den vorherigen Bildschirmen angezeigten indikativen Wechselkurs unterscheiden.</p>
         <h2>Geheimer XMR.TO Schlüssel<h2>
