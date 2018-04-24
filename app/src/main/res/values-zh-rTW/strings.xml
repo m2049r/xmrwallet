@@ -34,6 +34,7 @@
     <string name="info_send_prio_fees">較高優先權 = 較高手續費</string>
 
     <string name="info_xmrto_enabled">BTC付款已啟用, 點選我獲得更多資訊</string>
+    <string name="info_crazypass_enabled">CrAzYpass已啟用, 點選我獲得更多資訊</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>你已輸入Bitcoin地址</b><br/>
