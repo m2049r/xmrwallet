@@ -171,7 +171,6 @@
     <string name="title_amount">Menge</string>
     <string name="title_date">Datum</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
-    <string name="xmr" translatable="false">XMR</string>
     <string name="label_transactions">Transaktionen</string>
     <string name="text_daemonConnected">Daemon verbunden!</string>
 
@@ -353,24 +352,11 @@
     <string name="archive_alert_yes">Ja, mach das!</string>
     <string name="archive_alert_no">Nein, danke!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Priorität Standard</item>
         <item>Priority Gering</item>
         <item>Priority Mittel</item>
         <item>Priority Hoch</item>
-    </string-array>
-
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
     </string-array>
 
     <string name="fab_create_new">Neues Wallet erstellen</string>
