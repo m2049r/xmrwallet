@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Πορτοφόλι</string>
 
     <string name="menu_testnet">Δίκτυο δοκιμών(Testnet)</string>
@@ -169,7 +167,6 @@
     <string name="title_amount">Ποσό</string>
     <string name="title_date">Ημερομηνία</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR μη επιβεβαιωμένα</string>
-    <string name="xmr" translatable="false">XMR</string>
     <string name="label_transactions">Συναλλαγές</string>
     <string name="text_daemonConnected">Ο δαίμονας συνδέθηκε!</string>
 
@@ -348,24 +345,11 @@
     <string name="archive_alert_yes">Ναι, κάνε αυτό!</string>
     <string name="archive_alert_no">Όχι ευχαριστώ!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Προεπιλεγμένη Προτεραιότητα</item>
         <item>Χαμηλή Προτεραιότητα</item>
         <item>Μέτρια Προτεραιότητα</item>
         <item>Υψηλή Προτεραιότητα</item>
-    </string-array>
-
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
     </string-array>
 
     <string name="fab_create_new">Δημιουργία νέου πορτοφολιού</string>
