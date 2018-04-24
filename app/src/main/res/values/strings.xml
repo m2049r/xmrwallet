@@ -158,7 +158,9 @@
     <string name="prompt_changepw">New Passphrase for %1$s</string>
     <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
     <string name="prompt_password">Password for %1$s</string>
+    <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
     <string name="prompt_send_password">Confirm Password</string>
+    <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
     <string name="bad_password">Incorrect password!</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="error_not_wallet">This is not a wallet!</string>
@@ -211,6 +213,19 @@
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Passphrase</string>
+    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Fingerprint Authentication</strong>
+        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
+        without entering password.</p>
+        <p>But for additional security, monerujo will still require you to enter password when
+        viewing wallet details or sending funds.</p>
+        <strong>Security Warning</strong>
+        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
+        able to peep into your wallet balance.</p>
+        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
+        <strong>Are you sure to enable this function?</strong>
+    ]]></string>
     <string name="generate_bad_passwordB">Passphrases do not match</string>
     <string name="generate_empty_passwordB">Passphrase may not be empty</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>

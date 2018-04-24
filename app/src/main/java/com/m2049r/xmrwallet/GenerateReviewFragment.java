@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -38,18 +39,21 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.model.NetworkType;
-import com.m2049r.xmrwallet.util.KeyStoreHelper;
-import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
+import java.security.KeyStoreException;
 
 import timber.log.Timber;
 
@@ -369,12 +373,21 @@ public class GenerateReviewFragment extends Fragment {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            if (params.length != 3) return false;
+            if (params.length != 4) return false;
             File walletFile = Helper.getWalletFile(getActivity(), params[0]);
             String oldPassword = params[1];
             String userPassword = params[2];
+            boolean fingerprintAuthAllowed = Boolean.valueOf(params[3]);
             newPassword = KeyStoreHelper.getCrazyPass(getActivity(), userPassword);
-            return changeWalletPassword(newPassword);
+            boolean success = changeWalletPassword(newPassword);
+            if (success) {
+                if (fingerprintAuthAllowed) {
+                    KeyStoreHelper.saveWalletUserPass(getActivity(), walletName, userPassword);
+                } else {
+                    KeyStoreHelper.removeWalletUserPass(getActivity(), walletName);
+                }
+            }
+            return success;
         }
 
         @Override
@@ -409,6 +422,37 @@ public class GenerateReviewFragment extends Fragment {
 
         final TextInputLayout etPasswordB = (TextInputLayout) promptsView.findViewById(R.id.etWalletPasswordB);
         etPasswordB.setHint(getString(R.string.prompt_changepwB, walletName));
+
+        LinearLayout llFingerprintAuth = (LinearLayout) promptsView.findViewById(R.id.llFingerprintAuth);
+        final Switch swFingerprintAllowed = (Switch) llFingerprintAuth.getChildAt(0);
+        if (FingerprintHelper.isDeviceSupported(getActivity())) {
+            llFingerprintAuth.setVisibility(View.VISIBLE);
+
+            swFingerprintAllowed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!swFingerprintAllowed.isChecked()) return;
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(Html.fromHtml(getString(R.string.generate_fingerprint_warn)))
+                            .setCancelable(false)
+                            .setPositiveButton(getString(R.string.label_ok), null)
+                            .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    swFingerprintAllowed.setChecked(false);
+                                }
+                            })
+                            .show();
+                }
+            });
+
+            try {
+                swFingerprintAllowed.setChecked(FingerprintHelper.isFingerprintAuthAllowed(walletName));
+            } catch (KeyStoreException ex) {
+                ex.printStackTrace();
+            }
+        }
 
         etPasswordA.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
@@ -483,7 +527,7 @@ public class GenerateReviewFragment extends Fragment {
                         } else if (!newPasswordA.equals(newPasswordB)) {
                             etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                         } else if (newPasswordA.equals(newPasswordB)) {
-                            new AsyncChangePassword().execute(walletName, walletPassword, newPasswordA);
+                            new AsyncChangePassword().execute(walletName, walletPassword, newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
                             Helper.hideKeyboardAlways(getActivity());
                             openDialog.dismiss();
                             openDialog = null;
@@ -505,7 +549,7 @@ public class GenerateReviewFragment extends Fragment {
                     } else if (!newPasswordA.equals(newPasswordB)) {
                         etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                     } else if (newPasswordA.equals(newPasswordB)) {
-                        new AsyncChangePassword().execute(walletName, walletPassword, newPasswordA);
+                        new AsyncChangePassword().execute(walletName, walletPassword, newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
                         Helper.hideKeyboardAlways(getActivity());
                         openDialog.dismiss();
                         openDialog = null;
