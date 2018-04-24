@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -433,7 +434,7 @@ public class GenerateReviewFragment extends Fragment {
                     if (!swFingerprintAllowed.isChecked()) return;
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage(getString(R.string.generate_fingerprint_warn))
+                    builder.setMessage(Html.fromHtml(getString(R.string.generate_fingerprint_warn)))
                             .setCancelable(false)
                             .setPositiveButton(getString(R.string.label_ok), null)
                             .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
