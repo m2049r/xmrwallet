@@ -154,7 +154,9 @@
     <string name="prompt_changepw">Neue Passwortphrase für %1$s</string>
     <string name="prompt_changepwB">Passwortphrase für %1$s wiederholen</string>
     <string name="prompt_password">Passwort für %1$s</string>
+    <string name="prompt_fingerprint_auth">Fingerabdruck-Authentifizierung möglich.\nBitte Sensor berühren.</string>
     <string name="prompt_send_password">Passwort bestätigen</string>
+    <string name="bad_fingerprint">Fingerabdruck nicht erkannt. Nochmals versuchen.</string>
     <string name="bad_password">Falsches Passwort!</string>
     <string name="bad_wallet">Wallet existiert nicht!</string>
     <string name="error_not_wallet">Das ist kein Wallet!</string>
@@ -205,7 +207,19 @@
 
     <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Passwort</string>
+    <string name="generate_password_hint">Wallet Passwortphrase</string>
+    <string name="generate_fingerprint_hint">Erlaubt das Öffnen des Wallets durch Fingerabdruck-Authentifizierung</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Fingerabdruck-Authentifizierung</strong>
+        <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts 
+        das Wallet-Saldo einsehen sowie Gelder empfangen.</p>
+        <p>Aus Sicherheitsgründen wird Monerujo weiterhin dein Passwort abfragen, 
+        wenn du Wallet-Details einsehen oder Gelder senden möchtest.</p>
+        <strong>Sicherheits-Warnung</strong>
+        <p>Bedenke bitte, dass jeder mit Zugriff auf deinen Fingerabdruck dein Wallet-Saldo einsehen kann.</p>
+        <p>Eine bösartige Person könnte dies zum Beispiel versuchen, während du schläfst.</p>
+        <strong>Bist du sicher, dass du diese Funktion aktivieren willst?</strong>
+    ]]></string>
     <string name="generate_bad_passwordB">Passwortphrasen stimmen nicht überein</string>
     <string name="generate_empty_passwordB">Passwortphrase darf nicht leer sein</string>
     <string name="generate_buttonGenerate">Erstell mir jetzt endlich ein Wallet!</string>
