@@ -12,7 +12,7 @@
     <string name="menu_rename">Rinomina &#8230;</string>
     <string name="menu_archive">Archivia</string>
     <string name="menu_backup">Backup</string>
-    <string name="menu_changepw">[Change Passphrase]</string>
+    <string name="menu_changepw">Cambia passphrase</string>
 
     <string name="password_weak">Continua a scrivere &#8230;</string>
     <string name="password_fair">Mah &#8230;</string>
@@ -109,7 +109,7 @@
     <string name="archive_progress">Archiviazione in corso</string>
     <string name="rename_progress">Rinomina in corso</string>
     <string name="open_progress">Controllando connessione con daemon</string>
-    <string name="changepw_progress">[Change Password in progress]</string>
+    <string name="changepw_progress">Modifica password in corso</string>
 
     <string name="service_progress">Rimettendo le cose a posto &#8230;\nPuò richiedere del tempo!</string>
 
@@ -119,8 +119,8 @@
     <string name="archive_failed">Archiviazione fallita!</string>
     <string name="delete_failed">Cancellazione fallita!</string>
     <string name="rename_failed">Rinomina fallita!</string>
-    <string name="changepw_failed">[Change Password failed!]</string>
-    <string name="changepw_success">[Password changed]</string>
+    <string name="changepw_failed">Modifica password fallita!</string>
+    <string name="changepw_success">Password cambiata</string>
 
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;utente&gt;:&lt;password&gt;@]&lt;daemon&gt;[:&lt;porta&gt;])</string>
@@ -149,12 +149,12 @@
 
     <string name="prompt_rename">Rinomina %1$s</string>
 
-    <string name="prompt_changepw">[New Passphrase for %1$s]</string>
-    <string name="prompt_changepwB">[Repeat Passphrase for %1$s]</string>
+    <string name="prompt_changepw">Nuova passphrase per %1$s</string>
+    <string name="prompt_changepwB">Ripeti passphrase per %1$s</string>
     <string name="prompt_password">Password per %1$s</string>
-    <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
+    <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale./nTocca il sensore.</string>
     <string name="prompt_send_password">Conferma Password</string>
-    <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
+    <string name="bad_fingerprint">Impronta digitale non riconosciuta. Prova di nuovo.</string>
     <string name="bad_password">Password errata!</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
     <string name="error_not_wallet">Questo non è un portafoglio!</string>
@@ -206,24 +206,24 @@
     <string name="generate_title">Crea portafoglio</string>
     <string name="generate_name_hint">Nome del portafoglio</string>
     <string name="generate_password_hint">Passphrase del portafoglio</string>
-    <string name="generate_fingerprint_hint">[Allow to open wallet using fingerprint]</string>
+    <string name="generate_fingerprint_hint">Permetti di aprire il portafoglio usando la tua impronta digitale</string>
     <string name="generate_fingerprint_warn">[<![CDATA[
-        <strong>Fingerprint Authentication</strong>
-        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
-        without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
-        viewing wallet details or sending funds.</p>
-        <strong>Security Warning</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
-        able to peep into your wallet balance.</p>
-        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
-        <strong>Are you sure to enable this function?</strong>
+        <strong>Autenticazione tramite impronta digitale</strong>
+        <p>Abilitando l'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
+        senza inserire la password.</p>
+        <p>Per sicurezza aggiuntiva, Monerujo richiederà comunque di inserire la password per visualizzare i dettagli
+        del tuo portafoglio o inviare denaro.</p>
+        <strong>Avviso di sicurezza</strong>
+        <p>Infine, monerujo vuole ricordati che chiunque sia in grado di procurarsi la tua impronta digitale
+        sarà in grado di sbirciare il bilancio del tuo portafoglio.</p>
+        <p>Per esempio, un utente malevolo potrebbe aprire il tuo portafoglio mentre dormi.</p>
+        <strong>Sei sicuro/a di voler abilitare questa funzione?</strong>
     ]]>]</string>
-    <string name="generate_bad_passwordB">[Passphrases do not match]</string>
-    <string name="generate_empty_passwordB">[Passphrase may not be empty]</string>
+    <string name="generate_bad_passwordB">Le passphrase non corrispondono</string>
+    <string name="generate_empty_passwordB">La passphrase potrebbe non essere vuota</string>
     <string name="generate_buttonGenerate">Fammi subito un portafoglio!</string>
     <string name="generate_seed">Seed mnemonico</string>
-    <string name="generate_button_accept">[I have noted the above info!]</string>
+    <string name="generate_button_accept">Ho annotato le informazioni qui sopra!</string>
 
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Esporta chiavi</string>
@@ -256,7 +256,7 @@
     <string name="generate_spendkey_label">Chiave di spesa</string>
     <string name="generate_mnemonic_label">Seed mnemonico</string>
     <string name="generate_restoreheight_label">Altezza di ripristino:</string>
-    <string name="generate_crazypass_label">[Wallet Files Restore Password]</string>
+    <string name="generate_crazypass_label">Password di ripristino dei file del portafoglio</string>
 
     <string name="generate_check_key">Inserisci una chiave valida</string>
     <string name="generate_check_address">Inserisci un indirizzo valido</string>
