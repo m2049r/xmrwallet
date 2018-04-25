@@ -34,6 +34,7 @@
     <string name="info_send_prio_fees">Höhere Priorität = Höhere Gebühr</string>
 
     <string name="info_xmrto_enabled">BTC Zahlung aktiviert, tippe für mehr Infos.</string>
+    <string name="info_crazypass_enabled">CrAzYpass aktiviert, tippe für mehr Infos.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Du hast eine BTC Adresse eingegeben.</b><br/>
