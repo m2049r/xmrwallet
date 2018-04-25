@@ -157,7 +157,7 @@
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
-        <p>Dies ist die öffentliche Adresse des Wallets, an das du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren, 
+        <p>Dies ist die öffentliche Adresse des Wallets, an die du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren, 
 	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist um
         sicherzustellen die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
         <p>Zusätzlich zum Senden von XMR kannst du auch BTC mittels des XMR.TO Service versenden (siehe https://xmr.to
@@ -198,7 +198,7 @@
         <p>Dieser geheime Schlüssel ist für 24h nach Start der Transaktion gültig!</p>
         <h2>XMR.TO Countdown!</h2>
         <p>Wenn der Countdown 0 erreicht musst du ein neues Angebot von XMR.TO anfordern indem du zum vorherigen Schritt
-        zurückkehrst und wieder zum \"Bildschirm\" zurückkommst.</p>
+        zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
