@@ -125,9 +125,6 @@
     <string name="label_daemon">Nodo</string>
     <string name="prompt_daemon">([&lt;utente&gt;:&lt;password&gt;@]&lt;daemon&gt;[:&lt;porta&gt;])</string>
     <string name="prompt_mainnet">Selezione della rete</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Caricando la lista dei portafogli</string>
     <string name="status_wallet_loading">Caricando portafoglio &#8230;</string>
     <string name="status_wallet_unloading">Salvando portafoglio</string>

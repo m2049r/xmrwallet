@@ -123,9 +123,6 @@
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;bruker&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Velg nett</string>
-    <string name="connect_stagenet">StageNett</string>
-    <string name="connect_testnet">TestNett</string>
-    <string name="connect_mainnet">HovedNett</string>
     <string name="status_walletlist_loading">Laster lommebokliste</string>
     <string name="status_wallet_loading">Laster lommebok &#8230;</string>
     <string name="status_wallet_unloading">Lagrer lommebok</string>
