@@ -35,6 +35,8 @@
 
     <string name="info_xmrto_enabled">Paiement BTC activé, tapez pour plus d\'infos.</string>
 
+    <string name="info_crazypass_enabled">CrAzYpass activé, tapez pour plus d\'infos.</string>
+
     <string name="info_xmrto"><![CDATA[
         <b>Vous avez entré une adresse Bitcoin.</b><br/>
         <i>Vous envoyez des XMR et le destinataire recevra des BTC via le service <b>XMR.TO</b>.</i>
@@ -151,7 +153,9 @@
     <string name="prompt_changepw">Nouvelle Phase secrète pour %1$s</string>
     <string name="prompt_changepwB">Répéter la Phase secrète pour %1$s</string>
     <string name="prompt_password">Mot de passe pour %1$s</string>
+    <string name="prompt_fingerprint_auth">Vous pouvez également ouvrir le portefeuille avec votre empreinte digitale.\nMerci de toucher le capteur.</string>
     <string name="prompt_send_password">Confirmez le mot de passe</string>
+    <string name="bad_fingerprint">Empreinte digitale non reconnue. Résessayez.</string>
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
     <string name="error_not_wallet">Ce n\'est pas un portefeuille !</string>
@@ -203,6 +207,20 @@
     <string name="generate_title">Créer un Portefeuille</string>
     <string name="generate_name_hint">Nom du Portefeuille</string>
     <string name="generate_password_hint">Mot de Passe du Portefeuille</string>
+    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Authentification par empreinte dgitale</strong>
+        <p>En activant l\'authentification par empreinte digitale, vous pouvez voir le solde de
+        votre portefeuille et recevoir des fonds sans entrer de mot de passe.</p>
+        <p>Mais pour plus de sécurité, monerujo continuera de vous demander votre mot de passe
+        lorsque vous afficherez les détails du portefeuille ou enverez des fonds.</p>
+        <strong>Avertissement de Sécurité</strong>
+        <p>Enfin, monerujo vous rappel que quiconque pouvant obtenir votre empreinte digitale
+        sera capable de jeter un coup d\'œil au solde de votre portefeuille.</p>
+        <p>Par exemple, un utilisateur malveillant à vos côtés pourrait ouvrir votre portefeuille
+        pendant votre sommeil.</p>
+        <strong>Êtes vous certain de vouloir activer cette fonctionnalité ?</strong>
+    ]]></string>
     <string name="generate_bad_passwordB">Phrases secrètes non correspondantes</string>
     <string name="generate_empty_passwordB">La Phrase secrète ne doit pas être vide</string>
     <string name="generate_buttonGenerate">Faites moi un Portefeuille déjà !</string>
