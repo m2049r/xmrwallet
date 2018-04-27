@@ -23,16 +23,16 @@
     <string name="password_very_strong">Отлично! В лучших традициях h4x0r!</string>
 
     <string name="label_login_wallets">Кошелек</string>
-    <string name="label_credits">Credits</string>
+    <string name="label_credits">Информация</string>
     <string name="label_ok">Ok</string>
     <string name="label_cancel">Отмена</string>
     <string name="label_close">Закрыть</string>
-    <string name="label_wallet_advanced_details">Нажмите для дополнительной информации</string>
+    <string name="label_wallet_advanced_details">Нажмите для доп. информации</string>
 
     <string name="label_send_success">Успешно отправлено</string>
     <string name="label_send_done">Готово</string>
 
-    <string name="label_receive_info_gen_qr_code">Touch for QR Code</string>
+    <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
     <string name="info_send_prio_fees">Высокий приоритет = Высокие сборы</string>
 
     <string name="info_xmrto_enabled">Доступны платежи в BTC, нажмите для доп. информации</string>
@@ -62,11 +62,11 @@
     <string name="info_send_xmrto_query">Запрос &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>You can send %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> is giving you an exchange rate of <b>%3$s BTC</b> <u>right now</u></i>.
+        <b>Вы можете отправить %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b> устанавливает курс обменна <b>%3$s BTC</b> <u>в данный момент</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Amounts up to <b>%1$s BTC</b> will be sent <u>instantly</u>!</i>
+        <i>Сумма до <b>%1$s BTC</b> будет отправлена <u>немедленно</u>!</i>
     ]]></string>
 
     <string name="send_available_btc">Баланс: %2$s BTC (%1$s XMR)</string>
