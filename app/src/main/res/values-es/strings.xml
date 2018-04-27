@@ -88,9 +88,9 @@
     <string name="prompt_changepw">Nueva contraseña para %1$s</string>
     <string name="prompt_changepwB">Repetir contraseña para %1$s</string>
     <string name="prompt_password">Contraseña para %1$s</string>
-    <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
+    <string name="prompt_fingerprint_auth">Puedes poner tu dedo en el sensor para autorizar con tu huella.</string>
     <string name="prompt_send_password">Confirmar Contraseña</string>
-    <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
+    <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
     <string name="error_not_wallet">¡Esto no es un monedero!</string>
@@ -139,18 +139,18 @@
     <string name="generate_title">Crear monedero</string>
     <string name="generate_name_hint">Nombre del monedero</string>
     <string name="generate_password_hint">Frase de Contraseña</string>
-    <string name="generate_fingerprint_hint">[Allow to open wallet using fingerprint]</string>
+    <string name="generate_fingerprint_hint">Permitir abrir usando huella dactilar</string>
     <string name="generate_fingerprint_warn">[<![CDATA[
-        <strong>Fingerprint Authentication</strong>
-        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
-        without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
-        viewing wallet details or sending funds.</p>
-        <strong>Security Warning</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
-        able to peep into your wallet balance.</p>
-        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
-        <strong>Are you sure to enable this function?</strong>
+        <strong>Autenticación por huella</strong>
+        <p>Con la autenticación por huella dactilar activada, puedes acceder al balance y recibir fondos
+        sin la necesidad de ingresar tu contraseña.</p>
+        <p>Sin embargo, por seguridad extra, Monerujo va a requerir tu contraseña para ver la información
+        sensible de tu monedero o enviar fondos.</p>
+        <strong>Advertencia de seguridad</strong>
+        <p>Si bien es cómodo, recuerda que cualquier persona que tenga acceso a tu huella dactilar
+        va a ser capaz de mirar el balance de tu monedero.</p>
+        <p>Por ejemplo, un actor malicioso cercano podría abrir tu monedero con tu dedo mientras duermes.</p>
+        <strong>¿Estás seguro de activar esta función?</strong>
     ]]>]</string>
     <string name="generate_bad_passwordB">Contraseñas no coinciden</string>
     <string name="generate_empty_passwordB">Contraseña no puede estar vacía</string>
