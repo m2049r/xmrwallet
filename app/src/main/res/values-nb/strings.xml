@@ -42,13 +42,7 @@
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">XMR.TO Ordre</string>
-    <string name="info_send_xmrto_success_sending">Sender</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_txdetails_xmrto_key">Nøkkel:</string>
-    <string name="info_txdetails_xmrto_address">Adresse:</string>
-    <string name="info_txdetails_xmrto_status">Status:</string>
-    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Bekreftelse venter</string>
     <string name="info_send_xmrto_unpaid">Betaling venter</string>
@@ -87,16 +81,11 @@
 
     <string name="label_send_settings_advanced">Avansert:</string>
 
-    <string name="label_send_btc_details">Trykk for flere detaljer</string>
     <string name="label_send_btc_xmrto_info">Besøk xmr.to for støtte og sporing</string>
-    <string name="label_send_txinfo">Se transaksjonsdetaljer for mer informasjon</string>
     <string name="label_send_btc_xmrto_key_lb">Hemmelig nøkkel\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO Hemmelig nøkkel</string>
     <string name="label_send_btc_address">BTC destinasjonsadresse</string>
     <string name="label_send_btc_amount">Mengde</string>
-    <string name="label_send_btc_create_order">Lager XMR.TO ordre</string>
-
-    <string name="label_send_btc_retry">Trykk for å forsøke igjen</string>
 
     <string name="label_send_txid">Transaksjons-ID</string>
     <string name="label_send_address">Destinasjonsadresse</string>
@@ -111,21 +100,15 @@
 
     <string name="service_progress">Gjør ting ferdig &#8230;\nDette kan ta si tid!</string>
 
-    <string name="backup_success">Backup suksessfull</string>
     <string name="backup_failed">Backup feila!</string>
-    <string name="archive_success">Arkivering suksessfull</string>
     <string name="archive_failed">Arkivering feila!</string>
-    <string name="delete_failed">Sletting feila!</string>
     <string name="rename_failed">Kunne ikke gi nytt navn!</string>
 	<string name="changepw_failed">[Passordforandring feila!]</string>
 	<string name="changepw_success">[Passord forandra]</string>
 
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;bruker&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Velg nett</string>
-    <string name="status_walletlist_loading">Laster lommebokliste</string>
     <string name="status_wallet_loading">Laster lommebok &#8230;</string>
-    <string name="status_wallet_unloading">Lagrer lommebok</string>
     <string name="status_wallet_unloaded">Lommebok lagra</string>
     <string name="status_wallet_unload_failed">Lommeboklagring feila!</string>
     <string name="status_wallet_connecting">Kobler til &#8230;</string>
@@ -134,12 +117,9 @@
     <string name="status_wallet_node_invalid">Noden er ugyldig!\nPrøv en annen.</string>
     <string name="status_wallet_connect_ioex">Kan ikke nå node!\nPrøv på nytt eller med en annen.</string>
 
-    <string name="status_working">Jobber med det &#8230;</string>
     <string name="status_wallet_disconnected">Kobla fra</string>
 
-    <string name="status_transaction_sent">Transaksjon sendt!</string>
     <string name="status_transaction_failed">Transaksjon feila: %1$s</string>
-    <string name="status_transaction_prepare_failed">Kunne ikke lage transaksjon!</string>
 
     <string name="send_xmrto_timeout">Du venta for lenge, min venn!</string>
 
@@ -155,35 +135,22 @@
     <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
     <string name="bad_password">Feil passord!</string>
     <string name="bad_wallet">Lommebok eksisterer ikke!</string>
-    <string name="error_not_wallet">Dette er ikke en lommebok!</string>
     <string name="prompt_daemon_missing">Daemon-adresse må være gitt!</string>
     <string name="prompt_wrong_net">Lommebok matcher ikke valgt nett</string>
-    <string name="warn_daemon_unavailable">Kan ikke koble til daemon! Prøv igjen.</string>
-    <string name="panic">Noe er galt!</string>
 
     <string name="label_watchonly">(Bare se)</string>
 
     <string name="label_wallet_receive">Motta</string>
     <string name="label_wallet_send">Gi</string>
 
-    <string name="title_amount">Mengde</string>
-    <string name="title_date">Dato</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR ubekrefta</string>
-    <string name="label_transactions">Transaksjoner</string>
-    <string name="text_daemonConnected">Daemon tilkobla!</string>
 
     <string name="service_description">monerujo tjeneste</string>
-    <string name="local_service_started">monerujo tjeneste kjører</string>
-    <string name="local_service_stopped">monerujo tjeneste stoppa</string>
-    <string name="local_service_label">monerujo tjeneste</string>
-    <string name="local_service_connected">monerujo tjeneste tilkobla</string>
-    <string name="local_service_disconnected">monerujo tjeneste frakobla</string>
 
     <string name="status_synced">Synkronisert:</string>
     <string name="status_remaining">Gjenværende blokker</string>
     <string name="status_syncing">Skanner:</string>
 
-    <string name="prompt_problems">Problemer</string>
     <string name="message_strorage_not_writable">Ekstern lagring er ikke skrivbar! Panikk!</string>
     <string name="message_strorage_not_permitted">Vi trenger virkelig de eksternlagrings-rettighetene!</string>
     <string name="message_camera_not_permitted">Ikke noe kamera = ikke noe QR-skanning!</string>
@@ -195,8 +162,6 @@
     <string name="message_copy_xmrtokey">XMR.TO-nøkkel kopiert til utklippstavle!</string>
     <string name="message_copy_address">Lommebokadresse kopiert til utklippstavle!</string>
     <string name="message_copy_txid">Transaksjons-ID kopiert til utklippstavle!</string>
-    <string name="message_noselect_seed">Å velge seed er skrudd av for sikkerhetsgrunner!</string>
-    <string name="message_noselect_key">Å velge spend-nøkkel er skrudd av for sikkerhetsgrunner!</string>
     <string name="message_nocopy">Kopiering skrudd av for sikkerhetsgrunner!</string>
 
     <string name="message_exchange_failed">Kan ikke hente vekslingskurs!\nBruk XMR/XMR eller prøv igjen</string>
@@ -220,12 +185,7 @@
     <string name="generate_bad_passwordB">[Passordene stemmer ikke overens]</string>
     <string name="generate_empty_passwordB">[Passord kan ikke være tomt]</string>
     <string name="generate_buttonGenerate">Lag meg en lommebok!</string>
-    <string name="generate_seed">Mnemonisk seed</string>
     <string name="generate_button_accept">Jeg har notert informasjonen ovenfor!</string>
-
-    <string name="generate_button_backup">Backup</string>
-    <string name="generate_button_export">Eksporter nøkler</string>
-    <string name="generate_button_delete">SLETT</string>
 
     <string name="generate_wallet_name">Gi meg et navn!</string>
     <string name="generate_wallet_exists">Lommebok eksisterer!</string>
@@ -247,14 +207,11 @@
     <string name="generate_mnemonic_hint">25-ord mnemonisk seed</string>
     <string name="generate_restoreheight_hint">Gjenopprettelseshøyde- eller dato (ÅÅÅÅ-MM-DD)</string>
 
-    <string name="generate_wallet_label">Lommebok</string>
-    <string name="generate_password_label">Passord</string>
     <string name="generate_address_label">Offentlig adresse</string>
     <string name="generate_viewkey_label">View-nøkkel</string>
     <string name="generate_spendkey_label">Spend-nøkkel</string>
     <string name="generate_mnemonic_label">Mnemonisk seed</string>
-    <string name="generate_restoreheight_label">Gjenopprettelseshøyde:</string>
-	<string name="generate_crazypass_label">[Lommebokfiler gjenopprettelsespassord]</string>
+    <string name="generate_crazypass_label">[Lommebokfiler gjenopprettelsespassord]</string>
 
     <string name="generate_check_key">Skriv inn gyldig nøkkel</string>
     <string name="generate_check_address">Skriv inn gyldig adresse</string>
@@ -266,20 +223,13 @@
     <string name="send_paymentid_hint">Betalings-ID (valgfritt)</string>
     <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Privat notat (valgfritt)</string>
-    <string name="send_priority_hint">Transaksjonsprioritet</string>
-    <string name="send_mixin_hint">Mixin</string>
-    <string name="send_sweep_hint">Sweip</string>
     <string name="send_generate_paymentid_hint">Generer</string>
     <string name="send_qr_hint">Skann</string>
-    <string name="send_prepare_hint">Forbered</string>
-    <string name="send_dispose_hint">Forkast (angre)</string>
     <string name="send_send_label">Bruk mine søte moneroj</string>
     <string name="send_send_timed_label">Bruk mine søte moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Siste steg - bekreft!</string>
     <string name="send_qr_invalid">Ikke en QR-kode</string>
     <string name="send_qr_address_invalid">Ikke en gyldig betalings-QR-kode</string>
     <string name="send_address_invalid">Ikke en gyldig adresse</string>
-    <string name="send_preparing_progress">Forbereder transaksjon</string>
     <string name="send_title">Send</string>
     <string name="send_available">Saldo: %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
@@ -287,13 +237,10 @@
     <string name="send_settings_title">Innstillinger</string>
     <string name="send_confirm_title">Bekreft</string>
     <string name="send_success_title">Ferdig</string>
-    <string name="send_summary_heading">Oppsummering</string>
-    <string name="send_amount_too_large">Mengde over saldo</string>
 
     <string name="send_amount_label">Antall</string>
     <string name="send_fee_btc_label">Avgift (XMR)</string>
     <string name="send_fee_label">Avgift</string>
-    <string name="send_dust_label">Støv</string>
     <string name="send_total_btc_label">Totalt (XMR)</string>
     <string name="send_total_label">Totalt</string>
 
@@ -302,18 +249,14 @@
 
     <string name="send_create_tx_error_title">Error med å lage transaksjon</string>
 
-    <string name="tx_list_fee_pending">inkl. %1$s avgift</string>
     <string name="tx_list_fee">- Avgift %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">feila</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_status_btc">Status</string>
-    <string name="tx_address">Adresse</string>
     <string name="tx_timestamp">Tidsstempel</string>
     <string name="tx_id">TX ID</string>
-    <string name="tx_id_btc">TX ID\n(BTC)</string>
     <string name="tx_key">TX-nøkkel</string>
     <string name="tx_destination">Destinasjon</string>
     <string name="tx_destination_btc">Destinasjon\n(BTC)</string>
@@ -324,30 +267,20 @@
     <string name="tx_fee">Avgift</string>
     <string name="tx_transfers">Overføringer</string>
     <string name="tx_notes">Notater</string>
-    <string name="tx_button_copy">Kopier til utklippstavle</string>
-    <string name="tx_copy_message">Kopiert til utklippstavle</string>
-    <string name="tx_copy_label">Transaksjonsdetaljer</string>
     <string name="tx_notes_hint">(valgfritt)</string>
     <string name="tx_button_notes">Lagre</string>
-    <string name="tx_notes_set">Notater lagra</string>
     <string name="tx_notes_set_failed">Lagra notater feila</string>
     <string name="tx_title">Transaksjonsdetaljer</string>
 
     <string name="tx_pending">VENTENDE</string>
     <string name="tx_failed">FEILA</string>
 
-    <string name="receive_generate_hint">Vis meg QR-koden</string>
-    <string name="receive_paymentid_button">Generer</string>
     <string name="receive_paymentid_hint">Betalings-ID (valgfritt)</string>
     <string name="receive_amount_hint">Mengde</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Kunne ikke åpne lommebok!</string>
     <string name="receive_paymentid_invalid">16 eller 64 heks-karakterer (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Må være tom med integrert adresse</string>
-    <string name="receive_bitcoin_paymentid_invalid">Må være tom med Bitcoin-adresse</string>
-    <string name="receive_amount_invalid">Må være over 0</string>
 
-    <string name="receive_amount_empty">Skriv inn verdi</string>
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR ikke et tall</string>
