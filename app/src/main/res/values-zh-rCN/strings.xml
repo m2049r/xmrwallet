@@ -34,10 +34,11 @@
     <string name="info_send_prio_fees">较高优先权 = 较高手续费</string>
 
     <string name="info_xmrto_enabled">BTC付款已启用, 点选我获得更多信息</string>
+	<string name="info_crazypass_enabled">CrAzYpass已启用, 点选我获得更多信息</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>你已输入Bitcoin地址</b><br/>
-        <i>你將会发送XMR而收款方將会收到BTC(由<b>XMR.TO</b>提供转換)</i>
+        <i>你将会发送XMR而收款方将会收到BTC(由<b>XMR.TO</b>提供转換)</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">XMR.TO订单</string>
@@ -62,7 +63,7 @@
         <i><b>XMR.TO</b>提供的汇率为<b>%3$s BTC</b> <u>(即时)</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>金额若小于<b>%1$s BTC</b>將可以<u>零确认发送</u>!</i>
+        <i>金额若小于<b>%1$s BTC</b>将可以<u>零确认发送</u>!</i>
     ]]></string>
 
     <string name="send_available_btc">余额: %2$s BTC (%1$s XMR)</string>
@@ -74,7 +75,7 @@
     <string name="label_send_progress_xmrto_query">查询 XMR.TO 订单</string>
     <string name="label_send_progress_create_tx">正在准备 Monero 交易</string>
 
-    <string name="label_send_progress_queryparms">正在查询 xmr.to 参數</string>
+    <string name="label_send_progress_queryparms">正在查询 xmr.to 参数</string>
 
     <string name="label_generic_xmrto_error">XMR.TO 发生错误</string>
     <string name="text_generic_xmrto_error">错误代码: %1$d</string>
@@ -124,9 +125,6 @@
     <string name="label_daemon">节点</string>
     <string name="prompt_daemon">([&lt;名称&gt;:&lt;密码&gt;@]&lt;节点&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">网络选择</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">主网络</string>
     <string name="status_walletlist_loading">载入钱包列表</string>
     <string name="status_wallet_loading">载入钱包 &#8230;</string>
     <string name="status_wallet_unloading">储存钱包</string>
@@ -154,7 +152,9 @@
     <string name="prompt_changepw">为 %1$s 设定新密码</string>
     <string name="prompt_changepwB">重复输入 %1$s 的密码</string>
     <string name="prompt_password">%1$s 的密码</string>
+	<string name="prompt_fingerprint_auth">你也可以使用指纹来开启钱包。\n请轻触你的指纹感应器。</string>
     <string name="prompt_send_password">确认密码</string>
+	<string name="bad_fingerprint">无法识别指纹，请再试一次。</string>
     <string name="bad_password">密码错误!</string>
     <string name="bad_wallet">钱包不存在!</string>
     <string name="error_not_wallet">这不是钱包!</string>
@@ -193,10 +193,10 @@
     <string name="label_copy_viewkey">查看密钥</string>
     <string name="label_copy_address">公开地址</string>
     <string name="label_copy_xmrtokey">XMR.TO 密钥</string>
-    <string name="message_copy_viewkey">查看密钥已复制至剪貼簿!</string>
-    <string name="message_copy_xmrtokey">XMR.TO 密钥已复制至剪貼簿!</string>
-    <string name="message_copy_address">钱包地址已复制至剪貼簿!</string>
-    <string name="message_copy_txid">交易ID 已复制至剪貼簿!</string>
+    <string name="message_copy_viewkey">查看密钥已复制至剪贴簿!</string>
+    <string name="message_copy_xmrtokey">XMR.TO 密钥已复制至剪贴簿!</string>
+    <string name="message_copy_address">钱包地址已复制至剪贴簿!</string>
+    <string name="message_copy_txid">交易ID 已复制至剪贴簿!</string>
     <string name="message_noselect_seed">选取种子码因安全性因素已停用选取!</string>
     <string name="message_noselect_key">花费密钥因安全性因素已停用选取!</string>
     <string name="message_nocopy">因安全性因素已停用复制功能!</string>
@@ -206,6 +206,16 @@
     <string name="generate_title">建立钱包</string>
     <string name="generate_name_hint">钱包名称</string>
     <string name="generate_password_hint">钱包密码</string>
+	<string name="generate_fingerprint_hint">允许使用指纹开启钱包</string>
+	<string name="generate_fingerprint_warn"><![CDATA[
+        <strong>指纹验证</strong>
+        <p>启用指纹验证后，您可以观看钱包余额并接受资金，而无需输入密码。</p>
+        <p>但为了提高安全性，monerujo 仍然会要求您在观看钱包详细信息或发送资金时输入密码。</p>
+        <strong>安全警告</strong>
+        <p>最后，monerujo 想提醒您，任何可以取得您指紋的人，都能够窥视您的钱包余额。</p>
+        <p>例如，您周遭的恶意使用者可以趁您睡着时，使用您的指紋开启钱包。</p>
+        <strong>您确定要启用本功能吗？</strong>
+    ]]></string>
     <string name="generate_bad_passwordB">密码不符</string>
     <string name="generate_empty_passwordB">密码不得空白</string>
     <string name="generate_buttonGenerate">建立钱包!</string>
@@ -218,7 +228,7 @@
 
     <string name="generate_wallet_name">取个名称!</string>
     <string name="generate_wallet_exists">钱包已存在!</string>
-    <string name="generate_wallet_dot">无法使用以.作为开頭</string>
+    <string name="generate_wallet_dot">无法使用以.作为开头</string>
     <string name="generate_wallet_creating">建立钱包</string>
     <string name="generate_wallet_created">钱包已建立</string>
     <string name="generate_wallet_create_failed">钱包建立失败</string>
@@ -283,8 +293,8 @@
     <string name="send_fee_btc_label">手续费 (XMR)</string>
     <string name="send_fee_label">手续费</string>
     <string name="send_dust_label">Dust</string>
-    <string name="send_total_btc_label">总計 (XMR)</string>
-    <string name="send_total_label">总計</string>
+    <string name="send_total_btc_label">总计 (XMR)</string>
+    <string name="send_total_label">总计</string>
 
     <string name="send_amount">%1$s XMR</string>
     <string name="send_fee">+%1$s 手续费</string>
@@ -313,8 +323,8 @@
     <string name="tx_fee">手续费</string>
     <string name="tx_transfers">转账</string>
     <string name="tx_notes">附注</string>
-    <string name="tx_button_copy">复制至剪貼簿</string>
-    <string name="tx_copy_message">已复制至剪貼簿</string>
+    <string name="tx_button_copy">复制至剪贴簿</string>
+    <string name="tx_copy_message">已复制至剪贴簿</string>
     <string name="tx_copy_label">交易明細</string>
     <string name="tx_notes_hint">(选填)</string>
     <string name="tx_button_notes">储存</string>
@@ -332,23 +342,23 @@
     <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">无法开启钱包!</string>
     <string name="receive_paymentid_invalid">16 或 64 Hex 字元 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">使用整合地址时必須为空白</string>
-    <string name="receive_bitcoin_paymentid_invalid">使用BTC地址时必須为空白</string>
-    <string name="receive_amount_invalid">必須大于0</string>
+    <string name="receive_integrated_paymentid_invalid">使用整合地址时必须为空白</string>
+    <string name="receive_bitcoin_paymentid_invalid">使用BTC地址时必须为空白</string>
+    <string name="receive_amount_invalid">必须大于0</string>
 
-    <string name="receive_amount_empty">输入數值</string>
+    <string name="receive_amount_empty">输入数值</string>
     <string name="receive_amount_too_big">最大值 %1$s</string>
     <string name="receive_amount_negative">最小值 0</string>
-    <string name="receive_amount_nan">输入的XMR不是个數字</string>
+    <string name="receive_amount_nan">输入的XMR不是个数字</string>
 
     <string name="receive_title">接收</string>
 
-    <string name="details_alert_message">將会选示敏感信息。\n请注意周遭安全!</string>
+    <string name="details_alert_message">将会选示敏感信息。\n请注意周遭安全!</string>
     <string name="details_alert_yes">我现在很安全</string>
     <string name="details_alert_no">不看了!</string>
     <string name="details_title">详细信息</string>
 
-    <string name="archive_alert_message">钱包档案案將会被备份並且于列表中刪除!</string>
+    <string name="archive_alert_message">钱包档案案将会被备份并且于列表中刪除!</string>
     <string name="archive_alert_yes">好的!</string>
     <string name="archive_alert_no">不了!</string>
 
