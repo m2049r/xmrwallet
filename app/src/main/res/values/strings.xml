@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_testnet">Testnet</string>
@@ -46,13 +45,7 @@
 
     <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
 
-    <string name="info_send_xmrto_success_sending">Sending</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_txdetails_xmrto_key">Key:</string>
-    <string name="info_txdetails_xmrto_address">Address:</string>
-    <string name="info_txdetails_xmrto_status">Status:</string>
-    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
 
 
     <string name="info_send_xmrto_paid">Confirmation Pending</string>
@@ -92,16 +85,11 @@
 
     <string name="label_send_settings_advanced">Advanced:</string>
 
-    <string name="label_send_btc_details">Click for more details</string>
     <string name="label_send_btc_xmrto_info">Visit xmr.to for support &amp; tracking</string>
-    <string name="label_send_txinfo">See TX details for more details</string>
     <string name="label_send_btc_xmrto_key_lb">Secret Key\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO Secret Key</string>
     <string name="label_send_btc_address">Destination BTC Address</string>
     <string name="label_send_btc_amount">Amount</string>
-    <string name="label_send_btc_create_order">Creating XMR.TO Order</string>
-
-    <string name="label_send_btc_retry">Touch to retry</string>
 
     <string name="label_send_txid">Transaction ID</string>
     <string name="label_send_address">Destination Address</string>
@@ -116,24 +104,18 @@
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
-    <string name="backup_success">Backup successful</string>
     <string name="backup_failed">Backup failed!</string>
-    <string name="archive_success">Archive successful</string>
     <string name="archive_failed">Archive failed!</string>
-    <string name="delete_failed">Delete failed!</string>
     <string name="rename_failed">Rename failed!</string>
     <string name="changepw_failed">Change Password failed!</string>
     <string name="changepw_success">Password changed</string>
 
     <string name="label_daemon">Node</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Net Selection</string>
     <string name="connect_stagenet" translatable="false">Stagenet</string>
     <string name="connect_testnet" translatable="false">Testnet</string>
     <string name="connect_mainnet" translatable="false">Mainnet</string>
-    <string name="status_walletlist_loading">Loading Wallet List</string>
     <string name="status_wallet_loading">Loading Wallet &#8230;</string>
-    <string name="status_wallet_unloading">Saving Wallet</string>
     <string name="status_wallet_unloaded">Wallet saved</string>
     <string name="status_wallet_unload_failed">Wallet save failed!</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
@@ -142,12 +124,9 @@
     <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
     <string name="status_wallet_connect_ioex">Cannot reach node!\nTry again or another.</string>
 
-    <string name="status_working">Working on it &#8230;</string>
     <string name="status_wallet_disconnected">Disconnected</string>
 
-    <string name="status_transaction_sent">Transaction sent!</string>
     <string name="status_transaction_failed">Transaction failed: %1$s</string>
-    <string name="status_transaction_prepare_failed">Could not create transaction!</string>
 
     <string name="send_xmrto_timeout">You waited too long my friend!</string>
 
@@ -163,36 +142,22 @@
     <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
     <string name="bad_password">Incorrect password!</string>
     <string name="bad_wallet">Wallet does not exist!</string>
-    <string name="error_not_wallet">This is not a wallet!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
     <string name="prompt_wrong_net">Wallet does not match selected net</string>
-    <string name="warn_daemon_unavailable">Cannot connect to daemon! Try again.</string>
-    <string name="panic">Something\'s wrong!</string>
 
     <string name="label_watchonly">(Watch Only)</string>
 
     <string name="label_wallet_receive">Receive</string>
     <string name="label_wallet_send">Give</string>
 
-    <string name="title_amount">Amount</string>
-    <string name="title_date">Date</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
-    <string name="xmr" translatable="false">XMR</string>
-    <string name="label_transactions">Transactions</string>
-    <string name="text_daemonConnected">Daemon connected!</string>
 
     <string name="service_description">monerujo Service</string>
-    <string name="local_service_started">monerujo Service Running</string>
-    <string name="local_service_stopped">monerujo Service Stopped</string>
-    <string name="local_service_label">monerujo Service</string>
-    <string name="local_service_connected">monerujo Service Connected</string>
-    <string name="local_service_disconnected">monerujo Service Disconnected</string>
 
     <string name="status_synced">Synced:</string>
     <string name="status_remaining">Blocks remaining</string>
     <string name="status_syncing">Scanning:</string>
 
-    <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
     <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
@@ -204,8 +169,6 @@
     <string name="message_copy_xmrtokey">XMR.TO Key copied to clipboard!</string>
     <string name="message_copy_address">Wallet Address copied to clipboard!</string>
     <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
-    <string name="message_noselect_seed">Selecting seed disabled for security reasons!</string>
-    <string name="message_noselect_key">Selecting spend key disabled for security reasons!</string>
     <string name="message_nocopy">Copy disabled for security reasons!</string>
 
     <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
@@ -229,12 +192,7 @@
     <string name="generate_bad_passwordB">Passphrases do not match</string>
     <string name="generate_empty_passwordB">Passphrase may not be empty</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
-    <string name="generate_seed">Mnemonic Seed</string>
     <string name="generate_button_accept">I have noted the mnemonic seed</string>
-
-    <string name="generate_button_backup">Backup</string>
-    <string name="generate_button_export">Export Keys</string>
-    <string name="generate_button_delete">DELETE</string>
 
     <string name="generate_wallet_name">Give me a name!</string>
     <string name="generate_wallet_exists">Wallet exists!</string>
@@ -256,13 +214,10 @@
     <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
     <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_label">Wallet</string>
-    <string name="generate_password_label">Password</string>
     <string name="generate_address_label">Public Address</string>
     <string name="generate_viewkey_label">View Key</string>
     <string name="generate_spendkey_label">Spend Key</string>
     <string name="generate_mnemonic_label">Mnemonic Seed</string>
-    <string name="generate_restoreheight_label">Restore Height:</string>
     <string name="generate_crazypass_label">Wallet Files Restore Password</string>
 
     <string name="generate_check_key">Enter valid Key</string>
@@ -275,20 +230,13 @@
     <string name="send_paymentid_hint">Payment ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>
-    <string name="send_priority_hint">Tx Priority</string>
-    <string name="send_mixin_hint">Mixin</string>
-    <string name="send_sweep_hint">Sweep</string>
     <string name="send_generate_paymentid_hint">Generate</string>
     <string name="send_qr_hint">Scan</string>
-    <string name="send_prepare_hint">Prepare</string>
-    <string name="send_dispose_hint">Dispose (Undo)</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Last Step - Confirm!</string>
     <string name="send_qr_invalid">Not a QR Code</string>
     <string name="send_qr_address_invalid">Not a valid payment QR code</string>
     <string name="send_address_invalid">Not a valid address</string>
-    <string name="send_preparing_progress">Preparing transaction</string>
     <string name="send_title">Send</string>
     <string name="send_available">Balance: %1$s XMR</string>
     <string name="send_address_title">Address</string>
@@ -296,13 +244,10 @@
     <string name="send_settings_title">Settings</string>
     <string name="send_confirm_title">Confirm</string>
     <string name="send_success_title">Done</string>
-    <string name="send_summary_heading">Summary</string>
-    <string name="send_amount_too_large">Amount > Funds</string>
 
     <string name="send_amount_label">Amount</string>
     <string name="send_fee_btc_label">Fee (XMR)</string>
     <string name="send_fee_label">Fee</string>
-    <string name="send_dust_label">Dust</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
@@ -311,18 +256,14 @@
 
     <string name="send_create_tx_error_title">Create Transaction Error</string>
 
-    <string name="tx_list_fee_pending">incl. %1$s fee</string>
     <string name="tx_list_fee">- Fee %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">failed</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_status_btc">Status</string>
-    <string name="tx_address">Address</string>
     <string name="tx_timestamp">Timestamp</string>
     <string name="tx_id">TX ID</string>
-    <string name="tx_id_btc">TX ID\n(BTC)</string>
     <string name="tx_key">TX Key</string>
     <string name="tx_destination">Destination</string>
     <string name="tx_destination_btc">Destination\n(BTC)</string>
@@ -333,30 +274,20 @@
     <string name="tx_fee">Fee</string>
     <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notes</string>
-    <string name="tx_button_copy">Copy to Clipboard</string>
-    <string name="tx_copy_message">Copied to Clipboard</string>
-    <string name="tx_copy_label">Transaction Details</string>
     <string name="tx_notes_hint">(optional)</string>
     <string name="tx_button_notes">Save</string>
-    <string name="tx_notes_set">Notes saved</string>
     <string name="tx_notes_set_failed">Notes saved failed</string>
     <string name="tx_title">Transaction Details</string>
 
     <string name="tx_pending">PENDING</string>
     <string name="tx_failed">FAILED</string>
 
-    <string name="receive_generate_hint">Show me the QR Code</string>
-    <string name="receive_paymentid_button">Generate</string>
     <string name="receive_paymentid_hint">Payment ID (optional)</string>
     <string name="receive_amount_hint">Amount</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
     <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
-    <string name="receive_bitcoin_paymentid_invalid">Must be empty with bitcoin address</string>
-    <string name="receive_amount_invalid">Must be > 0</string>
 
-    <string name="receive_amount_empty">Enter value</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR not a number</string>

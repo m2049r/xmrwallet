@@ -44,13 +44,7 @@
 
     <string name="info_send_xmrto_success_order_label">Ordres XMR.TO</string>
 
-    <string name="info_send_xmrto_success_sending">Envoi</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_txdetails_xmrto_key">Clef :</string>
-    <string name="info_txdetails_xmrto_address">Adresse :</string>
-    <string name="info_txdetails_xmrto_status">Statut :</string>
-    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
 
 
     <string name="info_send_xmrto_paid">En Attente de Confirmation</string>
@@ -90,16 +84,11 @@
 
     <string name="label_send_settings_advanced">Avancé :</string>
 
-    <string name="label_send_btc_details">Cliquez pour plus d\'infos</string>
     <string name="label_send_btc_xmrto_info">Visitez xmr.to pour l\'assistance &amp; le suivi</string>
-    <string name="label_send_txinfo">Voir les détails TX pour plus d\'infos</string>
     <string name="label_send_btc_xmrto_key_lb">Clef Secrète\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Clef Secrète XMR.TO</string>
     <string name="label_send_btc_address">Adresse BTC Destination</string>
     <string name="label_send_btc_amount">Montant</string>
-    <string name="label_send_btc_create_order">Création de l\'ordre XMR.TO</string>
-
-    <string name="label_send_btc_retry">Touchez pour réessayer</string>
 
     <string name="label_send_txid">ID de Transaction</string>
     <string name="label_send_address">Adresse Destination</string>
@@ -114,21 +103,15 @@
 
     <string name="service_progress">Récapitulation &#8230;\nCela peut prendre un moment !</string>
 
-    <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
-    <string name="archive_success">Archivage réussi</string>
     <string name="archive_failed">Archivage Échouée !</string>
-    <string name="delete_failed">Suppression Échouée !</string>
     <string name="rename_failed">Renommage Échoué !</string>
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
     <string name="label_daemon">Nœud</string>
     <string name="prompt_daemon">([&lt;utilisateur&gt;:&lt;mdp&gt;@]&lt;démon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Sélection Réseau</string>
-    <string name="status_walletlist_loading">Chargement de la liste des Portefeuilles</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
-    <string name="status_wallet_unloading">Sauvegarde du Portefeuille</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
     <string name="status_wallet_connecting">Connexion &#8230;</string>
@@ -137,12 +120,9 @@
     <string name="status_wallet_node_invalid">Nœud invalide !\nEssayez un autre.</string>
     <string name="status_wallet_connect_ioex">Nœud injoignable !\nEssayez à nouveau ou un autre.</string>
 
-    <string name="status_working">On y travaille &#8230;</string>
     <string name="status_wallet_disconnected">Déconnecté</string>
 
-    <string name="status_transaction_sent">Transaction envoyée !</string>
     <string name="status_transaction_failed">Transaction échouée : %1$s</string>
-    <string name="status_transaction_prepare_failed">Impossible de créer la transaction !</string>
 
     <string name="send_xmrto_timeout">Vous avez attendu trop longtemps l\'ami !</string>
 
@@ -158,35 +138,22 @@
     <string name="bad_fingerprint">Empreinte digitale non reconnue. Résessayez.</string>
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
-    <string name="error_not_wallet">Ce n\'est pas un portefeuille !</string>
     <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
-    <string name="warn_daemon_unavailable">Connexion au démon impossible ! Réessayez.</string>
-    <string name="panic">Quelque chose ne va pas !</string>
 
     <string name="label_watchonly">(Audit)</string>
 
     <string name="label_wallet_receive">Recevoir</string>
     <string name="label_wallet_send">Envoyer</string>
 
-    <string name="title_amount">Montant</string>
-    <string name="title_date">Date</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR non confirmés</string>
-    <string name="label_transactions">Transactions</string>
-    <string name="text_daemonConnected">Démon connecté !</string>
 
     <string name="service_description">Service monerujo</string>
-    <string name="local_service_started">Service monerujo Lancé</string>
-    <string name="local_service_stopped">Service monerujo Arrêté</string>
-    <string name="local_service_label">Service monerujo</string>
-    <string name="local_service_connected">Service monerujo Connecté</string>
-    <string name="local_service_disconnected">Service monerujo Déconnecté</string>
 
     <string name="status_synced">Synchronisé :</string>
     <string name="status_remaining">Blocs restant</string>
     <string name="status_syncing">Analyse :</string>
 
-    <string name="prompt_problems">Problèmes </string>
     <string name="message_strorage_not_writable">Stockage Externe non inscriptible ! Panique !</string>
     <string name="message_strorage_not_permitted">On a vraiment besoin de ces permissions de Stockage Externe !</string>
     <string name="message_camera_not_permitted">Pas de camera = Pas de Scan QR !</string>
@@ -198,8 +165,6 @@
     <string name="message_copy_xmrtokey">Clef XMR.TO copiée !</string>
     <string name="message_copy_address">Adresse du Portefeuille copiée !</string>
     <string name="message_copy_txid">ID de Transaction copié !</string>
-    <string name="message_noselect_seed">Sélection de phrase mnemonic désactivée par sécurité !</string>
-    <string name="message_noselect_key">Sélecting de clef de dépense désactivée par sécurité !</string>
     <string name="message_nocopy">Copie désactivée par sécurité !</string>
 
     <string name="message_exchange_failed">Taux de change introuvable !\nUtilisez XMR/XMR ou essayez à nouveau</string>
@@ -224,12 +189,7 @@
     <string name="generate_bad_passwordB">Phrases secrètes non correspondantes</string>
     <string name="generate_empty_passwordB">La Phrase secrète ne doit pas être vide</string>
     <string name="generate_buttonGenerate">Faites moi un Portefeuille déjà !</string>
-    <string name="generate_seed">Phrase Mnémonique</string>
     <string name="generate_button_accept">J\'ai noté ces 25 mots !</string>
-
-    <string name="generate_button_backup">Sauvegarde</string>
-    <string name="generate_button_export">Exporter les clefs</string>
-    <string name="generate_button_delete">SUPPRIMER</string>
 
     <string name="generate_wallet_name">Donnez-moi un nom !</string>
     <string name="generate_wallet_exists">Le Portefeuille existe !</string>
@@ -251,13 +211,10 @@
     <string name="generate_mnemonic_hint">Phrase Mnémonique</string>
     <string name="generate_restoreheight_hint">Hauteur ou date de restauration (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_label">Portefeuille</string>
-    <string name="generate_password_label">Mot de passe</string>
     <string name="generate_address_label">Adresse publique</string>
     <string name="generate_viewkey_label">Clef d\'audit</string>
     <string name="generate_spendkey_label">Clef de dépense</string>
     <string name="generate_mnemonic_label">Phrase Mnémonique</string>
-    <string name="generate_restoreheight_label">Hauteur de restauration :</string>
     <string name="generate_crazypass_label">Mdp de restauration des fichiers Portefeuille</string>
 
     <string name="generate_check_key">Entrez une clef valide</string>
@@ -270,20 +227,13 @@
     <string name="send_paymentid_hint">ID de Paiement (optionnel)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notes Privées (optionnelles)</string>
-    <string name="send_priority_hint">Priorité Tx</string>
-    <string name="send_mixin_hint">RingSize</string>
-    <string name="send_sweep_hint">Balayage</string>
     <string name="send_generate_paymentid_hint">Générer</string>
     <string name="send_qr_hint">Scanner</string>
-    <string name="send_prepare_hint">Preparer</string>
-    <string name="send_dispose_hint">Éliminer (Undo)</string>
     <string name="send_send_label">Dépenser mes beaux Moneroj</string>
     <string name="send_send_timed_label">Dépenser mes beaux Moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Dernière étape - Confirmation !</string>
     <string name="send_qr_invalid">QR Code invalide</string>
     <string name="send_qr_address_invalid">QR code de paiement invalide</string>
     <string name="send_address_invalid">Adresse invalide</string>
-    <string name="send_preparing_progress">Preparation de la transaction</string>
     <string name="send_title">Envoi</string>
     <string name="send_available">Solde : %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
@@ -291,13 +241,10 @@
     <string name="send_settings_title">Paramètres</string>
     <string name="send_confirm_title">Confirmation</string>
     <string name="send_success_title">Terminé</string>
-    <string name="send_summary_heading">Résumé</string>
-    <string name="send_amount_too_large">Montant > Fonds</string>
 
     <string name="send_amount_label">Montant</string>
     <string name="send_fee_btc_label">Frais (XMR)</string>
     <string name="send_fee_label">Frais</string>
-    <string name="send_dust_label">Poussière</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
@@ -306,18 +253,14 @@
 
     <string name="send_create_tx_error_title">Erreur de Création de Transaction</string>
 
-    <string name="tx_list_fee_pending">Dont Frais %1$s</string>
     <string name="tx_list_fee">- Frais %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Echoué</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_status_btc">Statut</string>
-    <string name="tx_address">Adresse</string>
     <string name="tx_timestamp">Horodatage</string>
     <string name="tx_id">ID TX</string>
-    <string name="tx_id_btc">ID TX\n(BTC)</string>
     <string name="tx_key">Clef TX</string>
     <string name="tx_destination">Destination</string>
     <string name="tx_destination_btc">Destination\n(BTC)</string>
@@ -328,30 +271,20 @@
     <string name="tx_fee">Frais</string>
     <string name="tx_transfers">Transferts</string>
     <string name="tx_notes">Notes</string>
-    <string name="tx_button_copy">Copier</string>
-    <string name="tx_copy_message">Copié</string>
-    <string name="tx_copy_label">Détail de la Transaction</string>
     <string name="tx_notes_hint">(optionnelles)</string>
     <string name="tx_button_notes">Sauvegarder</string>
-    <string name="tx_notes_set">Notes sauvegardées</string>
     <string name="tx_notes_set_failed">Sauvegarde de Notes échouée</string>
     <string name="tx_title">Détails de la Transaction</string>
 
     <string name="tx_pending">EN ATTENTE</string>
     <string name="tx_failed">ÉCHOUÉ</string>
 
-    <string name="receive_generate_hint">Afficher le QR Code</string>
-    <string name="receive_paymentid_button">Générer</string>
     <string name="receive_paymentid_hint">ID de Paiement (optionnel)</string>
     <string name="receive_amount_hint">Montant</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Ouverture du portefeuille impossible !</string>
     <string name="receive_paymentid_invalid">16 ou 64 caractères héxadécimaux (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Doit être vide avec une adresse intégrée</string>
-    <string name="receive_bitcoin_paymentid_invalid">Doit être vide avec une adresse bitcoin</string>
-    <string name="receive_amount_invalid">Doit être > 0</string>
 
-    <string name="receive_amount_empty">Entrer la valeur</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR pas un nombre</string>

@@ -8,14 +8,11 @@
     <color name="gradientOrange">#FFFF6105</color>
     <color name="gradientPink">#FFF0006B</color>
 
-    <color name="xmrtoYellow">#FFFFD700</color>
-
     <color name="trafficGray">#9B9B9B</color>
 
     <color name="take">#FF417505</color>
     <color name="give">#FFFF6105</color>
 
-    <color name="moneroOrange">#cc5100</color>
     <color name="moneroWhite">#ffffff</color>
     <color name="moneroBlack">#000000</color>
     <color name="moneroBlue">#1F4E97</color>
@@ -27,15 +24,9 @@
     <color name="moneroText">#FF616161</color>
 
 
-    <color name="colorPrimary">#cc5100</color>
     <color name="colorPrimaryDark">#61221A</color>
-    <color name="textColorPrimary">#dcdcdc</color>
-    <color name="windowBackground">#ffffff</color>
-    <color name="navigationBarColor">#2B4868</color>
     <!--color name="colorAccent">#009ADA</color-->
     <color name="colorAccent">@color/gradientPink</color>
-
-    <color name="anotherColor">#F8CC5A</color>
 
     <color name="white">#ffffff</color>
 </resources>
