@@ -122,38 +122,40 @@
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>The Balance</h2>
-        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
-        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
-        as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
-        Read more about change at https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaction List</h2>
-        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
+        <h1>Кошелек</h1>
+        <h2>Сканирование</h2>
+        Поскольку Monero ориентирована на подержание анонимности, всякий раз, когда вы открываете кошелёк
+		Monerujo, нам приходится сканировать блокчейн, чтобы посмотреть, были ли отправлены на ваш кошелёк
+		новые Monero. Информация сохраняется только на вашем телефоне, привязанном к вашему кошельку. 
+		Иногда это может занять какое-то время, так как вы не синхронизировались в течение долгого периода.
+        <h2>Баланс</h2>
+        <p><b>Помогите! Баланс моего кошелька куда-то исчез или не подтверждён!</b><br/>
+        Не паникуйте! Если вы отправляете средства с вашего кошелька, ваш баланс временно остаётся
+		неподтверждённым. Это происходит в результате процесса обмена Monero в блокчейне и принципов
+		работы этого процесса. Подробности обмена можно узнать по ссылке:
+		https://getmonero.org/resources/moneropedia/change.html
+        <h2>Список транзакций</h2>
+        <p>Список транзакций, проведённых с использованием кошелька. В кошельках просмотра можно увидеть
+		только входящие транзакции.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
-        <h1>Transaction Details</h1>
-        <h2>Destination</h2>
-        This is the public address of the wallet you sent Monero to
+        <h1>Подробная информация по транзакциям</h1>
+        <h2>Адрес назначения</h2>
+        Это публичный адрес кошелька, на который вы отправляете Monero в соответствии с идентификатором оплаты
         <h2>PaymentID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
-        fully optional and private. For example it can allow a Business to reconcile your transaction
-        with an item you bought.
+        Вы можете использовать Payment ID для идентификации причины, по которой Monero передаётся одной
+		стороной другой стороне. Это опциональная и конфиденциальная операция. Например, она позволяет
+		коммерсантам сверить вашу транзакцию с товаром, который был приобретён вами.
         <h2>TX ID</h2>
-        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
-        Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TX KEY (Transaction Key)</h2>
-        This is your transaction private key, keep this safe as revealing this to a third party
-        reveals which signature in a ring is yours, thereby making your transaction transparent.
-        <h2>Block</h2>
-        This was the block your transaction was included in.
+        Это идентификатор вашей транзакции (Transaction ID). Вы можете использовать его для идентификации
+		вашей скрытой транзакции через эксплорер блокчейна Monero, например, через этот:
+        <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>TX KEY (Ключ транзакции)</h2>
+        Это ваш приватный ключ транзакции. Его следует хранить в безопасном месте, так как с его помощью
+		третья сторона может идентифицировать вашу подпись в кольце, что сделает транзакцию прозрачной.
+        <h2>Блок</h2>
+        Блок, в который была включена ваша транзакция.
     ]]></string>
 
     <string name="help_send"><![CDATA[
