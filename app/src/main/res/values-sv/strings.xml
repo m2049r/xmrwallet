@@ -36,6 +36,8 @@
 
     <string name="info_xmrto_enabled">BTC-betalning aktiverad, tryck för mer info.</string>
 
+    <string name="info_crazypass_enabled">CrAzYpass aktiverat, tryck för mer info.</string>
+
     <string name="info_xmrto"><![CDATA[<b>Du har angivit en Bitcoin-adress.</b><br/> <i>Du kommer att skicka XMR och mottagaren får BTC via tjänsten <b>XMR.TO</b>.</i>]]></string>
 
     <string name="info_send_xmrto_success_order_label">XMR.TO-beställning</string>
@@ -117,9 +119,6 @@
     <string name="label_daemon">Nod</string>
     <string name="prompt_daemon">([&lt;användare&gt;:&lt;lösenord&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Val av nät</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Läser in plånbokslista</string>
     <string name="status_wallet_loading">Läser in plånbok …</string>
     <string name="status_wallet_unloading">Sparar plånbok</string>
@@ -147,7 +146,9 @@
     <string name="prompt_changepw">Ny lösenfras för %1$s</string>
     <string name="prompt_changepwB">Upprepa lösenfrasen för %1$s</string>
     <string name="prompt_password">Lösenord för %1$s</string>
+    <string name="prompt_fingerprint_auth">Du kan också öppna plånboken med fingeravtryck.\nAnvänd fingeravtryckssensorn.</string>
     <string name="prompt_send_password">Bekräfta lösenord</string>
+    <string name="bad_fingerprint">Fingeravtrycket känns inte igen. Försök igen.</string>
     <string name="bad_password">Lösenordet är fel!</string>
     <string name="bad_wallet">Plånboken finns inte!</string>
     <string name="error_not_wallet">Detta är ingen plånbok!</string>
@@ -199,6 +200,8 @@
     <string name="generate_title">Skapa plånbok</string>
     <string name="generate_name_hint">Plånbokens namn</string>
     <string name="generate_password_hint">Plånbokens lösenfras</string>
+    <string name="generate_fingerprint_hint">Tillåt öppning av plånboken med fingeravtryck</string>
+    <string name="generate_fingerprint_warn"><![CDATA[<strong>Autentisering med fingeravtryck</strong> <p>När fingeravtrycksautentisering är aktiverad kan du se plånbokens saldo och ta emot pengar utan att ange lösenord.</p> <p>Men för ytterligare säkerhet kräver monerujo ändå att du anger lösenord för att granska information om plånboken eller skicka pengar.</p> <strong>Säkerhetsvarning</strong> <p>Slutligen vill monerujo påminna dig att vem som helst som kan komma åt ditt fingeravtryck kan se saldot i din plånbok.</p> <p>En elak användare i din närhet kan till exempel öppna din plånbok när du sover.</p> <strong>Är det säkert att du vill aktivera denna funktion?</strong>]]></string>
     <string name="generate_bad_passwordB">Lösenfraserna matchar inte</string>
     <string name="generate_empty_passwordB">Lösenfrasen får inte vara tom</string>
     <string name="generate_buttonGenerate">Skapa min plånbok nu då!</string>
