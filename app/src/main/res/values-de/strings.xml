@@ -288,7 +288,7 @@
 
     <string name="receive_title">Empfangen</string>
 
-    <string name="details_alert_message">Sensible Daten  angezeigt.\nSchau über deine Schulter!</string>
+    <string name="details_alert_message">Sensible Daten werden angezeigt.\nSchau über deine Schulter!</string>
     <string name="details_alert_yes">Ich bin sicher</string>
     <string name="details_alert_no">Nein, doch nicht!</string>
     <string name="details_title">Details</string>
