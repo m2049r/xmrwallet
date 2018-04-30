@@ -142,7 +142,7 @@
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Empfangen</string>
+    <string name="label_wallet_receive">Nehmen</string>
     <string name="label_wallet_send">Geben</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
