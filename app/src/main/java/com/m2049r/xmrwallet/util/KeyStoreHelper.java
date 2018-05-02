@@ -23,6 +23,7 @@ import android.os.Build;
 import android.security.KeyPairGeneratorSpec;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
+import android.util.Base64;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -35,11 +36,13 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.Signature;
 import java.security.SignatureException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.crypto.Cipher;
 import javax.security.auth.x500.X500Principal;
 
 import timber.log.Timber;
@@ -69,6 +72,41 @@ public class KeyStoreHelper {
             throw new IllegalStateException(ex);
         }
         return CrazyPassEncoder.encode(cnSlowHash(sig));
+    }
+
+    public static void saveWalletUserPass(Context context, String wallet, String password) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
+        byte[] data = password.getBytes(StandardCharsets.UTF_8);
+        try {
+            KeyStoreHelper.createKeys(context, walletKeyAlias);
+            byte[] encrypted = KeyStoreHelper.encrypt(walletKeyAlias, data);
+            context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
+                    .putString(wallet, Base64.encodeToString(encrypted, Base64.DEFAULT))
+                    .apply();
+        } catch (Exception ex) {
+            throw new IllegalStateException(ex);
+        }
+    }
+
+    public static String loadWalletUserPass(Context context, String wallet) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
+        String encoded = context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
+                .getString(wallet, "");
+        byte[] data = Base64.decode(encoded, Base64.DEFAULT);
+        byte[] decrypted = KeyStoreHelper.decrypt(walletKeyAlias, data);
+
+        return new String(decrypted, StandardCharsets.UTF_8);
+    }
+
+    public static void removeWalletUserPass(Context context, String wallet) {
+        String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
+        try {
+            KeyStoreHelper.deleteKeys(walletKeyAlias);
+            context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
+                    .remove(wallet).apply();
+        } catch (Exception ex) {
+            throw new IllegalStateException(ex);
+        }
     }
 
     /**
@@ -132,9 +170,10 @@ public class KeyStoreHelper {
                     KeyProperties.KEY_ALGORITHM_RSA, SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
             keyPairGenerator.initialize(
                     new KeyGenParameterSpec.Builder(
-                            alias, KeyProperties.PURPOSE_SIGN)
+                            alias, KeyProperties.PURPOSE_SIGN | KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                             .setDigests(KeyProperties.DIGEST_SHA256)
                             .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
+                            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
                             .build());
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             Timber.d("M Keys created");
@@ -163,6 +202,30 @@ public class KeyStoreHelper {
         } catch (Exception ex) {
             Timber.e(ex);
             return null;
+        }
+    }
+
+    public static byte[] encrypt(String alias, byte[] data) {
+        try {
+            PublicKey publicKey = getPrivateKeyEntry(alias).getCertificate().getPublicKey();
+            Cipher cipher = Cipher.getInstance(SecurityConstants.CIPHER_RSA_ECB_PKCS1);
+
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+            return cipher.doFinal(data);
+        } catch (Exception ex) {
+            throw new IllegalStateException("Could not initialize RSA cipher", ex);
+        }
+    }
+
+    public static byte[] decrypt(String alias, byte[] data) {
+        try {
+            PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
+            Cipher cipher = Cipher.getInstance(SecurityConstants.CIPHER_RSA_ECB_PKCS1);
+
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+            return cipher.doFinal(data);
+        } catch (Exception ex) {
+            throw new IllegalStateException("Could not initialize RSA cipher", ex);
         }
     }
 
@@ -213,5 +276,8 @@ public class KeyStoreHelper {
         String KEYSTORE_PROVIDER_ANDROID_KEYSTORE = "AndroidKeyStore";
         String TYPE_RSA = "RSA";
         String SIGNATURE_SHA256withRSA = "SHA256withRSA";
+        String CIPHER_RSA_ECB_PKCS1 = "RSA/ECB/PKCS1Padding";
+        String WALLET_PASS_PREFS_NAME = "wallet";
+        String WALLET_PASS_KEY_PREFIX = "walletKey-";
     }
 }

@@ -1,0 +1,296 @@
+<resources>
+    <string name="wallet_activity_name">Monedero</string>
+
+    <string name="menu_testnet">Testnet</string>
+    <string name="menu_about">Acerca De</string>
+    <string name="menu_privacy">Política de Privacidad</string>
+
+    <string name="menu_share">Compartir</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="menu_info">Detalles</string>
+    <string name="menu_receive">Recibir</string>
+    <string name="menu_rename">Renombrar &#8230;</string>
+    <string name="menu_archive">Archivar</string>
+    <string name="menu_backup">Copia de seguridad</string>
+    <string name="menu_changepw">Cambiar contraseña</string>
+
+    <string name="password_weak">Sigue escribiendo &#8230;</string>
+    <string name="password_fair">Mas o menos.</string>
+    <string name="password_good">Puedes hacerlo mejor.</string>
+    <string name="password_strong">Casi &#8230;</string>
+    <string name="password_very_strong">¡Bien ahí, hacker nivel 4!</string>
+
+    <string name="label_login_wallets">Monederos</string>
+    <string name="label_credits">Créditos</string>
+    <string name="label_ok">Aceptar</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_close">Cerrar</string>
+    <string name="label_wallet_advanced_details">Toca para información más detallada</string>
+
+    <string name="label_send_success">¡Éxito!</string>
+    <string name="label_send_done">Hecho</string>
+
+    <string name="label_receive_info_gen_qr_code">Toca para mostrar código QR</string>
+    <string name="info_send_prio_fees">Mayor Prioridad = Mayor Comisión</string>
+
+    <string name="info_paymentid_intergrated">ID de pago integrado</string>
+    <string name="info_prepare_tx">Preparando tu transacción</string>
+
+    <string name="message_copy_txid">¡ID de transacción copiado al portapapeles!</string>
+
+    <string name="label_send_txid">ID de Transacción</string>
+    <string name="label_send_address">Dirección de Destino</string>
+    <string name="label_send_payment_id">ID de Pago</string>
+    <string name="label_send_notes">Notas</string>
+
+    <string name="backup_progress">Copia de seguridad en progreso</string>
+    <string name="archive_progress">Archivado en progreso</string>
+    <string name="rename_progress">Cambio de nombre en progreso</string>
+    <string name="open_progress">Comprobando conexión con el daemon</string>
+    <string name="changepw_progress">Cambiando contraseña en progreso</string>
+
+    <string name="service_progress">Guardando todo\n¡Puede llevar un tiempo!</string>
+
+    <string name="backup_failed">¡Copia de seguridad fallida!</string>
+    <string name="archive_failed">¡Archivado fallido!</string>
+    <string name="rename_failed">¡Cambio de nombre fallido!</string>
+    <string name="changepw_failed">¡Cambio de contraseña fallido!</string>
+    <string name="changepw_success">Contraseña cambiada</string>
+
+    <string name="label_daemon">Nodo</string>
+    <string name="prompt_daemon">([&lt;usuario&gt;:&lt;contraseña&gt;@]&lt;daemon&gt;[:&lt;puerto&gt;])</string>
+    <string name="status_wallet_loading">Cargando monedero&#8230;</string>
+    <string name="status_wallet_unloaded">Monedero guardada</string>
+    <string name="status_wallet_unload_failed">¡Guardado de monedero fallido!</string>
+    <string name="status_wallet_connecting">Conectando&#8230;</string>
+    <string name="status_wallet_connect_failed">¡Conexión con el nodo fallida!\nComprueba el usuario/contraseña</string>
+    <string name="status_wallet_connect_timeout">¡Conexión con el nodo ha expirado!\nInténtalo de nuevo o prueba otro.</string>
+    <string name="status_wallet_node_invalid">¡Nodo inválido!\nInténtalo con otro.</string>
+    <string name="status_wallet_connect_ioex">¡No se puede alcanzar el nodo!\nInténtalo de nuevo o prueba otro.</string>
+
+    <string name="status_wallet_disconnected">Desconectado</string>
+
+    <string name="status_transaction_failed">Transacción fallida: %1$s</string>
+
+    <string name="service_busy">Todavía estoy ocupado con tu último monedero &#8230;</string>
+
+    <string name="prompt_rename">Renombrar %1$s</string>
+
+    <string name="prompt_changepw">Nueva contraseña para %1$s</string>
+    <string name="prompt_changepwB">Repetir contraseña para %1$s</string>
+    <string name="prompt_password">Contraseña para %1$s</string>
+    <string name="prompt_fingerprint_auth">Puedes poner tu dedo en el sensor para autorizar con tu huella.</string>
+    <string name="prompt_send_password">Confirmar Contraseña</string>
+    <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
+    <string name="bad_password">¡Contraseña incorrecta!</string>
+    <string name="bad_wallet">¡El monedero no existe!</string>
+    <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
+    <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
+
+    <string name="label_watchonly">(Sólo Vista)</string>
+
+    <string name="label_wallet_receive">Recibir</string>
+    <string name="label_wallet_send">Enviar</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR sin confirmar</string>
+
+    <string name="service_description">Servicio de monerujo</string>
+
+    <string name="status_synced">Sincronizado:</string>
+    <string name="status_remaining">bloques restantes</string>
+    <string name="status_syncing">Escaneando:</string>
+
+    <string name="message_strorage_not_writable">¡No se puede escribir en el almacenamiento externo! ¡Pánico!</string>
+    <string name="message_strorage_not_permitted">¡De verdad necesitamos esos permisos para el almacenamiento externo!</string>
+    <string name="message_camera_not_permitted">Sin cámara = ¡Sin escaneo de QR!</string>
+
+    <string name="label_copy_viewkey">Clave de Vista</string>
+    <string name="label_copy_address">Dirección Pública</string>
+    <string name="message_copy_viewkey">¡Clave de vista copiada al portapapeles!</string>
+    <string name="message_copy_address">¡Dirección del monedero copiada al portapapeles!</string>
+    <string name="message_nocopy">¡La copia está desactivada por motivos de seguridad!</string>
+
+    <string name="message_exchange_failed">¡No se ha podido obtener la tasa de cambio!\nUsa XMR/XMR o inténtalo de nuevo</string>
+
+    <string name="generate_title">Crear monedero</string>
+    <string name="generate_name_hint">Nombre del monedero</string>
+    <string name="generate_password_hint">Frase de Contraseña</string>
+    <string name="generate_fingerprint_hint">Permitir abrir usando huella dactilar</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Autenticación por huella</strong>
+        <p>Con la autenticación por huella dactilar activada, puedes acceder al balance y recibir fondos
+        sin la necesidad de ingresar tu contraseña.</p>
+        <p>Sin embargo, por seguridad extra, Monerujo va a requerir tu contraseña para ver la información
+        sensible de tu monedero o enviar fondos.</p>
+        <strong>Advertencia de seguridad</strong>
+        <p>Si bien es cómodo, recuerda que cualquier persona que tenga acceso a tu huella dactilar
+        va a ser capaz de mirar el balance de tu monedero.</p>
+        <p>Por ejemplo, un actor malicioso cercano podría abrir tu monedero con tu dedo mientras duermes.</p>
+        <strong>¿Estás seguro de activar esta función?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">Contraseñas no coinciden</string>
+    <string name="generate_empty_passwordB">Contraseña no puede estar vacía</string>
+    <string name="generate_buttonGenerate">¡Házme ya un monedero!</string>
+    <string name="generate_button_accept">¡Ya anote todo!</string>
+
+    <string name="generate_wallet_name">¡Dame un nombre!</string>
+    <string name="generate_wallet_exists">¡El monedero ya existe!</string>
+    <string name="generate_wallet_dot">No puede empezar con .</string>
+    <string name="generate_wallet_creating">Creando monedero</string>
+    <string name="generate_wallet_created">Monedero creada</string>
+    <string name="generate_wallet_create_failed">Creación de monedero fallida</string>
+
+    <string name="generate_restoreheight_error">Introduce un número o una fecha (AAAA-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">Claves</string>
+    <string name="generate_wallet_type_new">Nuevo</string>
+    <string name="generate_wallet_type_seed">Semilla</string>
+    <string name="generate_wallet_type_view">Ver</string>
+
+    <string name="generate_address_hint">Dirección Pública</string>
+    <string name="generate_viewkey_hint">Clave de Vista</string>
+    <string name="generate_spendkey_hint">Clave de Gasto</string>
+    <string name="generate_mnemonic_hint">Semilla Mnemotécnica de 25 Palabras</string>
+    <string name="generate_restoreheight_hint">Altura o Fecha (YYYY-MM-DD) de Restauración</string>
+
+    <string name="generate_address_label">Dirección Pública</string>
+    <string name="generate_viewkey_label">Clave de Vista</string>
+    <string name="generate_spendkey_label">Clave de Gasto</string>
+    <string name="generate_mnemonic_label">Semilla Mnemotécnica</string>
+    <string name="generate_crazypass_label">Contraseña de restauración para el archivo del monedero</string>
+
+    <string name="generate_check_key">Introduce una clave válida</string>
+    <string name="generate_check_address">Introduce una dirección válida</string>
+    <string name="generate_check_mnemonic">Introduce tu semilla de 25 palabras</string>
+
+    <string name="send_address_hint">Dirección XMR o BTC del Destinatario</string>
+    <string name="send_paymentid_hint">ID de Pago (opcional)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">Notas Privadas (opcional)</string>
+    <string name="send_generate_paymentid_hint">Generar</string>
+    <string name="send_qr_hint">Scan</string>
+    <string name="send_qr_invalid">No es un Código QR de monero</string>
+    <string name="send_qr_address_invalid">Dirección de Monero inválida</string>
+    <string name="send_title">Enviar</string>
+    <string name="send_available">Fondos disponibles: %1$s XMR</string>
+    <string name="send_address_title">Dirección</string>
+    <string name="send_amount_title">Monto</string>
+    <string name="send_settings_title">Ajustes</string>
+    <string name="send_confirm_title">Aprobar</string>
+    <string name="send_success_title">Hecho</string>
+
+    <string name="send_amount_label">Monto</string>
+    <string name="send_fee_label">Comisión</string>
+    <string name="send_total_label">Total</string>
+
+    <string name="send_create_tx_error_title">Error creando la transacción</string>
+
+    <string name="tx_list_fee">- Comisión %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">fallido</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Marca de tiempo</string>
+    <string name="tx_id">ID de Transacción</string>
+    <string name="tx_key">Clave de Transacción</string>
+    <string name="tx_destination">Destino</string>
+    <string name="tx_paymentId">ID de Pago</string>
+    <string name="tx_blockheight">Bloque</string>
+    <string name="tx_amount">Monto</string>
+    <string name="tx_fee">Comisión</string>
+    <string name="tx_transfers">Transferencias</string>
+    <string name="tx_notes">Notas</string>
+    <string name="tx_notes_hint">(opcional)</string>
+    <string name="tx_button_notes">Guardar</string>
+    <string name="tx_notes_set_failed">El guardado de las notas ha fallado</string>
+    <string name="tx_title">Detalles de la Transacción</string>
+
+    <string name="tx_pending">PENDIENTE</string>
+    <string name="tx_failed">FALLIDO</string>
+
+    <string name="receive_paymentid_hint">ID de Pago (opcional)</string>
+    <string name="receive_amount_hint">Monto</string>
+    <string name="receive_cannot_open">¡No se ha podido abrir el monedero!</string>
+    <string name="receive_paymentid_invalid">16 o 64 caracteres hexadecimales (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">Debe estar vacío con una dirección integrada</string>
+
+    <string name="receive_amount_too_big">Max. %1$s</string>
+    <string name="receive_amount_negative">Min. 0</string>
+    <string name="receive_amount_nan">XMR no es un número</string>
+
+    <string name="receive_title">Recibir</string>
+
+    <string name="details_alert_message">Se va a mostrar información delicada.\n¡Mira por encima del hombro!</string>
+    <string name="details_alert_yes">Estoy seguro</string>
+    <string name="details_alert_no">¡Llévame de vuelta!</string>
+    <string name="details_title">Detalles</string>
+
+    <string name="archive_alert_message">¡El monedero será copiada y después borrada!</string>
+    <string name="archive_alert_yes">¡Sí, haz eso!</string>
+    <string name="archive_alert_no">¡No gracias!</string>
+
+    <string-array name="priority">
+        <item>Prioridad por Defecto</item>
+        <item>Prioridad Baja</item>
+        <item>Prioridad Media</item>
+        <item>Prioridad Alta</item>
+    </string-array>
+
+    <string name="fab_create_new">Crear nuevo monedero</string>
+    <string name="fab_restore_viewonly">Restaurar monedero de sólo vista</string>
+    <string name="fab_restore_key">Restaurar monedero con claves privadas</string>
+    <string name="fab_restore_seed">Restaurar monedero con semilla de 25 palabras</string>
+    <string name="info_xmrto"><![CDATA[
+        <b>Ingresaste una dirección Bitcoin</b><br/>
+        <i>Vas a enviar XMR y el destinatario recibirá BTC usando el servicio <b>XMR.TO</b>.</i>
+    ]]></string>
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_paid">Confirmación pendiente</string>
+    <string name="info_send_xmrto_unpaid">Pago pendiente</string>
+    <string name="info_send_xmrto_error">Error de XMR.TO (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC Enviados!</string>
+    <string name="info_send_xmrto_query">Consultando &#8230;</string>
+    <string name="info_send_xmrto_parms"><![CDATA[
+         <b>Puedes enviar %1$s &#8212; %2$s BTC</b>.<br/>
+         <i><b>XMR.TO</b> está ofreciendo una tasa de cambio de <b>%3$s BTC</b> <u>en este momento</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>Montos hasta <b>%1$s BTC</b> serán enviados <u>en el momento</u>!</i>
+    ]]></string>
+    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
+    <string name="label_send_progress_xmrto_create">Creando orden XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">Consultando orden XMR.TO</string>
+    <string name="label_send_progress_create_tx">Preparando transacción Monero</string>
+    <string name="label_send_progress_queryparms">Consultando parámetros XMR.TO</string>
+    <string name="label_generic_xmrto_error">ERROR XMR.TO</string>
+    <string name="text_generic_xmrto_error">Código: %1$d</string>
+    <string name="text_retry">Toca para reintentar</string>
+    <string name="text_noretry_monero">Parece que estamos atascados!</string>
+    <string name="text_noretry">Oh-oh, parece que XMR.TO no está disponible ahora!</string>
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Cambio: %1$s BTC/XMR)</string>
+    <string name="label_send_settings_advanced">Avanzado</string>
+    <string name="label_send_btc_xmrto_info">Visita https://xmr.to para soporte y rastreo</string>
+    <string name="label_send_btc_xmrto_key_lb">Clave secreta\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">Clave secreta XMR.TO</string>
+    <string name="label_send_btc_address">Dirección BTC destino</string>
+    <string name="label_send_btc_amount">Monto</string>
+    <string name="send_xmrto_timeout">Oye, esperaste demasiado!</string>
+    <string name="label_copy_xmrtokey">Clave XMR.TO</string>
+    <string name="message_copy_xmrtokey">¡Clave XMR.TO copiada al portapapeles!</string>
+    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
+    <string name="send_send_label">Enviar mis preciados moneroj</string>
+    <string name="send_send_timed_label">Gastar mis preciados moneroj (%1$s)</string>
+    <string name="send_address_invalid">No es una dirección válida</string>
+    <string name="send_fee_btc_label">Comisión (XMR)</string>
+    <string name="send_total_btc_label">Total (XMR)</string>
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s Comisión</string>
+    <string name="tx_destination_btc">Destino\n(BTC)</string>
+    <string name="tx_amount_btc">Monto\n(BTC)</string>
+    <string name="about_whoami">Soy monerujo</string>
+    <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
+    <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
+    <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
+</resources>
