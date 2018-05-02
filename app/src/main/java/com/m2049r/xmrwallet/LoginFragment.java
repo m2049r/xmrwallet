@@ -262,7 +262,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             /*case R.id.action_backup:
                 activityCallback.onWalletBackup(listItem.name);
                 break;*/
-            case R.id.action_backup_file:
+            case R.id.action_backup:
                 activityCallback.onWalletBackupToFile(listItem.name);
                 break;
             case R.id.action_backup_nfc: //TODO 备份到NFC
