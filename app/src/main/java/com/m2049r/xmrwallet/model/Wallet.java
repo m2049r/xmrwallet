@@ -166,7 +166,7 @@ public class Wallet {
 
 //TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);
 
-    public static native String getPaymentIdFromAddress(String address, boolean isTestNet);
+    public static native String getPaymentIdFromAddress(String address, int networkType);
 
     public static native long getMaximumAllowedAmount();
 
