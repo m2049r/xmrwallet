@@ -174,39 +174,39 @@
     <string name="label_wallet_receive">Получить</string>
     <string name="label_wallet_send">Передать</string>
 
-    <string name="title_amount">Amount</string>
-    <string name="title_date">Date</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
+    <string name="title_amount">Сумма</string>
+    <string name="title_date">Дата</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR неподтвержденно</string>
     <string name="xmr" translatable="false">XMR</string>
-    <string name="label_transactions">Transactions</string>
-    <string name="text_daemonConnected">Daemon connected!</string>
+    <string name="label_transactions">Транзакции</string>
+    <string name="text_daemonConnected">Daemon подлючен!</string>
 
-    <string name="service_description">monerujo Service</string>
-    <string name="local_service_started">monerujo Service Running</string>
-    <string name="local_service_stopped">monerujo Service Stopped</string>
-    <string name="local_service_label">monerujo Service</string>
-    <string name="local_service_connected">monerujo Service Connected</string>
-    <string name="local_service_disconnected">monerujo Service Disconnected</string>
+    <string name="service_description">Служба monerujo</string>
+    <string name="local_service_started">Служба monerujo запущена</string>
+    <string name="local_service_stopped">Служба monerujo остановлена</string>
+    <string name="local_service_label">Служба monerujo</string>
+    <string name="local_service_connected">Служба monerujo подключена</string>
+    <string name="local_service_disconnected">Служба monerujo отключена</string>
 
-    <string name="status_synced">Synced:</string>
-    <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Scanning:</string>
+    <string name="status_synced">Синхронизировано:</string>
+    <string name="status_remaining">Блоков осталось</string>
+    <string name="status_syncing">Просканировано:</string>
 
-    <string name="prompt_problems">Problems</string>
-    <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
-    <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
+    <string name="prompt_problems">Проблемы</string>
+    <string name="message_strorage_not_writable">Внешнее хранилище недоступно для записи! Ахтунг!</string>
+    <string name="message_strorage_not_permitted">Нам действительно нужны эти разрешения!</string>
+    <string name="message_camera_not_permitted">Нет доступа к камере = Нет QR-сканирования!</string>
 
-    <string name="label_copy_viewkey">View Key</string>
-    <string name="label_copy_address">Public Address</string>
-    <string name="label_copy_xmrtokey">XMR.TO Key</string>
-    <string name="message_copy_viewkey">View Key copied to clipboard!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Key copied to clipboard!</string>
-    <string name="message_copy_address">Wallet Address copied to clipboard!</string>
-    <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
-    <string name="message_noselect_seed">Selecting seed disabled for security reasons!</string>
-    <string name="message_noselect_key">Selecting spend key disabled for security reasons!</string>
-    <string name="message_nocopy">Copy disabled for security reasons!</string>
+    <string name="label_copy_viewkey">Ключ просмотра</string>
+    <string name="label_copy_address">Публичный адрес</string>
+    <string name="label_copy_xmrtokey">XMR.TO ключ</string>
+    <string name="message_copy_viewkey">Ключ просмотра скопирован в буфер обмена!</string>
+    <string name="message_copy_xmrtokey">Ключ XMR.TO скопирован в буфер обмена!</string>
+    <string name="message_copy_address">Адрес кошелька скопирован в буфер обмена!</string>
+    <string name="message_copy_txid">ID транзакции копирован в буфер обмена!</string>
+    <string name="message_noselect_seed">Выбор мнемонической фразы отключен по соображениям безопасности!</string>
+    <string name="message_noselect_key">Выбор ключа траты отключен по соображениям безопасности!</string>
+    <string name="message_nocopy">Копирование недоступно по соображениям безопасности!</string>
 
     <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
 
