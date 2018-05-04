@@ -106,7 +106,7 @@
     <string name="label_send_txid">ID транзакции</string>
     <string name="label_send_address">Адрес назначения</string>
     <string name="label_send_payment_id">ID платежа</string>
-    <string name="label_send_notes">Notes</string>
+    <string name="label_send_notes">Примечание</string>
 
     <string name="backup_progress">Выполняется резервное копирование</string>
     <string name="archive_progress">Выполняется архивирование</string>
@@ -114,7 +114,7 @@
     <string name="open_progress">Проверка подключения</string>
     <string name="changepw_progress">Выполняется изменение пароля</string>
 
-    <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
+    <string name="service_progress">Для данного действия &#8230;\nМожет потребоваться некоторое время!</string>
 
     <string name="backup_success">Резервное копирование выполено успешно!</string>
     <string name="backup_failed">Резервное копирование произошло с ошибкой!</string>
@@ -208,23 +208,23 @@
     <string name="message_noselect_key">Выбор ключа траты отключен по соображениям безопасности!</string>
     <string name="message_nocopy">Копирование недоступно по соображениям безопасности!</string>
 
-    <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
+    <string name="message_exchange_failed">Не удается получить курс обмена!\nИспользуйте XMR/XMR или повторите попытку</string>
 
     <string name="generate_title">Создать кошелек</string>
     <string name="generate_name_hint">Имя кошелька</string>
     <string name="generate_password_hint">Пароль кошелька</string>
     <string name="generate_fingerprint_hint">Разрешить открыть кошелек при помощи отпечатка пальца</string>
     <string name="generate_fingerprint_warn"><![CDATA[
-        <strong>Fingerprint Authentication</strong>
-        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
-        without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
-        viewing wallet details or sending funds.</p>
-        <strong>Security Warning</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
-        able to peep into your wallet balance.</p>
-        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
-        <strong>Are you sure to enable this function?</strong>
+        <strong>Аутентификация ро отпечаткам пальцев</strong>
+        <p>С поддержкой аутентификации по отпечаткам пальцев, вы можете просматривать баланс и получать средства
+        без ввода пароля.</p>
+        <p>Но для дополнительной безопасности, monerujo потребует от вас ввести пароль при
+        просмотр деталей кошелька или отправке средств.</p>
+        <strong>Предупреждение системы безопасности</strong>
+        <p>monerujo хочет напомнить вам, что любой, кто может получить ваш отпечаток пальца, будет
+        обладать возможностью, заглянуть в баланс вашего кошелька.</p>
+        <p>Например, злоумышленник может заглянуть в ваш кошелек, когда вы спите.</p>
+        <strong>Вы уверены, что хотите включить эту функцию?</strong>
     ]]></string>
     <string name="generate_bad_passwordB">Пароль не совпадает</string>
     <string name="generate_empty_passwordB">Пароль не может быть пустым</string>
@@ -243,17 +243,17 @@
     <string name="generate_wallet_created">Кошелек создан</string>
     <string name="generate_wallet_create_failed">Не удалось создать кошелек</string>
 
-    <string name="generate_restoreheight_error">Enter Number or Date (YYYY-MM-DD)</string>
+    <string name="generate_restoreheight_error">Введите номер блока или дату (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_type_key">Keys</string>
-    <string name="generate_wallet_type_new">New</string>
-    <string name="generate_wallet_type_seed">Seed</string>
-    <string name="generate_wallet_type_view">View</string>
+    <string name="generate_wallet_type_key">Ключ</string>
+    <string name="generate_wallet_type_new">Новый</string>
+    <string name="generate_wallet_type_seed">Фраза</string>
+    <string name="generate_wallet_type_view">Просмотр</string>
 
     <string name="generate_address_hint">Публичный адрес</string>
     <string name="generate_viewkey_hint">Ключ просмотра</string>
     <string name="generate_spendkey_hint">Ключ траты</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
+    <string name="generate_mnemonic_hint">Мнемоническая фраза</string>
     <string name="generate_restoreheight_hint">Дата высоты восстановления (YYYY-MM-DD)</string>
 
     <string name="generate_wallet_label">Кошелек</string>
@@ -263,7 +263,7 @@
     <string name="generate_spendkey_label">Ключ траты</string>
     <string name="generate_mnemonic_label">Мнемоническая seed-фраза</string>
     <string name="generate_restoreheight_label">Высота восстановления:</string>
-    <string name="generate_crazypass_label">Wallet Files Restore Password</string>
+    <string name="generate_crazypass_label">Восстановление пароля файлов кошелька</string>
 
     <string name="generate_check_key">Введите действующий ключ</string>
     <string name="generate_check_address">Введите действующий адрес</string>
@@ -311,8 +311,8 @@
 
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
 
-    <string name="tx_list_fee_pending">incl. %1$s fee</string>
-    <string name="tx_list_fee">- Fee %1$s</string>
+    <string name="tx_list_fee_pending">включительно %1$s fee</string>
+    <string name="tx_list_fee">- Сбор %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
     <string name="tx_list_amount_negative">- %1$s</string>
