@@ -117,9 +117,6 @@
     <string name="label_daemon">Nod</string>
     <string name="prompt_daemon">([&lt;användare&gt;:&lt;lösenord&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Val av nät</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
     <string name="status_walletlist_loading">Läser in plånbokslista</string>
     <string name="status_wallet_loading">Läser in plånbok …</string>
     <string name="status_wallet_unloading">Sparar plånbok</string>
