@@ -55,6 +55,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
         GenerateReviewFragment.Listener,
+        GenerateReviewFragment.PasswordChangedListener,
         ScannerFragment.OnScannedListener, ReceiveFragment.Listener,
         SendAddressWizardFragment.OnScanListener {
 
@@ -64,6 +65,18 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     private Toolbar toolbar;
     private boolean needVerifyIdentity;
+
+    private String password;
+
+    @Override
+    public void onPasswordChanged(String newPassword) {
+        password = newPassword;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
     @Override
     public void setToolbarButton(int type) {
@@ -119,9 +132,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         if (extras != null) {
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
-            String walletPassword = extras.getString(REQUEST_PW);
             needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
-            connectWalletService(walletId, walletPassword);
+            connectWalletService(walletId, password);
         } else {
             finish();
             //throw new IllegalStateException("No extras passed! Panic!");
@@ -186,7 +198,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         }
     }
 
-    public void onWalletChangePassword() {//final String walletName, final String walletPassword) {
+    public void onWalletChangePassword() {
         try {
             GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -246,6 +258,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName()).commit();
         Timber.d("fragment added");
+
+        password = getIntent().getExtras().getString(REQUEST_PW);
 
         startWalletService();
         Timber.d("onCreate() done.");
@@ -709,8 +723,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         final Bundle extras = new Bundle();
-                        extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
-                        extras.putString("password", getIntent().getExtras().getString(REQUEST_PW));
+                        extras.putString(GenerateReviewFragment.REQUEST_TYPE, GenerateReviewFragment.VIEW_TYPE_WALLET);
 
                         if (needVerifyIdentity) {
                             Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
