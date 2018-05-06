@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_title">关于</string>
     <string name="about_close">关闭</string>
     <string name="about_whoami">我是 monerujo</string>
     <string name="about_version">版本 %1$s (%2$d)</string>
