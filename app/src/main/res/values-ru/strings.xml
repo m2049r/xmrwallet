@@ -35,7 +35,7 @@
     <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
     <string name="info_send_prio_fees">Высокий приоритет = Высокие сборы</string>
 
-    <string name="info_xmrto_enabled">Доступны платежи в BTC, нажмите для доп. информации</string>
+    <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
 
     <string name="info_crazypass_enabled">Доступен CrAzYpass, нажмите для доп. информации</string>
 
@@ -76,7 +76,7 @@
 
     <string name="label_send_progress_xmrto_create">Создание заказа XMR.TO</string>
     <string name="label_send_progress_xmrto_query">Запрос заказа XMR.TO</string>
-    <string name="label_send_progress_create_tx">Подготовка традиции Monero</string>
+    <string name="label_send_progress_create_tx">Подготовка транзакции Monero</string>
 
     <string name="label_send_progress_queryparms">Запрос параметров XMR.TO</string>
 
@@ -93,7 +93,7 @@
     <string name="label_send_settings_advanced">Дополнительно:</string>
 
     <string name="label_send_btc_details">Нажмите для доп. информации</string>
-    <string name="label_send_btc_xmrto_info">Посетите xmr.to для помощи &amp; tracking</string>
+    <string name="label_send_btc_xmrto_info">Посетите xmr.to для получения помощи &amp;</string>
     <string name="label_send_txinfo">Смотрите TX для получения доп. информации</string>
     <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO секретный ключ</string>
@@ -164,9 +164,9 @@
     <string name="bad_password">Неверный пароль!</string>
     <string name="bad_wallet">Кошелька не существует!</string>
     <string name="error_not_wallet">Это не кошелек!</string>
-    <string name="prompt_daemon_missing">Должен быть установлен адрес демона!</string>
+    <string name="prompt_daemon_missing">Должен быть установлен адрес Daemon!</string>
     <string name="prompt_wrong_net">Кошелек не соответствует выбранной сети</string>
-    <string name="warn_daemon_unavailable">Не удается подключиться к демону! Попробуйте еще раз</string>
+    <string name="warn_daemon_unavailable">Не удается подключиться к Daemon! Попробуйте еще раз</string>
     <string name="panic">Что-то не так!</string>
 
     <string name="label_watchonly">(Режим просмотра)</string>
@@ -229,8 +229,8 @@
     <string name="generate_bad_passwordB">Пароль не совпадает</string>
     <string name="generate_empty_passwordB">Пароль не может быть пустым</string>
     <string name="generate_buttonGenerate">Сделайте мне уже кошелек!</string>
-    <string name="generate_seed">Мнемоническая seed-фраза</string>
-    <string name="generate_button_accept">Я ввел мнемоническую seed-фразу</string>
+    <string name="generate_seed">Мнемоническая фраза</string>
+    <string name="generate_button_accept">Я ввел мнемоническую фразу</string>
 
     <string name="generate_button_backup">Резервная копия</string>
     <string name="generate_button_export">Экспорт ключей</string>
@@ -261,15 +261,15 @@
     <string name="generate_address_label">Публичный адрес</string>
     <string name="generate_viewkey_label">Ключ просмотра</string>
     <string name="generate_spendkey_label">Ключ траты</string>
-    <string name="generate_mnemonic_label">Мнемоническая seed-фраза</string>
+    <string name="generate_mnemonic_label">Мнемоническая фраза</string>
     <string name="generate_restoreheight_label">Высота восстановления:</string>
     <string name="generate_crazypass_label">Восстановление пароля файлов кошелька</string>
 
     <string name="generate_check_key">Введите действующий ключ</string>
     <string name="generate_check_address">Введите действующий адрес</string>
-    <string name="generate_check_mnemonic">Enter your 25 word seed</string>
+    <string name="generate_check_mnemonic">Введите вашу мнемоническую фразу</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicative)</string>
+    <string name="send_amount_btc_xmr">%1$s (ориентировочно)</string>
 
     <string name="send_address_hint">XMR или BTC адрес получателя</string>
     <string name="send_paymentid_hint">ID платежа (необязательно)</string>
@@ -277,7 +277,7 @@
     <string name="send_notes_hint">Персональная заметка (необязательно)</string>
     <string name="send_priority_hint">Приоритет Tx</string>
     <string name="send_mixin_hint">Mixin</string>
-    <string name="send_sweep_hint">Замести</string>
+    <string name="send_sweep_hint">\"Замести\"</string>
     <string name="send_generate_paymentid_hint">Генерация</string>
     <string name="send_qr_hint">Сканирование</string>
     <string name="send_prepare_hint">Подготовка</string>
@@ -307,11 +307,11 @@
     <string name="send_total_label">Всего</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Fee</string>
+    <string name="send_fee">+%1$s Сбор</string>
 
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
 
-    <string name="tx_list_fee_pending">включительно %1$s fee</string>
+    <string name="tx_list_fee_pending">включительно %1$s сбор</string>
     <string name="tx_list_fee">- Сбор %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
@@ -325,11 +325,11 @@
     <string name="tx_id_btc">TX ID(BTC)</string>
     <string name="tx_key">Ключ TX</string>
     <string name="tx_destination">Адресат</string>
-    <string name="tx_destination_btc">Адресат(BTC)</string>
+    <string name="tx_destination_btc">Адресат (BTC)</string>
     <string name="tx_paymentId">ID платежа</string>
     <string name="tx_blockheight">Блок</string>
     <string name="tx_amount">Количество</string>
-    <string name="tx_amount_btc">Количество(BTC)</string>
+    <string name="tx_amount_btc">Количество (BTC)</string>
     <string name="tx_fee">Сбор</string>
     <string name="tx_transfers">Переводы</string>
     <string name="tx_notes">Заметка</string>
@@ -347,13 +347,13 @@
 
     <string name="receive_generate_hint">Отсканировать QR-код</string>
     <string name="receive_paymentid_button">Генерация</string>
-    <string name="receive_paymentid_hint">ID платежа(необязательно)</string>
+    <string name="receive_paymentid_hint">ID платежа (необязательно)</string>
     <string name="receive_amount_hint">Сумма</string>
     <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Не удалось открыть кошелек!</string>
     <string name="receive_paymentid_invalid">Система счисления - 16 или 64(0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
-    <string name="receive_bitcoin_paymentid_invalid">Must be empty with bitcoin address</string>
+    <string name="receive_integrated_paymentid_invalid">Должно быть пустым со встроенным адресом</string>
+    <string name="receive_bitcoin_paymentid_invalid">Должно быть пустым с Bitcoin-адресом</string>
     <string name="receive_amount_invalid">Должно быть > 0</string>
 
     <string name="receive_amount_empty">Введите значение</string>
@@ -395,5 +395,5 @@
     <string name="fab_create_new">Создать новый кошелек</string>
     <string name="fab_restore_viewonly">Восстановить кошелек только для просмотра</string>
     <string name="fab_restore_key">Восстановить кошелек из ключей</string>
-    <string name="fab_restore_seed">Восстановить кошелек из seed-фразы</string>
+    <string name="fab_restore_seed">Восстановить кошелек из мнемонической фразы</string>
 </resources>
