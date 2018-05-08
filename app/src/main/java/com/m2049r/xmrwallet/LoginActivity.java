@@ -49,6 +49,9 @@ import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.nfc.AuthenticationException;
+import com.m2049r.xmrwallet.nfc.TagUtil;
+import com.m2049r.xmrwallet.nfc.ThreeDES;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
@@ -58,6 +61,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -349,6 +353,32 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    private class AsyncBackupToNFC extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showProgressDialog(R.string.backup_progress);
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            return backupWalletToNFC(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
+            if (!result) {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     private boolean backupWallet(String walletName) {
         File backupFolder = new File(getStorageRoot(), "backups");
         if (!backupFolder.exists()) {
@@ -370,10 +400,82 @@ public class LoginActivity extends SecureActivity
         return success;
     }
 
+    private boolean backupWalletToNFC(String walletName) {
+        boolean success=false;
+        File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+        //Timber.d("backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+        Intent intent = null;
+        TagUtil tagUtil = null;
+        boolean authenticated=false;
+        try {
+            tagUtil = TagUtil.selectTag(intent, false);
+            authenticated = tagUtil.authentication(intent, getKey(), false);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(authenticated)
+        {
+            Toast toast = Toast.makeText(LoginActivity.this, "Authentication Successful", Toast.LENGTH_LONG);
+            try {
+
+                byte[] bytes = new byte[(int)walletFile.length()];
+                new FileInputStream(walletFile).read(bytes);
+                tagUtil.writeTag(intent,(byte)4,bytes,false);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+            else
+                return false;
+        return success;
+    }
+    private byte[] getKey()
+    {
+        return ThreeDES.secretKey;
+    }
+
+    private class AsyncBackupT extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showProgressDialog(R.string.backup_progress);
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            return backupWallet(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
+            if (!result) {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
     @Override
     public void onWalletBackupToFile(String walletName) {
         Timber.d("backup for wallet ." + walletName + ".");
         new AsyncBackup().execute(walletName);
+    }
+
+    @Override
+    public void onWalletBackupToNFC(String walletName) {
+        Timber.d("backup to NFC hard wallet for wallet ." + walletName + ".");
+        new AsyncBackupToNFC().execute(walletName);
     }
 
     private class AsyncArchive extends AsyncTask<String, Void, Boolean> {

@@ -13,12 +13,8 @@
     <string name="menu_rename">Rename &#8230;</string>
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
-<<<<<<< HEAD
     <string name="menu_changepw">Change Passphrase</string>
-=======
     <string name="menu_backup_to_nfc">Backup To NFC</string>
->>>>>>> 6ce4b42f2effa3ec3525b3849c8f20ada88267d5
-
     <string name="password_weak">Continue typing &#8230;</string>
     <string name="password_fair">Meh &#8230;</string>
     <string name="password_good">C\'mon, you can do better!</string>
