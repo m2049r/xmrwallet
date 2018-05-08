@@ -455,6 +455,7 @@ public class Helper {
                         String pass = etPassword.getEditText().getText().toString();
                         if (processPasswordEntry(context, wallet, pass, false, action)) {
                             Helper.hideKeyboardAlways((Activity) context);
+                            cancelSignal.cancel();
                             openDialog.dismiss();
                             openDialog = null;
                         } else {
@@ -472,6 +473,7 @@ public class Helper {
                     String pass = etPassword.getEditText().getText().toString();
                     if (processPasswordEntry(context, wallet, pass, false, action)) {
                         Helper.hideKeyboardAlways((Activity) context);
+                        cancelSignal.cancel();
                         openDialog.dismiss();
                         openDialog = null;
                     } else {

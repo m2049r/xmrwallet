@@ -5,8 +5,11 @@ import android.content.Context;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.support.v4.os.CancellationSignal;
 
+import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 
 public class FingerprintHelper {
 
@@ -24,7 +27,7 @@ public class FingerprintHelper {
         KeyStore keyStore = KeyStore.getInstance(KeyStoreHelper.SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
         try {
             keyStore.load(null);
-        } catch (Exception ex) {
+        } catch (IOException | NoSuchAlgorithmException | CertificateException ex) {
             throw new IllegalStateException("Could not load KeyStore", ex);
         }
 
