@@ -74,6 +74,29 @@
         completo a tus fondos.
         ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>
         acceso completo a tus fondos! Si no la anotaste en un lugar seguro aún, ¡por favor hazlo!
+        <h2>Wallet Files Recovery Password</h2>
+        Asegúrate de escribir esta contraseña. Si restablececes tu dispositivo o desinstalas esta
+        aplicación, vas a necesitarla para acceder a tu monedero otra vez.<br/>
+        <h3>CrAzYpass</h3>
+        Si la contraseña que se muestra consiste de 52 caracteres alfanuméricos en grupos de 4...
+        ¡felicitaciones!
+		Los archivos de tu monedero están asegurado con una clave de 256 bits, generada por tu
+        propio dispositivo basándose en la contraseña que elegiste (al crear el monedero o luego
+        cambiándola manualmente). ¡Esto hace a tus archivos extremadamente difíciles de hackear!<br/>
+        Esta opción es obligatoria en todos los monederos nuevos.
+        <h3>Contraseña Antigua</h3>
+        Si ves tu contraseña aquí, los archivos de tu billetera no están tan seguros que cuando
+        se usa una CrAzYpass. Para solucionar esto, simplemente elige \"Cambiar Contraseña\" en el
+        menú. Después de ingresar una nueva contraseña (aún si eliges la misma que antes) la
+        aplicación generará una CrAzYpass y asegurará los archivos de tu monedero con ella.
+        ¡Por favor anótala bien!
+        <h3>Monederos CrAzYpass</h3>
+        Si alguna vez necesitas reinstalar Monerujo (por ejemplo luego de restaurar tu teléfono
+        o cambiar a uno nuevo) o si necesitas abrir los archivos de tu monedero en otro dispositivo
+        o en una PC, vas a tener que usar esta Contraseña de Recuperación (CrAzYpass) para poder
+        acceder a tu monedero otra vez.<br/>
+        Seleccionando \"Cambiar Contraseña\" en el menú, pueder elegir otra contraseña.
+        Ten presente que esto generará una nueva Contraseña de Recuperación (CrAzYpass). ¡Anótala bien!
         <h2>Clave de vista</h2>
         Tu clave de vista puede usarse para monitorizar las transacciones entrantes de tu
         monedero sin otorgar permiso para gastar los fondos guardados en ella.
@@ -161,8 +184,8 @@
         negocio pueda asociar inequívocamente tu transacción con un producto que has comprado.</p>
         <h2>Tamaño del anillo</h2>
         <p>Hay varios tamaños de anillo (ring size) para elegir en Monerujo. Si eres un
-        usuario principiante te recomendamos que simplemente utilices un tamaño de anillo de 5.
-        Aumentar el tamaño de anillo por encima de 5 incrementa el número de firmantes en una firma
+        usuario principiante te recomendamos que simplemente utilices un tamaño de anillo de 7.
+        Aumentar el tamaño de anillo por encima de 7 incrementa el número de firmantes en una firma
         de anillo, lo cual teóricamente proporciona una mayor negación plausible. Pero configurar
         tamaños de anillo altos también puede provocar que tu transacción quede fuera de la
         cadena de bloques.</p>

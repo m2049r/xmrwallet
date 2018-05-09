@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Créer un Portefeuille - Nouveau</h1>
+        <p>Si vous avez besoin d’une nouvelle adresse Monero !</p>
+        <p>Entrez un nom et un mot de passe unique pour le portefeuille.
+        Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
+        Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
+        <h2>Notez votre phrase Mnémonique !</h2>
+        <p>Sur l’écran suivant vous trouverez les 25 mots de votre \"Phrase Mnémonique\".
+        C’est la seule donnée necessaire pour récupérer votre portefeuille ultérieurement
+        et obtenir l’accès à vos fonds.
+        Il est très imprtant de la garder sécurisée et confidentielle, car elle donne
+        <em>à quiconque</em> le contrôle total de vos fonds !</p>
+        <p>Si vous perdez le mot de passe de votre portefeuille, vous pouvez toujours récupérer votre
+        portefeuille avec la phrase Mnémonique.</p>
+        <p>Il n’y a aucun moyen de récupérer votre phrase Mnémonique, si vous la perdez tous vos fonds
+        seront perdus ! La phrase Mnémonique ne peut pas non plus être changée, et si elle est dérobée
+        ou compromise, vous devrez transférer vos fonds vers un nouveau portefeuille (avec une nouvelle
+        phrase Mnémonique). Par conséquent, il vaut mieux que vous sauvegardiez votre phrase Mnémonique
+        en l’écrivant et en la conservant à de <em>multiples</em> endroits sécurisés.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Créer un Portefeuille - Phrase Mnémonique</h1>
+        <p>Si vous avez déjà une adresse Monero et que vus voulez reécupérer vos transactions depuis la chaïne de blocs !</p>
+        <p>Entrez un nom et un mot de passe unique pour le portefeuille.
+        Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
+        Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
+        <p>Entrez votre phrase Mnémonique dans le champ \"Phrase Mnémonique\".<p>
+        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
+        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
+        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Créer un Portefeuille - Clefs</h1>
+        <p>Si vous récupérez votr portefeuille en utilisant vos clefs !</p>
+        <p>Entrez un nom et un mot de passe unique pour le portefeuille.
+        Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
+        Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.<p>
+        <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez \"Clef d’Audit\" et \"Clef de dépense\".</p>
+        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
+        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
+        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Créer un Portefeuille d’Audit</h1>
+        <p>Si vous voulez suveiller les transaction entrantes sur un portefeuille !</p>
+        <p>Entrez un nom et un mot de passe unique pour le portefeuille.
+        Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
+        Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.<p>
+        <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez la \"Clef d’Audit\".</p>
+        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
+        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
+        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Détails du Portefeuille</h1>
+        <h2>Adresse Publique</h2>
+        Votre adresse publique est comme votre numéro de compte en banque, vous pouvez la partager avec n’importe qui sans
+        craindre de perdre vos Moneroj. On porra envoyer des Moneroj dans votre portefeuille en utilisant cette adresse.
+        <h2>Phrase Mnémonique</h2>
+        C’est la seule donée nécessaire pour récupérer votre portefeuille ultérieurement et obtenir l’accès à
+        vos fonds. Il est très imprtant de la garder sécurisée et confidentielle, car elle donne <em>à quiconque</em>
+        le contrôle total de vos Moneroj ! Si vous ne l’avez pas écrite à un emplacement sécurisé, faites-le !
+        <h2>Mdp de restauration des fichiers du Portefeuille</h2>
+        Assurez vous de noter ce mot de passe. Si vous réinitialisez votre appareil ou désinstallez l’application,
+        vous en aurez besoin pour accéder de nouveau à votre portefeuille.<br/>
+        <h3>CrAzYpass</h3>
+        Si le mot de passe affiché ici comporte 52 caractères alphanumériques par groupes de 4 - félicitations !
+        Vos fichiers de portefeuille sont sécurisé avec une clef 256 bits généré par les fonctionnalité de
+        sécurité de votre appareil sur la base de la phrase secrète que vous avez choisis (lors de la création
+        ou en l’ayant changée). Cela le rend êtrèmement difficile à pirater !<br/>
+        Cette fonctionnalité est obligatoire pour tous les nouveaux portefeuilles.
+        <h3>Mot de passe traditionnel</h3>
+        Si ici vous voyez votre phrase secrète, les fichiers de votre portefeuille ne sont pas aussi sécurisés qu’en
+        utilisant un CrAzYpass. Pour y remédier, choisissez simplement \"Changer la phrase secrète\" à partir du menu.
+        Après avoir renseigné une nouvelle phrase secrète (voire la même que précédemment) l’application va générer
+        un CrAzYpass pour vous et sécuriser les fichiers de votre portefeuille avec. Notez-le !
+        <h3>Portefeuilles CrAzYpass</h3>
+        Si vous avez un jour besoin de réinstaller Monerujo (par exemple après réinitialisation de votre téléphone, ou
+        remplacement de celui-ci) ou si vous voulez utiliser vos fichiers de portefeuille sur un appareil différent ou
+        un PC, vous devrez utiliser ce Mot de Passe de Restauration adin d’accéder de nouveau à votre portefeuille.<br/>
+        En choisissant \"Modifier Phrase Secrète\" à partir du menu, vous pouvez choisir une nouvelle phrase secrète.
+        Prenez garde, cela génèrera un nouveau Mot de Passe de Restauration. Notez-le !
+        <h2>Clef d’Audit</h2>
+        Votre clef d’Audit peut vous servir à surveiller les transactions entrantes sur votre portefeuille sans autoriser
+        la dépense de vos fonds dans votre portefeuille.
+        <h2>Clefs de dépense</h2>
+        Votre clef de dépense permet à quiconque de dépenser les Moneroj associés à votre portefeuille, alors ne la
+        communiquez à personne, gardez-la en sécurité comme votre phrase Mnémonique.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Liste des Portefeuilles</h1>
+        <h2>Nœud</h2>
+        <p>Monerujo utilise un nœud distant pour communiquer avec le réseau Monero sans avoir à
+        télécharger et stocker une copie complète de la chaîne de bloc. vous pourrez trouver une
+        liste de nœud distant populaire ou apprendre comment faire fonctionner votre propre nœud
+        distant ici https://moneroworld.com/<p>
+        <p>Monerujo est fourni avec quelques Nœuds distants préenregistrés. Les cinq derniers nœuds utilisé sont sauvegardés.</p>
+        <h2>Portefeuilles</h2>
+        <p>Ici vous pouvez voir vos Portefeuilles. Ils se trouvent dans le dossier <tt>monerujo</tt>
+        du stockage interne de votre appareil. Vous pouvez utiliser une application d’explorateur
+        de fichiers pour les vois. Vous devriez faire des sauvegardes régulières de ce répertoire
+        sur un stockage externe au cas où votre appareil exploserait ou serait volé.</p>
+        <p>Sélectionnez un portefeuille à ouvrir ou appuyez sur \"+\" pour en créer un nouveau.
+        Ou choisissez l’une des opérations de portefeuille :</p>
+        <h3>Détails</h3>
+        <p>Affichez les détails du portefeuille, phrase mnémonique &amp; Clefs.</p>
+        <h3>Recevoir</h3>
+        <p>Faites un QR code pour recevoir des Moneroj.</p>
+        <h3>Renommer</h3>
+        <p>Renommez le portefeuille. Les sauvegardes ne sont pas renommées.</p>
+        <h3>Sauvegarde</h3>
+        <p>Faites une copie du portefeuille dans le sous-répertoire <tt>backups</tt> de <tt>monerujo</tt>
+        remplaçant les copies précédentes s’y trouvant.</p>
+        <h3>Archivage</h3>
+        <p>Faites une sauvegarde du portefeuille suivi de sa suppression. La copie reste dans le répertoire
+        <tt>backups</tt>. Si vous n’avez plus besoin de vos sauvegardes, vous devriez les supprimer avec
+        une application d’explorateur de fichiers ou une application de suppression sécurisée.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Le Portefeuille</h1>
+        <h2>Analyse</h2>
+        Comme Monero aime garder les choses confidentielles, nous devons scanner la chaîne de blocs
+        chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveau Moneroj ont été
+        envoyés à votre portefeuille, cela ne stock sur votre appareil que les informations appartenant
+        à votre portefeuille. Parfois cela peut prendre un moment si vous n’avez pas synchronisé depuis
+        longtemps.
+        <h2>Le Solde</h2>
+        <p><b>Au secours ! Le solde de mon portefeuille à disparu ou est non confirmé !</b><br/>
+        Ne paniquez pas ! lorsque vous envoyez des fonds sur votre portefeuille, une partie de votre
+        solde sera temporairement affichée comme non confirmée.
+        Cela se produit à cause de la façon dont Monero est échangé sur la chaîne de blocs et du
+        fonctionnement de la monnaie dans Monero. Aprenez-en plus à propos de la monnaie dans Monero
+        sur https://getmonero.org/fr/resources/moneropedia/change.html
+        <h2>Liste des Transactions</h2>
+        <p>Une listes des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
+        transactions entrantes sont affichées.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Détails de la Transaction</h1>
+        <h2>Destination</h2>
+        C’est l’adresse publique du portefeuille auquel vous avez envoyé des Moneroj
+        <h2>ID de Paiement</h2>
+        Vous pouvez utiliser un ID de paiement pour identifier la raison pour laquelle vous avez
+        envoyé des Moneroj entre deux parties. C’est totallement privé et optionnel. Il permet par
+        exemple à une société de faire concorder votre transaction avec un article que vous avez
+        acheté.
+        <h2>ID TX</h2>
+        C’est votre ID de transaction, vous pouvez l’utiliser pour identifier vos transaction masquées
+        sur un explorateur de la chaîne de blocs Monero comme <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>Clef TX (Clef de Transaction)</h2>
+        C’est la clef privée de votre transaction, conservez là en sécurité car la révéler à un
+        tiers révèlerait quelle signature est la votre dans un cercle, et donc rendrait votre
+        transaction transparente.
+        <h2>Bloc</h2>
+        C’est le bloc dans lequel votre transaction a été insérée.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Envoyer</h1>
+        <h2>Adresse de Destinataire</h2>
+        <p>C’est l’adresse publique du portefeuille auquel vous allez envoyer des Moneroj, vous pouvez
+        la copier/coller, scanner un QR code ou la saisir manuellement. Vérifiez là bien trois fois
+        afin de vous assurer que vous n’envoyez pas de pièces à la mauvaise adresse.</p>
+        <p>En plus d’envoyer des XMR, vous pouvez envoyer des BTC via le service XMR.TO (voir https://xmr.to
+        pour plus de détails). Consultez la rubrique sur l’envoie de BTC ci-dessous.</p>
+        <h2>ID de Paiement</h2>
+        <p>Vous pouvez utiliser un ID de paiement pour identifier la raison pour laquelle vous avez
+        envoyé des Moneroj entre deux parties. C’est totallement privé et optionnel. Il permet par
+        exemple à une société de faire concorder votre transaction avec un article que vous avez
+        acheté.</p>
+        <h2>Taille du Cercle (Ring Size)</h2>
+        <p>Il y a une taill de cercle à choisir dans Monerujo. Si vous êtes un utilisateur novice
+        nous vous recommandons de rester à la taille de cercle de 7. Augmenter la taille de cerlce
+        au delà de 7 augmente le nombre de signataires dans la signature de cercle, fournissant
+        théoriquement une plus grande dénégation plausible. Cependant, configurer de grandes tailles
+        de cercle peut également faire ressortir votre transaction sur la chaîne de blocs.</p>
+        <h2>Priorité</h2>
+        <p>Ce paramètre détermine la vitesse à laquelle votre transaction sera insérée dans la chaîne
+        de blocs. Une priorité plus élevée sera en lien direct avec des frais de transaction plus
+        élevés, et l’inverse est vrai pour une faible priorité. Veuillez noter que si vous configurez
+        une priorité faible, votre transaction pourrait mettre des heures pour être insérée sur la
+        chaîne de blocs. La priorité par défaut est \"Moyenne\".</p>
+        <h1>Envoyer des BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO est un service tierce-partie qui agit commme un change depuis Monero vers Bitcoin.
+        Nous utilisons l’API XMR.TO pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
+        consulter https://xmr.to et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
+        n’est pas affiliée à XMR.TO et ne peut pas vous aider concernant leurs services.</p>
+        <h2>Taux de change XMR.TO<h2>
+        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive XMR.TO. Cela
+        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
+        n’est pas garantit à ce stade. Vous verrez également le montnt jusqu’auquel la transaction BTC
+        sera exécutée instantanément sans attendre de confirmation XMR (voir la FAQ XMR.TO pour plus de
+        détails). Veuillez noter que XMR.TO n’ajoute pas de frais additionnels - c’est pas cool ça ?</p>
+        <h2>Ordre XMR.TO<h2>
+        <p>Sur l’écran \"Confirmation\", vous verez l’ordre XMR.TO actuel. Cette ordre est valide pour
+        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
+        de change peut être différent du taux indicatif de l’écran précédent.</p>
+        <h2>Clef Secrète XMR.TO<h2>
+        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
+        XMR.TO peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
+        de XMR.TO.</p>
+        <p>Veuillez noter que cette clef secrète est seulement valable 24h après le lancement de la
+        transaction !</p>
+        <h2>Compte à Rebours XMR.TO !</h2>
+        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
+        XMR.TO en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>Envoyer des BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO est un service tierce-partie qui agit commme un change depuis Monero vers Bitcoin.
+        Nous utilisons l’API XMR.TO pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
+        consulter https://xmr.to et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
+        n’est pas affiliée à XMR.TO et ne peut pas vous aider concernant leurs services.</p>
+        <h2>Taux de change XMR.TO<h2>
+        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive XMR.TO. Cela
+        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
+        n’est pas garantit à ce stade. Vous verrez également le montnt jusqu’auquel la transaction BTC
+        sera exécutée instantanément sans attendre de confirmation XMR (voir la FAQ XMR.TO pour plus de
+        détails). Veuillez noter que XMR.TO n’ajoute pas de frais additionnels - c’est pas cool ça ?</p>
+        <h2>Ordre XMR.TO<h2>
+        <p>Sur l’écran \"Confirmation\", vous verez l’ordre XMR.TO actuel. Cette ordre est valide pour
+        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
+        de change peut être différent du taux indicatif de l’écran précédent.</p>
+        <h2>Clef Secrète XMR.TO<h2>
+        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
+        XMR.TO peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
+        de XMR.TO.</p>
+        <p>Veuillez noter que cette clef secrète est seulement valable 24h après le lancement de la
+        transaction !</p>
+        <h2>Compte à Rebours XMR.TO !</h2>
+        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
+        XMR.TO en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
+    ]]></string>
+
+</resources>

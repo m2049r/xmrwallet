@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.model;
 
+import com.m2049r.xmrwallet.data.WalletNode;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -39,6 +41,7 @@ public class WalletManager {
         if (WalletManager.Instance == null) {
             WalletManager.Instance = new WalletManager();
         }
+
         return WalletManager.Instance;
     }
 
@@ -69,22 +72,22 @@ public class WalletManager {
     }
 
     public Wallet createWallet(File aFile, String password, String language) {
-        long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, isTestNet());
+        long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long createWalletJ(String path, String password, String language, boolean isTestNet);
+    private native long createWalletJ(String path, String password, String language, int networkType);
 
     public Wallet openWallet(String path, String password) {
-        long walletHandle = openWalletJ(path, password, isTestNet());
+        long walletHandle = openWalletJ(path, password, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long openWalletJ(String path, String password, boolean isTestNet);
+    private native long openWalletJ(String path, String password, int networkType);
 
     public Wallet recoveryWallet(File aFile, String password, String mnemonic) {
         return recoveryWallet(aFile, password, mnemonic, 0);
@@ -92,28 +95,28 @@ public class WalletManager {
 
     public Wallet recoveryWallet(File aFile, String password, String mnemonic, long restoreHeight) {
         long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), password, mnemonic,
-                isTestNet(), restoreHeight);
+                getNetworkType().getValue(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
     private native long recoveryWalletJ(String path, String password, String mnemonic,
-                                        boolean isTestNet, long restoreHeight);
+                                        int networkType, long restoreHeight);
 
     public Wallet createWalletWithKeys(File aFile, String password, String language, long restoreHeight,
                                        String addressString, String viewKeyString, String spendKeyString) {
-        long walletHandle = createWalletWithKeysJ(aFile.getAbsolutePath(), password,
-                language, isTestNet(), restoreHeight,
+        long walletHandle = createWalletFromKeysJ(aFile.getAbsolutePath(), password,
+                language, getNetworkType().getValue(), restoreHeight,
                 addressString, viewKeyString, spendKeyString);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long createWalletWithKeysJ(String path, String password,
+    private native long createWalletFromKeysJ(String path, String password,
                                               String language,
-                                              boolean isTestNet,
+                                              int networkType,
                                               long restoreHeight,
                                               String addressString,
                                               String viewKeyString,
@@ -204,24 +207,23 @@ public class WalletManager {
 //TODO virtual bool checkPayment(const std::string &address, const std::string &txid, const std::string &txkey, const std::string &daemon_address, uint64_t &received, uint64_t &height, std::string &error) const = 0;
 
     private String daemonAddress = null;
-    private boolean testnet = true;
+    private NetworkType networkType = null;
 
-    public boolean isTestNet() {
-        if (daemonAddress == null) {
-            return true;
-            // assume testnet not explicitly initialised
-            //throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
-        }
-        return testnet;
+    public NetworkType getNetworkType() {
+        return networkType;
     }
 
-    public void setDaemon(String address, boolean testnet, String username, String password) {
-        //Timber.d("SETDAEMON " + username + "/" + password + "/" + address);
-        this.daemonAddress = address;
-        this.testnet = testnet;
-        this.daemonUsername = username;
-        this.daemonPassword = password;
-        setDaemonAddressJ(address);
+    //public void setDaemon(String address, NetworkType networkType, String username, String password) {
+    public void setDaemon(WalletNode walletNode) {
+        this.daemonAddress = walletNode.getAddress();
+        this.networkType = walletNode.getNetworkType();
+        this.daemonUsername = walletNode.getUsername();
+        this.daemonPassword = walletNode.getPassword();
+        setDaemonAddressJ(daemonAddress);
+    }
+
+    public void setNetworkType(NetworkType networkType) {
+        this.networkType = networkType;
     }
 
     public String getDaemonAddress() {
@@ -268,5 +270,23 @@ public class WalletManager {
 
 //TODO static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, const std::string &subdir);
 
+    static public native void initLogger(String argv0, String defaultLogBaseName);
 
+    //TODO: maybe put these in an enum like in monero core - but why?
+    static public int LOGLEVEL_SILENT = -1;
+    static public int LOGLEVEL_WARN = 0;
+    static public int LOGLEVEL_INFO = 1;
+    static public int LOGLEVEL_DEBUG = 2;
+    static public int LOGLEVEL_TRACE = 3;
+    static public int LOGLEVEL_MAX = 4;
+
+    static public native void setLogLevel(int level);
+
+    static public native void logDebug(String category, String message);
+
+    static public native void logInfo(String category, String message);
+
+    static public native void logWarning(String category, String message);
+
+    static public native void logError(String category, String message);
 }

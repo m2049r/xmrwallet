@@ -18,10 +18,12 @@ package com.m2049r.xmrwallet.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,22 +32,39 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Environment;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
+import android.support.v4.os.CancellationSignal;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.security.KeyStoreException;
 import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -54,17 +73,22 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
-    static private final String WALLET_DIR = "monerujo";
+    static private final String WALLET_DIR = "monerujo" + (BuildConfig.DEBUG ? "-debug" : "");
+    static private final String HOME_DIR = "monero" + (BuildConfig.DEBUG ? "-debug" : "");
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
-    static public File getStorageRoot(Context context) {
+    static public File getWalletRoot(Context context) {
+        return getStorage(context, WALLET_DIR);
+    }
+
+    static public File getStorage(Context context, String folderName) {
         if (!isExternalStorageWritable()) {
             String msg = context.getString(R.string.message_strorage_not_writable);
             Timber.e(msg);
             throw new IllegalStateException(msg);
         }
-        File dir = new File(Environment.getExternalStorageDirectory(), WALLET_DIR);
+        File dir = new File(Environment.getExternalStorageDirectory(), folderName);
         if (!dir.exists()) {
             Timber.i("Creating %s", dir.getAbsolutePath());
             dir.mkdirs(); // try to make it
@@ -114,9 +138,9 @@ public class Helper {
     }
 
     static public File getWalletFile(Context context, String aWalletName) {
-        File walletDir = getStorageRoot(context);
+        File walletDir = getWalletRoot(context);
         File f = new File(walletDir, aWalletName);
-        Timber.d("wallet= %s size= %d", f.getAbsolutePath(), f.length());
+        Timber.d("wallet=%s size= %d", f.getAbsolutePath(), f.length());
         return f;
     }
 
@@ -263,10 +287,217 @@ public class Helper {
     }
 
     static public HttpUrl getXmrToBaseUrl() {
-        if ((WalletManager.getInstance() == null) || WalletManager.getInstance().isTestNet()) {
+        if ((WalletManager.getInstance() == null)
+                || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
             return HttpUrl.parse("https://test.xmr.to/api/v2/xmr2btc/");
         } else {
             return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
+        }
+    }
+
+    private final static char[] HexArray = "0123456789ABCDEF".toCharArray();
+
+    public static String bytesToHex(byte[] data) {
+        if ((data != null) && (data.length > 0))
+            return String.format("%0" + (data.length * 2) + "X", new BigInteger(1, data));
+        else return "";
+    }
+
+    static public void setMoneroHome(Context context) {
+        try {
+            String home = getStorage(context, HOME_DIR).getAbsolutePath();
+            Os.setenv("HOME", home, true);
+        } catch (ErrnoException ex) {
+            throw new IllegalStateException(ex);
+        }
+    }
+
+    static public void initLogger(Context context) {
+        if (BuildConfig.DEBUG) {
+            initLogger(context, WalletManager.LOGLEVEL_DEBUG);
+        }
+        // no logger if not debug
+    }
+
+    // TODO make the log levels refer to the  WalletManagerFactory::LogLevel enum ?
+    static public void initLogger(Context context, int level) {
+        String home = getStorage(context, HOME_DIR).getAbsolutePath();
+        WalletManager.initLogger(home + "/monerujo", "monerujo.log");
+        if (level >= WalletManager.LOGLEVEL_SILENT)
+            WalletManager.setLogLevel(level);
+    }
+
+    // try to figure out what the real wallet password is given the user password
+    // which could be the actual wallet password or a (maybe malformed) CrAzYpass
+    // or the password used to derive the CrAzYpass for the wallet
+    static public String getWalletPassword(Context context, String walletName, String password) {
+        String walletPath = new File(getWalletRoot(context), walletName + ".keys").getAbsolutePath();
+
+        // try with entered password (which could be a legacy password or a CrAzYpass)
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
+            return password;
+        }
+
+        // maybe this is a malformed CrAzYpass?
+        String possibleCrazyPass = CrazyPassEncoder.reformat(password);
+        if (possibleCrazyPass != null) { // looks like a CrAzYpass
+            if (WalletManager.getInstance().verifyWalletPassword(walletPath, possibleCrazyPass, true)) {
+                return possibleCrazyPass;
+            }
+        }
+
+        // generate & try with CrAzYpass
+        String crazyPass = KeyStoreHelper.getCrazyPass(context, password);
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
+            return crazyPass;
+        }
+
+        return null;
+    }
+
+    static AlertDialog openDialog = null; // for preventing opening of multiple dialogs
+
+    static public void promptPassword(final Context context, final String wallet, boolean fingerprintDisabled, final PasswordAction action) {
+        if (openDialog != null) return; // we are already asking for password
+        LayoutInflater li = LayoutInflater.from(context);
+        final View promptsView = li.inflate(R.layout.prompt_password, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptsView);
+
+        final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
+        etPassword.setHint(context.getString(R.string.prompt_password, wallet));
+
+        boolean fingerprintAuthCheck;
+        try {
+            fingerprintAuthCheck = FingerprintHelper.isFingerprintAuthAllowed(wallet);
+        } catch (KeyStoreException ex) {
+            fingerprintAuthCheck = false;
+        }
+
+        final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
+        final CancellationSignal cancelSignal = new CancellationSignal();
+
+        if (fingerprintAuthAllowed) {
+            promptsView.findViewById(R.id.txtFingerprintAuth).setVisibility(View.VISIBLE);
+        }
+
+        etPassword.getEditText().addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (etPassword.getError() != null) {
+                    etPassword.setError(null);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+            }
+        });
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(context.getString(R.string.label_ok), null)
+                .setNegativeButton(context.getString(R.string.label_cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways((Activity) context);
+                                cancelSignal.cancel();
+                                dialog.cancel();
+                                openDialog = null;
+                            }
+                        });
+        openDialog = alertDialogBuilder.create();
+
+        final FingerprintManagerCompat.AuthenticationCallback fingerprintAuthCallback = new FingerprintManagerCompat.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errMsgId, CharSequence errString) {
+                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth)).setText(errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+                String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
+                if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
+                    Helper.hideKeyboardAlways((Activity) context);
+                    openDialog.dismiss();
+                    openDialog = null;
+                } else {
+                    etPassword.setError(context.getString(R.string.bad_password));
+                }
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth))
+                        .setText(context.getString(R.string.bad_fingerprint));
+            }
+        };
+
+        openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                if (fingerprintAuthAllowed) {
+                    FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
+                }
+                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String pass = etPassword.getEditText().getText().toString();
+                        if (processPasswordEntry(context, wallet, pass, false, action)) {
+                            Helper.hideKeyboardAlways((Activity) context);
+                            openDialog.dismiss();
+                            openDialog = null;
+                        } else {
+                            etPassword.setError(context.getString(R.string.bad_password));
+                        }
+                    }
+                });
+            }
+        });
+
+        // accept keyboard "ok"
+        etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    String pass = etPassword.getEditText().getText().toString();
+                    if (processPasswordEntry(context, wallet, pass, false, action)) {
+                        Helper.hideKeyboardAlways((Activity) context);
+                        openDialog.dismiss();
+                        openDialog = null;
+                    } else {
+                        etPassword.setError(context.getString(R.string.bad_password));
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        Helper.showKeyboard(openDialog);
+        openDialog.show();
+    }
+
+    public interface PasswordAction {
+        void action(String walletName, String password, boolean fingerprintUsed);
+    }
+
+    static private boolean processPasswordEntry(Context context, String walletName, String pass, boolean fingerprintUsed, PasswordAction action) {
+        String walletPassword = Helper.getWalletPassword(context, walletName, pass);
+        if (walletPassword != null) {
+            action.action(walletName, walletPassword, fingerprintUsed);
+            return true;
+        } else {
+            return false;
         }
     }
 }

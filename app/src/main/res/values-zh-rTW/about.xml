@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">關閉</string>
+    <string name="about_whoami">I am monerujo</string>
+    <string name="about_version">版本 %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>致謝</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>隱私權政策</h1>
+        <p>本頁將協助您了解 monerujo: Monero Wallet 是如何收集、使用以及披露用戶的資料。</p>
+        <p>當您使用本 App 時，代表您已經明確同意本隱私權政策。</p>
+        <h2>資料收集方式</h2>
+        <p>個人資料為可以協助辨識個體的任意資料。</p>
+        <p>Monerujo 只會在本地端使用您的 Monero 金鑰以及公開地址執行必要的處理，並在加密後發送至
+        Monero 網路進行交易。</p>
+        <p>其餘的個人資料都不會被 monerujo 收集。</p>
+        <p>倘若您有使用 USD/EUR 匯兌的功能(可選用)，monerujo 將透過 kraken.com 的公開
+        API 抓取目前的匯率。若欲了解您要求的資料會如何被收集及使用，請至 https://www.kraken.com/legal/privacy
+        觀看他們的隱私權政策，特別是「Information We Collect Automatically」章節。</p>
+        <p>若您想使用本 App 支付款項至 BTC 位址，您將使用 XMR.TO 所提供的服務。Monerujo
+        將發送 BTC 目標位址以及金額至 XMR.TO，您的 IP 在此時也可能會被收集。詳情請至 https://xmr.to/
+        觀看他們的隱私權政策。</p>
+        <h2>應用程式權限</h2>
+        <ul>
+        <li>INTERNET : 透過 Monero 節點連接至 Monero 網路。</li>
+        <li>READ_EXTERNAL_STORAGE : 讀取手機上的錢包資訊。</li>
+        <li>WRITE_EXTERNAL_STORAGE : 儲存錢包資訊於手機上。</li>
+        <li>WAKE_LOCK : 與遠端節點同步時，防止手機進入待命狀態。</li>
+        <li>CAMERA : 掃描 QR Code 以收取 Monero。</li>
+        </ul>
+        <h2>政策更新</h2>
+        <p>本隱私權政策可能會不定時更新。在更新的同時，我們也會在本 App 以及網站 (www.monerujo.io)
+        上公告新的隱私權政策或修改之處。但我們仍建議您定時查看本隱私權政策以即時了解任何的修改。
+        <p>本隱私權政策最後更新日期為 2017 年 11 月 10 日。
+        </p>
+        <h2>聯絡我們</h2>
+        <p>若您對於本隱私權政策或如何處理您的個人資料仍有問題，歡迎寄送電子郵件至 privacy@monerujo.io。</p>
+        ]]></string>
+</resources>

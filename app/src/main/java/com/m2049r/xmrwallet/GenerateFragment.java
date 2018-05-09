@@ -16,12 +16,15 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -32,20 +35,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.util.RestoreHeight;
-import com.m2049r.xmrwallet.widget.Toolbar;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
+import com.m2049r.xmrwallet.util.RestoreHeight;
+import com.m2049r.xmrwallet.widget.Toolbar;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
 
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import timber.log.Timber;
 
@@ -59,6 +65,7 @@ public class GenerateFragment extends Fragment {
 
     private TextInputLayout etWalletName;
     private TextInputLayout etWalletPassword;
+    private LinearLayout llFingerprintAuth;
     private TextInputLayout etWalletAddress;
     private TextInputLayout etWalletMnemonic;
     private TextInputLayout etWalletViewKey;
@@ -79,6 +86,7 @@ public class GenerateFragment extends Fragment {
 
         etWalletName = (TextInputLayout) view.findViewById(R.id.etWalletName);
         etWalletPassword = (TextInputLayout) view.findViewById(R.id.etWalletPassword);
+        llFingerprintAuth = (LinearLayout) view.findViewById(R.id.llFingerprintAuth);
         etWalletMnemonic = (TextInputLayout) view.findViewById(R.id.etWalletMnemonic);
         etWalletAddress = (TextInputLayout) view.findViewById(R.id.etWalletAddress);
         etWalletViewKey = (TextInputLayout) view.findViewById(R.id.etWalletViewKey);
@@ -145,6 +153,30 @@ public class GenerateFragment extends Fragment {
                 return false;
             }
         });
+
+        if (FingerprintHelper.isDeviceSupported(getContext())) {
+            llFingerprintAuth.setVisibility(View.VISIBLE);
+
+            final Switch swFingerprintAllowed = (Switch) llFingerprintAuth.getChildAt(0);
+            swFingerprintAllowed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!swFingerprintAllowed.isChecked()) return;
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(Html.fromHtml(getString(R.string.generate_fingerprint_warn)))
+                            .setCancelable(false)
+                            .setPositiveButton(getString(R.string.label_ok), null)
+                            .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    swFingerprintAllowed.setChecked(false);
+                                }
+                            })
+                            .show();
+                }
+            });
+        }
 
         if (type.equals(TYPE_NEW)) {
             etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -386,7 +418,7 @@ public class GenerateFragment extends Fragment {
 
     private boolean checkAddress() {
         String address = etWalletAddress.getEditText().getText().toString();
-        boolean ok = Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet());
+        boolean ok = Wallet.isAddressValid(address);
         if (!ok) {
             etWalletAddress.setError(getString(R.string.generate_check_address));
         } else {
@@ -423,18 +455,28 @@ public class GenerateFragment extends Fragment {
 
         String name = etWalletName.getEditText().getText().toString();
         String password = etWalletPassword.getEditText().getText().toString();
+        boolean fingerprintAuthAllowed = ((Switch) llFingerprintAuth.getChildAt(0)).isChecked();
+
+        // create the real wallet password
+        String crazyPass = KeyStoreHelper.getCrazyPass(getActivity(), password);
 
         long height = getHeight();
         if (height < 0) height = 0;
 
         if (type.equals(TYPE_NEW)) {
             bGenerate.setEnabled(false);
-            activityCallback.onGenerate(name, password);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
+            activityCallback.onGenerate(name, crazyPass);
         } else if (type.equals(TYPE_SEED)) {
             if (!checkMnemonic()) return;
             String seed = etWalletMnemonic.getEditText().getText().toString();
             bGenerate.setEnabled(false);
-            activityCallback.onGenerate(name, password, seed, height);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
+            activityCallback.onGenerate(name, crazyPass, seed, height);
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             if (checkAddress() && checkViewKey() && checkSpendKey()) {
                 bGenerate.setEnabled(false);
@@ -444,7 +486,10 @@ public class GenerateFragment extends Fragment {
                 if (type.equals(TYPE_KEY)) {
                     spendKey = etWalletSpendKey.getEditText().getText().toString();
                 }
-                activityCallback.onGenerate(name, password, address, viewKey, spendKey, height);
+                if (fingerprintAuthAllowed) {
+                    KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+                }
+                activityCallback.onGenerate(name, crazyPass, address, viewKey, spendKey, height);
             }
         }
     }

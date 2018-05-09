@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
-import com.m2049r.xmrwallet.dialog.DonationFragment;
+import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
@@ -49,8 +49,6 @@ import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
-import java.io.File;
-
 import timber.log.Timber;
 
 public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
@@ -62,8 +60,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
+    public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
 
     private Toolbar toolbar;
+    private boolean needVerifyIdentity;
 
     @Override
     public void setToolbarButton(int type) {
@@ -120,6 +120,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             String walletPassword = extras.getString(REQUEST_PW);
+            needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
             connectWalletService(walletId, walletPassword);
         } else {
             finish();
@@ -159,8 +160,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             case R.id.action_info:
                 onWalletDetails();
                 return true;
-            case R.id.action_donate:
-                DonationFragment.display(getSupportFragmentManager());
+            case R.id.action_credits:
+                CreditsFragment.display(getSupportFragmentManager());
                 return true;
             case R.id.action_share:
                 onShareTxInfo();
@@ -174,11 +175,28 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             case R.id.action_details_help:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_details);
                 return true;
+            case R.id.action_details_changepw:
+                onWalletChangePassword();
+                return true;
             case R.id.action_help_send:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_send);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void onWalletChangePassword() {//final String walletName, final String walletPassword) {
+        try {
+            GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            AlertDialog dialog = detailsFragment.createChangePasswordDialog();
+            if (dialog != null) {
+                Helper.showKeyboard(dialog);
+                dialog.show();
+            }
+        } catch (ClassCastException ex) {
+            Timber.w("onWalletChangePassword() called, but no GenerateReviewFragment active");
         }
     }
 
@@ -213,8 +231,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_DONATE:
-                        Toast.makeText(WalletActivity.this, getString(R.string.label_donate), Toast.LENGTH_SHORT).show();
+                    case Toolbar.BUTTON_CREDITS:
+                        Toast.makeText(WalletActivity.this, getString(R.string.label_credits), Toast.LENGTH_SHORT).show();
                     case Toolbar.BUTTON_NONE:
                     default:
                         Timber.e("Button " + type + "pressed - how can this be?");
@@ -222,12 +240,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             }
         });
 
-        boolean testnet = WalletManager.getInstance().isTestNet();
-        if (testnet) {
-            toolbar.setBackgroundResource(R.color.colorPrimaryDark);
-        } else {
-            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
-        }
+        showNet();
 
         Fragment walletFragment = new WalletFragment();
         getSupportFragmentManager().beginTransaction()
@@ -237,6 +250,23 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         startWalletService();
         Timber.d("onCreate() done.");
     }
+
+    public void showNet() {
+        switch (WalletManager.getInstance().getNetworkType()) {
+            case NetworkType_Mainnet:
+                toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
+                break;
+            case NetworkType_Testnet:
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            case NetworkType_Stagenet:
+                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                break;
+            default:
+                throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
+        }
+    }
+
 
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
@@ -368,7 +398,17 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onSendRequest() {
-        replaceFragment(new SendFragment(), null, null);
+        if (needVerifyIdentity) {
+            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                @Override
+                public void action(String walletName, String password, boolean fingerprintUsed) {
+                    replaceFragment(new SendFragment(), null, null);
+                    needVerifyIdentity = false;
+                }
+            });
+        } else {
+            replaceFragment(new SendFragment(), null, null);
+        }
     }
 
     @Override
@@ -668,9 +708,22 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        Bundle extras = new Bundle();
+                        final Bundle extras = new Bundle();
                         extras.putString("type", GenerateReviewFragment.VIEW_TYPE_WALLET);
-                        replaceFragment(new GenerateReviewFragment(), null, extras);
+                        extras.putString("password", getIntent().getExtras().getString(REQUEST_PW));
+
+                        if (needVerifyIdentity) {
+                            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                                @Override
+                                public void action(String walletName, String password, boolean fingerprintUsed) {
+                                    replaceFragment(new GenerateReviewFragment(), null, extras);
+                                    needVerifyIdentity = false;
+                                }
+                            });
+                        } else {
+                            replaceFragment(new GenerateReviewFragment(), null, extras);
+                        }
+
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         // do nothing
@@ -798,9 +851,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public boolean verifyWalletPassword(String password) {
-        String walletPath = new File(Helper.getStorageRoot(this),
-                getWalletName() + ".keys").getAbsolutePath();
-        return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
+        String walletPassword = Helper.getWalletPassword(getApplicationContext(), getWalletName(), password);
+        return walletPassword != null;
     }
 
     @Override

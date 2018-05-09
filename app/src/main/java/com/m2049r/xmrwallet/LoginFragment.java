@@ -18,12 +18,15 @@ package com.m2049r.xmrwallet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,22 +41,28 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.NodeList;
+import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.widget.DropDownEditText;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -70,9 +79,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private DropDownEditText etDaemonAddress;
     private ArrayAdapter<String> nodeAdapter;
 
-    private View llXmrToEnabled;
-    private View ibXmrToInfoClose;
-
     private Listener activityCallback;
 
     // Container Activity must implement this interface
@@ -81,11 +87,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         File getStorageRoot();
 
-        boolean onWalletSelected(String wallet, String daemon, boolean testnet);
+        boolean onWalletSelected(String wallet, String daemon);
 
-        void onWalletDetails(String wallet, boolean testnet);
+        void onWalletDetails(String wallet);
 
-        void onWalletReceive(String wallet, boolean testnet);
+        void onWalletReceive(String wallet);
 
         void onWalletRename(String name);
 
@@ -95,13 +101,15 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletArchive(String walletName);
 
-        void onAddWallet(boolean testnet, String type);
+        void onAddWallet(String type);
 
-        void showNet(boolean testnet);
+        void showNet();
 
         void setToolbarButton(int type);
 
         void setTitle(String title);
+
+        void setNetworkType(NetworkType networkType);
 
     }
 
@@ -128,8 +136,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onResume();
         Timber.d("onResume()");
         activityCallback.setTitle(null);
-        activityCallback.setToolbarButton(Toolbar.BUTTON_DONATE);
-        activityCallback.showNet(isTestnet());
+        activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
+        activityCallback.showNet();
     }
 
     @Override
@@ -172,23 +180,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         etDummy = (EditText) view.findViewById(R.id.etDummy);
 
-        llXmrToEnabled = view.findViewById(R.id.llXmrToEnabled);
-        llXmrToEnabled.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HelpFragment.display(getChildFragmentManager(), R.string.help_xmrto);
-
-            }
-        });
-        ibXmrToInfoClose = view.findViewById(R.id.ibXmrToInfoClose);
-        ibXmrToInfoClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                llXmrToEnabled.setVisibility(View.GONE);
-                showXmrtoEnabled = false;
-                saveXmrToPrefs();
-            }
-        });
+        ViewGroup llNotice = (ViewGroup) view.findViewById(R.id.llNotice);
+        Notice.showAll(llNotice,".*_login");
 
         etDaemonAddress = (DropDownEditText) view.findViewById(R.id.etDaemonAddress);
         nodeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line);
@@ -236,9 +229,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         });
 
         loadPrefs();
-        if (!showXmrtoEnabled) {
-            llXmrToEnabled.setVisibility(View.GONE);
-        }
 
         return view;
     }
@@ -246,13 +236,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     // Callbacks from WalletInfoAdapter
     @Override
     public void onInteraction(final View view, final WalletManager.WalletInfo infoItem) {
-        String x = isTestnet() ? "9A-" : "4-";
-        if (x.indexOf(infoItem.address.charAt(0)) < 0) {
+        String addressPrefix = addressPrefix();
+        if (addressPrefix.indexOf(infoItem.address.charAt(0)) < 0) {
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (activityCallback.onWalletSelected(infoItem.name, getDaemon(), isTestnet())) {
+        if (activityCallback.onWalletSelected(infoItem.name, getDaemon())) {
             savePrefs();
         }
     }
@@ -275,7 +265,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             case R.id.action_backup_file:
                 activityCallback.onWalletBackupToFile(listItem.name);
                 break;
-            case R.id.action_backup_nfc: //TODO 备份到NFC
+            case R.id.action_backup_nfc: //backup to NFC
                 activityCallback.onWalletBackupToNFC(listItem.name);
                 break;
             case R.id.action_archive:
@@ -287,11 +277,24 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         return true;
     }
 
+    private String addressPrefix() {
+        switch (WalletManager.getInstance().getNetworkType()) {
+            case NetworkType_Testnet:
+                return "9A-";
+            case NetworkType_Mainnet:
+                return "4-";
+            case NetworkType_Stagenet:
+                return "5-";
+            default:
+                throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
+        }
+    }
+
     private void filterList() {
         displayedList.clear();
-        String x = isTestnet() ? "9A" : "4";
+        String addressPrefix = addressPrefix();
         for (WalletManager.WalletInfo s : walletList) {
-            if (x.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
+            if (addressPrefix.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
         }
     }
 
@@ -318,14 +321,25 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 ivGunther.setImageDrawable(null);
             }
         }
+
+        // remove information of non-existent wallet
+        Set<String> removedWallets = getActivity()
+                .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
+                .getAll().keySet();
+        for (WalletManager.WalletInfo s : walletList) {
+            removedWallets.remove(s.name);
+        }
+        for (String name : removedWallets) {
+            KeyStoreHelper.removeWalletUserPass(getActivity(), name);
+        }
     }
 
     private void showInfo(@NonNull String name) {
-        activityCallback.onWalletDetails(name, isTestnet());
+        activityCallback.onWalletDetails(name);
     }
 
     private void showReceive(@NonNull String name) {
-        activityCallback.onWalletReceive(name, isTestnet());
+        activityCallback.onWalletReceive(name);
     }
 
     @Override
@@ -337,29 +351,31 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
-        menu.findItem(R.id.action_testnet).setChecked(isTestnet());
+        menu.findItem(R.id.action_testnet).setChecked(testnetCheckMenu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private boolean testnet = BuildConfig.DEBUG;
+    private boolean testnetCheckMenu = BuildConfig.DEBUG;
 
-    boolean isTestnet() {
-        return testnet;
-    }
+    //boolean isTestnet() {
+    //    return testnet;
+    //}
 
     public boolean onTestnetMenuItem() {
-        boolean lastState = testnet;
+        boolean lastState = testnetCheckMenu;
         setNet(!lastState, true); // set and save
         return !lastState;
     }
 
-    public void setNet(boolean testnet, boolean save) {
-        this.testnet = testnet;
-        activityCallback.showNet(testnet);
+    public void setNet(boolean testnetChecked, boolean save) {
+        this.testnetCheckMenu = testnetChecked;
+        NetworkType net = testnetChecked ? NetworkType.NetworkType_Testnet : NetworkType.NetworkType_Mainnet;
+        activityCallback.setNetworkType(net);
+        activityCallback.showNet();
         if (save) {
             savePrefs(true); // use previous state as we just clicked it
         }
-        if (testnet) {
+        if (testnetChecked) {
             setDaemon(daemonTestNet);
         } else {
             setDaemon(daemonMainNet);
@@ -369,7 +385,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    private static final String PREF_SHOW_XMRTO_ENABLED = "info_xmrto_enabled_login";
 
     private static final String PREF_DAEMONLIST_MAINNET =
             "node.moneroworld.com:18089;node.xmrbackb.one;node.xmr.be";
@@ -380,23 +395,12 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private NodeList daemonTestNet;
     private NodeList daemonMainNet;
 
-    boolean showXmrtoEnabled = true;
-
     void loadPrefs() {
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
         daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
-        setNet(isTestnet(), false);
-
-        showXmrtoEnabled = sharedPref.getBoolean(PREF_SHOW_XMRTO_ENABLED, true);
-    }
-
-    void saveXmrToPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
-        editor.apply();
+        setNet(testnetCheckMenu, false);
     }
 
     void savePrefs() {
@@ -406,7 +410,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     void savePrefs(boolean usePreviousTestnetState) {
         Timber.d("SAVE / %s", usePreviousTestnetState);
         // save the daemon address for the net
-        boolean testnet = isTestnet() ^ usePreviousTestnetState;
+        boolean testnet = testnetCheckMenu ^ usePreviousTestnetState;
         String daemon = getDaemon();
         if (testnet) {
             daemonTestNet.setRecent(daemon);
@@ -418,7 +422,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
         editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
-        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
         editor.apply();
     }
 
@@ -492,19 +495,19 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             case R.id.fabNew:
                 fabScreen.setVisibility(View.INVISIBLE);
                 isFabOpen = false;
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_NEW);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_NEW);
                 break;
             case R.id.fabView:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_VIEWONLY);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_VIEWONLY);
                 break;
             case R.id.fabKey:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_KEY);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_KEY);
                 break;
             case R.id.fabSeed:
                 animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_SEED);
+                activityCallback.onAddWallet(GenerateFragment.TYPE_SEED);
                 break;
             case R.id.fabScreen:
                 animateFAB();

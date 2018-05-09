@@ -300,7 +300,7 @@ public class ReceiveFragment extends Fragment {
         String paymentId = etPaymentId.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
         Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
-        if ((xmrAmount == null) || !Wallet.isAddressValid(address, WalletManager.getInstance().isTestNet())) {
+        if ((xmrAmount == null) || !Wallet.isAddressValid(address)) {
             clearQR();
             Timber.d("CLEARQR");
             return;
@@ -335,6 +335,7 @@ public class ReceiveFragment extends Fragment {
     }
 
     public Bitmap generate(String text, int width, int height) {
+        if ((width <= 0) || (height <= 0)) return null;
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);

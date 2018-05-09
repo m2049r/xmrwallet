@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_title">About</string>
     <string name="about_close">Close</string>
     <string name="about_whoami">I am monerujo</string>
     <string name="about_version">Version %1$s (%2$d)</string>
 
-    <string name="donation_text">
-        \"Donate you ungrateful bastards!\"
-    </string>
-
-    <string name="donation_address_label">Donations Address</string>
-    <string name="donation_address" translatable="false">4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk</string>
-
-    <string name="donation_credits"><![CDATA[
+    <string name="credits_text"><![CDATA[
         <b>Credits</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
@@ -292,6 +284,8 @@
         Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
         <h3>easylogging++ (https://github.com/monero-project/monero/tree/master/external/easylogging%2B%2B)</h3>
         Copyright (c) 2017 muflihun.com
+        <h3>zxcvbn4j (https://github.com/nulab/zxcvbn4j)</h3>
+        Copyright (c) 2014 Nulab Inc
         <h3>The MIT License</h3>
         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
         <br/>

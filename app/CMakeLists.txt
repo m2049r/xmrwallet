@@ -60,8 +60,12 @@ set_target_properties(boost_wserialization PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/boost/lib/${ANDROID_ABI}/libboost_wserialization.a)
 
 #############
-# Monero set(libs_to_merge wallet cryptonote_core cryptonote_basic mnemonics common cncrypto ringct)
+# Monero
 #############
+
+add_library(wallet_api STATIC IMPORTED)
+set_target_properties(wallet_api PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libwallet_api.a)
 
 add_library(wallet STATIC IMPORTED)
 set_target_properties(wallet PROPERTIES IMPORTED_LOCATION
@@ -91,11 +95,9 @@ add_library(ringct STATIC IMPORTED)
 set_target_properties(ringct PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libringct.a)
 
-#####
-
-add_library(p2p STATIC IMPORTED)
-set_target_properties(p2p PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libp2p.a)
+add_library(ringct_basic STATIC IMPORTED)
+set_target_properties(ringct_basic PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libringct_basic.a)
 
 add_library(blockchain_db STATIC IMPORTED)
 set_target_properties(blockchain_db PROPERTIES IMPORTED_LOCATION
@@ -113,7 +115,6 @@ add_library(unbound STATIC IMPORTED)
 set_target_properties(unbound PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libunbound.a)
 
-####
 add_library(epee STATIC IMPORTED)
 set_target_properties(epee PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libepee.a)
@@ -122,9 +123,21 @@ add_library(blocks STATIC IMPORTED)
 set_target_properties(blocks PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libblocks.a)
 
-add_library(miniupnpc STATIC IMPORTED)
-set_target_properties(miniupnpc PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libminiupnpc.a)
+add_library(checkpoints STATIC IMPORTED)
+set_target_properties(checkpoints PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcheckpoints.a)
+
+add_library(device STATIC IMPORTED)
+set_target_properties(device PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libdevice.a)
+
+add_library(multisig STATIC IMPORTED)
+set_target_properties(multisig PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libmultisig.a)
+
+add_library(version STATIC IMPORTED)
+set_target_properties(version PROPERTIES IMPORTED_LOCATION
+    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libversion.a)
 
 #############
 # System
@@ -137,23 +150,26 @@ include_directories( ${EXTERNAL_LIBS_DIR}/monero/include )
 message(STATUS EXTERNAL_LIBS_DIR :  ${EXTERNAL_LIBS_DIR})
 
 target_link_libraries(  monerujo
+
+                        wallet_api
                         wallet
                         cryptonote_core
                         cryptonote_basic
                         mnemonics
                         ringct
+                        ringct_basic
                         common
                         cncrypto
-
                         blockchain_db
                         lmdb
                         easylogging
                         unbound
-                        p2p
-
                         epee
                         blocks
-                        miniupnpc
+                        checkpoints
+                        device
+                        multisig
+                        version
 
                         boost_chrono
                         boost_date_time

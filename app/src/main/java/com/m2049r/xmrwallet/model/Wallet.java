@@ -79,7 +79,11 @@ public class Wallet {
 
     public native String getPath();
 
-    public native boolean isTestNet();
+    public NetworkType getNetworkType() {
+        return NetworkType.fromInteger(nettype());
+    }
+
+    public native int nettype();
 
 //TODO virtual void hardForkInfo(uint8_t &version, uint64_t &earliest_height) const = 0;
 //TODO virtual bool useForkRules(uint8_t version, int64_t early_blocks) const = 0;
@@ -155,10 +159,10 @@ public class Wallet {
     public static native boolean isPaymentIdValid(String payment_id);
 
     public static boolean isAddressValid(String address) {
-        return isAddressValid(address, WalletManager.getInstance().isTestNet());
+        return isAddressValid(address, WalletManager.getInstance().getNetworkType().getValue());
     }
 
-    public static native boolean isAddressValid(String address, boolean isTestNet);
+    public static native boolean isAddressValid(String address, int networkType);
 
 //TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);
 
@@ -270,6 +274,5 @@ public class Wallet {
 
 //virtual bool parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &tvAmount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error) = 0;
 //virtual bool rescanSpent() = 0;
-
 
 }

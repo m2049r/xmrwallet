@@ -175,7 +175,6 @@
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/tvTxFeeLabel"
                         style="@style/MoneroLabel.Gray"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -203,7 +202,6 @@
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/tvTxTotalLabel"
                         style="@style/MoneroLabel.Caps.Black"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
