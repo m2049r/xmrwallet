@@ -53,7 +53,6 @@ import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
-import java.security.KeyStoreException;
 
 import timber.log.Timber;
 
@@ -396,15 +395,17 @@ public class GenerateReviewFragment extends Fragment {
             File walletFile = Helper.getWalletFile(getActivity(), params[0]);
             String oldPassword = params[1];
             String userPassword = params[2];
-            boolean fingerprintAuthAllowed = Boolean.valueOf(params[3]);
+            boolean fingerPassValid = Boolean.valueOf(params[3]);
             newPassword = KeyStoreHelper.getCrazyPass(getActivity(), userPassword);
             boolean success = changeWalletPassword(newPassword);
             if (success) {
-                if (fingerprintAuthAllowed) {
-                    KeyStoreHelper.saveWalletUserPass(getActivity(), walletName, userPassword);
-                } else {
-                    KeyStoreHelper.removeWalletUserPass(getActivity(), walletName);
-                }
+                Context ctx = getActivity();
+                if (ctx != null)
+                    if (fingerPassValid) {
+                        KeyStoreHelper.saveWalletUserPass(ctx, walletName, userPassword);
+                    } else {
+                        KeyStoreHelper.removeWalletUserPass(ctx, walletName);
+                    }
             }
             return success;
         }
@@ -412,7 +413,7 @@ public class GenerateReviewFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            if (getActivity().isDestroyed()) {
+            if ((getActivity() == null) || getActivity().isDestroyed()) {
                 return;
             }
             if (progressCallback != null)
@@ -467,11 +468,7 @@ public class GenerateReviewFragment extends Fragment {
                 }
             });
 
-            try {
-                swFingerprintAllowed.setChecked(FingerprintHelper.isFingerprintAuthAllowed(walletName));
-            } catch (KeyStoreException ex) {
-                ex.printStackTrace();
-            }
+            swFingerprintAllowed.setChecked(FingerprintHelper.isFingerPassValid(getActivity(), walletName));
         }
 
         etPasswordA.getEditText().addTextChangedListener(new TextWatcher() {

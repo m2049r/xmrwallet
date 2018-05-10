@@ -64,7 +64,6 @@ import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.security.KeyStoreException;
 import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -368,12 +367,7 @@ public class Helper {
         final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
         etPassword.setHint(context.getString(R.string.prompt_password, wallet));
 
-        boolean fingerprintAuthCheck;
-        try {
-            fingerprintAuthCheck = FingerprintHelper.isFingerprintAuthAllowed(wallet);
-        } catch (KeyStoreException ex) {
-            fingerprintAuthCheck = false;
-        }
+        final boolean fingerprintAuthCheck = FingerprintHelper.isFingerPassValid(context, wallet);
 
         final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
         final CancellationSignal cancelSignal = new CancellationSignal();
@@ -425,13 +419,18 @@ public class Helper {
 
             @Override
             public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
-                String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
-                if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
-                    Helper.hideKeyboardAlways((Activity) context);
-                    openDialog.dismiss();
-                    openDialog = null;
-                } else {
+                try {
+                    String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
+                    if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
+                        Helper.hideKeyboardAlways((Activity) context);
+                        openDialog.dismiss();
+                        openDialog = null;
+                    } else {
+                        etPassword.setError(context.getString(R.string.bad_password));
+                    }
+                } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
                     etPassword.setError(context.getString(R.string.bad_password));
+                    // TODO: better errror message here - what would it be?
                 }
             }
 
