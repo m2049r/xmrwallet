@@ -133,6 +133,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
+            password = extras.getString(REQUEST_PW);
             connectWalletService(walletId, password);
         } else {
             finish();
@@ -258,8 +259,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName()).commit();
         Timber.d("fragment added");
-
-        password = getIntent().getExtras().getString(REQUEST_PW);
 
         startWalletService();
         Timber.d("onCreate() done.");

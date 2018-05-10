@@ -23,8 +23,10 @@ import android.os.Build;
 import android.security.KeyPairGeneratorSpec;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
@@ -39,10 +41,15 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.SignatureException;
+import java.security.UnrecoverableEntryException;
+import java.security.cert.CertificateException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.security.auth.x500.X500Principal;
 
 import timber.log.Timber;
@@ -58,43 +65,54 @@ public class KeyStoreHelper {
     static final private String RSA_ALIAS = "MonerujoRSA";
 
     public static String getCrazyPass(Context context, String password) {
-        // TODO we should check Locale.getDefault().getLanguage() here but for now we default to English
-        return getCrazyPass(context, password, "English");
-    }
-
-    public static String getCrazyPass(Context context, String password, String language) {
         byte[] data = password.getBytes(StandardCharsets.UTF_8);
         byte[] sig = null;
         try {
             KeyStoreHelper.createKeys(context, RSA_ALIAS);
             sig = KeyStoreHelper.signData(RSA_ALIAS, data);
-        } catch (Exception ex) {
+        } catch (NoSuchProviderException | NoSuchAlgorithmException |
+                InvalidAlgorithmParameterException | KeyStoreException |
+                InvalidKeyException | SignatureException ex) {
             throw new IllegalStateException(ex);
         }
         return CrazyPassEncoder.encode(cnSlowHash(sig));
     }
 
-    public static void saveWalletUserPass(Context context, String wallet, String password) {
+    public static boolean saveWalletUserPass(@NonNull Context context, String wallet, String password) {
         String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         byte[] data = password.getBytes(StandardCharsets.UTF_8);
         try {
             KeyStoreHelper.createKeys(context, walletKeyAlias);
             byte[] encrypted = KeyStoreHelper.encrypt(walletKeyAlias, data);
+            if (encrypted == null) return false;
             context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
                     .putString(wallet, Base64.encodeToString(encrypted, Base64.DEFAULT))
                     .apply();
-        } catch (Exception ex) {
-            throw new IllegalStateException(ex);
+            return true;
+        } catch (NoSuchProviderException | NoSuchAlgorithmException |
+                InvalidAlgorithmParameterException | KeyStoreException ex) {
+            Timber.w(ex);
+            return false;
         }
     }
 
-    public static String loadWalletUserPass(Context context, String wallet) {
+    static public class BrokenPasswordStoreException extends Exception {
+        BrokenPasswordStoreException() {
+            super();
+        }
+
+        BrokenPasswordStoreException(Throwable cause) {
+            super(cause);
+        }
+    }
+
+    public static String loadWalletUserPass(@NonNull Context context, String wallet) throws BrokenPasswordStoreException {
         String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         String encoded = context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getString(wallet, "");
         byte[] data = Base64.decode(encoded, Base64.DEFAULT);
         byte[] decrypted = KeyStoreHelper.decrypt(walletKeyAlias, data);
-
+        if (decrypted == null) throw new BrokenPasswordStoreException();
         return new String(decrypted, StandardCharsets.UTF_8);
     }
 
@@ -102,23 +120,23 @@ public class KeyStoreHelper {
         String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         try {
             KeyStoreHelper.deleteKeys(walletKeyAlias);
-            context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
-                    .remove(wallet).apply();
-        } catch (Exception ex) {
-            throw new IllegalStateException(ex);
+        } catch (KeyStoreException ex) {
+            Timber.w(ex);
         }
+        context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
+                .remove(wallet).apply();
     }
 
     /**
      * Creates a public and private key and stores it using the Android Key
      * Store, so that only this application will be able to access the keys.
      */
-    public static void createKeys(Context context, String alias) throws NoSuchProviderException,
+    private static void createKeys(Context context, String alias) throws NoSuchProviderException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException {
         KeyStore keyStore = KeyStore.getInstance(SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
         try {
             keyStore.load(null);
-        } catch (Exception ex) { // don't care why it failed
+        } catch (IOException | CertificateException ex) {
             throw new IllegalStateException("Could not load KeySotre", ex);
         }
         if (!keyStore.containsAlias(alias)) {
@@ -130,13 +148,25 @@ public class KeyStoreHelper {
         }
     }
 
-    public static void deleteKeys(String alias) throws KeyStoreException {
+    private static boolean deleteKeys(String alias) throws KeyStoreException {
         KeyStore keyStore = KeyStore.getInstance(SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
         try {
             keyStore.load(null);
             keyStore.deleteEntry(alias);
-        } catch (Exception ex) { // don't care why it failed
-            throw new IllegalStateException("Could not load KeySotre", ex);
+            return true;
+        } catch (IOException | NoSuchAlgorithmException | CertificateException ex) {
+            Timber.w(ex);
+            return false;
+        }
+    }
+
+    public static boolean keyExists(String wallet) throws BrokenPasswordStoreException {
+        try {
+            KeyStore keyStore = KeyStore.getInstance(KeyStoreHelper.SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
+            keyStore.load(null);
+            return keyStore.containsAlias(KeyStoreHelper.SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet);
+        } catch (IOException | NoSuchAlgorithmException | CertificateException | KeyStoreException ex) {
+            throw new BrokenPasswordStoreException(ex);
         }
     }
 
@@ -164,22 +194,19 @@ public class KeyStoreHelper {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    private static void createKeysM(String alias) {
-        try {
-            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(
-                    KeyProperties.KEY_ALGORITHM_RSA, SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
-            keyPairGenerator.initialize(
-                    new KeyGenParameterSpec.Builder(
-                            alias, KeyProperties.PURPOSE_SIGN | KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                            .setDigests(KeyProperties.DIGEST_SHA256)
-                            .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
-                            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
-                            .build());
-            KeyPair keyPair = keyPairGenerator.generateKeyPair();
-            Timber.d("M Keys created");
-        } catch (NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
-            throw new RuntimeException(e);
-        }
+    private static void createKeysM(String alias) throws NoSuchProviderException,
+            NoSuchAlgorithmException, InvalidAlgorithmParameterException {
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(
+                KeyProperties.KEY_ALGORITHM_RSA, SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
+        keyPairGenerator.initialize(
+                new KeyGenParameterSpec.Builder(
+                        alias, KeyProperties.PURPOSE_SIGN | KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                        .setDigests(KeyProperties.DIGEST_SHA256)
+                        .setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PKCS1)
+                        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+                        .build());
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+        Timber.d("M Keys created");
     }
 
     private static KeyStore.PrivateKeyEntry getPrivateKeyEntry(String alias) {
@@ -199,33 +226,38 @@ public class KeyStoreHelper {
                 return null;
             }
             return (KeyStore.PrivateKeyEntry) entry;
-        } catch (Exception ex) {
+        } catch (IOException | NoSuchAlgorithmException | CertificateException
+                | UnrecoverableEntryException | KeyStoreException ex) {
             Timber.e(ex);
             return null;
         }
     }
 
-    public static byte[] encrypt(String alias, byte[] data) {
+    private static byte[] encrypt(String alias, byte[] data) {
         try {
             PublicKey publicKey = getPrivateKeyEntry(alias).getCertificate().getPublicKey();
             Cipher cipher = Cipher.getInstance(SecurityConstants.CIPHER_RSA_ECB_PKCS1);
 
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
             return cipher.doFinal(data);
-        } catch (Exception ex) {
-            throw new IllegalStateException("Could not initialize RSA cipher", ex);
+        } catch (InvalidKeyException | IllegalBlockSizeException | BadPaddingException
+                | NoSuchAlgorithmException | NoSuchPaddingException ex) {
+            Timber.e(ex);
+            return null;
         }
     }
 
-    public static byte[] decrypt(String alias, byte[] data) {
+    private static byte[] decrypt(String alias, byte[] data) {
         try {
             PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
             Cipher cipher = Cipher.getInstance(SecurityConstants.CIPHER_RSA_ECB_PKCS1);
 
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             return cipher.doFinal(data);
-        } catch (Exception ex) {
-            throw new IllegalStateException("Could not initialize RSA cipher", ex);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                IllegalBlockSizeException | BadPaddingException ex) {
+            Timber.e(ex);
+            return null;
         }
     }
 
@@ -236,7 +268,7 @@ public class KeyStoreHelper {
      *
      * @return The data signature generated
      */
-    public static byte[] signData(String alias, byte[] data) throws NoSuchAlgorithmException,
+    private static byte[] signData(String alias, byte[] data) throws NoSuchAlgorithmException,
             InvalidKeyException, SignatureException {
 
         PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
@@ -256,7 +288,7 @@ public class KeyStoreHelper {
      * @return A boolean value telling you whether the signature is valid or
      * not.
      */
-    public static boolean verifyData(String alias, byte[] data, byte[] signature)
+    private static boolean verifyData(String alias, byte[] data, byte[] signature)
             throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 
         // Make sure the signature string exists

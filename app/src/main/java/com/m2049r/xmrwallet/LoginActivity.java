@@ -50,7 +50,6 @@ import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
@@ -63,7 +62,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
-import java.security.KeyStoreException;
 import java.util.Date;
 
 import timber.log.Timber;
@@ -229,17 +227,20 @@ public class LoginActivity extends SecureActivity
         @Override
         protected Boolean doInBackground(String... params) {
             if (params.length != 2) return false;
-            File walletFile = Helper.getWalletFile(LoginActivity.this, params[0]);
+            String oldName = params[0];
             String newName = params[1];
+            File walletFile = Helper.getWalletFile(LoginActivity.this, oldName);
             boolean success = renameWallet(walletFile, newName);
             try {
-                if (success && FingerprintHelper.isFingerprintAuthAllowed(params[0])) {
-                    String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, params[0]);
+                if (success) {
+                    String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, oldName);
                     KeyStoreHelper.saveWalletUserPass(LoginActivity.this, newName, savedPass);
-                    KeyStoreHelper.removeWalletUserPass(LoginActivity.this, params[0]);
                 }
-            } catch (KeyStoreException ex) {
-                ex.printStackTrace();
+            } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+                Timber.w(ex);
+            } finally {
+                // we have either set a new password or it is broken - kill the old one either way
+                KeyStoreHelper.removeWalletUserPass(LoginActivity.this, oldName);
             }
             return success;
         }

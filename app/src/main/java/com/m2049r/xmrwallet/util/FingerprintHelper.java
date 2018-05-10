@@ -5,8 +5,7 @@ import android.content.Context;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.support.v4.os.CancellationSignal;
 
-import java.security.KeyStore;
-import java.security.KeyStoreException;
+import timber.log.Timber;
 
 public class FingerprintHelper {
 
@@ -20,15 +19,14 @@ public class FingerprintHelper {
                 fingerprintManager.hasEnrolledFingerprints();
     }
 
-    public static boolean isFingerprintAuthAllowed(String wallet) throws KeyStoreException {
-        KeyStore keyStore = KeyStore.getInstance(KeyStoreHelper.SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
+    public static boolean isFingerPassValid(Context context, String wallet) {
         try {
-            keyStore.load(null);
-        } catch (Exception ex) {
-            throw new IllegalStateException("Could not load KeyStore", ex);
+            KeyStoreHelper.loadWalletUserPass(context, wallet);
+            return true;
+        } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+            Timber.w(ex);
+            return false;
         }
-
-        return keyStore.containsAlias(KeyStoreHelper.SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet);
     }
 
     public static void authenticate(Context context, CancellationSignal cancelSignal,
@@ -36,5 +34,4 @@ public class FingerprintHelper {
         FingerprintManagerCompat manager = FingerprintManagerCompat.from(context);
         manager.authenticate(null, 0, cancelSignal, callback, null);
     }
-
 }
