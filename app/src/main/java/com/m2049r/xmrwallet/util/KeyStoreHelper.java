@@ -70,12 +70,12 @@ public class KeyStoreHelper {
         try {
             KeyStoreHelper.createKeys(context, RSA_ALIAS);
             sig = KeyStoreHelper.signData(RSA_ALIAS, data);
+            return CrazyPassEncoder.encode(cnSlowHash(sig));
         } catch (NoSuchProviderException | NoSuchAlgorithmException |
                 InvalidAlgorithmParameterException | KeyStoreException |
                 InvalidKeyException | SignatureException ex) {
             throw new IllegalStateException(ex);
         }
-        return CrazyPassEncoder.encode(cnSlowHash(sig));
     }
 
     public static boolean saveWalletUserPass(@NonNull Context context, String wallet, String password) {
@@ -110,6 +110,7 @@ public class KeyStoreHelper {
         String walletKeyAlias = SecurityConstants.WALLET_PASS_KEY_PREFIX + wallet;
         String encoded = context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getString(wallet, "");
+        if (encoded.isEmpty()) throw new BrokenPasswordStoreException();
         byte[] data = Base64.decode(encoded, Base64.DEFAULT);
         byte[] decrypted = KeyStoreHelper.decrypt(walletKeyAlias, data);
         if (decrypted == null) throw new BrokenPasswordStoreException();
