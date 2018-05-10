@@ -391,13 +391,11 @@ public class GenerateReviewFragment extends Fragment {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            if (params.length != 4) return false;
-            File walletFile = Helper.getWalletFile(getActivity(), params[0]);
-            String oldPassword = params[1];
-            String userPassword = params[2];
-            boolean fingerPassValid = Boolean.valueOf(params[3]);
+            if (params.length != 2) return false;
+            final String userPassword = params[0];
+            final boolean fingerPassValid = Boolean.valueOf(params[1]);
             newPassword = KeyStoreHelper.getCrazyPass(getActivity(), userPassword);
-            boolean success = changeWalletPassword(newPassword);
+            final boolean success = changeWalletPassword(newPassword);
             if (success) {
                 Context ctx = getActivity();
                 if (ctx != null)
@@ -544,7 +542,7 @@ public class GenerateReviewFragment extends Fragment {
                         } else if (!newPasswordA.equals(newPasswordB)) {
                             etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                         } else if (newPasswordA.equals(newPasswordB)) {
-                            new AsyncChangePassword().execute(walletName, getPassword(), newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
+                            new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
                             Helper.hideKeyboardAlways(getActivity());
                             openDialog.dismiss();
                             openDialog = null;
@@ -566,7 +564,7 @@ public class GenerateReviewFragment extends Fragment {
                     } else if (!newPasswordA.equals(newPasswordB)) {
                         etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                     } else if (newPasswordA.equals(newPasswordB)) {
-                        new AsyncChangePassword().execute(walletName, getPassword(), newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
+                        new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
                         Helper.hideKeyboardAlways(getActivity());
                         openDialog.dismiss();
                         openDialog = null;
