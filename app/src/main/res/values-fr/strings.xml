@@ -311,4 +311,7 @@
     <string name="fab_restore_viewonly">Restaurer un portefeuille d\'audit</string>
     <string name="fab_restore_key">Restaurer un portefeuille depuis la clef privée</string>
     <string name="fab_restore_seed">Restaurer un portefeuille depuis la phrase mnémonique</string>
+    <string name="menu_backup_to_nfc">Backup To NFC</string>
+    <string name="input_nfc_password_title">Input NFC Password Then Tap</string>
+    <string name="menu_backup_to_file">Backup To File</string>
 </resources>

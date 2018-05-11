@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -35,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -71,6 +73,15 @@ public class GenerateFragment extends Fragment {
     private TextInputLayout etWalletViewKey;
     private TextInputLayout etWalletSpendKey;
     private TextInputLayout etWalletRestoreHeight;
+
+    private LinearLayout llNfcPasswordSeed;
+    private TextInputLayout etNfcPasswordSeed;
+    private ImageView ivNfcPasswordSeed;
+
+    private LinearLayout llNfcPasswordkey;
+    private TextInputLayout etNfcPasswordkey;
+    private ImageView ivNfcPasswordkey;
+
     private Button bGenerate;
 
     private String type = null;
@@ -92,7 +103,25 @@ public class GenerateFragment extends Fragment {
         etWalletViewKey = (TextInputLayout) view.findViewById(R.id.etWalletViewKey);
         etWalletSpendKey = (TextInputLayout) view.findViewById(R.id.etWalletSpendKey);
         etWalletRestoreHeight = (TextInputLayout) view.findViewById(R.id.etWalletRestoreHeight);
+
+        llNfcPasswordSeed = (LinearLayout) view.findViewById(R.id.llNfcPasswordSeed);
+        etNfcPasswordSeed = (TextInputLayout) view.findViewById(R.id.etNfcPasswordSeed);
+        ivNfcPasswordSeed = (ImageView) view.findViewById(R.id.ivNfcPasswordSeed);
+        llNfcPasswordkey = (LinearLayout) view.findViewById(R.id.llNfcPasswordkey);
+        etNfcPasswordkey = (TextInputLayout) view.findViewById(R.id.etNfcPasswordkey);
+        ivNfcPasswordkey = (ImageView) view.findViewById(R.id.ivNfcPasswordkey);
+
         bGenerate = (Button) view.findViewById(R.id.bGenerate);
+
+        ivNfcPasswordkey.setImageResource(R.drawable.nfc_signal);
+        ivNfcPasswordSeed.setImageResource(R.drawable.nfc_signal);
+        AnimationDrawable nfcAnimationkey = (AnimationDrawable) ivNfcPasswordkey.getDrawable();
+        nfcAnimationkey.setOneShot(false);
+        nfcAnimationkey.start();
+
+        AnimationDrawable nfcAnimationSeed = (AnimationDrawable) ivNfcPasswordSeed.getDrawable();
+        nfcAnimationSeed.setOneShot(false);
+        nfcAnimationSeed.start();
 
         etWalletMnemonic.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
         etWalletAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -212,6 +241,8 @@ public class GenerateFragment extends Fragment {
                     return false;
                 }
             });
+            llNfcPasswordSeed.setVisibility(View.VISIBLE);
+
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -252,6 +283,8 @@ public class GenerateFragment extends Fragment {
                     return false;
                 }
             });
+
+            llNfcPasswordkey.setVisibility(View.VISIBLE);
         }
         if (type.equals(TYPE_KEY)) {
             etWalletSpendKey.setVisibility(View.VISIBLE);
@@ -268,6 +301,7 @@ public class GenerateFragment extends Fragment {
                     return false;
                 }
             });
+            llNfcPasswordkey.setVisibility(View.VISIBLE);
         }
         if (!type.equals(TYPE_NEW)) {
             etWalletRestoreHeight.setVisibility(View.VISIBLE);
@@ -281,6 +315,7 @@ public class GenerateFragment extends Fragment {
                     return false;
                 }
             });
+
         }
         bGenerate.setOnClickListener(new View.OnClickListener()
 
