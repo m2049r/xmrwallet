@@ -18,6 +18,7 @@ package com.m2049r.xmrwallet;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,6 +26,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
+import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,6 +47,7 @@ import com.m2049r.xmrwallet.data.WalletNode;
 import com.m2049r.xmrwallet.dialog.AboutFragment;
 import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.dialog.InputNfcPasswordFragment;
 import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -81,6 +84,10 @@ public class LoginActivity extends SecureActivity
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
 
     private Toolbar toolbar;
+
+    private TagUtil tagUtil ;
+
+    private InputNfcPasswordFragment inputNfcPassword;
 
     @Override
     public void setToolbarButton(int type) {
@@ -323,7 +330,6 @@ public class LoginActivity extends SecureActivity
                 return false;
             }
         });
-
         dialog.show();
     }
 
@@ -379,6 +385,36 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    private class AsyncBackupToNFC2 extends AsyncTask<Object, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected Boolean doInBackground(Object... params) {
+            if (params.length != 2) return false;
+            Intent intent = (Intent) params[0];
+            String walletName = (String) params[1];
+            return backupWalletToNFC(intent,walletName);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (isDestroyed()) {
+                return;
+            }
+            dismissProgressDialog();
+            if (!result) {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            }else{
+                InputNfcPasswordFragment.getInstance().dismiss();
+            }
+        }
+    }
+
     private boolean backupWallet(String walletName) {
         File backupFolder = new File(getStorageRoot(), "backups");
         if (!backupFolder.exists()) {
@@ -397,6 +433,42 @@ public class LoginActivity extends SecureActivity
         // or just create a new backup every time and keep n old backups
         boolean success = copyWallet(walletFile, backupFile, true, true);
         Timber.d("copyWallet is %s", success);
+        return success;
+    }
+
+    private boolean backupWalletToNFC(Intent intent,String walletName) {
+        boolean success=false;
+        File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+        //Timber.d("backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
+
+        boolean authenticated=false;
+        try {
+            tagUtil = TagUtil.selectTag(intent, false);
+            authenticated = tagUtil.authentication(intent, getKey(), false);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(authenticated)
+        {
+            Toast toast = Toast.makeText(LoginActivity.this, "Authentication Successful", Toast.LENGTH_LONG);
+            try {
+
+                byte[] bytes = new byte[(int)walletFile.length()];
+                new FileInputStream(walletFile).read(bytes);
+                tagUtil.writeTag(intent,(byte)4,bytes,false);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+            return false;
         return success;
     }
 
@@ -432,8 +504,8 @@ public class LoginActivity extends SecureActivity
                 e.printStackTrace();
             }
         }
-            else
-                return false;
+        else
+            return false;
         return success;
     }
     private byte[] getKey()
@@ -475,7 +547,9 @@ public class LoginActivity extends SecureActivity
     @Override
     public void onWalletBackupToNFC(String walletName) {
         Timber.d("backup to NFC hard wallet for wallet ." + walletName + ".");
-        new AsyncBackupToNFC().execute(walletName);
+        InputNfcPasswordFragment.display(getSupportFragmentManager());
+        InputNfcPasswordFragment.getInstance().setWalletName(walletName);
+
     }
 
     private class AsyncArchive extends AsyncTask<String, Void, Boolean> {
@@ -656,6 +730,21 @@ public class LoginActivity extends SecureActivity
         if (WalletService.Running && (progressDialog == null)) {
             // and show a progress dialog, but only if there isn't one already
             new AsyncWaitForService().execute();
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())
+                || NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())
+                || NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
+            try {
+                tagUtil = TagUtil.selectTag(intent, false);
+                new AsyncBackupToNFC2().execute(intent,InputNfcPasswordFragment.getInstance().getWalletName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

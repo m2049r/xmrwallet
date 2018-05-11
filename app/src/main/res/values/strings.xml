@@ -213,6 +213,9 @@
     <string name="generate_spendkey_hint">Spend Key</string>
     <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
     <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
+    <string name="generate_nfc_password_seed_hint">Input NFC Password Then Tap To read Seed</string>
+    <string name="generate_nfc_password_key_hint">Input NFC Password Then Tap to Read Keys</string>
+
 
     <string name="generate_address_label">Public Address</string>
     <string name="generate_viewkey_label">View Key</string>
@@ -328,4 +331,5 @@
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
     <string name="menu_backup_to_file">Backup To File</string>
+    <string name="input_nfc_password_title">Input NFC Password Then Tap</string>
 </resources>

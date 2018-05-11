@@ -308,4 +308,7 @@
     <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
     <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
     <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
+    <string name="menu_backup_to_nfc">Backup To NFC</string>
+    <string name="input_nfc_password_title">Input NFC Password Then Tap</string>
+    <string name="menu_backup_to_file">Backup To File</string>
 </resources>

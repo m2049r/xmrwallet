@@ -293,4 +293,7 @@
     <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
     <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
+    <string name="menu_backup_to_nfc">Backup To NFC</string>
+    <string name="input_nfc_password_title">Input NFC Password Then Tap</string>
+    <string name="menu_backup_to_file">Backup To File</string>
 </resources>
