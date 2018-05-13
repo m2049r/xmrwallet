@@ -1,7 +1,6 @@
 <resources>
     <string name="wallet_activity_name">錢包</string>
 
-    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">關於</string>
     <string name="menu_privacy">隱私權政策</string>
 

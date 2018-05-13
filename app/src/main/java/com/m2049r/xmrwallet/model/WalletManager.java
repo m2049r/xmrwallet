@@ -228,7 +228,6 @@ public class WalletManager {
 
     public String getDaemonAddress() {
         if (daemonAddress == null) {
-            // assume testnet not explicitly initialised
             throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
         }
         return this.daemonAddress;
@@ -236,13 +235,13 @@ public class WalletManager {
 
     private native void setDaemonAddressJ(String address);
 
-    String daemonUsername = "";
+    private String daemonUsername = "";
 
     public String getDaemonUsername() {
         return daemonUsername;
     }
 
-    String daemonPassword = "";
+    private String daemonPassword = "";
 
     public String getDaemonPassword() {
         return daemonPassword;

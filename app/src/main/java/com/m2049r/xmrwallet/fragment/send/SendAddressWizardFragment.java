@@ -233,7 +233,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean isBitcoinAddress() {
         String address = etAddress.getEditText().getText().toString();
-        if ((address.length() >= 27) && (address.length() <= 34))
+        if ((address.length() >= 27) && (address.length() <= 35))
             return BitcoinAddressValidator.validate(address);
         else
             return false;
