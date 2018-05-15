@@ -8,209 +8,209 @@
 		Χρησιμοποίησε έναν ισχυρό κωδικό πρόσβασης - ακόμα καλύτερα χρησιμοποιήσε μια φράση-κωδικό.</p>
         <h2>Σημείωσε τον μνημονικό σου σπόρο!</h2>
         <p>Στην παρακάτω οθόνη θα βρείς τον 25-λέξεων \"Μνημονικό Σπόρο \".
-        Αυτό είναι η μόνη πληροφορία που χρειάζεσαι για να επαναφέρεις το πορτοφόλι σου στο μέλλον
+        Αυτό είναι τα μόνα δεδομένα που χρειάζεσαι για να επαναφέρεις το πορτοφόλι σου στο μέλλον
         και να έχεις πλήρη πρόσβαση στα κεφάλαιά σου.
         Το να το κρατήσεις ασφαλές και ιδιωτικό είναι πολύ σημαντικό, καθώς δίνει στον <em>οποιονδήποτε</em>
         πλήρη πρόσβαση στα κεφάλαιά σου!</p>
-        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
-        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
-        The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
-        you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
-        that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
-        and secure places.</p>
+        <p>Αν χάσεις τον κωδικό του πορτοφολιού σου, μπορείς να επαναφέρεις το πορτοφόλι σου με τον Μνημονικό Σπόρο</p>
+        <p>Δεν υπάρχει τρόπος να επαναφέρεις τον Μνημονικό σου Σπόρο, αν τον χάσεις όλα σου τα κεφάλαια θα χαθούν!
+        Επίσης, ο Μνημονικός Σπόρος δεν γίνεται να αλλάξει, και αν κλαπεί ή εκτεθεί,
+        θα πρέπει να μεταφέρεις τα κεφάλαιά σου σε ένα νέο πορτοφόλι (με νέο Μνημονιακό Σπόρο). Επομένως, το καλύτερο
+        είναι να κρατήσεις αντίγραφο του Μνημονικού Σπόρου σου γράφοντάς τον και αποθηκεύοντάς τον <em>πολλαπλές φορές</em> σε
+        ασφαλή μέρη.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.</p>
-        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Δημιουργία πορτοφολιού - Σπόρος</h1>
+        <p>Εάν έχεις ήδη μια Διεύθυνση Monero και θέλεις να επαναφέρεις τις συναλλαγές από το blockchain!</p>
+        <p>Βάλε ένα μοναδικό όνομα χρήστη και κωδικό για το πορτοφόλι. Ο κωδικός χρησιμοποιείται για τη διασφάλιση των δεδομένων του πορτοφολιού στη συσκευή.
+        Χρησιμοποιήστε έναν ισχυρό κωδικό πρόσβασης - ακόμα καλύτερα χρησιμοποιήστε μια φράση-κωδικό.</p>
+        <p>Βάλε τον Σπόρο σου στο πεδίο \"Μνημονικός Σπόρος\".<p>
+        <p>Εάν ξέρεις τον αριθμό μπλοκ της πρώτης συναλλαγής για αυτή την διεύθυνση, βάλε τον στο
+        πεδίο \"Ύψος ανάκτησης\" - αφήνοντάς το κενό θα σαρωθεί <em>ολόκληρο</em> το blockchain για
+        συναλλαγές που ανήκουν στην διεύθυνσή σου. Αυτό παίρνει <em>πολύ</em> ώρα.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Create Wallet - Keys</h1>
-        <p>If you are recovering your wallet using your keys!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Δημιουργία πορτοφολιού - Κλειδιά</h1>
+        <p>Εάν επαναφέρεις το πορτοφόλι χρησιμοποιώντας τα κλειδιά του πορτοφολιού σου!</p>
+        <p>Βάλε ένα μοναδικό όνομα χρήστη και κωδικό για το πορτοφόλι. Ο κωδικός χρησιμοποιείται για τη διασφάλιση των δεδομένων του πορτοφολιού στη συσκευή.
+        Χρησιμοποιήστε έναν ισχυρό κωδικό πρόσβασης - ακόμα καλύτερα χρησιμοποιήστε μια φράση-κωδικό.</p>
+        <p>Βάλε την Διεύθυνση Monero στο πεδίο \"Δημόσια Διεύθυνση\" και συμπλήρωσε το \"Κλειδί Προβολής\" και \"Κλειδί Ξοδεύματος\".</p>
+        <p>Εάν ξέρεις τον αριθμό μπλοκ της πρώτης συναλλαγής για αυτή την διεύθυνση, βάλε τον στο
+        πεδίο \"Ύψος ανάκτησης\" - αφήνοντάς το κενό θα σαρωθεί <em>ολόκληρο</em> το blockchain για
+        συναλλαγές που ανήκουν στην διεύθυνσή σου. Αυτό παίρνει <em>πολύ</em> ώρα.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Create Wallet - View</h1>
-        <p>If you just want to monitor incoming transactions to a wallet!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
-        <p>If you know the block number of the first transaction used for this address, enter it in the
-        field \"Restore Height\" - leaving it blank will scan the <em>entire</em> blockchain for
-        transactions belonging to your address. This takes a <em>long</em> time.</p>
+        <h1>Δημιουργία πορτοφολιού - Παρακολούθησης</h1>
+        <p>Εάν θέλεις μόνο να παρακολουθείς για εισερχόμενες συναλλαγές σε ένα πορτοφόλι!</p>
+        <p>Βάλε ένα μοναδικό όνομα χρήστη και κωδικό για το πορτοφόλι. Ο κωδικός χρησιμοποιείται για τη διασφάλιση των δεδομένων του πορτοφολιού στη συσκευή.
+        Χρησιμοποιήστε έναν ισχυρό κωδικό πρόσβασης - ακόμα καλύτερα χρησιμοποιήστε μια φράση-κωδικό.</p>
+        <p>Βάλε την Διεύθυνση Monero στο πεδίο \"Δημόσια Διεύθυνση\" και συμπλήρωσε το \"Κλειδί Προβολής\".</p>
+        <p>Εάν ξέρεις τον αριθμό μπλοκ της πρώτης συναλλαγής για αυτή την διεύθυνση, βάλε τον στο
+        πεδίο \"Ύψος ανάκτησης\" - αφήνοντάς το κενό θα σαρωθεί <em>ολόκληρο</em> το blockchain για
+        συναλλαγές που ανήκουν στην διεύθυνσή σου. Αυτό παίρνει <em>πολύ</em> ώρα.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
-        <h1>Wallet Details</h1>
-        <h2>Public address</h2>
-        Your public address is like your bank account number you can share this with anyone without
-        having to fear losing your Monero. People will send Monero to your wallet using this address.
-        <h2>Mnemonic Seed</h2>
-        This is the only data needed to recover your wallet at a later point and gain full access to
-        your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
-        access to your Monero! If you haven’t written this down somewhere safe please do!
-        <h2>View key</h2>
-        Your view key can be used to monitor incoming transactions to your wallet without giving
-        permission to spend the funds inside your wallet.
-        <h2>Spend key</h2>
-        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
-        anyone this key, keep it safe like your Mnemonic Seed.
+        <h1>Λεπτομέρειες Πορτοφολιού</h1>
+        <h2>Δημόσια διεύθυνση</h2>
+        Η δημόσια διεύθυνσή σου είναι σαν τον αριθμό τραπεζικού λογαριασμού μπορείς να την μοιραστείς με οποιονδήποτε
+        χωρίς να φοβάσαι οτι θα χάσεις τα Monero σου. Μπορείς να λάβεις Monero στο πορτοφόλι σου με αυτή την διεύθυνση.
+        <h2>Μνημονικός Σπόρος</h2>
+        Αυτό είναι τα μόνα δεδομένα που χρειάζεσαι για να επαναφέρεις το πορτοφόλι σου οποτεδήποτε στο μέλλον
+        και να έχεις πλήρη πρόσβαση στα κεφάλαιά σου. Το να το κρατήσεις ασφαλές και ιδιωτικό είναι πολύ σημαντικό, καθώς δίνει στον <em>οποιονδήποτε</em>
+        πλήρη πρόσβαση στα κεφάλαιά σου! Αν δεν το έχεις σημειώσει ήδη σε ασφαλές μέρος παρακαλώ κάνε το!
+        <h2>Κλειδί προβολής</h2>
+        Το κλειδί προβολής(view key) μπορεί να χρησιμοποιηθεί για να παρακολουθήσει εισερχόμενες συναλλαγές
+        στο πορτοφόλι σου χωρίς να δίνει την δυνατότητα να ξοδέψεις κεφάλαια από αυτό.
+        <h2>Κλειδί ξοδεύματος</h2>
+        Το κλειδί ξοδεύματος(spend key) επιτρέπει στον οποιονδήποτε να ξοδέψει τα Monero που σχετίζοντε με το πορτοφόλι σου,
+        για αυτό μην μοιραστείς με κανέναν αυτό το κλειδί, κράτα το ασφαλές όπως και τον Μνημονικό σου Σπόρο.
     ]]></string>
 
     <string name="help_list"><![CDATA[
-        <h1>Wallet List</h1>
-        <h2>Node</h2>
-        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
-        to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
-        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
-        <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
-        in the internal storage of your device. You can use a file explorer app to see them.
-        You should make backups of this folder on a regular basis to off-device storage in
-        case your device explodes or gets stolen.</p>
-        <p>Select a wallet to open it or press the \"+\" to create a new one.
-        Or select one of the wallet operations:</p>
-        <h3>Details</h3>
-        <p>Show the wallet details, seed &amp; keys.</p>
-        <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
-        <h3>Rename</h3>
-        <p>Rename the wallet. Backups are not renamed.</p>
-        <h3>Backup</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
-        overwriting previous copies there.</p>
-        <h3>Archive</h3>
-        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
-        folder. If you no longer need your backups you should delete them with a file explorer or
-        secure delete app.</p>
+        <h1>Λίστα Πορτοφολιών</h1>
+        <h2>Κόμβος</h2>
+        <p>Το Monerujo χρησιμοποιεί έναν Απομακρυσμένο Κόμβο(Remote Node) για επικοινωνία με το Δίκτυο του Monero χωρίς
+        να χρειάζεται να κατεβάσει και αποθηκεύσει ολόκληρο το blockchain. Μπορείς να βρεις μια λίστα απο δημοφιλείς
+        απομακρυσμένους κόμβους ή να μάθεις πως να τρέχεις τον δικό σου απομακρυσμένο κόμβο εδώ https://moneroworld.com/<p>
+        <p>Το Monerujo έχει κάποιους προκαθορισμένους Απομακρυσμένους Κόμβους. Θυμάται τους τελευταίους πέντε που χρησιμοποιήθηκαν.</p>
+        <h2>Πορτοφόλια</h2>
+        <p>Εδώ βλέπεις τα πορτοφόλια σου. Βρίσκοντε στον φάκελο <tt>monerujo</tt>
+        στην εσωτερική αποθήκευση της συσκευής σας. Μπορείς να τα δεις με μια εφαρμογή εξερεύνησης αρχείων.
+        Θα πρέπει να κρατάς συχνά αντίγραφα ασφαλείας αυτού του φακέλου εκτώς συσκευής σε
+        περίπτωση που η συσκευή σου ανατιναχθεί ή κλαπεί.</p>
+        <p>Επέλεξε ένα πορτοφόλι για να το ανοίξεις ή πάτα στο \"+\" για να φτιάξεις ένα καινούριο.
+        Ή επέλεξε μία από τις λειτουργίες πορτοφολιού:</p>
+        <h3>Λεπτομέριες</h3>
+        <p>Δες λεπτομέρειες πορτοφολιού, σπόρο &amp; κλειδιά.</p>
+        <h3>Λήψη</h3>
+        <p>Δημιουργία ενός κωδικού QR για λήψη Moneroj.</p>
+        <h3>Μετονομασία</h3>
+        <p>Μετονόμασε το πορτοφόλι. Τα αντίγραφα ασφαλείας δεν θα μετονομαστούν.</p>
+        <h3>Αντιγρ. Ασφαλείας</h3>
+        <p>Φτιάχνει ένα αντίγραφο ασφαλείας του πορτοφολιού στον φάκελο <tt>backups</tt> που είναι
+        στον φάκελο <tt>monerujo</tt> αντικαθιστόντας προηγούμενα αντίγραφα εκεί.</p>
+        <h3>Αρχειοθέτηση</h3>
+        <p>Φτιάχνει ένα αντίγραφο ασφαλείας και στη συνέχεια διαγράφει το πορτοφόλι. Το αντίγραφο παραμένει στον
+        <tt>backups</tt> φάκελο. Εάν δεν χρειάζεσαι πλεον τα αντίγραφα θα πρεπει να τα διαγράψεις με μια
+        εφαρμογή εξερεύνησης αρχείων ή μια εφαρμογή ασφαλούς διαγραφής.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>The Balance</h2>
-        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
-        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
-        as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
-        Read more about change at https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaction List</h2>
-        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
+        <h1>Το Πορτοφόλι</h1>
+        <h2>Σάρωση</h2>
+        Επειδή το Monero θέλει να κρατάει τα πράγματα ιδιωτικά, κάθε φορά που ανοίγεις ένα πορτοφόλι
+        Monerujo πρέπει να σαρώσουμε όλο το blockchain για να βρεθούν νέα ληφθέντα Moneroj στο πορτοφόλι σας, αυτό
+        αποθηκεύει μόνο πληροφορίες στο τηλέφωνό σου που ανιστοιχούν στο πορτοφόλι σου. Μερικές φορές
+        μπορεί να χρειαστεί λίγος χρόνος γιατί δεν έχεις συγχρονίσει για μεγάλο χρονικό διάστημα.
+        <h2>Το Υπόλοιπο</h2>
+        <p><b>Βοήθεια! Το υπόλοιπο του πορτοφολιού μου εξαφανίστηκε ή ειναι μη επιβεβαιωμένο!</b><br/>
+        Μην πανικοβάλεσαι! Όταν στέλνεις κεφάλαια από το πορτοφόλι σου, ένα μέρος
+        του υπολοίπου σου θα δείχνει για λίγο ως μη επιβεβαιωμένο.
+        Αυτό συμβαίνει σαν αποτέλεσμα του πως το Monero ανταλλάσεται στο blockchain και το πως δουλεύουν τα ρέστα.
+        Διάβασε περισσότερα για τα ρέστα εδώ(Αγγλικά) https://getmonero.org/resources/moneropedia/change.html
+        <h2>Λίστα Συναλλαγών</h2>
+        <p>Μια λίστα απο τις συναλλαγές του πορτοφολιού. Στα πορτοφόλια παρακολούθησης φαίνοντε μόνο οι εισερχόμενες συναλλαγές.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
-        <h1>Transaction Details</h1>
-        <h2>Destination</h2>
-        This is the public address of the wallet you sent Monero to
-        <h2>PaymentID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
-        fully optional and private. For example it can allow a Business to reconcile your transaction
-        with an item you bought.
-        <h2>TX ID</h2>
-        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
-        Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TX KEY (Transaction Key)</h2>
-        This is your transaction private key, keep this safe as revealing this to a third party
-        reveals which signature in a ring is yours, thereby making your transaction transparent.
-        <h2>Block</h2>
-        This was the block your transaction was included in.
+        <h1>Λεπτομέρειες Συναλλαγής</h1>
+        <h2>Προορισμός</h2>
+        Αυτό είναι η δημόσια διεύθυνση του πορτοφολιού που στέλνεις Monero.
+        <h2>ID Πληρωμής</h2>
+        Μπορείς να χρησιμοποιήσεις ένα ID Πληρωμής(Payment ID) για να προσδιορίσεις τον λόγο που στέλνεις Monero
+        ανάμεσα σε δύο ενδιαφερόμενους αυτό είναι προεραιτικό και ιδωτικό. Για παράδειγμα μπορεί να επιτρέψει σε μια επιχείρηση
+        να κανονίσει την συναλλαγή σου με ένα αντικείμενο που αγόρασες.
+        <h2>ID Συναλλαγής(TX ID)</h2>
+        Αυτό είναι το ID της συναλλαγής που μπορείς να χρησιμοποιήσεις για να διευκρινήσεις την θολωμένη συναλλαγή σου σε εναν Monero
+        Blockchain εξερευνητή όπως το <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>Κλειδί συναλλαγής(TX KEY)</h2>
+        Αυτό είναι το ιδιωτικό κλειδί της συναλλαγής σου, κράτησέ το ασφαλές από τρίτους γιατί
+        αποκαλύπτει ποια υπογραφή σε έναν δακτύλιο(ring) είναι δική σου, επομένως κάνει την συναλλαγή σου φανερή.
+        <h2>Μπλοκ</h2>
+        Αυτό είναι ο αριθμός του μπλοκ στο οποιο συμπεριλήφθει μέσα η συναλλαγή σου.
     ]]></string>
 
     <string name="help_send"><![CDATA[
-        <h1>Send</h1>
-        <h2>Receiver’s address</h2>
-        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
-        your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
-        ensure you aren’t sending coins to the wrong address.</p>
-        <p>In addition to sending XMR, you can send BTC through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
-        <h2>Payment ID</h2>
-        <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
-        is fully optional and private. For example it can allow a business to reconcile your
-        transaction with an item you bought.<p>
-        <h2>Ring size</h2>
-        <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
-        we recommend you stick with a ring size of 7. Increasing the ring size above 7 increases
-        the amount of signers in a ring signature, theoretically providing increased plausible
-        deniability. However setting high ring sizes can also make your transaction stand out on
-        the blockchain.</p>
-        <h2>Priority</h2>
-        <p>This setting determines the speed at which your transaction will be included in the
-        blockchain. A high priority setting will correlate directly with a higher transaction fee
-        and the inverse is true for a low priority. Please note that if you set your transaction to
-        a low priority it can be hours before it is included on the blockchain. The default priority
-        is \"Medium\".</p>
-        <h1>Sending BTC</h1>
+        <h1>Αποστολή</h1>
+        <h2>Διεύθυνση παραλήπτη</h2>
+        <p>Αυή είναι η δημόσια διεύθυνση πορτοφολιού που στέλνεις Moneroj, μπορείς να το αντιγράψεις
+        από το πρόχειρο, να σαρώσεις έναν κωδικό QR ή να το πληκτρολογήσεις. Βεβαιώσου οτι έχεις τριπλο-ελέγξει
+        για να είσαι σίγουρος ότι δεν στέλνεις σε λάθος διύθυνση τα κεφάλαια σου.</p>
+        <p>Εκτός από την αποστολή XMR, μπορείς να στείλεις BTC δια μέσου της υπηρεσίας XMR.TO (δες https://xmr.to
+        για πληροφορίες). Δες την ενότητα σχετικά με αποστολή BTC παρακάτω.</p>
+        <h2>ID Πληρωμής</h2>
+        <p>Μπορείς να χρησιμοποιήσεις ένα ID Πληρωμής(Payment ID) για να προσδιορίσεις τον λόγο που στέλνεις Monero
+        ανάμεσα σε δύο ενδιαφερόμενους αυτό είναι προεραιτικό και ιδωτικό. Για παράδειγμα μπορεί να επιτρέψει σε μια επιχείρηση
+        να κανονίσει την συναλλαγή σου με ένα αντικείμενο που αγόρασες.<p>
+        <h2>Μέγεθος Δακτύλιου(Ring size)</h2>
+        <p>Υπάρχει ένας αριθμός επιλογών μεγέθους δακτύλιου που μπορείς να διαλέξεις στο Monerujo. Αν είσαι νέος χρήστης
+        προτείνουμε να επιλέγεις ένα μέγεθος δακτύλιου 7. Αυξάνοντας τον αριθμό δακτυλίου πάνω από 7 αυξάνει
+        το ποσό των υπογραφόντων σε μια υπογραφη δακτυλίου, προσφέροντας θεωρητικά εύλογα αυξημένη
+        δυσπιστία. Ωστόσο η επιλογή μεγαλύτερου μεγέθους δακτυλίου μπορεί να κάνει την συναλλαγή σου να ξεχωρίζει
+        στο blockchain.</p>
+        <h2>Προτεραιότητα</h2>
+        <p>Αυτή η επιλογή καθορίζει την ταχύτητα με την οποία η συναλλαγή σου θα συμπεριληφθει στο
+        blockchain. Μια επιλογή υψηλής προτεραιότητας θα έχει σαν άμεση συνέπεια υψηλότερα κόμιστρα συναλλαγής
+        και το αντίστροφο είναι αληθές για μια συναλλαγή χαμηλής προτεραιότητας. Σημειωτέον ότι αν στείλεις την συναλλαγή
+        με χαμηλή προτεραιότητα μπορεί να πάρει ώρες μέχρι να συμπεριληφθεί στο blockchain. Η προεπιλεγμένη προτεραιότητα
+        είναι η \"Μέτρια\".</p>
+        <h1>Αποστολή BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>Το XMR.TO είναι τρίτος πάροχος που δρα σαν ανταλλακτήριο από Monero σε Bitcoin.
+        Χρησιμοποιούμε το API του XMR.TO για να ενσωματώσουμε πληρωμές Bitcoin στο Monerujo. Παρακαλώ δες το
+        https://xmr.to και αποφάσισε για τον εαυτό σου εαν αυτό είναι κάτι που θες να χρησιμοποιήσεις. Η Ομάδα του
+        Monerujo δεν συνδέεται με το XMR.TO και δεν μπορεί να σε βοηθήσει με την υπηρεσία.</p>
+        <h2>Ισοτιμία συναλλάγματος XMR.TO<h2>
+        <p>Στην οθόνη \"Ποσό\" θα σου δωθούν οι τρέχουσες παράμετροι της υπηρεσίας XMR.TO. Αυτές
+        περιλαμβάνουν την τρέχουσα ισοτιμία καθώς και τα μέγιστα και ελάχιστα όρια BTC. Σημειωτέον ότι αυτή η
+        ισοτιμία δεν εξασφαλίζεται σε αυτό το σημείο. Θα δεις επίσης το ποσό για το οποιό
+        η συναλλαγή BTC θα εκτελεσθέι άμεσα χωρίς αναμονή για επιβαιώσεις στο δίκτυο του
+        XMR (δες το FAQ του XMR.TO για περισσότερες λεπτομέρειες). Σημειωτέο, ότι το XMR.TO
+        δεν χρεώνει επιπλέον προμήθειες - πόσο πρώτο είναι αυτό;</p>
+        <h2>Εντολή XMR.TO<h2>
+        <p>Στην οθόνη \"Επιβεβαίωση\", θα δεις την πραγματική εντολή XMR.TO. Αυτή η εντολή ισχύει για
+        περιορισμένο χρόνο - μπορεί να προσέξεις μια αντίστροφη μέτρηση στο κουμπί \"Ξόδεψε\". Η ισοτιμία
+        μπορεί να είναι διαφορετική από την ενδεικτική που φαινόταν σε προηγούμενες οθόνες.</p>
+        <h2>Μυστικό Κλειδί XMR.TO<h2>
+        <p>Μιας και το Monerujo διαχειρίζεται μόνο την πλευρά του Monero της συναλλαγής το μυστικό κλειδί XMR.TO
+        μπορεί να χρησιμοποιηθεί για να εντοπίσει την συναλλαγή απο μεριάς Bitcoin στην XMR.TO εντολή σου στην αρχική τους σελίδα.</p>
+        <p>Σημειωτέο ότι, αυτό το μυστικό κλειδί θα ισχύει για 24 ώρες από όταν ξεκίνησες
+        την συναλλαγή!</p>
+        <h2>Αντίστροφη μέτρηση XMR.TO!</h2>
+        <p>Μόλις η αντίστροφη μέτρηση φθάσει στο μηδέν, χρειάζεται να ξεκινήσεις πάλι την συναλλαγή στο XMR.TO πηγαίνοντας
+        πίσω στο προηγούμενο βήμα και μετά επιστρέφοντας στην οθόνη \"Επιβεβαίωση\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Sending BTC</h1>
+        <h1>Αποστολή BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO Exchange Rate<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO Order<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
+        <p>Το XMR.TO είναι τρίτος πάροχος που δρα σαν ανταλλακτήριο από Monero σε Bitcoin
+        Χρησιμοποιούμε το API του XMR.TO για να ενσωματώσουμε πληρωμές Bitcoin στο Monerujo. Παρακαλώ δες το
+        https://xmr.to και αποφάσισε για τον εαυτό σου εαν αυτό είναι κάτι που θες να χρησιμοποιήσεις. Η Ομάδα του
+        Monerujo δεν συνδέεται με το XMR.TO και δεν μπορεί να σε βοηθήσει με την υπηρεσία.</p>
+        <h2>Ισοτιμία συναλλάγματος XMR.TO<h2>
+        <p>Στην οθόνη \"Ποσό\" θα σου δωθούν οι τρέχουσες παράμετροι της υπηρεσίας XMR.TO. Αυτές
+        περιλαμβάνουν την τρέχουσα ισοτιμία καθώς και τα μέγιστα και ελάχιστα όρια BTC. Σημειωτέον ότι αυτή η
+        ισοτιμία δεν εξασφαλίζεται σε αυτό το σημείο. Θα δεις επίσης το ποσό για το οποιό
+        η συναλλαγή BTC θα εκτελεσθέι άμεσα χωρίς αναμονή για επιβαιώσεις στο δίκτυο του
+        XMR (δες το FAQ του XMR.TO για περισσότερες λεπτομέρειες). Σημειωτέο, ότι το XMR.TO
+        δεν χρεώνει επιπλέον προμήθειες - πόσο πρώτο είναι αυτό;</p>
+        <h2>Εντολή XMR.TO<h2>
+        <p>Στην οθόνη \"Επιβεβαίωση\", θα δεις την πραγματική εντολή XMR.TO. Αυτή η εντολή ισχύει για
+        περιορισμένο χρόνο - μπορεί να προσέξεις μια αντίστροφη μέτρηση στο κουμπί \"Ξόδεψε\". Η ισοτιμία
+        μπορεί να είναι διαφορετική από την ενδεικτική που φαινόταν σε προηγούμενες οθόνες.</p>
+        <h2>Μυστικό Κλειδί XMR.TO<h2>
+        <p>Μιας και το Monerujo διαχειρίζεται μόνο την πλευρά του Monero της συναλλαγής το μυστικό κλειδί XMR.TO
+        μπορεί να χρησιμοποιηθεί για να εντοπίσει την συναλλαγή απο μεριάς Bitcoin στην XMR.TO εντολή σου στην αρχική τους σελίδα.</p>
+        <p>Σημειωτέο ότι, αυτό το μυστικό κλειδί θα ισχύει για 24 ώρες από όταν ξεκίνησες
+        την συναλλαγή!</p>
+        <h2>Αντίστροφη μέτρηση XMR.TO!</h2>
+        <p>Μόλις η αντίστροφη μέτρηση φθάσει στο μηδέν, χρειάζεται να ξεκινήσεις πάλι την συναλλαγή στο XMR.TO πηγαίνοντας
+        πίσω στο προηγούμενο βήμα και μετά επιστρέφοντας στην οθόνη \"Επιβεβαίωση\".</p>
     ]]></string>
 
 </resources>
