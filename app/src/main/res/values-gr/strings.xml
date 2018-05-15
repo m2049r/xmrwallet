@@ -225,8 +225,8 @@
     <string name="generate_wallet_type_view">Προβολή</string>
 
     <string name="generate_address_hint">Δημόσια Διεύθυνση(Public Address)</string>
-    <string name="generate_viewkey_hint">Κλειδί προβολής(View Key)</string>
-    <string name="generate_spendkey_hint">Κλειδί ξοδεύματος(Spend Key)</string>
+    <string name="generate_viewkey_hint">Κλειδί Προβολής(View Key)</string>
+    <string name="generate_spendkey_hint">Κλειδί Ξοδεύματος(Spend Key)</string>
     <string name="generate_mnemonic_hint">Μνημονικός Σπόρος(Mnemonic Seed) 25-Λέξεων</string>
     <string name="generate_restoreheight_hint">Ύψος ανάκτησης ή Ημερομηνία (YYYY-MM-DD δλδ χρονιά-μήνας-μέρα)</string>
 
