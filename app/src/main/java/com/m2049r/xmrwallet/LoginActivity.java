@@ -90,15 +90,15 @@ public class LoginActivity extends SecureActivity
 
     private Toolbar toolbar;
 
-    private TagUtil tagUtil ;
+    private TagUtil tagUtil;
 
     private InputNfcPasswordFragment inputNfcPassword;
 
-    protected NfcAdapter nfcAdapter =null;
+    protected NfcAdapter nfcAdapter = null;
     protected PendingIntent pendingIntent = null;
     protected IntentFilter[] mFilters = null;
-    protected String[][] mTechLists  = new String[][] { new String[] { NfcA.class.getName() }, new String[] { NfcF.class.getName() },
-                new String[] { NfcB.class.getName() }, new String[] { NfcV.class.getName() } };
+    protected String[][] mTechLists = new String[][]{new String[]{NfcA.class.getName()}, new String[]{NfcF.class.getName()},
+            new String[]{NfcB.class.getName()}, new String[]{NfcV.class.getName()}};
 
     @Override
     public void setToolbarButton(int type) {
@@ -372,33 +372,7 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-//    private class AsyncBackupToNFC extends AsyncTask<String, Void, Boolean> {
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            showProgressDialog(R.string.backup_progress);
-//        }
-//
-//        @Override
-//        protected Boolean doInBackground(String... params) {
-//            if (params.length != 1) return false;
-//            return backupWalletToNFC(params[0]);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Boolean result) {
-//            super.onPostExecute(result);
-//            if (isDestroyed()) {
-//                return;
-//            }
-//            dismissProgressDialog();
-//            if (!result) {
-//                Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    }
-
-    private class AsyncBackupToNFC2 extends AsyncTask<Object, Void, Boolean> {
+    private class AsyncBackupToNFC extends AsyncTask<Object, Void, Boolean> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -410,7 +384,7 @@ public class LoginActivity extends SecureActivity
             if (params.length != 2) return false;
             Intent intent = (Intent) params[0];
             String walletName = (String) params[1];
-            return backupWalletToNFC(intent,walletName);
+            return backupWalletToNFC(intent, walletName);
         }
 
         @Override
@@ -422,7 +396,7 @@ public class LoginActivity extends SecureActivity
             dismissProgressDialog();
             if (!result) {
                 Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
-            }else{
+            } else {
                 Toast.makeText(LoginActivity.this, "backup to NFC success ", Toast.LENGTH_LONG).show();
                 inputNfcPassword.dismiss();
             }
@@ -450,51 +424,51 @@ public class LoginActivity extends SecureActivity
         return success;
     }
 
-    private boolean backupWalletToNFC(Intent intent,String walletName) {
-        boolean success=false;
+    private boolean backupWalletToNFC(Intent intent, String walletName) {
+        boolean success = false;
         String seed;
         String spendKey;
         String viewKey;
         String address;
+        String height;
+
         File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
         String realPassword = KeyStoreHelper.getCrazyPass(this, this.inputNfcPassword.getPassword());
         Wallet newWallet = WalletManager.getInstance().openWallet(walletFile.getPath(), realPassword);
-        String name = newWallet.getName();
-        Wallet.Status  status = newWallet.getStatus();
+        Wallet.Status status = newWallet.getStatus();
         if (status != Wallet.Status.Status_Ok) {
             Timber.e(newWallet.getErrorString());
             newWallet.close();
             return false;
         }
-         seed= newWallet.getSeed();//length about 200
-         spendKey=newWallet.getSecretSpendKey(); //length=64
-         viewKey=newWallet.getSecretViewKey();   //length=64
-         address = newWallet.getAddress();  //length=95
+        seed = newWallet.getSeed();//length about 200
+        spendKey = newWallet.getSecretSpendKey(); //length=64
+        viewKey = newWallet.getSecretViewKey();   //length=64
+        address = newWallet.getAddress();  //length=95
+        height = new Long(newWallet.getBlockChainHeight()).toString();
 
-        boolean authenticated=false;
+        boolean authenticated = false;
         try {
             tagUtil = TagUtil.selectTag(intent, false);
             authenticated = tagUtil.authentication(intent, getKey(), false);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if(authenticated)
-        {
+        if (authenticated) {
             Toast toast = Toast.makeText(LoginActivity.this, "Writting keys now, please don't move the NFC", Toast.LENGTH_LONG);
             try {
-
                 byte[] bytes = seed.getBytes("utf-8");//TODO: other character encoding
-                tagUtil.writePages(intent,(byte)4,address.getBytes(),false);//write address from page 4
-                tagUtil.writePages(intent,(byte)30,viewKey.getBytes(),false);//write view key from page 30
-                tagUtil.writePages(intent,(byte)60,spendKey.getBytes(),false);//write spend key from page 60
-                tagUtil.writePages(intent,(byte)90,seed.getBytes("utf-8"),false);//write seed from page 90
-                tagUtil.setAccess(intent,(byte)30,(byte)0,false);
-                success=true;
+                tagUtil.writePages(intent, (byte) 4, address.getBytes(), false);//write address from page 4
+                tagUtil.writePages(intent, (byte) 30, viewKey.getBytes(), false);//write view key from page 30
+                tagUtil.writePages(intent, (byte) 60, spendKey.getBytes(), false);//write spend key from page 60
+                tagUtil.writePages(intent, (byte) 90, height.getBytes("utf-8"), false);//write height from page 90
+                tagUtil.writePages(intent, (byte) 100, seed.getBytes("utf-8"), false);//write seed from page 100
+                tagUtil.setAccess(intent, (byte) 30, (byte) 0x80, false);//pages after 30 cannot be read/write without a key!
+                success = true;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -504,44 +478,7 @@ public class LoginActivity extends SecureActivity
         return success;
     }
 
-//    private boolean backupWalletToNFC(String walletName) {
-//        boolean success=false;
-//        File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
-//        //Timber.d("backup " + walletFile.getAbsolutePath() + " to " + backupFile.getAbsolutePath());
-//        Intent intent = null;
-//        TagUtil tagUtil = null;
-//        boolean authenticated=false;
-//        try {
-//            tagUtil = TagUtil.selectTag(intent, false);
-//            authenticated = tagUtil.authentication(intent, getKey(), false);
-//        }catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        if(authenticated)
-//        {
-//            Toast toast = Toast.makeText(LoginActivity.this, "Authentication Successful", Toast.LENGTH_LONG);
-//            try {
-//
-//                byte[] bytes = new byte[(int)walletFile.length()];
-//                new FileInputStream(walletFile).read(bytes);
-//                tagUtil.writeTag(intent,(byte)4,bytes,false);
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            } catch (AuthenticationException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        else
-//            return false;
-//        return success;
-//    }
-    private byte[] getKey()
-    {
+    private byte[] getKey() {
         return ThreeDES.defaultKey;
     }
 
@@ -570,6 +507,7 @@ public class LoginActivity extends SecureActivity
             }
         }
     }
+
     @Override
     public void onWalletBackupToFile(String walletName) {
         Timber.d("backup for wallet ." + walletName + ".");
@@ -775,7 +713,7 @@ public class LoginActivity extends SecureActivity
                 || NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())
                 || NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             try {
-                new AsyncBackupToNFC2().execute(intent,inputNfcPassword.getWalletName());
+                new AsyncBackupToNFC().execute(intent, inputNfcPassword.getWalletName());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1334,14 +1272,14 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-        protected void initNfc() {
+    protected void initNfc() {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         //ifNFCSupport();
         // 将被调用的Intent，用于重复被Intent触发后将要执行的跳转
         pendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-        mTechLists = new String[][] { new String[] { NfcA.class.getName() }, new String[] { NfcF.class.getName() },
-                new String[] { NfcB.class.getName() }, new String[] { NfcV.class.getName() } };// 允许扫描的标签类型
+        mTechLists = new String[][]{new String[]{NfcA.class.getName()}, new String[]{NfcF.class.getName()},
+                new String[]{NfcB.class.getName()}, new String[]{NfcV.class.getName()}};// 允许扫描的标签类型
 
 
     }

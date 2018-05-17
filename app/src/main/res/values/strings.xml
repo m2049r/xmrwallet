@@ -332,4 +332,5 @@
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
     <string name="menu_backup_to_file">Backup To File</string>
     <string name="input_nfc_password_title">Input Wallet Password Then Tap</string>
+    <string name="input_nfc_password_hint">secrets are transfered in plain-text over the air and that a secure location should be used to prevent eavesdropping</string>
 </resources>

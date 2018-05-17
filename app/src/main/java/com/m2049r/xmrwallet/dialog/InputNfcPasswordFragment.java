@@ -41,13 +41,8 @@ public class InputNfcPasswordFragment extends DialogFragment {
 
     private static InputNfcPasswordFragment fragment = null;
 
-//    protected NfcAdapter nfcAdapter;
-//    protected PendingIntent pendingIntent;
-//    protected IntentFilter[] mFilters;
-//    protected String[][] mTechLists;
-
     public static InputNfcPasswordFragment getInstance() {
-        if(fragment ==null){
+        if (fragment == null) {
             fragment = new InputNfcPasswordFragment();
         }
 
@@ -93,10 +88,11 @@ public class InputNfcPasswordFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
         initZxcvbn();
-        //initNfc();
         return builder.create();
     }
+
     Zxcvbn zxcvbn = new Zxcvbn();
+
     // initialize zxcvbn engine in background thread
     private void initZxcvbn() {
         new Thread(new Runnable() {
@@ -110,27 +106,13 @@ public class InputNfcPasswordFragment extends DialogFragment {
     private void checkPassword() {
         String password = etWalletPassword.getEditText().getText().toString();
         if (!password.isEmpty()) {
-//            Strength strength = zxcvbn.measure(password);
-//            int msg;
-//            double guessesLog10 = strength.getGuessesLog10();
-//            if (guessesLog10 < 10)
-//                msg = R.string.password_weak;
-//            else if (guessesLog10 < 11)
-//                msg = R.string.password_fair;
-//            else if (guessesLog10 < 12)
-//                msg = R.string.password_good;
-//            else if (guessesLog10 < 13)
-//                msg = R.string.password_strong;
-//            else
-//                msg = R.string.password_very_strong;
-//            etWalletPassword.setError(getResources().getString(msg));
         } else {
             etWalletPassword.setError(null);
         }
     }
 
     //get input nfc password
-    public String getPassword(){
+    public String getPassword() {
         String password = etWalletPassword.getEditText().getText().toString();
         return password;
     }
@@ -143,57 +125,4 @@ public class InputNfcPasswordFragment extends DialogFragment {
         this.walletName = walletName;
     }
 
-//    protected void initNfc() {
-//
-//        nfcAdapter = NfcAdapter.getDefaultAdapter(this.getContext());
-//        ifNFCSupport();
-//        // 将被调用的Intent，用于重复被Intent触发后将要执行的跳转
-//        pendingIntent = PendingIntent.getActivity(this.getContext(), 0,
-//                new Intent(this.getContext(), getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-//        mTechLists = new String[][] { new String[] { NfcA.class.getName() }, new String[] { NfcF.class.getName() },
-//                new String[] { NfcB.class.getName() }, new String[] { NfcV.class.getName() } };// 允许扫描的标签类型
-//
-//
-//    }
-
-    /**
-     * 检测工作,判断设备的NFC支持情况
-     *
-     * @return
-     */
-//    private boolean ifNFCSupport() {
-//        if (nfcAdapter == null) {
-//            Toast.makeText(this.getContext(), "NO NFC FOUND!", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        if (nfcAdapter != null && !nfcAdapter.isEnabled()) {
-//            Toast.makeText(this.getContext(), "Please open NFC first!", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        return true;
-//    }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
-//        nfcAdapter.enableForegroundDispatch(this.getActivity(), pendingIntent, mFilters, mTechLists);
-//
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        nfcAdapter.disableForegroundDispatch(this.getActivity());
-//    }
-
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        super.onNewIntent(intent);
-//        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())||
-//                NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
-//            readOrWriteTag(intent);
-//        }
-//
-//    }
 }
