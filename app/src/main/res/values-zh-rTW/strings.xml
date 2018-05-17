@@ -133,8 +133,10 @@
     <string name="prompt_password">%1$s 的密碼</string>
     <string name="prompt_fingerprint_auth">你也可以使用指紋來開啟錢包。\n請輕觸你的指紋感應器。</string>
     <string name="prompt_send_password">確認密碼</string>
+    <string name="prompt_open_wallet">正在開啟錢包&#8230;</string>
     <string name="bad_fingerprint">無法辨識的指紋，請再試一次。</string>
     <string name="bad_password">密碼錯誤!</string>
+    <string name="bad_saved_password">儲存的密碼不正確。\n請手動輸入密碼。</string>
     <string name="bad_wallet">錢包不存在!</string>
     <string name="prompt_daemon_missing">必需要設定節點位置!</string>
     <string name="prompt_wrong_net">錢包不符合選擇的網路</string>
