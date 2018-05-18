@@ -1,0 +1,6 @@
+[submodule "opt/android/android-openssl"]
+	path = opt/android/android-openssl
+	url = https://github.com/m2049r/android-openssl.git
+[submodule "opt/android/monero"]
+	path = opt/android/monero
+	url = https://github.com/m2049r/monero.git
