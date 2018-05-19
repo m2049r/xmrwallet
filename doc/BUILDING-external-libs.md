@@ -14,11 +14,13 @@ Yes, lots of copy&paste here. TODO: Script this.
 
 ```Shell
 sudo apt-get install build-essential cmake tofrodos libtool-bin
-sudo mkdir /opt/android
-sudo chown $LOGNAME /opt/android
+
+cd opt/android
+sudo ln -s "$(pwd)" /opt/android
 ```
 
 ## Install Android NDK
+
 ```Shell
 cd /opt/android
 wget https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
@@ -31,18 +33,19 @@ ndk/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch x86_64
 ```
 
 ## Prepare output
+
 ```Shell
 mkdir -p /opt/android/build
 ```
 
 ## Build OpenSSL
+
 Best is to compile openssl from sources. Copying from your phone or elsewhere (don't!) ends up in misery.
 
 If you don't want to build for all architectures, edit ```build-all-arch.sh``` before running it (Line 12).
 
 ```Shell
 cd /opt/android
-git clone https://github.com/m2049r/android-openssl.git
 wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz
 cd android-openssl
 tar xfz ../OpenSSL_1_0_2l.tar.gz
@@ -50,6 +53,7 @@ ANDROID_NDK_ROOT=/opt/android/ndk ./build-all-arch.sh
 ```
 
 ### Install & make symlinks
+
 ```Shell
 mkdir -p /opt/android/build/openssl/{arm,arm64,x86,x86_64}
 cp -a /opt/android/android-openssl/prebuilt/armeabi   /opt/android/build/openssl/arm/lib
@@ -62,6 +66,7 @@ ln -s /opt/android/build/openssl/include /opt/android/build/openssl/arm64/includ
 ln -s /opt/android/build/openssl/include /opt/android/build/openssl/x86/include
 ln -s /opt/android/build/openssl/include /opt/android/build/openssl/x86_64/include
 ```
+
 ```Shell
 ln -sf /opt/android/build/openssl/include /opt/android/tool/arm/sysroot/usr/include/openssl
 ln -sf /opt/android/build/openssl/arm/lib/*.so /opt/android/tool/arm/sysroot/usr/lib
@@ -77,6 +82,7 @@ ln -sf /opt/android/build/openssl/x86_64/lib/*.so /opt/android/tool/x86_64/sysro
 ```
 
 ## Build Boost
+
 ```Shell
 cd /opt/android
 wget https://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.gz/download -O boost_1_58_0.tar.gz
@@ -84,9 +90,11 @@ tar xfz boost_1_58_0.tar.gz
 cd boost_1_58_0
 ./bootstrap.sh
 ```
-Comment out ```using ::fgetpos;``` & ```using ::fsetpos;``` in ```cstdio```.
+
+Comment out `using ::fgetpos;` & `using ::fsetpos;` in `opt/android/boost_1_58_0/boost/compatibility/cpp_c_headers/cstdio`.
 
 Then build & install to ```/opt/android/build/boost``` with
+
 ```Shell
 PATH=/opt/android/tool/arm/arm-linux-androideabi/bin:/opt/android/tool/arm/bin:$PATH      ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --build-dir=android-arm    --prefix=/opt/android/build/boost/arm    --includedir=/opt/android/build/boost/include toolset=clang threading=multi threadapi=pthread target-os=android install
 ln -sf ../include /opt/android/build/boost/arm
@@ -99,19 +107,19 @@ ln -sf ../include /opt/android/build/boost/x86_64
 ```
 
 ## And finally: Build Monero
-```Shell
-cd /opt/android
-git clone https://github.com/m2049r/monero.git
 
-cd /opt/android/monero/build
+```Shell
+cd /opt/android/monero
 ./build-all-arch.sh
 ```
 
-# Bringing it all together
+## Bringing it all together
+
 - Copy all .a libraries into the appropriate `external-libs` folders.
 - Copy `/opt/android/monero/src/wallet/api/wallet2_api.h` into `external-libs/monero/include`
 
 If using default locations, this would mean:
+
 ```Shell
 cd <path-to-xmrwallet>/external-libs
 # remove old stuff
