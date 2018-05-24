@@ -24,7 +24,6 @@ public class FingerprintHelper {
             KeyStoreHelper.loadWalletUserPass(context, wallet);
             return true;
         } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
-            Timber.w(ex);
             return false;
         }
     }
