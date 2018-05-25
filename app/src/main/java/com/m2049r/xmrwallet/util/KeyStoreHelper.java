@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet.util;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.security.KeyPairGeneratorSpec;
 import android.security.keystore.KeyGenParameterSpec;
@@ -84,10 +85,12 @@ public class KeyStoreHelper {
         try {
             KeyStoreHelper.createKeys(context, walletKeyAlias);
             byte[] encrypted = KeyStoreHelper.encrypt(walletKeyAlias, data);
-            if (encrypted == null) return false;
-            context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
-                    .putString(wallet, Base64.encodeToString(encrypted, Base64.DEFAULT))
-                    .apply();
+            SharedPreferences.Editor e = context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit();
+            if (encrypted == null) {
+                e.remove(wallet).apply();
+                return false;
+            }
+            e.putString(wallet, Base64.encodeToString(encrypted, Base64.DEFAULT)).apply();
             return true;
         } catch (NoSuchProviderException | NoSuchAlgorithmException |
                 InvalidAlgorithmParameterException | KeyStoreException ex) {
@@ -229,8 +232,7 @@ public class KeyStoreHelper {
             return (KeyStore.PrivateKeyEntry) entry;
         } catch (IOException | NoSuchAlgorithmException | CertificateException
                 | UnrecoverableEntryException | KeyStoreException ex) {
-            Timber.e(ex);
-            return null;
+            throw new IllegalStateException(ex);
         }
     }
 
