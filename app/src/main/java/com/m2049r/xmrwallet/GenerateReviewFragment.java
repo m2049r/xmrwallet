@@ -102,10 +102,10 @@ public class GenerateReviewFragment extends Fragment {
 
         bAccept = (Button) view.findViewById(R.id.bAccept);
 
-        boolean testnet = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
-        tvWalletMnemonic.setTextIsSelectable(testnet);
-        tvWalletSpendKey.setTextIsSelectable(testnet);
-        tvWalletPassword.setTextIsSelectable(testnet);
+        boolean allowCopy = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
+        tvWalletMnemonic.setTextIsSelectable(allowCopy);
+        tvWalletSpendKey.setTextIsSelectable(allowCopy);
+        tvWalletPassword.setTextIsSelectable(allowCopy);
 
         bAccept.setOnClickListener(new View.OnClickListener() {
             @Override

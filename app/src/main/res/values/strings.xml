@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="menu_testnet">Testnet</string>
+    <string name="menu_stagenet" translatable="false">Stagenet</string>
     <string name="menu_about">About</string>
     <string name="menu_privacy">Privacy Policy</string>
 

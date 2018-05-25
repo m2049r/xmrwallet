@@ -1007,11 +1007,11 @@ public class LoginActivity extends SecureActivity
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
                 return true;
-            case R.id.action_testnet:
+            case R.id.action_stagenet:
                 try {
                     LoginFragment loginFragment = (LoginFragment)
                             getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-                    item.setChecked(loginFragment.onTestnetMenuItem());
+                    item.setChecked(loginFragment.onStagenetMenuItem());
                 } catch (ClassCastException ex) {
                     // never mind then
                 }
