@@ -361,10 +361,16 @@ public class Helper {
             return crazyPass;
         }
 
-        // or maybe it is a broken CrAzYpass?
-        String brokenCrazyPass = KeyStoreHelper.getBrokenCrazyPass(context, password);
-        if (WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass, true)) {
-            return brokenCrazyPass;
+        // or maybe it is a broken CrAzYpass? (of which we have two variants)
+        String brokenCrazyPass2 = KeyStoreHelper.getBrokenCrazyPass(context, password, 2);
+        if ((brokenCrazyPass2 != null)
+                && WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass2, true)) {
+            return brokenCrazyPass2;
+        }
+        String brokenCrazyPass1 = KeyStoreHelper.getBrokenCrazyPass(context, password, 1);
+        if ((brokenCrazyPass1 != null)
+                && WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass1, true)) {
+            return brokenCrazyPass1;
         }
 
         return null;

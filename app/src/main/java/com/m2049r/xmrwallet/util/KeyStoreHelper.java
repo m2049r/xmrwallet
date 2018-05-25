@@ -61,17 +61,17 @@ public class KeyStoreHelper {
         System.loadLibrary("monerujo");
     }
 
-    public static native byte[] slowHash(byte[] data, boolean broken);
+    public static native byte[] slowHash(byte[] data, int brokenVariant);
 
     static final private String RSA_ALIAS = "MonerujoRSA";
 
-    private static String getCrazyPass(Context context, String password, boolean broken) {
+    private static String getCrazyPass(Context context, String password, int brokenVariant) {
         byte[] data = password.getBytes(StandardCharsets.UTF_8);
         byte[] sig = null;
         try {
             KeyStoreHelper.createKeys(context, RSA_ALIAS);
             sig = KeyStoreHelper.signData(RSA_ALIAS, data);
-            byte[] hash = slowHash(sig, broken);
+            byte[] hash = slowHash(sig, brokenVariant);
             if (hash == null) {
                 throw new IllegalStateException("Slow Hash is null!");
             }
@@ -84,19 +84,16 @@ public class KeyStoreHelper {
     }
 
     public static String getCrazyPass(Context context, String password) {
-        return getCrazyPass(context, password, false);
+        return getCrazyPass(context, password, 0);
     }
 
-    public static String getBrokenCrazyPass(Context context, String password) {
+    public static String getBrokenCrazyPass(Context context, String password, int brokenVariant) {
         // due to a link bug in the initial implementation, some crazypasses were built with
         // prehash & variant == 1
         // since there are wallets out there, we need to keep this here
-
-        // arm32 variant code is broken in monero-core
-        // (raises "signal 7 (SIGBUS), code 1 (BUS_ADRALN)" in cn_slow_hash())
-        if (isArm32()) return "";
-
-        return getCrazyPass(context, password, true);
+        // yes, it's a mess
+        if (isArm32() && (brokenVariant != 2)) return null;
+        return getCrazyPass(context, password, brokenVariant);
     }
 
     private static Boolean isArm32 = null;
