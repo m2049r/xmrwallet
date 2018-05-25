@@ -26,7 +26,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.util.Base64;
-import android.util.Log;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -92,8 +91,27 @@ public class KeyStoreHelper {
         // due to a link bug in the initial implementation, some crazypasses were built with
         // prehash & variant == 1
         // since there are wallets out there, we need to keep this here
-        return getCrazyPass(context, password, true);
 
+        // arm32 variant code is broken in monero-core
+        // (raises "signal 7 (SIGBUS), code 1 (BUS_ADRALN)" in cn_slow_hash())
+        if (isArm32()) return "";
+
+        return getCrazyPass(context, password, true);
+    }
+
+    private static Boolean isArm32 = null;
+
+    public static boolean isArm32() {
+        if (isArm32 != null) return isArm32;
+        synchronized (KeyStoreException.class) {
+            if (isArm32 != null) return isArm32;
+            if (Build.SUPPORTED_ABIS[0].equals("armeabi-v7a")) {
+                isArm32 = true;
+            } else {
+                isArm32 = false;
+            }
+            return isArm32;
+        }
     }
 
     public static boolean saveWalletUserPass(@NonNull Context context, String wallet, String password) {
