@@ -302,6 +302,16 @@ public class Helper {
         else return "";
     }
 
+    public static byte[] hexToBytes(String hex) {
+        final int len = hex.length();
+        final byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                    + Character.digit(hex.charAt(i + 1), 16));
+        }
+        return data;
+    }
+
     static public void setMoneroHome(Context context) {
         try {
             String home = getStorage(context, HOME_DIR).getAbsolutePath();
@@ -349,6 +359,12 @@ public class Helper {
         String crazyPass = KeyStoreHelper.getCrazyPass(context, password);
         if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
             return crazyPass;
+        }
+
+        // or maybe it is a broken CrAzYpass?
+        String brokenCrazyPass = KeyStoreHelper.getBrokenCrazyPass(context, password);
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass, true)) {
+            return brokenCrazyPass;
         }
 
         return null;

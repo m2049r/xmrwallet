@@ -697,16 +697,21 @@ Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject insta
 
 //void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
 JNIEXPORT jbyteArray JNICALL
-Java_com_m2049r_xmrwallet_util_KeyStoreHelper_cnSlowHash(JNIEnv *env, jobject clazz,
-                                               jbyteArray data) {
+Java_com_m2049r_xmrwallet_util_KeyStoreHelper_slowHash(JNIEnv *env, jobject clazz,
+                                                       jbyteArray data, jboolean broken) {
+    char hash[HASH_SIZE];
+    jsize size = env->GetArrayLength(data);
+    if (broken && (size < 200 /*sizeof(union hash_state)*/)) {
+        return nullptr;
+    }
 
     jbyte *buffer = env->GetByteArrayElements(data, NULL);
-    jsize size = env->GetArrayLength(data);
-    char hash[HASH_SIZE];
-    cn_slow_hash(buffer, (size_t) size, hash);
-
+    if (broken) {
+        slow_hash_broken(buffer, hash);
+    } else {
+        slow_hash(buffer, (size_t) size, hash);
+    }
     env->ReleaseByteArrayElements(data, buffer, JNI_ABORT); // do not update java byte[]
-
     jbyteArray result = env->NewByteArray(HASH_SIZE);
     env->SetByteArrayRegion(result, 0, HASH_SIZE, (jbyte *) hash);
     return result;

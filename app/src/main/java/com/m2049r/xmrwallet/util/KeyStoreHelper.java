@@ -26,6 +26,7 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -61,22 +62,38 @@ public class KeyStoreHelper {
         System.loadLibrary("monerujo");
     }
 
-    public static native byte[] cnSlowHash(byte[] data);
+    public static native byte[] slowHash(byte[] data, boolean broken);
 
     static final private String RSA_ALIAS = "MonerujoRSA";
 
-    public static String getCrazyPass(Context context, String password) {
+    private static String getCrazyPass(Context context, String password, boolean broken) {
         byte[] data = password.getBytes(StandardCharsets.UTF_8);
         byte[] sig = null;
         try {
             KeyStoreHelper.createKeys(context, RSA_ALIAS);
             sig = KeyStoreHelper.signData(RSA_ALIAS, data);
-            return CrazyPassEncoder.encode(cnSlowHash(sig));
+            byte[] hash = slowHash(sig, broken);
+            if (hash == null) {
+                throw new IllegalStateException("Slow Hash is null!");
+            }
+            return CrazyPassEncoder.encode(hash);
         } catch (NoSuchProviderException | NoSuchAlgorithmException |
                 InvalidAlgorithmParameterException | KeyStoreException |
                 InvalidKeyException | SignatureException ex) {
             throw new IllegalStateException(ex);
         }
+    }
+
+    public static String getCrazyPass(Context context, String password) {
+        return getCrazyPass(context, password, false);
+    }
+
+    public static String getBrokenCrazyPass(Context context, String password) {
+        // due to a link bug in the initial implementation, some crazypasses were built with
+        // prehash & variant == 1
+        // since there are wallets out there, we need to keep this here
+        return getCrazyPass(context, password, true);
+
     }
 
     public static boolean saveWalletUserPass(@NonNull Context context, String wallet, String password) {
