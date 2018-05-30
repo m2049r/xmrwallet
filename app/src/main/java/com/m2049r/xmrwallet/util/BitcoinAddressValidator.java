@@ -67,7 +67,7 @@ public class BitcoinAddressValidator {
         byte[] result = new byte[25];
         byte[] numBytes = num.toByteArray();
         if (numBytes.length > result.length) return null;
-        
+
         if (num.bitLength() == 200) {
             System.arraycopy(numBytes, 1, result, 0, 25);
         } else {
