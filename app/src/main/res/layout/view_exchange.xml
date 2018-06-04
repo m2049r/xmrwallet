@@ -12,14 +12,14 @@
 
         <Spinner
             android:id="@+id/sCurrencyA"
-            android:layout_width="56dp"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
             android:textAlignment="center" />
 
-        <com.m2049r.xmrwallet.widget.CTextInputLayout
+        <com.m2049r.aeonwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:inputType="numberDecimal"
                 tools:text="87.00000" />
 
-        </com.m2049r.xmrwallet.widget.CTextInputLayout>
+        </com.m2049r.aeonwallet.widget.CTextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +49,7 @@
         <Spinner
             android:id="@+id/sCurrencyB"
             style="@style/MoneroSpinnerGray"
-            android:layout_width="56sp"
+            android:layout_width="64sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"

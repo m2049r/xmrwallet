@@ -60,14 +60,9 @@ enum {
     HASH_DATA_AREA = 136
 };
 
-void cn_slow_hash(const void *data, size_t length, char *hash, int variant, int prehashed);
-
+void cn_slow_hash(const void *data, size_t length, char *hash, int light, int variant, int prehashed);
 inline void slow_hash(const void *data, const size_t length, char *hash) {
-    cn_slow_hash(data, length, hash, 0 /* variant */, 0/*prehashed*/);
-}
-
-inline void slow_hash_broken(const void *data, char *hash, int variant) {
-    cn_slow_hash(data, 200 /*sizeof(union hash_state)*/, hash, variant, 1 /*prehashed*/);
+    cn_slow_hash(data, length, hash, 0 /*light*/, 0 /* variant */, 0/*prehashed*/);
 }
 
 #ifdef __cplusplus

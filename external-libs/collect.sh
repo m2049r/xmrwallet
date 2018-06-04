@@ -6,7 +6,7 @@ set -e
 
 orig_path=$PATH
 
-packages=(boost openssl monero)
+packages=(boost openssl aeon)
 archs=(arm arm64 x86 x86_64)
 
 for arch in ${archs[@]}; do

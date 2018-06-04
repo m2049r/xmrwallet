@@ -12,7 +12,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center" />
 
-    <com.m2049r.xmrwallet.widget.ExchangeTextView
+    <com.m2049r.aeonwallet.widget.ExchangeTextView
         android:id="@+id/evAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:layout_marginTop="16dp"
         android:orientation="vertical" />
 
-    <com.m2049r.xmrwallet.widget.NumberPadView
+    <com.m2049r.aeonwallet.widget.NumberPadView
         android:id="@+id/numberPad"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

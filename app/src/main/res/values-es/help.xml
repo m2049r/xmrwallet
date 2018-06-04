@@ -223,32 +223,4 @@
         \"Confirmar\".</p>
     ]]></string>
 
-    <string name="help_xmrto"><![CDATA[
-        <h1>Enviar BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO es un servicio de terceros que actúa como casa de cambio de Monero a Bitcoin.
-        Usamos la API de XMR.TO para integrar pagos de Bitcoin dentro de Monerujo. Por favor revisa
-        https://xmr.to y decide por ti mismo si es un servicio que quieres usar. El equipo de Monerujo
-        no está asociado con XMR.TO y no puede ayudarte con su servicio.</p>
-        <h2>Tipo de cambio XMR.TO<h2>
-        <p>En la pantalla de \"Monto\" se te mostrará las condiciones actuales del servicio XMR.TO.
-        Estas incluyen el tipo de cambio del momento así como también los límites mínimo y máximo de BTC.
-        Toma nota de que el tipo de cambio aún no está garantizado en esa instancia. También verás el
-        monto tope hasta el cual la transacción será ejecutada instantáneamente sin esperar a
-        confirmaciones de XMR (revisa el FAQ de XMR.TO para más detalles). Por favor observa que
-        XMR.TO no cobra comisiones extra - increíble, verdad?</p>
-        <h2>Orden XMR.TO<h2>
-        <p> En la pantalla \"Confirmar\" verás la orden XMR.TO final. Esta orden es válida por un
-        tiempo limitado - notarás una cuenta atrás en el botón de \"Gastar\". El tipo de cambio a
-        esta altura puede ser distinto al aproximado que era mostrado en pantallas anteriores.</p>
-        <h2>Clave secreta XMR.TO<h2>
-        <p>Dado que Monerujo sólo administra la parte en Monero de tu transacción, puedes usar tu
-        clave secreta XMR.TO para rastrear la parte en Bitcoin de tu orden en la página de XMR.TO.</p>
-        <p>Por favor ten en cuenta que esta clave secreta sólo es válida por 24 horas a partir de
-        iniciada la transacción!</p>
-        <h2>Cuenta atrás XMR.TO!</h2>
-        <p>Una vez que la cuenta atrás alcanza el cero, necesitarás pedir una nueva cotización de
-        parte de XMR.TO, esto se logra dando un paso atrás y luego volviendo a la pantalla de
-        \"Confirmar\".</p>
-    ]]></string>
 </resources>

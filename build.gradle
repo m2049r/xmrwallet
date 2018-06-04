@@ -24,7 +24,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    apkName = 'monerujo'
+    apkName = 'monerujoAE'
     okHttpVersion = '3.9.0'
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'

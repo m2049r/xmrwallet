@@ -32,60 +32,12 @@
     <string name="label_receive_info_gen_qr_code">点选显示QR码</string>
     <string name="info_send_prio_fees">较高优先权 = 较高手续费</string>
 
-    <string name="info_xmrto_enabled">BTC付款已启用, 点选我获得更多信息</string>
     <string name="info_crazypass_enabled">CrAzYpass已启用, 点选我获得更多信息</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>你已输入Bitcoin地址</b><br/>
-        <i>你将会发送XMR而收款方将会收到BTC(由<b>XMR.TO</b>提供转換)</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">XMR.TO订单</string>
-
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_send_xmrto_paid">等待确认中</string>
-    <string name="info_send_xmrto_unpaid">等待付款中</string>
-    <string name="info_send_xmrto_error">XMR.TO发生错误(%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC已发送!</string>
-    <string name="info_send_xmrto_query">查询中 &#8230;</string>
-
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>你可发送 %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b>提供的汇率为<b>%3$s BTC</b> <u>(即时)</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>金额若小于<b>%1$s BTC</b>将可以<u>零确认发送</u>!</i>
-    ]]></string>
-
-    <string name="send_available_btc">余额: %2$s BTC (%1$s XMR)</string>
 
     <string name="info_paymentid_intergrated">付款ID已嵌入</string>
     <string name="info_prepare_tx">正在准备你的交易</string>
 
-    <string name="label_send_progress_xmrto_create">建立 XMR.TO 订单</string>
-    <string name="label_send_progress_xmrto_query">查询 XMR.TO 订单</string>
-    <string name="label_send_progress_create_tx">正在准备 Monero 交易</string>
-
-    <string name="label_send_progress_queryparms">正在查询 xmr.to 参数</string>
-
-    <string name="label_generic_xmrto_error">XMR.TO 发生错误</string>
-    <string name="text_generic_xmrto_error">错误代码: %1$d</string>
-
-    <string name="text_retry">点选以重试</string>
-    <string name="text_noretry_monero">我们卡住了!</string>
-    <string name="text_noretry">噢不, XMR.TO 现在似乎无法提供服务!</string>
-
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(汇率: %1$s BTC/XMR)</string>
-
     <string name="label_send_settings_advanced">高级选项:</string>
-
-    <string name="label_send_btc_xmrto_info">参访 xmr.to 以支持 &amp; 追踪</string>
-    <string name="label_send_btc_xmrto_key_lb">私钥\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO 私钥</string>
-    <string name="label_send_btc_address">目的地 BTC 地址</string>
-    <string name="label_send_btc_amount">金额</string>
 
     <string name="label_send_txid">交易ID</string>
     <string name="label_send_address">收款地址</string>
@@ -121,8 +73,6 @@
 
     <string name="status_transaction_failed">交易失败: %1$s</string>
 
-    <string name="send_xmrto_timeout">等待时间过长!</string>
-
     <string name="service_busy">前一个钱包尚未处理完毕 &#8230;</string>
 
     <string name="prompt_rename">重新命名 %1$s</string>
@@ -143,7 +93,7 @@
     <string name="label_wallet_receive">接收</string>
     <string name="label_wallet_send">发送</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s 未确认的 XMR </string>
+    <string name="xmr_unconfirmed_amount">+ %1$s 未确认的 AEON </string>
 
     <string name="service_description">monerujo 服务</string>
 
@@ -157,14 +107,12 @@
 
     <string name="label_copy_viewkey">查看密钥</string>
     <string name="label_copy_address">公开地址</string>
-    <string name="label_copy_xmrtokey">XMR.TO 密钥</string>
     <string name="message_copy_viewkey">查看密钥已复制至剪贴簿!</string>
-    <string name="message_copy_xmrtokey">XMR.TO 密钥已复制至剪贴簿!</string>
     <string name="message_copy_address">钱包地址已复制至剪贴簿!</string>
     <string name="message_copy_txid">交易ID 已复制至剪贴簿!</string>
     <string name="message_nocopy">因安全性因素已停用复制功能!</string>
 
-    <string name="message_exchange_failed">无法取得汇率!\n使用 XMR/XMR 或重试</string>
+    <string name="message_exchange_failed">无法取得汇率!\n使用 AEON/AEON 或重试</string>
 
     <string name="generate_title">建立钱包</string>
     <string name="generate_name_hint">钱包名称</string>
@@ -212,23 +160,20 @@
 
     <string name="generate_check_key">输入有效的密钥</string>
     <string name="generate_check_address">输入有效的地址</string>
-    <string name="generate_check_mnemonic">输入你的25字种子码</string>
+    <string name="generate_check_mnemonic">输入你的24/25字种子码</string>
 
-    <string name="send_amount_btc_xmr">%1$s (指示)</string>
-
-    <string name="send_address_hint">收款者的 XMR 或 BTC 地址</string>
+    <string name="send_address_hint">收款者的 AEON 地址</string>
     <string name="send_paymentid_hint">付款ID (选填)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">注记 (选填)</string>
     <string name="send_generate_paymentid_hint">产生</string>
     <string name="send_qr_hint">扫描</string>
     <string name="send_send_label">发送我的 Moneroj</string>
-    <string name="send_send_timed_label">发送我的 Moneroj (%1$s)</string>
     <string name="send_qr_invalid">这不是QR码</string>
     <string name="send_qr_address_invalid">这不是有效的付款QR码</string>
     <string name="send_address_invalid">这不是有效的地址</string>
     <string name="send_title">发送</string>
-    <string name="send_available">余额: %1$s XMR</string>
+    <string name="send_available">余额: %1$s AEON</string>
     <string name="send_address_title">地址</string>
     <string name="send_amount_title">金额</string>
     <string name="send_settings_title">设定</string>
@@ -236,12 +181,10 @@
     <string name="send_success_title">完成</string>
 
     <string name="send_amount_label">金额</string>
-    <string name="send_fee_btc_label">手续费 (XMR)</string>
     <string name="send_fee_label">手续费</string>
-    <string name="send_total_btc_label">总计 (XMR)</string>
     <string name="send_total_label">总计</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s 手续费</string>
 
     <string name="send_create_tx_error_title">建立交易错误</string>
@@ -256,11 +199,9 @@
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX密钥</string>
     <string name="tx_destination">收款地址</string>
-    <string name="tx_destination_btc">收款地址\n(BTC)</string>
     <string name="tx_paymentId">付款ID</string>
     <string name="tx_blockheight">区块</string>
     <string name="tx_amount">金额</string>
-    <string name="tx_amount_btc">金额\n(BTC)</string>
     <string name="tx_fee">手续费</string>
     <string name="tx_transfers">转账</string>
     <string name="tx_notes">附注</string>
@@ -280,7 +221,7 @@
 
     <string name="receive_amount_too_big">最大值 %1$s</string>
     <string name="receive_amount_negative">最小值 0</string>
-    <string name="receive_amount_nan">输入的XMR不是个数字</string>
+    <string name="receive_amount_nan">输入的AEON不是个数字</string>
 
     <string name="receive_title">接收</string>
 

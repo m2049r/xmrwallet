@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.m2049r.xmrwallet">
+    package="com.m2049r.aeonwallet">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -39,7 +39,7 @@
             android:name=".service.WalletService"
             android:description="@string/service_description"
             android:exported="false"
-            android:label="Monero Wallet Service" />
+            android:label="Wallet Service" />
 
     </application>
 

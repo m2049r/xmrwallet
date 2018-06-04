@@ -205,32 +205,4 @@
         det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 
-    <string name="help_xmrto"><![CDATA[
-        <h1>Å sende BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker XMR.TO-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://xmr.to og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
-        er ikke assosierte med XMR.TO og kan ikke hjelpe deg med deres tjeneste.</p>
-        <h2>XMR.TO vekslingskurs<h2>
-        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til XMR.TO-tjenesten. Disse
-        inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
-        kursen ikke er garantert på dette punktet. Du vil også se
-        den øvre grensa for at BTC-transaksjonen skal gå igjennom uten å vente på
-        XMR-bekreftelser (se XMR.TO-FAQen for fler detaljer). Legg merke til at XMR.TO
-        ikke har noen ekstra avgifter - hvor kult er ikke det?</p>
-        <h2>XMR.TO ordre<h2>
-        <p>På \"Bekreft\" skjermen, vil du se den faktiske XMR.TO ordren. Denne ordren er gyldig for
-        en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
-        enn den veiledende kursen vist på de tidligere skjermene.</p>
-        <h2>XMR.TO hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din XMR.TO hemmelige nøkkel
-        bli brukt til å spore BTC-transaksjonen på XMR.TO sine hjemmesider.</p>
-        <p>Vær oppmerksom på at denne nøkkelen kun er tilgjengelig for 24-timer etter transaksjonen
-		har blitt utført!</p>
-		<h2>XMR.TO nedtelling!</h2>
-        <p>Når nedtellinga når null, må du få en ny kvote fra XMR.TO ved å gå tilbake til
-        det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
-    ]]></string>
-
 </resources>
