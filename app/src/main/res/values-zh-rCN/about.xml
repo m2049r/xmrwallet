@@ -22,9 +22,9 @@
         <p>Monerujo 只会在本地端使用您的 Monero 私钥以及公开地址执行必要的处理，并在加密后发送至
         Monero 网络进行交易。</p>
         <p>其他个人信息都不会被 monerujo 收集。</p>
-        <p>如果你使用 USD/EUR 外汇的功能(可选用)，monerujo 將通过 kraken.com 的公开
-        API 抓取当前汇率。如果你想了解自己被收集的信息如何被使用，请访问 https://www.kraken.com/legal/privacy
-        查看他们的隐私政策，特別是「Information We Collect Automatically」章节。</p>
+        <p>如果你使用外汇的功能(可选用)，monerujo 將通过 coinmarketcap.com 的公开
+        API 抓取当前汇率。如果你想了解自己被收集的信息如何被使用，请访问 https://coinmarketcap.com/privacy
+        查看他们的隐私政策。</p>
         <h2>应用程序权限</h2>
         <ul>
         <li>INTERNET : 通过 Monero 节点连接至 Monero 网络。</li>

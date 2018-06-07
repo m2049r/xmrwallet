@@ -41,9 +41,7 @@ import com.m2049r.aeonwallet.model.Wallet;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeRate;
-import com.m2049r.aeonwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.aeonwallet.util.Helper;
-import com.m2049r.aeonwallet.util.OkHttpClientSingleton;
 
 import java.util.Locale;
 
@@ -310,12 +308,13 @@ public class ExchangeView extends LinearLayout
         }
     }
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void startExchange() {
         showProgress();
         String currencyA = (String) sCurrencyA.getSelectedItem();
         String currencyB = (String) sCurrencyB.getSelectedItem();
+
         exchangeApi.queryExchangeRate(currencyA, currencyB,
                 new ExchangeCallback() {
                     @Override
