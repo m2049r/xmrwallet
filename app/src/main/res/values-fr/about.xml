@@ -36,10 +36,6 @@
         Consultez leur politique de confidentialité sur https://www.kraken.com/legal/privacy
         pour des détails sur la façon dont les données de vos requêtes sont collectées
         (particulièrement la rubrique "Information We Collect Automatically").</p>
-        <p>Si vous utilisez l’application pour payer à une adresse BTC, vous utiliserez
-        le service XMR.TO. Consultez leur politique de confidentialité sur https://xmr.to/
-        pour plus de détails. Monerujo leur transmet l’adresse de destination BTC et le
-        montant. Votre IP serait également collectable.</p>
         <h2>Permissions de l’application</h2>
         <ul>
         <li>INTERNET : Connection au réseau Monero via le démon d’un nœud Monero</li>

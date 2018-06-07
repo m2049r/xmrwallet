@@ -137,8 +137,6 @@
         <h1>Invia</h1>
         <h2>Indirizzo del ricevente</h2>
         <p>Questo è l&apos;indirizzo pubblico del portafoglio cui stai inviando Moneroj, puoi incollare qui un indirizzo che hai precededentemente copiato sul blocco appunti, scansionare un codice QR o inserire un indirizzo manualmente. Accertati più volte che sia l&apos;indirizzo corretto e che tu non stia inviando Moneroj ad un indirizzo sbagliato.</p>
-        <p>Oltre ad inviare Moneroj (XMR), puoi anche inviare Bitcoin (BTC) attraverso il servizio XMR.TO (vedi https://xmr.to
-        per ulteriori dettagli). Controlla la sezione sull&apos;invio di BTC più avanti.</p>
         <h2>ID Pagamento</h2>
         <p>Puoi usare un ID Pagamento per identificare la causale della transazione. Questa è un&apos;informazione opzionale e privata. Ad esempio può aiutare un venditore ad associare una transazione ricevuta ad un bene da te acquistato.<p>
         <h2>Dimensione dell&apos;anello (ring size)</h2>
@@ -146,19 +144,6 @@
         <h2>Priorità</h2>
         <p>Questa impostazione determina la velocità con la quale la tua transazione verrà inclusa nella blockchain. Un&apos;alta priorità si correla ad una commissione di transazione più alta, così come una priorità bassa si correla ad una commissione di transazione più bassa. Considera che se imposti una priorità bassa alla tua transazione, potrebbero trascorrere ore prima che essa sia inserita all&apos;interno della blockchain. La priorità di default è
         \"Media\".</p>
-        <h1>Inviare BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO è un servizio di terze parti che funziona come cambiavaluta da Monero a Bitcoin.
-        Utilizziamo le API XMR.TO per integrare pagamenti Bitcoin all&apos;interno di Monerujo. Controlla https://xmr.to e decidi tu stesso se questa è una funzionalità che vuoi usare. Il team Monerujo non è associato in alcun modo con XMR.TO e non è in grado di aiutarti con il servizio da loro offerto.</p>
-        <h2>Tasso di cambio XMR.TO<h2>
-        <p>Sulla schermata \"Ammontare\" ti verranno mostrati i parametri attuali del servizio XMR.TO. Questi parametri includono il tasso di cambio attuale oltre ai limiti massimo e minimo di BTC. Considera che il tasso che ti viene mostrato non è ancora garantito in questa fase. Vedrai inoltre l&apos;ammontare fino al quale la transazione BTC verrà eseguita istantaneamente senza attendere conferme XMR (vedi le FAQ XMR.TO per maggiori informazioni). Considera inoltre che il servizio XMR.TO non aggiunge commissioni extra - bello vero?</p>
-        <h2>Ordine XMR.TO<h2>
-        <p>Sulla schermata \"Conferma\", troverai il vero ordine XMR.TO. Questo ordine è valido per un tempo limitato - potresti notare un conto alla rovescia sul pulsante \"Spendi\". Il tasso di cambio potrebbe essere diverso da quello indicativo mostrato nelle schermate precedenti.</p>
-        <h2>Chiave segreta XMR.TO<h2>
-        <p>Dal momento che Monerujo gestisce soltanto il versante Monero della tua transazione, può essere usata la chiave segreta XMR.TO per tracciare il versante Bitcoin del tuo ordine sulla homepage XMR.TO.</p>
-        <p>Considera che questa chiave segreta è valida solamente per 24 ore dall&apos;inizio della transazione!</p>
-        <h2>Conto alla rovescia XMR.TO!</h2>
-        <p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a XMR.TO tornando indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
 
 </resources>

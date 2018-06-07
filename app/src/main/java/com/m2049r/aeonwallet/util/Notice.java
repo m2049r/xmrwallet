@@ -37,8 +37,6 @@ public class Notice {
     private static final String PREFS_NAME = "notice";
     private static List<Notice> notices = null;
 
-    private static final String NOTICE_SHOW_XMRTO_ENABLED_LOGIN = "notice_xmrto_enabled_login";
-    private static final String NOTICE_SHOW_XMRTO_ENABLED_SEND = "notice_xmrto_enabled_send";
     private static final String NOTICE_SHOW_CRAZYPASS = "notice_crazypass_enabled_login";
 
     private static void init() {

@@ -285,15 +285,6 @@ public class Helper {
         return ShakeAnimation;
     }
 
-    static public HttpUrl getXmrToBaseUrl() {
-        if ((WalletManager.getInstance() == null)
-                || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
-            return HttpUrl.parse("https://test.xmr.to/api/v2/xmr2btc/");
-        } else {
-            return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
-        }
-    }
-
     private final static char[] HexArray = "0123456789ABCDEF".toCharArray();
 
     public static String bytesToHex(byte[] data) {

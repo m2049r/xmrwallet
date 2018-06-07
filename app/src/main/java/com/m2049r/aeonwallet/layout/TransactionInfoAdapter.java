@@ -103,7 +103,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        final ImageView ivTxType;
         final TextView tvAmount;
         final TextView tvFee;
         final TextView tvPaymentId;
@@ -112,7 +111,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         ViewHolder(View itemView) {
             super(itemView);
-            ivTxType = (ImageView) itemView.findViewById(R.id.ivTxType);
             tvAmount = (TextView) itemView.findViewById(R.id.tx_amount);
             tvFee = (TextView) itemView.findViewById(R.id.tx_fee);
             tvPaymentId = (TextView) itemView.findViewById(R.id.tx_paymentid);
@@ -131,11 +129,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             this.infoItem = infoItems.get(position);
 
             UserNotes userNotes = new UserNotes(infoItem.notes);
-            if (userNotes.xmrtoKey != null) {
-                ivTxType.setVisibility(View.VISIBLE);
-            } else {
-                ivTxType.setVisibility(View.GONE); // gives us more space for the amount
-            }
 
             String displayAmount = Helper.getDisplayAmount(infoItem.amount, Helper.DISPLAY_DIGITS_INFO);
             if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {

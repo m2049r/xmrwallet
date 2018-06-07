@@ -27,8 +27,6 @@
         <p>Altri dati personali non sono raccolti dall'app.</p>
         <p>Se usi la funzionalità (opzionale) del cambio USD/EUR, monerujo recupera il tasso di cambio attraverso le API pubbliche di kraken.com.
         Controlla la loro politica per la privacy (in lingua inglese) su https://www.kraken.com/legal/privacy per conoscere i dettagli su come vengono raccolti i dati nelle tue richieste (specialmente la sezione "Information We Collect Automatically" - "Informazioni che raccogliamo in modo automatico).</p>
-        <p>Se utilizzi l'app per effettuare pagamenti ad indirizzi BTC, stai usando il servizio XMR.TO.
-        Controlla la loro politica per la privacy (in lingua inglese) su https://xmr.to/ per conoscere i dettagli. Monerujo invia a loro l'indirizzo di destinazione BTC e l'ammontare della transazione. Anche il tuo IP potrebbe essere raccolto.</p>
         <h2>Permessi app</h2>
         <ul>
         <li>INTERNET : Connessione alla rete Monero attraverso un nodo </li>
