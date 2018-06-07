@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:showIn="LinearLayout"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="LinearLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,11 +12,16 @@
 
         <Spinner
             android:id="@+id/sCurrencyA"
-            android:layout_width="56dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
+            android:minWidth="64dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
+            android:paddingTop="8dp"
             android:textAlignment="center" />
 
         <com.m2049r.xmrwallet.widget.CTextInputLayout
@@ -49,19 +54,22 @@
         <Spinner
             android:id="@+id/sCurrencyB"
             style="@style/MoneroSpinnerGray"
-            android:layout_width="56sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
+            android:minWidth="64dp"
             android:paddingBottom="8dp"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
             android:paddingTop="8dp"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/tvAmountB"
             style="@style/MoneroText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
             android:layout_marginStart="16dp"
