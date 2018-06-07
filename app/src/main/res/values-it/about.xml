@@ -15,35 +15,33 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>Politica per la Privacy</h1>
-        <p>Questa pagina ti informa sulla nostra politica riguardante la raccolta, l'utilizzo e la rivelazione di informazioni personali che riceviamo dagli utenti della nostra app (monerujo: Portafoglio Monero).
+        <p>Questa pagina ti informa sulla nostra politica riguardante la raccolta, l\'utilizzo e la rivelazione di informazioni personali che riceviamo dagli utenti della nostra app (monerujo: Portafoglio Monero).
         </p>
-        <p>Usando questa app, acconsenti alla raccolta e all'utilizzo delle informazioni in accordo con questa politica.
+        <p>Usando questa app, acconsenti alla raccolta e all\'utilizzo delle informazioni in accordo con questa politica.
         </p>
         <h2>Dati raccolti</h2>
         <p>Per "dato personale" si intende ogni tipo di dato grazie al quale è possibile identificare un individuo.
         </p>
-        <p>Le chiavi e gli indirizzi pubblici di Monero vengono raccolti e processati dall'app localmente con lo scopo di processare le transazioni e vengono trasmessi all'interno della rete Monero in modo cifrato.
+        <p>Le chiavi e gli indirizzi pubblici di Monero vengono raccolti e processati dall\'app localmente con lo scopo di processare le transazioni e vengono trasmessi all\'interno della rete Monero in modo cifrato.
         </p>
-        <p>Altri dati personali non sono raccolti dall'app.</p>
-        <p>Se usi la funzionalità (opzionale) del cambio USD/EUR, monerujo recupera il tasso di cambio attraverso le API pubbliche di kraken.com.
-        Controlla la loro politica per la privacy (in lingua inglese) su https://www.kraken.com/legal/privacy per conoscere i dettagli su come vengono raccolti i dati nelle tue richieste (specialmente la sezione "Information We Collect Automatically" - "Informazioni che raccogliamo in modo automatico).</p>
-        <p>Se utilizzi l'app per effettuare pagamenti ad indirizzi BTC, stai usando il servizio XMR.TO.
-        Controlla la loro politica per la privacy (in lingua inglese) su https://xmr.to/ per conoscere i dettagli. Monerujo invia a loro l'indirizzo di destinazione BTC e l'ammontare della transazione. Anche il tuo IP potrebbe essere raccolto.</p>
+        <p>Altri dati personali non sono raccolti dall\'app.</p>
+        <p>Se usi la funzionalità (opzionale) del cambio, monerujo recupera il tasso di cambio attraverso le API pubbliche di coinmarketcap.com.
+        Controlla la loro politica per la privacy (in lingua inglese) su https://coinmarketcap.com/privacy per conoscere i dettagli su come vengono raccolti i dati nelle tue richieste.</p>
         <h2>Permessi app</h2>
         <ul>
         <li>INTERNET : Connessione alla rete Monero attraverso un nodo </li>
-        <li>READ_EXTERNAL_STORAGE : Legge i file di portafoglio salvati all'interno del dispositivo</li>
-        <li>WRITE_EXTERNAL_STORAGE : Scrive i file di portafoglio salvati all'interno del dispositivo</li>
+        <li>READ_EXTERNAL_STORAGE : Legge i file di portafoglio salvati all\'interno del dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Scrive i file di portafoglio salvati all\'interno del dispositivo</li>
         <li>WAKE_LOCK : Tiene il dispositivo sveglio durante la sincronizzazione</li>
         <li>CAMERA : Scansione codici QR di indirizzi Monero</li>
         </ul>
         <h2>Modifica a questa Politica per la Privacy</h2>
-        <p>Potremmo aggiorare questa politica per la privacy di volta in volta. Ti invieremo una notifica su ciò che è cambiato pubblicando la nuova politica per la privacy all'interno dell'app e sul sito (www.monerujo.io)
+        <p>Potremmo aggiorare questa politica per la privacy di volta in volta. Ti invieremo una notifica su ciò che è cambiato pubblicando la nuova politica per la privacy all\'interno dell\'app e sul sito (www.monerujo.io)
 		Sei invitato a rivedere periodicamente questa politica per la privacy per controllarne i cambiamenti.
         <p>Questa politica per la privacy è stata aggiornata il 10 novembre 2017.
         </p>
         <h2>Contattaci</h2>
-        <p>Se hai dubbi o domande sulla nostra politica per la privacy, oppure su come i tuoi dati vengono raccolti e processati, contattaci all'indirizzo email privacy@monerujo.io.
+        <p>Se hai dubbi o domande sulla nostra politica per la privacy, oppure su come i tuoi dati vengono raccolti e processati, contattaci all\'indirizzo email privacy@monerujo.io.
         </p>
         ]]></string>
 </resources>

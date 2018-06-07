@@ -29,11 +29,10 @@
         Monero de forma cifrada.
         </p>
         <p>Otros datos personales no son recopilados por la app.</p>
-        <p>Si utiliza la funcionalidad de cambio USD/EUR (opcional), monerujo obtiene la tasa
-        de cambio a través de la API pública de kraken.com.
-        Vea su política de privadad en https://www.kraken.com/legal/privacy para conocer más
-        detalles acerca de como se recopilan los datos de sus peticiones (especialmente la sección
-        "Innformation We Collect Automatically").</p>
+        <p>Si utiliza la funcionalidad de cambio (opcional), monerujo obtiene la tasa
+        de cambio a través de la API pública de coinmarketcap.com.
+        Vea su política de privadad en https://coinmarketcap.com/privacy para conocer más
+        detalles acerca de como se recopilan los datos de sus peticiones.</p>
         <h2>Permisos de la App</h2>
         <ul>
         <li>INTERNET : Conectar a la red de Monero a través de un Daemon Nodo de Monero</li>
