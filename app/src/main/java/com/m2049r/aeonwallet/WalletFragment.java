@@ -43,9 +43,7 @@ import com.m2049r.aeonwallet.model.Wallet;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeRate;
-import com.m2049r.aeonwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.aeonwallet.util.Helper;
-import com.m2049r.aeonwallet.util.OkHttpClientSingleton;
 import com.m2049r.aeonwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
