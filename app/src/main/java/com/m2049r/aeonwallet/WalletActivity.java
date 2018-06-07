@@ -270,10 +270,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
                 break;
             case NetworkType_Testnet:
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(R.color.give);
                 break;
             case NetworkType_Stagenet:
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(R.color.give);
                 break;
             default:
                 throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());

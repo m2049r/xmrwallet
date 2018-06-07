@@ -494,11 +494,11 @@ public class LoginActivity extends SecureActivity
                 break;
             case NetworkType_Testnet:
                 toolbar.setSubtitle(getString(R.string.connect_testnet));
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(R.color.give);
                 break;
             case NetworkType_Stagenet:
                 toolbar.setSubtitle(getString(R.string.connect_stagenet));
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(R.color.give);
                 break;
             default:
                 throw new IllegalStateException("NetworkType unknown: " + WalletManager.getInstance().getNetworkType());
