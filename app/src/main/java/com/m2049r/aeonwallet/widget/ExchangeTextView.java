@@ -250,7 +250,7 @@ public class ExchangeTextView extends LinearLayout
         }
     }
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void startExchange() {
         showProgress();

@@ -56,6 +56,7 @@ import com.m2049r.aeonwallet.R;
 import com.m2049r.aeonwallet.model.NetworkType;
 import com.m2049r.aeonwallet.model.Wallet;
 import com.m2049r.aeonwallet.model.WalletManager;
+import com.m2049r.aeonwallet.service.exchange.api.ExchangeApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +73,8 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
+    static public final String CRYPTO = "AEON";
+
     static private final String WALLET_DIR = "aeonwallet" + (BuildConfig.DEBUG ? "-debug" : "");
     static private final String HOME_DIR = "aeon" + (BuildConfig.DEBUG ? "-debug" : "");
 
@@ -341,13 +344,11 @@ public class Helper {
     // or the password used to derive the CrAzYpass for the wallet
     static public String getWalletPassword(Context context, String walletName, String password) {
         String walletPath = new File(getWalletRoot(context), walletName + ".keys").getAbsolutePath();
-        Timber.e("A %s/%s/", walletPath, password);
 
         // try with entered password (which could be a legacy password or a CrAzYpass)
         if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
             return password;
         }
-        Timber.e("B");
 
         // maybe this is a malformed CrAzYpass?
         String possibleCrazyPass = CrazyPassEncoder.reformat(password);
@@ -356,15 +357,12 @@ public class Helper {
                 return possibleCrazyPass;
             }
         }
-        Timber.e("C");
 
         // generate & try with CrAzYpass
         String crazyPass = KeyStoreHelper.getCrazyPass(context, password);
-        Timber.e("D /%s/",crazyPass);
         if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
             return crazyPass;
         }
-        Timber.e("E");
 
         return null;
     }
@@ -515,5 +513,10 @@ public class Helper {
         } else {
             return false;
         }
+    }
+
+    static public ExchangeApi getExchangeApi() {
+        return new com.m2049r.aeonwallet.service.exchange.coinmarketcap.ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+
     }
 }

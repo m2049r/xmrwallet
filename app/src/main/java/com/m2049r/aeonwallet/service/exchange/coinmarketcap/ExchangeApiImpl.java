@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2018 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.aeonwallet.service.exchange.kraken;
+package com.m2049r.aeonwallet.service.exchange.coinmarketcap;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
@@ -23,6 +23,7 @@ import com.m2049r.aeonwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeException;
 import com.m2049r.aeonwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.aeonwallet.util.Helper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +38,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ExchangeApiImpl implements ExchangeApi {
+    static final String CRYPTO_ID = "1026";
 
     @NonNull
     private final OkHttpClient okHttpClient;
@@ -52,7 +54,7 @@ public class ExchangeApiImpl implements ExchangeApi {
     }
 
     public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://api.kraken.com/0/public/Ticker"));
+        this(okHttpClient, HttpUrl.parse("https://api.coinmarketcap.com/v2/ticker/"));
     }
 
     @Override
@@ -67,12 +69,12 @@ public class ExchangeApiImpl implements ExchangeApi {
         boolean inverse = false;
         String fiat = null;
 
-        if (baseCurrency.equals("XMR")) {
+        if (baseCurrency.equals(Helper.CRYPTO)) {
             fiat = quoteCurrency;
             inverse = false;
         }
 
-        if (quoteCurrency.equals("XMR")) {
+        if (quoteCurrency.equals(Helper.CRYPTO)) {
             fiat = baseCurrency;
             inverse = true;
         }
@@ -85,7 +87,8 @@ public class ExchangeApiImpl implements ExchangeApi {
         final boolean swapAssets = inverse;
 
         final HttpUrl url = baseUrl.newBuilder()
-                .addQueryParameter("pair", "XMR" + fiat)
+                .addEncodedPathSegments(CRYPTO_ID + "/")
+                .addQueryParameter("convert", fiat)
                 .build();
 
         final Request httpRequest = createHttpRequest(url);
@@ -101,12 +104,12 @@ public class ExchangeApiImpl implements ExchangeApi {
                 if (response.isSuccessful()) {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
-                        final JSONArray jsonError = json.getJSONArray("error");
-                        if (jsonError.length() > 0) {
-                            final String errorMsg = jsonError.getString(0);
-                            callback.onError(new ExchangeException(response.code(), errorMsg));
+                        final JSONObject metadata = json.getJSONObject("metadata");
+                        if (!metadata.isNull("error")) {
+                            final String errorMsg = metadata.getString("error");
+                            callback.onError(new ExchangeException(response.code(), (String) errorMsg));
                         } else {
-                            final JSONObject jsonResult = json.getJSONObject("result");
+                            final JSONObject jsonResult = json.getJSONObject("data");
                             reportSuccess(jsonResult, swapAssets, callback);
                         }
                     } catch (JSONException ex) {
@@ -129,7 +132,6 @@ public class ExchangeApiImpl implements ExchangeApi {
             callback.onError(ex);
         }
     }
-
 
     private Request createHttpRequest(final HttpUrl url) {
         return new Request.Builder()
