@@ -259,8 +259,8 @@
 
     <string-array name="currency" translatable="false">
         <item>AEON</item>
-        <item>USD</item>
         <item>EUR</item>
+        <item>USD</item>
         <item>JPY</item>
         <item>GBP</item>
         <item>CHF</item>
