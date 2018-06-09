@@ -101,7 +101,9 @@ public class WalletFragment extends Fragment
         ivSynced = (ImageView) view.findViewById(R.id.ivSynced);
 
         sCurrency = (Spinner) view.findViewById(R.id.sCurrency);
-        sCurrency.setAdapter(ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance));
+        ArrayAdapter currencyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance);
+        currencyAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
+        sCurrency.setAdapter(currencyAdapter);
 
         bSend = (Button) view.findViewById(R.id.bSend);
         bReceive = (Button) view.findViewById(R.id.bReceive);
