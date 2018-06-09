@@ -46,35 +46,6 @@
             android:textSize="18sp"
             android:visibility="invisible" />
 
-
-        <LinearLayout
-            android:id="@+id/llXmrTo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:visibility="invisible">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:paddingTop="8dp"
-                android:src="@drawable/gunther_24dp" />
-
-            <TextView
-                android:id="@+id/tvXmrTo"
-                style="@style/MoneroText.Info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="start|top"
-                android:singleLine="false"
-                android:textSize="18sp"
-                tools:text="@string/info_xmrto" />
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/llPaymentId"
             android:layout_width="match_parent"

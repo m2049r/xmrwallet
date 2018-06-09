@@ -60,84 +60,84 @@ set_target_properties(boost_wserialization PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/boost/lib/${ANDROID_ABI}/libboost_wserialization.a)
 
 #############
-# Monero
+# Aeon
 #############
 
 add_library(wallet_api STATIC IMPORTED)
 set_target_properties(wallet_api PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libwallet_api.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libwallet_api.a)
 
 add_library(wallet STATIC IMPORTED)
 set_target_properties(wallet PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libwallet.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libwallet.a)
 
 add_library(cryptonote_core STATIC IMPORTED)
 set_target_properties(cryptonote_core PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcryptonote_core.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libcryptonote_core.a)
 
 add_library(cryptonote_basic STATIC IMPORTED)
 set_target_properties(cryptonote_basic PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcryptonote_basic.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libcryptonote_basic.a)
 
 add_library(mnemonics STATIC IMPORTED)
 set_target_properties(mnemonics PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libmnemonics.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libmnemonics.a)
 
 add_library(common STATIC IMPORTED)
 set_target_properties(common PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcommon.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libcommon.a)
 
 add_library(cncrypto STATIC IMPORTED)
 set_target_properties(cncrypto PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcncrypto.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libcncrypto.a)
 
 add_library(ringct STATIC IMPORTED)
 set_target_properties(ringct PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libringct.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libringct.a)
 
 add_library(ringct_basic STATIC IMPORTED)
 set_target_properties(ringct_basic PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libringct_basic.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libringct_basic.a)
 
 add_library(blockchain_db STATIC IMPORTED)
 set_target_properties(blockchain_db PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libblockchain_db.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libblockchain_db.a)
 
 add_library(lmdb STATIC IMPORTED)
 set_target_properties(lmdb PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/liblmdb.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/liblmdb.a)
 
 add_library(easylogging STATIC IMPORTED)
 set_target_properties(easylogging PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libeasylogging.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libeasylogging.a)
 
 add_library(unbound STATIC IMPORTED)
 set_target_properties(unbound PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libunbound.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libunbound.a)
 
 add_library(epee STATIC IMPORTED)
 set_target_properties(epee PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libepee.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libepee.a)
 
 add_library(blocks STATIC IMPORTED)
 set_target_properties(blocks PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libblocks.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libblocks.a)
 
 add_library(checkpoints STATIC IMPORTED)
 set_target_properties(checkpoints PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libcheckpoints.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libcheckpoints.a)
 
 add_library(device STATIC IMPORTED)
 set_target_properties(device PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libdevice.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libdevice.a)
 
 add_library(multisig STATIC IMPORTED)
 set_target_properties(multisig PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libmultisig.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libmultisig.a)
 
 add_library(version STATIC IMPORTED)
 set_target_properties(version PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libversion.a)
+    ${EXTERNAL_LIBS_DIR}/aeon/lib/${ANDROID_ABI}/libversion.a)
 
 #############
 # System
@@ -145,7 +145,7 @@ set_target_properties(version PROPERTIES IMPORTED_LOCATION
 
 find_library( log-lib log )
 
-include_directories( ${EXTERNAL_LIBS_DIR}/monero/include )
+include_directories( ${EXTERNAL_LIBS_DIR}/aeon/include )
 
 message(STATUS EXTERNAL_LIBS_DIR :  ${EXTERNAL_LIBS_DIR})
 
