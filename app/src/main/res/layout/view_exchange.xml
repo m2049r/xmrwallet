@@ -17,11 +17,7 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="72dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:paddingTop="8dp" />
+            android:minWidth="72dp" />
 
         <com.m2049r.aeonwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
@@ -59,16 +55,12 @@
             android:entries="@array/currency"
             android:gravity="center"
             android:minWidth="72dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:paddingTop="8dp"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/tvAmountB"
             style="@style/MoneroText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
             android:layout_marginStart="16dp"

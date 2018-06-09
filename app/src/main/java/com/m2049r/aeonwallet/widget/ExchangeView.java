@@ -165,9 +165,11 @@ public class ExchangeView extends LinearLayout
         etAmount = (TextInputLayout) findViewById(R.id.etAmount);
         tvAmountB = (TextView) findViewById(R.id.tvAmountB);
         sCurrencyA = (Spinner) findViewById(R.id.sCurrencyA);
-        sCurrencyA.setAdapter(ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner));
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner);
+        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
+        sCurrencyA.setAdapter(adapter);
         sCurrencyB = (Spinner) findViewById(R.id.sCurrencyB);
-        sCurrencyB.setAdapter(ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner));
+        sCurrencyB.setAdapter(adapter);
         evExchange = (ImageView) findViewById(R.id.evExchange);
         pbExchange = (ProgressBar) findViewById(R.id.pbExchange);
 
