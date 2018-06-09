@@ -16,7 +16,7 @@ public class FingerprintHelper {
         FingerprintManager fingerprintManager = context.getSystemService(FingerprintManager.class);
         KeyguardManager keyguardManager = context.getSystemService(KeyguardManager.class);
 
-        return keyguardManager != null && fingerprintManager != null &&
+        return (keyguardManager != null) && (fingerprintManager != null) &&
                 keyguardManager.isKeyguardSecure() &&
                 fingerprintManager.isHardwareDetected() &&
                 fingerprintManager.hasEnrolledFingerprints();
