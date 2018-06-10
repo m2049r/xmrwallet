@@ -284,7 +284,9 @@ public class KeyStoreHelper {
 
     private static byte[] decrypt(String alias, byte[] data) {
         try {
-            PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
+            KeyStore.PrivateKeyEntry pke = getPrivateKeyEntry(alias);
+            if (pke == null) return null;
+            PrivateKey privateKey = pke.getPrivateKey();
             Cipher cipher = Cipher.getInstance(SecurityConstants.CIPHER_RSA_ECB_PKCS1);
 
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
@@ -305,7 +307,8 @@ public class KeyStoreHelper {
      */
     private static byte[] signData(String alias, byte[] data) throws NoSuchAlgorithmException,
             InvalidKeyException, SignatureException {
-
+        KeyStore.PrivateKeyEntry pke = getPrivateKeyEntry(alias);
+        if (pke == null) return null;
         PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
         Signature s = Signature.getInstance(SecurityConstants.SIGNATURE_SHA256withRSA);
         s.initSign(privateKey);
