@@ -17,12 +17,7 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="64dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:paddingTop="8dp"
-            android:textAlignment="center" />
+            android:minWidth="56dp" />
 
         <com.m2049r.xmrwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
@@ -59,11 +54,7 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="64dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:paddingTop="8dp"
+            android:minWidth="56dp"
             android:textAlignment="center" />
 
         <TextView
