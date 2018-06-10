@@ -31,11 +31,12 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import android.os.CancellationSignal;
 import android.os.Environment;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v4.os.CancellationSignal;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.text.Editable;
@@ -397,10 +398,6 @@ public class Helper {
         final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
         final CancellationSignal cancelSignal = new CancellationSignal();
 
-        if (fingerprintAuthAllowed) {
-            promptsView.findViewById(R.id.txtFingerprintAuth).setVisibility(View.VISIBLE);
-        }
-
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -436,40 +433,46 @@ public class Helper {
                         });
         openDialog = alertDialogBuilder.create();
 
-        final FingerprintManagerCompat.AuthenticationCallback fingerprintAuthCallback = new FingerprintManagerCompat.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errMsgId, CharSequence errString) {
-                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth)).setText(errString);
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
-                try {
-                    String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
-                    if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
-                        Helper.hideKeyboardAlways((Activity) context);
-                        openDialog.dismiss();
-                        openDialog = null;
-                    } else {
-                        etPassword.setError(context.getString(R.string.bad_password));
-                    }
-                } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
-                    etPassword.setError(context.getString(R.string.bad_password));
-                    // TODO: better errror message here - what would it be?
+        final FingerprintManager.AuthenticationCallback fingerprintAuthCallback;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            fingerprintAuthCallback = null;
+        } else {
+            fingerprintAuthCallback = new FingerprintManager.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errMsgId, CharSequence errString) {
+                    ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth)).setText(errString);
                 }
-            }
 
-            @Override
-            public void onAuthenticationFailed() {
-                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth))
-                        .setText(context.getString(R.string.bad_fingerprint));
-            }
-        };
+                @Override
+                public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+                    try {
+                        String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
+                        if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
+                            Helper.hideKeyboardAlways((Activity) context);
+                            openDialog.dismiss();
+                            openDialog = null;
+                        } else {
+                            etPassword.setError(context.getString(R.string.bad_password));
+                        }
+                    } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+                        etPassword.setError(context.getString(R.string.bad_password));
+                        // TODO: better errror message here - what would it be?
+                    }
+                }
+
+                @Override
+                public void onAuthenticationFailed() {
+                    ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth))
+                            .setText(context.getString(R.string.bad_fingerprint));
+                }
+            };
+        }
 
         openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
-                if (fingerprintAuthAllowed) {
+                if (fingerprintAuthAllowed && fingerprintAuthCallback != null) {
+                    promptsView.findViewById(R.id.txtFingerprintAuth).setVisibility(View.VISIBLE);
                     FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
                 }
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
