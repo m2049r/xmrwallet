@@ -31,11 +31,10 @@
         réseau Monero sous une forme chiffrée.
         </p>
         <p>Aucune autre donnée personnelle n’est collectée par l’application.</p>
-        <p>Si vous utilisez la fonction (optionnelle) de change USD/EUR, monerujo récupère le
-        taux de change via l’API publique de kraken.com.
-        Consultez leur politique de confidentialité sur https://www.kraken.com/legal/privacy
-        pour des détails sur la façon dont les données de vos requêtes sont collectées
-        (particulièrement la rubrique "Information We Collect Automatically").</p>
+        <p>Si vous utilisez la fonction (optionnelle) de change, monerujo récupère le
+        taux de change via l’API publique de coinmarketcap.com.
+        Consultez leur politique de confidentialité sur https://coinmarketcap.com/privacy
+        pour des détails sur la façon dont les données de vos requêtes sont collectées.</p>
         <p>Si vous utilisez l’application pour payer à une adresse BTC, vous utiliserez
         le service XMR.TO. Consultez leur politique de confidentialité sur https://xmr.to/
         pour plus de détails. Monerujo leur transmet l’adresse de destination BTC et le

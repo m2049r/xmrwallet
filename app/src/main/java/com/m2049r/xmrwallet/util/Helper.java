@@ -56,6 +56,7 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +73,8 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
+    static public final String CRYPTO = "XMR";
+
     static private final String WALLET_DIR = "monerujo" + (BuildConfig.DEBUG ? "-debug" : "");
     static private final String HOME_DIR = "monero" + (BuildConfig.DEBUG ? "-debug" : "");
 
@@ -522,5 +525,10 @@ public class Helper {
         } else {
             return false;
         }
+    }
+
+    static public ExchangeApi getExchangeApi() {
+        return new com.m2049r.xmrwallet.service.exchange.coinmarketcap.ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+
     }
 }

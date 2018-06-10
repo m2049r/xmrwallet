@@ -29,11 +29,10 @@
 	von Transaktionen lokal gesammelt und verarbeitet und verschlüsselt in das Monero-Netzwerk übertragen.
         </p>
         <p>Andere persönliche Daten werden von der App nicht gesammelt.</p>
-        <p>Wenn du den USD/EUR Umrechner (optional) nutzt fragt Monerujo
-	den aktuellen Kurs über die öffentliche Schnittstelle von kraken.com ab.
-        Siehe dir ihre Datenschutzerklärung unter https://www.kraken.com/legal/privacy für
-        Details darüber an, wie Daten in deinen Anfragen gesammelt werden (insbesondere der
-        Abschnitt "Information We Collect Automatically").</p>
+        <p>Wenn du den Umrechner (optional) nutzt fragt Monerujo
+	den aktuellen Kurs über die öffentliche Schnittstelle von coinmarketcap.com ab.
+        Siehe dir ihre Datenschutzerklärung unter https://coinmarketcap.com/privacy für
+        Details darüber an, wie Daten in deinen Anfragen gesammelt werden.</p>
 	<p>Wenn du die App zum Bezahlen an BTC-Adressen verwendest, verwendest du den Dienst XMR.TO.
         Weitere Informationen findest du in den Datenschutzerklärung unter https://xmr.to/. 
 	Monerujo schickt dem Anbieter die BTC Zieladresse und den Betrag.
