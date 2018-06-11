@@ -236,9 +236,6 @@ public class TxFragment extends Fragment {
         String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
 
         long realAmount = info.amount;
-        if (info.isPending) {
-            realAmount = realAmount - info.fee;
-        }
         tvTxAmount.setText(sign + Wallet.getDisplayAmount(realAmount));
 
         if ((info.fee > 0)) {
