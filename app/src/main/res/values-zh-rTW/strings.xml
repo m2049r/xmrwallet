@@ -305,4 +305,7 @@
     <string name="fab_restore_viewonly">回復唯讀錢包</string>
     <string name="fab_restore_key">從私鑰回復錢包</string>
     <string name="fab_restore_seed">從25字種子碼回復錢包</string>
+    <string name="menu_backup_to_nfc">備份到NFC</string>
+    <string name="input_nfc_password_title">輸入密碼後刷NFC</string>
+    <string name="menu_backup_to_file">備份到文件</string>
 </resources>

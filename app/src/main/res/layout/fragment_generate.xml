@@ -169,6 +169,73 @@
                 android:textAlignment="textStart" />
         </android.support.design.widget.TextInputLayout>
 
+
+        <LinearLayout
+            android:id="@+id/llNfcPasswordSeed"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/etNfcPasswordSeed"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    style="@style/MoneroEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/generate_nfc_password_seed_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivNfcPasswordSeed"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_gravity="top"
+                android:src="@drawable/nfc3" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llNfcPasswordkey"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/etNfcPasswordkey"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    style="@style/MoneroEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/generate_nfc_password_key_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivNfcPasswordkey"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_gravity="top"
+                android:src="@drawable/nfc3" />
+        </LinearLayout>
+
+
         <Button
             android:id="@+id/bGenerate"
             style="@style/MoneroButton"

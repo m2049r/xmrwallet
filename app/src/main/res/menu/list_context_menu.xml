@@ -16,8 +16,12 @@
         android:title="@string/menu_rename" />
 
     <item
-        android:id="@+id/action_backup"
-        android:title="@string/menu_backup" />
+        android:id="@+id/action_backup_file"
+        android:title="@string/menu_backup_to_file" />
+
+    <item
+        android:id="@+id/action_backup_nfc"
+        android:title="@string/menu_backup_to_nfc" />
 
     <item
         android:id="@+id/action_archive"

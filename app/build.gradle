@@ -72,7 +72,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
     implementation 'com.nulab-inc:zxcvbn:1.2.3'
-
+    //compile files('lib/sunjce_provider.jar')
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"
