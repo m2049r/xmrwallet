@@ -80,8 +80,10 @@
     <string name="prompt_password">Contraseña para %1$s</string>
     <string name="prompt_fingerprint_auth">Puedes poner tu dedo en el sensor para autorizar con tu huella.</string>
     <string name="prompt_send_password">Confirmar Contraseña</string>
+    <string name="prompt_open_wallet">[Opening the wallet&#8230;]</string>
     <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
+    <string name="bad_saved_password">[Saved password is incorrect.\nPlease enter password manually.]</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
     <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>

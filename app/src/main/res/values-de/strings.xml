@@ -133,8 +133,10 @@
     <string name="prompt_password">Passwort für %1$s</string>
     <string name="prompt_fingerprint_auth">Fingerabdruck-Authentifizierung möglich.\nBitte Sensor berühren.</string>
     <string name="prompt_send_password">Passwort bestätigen</string>
+    <string name="prompt_open_wallet">[Opening the wallet&#8230;]</string>
     <string name="bad_fingerprint">Fingerabdruck nicht erkannt. Nochmals versuchen.</string>
     <string name="bad_password">Falsches Passwort!</string>
+    <string name="bad_saved_password">[Saved password is incorrect.\nPlease enter password manually.]</string>
     <string name="bad_wallet">Wallet existiert nicht!</string>
     <string name="prompt_daemon_missing">Daemonadresse muss gesetzt sein!</string>
     <string name="prompt_wrong_net">Wallet entspricht nicht dem ausgewähltem Netz</string>
