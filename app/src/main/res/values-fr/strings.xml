@@ -313,11 +313,8 @@
     <string name="fab_restore_key">Restaurer un portefeuille depuis la clef privée</string>
     <string name="fab_restore_seed">Restaurer un portefeuille depuis la phrase mnémonique</string>
 
-    <string name="accounts_drawer_open">Ouvrir le Tiroir des Comptes</string>
-    <string name="accounts_drawer_close">Fermer le Tiroir des Comptes</string>
     <string name="accounts_drawer_new">Créer un Compte</string>
     <string name="accounts_drawer_title">Comptes</string>
-    <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Nouveau Compte #%1$d ajouté</string>
     <string name="tx_account">Compte #</string>
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
