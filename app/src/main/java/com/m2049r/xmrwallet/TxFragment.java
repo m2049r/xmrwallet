@@ -59,6 +59,7 @@ public class TxFragment extends Fragment {
         TS_FORMATTER.setTimeZone(tz);
     }
 
+    private TextView tvAccount;
     private TextView tvTxTimestamp;
     private TextView tvTxId;
     private TextView tvTxKey;
@@ -88,6 +89,7 @@ public class TxFragment extends Fragment {
         tvDestinationBtc = (TextView) view.findViewById(R.id.tvDestinationBtc);
         tvTxAmountBtc = (TextView) view.findViewById(R.id.tvTxAmountBtc);
 
+        tvAccount = (TextView) view.findViewById(R.id.tvAccount);
         tvTxTimestamp = (TextView) view.findViewById(R.id.tvTxTimestamp);
         tvTxId = (TextView) view.findViewById(R.id.tvTxId);
         tvTxKey = (TextView) view.findViewById(R.id.tvTxKey);
@@ -221,6 +223,8 @@ public class TxFragment extends Fragment {
 
         activityCallback.setSubtitle(getString(R.string.tx_title));
         activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+
+        tvAccount.setText("" + info.subaddrAccount);
 
         tvTxTimestamp.setText(TS_FORMATTER.format(new Date(info.timestamp * 1000)));
         tvTxId.setText(info.hash);

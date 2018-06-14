@@ -292,4 +292,12 @@
     <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
     <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
+
+    <string name="accounts_drawer_open">Open Accounts Drawer</string>
+    <string name="accounts_drawer_close">Close Accounts Drawer</string>
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_balance">%1$s XMR</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
 </resources>

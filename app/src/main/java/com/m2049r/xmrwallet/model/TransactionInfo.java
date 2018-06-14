@@ -53,6 +53,11 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         }
     }
 
+//    virtual std::set<uint32_t> subaddrIndex() const = 0;
+//    virtual uint32_t subaddrAccount() const = 0;
+//    virtual std::string label() const = 0;
+//    virtual uint64_t confirmations() const = 0;
+
     public Direction direction;
     public boolean isPending;
     public boolean isFailed;
@@ -62,6 +67,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
     public String hash;
     public long timestamp;
     public String paymentId;
+    public int subaddrAccount;
     public long confirmations;
     public List<Transfer> transfers;
 
@@ -78,6 +84,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             String hash,
             long timestamp,
             String paymentId,
+            int subaddrAccount,
             long confirmations,
             List<Transfer> transfers) {
         this.direction = Direction.values()[direction];
@@ -89,6 +96,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.hash = hash;
         this.timestamp = timestamp;
         this.paymentId = paymentId;
+        this.subaddrAccount = subaddrAccount;
         this.confirmations = confirmations;
         this.transfers = transfers;
     }
@@ -108,6 +116,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeString(hash);
         out.writeLong(timestamp);
         out.writeString(paymentId);
+        out.writeInt(subaddrAccount);
         out.writeLong(confirmations);
         out.writeList(transfers);
         out.writeString(txKey);
@@ -134,6 +143,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         hash = in.readString();
         timestamp = in.readLong();
         paymentId = in.readString();
+        subaddrAccount = in.readInt();
         confirmations = in.readLong();
         transfers = in.readArrayList(Transfer.class.getClassLoader());
         txKey = in.readString();
