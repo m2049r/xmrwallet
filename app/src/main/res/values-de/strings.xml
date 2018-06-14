@@ -175,9 +175,9 @@
     <string name="generate_fingerprint_hint">Erlaubt das Öffnen des Wallets durch Fingerabdruck-Authentifizierung</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Fingerabdruck-Authentifizierung</strong>
-        <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts 
+        <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts
         das Wallet-Saldo einsehen sowie Gelder empfangen.</p>
-        <p>Aus Sicherheitsgründen wird Monerujo weiterhin dein Passwort abfragen, 
+        <p>Aus Sicherheitsgründen wird Monerujo weiterhin dein Passwort abfragen,
         wenn du Wallet-Details einsehen oder Gelder senden möchtest.</p>
         <strong>Sicherheits-Warnung</strong>
         <p>Bedenke bitte, dass jeder mit Zugriff auf deinen Fingerabdruck dein Wallet-Saldo einsehen kann.</p>
@@ -315,7 +315,13 @@
     <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
     <string name="tx_account">Konto #</string>
 
-    <string name="send_sweepall">Versende alle verfügbaren Gelder aus diesem Konto!</string>
+    <string name="send_sweepall">Versende ALLE(!) verfügbaren Gelder aus diesem Konto</string>
     <string name="tx_subaddress">Subadresse #%1$d</string>
     <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d</string>
+    <string name="accounts_drawer_open">Open Accounts Drawer</string>
+    <string name="accounts_drawer_close">Close Accounts Drawer</string>
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
 </resources>
