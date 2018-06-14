@@ -299,7 +299,6 @@
     <string name="accounts_drawer_close">Close Accounts Drawer</string>
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_drawer_title">Accounts</string>
-    <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 </resources>
