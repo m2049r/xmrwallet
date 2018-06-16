@@ -849,6 +849,31 @@ Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject i
 }
 
 JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_createSweepTransaction(JNIEnv *env, jobject instance,
+                                                          jstring dst_addr, jstring payment_id,
+                                                          jint mixin_count,
+                                                          jint priority,
+                                                          jint accountIndex) {
+
+    const char *_dst_addr = env->GetStringUTFChars(dst_addr, NULL);
+    const char *_payment_id = env->GetStringUTFChars(payment_id, NULL);
+    Bitmonero::PendingTransaction::Priority _priority =
+            static_cast<Bitmonero::PendingTransaction::Priority>(priority);
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+
+    Monero::optional<uint64_t> empty;
+
+    Bitmonero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
+                                                                  empty, (uint32_t) mixin_count,
+                                                                  _priority,
+                                                                  (uint32_t) accountIndex);
+
+    env->ReleaseStringUTFChars(dst_addr, _dst_addr);
+    env->ReleaseStringUTFChars(payment_id, _payment_id);
+    return reinterpret_cast<jlong>(tx);
+}
+
+JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_createSweepUnmixableTransactionJ(JNIEnv *env,
                                                                         jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);

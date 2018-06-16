@@ -1,30 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvFunds"
-        style="@style/MoneroText.Funds"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center" />
+        android:orientation="horizontal">
 
-    <com.m2049r.xmrwallet.widget.ExchangeTextView
-        android:id="@+id/evAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical" />
+        <TextView
+            android:id="@+id/tvFunds"
+            style="@style/MoneroText.Funds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/ibSweep"
+            android:gravity="center"
+            tools:text="Balance: 70.198276354123 XMR" />
 
-    <com.m2049r.xmrwallet.widget.NumberPadView
-        android:id="@+id/numberPad"
+        <ImageButton
+            android:id="@+id/ibSweep"
+            style="@style/MoneroLabel.NumPad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp"
+            android:src="@drawable/ic_all_inclusive_24dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llAmount"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:gravity="center" />
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.m2049r.xmrwallet.widget.ExchangeTextView
+            android:id="@+id/evAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" />
+
+        <com.m2049r.xmrwallet.widget.NumberPadView
+            android:id="@+id/numberPad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivSweep"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_all_inclusive_24dp"
+        android:visibility="gone"/>
 
 </LinearLayout>
