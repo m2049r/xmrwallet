@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 95
-        versionName "1.5.5 'Accounts Nacho'"
+        versionCode 96
+        versionName "1.5.6 'Maximum Nacho'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
