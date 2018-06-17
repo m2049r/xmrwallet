@@ -237,7 +237,7 @@
     <string name="send_address_title">Adresse</string>
     <string name="send_amount_title">Betrag</string>
     <string name="send_settings_title">Optionen</string>
-    <string name="send_confirm_title">Annehmen</string>
+    <string name="send_confirm_title">Gebühr</string>
     <string name="send_success_title">Fertig</string>
 
     <string name="send_amount_label">Betrag</string>
@@ -317,4 +317,5 @@
     <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
 </resources>

@@ -60,9 +60,8 @@ public class SendAmountWizardFragment extends SendWizardFragment {
 
     private TextView tvFunds;
     private ExchangeTextView evAmount;
-    private NumberPadView numberPad;
     private View llAmount;
-    private View ivSweep;
+    private View rlSweep;
     private ImageButton ibSweep;
 
     @Override
@@ -78,12 +77,11 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         tvFunds = (TextView) view.findViewById(R.id.tvFunds);
 
         evAmount = (ExchangeTextView) view.findViewById(R.id.evAmount);
-        numberPad = (NumberPadView) view.findViewById(R.id.numberPad);
-        numberPad.setListener(evAmount);
+        ((NumberPadView) view.findViewById(R.id.numberPad)).setListener(evAmount);
 
+        rlSweep = view.findViewById(R.id.rlSweep);
         llAmount = view.findViewById(R.id.llAmount);
-        ivSweep = view.findViewById(R.id.ivSweep);
-        ivSweep.setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.ivSweep).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sweepAll(false);
@@ -110,11 +108,11 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         if (spendAllMode) {
             ibSweep.setVisibility(View.INVISIBLE);
             llAmount.setVisibility(View.GONE);
-            ivSweep.setVisibility(View.VISIBLE);
+            rlSweep.setVisibility(View.VISIBLE);
         } else {
             ibSweep.setVisibility(View.VISIBLE);
             llAmount.setVisibility(View.VISIBLE);
-            ivSweep.setVisibility(View.GONE);
+            rlSweep.setVisibility(View.GONE);
         }
         this.spendAllMode = spendAllMode;
     }

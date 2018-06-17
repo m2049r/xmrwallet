@@ -57,11 +57,29 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivSweep"
+    <RelativeLayout
+        android:id="@+id/rlSweep"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_all_inclusive_24dp"
-        android:visibility="gone"/>
+        android:visibility="gone">
 
+        <ImageView
+            android:id="@+id/ivSweep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvSweep"
+            android:layout_alignParentTop="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_all_inclusive_24dp" />
+
+        <TextView
+            android:id="@+id/tvSweep"
+            style="@style/MoneroLabel.Heading.Donation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="@string/send_sweepall" />
+    </RelativeLayout>
 </LinearLayout>

@@ -258,6 +258,8 @@
 
     <string name="send_create_tx_error_title">Create Transaction Error</string>
 
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+
     <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Added new account #%1$d</string>
 
