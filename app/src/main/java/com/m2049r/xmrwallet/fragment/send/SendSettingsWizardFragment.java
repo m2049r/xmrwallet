@@ -36,6 +36,7 @@ import com.m2049r.xmrwallet.util.UserNotes;
 import timber.log.Timber;
 
 public class SendSettingsWizardFragment extends SendWizardFragment {
+    final static public int MIXIN = 6;
 
     public static SendSettingsWizardFragment newInstance(Listener listener) {
         SendSettingsWizardFragment instance = new SendSettingsWizardFragment();
@@ -54,15 +55,12 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
         TxData getTxData();
     }
 
-    // Mixin = Ringsize - 1
-    final static int Mixins[] = {6, 9, 12, 25}; // must match the layout XML / "@array/mixin"
     final static PendingTransaction.Priority Priorities[] =
             {PendingTransaction.Priority.Priority_Default,
                     PendingTransaction.Priority.Priority_Low,
                     PendingTransaction.Priority.Priority_Medium,
                     PendingTransaction.Priority.Priority_High}; // must match the layout XML
 
-    private Spinner sMixin;
     private Spinner sPriority;
     private EditText etNotes;
     private EditText etDummy;
@@ -77,7 +75,6 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
         View view = inflater.inflate(
                 R.layout.fragment_send_settings, container, false);
 
-        sMixin = (Spinner) view.findViewById(R.id.sMixin);
         sPriority = (Spinner) view.findViewById(R.id.sPriority);
 
         etNotes = (EditText) view.findViewById(R.id.etNotes);
@@ -104,7 +101,7 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
         if (sendListener != null) {
             TxData txData = sendListener.getTxData();
             txData.setPriority(Priorities[sPriority.getSelectedItemPosition()]);
-            txData.setMixin(Mixins[sMixin.getSelectedItemPosition()]);
+            txData.setMixin(MIXIN);
             txData.setUserNotes(new UserNotes(etNotes.getText().toString()));
         }
         return true;
