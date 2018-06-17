@@ -372,7 +372,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             "node.moneroworld.com:18089;node.xmrbackb.one;node.xmr.be";
 
     private static final String PREF_DAEMONLIST_STAGENET =
-            "stagenet.xmr-tw.org";
+            "stagenet.monerujo.io;stagenet.xmr-tw.org";
 
     private NodeList daemonStageNet;
     private NodeList daemonMainNet;
