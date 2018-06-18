@@ -19,6 +19,9 @@ package com.m2049r.xmrwallet.model;
 import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -86,10 +89,22 @@ public class Wallet {
     public native boolean setPassword(String password);
 
     public String getAddress() {
-        return getAddressJ(accountIndex);
+        return getAddress(accountIndex);
     }
 
-    private native String getAddressJ(int accountIndex);
+    public String getAddress(int accountIndex) {
+        return getAddressJ(accountIndex, 0);
+    }
+
+    public String getSubaddress(int addressIndex) {
+        return getAddressJ(accountIndex, addressIndex);
+    }
+
+    public String getSubaddress(int accountIndex, int addressIndex) {
+        return getAddressJ(accountIndex, addressIndex);
+    }
+
+    private native String getAddressJ(int accountIndex, int addressIndex);
 
     public native String getPath();
 
@@ -109,7 +124,9 @@ public class Wallet {
     public native String getSecretSpendKey();
 
     public boolean store() {
-        return store("");
+        final boolean ok = store("");
+        Timber.d("stored");
+        return ok;
     }
 
     public native boolean store(String path);
@@ -323,17 +340,21 @@ public class Wallet {
     public String getAccountLabel(int accountIndex) {
         String label = getSubaddressLabel(accountIndex, 0);
         if (label.equals(NEW_ACCOUNT_NAME)) {
-            String address = getAddressJ(accountIndex);
+            String address = getAddress(accountIndex);
             int len = address.length();
             return address.substring(0, 6) +
                     "\u2026" + address.substring(len - 6, len);
         } else return label;
     }
 
+    public String getSubaddressLabel(int addressIndex) {
+        return getSubaddressLabel(accountIndex, addressIndex);
+    }
+
     public native String getSubaddressLabel(int accountIndex, int addressIndex);
 
     public void setAccountLabel(String label) {
-        setSubaddressLabel(accountIndex, 0, label);
+        setAccountLabel(accountIndex, label);
     }
 
     public void setAccountLabel(int accountIndex, String label) {
@@ -342,9 +363,30 @@ public class Wallet {
 
     public native void setSubaddressLabel(int accountIndex, int addressIndex, String label);
 
-    public int numAccounts() {
-        return numSubaddressAccounts();
+    public native int getNumAccounts();
+
+    public int getNumSubaddresses() {
+        return getNumSubaddresses(accountIndex);
     }
 
-    public native int numSubaddressAccounts();
+    public native int getNumSubaddresses(int accountIndex);
+
+    public String getNewSubaddress() {
+        return getNewSubaddress(accountIndex);
+    }
+
+    public String getNewSubaddress(int accountIndex) {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss", Locale.US).format(new Date());
+        addSubaddress(accountIndex, timeStamp);
+        String subaddress = getLastSubaddress(accountIndex);
+        Timber.d("%d: %s", getNumSubaddresses(accountIndex) - 1, subaddress);
+        return subaddress;
+    }
+
+    public native void addSubaddress(int accountIndex, String label);
+
+    public String getLastSubaddress(int accountIndex) {
+        return getSubaddress(accountIndex, getNumSubaddresses(accountIndex) - 1);
+    }
+
 }

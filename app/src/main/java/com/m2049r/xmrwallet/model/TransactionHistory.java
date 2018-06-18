@@ -75,7 +75,7 @@ public class TransactionHistory {
         Timber.d("refreshed %d", t.size());
         for (Iterator<TransactionInfo> iterator = t.iterator(); iterator.hasNext(); ) {
             TransactionInfo info = iterator.next();
-            if (info.subaddrAccount != accountIndex) {
+            if (info.account != accountIndex) {
                 iterator.remove();
                 Timber.d("removed %s", info.hash);
             } else {

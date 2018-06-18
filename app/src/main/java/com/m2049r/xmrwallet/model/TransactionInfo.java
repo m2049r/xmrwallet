@@ -67,7 +67,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
     public String hash;
     public long timestamp;
     public String paymentId;
-    public int subaddrAccount;
+    public int account;
+    public int subaddress;
     public long confirmations;
     public List<Transfer> transfers;
 
@@ -84,7 +85,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             String hash,
             long timestamp,
             String paymentId,
-            int subaddrAccount,
+            int account,
+            int subaddress,
             long confirmations,
             List<Transfer> transfers) {
         this.direction = Direction.values()[direction];
@@ -96,7 +98,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.hash = hash;
         this.timestamp = timestamp;
         this.paymentId = paymentId;
-        this.subaddrAccount = subaddrAccount;
+        this.account = account;
+        this.subaddress = subaddress;
         this.confirmations = confirmations;
         this.transfers = transfers;
     }
@@ -116,7 +119,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeString(hash);
         out.writeLong(timestamp);
         out.writeString(paymentId);
-        out.writeInt(subaddrAccount);
+        out.writeInt(account);
+        out.writeInt(subaddress);
         out.writeLong(confirmations);
         out.writeList(transfers);
         out.writeString(txKey);
@@ -143,7 +147,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         hash = in.readString();
         timestamp = in.readLong();
         paymentId = in.readString();
-        subaddrAccount = in.readInt();
+        account = in.readInt();
+        subaddress = in.readInt();
         confirmations = in.readLong();
         transfers = in.readArrayList(Transfer.class.getClassLoader());
         txKey = in.readString();
