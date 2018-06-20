@@ -490,8 +490,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed()");
-        if (numAccounts != wallet.numAccounts()) {
-            numAccounts = wallet.numAccounts();
+        if (numAccounts != wallet.getNumAccounts()) {
+            numAccounts = wallet.getNumAccounts();
             runOnUiThread(new Runnable() {
                 public void run() {
                     updateAccountsList();
@@ -739,8 +739,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     }
 
     @Override
-    public String getWalletAddress() {
-        return getWallet().getAddress();
+    public String getWalletSubaddress(int accountIndex, int subaddressIndex) {
+        return getWallet().getSubaddress(accountIndex, subaddressIndex);
     }
 
     public String getWalletName() {
@@ -890,7 +890,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onWalletReceive() {
-        startReceive(getWalletAddress());
+        startReceive(getWallet().getAddress());
     }
 
     void startReceive(String address) {
@@ -965,7 +965,8 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 Helper.getDisplayAmount(wallet.getBalanceAll(), 5)));
         Menu menu = accountsView.getMenu();
         menu.removeGroup(R.id.accounts_list);
-        for (int i = 0; i < wallet.numAccounts(); i++) {
+        final int n = wallet.getNumAccounts();
+        for (int i = 0; i < n; i++) {
             final String label = wallet.getAccountLabel(i);
             final MenuItem item = menu.add(R.id.accounts_list, getAccountId(i), 2 * i, label);
             item.setIcon(R.drawable.ic_account_balance_wallet_black_24dp);
@@ -1049,7 +1050,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         switch (id) {
             case R.id.account_new:
                 getWallet().addAccount();
-                int newIdx = getWallet().numAccounts() - 1;
+                int newIdx = getWallet().getNumAccounts() - 1;
                 getWallet().setAccountIndex(newIdx);
                 Toast.makeText(this,
                         getString(R.string.accounts_new, newIdx),

@@ -100,7 +100,7 @@
     <string name="open_progress">Vérification de la connexion au démon</string>
     <string name="changepw_progress">Modification du mot de passe en cours</string>
 
-    <string name="service_progress">Récapitulation &#8230;\nCela peut prendre un moment !</string>
+    <string name="service_progress">Remise en ordre &#8230;\nCela peut prendre un moment !</string>
 
     <string name="backup_failed">Sauvegarde Échouée !</string>
     <string name="archive_failed">Archivage Échouée !</string>
@@ -134,10 +134,10 @@
     <string name="prompt_password">Mot de passe pour %1$s</string>
     <string name="prompt_fingerprint_auth">Vous pouvez également ouvrir le portefeuille avec votre empreinte digitale.\nMerci de toucher le capteur.</string>
     <string name="prompt_send_password">Confirmez le mot de passe</string>
-    <string name="prompt_open_wallet">[Opening the wallet&#8230;]</string>
+    <string name="prompt_open_wallet">Ouverture du portefeuille &#8230;</string>
     <string name="bad_fingerprint">Empreinte digitale non reconnue. Résessayez.</string>
     <string name="bad_password">Mot de passe incorrect !</string>
-    <string name="bad_saved_password">[Saved password is incorrect.\nPlease enter password manually.]</string>
+    <string name="bad_saved_password">Mot de passe sauvegardé incorrect.\nVeuillez entrer le mot de passe manuellement.</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
     <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
@@ -313,8 +313,12 @@
     <string name="fab_restore_key">Restaurer un portefeuille depuis la clef privée</string>
     <string name="fab_restore_seed">Restaurer un portefeuille depuis la phrase mnémonique</string>
 
-    <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
-    <string name="accounts_new">Added new account #%1$d</string>
-    <string name="tx_account">Account #</string>
+    <string name="accounts_drawer_new">Créer un Compte</string>
+    <string name="accounts_drawer_title">Comptes</string>
+    <string name="accounts_new">Nouveau Compte #%1$d ajouté</string>
+    <string name="tx_account">Compte #</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>

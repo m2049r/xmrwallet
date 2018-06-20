@@ -62,6 +62,8 @@ import timber.log.Timber;
 public class ReceiveFragment extends Fragment {
 
     private ProgressBar pbProgress;
+    private View llAddress;
+    private TextView tvAddressLabel;
     private TextView tvAddress;
     private TextInputLayout etPaymentId;
     private ExchangeView evAmount;
@@ -71,6 +73,10 @@ public class ReceiveFragment extends Fragment {
     private ImageView qrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
+    private Button bSubaddress;
+
+    private Wallet wallet = null;
+    private boolean isMyWallet = false;
 
     public interface Listener {
         void setToolbarButton(int type);
@@ -87,6 +93,8 @@ public class ReceiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
+        llAddress = view.findViewById(R.id.llAddress);
+        tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
@@ -96,6 +104,7 @@ public class ReceiveFragment extends Fragment {
         qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
+        bSubaddress = (Button) view.findViewById(R.id.bSubaddress);
 
         etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -106,7 +115,7 @@ public class ReceiveFragment extends Fragment {
                 copyAddress();
             }
         });
-        bCopyAddress.setClickable(false);
+        enableCopyAddress(false);
 
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
@@ -162,6 +171,37 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
+        bSubaddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enableSubaddressButton(false);
+                enableCopyAddress(false);
+
+                final Runnable resetSize = new Runnable() {
+                    public void run() {
+                        tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
+                    }
+                };
+
+                final Runnable newAddress = new Runnable() {
+                    public void run() {
+                        tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
+                                wallet.getNumSubaddresses() - 1));
+                        tvAddress.setText(wallet.getNewSubaddress());
+                        storeWallet();
+                        generateQr();
+                        enableCopyAddress(true);
+                        tvAddress.animate().alpha(1).setDuration(125)
+                                .scaleX(1.2f).scaleY(1.2f)
+                                .withEndAction(resetSize).start();
+                    }
+                };
+
+                tvAddress.animate().alpha(0).setDuration(250)
+                        .withEndAction(newAddress).start();
+            }
+        });
+
         qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,9 +234,23 @@ public class ReceiveFragment extends Fragment {
             String password = b.getString("password");
             loadAndShow(path, password);
         } else {
-            show(walletName, address);
+            if (getActivity() instanceof GenerateReviewFragment.ListenerWithWallet) {
+                wallet = ((GenerateReviewFragment.ListenerWithWallet) getActivity()).getWallet();
+                show();
+            } else {
+                throw new IllegalStateException("no wallet info");
+            }
         }
         return view;
+    }
+
+    void enableSubaddressButton(boolean enable) {
+        bSubaddress.setEnabled(enable);
+        if (enable) {
+            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_orange_24dp, 0, 0);
+        } else {
+            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_gray_24dp, 0, 0);
+        }
     }
 
     void copyAddress() {
@@ -228,23 +282,36 @@ public class ReceiveFragment extends Fragment {
         super.onResume();
         Timber.d("onResume()");
         listenerCallback.setToolbarButton(Toolbar.BUTTON_BACK);
-        listenerCallback.setSubtitle(getString(R.string.receive_title));
-        generateQr();
+        if (wallet != null) {
+            listenerCallback.setSubtitle(wallet.getAccountLabel());
+            generateQr();
+        } else {
+            listenerCallback.setSubtitle(getString(R.string.status_wallet_loading));
+            clearQR();
+        }
     }
 
     private boolean isLoaded = false;
 
-    private void show(String name, String address) {
-        Timber.d("name=%s", name);
+    private void show() {
+        Timber.d("name=%s", wallet.getName());
         isLoaded = true;
-        listenerCallback.setTitle(name);
-        tvAddress.setText(address);
+        listenerCallback.setTitle(wallet.getName());
+        listenerCallback.setSubtitle(wallet.getAccountLabel());
+        tvAddress.setText(wallet.getAddress());
         etPaymentId.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bCopyAddress.setClickable(true);
-        bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
+        enableCopyAddress(true);
         hideProgress();
         generateQr();
+    }
+
+    private void enableCopyAddress(boolean enable) {
+        bCopyAddress.setClickable(enable);
+        if (enable)
+            bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
+        else
+            bCopyAddress.setImageResource(R.drawable.ic_content_nocopy_black_24dp);
     }
 
     private void loadAndShow(String walletPath, String password) {
@@ -254,18 +321,14 @@ public class ReceiveFragment extends Fragment {
 
     private class AsyncShow extends AsyncTask<String, Void, Boolean> {
         String password;
-        String address;
-        String name;
 
         @Override
         protected Boolean doInBackground(String... params) {
             if (params.length != 2) return false;
             String walletPath = params[0];
             password = params[1];
-            Wallet wallet = WalletManager.getInstance().openWallet(walletPath, password);
-            address = wallet.getAddress();
-            name = wallet.getName();
-            wallet.close();
+            wallet = WalletManager.getInstance().openWallet(walletPath, password);
+            isMyWallet = true;
             return true;
         }
 
@@ -274,13 +337,34 @@ public class ReceiveFragment extends Fragment {
             super.onPostExecute(result);
             if (!isAdded()) return; // never mind
             if (result) {
-                show(name, address);
+                show();
             } else {
                 Toast.makeText(getActivity(), getString(R.string.receive_cannot_open), Toast.LENGTH_LONG).show();
                 hideProgress();
             }
         }
     }
+
+    private void storeWallet() {
+        new AsyncStore().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+    }
+
+    private class AsyncStore extends AsyncTask<String, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 0) return false;
+            if (wallet != null) wallet.store();
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            enableSubaddressButton(true);
+            super.onPostExecute(result);
+        }
+    }
+
 
     private boolean checkPaymentId() {
         String paymentId = etPaymentId.getEditText().getText().toString();
@@ -417,5 +501,16 @@ public class ReceiveFragment extends Fragment {
     public void onPause() {
         Timber.d("onPause()");
         super.onPause();
+    }
+
+    @Override
+    public void onDetach() {
+        Timber.d("onDetach()");
+        if ((wallet != null) && (isMyWallet)) {
+            wallet.close();
+            wallet = null;
+            isMyWallet = false;
+        }
+        super.onDetach();
     }
 }

@@ -299,4 +299,8 @@
     <string name="accounts_drawer_title">Cuentas</string>
     <string name="accounts_new">Nueva cuenta agregada #%1$d</string>
     <string name="tx_account"># de cuenta</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>

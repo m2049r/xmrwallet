@@ -86,7 +86,7 @@
     <string name="label_send_btc_xmrto_key_lb">Geheimer Schlüssel\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO Geheimer Schlüssel</string>
     <string name="label_send_btc_address">BTC Zieladresse</string>
-    <string name="label_send_btc_amount">Menge</string>
+    <string name="label_send_btc_amount">Betrag</string>
 
     <string name="label_send_txid">Transaktions-ID</string>
     <string name="label_send_address">Zieladresse</string>
@@ -235,12 +235,12 @@
     <string name="send_title">Senden</string>
     <string name="send_available">Saldo: %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
-    <string name="send_amount_title">Menge</string>
-    <string name="send_settings_title">Einstellungen</string>
-    <string name="send_confirm_title">Bestätigen</string>
+    <string name="send_amount_title">Betrag</string>
+    <string name="send_settings_title">Optionen</string>
+    <string name="send_confirm_title">Gebühr</string>
     <string name="send_success_title">Fertig</string>
 
-    <string name="send_amount_label">Menge</string>
+    <string name="send_amount_label">Betrag</string>
     <string name="send_fee_btc_label">Gebühr (XMR)</string>
     <string name="send_fee_label">Gebühr</string>
     <string name="send_total_btc_label">Total (XMR)</string>
@@ -264,8 +264,8 @@
     <string name="tx_destination_btc">Ziel\n(BTC)</string>
     <string name="tx_paymentId">Zahlungs-ID</string>
     <string name="tx_blockheight">Block</string>
-    <string name="tx_amount">Menge</string>
-    <string name="tx_amount_btc">Menge\n(BTC)</string>
+    <string name="tx_amount">Betrag</string>
+    <string name="tx_amount_btc">Betrag\n(BTC)</string>
     <string name="tx_fee">Gebühr</string>
     <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notizen</string>
@@ -278,7 +278,7 @@
     <string name="tx_failed">FEHLGESCHLAGEN</string>
 
     <string name="receive_paymentid_hint">Zahlungs-ID (optional)</string>
-    <string name="receive_amount_hint">Menge</string>
+    <string name="receive_amount_hint">Betrag</string>
     <string name="receive_cannot_open">Konnte Wallet nicht öffnen!</string>
     <string name="receive_paymentid_invalid">16 oder 64 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Muss bei einer integrierten Adresse leer sein</string>
@@ -314,4 +314,7 @@
     <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>

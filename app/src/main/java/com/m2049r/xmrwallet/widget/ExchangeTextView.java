@@ -25,6 +25,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -44,6 +45,8 @@ import timber.log.Timber;
 
 public class ExchangeTextView extends LinearLayout
         implements NumberPadView.NumberPadListener {
+
+    private static String MAX = "\u221E";
 
     String xmrAmount = null;
     String notXmrAmount = null;
@@ -68,7 +71,7 @@ public class ExchangeTextView extends LinearLayout
                 if (amount > max) {
                     ok = false;
                 }
-                if (amount <= 0) {
+                if (amount <= 0) { /////////////////////////////
                     ok = false;
                 }
             } catch (NumberFormatException ex) {

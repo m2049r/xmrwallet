@@ -422,6 +422,7 @@ public class WalletFragment extends Fragment
         setProgress(syncProgress);
         setProgress(syncText);
         showReceive();
+        if (activityCallback.isSynced()) enableAccountsList(true);
     }
 
     @Override
