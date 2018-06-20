@@ -286,8 +286,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.accounts_drawer_open, R.string.accounts_drawer_close);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         setDrawerEnabled(false); // disable until synced

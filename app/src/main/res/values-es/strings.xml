@@ -295,8 +295,6 @@
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
     <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
 
-    <string name="accounts_drawer_open">Open Accounts Drawer</string>
-    <string name="accounts_drawer_close">Close Accounts Drawer</string>
     <string name="accounts_drawer_new">Crear Cuenta</string>
     <string name="accounts_drawer_title">Cuentas</string>
     <string name="accounts_new">Nueva cuenta agregada #%1$d</string>

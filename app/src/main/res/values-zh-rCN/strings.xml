@@ -307,8 +307,6 @@
     <string name="fab_restore_key">从私钥恢复钱包</string>
     <string name="fab_restore_seed">从25字种子码恢复钱包</string>
 
-    <string name="accounts_drawer_open">Open Accounts Drawer</string>
-    <string name="accounts_drawer_close">Close Accounts Drawer</string>
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
