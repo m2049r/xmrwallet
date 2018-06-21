@@ -179,7 +179,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             saveWallet();
         }
         stopWalletService();
-        drawer.removeDrawerListener(drawerToggle);
+        if (drawer != null) drawer.removeDrawerListener(drawerToggle);
         super.onDestroy();
     }
 
