@@ -311,13 +311,10 @@
     <string name="fab_restore_key">Recupera un portafoglio dalle chiavi private</string>
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
 
-    <string name="accounts_drawer_open">Apri cassetto degli account</string>
-    <string name="accounts_drawer_close">Chiudi cassetto degli account</string>
-    <string name="accounts_drawer_new">Crea Account</string>
     <string name="accounts_drawer_title">Accounts</string>
-    <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
     <string name="tx_account">Account #</string>
+
     <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>

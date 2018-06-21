@@ -62,6 +62,7 @@ import timber.log.Timber;
 public class ReceiveFragment extends Fragment {
 
     private ProgressBar pbProgress;
+    private View llAddress;
     private TextView tvAddressLabel;
     private TextView tvAddress;
     private TextInputLayout etPaymentId;
@@ -92,6 +93,7 @@ public class ReceiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
+        llAddress = view.findViewById(R.id.llAddress);
         tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
@@ -113,7 +115,7 @@ public class ReceiveFragment extends Fragment {
                 copyAddress();
             }
         });
-        bCopyAddress.setClickable(false);
+        enableCopyAddress(false);
 
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
@@ -173,11 +175,30 @@ public class ReceiveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 enableSubaddressButton(false);
-                tvAddress.setText(wallet.getNewSubaddress());
-                tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
-                        wallet.getNumSubaddresses() - 1));
-                storeWallet();
-                generateQr();
+                enableCopyAddress(false);
+
+                final Runnable resetSize = new Runnable() {
+                    public void run() {
+                        tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
+                    }
+                };
+
+                final Runnable newAddress = new Runnable() {
+                    public void run() {
+                        tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
+                                wallet.getNumSubaddresses() - 1));
+                        tvAddress.setText(wallet.getNewSubaddress());
+                        storeWallet();
+                        generateQr();
+                        enableCopyAddress(true);
+                        tvAddress.animate().alpha(1).setDuration(125)
+                                .scaleX(1.2f).scaleY(1.2f)
+                                .withEndAction(resetSize).start();
+                    }
+                };
+
+                tvAddress.animate().alpha(0).setDuration(250)
+                        .withEndAction(newAddress).start();
             }
         });
 
@@ -226,9 +247,9 @@ public class ReceiveFragment extends Fragment {
     void enableSubaddressButton(boolean enable) {
         bSubaddress.setEnabled(enable);
         if (enable) {
-            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_orange_24dp,0,0);
+            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_orange_24dp, 0, 0);
         } else {
-            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_gray_24dp,0,0);
+            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_gray_24dp, 0, 0);
         }
     }
 
@@ -261,8 +282,13 @@ public class ReceiveFragment extends Fragment {
         super.onResume();
         Timber.d("onResume()");
         listenerCallback.setToolbarButton(Toolbar.BUTTON_BACK);
-        listenerCallback.setSubtitle(wallet.getAccountLabel());
-        generateQr();
+        if (wallet != null) {
+            listenerCallback.setSubtitle(wallet.getAccountLabel());
+            generateQr();
+        } else {
+            listenerCallback.setSubtitle(getString(R.string.status_wallet_loading));
+            clearQR();
+        }
     }
 
     private boolean isLoaded = false;
@@ -271,13 +297,21 @@ public class ReceiveFragment extends Fragment {
         Timber.d("name=%s", wallet.getName());
         isLoaded = true;
         listenerCallback.setTitle(wallet.getName());
+        listenerCallback.setSubtitle(wallet.getAccountLabel());
         tvAddress.setText(wallet.getAddress());
         etPaymentId.setEnabled(true);
         bPaymentId.setEnabled(true);
-        bCopyAddress.setClickable(true);
-        bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
+        enableCopyAddress(true);
         hideProgress();
         generateQr();
+    }
+
+    private void enableCopyAddress(boolean enable) {
+        bCopyAddress.setClickable(enable);
+        if (enable)
+            bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
+        else
+            bCopyAddress.setImageResource(R.drawable.ic_content_nocopy_black_24dp);
     }
 
     private void loadAndShow(String walletPath, String password) {
