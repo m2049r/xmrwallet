@@ -311,7 +311,6 @@
     <string name="fab_restore_key">Recupera un portafoglio dalle chiavi private</string>
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
 
-    <string name="accounts_drawer_new">Crea Account</string>
     <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
     <string name="tx_account">Account #</string>
