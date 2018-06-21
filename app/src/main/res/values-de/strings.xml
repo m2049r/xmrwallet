@@ -310,13 +310,11 @@
     <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
     <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
 
-    <string name="accounts_drawer_open">Kontenübersicht öffnen</string>
-    <string name="accounts_drawer_close">Kontenübersicht schließen</string>
     <string name="accounts_drawer_new">Konto erstellen</string>
     <string name="accounts_drawer_title">Konten</string>
-    <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
     <string name="tx_account">Konto #</string>
+
     <string name="send_sweepall">Versende alle verfügbaren Gelder aus diesem Konto!</string>
     <string name="tx_subaddress">Subadresse #%1$d</string>
     <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d</string>

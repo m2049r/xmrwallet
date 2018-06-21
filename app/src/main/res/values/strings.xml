@@ -216,7 +216,6 @@
     <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
     <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
 
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
     <string name="generate_address_label">Public Address</string>
     <string name="generate_viewkey_label">View Key</string>
     <string name="generate_spendkey_label">Spend Key</string>
@@ -259,18 +258,12 @@
 
     <string name="send_create_tx_error_title">Create Transaction Error</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
-
-    <string name="accounts_balance">%1$s XMR</string>
-    <string name="accounts_new">Added new account #%1$d</string>
-
     <string name="tx_list_fee">- Fee %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">failed</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_account">Account #</string>
     <string name="tx_timestamp">Timestamp</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX Key</string>
@@ -361,11 +354,15 @@
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
 
-    <string name="accounts_drawer_open">Open Accounts Drawer</string>
-    <string name="accounts_drawer_close">Close Accounts Drawer</string>
+    <string name="accounts_balance" translatable="false">%1$s XMR</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
 
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>
