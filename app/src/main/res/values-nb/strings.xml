@@ -309,13 +309,11 @@
     <string name="fab_restore_key">Gjenoprett lommebok fra private nøkler</string>
     <string name="fab_restore_seed">Gjenoprett lommebok fra 25-ord seed</string>
 
-    <string name="accounts_drawer_open">Open Accounts Drawer</string>
-    <string name="accounts_drawer_close">Close Accounts Drawer</string>
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_drawer_title">Accounts</string>
-    <string name="accounts_balance">%1$s XMR</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
+
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
