@@ -1,8 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Carteira</string>
 
-    <string name="menu_testnet">Rede de teste</string>
     <string name="menu_about">Sobre nós</string>
     <string name="menu_privacy">Política de Privacidade</string>
 
@@ -111,9 +109,6 @@
 
     <string name="label_daemon">Nó</string>
     <string name="prompt_daemon">([&lt;utilizador&gt;:&lt;passe&gt;@]&lt;serviço&gt;[:&lt;porta&gt;])</string>
-    <string name="connect_stagenet" translatable="false">Stagenet</string>
-    <string name="connect_testnet" translatable="false">Testnet</string>
-    <string name="connect_mainnet" translatable="false">Mainnet</string>
     <string name="status_wallet_loading">A carregar a carteira &#8230;</string>
     <string name="status_wallet_unloaded">Carteira guardada</string>
     <string name="status_wallet_unload_failed">Erro ao gravar a carteira!</string>
@@ -303,13 +298,6 @@
     <string name="archive_alert_yes">Sim, faz isso!</string>
     <string name="archive_alert_no">Não obrigado!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Prioridade por Defeito</item>
         <item>Prioridade Baixa</item>
@@ -317,14 +305,20 @@
         <item>Prioridade Alta</item>
     </string-array>
 
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
-    </string-array>
-
     <string name="fab_create_new">Criar nova carteira</string>
     <string name="fab_restore_viewonly">Restaurar carteira apenas de visualização</string>
     <string name="fab_restore_key">Restaurar carteira a partir de chaves privadas</string>
     <string name="fab_restore_seed">Restaurar carteira a partir da semente de 25 palavras</string>
+
+    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
+    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
+
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>
