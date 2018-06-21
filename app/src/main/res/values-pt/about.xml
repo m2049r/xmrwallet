@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Fechar</string>
+    <string name="about_whoami">Eu sou o monerujo</string>
+    <string name="about_version">Versão %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Créditos</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Política de Privacidade</h1>
+        <p>Esta página contém informação acerca das nossas políticas de recolha, uso
+        e divulgação das informações pessoais que recebemos dos utilizadores
+        da nossa app (monerujo: Monero Wallet).
+        </p>
+        <p>Ao utilizar esta app está a concordar com a recolha e uso de
+        informação de acordo com esta política.
+        </p>
+        <h2>Dados Recolhidos</h2>
+        <p> Dados pessoais são todo o tipo de dados que permitem identificar um indivíduo.
+        </p>
+        <p>As chaves e endereços Monero são recolhidos e processados pela app localmente
+        para o propósito de processar transacções e transmiti-las à rede Monero de forma
+        encriptada.
+        </p>
+        <p>Quaisquer outros dados pessoais não são recolhidos pela app.</p>
+        <p>Se utilizar a conversão para USD/EUR, o monerujo obtém as taxas de conversão a
+        partir da API pública do kraken.com.
+        Confirme a política de privacidade deste serviço em https://www.kraken.com/legal/privacy para
+        mais detalhes em como estes pedidos são processados (especialmente a
+        secção "Informação que recolhemos automaticament").</p>
+        <p>Se utilizar esta app para pagar em BTC, você estará a utilizar o serviço XMR.TO.
+        Veja a sua política de privacidade em https://xmr.to/ para mais detalhes. O monerujo envia
+        para este serviço a quantidade e o endereço de destino das BTC. O seu IP vai ser registado.</p>
+        <h2>Permissões da app</h2>
+        <ul>
+        <li>INTERNET : Ligar à rede Monero</li>
+        <li>READ_EXTERNAL_STORAGE : Ler as carteiras Monero guardadas no dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Escrever as carteiras Monero no dispositivo</li>
+        <li>WAKE_LOCK : Manter o dispositivo ligado enquanto sincroniza</li>
+        <li>CAMERA : Ler códigos QR para receber Monero</li>
+        </ul>
+        <h2>Alterações a esta política de privacidade</h2>
+        <p>Nós podemos alterar esta política de privacidade de tempos em temps. Iremos notificar
+        quaisquer alterações actualizando esta política de privacidade na app e no
+        website oficial (www.monerujo.io)
+        É aconselhável que reveja esta política de privacidade periodicamente para conferir quaisquer alterações.
+        <p>A última actualização à política de privacidade foi em: 10 de Novembro de 2017.
+        </p>
+        <h2>Contacte-nos</h2>
+        <p>Se tiver alguma questão acerca da nossa política de privacidade,
+        ou sobre como os seus dados são recolhidos e processados,
+        por favor envie um email para privacy@monerujo.io.
+        </p>
+        ]]></string>
+
+    <string name="about_licenses" translatable="false"><![CDATA[
+        <h1>Open Source Licenses</h1>
+        <h2>Licensed under the Apache License, Version 2.0</h2>
+        <h3>monerujo (https://github.com/m2049r/xmrwallet)</h3>
+        Copyright (c) 2017 m2049r et al.
+        <h3>The Android Open Source Project</h3>
+        <ul>
+            <li>com.android.support:design</li>
+            <li>com.android.support:support-v4</li>
+            <li>com.android.support:appcompat-v7</li>
+            <li>com.android.support:recyclerview-v7</li>
+            <li>com.android.support:cardview-v7</li>
+            <li>com.android.support.constraint:constraint-layout</li>
+            <li>com.android.support:support-annotations</li>
+            <li>com.android.support:support-vector-drawable</li>
+            <li>com.android.support:animated-vector-drawable</li>
+            <li>com.android.support:transition</li>
+            <li>com.android.support:support-compat</li>
+            <li>com.android.support:support-media-compat</li>
+            <li>com.android.support:support-core-utils</li>
+            <li>com.android.support:support-core-ui</li>
+            <li>com.android.support:support-fragment</li>
+            <li>com.android.support.constraint:constraint-layout-solver</li>
+        </ul>
+        Copyright (c) The Android Open Source Project
+
+        <h3>OkHttp</h3>
+        Copyright (c) 2014 Square, Inc.
+
+        <h3>Timber</h3>
+        Copyright (c) 2013 Jake Wharton
+
+        <h3>com.google.zxing:core</h3>
+        Copyright (c) 2012 ZXing authors
+
+        <h3>me.dm7.barcodescanner</h3>
+        <ul>
+            <li>me.dm7.barcodescanner:core</li>
+            <li>me.dm7.barcodescanner:zxing</li>
+        </ul>
+        Copyright (c) 2014 Dushyanth Maguluru
+
+        <h3>AndroidLicensesPage (https://github.com/adamsp/AndroidLicensesPage)</h3>
+        Copyright (c) 2013 Adam Speakman
+
+        <h3>Apache License, Version 2.0, January 2004</h3>
+        http://www.apache.org/licenses/<br/>
+        <br/>
+        TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION<br/>
+        <br/>
+        1. Definitions.<br/>
+        <br/>
+        \"License\" shall mean the terms and conditions for use, reproduction,
+        and distribution as defined by Sections 1 through 9 of this document.<br/>
+        <br/>
+        \"Licensor\" shall mean the copyright owner or entity authorized by
+        the copyright owner that is granting the License.<br/>
+        <br/>
+        \"Legal Entity\" shall mean the union of the acting entity and all
+        other entities that control, are controlled by, or are under common
+        control with that entity. For the purposes of this definition,
+        \"control\" means (i) the power, direct or indirect, to cause the
+        direction or management of such entity, whether by contract or
+        otherwise, or (ii) ownership of fifty percent (50%) or more of the
+        outstanding shares, or (iii) beneficial ownership of such entity.<br/>
+        <br/>
+        \"You\" (or \"Your\") shall mean an individual or Legal Entity
+        exercising permissions granted by this License.<br/>
+        <br/>
+        \"Source\" form shall mean the preferred form for making modifications,
+        including but not limited to software source code, documentation
+        source, and configuration files.<br/>
+        <br/>
+        \"Object\" form shall mean any form resulting from mechanical
+        transformation or translation of a Source form, including but
+        not limited to compiled object code, generated documentation,
+        and conversions to other media types.<br/>
+        <br/>
+        \"Work\" shall mean the work of authorship, whether in Source or
+        Object form, made available under the License, as indicated by a
+        copyright notice that is included in or attached to the work
+        (an example is provided in the Appendix below).<br/>
+        <br/>
+        \"Derivative Works\" shall mean any work, whether in Source or Object
+        form, that is based on (or derived from) the Work and for which the
+        editorial revisions, annotations, elaborations, or other modifications
+        represent, as a whole, an original work of authorship. For the purposes
+        of this License, Derivative Works shall not include works that remain
+        separable from, or merely link (or bind by name) to the interfaces of,
+        the Work and Derivative Works thereof.<br/>
+        <br/>
+        \"Contribution\" shall mean any work of authorship, including
+        the original version of the Work and any modifications or additions
+        to that Work or Derivative Works thereof, that is intentionally
+        submitted to Licensor for inclusion in the Work by the copyright owner
+        or by an individual or Legal Entity authorized to submit on behalf of
+        the copyright owner. For the purposes of this definition, \"submitted\"
+        means any form of electronic, verbal, or written communication sent
+        to the Licensor or its representatives, including but not limited to
+        communication on electronic mailing lists, source code control systems,
+        and issue tracking systems that are managed by, or on behalf of, the
+        Licensor for the purpose of discussing and improving the Work, but
+        excluding communication that is conspicuously marked or otherwise
+        designated in writing by the copyright owner as \"Not a Contribution.\"<br/>
+        <br/>
+        \"Contributor\" shall mean Licensor and any individual or Legal Entity
+        on behalf of whom a Contribution has been received by Licensor and
+        subsequently incorporated within the Work.<br/>
+        <br/>
+        2. Grant of Copyright License. Subject to the terms and conditions of
+        this License, each Contributor hereby grants to You a perpetual,
+        worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+        copyright license to reproduce, prepare Derivative Works of,
+        publicly display, publicly perform, sublicense, and distribute the
+        Work and such Derivative Works in Source or Object form.<br/>
+        <br/>
+        3. Grant of Patent License. Subject to the terms and conditions of
+        this License, each Contributor hereby grants to You a perpetual,
+        worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+        (except as stated in this section) patent license to make, have made,
+        use, offer to sell, sell, import, and otherwise transfer the Work,
+        where such license applies only to those patent claims licensable
+        by such Contributor that are necessarily infringed by their
+        Contribution(s) alone or by combination of their Contribution(s)
+        with the Work to which such Contribution(s) was submitted. If You
+        institute patent litigation against any entity (including a
+        cross-claim or counterclaim in a lawsuit) alleging that the Work
+        or a Contribution incorporated within the Work constitutes direct
+        or contributory patent infringement, then any patent licenses
+        granted to You under this License for that Work shall terminate
+        as of the date such litigation is filed.<br/>
+        <br/>
+        4. Redistribution. You may reproduce and distribute copies of the
+        Work or Derivative Works thereof in any medium, with or without
+        modifications, and in Source or Object form, provided that You
+        meet the following conditions:<br/>
+        <br/>
+        (a) You must give any other recipients of the Work or
+        Derivative Works a copy of this License; and<br/>
+        <br/>
+        (b) You must cause any modified files to carry prominent notices
+        stating that You changed the files; and<br/>
+        <br/>
+        (c) You must retain, in the Source form of any Derivative Works
+        that You distribute, all copyright, patent, trademark, and
+        attribution notices from the Source form of the Work,
+        excluding those notices that do not pertain to any part of
+        the Derivative Works; and<br/>
+        <br/>
+        (d) If the Work includes a \"NOTICE\" text file as part of its
+        distribution, then any Derivative Works that You distribute must
+        include a readable copy of the attribution notices contained
+        within such NOTICE file, excluding those notices that do not
+        pertain to any part of the Derivative Works, in at least one
+        of the following places: within a NOTICE text file distributed
+        as part of the Derivative Works; within the Source form or
+        documentation, if provided along with the Derivative Works; or,
+        within a display generated by the Derivative Works, if and
+        wherever such third-party notices normally appear. The contents
+        of the NOTICE file are for informational purposes only and
+        do not modify the License. You may add Your own attribution
+        notices within Derivative Works that You distribute, alongside
+        or as an addendum to the NOTICE text from the Work, provided
+        that such additional attribution notices cannot be construed
+        as modifying the License.<br/>
+        <br/>
+        You may add Your own copyright statement to Your modifications and
+        may provide additional or different license terms and conditions
+        for use, reproduction, or distribution of Your modifications, or
+        for any such Derivative Works as a whole, provided Your use,
+        reproduction, and distribution of the Work otherwise complies with
+        the conditions stated in this License.<br/>
+        <br/>
+        5. Submission of Contributions. Unless You explicitly state otherwise,
+        any Contribution intentionally submitted for inclusion in the Work
+        by You to the Licensor shall be under the terms and conditions of
+        this License, without any additional terms or conditions.
+        Notwithstanding the above, nothing herein shall supersede or modify
+        the terms of any separate license agreement you may have executed
+        with Licensor regarding such Contributions.<br/>
+        <br/>
+        6. Trademarks. This License does not grant permission to use the trade
+        names, trademarks, service marks, or product names of the Licensor,
+        except as required for reasonable and customary use in describing the
+        origin of the Work and reproducing the content of the NOTICE file.<br/>
+        <br/>
+        7. Disclaimer of Warranty. Unless required by applicable law or
+        agreed to in writing, Licensor provides the Work (and each
+        Contributor provides its Contributions) on an \"AS IS\" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+        implied, including, without limitation, any warranties or conditions
+        of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+        PARTICULAR PURPOSE. You are solely responsible for determining the
+        appropriateness of using or redistributing the Work and assume any
+        risks associated with Your exercise of permissions under this License.<br/>
+        <br/>
+        8. Limitation of Liability. In no event and under no legal theory,
+        whether in tort (including negligence), contract, or otherwise,
+        unless required by applicable law (such as deliberate and grossly
+        negligent acts) or agreed to in writing, shall any Contributor be
+        liable to You for damages, including any direct, indirect, special,
+        incidental, or consequential damages of any character arising as a
+        result of this License or out of the use or inability to use the
+        Work (including but not limited to damages for loss of goodwill,
+        work stoppage, computer failure or malfunction, or any and all
+        other commercial damages or losses), even if such Contributor
+        has been advised of the possibility of such damages.<br/>
+        <br/>
+        9. Accepting Warranty or Additional Liability. While redistributing
+        the Work or Derivative Works thereof, You may choose to offer,
+        and charge a fee for, acceptance of support, warranty, indemnity,
+        or other liability obligations and/or rights consistent with this
+        License. However, in accepting such obligations, You may act only
+        on Your own behalf and on Your sole responsibility, not on behalf
+        of any other Contributor, and only if You agree to indemnify,
+        defend, and hold each Contributor harmless for any liability
+        incurred by, or claims asserted against, such Contributor by reason
+        of your accepting any such warranty or additional liability.
+
+        <h2>Licensed under the MIT License</h2>
+        <h3>rapidjson (https://github.com/monero-project/monero/blob/master/external/rapidjson)</h3>
+        Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+        <h3>easylogging++ (https://github.com/monero-project/monero/tree/master/external/easylogging%2B%2B)</h3>
+        Copyright (c) 2017 muflihun.com
+        <h3>zxcvbn4j (https://github.com/nulab/zxcvbn4j)</h3>
+        Copyright (c) 2014 Nulab Inc
+        <h3>The MIT License</h3>
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+        <br/>
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/>
+        <br/>
+        THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br/>
+
+        <h2>Monero (https://github.com/monero-project/monero)</h2>
+        <h3>The Monero Project License</h3>
+        Copyright (c) 2014-2017, The Monero Project. All rights reserved.<br/>
+        <br/>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are met:<br/>
+        <br/>
+        1. Redistributions of source code must retain the above copyright notice, this
+        list of conditions and the following disclaimer.<br/>
+        <br/>
+        2. Redistributions in binary form must reproduce the above copyright notice,
+        this list of conditions and the following disclaimer in the documentation
+        and/or other materials provided with the distribution.<br/>
+        <br/>
+        3. Neither the name of the copyright holder nor the names of its contributors
+        may be used to endorse or promote products derived from this software without
+        specific prior written permission.<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND
+        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br/>
+        <br/>
+        Parts of the project are originally copyright (c) 2012-2013 The Cryptonote
+        developers
+
+        <h2>OpenSSL (https://github.com/openssl/openssl)</h2>
+        <h3>LICENSE ISSUES</h3>
+        The OpenSSL toolkit stays under a double license, i.e. both the conditions of
+        the OpenSSL License and the original SSLeay license apply to the toolkit.
+        See below for the actual license texts.
+        <h3>OpenSSL License</h3>
+        Copyright (c) 1998-2017 The OpenSSL Project.  All rights reserved.<br/>
+        <br/>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions
+        are met:<br/>
+        1. Redistributions of source code must retain the above copyright
+           notice, this list of conditions and the following disclaimer.<br/>
+        <br/>
+        2. Redistributions in binary form must reproduce the above copyright
+           notice, this list of conditions and the following disclaimer in
+           the documentation and/or other materials provided with the
+           distribution.<br/>
+        <br/>
+        3. All advertising materials mentioning features or use of this
+           software must display the following acknowledgment:
+           \"This product includes software developed by the OpenSSL Project
+           for use in the OpenSSL Toolkit. (http://www.openssl.org/)\"<br/>
+        <br/>
+        4. The names \"OpenSSL Toolkit\" and \"OpenSSL Project\" must not be used to
+           endorse or promote products derived from this software without
+           prior written permission. For written permission, please contact
+           openssl-core@openssl.org.<br/>
+        <br/>
+        5. Products derived from this software may not be called \"OpenSSL\"
+           nor may \"OpenSSL\" appear in their names without prior written
+           permission of the OpenSSL Project.<br/>
+        <br/>
+        6. Redistributions of any form whatsoever must retain the following
+           acknowledgment:<br/>
+           \"This product includes software developed by the OpenSSL Project
+           for use in the OpenSSL Toolkit (http://www.openssl.org/)\"<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT \"AS IS\" AND ANY
+        EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+        PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+        ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+        NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+        STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+        ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+        OF THE POSSIBILITY OF SUCH DAMAGE.<br/>
+        <br/>
+        This product includes cryptographic software written by Eric Young
+        (eay@cryptsoft.com).  This product includes software written by Tim
+        Hudson (tjh@cryptsoft.com).
+        <h3>Original SSLeay License</h3>
+        Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com). All rights reserved.<br/>
+        <br/>
+        This package is an SSL implementation written
+        by Eric Young (eay@cryptsoft.com).
+        The implementation was written so as to conform with Netscapes SSL.<br/>
+        <br/>
+        This library is free for commercial and non-commercial use as long as
+        the following conditions are aheared to.  The following conditions
+        apply to all code found in this distribution, be it the RC4, RSA,
+        lhash, DES, etc., code; not just the SSL code.  The SSL documentation
+        included with this distribution is covered by the same copyright terms
+        except that the holder is Tim Hudson (tjh@cryptsoft.com).<br/>
+        <br/>
+        Copyright remains Eric Young's, and as such any Copyright notices in
+        the code are not to be removed.
+        If this package is used in a product, Eric Young should be given attribution
+        as the author of the parts of the library used.
+        This can be in the form of a textual message at program startup or
+        in documentation (online or textual) provided with the package.<br/>
+        <br/>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions
+        are met:<br/>
+        1. Redistributions of source code must retain the copyright
+           notice, this list of conditions and the following disclaimer.<br/>
+        2. Redistributions in binary form must reproduce the above copyright
+           notice, this list of conditions and the following disclaimer in the
+           documentation and/or other materials provided with the distribution.<br/>
+        3. All advertising materials mentioning features or use of this software
+           must display the following acknowledgement:<br/>
+           \"This product includes cryptographic software written by
+            Eric Young (eay@cryptsoft.com)\"
+           The word 'cryptographic' can be left out if the rouines from the library
+           being used are not cryptographic related :-).<br/>
+        4. If you include any Windows specific code (or a derivative thereof) from
+           the apps directory (application code) you must include an acknowledgement:
+           \"This product includes software written by Tim Hudson (tjh@cryptsoft.com)\"<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+        ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+        OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+        LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+        OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+        SUCH DAMAGE.<br/>
+        <br/>
+        The licence and distribution terms for any publically available version or
+        derivative of this code cannot be changed.  i.e. this code cannot simply be
+        copied and put under another distribution licence
+        [including the GNU Public Licence.]
+
+        <h2>Boost</h2>
+        <ul>
+            <li>Boost (https://sourceforge.net/projects/boost)</li>
+            <li>Boost/Archive (https://github.com/monero-project/monero/tree/master/external/boost/archive)</li>
+        </ul>
+        <h3>Boost Software License - Version 1.0 - August 17th, 2003</h3>
+        Permission is hereby granted, free of charge, to any person or organization
+        obtaining a copy of the software and accompanying documentation covered by
+        this license (the \"Software\") to use, reproduce, display, distribute,
+        execute, and transmit the Software, and to prepare derivative works of the
+        Software, and to permit third-parties to whom the Software is furnished to
+        do so, all subject to the following:<br/>
+        <br/>
+        The copyright notices in the Software and this entire statement, including
+        the above license grant, this restriction and the following disclaimer,
+        must be included in all copies of the Software, in whole or in part, and
+        all derivative works of the Software, unless such copies or derivative
+        works are solely in the form of machine-executable object code generated by
+        a source language processor.<br/>
+        <br/>
+        THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+        SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+        FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+        ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+        DEALINGS IN THE SOFTWARE.
+
+        <h2>Unbound (https://github.com/monero-project/monero/blob/master/external/unbound)</h2>
+        <h3>Unbound Software License</h3>
+        Copyright (c) 2007, NLnet Labs. All rights reserved.<br/>
+        <br/>
+        This software is open source.<br/>
+        <br/>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions
+        are met:<br/>
+        <br/>
+        Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.<br/>
+        <br/>
+        Redistributions in binary form must reproduce the above copyright notice,
+        this list of conditions and the following disclaimer in the documentation
+        and/or other materials provided with the distribution.<br/>
+        <br/>
+        Neither the name of the NLNET LABS nor the names of its contributors may
+        be used to endorse or promote products derived from this software without
+        specific prior written permission.<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+        \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+        A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+        HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+        TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+        <h2>MiniUPnPc (https://github.com/monero-project/monero/blob/master/external/miniupnpc)</h2>
+        Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+        <h3>The MiniUPnPc License</h3>
+        Copyright (c) 2005-2015, Thomas BERNARD. All rights reserved.<br/>
+        <br/>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are met:<br/>
+        <br/>
+        * Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.<br/>
+        * Redistributions in binary form must reproduce the above copyright notice,
+        this list of conditions and the following disclaimer in the documentation
+        and/or other materials provided with the distribution.<br/>
+        * The name of the author may not be used to endorse or promote products
+        derived from this software without specific prior written permission.<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"
+        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+        ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+        LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+        CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+        SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+        INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+        CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+        ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGE.
+
+        <h2>liblmdb (https://github.com/monero-project/monero/blob/master/external/db_drivers/liblmdb)</h2>
+        <h3>The OpenLDAP Public License, Version 2.8, 17 August 2003</h3>
+        Redistribution and use of this software and associated documentation
+        (\"Software\"), with or without modification, are permitted provided
+        that the following conditions are met:<br/>
+        <br/>
+        1. Redistributions in source form must retain copyright statements
+        and notices,<br/>
+        <br/>
+        2. Redistributions in binary form must reproduce applicable copyright
+        statements and notices, this list of conditions, and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution, and<br/>
+        <br/>
+        3. Redistributions must contain a verbatim copy of this document.<br/>
+        <br/>
+        The OpenLDAP Foundation may revise this license from time to time.
+        Each revision is distinguished by a version number.  You may use
+        this Software under terms of this license revision or under the
+        terms of any subsequent revision of the license.<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE OPENLDAP FOUNDATION AND ITS
+        CONTRIBUTORS ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+        INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+        AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT
+        SHALL THE OPENLDAP FOUNDATION, ITS CONTRIBUTORS, OR THE AUTHOR(S)
+        OR OWNER(S) OF THE SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT,
+        INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+        BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+        LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+        ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGE.<br/>
+        <br/>
+        The names of the authors and copyright holders must not be used in
+        advertising or otherwise to promote the sale, use or other dealing
+        in this Software without specific, written prior permission.  Title
+        to copyright in this Software shall at all times remain with copyright
+        holders.<br/>
+        <br/>
+        OpenLDAP is a registered trademark of the OpenLDAP Foundation.<br/>
+        <br/>
+        Copyright 1999-2003 The OpenLDAP Foundation, Redwood City,
+        California, USA.  All Rights Reserved.  Permission to copy and
+        distribute verbatim copies of this document is granted.
+
+        <h2>epee (https://github.com/monero-project/monero/blob/master/contrib/epee)</h2>
+        Copyright (c) 2006-2013, Andrey N. Sabelnikov, www.sabelnikov.net. All rights reserved.
+        <h3>The epee License</h3>
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are met:<br/>
+        * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.<br/>
+        * Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.<br/>
+        * Neither the name of the Andrey N. Sabelnikov nor the
+        names of its contributors may be used to endorse or promote products
+        derived from this software without specific prior written permission.<br/>
+        <br/>
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND
+        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+        DISCLAIMED. IN NO EVENT SHALL Andrey N. Sabelnikov BE LIABLE FOR ANY
+        DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+        (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+        ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+        <h2>'Poppins' Font</h2>
+        <h3>SIL Open Font License</h3>
+        <p>Copyright (c) 2014, Indian Type Foundry (info@indiantypefoundry.com).</p>
+        <p>This Font Software is licensed under the SIL Open Font License, Version 1.1.<br />
+            This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL</p>
+        <p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br />
+            SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007<br />&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+        <p>PREAMBLE<br />
+            The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.</p>
+        <p>The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded, redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.</p>
+        <p>DEFINITIONS<br />
+            &#8220;Font Software&#8221; refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.</p>
+        <p>&#8220;Reserved Font Name&#8221; refers to any names specified as such after the copyright statement(s).</p>
+        <p>&#8220;Original Version&#8221; refers to the collection of Font Software components as distributed by the Copyright Holder(s).</p>
+        <p>&#8220;Modified Version&#8221; refers to any derivative made by adding to, deleting, or substituting&#8212;in part or in whole&#8212;any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.</p>
+        <p>&#8220;Author&#8221; refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.</p>
+        <p>PERMISSION &amp; CONDITIONS<br />
+            Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:</p>
+        <p>1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.</p>
+        <p>2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.</p>
+        <p>3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.</p>
+        <p>4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.</p>
+        <p>5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.</p>
+        <p>TERMINATION<br />
+            This license becomes null and void if any of the above conditions are not met.</p>
+        <p>DISCLAIMER<br />
+            THE FONT SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.</p>
+        ]]></string>
+</resources>
