@@ -103,7 +103,7 @@ ln -sf ../include /opt/android/build/boost/x86_64
 cd /opt/android
 git clone https://github.com/m2049r/monero.git
 
-cd /opt/android/monero/build
+cd /opt/android/monero
 ./build-all-arch.sh
 ```
 
