@@ -185,9 +185,9 @@ public class ReceiveFragment extends Fragment {
 
                 final Runnable newAddress = new Runnable() {
                     public void run() {
+                        tvAddress.setText(wallet.getNewSubaddress());
                         tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
                                 wallet.getNumSubaddresses() - 1));
-                        tvAddress.setText(wallet.getNewSubaddress());
                         storeWallet();
                         generateQr();
                         enableCopyAddress(true);
