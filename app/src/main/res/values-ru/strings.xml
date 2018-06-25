@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Кошелек</string>
 
-    <string name="menu_testnet">Тестовая сеть (testnet)</string>
+    <string name="menu_stagenet" translatable="false">Stagenet</string>
     <string name="menu_about">О программе</string>
     <string name="menu_privacy">Политика конфиденциальности</string>
 
@@ -16,8 +15,8 @@
     <string name="menu_backup">Резервная копия</string>
     <string name="menu_changepw">Изменить пароль</string>
 
-    <string name="password_weak">Продолжайте писать... &#8230;</string>
-    <string name="password_fair">Ничего выдающегося... &#8230;</string>
+    <string name="password_weak">Продолжайте писать &#8230;</string>
+    <string name="password_fair">Ничего выдающегося &#8230;</string>
     <string name="password_good">Давай, ты можешь лучше!</string>
     <string name="password_strong">Почти получилось! &#8230;</string>
     <string name="password_very_strong">Отлично! В лучших традициях h4x0r!</string>
@@ -40,19 +39,13 @@
     <string name="info_crazypass_enabled">Доступен CrAzYpass, нажмите для доп. информации</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Вы ввели Bitcoin адрес. </b><br/>
+        <b>Вы ввели Bitcoin адрес.</b><br/>
         <i>Отправляйте XMR, получатель получит BTC, используя сервис XMR.TO</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">Заказ XMR.TO</string>
 
-    <string name="info_send_xmrto_success_sending">Отправка</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_txdetails_xmrto_key">Ключ:</string>
-    <string name="info_txdetails_xmrto_address">Адрес:</string>
-    <string name="info_txdetails_xmrto_status">Состояние:</string>
-    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
 
 
     <string name="info_send_xmrto_paid">Ожидание подтверждения</string>
@@ -92,16 +85,11 @@
 
     <string name="label_send_settings_advanced">Дополнительно:</string>
 
-    <string name="label_send_btc_details">Нажмите для доп. информации</string>
     <string name="label_send_btc_xmrto_info">Посетите xmr.to для получения помощи &amp;</string>
-    <string name="label_send_txinfo">Смотрите TX для получения доп. информации</string>
     <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя BTC</string>
     <string name="label_send_btc_amount">Количество</string>
-    <string name="label_send_btc_create_order">Создание заказа XMR.TO</string>
-
-    <string name="label_send_btc_retry">Нажмите, чтобы повторить попытку</string>
 
     <string name="label_send_txid">ID транзакции</string>
     <string name="label_send_address">Адрес назначения</string>
@@ -116,24 +104,18 @@
 
     <string name="service_progress">Для данного действия &#8230;\nМожет потребоваться некоторое время!</string>
 
-    <string name="backup_success">Резервное копирование выполено успешно!</string>
     <string name="backup_failed">Резервное копирование произошло с ошибкой!</string>
-    <string name="archive_success">Архивирование выполено успешно!</string>
     <string name="archive_failed">Архивирование произошло с ошибкой!</string>
-    <string name="delete_failed">Удаление произошло с ошибкой!</string>
     <string name="rename_failed">Переименование произошло с ошибкой!</string>
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
-    <string name="changepw_success">Изменение пароля выполено успешно!</string>
+    <string name="changepw_success">Изменение пароля выполено успешно</string>
 
     <string name="label_daemon">Нода</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Net Selection</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
-    <string name="status_walletlist_loading">Загрузка списка кошельков</string>
+    <string name="connect_stagenet" translatable="false">Stagenet</string>
+    <string name="connect_testnet" translatable="false">Testnet</string>
+    <string name="connect_mainnet" translatable="false">Mainnet</string>
     <string name="status_wallet_loading">Загрузка кошелека &#8230;</string>
-    <string name="status_wallet_unloading">Запись кошелька</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
     <string name="status_wallet_connecting">Подключение &#8230;</string>
@@ -142,12 +124,9 @@
     <string name="status_wallet_node_invalid">Ошибка ноды!\nПопробуйте еще раз.</string>
     <string name="status_wallet_connect_ioex">Не удается подключится к ноде!\nПопробуйте позже.</string>
 
-    <string name="status_working">Подключено к &#8230;</string>
     <string name="status_wallet_disconnected">Разъединено</string>
 
-    <string name="status_transaction_sent">Транзакция отправлена!</string>
     <string name="status_transaction_failed">Ошибка транзакции: %1$s</string>
-    <string name="status_transaction_prepare_failed">Не удалось создать транзакцию!</string>
 
     <string name="send_xmrto_timeout">Ты слишком долго ждал, мой друг!</string>
 
@@ -160,39 +139,27 @@
     <string name="prompt_password">Пароль для %1$s</string>
     <string name="prompt_fingerprint_auth">Теперь вы можете открыть кошелек с помощью отпечатков пальцев.\nПожалуйста коснитесь датчика.</string>
     <string name="prompt_send_password">Подтверждение пароля</string>
+    <string name="prompt_open_wallet">Открытие кошелька&#8230;</string>
     <string name="bad_fingerprint">Отпечаток пальца не распознается. Попробуйте ещё раз.</string>
     <string name="bad_password">Неверный пароль!</string>
+    <string name="bad_saved_password">Сохраненный пароль неверен.\nВведите пароль вручную.</string>
     <string name="bad_wallet">Кошелька не существует!</string>
-    <string name="error_not_wallet">Это не кошелек!</string>
     <string name="prompt_daemon_missing">Должен быть установлен адрес Daemon!</string>
     <string name="prompt_wrong_net">Кошелек не соответствует выбранной сети</string>
-    <string name="warn_daemon_unavailable">Не удается подключиться к Daemon! Попробуйте еще раз</string>
-    <string name="panic">Что-то не так!</string>
 
     <string name="label_watchonly">(Режим просмотра)</string>
 
     <string name="label_wallet_receive">Получить</string>
     <string name="label_wallet_send">Передать</string>
 
-    <string name="title_amount">Сумма</string>
-    <string name="title_date">Дата</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR неподтвержденно</string>
-    <string name="xmr" translatable="false">XMR</string>
-    <string name="label_transactions">Транзакции</string>
-    <string name="text_daemonConnected">Daemon подлючен!</string>
 
     <string name="service_description">Служба monerujo</string>
-    <string name="local_service_started">Служба monerujo запущена</string>
-    <string name="local_service_stopped">Служба monerujo остановлена</string>
-    <string name="local_service_label">Служба monerujo</string>
-    <string name="local_service_connected">Служба monerujo подключена</string>
-    <string name="local_service_disconnected">Служба monerujo отключена</string>
 
     <string name="status_synced">Синхронизировано:</string>
     <string name="status_remaining">Блоков осталось</string>
     <string name="status_syncing">Просканировано:</string>
 
-    <string name="prompt_problems">Проблемы</string>
     <string name="message_strorage_not_writable">Внешнее хранилище недоступно для записи! Ахтунг!</string>
     <string name="message_strorage_not_permitted">Нам действительно нужны эти разрешения!</string>
     <string name="message_camera_not_permitted">Нет доступа к камере = Нет QR-сканирования!</string>
@@ -204,8 +171,6 @@
     <string name="message_copy_xmrtokey">Ключ XMR.TO скопирован в буфер обмена!</string>
     <string name="message_copy_address">Адрес кошелька скопирован в буфер обмена!</string>
     <string name="message_copy_txid">ID транзакции копирован в буфер обмена!</string>
-    <string name="message_noselect_seed">Выбор мнемонической фразы отключен по соображениям безопасности!</string>
-    <string name="message_noselect_key">Выбор ключа траты отключен по соображениям безопасности!</string>
     <string name="message_nocopy">Копирование недоступно по соображениям безопасности!</string>
 
     <string name="message_exchange_failed">Не удается получить курс обмена!\nИспользуйте XMR/XMR или повторите попытку</string>
@@ -229,15 +194,10 @@
     <string name="generate_bad_passwordB">Пароль не совпадает</string>
     <string name="generate_empty_passwordB">Пароль не может быть пустым</string>
     <string name="generate_buttonGenerate">Сделайте мне уже кошелек!</string>
-    <string name="generate_seed">Мнемоническая фраза</string>
     <string name="generate_button_accept">Я ввел мнемоническую фразу</string>
 
-    <string name="generate_button_backup">Резервная копия</string>
-    <string name="generate_button_export">Экспорт ключей</string>
-    <string name="generate_button_delete">УДАЛИТЬ</string>
-
     <string name="generate_wallet_name">Придумай мне имя!</string>
-    <string name="generate_wallet_exists">Такой кошелек существует</string>
+    <string name="generate_wallet_exists">Такой кошелек существует!</string>
     <string name="generate_wallet_dot">Не может начинаться с .</string>
     <string name="generate_wallet_creating">Создание кошелька</string>
     <string name="generate_wallet_created">Кошелек создан</string>
@@ -250,20 +210,17 @@
     <string name="generate_wallet_type_seed">Фраза</string>
     <string name="generate_wallet_type_view">Просмотр</string>
 
-    <string name="generate_address_hint">Публичный адрес</string>
-    <string name="generate_viewkey_hint">Ключ просмотра</string>
-    <string name="generate_spendkey_hint">Ключ траты</string>
-    <string name="generate_mnemonic_hint">Мнемоническая фраза</string>
-    <string name="generate_restoreheight_hint">Дата высоты восстановления (YYYY-MM-DD)</string>
+    <string name="generate_address_hint">Public Address</string>
+    <string name="generate_viewkey_hint">View Key</string>
+    <string name="generate_spendkey_hint">Spend Key</string>
+    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
+    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_label">Кошелек</string>
-    <string name="generate_password_label">Пароль</string>
     <string name="generate_address_label">Публичный адрес</string>
     <string name="generate_viewkey_label">Ключ просмотра</string>
     <string name="generate_spendkey_label">Ключ траты</string>
     <string name="generate_mnemonic_label">Мнемоническая фраза</string>
-    <string name="generate_restoreheight_label">Высота восстановления:</string>
-    <string name="generate_crazypass_label">Восстановление пароля файлов кошелька</string>
+    <string name="generate_crazypass_label">Дата высоты восстановления (YYYY-MM-DD)</string>
 
     <string name="generate_check_key">Введите действующий ключ</string>
     <string name="generate_check_address">Введите действующий адрес</string>
@@ -275,20 +232,13 @@
     <string name="send_paymentid_hint">ID платежа (необязательно)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Персональная заметка (необязательно)</string>
-    <string name="send_priority_hint">Приоритет Tx</string>
-    <string name="send_mixin_hint">Mixin</string>
-    <string name="send_sweep_hint">\"Замести\"</string>
     <string name="send_generate_paymentid_hint">Генерация</string>
     <string name="send_qr_hint">Сканирование</string>
-    <string name="send_prepare_hint">Подготовка</string>
-    <string name="send_dispose_hint">Утилизировать (Отмена)</string>
     <string name="send_send_label">Потратьте мои сладкие Moneroj</string>
     <string name="send_send_timed_label">Потратьте мои сладкие Moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Последний шаг - подтвердить!</string>
     <string name="send_qr_invalid">Это не QR-код</string>
     <string name="send_qr_address_invalid">Недопустимый платеж по QR-коду</string>
     <string name="send_address_invalid">Недопустимый адрес</string>
-    <string name="send_preparing_progress">Подготовка транзакции</string>
     <string name="send_title">Отправка</string>
     <string name="send_available">Баланс: %1$s XMR</string>
     <string name="send_address_title">Адрес</string>
@@ -296,13 +246,10 @@
     <string name="send_settings_title">Настройки</string>
     <string name="send_confirm_title">Подтверждение</string>
     <string name="send_success_title">Готово</string>
-    <string name="send_summary_heading">Итог</string>
-    <string name="send_amount_too_large">Сумма > Средства</string>
 
     <string name="send_amount_label">Сумма</string>
     <string name="send_fee_btc_label">Сбор (XMR)</string>
     <string name="send_fee_label">Сбор</string>
-    <string name="send_dust_label">Пыль</string>
     <string name="send_total_btc_label">Всего (XMR)</string>
     <string name="send_total_label">Всего</string>
 
@@ -311,52 +258,38 @@
 
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
 
-    <string name="tx_list_fee_pending">включительно %1$s сбор</string>
     <string name="tx_list_fee">- Сбор %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_status_btc">Статус</string>
-    <string name="tx_address">Адрес</string>
     <string name="tx_timestamp">Отметка</string>
     <string name="tx_id">TX ID</string>
-    <string name="tx_id_btc">TX ID(BTC)</string>
     <string name="tx_key">Ключ TX</string>
     <string name="tx_destination">Адресат</string>
-    <string name="tx_destination_btc">Адресат (BTC)</string>
+    <string name="tx_destination_btc">Адресат\n(BTC)</string>
     <string name="tx_paymentId">ID платежа</string>
     <string name="tx_blockheight">Блок</string>
     <string name="tx_amount">Количество</string>
-    <string name="tx_amount_btc">Количество (BTC)</string>
+    <string name="tx_amount_btc">Количество\n(BTC)</string>
     <string name="tx_fee">Сбор</string>
     <string name="tx_transfers">Переводы</string>
-    <string name="tx_notes">Заметка</string>
-    <string name="tx_button_copy">Скопировать в буфер обмена</string>
-    <string name="tx_copy_message">Скопировано в буфер обмена</string>
-    <string name="tx_copy_label">Детали транзакции</string>
+    <string name="tx_notes">Заметки</string>
     <string name="tx_notes_hint">(необязательно)</string>
     <string name="tx_button_notes">Сохранено</string>
-    <string name="tx_notes_set">Заметка сохранена</string>
     <string name="tx_notes_set_failed">Ошибка сохранения заметки</string>
     <string name="tx_title">Подробно</string>
 
     <string name="tx_pending">ОЖИДАНИЕ</string>
     <string name="tx_failed">ОШИБКА</string>
 
-    <string name="receive_generate_hint">Отсканировать QR-код</string>
-    <string name="receive_paymentid_button">Генерация</string>
     <string name="receive_paymentid_hint">ID платежа (необязательно)</string>
     <string name="receive_amount_hint">Сумма</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Не удалось открыть кошелек!</string>
     <string name="receive_paymentid_invalid">Система счисления - 16 или 64(0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Должно быть пустым со встроенным адресом</string>
-    <string name="receive_bitcoin_paymentid_invalid">Должно быть пустым с Bitcoin-адресом</string>
-    <string name="receive_amount_invalid">Должно быть > 0</string>
 
-    <string name="receive_amount_empty">Введите значение</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">Не числовое значение XMR</string>
@@ -372,28 +305,64 @@
     <string name="archive_alert_yes">Да, сделай это!</string>
     <string name="archive_alert_no">Нет, спасибо!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
-        <item>Приоритет - по умолчанию</item>
-        <item>Приоритет - низкий</item>
-        <item>Приоритет - средний</item>
-        <item>Приоритет - высокий</item>
+        <item>Приоритет - Стандартный</item>
+        <item>Приоритет - Низкий</item>
+        <item>Приоритет - Средний</item>
+        <item>Приоритет - Высокий</item>
     </string-array>
 
     <string-array name="currency" translatable="false">
         <item>XMR</item>
         <item>EUR</item>
         <item>USD</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CAD</item>
+        <item>AUD</item>
+        <item>ZAR</item>
+
+        <item>BRL</item>
+        <item>CLP</item>
+        <item>CNY</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>HKD</item>
+        <item>HUF</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>KRW</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>PHP</item>
+        <item>PKR</item>
+        <item>PLN</item>
+        <item>RUB</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>TRY</item>
+        <item>TWD</item>
     </string-array>
 
     <string name="fab_create_new">Создать новый кошелек</string>
     <string name="fab_restore_viewonly">Восстановить кошелек только для просмотра</string>
     <string name="fab_restore_key">Восстановить кошелек из ключей</string>
     <string name="fab_restore_seed">Восстановить кошелек из мнемонической фразы</string>
+
+    <string name="accounts_balance" translatable="false">%1$s XMR</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+
+    <string name="accounts_drawer_new">Создать учетную запись</string>
+    <string name="accounts_drawer_title">Учетная запись</string>
+    <string name="accounts_new">Добавить новую учетную запись #%1$d</string>
+    <string name="tx_account">Учетная запись #</string>
+
+    <string name="send_sweepall">Отправить все средства на этот счет!</string>
+    <string name="tx_subaddress">Субадрес #%1$d</string>
+    <string name="generate_address_label_sub">Публичный субадрес #%1$d</string>
 </resources>
