@@ -2,18 +2,21 @@ package com.m2049r.aeonwallet.util;
 
 import android.app.KeyguardManager;
 import android.content.Context;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v4.os.CancellationSignal;
-
-import timber.log.Timber;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import android.os.CancellationSignal;
 
 public class FingerprintHelper {
 
     public static boolean isDeviceSupported(Context context) {
-        FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
-        KeyguardManager keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return false;
+        }
 
-        return keyguardManager != null &&
+        FingerprintManager fingerprintManager = context.getSystemService(FingerprintManager.class);
+        KeyguardManager keyguardManager = context.getSystemService(KeyguardManager.class);
+
+        return (keyguardManager != null) && (fingerprintManager != null) &&
                 keyguardManager.isKeyguardSecure() &&
                 fingerprintManager.isHardwareDetected() &&
                 fingerprintManager.hasEnrolledFingerprints();
@@ -29,8 +32,14 @@ public class FingerprintHelper {
     }
 
     public static void authenticate(Context context, CancellationSignal cancelSignal,
-                                    FingerprintManagerCompat.AuthenticationCallback callback) {
-        FingerprintManagerCompat manager = FingerprintManagerCompat.from(context);
-        manager.authenticate(null, 0, cancelSignal, callback, null);
+                                    FingerprintManager.AuthenticationCallback callback) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return;
+        }
+
+        FingerprintManager manager = context.getSystemService(FingerprintManager.class);
+        if (manager != null) {
+            manager.authenticate(null, cancelSignal, 0, callback, null);
+        }
     }
 }

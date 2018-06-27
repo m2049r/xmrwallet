@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Fechar</string>
+    <string name="about_whoami">Eu sou o monerujo</string>
+    <string name="about_version">Versão %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Créditos</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Política de Privacidade</h1>
+        <p>Esta página contém informação acerca das nossas políticas de recolha, uso
+        e divulgação das informações pessoais que recebemos dos utilizadores
+        da nossa app (monerujo: Monero Wallet).
+        </p>
+        <p>Ao utilizar esta app está a concordar com a recolha e uso de
+        informação de acordo com esta política.
+        </p>
+        <h2>Dados Recolhidos</h2>
+        <p> Dados pessoais são todo o tipo de dados que permitem identificar um indivíduo.
+        </p>
+        <p>As chaves e endereços Monero são recolhidos e processados pela app localmente
+        para o propósito de processar transacções e transmiti-las à rede Monero de forma
+        encriptada.
+        </p>
+        <p>Quaisquer outros dados pessoais não são recolhidos pela app.</p>
+        <p>Se utilizar a conversão para USD/EUR, o monerujo obtém as taxas de conversão a
+        partir da API pública do kraken.com.
+        Confirme a política de privacidade deste serviço em https://www.kraken.com/legal/privacy para
+        mais detalhes em como estes pedidos são processados (especialmente a
+        secção "Informação que recolhemos automaticament").</p>
+        <p>Se utilizar esta app para pagar em BTC, você estará a utilizar o serviço XMR.TO.
+        Veja a sua política de privacidade em https://xmr.to/ para mais detalhes. O monerujo envia
+        para este serviço a quantidade e o endereço de destino das BTC. O seu IP vai ser registado.</p>
+        <h2>Permissões da app</h2>
+        <ul>
+        <li>INTERNET : Ligar à rede Monero</li>
+        <li>READ_EXTERNAL_STORAGE : Ler as carteiras Monero guardadas no dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Escrever as carteiras Monero no dispositivo</li>
+        <li>WAKE_LOCK : Manter o dispositivo ligado enquanto sincroniza</li>
+        <li>CAMERA : Ler códigos QR para receber Monero</li>
+        </ul>
+        <h2>Alterações a esta política de privacidade</h2>
+        <p>Nós podemos alterar esta política de privacidade de tempos em temps. Iremos notificar
+        quaisquer alterações actualizando esta política de privacidade na app e no
+        website oficial (www.monerujo.io)
+        É aconselhável que reveja esta política de privacidade periodicamente para conferir quaisquer alterações.
+        <p>A última actualização à política de privacidade foi em: 10 de Novembro de 2017.
+        </p>
+        <h2>Contacte-nos</h2>
+        <p>Se tiver alguma questão acerca da nossa política de privacidade,
+        ou sobre como os seus dados são recolhidos e processados,
+        por favor envie um email para privacy@monerujo.io.
+        </p>
+        ]]></string>
+</resources>

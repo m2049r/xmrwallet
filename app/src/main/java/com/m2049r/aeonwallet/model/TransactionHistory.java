@@ -17,7 +17,10 @@
 package com.m2049r.aeonwallet.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class TransactionHistory {
     static {
@@ -26,8 +29,18 @@ public class TransactionHistory {
 
     private long handle;
 
-    public TransactionHistory(long handle) {
+    int accountIndex;
+
+    public void setAccountFor(Wallet wallet) {
+        if (accountIndex != wallet.getAccountIndex()) {
+            this.accountIndex = wallet.getAccountIndex();
+            refreshWithNotes(wallet);
+        }
+    }
+
+    public TransactionHistory(long handle, int accountIndex) {
         this.handle = handle;
+        this.accountIndex = accountIndex;
     }
 
     public void loadNotes(Wallet wallet) {
@@ -36,7 +49,7 @@ public class TransactionHistory {
         }
     }
 
-    public native int getCount();
+    public native int getCount(); // over all accounts/subaddresses
 
     //private native long getTransactionByIndexJ(int i);
 
@@ -53,8 +66,23 @@ public class TransactionHistory {
         loadNotes(wallet);
     }
 
+//    public void refresh() {
+//        transactions = refreshJ();
+//    }
+
     public void refresh() {
-        transactions = refreshJ();
+        List<TransactionInfo> t = refreshJ();
+        Timber.d("refreshed %d", t.size());
+        for (Iterator<TransactionInfo> iterator = t.iterator(); iterator.hasNext(); ) {
+            TransactionInfo info = iterator.next();
+            if (info.account != accountIndex) {
+                iterator.remove();
+                Timber.d("removed %s", info.hash);
+            } else {
+                Timber.d("kept %s", info.hash);
+            }
+        }
+        transactions = t;
     }
 
     private native List<TransactionInfo> refreshJ();

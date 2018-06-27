@@ -87,8 +87,10 @@
     <string name="prompt_password">Password for %1$s</string>
     <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
     <string name="prompt_send_password">Confirm Password</string>
+    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
     <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
     <string name="bad_password">Incorrect password!</string>
+    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
     <string name="prompt_wrong_net">Wallet does not match selected net</string>
@@ -242,14 +244,6 @@
     <string name="archive_alert_yes">Yes, do that!</string>
     <string name="archive_alert_no">No thanks!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 3</item>
-        <item>Ringsize 6</item>
-        <item>Ringsize 9</item>
-        <item>Ringsize 12</item>
-        <item>Ringsize 25</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Priority Default</item>
         <item>Priority Low</item>
@@ -298,4 +292,16 @@
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+
+    <string name="accounts_balance" translatable="false">%1$s XMR</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>

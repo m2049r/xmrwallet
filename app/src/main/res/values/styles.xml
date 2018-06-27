@@ -52,6 +52,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="MoneroLabel.Caps.White">
+        <item name="android:textColor">@color/moneroWhite</item>
+    </style>
+
     <style name="MoneroLabel.Caps.Black">
         <item name="android:textColor">@color/moneroBlack</item>
     </style>
@@ -195,6 +199,13 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="MoneroText.Medium.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MoneroText.Large">
+        <item name="android:textSize">24sp</item>
+    </style>
 
     <style name="MoneroText.Success">
         <item name="android:textSize">18sp</item>

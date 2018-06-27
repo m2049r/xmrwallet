@@ -83,8 +83,10 @@
     <string name="prompt_password">Password per %1$s</string>
     <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale./nTocca il sensore.</string>
     <string name="prompt_send_password">Conferma Password</string>
+    <string name="prompt_open_wallet">Aprendo il portafoglio&#8230;</string>
     <string name="bad_fingerprint">Impronta digitale non riconosciuta. Prova di nuovo.</string>
     <string name="bad_password">Password errata!</string>
+    <string name="bad_saved_password">La password salvata è scorretta.\nInserisci la password manualmente.</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
     <string name="prompt_daemon_missing">Deve essere impostato l\'indirizzo del Daemon!</string>
     <string name="prompt_wrong_net">Il portafoglio non si abbina con la rete selezionata</string>
@@ -249,4 +251,13 @@
     <string name="fab_restore_viewonly">Recupera un portafoglio solo-visualizzazione</string>
     <string name="fab_restore_key">Recupera un portafoglio dalle chiavi private</string>
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
+
+    <string name="accounts_drawer_new">Crea Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>
 </resources>
