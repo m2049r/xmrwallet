@@ -138,7 +138,7 @@
     <string name="bad_password">密碼錯誤！</string>
     <string name="bad_saved_password">儲存的密碼不正確。\n請手動輸入密碼。</string>
     <string name="bad_wallet">錢包不存在!</string>
-    <string name="prompt_daemon_missing">必需設定節點位置!</string>
+    <string name="prompt_daemon_missing">必須設定節點位置!</string>
     <string name="prompt_wrong_net">錢包不符合選擇的網路</string>
 
     <string name="label_watchonly">(唯讀)</string>
