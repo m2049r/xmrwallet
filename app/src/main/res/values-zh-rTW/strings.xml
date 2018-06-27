@@ -171,7 +171,7 @@
     <string name="send_notes_hint">註記 (選填)</string>
     <string name="send_generate_paymentid_hint">產生</string>
     <string name="send_qr_hint">掃描</string>
-    <string name="send_send_label">發送我的 Moneroj</string>
+    <string name="send_send_label">發送我的 Aeon</string>
     <string name="send_qr_invalid">這不是QR碼</string>
     <string name="send_qr_address_invalid">這不是有效的付款QR碼</string>
     <string name="send_address_invalid">這不是有效的地址</string>
@@ -226,8 +226,6 @@
     <string name="receive_amount_negative">最小值 0</string>
     <string name="receive_amount_nan">輸入的AEON不是個數字</string>
 
-    <string name="receive_title">接收</string>
-
     <string name="details_alert_message">將會顯示敏感資訊。\n請注意周遭安全!</string>
     <string name="details_alert_yes">我現在很安全</string>
     <string name="details_alert_no">不看了!</string>
@@ -250,7 +248,6 @@
     <string name="fab_restore_seed">從25字種子碼回復錢包</string>
 
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 

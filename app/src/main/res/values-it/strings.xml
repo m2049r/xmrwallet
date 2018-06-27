@@ -174,7 +174,7 @@
     <string name="send_notes_hint">Note private (opzionali)</string>
     <string name="send_generate_paymentid_hint">Genera</string>
     <string name="send_qr_hint">Scansiona</string>
-    <string name="send_send_label">Spendi i miei bei Moneroj</string>
+    <string name="send_send_label">Spendi i miei bei Aeon</string>
     <string name="send_qr_invalid">Non è un codice QR</string>
     <string name="send_qr_address_invalid">Non è un codice QR pagamento valido</string>
     <string name="send_address_invalid">Non è un indirizzo valido</string>
@@ -229,8 +229,6 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">AEON non è un numero</string>
 
-    <string name="receive_title">Ricevi</string>
-
     <string name="details_alert_message">Verranno ora mostrati dati sensibili.\nGuardati alle spalle!</string>
     <string name="details_alert_yes">Sono al sicuro</string>
     <string name="details_alert_no">Torna indietro!</string>
@@ -253,7 +251,6 @@
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
 
     <string name="accounts_drawer_new">Crea Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
     <string name="tx_account">Account #</string>
 

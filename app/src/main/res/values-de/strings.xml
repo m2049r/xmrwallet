@@ -173,7 +173,7 @@
     <string name="send_notes_hint">Private Notizen (optional)</string>
     <string name="send_generate_paymentid_hint">Erzeuge</string>
     <string name="send_qr_hint">Scannen</string>
-    <string name="send_send_label">Gib meine wertvollen Moneroj aus</string>
+    <string name="send_send_label">Gib meine wertvollen Aeon aus</string>
     <string name="send_qr_invalid">Kein QR-Code</string>
     <string name="send_qr_address_invalid">Kein gültiger Zahlungs-QR-Code</string>
     <string name="send_address_invalid">Keine gültige Adresse</string>
@@ -186,7 +186,6 @@
     <string name="send_success_title">Fertig</string>
 
     <string name="send_amount_label">Betrag</string>
-    <string name="send_fee_btc_label">Gebühr (XMR)</string>
     <string name="send_fee_label">Gebühr</string>
     <string name="send_total_label">Total</string>
 
@@ -229,8 +228,6 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">AEON keine Nummer</string>
 
-    <string name="receive_title">Empfangen</string>
-
     <string name="details_alert_message">Sensible Daten werden angezeigt.\nSchau über deine Schulter!</string>
     <string name="details_alert_yes">Ich bin sicher</string>
     <string name="details_alert_no">Nein, doch nicht!</string>
@@ -253,7 +250,6 @@
     <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
 
     <string name="accounts_drawer_new">Konto erstellen</string>
-    <string name="accounts_drawer_title">Konten</string>
     <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
     <string name="tx_account">Konto #</string>
 

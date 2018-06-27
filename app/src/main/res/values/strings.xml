@@ -233,8 +233,6 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">AEON not a number</string>
 
-    <string name="receive_title">Receive</string>
-
     <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
     <string name="details_alert_yes">I\'m safe</string>
     <string name="details_alert_no">Take me back!</string>
@@ -297,7 +295,6 @@
     <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
 
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 

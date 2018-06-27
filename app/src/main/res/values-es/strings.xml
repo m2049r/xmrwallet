@@ -170,8 +170,8 @@
     <string name="send_notes_hint">Notas Privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Generar</string>
     <string name="send_qr_hint">Scan</string>
-    <string name="send_qr_invalid">No es un Código QR de monero</string>
-    <string name="send_qr_address_invalid">Dirección de Monero inválida</string>
+    <string name="send_qr_invalid">No es un Código QR de Aeon</string>
+    <string name="send_qr_address_invalid">Dirección de Aeon inválida</string>
     <string name="send_title">Enviar</string>
     <string name="send_available">Fondos disponibles: %1$s AEON</string>
     <string name="send_address_title">Dirección</string>
@@ -220,8 +220,6 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">AEON no es un número</string>
 
-    <string name="receive_title">Recibir</string>
-
     <string name="details_alert_message">Se va a mostrar información delicada.\n¡Mira por encima del hombro!</string>
     <string name="details_alert_yes">Estoy seguro</string>
     <string name="details_alert_no">¡Llévame de vuelta!</string>
@@ -243,7 +241,7 @@
     <string name="fab_restore_key">Restaurar monedero con claves privadas</string>
     <string name="fab_restore_seed">Restaurar monedero con semilla de 25 palabras</string>
     <string name="label_send_settings_advanced">Avanzado</string>
-    <string name="send_send_label">Enviar mis preciados moneroj</string>
+    <string name="send_send_label">Enviar mis preciados Aeon</string>
     <string name="send_address_invalid">No es una dirección válida</string>
     <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s Comisión</string>
@@ -251,7 +249,6 @@
     <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
 
     <string name="accounts_drawer_new">Crear Cuenta</string>
-    <string name="accounts_drawer_title">Cuentas</string>
     <string name="accounts_new">Nueva cuenta agregada #%1$d</string>
     <string name="tx_account"># de cuenta</string>
 
