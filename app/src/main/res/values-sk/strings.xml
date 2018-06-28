@@ -48,7 +48,7 @@
 
     <string name="info_send_xmrto_paid">Čaká na Potvrdenie</string>
     <string name="info_send_xmrto_unpaid">Čakajúca Platba</string>
-    <string name="info_send_xmrto_error">XMR.TO Error (%1$s)</string>
+    <string name="info_send_xmrto_error">XMR.TO Chyba (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC Odoslané!</string>
     <string name="info_send_xmrto_query">Zisťujem &#8230;</string>
 
@@ -109,7 +109,7 @@
     <string name="changepw_success">Heslo zmenené</string>
 
     <string name="label_daemon">Uzol</string>
-    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="prompt_daemon">([&lt;meno&gt;:&lt;heslo&gt;@]&lt;server&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Načítavam peňaženku &#8230;</string>
     <string name="status_wallet_unloaded">Peňaženka uložená</string>
     <string name="status_wallet_unload_failed">Uloženie zlyhalo!</string>
@@ -256,7 +256,6 @@
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_account">Účet #</string>
     <string name="tx_timestamp">časová pečiatka</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX Kľúč</string>
