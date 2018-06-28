@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.aeonwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 13
-        versionName "0.1.3 'Rebase RC3'"
+        versionCode 20
+        versionName "0.2.0 'Accounts RC1'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
