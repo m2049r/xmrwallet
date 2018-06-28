@@ -80,6 +80,13 @@ public class WalletManager {
 
     private native long createWalletJ(String path, String password, String language, int networkType);
 
+    public Wallet openAccount(String path, int accountIndex, String password) {
+        long walletHandle = openWalletJ(path, password, getNetworkType().getValue());
+        Wallet wallet = new Wallet(walletHandle, accountIndex);
+        manageWallet(wallet);
+        return wallet;
+    }
+
     public Wallet openWallet(String path, String password) {
         long walletHandle = openWalletJ(path, password, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);

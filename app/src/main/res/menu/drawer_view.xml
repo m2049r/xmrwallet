@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/accounts_list"
+        android:checkableBehavior="single"
+        android:orderInCategory="100" />
+    <group
+        android:checkableBehavior="none"
+        android:orderInCategory="200">
+        <item
+            android:id="@+id/account_new"
+            android:icon="@drawable/ic_add_circle_white"
+            android:title="@string/accounts_drawer_new" />
+    </group>
+</menu>

@@ -34,7 +34,7 @@ for arch in ${archs[@]}; do
 		rm -f $OUTPUT_DIR/*.a
 		cp -a /opt/android/build/$package/$arch/lib/*.a $OUTPUT_DIR
 
-		if [ $package = "monero" -a -d "/opt/android/build/$package/include" ]; then
+		if [ $package = "aeon" -a -d "/opt/android/build/$package/include" ]; then
 			rm -rf $OUTPUT_DIR/../../include
 		  cp -a /opt/android/build/$package/include $OUTPUT_DIR/../..
 		fi		

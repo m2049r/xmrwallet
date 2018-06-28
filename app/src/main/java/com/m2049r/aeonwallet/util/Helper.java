@@ -31,11 +31,13 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.CancellationSignal;
 import android.os.Environment;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v4.os.CancellationSignal;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.text.Editable;
@@ -66,6 +68,7 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -359,6 +362,7 @@ public class Helper {
     }
 
     static AlertDialog openDialog = null; // for preventing opening of multiple dialogs
+    static AsyncTask<Void, Void, Boolean> loginTask = null;
 
     static public void promptPassword(final Context context, final String wallet, boolean fingerprintDisabled, final PasswordAction action) {
         if (openDialog != null) return; // we are already asking for password
@@ -371,13 +375,66 @@ public class Helper {
         final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
         etPassword.setHint(context.getString(R.string.prompt_password, wallet));
 
+        final TextView tvOpenPrompt = (TextView) promptsView.findViewById(R.id.tvOpenPrompt);
+        final Drawable icFingerprint = context.getDrawable(R.drawable.ic_fingerprint);
+        final Drawable icError = context.getDrawable(R.drawable.ic_error_red_36dp);
+        final Drawable icInfo = context.getDrawable(R.drawable.ic_info_green_36dp);
+
         final boolean fingerprintAuthCheck = FingerprintHelper.isFingerPassValid(context, wallet);
 
         final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
         final CancellationSignal cancelSignal = new CancellationSignal();
 
-        if (fingerprintAuthAllowed) {
-            promptsView.findViewById(R.id.txtFingerprintAuth).setVisibility(View.VISIBLE);
+        final AtomicBoolean incorrectSavedPass = new AtomicBoolean(false);
+        class LoginWalletTask extends AsyncTask<Void, Void, Boolean> {
+            private String pass;
+            private boolean fingerprintUsed;
+
+            LoginWalletTask(String pass, boolean fingerprintUsed) {
+                this.pass = pass;
+                this.fingerprintUsed = fingerprintUsed;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icInfo, null, null, null);
+                tvOpenPrompt.setText(context.getText(R.string.prompt_open_wallet));
+                tvOpenPrompt.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Boolean doInBackground(Void... unused) {
+                return processPasswordEntry(context, wallet, pass, fingerprintUsed, action);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result) {
+                if (result) {
+                    Helper.hideKeyboardAlways((Activity) context);
+                    cancelSignal.cancel();
+                    openDialog.dismiss();
+                    openDialog = null;
+                } else {
+                    if (fingerprintUsed) {
+                        incorrectSavedPass.set(true);
+                        tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                        tvOpenPrompt.setText(context.getText(R.string.bad_saved_password));
+                    } else {
+                        if (!fingerprintAuthAllowed) {
+                            tvOpenPrompt.setVisibility(View.GONE);
+                        } else if (incorrectSavedPass.get()) {
+                            tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                            tvOpenPrompt.setText(context.getText(R.string.bad_password));
+                        } else {
+                            tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
+                            tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
+                        }
+                        etPassword.setError(context.getString(R.string.bad_password));
+                    }
+                }
+
+                loginTask = null;
+            }
         }
 
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {
@@ -409,46 +466,56 @@ public class Helper {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways((Activity) context);
                                 cancelSignal.cancel();
+                                if (loginTask != null) {
+                                    loginTask.cancel(true);
+                                    loginTask = null;
+                                }
                                 dialog.cancel();
                                 openDialog = null;
                             }
                         });
         openDialog = alertDialogBuilder.create();
 
-        final FingerprintManagerCompat.AuthenticationCallback fingerprintAuthCallback = new FingerprintManagerCompat.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errMsgId, CharSequence errString) {
-                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth)).setText(errString);
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
-                try {
-                    String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
-                    if (Helper.processPasswordEntry(context, wallet, userPass, true, action)) {
-                        Helper.hideKeyboardAlways((Activity) context);
-                        openDialog.dismiss();
-                        openDialog = null;
-                    } else {
-                        etPassword.setError(context.getString(R.string.bad_password));
-                    }
-                } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
-                    etPassword.setError(context.getString(R.string.bad_password));
-                    // TODO: better errror message here - what would it be?
+        final FingerprintManager.AuthenticationCallback fingerprintAuthCallback;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            fingerprintAuthCallback = null;
+        } else {
+            fingerprintAuthCallback = new FingerprintManager.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errMsgId, CharSequence errString) {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                    tvOpenPrompt.setText(errString);
                 }
-            }
 
-            @Override
-            public void onAuthenticationFailed() {
-                ((TextView) promptsView.findViewById(R.id.txtFingerprintAuth))
-                        .setText(context.getString(R.string.bad_fingerprint));
-            }
-        };
+                @Override
+                public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+                    try {
+                        String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
+                        if (loginTask == null) {
+                            loginTask = new LoginWalletTask(userPass, true);
+                            loginTask.execute();
+                        }
+                    } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+                        etPassword.setError(context.getString(R.string.bad_password));
+                        // TODO: better error message here - what would it be?
+                    }
+                }
+
+                @Override
+                public void onAuthenticationFailed() {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                    tvOpenPrompt.setText(context.getString(R.string.bad_fingerprint));
+                }
+            };
+        }
 
         openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
-                if (fingerprintAuthAllowed) {
+                if (fingerprintAuthAllowed && fingerprintAuthCallback != null) {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
+                    tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
+                    tvOpenPrompt.setVisibility(View.VISIBLE);
                     FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
                 }
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
@@ -456,13 +523,9 @@ public class Helper {
                     @Override
                     public void onClick(View view) {
                         String pass = etPassword.getEditText().getText().toString();
-                        if (processPasswordEntry(context, wallet, pass, false, action)) {
-                            Helper.hideKeyboardAlways((Activity) context);
-                            cancelSignal.cancel();
-                            openDialog.dismiss();
-                            openDialog = null;
-                        } else {
-                            etPassword.setError(context.getString(R.string.bad_password));
+                        if (loginTask == null) {
+                            loginTask = new LoginWalletTask(pass, false);
+                            loginTask.execute();
                         }
                     }
                 });
@@ -474,13 +537,9 @@ public class Helper {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
-                    if (processPasswordEntry(context, wallet, pass, false, action)) {
-                        Helper.hideKeyboardAlways((Activity) context);
-                        cancelSignal.cancel();
-                        openDialog.dismiss();
-                        openDialog = null;
-                    } else {
-                        etPassword.setError(context.getString(R.string.bad_password));
+                    if (loginTask == null) {
+                        loginTask = new LoginWalletTask(pass, false);
+                        loginTask.execute();
                     }
                     return true;
                 }

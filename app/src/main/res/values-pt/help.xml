@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Criar Carteira - Nova</h1>
+        <p>Se precisas de um endereço Monero novo!</p>
+        <p>Introduz nome e palavra passe únicos para a carteira.
+        A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte -
+        melhor ainda é utilizar uma frase passe.</p>
+        <h2>Toma nota da tua Semente Mnemónica!</h2>
+        <p>No próximo ecrã vai estar a tua \"Semente Mnemónica\" de 25 palavras.
+        Esta semente é suficiente para recuperar a tua carteira mais tarde
+        e ganhar total acesso aos teus fundos.
+        Mantê-la segura e privada é muito importante, já que pode dar acesso total aos
+        teus fundos a <em>qualquer pessoa</em>!
+        <p>Se perderes a palavra passe da tua carteira, podes recuperar a carteira com a Semente Mnemónica.</p>
+        <p>Não há forma de recuperar a Semente Mnemónica, se a perderes todos os teus fundos serão perdidos!
+        A Semente Mnemónica não pode ser alterada, e se for roubada ou comprometida de outra forma,
+        tens de transferir os teus fundos para uma carteira nova (com uma nova Semente Mnemónica). Por isso,
+        é melhor fazer uma cópia de segurança da Semente escrevendo-a fisicamente e guardando-a em
+        <em>vários</em> lugares seguros.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Crirar Carteira - Semente</h1>
+        <p>Se já tens um Endereço Monero e queres recuperar as transacções da blockchain!</p>
+        <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
+        <p>Introduz a tua Semente no campo \"Semente Mnemónica\".<p>
+        <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
+        \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
+        encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Criar Carteira - Chaves</h1>
+        <p>Se estás a recuperar a tua carteira a partir das tuas chaves!</p>
+        <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
+        <p>Introduz o teu Endereço Monero no campo \"Endereço público\" e preenche a \"Chave de Visualização\" e a \"Chave de utilização\".</p>
+        <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
+        \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
+        encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Criar Carteira - Visualização</h1>
+        <p>Se apenas queres ver as transacções de depósito numa carteira!</p>
+        <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
+        <p>Introduz o teu Endereço Monero no campo \"Endereço público\" e preenche a \"Chave de Visualização\".</p>
+        <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
+        \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
+        encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Detalhes da Carteira</h1>
+        <h2>Endereço público</h2>
+        O teu endereço público é como o teu número de conta bancário e podes partilhá-lo livremente
+        sem qualquer receio de perderes os teus Monero. As pessoas enviam dinheiro para a tua carteira
+        através deste endereço.
+        <h2>Semente Mnemónica</h2>
+        Este é o único dado necessário para recuperar a tua carteira no futuro e ganhar acesso total aos
+        teus fundos. Manter esta informação privada e protegida é muito importante, já que dá a <em>qualquer</em>
+        pessoa acesso aos teus Monero! Se não escreveste a semente nalgum sítio seguro, por favor fá-lo!
+        <h2>Palavra passe dos Ficheiros da Carteira</h2>
+        Certifica-te que escreves esta palavra passe. Se formatares o teu dispositivo ou desinstalares esta
+        app, vais precisar precisar disto para acederes à tua carteira.<br/>
+        <h3>passLoUCa</h3>
+        Se a palavra passe mostrada aqui tem 52 caracteres alfanuméricos em grupos de 4 - parabéns!
+        Os teus ficheiros estão seguros com uma chave de 256-bits gerada pelas funcionalidades de segurança
+        do teu dispositivo através da frase passe que escolheste (na criação ou alterando-a). Isto
+        torna-a extremamente difícil de piratear!<br/>
+        Esta funcionalidade é obrigatória para todas as carteiras novas.
+        <h3>Palavra passe antiga</h3>
+        Se vês a tua frase passe aqui, os ficheiros da tua carteira não estão tão seguros quanto
+        se estivesses a usar a passLoUCa. Para corrigir isto, selecciona \"Alterar palavra passe\" no
+        menu. Após introduzir a nova palavra passe (podes usar a mesma) a aplicação gera uma passLoUCa para
+        ti e protege os ficheiros da tua carteira com ela. Escreve-a nalgum lado!
+        <h3>Carteiras com passLoUCa</h3>
+        Se precisares de reinstalar o Monerujo (por exemplo, depois de formatares o telemóvel ou trocares
+        para um novo) ou quiseres utilizar os ficheiros da carteira num dispositivo diferente ou PC, tens
+        que usar esta Palavra passe de Recuperação de forma a aceder à tua carteira novamente.<br/>
+        Ao seleccionar \"Alterar palavra passe\" do menu, podes escolher uma palavra passe nova. Cuidado
+        que isto vai fazer gerar uma nova Palavra passe de Recuperação. Escreve-a nalgum lado!
+        <h2>Chave de Visualização</h2>
+        A tua chave de visualização pode ser usada para ver as transacções de depósito sem dar permissão
+        para gastar os fundos da tua carteira.
+        <h2>Spend key</h2>
+        A tua chave de utilização permite a qualquer pessoa de gaster os Monero associados à tua carteira,
+        por isso não a reveles a ninguém, mantém-a segura assim como a tua Semente Mnemónica.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Lista de Carteiras</h1>
+        <h2>Nó</h2>
+        <p>O Monerujo utiliza um Nó Remoto para comunicar com a rede Monero sem ter que descarregar e
+        guardar uma cópia da blockchain inteira. Podes encontrar uma lista de nós remotos populares ou
+        aprende como correr o teu próprio nó remoto em https://moneroworld.com/<p>
+        <p>O Monerujo vem com alguns Nós Remotos predefinidos. O histórico dos últimos 5 nós é guardado.</p>
+        <h2>Carteiras</h2>
+        <p>Aqui vês as tuas carteiras. Estão localizadas na pasta <tt>monerujo</tt>
+        na memória interna do teu dispositivo. Podes utilizar um explorador de ficheiros
+        para vê-las. Deves fazer cópias de segurança desta pasta regularmente para outro
+        dispositivo para o caso dele explodir ou ser roubado.</p>
+        <p>Selecciona u carteir para a abrir ou pressiona \"+\" para criar uma nova.
+        Ou selecciona uma das operações:</p>
+        <h3>Detalhes</h3>
+        <p>Mostra os detalhes da carteira, semente &amp; chaves.</p>
+        <h3>Receber</h3>
+        <p>Cria um código QR para receber Moneroj.</p>
+        <h3>Renomear</h3>
+        <p>Renomeia a carteira. As cópias de segurança não são renomeadas.</p>
+        <h3>Cópia de segurança</h3>
+        <p>Faz uma cópia da carteira na pasta <tt>cópias de segurança</tt> dentro do
+        <tt>monerujo</tt> reescrevendo cópias anteriores que lá estejam.</p>
+        <h3>Arquivar</h3>
+        <p>Faz uma cópia de segurança e de seguida apaga a carteira. a cópia permanece na pasta de
+        <tt>cópias de segurança</tt>. Se já não precisas das tuas cópias de segurança, deves apagá-las
+        num sistema de gestão de ficheiros ou com uma app que apaga de forma segura.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>A Carteira</h1>
+        <h2>A Examinar</h2>
+        Como o Monero gosta de manter as coisas privadas, cada vez que abres uma carteira Monerujo temos
+        que examinar a blockchain para ver se novos Moneroj foram enviados para a tua carteira. Apenas
+        informação correspondente à tua carteira é guardada no telefone. Por vezes pode demorar algum tempo
+        por já não sincronizares há algum tempo.
+        <h2>O Saldo</h2>
+        <p><b>Ajudem! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
+        Não entres em pânico! Quando envias fundos da tua carteira, algum do teu saldo aparece temporariamente
+        como não confirmado.
+        Isto acontece como resultado da forma como os Moneroj são trocados na blockchain.
+        Podes ler mais sobre iston em https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de Transacções</h2>
+        <p>Uma lista de transacções da carteira. Em carteiras de visualização, apenas são mostradas transacções
+        de depósito.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Detalhes da Transacção</h1>
+        <h2>Destino</h2>
+        O endereço público para o qual enviaste Moneroj
+        <h2>ID do Pagamento</h2>
+        Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Moneroj.
+        Isto é opcional e privado. Por exemplo, isto permite que um negócio identifique que item
+        é que uma determinada transacção está a pagar.
+        <h2>ID TX</h2>
+        Este é o ID da tua Transacção que podes utilizar para identificar a tua transacção ofuscada
+        num explorador da Monero Blockchain como o <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>Chave TX (Chave da Transacção)</h2>
+        Esta é a chave privada da tua transacção, mantém-a segura já que revelá-la a um terceiro
+        revela qual a tua assinatura num anel, fazendo com que a tua transacção seja transparente.
+        <h2>Bloco</h2>
+        O bloco em que a tua transacção foi incluída.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Enviar</h1>
+        <h2>Endereço do Destinatário</h2>
+        <p> Este é o endereço público da carteira para a qual vais enviar Moneroj, podes copiar esta
+        informação da área de transferência, capturara um código QR, ou introduzir manualmente. Confirma
+        atentamente que não estás a enviar para o endereço errado.</p>
+        <p>Em adição a enviar XMR, podes enviar BTC através do serviço XMR.TO (ver https://xmr.to
+        para mais detalhes). Vê a secção de enviar BTC mais abaixo.</p>
+        <h2>ID do Pagamento</h2>
+        <p>Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Moneroj.
+        Isto é opcional e privado. Por exemplo, isto permite que um negócio identifique que item
+        é que uma determinada transacção está a pagar.</p>
+        <h2>Tamanho do anel</h2>
+        <p>Existem várias opções de tamanho do anel que podes escolher. Se és principiate recomendamos
+        que te mantenhas um tamanho do anel de 7. Aumentar o tamanho acima de 7 aumenta a
+        quantidade de signatários num anel de assinaturas, teoricamente aumentando a possibilidade
+        de negação plausível. Contudo aumentar o tamanho do anel faz com que a tua transacção se
+        destaque na blockchain.</p>
+        <h2>Prioridade</h2>
+        <p>Esta opção determina a velocidade com que a tua transacção será incluída na blockchain.
+        Uma prioridade alta está correlacionada com uma taxa de transacção mais elevada, e o inverso
+        é verdade para uma prioridade baixa. Nota que ao definiras a transacção como sendo de baixa
+        prioridade, pode demorar horas até que seja incluída na blockchain. A prioridade vem, por
+        defeito, a \"Média\".</p>
+        <h1>Enviar BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
+        Nós utilizamos a API do XMR.TO para integrar pagamentos de Bitcoin no Monerujo. Por favor
+        vai a https://xmr.to e decide por ti próprio se queres utilizar este serviço. A equipa
+        do Monerujo não está associada com o XMR.TO e não te pode ajudar com este serviço.</p>
+        <h2>Taxa de câmbio XMR.TO<h2>
+        <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço XMR.TO. Estes
+        incluem a taxa de câmbio assim como os limites superiores e inferiores em BTC. Nota que
+        esta taxa ainda não é garantido. Também vais ver a quantidade máxima de BTC para que
+        a transação seja executada instantaneamente sem ter que esperar pelas confirmações XMR
+        (ver o FAQ do XMR.TO para mais detalhes). Nota que o XMR.TO não cobra nenhumas taxas
+        extra - isto não é brutal?</p>
+        <h2>Pedido XMR.TO<h2>
+        <p>No ecrão de \"Confirmação\", vais ver o pedido actual XMR.TO. Este pedido é válido
+        por um período limitado de tempo - podes reparar que exite uma contagem decrescente no
+        botão de \"Enviar\". A taxa de câmbio pode ser diferente da taxa indicativa mostrada
+        nos ecrãs anteriores.</p>
+        <h2>Chave Secreta XMR.TO<h2>
+        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta XMR.TO
+        pode ser utilizada para monitorar a parte Bitcoin da transacção na página pricipal do
+        XMR.TO.</p>
+        <p>Nota que esta chave secreta só é válida por 24 horas depois de a transacção ter
+        iniciado!</p>
+        <h2>Contagem decrescente XMR.TO!</h2>
+        <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do XMR.TO
+        indo ao passo anterior e depois voltando ao ecrã de \"Confirmar\".</p>
+    ]]></string>
+
+</resources>
