@@ -17,9 +17,9 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="56dp" />
+            android:minWidth="72dp" />
 
-        <com.m2049r.xmrwallet.widget.CTextInputLayout
+        <com.m2049r.aeonwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:inputType="numberDecimal"
                 tools:text="87.00000" />
 
-        </com.m2049r.xmrwallet.widget.CTextInputLayout>
+        </com.m2049r.aeonwallet.widget.CTextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -54,7 +54,7 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="56dp"
+            android:minWidth="72dp"
             android:textAlignment="center" />
 
         <TextView

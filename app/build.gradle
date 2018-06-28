@@ -4,11 +4,11 @@ android {
     compileSdkVersion 25
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.m2049r.xmrwallet"
+        applicationId "com.m2049r.aeonwallet"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 100
-        versionName "1.5.10 'Maximum Nacho'"
+        versionCode 20
+        versionName "0.2.0 'Accounts RC1'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

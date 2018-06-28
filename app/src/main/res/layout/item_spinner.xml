@@ -8,4 +8,4 @@
     android:ellipsize="marquee"
     android:gravity="center"
     android:singleLine="true"
-    tools:text="XMR" />
+    tools:text="AEON" />

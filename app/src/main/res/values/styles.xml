@@ -29,7 +29,7 @@
 
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/moneroText</item>
-        <item name="colorAccent">@color/gradientPink</item>
+        <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:spinnerItemStyle">@style/MoneroSpinnerItem</item>
         <item name="android:spinnerStyle">@style/MoneroSpinner</item>
@@ -191,15 +191,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MoneroText.Label.Heading">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="MoneroText.Label.Medium">
-        <item name="android:textSize">14sp</item>
-    </style>
-
     <style name="MoneroText.Small">
         <item name="android:textSize">10sp</item>
     </style>
@@ -208,14 +199,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="MoneroText.Medium.Bold">
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="MoneroText.Large">
         <item name="android:textSize">24sp</item>
     </style>
-
 
     <style name="MoneroText.Success">
         <item name="android:textSize">18sp</item>
@@ -254,13 +240,6 @@
         <item name="android:textSize">11sp</item>
     </style>
 
-    <style name="MoneroButton.Alert">
-        <item name="android:textColor">@color/moneroBlack</item>
-        <item name="android:background">@color/gradientPink</item>
-    </style>
-
-    <style name="MoneroButton.ReallySend"></style>
-
     <style name="MoneroButton.Take">
         <item name="android:background">@color/take</item>
     </style>
@@ -274,30 +253,9 @@
         <item name="android:backgroundTint">@color/gradientPink</item>
     </style>
 
-    <style name="MoneroEdit.Amount">
-        <!--item name="android:textSize">32sp</item-->
-        <item name="android:textColor">@color/gradientOrange</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-
-    <style name="MoneroEdit.Medium" parent="MoneroText.Medium">
-        <item name="android:textColor">?colorPrimary</item>
-        <item name="android:backgroundTint">@color/gradientPink</item>
-    </style>
 
     <style name="MoneroEdit.Small">
         <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="MoneroProgress" parent="@android:style/Widget.ProgressBar.Horizontal">
-        <item name="android:progressTint">?colorPrimaryDark</item>
-        <item name="android:progressBackgroundTint">?colorPrimary</item>
-    </style>
-
-    <style name="MoneroListView" parent="@android:style/Widget.ListView">
-        <item name="android:divider">@null</item>
-        <item name="android:dividerHeight">0dp</item>
     </style>
 
     <style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
@@ -318,16 +276,8 @@
     </style>
 
 
-    <style name="MoneroTextAppearanceSpinnerItemGray" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/moneroGray</item>
-    </style>
-
     <style name="MoneroSpinnerGray" parent="@style/Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/backgound_spinner_gray</item>
-    </style>
-
-    <style name="MoneroSpinnerItemGray" parent="android:Widget.TextView.SpinnerItem">
-        <item name="android:textAppearance">@style/MoneroTextAppearanceSpinnerItemGray</item>
     </style>
 
 </resources>

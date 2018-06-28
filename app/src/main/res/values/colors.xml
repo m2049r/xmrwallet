@@ -5,13 +5,13 @@
     <color name="tx_pending">@color/moneroFab</color>
     <color name="tx_failed">@color/moneroBlack</color>
 
-    <color name="gradientOrange">#FFFF6105</color>
-    <color name="gradientPink">#FFF0006B</color>
+    <color name="gradientOrange">#FF1059c6</color>
+    <color name="gradientPink">#FF39d9fd</color>
 
     <color name="trafficGray">#9B9B9B</color>
 
-    <color name="take">#FF417505</color>
-    <color name="give">#FFFF6105</color>
+    <color name="take">#FF1059c6</color>
+    <color name="give">#FFc62e10</color>
 
     <color name="moneroWhite">#ffffff</color>
     <color name="moneroBlack">#000000</color>
@@ -24,9 +24,9 @@
     <color name="moneroText">#FF616161</color>
 
 
-    <color name="colorPrimaryDark">#61221A</color>
+    <color name="colorPrimaryDark">@color/gradientOrange</color>
     <!--color name="colorAccent">#009ADA</color-->
-    <color name="colorAccent">@color/gradientPink</color>
+    <color name="colorAccent">@color/gradientOrange</color>
 
     <color name="white">#ffffff</color>
 </resources>

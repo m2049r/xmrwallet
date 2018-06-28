@@ -32,59 +32,12 @@
     <string name="label_receive_info_gen_qr_code">Trykk for QR kode</string>
     <string name="info_send_prio_fees">Høyere prioritet = høyere avgifter</string>
 
-    <string name="info_xmrto_enabled">BTC betaling tilgjengelig, trykk for mer info.</string>
     <string name="info_crazypass_enabled">CrAzYpass tilgjengelig, trykk for mer info.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Du skrev inn en Bitcoin addresse.</b><br/>
-        <i>Du vil sende XMR og mottakeren vil få BTC gjennom <b>XMR.TO</b> tjenesten.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">XMR.TO Ordre</string>
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_send_xmrto_paid">Bekreftelse venter</string>
-    <string name="info_send_xmrto_unpaid">Betaling venter</string>
-    <string name="info_send_xmrto_error">XMR.TO error (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC sendt!</string>
-    <string name="info_send_xmrto_query">Spør &#8230;</string>
-
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Du kan sende %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> gir deg en vekslingskurs på <b>%3$s BTC</b> <u>akkurat nå</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Mengder opp til <b>%1$s BTC</b> vil bli sendt <u>umiddelbart</u>!</i>
-    ]]></string>
-
-    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
 
     <string name="info_paymentid_intergrated">Betalings ID integrert</string>
     <string name="info_prepare_tx">Forbereder din transaksjon</string>
 
-    <string name="label_send_progress_xmrto_create">Lager XMR.TO ordre</string>
-    <string name="label_send_progress_xmrto_query">Spør etter XMR.TO ordre</string>
-    <string name="label_send_progress_create_tx">Forbereder Monero transaksjon</string>
-
-    <string name="label_send_progress_queryparms">Spør etter xmr.to parametre</string>
-
-    <string name="label_generic_xmrto_error">XMR.TO ERROR</string>
-    <string name="text_generic_xmrto_error">Kode: %1$d</string>
-
-    <string name="text_retry">Trykk for å prøve igjen</string>
-    <string name="text_noretry_monero">Nå sitter vi fast her!</string>
-    <string name="text_noretry">Ops, det ser ikke ut til at XMR.TO er tilgjengelig for øyeblikket!</string>
-
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
-
     <string name="label_send_settings_advanced">Avansert:</string>
-
-    <string name="label_send_btc_xmrto_info">Besøk xmr.to for støtte og sporing</string>
-    <string name="label_send_btc_xmrto_key_lb">Hemmelig nøkkel\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Hemmelig nøkkel</string>
-    <string name="label_send_btc_address">BTC destinasjonsadresse</string>
-    <string name="label_send_btc_amount">Mengde</string>
 
     <string name="label_send_txid">Transaksjons-ID</string>
     <string name="label_send_address">Destinasjonsadresse</string>
@@ -120,8 +73,6 @@
 
     <string name="status_transaction_failed">Transaksjon feila: %1$s</string>
 
-    <string name="send_xmrto_timeout">Du venta for lenge, min venn!</string>
-
     <string name="service_busy">Jeg er fortsatt opptatt med din forrige lommebok &#8230;</string>
 
     <string name="prompt_rename">Gi nytt navn til %1$s</string>
@@ -144,7 +95,7 @@
     <string name="label_wallet_receive">Motta</string>
     <string name="label_wallet_send">Gi</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR ubekrefta</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s AEON ubekrefta</string>
 
     <string name="service_description">monerujo tjeneste</string>
 
@@ -158,14 +109,12 @@
 
     <string name="label_copy_viewkey">View-nøkkel</string>
     <string name="label_copy_address">Offentlig adresse</string>
-    <string name="label_copy_xmrtokey">XMR.TO nøkkel</string>
     <string name="message_copy_viewkey">View-nøkkel kopiert til utklippstavle!</string>
-    <string name="message_copy_xmrtokey">XMR.TO-nøkkel kopiert til utklippstavle!</string>
     <string name="message_copy_address">Lommebokadresse kopiert til utklippstavle!</string>
     <string name="message_copy_txid">Transaksjons-ID kopiert til utklippstavle!</string>
     <string name="message_nocopy">Kopiering skrudd av for sikkerhetsgrunner!</string>
 
-    <string name="message_exchange_failed">Kan ikke hente vekslingskurs!\nBruk XMR/XMR eller prøv igjen</string>
+    <string name="message_exchange_failed">Kan ikke hente vekslingskurs!\nBruk AEON/AEON eller prøv igjen</string>
 
     <string name="generate_title">Lag lommebok</string>
     <string name="generate_name_hint">Lommeboknavn</string>
@@ -216,23 +165,20 @@
 
     <string name="generate_check_key">Skriv inn gyldig nøkkel</string>
     <string name="generate_check_address">Skriv inn gyldig adresse</string>
-    <string name="generate_check_mnemonic">Skriv inn ditt 25-ord lange seed</string>
+    <string name="generate_check_mnemonic">Skriv inn ditt 24/25-ord lange seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (veiledende)</string>
-
-    <string name="send_address_hint">Mottakers BTC eller XMR adresse</string>
+    <string name="send_address_hint">Mottakers AEON adresse</string>
     <string name="send_paymentid_hint">Betalings-ID (valgfritt)</string>
     <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Privat notat (valgfritt)</string>
     <string name="send_generate_paymentid_hint">Generer</string>
     <string name="send_qr_hint">Skann</string>
-    <string name="send_send_label">Bruk mine søte moneroj</string>
-    <string name="send_send_timed_label">Bruk mine søte moneroj (%1$s)</string>
+    <string name="send_send_label">Bruk mine søte Aeon</string>
     <string name="send_qr_invalid">Ikke en QR-kode</string>
     <string name="send_qr_address_invalid">Ikke en gyldig betalings-QR-kode</string>
     <string name="send_address_invalid">Ikke en gyldig adresse</string>
     <string name="send_title">Send</string>
-    <string name="send_available">Saldo: %1$s XMR</string>
+    <string name="send_available">Saldo: %1$s AEON</string>
     <string name="send_address_title">Adresse</string>
     <string name="send_amount_title">Mengde</string>
     <string name="send_settings_title">Innstillinger</string>
@@ -240,12 +186,10 @@
     <string name="send_success_title">Ferdig</string>
 
     <string name="send_amount_label">Antall</string>
-    <string name="send_fee_btc_label">Avgift (XMR)</string>
     <string name="send_fee_label">Avgift</string>
-    <string name="send_total_btc_label">Totalt (XMR)</string>
     <string name="send_total_label">Totalt</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s avgift</string>
 
     <string name="send_create_tx_error_title">Error med å lage transaksjon</string>
@@ -260,11 +204,9 @@
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX-nøkkel</string>
     <string name="tx_destination">Destinasjon</string>
-    <string name="tx_destination_btc">Destinasjon\n(BTC)</string>
     <string name="tx_paymentId">Betalings-ID</string>
     <string name="tx_blockheight">Blokk</string>
     <string name="tx_amount">Mengde</string>
-    <string name="tx_amount_btc">Mengde\n(BTC)</string>
     <string name="tx_fee">Avgift</string>
     <string name="tx_transfers">Overføringer</string>
     <string name="tx_notes">Notater</string>
@@ -284,9 +226,7 @@
 
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR ikke et tall</string>
-
-    <string name="receive_title">Motta</string>
+    <string name="receive_amount_nan">AEON ikke et tall</string>
 
     <string name="details_alert_message">Sensitive data vil nå bli vist.\nSe over skulderen din!</string>
     <string name="details_alert_yes">Jeg er trygg</string>
@@ -310,7 +250,6 @@
     <string name="fab_restore_seed">Gjenoprett lommebok fra 25-ord seed</string>
 
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 

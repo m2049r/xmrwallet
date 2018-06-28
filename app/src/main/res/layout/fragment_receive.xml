@@ -81,7 +81,7 @@
 
         </LinearLayout>
 
-        <com.m2049r.xmrwallet.widget.ExchangeView
+        <com.m2049r.aeonwallet.widget.ExchangeView
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

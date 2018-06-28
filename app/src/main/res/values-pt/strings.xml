@@ -32,61 +32,12 @@
     <string name="label_receive_info_gen_qr_code">Toca para código QR</string>
     <string name="info_send_prio_fees">Prioridade Alta = Taxas Altas</string>
 
-    <string name="info_xmrto_enabled">Pagamento em BTC activado, toca para mais informação.</string>
-
     <string name="info_crazypass_enabled">passLoUCa activa, toca para mais informação.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Introduziu um endereço Bitcoin.</b><br/>
-        <i>Vai enviar em XMR e o destinatário vai receber BTC através do serviço <b>XMR.TO</b></i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
-
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
-    <string name="info_send_xmrto_paid">Confirmação Pendente</string>
-    <string name="info_send_xmrto_unpaid">Pagamento Pendente</string>
-    <string name="info_send_xmrto_error">Erro XMR.TO (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC Enviadas!</string>
-    <string name="info_send_xmrto_query">A comunicar &#8230;</string>
-
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Pode enviar %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> está com uma taxa de conversão de <b>%3$s BTC</b> <u>neste momento</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Quantidades até <b>%1$s BTC</b> serão enviadas <u>instantaneament</u>!</i>
-    ]]></string>
-
-    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
 
     <string name="info_paymentid_intergrated">ID do pagamento integrado</string>
     <string name="info_prepare_tx">A preparar a transacção</string>
 
-    <string name="label_send_progress_xmrto_create">A criar um pedido XMR.TO</string>
-    <string name="label_send_progress_xmrto_query">A actualizar o pedido XMR.TO</string>
-    <string name="label_send_progress_create_tx">A preparar a transacção Monero</string>
-
-    <string name="label_send_progress_queryparms">A obter os parâmetros xmr.to</string>
-
-    <string name="label_generic_xmrto_error">ERRO XMR.TO</string>
-    <string name="text_generic_xmrto_error">Código: %1$d</string>
-
-    <string name="text_retry">Toca para voltar a tentar</string>
-    <string name="text_noretry_monero">Agora estamos emperrados aqui!</string>
-    <string name="text_noretry">Ups, XMR.TO não parece estar disponível neste momento!</string>
-
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rácio: %1$s BTC/XMR)</string>
-
     <string name="label_send_settings_advanced">Avançado:</string>
-
-    <string name="label_send_btc_xmrto_info">Vai a xmr.to para suporte &amp; seguimento</string>
-    <string name="label_send_btc_xmrto_key_lb">Chave secreta\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Chave secreta</string>
-    <string name="label_send_btc_address">Endereço BTC de destino</string>
-    <string name="label_send_btc_amount">Quantidade</string>
 
     <string name="label_send_txid">ID da Transacção</string>
     <string name="label_send_address">Endereço de destino</string>
@@ -122,8 +73,6 @@
 
     <string name="status_transaction_failed">Transacção falhou: %1$s</string>
 
-    <string name="send_xmrto_timeout">Já esperaste demasiado tempo!</string>
-
     <string name="service_busy">Ainda estou ocupado com a tua última carteira &#8230;</string>
 
     <string name="prompt_rename">Renomear %1$s</string>
@@ -158,9 +107,7 @@
 
     <string name="label_copy_viewkey">Ver chave</string>
     <string name="label_copy_address">Endereço público</string>
-    <string name="label_copy_xmrtokey">Chave XMR.TO</string>
     <string name="message_copy_viewkey">Chave de visualização copiada para a área de transferência</string>
-    <string name="message_copy_xmrtokey">Chave XMR.TO copiada para a área de transferência!</string>
     <string name="message_copy_address">Endereço da carteira copiado para a área de transferência!</string>
     <string name="message_copy_txid">ID da transacção copiado para a área de transferência!</string>
     <string name="message_nocopy">Copiar está desactivo por razões de segurança!</string>
@@ -219,16 +166,13 @@
     <string name="generate_check_address">Introduz um endereço válido</string>
     <string name="generate_check_mnemonic">Introduz a semente de 25 palavras</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
-
     <string name="send_address_hint">Endereço de destino XMR ou BTC</string>
     <string name="send_paymentid_hint">ID do pagamento (opcional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Gerar</string>
     <string name="send_qr_hint">Capturar</string>
-    <string name="send_send_label">Gasta os meus queridos Moneroj</string>
-    <string name="send_send_timed_label">Gasta os meus queridos Moneroj (%1$s)</string>
+    <string name="send_send_label">Gasta os meus queridos Aeon</string>
     <string name="send_qr_invalid">Não é um código QR</string>
     <string name="send_qr_address_invalid">Não é um código QR válido</string>
     <string name="send_address_invalid">Não é um endereço válido</string>
@@ -241,9 +185,7 @@
     <string name="send_success_title">Feito</string>
 
     <string name="send_amount_label">Quantidade</string>
-    <string name="send_fee_btc_label">Taxa (XMR)</string>
     <string name="send_fee_label">Taxa</string>
-    <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
     <string name="send_amount">%1$s XMR</string>
@@ -261,11 +203,9 @@
     <string name="tx_id">ID TX</string>
     <string name="tx_key">Chave TX</string>
     <string name="tx_destination">Destino</string>
-    <string name="tx_destination_btc">Destino\n(BTC)</string>
     <string name="tx_paymentId">ID Pagamento</string>
     <string name="tx_blockheight">Bloco</string>
     <string name="tx_amount">Quantidade</string>
-    <string name="tx_amount_btc">Quantidade\n(BTC)</string>
     <string name="tx_fee">Taxa</string>
     <string name="tx_transfers">Transferências</string>
     <string name="tx_notes">Notas</string>
@@ -286,8 +226,6 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Mín. 0</string>
     <string name="receive_amount_nan">XMR não é um número</string>
-
-    <string name="receive_title">Receber</string>
 
     <string name="details_alert_message">Dados sensíveis vão ser mostrados.\nOlha à tua volta!</string>
     <string name="details_alert_yes">Estou seguro</string>
@@ -314,7 +252,6 @@
     <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
 
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 

@@ -20,38 +20,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="9"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/ivTxType"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_xmrto_32dp"
-                android:visibility="visible" />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tx_amount"
+                style="@style/MoneroText.PosAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:gravity="end"
+                tools:text="+ 999.999999" />
 
-                <TextView
-                    android:id="@+id/tx_amount"
-                    style="@style/MoneroText.PosAmount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    tools:text="+ 999.999999" />
-
-                <TextView
-                    android:id="@+id/tx_fee"
-                    style="@style/MoneroText.PosFee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    tools:text="Fee 0.06817" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tx_fee"
+                style="@style/MoneroText.PosFee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                tools:text="Fee 0.06817" />
         </LinearLayout>
 
         <TextView
