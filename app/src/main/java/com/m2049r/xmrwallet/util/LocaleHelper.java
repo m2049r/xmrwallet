@@ -1,8 +1,8 @@
 package com.m2049r.xmrwallet.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
 import com.m2049r.xmrwallet.R;
@@ -52,11 +52,13 @@ public class LocaleHelper {
         setPreferredLocale(context, locale);
 
         Locale newLocale = (locale.isEmpty()) ? SYSTEM_DEFAULT_LOCALE : Locale.forLanguageTag(locale);
-        Resources resources = context.getResources();
-        Configuration configuration = resources.getConfiguration();
+        Configuration configuration = context.getResources().getConfiguration();
+
+        Locale.setDefault(newLocale);
 
         configuration.setLocale(newLocale);
         configuration.setLayoutDirection(newLocale);
+
         return context.createConfigurationContext(configuration);
     }
 
@@ -66,11 +68,8 @@ public class LocaleHelper {
 
     private static String getLocaleString(Context context, Locale locale, int resId) {
         Configuration configuration = context.getResources().getConfiguration();
-        configuration.locale = locale;
-
-        Resources localizedResources = new Resources(context.getAssets(),
-                context.getResources().getDisplayMetrics(), configuration);
-        return localizedResources.getString(resId);
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration).getString(resId);
     }
 
     private static String getPreferredLocale(Context context) {
@@ -78,8 +77,9 @@ public class LocaleHelper {
                 .getString(PREFERRED_LOCALE_KEY, "");
     }
 
+    @SuppressLint("ApplySharedPref")
     private static void setPreferredLocale(Context context, String locale) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putString(PREFERRED_LOCALE_KEY, locale).apply();
+                .putString(PREFERRED_LOCALE_KEY, locale).commit();
     }
 }
