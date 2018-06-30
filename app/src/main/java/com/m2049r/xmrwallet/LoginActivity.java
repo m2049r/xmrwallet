@@ -52,6 +52,7 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
+import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -62,7 +63,12 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -959,6 +965,45 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    public void onChangeLocale() {
+        final ArrayList<Locale> translatedLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
+        String[] localeDisplayName = new String[1 + translatedLocales.size()];
+
+        Collections.sort(translatedLocales, new Comparator<Locale>() {
+            @Override
+            public int compare(Locale locale1, Locale locale2) {
+                return locale1.getDisplayName(locale1).compareTo(locale2.getDisplayName(locale2));
+            }
+        });
+
+        localeDisplayName[0] = getString(R.string.language_system_default);
+        for (int i = 1; i < localeDisplayName.length; ++i) {
+            Locale locale = translatedLocales.get(i - 1);
+            localeDisplayName[i] = locale.getDisplayName(locale);
+        }
+
+        int currentLocaleIndex = 0;
+        String currentLocaleName = LocaleHelper.getLocale(LoginActivity.this);
+        if (!currentLocaleName.isEmpty()) {
+            Locale currentLocale = Locale.forLanguageTag(currentLocaleName);
+            currentLocaleIndex = Arrays.asList(localeDisplayName).indexOf(currentLocale.getDisplayName(currentLocale));
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle(getString(R.string.menu_language));
+        builder.setSingleChoiceItems(localeDisplayName, currentLocaleIndex, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+
+                LocaleHelper.setLocale(LoginActivity.this,
+                        (i == 0) ? "" : translatedLocales.get(i - 1).toLanguageTag());
+                startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+        builder.show();
+    }
+
     @Override
     public void onBackPressed() {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -1006,6 +1051,9 @@ public class LoginActivity extends SecureActivity
                 return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
+                return true;
+            case R.id.action_language:
+                onChangeLocale();
                 return true;
             case R.id.action_stagenet:
                 try {

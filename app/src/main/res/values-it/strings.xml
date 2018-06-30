@@ -319,4 +319,7 @@
     <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
 </resources>
