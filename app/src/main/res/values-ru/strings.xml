@@ -32,7 +32,7 @@
     <string name="label_send_done">Готово</string>
 
     <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
-    <string name="info_send_prio_fees">Высокий приоритет = Высокие сборы</string>
+    <string name="info_send_prio_fees">Высокий приоритет = Высокие комиссии</string>
 
     <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
 
@@ -89,7 +89,7 @@
     <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя BTC</string>
-    <string name="label_send_btc_amount">Количество</string>
+    <string name="label_send_btc_amount">Сумма</string>
 
     <string name="label_send_txid">ID транзакции</string>
     <string name="label_send_address">Адрес назначения</string>
@@ -110,7 +110,7 @@
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
-    <string name="label_daemon">Нода</string>
+    <string name="label_daemon">Удаленный узел</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="connect_stagenet" translatable="false">Stagenet</string>
     <string name="connect_testnet" translatable="false">Testnet</string>
@@ -119,10 +119,10 @@
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
     <string name="status_wallet_connecting">Подключение &#8230;</string>
-    <string name="status_wallet_connect_failed">Ошибка подключения к ноде!\nПроверьте username/password</string>
+    <string name="status_wallet_connect_failed">Ошибка подключения к удаленному узлу!\nПроверьте username/password</string>
     <string name="status_wallet_connect_timeout">Время ожидания соединения превышено!\nПопробуйте еще раз.</string>
-    <string name="status_wallet_node_invalid">Ошибка ноды!\nПопробуйте еще раз.</string>
-    <string name="status_wallet_connect_ioex">Не удается подключится к ноде!\nПопробуйте позже.</string>
+    <string name="status_wallet_node_invalid">Ошибка удаленного узла!\nПопробуйте еще раз.</string>
+    <string name="status_wallet_connect_ioex">Не удается подключится к удаленному узлу!\nПопробуйте позже.</string>
 
     <string name="status_wallet_disconnected">Разъединено</string>
 
@@ -144,7 +144,7 @@
     <string name="bad_password">Неверный пароль!</string>
     <string name="bad_saved_password">Сохраненный пароль неверен.\nВведите пароль вручную.</string>
     <string name="bad_wallet">Кошелька не существует!</string>
-    <string name="prompt_daemon_missing">Должен быть установлен адрес Daemon!</string>
+    <string name="prompt_daemon_missing">Должен быть установлен адрес удаленного узла!</string>
     <string name="prompt_wrong_net">Кошелек не соответствует выбранной сети</string>
 
     <string name="label_watchonly">(Режим просмотра)</string>
@@ -226,7 +226,7 @@
     <string name="generate_check_address">Введите действующий адрес</string>
     <string name="generate_check_mnemonic">Введите вашу мнемоническую фразу</string>
 
-    <string name="send_amount_btc_xmr">%1$s (ориентировочно)</string>
+    <string name="send_amount_btc_xmr">%1$s (приблизительно)</string>
 
     <string name="send_address_hint">XMR или BTC адрес получателя</string>
     <string name="send_paymentid_hint">ID платежа (необязательно)</string>
@@ -248,32 +248,32 @@
     <string name="send_success_title">Готово</string>
 
     <string name="send_amount_label">Сумма</string>
-    <string name="send_fee_btc_label">Сбор (XMR)</string>
-    <string name="send_fee_label">Сбор</string>
+    <string name="send_fee_btc_label">Комиссия (XMR)</string>
+    <string name="send_fee_label">Комиссия</string>
     <string name="send_total_btc_label">Всего (XMR)</string>
     <string name="send_total_label">Всего</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Сбор</string>
+    <string name="send_fee">+%1$s Комиссия</string>
 
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
 
-    <string name="tx_list_fee">- Сбор %1$s</string>
+    <string name="tx_list_fee">- Комиссия %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_timestamp">Отметка</string>
+    <string name="tx_timestamp">Отметка времени</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
     <string name="tx_destination">Адресат</string>
     <string name="tx_destination_btc">Адресат\n(BTC)</string>
     <string name="tx_paymentId">ID платежа</string>
     <string name="tx_blockheight">Блок</string>
-    <string name="tx_amount">Количество</string>
-    <string name="tx_amount_btc">Количество\n(BTC)</string>
-    <string name="tx_fee">Сбор</string>
+    <string name="tx_amount">Сумма</string>
+    <string name="tx_amount_btc">Сумма\n(BTC)</string>
+    <string name="tx_fee">Комиссия</string>
     <string name="tx_transfers">Переводы</string>
     <string name="tx_notes">Заметки</string>
     <string name="tx_notes_hint">(необязательно)</string>
@@ -296,7 +296,7 @@
 
     <string name="receive_title">Получить</string>
 
-    <string name="details_alert_message">Сейчас будут показаны конфиденциальные данные. Посмотри через плечо!</string>
+    <string name="details_alert_message">Сейчас будут показаны конфиденциальные данные. Оглянись вокруг!</string>
     <string name="details_alert_yes">Я в безопасности</string>
     <string name="details_alert_no">Верните меня обратно!</string>
     <string name="details_title">Подробная информация</string>
