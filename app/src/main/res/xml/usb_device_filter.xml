@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Ledger Nano S HID: VID=0x2C97 PID=0x0001 -->
+    <usb-device
+        product-id="1"
+        vendor-id="11415" />
+
+</resources>

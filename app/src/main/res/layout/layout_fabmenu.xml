@@ -139,6 +139,39 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/fabLedgerL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="88dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/fabLedgerT"
+                style="@style/MoneroFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:text="@string/fab_restore_ledger" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabLedger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@+id/fabLedgerT"
+                android:backgroundTint="@color/gradientPink"
+                android:elevation="6dp"
+                android:src="@drawable/ic_ledger_restore"
+                app:borderWidth="0dp"
+                app:fabSize="mini"
+                app:pressedTranslationZ="12dp" />
+
+        </RelativeLayout>
+
     </FrameLayout>
 
     <LinearLayout

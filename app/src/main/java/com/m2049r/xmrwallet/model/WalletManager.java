@@ -17,6 +17,7 @@
 package com.m2049r.xmrwallet.model;
 
 import com.m2049r.xmrwallet.data.WalletNode;
+import com.m2049r.xmrwallet.ledger.Ledger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -129,6 +130,23 @@ public class WalletManager {
                                               String viewKeyString,
                                               String spendKeyString);
 
+    public Wallet createWalletFromDevice(File aFile, String password, long restoreHeight,
+                                         String deviceName) {
+        long walletHandle = createWalletFromDeviceJ(aFile.getAbsolutePath(), password,
+                getNetworkType().getValue(), deviceName, restoreHeight,
+                Ledger.SUBADDRESS_LOOKAHEAD);
+        Wallet wallet = new Wallet(walletHandle);
+        manageWallet(wallet);
+        return wallet;
+    }
+
+    private native long createWalletFromDeviceJ(String path, String password,
+                                                int networkType,
+                                                String deviceName,
+                                                long restoreHeight,
+                                                String subaddressLookahead);
+
+
     public native boolean closeJ(Wallet wallet);
 
     public boolean close(Wallet wallet) {
@@ -149,6 +167,12 @@ public class WalletManager {
     public native boolean walletExists(String path);
 
     public native boolean verifyWalletPassword(String keys_file_name, String password, boolean watch_only);
+
+    public boolean verifyWalletPasswordOnly(String keys_file_name, String password) {
+        return queryWalletHardware(keys_file_name, password) >= 0;
+    }
+
+    public native int queryWalletHardware(String keys_file_name, String password);
 
     //public native List<String> findWallets(String path); // this does not work - some error in boost
 

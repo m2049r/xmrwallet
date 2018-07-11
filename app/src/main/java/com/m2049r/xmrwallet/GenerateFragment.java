@@ -61,6 +61,7 @@ public class GenerateFragment extends Fragment {
     static final String TYPE_NEW = "new";
     static final String TYPE_KEY = "key";
     static final String TYPE_SEED = "seed";
+    static final String TYPE_LEDGER = "ledger";
     static final String TYPE_VIEWONLY = "view";
 
     private TextInputLayout etWalletName;
@@ -185,6 +186,17 @@ public class GenerateFragment extends Fragment {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                         Helper.hideKeyboard(getActivity());
                         generateWallet();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        } else if (type.equals(TYPE_LEDGER)) {
+            etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
+            etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                        etWalletRestoreHeight.requestFocus();
                         return true;
                     }
                     return false;
@@ -485,6 +497,12 @@ public class GenerateFragment extends Fragment {
                 KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
             }
             activityCallback.onGenerate(name, crazyPass, seed, height);
+        } else if (type.equals(TYPE_LEDGER)) {
+            bGenerate.setEnabled(false);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
+            activityCallback.onGenerateLedger(name, crazyPass, height);
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             if (checkAddress() && checkViewKey() && checkSpendKey()) {
                 bGenerate.setEnabled(false);
@@ -523,6 +541,8 @@ public class GenerateFragment extends Fragment {
                 return getString(R.string.generate_wallet_type_new);
             case TYPE_SEED:
                 return getString(R.string.generate_wallet_type_seed);
+            case TYPE_LEDGER:
+                return getString(R.string.generate_wallet_type_ledger);
             case TYPE_VIEWONLY:
                 return getString(R.string.generate_wallet_type_view);
             default:
@@ -539,6 +559,8 @@ public class GenerateFragment extends Fragment {
         void onGenerate(String name, String password, String seed, long height);
 
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
+
+        void onGenerateLedger(String name, String password, long height);
 
         void setTitle(String title);
 
@@ -574,6 +596,9 @@ public class GenerateFragment extends Fragment {
                 break;
             case TYPE_SEED:
                 inflater.inflate(R.menu.create_wallet_seed, menu);
+                break;
+            case TYPE_LEDGER:
+                inflater.inflate(R.menu.create_wallet_ledger, menu);
                 break;
             case TYPE_VIEWONLY:
                 inflater.inflate(R.menu.create_wallet_view, menu);

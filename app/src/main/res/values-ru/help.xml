@@ -239,4 +239,15 @@
         предложение, вернувшись к предыдущему шагу, а затем к экрану \"Подтверждение\".</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Create Wallet - Ledger</h1>
+        <p>You want to recover your wallet from your Ledger Nano S device.</p>
+        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
+        time you want to access your wallet.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
+        device. Use a strong password - even better use a passphrase.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
 </resources>
