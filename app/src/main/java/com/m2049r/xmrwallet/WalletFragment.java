@@ -271,7 +271,7 @@ public class WalletFragment extends Fragment
             bSend.setVisibility(View.VISIBLE);
             bSend.setEnabled(true);
         }
-        enableAccountsList(true);
+        if (isVisible()) enableAccountsList(true); //otherwise it is enabled in onResume()
     }
 
     boolean walletLoaded = false;
