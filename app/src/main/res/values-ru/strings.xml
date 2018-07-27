@@ -1,8 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Кошелек</string>
 
-    <string name="menu_stagenet" translatable="false">Stagenet</string>
     <string name="menu_about">О программе</string>
     <string name="menu_privacy">Политика конфиденциальности</string>
 
@@ -112,9 +110,6 @@
 
     <string name="label_daemon">Удаленный узел</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="connect_stagenet" translatable="false">Stagenet</string>
-    <string name="connect_testnet" translatable="false">Testnet</string>
-    <string name="connect_mainnet" translatable="false">Mainnet</string>
     <string name="status_wallet_loading">Загрузка кошелека &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
@@ -312,50 +307,10 @@
         <item>Приоритет - Высокий</item>
     </string-array>
 
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
-        <item>JPY</item>
-        <item>GBP</item>
-        <item>CHF</item>
-        <item>CAD</item>
-        <item>AUD</item>
-        <item>ZAR</item>
-
-        <item>BRL</item>
-        <item>CLP</item>
-        <item>CNY</item>
-        <item>CZK</item>
-        <item>DKK</item>
-        <item>HKD</item>
-        <item>HUF</item>
-        <item>IDR</item>
-        <item>ILS</item>
-        <item>INR</item>
-        <item>KRW</item>
-        <item>MXN</item>
-        <item>MYR</item>
-        <item>NOK</item>
-        <item>NZD</item>
-        <item>PHP</item>
-        <item>PKR</item>
-        <item>PLN</item>
-        <item>RUB</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>THB</item>
-        <item>TRY</item>
-        <item>TWD</item>
-    </string-array>
-
     <string name="fab_create_new">Создать новый кошелек</string>
     <string name="fab_restore_viewonly">Восстановить кошелек только для просмотра</string>
     <string name="fab_restore_key">Восстановить кошелек из ключей</string>
     <string name="fab_restore_seed">Восстановить кошелек из мнемонической фразы</string>
-
-    <string name="accounts_balance" translatable="false">%1$s XMR</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
 
     <string name="accounts_drawer_new">Создать учетную запись</string>
     <string name="accounts_drawer_title">Учетная запись</string>
