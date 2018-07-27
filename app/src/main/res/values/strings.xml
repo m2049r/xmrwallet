@@ -71,7 +71,7 @@
     <string name="label_send_progress_xmrto_query">Querying XMR.TO Order</string>
     <string name="label_send_progress_create_tx">Preparing Monero Transaction</string>
 
-    <string name="label_send_progress_queryparms">Querying xmr.to parameters</string>
+    <string name="label_send_progress_queryparms">Querying XMR.TO parameters</string>
 
     <string name="label_generic_xmrto_error">XMR.TO ERROR</string>
     <string name="text_generic_xmrto_error">Code: %1$d</string>
