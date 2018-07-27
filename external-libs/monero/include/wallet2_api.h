@@ -468,6 +468,21 @@ struct Wallet
     */
     virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
 
+   /*!
+    * \brief setRecoveringFromDevice - set state to recovering from device
+    *
+    * \param recoveringFromDevice - true/false
+    */
+    virtual void setRecoveringFromDevice(bool recoveringFromDevice) = 0;
+
+    /*!
+     * \brief setSubaddressLookahead - set size of subaddress lookahead
+     *
+     * \param major - size fot the major index
+     * \param minor - size fot the minor index
+     */
+    virtual void setSubaddressLookahead(uint32_t major, uint32_t minor) = 0;
+
     /**
      * @brief connectToDaemon - connects to the daemon. TODO: check if it can be removed
      * @return
@@ -556,7 +571,8 @@ struct Wallet
     }
     static uint64_t maximumAllowedAmount();
     // Easylogger wrapper
-    static void init(const char *argv0, const char *default_log_base_name);
+    static void init(const char *argv0, const char *default_log_base_name) { init(argv0, default_log_base_name, "", true); }
+    static void init(const char *argv0, const char *default_log_base_name, const std::string &log_path, bool console);
     static void debug(const std::string &category, const std::string &str);
     static void info(const std::string &category, const std::string &str);
     static void warning(const std::string &category, const std::string &str);
@@ -916,6 +932,23 @@ struct WalletManager
     }
 
     /*!
+     * \brief  creates wallet using hardware device.
+     * \param  path                 Name of wallet file to be created
+     * \param  password             Password of wallet file
+     * \param  nettype              Network type
+     * \param  deviceName           Device name
+     * \param  restoreHeight        restore from start height (0 sets to current height)
+     * \param  subaddressLookahead  Size of subaddress lookahead (empty sets to some default low value)
+     * \return                      Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
+     */
+    virtual Wallet * createWalletFromDevice(const std::string &path,
+                                            const std::string &password,
+                                            NetworkType nettype,
+                                            const std::string &deviceName,
+                                            uint64_t restoreHeight = 0,
+                                            const std::string &subaddressLookahead = "") = 0;
+
+    /*!
      * \brief Closes wallet. In case operation succeeded, wallet object deleted. in case operation failed, wallet object not deleted
      * \param wallet        previously opened / created wallet instance
      * \return              None
@@ -956,25 +989,25 @@ struct WalletManager
     virtual void setDaemonAddress(const std::string &address) = 0;
 
     //! returns whether the daemon can be reached, and its version number
-    virtual bool connected(uint32_t *version = NULL) const = 0;
+    virtual bool connected(uint32_t *version = NULL) = 0;
 
     //! returns current blockchain height
-    virtual uint64_t blockchainHeight() const = 0;
+    virtual uint64_t blockchainHeight() = 0;
 
     //! returns current blockchain target height
-    virtual uint64_t blockchainTargetHeight() const = 0;
+    virtual uint64_t blockchainTargetHeight() = 0;
 
     //! returns current network difficulty
-    virtual uint64_t networkDifficulty() const = 0;
+    virtual uint64_t networkDifficulty() = 0;
 
     //! returns current mining hash rate (0 if not mining)
-    virtual double miningHashRate() const = 0;
+    virtual double miningHashRate() = 0;
 
     //! returns current block target
-    virtual uint64_t blockTarget() const = 0;
+    virtual uint64_t blockTarget() = 0;
 
     //! returns true iff mining
-    virtual bool isMining() const = 0;
+    virtual bool isMining() = 0;
 
     //! starts mining with the set number of threads
     virtual bool startMining(const std::string &address, uint32_t threads = 1, bool background_mining = false, bool ignore_battery = true) = 0;

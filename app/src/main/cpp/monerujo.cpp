@@ -551,9 +551,12 @@ Java_com_m2049r_xmrwallet_model_Wallet_setPassword(JNIEnv *env, jobject instance
 }
 
 JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getAddressJ(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_getAddressJ(JNIEnv *env, jobject instance,
+                                                   jint accountIndex,
+                                                   jint addressIndex) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return env->NewStringUTF(wallet->address().c_str());
+    return env->NewStringUTF(
+            wallet->address((uint32_t) accountIndex, (uint32_t) addressIndex).c_str());
 }
 
 JNIEXPORT jstring JNICALL
@@ -646,15 +649,29 @@ Java_com_m2049r_xmrwallet_model_Wallet_getConnectionStatusJ(JNIEnv *env, jobject
 //TODO virtual bool trustedDaemon() const = 0;
 
 JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getBalance(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_getBalance(JNIEnv *env, jobject instance,
+                                                  jint accountIndex) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return wallet->balance();
+    return wallet->balance((uint32_t) accountIndex);
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getUnlockedBalance(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_getBalanceAll(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return wallet->unlockedBalance();
+    return wallet->balanceAll();
+}
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getUnlockedBalance(JNIEnv *env, jobject instance,
+                                                          jint accountIndex) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    return wallet->unlockedBalance((uint32_t) accountIndex);
+}
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getUnlockedBalanceAll(JNIEnv *env, jobject instance) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    return wallet->unlockedBalanceAll();
 }
 
 JNIEXPORT jboolean JNICALL
@@ -693,6 +710,33 @@ JNIEXPORT jboolean JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
     return static_cast<jboolean>(wallet->synchronized());
+}
+
+//void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
+JNIEXPORT jbyteArray JNICALL
+Java_com_m2049r_xmrwallet_util_KeyStoreHelper_slowHash(JNIEnv *env, jobject clazz,
+                                                       jbyteArray data, jint brokenVariant) {
+    char hash[HASH_SIZE];
+    jsize size = env->GetArrayLength(data);
+    if ((brokenVariant > 0) && (size < 200 /*sizeof(union hash_state)*/)) {
+        return nullptr;
+    }
+
+    jbyte *buffer = env->GetByteArrayElements(data, NULL);
+    switch (brokenVariant) {
+        case 1:
+            slow_hash_broken(buffer, hash, 1);
+            break;
+        case 2:
+            slow_hash_broken(buffer, hash, 0);
+            break;
+        default: // not broken
+            slow_hash(buffer, (size_t) size, hash);
+    }
+    env->ReleaseByteArrayElements(data, buffer, JNI_ABORT); // do not update java byte[]
+    jbyteArray result = env->NewByteArray(HASH_SIZE);
+    env->SetByteArrayRegion(result, 0, HASH_SIZE, (jbyte *) hash);
+    return result;
 }
 
 JNIEXPORT jstring JNICALL
@@ -739,8 +783,6 @@ Java_com_m2049r_xmrwallet_model_Wallet_isAddressValid(JNIEnv *env, jobject clazz
     env->ReleaseStringUTFChars(address, _address);
     return static_cast<jboolean>(isValid);
 }
-
-//TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);
 
 JNIEXPORT jstring JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getPaymentIdFromAddress(JNIEnv *env, jobject clazz,
@@ -789,7 +831,8 @@ JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject instance,
                                                           jstring dst_addr, jstring payment_id,
                                                           jlong amount, jint mixin_count,
-                                                          jint priority) {
+                                                          jint priority,
+                                                          jint accountIndex) {
 
     const char *_dst_addr = env->GetStringUTFChars(dst_addr, NULL);
     const char *_payment_id = env->GetStringUTFChars(payment_id, NULL);
@@ -798,8 +841,34 @@ Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject i
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
 
     Bitmonero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
-                                                                  amount, mixin_count,
-                                                                  _priority);
+                                                                  amount, (uint32_t) mixin_count,
+                                                                  _priority,
+                                                                  (uint32_t) accountIndex);
+
+    env->ReleaseStringUTFChars(dst_addr, _dst_addr);
+    env->ReleaseStringUTFChars(payment_id, _payment_id);
+    return reinterpret_cast<jlong>(tx);
+}
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_createSweepTransaction(JNIEnv *env, jobject instance,
+                                                              jstring dst_addr, jstring payment_id,
+                                                              jint mixin_count,
+                                                              jint priority,
+                                                              jint accountIndex) {
+
+    const char *_dst_addr = env->GetStringUTFChars(dst_addr, NULL);
+    const char *_payment_id = env->GetStringUTFChars(payment_id, NULL);
+    Bitmonero::PendingTransaction::Priority _priority =
+            static_cast<Bitmonero::PendingTransaction::Priority>(priority);
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+
+    Monero::optional<uint64_t> empty;
+
+    Bitmonero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
+                                                                  empty, (uint32_t) mixin_count,
+                                                                  _priority,
+                                                                  (uint32_t) accountIndex);
 
     env->ReleaseStringUTFChars(dst_addr, _dst_addr);
     env->ReleaseStringUTFChars(payment_id, _payment_id);
@@ -918,7 +987,86 @@ Java_com_m2049r_xmrwallet_model_Wallet_getTxKey(JNIEnv *env, jobject instance,
     return env->NewStringUTF(txKey.c_str());
 }
 
+//virtual void addSubaddressAccount(const std::string& label) = 0;
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_addAccount(JNIEnv *env, jobject instance,
+                                                  jstring label) {
 
+    const char *_label = env->GetStringUTFChars(label, NULL);
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    wallet->addSubaddressAccount(_label);
+
+    env->ReleaseStringUTFChars(label, _label);
+}
+
+//virtual std::string getSubaddressLabel(uint32_t accountIndex, uint32_t addressIndex) const = 0;
+JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getSubaddressLabel(JNIEnv *env, jobject instance,
+                                                          jint accountIndex, jint addressIndex) {
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+
+    std::string label = wallet->getSubaddressLabel((uint32_t) accountIndex,
+                                                   (uint32_t) addressIndex);
+
+    return env->NewStringUTF(label.c_str());
+}
+
+//virtual void setSubaddressLabel(uint32_t accountIndex, uint32_t addressIndex, const std::string &label) = 0;
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_setSubaddressLabel(JNIEnv *env, jobject instance,
+                                                          jint accountIndex, jint addressIndex,
+                                                          jstring label) {
+
+    const char *_label = env->GetStringUTFChars(label, NULL);
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    wallet->setSubaddressLabel(accountIndex, addressIndex, _label);
+
+    env->ReleaseStringUTFChars(label, _label);
+}
+
+// virtual size_t numSubaddressAccounts() const = 0;
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getNumAccounts(JNIEnv *env, jobject instance) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    return static_cast<jint>(wallet->numSubaddressAccounts());
+}
+
+//virtual size_t numSubaddresses(uint32_t accountIndex) const = 0;
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getNumSubaddresses(JNIEnv *env, jobject instance,
+                                                          jint accountIndex) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    return static_cast<jint>(wallet->numSubaddresses(accountIndex));
+}
+
+//virtual void addSubaddress(uint32_t accountIndex, const std::string &label) = 0;
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_addSubaddress(JNIEnv *env, jobject instance,
+                                                     jint accountIndex,
+                                                     jstring label) {
+
+    const char *_label = env->GetStringUTFChars(label, NULL);
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    wallet->addSubaddress(accountIndex, _label);
+    env->ReleaseStringUTFChars(label, _label);
+}
+
+/*JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getLastSubaddress(JNIEnv *env, jobject instance,
+                                                         jint accountIndex) {
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    size_t num = wallet->numSubaddresses(accountIndex);
+    //wallet->subaddress()->getAll()[num]->getAddress().c_str()
+    Monero::Subaddress *s = wallet->subaddress();
+    s->refresh(accountIndex);
+    std::vector<Monero::SubaddressRow *> v = s->getAll();
+    return env->NewStringUTF(v[num - 1]->getAddress().c_str());
+}
+*/
 //virtual std::string signMessage(const std::string &message) = 0;
 //virtual bool verifySignedMessage(const std::string &message, const std::string &addres, const std::string &signature) const = 0;
 
@@ -964,10 +1112,13 @@ jobject newTransferList(JNIEnv *env, Bitmonero::TransactionInfo *info) {
 
 jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     jmethodID c = env->GetMethodID(class_TransactionInfo, "<init>",
-                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;JLjava/util/List;)V");
+                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;IIJLjava/util/List;)V");
     jobject transfers = newTransferList(env, info);
     jstring _hash = env->NewStringUTF(info->hash().c_str());
     jstring _paymentId = env->NewStringUTF(info->paymentId().c_str());
+    uint32_t subaddrIndex = 0;
+    if (info->direction() == Bitmonero::TransactionInfo::Direction_In)
+        subaddrIndex = *(info->subaddrIndex().begin());
     jobject result = env->NewObject(class_TransactionInfo, c,
                                     info->direction(),
                                     info->isPending(),
@@ -978,6 +1129,8 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
                                     _hash,
                                     static_cast<jlong> (info->timestamp()),
                                     _paymentId,
+                                    info->subaddrAccount(),
+                                    subaddrIndex,
                                     info->confirmations(),
                                     transfers);
     env->DeleteLocalRef(transfers);
@@ -988,6 +1141,7 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
 
 #include <stdio.h>
 #include <stdlib.h>
+
 jobject cpp2java(JNIEnv *env, std::vector<Bitmonero::TransactionInfo *> vector) {
 
     jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
@@ -1045,11 +1199,13 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getAmount(JNIEnv *env, jobjec
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
     return tx->amount();
 }
+
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getDust(JNIEnv *env, jobject instance) {
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
     return tx->dust();
 }
+
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getFee(JNIEnv *env, jobject instance) {
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
@@ -1083,7 +1239,8 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobje
 //static void error(const std::string &category, const std::string &str);
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_initLogger(JNIEnv *env, jobject instance,
-                                                   jstring argv0, jstring default_log_base_name) {
+                                                         jstring argv0,
+                                                         jstring default_log_base_name) {
 
     const char *_argv0 = env->GetStringUTFChars(argv0, NULL);
     const char *_default_log_base_name = env->GetStringUTFChars(default_log_base_name, NULL);
@@ -1109,7 +1266,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logDebug(JNIEnv *env, jobject inst
 
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_logInfo(JNIEnv *env, jobject instance,
-                                                       jstring category, jstring message) {
+                                                      jstring category, jstring message) {
 
     const char *_category = env->GetStringUTFChars(category, NULL);
     const char *_message = env->GetStringUTFChars(message, NULL);
@@ -1122,7 +1279,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logInfo(JNIEnv *env, jobject insta
 
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_logWarning(JNIEnv *env, jobject instance,
-                                                       jstring category, jstring message) {
+                                                         jstring category, jstring message) {
 
     const char *_category = env->GetStringUTFChars(category, NULL);
     const char *_message = env->GetStringUTFChars(message, NULL);
@@ -1149,10 +1306,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_logError(JNIEnv *env, jobject inst
 JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jobject instance,
                                                           jint level) {
-            Bitmonero::WalletManagerFactory::setLogLevel(level);
+    Bitmonero::WalletManagerFactory::setLogLevel(level);
 }
-
-
 
 #ifdef __cplusplus
 }

@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgound_all"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
-    <com.m2049r.xmrwallet.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/ToolBarStyle.Event"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/backgound_toolbar_mainnet"
-        android:minHeight="?attr/actionBarSize" />
+        android:layout_height="match_parent"
+        android:background="@drawable/backgound_all"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <com.m2049r.xmrwallet.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ToolBarStyle.Event"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@drawable/backgound_toolbar_mainnet"
+            android:minHeight="?android:attr/actionBarSize" />
 
-</LinearLayout>
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/accounts_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_view" />
+
+</android.support.v4.widget.DrawerLayout>

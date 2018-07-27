@@ -18,10 +18,12 @@ package com.m2049r.xmrwallet.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,28 +31,44 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.CancellationSignal;
 import android.os.Environment;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.system.ErrnoException;
 import android.system.Os;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -58,8 +76,10 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
-    static private final String WALLET_DIR = "monerujo";
-    static private final String HOME_DIR = "monero";
+    static public final String CRYPTO = "XMR";
+
+    static private final String WALLET_DIR = "monerujo" + (BuildConfig.DEBUG ? "-debug" : "");
+    static private final String HOME_DIR = "monero" + (BuildConfig.DEBUG ? "-debug" : "");
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
@@ -280,6 +300,24 @@ public class Helper {
         }
     }
 
+    private final static char[] HexArray = "0123456789ABCDEF".toCharArray();
+
+    public static String bytesToHex(byte[] data) {
+        if ((data != null) && (data.length > 0))
+            return String.format("%0" + (data.length * 2) + "X", new BigInteger(1, data));
+        else return "";
+    }
+
+    public static byte[] hexToBytes(String hex) {
+        final int len = hex.length();
+        final byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                    + Character.digit(hex.charAt(i + 1), 16));
+        }
+        return data;
+    }
+
     static public void setMoneroHome(Context context) {
         try {
             String home = getStorage(context, HOME_DIR).getAbsolutePath();
@@ -302,5 +340,254 @@ public class Helper {
         WalletManager.initLogger(home + "/monerujo", "monerujo.log");
         if (level >= WalletManager.LOGLEVEL_SILENT)
             WalletManager.setLogLevel(level);
+    }
+
+    // try to figure out what the real wallet password is given the user password
+    // which could be the actual wallet password or a (maybe malformed) CrAzYpass
+    // or the password used to derive the CrAzYpass for the wallet
+    static public String getWalletPassword(Context context, String walletName, String password) {
+        String walletPath = new File(getWalletRoot(context), walletName + ".keys").getAbsolutePath();
+
+        // try with entered password (which could be a legacy password or a CrAzYpass)
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, password, true)) {
+            return password;
+        }
+
+        // maybe this is a malformed CrAzYpass?
+        String possibleCrazyPass = CrazyPassEncoder.reformat(password);
+        if (possibleCrazyPass != null) { // looks like a CrAzYpass
+            if (WalletManager.getInstance().verifyWalletPassword(walletPath, possibleCrazyPass, true)) {
+                return possibleCrazyPass;
+            }
+        }
+
+        // generate & try with CrAzYpass
+        String crazyPass = KeyStoreHelper.getCrazyPass(context, password);
+        if (WalletManager.getInstance().verifyWalletPassword(walletPath, crazyPass, true)) {
+            return crazyPass;
+        }
+
+        // or maybe it is a broken CrAzYpass? (of which we have two variants)
+        String brokenCrazyPass2 = KeyStoreHelper.getBrokenCrazyPass(context, password, 2);
+        if ((brokenCrazyPass2 != null)
+                && WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass2, true)) {
+            return brokenCrazyPass2;
+        }
+        String brokenCrazyPass1 = KeyStoreHelper.getBrokenCrazyPass(context, password, 1);
+        if ((brokenCrazyPass1 != null)
+                && WalletManager.getInstance().verifyWalletPassword(walletPath, brokenCrazyPass1, true)) {
+            return brokenCrazyPass1;
+        }
+
+        return null;
+    }
+
+    static AlertDialog openDialog = null; // for preventing opening of multiple dialogs
+    static AsyncTask<Void, Void, Boolean> loginTask = null;
+
+    static public void promptPassword(final Context context, final String wallet, boolean fingerprintDisabled, final PasswordAction action) {
+        if (openDialog != null) return; // we are already asking for password
+        LayoutInflater li = LayoutInflater.from(context);
+        final View promptsView = li.inflate(R.layout.prompt_password, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptsView);
+
+        final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
+        etPassword.setHint(context.getString(R.string.prompt_password, wallet));
+
+        final TextView tvOpenPrompt = (TextView) promptsView.findViewById(R.id.tvOpenPrompt);
+        final Drawable icFingerprint = context.getDrawable(R.drawable.ic_fingerprint);
+        final Drawable icError = context.getDrawable(R.drawable.ic_error_red_36dp);
+        final Drawable icInfo = context.getDrawable(R.drawable.ic_info_green_36dp);
+
+        final boolean fingerprintAuthCheck = FingerprintHelper.isFingerPassValid(context, wallet);
+
+        final boolean fingerprintAuthAllowed = !fingerprintDisabled && fingerprintAuthCheck;
+        final CancellationSignal cancelSignal = new CancellationSignal();
+
+        final AtomicBoolean incorrectSavedPass = new AtomicBoolean(false);
+        class LoginWalletTask extends AsyncTask<Void, Void, Boolean> {
+            private String pass;
+            private boolean fingerprintUsed;
+
+            LoginWalletTask(String pass, boolean fingerprintUsed) {
+                this.pass = pass;
+                this.fingerprintUsed = fingerprintUsed;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icInfo, null, null, null);
+                tvOpenPrompt.setText(context.getText(R.string.prompt_open_wallet));
+                tvOpenPrompt.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Boolean doInBackground(Void... unused) {
+                return processPasswordEntry(context, wallet, pass, fingerprintUsed, action);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result) {
+                if (result) {
+                    Helper.hideKeyboardAlways((Activity) context);
+                    cancelSignal.cancel();
+                    openDialog.dismiss();
+                    openDialog = null;
+                } else {
+                    if (fingerprintUsed) {
+                        incorrectSavedPass.set(true);
+                        tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                        tvOpenPrompt.setText(context.getText(R.string.bad_saved_password));
+                    } else {
+                        if (!fingerprintAuthAllowed) {
+                            tvOpenPrompt.setVisibility(View.GONE);
+                        } else if (incorrectSavedPass.get()) {
+                            tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                            tvOpenPrompt.setText(context.getText(R.string.bad_password));
+                        } else {
+                            tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
+                            tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
+                        }
+                        etPassword.setError(context.getString(R.string.bad_password));
+                    }
+                }
+
+                loginTask = null;
+            }
+        }
+
+        etPassword.getEditText().addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (etPassword.getError() != null) {
+                    etPassword.setError(null);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+            }
+        });
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(context.getString(R.string.label_ok), null)
+                .setNegativeButton(context.getString(R.string.label_cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways((Activity) context);
+                                cancelSignal.cancel();
+                                if (loginTask != null) {
+                                    loginTask.cancel(true);
+                                    loginTask = null;
+                                }
+                                dialog.cancel();
+                                openDialog = null;
+                            }
+                        });
+        openDialog = alertDialogBuilder.create();
+
+        final FingerprintManager.AuthenticationCallback fingerprintAuthCallback;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            fingerprintAuthCallback = null;
+        } else {
+            fingerprintAuthCallback = new FingerprintManager.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errMsgId, CharSequence errString) {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                    tvOpenPrompt.setText(errString);
+                }
+
+                @Override
+                public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+                    try {
+                        String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
+                        if (loginTask == null) {
+                            loginTask = new LoginWalletTask(userPass, true);
+                            loginTask.execute();
+                        }
+                    } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+                        etPassword.setError(context.getString(R.string.bad_password));
+                        // TODO: better error message here - what would it be?
+                    }
+                }
+
+                @Override
+                public void onAuthenticationFailed() {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                    tvOpenPrompt.setText(context.getString(R.string.bad_fingerprint));
+                }
+            };
+        }
+
+        openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                if (fingerprintAuthAllowed && fingerprintAuthCallback != null) {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
+                    tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
+                    tvOpenPrompt.setVisibility(View.VISIBLE);
+                    FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
+                }
+                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String pass = etPassword.getEditText().getText().toString();
+                        if (loginTask == null) {
+                            loginTask = new LoginWalletTask(pass, false);
+                            loginTask.execute();
+                        }
+                    }
+                });
+            }
+        });
+
+        // accept keyboard "ok"
+        etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    String pass = etPassword.getEditText().getText().toString();
+                    if (loginTask == null) {
+                        loginTask = new LoginWalletTask(pass, false);
+                        loginTask.execute();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        Helper.showKeyboard(openDialog);
+        openDialog.show();
+    }
+
+    public interface PasswordAction {
+        void action(String walletName, String password, boolean fingerprintUsed);
+    }
+
+    static private boolean processPasswordEntry(Context context, String walletName, String pass, boolean fingerprintUsed, PasswordAction action) {
+        String walletPassword = Helper.getWalletPassword(context, walletName, pass);
+        if (walletPassword != null) {
+            action.action(walletName, walletPassword, fingerprintUsed);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static public ExchangeApi getExchangeApi() {
+        return new com.m2049r.xmrwallet.service.exchange.coinmarketcap.ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+
     }
 }

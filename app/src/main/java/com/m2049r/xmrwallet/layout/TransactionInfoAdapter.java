@@ -166,7 +166,11 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             }
 
             if ((userNotes.note.isEmpty())) {
-                this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ? "" : infoItem.paymentId);
+                this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ?
+                        (infoItem.subaddress != 0 ?
+                                (context.getString(R.string.tx_subaddress, infoItem.subaddress)) :
+                                "") :
+                        infoItem.paymentId);
             } else {
                 this.tvPaymentId.setText(userNotes.note);
             }

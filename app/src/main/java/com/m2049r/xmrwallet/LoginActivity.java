@@ -29,18 +29,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +51,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -71,7 +68,8 @@ import timber.log.Timber;
 
 public class LoginActivity extends SecureActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
-        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, ReceiveFragment.Listener {
+        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener,
+        GenerateReviewFragment.ProgressListener, ReceiveFragment.Listener {
     private static final String GENERATE_STACK = "gen";
 
     static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
@@ -176,9 +174,9 @@ public class LoginActivity extends SecureActivity
                     case DialogInterface.BUTTON_POSITIVE:
                         final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
                         if (WalletManager.getInstance().walletExists(walletFile)) {
-                            promptPassword(walletName, new PasswordAction() {
+                            Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
                                 @Override
-                                public void action(String walletName, String password) {
+                                public void action(String walletName, String password, boolean fingerprintUsed) {
                                     startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
                                 }
                             });
@@ -208,9 +206,9 @@ public class LoginActivity extends SecureActivity
         if (checkServiceRunning()) return;
         final File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
-            promptPassword(walletName, new PasswordAction() {
+            Helper.promptPassword(LoginActivity.this, walletName, false, new Helper.PasswordAction() {
                 @Override
-                public void action(String walletName, String password) {
+                public void action(String walletName, String password, boolean fingerprintUsed) {
                     startReceive(walletFile, password);
                 }
             });
@@ -229,9 +227,22 @@ public class LoginActivity extends SecureActivity
         @Override
         protected Boolean doInBackground(String... params) {
             if (params.length != 2) return false;
-            File walletFile = Helper.getWalletFile(LoginActivity.this, params[0]);
+            String oldName = params[0];
             String newName = params[1];
-            return renameWallet(walletFile, newName);
+            File walletFile = Helper.getWalletFile(LoginActivity.this, oldName);
+            boolean success = renameWallet(walletFile, newName);
+            try {
+                if (success) {
+                    String savedPass = KeyStoreHelper.loadWalletUserPass(LoginActivity.this, oldName);
+                    KeyStoreHelper.saveWalletUserPass(LoginActivity.this, newName, savedPass);
+                }
+            } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
+                Timber.w(ex);
+            } finally {
+                // we have either set a new password or it is broken - kill the old one either way
+                KeyStoreHelper.removeWalletUserPass(LoginActivity.this, oldName);
+            }
+            return success;
         }
 
         @Override
@@ -378,6 +389,7 @@ public class LoginActivity extends SecureActivity
             if (params.length != 1) return false;
             String walletName = params[0];
             if (backupWallet(walletName) && deleteWallet(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                KeyStoreHelper.removeWalletUserPass(LoginActivity.this, walletName);
                 return true;
             } else {
                 return false;
@@ -437,121 +449,24 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    public void onWalletChangePassword() {//final String walletName, final String walletPassword) {
+        try {
+            GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            AlertDialog dialog = detailsFragment.createChangePasswordDialog();
+            if (dialog != null) {
+                Helper.showKeyboard(dialog);
+                dialog.show();
+            }
+        } catch (ClassCastException ex) {
+            Timber.w("onWalletChangePassword() called, but no GenerateReviewFragment active");
+        }
+    }
+
     @Override
     public void onAddWallet(String type) {
         if (checkServiceRunning()) return;
         startGenerateFragment(type);
-    }
-
-    AlertDialog passwordDialog = null; // for preventing multiple clicks in wallet list
-
-    void promptPassword(final String wallet, final PasswordAction action) {
-        if (passwordDialog != null) return; // we are already asking for password
-        Context context = LoginActivity.this;
-        LayoutInflater li = LayoutInflater.from(context);
-        View promptsView = li.inflate(R.layout.prompt_password, null);
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-        alertDialogBuilder.setView(promptsView);
-
-        final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
-        etPassword.setHint(LoginActivity.this.getString(R.string.prompt_password, wallet));
-
-        etPassword.getEditText().addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (etPassword.getError() != null) {
-                    etPassword.setError(null);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-            }
-        });
-
-        // set dialog message
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton(getString(R.string.label_ok), null)
-                .setNegativeButton(getString(R.string.label_cancel),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Helper.hideKeyboardAlways(LoginActivity.this);
-                                dialog.cancel();
-                                passwordDialog = null;
-                            }
-                        });
-        passwordDialog = alertDialogBuilder.create();
-
-        passwordDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String pass = etPassword.getEditText().getText().toString();
-                        if (processPasswordEntry(wallet, pass, action)) {
-                            Helper.hideKeyboardAlways(LoginActivity.this);
-                            passwordDialog.dismiss();
-                            passwordDialog = null;
-                        } else {
-                            etPassword.setError(getString(R.string.bad_password));
-                        }
-                    }
-                });
-            }
-        });
-
-        Helper.showKeyboard(passwordDialog);
-
-        // accept keyboard "ok"
-        etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    String pass = etPassword.getEditText().getText().toString();
-                    if (processPasswordEntry(wallet, pass, action)) {
-                        Helper.hideKeyboardAlways(LoginActivity.this);
-                        passwordDialog.dismiss();
-                        passwordDialog = null;
-                    } else {
-                        etPassword.setError(getString(R.string.bad_password));
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        passwordDialog.show();
-    }
-
-    private boolean checkWalletPassword(String walletName, String password) {
-        String walletPath = new File(Helper.getWalletRoot(getApplicationContext()),
-                walletName + ".keys").getAbsolutePath();
-        // only test view key
-        return WalletManager.getInstance().verifyWalletPassword(walletPath, password, true);
-    }
-
-    interface PasswordAction {
-        void action(String walletName, String password);
-    }
-
-    private boolean processPasswordEntry(String walletName, String pass, PasswordAction action) {
-        if (checkWalletPassword(walletName, pass)) {
-            action.action(walletName, pass);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     ////////////////////////////////////////
@@ -598,7 +513,8 @@ public class LoginActivity extends SecureActivity
 
     ProgressDialog progressDialog = null;
 
-    private void showProgressDialog(int msgId) {
+    @Override
+    public void showProgressDialog(int msgId) {
         showProgressDialog(msgId, 0);
     }
 
@@ -617,7 +533,8 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    private void dismissProgressDialog() {
+    @Override
+    public void dismissProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -687,11 +604,12 @@ public class LoginActivity extends SecureActivity
         }
     }
 
-    void startWallet(String walletName, String walletPassword) {
+    void startWallet(String walletName, String walletPassword, boolean fingerprintUsed) {
         Timber.d("startWallet()");
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
+        intent.putExtra(WalletActivity.REQUEST_FINGERPRINT_USED, fingerprintUsed);
         startActivity(intent);
     }
 
@@ -1077,6 +995,9 @@ public class LoginActivity extends SecureActivity
             case R.id.action_details_help:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_details);
                 return true;
+            case R.id.action_details_changepw:
+                onWalletChangePassword();
+                return true;
             case R.id.action_license_info:
                 AboutFragment.display(getSupportFragmentManager());
                 return true;
@@ -1086,11 +1007,11 @@ public class LoginActivity extends SecureActivity
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
                 return true;
-            case R.id.action_testnet:
+            case R.id.action_stagenet:
                 try {
                     LoginFragment loginFragment = (LoginFragment)
                             getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-                    item.setChecked(loginFragment.onTestnetMenuItem());
+                    item.setChecked(loginFragment.onStagenetMenuItem());
                 } catch (ClassCastException ex) {
                     // never mind then
                 }
@@ -1178,10 +1099,10 @@ public class LoginActivity extends SecureActivity
         File walletFile = Helper.getWalletFile(this, walletNode.getName());
         if (WalletManager.getInstance().walletExists(walletFile)) {
             WalletManager.getInstance().setDaemon(walletNode);
-            promptPassword(walletNode.getName(), new PasswordAction() {
+            Helper.promptPassword(LoginActivity.this, walletNode.getName(), false, new Helper.PasswordAction() {
                 @Override
-                public void action(String walletName, String password) {
-                    startWallet(walletName, password);
+                public void action(String walletName, String password, boolean fingerprintUsed) {
+                    startWallet(walletName, password, fingerprintUsed);
                 }
             });
         } else { // this cannot really happen as we prefilter choices

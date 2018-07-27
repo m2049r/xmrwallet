@@ -30,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -41,9 +42,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
-import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.util.Locale;
 
@@ -166,7 +165,11 @@ public class ExchangeView extends LinearLayout
         etAmount = (TextInputLayout) findViewById(R.id.etAmount);
         tvAmountB = (TextView) findViewById(R.id.tvAmountB);
         sCurrencyA = (Spinner) findViewById(R.id.sCurrencyA);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner);
+        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
+        sCurrencyA.setAdapter(adapter);
         sCurrencyB = (Spinner) findViewById(R.id.sCurrencyB);
+        sCurrencyB.setAdapter(adapter);
         evExchange = (ImageView) findViewById(R.id.evExchange);
         pbExchange = (ProgressBar) findViewById(R.id.pbExchange);
 
@@ -310,12 +313,13 @@ public class ExchangeView extends LinearLayout
         }
     }
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void startExchange() {
         showProgress();
         String currencyA = (String) sCurrencyA.getSelectedItem();
         String currencyB = (String) sCurrencyB.getSelectedItem();
+
         exchangeApi.queryExchangeRate(currencyA, currencyB,
                 new ExchangeCallback() {
                     @Override

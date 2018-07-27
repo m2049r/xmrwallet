@@ -112,7 +112,6 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/labelDestinationBtc"
                             style="@style/MoneroLabel.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -135,7 +134,6 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/labelTxXmrToKey"
                             style="@style/MoneroLabel.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -172,6 +170,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:shrinkColumns="1">
+
+            <TableRow>
+
+                <TextView
+                    style="@style/MoneroLabel.Small"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
+                    android:padding="8dp"
+                    android:text="@string/tx_account" />
+
+                <TextView
+                    android:id="@+id/tvAccount"
+                    style="@style/MoneroText"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
 
             <TableRow>
 

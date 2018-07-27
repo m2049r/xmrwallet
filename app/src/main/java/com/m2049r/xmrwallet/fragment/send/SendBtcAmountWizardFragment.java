@@ -247,7 +247,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
     private XmrToApi xmrToApi = null;
 
-    private final XmrToApi getXmrToApi() {
+    private XmrToApi getXmrToApi() {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {

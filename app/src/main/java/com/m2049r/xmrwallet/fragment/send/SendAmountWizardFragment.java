@@ -20,6 +20,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
@@ -57,8 +60,9 @@ public class SendAmountWizardFragment extends SendWizardFragment {
 
     private TextView tvFunds;
     private ExchangeTextView evAmount;
-    //private Button bSendAll;
-    private NumberPadView numberPad;
+    private View llAmount;
+    private View rlSweep;
+    private ImageButton ibSweep;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,37 +77,64 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         tvFunds = (TextView) view.findViewById(R.id.tvFunds);
 
         evAmount = (ExchangeTextView) view.findViewById(R.id.evAmount);
-        numberPad = (NumberPadView) view.findViewById(R.id.numberPad);
-        numberPad.setListener(evAmount);
+        ((NumberPadView) view.findViewById(R.id.numberPad)).setListener(evAmount);
 
-        /*
-        bSendAll = (Button) view.findViewById(R.id.bSendAll);
-        bSendAll.setOnClickListener(new View.OnClickListener() {
+        rlSweep = view.findViewById(R.id.rlSweep);
+        llAmount = view.findViewById(R.id.llAmount);
+        view.findViewById(R.id.ivSweep).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: send all - figure out how to display this
+                sweepAll(false);
             }
         });
-*/
+
+        ibSweep = (ImageButton) view.findViewById(R.id.ibSweep);
+
+        ibSweep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sweepAll(true);
+            }
+        });
 
         Helper.hideKeyboard(getActivity());
 
         return view;
     }
 
+    private boolean spendAllMode = false;
+
+    private void sweepAll(boolean spendAllMode) {
+        if (spendAllMode) {
+            ibSweep.setVisibility(View.INVISIBLE);
+            llAmount.setVisibility(View.GONE);
+            rlSweep.setVisibility(View.VISIBLE);
+        } else {
+            ibSweep.setVisibility(View.VISIBLE);
+            llAmount.setVisibility(View.VISIBLE);
+            rlSweep.setVisibility(View.GONE);
+        }
+        this.spendAllMode = spendAllMode;
+    }
 
     @Override
     public boolean onValidateFields() {
-        if (!evAmount.validate(maxFunds)) {
-            return false;
-        }
+        if (spendAllMode) {
+            if (sendListener != null) {
+                sendListener.getTxData().setAmount(Wallet.SWEEP_ALL);
+            }
+        } else {
+            if (!evAmount.validate(maxFunds)) {
+                return false;
+            }
 
-        if (sendListener != null) {
-            String xmr = evAmount.getAmount();
-            if (xmr != null) {
-                sendListener.getTxData().setAmount(Wallet.getAmountFromString(xmr));
-            } else {
-                sendListener.getTxData().setAmount(0L);
+            if (sendListener != null) {
+                String xmr = evAmount.getAmount();
+                if (xmr != null) {
+                    sendListener.getTxData().setAmount(Wallet.getAmountFromString(xmr));
+                } else {
+                    sendListener.getTxData().setAmount(0L);
+                }
             }
         }
         return true;

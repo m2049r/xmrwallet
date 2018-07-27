@@ -80,6 +80,13 @@ public class WalletManager {
 
     private native long createWalletJ(String path, String password, String language, int networkType);
 
+    public Wallet openAccount(String path, int accountIndex, String password) {
+        long walletHandle = openWalletJ(path, password, getNetworkType().getValue());
+        Wallet wallet = new Wallet(walletHandle, accountIndex);
+        manageWallet(wallet);
+        return wallet;
+    }
+
     public Wallet openWallet(String path, String password) {
         long walletHandle = openWalletJ(path, password, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
@@ -228,7 +235,6 @@ public class WalletManager {
 
     public String getDaemonAddress() {
         if (daemonAddress == null) {
-            // assume testnet not explicitly initialised
             throw new IllegalStateException("use setDaemon() to initialise daemon and net first!");
         }
         return this.daemonAddress;
@@ -236,13 +242,13 @@ public class WalletManager {
 
     private native void setDaemonAddressJ(String address);
 
-    String daemonUsername = "";
+    private String daemonUsername = "";
 
     public String getDaemonUsername() {
         return daemonUsername;
     }
 
-    String daemonPassword = "";
+    private String daemonPassword = "";
 
     public String getDaemonPassword() {
         return daemonPassword;
@@ -271,6 +277,7 @@ public class WalletManager {
 //TODO static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, const std::string &subdir);
 
     static public native void initLogger(String argv0, String defaultLogBaseName);
+
     //TODO: maybe put these in an enum like in monero core - but why?
     static public int LOGLEVEL_SILENT = -1;
     static public int LOGLEVEL_WARN = 0;
@@ -278,9 +285,14 @@ public class WalletManager {
     static public int LOGLEVEL_DEBUG = 2;
     static public int LOGLEVEL_TRACE = 3;
     static public int LOGLEVEL_MAX = 4;
+
     static public native void setLogLevel(int level);
+
     static public native void logDebug(String category, String message);
+
     static public native void logInfo(String category, String message);
+
     static public native void logWarning(String category, String message);
+
     static public native void logError(String category, String message);
 }

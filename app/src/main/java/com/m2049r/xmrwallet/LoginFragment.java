@@ -43,18 +43,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.NodeList;
+import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.widget.DropDownEditText;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -70,9 +72,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private ImageView ivGunther;
     private DropDownEditText etDaemonAddress;
     private ArrayAdapter<String> nodeAdapter;
-
-    private View llXmrToEnabled;
-    private View ibXmrToInfoClose;
 
     private Listener activityCallback;
 
@@ -173,23 +172,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         etDummy = (EditText) view.findViewById(R.id.etDummy);
 
-        llXmrToEnabled = view.findViewById(R.id.llXmrToEnabled);
-        llXmrToEnabled.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HelpFragment.display(getChildFragmentManager(), R.string.help_xmrto);
-
-            }
-        });
-        ibXmrToInfoClose = view.findViewById(R.id.ibXmrToInfoClose);
-        ibXmrToInfoClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                llXmrToEnabled.setVisibility(View.GONE);
-                showXmrtoEnabled = false;
-                saveXmrToPrefs();
-            }
-        });
+        ViewGroup llNotice = (ViewGroup) view.findViewById(R.id.llNotice);
+        Notice.showAll(llNotice,".*_login");
 
         etDaemonAddress = (DropDownEditText) view.findViewById(R.id.etDaemonAddress);
         nodeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line);
@@ -237,9 +221,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         });
 
         loadPrefs();
-        if (!showXmrtoEnabled) {
-            llXmrToEnabled.setVisibility(View.GONE);
-        }
 
         return view;
     }
@@ -326,6 +307,17 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 ivGunther.setImageDrawable(null);
             }
         }
+
+        // remove information of non-existent wallet
+        Set<String> removedWallets = getActivity()
+                .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
+                .getAll().keySet();
+        for (WalletManager.WalletInfo s : walletList) {
+            removedWallets.remove(s.name);
+        }
+        for (String name : removedWallets) {
+            KeyStoreHelper.removeWalletUserPass(getActivity(), name);
+        }
     }
 
     private void showInfo(@NonNull String name) {
@@ -345,81 +337,65 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
-        menu.findItem(R.id.action_testnet).setChecked(testnetCheckMenu);
+        menu.findItem(R.id.action_stagenet).setChecked(stagenetCheckMenu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private boolean testnetCheckMenu = BuildConfig.DEBUG;
+    private boolean stagenetCheckMenu = BuildConfig.DEBUG;
 
-    //boolean isTestnet() {
-    //    return testnet;
-    //}
-
-    public boolean onTestnetMenuItem() {
-        boolean lastState = testnetCheckMenu;
+    public boolean onStagenetMenuItem() {
+        boolean lastState = stagenetCheckMenu;
         setNet(!lastState, true); // set and save
         return !lastState;
     }
 
-    public void setNet(boolean testnetChecked, boolean save) {
-        this.testnetCheckMenu = testnetChecked;
-        NetworkType net = testnetChecked ? NetworkType.NetworkType_Testnet : NetworkType.NetworkType_Mainnet;
+    public void setNet(boolean stagenetChecked, boolean save) {
+        this.stagenetCheckMenu = stagenetChecked;
+        NetworkType net = stagenetChecked ? NetworkType.NetworkType_Stagenet : NetworkType.NetworkType_Mainnet;
         activityCallback.setNetworkType(net);
         activityCallback.showNet();
         if (save) {
             savePrefs(true); // use previous state as we just clicked it
         }
-        if (testnetChecked) {
-            setDaemon(daemonTestNet);
+        if (stagenetChecked) {
+            setDaemon(daemonStageNet);
         } else {
             setDaemon(daemonMainNet);
         }
         loadList();
     }
 
-    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
+    private static final String PREF_DAEMON_STAGENET = "daemon_stagenet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    private static final String PREF_SHOW_XMRTO_ENABLED = "info_xmrto_enabled_login";
 
     private static final String PREF_DAEMONLIST_MAINNET =
             "node.moneroworld.com:18089;node.xmrbackb.one;node.xmr.be";
 
-    private static final String PREF_DAEMONLIST_TESTNET =
-            "testnet.xmrchain.net";
+    private static final String PREF_DAEMONLIST_STAGENET =
+            "stagenet.monerujo.io;stagenet.xmr-tw.org";
 
-    private NodeList daemonTestNet;
+    private NodeList daemonStageNet;
     private NodeList daemonMainNet;
-
-    boolean showXmrtoEnabled = true;
 
     void loadPrefs() {
         SharedPreferences sharedPref = activityCallback.getPrefs();
 
         daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
-        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
-        setNet(testnetCheckMenu, false);
-
-        showXmrtoEnabled = sharedPref.getBoolean(PREF_SHOW_XMRTO_ENABLED, true);
-    }
-
-    void saveXmrToPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
-        editor.apply();
+        daemonStageNet = new NodeList(sharedPref.getString(PREF_DAEMON_STAGENET, PREF_DAEMONLIST_STAGENET));
+        setNet(stagenetCheckMenu, false);
     }
 
     void savePrefs() {
         savePrefs(false);
     }
 
-    void savePrefs(boolean usePreviousTestnetState) {
-        Timber.d("SAVE / %s", usePreviousTestnetState);
+    void savePrefs(boolean usePreviousNetState) {
+        Timber.d("SAVE / %s", usePreviousNetState);
         // save the daemon address for the net
-        boolean testnet = testnetCheckMenu ^ usePreviousTestnetState;
+        boolean stagenet = stagenetCheckMenu ^ usePreviousNetState;
         String daemon = getDaemon();
-        if (testnet) {
-            daemonTestNet.setRecent(daemon);
+        if (stagenet) {
+            daemonStageNet.setRecent(daemon);
         } else {
             daemonMainNet.setRecent(daemon);
         }
@@ -427,8 +403,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         SharedPreferences sharedPref = activityCallback.getPrefs();
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
-        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
-        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
+        editor.putString(PREF_DAEMON_STAGENET, daemonStageNet.toString());
         editor.apply();
     }
 

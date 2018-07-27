@@ -52,6 +52,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="MoneroLabel.Caps.White">
+        <item name="android:textColor">@color/moneroWhite</item>
+    </style>
+
     <style name="MoneroLabel.Caps.Black">
         <item name="android:textColor">@color/moneroBlack</item>
     </style>
