@@ -1,9 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="login_activity_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Portofel</string>
 
-    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">Despre</string>
     <string name="menu_privacy">Politică de confidențialitate</string>
 
@@ -43,16 +40,7 @@
 
     <string name="info_send_xmrto_success_order_label">Ordin XMR.TO</string>
 
-    <string name="info_send_xmrto_success_sending">Trimitere</string>
-    <string name="info_send_xmrto_success_status_label">Stare:</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-    <string name="info_send_xmrto_success_status">%1$s este %1$s (#%1$d)</string>
-
-    <string name="info_txdetails_xmrto_key">Cheie:</string>
-    <string name="info_txdetails_xmrto_address">Adresă:</string>
-    <string name="info_txdetails_xmrto_status">Stare:</string>
-    <string name="info_txdetails_xmrto_amount">%1$s BTC</string>
-
 
     <string name="info_send_xmrto_paid">Confirmare în așteptare</string>
     <string name="info_send_xmrto_unpaid">Plată în așteptare</string>
@@ -91,16 +79,11 @@
 
     <string name="label_send_settings_advanced">Avansat:</string>
 
-    <string name="label_send_btc_details">Apasă pentru detalii</string>
     <string name="label_send_btc_xmrto_info">Vizitează xmr.to pentru suport &amp; interogare</string>
-    <string name="label_send_txinfo">Vezi detaliile TX pentru mai multe detalii</string>
     <string name="label_send_btc_xmrto_key_lb">Cheia secretă \nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Cheia secretă XMR.TO </string>
     <string name="label_send_btc_address">Destinație adresă BTC</string>
     <string name="label_send_btc_amount">Sumă</string>
-    <string name="label_send_btc_create_order">Creare ordin XMR.TO</string>
-
-    <string name="label_send_btc_retry">Atinge pentru a reîncerca</string>
 
     <string name="label_send_txid">ID Tranzacție </string>
     <string name="label_send_address">Adresă destinație</string>
@@ -114,22 +97,13 @@
 
     <string name="service_progress">Impachetăm lucrurile &#8230;\nPoate dura un pic!</string>
 
-    <string name="backup_success">Copia de rezervă creată cu succes</string>
     <string name="backup_failed">Copia de rezervă a eșuat!</string>
-    <string name="archive_success">Arhivarea a reușit</string>
     <string name="archive_failed">Arhivarea a eșuat!</string>
-    <string name="delete_failed">Ștergerea a eșuat!</string>
     <string name="rename_failed">Redenumirea a eșuat!</string>
 
     <string name="label_daemon">Nodul</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
-    <string name="prompt_mainnet">Selectare rețea</string>
-    <string name="connect_stagenet">StageNet</string>
-    <string name="connect_testnet">TestNet</string>
-    <string name="connect_mainnet">MainNet</string>
-    <string name="status_walletlist_loading">Se încarca lista de portofele</string>
     <string name="status_wallet_loading">Se încarcă portofelul &#8230;</string>
-    <string name="status_wallet_unloading">Se salvează portofelul</string>
     <string name="status_wallet_unloaded">Portofelul a fost salvat</string>
     <string name="status_wallet_unload_failed">Salvarea portofelului a eșuat!</string>
     <string name="status_wallet_connecting">Se conecteaza &#8230;</string>
@@ -138,12 +112,9 @@
     <string name="status_wallet_node_invalid">Nodul este invalid!\nÎncearcă altul.</string>
     <string name="status_wallet_connect_ioex">Nu se poate ajunge la nod!\nÎncearca din nou sau un altul.</string>
 
-    <string name="status_working">Lucrez la el &#8230;</string>
     <string name="status_wallet_disconnected">Deconectat</string>
 
-    <string name="status_transaction_sent">Tranzacție trimisă!</string>
     <string name="status_transaction_failed">Tranzacție eșuată: %1$s</string>
-    <string name="status_transaction_prepare_failed">Nu se poate creea tranzacția!</string>
 
     <string name="send_xmrto_timeout">Ai așteptat prea mult prietene!</string>
 
@@ -155,36 +126,22 @@
     <string name="prompt_send_password">Confirmă Parola</string>
     <string name="bad_password">Parolă incorectă!</string>
     <string name="bad_wallet">Portofelul nu există!</string>
-    <string name="error_not_wallet">Acesta nu este un portofel!</string>
     <string name="prompt_daemon_missing">Adresa nodului trebuie setată!</string>
     <string name="prompt_wrong_net">Portofelul selectat nu se potrivește cu rețeaua</string>
-    <string name="warn_daemon_unavailable">Nu s-a putut conecta la nod! Încearcă.</string>
-    <string name="panic">Ceva este în neregulă!</string>
 
     <string name="label_watchonly">(Doar vizionare)</string>
 
     <string name="label_wallet_receive">Primește</string>
     <string name="label_wallet_send">Oferă</string>
 
-    <string name="title_amount">Suma</string>
-    <string name="title_date">Dată</string>
     <string name="xmr_unconfirmed_amount">+ %1$s XMR neconfirmat</string>
-    <string name="xmr" translatable="false">XMR</string>
-    <string name="label_transactions">Tranzacții</string>
-    <string name="text_daemonConnected">Nodul este conectat!</string>
 
     <string name="service_description">Serviciul monerujo</string>
-    <string name="local_service_started">Serviciul monerujo rulează</string>
-    <string name="local_service_stopped">Serviciul monerujo a fost oprit</string>
-    <string name="local_service_label">Serviciul monerujo</string>
-    <string name="local_service_connected">Serviciul monerujo este conectat</string>
-    <string name="local_service_disconnected">Serviciul monerujo este deconectat</string>
 
     <string name="status_synced">Sincronizat:</string>
     <string name="status_remaining">Monoblocuri rămase</string>
     <string name="status_syncing">Scanare:</string>
 
-    <string name="prompt_problems">Probleme</string>
     <string name="message_strorage_not_writable">Nu se poate scrie pe memoria externă! Panică!</string>
     <string name="message_strorage_not_permitted">Chiar avem nevoie de permisiuni pentru memoria externă!</string>
     <string name="message_camera_not_permitted">Fără cameră = Fără scanare coduri QR!</string>
@@ -196,8 +153,6 @@
     <string name="message_copy_xmrtokey">Cheie XMR.TO copiată la clipboard!</string>
     <string name="message_copy_address">Adresă portofel copiatp la clipboard!</string>
     <string name="message_copy_txid">ID tranzacție copiată la clipboard!</string>
-    <string name="message_noselect_seed">Selectarea cuvintelor mnemonice dezactivată din motive de securitate!</string>
-    <string name="message_noselect_key">Selectarea cheii de consum dezactivată din motive de securitate!</string>
     <string name="message_nocopy">Copierea dezactivată din motive de securitate!</string>
 
     <string name="message_exchange_failed">Nu pot accesa rata de schimb!\nFolosește XMR/XMR sau reîncearcă</string>
@@ -206,12 +161,7 @@
     <string name="generate_name_hint">Nume portofel</string>
     <string name="generate_password_hint">Wallet Passphrase</string>
     <string name="generate_buttonGenerate">Hai cu portofelul odată!</string>
-    <string name="generate_seed">Semnătura Mnemonică</string>
     <string name="generate_button_accept">Mi-am notat cele 25 de cuvinte!</string>
-
-    <string name="generate_button_backup">Copie de rezervă</string>
-    <string name="generate_button_export">Exportă chei</string>
-    <string name="generate_button_delete">ȘTERGE</string>
 
     <string name="generate_wallet_name">Dă-mi un nume!</string>
     <string name="generate_wallet_exists">Portofelul există!</string>
@@ -233,13 +183,10 @@
     <string name="generate_mnemonic_hint">Semnătura Mnemonică de 25-cuvinte</string>
     <string name="generate_restoreheight_hint">Restaurează Monobloc sau Dată (YYYY-MM-ZZ)</string>
 
-    <string name="generate_wallet_label">Portofel</string>
-    <string name="generate_password_label">Parolă</string>
     <string name="generate_address_label">Adresă publică</string>
     <string name="generate_viewkey_label">Cheie vizualizare</string>
     <string name="generate_spendkey_label">Cheie consum</string>
     <string name="generate_mnemonic_label">Semnătură Mnemonică</string>
-    <string name="generate_restoreheight_label">Restaurează Monobloc:</string>
 
     <string name="generate_check_key">Introdu cheie validă</string>
     <string name="generate_check_address">Introdu Adresă validă</string>
@@ -251,20 +198,13 @@
     <string name="send_paymentid_hint">Payment ID (facultativ)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notițe private (facultativ)</string>
-    <string name="send_priority_hint">Prioritatea tranzacției</string>
-    <string name="send_mixin_hint">Inele</string>
-    <string name="send_sweep_hint">Șterge</string>
     <string name="send_generate_paymentid_hint">Generează</string>
     <string name="send_qr_hint">Scanează</string>
-    <string name="send_prepare_hint">Prepgătește</string>
-    <string name="send_dispose_hint">Dispune (Anulează)</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
-    <string name="send_really_send_hint">Ultimul pas - Confirmă!</string>
     <string name="send_qr_invalid">Cod QR invalid</string>
-    <string name="send_qr_address_invalid">Cod QR de plată invalid/string>
+    <string name="send_qr_address_invalid">Cod QR de plată invalid</string>
     <string name="send_address_invalid">Adresă invalidă</string>
-    <string name="send_preparing_progress">Pregătirea tranzacției</string>
     <string name="send_title">Trimitere</string>
     <string name="send_available">Balanță: %1$s XMR</string>
     <string name="send_address_title">Adresă</string>
@@ -272,13 +212,10 @@
     <string name="send_settings_title">Setări</string>
     <string name="send_confirm_title">Confirmă</string>
     <string name="send_success_title">Gata</string>
-    <string name="send_summary_heading">Sumar</string>
-    <string name="send_amount_too_large">Sumă > Fonduri</string>
 
     <string name="send_amount_label">Sumă</string>
     <string name="send_fee_btc_label">Comision (XMR)</string>
     <string name="send_fee_label">Comision</string>
-    <string name="send_dust_label">Praf</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
@@ -287,18 +224,14 @@
 
     <string name="send_create_tx_error_title">Eroare creare tranzacție</string>
 
-    <string name="tx_list_fee_pending">incl. %1$s comision</string>
     <string name="tx_list_fee">- Comision %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">eșuat</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_status_btc">Stare</string>
-    <string name="tx_address">Adresă</string>
     <string name="tx_timestamp">Timestamp-ul</string>
     <string name="tx_id">ID Tranzacție</string>
-    <string name="tx_id_btc">ID Tranzacție\n(BTC)</string>
     <string name="tx_key">Cheie tranzacție</string>
     <string name="tx_destination">Destinație</string>
     <string name="tx_destination_btc">Destinație\n(BTC)</string>
@@ -309,30 +242,20 @@
     <string name="tx_fee">Comision</string>
     <string name="tx_transfers">Transferuri</string>
     <string name="tx_notes">Notițe</string>
-    <string name="tx_button_copy">Copiază Clipboard</string>
-    <string name="tx_copy_message">Copiat la Clipboard</string>
-    <string name="tx_copy_label">Detalii tranzacție</string>
     <string name="tx_notes_hint">(facultativ)</string>
     <string name="tx_button_notes">Salvează</string>
-    <string name="tx_notes_set">Notițe salvate</string>
     <string name="tx_notes_set_failed">Salvare notițe eșuată</string>
     <string name="tx_title">Detalii tranzacție</string>
 
     <string name="tx_pending">ÎN CURS</string>
     <string name="tx_failed">EȘUAT</string>
 
-    <string name="receive_generate_hint">Arată-mi codul QR</string>
-    <string name="receive_paymentid_button">Generează</string>
     <string name="receive_paymentid_hint">Payment ID (facultativ)</string>
     <string name="receive_amount_hint">Sumă</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
     <string name="receive_cannot_open">Nu pot deschide portofel!</string>
     <string name="receive_paymentid_invalid">16 sau 64 caractere Hex (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Trebuie să fie gol cu adresă integrată</string>
-    <string name="receive_bitcoin_paymentid_invalid">Trebuie să fie go cu adresă bitcoin</string>
-    <string name="receive_amount_invalid">Trebuie să fie > 0</string>
 
-    <string name="receive_amount_empty">Introdu valoare</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR fără valoare</string>
@@ -348,13 +271,6 @@
     <string name="archive_alert_yes">Da, fă asta!</string>
     <string name="archive_alert_no">Nu mersi!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Mărime inel 7</item>
-        <item>Mărime inel 10</item>
-        <item>Mărime inel 13</item>
-        <item>Mărime inel 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Prioritate Implicită</item>
         <item>Prioritate mică</item>
@@ -362,14 +278,43 @@
         <item>Prioritate mare</item>
     </string-array>
 
-    <string-array name="currency" translatable="false">
-        <item>XMR</item>
-        <item>EUR</item>
-        <item>USD</item>
-    </string-array>
-
     <string name="fab_create_new">Creeaza portofel nou</string>
     <string name="fab_restore_viewonly">Restaurează portofel-vizualizare</string>
     <string name="fab_restore_key">Restaurează portofel folosind cheie privată</string>
     <string name="fab_restore_seed">Restaurează portofel folosind cele 25 de cuvinte mnemonice</string>
+
+    <string name="menu_changepw">Change Passphrase</string>
+    <string name="info_crazypass_enabled">CrAzYpass enabled, tap for more info.</string>
+    <string name="changepw_progress">Change Password in progress</string>
+    <string name="changepw_failed">Change Password failed!</string>
+    <string name="changepw_success">Password changed</string>
+    <string name="prompt_changepw">New Passphrase for %1$s</string>
+    <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
+    <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
+    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
+    <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
+    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
+    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_fingerprint_warn">
+        <strong>Fingerprint Authentication</strong>
+        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
+        without entering password.</p>
+        <p>But for additional security, monerujo will still require you to enter password when
+        viewing wallet details or sending funds.</p>
+        <strong>Security Warning</strong>
+        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
+        able to peep into your wallet balance.</p>
+        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
+        <strong>Are you sure to enable this function?</strong>
+    </string>
+    <string name="generate_bad_passwordB">Passphrases do not match</string>
+    <string name="generate_empty_passwordB">Passphrase may not be empty</string>
+    <string name="generate_crazypass_label">Wallet Files Restore Password</string>
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 </resources>
