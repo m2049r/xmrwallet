@@ -317,4 +317,20 @@
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
 </resources>
