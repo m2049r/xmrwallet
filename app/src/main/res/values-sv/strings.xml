@@ -19,7 +19,7 @@
     <string name="password_fair">Nja …</string>
     <string name="password_good">Kom igen, bättre kan du!</string>
     <string name="password_strong">Du närmar dig …</string>
-    <string name="password_very_strong">Så ska det se ut, som h4x0r!</string>
+    <string name="password_very_strong">Så ska det se ut, som en h4x0r!</string>
 
     <string name="label_login_wallets">Plånböcker</string>
     <string name="label_credits">Erkännanden</string>
