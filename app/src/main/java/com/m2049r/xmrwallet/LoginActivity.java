@@ -977,7 +977,7 @@ public class LoginActivity extends SecureActivity
         });
 
         localeDisplayName[0] = getString(R.string.language_system_default);
-        for (int i = 1; i < localeDisplayName.length; ++i) {
+        for (int i = 1; i < localeDisplayName.length; i++) {
             Locale locale = translatedLocales.get(i - 1);
             localeDisplayName[i] = locale.getDisplayName(locale);
         }
