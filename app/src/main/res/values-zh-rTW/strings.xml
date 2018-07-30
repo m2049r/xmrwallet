@@ -317,19 +317,19 @@
     <string name="tx_subaddress">附屬地址 #%1$d</string>
     <string name="generate_address_label_sub">附屬公開地址 #%1$d</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">從 Ledger Nano S 回復錢包</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">正在與 Ledger 溝通</string>
+    <string name="progress_ledger_confirm">需要在 Ledger 上確認！</string>
+    <string name="progress_ledger_lookahead">正在取得子地址</string>
+    <string name="progress_ledger_verify">正在驗證金鑰</string>
+    <string name="progress_ledger_opentx">正在瘋狂地計算中</string>
+    <string name="progress_ledger_mlsag">正在計算雜湊值</string>
+    <string name="open_wallet_ledger_missing">請(重新)連接 Ledger 裝置</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">正在建立帳戶</string>
+    <string name="accounts_progress_update">正在更新錢包</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s 已連接</string>
+    <string name="toast_ledger_detached">%1$s 已斷開</string>
 </resources>
