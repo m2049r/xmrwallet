@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Tárcalétrehozás - új</h1>
+        <p>Ha szükséged van egy új Monero-címre!</p>
+        <p>Adj meg egy egyedi tárcanevet és jelszót.
+        A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál. Használj erős jelszót, de
+        még jobb a jelmondat használata.</p>
+        <h2>Jegyezd le a mnemonikus magot!</h2>
+        <p>A következő oldalon találod a 25 szóból álló úgynevezett mnemonikus magot.
+        Ez az egyetlen adat, mely a tárcád későbbi visszaállításához és a pénzedhez való újbóli hozzáféréshez
+        szükséges. Titokban és biztonságban tartása rendkívül fontos, ugyanis ennek ismeretében <em>bárki</em>
+        teljes hozzáférést szerezhet a Moneródhoz.</p>
+        <p>Ha elveszted vagy elfeljted a jelszavadat, a tárdád még visszaállítható a mnemonikus mag használatával.</p>
+        <p>A mnemonikus mag visszaállítására nincsen lehetőség, így ennek elvesztése esetén a pénzedet is elveszíted!
+        A mnemonikus mag megváltoztatása nem lehetséges, tehét ha azt ellopják vagy más módon veszélyeztetett
+        helyezetbe kerül, akkor pénzedet át kell tenned egy új tárcába (melyhez új mnemonikus mag is jár).
+        Ebből adódóan tehát a lehető legjobb az, ha biztonsági mentést készítesz a mnemonikus magról, azaz leírod
+        és <em>több</em> biztonságos helyre elteszed.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Tárcalétrehozás - mag</h1>
+        <p>Ha már van Monero-címed és szeretnéd a tranzakciókat újból betölteni a blokkláncból!</p>
+        <p>Adj meg egy egyedi tárcanevet és jelszót. A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál.
+        Használj erős jelszót, de még jobb a jelmondat használata.</p>
+        <p>Add meg a mnemonikus magodat a megfelelő mezőben.<p>
+        <p>Ha tudod a címhez tartozó első tranzakció blokkszámát, akkor add azt meg a Visszaállítási lánchossz
+        mezőben. Üresen hagyása a <em>teljes</em> blokklánc újbóli beolvasását vonja maga után a címedhez
+        tartozó tranzakciók megkeresése érdekében. Ez <em>sok</em> időt vesz igénybe.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Tárcalétrehozás - kulcsok</h1>
+        <p>Ha a kulcsaid használatával állítod vissza a tárcád!</p>
+        <p>Adj meg egy egyedi tárcanevet és jelszót. A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál.
+        Használj erős jelszót, de még jobb a jelmondat használata.</p>
+        <p>Add meg a Monero-címed a Nyilvános cím mezőben és töltsd ki a Figyelőkulcs és Költőkulcs mezőket.</p>
+        <p>Ha tudod a címhez tartozó első tranzakció blokkszámát, akkor add azt meg a Visszaállítási lánchossz
+        mezőben. Üresen hagyása a <em>teljes</em> blokklánc újbóli beolvasását vonja maga után a címedhez
+        tartozó tranzakciók megkeresése érdekében. Ez <em>sok</em> időt vesz igénybe.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Tárcalétrehozás - figyelőtárca</h1>
+        <p>Ha csak a tárcába beérkező tranzakciókat szeretnéd figyelemmel követni!</p>
+        <p>Adj meg egy egyedi tárcanevet és jelszót. A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál.
+        Használj erős jelszót, de még jobb a jelmondat használata.</p>
+        <p>Add meg a Monero-címed a Nyilvános cím mezőben és töltsd ki a Figyelőkulcs mezőt.</p>
+        <p>Ha tudod a címhez tartozó első tranzakció blokkszámát, akkor add azt meg a Visszaállítási lánchossz
+        mezőben. Üresen hagyása a <em>teljes</em> blokklánc újbóli beolvasását vonja maga után a címedhez
+        tartozó tranzakciók megkeresése érdekében. Ez <em>sok</em> időt vesz igénybe.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Tárcarészletek</h1>
+        <h2>Nyilvános cím</h2>
+        A nyilvános címed olyan, mint a bankszámlaszámod: megoszthatod bárkivel, nem kell félned attól,
+        hogy elvész a Moneród. Mások ezen cím használatával tudnak neked Monerót küldeni.
+        <h2>Mnemonikus mag</h2>
+        Ez az egyetlen adat, mely a tárcád későbbi visszaállításához és a pénzedhez való újbóli hozzáféréshez
+        szükséges. Titokban és biztonságban tartása rendkívül fontos, ugyanis ennek ismeretében <em>bárki</em>
+        teljes hozzáférést szerezhet a Moneródhoz. Ha még nem jegyezted le valami biztonságos helyre, úgy kérlek,
+        ezt tedd meg most!
+        <h2>Tárcafájl-visszaállító jelszó</h2>
+        Mindenképpen írd le ezt a jelszót. Ha visszaállítod az eszközöd vagy eltávolítod az applikációt, akkor
+        erre a jelszóra lesz szükséged a tárcád újbóli eléréséhez.<br/>
+        <h3>CrAzYpass</h3>
+        Ha az itt megjelenített jelszó 52 darab alfanumerikus karakter négyes csoportokba szervezve - gratulálunk!
+        A tárcafájljaid biztosítva vannak egy, az eszközöd által generált 256-bites kulccsal a tárca létrehozásakor
+        vagy jelszómódosításkor választott jelszó alapján. A tárca feltörése ezáltal igen nehézzé válik.<br/>
+        Ez a szolgáltatás minden újonnan létrehozott tárca esetén kötelező.
+        <h3>Hagyatéki jelszó</h3>
+        Ha látod itt a jelszavadat, akkor a tárcafájljaid nincsenek olyan biztonságban, mint a CrAzYpass
+        használata esetén. Ennek megoldására egyszerűen csak válaszd ki a Jelszómódosítás menüpontot. Egy
+        új jelszó megadása (ami akár a korábbival megegyező is lehet) esetén az applikáció generálni fog
+        számodra egy CrAzYpass-t, majd azzal biztosítani fogja a tárcafájljaid. Írd le!
+        <h3>CrAzYpass-os tárcák</h3>
+        Ha bármikor szükségessé válik a monerujo újratelepítése (például gyári állapo visszaállítása vagy
+        telefoncsere esetén) vagy tárcafájljaidat egy másik eszközön, esetleg számítógépen szeretnéd használni,
+        akkor ezt a visszaállító jelszót kell használnod a tárcád újbóli eléréséhez.<br/>
+        A Jelszómódosítás menüpontban másik jelszót választhatsz, ám légy figyelmes, ugyanis ez új visszaállító
+        jelszó generálásához is vezet. Írd le!
+        <h2>Figyelőkulcs</h2>
+        A figyelőkulcsod (view key) használható a beérkező tranzakciók megfigyelésére anélkül, hogy felhatalmazást
+        adnál a tárcádban található pénzösszeg elköltésére.
+        <h2>Költőkulcs</h2>
+        A költőkulcsod (spend key) lehetővé teszi a tárcádban található Monero elköltését, így ezen kulcsot
+        tartsd titokban csakúgy, mint a mnemonikus magot.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Tárcalista</h1>
+        <h2>Csomópont</h2>
+        <p>A monerujo távoli csomópontot használ a Monero-hálózattal való kommunikációhoz, így nem
+        kell az egész blokklánc egy másolatát letölteni és tárolni. A népszerű távoli csomópontokról
+        és a saját csomópont futtatásáról a https://moneroworld.com weboldalon olvashatsz.<p>
+        <p>A monerujo tartalmaz néhány előbeállított távoli csomópontot. Megjegyzésre az utolsó öt
+        használt csomópont kerül.</p>
+        <h2>Tárcák</h2>
+        <p>Itt láthatod a tárcáidat. Helyileg az eszközöd belső tárhelyén, a <tt>monerujo</tt>
+        mappában találhatók, és egy fájlkezelő használatával ezeket könnyedén meg is találhatod.
+        Időközönként csinálj biztonsági mentést erről a mappáról egy külső tárolóra arra az esetre,
+        ha az eszközöd tönkremenne, esetleg ellopnák azt.</p>
+        <p>Válassz egy tárcát megnyitásra vagy koppints a „+” gombra új létrehozásához.
+        Esetleg használd az alábbi műveletek valamelyikét:</p>
+        <h3>Részletek</h3>
+        <p>Tárca részleteinek, valamint a mnemonikus mag és kulcsok mutatása.
+        <h3>Fogadás</h3>
+        <p>QR-kód létrehozása Monero fogadására.</p>
+        <h3>Átnevezés</h3>
+        <p>Tárca átnevezése. A biztonsági mentések nem kerülnek átnevezésre.</p>
+        <h3>Biztonsági mentés</h3>
+        <p>Másolat készítése a tárcáról a <tt>monerujo</tt> alatt található <tt>backups</tt>
+        mappán belül. A korábbi másolatok felülírásra kerülnek.</p>
+        <h3>Archiválás</h3>
+        <p>Biztonsági mentés készítése a tárcáról, majd annak ezt követő törlése. A másolat a
+        <tt>backups</tt> mappában marad. Ha már nincsen szükséged a biztonsági mentéseidre, töröld
+        azokat egy fájlkezelő vagy biztonságos tisztítóapplikáció használatával.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>A tárca</h1>
+        <h2>Beolvasás</h2>
+        Mivel a Monero szereti titokban tartani a dolgokat, így a monerujo-tárca minden egyes megnyitásakor
+        beolvasásra kerül a blokklánc, hogy megnézzük, került-e a tárcádba Monero. Ez csakis olyan információt
+        tárol a telefonodon, mely a tárcádhoz tartozik. Ha már hosszú ideje nem szinkronizáltál, a művelet
+        eltarthat egy ideig.
+        <h2>Az egyenleg</h2>
+        <p><b>Segítség! A tárcaegyenlegem eltűnt vagy függőben van!</b><br/>
+        Ne pánikolj! Amikor pénzt küldesz a tárcádból, az egyenleged egy része átmenetileg függőként
+        fog megjelenni.
+        Ez a Monero blokkláncon való kicserélődési módjának és a visszajáró kezelésének eredményeképp van.
+        Erről részletesen a https://getmonero.org/resources/moneropedia/change.html weboldalon olvashatsz.
+        <h2>Tranzakciólista</h2>
+        <p>A tárcához tartozó tranzakciók listája. A csak megtekintésre szolgáló tárcák esetében kizárólag
+        a bejövő tranzakciók kerülnek megjelenítésre.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Tranzakciórészletek</h1>
+        <h2>Kedvezményezett címe</h2>
+        A tárca nyilvános címe, melyre Monerót küldtél.
+        <h2>Fizetési azonosító</h2>
+        Fizetési azonosítót (Payment ID) használhatsz arra a célra, hogy beazonosítsd, miért történt
+        tranzakció két fél között. Ez teljes mértékben opcionális és privát. A fizetési azonosító például
+        lehetővé teszi egy üzlet számára a tranzakciód és a megvásárolt tételed összeegyeztetését.
+        <h2>Tranzakcióazonosító</h2>
+        A tranzakcióazonosítód (TX ID) szolgál arra, hogy a titkosított tranzakciódat azonosítani tudd
+        egy blokkkeresőben, mint például a <a href="https://xmrchain.net/">https://xmrchain.net/</a>.
+        <h2>Tranzakciókulcs</h2>
+        Ez a tranzakciós privát kulcsod (TX KEY). Tartsd biztonságban, ugyanis harmadik félnek való megmutatása
+        felfedi, hogy egy gyűrűn belül melyik aláírás a tiéd, ezáltal nyílttá téve a tranzakciódat.
+        <h2>Blokk</h2>
+        A blokk, melybe a tranzakciód került.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Küldés</h1>
+        <h2>Kedvezményezett címe</h2>
+        <p>Azon tárca nyilvános címe, melyre Monerót küldesz. Begépelhető kézileg, de akár vágólapról vagy
+        QR-kódból is beilleszthető. Többször is ellenőrizd, hogy biztosan jó címre utalsz-e.</p>
+        <p>Az XMR-küldés mellett BTC-küldésre is lehetőség van az XMR.TO szolgálatatásn keresztül. Részletekért
+        látogass el a https://xmr.to weboldalra és olvasd el a lentebb található BTC-küldés című pontot.</p>
+        <h2>Fizetési azonosító</h2>
+        <p>Fizetési azonosítót (payment ID) használhatsz arra a célra, hogy beazonosítsd, miért történt
+        tranzakció két fél között. Ez teljes mértékben opcionális és privát. A fizetési azonosító például
+        lehetővé teszi egy üzlet számára a tranzakciód és a megvásárolt tételed összeegyeztetését.<p>
+        <h2>Gyűrűméret</h2>
+        <p>A monerujóban több gyűrűméret közül lehet választani. Ha kezdő felhasználó vagy, javasoljuk
+        a 7-es gyűrűméret használatát. A gyűrűméret 7 fölé emelése növeli a gyűrűaláírásban részt vevő
+        aláírók számát, elméletileg megnöveld elfogadható tagadhatóságot biztosítva, azonban a nagy
+        gyűrűtméret használata miatt a tranzakciód kitűnhet a blokkláncon.</p>
+        <h2>Prioritás</h2>
+        <p>Ez a beállítás határozza meg, hogy milyen gyorsan kerül a tranzakciód a blokkláncba.
+        A magasabb prioritás közvetlen kapcsolatban áll a magasabb tranzakciós költséggel, ennek
+        ellentetje pedig a kis prioritás esetén igaz. Vedd figyelembe, hogy alacsony prioritás mellett
+        órahosszákba is telhet mire a tranzakciód a blokkláncba bekerül. Az alapértelmezett prioritás
+        a közepes.</p>
+        <h1>BTC-küldés</h1>
+        <h2>XMR.TO</h2>
+        <p>Az XMR.TO egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az XMR.TO API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://xmr.to weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az XMR.TO-val és nem tudnak segítséget nyújtani a
+        szolgáltatásaikkal kapcsolatban.</p>
+        <h2>XMR.TO árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az XMR.TO szolgáltatás paraméterei. Ez magában
+        foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
+        hogy ez az árfolyam ekkor még nem garantált. Megjelenítésre kerül az a mennyiség is, amely mellett
+        a BTC-tranzakció azonnal megvalósításra kerül XMR-megerősítések nélkül (részletekért olvad el az
+        XMR.TO oldalán a gyakran ismételt kérdéseket). Az XMR.TO nem számol fel extra költségeket - milyen
+        király már ez?</p>
+        <h2>XMR.TO megrendelés<h2>
+        <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
+        érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
+        látottaktól.</p>
+        <h2>XMR.TO titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az XMR.TO titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az XMR.TO kezdőlapján.</p>
+        <p>Kérjük vedd figyelembe, hogy ez a titkos kulcs csak a tranzakció kezdetétől számított
+        24 óráig érvényes!</p>
+        <h2>XMR.TO visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az XMR.TO-tól azáltal, hogy
+        visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>BTC-küldés</h1>
+        <h2>XMR.TO</h2>
+        <p>Az XMR.TO egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az XMR.TO API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://xmr.to weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az XMR.TO-val és nem tudnak segítséget nyújtani a
+        szolgáltatásaikkal kapcsolatban.</p>
+        <h2>XMR.TO árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az XMR.TO szolgáltatás paraméterei. Ez magában
+        foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
+        hogy ez az árfolyam ekkor még nem garantált. Megjelenítésre kerül az a mennyiség is, amely mellett
+        a BTC-tranzakció azonnal megvalósításra kerül XMR-megerősítések nélkül (részletekért olvad el az
+        XMR.TO oldalán a gyakran ismételt kérdéseket). Az XMR.TO nem számol fel extra költségeket - milyen
+        király már ez?</p>
+        <h2>XMR.TO megrendelés<h2>
+        <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
+        érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
+        látottaktól.</p>
+        <h2>XMR.TO titkos kulcs<h2>
+        <p>ivel a monerujo csak a tranzakciód Monero részét kezeli, így az XMR.TO titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az XMR.TO kezdőlapján.</p>
+        <p>Kérjük vedd figyelembe, hogy ez a titkos kulcs csak a tranzakció kezdetétől számított
+        24 óráig érvényes!</p>
+        <h2>XMR.TO visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az XMR.TO-tól azáltal, hogy
+        visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
+    ]]></string>
+
+</resources>
