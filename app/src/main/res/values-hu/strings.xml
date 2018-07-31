@@ -1,0 +1,322 @@
+<resources>
+    <string name="wallet_activity_name">Tárca</string>
+
+    <string name="menu_about">Névjegy</string>
+    <string name="menu_privacy">Adatvédelem</string>
+
+    <string name="menu_share">Megosztás</string>
+    <string name="menu_help">Segítség</string>
+    <string name="menu_info">Részletek</string>
+    <string name="menu_receive">Fogadás</string>
+    <string name="menu_rename">Átnevezés&#8230;</string>
+    <string name="menu_archive">Archiválás</string>
+    <string name="menu_backup">Biztonsági mentés</string>
+    <string name="menu_changepw">Jelszómódosítás</string>
+
+    <string name="password_weak">Folytasd a gépelést&#8230;</string>
+    <string name="password_fair">Ehh&#8230;</string>
+    <string name="password_good">Gyerünk, tudsz ennél jobbat!</string>
+    <string name="password_strong">Alakul&#8230;</string>
+    <string name="password_very_strong">Ez igen, h4ck3r stílus!</string>
+
+    <string name="label_login_wallets">Tárcák</string>
+    <string name="label_credits">Készítők</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">Mégsem</string>
+    <string name="label_close">Bezárás</string>
+    <string name="label_wallet_advanced_details">Koppints a részletes informcáióért</string>
+
+    <string name="label_send_success">Sikeresen elküldve</string>
+    <string name="label_send_done">Kész</string>
+
+    <string name="label_receive_info_gen_qr_code">Koppints a QR-kódért</string>
+    <string name="info_send_prio_fees">Magasabb prioritás = magasabb tranzakciós díj</string>
+
+    <string name="info_xmrto_enabled">BTC fizetés engedélyezve, koppints ide a részletekért.</string>
+    <string name="info_crazypass_enabled">CrAzYpass engedélyezve, koppints ide a részletekért</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>Bitcoin-címet adtál meg.</b><br/>
+        <i>XMR-t fogsz küldeni, a fogadó pedig BTC-t fog kapni az <b>XMR.TO</b> szolgáltatásán keresztül.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO megrendelés</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+
+    <string name="info_send_xmrto_paid">Megerősítés folyamatban</string>
+    <string name="info_send_xmrto_unpaid">Kifizetés folyamatban</string>
+    <string name="info_send_xmrto_error">XMR.TO-hiba (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC elküldve!</string>
+    <string name="info_send_xmrto_query">Lekérdezés&#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>Elküldhetsz: %1$s &#8212; %2$s BTC</b>.<br/>
+        <i>Az <b>XMR.TO</b> <u>aktuális</u> árfolyama: <b>%3$s BTC</b></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>A legfeljebb <b>%1$s BTC</b> nagyságú összegek <u>azonnal</u> elküldésre kerülnek!</i>
+    ]]></string>
+
+    <string name="send_available_btc">Egyenleg: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">Fizetési azonosító integrálva</string>
+    <string name="info_prepare_tx">Tranzakció előkészítése</string>
+
+    <string name="label_send_progress_xmrto_create">XMR.TO megrendelés létrehozása</string>
+    <string name="label_send_progress_xmrto_query">XMR.TO megrendelés lekérdezése</string>
+    <string name="label_send_progress_create_tx">Monero-tranzakció előkészítése</string>
+
+    <string name="label_send_progress_queryparms">XMR.TO paraméterek lekérdezése</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO HIBA</string>
+    <string name="text_generic_xmrto_error">Kód: %1$d</string>
+
+    <string name="text_retry">Koppints az újrapróbálkozáshoz</string>
+    <string name="text_noretry_monero">Itt most elakadtunk!</string>
+    <string name="text_noretry">Ajjaj! Úgy néz ki, az XMR.TO most nem elérhető!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Arány: %1$s BTC/XMR)</string>
+
+    <string name="label_send_settings_advanced">Haladó:</string>
+
+    <string name="label_send_btc_xmrto_info">Segítségért és nyomonkövetésért látogass el az XMR.TO weboldalra</string>
+    <string name="label_send_btc_xmrto_key_lb">Titkos kulcs\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO titkos kulcs</string>
+    <string name="label_send_btc_address">Kedvezményezett BTC-címe</string>
+    <string name="label_send_btc_amount">Mennyiség</string>
+
+    <string name="label_send_txid">Tranzakcióazonosító</string>
+    <string name="label_send_address">Kedvezményezett címe</string>
+    <string name="label_send_payment_id">Fizetési azonosító</string>
+    <string name="label_send_notes">Közlemény</string>
+
+    <string name="backup_progress">Biztonsági mentés folyamatban</string>
+    <string name="archive_progress">Archiválás folyamatban</string>
+    <string name="rename_progress">Átnevezés folyamatban</string>
+    <string name="open_progress">Daemon-kapcsolat ellenőrzése</string>
+    <string name="changepw_progress">Jelszómódosítás folyamatban</string>
+
+    <string name="service_progress">Műveletek befejezése&#8230;\nEz eltarthat egy ideig!</string>
+
+    <string name="backup_failed">Sikertelen biztonsági mentés!</string>
+    <string name="archive_failed">Sikertelen archiválás!</string>
+    <string name="rename_failed">Sikertelen átnevezés!</string>
+    <string name="changepw_failed">Sikertelen jelszómódosítás!</string>
+    <string name="changepw_success">Jelszó megváltoztatva</string>
+
+    <string name="label_daemon">Csomópont</string>
+    <string name="prompt_daemon">([&lt;felhasználó&gt;:&lt;jelszó&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="status_wallet_loading">Tárca betöltése&#8230;</string>
+    <string name="status_wallet_unloaded">Tárca mentve</string>
+    <string name="status_wallet_unload_failed">Sikertelen mentés!</string>
+    <string name="status_wallet_connecting">Kapcsolódás&#8230;</string>
+    <string name="status_wallet_connect_failed">Sikertelen kapcsolódás.\nEllenőrizd a felhasználónevet és jelszót.</string>
+    <string name="status_wallet_connect_timeout">A kapcsolódás időtúllépés miatt megszakadt.\nPróbáld újra vagy próbálkozz egy másikkal.</string>
+    <string name="status_wallet_node_invalid">Érvénytelen csomópont!\nPróbálkozz egy másikkal.</string>
+    <string name="status_wallet_connect_ioex">Nem lehet elérni a csomópontot!\nPróbáld újra vagy próbálkozz egy másikkal.</string>
+
+    <string name="status_wallet_disconnected">Szétkapcsolva</string>
+
+    <string name="status_transaction_failed">Sikertelen tranzakció: %1$s</string>
+
+    <string name="send_xmrto_timeout">Túl sokat vártál, barátom!</string>
+
+    <string name="service_busy">Még az előző tárcáddal vagyok elfoglalva&#8230;</string>
+
+    <string name="prompt_rename">%1$s átnevezése</string>
+
+    <string name="prompt_changepw">A(z) %1$s tárca új jelszava</string>
+    <string name="prompt_changepwB">Ismételd meg a(z) %1$s tárca új jelszavát</string>
+    <string name="prompt_password">A(z) %1$s tárca jelszava</string>
+    <string name="prompt_fingerprint_auth">Ujjlenyomattal is megnyithatod a tárcát.\nKérlek, érintsd meg a szenzort.</string>
+    <string name="prompt_send_password">Jelszó megerősítése</string>
+    <string name="prompt_open_wallet">Tárca megnyitása&#8230;</string>
+    <string name="bad_fingerprint">Az ujjlenyomat nem felismerhető. Próbáld újra.</string>
+    <string name="bad_password">Helytelen jelszó!</string>
+    <string name="bad_saved_password">Az elmentett jelszó helytelen.\nKérlek, add meg a jelszót manuálisan.</string>
+    <string name="bad_wallet">A tárca nem létezik!</string>
+    <string name="prompt_daemon_missing">A daemon címét meg kell adni!</string>
+    <string name="prompt_wrong_net">A tárcához nem a megfelelő hálózat van kiválasztva</string>
+
+    <string name="label_watchonly">(csak megtekintés)</string>
+
+    <string name="label_wallet_receive">Fogadás</string>
+    <string name="label_wallet_send">Küldés</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR függőben</string>
+
+    <string name="service_description">monerujo szolgáltatás</string>
+
+    <string name="status_synced">Szinkronizálva:</string>
+    <string name="status_remaining">blokk van hátra</string>
+    <string name="status_syncing">Beolvasás:</string>
+
+    <string name="message_strorage_not_writable">A külső tárhely nem írható! Pánik!</string>
+    <string name="message_strorage_not_permitted">Nagyon szükségünk van a külső tárhely engedélyeire!</string>
+    <string name="message_camera_not_permitted">Ha nincs kamera, nincs QR-kód beolvasás sem!</string>
+
+    <string name="label_copy_viewkey">Figyelőkulcs</string>
+    <string name="label_copy_address">Nyilvános cím</string>
+    <string name="label_copy_xmrtokey">XMR.TO kulcs</string>
+    <string name="message_copy_viewkey">Figyelőkulcs vágólapra másolva!</string>
+    <string name="message_copy_xmrtokey">XMR.TO kulcs vágólapra másolva!</string>
+    <string name="message_copy_address">Tárcacím vágólapra másolva!</string>
+    <string name="message_copy_txid">Tranzakcióazonosító vágólapra másolva!</string>
+    <string name="message_nocopy">A másolás biztonsági okokból tiltásra került!</string>
+
+    <string name="message_exchange_failed">Nem sikerült az árfolyam lekérése!\nHasználj XMR/XMR-t vagy próbáld újra</string>
+
+    <string name="generate_title">Tárcalétrehozás</string>
+    <string name="generate_name_hint">Tárca neve</string>
+    <string name="generate_password_hint">Tárca jelszava</string>
+    <string name="generate_fingerprint_hint">Tárca ujjlenyomattal való megnyitásának engedélyezése</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Ujjlenyomat-azonosítás</strong>
+        <p>Az ujjlenyomat-azonosítás engedélyezésével jelszó megadása nélkül tekintheted meg a
+        tárcaegyenleget és fogadhatsz pénzösszegeket.</p>
+        <p>A további biztonság érdekében ugyanakkor a monerujo továbbra is jelszót fog kérni a
+        tárca részletes adatainak megtekintése és a pénzküldés esetén.</p>
+        <strong>Biztonsági figyelmeztetés</strong>
+        <p>A monerujo felhívja a figyelmed arra, hogy az ujjlenyomatoddal rendelkező személy(ek)
+        megtekinthetik a tárcaegyenleged.</p>
+        <p>Egy rosszhiszemű személy például megnyithatja a tárcádat míg te alszol.</p>
+        <strong>Biztosan engedélyezni szeretnéd ezt a funckiót?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">A jelszavak nem egyeznek</string>
+    <string name="generate_empty_passwordB">A jelszó nem lehet üres</string>
+    <string name="generate_buttonGenerate">Legyen kész a tárcám!</string>
+    <string name="generate_button_accept">Lejegyeztem a mnemonikus magot</string>
+
+    <string name="generate_wallet_name">Nevezz el!</string>
+    <string name="generate_wallet_exists">Már létezik ez a tárca!</string>
+    <string name="generate_wallet_dot">Nem kezdődhet ponttal.</string>
+    <string name="generate_wallet_creating">Tárca létrehozása</string>
+    <string name="generate_wallet_created">Tárca létrehozva</string>
+    <string name="generate_wallet_create_failed">Sikertelen tárcalétrehozás</string>
+
+    <string name="generate_restoreheight_error">Számot vagy dátumot (ÉÉÉÉ-HH-NN) adj meg</string>
+
+    <string name="generate_wallet_type_key">Kulcsok</string>
+    <string name="generate_wallet_type_new">Új</string>
+    <string name="generate_wallet_type_seed">Mag</string>
+    <string name="generate_wallet_type_view">Figyelőtárca</string>
+
+    <string name="generate_address_hint">Nyilvános cím</string>
+    <string name="generate_viewkey_hint">Figyelőkulcs</string>
+    <string name="generate_spendkey_hint">Költőkulcs</string>
+    <string name="generate_mnemonic_hint">25 szavas mnemonikus mag</string>
+    <string name="generate_restoreheight_hint">Visszaállítási lánchossz vagy dátum (ÉÉÉÉ-HH-NN)</string>
+
+    <string name="generate_address_label">Nyilvános cím</string>
+    <string name="generate_viewkey_label">Figyelőkulcs</string>
+    <string name="generate_spendkey_label">Költőkulcs</string>
+    <string name="generate_mnemonic_label">Mnemonikus mag</string>
+    <string name="generate_crazypass_label">Tárcafájl-visszaállító jelszó</string>
+
+    <string name="generate_check_key">Adj meg egy valós kulcsot</string>
+    <string name="generate_check_address">Adj meg egy valós címet</string>
+    <string name="generate_check_mnemonic">Add meg a 25 szavas magod</string>
+
+    <string name="send_amount_btc_xmr">%1$s (előrejelzés)</string>
+
+    <string name="send_address_hint">Kedvezményezett XMR vagy BTC címe</string>
+    <string name="send_paymentid_hint">Fizetési azonosító (opcionális)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">Privát közlemény (opcionális)</string>
+    <string name="send_generate_paymentid_hint">Generálás</string>
+    <string name="send_qr_hint">Beolvasás</string>
+    <string name="send_send_label">Édes, drága Monero elköltése</string>
+    <string name="send_send_timed_label">Édes, drága Monero elköltése (%1$s)</string>
+    <string name="send_qr_invalid">Ez nem egy QR-kód</string>
+    <string name="send_address_invalid">Érvénytelen cím</string>
+    <string name="send_qr_address_invalid">Érvénytelen QR-kód</string>
+    <string name="send_title">Küldés</string>
+    <string name="send_available">Egyenleg: %1$s XMR</string>
+    <string name="send_address_title">Cím</string>
+    <string name="send_amount_title">Mennyiség</string>
+    <string name="send_settings_title">Beállítások</string>
+    <string name="send_confirm_title">Megerősítés</string>
+    <string name="send_success_title">Kész</string>
+
+    <string name="send_amount_label">Mennyiség</string>
+    <string name="send_fee_btc_label">Díj (XMR)</string>
+    <string name="send_fee_label">Díj</string>
+    <string name="send_total_btc_label">Összesen (XMR)</string>
+    <string name="send_total_label">Összesen</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s díj</string>
+
+    <string name="send_create_tx_error_title">Tranzakciólétrehozási hiba</string>
+
+    <string name="tx_list_fee">- %1$s díj</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">sikertelen</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Időbélyeg</string>
+    <string name="tx_id">Tranzakcióazonosító</string>
+    <string name="tx_key">Tranzkaciós kulcs</string>
+    <string name="tx_destination">Cél</string>
+    <string name="tx_destination_btc">Cél\n(BTC)</string>
+    <string name="tx_paymentId">Fizetési azonosító</string>
+    <string name="tx_blockheight">Blokk</string>
+    <string name="tx_amount">Mennyiség</string>
+    <string name="tx_amount_btc">Mennyiség\n(BTC)</string>
+    <string name="tx_fee">Díj</string>
+    <string name="tx_transfers">Transzferek</string>
+    <string name="tx_notes">Közlemény</string>
+    <string name="tx_notes_hint">(opcionális)</string>
+    <string name="tx_button_notes">Mentés</string>
+    <string name="tx_notes_set_failed">A közlemény mentése sikertelen</string>
+    <string name="tx_title">Tranzakciórészletek</string>
+
+    <string name="tx_pending">FÜGGŐBEN</string>
+    <string name="tx_failed">SIKERTELEN</string>
+
+    <string name="receive_paymentid_hint">Fizetési azonosító (opcionális)</string>
+    <string name="receive_amount_hint">Mennyiség</string>
+    <string name="receive_cannot_open">Nem sikerült megnyitni a tárcát!</string>
+    <string name="receive_paymentid_invalid">16 vagy 64 hexadecimális karakter (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">Integrált cím esetén üresnek kell lennie</string>
+
+    <string name="receive_amount_too_big">Max. %1$s</string>
+    <string name="receive_amount_negative">Min. 0</string>
+    <string name="receive_amount_nan">XMR nem egy szám</string>
+
+    <string name="receive_title">Fogadás</string>
+
+    <string name="details_alert_message">Bizalmas adatok kerülnek megjelenítésre.\nBizonyosodj meg róla, hogy más nem látja!</string>
+    <string name="details_alert_yes">Mehet</string>
+    <string name="details_alert_no">Inkább ne!</string>
+    <string name="details_title">Részletek</string>
+
+    <string name="archive_alert_message">A tárcáról biztonsági másolat készül, majd törlésre fog kerülni!</string>
+    <string name="archive_alert_yes">Igen, mehet!</string>
+    <string name="archive_alert_no">Inkább ne!</string>
+
+    <string-array name="priority">
+        <item>Alapértelmezett prioritás</item>
+        <item>Alacsony prioritás</item>
+        <item>Közepes prioritás</item>
+        <item>Magas prioritás</item>
+    </string-array>
+
+    <string name="fab_create_new">Új tárca létrehozása</string>
+    <string name="fab_restore_viewonly">Figyelőtárca visszaállítása</string>
+    <string name="fab_restore_key">Visszaállítás privát kulcsokkal</string>
+    <string name="fab_restore_seed">Visszaállítás mnemonikus maggal</string>
+
+    <string name="accounts_drawer_new">Számla létrehozása</string>
+    <string name="accounts_drawer_title">Számlák</string>
+    <string name="accounts_new">Új számla hozzáadva (#%1$d)</string>
+    <string name="tx_account">Számla #</string>
+
+    <string name="send_sweepall">Teljes megerősített egyenleg küldése!</string>
+    <string name="tx_subaddress">Alcím #%1$d</string>
+    <string name="generate_address_label_sub">Nyilvános alcím #%1$d</string>
+</resources>
