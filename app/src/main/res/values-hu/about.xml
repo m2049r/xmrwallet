@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Bezárás</string>
+    <string name="about_whoami">Monerujo vagyok</string>
+    <string name="about_version">Verzió: %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Készítők</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Adatvédelmi irányelvek</h1>
+        <p>Ez az oldal nyújt tájékoztatást az applikációnkat (monerujo: Monero pénztárca)
+        használók személyes információinak gyűjtésére, felhasználására és közzétételére
+        vonatkozó irányelveinkről.
+        </p>
+        <p>Az applikáció használatával elfogadod az ezen irányelveknek megfelelő
+        információgyűjtést és azok felhasználását.
+        </p>
+        <h2>Gyűjtött adatok</h2>
+        <p>Személyes adat bármi olyan adat, mely személyazonosításra alkalmas.
+        </p>
+        <p>A Monero-kulcsok és a nyilvános címek az applikáció által helyileg kerülnek
+        összegyűjtésre és feldolgozásra a tranzakciók lebonyolítása céljából, majd ezek
+        titkosított formában kerülnek továbbításra a Monero hálózatába.
+        </p>
+        <p>Más személyes adatot nem gyűjt az applikáció.</p>
+        <p>Az átváltási funkció (opcionális) használata esetén a monerujo a coinmarketcap.com
+        nyilvános API-ján keresztül kéri le az árfolyamot.
+        A kéréseid során történő adatgyűjtés módjával kapcsolatban tekintsd meg az adatvédelmi
+        irányelveiket a https://coinmarketcap.com/privacy weboldalon.</p>
+        <p>Ha BTC-címekre való fizetésre használod az applikációt, akkor az XMR.TO szolgáltatását
+        használod. Részletes adatvédelmi irányelveiket a https://xmr.to/ weboldalon tekintheted meg.
+        A monerujo számukra a kedvezményezett BTC-címet és a küldeni kívánt mennyiséget közli meg,
+        ám az IP-címed is begyűjthető.</p>
+        <h2>Applikációengedélyek</h2>
+        <ul>
+        <li>INTERNET : csatlakozás a Monero-hálózathoz egy Monero daemon csomóponton keresztül</li>
+        <li>READ_EXTERNAL_STORAGE : az eszközön tárolt tárcafájlok olvasása</li>
+        <li>WRITE_EXTERNAL_STORAGE : az eszközön tárolt tárcafájlok írása</li>
+        <li>WAKE_LOCK : az eszköz ébren tartása szinkronizálás közben</li>
+        <li>CAMERA : QR-kódok beolvasása Monero fogadásához</li>
+        </ul>
+        <h2>Az adatvédelmi irányelvek módosításai</h2>
+        <p>Az adatvédelmi irányelveket időnként frissíthetjük. Bármiféle módosításról
+        értesíteni fogunk az új adatvédelmi irányelvek applikációban és weboldalon (www.monerujo.io)
+        történő közzétételével.
+        Javasolt az adatvédelmi irányelvek időközönkénti átolvasása a változásokról való értesülés céljából.
+        <p>Az adatvédelmi irányelvek legutolsó frissítése: 2017. november 10.
+        </p>
+        <h2>Lépj kapcsolatba velünk</h2>
+        <p>Ha bármilyen kérdésed merül fel az adatvédelmi irányelveinkkel vagy az adatok
+        gyűjtésével és feldolgozásával kapcsolatban, úgy kérlek, írj e-mailt a privacy@monerujo.io címre.
+        </p>
+        ]]></string>
+</resources>
