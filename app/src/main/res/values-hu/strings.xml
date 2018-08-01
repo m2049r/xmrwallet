@@ -32,7 +32,7 @@
     <string name="label_receive_info_gen_qr_code">Koppints a QR-kódért</string>
     <string name="info_send_prio_fees">Magasabb prioritás = magasabb tranzakciós díj</string>
 
-    <string name="info_xmrto_enabled">BTC fizetés engedélyezve, koppints ide a részletekért.</string>
+    <string name="info_xmrto_enabled">BTC fizetés engedélyezve, koppints ide a részletekért</string>
     <string name="info_crazypass_enabled">CrAzYpass engedélyezve, koppints ide a részletekért</string>
 
     <string name="info_xmrto"><![CDATA[
