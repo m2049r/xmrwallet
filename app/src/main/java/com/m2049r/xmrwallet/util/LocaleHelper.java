@@ -12,29 +12,18 @@ import java.util.HashSet;
 import java.util.Locale;
 
 public class LocaleHelper {
+    public static final int COMPARED_RESOURCE_ID = R.string.language;
+
     private static final String PREFERRED_LOCALE_KEY = "preferred_locale";
     private static Locale SYSTEM_DEFAULT_LOCALE = Locale.getDefault();
 
     public static ArrayList<Locale> getAvailableLocales(Context context) {
         ArrayList<Locale> locales = new ArrayList<>();
         HashSet<String> localizedStrings = new HashSet<>();
-        int compareResId = R.string.menu_about;
 
-        // Application default locale
-        locales.add(Locale.ENGLISH);
-        localizedStrings.add(getLocaleString(context, Locale.ENGLISH, compareResId));
-
-        // Locale with region
-        locales.add(Locale.CHINA);
-        localizedStrings.add(getLocaleString(context, Locale.CHINA, compareResId));
-
-        locales.add(Locale.TAIWAN);
-        localizedStrings.add(getLocaleString(context, Locale.TAIWAN, compareResId));
-
-        // Enumerate supported locales and add translated ones
         for (String localeName : context.getAssets().getLocales()) {
             Locale locale = Locale.forLanguageTag(localeName);
-            String localizedString = getLocaleString(context, locale, compareResId);
+            String localizedString = getLocaleString(context, locale, COMPARED_RESOURCE_ID);
 
             if (localizedStrings.add(localizedString)) {
                 locales.add(locale);
@@ -66,7 +55,7 @@ public class LocaleHelper {
         SYSTEM_DEFAULT_LOCALE = locale;
     }
 
-    private static String getLocaleString(Context context, Locale locale, int resId) {
+    public static String getLocaleString(Context context, Locale locale, int resId) {
         Configuration configuration = context.getResources().getConfiguration();
         configuration.setLocale(locale);
         return context.createConfigurationContext(configuration).getString(resId);

@@ -972,21 +972,24 @@ public class LoginActivity extends SecureActivity
         Collections.sort(translatedLocales, new Comparator<Locale>() {
             @Override
             public int compare(Locale locale1, Locale locale2) {
-                return locale1.getDisplayName(locale1).compareTo(locale2.getDisplayName(locale2));
+                String localeString1 = LocaleHelper.getLocaleString(LoginActivity.this, locale1, LocaleHelper.COMPARED_RESOURCE_ID);
+                String localeString2 = LocaleHelper.getLocaleString(LoginActivity.this, locale2, LocaleHelper.COMPARED_RESOURCE_ID);
+                return localeString1.compareTo(localeString2);
             }
         });
 
         localeDisplayName[0] = getString(R.string.language_system_default);
         for (int i = 1; i < localeDisplayName.length; i++) {
             Locale locale = translatedLocales.get(i - 1);
-            localeDisplayName[i] = locale.getDisplayName(locale);
+            localeDisplayName[i] = LocaleHelper.getLocaleString(LoginActivity.this, locale, LocaleHelper.COMPARED_RESOURCE_ID);
         }
 
         int currentLocaleIndex = 0;
         String currentLocaleName = LocaleHelper.getLocale(LoginActivity.this);
         if (!currentLocaleName.isEmpty()) {
             Locale currentLocale = Locale.forLanguageTag(currentLocaleName);
-            currentLocaleIndex = Arrays.asList(localeDisplayName).indexOf(currentLocale.getDisplayName(currentLocale));
+            String currentLocalizedString = LocaleHelper.getLocaleString(LoginActivity.this, currentLocale, LocaleHelper.COMPARED_RESOURCE_ID);
+            currentLocaleIndex = Arrays.asList(localeDisplayName).indexOf(currentLocalizedString);
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
