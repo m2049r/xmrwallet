@@ -321,7 +321,6 @@
     <string name="tx_subaddress">Субадрес #%1$d</string>
     <string name="generate_address_label_sub">Публичный субадрес #%1$d</string>
 
-    <string name="language">Русский</string>
     <string name="menu_language">Language</string>
     <string name="language_system_default">Use System Language</string>
 </resources>

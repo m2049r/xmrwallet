@@ -45,8 +45,17 @@ android {
     // Map for the version code that gives each ABI a value.
     def abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, 'x86': 3, 'x86_64': 4]
 
+    // Enumerate translated locales
+    def translatedLocales = ["en"]
+    new File("app/src/main/res/").eachFileMatch(~/^values-.*/) { file ->
+        def languageTag = file.name.substring(7).replace("-r", "-")
+        translatedLocales.add(languageTag)
+    }
+
     // APKs for the same app that all have the same version information.
     android.applicationVariants.all { variant ->
+        // Update string resource: translated_locales
+        variant.resValue("string", "translated_locales", translatedLocales.join(","))
         // Assigns a different version code for each output APK.
         variant.outputs.all {
             output ->
