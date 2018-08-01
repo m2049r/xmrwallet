@@ -509,6 +509,12 @@ public class Helper {
                 }
 
                 @Override
+                public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
+                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icError, null, null, null);
+                    tvOpenPrompt.setText(helpString);
+                }
+
+                @Override
                 public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
                     try {
                         String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);

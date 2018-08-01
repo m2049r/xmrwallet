@@ -391,16 +391,24 @@ public class GenerateFragment extends Fragment {
             // is it a date?
             SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
             parser.setLenient(false);
-            parser.parse(restoreHeight);
-            height = RestoreHeight.getInstance().getHeight(restoreHeight);
-        } catch (ParseException exPE) {
+            height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
+        } catch (ParseException ex) {
+        }
+        if (height <= 0)
+            try {
+                // is it a date without dashes?
+                SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
+                parser.setLenient(false);
+                height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
+            } catch (ParseException ex) {
+            }
+        if (height <= 0)
             try {
                 // or is it a height?
                 height = Long.parseLong(restoreHeight);
-            } catch (NumberFormatException exNFE) {
+            } catch (NumberFormatException ex) {
                 return -1;
             }
-        }
         Timber.d("Using Restore Height = %d", height);
         return height;
     }
