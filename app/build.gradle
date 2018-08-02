@@ -46,7 +46,7 @@ android {
     def abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, 'x86': 3, 'x86_64': 4]
 
     // Enumerate translated locales
-    def translatedLocales = ["en"]
+    def translatedLocales = []
     new File("app/src/main/res/").eachFileMatch(~/^values-.*/) { file ->
         def languageTag = file.name.substring(7).replace("-r", "-")
         translatedLocales.add(languageTag)

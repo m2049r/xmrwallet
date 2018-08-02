@@ -966,10 +966,10 @@ public class LoginActivity extends SecureActivity
     }
 
     public void onChangeLocale() {
-        final ArrayList<Locale> translatedLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
-        String[] localeDisplayName = new String[1 + translatedLocales.size()];
+        final ArrayList<Locale> availableLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
+        String[] localeDisplayName = new String[1 + availableLocales.size()];
 
-        Collections.sort(translatedLocales, new Comparator<Locale>() {
+        Collections.sort(availableLocales, new Comparator<Locale>() {
             @Override
             public int compare(Locale locale1, Locale locale2) {
                 String localeString1 = LocaleHelper.getDisplayName(locale1, true);
@@ -980,7 +980,7 @@ public class LoginActivity extends SecureActivity
 
         localeDisplayName[0] = getString(R.string.language_system_default);
         for (int i = 1; i < localeDisplayName.length; i++) {
-            Locale locale = translatedLocales.get(i - 1);
+            Locale locale = availableLocales.get(i - 1);
             localeDisplayName[i] = LocaleHelper.getDisplayName(locale, true);
         }
 
@@ -1000,7 +1000,7 @@ public class LoginActivity extends SecureActivity
                 dialog.dismiss();
 
                 LocaleHelper.setLocale(LoginActivity.this,
-                        (i == 0) ? "" : translatedLocales.get(i - 1).toLanguageTag());
+                        (i == 0) ? "" : availableLocales.get(i - 1).toLanguageTag());
                 startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
