@@ -320,6 +320,6 @@
     <string name="tx_subaddress">Alcím #%1$d</string>
     <string name="generate_address_label_sub">Nyilvános alcím #%1$d</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Nyelv</string>
+    <string name="language_system_default">Rendszernyelv használata</string>
 </resources>
