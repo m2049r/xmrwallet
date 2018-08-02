@@ -12,25 +12,28 @@ import java.util.HashSet;
 import java.util.Locale;
 
 public class LocaleHelper {
-    public static final int COMPARED_RESOURCE_ID = R.string.language;
-
     private static final String PREFERRED_LOCALE_KEY = "preferred_locale";
     private static Locale SYSTEM_DEFAULT_LOCALE = Locale.getDefault();
 
     public static ArrayList<Locale> getAvailableLocales(Context context) {
         ArrayList<Locale> locales = new ArrayList<>();
-        HashSet<String> localizedStrings = new HashSet<>();
+        String[] availableLocales = context.getString(R.string.available_locales).split(",");
 
-        for (String localeName : context.getAssets().getLocales()) {
-            Locale locale = Locale.forLanguageTag(localeName);
-            String localizedString = getLocaleString(context, locale, COMPARED_RESOURCE_ID);
-
-            if (localizedStrings.add(localizedString)) {
-                locales.add(locale);
-            }
+        for (String localeName : availableLocales) {
+            locales.add(Locale.forLanguageTag(localeName));
         }
 
         return locales;
+    }
+
+    public static String getDisplayName(Locale locale, boolean sentenceCase) {
+        String displayName = locale.getDisplayName(locale);
+
+        if (sentenceCase) {
+            displayName = toSentenceCase(displayName, locale);
+        }
+
+        return displayName;
     }
 
     public static String getLocale(Context context) {
@@ -55,10 +58,14 @@ public class LocaleHelper {
         SYSTEM_DEFAULT_LOCALE = locale;
     }
 
-    public static String getLocaleString(Context context, Locale locale, int resId) {
-        Configuration configuration = context.getResources().getConfiguration();
-        configuration.setLocale(locale);
-        return context.createConfigurationContext(configuration).getString(resId);
+    private static String toSentenceCase(String str, Locale locale) {
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        int firstCodePointLen = str.offsetByCodePoints(0, 1);
+        return str.substring(0, firstCodePointLen).toUpperCase(locale)
+                + str.substring(firstCodePointLen);
     }
 
     private static String getPreferredLocale(Context context) {

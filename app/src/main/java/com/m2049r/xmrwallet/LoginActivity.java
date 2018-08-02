@@ -966,29 +966,29 @@ public class LoginActivity extends SecureActivity
     }
 
     public void onChangeLocale() {
-        final ArrayList<Locale> translatedLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
-        String[] localeDisplayName = new String[1 + translatedLocales.size()];
+        final ArrayList<Locale> availableLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
+        String[] localeDisplayName = new String[1 + availableLocales.size()];
 
-        Collections.sort(translatedLocales, new Comparator<Locale>() {
+        Collections.sort(availableLocales, new Comparator<Locale>() {
             @Override
             public int compare(Locale locale1, Locale locale2) {
-                String localeString1 = LocaleHelper.getLocaleString(LoginActivity.this, locale1, LocaleHelper.COMPARED_RESOURCE_ID);
-                String localeString2 = LocaleHelper.getLocaleString(LoginActivity.this, locale2, LocaleHelper.COMPARED_RESOURCE_ID);
+                String localeString1 = LocaleHelper.getDisplayName(locale1, true);
+                String localeString2 = LocaleHelper.getDisplayName(locale2, true);
                 return localeString1.compareTo(localeString2);
             }
         });
 
         localeDisplayName[0] = getString(R.string.language_system_default);
         for (int i = 1; i < localeDisplayName.length; i++) {
-            Locale locale = translatedLocales.get(i - 1);
-            localeDisplayName[i] = LocaleHelper.getLocaleString(LoginActivity.this, locale, LocaleHelper.COMPARED_RESOURCE_ID);
+            Locale locale = availableLocales.get(i - 1);
+            localeDisplayName[i] = LocaleHelper.getDisplayName(locale, true);
         }
 
         int currentLocaleIndex = 0;
         String currentLocaleName = LocaleHelper.getLocale(LoginActivity.this);
         if (!currentLocaleName.isEmpty()) {
             Locale currentLocale = Locale.forLanguageTag(currentLocaleName);
-            String currentLocalizedString = LocaleHelper.getLocaleString(LoginActivity.this, currentLocale, LocaleHelper.COMPARED_RESOURCE_ID);
+            String currentLocalizedString = LocaleHelper.getDisplayName(currentLocale, true);
             currentLocaleIndex = Arrays.asList(localeDisplayName).indexOf(currentLocalizedString);
         }
 
@@ -1000,7 +1000,7 @@ public class LoginActivity extends SecureActivity
                 dialog.dismiss();
 
                 LocaleHelper.setLocale(LoginActivity.this,
-                        (i == 0) ? "" : translatedLocales.get(i - 1).toLanguageTag());
+                        (i == 0) ? "" : availableLocales.get(i - 1).toLanguageTag());
                 startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
