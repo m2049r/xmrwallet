@@ -143,8 +143,8 @@
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Empfangen</string>
-    <string name="label_wallet_send">Senden</string>
+    <string name="label_wallet_receive">Empfange</string>
+    <string name="label_wallet_send">Sende</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
 
@@ -305,10 +305,10 @@
         <item>Priorität Hoch</item>
     </string-array>
 
-    <string name="fab_create_new">Neue Wallet erstellen</string>
+    <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
-    <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
-    <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
+    <string name="fab_restore_key">Mit privaten Schlüsseln wiederherstellen</string>
+    <string name="fab_restore_seed">Mit 25 Wörter Seed wiederherstellen</string>
 
     <string name="accounts_drawer_new">Konto erstellen</string>
     <string name="accounts_drawer_title">Konten</string>
