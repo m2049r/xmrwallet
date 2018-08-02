@@ -17,11 +17,9 @@ public class LocaleHelper {
 
     public static ArrayList<Locale> getAvailableLocales(Context context) {
         ArrayList<Locale> locales = new ArrayList<>();
-        String[] translatedLocales = context.getString(R.string.translated_locales).split(",");
+        String[] availableLocales = context.getString(R.string.available_locales).split(",");
 
-        locales.add(Locale.ENGLISH);
-
-        for (String localeName : translatedLocales) {
+        for (String localeName : availableLocales) {
             locales.add(Locale.forLanguageTag(localeName));
         }
 
