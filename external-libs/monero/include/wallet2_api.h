@@ -802,6 +802,12 @@ struct Wallet
     
     //! Initiates a light wallet import wallet request
     virtual bool lightWalletImportWalletRequest(std::string &payment_id, uint64_t &fee, bool &new_request, bool &request_fulfilled, std::string &payment_address, std::string &status) = 0;
+
+    /*!
+     * \brief Queries if the wallet keys are on a hardware device
+     * \return true if they are
+     */
+    virtual bool isKeyOnDevice() const = 0;
 };
 
 /**
@@ -974,6 +980,17 @@ struct WalletManager
      * @return - true if password is correct
      */
     virtual bool verifyWalletPassword(const std::string &keys_file_name, const std::string &password, bool no_spend_key) const = 0;
+
+    /*!
+     * \brief determine the key storage for the specified wallet file
+     * \param keys_file_name  Keys file to verify password for
+     * \param password        Password to verify
+     * \return                -1: incorrect password, 0 = default hw, 1 ledger hw
+     *
+     * for verification only - determines key storage hardware
+     *
+     */
+    virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 
     /*!
      * \brief findWallets - searches for the wallet files by given path name recursively

@@ -47,6 +47,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -62,7 +63,6 @@ import timber.log.Timber;
 public class ReceiveFragment extends Fragment {
 
     private ProgressBar pbProgress;
-    private View llAddress;
     private TextView tvAddressLabel;
     private TextView tvAddress;
     private TextInputLayout etPaymentId;
@@ -93,7 +93,6 @@ public class ReceiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
-        llAddress = view.findViewById(R.id.llAddress);
         tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
         etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
@@ -177,23 +176,9 @@ public class ReceiveFragment extends Fragment {
                 enableSubaddressButton(false);
                 enableCopyAddress(false);
 
-                final Runnable resetSize = new Runnable() {
-                    public void run() {
-                        tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
-                    }
-                };
-
                 final Runnable newAddress = new Runnable() {
                     public void run() {
-                        tvAddress.setText(wallet.getNewSubaddress());
-                        tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
-                                wallet.getNumSubaddresses() - 1));
-                        storeWallet();
-                        generateQr();
-                        enableCopyAddress(true);
-                        tvAddress.animate().alpha(1).setDuration(125)
-                                .scaleX(1.2f).scaleY(1.2f)
-                                .withEndAction(resetSize).start();
+                        getNewSubaddress();
                     }
                 };
 
@@ -315,18 +300,39 @@ public class ReceiveFragment extends Fragment {
     }
 
     private void loadAndShow(String walletPath, String password) {
-        new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
-                walletPath, password);
+        new AsyncShow(walletPath, password).executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
     }
 
-    private class AsyncShow extends AsyncTask<String, Void, Boolean> {
-        String password;
+    GenerateReviewFragment.ProgressListener progressCallback = null;
+
+    private class AsyncShow extends AsyncTask<Void, Void, Boolean> {
+        final private String walletPath;
+        final private String password;
+
+
+        AsyncShow(String walletPath, String passsword) {
+            super();
+            this.walletPath = walletPath;
+            this.password = passsword;
+        }
+
+        boolean dialogOpened = false;
 
         @Override
-        protected Boolean doInBackground(String... params) {
-            if (params.length != 2) return false;
-            String walletPath = params[0];
-            password = params[1];
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showProgress();
+            if ((walletPath != null)
+                    && (WalletManager.getInstance().queryWalletHardware(walletPath + ".keys", password) == 1)
+                    && (progressCallback != null)) {
+                progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
+                dialogOpened = true;
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (params.length != 0) return false;
             wallet = WalletManager.getInstance().openWallet(walletPath, password);
             isMyWallet = true;
             return true;
@@ -335,6 +341,8 @@ public class ReceiveFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            if (dialogOpened)
+                progressCallback.dismissProgressDialog();
             if (!isAdded()) return; // never mind
             if (result) {
                 show();
@@ -495,6 +503,10 @@ public class ReceiveFragment extends Fragment {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+        if (context instanceof GenerateReviewFragment.ProgressListener) {
+            this.progressCallback = (GenerateReviewFragment.ProgressListener) context;
+        }
+
     }
 
     @Override
@@ -512,5 +524,52 @@ public class ReceiveFragment extends Fragment {
             isMyWallet = false;
         }
         super.onDetach();
+    }
+
+    private void getNewSubaddress() {
+        new AsyncSubaddress().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+    }
+
+    private class AsyncSubaddress extends AsyncTask<Void, Void, Boolean> {
+        private String newSubaddress;
+
+        boolean dialogOpened = false;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (wallet.isKeyOnDevice() && (progressCallback != null)) {
+                progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_SUBADDRESS);
+                dialogOpened = true;
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (params.length != 0) return false;
+            newSubaddress = wallet.getNewSubaddress();
+            storeWallet();
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (dialogOpened)
+                progressCallback.dismissProgressDialog();
+            tvAddress.setText(newSubaddress);
+            tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
+                    wallet.getNumSubaddresses() - 1));
+            generateQr();
+            enableCopyAddress(true);
+            final Runnable resetSize = new Runnable() {
+                public void run() {
+                    tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
+                }
+            };
+            tvAddress.animate().alpha(1).setDuration(125)
+                    .scaleX(1.2f).scaleY(1.2f)
+                    .withEndAction(resetSize).start();
+        }
     }
 }

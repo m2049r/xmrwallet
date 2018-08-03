@@ -329,5 +329,4 @@
     <style name="MoneroSpinnerItemGray" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textAppearance">@style/MoneroTextAppearanceSpinnerItemGray</item>
     </style>
-
 </resources>

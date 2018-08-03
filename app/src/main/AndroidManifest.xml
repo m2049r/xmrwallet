@@ -10,11 +10,11 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
+        android:name=".XmrWalletApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".XmrWalletApplication"
         android:theme="@style/MyMaterialTheme">
 
         <activity
@@ -28,12 +28,38 @@
             android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/usb_device_filter" />
+
         </activity>
+
+        <!--activity
+            android:name=".util.UsbEventReceiverActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:process=":UsbEventReceiverActivityProcess"
+            android:taskAffinity="com.m2049r.xmrwallet.taskAffinityUsbEventReceiver"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/usb_device_filter" />
+        </activity-->
 
         <service
             android:name=".service.WalletService"
