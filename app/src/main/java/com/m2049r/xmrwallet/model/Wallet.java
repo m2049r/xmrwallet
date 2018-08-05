@@ -150,7 +150,10 @@ public class Wallet {
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
-//    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
+
+    public native long getRestoreHeight();
+
+    //    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
 //    virtual bool connectToDaemon() = 0;
 
     public ConnectionStatus getConnectionStatus() {
