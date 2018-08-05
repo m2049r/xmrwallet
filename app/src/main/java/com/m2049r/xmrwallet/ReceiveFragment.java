@@ -20,6 +20,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.nfc.NfcAdapter;
+import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -226,6 +228,12 @@ public class ReceiveFragment extends Fragment {
                 throw new IllegalStateException("no wallet info");
             }
         }
+
+        View tvNfc = view.findViewById(R.id.tvNfc);
+        NfcManager manager = (NfcManager) getContext().getSystemService(Context.NFC_SERVICE);
+        if ((manager != null) && (manager.getDefaultAdapter() != null))
+            tvNfc.setVisibility(View.VISIBLE);
+
         return view;
     }
 
@@ -257,7 +265,7 @@ public class ReceiveFragment extends Fragment {
     void setQR(Bitmap qr) {
         qrCode.setImageBitmap(qr);
         qrValid = true;
-        tvQrCode.setVisibility(View.INVISIBLE);
+        tvQrCode.setVisibility(View.GONE);
         Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
     }
@@ -373,7 +381,6 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-
     private boolean checkPaymentId() {
         String paymentId = etPaymentId.getEditText().getText().toString();
         boolean ok = paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
@@ -386,6 +393,15 @@ public class ReceiveFragment extends Fragment {
         return ok;
     }
 
+    public BarcodeData getBarcodeData() {
+        if (qrValid)
+            return bcData;
+        else
+            return null;
+    }
+
+    private BarcodeData bcData = null;
+
     private void generateQr() {
         Timber.d("GENQR");
         String address = tvAddress.getText().toString();
@@ -397,27 +413,9 @@ public class ReceiveFragment extends Fragment {
             Timber.d("CLEARQR");
             return;
         }
-        StringBuffer sb = new StringBuffer();
-        sb.append(BarcodeData.XMR_SCHEME).append(address);
-        boolean first = true;
-        if (!paymentId.isEmpty()) {
-            if (first) {
-                sb.append("?");
-                first = false;
-            }
-            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
-        }
-        if (!xmrAmount.isEmpty()) {
-            if (first) {
-                sb.append("?");
-            } else {
-                sb.append("&");
-            }
-            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(xmrAmount);
-        }
-        String text = sb.toString();
+        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, paymentId, xmrAmount);
         int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
-        Bitmap qr = generate(text, size, size);
+        Bitmap qr = generate(bcData.getUriString(), size, size);
         if (qr != null) {
             setQR(qr);
             Timber.d("SETQR");

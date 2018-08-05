@@ -18,9 +18,7 @@ package com.m2049r.xmrwallet.data;
 
 import android.net.Uri;
 
-import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 
 import java.util.HashMap;
@@ -45,6 +43,11 @@ public class BarcodeData {
     public String paymentId = null;
     public String amount = null;
 
+    public BarcodeData(String uri) {
+        this.asset = asset;
+        this.address = address;
+    }
+
     public BarcodeData(Asset asset, String address) {
         this.asset = asset;
         this.address = address;
@@ -61,6 +64,31 @@ public class BarcodeData {
         this.address = address;
         this.paymentId = paymentId;
         this.amount = amount;
+    }
+
+    public Uri getUri() {
+        return Uri.parse(getUriString());
+    }
+
+    public String getUriString() {
+        if (asset != Asset.XMR) throw new IllegalStateException("We can only do XMR stuff!");
+        StringBuilder sb = new StringBuilder();
+        sb.append(BarcodeData.XMR_SCHEME).append(address);
+        boolean first = true;
+        if ((paymentId != null) && !paymentId.isEmpty()) {
+            sb.append("?");
+            first = false;
+            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
+        }
+        if (!amount.isEmpty()) {
+            if (first) {
+                sb.append("?");
+            } else {
+                sb.append("&");
+            }
+            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(amount);
+        }
+        return sb.toString();
     }
 
     static public BarcodeData fromQrCode(String qrCode) {

@@ -17,6 +17,7 @@
 package com.m2049r.xmrwallet.fragment.send;
 
 import android.content.Context;
+import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.CardView;
@@ -64,6 +65,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     public interface Listener {
         void setBarcodeData(BarcodeData data);
 
+        BarcodeData getBarcodeData();
+
         void setMode(SendFragment.Mode mode);
 
         TxData getTxData();
@@ -83,8 +86,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     public interface OnScanListener {
         void onScan();
-
-        BarcodeData popScannedData();
     }
 
     @Override
@@ -206,6 +207,11 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());
 
+        View tvNfc = view.findViewById(R.id.tvNfc);
+        NfcManager manager = (NfcManager) getContext().getSystemService(Context.NFC_SERVICE);
+        if ((manager != null) && (manager.getDefaultAdapter() != null))
+            tvNfc.setVisibility(View.VISIBLE);
+
         return view;
     }
 
@@ -298,11 +304,20 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     public void onResume() {
         super.onResume();
         Timber.d("onResume");
-        BarcodeData data = onScanListener.popScannedData();
-        sendListener.setBarcodeData(data);
-        if (data != null) {
+        processScannedData();
+    }
+
+    public void processScannedData(BarcodeData barcodeData) {
+        sendListener.setBarcodeData(barcodeData);
+        if (isResumed())
+            processScannedData();
+    }
+
+    public void processScannedData() {
+        BarcodeData barcodeData = sendListener.getBarcodeData();
+        if (barcodeData != null) {
             Timber.d("GOT DATA");
-            String scannedAddress = data.address;
+            String scannedAddress = barcodeData.address;
             if (scannedAddress != null) {
                 etAddress.getEditText().setText(scannedAddress);
                 checkAddress();
@@ -310,7 +325,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 etAddress.getEditText().getText().clear();
                 etAddress.setError(null);
             }
-            String scannedPaymenId = data.paymentId;
+            String scannedPaymenId = barcodeData.paymentId;
             if (scannedPaymenId != null) {
                 etPaymentId.getEditText().setText(scannedPaymenId);
                 checkPaymentId();
@@ -318,7 +333,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 etPaymentId.getEditText().getText().clear();
                 etPaymentId.setError(null);
             }
-        }
+        } else
+            Timber.d("barcodeData=null");
     }
 
     @Override
