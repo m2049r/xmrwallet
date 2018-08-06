@@ -27,7 +27,6 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -841,26 +840,39 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     }
 
-    private BarcodeData scannedData = null;
-
     @Override
     public boolean onScanned(String qrCode) {
         // #gurke
         BarcodeData bcData = BarcodeData.fromQrCode(qrCode);
         if (bcData != null) {
-            this.scannedData = bcData;
             popFragmentStack(null);
+            Timber.d("AAA");
+            onUriScanned(bcData);
             return true;
         } else {
             return false;
         }
     }
 
+    OnUriScannedListener onUriScannedListener = null;
+
     @Override
-    public BarcodeData popScannedData() {
-        BarcodeData data = scannedData;
-        scannedData = null;
-        return data;
+    public void setOnUriScannedListener(OnUriScannedListener onUriScannedListener) {
+        this.onUriScannedListener = onUriScannedListener;
+    }
+
+    @Override
+    void onUriScanned(BarcodeData barcodeData) {
+        super.onUriScanned(barcodeData);
+        boolean processed = false;
+        if (onUriScannedListener != null) {
+            processed = onUriScannedListener.onUriScanned(barcodeData);
+        }
+        if (!processed || (onUriScannedListener == null)) {
+            Toast.makeText(this, getString(R.string.nfc_tag_read_what), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, getString(R.string.nfc_tag_read_success), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
