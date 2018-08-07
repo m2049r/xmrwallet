@@ -321,9 +321,9 @@
 
     <string name="fab_restore_ledger">Wallet mit Ledger Nano S wiederherstellen</string>
 
-    <string name="progress_ledger_progress">Kommunikation with Ledger</string>
+    <string name="progress_ledger_progress">Kommunikation mit Ledger</string>
     <string name="progress_ledger_confirm">Bestätigung auf Ledger benötigt!</string>
-    <string name="progress_ledger_lookahead">Abrufen von Subaddressen</string>
+    <string name="progress_ledger_lookahead">Abrufen von Subadressen</string>
     <string name="progress_ledger_verify">Prüfe Schlüssel</string>
     <string name="progress_ledger_opentx">Mache verrückte Mathe</string>
     <string name="progress_ledger_mlsag">Berechne ein paar Hashwerte</string>
