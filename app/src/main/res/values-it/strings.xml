@@ -176,7 +176,7 @@
     <string name="generate_fingerprint_hint">Permetti di aprire il portafoglio usando la tua impronta digitale</string>
     <string name="generate_fingerprint_warn">[<![CDATA[
         <strong>Autenticazione tramite impronta digitale</strong>
-        <p>Abilitando l'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
+        <p>Abilitando l\'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
         senza inserire la password.</p>
         <p>Per sicurezza aggiuntiva, Monerujo richiederà comunque di inserire la password per visualizzare i dettagli
         del tuo portafoglio o inviare denaro.</p>

@@ -144,8 +144,8 @@
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Empfangen</string>
-    <string name="label_wallet_send">Senden</string>
+    <string name="label_wallet_receive">Empfange</string>
+    <string name="label_wallet_send">Sende</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
 
@@ -306,10 +306,10 @@
         <item>Priorität Hoch</item>
     </string-array>
 
-    <string name="fab_create_new">Neue Wallet erstellen</string>
+    <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
-    <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
-    <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
+    <string name="fab_restore_key">Mit privaten Schlüsseln wiederherstellen</string>
+    <string name="fab_restore_seed">Mit 25 Wörter Seed wiederherstellen</string>
 
     <string name="accounts_drawer_new">Konto erstellen</string>
     <string name="accounts_drawer_title">Konten</string>
@@ -323,21 +323,21 @@
     <string name="menu_language">Sprache</string>
     <string name="language_system_default">Benutze Systemsprache</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Wallet mit Ledger Nano S wiederherstellen</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">Kommunikation with Ledger</string>
+    <string name="progress_ledger_confirm">Bestätigung auf Ledger benötigt!</string>
+    <string name="progress_ledger_lookahead">Abrufen von Subaddressen</string>
+    <string name="progress_ledger_verify">Prüfe Schlüssel</string>
+    <string name="progress_ledger_opentx">Mache verrückte Mathe</string>
+    <string name="progress_ledger_mlsag">Berechne ein paar Hashwerte</string>
+    <string name="open_wallet_ledger_missing">Bitte Ledger (wieder-)anschließen!</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">Erzeuge Konto</string>
+    <string name="accounts_progress_update">Aktualisiere Wallet</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s angesteckt</string>
+    <string name="toast_ledger_detached">%1$s abgesteckt</string>
 
     <string name="progress_nfc_write">Writing Tag</string>
     <string name="nfc_write_failed">Writing Tag failed!</string>
