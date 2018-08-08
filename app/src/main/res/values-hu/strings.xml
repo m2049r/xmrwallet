@@ -323,21 +323,21 @@
     <string name="menu_language">Nyelv</string>
     <string name="language_system_default">Rendszernyelv használata</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Visszaállítás Ledger Nano S-ről</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">Kommunikáció a Ledgerrel</string>
+    <string name="progress_ledger_confirm">Ledgeren való megerősítés szükséges!</string>
+    <string name="progress_ledger_lookahead">Alcímek visszakeresése</string>
+    <string name="progress_ledger_verify">Kulcsok ellenőrzése</string>
+    <string name="progress_ledger_opentx">Őrült matekozás</string>
+    <string name="progress_ledger_mlsag">Dolgok hash-elése</string>
+    <string name="open_wallet_ledger_missing">Csatlakoztasd (újra) a Ledgert</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">Számla létrehozása</string>
+    <string name="accounts_progress_update">Tárca frissítése</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s csatlakoztatva</string>
+    <string name="toast_ledger_detached">%1$s leválasztva</string>
 
     <string name="progress_nfc_write">Writing Tag</string>
     <string name="nfc_write_failed">Writing Tag failed!</string>

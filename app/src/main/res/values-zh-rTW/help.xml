@@ -190,14 +190,11 @@
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
-        <h1>Create Wallet - Ledger</h1>
-        <p>You want to recover your wallet from your Ledger Nano S device.</p>
-        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
-        time you want to access your wallet.</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
-        device. Use a strong password - even better use a passphrase.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>建立 Ledger 錢包</h1>
+        <p>如果你想從 Ledger Nano S 回復你的錢包！</p>
+        <p>你的密鑰從未離開過 Ledger 裝置，所以當你要存取錢包時，就必須連接它。</p>
+        <p>請輸入獨一無二的錢包名稱與錢包密碼。這個密碼是用來保護你在這個裝置上的錢包資料，請使用足夠強度的密碼。</p>
+        <p>請在欄位\"回復高度\"輸入這個地址第一筆交易發生的區塊高度。你也可以依照 YYYY-MM-DD
+        格式輸入日期。如果你不是很確定，可以輸入這個錢包地址第一次使用<em>之前</em>的區塊高度或日期。</p>
     ]]></string>
 </resources>
