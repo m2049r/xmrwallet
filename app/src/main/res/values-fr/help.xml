@@ -28,9 +28,10 @@
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
         <p>Entrez votre phrase Mnémonique dans le champ \"Phrase Mnémonique\".<p>
-        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
-        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
-        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+        <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
+        champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
+        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
@@ -40,9 +41,10 @@
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.<p>
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez \"Clef d’Audit\" et \"Clef de dépense\".</p>
-        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
-        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
-        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+        <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
+        champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
+        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
@@ -52,9 +54,10 @@
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.<p>
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez la \"Clef d’Audit\".</p>
-        <p>Si vous connaissez le numéro du bloc de votre première transaction à cette adresse, entrez-le dans le
-        champ \"Hauteur de restauration\" - en le laissant vide la <em>totalité</em> de la chaîne de blocs sera scannée
-        à la recherche des transactions appartenant à votre adresse. Cela prend <em>beaucoup</em> de temps.</p>
+        <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
+        champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
+        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
