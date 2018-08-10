@@ -207,7 +207,6 @@
     <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Privat anteckning (valfri)</string>
     <string name="send_generate_paymentid_hint">Skapa</string>
-    <string name="send_qr_hint">Skanna</string>
     <string name="send_send_label">Spendera mina Moneroj</string>
     <string name="send_send_timed_label">Spendera mina Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Inte en QR-kod</string>

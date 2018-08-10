@@ -233,7 +233,7 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>
     <string name="send_generate_paymentid_hint">Generate</string>
-    <string name="send_qr_hint">Scan</string>
+    <string name="send_qr_hint" translatable="false">Scan</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Not a QR Code</string>

@@ -229,7 +229,6 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notes Privées (optionnelles)</string>
     <string name="send_generate_paymentid_hint">Générer</string>
-    <string name="send_qr_hint">Scanner</string>
     <string name="send_send_label">Dépenser mes beaux Moneroj</string>
     <string name="send_send_timed_label">Dépenser mes beaux Moneroj (%1$s)</string>
     <string name="send_qr_invalid">QR Code invalide</string>

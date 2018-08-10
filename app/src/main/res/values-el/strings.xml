@@ -201,7 +201,6 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Προσωπικές σημειώσεις (προαιρετικό)</string>
     <string name="send_generate_paymentid_hint">Δημιουργία</string>
-    <string name="send_qr_hint">Σάρωση</string>
     <string name="send_send_label">Ξόδεψε τα γλυκά μου Moneroj</string>
     <string name="send_send_timed_label">Ξόδεψε τα γλυκά μου Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Δεν είναι QR κώδικας</string>
