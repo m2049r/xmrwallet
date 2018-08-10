@@ -227,7 +227,7 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Privát közlemény (opcionális)</string>
     <string name="send_generate_paymentid_hint">Generálás</string>
-    <string name="send_qr_hint">Beolvasás</string>
+    <string name="send_qr_hint">Scan</string>
     <string name="send_send_label">Édes, drága Monero elköltése</string>
     <string name="send_send_timed_label">Édes, drága Monero elköltése (%1$s)</string>
     <string name="send_qr_invalid">Ez nem egy QR-kód</string>
@@ -339,13 +339,13 @@
     <string name="toast_ledger_attached">%1$s csatlakoztatva</string>
     <string name="toast_ledger_detached">%1$s leválasztva</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Címke írása</string>
+    <string name="nfc_write_failed">Sikertelen címkeírás!</string>
+    <string name="nfc_write_successful">Sikeres címkeírás</string>
+    <string name="nfc_tag_unsupported">A címke nem támogatja az NDEF-et!</string>
+    <string name="nfc_tag_size">A címke %d byte-os, de %d kellene!</string>
+    <string name="nfc_tag_read_undef">Nem értem a címkét!</string>
+    <string name="nfc_tag_read_what">Nem tudom, mit akarsz!</string>
+    <string name="nfc_tag_read_success">Sikeres címkeolvasás</string>
+    <string name="nfc_tag_tap">NFC elérhető!</string>
 </resources>
