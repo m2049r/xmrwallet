@@ -224,7 +224,6 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">注记 (选填)</string>
     <string name="send_generate_paymentid_hint">产生</string>
-    <string name="send_qr_hint">扫描</string>
     <string name="send_send_label">发送我的 Monero</string>
     <string name="send_send_timed_label">发送我的 Monero (%1$s)</string>
     <string name="send_qr_invalid">这不是QR码</string>

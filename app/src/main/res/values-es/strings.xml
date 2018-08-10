@@ -169,7 +169,6 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas Privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Generar</string>
-    <string name="send_qr_hint">Scan</string>
     <string name="send_qr_invalid">No es un Código QR de monero</string>
     <string name="send_qr_address_invalid">Dirección de Monero inválida</string>
     <string name="send_title">Enviar</string>

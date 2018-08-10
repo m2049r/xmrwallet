@@ -226,7 +226,6 @@
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Gerar</string>
-    <string name="send_qr_hint">Capturar</string>
     <string name="send_send_label">Gasta os meus queridos Moneroj</string>
     <string name="send_send_timed_label">Gasta os meus queridos Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Não é um código QR</string>
