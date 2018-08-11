@@ -431,17 +431,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onSendRequest() {
-        if (needVerifyIdentity) {
-            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
-                @Override
-                public void action(String walletName, String password, boolean fingerprintUsed) {
-                    replaceFragment(new SendFragment(), null, null);
-                    needVerifyIdentity = false;
-                }
-            });
-        } else {
-            replaceFragment(new SendFragment(), null, null);
-        }
+        replaceFragment(new SendFragment(), null, null);
     }
 
     @Override
