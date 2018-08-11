@@ -350,9 +350,9 @@ public class WalletService extends Service {
                             if (observer != null) observer.onSendTransactionFailed(error);
                             return;
                         }
+                        final String txid = pendingTransaction.getFirstTxId(); // tx ids vanish after commit()!
                         boolean success = pendingTransaction.commit("", true);
                         if (success) {
-                            final String txid = pendingTransaction.getFirstTxId();
                             myWallet.disposePendingTransaction();
                             if (observer != null) observer.onTransactionSent(txid);
                             String notes = extras.getString(REQUEST_CMD_SEND_NOTES);

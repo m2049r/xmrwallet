@@ -534,12 +534,11 @@ public class SendFragment extends Fragment
     public void onSendTransactionFailed(final String error) {
         Timber.d("error=%s", error);
         committedTx = null;
-        Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_SHORT).show();
-        enableNavigation();
-        final SendConfirm fragment = getSendConfirm();
-        if (fragment != null) {
-            fragment.sendFailed();
+        final SendConfirm confirm = getSendConfirm();
+        if (confirm != null) {
+            confirm.sendFailed(getString(R.string.status_transaction_failed, error));
         }
+        enableNavigation();
     }
 
     @Override

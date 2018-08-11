@@ -216,9 +216,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     }
 
     @Override
-    public void sendFailed() {
-        Timber.e("SEND FAILED");
+    public void sendFailed(String error) {
         pbProgressSend.setVisibility(View.INVISIBLE);
+        Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_LONG).show();
     }
 
     @Override
