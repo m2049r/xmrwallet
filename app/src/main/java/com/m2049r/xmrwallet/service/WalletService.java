@@ -340,19 +340,21 @@ public class WalletService extends Service {
                         Wallet myWallet = getWallet();
                         Timber.d("SEND TX for wallet: %s", myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
-                        if ((pendingTransaction == null)
-                                || (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok)) {
+                        if (pendingTransaction == null) {
+                            throw new IllegalArgumentException("PendingTransaction is null"); // die
+                        }
+                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
                             Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
                             final String error = pendingTransaction.getErrorString();
                             myWallet.disposePendingTransaction(); // it's broken anyway
                             if (observer != null) observer.onSendTransactionFailed(error);
                             return;
                         }
-                        final String txid = pendingTransaction.getFirstTxId();
                         boolean success = pendingTransaction.commit("", true);
-                        myWallet.disposePendingTransaction();
-                        if (observer != null) observer.onTransactionSent(txid);
                         if (success) {
+                            final String txid = pendingTransaction.getFirstTxId();
+                            myWallet.disposePendingTransaction();
+                            if (observer != null) observer.onTransactionSent(txid);
                             String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
                             if ((notes != null) && (!notes.isEmpty())) {
                                 myWallet.setUserNote(txid, notes);
@@ -364,6 +366,11 @@ public class WalletService extends Service {
                             }
                             if (observer != null) observer.onWalletStored(rc);
                             listener.updated = true;
+                        } else {
+                            final String error = pendingTransaction.getErrorString();
+                            myWallet.disposePendingTransaction();
+                            if (observer != null) observer.onSendTransactionFailed(error);
+                            return;
                         }
                     } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
                         Wallet myWallet = getWallet();
