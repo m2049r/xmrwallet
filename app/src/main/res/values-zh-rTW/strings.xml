@@ -320,29 +320,29 @@
     <string name="menu_language">語言</string>
     <string name="language_system_default">使用系統語言</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">從 Ledger Nano S 回復錢包</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">與 Ledger 錢包傳輸資料中</string>
+    <string name="progress_ledger_confirm">請在 Ledger 裝置上確認此操作！</string>
+    <string name="progress_ledger_lookahead">正在取得子地址中</string>
+    <string name="progress_ledger_verify">正在驗證金鑰中</string>
+    <string name="progress_ledger_opentx">正在進行瘋狂的數學計算</string>
+    <string name="progress_ledger_mlsag">正在進行雜湊運算</string>
+    <string name="open_wallet_ledger_missing">請(重新)連接 Ledger 裝置</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">正在建立帳戶</string>
+    <string name="accounts_progress_update">正在更新帳戶</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s 已連接</string>
+    <string name="toast_ledger_detached">%1$s 已斷開連接</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">正在寫入NFC標籤</string>
+    <string name="nfc_write_failed">NFC標籤寫入失敗！</string>
+    <string name="nfc_write_successful">NFC標籤寫入成功</string>
+    <string name="nfc_tag_unsupported">此NFC標籤不支援 NDEF 格式！</string>
+    <string name="nfc_tag_size">此NFC標籤可存放 %d 位元組，但尚需 %d！</string>
+    <string name="nfc_tag_read_undef">無法辨識此NFC標籤！</string>
+    <string name="nfc_tag_read_what">無法執行此NFC標籤的操作！</string>
+    <string name="nfc_tag_read_success">已成功讀取此NFC標籤</string>
+    <string name="nfc_tag_tap">可使用NFC標籤</string>
 </resources>
