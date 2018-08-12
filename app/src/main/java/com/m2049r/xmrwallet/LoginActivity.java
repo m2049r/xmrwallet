@@ -1276,7 +1276,10 @@ public class LoginActivity extends BaseActivity
     BroadcastReceiver detachReceiver;
 
     private void unregisterDetachReceiver() {
-        if (detachReceiver != null) unregisterReceiver(detachReceiver);
+        if (detachReceiver != null) {
+            unregisterReceiver(detachReceiver);
+            detachReceiver = null;
+        }
     }
 
     private void registerDetachReceiver() {
