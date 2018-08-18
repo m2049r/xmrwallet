@@ -17,17 +17,22 @@
 package com.m2049r.xmrwallet.service;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
@@ -45,6 +50,7 @@ public class WalletService extends Service {
     public static boolean Running = false;
 
     final static int NOTIFICATION_ID = 2049;
+    final static String CHANNEL_ID = "m_service";
 
     public static final String REQUEST_WALLET = "wallet";
     public static final String REQUEST = "request";
@@ -566,11 +572,26 @@ public class WalletService extends Service {
     private void startNotfication() {
         Intent notificationIntent = new Intent(this, WalletActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new Notification.Builder(this)
+
+        String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel() : "";
+        Notification notification = new NotificationCompat.Builder(this, channelId)
                 .setContentTitle(getString(R.string.service_description))
+                .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_monerujo)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(NOTIFICATION_ID, notification);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private String createNotificationChannel() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, getString(R.string.service_description),
+                NotificationManager.IMPORTANCE_LOW);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationManager.createNotificationChannel(channel);
+        return CHANNEL_ID;
     }
 }

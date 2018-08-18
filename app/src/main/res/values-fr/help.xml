@@ -30,7 +30,7 @@
         <p>Entrez votre phrase Mnémonique dans le champ \"Phrase Mnémonique\".<p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -43,7 +43,7 @@
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez \"Clef d’Audit\" et \"Clef de dépense\".</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -56,7 +56,7 @@
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez la \"Clef d’Audit\".</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -257,7 +257,7 @@
         fort, ou mieux, utilisez une phrase de sécurité.</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 </resources>
