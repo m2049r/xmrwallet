@@ -32,9 +32,9 @@
     <string name="label_receive_info_gen_qr_code">點選顯示QR碼</string>
     <string name="info_send_prio_fees">較高優先權 = 較高手續費</string>
 
-    <string name="info_xmrto_enabled">BTC付款已啟用, 點選了解更多</string>
-    <string name="info_crazypass_enabled">CrAzYpass已啟用, 點選了解更多</string>
-    <string name="info_ledger_enabled">Ledger已啟用, 點選了解更多</string>
+    <string name="info_xmrto_enabled">BTC 付款已啟用, 點選了解更多</string>
+    <string name="info_crazypass_enabled">CrAzYpass 已啟用, 點選了解更多</string>
+    <string name="info_ledger_enabled">Ledger 已啟用, 點選了解更多</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>你輸入了Bitcoin地址</b><br/>
@@ -91,7 +91,7 @@
 
     <string name="label_send_txid">交易ID</string>
     <string name="label_send_address">收款地址</string>
-    <string name="label_send_payment_id">付款ID</string>
+    <string name="label_send_payment_id">付款 ID</string>
     <string name="label_send_notes">附註</string>
 
     <string name="backup_progress">備份中</string>
@@ -260,7 +260,7 @@
     <string name="tx_key">交易金鑰 (TX Key)</string>
     <string name="tx_destination">收款地址</string>
     <string name="tx_destination_btc">收款地址\n(BTC)</string>
-    <string name="tx_paymentId">付款ID</string>
+    <string name="tx_paymentId">付款 ID</string>
     <string name="tx_blockheight">區塊</string>
     <string name="tx_amount">金額</string>
     <string name="tx_amount_btc">金額\n(BTC)</string>
@@ -283,7 +283,7 @@
 
     <string name="receive_amount_too_big">最大值 %1$s</string>
     <string name="receive_amount_negative">最小值 0</string>
-    <string name="receive_amount_nan">輸入的XMR不是數字</string>
+    <string name="receive_amount_nan">輸入的 XMR 不是數字</string>
 
     <string name="receive_title">接收</string>
 
@@ -336,13 +336,13 @@
     <string name="toast_ledger_attached">%1$s 已連接</string>
     <string name="toast_ledger_detached">%1$s 已斷開連接</string>
 
-    <string name="progress_nfc_write">正在寫入NFC標籤</string>
-    <string name="nfc_write_failed">NFC標籤寫入失敗！</string>
-    <string name="nfc_write_successful">NFC標籤寫入成功</string>
-    <string name="nfc_tag_unsupported">此NFC標籤不支援 NDEF 格式！</string>
-    <string name="nfc_tag_size">此NFC標籤可存放 %d 位元組，但尚需 %d！</string>
-    <string name="nfc_tag_read_undef">無法辨識此NFC標籤！</string>
-    <string name="nfc_tag_read_what">無法執行此NFC標籤的操作！</string>
-    <string name="nfc_tag_read_success">已成功讀取此NFC標籤</string>
-    <string name="nfc_tag_tap">可使用NFC標籤</string>
+    <string name="progress_nfc_write">正在寫入 NFC 標籤</string>
+    <string name="nfc_write_failed">NFC 標籤寫入失敗！</string>
+    <string name="nfc_write_successful">NFC 標籤寫入成功</string>
+    <string name="nfc_tag_unsupported">此 NFC 標籤不支援 NDEF 格式！</string>
+    <string name="nfc_tag_size">此 NFC 標籤可存放 %d 位元組，但需要 %d！</string>
+    <string name="nfc_tag_read_undef">無法辨識此 NFC 標籤！</string>
+    <string name="nfc_tag_read_what">無法執行此 NFC 標籤的操作！</string>
+    <string name="nfc_tag_read_success">已成功讀取此 NFC 標籤</string>
+    <string name="nfc_tag_tap">可使用 NFC 標籤</string>
 </resources>
