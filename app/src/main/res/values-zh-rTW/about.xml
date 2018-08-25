@@ -30,11 +30,11 @@
         觀看他們的隱私權政策。</p>
         <h2>應用程式權限</h2>
         <ul>
-        <li>INTERNET : 透過 Monero 節點連接至 Monero 網路。</li>
-        <li>READ_EXTERNAL_STORAGE : 讀取手機上的錢包資訊。</li>
-        <li>WRITE_EXTERNAL_STORAGE : 儲存錢包資訊於手機上。</li>
-        <li>WAKE_LOCK : 與遠端節點同步時，防止手機進入待命狀態。</li>
-        <li>CAMERA : 掃描 QR Code 以收取 Monero。</li>
+        <li>INTERNET：透過 Monero 節點連接至 Monero 網路。</li>
+        <li>READ_EXTERNAL_STORAGE：讀取手機上的錢包資訊。</li>
+        <li>WRITE_EXTERNAL_STORAGE：儲存錢包資訊於手機上。</li>
+        <li>WAKE_LOCK：與遠端節點同步時，防止手機進入待命狀態。</li>
+        <li>CAMERA：掃描 QR 碼以收取 Monero。</li>
         </ul>
         <h2>政策更新</h2>
         <p>本隱私權政策可能會不定時更新。在更新的同時，我們也會在本 App 以及網站 (www.monerujo.io)
