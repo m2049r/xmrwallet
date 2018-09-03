@@ -417,8 +417,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_verifyWalletPassword(JNIEnv *env, 
 //virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletHardware(JNIEnv *env, jobject instance,
-                                                                jstring keys_file_name,
-                                                                jstring password) {
+                                                                  jstring keys_file_name,
+                                                                  jstring password) {
     const char *_keys_file_name = env->GetStringUTFChars(keys_file_name, NULL);
     const char *_password = env->GetStringUTFChars(password, NULL);
     int hardwareId =
@@ -686,7 +686,13 @@ Java_com_m2049r_xmrwallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
 }
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
-//    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
+
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_setRestoreHeight(JNIEnv *env, jobject instance,
+                                                        jlong height) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    wallet->setRefreshFromBlockHeight((uint64_t) height);
+}
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getRestoreHeight(JNIEnv *env, jobject instance) {
