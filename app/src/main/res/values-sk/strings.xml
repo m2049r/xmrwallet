@@ -318,8 +318,8 @@
     <string name="generate_address_label_sub">Verejná Podadresa #%1$d</string>
 	
 	<string name="language">Slovenský</string>
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Jazyk</string>
+    <string name="language_system_default">Použi jazyk systému</string>
 	
 	<string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
 
