@@ -22,7 +22,7 @@
         <p>Vlož unikátny názov a heslo peňaženky. 
 		Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
 		Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
-        <p>Vlož svoj Seed do poľa \"Mnemonic Seed\".<p>
+        <p>Vlož svoj Seed do poľa \"Mnemotechnický Seed\".<p>
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
 		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
@@ -36,16 +36,29 @@
 		<p>Vlož svoju Monero adresu do poľa \"Verejná Adresa\" a vyplň \"Prezerací Kľúč\" and  \"Platobný Kľúč\".</p>
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
 		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
+		<p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
+		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>	
     ]]></string>
 
+	    <string name="help_create_ledger"><![CDATA[
+        <h1>Vytvoriť Peňaženku - Ledger</h1>
+        <p>Obnovenie peňaženky zo zariadenia Ledger Nano S.</p>
+        <p>Tvoj tajný kľúč nikdy neunikne zo zariadenia Ledger, takže budeš musieť mať Ledger pripojený vždy, keď budeš chcieť pristupovať k svojej peňaženke.</p>
+        <p>Vlož unikátny názov a heslo peňaženky.  Heslo je určené na zabezpečenie dát peňaženky na Android zariadení.  
+        Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
+        <p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
+		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>	
+    ]]></string>
+	
     <string name="help_create_view"><![CDATA[
-        <h1>Vytvoriť Peňaženku - Prezeracia</h1>
+        <h1>Vytvoriť Peňaženku - Prezeracia Peňaženka</h1>
         <p>Ak chceš iba sledovať prichádzajúce transakcie!</p>
         <p>Vlož unikátny názov a heslo peňaženky. Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
         Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
         <p>Vlož svoju Monero adresu do poľa \"Verejná Adresa\" a vyplň \"Prezerací Kľúč\".</p>
-        <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
-		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
+        <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
+		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.
+		Zanechaním prázdneho poľa budeš skenovať <em>celý</em> blockchain, aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
