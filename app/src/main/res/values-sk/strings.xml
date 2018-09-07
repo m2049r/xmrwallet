@@ -317,7 +317,6 @@
     <string name="tx_subaddress">Podadresa #%1$d</string>
     <string name="generate_address_label_sub">Verejná Podadresa #%1$d</string>
 	
-	<string name="language">Slovenský</string>
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
 	
