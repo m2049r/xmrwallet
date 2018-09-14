@@ -34,7 +34,7 @@
 
     <string name="info_xmrto_enabled">BTC platby aktivované, klepni pre viac info.</string>
     <string name="info_crazypass_enabled">CrAzYpass aktivovaný, klepni pre viac info.</string>
-	<string name="info_ledger_enabled">Ledger aktivovaný, klepni pre viac info.</string>
+    <string name="info_ledger_enabled">Ledger aktivovaný, klepni pre viac info.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Vložil si Bitcoin adresu.</b><br/>
@@ -316,11 +316,11 @@
     <string name="send_sweepall">Pošli všetky potvrdené prostriedky na tomto účte!</string>
     <string name="tx_subaddress">Podadresa #%1$d</string>
     <string name="generate_address_label_sub">Verejná Podadresa #%1$d</string>
-	
+
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
-	
-	<string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
+
+    <string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
 
     <string name="progress_ledger_progress">Komunikácia s Ledger</string>
     <string name="progress_ledger_confirm">Vyžaduje potvrdenie na Ledgeri!</string>
@@ -345,4 +345,6 @@
     <string name="nfc_tag_read_what">Neviem čo tým básnik myslel!</string>
     <string name="nfc_tag_read_success">Čítanie Tagu úspešné</string>
     <string name="nfc_tag_tap">NFC je dostupné!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
 </resources>

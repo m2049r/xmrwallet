@@ -20,15 +20,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,9 +64,8 @@ public class ReceiveFragment extends Fragment {
     private ProgressBar pbProgress;
     private TextView tvAddressLabel;
     private TextView tvAddress;
-    private TextInputLayout etPaymentId;
+    private TextInputLayout etNotes;
     private ExchangeView evAmount;
-    private Button bPaymentId;
     private TextView tvQrCode;
     private ImageView qrCode;
     private ImageView qrCodeFull;
@@ -97,9 +93,8 @@ public class ReceiveFragment extends Fragment {
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
         tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
-        etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
+        etNotes = (TextInputLayout) view.findViewById(R.id.etNotes);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
-        bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         qrCode = (ImageView) view.findViewById(R.id.qrCode);
         tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
         qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
@@ -107,7 +102,6 @@ public class ReceiveFragment extends Fragment {
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
         bSubaddress = (Button) view.findViewById(R.id.bSubaddress);
 
-        etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         bCopyAddress.setOnClickListener(new View.OnClickListener() {
@@ -136,39 +130,15 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        final EditText notesEdit = etNotes.getEditText();
+        notesEdit.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        notesEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    if (checkPaymentId()) { // && evAmount.checkXmrAmount(true)) {
-                        generateQr();
-                    }
+                    generateQr();
                     return true;
                 }
                 return false;
-            }
-        });
-        etPaymentId.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                clearQR();
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-        bPaymentId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etPaymentId.getEditText().setText((Wallet.generatePaymentId()));
-                etPaymentId.getEditText().setSelection(etPaymentId.getEditText().getText().length());
-                if (checkPaymentId()) { //&& evAmount.checkXmrAmount(true)) {
-                    generateQr();
-                }
             }
         });
 
@@ -195,7 +165,7 @@ public class ReceiveFragment extends Fragment {
                 if (qrValid) {
                     qrCodeFull.setImageBitmap(((BitmapDrawable) qrCode.getDrawable()).getBitmap());
                     qrCodeFull.setVisibility(View.VISIBLE);
-                } else if (checkPaymentId()) {
+                } else {
                     evAmount.doExchange();
                 }
             }
@@ -292,8 +262,6 @@ public class ReceiveFragment extends Fragment {
         listenerCallback.setTitle(wallet.getName());
         listenerCallback.setSubtitle(wallet.getAccountLabel());
         tvAddress.setText(wallet.getAddress());
-        etPaymentId.setEnabled(true);
-        bPaymentId.setEnabled(true);
         enableCopyAddress(true);
         hideProgress();
         generateQr();
@@ -381,18 +349,6 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-    private boolean checkPaymentId() {
-        String paymentId = etPaymentId.getEditText().getText().toString();
-        boolean ok = paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
-
-        if (!ok) {
-            etPaymentId.setError(getString(R.string.receive_paymentid_invalid));
-        } else {
-            etPaymentId.setError(null);
-        }
-        return ok;
-    }
-
     public BarcodeData getBarcodeData() {
         if (qrValid)
             return bcData;
@@ -405,15 +361,15 @@ public class ReceiveFragment extends Fragment {
     private void generateQr() {
         Timber.d("GENQR");
         String address = tvAddress.getText().toString();
-        String paymentId = etPaymentId.getEditText().getText().toString();
+        String notes = etNotes.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
+        Timber.d("%s/%s/%s", xmrAmount, notes, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address)) {
             clearQR();
             Timber.d("CLEARQR");
             return;
         }
-        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, paymentId, xmrAmount);
+        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, null, notes, xmrAmount);
         int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
         Bitmap qr = generate(bcData.getUriString(), size, size);
         if (qr != null) {

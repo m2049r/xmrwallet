@@ -30,6 +30,7 @@ public class BarcodeData {
     public static final String XMR_SCHEME = "monero:";
     public static final String XMR_PAYMENTID = "tx_payment_id";
     public static final String XMR_AMOUNT = "tx_amount";
+    public static final String XMR_DESCRIPTION = "tx_description";
 
     static final String BTC_SCHEME = "bitcoin:";
     static final String BTC_AMOUNT = "amount";
@@ -42,6 +43,7 @@ public class BarcodeData {
     public String address = null;
     public String paymentId = null;
     public String amount = null;
+    public String description = null;
 
     public BarcodeData(String uri) {
         this.asset = asset;
@@ -66,6 +68,14 @@ public class BarcodeData {
         this.amount = amount;
     }
 
+    public BarcodeData(Asset asset, String address, String paymentId, String description, String amount) {
+        this.asset = asset;
+        this.address = address;
+        this.paymentId = paymentId;
+        this.description = description;
+        this.amount = amount;
+    }
+
     public Uri getUri() {
         return Uri.parse(getUriString());
     }
@@ -80,12 +90,13 @@ public class BarcodeData {
             first = false;
             sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
         }
+        if ((description != null) && !description.isEmpty()) {
+            sb.append(first ? "?" : "&");
+            first = false;
+            sb.append(BarcodeData.XMR_DESCRIPTION).append('=').append(Uri.encode(description));
+        }
         if (!amount.isEmpty()) {
-            if (first) {
-                sb.append("?");
-            } else {
-                sb.append("&");
-            }
+            sb.append(first ? "?" : "&");
             sb.append(BarcodeData.XMR_AMOUNT).append('=').append(amount);
         }
         return sb.toString();
@@ -140,6 +151,7 @@ public class BarcodeData {
         }
         String address = monero.getPath();
         String paymentId = parms.get(XMR_PAYMENTID);
+        String description = parms.get(XMR_DESCRIPTION);
         String amount = parms.get(XMR_AMOUNT);
         if (amount != null) {
             try {
@@ -158,7 +170,7 @@ public class BarcodeData {
             Timber.d("address invalid");
             return null;
         }
-        return new BarcodeData(Asset.XMR, address, paymentId, amount);
+        return new BarcodeData(Asset.XMR, address, paymentId, description, amount);
     }
 
     static public BarcodeData parseMoneroNaked(String address) {

@@ -62,9 +62,7 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
                     PendingTransaction.Priority.Priority_High}; // must match the layout XML
 
     private Spinner sPriority;
-    private EditText etNotes;
     private EditText etDummy;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,19 +74,6 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
                 R.layout.fragment_send_settings, container, false);
 
         sPriority = (Spinner) view.findViewById(R.id.sPriority);
-
-        etNotes = (EditText) view.findViewById(R.id.etNotes);
-        etNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etNotes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    etDummy.requestFocus();
-                    Helper.hideKeyboard(getActivity());
-                    return true;
-                }
-                return false;
-            }
-        });
 
         etDummy = (EditText) view.findViewById(R.id.etDummy);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -102,7 +87,6 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
             TxData txData = sendListener.getTxData();
             txData.setPriority(Priorities[sPriority.getSelectedItemPosition()]);
             txData.setMixin(MIXIN);
-            txData.setUserNotes(new UserNotes(etNotes.getText().toString()));
         }
         return true;
     }
