@@ -347,4 +347,6 @@
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
     <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Beschreibung (optional)</string>
 </resources>
