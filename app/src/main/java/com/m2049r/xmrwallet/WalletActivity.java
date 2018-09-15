@@ -273,6 +273,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                         break;
                     case Toolbar.BUTTON_CANCEL:
                         onDisposeRequest();
+                        Helper.hideKeyboard(WalletActivity.this);
                         WalletActivity.super.onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
@@ -920,7 +921,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             drawer.closeDrawer(GravityCompat.START);
             return;
         }
-
         final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment instanceof OnBackPressedListener) {
             if (!((OnBackPressedListener) fragment).onBackPressed()) {

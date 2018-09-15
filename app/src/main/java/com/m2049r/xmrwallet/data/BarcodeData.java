@@ -20,6 +20,7 @@ import android.net.Uri;
 
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
+import com.m2049r.xmrwallet.util.OpenAliasHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,9 @@ public class BarcodeData {
     public static final String XMR_AMOUNT = "tx_amount";
     public static final String XMR_DESCRIPTION = "tx_description";
 
+    public static final String OA_XMR_ASSET = "xmr";
+    public static final String OA_BTC_ASSET = "btc";
+
     static final String BTC_SCHEME = "bitcoin:";
     static final String BTC_AMOUNT = "amount";
 
@@ -40,10 +44,12 @@ public class BarcodeData {
     }
 
     public Asset asset = null;
+    public String addressName = null;
     public String address = null;
     public String paymentId = null;
     public String amount = null;
     public String description = null;
+    public boolean isSecure = true;
 
     public BarcodeData(String uri) {
         this.asset = asset;
@@ -76,6 +82,14 @@ public class BarcodeData {
         this.amount = amount;
     }
 
+    public void setAddressName(String name) {
+        addressName = name;
+    }
+
+    public void isSecure(boolean isSecure) {
+        this.isSecure = isSecure;
+    }
+
     public Uri getUri() {
         return Uri.parse(getUriString());
     }
@@ -95,7 +109,7 @@ public class BarcodeData {
             first = false;
             sb.append(BarcodeData.XMR_DESCRIPTION).append('=').append(Uri.encode(description));
         }
-        if (!amount.isEmpty()) {
+        if ((amount != null) && !amount.isEmpty()) {
             sb.append(first ? "?" : "&");
             sb.append(BarcodeData.XMR_AMOUNT).append('=').append(amount);
         }
@@ -237,5 +251,59 @@ public class BarcodeData {
         }
 
         return new BarcodeData(BarcodeData.Asset.BTC, address);
+    }
+
+    static public BarcodeData parseOpenAlias(String oaString) {
+        Timber.d("parseOpenAlias=%s", oaString);
+        if (oaString == null) return null;
+
+        Map<String, String> oaAttrs = OpenAliasHelper.parse(oaString);
+        if (oaAttrs == null) return null;
+
+        String oaAsset = oaAttrs.get(OpenAliasHelper.OA1_ASSET);
+        if (oaAsset == null) return null;
+
+        String address = oaAttrs.get(OpenAliasHelper.OA1_ADDRESS);
+        if (address == null) return null;
+
+        Asset asset;
+        if (OA_XMR_ASSET.equals(oaAsset)) {
+            if (!Wallet.isAddressValid(address)) {
+                Timber.d("XMR address invalid");
+                return null;
+            }
+            asset = Asset.XMR;
+        } else if (OA_BTC_ASSET.equals(oaAsset)) {
+            if (!BitcoinAddressValidator.validate(address)) {
+                Timber.d("BTC address invalid");
+                return null;
+            }
+            asset = Asset.BTC;
+        } else {
+            Timber.i("Unsupported OpenAlias asset %s", oaAsset);
+            return null;
+        }
+
+        String paymentId = oaAttrs.get(OpenAliasHelper.OA1_PAYMENTID);
+        String description = oaAttrs.get(OpenAliasHelper.OA1_DESCRIPTION);
+        String amount = oaAttrs.get(OpenAliasHelper.OA1_AMOUNT);
+        String addressName = oaAttrs.get(OpenAliasHelper.OA1_NAME);
+
+        if (amount != null) {
+            try {
+                Double.parseDouble(amount);
+            } catch (NumberFormatException ex) {
+                Timber.d(ex.getLocalizedMessage());
+                return null; // we have an amount but its not a number!
+            }
+        }
+        if ((paymentId != null) && !Wallet.isPaymentIdValid(paymentId)) {
+            Timber.d("paymentId invalid");
+            return null;
+        }
+
+        BarcodeData bc = new BarcodeData(asset, address, paymentId, description, amount);
+        bc.setAddressName(addressName);
+        return bc;
     }
 }
