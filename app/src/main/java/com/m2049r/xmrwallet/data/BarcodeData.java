@@ -286,6 +286,9 @@ public class BarcodeData {
 
         String paymentId = oaAttrs.get(OpenAliasHelper.OA1_PAYMENTID);
         String description = oaAttrs.get(OpenAliasHelper.OA1_DESCRIPTION);
+        if (description == null) {
+            description = oaAttrs.get(OpenAliasHelper.OA1_NAME);
+        }
         String amount = oaAttrs.get(OpenAliasHelper.OA1_AMOUNT);
         String addressName = oaAttrs.get(OpenAliasHelper.OA1_NAME);
 
