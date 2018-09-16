@@ -302,7 +302,8 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         // accept keyboard "ok"
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
                     if (getActivityCallback().verifyWalletPassword(pass)) {
                         Helper.hideKeyboardAlways(activity);
