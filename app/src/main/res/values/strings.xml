@@ -239,7 +239,7 @@
     <string name="send_qr_invalid">Not a QR Code</string>
     <string name="send_qr_address_invalid">Not a valid payment QR code</string>
     <string name="send_address_invalid">Not a valid address</string>
-    <string name="send_address_not_openalias">OpenAlias not resolved - address not available</string>
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
     <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
     <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
