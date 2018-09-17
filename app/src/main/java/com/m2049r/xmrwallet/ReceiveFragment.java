@@ -20,13 +20,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +46,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
@@ -62,12 +62,10 @@ import timber.log.Timber;
 public class ReceiveFragment extends Fragment {
 
     private ProgressBar pbProgress;
-    private View llAddress;
     private TextView tvAddressLabel;
     private TextView tvAddress;
-    private TextInputLayout etPaymentId;
+    private TextInputLayout etNotes;
     private ExchangeView evAmount;
-    private Button bPaymentId;
     private TextView tvQrCode;
     private ImageView qrCode;
     private ImageView qrCodeFull;
@@ -93,12 +91,10 @@ public class ReceiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
 
         pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
-        llAddress = view.findViewById(R.id.llAddress);
         tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
         tvAddress = (TextView) view.findViewById(R.id.tvAddress);
-        etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
+        etNotes = (TextInputLayout) view.findViewById(R.id.etNotes);
         evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
-        bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
         qrCode = (ImageView) view.findViewById(R.id.qrCode);
         tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
         qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
@@ -106,7 +102,6 @@ public class ReceiveFragment extends Fragment {
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
         bSubaddress = (Button) view.findViewById(R.id.bSubaddress);
 
-        etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         bCopyAddress.setOnClickListener(new View.OnClickListener() {
@@ -135,39 +130,16 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        final EditText notesEdit = etNotes.getEditText();
+        notesEdit.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        notesEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    if (checkPaymentId()) { // && evAmount.checkXmrAmount(true)) {
-                        generateQr();
-                    }
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    generateQr();
                     return true;
                 }
                 return false;
-            }
-        });
-        etPaymentId.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                clearQR();
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-        bPaymentId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etPaymentId.getEditText().setText((Wallet.generatePaymentId()));
-                etPaymentId.getEditText().setSelection(etPaymentId.getEditText().getText().length());
-                if (checkPaymentId()) { //&& evAmount.checkXmrAmount(true)) {
-                    generateQr();
-                }
             }
         });
 
@@ -177,23 +149,9 @@ public class ReceiveFragment extends Fragment {
                 enableSubaddressButton(false);
                 enableCopyAddress(false);
 
-                final Runnable resetSize = new Runnable() {
-                    public void run() {
-                        tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
-                    }
-                };
-
                 final Runnable newAddress = new Runnable() {
                     public void run() {
-                        tvAddress.setText(wallet.getNewSubaddress());
-                        tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
-                                wallet.getNumSubaddresses() - 1));
-                        storeWallet();
-                        generateQr();
-                        enableCopyAddress(true);
-                        tvAddress.animate().alpha(1).setDuration(125)
-                                .scaleX(1.2f).scaleY(1.2f)
-                                .withEndAction(resetSize).start();
+                        getNewSubaddress();
                     }
                 };
 
@@ -208,7 +166,7 @@ public class ReceiveFragment extends Fragment {
                 if (qrValid) {
                     qrCodeFull.setImageBitmap(((BitmapDrawable) qrCode.getDrawable()).getBitmap());
                     qrCodeFull.setVisibility(View.VISIBLE);
-                } else if (checkPaymentId()) {
+                } else {
                     evAmount.doExchange();
                 }
             }
@@ -241,6 +199,12 @@ public class ReceiveFragment extends Fragment {
                 throw new IllegalStateException("no wallet info");
             }
         }
+
+        View tvNfc = view.findViewById(R.id.tvNfc);
+        NfcManager manager = (NfcManager) getContext().getSystemService(Context.NFC_SERVICE);
+        if ((manager != null) && (manager.getDefaultAdapter() != null))
+            tvNfc.setVisibility(View.VISIBLE);
+
         return view;
     }
 
@@ -272,7 +236,7 @@ public class ReceiveFragment extends Fragment {
     void setQR(Bitmap qr) {
         qrCode.setImageBitmap(qr);
         qrValid = true;
-        tvQrCode.setVisibility(View.INVISIBLE);
+        tvQrCode.setVisibility(View.GONE);
         Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
     }
@@ -299,8 +263,6 @@ public class ReceiveFragment extends Fragment {
         listenerCallback.setTitle(wallet.getName());
         listenerCallback.setSubtitle(wallet.getAccountLabel());
         tvAddress.setText(wallet.getAddress());
-        etPaymentId.setEnabled(true);
-        bPaymentId.setEnabled(true);
         enableCopyAddress(true);
         hideProgress();
         generateQr();
@@ -315,18 +277,39 @@ public class ReceiveFragment extends Fragment {
     }
 
     private void loadAndShow(String walletPath, String password) {
-        new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR,
-                walletPath, password);
+        new AsyncShow(walletPath, password).executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
     }
 
-    private class AsyncShow extends AsyncTask<String, Void, Boolean> {
-        String password;
+    GenerateReviewFragment.ProgressListener progressCallback = null;
+
+    private class AsyncShow extends AsyncTask<Void, Void, Boolean> {
+        final private String walletPath;
+        final private String password;
+
+
+        AsyncShow(String walletPath, String passsword) {
+            super();
+            this.walletPath = walletPath;
+            this.password = passsword;
+        }
+
+        boolean dialogOpened = false;
 
         @Override
-        protected Boolean doInBackground(String... params) {
-            if (params.length != 2) return false;
-            String walletPath = params[0];
-            password = params[1];
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showProgress();
+            if ((walletPath != null)
+                    && (WalletManager.getInstance().queryWalletHardware(walletPath + ".keys", password) == 1)
+                    && (progressCallback != null)) {
+                progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
+                dialogOpened = true;
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (params.length != 0) return false;
             wallet = WalletManager.getInstance().openWallet(walletPath, password);
             isMyWallet = true;
             return true;
@@ -335,6 +318,8 @@ public class ReceiveFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            if (dialogOpened)
+                progressCallback.dismissProgressDialog();
             if (!isAdded()) return; // never mind
             if (result) {
                 show();
@@ -365,51 +350,29 @@ public class ReceiveFragment extends Fragment {
         }
     }
 
-
-    private boolean checkPaymentId() {
-        String paymentId = etPaymentId.getEditText().getText().toString();
-        boolean ok = paymentId.isEmpty() || Wallet.isPaymentIdValid(paymentId);
-
-        if (!ok) {
-            etPaymentId.setError(getString(R.string.receive_paymentid_invalid));
-        } else {
-            etPaymentId.setError(null);
-        }
-        return ok;
+    public BarcodeData getBarcodeData() {
+        if (qrValid)
+            return bcData;
+        else
+            return null;
     }
+
+    private BarcodeData bcData = null;
 
     private void generateQr() {
         Timber.d("GENQR");
         String address = tvAddress.getText().toString();
-        String paymentId = etPaymentId.getEditText().getText().toString();
+        String notes = etNotes.getEditText().getText().toString();
         String xmrAmount = evAmount.getAmount();
-        Timber.d("%s/%s/%s", xmrAmount, paymentId, address);
+        Timber.d("%s/%s/%s", xmrAmount, notes, address);
         if ((xmrAmount == null) || !Wallet.isAddressValid(address)) {
             clearQR();
             Timber.d("CLEARQR");
             return;
         }
-        StringBuffer sb = new StringBuffer();
-        sb.append(BarcodeData.XMR_SCHEME).append(address);
-        boolean first = true;
-        if (!paymentId.isEmpty()) {
-            if (first) {
-                sb.append("?");
-                first = false;
-            }
-            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
-        }
-        if (!xmrAmount.isEmpty()) {
-            if (first) {
-                sb.append("?");
-            } else {
-                sb.append("&");
-            }
-            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(xmrAmount);
-        }
-        String text = sb.toString();
+        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, null, notes, xmrAmount);
         int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
-        Bitmap qr = generate(text, size, size);
+        Bitmap qr = generate(bcData.getUriString(), size, size);
         if (qr != null) {
             setQR(qr);
             Timber.d("SETQR");
@@ -495,6 +458,10 @@ public class ReceiveFragment extends Fragment {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+        if (context instanceof GenerateReviewFragment.ProgressListener) {
+            this.progressCallback = (GenerateReviewFragment.ProgressListener) context;
+        }
+
     }
 
     @Override
@@ -512,5 +479,52 @@ public class ReceiveFragment extends Fragment {
             isMyWallet = false;
         }
         super.onDetach();
+    }
+
+    private void getNewSubaddress() {
+        new AsyncSubaddress().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+    }
+
+    private class AsyncSubaddress extends AsyncTask<Void, Void, Boolean> {
+        private String newSubaddress;
+
+        boolean dialogOpened = false;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (wallet.isKeyOnDevice() && (progressCallback != null)) {
+                progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_SUBADDRESS);
+                dialogOpened = true;
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (params.length != 0) return false;
+            newSubaddress = wallet.getNewSubaddress();
+            storeWallet();
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (dialogOpened)
+                progressCallback.dismissProgressDialog();
+            tvAddress.setText(newSubaddress);
+            tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
+                    wallet.getNumSubaddresses() - 1));
+            generateQr();
+            enableCopyAddress(true);
+            final Runnable resetSize = new Runnable() {
+                public void run() {
+                    tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
+                }
+            };
+            tvAddress.animate().alpha(1).setDuration(125)
+                    .scaleX(1.2f).scaleY(1.2f)
+                    .withEndAction(resetSize).start();
+        }
     }
 }

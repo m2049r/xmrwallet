@@ -145,17 +145,22 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     }
 
     @Override
-    public void sendFailed() {
+    public void sendFailed(String errorText) {
         pbProgressSend.setVisibility(View.INVISIBLE);
+        showAlert(getString(R.string.send_create_tx_error_title), errorText);
     }
 
     @Override
     public void createTransactionFailed(String errorText) {
         hideProgress();
+        showAlert(getString(R.string.send_create_tx_error_title), errorText);
+    }
+
+    private void showAlert(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(true).
-                setTitle(getString(R.string.send_create_tx_error_title)).
-                setMessage(errorText).
+                setTitle(title).
+                setMessage(message).
                 create().
                 show();
     }
@@ -297,7 +302,8 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         // accept keyboard "ok"
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
                     if (getActivityCallback().verifyWalletPassword(pass)) {
                         Helper.hideKeyboardAlways(activity);

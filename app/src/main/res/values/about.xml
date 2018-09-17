@@ -392,7 +392,7 @@
         included with this distribution is covered by the same copyright terms
         except that the holder is Tim Hudson (tjh@cryptsoft.com).<br/>
         <br/>
-        Copyright remains Eric Young's, and as such any Copyright notices in
+        Copyright remains Eric Young\'s, and as such any Copyright notices in
         the code are not to be removed.
         If this package is used in a product, Eric Young should be given attribution
         as the author of the parts of the library used.
@@ -411,13 +411,13 @@
            must display the following acknowledgement:<br/>
            \"This product includes cryptographic software written by
             Eric Young (eay@cryptsoft.com)\"
-           The word 'cryptographic' can be left out if the rouines from the library
+           The word \'cryptographic\' can be left out if the rouines from the library
            being used are not cryptographic related :-).<br/>
         4. If you include any Windows specific code (or a derivative thereof) from
            the apps directory (application code) you must include an acknowledgement:
            \"This product includes software written by Tim Hudson (tjh@cryptsoft.com)\"<br/>
         <br/>
-        THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+        THIS SOFTWARE IS PROVIDED BY ERIC YOUNG "AS IS" AND
         ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
         ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
@@ -545,7 +545,7 @@
         terms of any subsequent revision of the license.<br/>
         <br/>
         THIS SOFTWARE IS PROVIDED BY THE OPENLDAP FOUNDATION AND ITS
-        CONTRIBUTORS ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+        CONTRIBUTORS "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES,
         INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
         AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT
         SHALL THE OPENLDAP FOUNDATION, ITS CONTRIBUTORS, OR THE AUTHOR(S)
@@ -595,7 +595,7 @@
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-        <h2>'Poppins' Font</h2>
+        <h2>\'Poppins\' Font</h2>
         <h3>SIL Open Font License</h3>
         <p>Copyright (c) 2014, Indian Type Foundry (info@indiantypefoundry.com).</p>
         <p>This Font Software is licensed under the SIL Open Font License, Version 1.1.<br />

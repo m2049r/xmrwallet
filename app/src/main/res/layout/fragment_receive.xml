@@ -89,75 +89,52 @@
             android:layout_marginTop="16dp"
             android:orientation="vertical" />
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/etNotes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/etPaymentId"
-                android:layout_width="0dp"
+            <EditText
+                style="@style/MoneroEdit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                app:counterEnabled="true"
-                app:counterMaxLength="16"
-                app:errorEnabled="true">
+                android:hint="@string/receive_desc_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:textAlignment="textStart" />
 
-                <android.support.design.widget.TextInputEditText
-                    style="@style/MoneroEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/moneroGray"
-                    android:hint="@string/receive_paymentid_hint"
-                    android:imeOptions="actionDone"
-                    android:inputType="textMultiLine"
-                    android:textAlignment="textStart" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/bPaymentId"
-                style="@style/MoneroText.Button.Small"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:drawableTop="@drawable/ic_settings_orange_24dp"
-                android:text="@string/send_generate_paymentid_hint"
-                android:textColor="@color/moneroGray"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvQrCode"
-                style="@style/MoneroFab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:drawablePadding="4dp"
-                android:drawableStart="@drawable/ic_info_outline_gray_24dp"
-                android:text="@string/label_receive_info_gen_qr_code"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:visibility="invisible" />
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_above="@id/tvNfc"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:layout_margin="16dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardCornerRadius="2dp"
                 card_view:cardElevation="8dp"
                 card_view:contentPadding="4dp">
+
+                <TextView
+                    android:id="@+id/tvQrCode"
+                    style="@style/MoneroFab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_info_outline_gray_24dp"
+                    android:text="@string/label_receive_info_gen_qr_code"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/qrCode"
@@ -166,7 +143,19 @@
                     android:adjustViewBounds="true"
                     android:background="#00000000" />
             </android.support.v7.widget.CardView>
-        </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvNfc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/ic_nfc_black_24dp"
+                android:gravity="center"
+                android:text="@string/nfc_tag_tap"
+                android:visibility="visible" />
+        </RelativeLayout>
     </LinearLayout>
 
     <ImageView

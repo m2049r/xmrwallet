@@ -30,18 +30,6 @@
         használata <em>előttről</em>.</p>
     ]]></string>
 
-    <string name="help_create_ledger"><![CDATA[
-        <h1>Tárcalétrehozás - Ledger</h1>
-        <p>Ha a Ledger Nano S eszközödről szeretenéd visszaállítani a tárcád.</p>
-        <p>A titkos kulcsaid mindig a Ledgeren maradnak, így azt mindig csatlakoztatnod kell,
-        ha hozzá szeretnél férni a tárcádhoz.</p>
-        <p>Adj meg egy egyedi tárcanevet és jelszót. A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál.
-        Használj erős jelszót, de még jobb a jelmondat használata.</p>
-        <p>Add meg a címhez tartozó első tranzakció blokkszámát a Visszaállítási lánchossz mezőben, de megadhatod dátum
-        formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
-        használata <em>előttről</em>.</p>
-    ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Tárcalétrehozás - kulcsok</h1>
         <p>Ha a kulcsaid használatával állítod vissza a tárcád!</p>
@@ -246,4 +234,15 @@
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Tárcalétrehozás - Ledger</h1>
+        <p>Ha a Ledger Nano S eszközödről szeretenéd visszaállítani a tárcád.</p>
+        <p>A titkos kulcsaid mindig a Ledgeren maradnak, így azt mindig csatlakoztatnod kell,
+        ha hozzá szeretnél férni a tárcádhoz.</p>
+        <p>Adj meg egy egyedi tárcanevet és jelszót. A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál.
+        Használj erős jelszót, de még jobb a jelmondat használata.</p>
+        <p>Add meg a címhez tartozó első tranzakció blokkszámát a Visszaállítási lánchossz mezőben, de megadhatod dátum
+        formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
+        használata <em>előttről</em>.</p>
+    ]]></string>
 </resources>

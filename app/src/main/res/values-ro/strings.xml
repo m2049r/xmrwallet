@@ -32,6 +32,8 @@
     <string name="info_send_prio_fees">Prioritate mare = Comision mare</string>
 
     <string name="info_xmrto_enabled">Plată BTC activată, apasă pentru mai multe informații.</string>
+    <string name="info_crazypass_enabled">CrAzYpass activată, apasă pentru mai multe informații.</string>
+    <string name="info_ledger_enabled">Ledger activată, apasă pentru mai multe informații.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Ai introdus o adresă de Bitcoin.</b><br/>
@@ -194,12 +196,10 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicativ)</string>
 
-    <string name="send_address_hint">Adresa XMR sau BTC a destinatarului</string>
     <string name="send_paymentid_hint">Payment ID (facultativ)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notițe private (facultativ)</string>
     <string name="send_generate_paymentid_hint">Generează</string>
-    <string name="send_qr_hint">Scanează</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Cod QR invalid</string>
@@ -284,7 +284,6 @@
     <string name="fab_restore_seed">Restaurează portofel folosind cele 25 de cuvinte mnemonice</string>
 
     <string name="menu_changepw">Change Passphrase</string>
-    <string name="info_crazypass_enabled">CrAzYpass enabled, tap for more info.</string>
     <string name="changepw_progress">Change Password in progress</string>
     <string name="changepw_failed">Change Password failed!</string>
     <string name="changepw_success">Password changed</string>
@@ -318,6 +317,9 @@
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
 
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
     <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
 
     <string name="progress_ledger_progress">Communicating with Ledger</string>
@@ -333,4 +335,22 @@
 
     <string name="toast_ledger_attached">%1$s attached</string>
     <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias not resolved - address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>

@@ -34,6 +34,7 @@
 
     <string name="info_xmrto_enabled">BTC Zahlung aktiviert - Tippe für mehr Infos.</string>
     <string name="info_crazypass_enabled">CrAzYpass aktiviert - Tippe für mehr Infos.</string>
+    <string name="info_ledger_enabled">Ledger aktiviert - Tippe für mehr Infos.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Du hast eine BTC Adresse eingegeben.</b><br/>
@@ -221,12 +222,10 @@
 
     <string name="send_amount_btc_xmr">%1$s (Anhaltswert)</string>
 
-    <string name="send_address_hint">XMR oder BTC Adresse des Empfängers</string>
     <string name="send_paymentid_hint">Zahlungs-ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notizen (optional)</string>
     <string name="send_generate_paymentid_hint">Erzeuge</string>
-    <string name="send_qr_hint">Scannen</string>
     <string name="send_send_label">Gib meine wertvollen Moneroj aus</string>
     <string name="send_send_timed_label">Gib meine wertvollen Moneroj aus (%1$s)</string>
     <string name="send_qr_invalid">Kein QR-Code</string>
@@ -319,6 +318,9 @@
     <string name="tx_subaddress">Subadresse #%1$d</string>
     <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d</string>
 
+    <string name="menu_language">Sprache</string>
+    <string name="language_system_default">Benutze Systemsprache</string>
+
     <string name="fab_restore_ledger">Wallet mit Ledger Nano S wiederherstellen</string>
 
     <string name="progress_ledger_progress">Kommunikation mit Ledger</string>
@@ -334,4 +336,22 @@
 
     <string name="toast_ledger_attached">%1$s angesteckt</string>
     <string name="toast_ledger_detached">%1$s abgesteckt</string>
+
+    <string name="receive_desc_hint">Beschreibung (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias nicht aufgelöst - Adresse nicht verfügbar</string>
+    <string name="send_address_openalias">OpenAlias sicher &#x2714;</string>
+    <string name="send_address_resolve_openalias">Löse OpenAlias auf&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC - Adresse kann gefälscht sein!</string>
+    <string name="send_address_hint">Empfänger XMR/BTC Adresse oder OpenAlias</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
 </resources>

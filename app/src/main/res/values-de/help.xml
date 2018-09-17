@@ -27,9 +27,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.</p>
         <p>Trage deinen Seed in das Feld \"Mnemonischer Seed\" ein.<p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
@@ -38,9 +38,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
         <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
@@ -49,9 +49,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
         <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_details"><![CDATA[

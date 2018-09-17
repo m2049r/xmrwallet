@@ -32,8 +32,9 @@
     <string name="label_receive_info_gen_qr_code">Koppints a QR-kódért</string>
     <string name="info_send_prio_fees">Magasabb prioritás = magasabb tranzakciós díj</string>
 
-    <string name="info_xmrto_enabled">BTC fizetés engedélyezve, koppints ide a részletekért</string>
+    <string name="info_xmrto_enabled">BTC fizetés engedélyezve, koppints ide a részletekért.</string>
     <string name="info_crazypass_enabled">CrAzYpass engedélyezve, koppints ide a részletekért</string>
+    <string name="info_ledger_enabled">Ledger engedélyezve, koppints ide a részletekért</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Bitcoin-címet adtál meg.</b><br/>
@@ -43,7 +44,6 @@
     <string name="info_send_xmrto_success_order_label">XMR.TO megrendelés</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
 
     <string name="info_send_xmrto_paid">Megerősítés folyamatban</string>
     <string name="info_send_xmrto_unpaid">Kifizetés folyamatban</string>
@@ -222,12 +222,10 @@
 
     <string name="send_amount_btc_xmr">%1$s (előrejelzés)</string>
 
-    <string name="send_address_hint">Kedvezményezett XMR vagy BTC címe</string>
     <string name="send_paymentid_hint">Fizetési azonosító (opcionális)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Privát közlemény (opcionális)</string>
     <string name="send_generate_paymentid_hint">Generálás</string>
-    <string name="send_qr_hint">Beolvasás</string>
     <string name="send_send_label">Édes, drága Monero elköltése</string>
     <string name="send_send_timed_label">Édes, drága Monero elköltése (%1$s)</string>
     <string name="send_qr_invalid">Ez nem egy QR-kód</string>
@@ -320,6 +318,9 @@
     <string name="tx_subaddress">Alcím #%1$d</string>
     <string name="generate_address_label_sub">Nyilvános alcím #%1$d</string>
 
+    <string name="menu_language">Nyelv</string>
+    <string name="language_system_default">Rendszernyelv használata</string>
+
     <string name="fab_restore_ledger">Visszaállítás Ledger Nano S-ről</string>
 
     <string name="progress_ledger_progress">Kommunikáció a Ledgerrel</string>
@@ -335,4 +336,22 @@
 
     <string name="toast_ledger_attached">%1$s csatlakoztatva</string>
     <string name="toast_ledger_detached">%1$s leválasztva</string>
+
+    <string name="progress_nfc_write">Címke írása</string>
+    <string name="nfc_write_failed">Sikertelen címkeírás!</string>
+    <string name="nfc_write_successful">Sikeres címkeírás</string>
+    <string name="nfc_tag_unsupported">A címke nem támogatja az NDEF-et!</string>
+    <string name="nfc_tag_size">A címke %d byte-os, de %d kellene!</string>
+    <string name="nfc_tag_read_undef">Nem értem a címkét!</string>
+    <string name="nfc_tag_read_what">Nem tudom, mit akarsz!</string>
+    <string name="nfc_tag_read_success">Sikeres címkeolvasás</string>
+    <string name="nfc_tag_tap">NFC elérhető!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias not resolved - address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>
