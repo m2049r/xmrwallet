@@ -222,7 +222,6 @@
 
     <string name="send_amount_btc_xmr">%1$s (Anhaltswert)</string>
 
-    <string name="send_address_hint">XMR oder BTC Adresse des Empfängers</string>
     <string name="send_paymentid_hint">Zahlungs-ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notizen (optional)</string>
@@ -338,6 +337,14 @@
     <string name="toast_ledger_attached">%1$s angesteckt</string>
     <string name="toast_ledger_detached">%1$s abgesteckt</string>
 
+    <string name="receive_desc_hint">Beschreibung (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias nicht aufgelöst - Adresse nicht verfügbar</string>
+    <string name="send_address_openalias">OpenAlias sicher &#x2714;</string>
+    <string name="send_address_resolve_openalias">Löse OpenAlias auf&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC - Adresse kann gefälscht sein!</string>
+    <string name="send_address_hint">Empfänger XMR/BTC Adresse oder OpenAlias</string>
+
     <string name="progress_nfc_write">Writing Tag</string>
     <string name="nfc_write_failed">Writing Tag failed!</string>
     <string name="nfc_write_successful">Writing Tag successful</string>
@@ -347,11 +354,4 @@
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
     <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
-
-    <string name="receive_desc_hint">Description (optional)</string>
-
-    <string name="send_address_not_openalias">OpenAlias not resolved - address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
 </resources>

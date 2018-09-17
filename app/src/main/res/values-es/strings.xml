@@ -164,7 +164,6 @@
     <string name="generate_check_address">Introduce una dirección válida</string>
     <string name="generate_check_mnemonic">Introduce tu semilla de 25 palabras</string>
 
-    <string name="send_address_hint">Dirección XMR o BTC del Destinatario</string>
     <string name="send_paymentid_hint">ID de Pago (opcional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas Privadas (opcional)</string>
@@ -340,4 +339,5 @@
     <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
     <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>

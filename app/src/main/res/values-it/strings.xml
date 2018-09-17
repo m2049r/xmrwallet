@@ -223,7 +223,6 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
 
-    <string name="send_address_hint">Indirizzo XMR o BTC del ricevente</string>
     <string name="send_paymentid_hint">ID pagamento (opzionale)</string>
     <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Note private (opzionali)</string>
@@ -355,4 +354,5 @@
     <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
     <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>
