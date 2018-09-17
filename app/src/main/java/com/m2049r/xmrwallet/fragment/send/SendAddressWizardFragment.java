@@ -25,6 +25,7 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,10 @@ import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.OpenAliasHelper;
 import com.m2049r.xmrwallet.util.UserNotes;
+
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -83,6 +87,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private TextView tvXmrTo;
     private View llXmrTo;
 
+    private boolean resolvingOA = false;
+
     OnScanListener onScanListener;
 
     public interface OnScanListener {
@@ -108,7 +114,11 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                         || (actionId == EditorInfo.IME_ACTION_NEXT)) {
-                    if (checkAddress()) {
+                    String dnsOA = dnsFromOpenAlias(etAddress.getEditText().getText().toString());
+                    Timber.d("OpenAlias is %s", dnsOA);
+                    if (dnsOA != null) {
+                        processOpenAlias(dnsOA);
+                    } else if (checkAddress()) {
                         if (llPaymentId.getVisibility() == View.VISIBLE) {
                             etPaymentId.requestFocus();
                         } else {
@@ -230,6 +240,38 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         return view;
     }
 
+    private void processOpenAlias(String dnsOA) {
+        if (resolvingOA) return; // already resolving - just wait
+        if (dnsOA != null) {
+            resolvingOA = true;
+            etAddress.setError(getString(R.string.send_address_resolve_openalias));
+            OpenAliasHelper.resolve(dnsOA, new OpenAliasHelper.OnResolvedListener() {
+                @Override
+                public void onResolved(Map<BarcodeData.Asset, BarcodeData> dataMap) {
+                    resolvingOA = false;
+                    BarcodeData barcodeData = dataMap.get(BarcodeData.Asset.XMR);
+                    if (barcodeData == null) barcodeData = dataMap.get(BarcodeData.Asset.BTC);
+                    if (barcodeData != null) {
+                        Timber.d("DNSSEC=%b, %s", barcodeData.isSecure, barcodeData.address);
+                        processScannedData(barcodeData);
+                        etDummy.requestFocus();
+                        Helper.hideKeyboard(getActivity());
+                    } else {
+                        etAddress.setError(getString(R.string.send_address_not_openalias));
+                        Timber.d("NO XMR OPENALIAS TXT FOUND");
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    resolvingOA = false;
+                    etAddress.setError(getString(R.string.send_address_not_openalias));
+                    Timber.e("OA FAILED");
+                }
+            });
+        } // else ignore
+    }
+
     private boolean checkAddressNoError() {
         String address = etAddress.getEditText().getText().toString();
         return Wallet.isAddressValid(address)
@@ -276,12 +318,21 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         return ok;
     }
 
+    private void shakeAddress() {
+        etAddress.startAnimation(Helper.getShakeAnimation(getContext()));
+    }
+
     @Override
     public boolean onValidateFields() {
         boolean ok = true;
         if (!checkAddressNoError()) {
-            etAddress.startAnimation(Helper.getShakeAnimation(getContext()));
+            shakeAddress();
             ok = false;
+            String dnsOA = dnsFromOpenAlias(etAddress.getEditText().getText().toString());
+            Timber.d("OpenAlias is %s", dnsOA);
+            if (dnsOA != null) {
+                processOpenAlias(dnsOA);
+            }
         }
         if (!checkPaymentId()) {
             etPaymentId.startAnimation(Helper.getShakeAnimation(getContext()));
@@ -336,7 +387,12 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             String scannedAddress = barcodeData.address;
             if (scannedAddress != null) {
                 etAddress.getEditText().setText(scannedAddress);
-                checkAddress();
+                if (checkAddress()) {
+                    if (!barcodeData.isSecure)
+                        etAddress.setError(getString(R.string.send_address_no_dnssec));
+                    else
+                        etAddress.setError(getString(R.string.send_address_openalias));
+                }
             } else {
                 etAddress.getEditText().getText().clear();
                 etAddress.setError(null);
@@ -366,5 +422,15 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         Timber.d("onResumeFragment()");
         Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
+    }
+
+    String dnsFromOpenAlias(String openalias) {
+        Timber.d("checking openalias candidate %s", openalias);
+        if (Patterns.DOMAIN_NAME.matcher(openalias).matches()) return openalias;
+        if (Patterns.EMAIL_ADDRESS.matcher(openalias).matches()) {
+            openalias = openalias.replaceFirst("@", ".");
+            if (Patterns.DOMAIN_NAME.matcher(openalias).matches()) return openalias;
+        }
+        return null; // not an openalias
     }
 }

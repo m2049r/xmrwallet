@@ -82,6 +82,11 @@ dependencies {
 
     implementation 'com.nulab-inc:zxcvbn:1.2.3'
 
+    implementation 'dnsjava:dnsjava:2.1.8'
+    //implementation "org.minidns:minidns-hla:0.3.2"
+    implementation 'org.jitsi:dnssecjava:1.1.3'
+    implementation 'org.slf4j:slf4j-nop:1.7.25'
+
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"
