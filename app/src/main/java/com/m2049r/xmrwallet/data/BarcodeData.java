@@ -28,6 +28,7 @@ import java.util.Map;
 import timber.log.Timber;
 
 public class BarcodeData {
+
     public static final String XMR_SCHEME = "monero:";
     public static final String XMR_PAYMENTID = "tx_payment_id";
     public static final String XMR_AMOUNT = "tx_amount";
@@ -43,13 +44,19 @@ public class BarcodeData {
         XMR, BTC
     }
 
+    public enum Security {
+        NORMAL,
+        OA_NO_DNSSEC,
+        OA_DNSSEC
+    }
+
     public Asset asset = null;
     public String addressName = null;
     public String address = null;
     public String paymentId = null;
     public String amount = null;
     public String description = null;
-    public boolean isSecure = true;
+    public Security security = Security.NORMAL;
 
     public BarcodeData(String uri) {
         this.asset = asset;
@@ -86,8 +93,8 @@ public class BarcodeData {
         addressName = name;
     }
 
-    public void isSecure(boolean isSecure) {
-        this.isSecure = isSecure;
+    public void setSecurity(Security security) {
+        this.security = security;
     }
 
     public Uri getUri() {
