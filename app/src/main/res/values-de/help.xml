@@ -230,12 +230,12 @@
     <string name="help_create_ledger"><![CDATA[
         <h1>Wallet erstellen - Ledger</h1>
         <p>Falls du dein Wallet mit einem Ledger Nano S wiederherstellen willst!</p>
-        <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät, also muss es immer eingesteckt sein
-        wenn du dieses Wallet beutzt.</p>
+        <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät, also muss es immer eingesteckt sein,
+        wenn du dieses Wallet benutzt.</p>
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
-        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
+        ungefähres Datum oder Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
 </resources>
