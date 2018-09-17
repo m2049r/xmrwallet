@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 121
-        versionName "1.7.1 'OpenAlias'"
+        versionCode 122
+        versionName "1.7.2 'OpenAlias'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
