@@ -252,7 +252,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     BarcodeData barcodeData = dataMap.get(BarcodeData.Asset.XMR);
                     if (barcodeData == null) barcodeData = dataMap.get(BarcodeData.Asset.BTC);
                     if (barcodeData != null) {
-                        Timber.d("DNSSEC=%b, %s", barcodeData.isSecure, barcodeData.address);
+                        Timber.d("Security=%s, %s", barcodeData.security.toString(), barcodeData.address);
                         processScannedData(barcodeData);
                         etDummy.requestFocus();
                         Helper.hideKeyboard(getActivity());
@@ -388,9 +388,9 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             if (scannedAddress != null) {
                 etAddress.getEditText().setText(scannedAddress);
                 if (checkAddress()) {
-                    if (!barcodeData.isSecure)
+                    if (barcodeData.security == BarcodeData.Security.OA_NO_DNSSEC)
                         etAddress.setError(getString(R.string.send_address_no_dnssec));
-                    else
+                    else if (barcodeData.security == BarcodeData.Security.OA_DNSSEC)
                         etAddress.setError(getString(R.string.send_address_openalias));
                 }
             } else {

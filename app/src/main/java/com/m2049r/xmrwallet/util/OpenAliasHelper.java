@@ -142,7 +142,7 @@ public class OpenAliasHelper {
                     for (String txt : txts) {
                         BarcodeData bc = BarcodeData.parseOpenAlias(txt);
                         if (bc != null) {
-                            bc.isSecure(dnssec);
+                            bc.setSecurity(dnssec ? BarcodeData.Security.OA_DNSSEC : BarcodeData.Security.OA_NO_DNSSEC);
                             if (!dataMap.containsKey(bc.asset)) {
                                 dataMap.put(bc.asset, bc);
                             }
