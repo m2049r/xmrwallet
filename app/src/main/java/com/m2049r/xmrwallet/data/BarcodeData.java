@@ -127,9 +127,13 @@ public class BarcodeData {
         if (bcData == null) {
             bcData = parseBitcoinUri(qrCode);
         }
-        // check for naked btc addres
+        // check for naked btc address
         if (bcData == null) {
             bcData = parseBitcoinNaked(qrCode);
+        }
+        // check for OpenAlias
+        if (bcData == null) {
+            bcData = parseOpenAlias(qrCode);
         }
         return bcData;
     }
