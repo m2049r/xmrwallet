@@ -336,24 +336,24 @@
     <string name="toast_ledger_attached">%1$s connecté</string>
     <string name="toast_ledger_detached">%1$s déconnecté</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Écriture du Tag</string>
+    <string name="nfc_write_failed">Échec de l\'écriture du Tag !</string>
+    <string name="nfc_write_successful">Tag écrit avec succès</string>
+    <string name="nfc_tag_unsupported">le Tag ne supporte pas NDEF !</string>
+    <string name="nfc_tag_size">Le Tag donne %d octets, mais il en faut %d !</string>
+    <string name="nfc_tag_read_undef">Je ne comprend pas le Tag !</string>
+    <string name="nfc_tag_read_what">Je ne sais pas ce que vous voulez !</string>
+    <string name="nfc_tag_read_success">Tag lut avec succès</string>
+    <string name="nfc_tag_tap">NFC Disponible !</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Langue</string>
+    <string name="language_system_default">Utiliser la Langue du Système</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Description (optionnelle)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+    <string name="send_address_not_openalias">Adresse OpenAlias indisponible</string>
+    <string name="send_address_openalias">Sécurisé OpenAlias &#x2714;</string>
+    <string name="send_address_resolve_openalias">Résolution OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
+    <string name="send_address_hint">Adresse ou OpenAlias XMR/BTC du Destinataire</string>
 </resources>
