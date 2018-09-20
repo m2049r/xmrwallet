@@ -298,8 +298,8 @@
     <string name="tx_account">Konto #</string>
 
     <string name="send_sweepall">Skicka alla bekräftade pengar i detta konto!</string>
-    <string name="tx_subaddress">Underaddress #%1$d</string>
-    <string name="generate_address_label_sub">Publik underaddress #%1$d</string>
+    <string name="tx_subaddress">Underadress #%1$d</string>
+    <string name="generate_address_label_sub">Publik underadress #%1$d</string>
 
     <string name="menu_language">Språk</string>
     <string name="language_system_default">Använd systemets språk</string>
