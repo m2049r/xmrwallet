@@ -289,52 +289,52 @@
     <string name="fab_restore_key">Återställ plånbok från privata nycklar</string>
     <string name="fab_restore_seed">Återställ plånbok från startvärde på 25 ord</string>
 
-    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
-    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
+    <string name="prompt_open_wallet">Öppnar plånboken&#8230;</string>
+    <string name="bad_saved_password">Det sparade lösenordet är inkorrekt.\nSkriv lösenordet manuellt.</string>
 
-    <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
-    <string name="accounts_new">Added new account #%1$d</string>
-    <string name="tx_account">Account #</string>
+    <string name="accounts_drawer_new">Skapa konto</string>
+    <string name="accounts_drawer_title">Konton</string>
+    <string name="accounts_new">Nytt konto skapat #%1$d</string>
+    <string name="tx_account">Konto #</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="send_sweepall">Skicka alla bekräftade pengar i detta konto!</string>
+    <string name="tx_subaddress">Underaddress #%1$d</string>
+    <string name="generate_address_label_sub">Publik underaddress #%1$d</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Språk</string>
+    <string name="language_system_default">Använd systemets språk</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Återställ från Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">Kommunicerar med Ledger</string>
+    <string name="progress_ledger_confirm">Bekräfta på Ledger!</string>
+    <string name="progress_ledger_lookahead">Hämtar underadresser</string>
+    <string name="progress_ledger_verify">Verifierar nycklar</string>
+    <string name="progress_ledger_opentx">Beräknar galet svår matte</string>
+    <string name="progress_ledger_mlsag">Beräknar checksumma</string>
+    <string name="open_wallet_ledger_missing">Vänligen (åter)anslut Ledger</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">Skapar konto</string>
+    <string name="accounts_progress_update">Uppdaterar blånbok</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s ansluten</string>
+    <string name="toast_ledger_detached">%1$s frånkopplad</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Skriver tagg</string>
+    <string name="nfc_write_failed">Misslyckades att skriva till tagg!</string>
+    <string name="nfc_write_successful">Skrivning till tagg lyckades</string>
+    <string name="nfc_tag_unsupported">Taggen stöder inte NDEF!</string>
+    <string name="nfc_tag_size">Taggen har %d bytes, men vi behöver %d!</string>
+    <string name="nfc_tag_read_undef">Jag förstår inte taggen!</string>
+    <string name="nfc_tag_read_what">Jag vet inte vad du vill!</string>
+    <string name="nfc_tag_read_success">Lyckades läsa tagg</string>
+    <string name="nfc_tag_tap">NFC tillgängligt!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Beskrivning (valfri)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+    <string name="send_address_not_openalias">OpenAlias-adress ej tillgänglig</string>
+    <string name="send_address_openalias">OpenAlias säkrad &#x2714;</string>
+    <string name="send_address_resolve_openalias">Slår upp OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias utan DNSSEC - adressen kan vara förfalskad</string>
+    <string name="send_address_hint">Mottagarens XMR/BTC-adress eller OpenAlias</string>
 </resources>
