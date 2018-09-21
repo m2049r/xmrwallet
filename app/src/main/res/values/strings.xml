@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="menu_testnet">Testnet</string>
+    <string name="menu_stagenet" translatable="false">Stagenet</string>
     <string name="menu_about">About</string>
     <string name="menu_privacy">Privacy Policy</string>
 
@@ -35,8 +35,8 @@
     <string name="info_send_prio_fees">Higher Priority = Higher Fees</string>
 
     <string name="info_xmrto_enabled">BTC payment enabled, tap for more info.</string>
-
     <string name="info_crazypass_enabled">CrAzYpass enabled, tap for more info.</string>
+    <string name="info_ledger_enabled">Ledger enabled, tap for more info.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>You entered a Bitcoin address.</b><br/>
@@ -46,7 +46,6 @@
     <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
-
 
     <string name="info_send_xmrto_paid">Confirmation Pending</string>
     <string name="info_send_xmrto_unpaid">Payment Pending</string>
@@ -71,7 +70,7 @@
     <string name="label_send_progress_xmrto_query">Querying XMR.TO Order</string>
     <string name="label_send_progress_create_tx">Preparing Monero Transaction</string>
 
-    <string name="label_send_progress_queryparms">Querying xmr.to parameters</string>
+    <string name="label_send_progress_queryparms">Querying XMR.TO parameters</string>
 
     <string name="label_generic_xmrto_error">XMR.TO ERROR</string>
     <string name="text_generic_xmrto_error">Code: %1$d</string>
@@ -139,8 +138,10 @@
     <string name="prompt_password">Password for %1$s</string>
     <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
     <string name="prompt_send_password">Confirm Password</string>
+    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
     <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
     <string name="bad_password">Incorrect password!</string>
+    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="prompt_daemon_missing">Daemon address must be set!</string>
     <string name="prompt_wrong_net">Wallet does not match selected net</string>
@@ -207,6 +208,7 @@
     <string name="generate_wallet_type_new">New</string>
     <string name="generate_wallet_type_seed">Seed</string>
     <string name="generate_wallet_type_view">View</string>
+    <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
 
     <string name="generate_address_hint">Public Address</string>
     <string name="generate_viewkey_hint">View Key</string>
@@ -226,17 +228,21 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicative)</string>
 
-    <string name="send_address_hint">Receiver\'s XMR or BTC Address</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
     <string name="send_paymentid_hint">Payment ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>
     <string name="send_generate_paymentid_hint">Generate</string>
-    <string name="send_qr_hint">Scan</string>
+    <string name="send_qr_hint" translatable="false">Scan</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Not a QR Code</string>
     <string name="send_qr_address_invalid">Not a valid payment QR code</string>
     <string name="send_address_invalid">Not a valid address</string>
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
     <string name="send_title">Send</string>
     <string name="send_available">Balance: %1$s XMR</string>
     <string name="send_address_title">Address</string>
@@ -284,6 +290,7 @@
 
     <string name="receive_paymentid_hint">Payment ID (optional)</string>
     <string name="receive_amount_hint">Amount</string>
+    <string name="receive_desc_hint">Description (optional)</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
     <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
@@ -303,13 +310,6 @@
     <string name="archive_alert_yes">Yes, do that!</string>
     <string name="archive_alert_no">No thanks!</string>
 
-    <string-array name="mixin" translatable="false">
-        <item>Ringsize 7</item>
-        <item>Ringsize 10</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
-    </string-array>
-
     <string-array name="priority">
         <item>Priority Default</item>
         <item>Priority Low</item>
@@ -321,10 +321,82 @@
         <item>XMR</item>
         <item>EUR</item>
         <item>USD</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CAD</item>
+        <item>AUD</item>
+        <item>ZAR</item>
+
+        <item>BRL</item>
+        <item>CLP</item>
+        <item>CNY</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>HKD</item>
+        <item>HUF</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>KRW</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>PHP</item>
+        <item>PKR</item>
+        <item>PLN</item>
+        <item>RUB</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>TRY</item>
+        <item>TWD</item>
     </string-array>
 
     <string name="fab_create_new">Create new wallet</string>
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+
+    <string name="accounts_balance" translatable="false">%1$s XMR</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
 </resources>

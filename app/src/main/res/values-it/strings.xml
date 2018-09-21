@@ -1,7 +1,6 @@
 <resources>
     <string name="wallet_activity_name">Portafoglio</string>
 
-    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">Informazioni</string>
     <string name="menu_privacy">Politiche Privacy</string>
 
@@ -35,6 +34,7 @@
 
     <string name="info_xmrto_enabled">Pagamento BTC abilitato, tocca per maggiori informazioni.</string>
     <string name="info_crazypass_enabled">CrAzYpass abilitato, tocca per maggiori informazioni.</string>
+    <string name="info_ledger_enabled">Ledger abilitato, tocca per maggiori informazioni.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Hai inserito un indirizzo Bitcoin.</b><br/>
@@ -134,8 +134,10 @@
     <string name="prompt_password">Password per %1$s</string>
     <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale./nTocca il sensore.</string>
     <string name="prompt_send_password">Conferma Password</string>
+    <string name="prompt_open_wallet">Aprendo il portafoglio&#8230;</string>
     <string name="bad_fingerprint">Impronta digitale non riconosciuta. Prova di nuovo.</string>
     <string name="bad_password">Password errata!</string>
+    <string name="bad_saved_password">La password salvata è scorretta.\nInserisci la password manualmente.</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
     <string name="prompt_daemon_missing">Deve essere impostato l\'indirizzo del Daemon!</string>
     <string name="prompt_wrong_net">Il portafoglio non si abbina con la rete selezionata</string>
@@ -174,7 +176,7 @@
     <string name="generate_fingerprint_hint">Permetti di aprire il portafoglio usando la tua impronta digitale</string>
     <string name="generate_fingerprint_warn">[<![CDATA[
         <strong>Autenticazione tramite impronta digitale</strong>
-        <p>Abilitando l'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
+        <p>Abilitando l\'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
         senza inserire la password.</p>
         <p>Per sicurezza aggiuntiva, Monerujo richiederà comunque di inserire la password per visualizzare i dettagli
         del tuo portafoglio o inviare denaro.</p>
@@ -221,12 +223,10 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
 
-    <string name="send_address_hint">Indirizzo XMR o BTC del ricevente</string>
     <string name="send_paymentid_hint">ID pagamento (opzionale)</string>
     <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Note private (opzionali)</string>
     <string name="send_generate_paymentid_hint">Genera</string>
-    <string name="send_qr_hint">Scansiona</string>
     <string name="send_send_label">Spendi i miei bei Moneroj</string>
     <string name="send_send_timed_label">Spendi i miei bei Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Non è un codice QR</string>
@@ -309,4 +309,50 @@
     <string name="fab_restore_viewonly">Recupera un portafoglio solo-visualizzazione</string>
     <string name="fab_restore_key">Recupera un portafoglio dalle chiavi private</string>
     <string name="fab_restore_seed">Recupera un portafoglio da un seed di 25 parole</string>
+
+    <string name="accounts_drawer_new">Crea Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>

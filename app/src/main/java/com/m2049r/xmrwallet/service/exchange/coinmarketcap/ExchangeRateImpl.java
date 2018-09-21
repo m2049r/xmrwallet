@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2018 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.service.exchange.kraken;
+package com.m2049r.xmrwallet.service.exchange.coinmarketcap;
 
 import android.support.annotation.NonNull;
 
@@ -25,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +38,7 @@ class ExchangeRateImpl implements ExchangeRate {
 
     @Override
     public String getServiceName() {
-        return "kraken.com";
+        return "coinmarketcap.com";
     }
 
     @Override
@@ -64,29 +65,21 @@ class ExchangeRateImpl implements ExchangeRate {
 
     ExchangeRateImpl(final JSONObject jsonObject, final boolean swapAssets) throws JSONException, ExchangeException {
         try {
-            final String key = jsonObject.keys().next(); // we expect only one
-            Pattern pattern = Pattern.compile("^X(.*?)Z(.*?)$");
-            Matcher matcher = pattern.matcher(key);
-            if (matcher.find()) {
-                this.baseCurrency = swapAssets ? matcher.group(2) : matcher.group(1);
-                this.quoteCurrency = swapAssets ? matcher.group(1) : matcher.group(2);
-            } else {
-                throw new ExchangeException("no pair returned!");
+            final String baseC = jsonObject.getString("symbol");
+            final JSONObject quotes = jsonObject.getJSONObject("quotes");
+            final Iterator<String> keys = quotes.keys();
+            String key = null;
+            // get key which is not USD unless it is the only one
+            while (keys.hasNext()) {
+                key = keys.next();
+                if (!key.equals("USD")) break;
             }
-
-            JSONObject pair = jsonObject.getJSONObject(key);
-            JSONArray close = pair.getJSONArray("c");
-            String closePrice = close.getString(0);
-            if (closePrice != null) {
-                try {
-                    double rate = Double.parseDouble(closePrice);
-                    this.rate = swapAssets ? (1 / rate) : rate;
-                } catch (NumberFormatException ex) {
-                    throw new ExchangeException(ex.getLocalizedMessage());
-                }
-            } else {
-                throw new ExchangeException("no close price returned!");
-            }
+            final String quoteC = key;
+            baseCurrency = swapAssets ? quoteC : baseC;
+            quoteCurrency = swapAssets ? baseC : quoteC;
+            JSONObject quote = quotes.getJSONObject(key);
+            double price = quote.getDouble("price");
+            this.rate = swapAssets ? (1d / price) : price;
         } catch (NoSuchElementException ex) {
             throw new ExchangeException(ex.getLocalizedMessage());
         }

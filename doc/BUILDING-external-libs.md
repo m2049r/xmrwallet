@@ -107,8 +107,9 @@ ln -sf ../include /opt/android/build/boost/x86_64
 ```Shell
 cd /opt/android
 git clone https://github.com/m2049r/monero.git
-git checkout release-v0.12-monerujo-v1.5.1
-cd /opt/android/monero/build
+cd monero
+git checkout release-v0.12.3
+
 ./build-all-arch.sh
 ```
 

@@ -468,6 +468,21 @@ struct Wallet
     */
     virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
 
+   /*!
+    * \brief setRecoveringFromDevice - set state to recovering from device
+    *
+    * \param recoveringFromDevice - true/false
+    */
+    virtual void setRecoveringFromDevice(bool recoveringFromDevice) = 0;
+
+    /*!
+     * \brief setSubaddressLookahead - set size of subaddress lookahead
+     *
+     * \param major - size fot the major index
+     * \param minor - size fot the minor index
+     */
+    virtual void setSubaddressLookahead(uint32_t major, uint32_t minor) = 0;
+
     /**
      * @brief connectToDaemon - connects to the daemon. TODO: check if it can be removed
      * @return
@@ -556,7 +571,8 @@ struct Wallet
     }
     static uint64_t maximumAllowedAmount();
     // Easylogger wrapper
-    static void init(const char *argv0, const char *default_log_base_name);
+    static void init(const char *argv0, const char *default_log_base_name) { init(argv0, default_log_base_name, "", true); }
+    static void init(const char *argv0, const char *default_log_base_name, const std::string &log_path, bool console);
     static void debug(const std::string &category, const std::string &str);
     static void info(const std::string &category, const std::string &str);
     static void warning(const std::string &category, const std::string &str);
@@ -786,6 +802,12 @@ struct Wallet
     
     //! Initiates a light wallet import wallet request
     virtual bool lightWalletImportWalletRequest(std::string &payment_id, uint64_t &fee, bool &new_request, bool &request_fulfilled, std::string &payment_address, std::string &status) = 0;
+
+    /*!
+     * \brief Queries if the wallet keys are on a hardware device
+     * \return true if they are
+     */
+    virtual bool isKeyOnDevice() const = 0;
 };
 
 /**
@@ -916,6 +938,23 @@ struct WalletManager
     }
 
     /*!
+     * \brief  creates wallet using hardware device.
+     * \param  path                 Name of wallet file to be created
+     * \param  password             Password of wallet file
+     * \param  nettype              Network type
+     * \param  deviceName           Device name
+     * \param  restoreHeight        restore from start height (0 sets to current height)
+     * \param  subaddressLookahead  Size of subaddress lookahead (empty sets to some default low value)
+     * \return                      Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
+     */
+    virtual Wallet * createWalletFromDevice(const std::string &path,
+                                            const std::string &password,
+                                            NetworkType nettype,
+                                            const std::string &deviceName,
+                                            uint64_t restoreHeight = 0,
+                                            const std::string &subaddressLookahead = "") = 0;
+
+    /*!
      * \brief Closes wallet. In case operation succeeded, wallet object deleted. in case operation failed, wallet object not deleted
      * \param wallet        previously opened / created wallet instance
      * \return              None
@@ -941,6 +980,17 @@ struct WalletManager
      * @return - true if password is correct
      */
     virtual bool verifyWalletPassword(const std::string &keys_file_name, const std::string &password, bool no_spend_key) const = 0;
+
+    /*!
+     * \brief determine the key storage for the specified wallet file
+     * \param keys_file_name  Keys file to verify password for
+     * \param password        Password to verify
+     * \return                -1: incorrect password, 0 = default hw, 1 ledger hw
+     *
+     * for verification only - determines key storage hardware
+     *
+     */
+    virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 
     /*!
      * \brief findWallets - searches for the wallet files by given path name recursively

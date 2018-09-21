@@ -216,9 +216,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     }
 
     @Override
-    public void sendFailed() {
-        Timber.e("SEND FAILED");
+    public void sendFailed(String error) {
         pbProgressSend.setVisibility(View.INVISIBLE);
+        Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -421,7 +421,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         // accept keyboard "ok"
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
                     if (getActivityCallback().verifyWalletPassword(pass)) {
                         Helper.hideKeyboardAlways(activity);

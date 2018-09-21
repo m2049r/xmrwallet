@@ -177,6 +177,24 @@
                     style="@style/MoneroLabel.Small"
                     android:layout_gravity="center_vertical"
                     android:gravity="end"
+                    android:padding="8dp"
+                    android:text="@string/tx_account" />
+
+                <TextView
+                    android:id="@+id/tvAccount"
+                    style="@style/MoneroText"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/MoneroLabel.Small"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
