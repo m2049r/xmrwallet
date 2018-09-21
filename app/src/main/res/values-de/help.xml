@@ -27,9 +27,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.</p>
         <p>Trage deinen Seed in das Feld \"Mnemonischer Seed\" ein.<p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
@@ -38,9 +38,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
         <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
@@ -49,9 +49,9 @@
         <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
         Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
         <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
-        <p>Falls du die Blocknummer der ersten Transaktion dieser Adresse kennst gib sie in das Feld
-	\"Restore Height\" ein - dieses Feld leer zu lassen bedeutet die <em>gesamte</em> Blockchain 
-        nach Transaktionen zu und von dieser Adresse zu durchsuchen. Das dauert <em>sehr lang</em>.</p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
@@ -204,7 +204,7 @@
     <string name="help_xmrto"><![CDATA[
         <h1>BTC senden</h1>
         <h2>XMR.TO</h2>
-        <p>XXMR.TO ist ein Drittanbieter-Service, der als Wechselservice von Monero zu Bitcoin fungiert.
+        <p>XMR.TO ist ein Drittanbieter-Service, der als Wechselservice von Monero zu Bitcoin fungiert.
         Wir verwenden die XMR.TO Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte sieh dir
         https://xmr.to an und entscheide selbst, ob es etwas ist, was du verwenden möchtest. Das Monerujo
         Team ist nicht mit XMR.TO verbunden und kann dir bei deren Service nicht helfen.</p>
@@ -227,4 +227,15 @@
         indem du zum vorherigen Schritt zurückgehst und dann zum Bildschirm "Bestätigen" zurückkehrst.</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Wallet erstellen - Ledger</h1>
+        <p>Falls du dein Wallet mit einem Ledger Nano S wiederherstellen willst!</p>
+        <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät, also muss es immer eingesteckt sein,
+        wenn du dieses Wallet benutzt.</p>
+        <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
+        Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
+        <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
+        Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
+        ungefähres Datum oder Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
+    ]]></string>
 </resources>

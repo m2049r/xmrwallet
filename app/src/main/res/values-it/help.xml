@@ -58,24 +58,24 @@
 		E&apos; molto importante mantenerlo privato e conservarlo in un luogo sicuro, poiché può concedere a <em>chiunque</em>
 		pieno accesso ai tuoi Moneroj! Se non lo hai già fatto, annotati il Seed Mnemonico e conservalo in un luogo sicuro!
         <h2>Password di ripristino dei file del portafoglio</h2>
-        Assicurati di aver salvato questa password. Se resetti il tuo dispositivo o disinstalli l'app
+        Assicurati di aver salvato questa password. Se resetti il tuo dispositivo o disinstalli l\'app
         ne avrai bisogno per accedere di nuovo al tuo portafoglio.<br/>
         <h3>CrAzYpass</h3>
         Se la password visualizzata qui contiene 52 caratteri alfanumerici in gruppi di 4 - Congratulazioni!
         I file del tuo portafoglio sono criptati con una chiave a 256-bit generata dal tuo dispositivo
-        e basata sulla passphrase che hai scelto (alla creazione o quando l'hai modificata). Questo la rende estremamente
+        e basata sulla passphrase che hai scelto (alla creazione o quando l\'hai modificata). Questo la rende estremamente
         difficile da hackerare!<br/>
         Questa funzionalità è obbligatoria per tutti i nuovi portafogli.
         <h3>Password precedente</h3>
         Se vedi la tua passphrase qui, i file del tuo portaglio non sono così sicuri come 
         quelli criptati da CrAzYpass. Per adeguare la tua password semplicemente seleziona \"Cambia Passphrase\" dal menu.
-        Dopo aver inserito una nuova passphrase (eventualmente la stessa usata in precedenza) l'applicazione genererà
+        Dopo aver inserito una nuova passphrase (eventualmente la stessa usata in precedenza) l\'applicazione genererà
         una CrAzYpass per te e la userà per mettere al sicuro i file del tuo wallet. Annotala!
         <h3>Portafogli CrAzYpass</h3>
         Se dovessi avere bisogno di reinstallare Monerujo (per esempio dopo aver resettato il tuo telefono
         o dopo averlo sostituito) o vuoi usare i file del tuo portafoglio su un diverso dispositivo o PC, devi
         usare questa password di recupero per poter accedere nuovamente al tuo portafoglio.<br/>
-        Selezionando \'Cambia Passphrase\' dal menu, potrai scegliere un'altra passphrase. Questa azione
+        Selezionando \'Cambia Passphrase\' dal menu, potrai scegliere un\'altra passphrase. Questa azione
         creerà una nuova password di recupero. Ricordati di annotarla!
         <h2>Chiave di Visualizzazione</h2>
 		La tua chiave di visualizzazione può essere usata per monitorare le transazioni in ingresso al tuo portafoglio senza concedere il permesso di spendere i fondi.
@@ -177,4 +177,15 @@
         <p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a XMR.TO tornando indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Create Wallet - Ledger</h1>
+        <p>You want to recover your wallet from your Ledger Nano S device.</p>
+        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
+        time you want to access your wallet.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
+        device. Use a strong password - even better use a passphrase.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
 </resources>

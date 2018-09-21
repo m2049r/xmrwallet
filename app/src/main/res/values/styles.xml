@@ -52,6 +52,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="MoneroLabel.Caps.White">
+        <item name="android:textColor">@color/moneroWhite</item>
+    </style>
+
     <style name="MoneroLabel.Caps.Black">
         <item name="android:textColor">@color/moneroBlack</item>
     </style>
@@ -325,5 +329,4 @@
     <style name="MoneroSpinnerItemGray" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textAppearance">@style/MoneroTextAppearanceSpinnerItemGray</item>
     </style>
-
 </resources>

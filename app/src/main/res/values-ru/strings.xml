@@ -1,8 +1,13 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Кошелек</string>
 
     <string name="menu_stagenet" translatable="false">Stagenet</string>
+=======
+    <string name="wallet_activity_name">Кошелек</string>
+
+>>>>>>> m2049r/master
     <string name="menu_about">О программе</string>
     <string name="menu_privacy">Политика конфиденциальности</string>
 
@@ -35,8 +40,13 @@
     <string name="info_send_prio_fees">Высокий приоритет = Высокие комиссии</string>
 
     <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
+<<<<<<< HEAD
 
     <string name="info_crazypass_enabled">Доступен CrAzYpass, нажмите для доп. информации</string>
+=======
+    <string name="info_crazypass_enabled">Доступен CrAzYpass, нажмите для доп. информации</string>
+    <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
+>>>>>>> m2049r/master
 
     <string name="info_xmrto"><![CDATA[
         <b>Вы ввели Bitcoin адрес.</b><br/>
@@ -112,9 +122,12 @@
 
     <string name="label_daemon">Удаленный узел</string>
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+<<<<<<< HEAD
     <string name="connect_stagenet" translatable="false">Stagenet</string>
     <string name="connect_testnet" translatable="false">Testnet</string>
     <string name="connect_mainnet" translatable="false">Mainnet</string>
+=======
+>>>>>>> m2049r/master
     <string name="status_wallet_loading">Загрузка кошелека &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
@@ -228,12 +241,18 @@
 
     <string name="send_amount_btc_xmr">%1$s (приблизительно)</string>
 
+<<<<<<< HEAD
     <string name="send_address_hint">XMR или BTC адрес получателя</string>
+=======
+>>>>>>> m2049r/master
     <string name="send_paymentid_hint">ID платежа (необязательно)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Персональная заметка (необязательно)</string>
     <string name="send_generate_paymentid_hint">Генерация</string>
+<<<<<<< HEAD
     <string name="send_qr_hint">Сканирование</string>
+=======
+>>>>>>> m2049r/master
     <string name="send_send_label">Потратьте мои сладкие Moneroj</string>
     <string name="send_send_timed_label">Потратьте мои сладкие Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Это не QR-код</string>
@@ -312,6 +331,7 @@
         <item>Приоритет - Высокий</item>
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="currency" translatable="false">
         <item>XMR</item>
         <item>EUR</item>
@@ -349,14 +369,19 @@
         <item>TWD</item>
     </string-array>
 
+=======
+>>>>>>> m2049r/master
     <string name="fab_create_new">Создать новый кошелек</string>
     <string name="fab_restore_viewonly">Восстановить кошелек только для просмотра</string>
     <string name="fab_restore_key">Восстановить кошелек из ключей</string>
     <string name="fab_restore_seed">Восстановить кошелек из мнемонической фразы</string>
 
+<<<<<<< HEAD
     <string name="accounts_balance" translatable="false">%1$s XMR</string>
     <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
 
+=======
+>>>>>>> m2049r/master
     <string name="accounts_drawer_new">Создать учетную запись</string>
     <string name="accounts_drawer_title">Учетная запись</string>
     <string name="accounts_new">Добавить новую учетную запись #%1$d</string>
@@ -365,4 +390,44 @@
     <string name="send_sweepall">Отправить все средства на этот счет!</string>
     <string name="tx_subaddress">Субадрес #%1$d</string>
     <string name="generate_address_label_sub">Публичный субадрес #%1$d</string>
+<<<<<<< HEAD
+=======
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+>>>>>>> m2049r/master
 </resources>

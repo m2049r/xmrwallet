@@ -61,6 +61,7 @@ public class GenerateFragment extends Fragment {
     static final String TYPE_NEW = "new";
     static final String TYPE_KEY = "key";
     static final String TYPE_SEED = "seed";
+    static final String TYPE_LEDGER = "ledger";
     static final String TYPE_VIEWONLY = "view";
 
     private TextInputLayout etWalletName;
@@ -144,7 +145,8 @@ public class GenerateFragment extends Fragment {
 
         etWalletName.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     if (checkName()) {
                         etWalletPassword.requestFocus();
                     } // otherwise ignore
@@ -182,9 +184,22 @@ public class GenerateFragment extends Fragment {
             etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
             etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_DONE)) {
                         Helper.hideKeyboard(getActivity());
                         generateWallet();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        } else if (type.equals(TYPE_LEDGER)) {
+            etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
+            etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                        etWalletRestoreHeight.requestFocus();
                         return true;
                     }
                     return false;
@@ -193,7 +208,8 @@ public class GenerateFragment extends Fragment {
         } else if (type.equals(TYPE_SEED)) {
             etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         etWalletMnemonic.requestFocus();
                         return true;
                     }
@@ -203,7 +219,8 @@ public class GenerateFragment extends Fragment {
             etWalletMnemonic.setVisibility(View.VISIBLE);
             etWalletMnemonic.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         if (checkMnemonic()) {
                             etWalletRestoreHeight.requestFocus();
                         }
@@ -215,7 +232,8 @@ public class GenerateFragment extends Fragment {
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             etWalletPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         etWalletAddress.requestFocus();
                         return true;
                     }
@@ -227,7 +245,8 @@ public class GenerateFragment extends Fragment {
 
             {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         if (checkAddress()) {
                             etWalletViewKey.requestFocus();
                         }
@@ -239,7 +258,8 @@ public class GenerateFragment extends Fragment {
             etWalletViewKey.setVisibility(View.VISIBLE);
             etWalletViewKey.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         if (checkViewKey()) {
                             if (type.equals(TYPE_KEY)) {
                                 etWalletSpendKey.requestFocus();
@@ -259,7 +279,8 @@ public class GenerateFragment extends Fragment {
 
             {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                         if (checkSpendKey()) {
                             etWalletRestoreHeight.requestFocus();
                         }
@@ -273,7 +294,8 @@ public class GenerateFragment extends Fragment {
             etWalletRestoreHeight.setVisibility(View.VISIBLE);
             etWalletRestoreHeight.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                            || (actionId == EditorInfo.IME_ACTION_DONE)) {
                         Helper.hideKeyboard(getActivity());
                         generateWallet();
                         return true;
@@ -391,16 +413,24 @@ public class GenerateFragment extends Fragment {
             // is it a date?
             SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
             parser.setLenient(false);
-            parser.parse(restoreHeight);
-            height = RestoreHeight.getInstance().getHeight(restoreHeight);
-        } catch (ParseException exPE) {
+            height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
+        } catch (ParseException ex) {
+        }
+        if (height <= 0)
+            try {
+                // is it a date without dashes?
+                SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
+                parser.setLenient(false);
+                height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
+            } catch (ParseException ex) {
+            }
+        if (height <= 0)
             try {
                 // or is it a height?
                 height = Long.parseLong(restoreHeight);
-            } catch (NumberFormatException exNFE) {
+            } catch (NumberFormatException ex) {
                 return -1;
             }
-        }
         Timber.d("Using Restore Height = %d", height);
         return height;
     }
@@ -477,6 +507,12 @@ public class GenerateFragment extends Fragment {
                 KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
             }
             activityCallback.onGenerate(name, crazyPass, seed, height);
+        } else if (type.equals(TYPE_LEDGER)) {
+            bGenerate.setEnabled(false);
+            if (fingerprintAuthAllowed) {
+                KeyStoreHelper.saveWalletUserPass(getActivity(), name, password);
+            }
+            activityCallback.onGenerateLedger(name, crazyPass, height);
         } else if (type.equals(TYPE_KEY) || type.equals(TYPE_VIEWONLY)) {
             if (checkAddress() && checkViewKey() && checkSpendKey()) {
                 bGenerate.setEnabled(false);
@@ -515,6 +551,8 @@ public class GenerateFragment extends Fragment {
                 return getString(R.string.generate_wallet_type_new);
             case TYPE_SEED:
                 return getString(R.string.generate_wallet_type_seed);
+            case TYPE_LEDGER:
+                return getString(R.string.generate_wallet_type_ledger);
             case TYPE_VIEWONLY:
                 return getString(R.string.generate_wallet_type_view);
             default:
@@ -531,6 +569,8 @@ public class GenerateFragment extends Fragment {
         void onGenerate(String name, String password, String seed, long height);
 
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
+
+        void onGenerateLedger(String name, String password, long height);
 
         void setTitle(String title);
 
@@ -566,6 +606,9 @@ public class GenerateFragment extends Fragment {
                 break;
             case TYPE_SEED:
                 inflater.inflate(R.menu.create_wallet_seed, menu);
+                break;
+            case TYPE_LEDGER:
+                inflater.inflate(R.menu.create_wallet_ledger, menu);
                 break;
             case TYPE_VIEWONLY:
                 inflater.inflate(R.menu.create_wallet_view, menu);

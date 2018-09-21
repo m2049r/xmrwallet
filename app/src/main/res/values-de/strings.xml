@@ -1,7 +1,6 @@
 <resources>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">Über</string>
     <string name="menu_privacy">Datenschutzerklärung</string>
 
@@ -12,7 +11,7 @@
     <string name="menu_rename">Umbenennen &#8230;</string>
     <string name="menu_archive">Archivieren</string>
     <string name="menu_backup">Backup</string>
-    <string name="menu_changepw">Passwortphrase ändern</string>
+    <string name="menu_changepw">Passwort ändern</string>
 
     <string name="password_weak">Tippe weiter &#8230;</string>
     <string name="password_fair">Hmmm &#8230;</string>
@@ -33,8 +32,9 @@
     <string name="label_receive_info_gen_qr_code">Berühren für QR-Code</string>
     <string name="info_send_prio_fees">Höhere Priorität = Höhere Gebühr</string>
 
-    <string name="info_xmrto_enabled">BTC Zahlung aktiviert, tippe für mehr Infos.</string>
-    <string name="info_crazypass_enabled">CrAzYpass aktiviert, tippe für mehr Infos.</string>
+    <string name="info_xmrto_enabled">BTC Zahlung aktiviert - Tippe für mehr Infos.</string>
+    <string name="info_crazypass_enabled">CrAzYpass aktiviert - Tippe für mehr Infos.</string>
+    <string name="info_ledger_enabled">Ledger aktiviert - Tippe für mehr Infos.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Du hast eine BTC Adresse eingegeben.</b><br/>
@@ -87,7 +87,7 @@
     <string name="label_send_btc_xmrto_key_lb">Geheimer Schlüssel\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO Geheimer Schlüssel</string>
     <string name="label_send_btc_address">BTC Zieladresse</string>
-    <string name="label_send_btc_amount">Menge</string>
+    <string name="label_send_btc_amount">Betrag</string>
 
     <string name="label_send_txid">Transaktions-ID</string>
     <string name="label_send_address">Zieladresse</string>
@@ -112,7 +112,7 @@
     <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Lade Wallet &#8230;</string>
     <string name="status_wallet_unloaded">Wallet gespeichert</string>
-    <string name="status_wallet_unload_failed">Wallet Speicherung fehlgeschlagen!</string>
+    <string name="status_wallet_unload_failed">Walletspeicherung fehlgeschlagen!</string>
     <string name="status_wallet_connecting">Verbinde &#8230;</string>
     <string name="status_wallet_connect_failed">Verbindung zum Node fehlgeschlagen!\nPrüfe Username/Passwort</string>
     <string name="status_wallet_connect_timeout">Node Zeitüberschreitung!\nNochmal oder anderen Node versuchen.</string>
@@ -129,21 +129,23 @@
 
     <string name="prompt_rename">Umbenennen %1$s</string>
 
-    <string name="prompt_changepw">Neue Passwortphrase für %1$s</string>
-    <string name="prompt_changepwB">Passwortphrase für %1$s wiederholen</string>
+    <string name="prompt_changepw">Neues Passwort für %1$s</string>
+    <string name="prompt_changepwB">Passwort für %1$s wiederholen</string>
     <string name="prompt_password">Passwort für %1$s</string>
     <string name="prompt_fingerprint_auth">Fingerabdruck-Authentifizierung möglich.\nBitte Sensor berühren.</string>
     <string name="prompt_send_password">Passwort bestätigen</string>
+    <string name="prompt_open_wallet">Öffne Wallet &#8230;</string>
     <string name="bad_fingerprint">Fingerabdruck nicht erkannt. Nochmals versuchen.</string>
     <string name="bad_password">Falsches Passwort!</string>
+    <string name="bad_saved_password">Hinterlegtes Passwort falsch.\nBitte Passwort manuell eingeben.</string>
     <string name="bad_wallet">Wallet existiert nicht!</string>
     <string name="prompt_daemon_missing">Daemonadresse muss gesetzt sein!</string>
     <string name="prompt_wrong_net">Wallet entspricht nicht dem ausgewähltem Netz</string>
 
     <string name="label_watchonly">(Watch Only)</string>
 
-    <string name="label_wallet_receive">Nehmen</string>
-    <string name="label_wallet_send">Geben</string>
+    <string name="label_wallet_receive">Empfange</string>
+    <string name="label_wallet_send">Sende</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR unbestätigt</string>
 
@@ -153,12 +155,12 @@
     <string name="status_remaining">Blöcke verbleibend</string>
     <string name="status_syncing">Scanne:</string>
 
-    <string name="message_strorage_not_writable">Externer Speicher nicht beschreibbar! Panik!</string>
+    <string name="message_strorage_not_writable">Externer Speicher nicht beschreibbar!</string>
     <string name="message_strorage_not_permitted">Wir brauchen die Zugriffsrechte auf den externen Speicher wirklich!</string>
-    <string name="message_camera_not_permitted">Keine Kamera = Kein QR scannen!</string>
+    <string name="message_camera_not_permitted">Keine Kamera = Kein QR-Code scannen!</string>
 
     <string name="label_copy_viewkey">View-Key</string>
-    <string name="label_copy_address">Öffentliche Adresse</string>
+    <string name="label_copy_address">Empfangsadresse</string>
     <string name="label_copy_xmrtokey">XMR.TO Schlüssel</string>
     <string name="message_copy_viewkey">View-Key in Zwischenablage kopiert!</string>
     <string name="message_copy_xmrtokey">XMR.TO Schlüssel in Zwischenablage kopiert!</string>
@@ -170,21 +172,21 @@
 
     <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Passwortphrase</string>
+    <string name="generate_password_hint">Walletpasswort</string>
     <string name="generate_fingerprint_hint">Erlaubt das Öffnen des Wallets durch Fingerabdruck-Authentifizierung</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Fingerabdruck-Authentifizierung</strong>
-        <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts 
+        <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts
         das Wallet-Saldo einsehen sowie Gelder empfangen.</p>
-        <p>Aus Sicherheitsgründen wird Monerujo weiterhin dein Passwort abfragen, 
+        <p>Aus Sicherheitsgründen wird Monerujo weiterhin dein Passwort abfragen,
         wenn du Wallet-Details einsehen oder Gelder senden möchtest.</p>
         <strong>Sicherheits-Warnung</strong>
         <p>Bedenke bitte, dass jeder mit Zugriff auf deinen Fingerabdruck dein Wallet-Saldo einsehen kann.</p>
         <p>Eine bösartige Person könnte dies zum Beispiel versuchen, während du schläfst.</p>
         <strong>Bist du sicher, dass du diese Funktion aktivieren willst?</strong>
     ]]></string>
-    <string name="generate_bad_passwordB">Passwortphrasen stimmen nicht überein</string>
-    <string name="generate_empty_passwordB">Passwortphrase darf nicht leer sein</string>
+    <string name="generate_bad_passwordB">Passwörter stimmen nicht überein</string>
+    <string name="generate_empty_passwordB">Passwort darf nicht leer sein</string>
     <string name="generate_buttonGenerate">Erstell mir jetzt endlich ein Wallet!</string>
     <string name="generate_button_accept">Ich habe den Mnemonischen Seed notiert!</string>
 
@@ -195,51 +197,49 @@
     <string name="generate_wallet_created">Wallet erstellt</string>
     <string name="generate_wallet_create_failed">Walleterstellung fehlgeschlagen</string>
 
-    <string name="generate_restoreheight_error">Gib eine Nummer oder ein Datum (JJJJ-MM-TT) ein</string>
+    <string name="generate_restoreheight_error">Gib eine Blocknummer oder ein Datum (JJJJ-MM-TT) ein</string>
 
     <string name="generate_wallet_type_key">Schlüssel</string>
     <string name="generate_wallet_type_new">Neu</string>
     <string name="generate_wallet_type_seed">Seed</string>
     <string name="generate_wallet_type_view">View</string>
 
-    <string name="generate_address_hint">Öffentliche Adresse</string>
+    <string name="generate_address_hint">Empfangsadresse</string>
     <string name="generate_viewkey_hint">View-Key</string>
     <string name="generate_spendkey_hint">Spend-Key</string>
     <string name="generate_mnemonic_hint">25-Wörter mnemonischer Seed</string>
     <string name="generate_restoreheight_hint">Wiederherstellungshöhe oder Datum (JJJJ-MM-TT)</string>
 
-    <string name="generate_address_label">Öffentliche Adresse</string>
+    <string name="generate_address_label">Empfangsadresse</string>
     <string name="generate_viewkey_label">View-Key</string>
     <string name="generate_spendkey_label">Spend-Key</string>
     <string name="generate_mnemonic_label">Mnemonischer Seed</string>
-    <string name="generate_crazypass_label">Walletdateien Wiederherstellungspasswort</string>
+    <string name="generate_crazypass_label">Wiederherstellungspasswort für Walletdateien</string>
 
     <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
-    <string name="generate_check_mnemonic">Gib deine 25 Wörter Seed ein</string>
+    <string name="generate_check_mnemonic">Gib deinen 25 Wörter Seed ein</string>
 
     <string name="send_amount_btc_xmr">%1$s (Anhaltswert)</string>
 
-    <string name="send_address_hint">Empfänger XMR oder BTC Adresse</string>
     <string name="send_paymentid_hint">Zahlungs-ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notizen (optional)</string>
     <string name="send_generate_paymentid_hint">Erzeuge</string>
-    <string name="send_qr_hint">Scannen</string>
     <string name="send_send_label">Gib meine wertvollen Moneroj aus</string>
     <string name="send_send_timed_label">Gib meine wertvollen Moneroj aus (%1$s)</string>
     <string name="send_qr_invalid">Kein QR-Code</string>
     <string name="send_qr_address_invalid">Kein gültiger Zahlungs-QR-Code</string>
     <string name="send_address_invalid">Keine gültige Adresse</string>
     <string name="send_title">Senden</string>
-    <string name="send_available">Saldo: %1$s XMR</string>
+    <string name="send_available">Verfügbar: %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
-    <string name="send_amount_title">Menge</string>
+    <string name="send_amount_title">Betrag</string>
     <string name="send_settings_title">Einstellungen</string>
     <string name="send_confirm_title">Bestätigen</string>
     <string name="send_success_title">Fertig</string>
 
-    <string name="send_amount_label">Menge</string>
+    <string name="send_amount_label">Betrag</string>
     <string name="send_fee_btc_label">Gebühr (XMR)</string>
     <string name="send_fee_label">Gebühr</string>
     <string name="send_total_btc_label">Total (XMR)</string>
@@ -248,7 +248,7 @@
     <string name="send_amount">%1$s XMR</string>
     <string name="send_fee">+%1$s Gebühr</string>
 
-    <string name="send_create_tx_error_title">Transaktionserstellungsfehler</string>
+    <string name="send_create_tx_error_title">Fehler bei Transaktionserstellung</string>
 
     <string name="tx_list_fee">- Gebühr %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
@@ -257,14 +257,14 @@
     <string name="tx_list_amount_positive">+ %1$s</string>
 
     <string name="tx_timestamp">Zeitstempel</string>
-    <string name="tx_id">TX-ID</string>
-    <string name="tx_key">TX-Schlüssel</string>
+    <string name="tx_id">Transaktions-ID</string>
+    <string name="tx_key">Transaktionsschlüssel</string>
     <string name="tx_destination">Ziel</string>
     <string name="tx_destination_btc">Ziel\n(BTC)</string>
     <string name="tx_paymentId">Zahlungs-ID</string>
     <string name="tx_blockheight">Block</string>
-    <string name="tx_amount">Menge</string>
-    <string name="tx_amount_btc">Menge\n(BTC)</string>
+    <string name="tx_amount">Betrag</string>
+    <string name="tx_amount_btc">Betrag\n(BTC)</string>
     <string name="tx_fee">Gebühr</string>
     <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notizen</string>
@@ -277,7 +277,7 @@
     <string name="tx_failed">FEHLGESCHLAGEN</string>
 
     <string name="receive_paymentid_hint">Zahlungs-ID (optional)</string>
-    <string name="receive_amount_hint">Menge</string>
+    <string name="receive_amount_hint">Betrag</string>
     <string name="receive_cannot_open">Konnte Wallet nicht öffnen!</string>
     <string name="receive_paymentid_invalid">16 oder 64 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Muss bei einer integrierten Adresse leer sein</string>
@@ -299,13 +299,59 @@
 
     <string-array name="priority">
         <item>Priorität Standard</item>
-        <item>Priority Gering</item>
-        <item>Priority Mittel</item>
-        <item>Priority Hoch</item>
+        <item>Priorität Gering</item>
+        <item>Priorität Mittel</item>
+        <item>Priorität Hoch</item>
     </string-array>
 
     <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View Only Wallet wiederherstellen</string>
-    <string name="fab_restore_key">Wallet mit privaten Schlüsseln wiederherstellen</string>
-    <string name="fab_restore_seed">Wallet mit 25 Wörter Seed wiederherstellen</string>
+    <string name="fab_restore_key">Mit privaten Schlüsseln wiederherstellen</string>
+    <string name="fab_restore_seed">Mit 25 Wörter Seed wiederherstellen</string>
+
+    <string name="accounts_drawer_new">Konto erstellen</string>
+    <string name="accounts_drawer_title">Konten</string>
+    <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
+    <string name="tx_account">Konto #</string>
+
+    <string name="send_sweepall">Versende ALLE(!) verfügbaren Gelder aus diesem Konto</string>
+    <string name="tx_subaddress">Subadresse #%1$d</string>
+    <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d</string>
+
+    <string name="menu_language">Sprache</string>
+    <string name="language_system_default">Benutze Systemsprache</string>
+
+    <string name="fab_restore_ledger">Wallet mit Ledger Nano S wiederherstellen</string>
+
+    <string name="progress_ledger_progress">Kommunikation mit Ledger</string>
+    <string name="progress_ledger_confirm">Bestätigung auf Ledger benötigt!</string>
+    <string name="progress_ledger_lookahead">Abrufen von Subadressen</string>
+    <string name="progress_ledger_verify">Prüfe Schlüssel</string>
+    <string name="progress_ledger_opentx">Mache verrückte Mathe</string>
+    <string name="progress_ledger_mlsag">Berechne ein paar Hashwerte</string>
+    <string name="open_wallet_ledger_missing">Bitte Ledger (wieder-)anschließen!</string>
+
+    <string name="accounts_progress_new">Erzeuge Konto</string>
+    <string name="accounts_progress_update">Aktualisiere Wallet</string>
+
+    <string name="toast_ledger_attached">%1$s angesteckt</string>
+    <string name="toast_ledger_detached">%1$s abgesteckt</string>
+
+    <string name="receive_desc_hint">Beschreibung (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias Adresse nicht verfügbar</string>
+    <string name="send_address_openalias">OpenAlias sicher &#x2714;</string>
+    <string name="send_address_resolve_openalias">Löse OpenAlias auf&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC - Adresse kann gefälscht sein!</string>
+    <string name="send_address_hint">Empfänger XMR/BTC Adresse oder OpenAlias</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
 </resources>

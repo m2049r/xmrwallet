@@ -24,14 +24,25 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
@@ -40,28 +51,39 @@ import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
+import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import timber.log.Timber;
 
-public class WalletActivity extends SecureActivity implements WalletFragment.Listener,
+public class WalletActivity extends BaseActivity implements WalletFragment.Listener,
         WalletService.Observer, SendFragment.Listener, TxFragment.Listener,
         GenerateReviewFragment.ListenerWithWallet,
         GenerateReviewFragment.Listener,
         GenerateReviewFragment.PasswordChangedListener,
         ScannerFragment.OnScannedListener, ReceiveFragment.Listener,
-        SendAddressWizardFragment.OnScanListener {
+        SendAddressWizardFragment.OnScanListener,
+        WalletFragment.DrawerLocker,
+        NavigationView.OnNavigationItemSelectedListener {
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
     public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
+
+    private NavigationView accountsView;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle drawerToggle;
 
     private Toolbar toolbar;
     private boolean needVerifyIdentity;
@@ -133,6 +155,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
+            password = extras.getString(REQUEST_PW);
             connectWalletService(walletId, password);
         } else {
             finish();
@@ -154,16 +177,25 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     @Override
     protected void onDestroy() {
         Timber.d("onDestroy()");
-        if ((mBoundService != null) && !isSynced() && (getWallet() != null)) {
+        if ((mBoundService != null) && (getWallet() != null)) {
             saveWallet();
         }
         stopWalletService();
+        if (drawer != null) drawer.removeDrawerListener(drawerToggle);
         super.onDestroy();
     }
 
     @Override
     public boolean hasWallet() {
         return haveWallet;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem renameItem = menu.findItem(R.id.action_rename);
+        if (renameItem != null)
+            renameItem.setVisible(hasWallet() && getWallet().isSynchronized());
+        return true;
     }
 
     @Override
@@ -192,6 +224,9 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 return true;
             case R.id.action_help_send:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_send);
+                return true;
+            case R.id.action_rename:
+                onAccountRename();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -238,6 +273,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                         break;
                     case Toolbar.BUTTON_CANCEL:
                         onDisposeRequest();
+                        Helper.hideKeyboard(WalletActivity.this);
                         WalletActivity.super.onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
@@ -252,14 +288,21 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             }
         });
 
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
+        drawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        setDrawerEnabled(false); // disable until synced
+
+        accountsView = (NavigationView) findViewById(R.id.accounts_nav);
+        accountsView.setNavigationItemSelectedListener(this);
+
         showNet();
 
         Fragment walletFragment = new WalletFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName()).commit();
         Timber.d("fragment added");
-
-        password = getIntent().getExtras().getString(REQUEST_PW);
 
         startWalletService();
         Timber.d("onCreate() done.");
@@ -280,7 +323,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                 throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
         }
     }
-
 
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
@@ -358,28 +400,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         Timber.d("onResume()");
     }
 
-    private PowerManager.WakeLock wl = null;
-
-    void acquireWakeLock() {
-        if ((wl != null) && wl.isHeld()) return;
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        this.wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, getString(R.string.app_name));
-        try {
-            wl.acquire();
-            Timber.d("WakeLock acquired");
-        } catch (SecurityException ex) {
-            Timber.w("WakeLock NOT acquired: %s", ex.getLocalizedMessage());
-            wl = null;
-        }
-    }
-
-    public void releaseWakeLock() {
-        if ((wl == null) || !wl.isHeld()) return;
-        wl.release();
-        wl = null;
-        Timber.d("WakeLock released");
-    }
-
     public void saveWallet() {
         if (mIsBound) { // no point in talking to unbound service
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
@@ -412,17 +432,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onSendRequest() {
-        if (needVerifyIdentity) {
-            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
-                @Override
-                public void action(String walletName, String password, boolean fingerprintUsed) {
-                    replaceFragment(new SendFragment(), null, null);
-                    needVerifyIdentity = false;
-                }
-            });
-        } else {
-            replaceFragment(new SendFragment(), null, null);
-        }
+        replaceFragment(new SendFragment(), null, null);
     }
 
     @Override
@@ -445,16 +455,26 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 // WalletService.Observer
 ///////////////////////////
 
+    private int numAccounts = -1;
+
     // refresh and return true if successful
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed()");
+        if (numAccounts != wallet.getNumAccounts()) {
+            numAccounts = wallet.getNumAccounts();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    updateAccountsList();
+                }
+            });
+        }
         try {
             final WalletFragment walletFragment = (WalletFragment)
                     getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
             if (wallet.isSynchronized()) {
                 Timber.d("onRefreshed() synced");
-                releaseWakeLock(); // the idea is to stay awake until synced
+                releaseWakeLock(RELEASE_WAKE_LOCK_DELAY); // the idea is to stay awake until synced
                 if (!synced) { // first sync
                     onProgress(-1);
                     saveWallet(); // save on first sync
@@ -496,9 +516,20 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     boolean haveWallet = false;
 
     @Override
+    public void onWalletOpen(final int hardware) {
+        if (hardware > 0)
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
+                }
+            });
+    }
+
+    @Override
     public void onWalletStarted(final boolean success) {
         runOnUiThread(new Runnable() {
             public void run() {
+                dismissProgressDialog();
                 if (!success) {
                     Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
                 }
@@ -529,6 +560,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
+                    dismissProgressDialog();
                     PendingTransaction.Status status = pendingTransaction.getStatus();
                     if (status != PendingTransaction.Status.Status_Ok) {
                         String errorText = pendingTransaction.getErrorString();
@@ -684,14 +716,16 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             intent.putExtra(WalletService.REQUEST_CMD_TX_TAG, tag);
             startService(intent);
             Timber.d("CREATE TX request sent");
+            if (getWallet().isKeyOnDevice())
+                showLedgerProgressDialog(LedgerProgressDialog.TYPE_SEND);
         } else {
             Timber.e("Service not bound");
         }
     }
 
     @Override
-    public String getWalletAddress() {
-        return getWallet().getAddress();
+    public String getWalletSubaddress(int accountIndex, int subaddressIndex) {
+        return getWallet().getSubaddress(accountIndex, subaddressIndex);
     }
 
     public String getWalletName() {
@@ -797,26 +831,39 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     }
 
-    private BarcodeData scannedData = null;
-
     @Override
     public boolean onScanned(String qrCode) {
         // #gurke
         BarcodeData bcData = BarcodeData.fromQrCode(qrCode);
         if (bcData != null) {
-            this.scannedData = bcData;
             popFragmentStack(null);
+            Timber.d("AAA");
+            onUriScanned(bcData);
             return true;
         } else {
             return false;
         }
     }
 
+    OnUriScannedListener onUriScannedListener = null;
+
     @Override
-    public BarcodeData popScannedData() {
-        BarcodeData data = scannedData;
-        scannedData = null;
-        return data;
+    public void setOnUriScannedListener(OnUriScannedListener onUriScannedListener) {
+        this.onUriScannedListener = onUriScannedListener;
+    }
+
+    @Override
+    void onUriScanned(BarcodeData barcodeData) {
+        super.onUriScanned(barcodeData);
+        boolean processed = false;
+        if (onUriScannedListener != null) {
+            processed = onUriScannedListener.onUriScanned(barcodeData);
+        }
+        if (!processed || (onUriScannedListener == null)) {
+            Toast.makeText(this, getString(R.string.nfc_tag_read_what), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, getString(R.string.nfc_tag_read_success), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -841,7 +888,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onWalletReceive() {
-        startReceive(getWalletAddress());
+        startReceive(getWallet().getAddress());
     }
 
     void startReceive(String address) {
@@ -870,6 +917,10 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
 
     @Override
     public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            return;
+        }
         final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment instanceof OnBackPressedListener) {
             if (!((OnBackPressedListener) fragment).onBackPressed()) {
@@ -890,4 +941,164 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         return getPreferences(Context.MODE_PRIVATE);
     }
 
+    private List<Integer> accountIds = new ArrayList<>();
+
+    // generate and cache unique ids for use in accounts list
+    private int getAccountId(int accountIndex) {
+        final int n = accountIds.size();
+        for (int i = n; i <= accountIndex; i++) {
+            accountIds.add(View.generateViewId());
+        }
+        return accountIds.get(accountIndex);
+    }
+
+    // drawer stuff
+    void updateAccountsList() {
+        final Wallet wallet = getWallet();
+        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
+        tvName.setText(wallet.getName());
+        final TextView tvBalance = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvBalance);
+        tvBalance.setText(getString(R.string.accounts_balance,
+                Helper.getDisplayAmount(wallet.getBalanceAll(), 5)));
+        Menu menu = accountsView.getMenu();
+        menu.removeGroup(R.id.accounts_list);
+        final int n = wallet.getNumAccounts();
+        for (int i = 0; i < n; i++) {
+            final String label = wallet.getAccountLabel(i);
+            final MenuItem item = menu.add(R.id.accounts_list, getAccountId(i), 2 * i, label);
+            item.setIcon(R.drawable.ic_account_balance_wallet_black_24dp);
+            if (i == wallet.getAccountIndex())
+                item.setChecked(true);
+        }
+        menu.setGroupCheckable(R.id.accounts_list, true, true);
+    }
+
+    @Override
+    public void setDrawerEnabled(boolean enabled) {
+        Timber.d("setDrawerEnabled %b", enabled);
+        final int lockMode = enabled ? DrawerLayout.LOCK_MODE_UNLOCKED :
+                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+        drawer.setDrawerLockMode(lockMode);
+        drawerToggle.setDrawerIndicatorEnabled(enabled);
+        invalidateOptionsMenu(); // menu may need to be changed
+    }
+
+    void updateAccountName() {
+        setSubtitle(getWallet().getAccountLabel());
+        updateAccountsList();
+    }
+
+    public void onAccountRename() {
+        final LayoutInflater li = LayoutInflater.from(this);
+        final View promptsView = li.inflate(R.layout.prompt_rename, null);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+        final Wallet wallet = getWallet();
+        tvRenameLabel.setText(getString(R.string.prompt_rename, wallet.getAccountLabel()));
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.label_ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(WalletActivity.this);
+                                String newName = etRename.getText().toString();
+                                wallet.setAccountLabel(newName);
+                                updateAccountName();
+                            }
+                        })
+                .setNegativeButton(getString(R.string.label_cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(WalletActivity.this);
+                                dialog.cancel();
+                            }
+                        });
+
+        final AlertDialog dialog = alertDialogBuilder.create();
+        Helper.showKeyboard(dialog);
+
+        // accept keyboard "ok"
+        etRename.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Helper.hideKeyboardAlways(WalletActivity.this);
+                    String newName = etRename.getText().toString();
+                    dialog.cancel();
+                    wallet.setAccountLabel(newName);
+                    updateAccountName();
+                    return false;
+                }
+                return false;
+            }
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        final int id = item.getItemId();
+        switch (id) {
+            case R.id.account_new:
+                addAccount();
+                break;
+            default:
+                Timber.d("NavigationDrawer ID=%d", id);
+                int accountIdx = accountIds.indexOf(id);
+                if (accountIdx >= 0) {
+                    Timber.d("found @%d", accountIdx);
+                    getWallet().setAccountIndex(accountIdx);
+                }
+                forceUpdate();
+                drawer.closeDrawer(GravityCompat.START);
+        }
+        return true;
+    }
+
+    private void addAccount() {
+        new AsyncAddAccount().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+    }
+
+    private class AsyncAddAccount extends AsyncTask<Void, Void, Boolean> {
+        boolean dialogOpened = false;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (getWallet().isKeyOnDevice()) {
+                showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
+                dialogOpened = true;
+            } else {
+                showProgressDialog(R.string.accounts_progress_new);
+                dialogOpened = true;
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (params.length != 0) return false;
+            getWallet().addAccount();
+            getWallet().setAccountIndex(getWallet().getNumAccounts() - 1);
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            forceUpdate();
+            drawer.closeDrawer(GravityCompat.START);
+            if (dialogOpened)
+                dismissProgressDialog();
+            Toast.makeText(WalletActivity.this,
+                    getString(R.string.accounts_new, getWallet().getNumAccounts() - 1),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -33,6 +33,8 @@ import com.m2049r.xmrwallet.dialog.HelpFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class Notice {
     private static final String PREFS_NAME = "notice";
     private static List<Notice> notices = null;
@@ -40,6 +42,7 @@ public class Notice {
     private static final String NOTICE_SHOW_XMRTO_ENABLED_LOGIN = "notice_xmrto_enabled_login";
     private static final String NOTICE_SHOW_XMRTO_ENABLED_SEND = "notice_xmrto_enabled_send";
     private static final String NOTICE_SHOW_CRAZYPASS = "notice_crazypass_enabled_login";
+    private static final String NOTICE_SHOW_LEDGER = "notice_ledger_enabled_login";
 
     private static void init() {
         synchronized (Notice.class) {
@@ -62,6 +65,12 @@ public class Notice {
                             R.string.info_crazypass_enabled,
                             R.string.help_details,
                             2)
+            );
+            notices.add(
+                    new Notice(NOTICE_SHOW_LEDGER,
+                            R.string.info_ledger_enabled,
+                            R.string.help_create_ledger,
+                            1)
             );
         }
     }

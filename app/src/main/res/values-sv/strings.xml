@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="wallet_activity_name">Plånbok</string>
+
+    <string name="menu_about">Om</string>
+    <string name="menu_privacy">Sekretesspolicy</string>
+
+    <string name="menu_share">Dela</string>
+    <string name="menu_help">Hjälp</string>
+    <string name="menu_info">Detaljer</string>
+    <string name="menu_receive">Ta emot</string>
+    <string name="menu_rename">Byt namn …</string>
+    <string name="menu_archive">Arkivera</string>
+    <string name="menu_backup">Säkerhetskopiera</string>
+    <string name="menu_changepw">Ändra lösenfras</string>
+
+    <string name="password_weak">Fortsätt skriva …</string>
+    <string name="password_fair">Nja …</string>
+    <string name="password_good">Kom igen, bättre kan du!</string>
+    <string name="password_strong">Du närmar dig …</string>
+    <string name="password_very_strong">Så ska det se ut, som en h4x0r!</string>
+
+    <string name="label_login_wallets">Plånböcker</string>
+    <string name="label_credits">Erkännanden</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">Avbryt</string>
+    <string name="label_close">Stäng</string>
+    <string name="label_wallet_advanced_details">Tryck för detaljerad information</string>
+
+    <string name="label_send_success">Har skickats</string>
+    <string name="label_send_done">Färdig</string>
+
+    <string name="label_receive_info_gen_qr_code">Tryck för QR-kod</string>
+    <string name="info_send_prio_fees">Högre prioritet = Högre avgift</string>
+
+    <string name="info_xmrto_enabled">BTC-betalning aktiverad, tryck för mer info.</string>
+    <string name="info_crazypass_enabled">CrAzYpass aktiverat, tryck för mer info.</string>
+    <string name="info_ledger_enabled">Ledger aktiverat, tryck för mer info.</string>
+
+    <string name="info_xmrto"><![CDATA[<b>Du har angivit en Bitcoin-adress.</b><br/> <i>Du kommer att skicka XMR och mottagaren får BTC via tjänsten <b>XMR.TO</b>.</i>]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO-beställning</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+    <string name="info_send_xmrto_paid">Väntar på bekräftelse</string>
+    <string name="info_send_xmrto_unpaid">Väntar på betalning</string>
+    <string name="info_send_xmrto_error">XMR.TO-fel (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC skickades!</string>
+    <string name="info_send_xmrto_query">Frågar …</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[<b>Du kan skicka %1$s &#8212; %2$s BTC</b>.<br/> <i><b>XMR.TO</b> ger dig <u>just nu</u> en växelkurs på <b>%3$s BTC</b></i>.]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[<i>Belopp upp till <b>%1$s BTC</b> skickas <u>omedelbart</u>!</i>]]></string>
+
+    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">Betalnings-ID integrerat</string>
+    <string name="info_prepare_tx">Förbereder din transaktion</string>
+
+    <string name="label_send_progress_xmrto_create">Skapar XMR.TO-beställning</string>
+    <string name="label_send_progress_xmrto_query">Frågar XMR.TO-beställningen</string>
+    <string name="label_send_progress_create_tx">Förbereder Monero-transaktion</string>
+
+    <string name="label_send_progress_queryparms">Frågar xmr.to-parametrar</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO-FEL</string>
+    <string name="text_generic_xmrto_error">Kod: %1$d</string>
+
+    <string name="text_retry">Tryck för att försöka igen</string>
+    <string name="text_noretry_monero">Nu har vi kört fast!</string>
+    <string name="text_noretry">Åh nej, XMR.TO verkar inte vara tillgänglig just nu!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Kurs: %1$s BTC/XMR)</string>
+
+    <string name="label_send_settings_advanced">Avancerat:</string>
+
+    <string name="label_send_btc_xmrto_info">Besök xmr.to för support &amp; spårning</string>
+    <string name="label_send_btc_xmrto_key_lb">Hemlig nyckel\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO hemlig nyckel</string>
+    <string name="label_send_btc_address">Måladress för BTC</string>
+    <string name="label_send_btc_amount">Belopp</string>
+
+    <string name="label_send_txid">Transaktions-ID</string>
+    <string name="label_send_address">Måladress</string>
+    <string name="label_send_payment_id">Betalnings-ID</string>
+    <string name="label_send_notes">Anteckningar</string>
+
+    <string name="backup_progress">Säkerhetskopiering pågår</string>
+    <string name="archive_progress">Arkivering pågår</string>
+    <string name="rename_progress">Namnbyte pågår</string>
+    <string name="open_progress">Kontrollerar anslutning till daemon</string>
+    <string name="changepw_progress">Ändring av lösenord pågår</string>
+
+    <string name="service_progress">Gör klart några saker …\nDetta kan ta lite tid!</string>
+
+    <string name="backup_failed">Det gick inte att säkerhetskopiera!</string>
+    <string name="archive_failed">Det gick inte att arkivera!</string>
+    <string name="rename_failed">Det gick inte att byta namn!</string>
+    <string name="changepw_failed">Det gick inte att ändra lösenord!</string>
+    <string name="changepw_success">Lösenordet har ändrats</string>
+
+    <string name="label_daemon">Nod</string>
+    <string name="prompt_daemon">([&lt;användare&gt;:&lt;lösenord&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="status_wallet_loading">Läser in plånbok …</string>
+    <string name="status_wallet_unloaded">Plånbok sparad</string>
+    <string name="status_wallet_unload_failed">Det gick inte att spara plånbok!</string>
+    <string name="status_wallet_connecting">Ansluter …</string>
+    <string name="status_wallet_connect_failed">Kunde inte ansluta till nod!\nKontrollera användarnamn/lösenord</string>
+    <string name="status_wallet_connect_timeout">Fel: Anslutning till nod uppnådde en tidsgräns!\nFörsök igen eller en annan nod.</string>
+    <string name="status_wallet_node_invalid">Ogiltig nod!\nPröva någon annan.</string>
+    <string name="status_wallet_connect_ioex">Noden kan inte nås!\nFörsök igen eller en annan nod.</string>
+
+    <string name="status_wallet_disconnected">Frånkopplad</string>
+
+    <string name="status_transaction_failed">Transaktionen misslyckades: %1$s</string>
+
+    <string name="send_xmrto_timeout">Du väntade för länge!</string>
+
+    <string name="service_busy">Jag är fortfarande upptagen med din förra plånbok …</string>
+
+    <string name="prompt_rename">Byt namn %1$s</string>
+
+    <string name="prompt_changepw">Ny lösenfras för %1$s</string>
+    <string name="prompt_changepwB">Upprepa lösenfrasen för %1$s</string>
+    <string name="prompt_password">Lösenord för %1$s</string>
+    <string name="prompt_fingerprint_auth">Du kan också öppna plånboken med fingeravtryck.\nAnvänd fingeravtryckssensorn.</string>
+    <string name="prompt_send_password">Bekräfta lösenord</string>
+    <string name="bad_fingerprint">Fingeravtrycket känns inte igen. Försök igen.</string>
+    <string name="bad_password">Lösenordet är fel!</string>
+    <string name="bad_wallet">Plånboken finns inte!</string>
+    <string name="prompt_daemon_missing">Nodens adress måste anges!</string>
+    <string name="prompt_wrong_net">Plånboken matchar inte valt nät</string>
+
+    <string name="label_watchonly">(Granskning)</string>
+
+    <string name="label_wallet_receive">Ta emot</string>
+    <string name="label_wallet_send">Ge</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR obekräftade</string>
+
+    <string name="service_description">monerujo-tjänsten</string>
+
+    <string name="status_synced">Synkade:</string>
+    <string name="status_remaining">Återstående block</string>
+    <string name="status_syncing">Skannar:</string>
+
+    <string name="message_strorage_not_writable">Externt lagringsutrymme är skrivskyddat! Panik!</string>
+    <string name="message_strorage_not_permitted">Vi behöver verkligen behörighet för Externt lagringsutrymme!</string>
+    <string name="message_camera_not_permitted">Ingen kamera = Ingen QR-skanning!</string>
+
+    <string name="label_copy_viewkey">Granskningsnyckel</string>
+    <string name="label_copy_address">Publik adress</string>
+    <string name="label_copy_xmrtokey">XMR.TO-nyckel</string>
+    <string name="message_copy_viewkey">Granskningsnyckel kopierades till urklipp!</string>
+    <string name="message_copy_xmrtokey">XMR.TO-nyckel kopierades till urklipp!</string>
+    <string name="message_copy_address">Plånboksadress kopierades till urklipp!</string>
+    <string name="message_copy_txid">Transaktions-ID kopierades till urklipp!</string>
+    <string name="message_nocopy">Kopiering är inaktiverad av säkerhetskäl!</string>
+
+    <string name="message_exchange_failed">Det gick inte att hämta växelkurs!\nAnvänd XMR/XMR eller försök igen</string>
+
+    <string name="generate_title">Skapa plånbok</string>
+    <string name="generate_name_hint">Plånbokens namn</string>
+    <string name="generate_password_hint">Plånbokens lösenfras</string>
+    <string name="generate_fingerprint_hint">Tillåt öppning av plånboken med fingeravtryck</string>
+    <string name="generate_fingerprint_warn"><![CDATA[<strong>Autentisering med fingeravtryck</strong> <p>När fingeravtrycksautentisering är aktiverad kan du se plånbokens saldo och ta emot pengar utan att ange lösenord.</p> <p>Men för ytterligare säkerhet kräver monerujo ändå att du anger lösenord för att granska information om plånboken eller skicka pengar.</p> <strong>Säkerhetsvarning</strong> <p>Slutligen vill monerujo påminna dig att vem som helst som kan komma åt ditt fingeravtryck kan se saldot i din plånbok.</p> <p>En elak användare i din närhet kan till exempel öppna din plånbok när du sover.</p> <strong>Är det säkert att du vill aktivera denna funktion?</strong>]]></string>
+    <string name="generate_bad_passwordB">Lösenfraserna matchar inte</string>
+    <string name="generate_empty_passwordB">Lösenfrasen får inte vara tom</string>
+    <string name="generate_buttonGenerate">Skapa min plånbok nu då!</string>
+    <string name="generate_button_accept">Jag har skrivit ner det minnesbaserade startvärdet</string>
+
+    <string name="generate_wallet_name">Ge mig ett namn!</string>
+    <string name="generate_wallet_exists">Plånboken finns!</string>
+    <string name="generate_wallet_dot">Får inte börja med .</string>
+    <string name="generate_wallet_creating">Skapar plånbok</string>
+    <string name="generate_wallet_created">Plånboken skapades</string>
+    <string name="generate_wallet_create_failed">Det gick inte att skapa plånbok</string>
+
+    <string name="generate_restoreheight_error">Ange ett tal eller ett datum (ÅÅÅÅ-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">Nycklar</string>
+    <string name="generate_wallet_type_new">Nytt</string>
+    <string name="generate_wallet_type_seed">Startvärde</string>
+    <string name="generate_wallet_type_view">Visa</string>
+
+    <string name="generate_address_hint">Publik adress</string>
+    <string name="generate_viewkey_hint">Granskningsnyckel</string>
+    <string name="generate_spendkey_hint">Spendernyckel</string>
+    <string name="generate_mnemonic_hint">Minnesbaserat startvärde på 25 ord</string>
+    <string name="generate_restoreheight_hint">Återställningshöjd eller datum (ÅÅÅÅ-MM-DD)</string>
+
+    <string name="generate_address_label">Publik adress</string>
+    <string name="generate_viewkey_label">Granskningsnyckel</string>
+    <string name="generate_spendkey_label">Spendernyckel</string>
+    <string name="generate_mnemonic_label">Minnesbaserat startvärde</string>
+    <string name="generate_crazypass_label">Lösenord för återställning av plånboksfiler</string>
+
+    <string name="generate_check_key">Ange en giltig nyckel</string>
+    <string name="generate_check_address">Ange en giltig adress</string>
+    <string name="generate_check_mnemonic">Ange ditt startvärde på 25 ord</string>
+
+    <string name="send_amount_btc_xmr">%1$s (ungefärlig)</string>
+
+    <string name="send_paymentid_hint">Betalnings-ID (valfritt)</string>
+    <string name="send_amount_hint">0,00</string>
+    <string name="send_notes_hint">Privat anteckning (valfri)</string>
+    <string name="send_generate_paymentid_hint">Skapa</string>
+    <string name="send_send_label">Spendera mina Moneroj</string>
+    <string name="send_send_timed_label">Spendera mina Moneroj (%1$s)</string>
+    <string name="send_qr_invalid">Inte en QR-kod</string>
+    <string name="send_qr_address_invalid">Inte en giltig QR-kod för betalning</string>
+    <string name="send_address_invalid">Inte en giltig adress</string>
+    <string name="send_title">Skicka</string>
+    <string name="send_available">Saldo: %1$s XMR</string>
+    <string name="send_address_title">Adress</string>
+    <string name="send_amount_title">Belopp</string>
+    <string name="send_settings_title">Inställningar</string>
+    <string name="send_confirm_title">Bekräfta</string>
+    <string name="send_success_title">Färdig</string>
+
+    <string name="send_amount_label">Belopp</string>
+    <string name="send_fee_btc_label">Avgift (XMR)</string>
+    <string name="send_fee_label">Avgift</string>
+    <string name="send_total_btc_label">Summa (XMR)</string>
+    <string name="send_total_label">Summa</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s avgift</string>
+
+    <string name="send_create_tx_error_title">Ett fel uppstod när transaktion skapades</string>
+
+    <string name="tx_list_fee">- Avgift %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">misslyckades</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Tidsstämpel</string>
+    <string name="tx_id">TX-ID</string>
+    <string name="tx_key">TX-nyckel</string>
+    <string name="tx_destination">Mål</string>
+    <string name="tx_destination_btc">Mål\n(BTC)</string>
+    <string name="tx_paymentId">Betalnings-ID</string>
+    <string name="tx_blockheight">Block</string>
+    <string name="tx_amount">Belopp</string>
+    <string name="tx_amount_btc">Belopp\n(BTC)</string>
+    <string name="tx_fee">Avgift</string>
+    <string name="tx_transfers">Överföringar</string>
+    <string name="tx_notes">Anteckningar</string>
+    <string name="tx_notes_hint">(valfritt)</string>
+    <string name="tx_button_notes">Spara</string>
+    <string name="tx_notes_set_failed">Det gick inte att spara anteckningarna</string>
+    <string name="tx_title">Transaktionsdetaljer</string>
+
+    <string name="tx_pending">VÄNTANDE</string>
+    <string name="tx_failed">MISSLYCKAD</string>
+
+    <string name="receive_paymentid_hint">Betalnings-ID (valfritt)</string>
+    <string name="receive_amount_hint">Belopp</string>
+    <string name="receive_cannot_open">Det gick inte att öppna plånboken!</string>
+    <string name="receive_paymentid_invalid">16 eller 64 hexadecimala tecken (0–9, a–f)</string>
+    <string name="receive_integrated_paymentid_invalid">Måste vara tomt med en integrerad adress</string>
+
+    <string name="receive_amount_too_big">Max. %1$s</string>
+    <string name="receive_amount_negative">Min. 0</string>
+    <string name="receive_amount_nan">XMR är inte ett tal</string>
+
+    <string name="receive_title">Ta emot</string>
+
+    <string name="details_alert_message">Nu kommer känsliga data att visas.\nTitta över axeln!</string>
+    <string name="details_alert_yes">Det är OK</string>
+    <string name="details_alert_no">Ta mig tillbaka!</string>
+    <string name="details_title">Detaljer</string>
+
+    <string name="archive_alert_message">Plånboken kommer att säkerhetskopieras och sedan tas bort!</string>
+    <string name="archive_alert_yes">Ja, gör det!</string>
+    <string name="archive_alert_no">Nej tack!</string>
+
+    <string-array name="priority">
+        <item>Prioritet standard</item>
+        <item>Prioritet låg</item>
+        <item>Prioritet medel</item>
+        <item>Prioritet hög</item>
+    </string-array>
+
+    <string name="fab_create_new">Skapa ny plånbok</string>
+    <string name="fab_restore_viewonly">Återställ granskningsplånbok</string>
+    <string name="fab_restore_key">Återställ plånbok från privata nycklar</string>
+    <string name="fab_restore_seed">Återställ plånbok från startvärde på 25 ord</string>
+
+    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
+    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
+
+    <string name="accounts_drawer_new">Create Account</string>
+    <string name="accounts_drawer_title">Accounts</string>
+    <string name="accounts_new">Added new account #%1$d</string>
+    <string name="tx_account">Account #</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+</resources>

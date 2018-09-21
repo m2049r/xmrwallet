@@ -1,7 +1,6 @@
 <resources>
     <string name="wallet_activity_name">Monedero</string>
 
-    <string name="menu_testnet">Testnet</string>
     <string name="menu_about">Acerca De</string>
     <string name="menu_privacy">Política de Privacidad</string>
 
@@ -81,8 +80,10 @@
     <string name="prompt_password">Contraseña para %1$s</string>
     <string name="prompt_fingerprint_auth">Puedes poner tu dedo en el sensor para autorizar con tu huella.</string>
     <string name="prompt_send_password">Confirmar Contraseña</string>
+    <string name="prompt_open_wallet">Abriendo el monedero&#8230;</string>
     <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
+    <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngresela manualmente.</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
     <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
@@ -163,12 +164,10 @@
     <string name="generate_check_address">Introduce una dirección válida</string>
     <string name="generate_check_mnemonic">Introduce tu semilla de 25 palabras</string>
 
-    <string name="send_address_hint">Dirección XMR o BTC del Destinatario</string>
     <string name="send_paymentid_hint">ID de Pago (opcional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas Privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Generar</string>
-    <string name="send_qr_hint">Scan</string>
     <string name="send_qr_invalid">No es un Código QR de monero</string>
     <string name="send_qr_address_invalid">Dirección de Monero inválida</string>
     <string name="send_title">Enviar</string>
@@ -291,6 +290,54 @@
     <string name="tx_amount_btc">Monto\n(BTC)</string>
     <string name="about_whoami">Soy monerujo</string>
     <string name="info_send_xmrto_success_order_label">Orden XMR.TO</string>
+
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
     <string name="info_crazypass_enabled">CrAzYpass activado, toca para más info.</string>
+    <string name="info_ledger_enabled">Ledger activado, toca para más info.</string>
+
+    <string name="accounts_drawer_new">Crear Cuenta</string>
+    <string name="accounts_drawer_title">Cuentas</string>
+    <string name="accounts_new">Nueva cuenta agregada #%1$d</string>
+    <string name="tx_account"># de cuenta</string>
+
+    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="tx_subaddress">Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_update">Updating wallet</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 </resources>

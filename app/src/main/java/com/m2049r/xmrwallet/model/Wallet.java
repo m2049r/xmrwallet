@@ -19,13 +19,30 @@ package com.m2049r.xmrwallet.model;
 import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import timber.log.Timber;
 
 public class Wallet {
+    final static public long SWEEP_ALL = Long.MAX_VALUE;
+
     static {
         System.loadLibrary("monerujo");
     }
 
-    static final String TAG = "Wallet";
+    private int accountIndex = 0;
+
+    public int getAccountIndex() {
+        return accountIndex;
+    }
+
+    public void setAccountIndex(int accountIndex) {
+        Timber.d("setAccountIndex(%d)", accountIndex);
+        this.accountIndex = accountIndex;
+        getHistory().setAccountFor(this);
+    }
 
     public String getName() {
         return new File(getPath()).getName();
@@ -36,6 +53,11 @@ public class Wallet {
 
     Wallet(long handle) {
         this.handle = handle;
+    }
+
+    Wallet(long handle, int accountIndex) {
+        this.handle = handle;
+        this.accountIndex = accountIndex;
     }
 
     public enum Status {
@@ -66,16 +88,23 @@ public class Wallet {
 
     public native boolean setPassword(String password);
 
-    private String address = null;
-
     public String getAddress() {
-        if (address == null) {
-            address = getAddressJ();
-        }
-        return address;
+        return getAddress(accountIndex);
     }
 
-    private native String getAddressJ();
+    public String getAddress(int accountIndex) {
+        return getAddressJ(accountIndex, 0);
+    }
+
+    public String getSubaddress(int addressIndex) {
+        return getAddressJ(accountIndex, addressIndex);
+    }
+
+    public String getSubaddress(int accountIndex, int addressIndex) {
+        return getAddressJ(accountIndex, addressIndex);
+    }
+
+    private native String getAddressJ(int accountIndex, int addressIndex);
 
     public native String getPath();
 
@@ -95,7 +124,9 @@ public class Wallet {
     public native String getSecretSpendKey();
 
     public boolean store() {
-        return store("");
+        final boolean ok = store("");
+        Timber.d("stored");
+        return ok;
     }
 
     public native boolean store(String path);
@@ -119,7 +150,12 @@ public class Wallet {
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
-//    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
+
+    public native void setRestoreHeight(long height);
+
+    public native long getRestoreHeight();
+
+    //    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
 //    virtual bool connectToDaemon() = 0;
 
     public ConnectionStatus getConnectionStatus() {
@@ -132,9 +168,21 @@ public class Wallet {
 //TODO virtual void setTrustedDaemon(bool arg) = 0;
 //TODO virtual bool trustedDaemon() const = 0;
 
-    public native long getBalance();
+    public long getBalance() {
+        return getBalance(accountIndex);
+    }
 
-    public native long getUnlockedBalance();
+    public native long getBalance(int accountIndex);
+
+    public native long getBalanceAll();
+
+    public long getUnlockedBalance() {
+        return getUnlockedBalance(accountIndex);
+    }
+
+    public native long getUnlockedBalanceAll();
+
+    public native long getUnlockedBalance(int accountIndex);
 
     public native boolean isWatchOnly();
 
@@ -163,8 +211,6 @@ public class Wallet {
     }
 
     public static native boolean isAddressValid(String address, int networkType);
-
-//TODO static static bool keyValid(const std::string &secret_key_string, const std::string &address_string, bool isViewKey, bool testnet, std::string &error);
 
     public static native String getPaymentIdFromAddress(String address, int networkType);
 
@@ -209,14 +255,23 @@ public class Wallet {
                                                 PendingTransaction.Priority priority) {
         disposePendingTransaction();
         int _priority = priority.getValue();
-        long txHandle = createTransactionJ(dst_addr, payment_id, amount, mixin_count, _priority);
+        long txHandle =
+                (amount == SWEEP_ALL ?
+                        createSweepTransaction(dst_addr, payment_id, mixin_count, _priority,
+                                accountIndex) :
+                        createTransactionJ(dst_addr, payment_id, amount, mixin_count, _priority,
+                                accountIndex));
         pendingTransaction = new PendingTransaction(txHandle);
         return pendingTransaction;
     }
 
     private native long createTransactionJ(String dst_addr, String payment_id,
                                            long amount, int mixin_count,
-                                           int priority);
+                                           int priority, int accountIndex);
+
+    private native long createSweepTransaction(String dst_addr, String payment_id,
+                                               int mixin_count,
+                                               int priority, int accountIndex);
 
 
     public PendingTransaction createSweepUnmixableTransaction() {
@@ -243,7 +298,7 @@ public class Wallet {
 
     public TransactionHistory getHistory() {
         if (history == null) {
-            history = new TransactionHistory(getHistoryJ());
+            history = new TransactionHistory(getHistoryJ(), accountIndex);
         }
         return history;
     }
@@ -275,4 +330,69 @@ public class Wallet {
 //virtual bool parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &tvAmount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error) = 0;
 //virtual bool rescanSpent() = 0;
 
+    private static final String NEW_ACCOUNT_NAME = "Untitled account"; // src/wallet/wallet2.cpp:941
+
+    public void addAccount() {
+        addAccount(NEW_ACCOUNT_NAME);
+    }
+
+    public native void addAccount(String label);
+
+    public String getAccountLabel() {
+        return getAccountLabel(accountIndex);
+    }
+
+    public String getAccountLabel(int accountIndex) {
+        String label = getSubaddressLabel(accountIndex, 0);
+        if (label.equals(NEW_ACCOUNT_NAME)) {
+            String address = getAddress(accountIndex);
+            int len = address.length();
+            return address.substring(0, 6) +
+                    "\u2026" + address.substring(len - 6, len);
+        } else return label;
+    }
+
+    public String getSubaddressLabel(int addressIndex) {
+        return getSubaddressLabel(accountIndex, addressIndex);
+    }
+
+    public native String getSubaddressLabel(int accountIndex, int addressIndex);
+
+    public void setAccountLabel(String label) {
+        setAccountLabel(accountIndex, label);
+    }
+
+    public void setAccountLabel(int accountIndex, String label) {
+        setSubaddressLabel(accountIndex, 0, label);
+    }
+
+    public native void setSubaddressLabel(int accountIndex, int addressIndex, String label);
+
+    public native int getNumAccounts();
+
+    public int getNumSubaddresses() {
+        return getNumSubaddresses(accountIndex);
+    }
+
+    public native int getNumSubaddresses(int accountIndex);
+
+    public String getNewSubaddress() {
+        return getNewSubaddress(accountIndex);
+    }
+
+    public String getNewSubaddress(int accountIndex) {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss", Locale.US).format(new Date());
+        addSubaddress(accountIndex, timeStamp);
+        String subaddress = getLastSubaddress(accountIndex);
+        Timber.d("%d: %s", getNumSubaddresses(accountIndex) - 1, subaddress);
+        return subaddress;
+    }
+
+    public native void addSubaddress(int accountIndex, String label);
+
+    public String getLastSubaddress(int accountIndex) {
+        return getSubaddress(accountIndex, getNumSubaddresses(accountIndex) - 1);
+    }
+
+    public native boolean isKeyOnDevice();
 }

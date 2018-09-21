@@ -25,6 +25,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -36,9 +37,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
-import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 
 import java.util.Locale;
 
@@ -46,6 +45,8 @@ import timber.log.Timber;
 
 public class ExchangeTextView extends LinearLayout
         implements NumberPadView.NumberPadListener {
+
+    private static String MAX = "\u221E";
 
     String xmrAmount = null;
     String notXmrAmount = null;
@@ -70,7 +71,7 @@ public class ExchangeTextView extends LinearLayout
                 if (amount > max) {
                     ok = false;
                 }
-                if (amount <= 0) {
+                if (amount <= 0) { /////////////////////////////
                     ok = false;
                 }
             } catch (NumberFormatException ex) {
@@ -250,7 +251,7 @@ public class ExchangeTextView extends LinearLayout
         }
     }
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void startExchange() {
         showProgress();

@@ -37,16 +37,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.OnBackPressedListener;
+import com.m2049r.xmrwallet.OnUriScannedListener;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
-import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.NodeList;
 import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.util.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
@@ -62,7 +61,7 @@ public class SendFragment extends Fragment
         SendSettingsWizardFragment.Listener,
         SendConfirmWizardFragment.Listener,
         SendSuccessWizardFragment.Listener,
-        OnBackPressedListener {
+        OnBackPressedListener, OnUriScannedListener {
 
     private Listener activityCallback;
 
@@ -86,6 +85,8 @@ public class SendFragment extends Fragment
         void setTitle(String title);
 
         void setSubtitle(String subtitle);
+
+        void setOnUriScannedListener(OnUriScannedListener onUriScannedListener);
     }
 
     private EditText etDummy;
@@ -98,10 +99,6 @@ public class SendFragment extends Fragment
     private Button bNext;
 
     private Button bDone;
-
-    private View llXmrToEnabled;
-    private View ibXmrToInfoClose;
-
 
     static private int MAX_FALLBACK = Integer.MAX_VALUE;
 
@@ -121,7 +118,7 @@ public class SendFragment extends Fragment
         arrowNext = getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp);
 
         ViewGroup llNotice = (ViewGroup) view.findViewById(R.id.llNotice);
-        Notice.showAll(llNotice,".*_send");
+        Notice.showAll(llNotice, ".*_send");
 
         spendViewPager = (SpendViewPager) view.findViewById(R.id.pager);
         pagerAdapter = new SpendPagerAdapter(getChildFragmentManager());
@@ -226,11 +223,18 @@ public class SendFragment extends Fragment
         Timber.d("onAttach %s", context);
         super.onAttach(context);
         if (context instanceof Listener) {
-            this.activityCallback = (Listener) context;
+            activityCallback = (Listener) context;
+            activityCallback.setOnUriScannedListener(this);
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+    }
+
+    @Override
+    public void onDetach() {
+        activityCallback.setOnUriScannedListener(null);
+        super.onDetach();
     }
 
     private SpendViewPager spendViewPager;
@@ -245,6 +249,18 @@ public class SendFragment extends Fragment
             spendViewPager.previous();
             return true;
         }
+    }
+
+    @Override
+    public boolean onUriScanned(BarcodeData barcodeData) {
+        if (spendViewPager.getCurrentItem() == SpendPagerAdapter.POS_ADDRESS) {
+            final SendWizardFragment fragment = pagerAdapter.getFragment(SpendPagerAdapter.POS_ADDRESS);
+            if (fragment instanceof SendAddressWizardFragment) {
+                ((SendAddressWizardFragment) fragment).processScannedData(barcodeData);
+                return true;
+            }
+        }
+        return false;
     }
 
     enum Mode {
@@ -415,7 +431,13 @@ public class SendFragment extends Fragment
     }
 
     @Override
+    public BarcodeData getBarcodeData() {
+        return barcodeData;
+    }
+
+    @Override
     public BarcodeData popBarcodeData() {
+        Timber.d("POPPED");
         BarcodeData data = barcodeData;
         barcodeData = null;
         return data;
@@ -512,12 +534,11 @@ public class SendFragment extends Fragment
     public void onSendTransactionFailed(final String error) {
         Timber.d("error=%s", error);
         committedTx = null;
-        Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_SHORT).show();
-        enableNavigation();
-        final SendConfirm fragment = getSendConfirm();
-        if (fragment != null) {
-            fragment.sendFailed();
+        final SendConfirm confirm = getSendConfirm();
+        if (confirm != null) {
+            confirm.sendFailed(getString(R.string.status_transaction_failed, error));
         }
+        enableNavigation();
     }
 
     @Override

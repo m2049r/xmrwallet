@@ -22,19 +22,19 @@
         <p>Monerujo 只會在本地端使用您的 Monero 金鑰以及公開地址執行必要的處理，並在加密後發送至
         Monero 網路進行交易。</p>
         <p>其餘的個人資料都不會被 monerujo 收集。</p>
-        <p>倘若您有使用 USD/EUR 匯兌的功能(可選用)，monerujo 將透過 kraken.com 的公開
-        API 抓取目前的匯率。若欲了解您要求的資料會如何被收集及使用，請至 https://www.kraken.com/legal/privacy
-        觀看他們的隱私權政策，特別是「Information We Collect Automatically」章節。</p>
+        <p>倘若您有使用匯兌的功能(可選用)，monerujo 將透過 coinmarketcap.com 的公開
+        API 抓取目前的匯率。若欲了解您要求的資料會如何被收集及使用，請至 https://coinmarketcap.com/privacy
+        觀看他們的隱私權政策。</p>
         <p>若您想使用本 App 支付款項至 BTC 位址，您將使用 XMR.TO 所提供的服務。Monerujo
         將發送 BTC 目標位址以及金額至 XMR.TO，您的 IP 在此時也可能會被收集。詳情請至 https://xmr.to/
         觀看他們的隱私權政策。</p>
         <h2>應用程式權限</h2>
         <ul>
-        <li>INTERNET : 透過 Monero 節點連接至 Monero 網路。</li>
-        <li>READ_EXTERNAL_STORAGE : 讀取手機上的錢包資訊。</li>
-        <li>WRITE_EXTERNAL_STORAGE : 儲存錢包資訊於手機上。</li>
-        <li>WAKE_LOCK : 與遠端節點同步時，防止手機進入待命狀態。</li>
-        <li>CAMERA : 掃描 QR Code 以收取 Monero。</li>
+        <li>INTERNET：透過 Monero 節點連接至 Monero 網路。</li>
+        <li>READ_EXTERNAL_STORAGE：讀取手機上的錢包資訊。</li>
+        <li>WRITE_EXTERNAL_STORAGE：儲存錢包資訊於手機上。</li>
+        <li>WAKE_LOCK：與遠端節點同步時，防止手機進入待命狀態。</li>
+        <li>CAMERA：掃描 QR 碼以收取 Monero。</li>
         </ul>
         <h2>政策更新</h2>
         <p>本隱私權政策可能會不定時更新。在更新的同時，我們也會在本 App 以及網站 (www.monerujo.io)

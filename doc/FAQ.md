@@ -6,14 +6,15 @@
 ## What features does it have?
 
 - Seamless XMR.TO integration - instantly pay BTC with XMR using third-party XMR.TO service
-- Speaks spanish
-- Uses Monero v0.12
+- Speaks spanish and whole lot more
+- Uses Monero v0.12.2
 - Support for Android >= 5.0
 - Testnet and Mainnet
 - Generate new wallets
 - Recover wallets from mnemonic seed or from keys
 - Create *Watch Only* wallets from address + viewkey
 - Multiple wallets
+- Support for accounts
 - View wallet details (address, keys, etc.)
 - View transactions including details and copy to clipboard
 - Spend Moneroj (handle with care on mainnet!)
@@ -28,6 +29,9 @@
 - Rename wallets
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
+
+## How do I use a node with username & password?
+```username:password@node.address:portnumber```
 
 ## The app always crashes as soon as I open a wallet!
 Users of Zenfone MAX & Zenfone 2 Laser (possibly others) **MUST** use the armeabi-v7a APK as the arm64-v8a build uses hardware AES

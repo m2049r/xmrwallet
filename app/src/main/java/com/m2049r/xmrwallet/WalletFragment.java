@@ -43,9 +43,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
-import com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
@@ -101,7 +99,9 @@ public class WalletFragment extends Fragment
         ivSynced = (ImageView) view.findViewById(R.id.ivSynced);
 
         sCurrency = (Spinner) view.findViewById(R.id.sCurrency);
-        sCurrency.setAdapter(ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance));
+        ArrayAdapter currencyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance);
+        currencyAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
+        sCurrency.setAdapter(currencyAdapter);
 
         bSend = (Button) view.findViewById(R.id.bSend);
         bReceive = (Button) view.findViewById(R.id.bReceive);
@@ -150,7 +150,7 @@ public class WalletFragment extends Fragment
         // at this point selection is XMR in case of error
         String displayB;
         double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // crash if this fails!
-        if (!"XMR".equals(balanceCurrency)) { // not XMR
+        if (!Helper.CRYPTO.equals(balanceCurrency)) { // not XMR
             double amountB = amountA * balanceRate;
             displayB = Helper.getFormattedAmount(amountB, false);
         } else { // XMR
@@ -159,10 +159,10 @@ public class WalletFragment extends Fragment
         tvBalance.setText(displayB);
     }
 
-    String balanceCurrency = "XMR";
+    String balanceCurrency = Helper.CRYPTO;
     double balanceRate = 1.0;
 
-    private final ExchangeApi exchangeApi = new ExchangeApiImpl(OkHttpClientSingleton.getOkHttpClient());
+    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void refreshBalance() {
         if (sCurrency.getSelectedItemPosition() == 0) { // XMR
@@ -170,9 +170,10 @@ public class WalletFragment extends Fragment
             tvBalance.setText(Helper.getFormattedAmount(amountXmr, true));
         } else { // not XMR
             String currency = (String) sCurrency.getSelectedItem();
+            Timber.d(currency);
             if (!currency.equals(balanceCurrency) || (balanceRate <= 0)) {
                 showExchanging();
-                exchangeApi.queryExchangeRate("XMR", currency,
+                exchangeApi.queryExchangeRate(Helper.CRYPTO, currency,
                         new ExchangeCallback() {
                             @Override
                             public void onSuccess(final ExchangeRate exchangeRate) {
@@ -228,10 +229,10 @@ public class WalletFragment extends Fragment
 
     public void exchange(final ExchangeRate exchangeRate) {
         hideExchanging();
-        if (!"XMR".equals(exchangeRate.getBaseCurrency())) {
+        if (!Helper.CRYPTO.equals(exchangeRate.getBaseCurrency())) {
             Timber.e("Not XMR");
             sCurrency.setSelection(0, true);
-            balanceCurrency = "XMR";
+            balanceCurrency = Helper.CRYPTO;
             balanceRate = 1.0;
         } else {
             int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());
@@ -256,7 +257,7 @@ public class WalletFragment extends Fragment
     // called from activity
 
     public void onRefreshed(final Wallet wallet, final boolean full) {
-        Timber.d("onRefreshed()");
+        Timber.d("onRefreshed(%b)", full);
         if (full) {
             List<TransactionInfo> list = wallet.getHistory().getAll();
             adapter.setInfos(list);
@@ -270,6 +271,7 @@ public class WalletFragment extends Fragment
             bSend.setVisibility(View.VISIBLE);
             bSend.setEnabled(true);
         }
+        if (isVisible()) enableAccountsList(true); //otherwise it is enabled in onResume()
     }
 
     boolean walletLoaded = false;
@@ -313,7 +315,7 @@ public class WalletFragment extends Fragment
         if (wallet == null) return;
         walletTitle = wallet.getName();
         String watchOnly = (wallet.isWatchOnly() ? getString(R.string.label_watchonly) : "");
-        walletSubtitle = wallet.getAddress().substring(0, 10) + "…" + watchOnly;
+        walletSubtitle = wallet.getAccountLabel();
         activityCallback.setTitle(walletTitle, walletSubtitle);
         Timber.d("wallet title is %s", walletTitle);
     }
@@ -323,10 +325,13 @@ public class WalletFragment extends Fragment
     private String walletSubtitle = null;
     private long unlockedBalance = 0;
 
+    private int accountIdx = -1;
+
     private void updateStatus(Wallet wallet) {
         if (!isAdded()) return;
         Timber.d("updateStatus()");
-        if (walletTitle == null) {
+        if ((walletTitle == null) || (accountIdx != wallet.getAccountIndex())) {
+            accountIdx = wallet.getAccountIndex();
             setActivityTitle(wallet);
         }
         long balance = wallet.getBalance();
@@ -412,9 +417,28 @@ public class WalletFragment extends Fragment
         super.onResume();
         Timber.d("onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
-        activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE);
+        //activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE); // TODO: Close button somewhere else
+        activityCallback.setToolbarButton(Toolbar.BUTTON_NONE);
         setProgress(syncProgress);
         setProgress(syncText);
         showReceive();
+        if (activityCallback.isSynced()) enableAccountsList(true);
     }
+
+    @Override
+    public void onPause() {
+        enableAccountsList(false);
+        super.onPause();
+    }
+
+    public interface DrawerLocker {
+        void setDrawerEnabled(boolean enabled);
+    }
+
+    private void enableAccountsList(boolean enable) {
+        if (activityCallback instanceof DrawerLocker) {
+            ((DrawerLocker) activityCallback).setDrawerEnabled(enable);
+        }
+    }
+
 }

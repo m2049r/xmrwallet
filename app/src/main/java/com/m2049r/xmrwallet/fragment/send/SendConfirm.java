@@ -19,7 +19,7 @@ package com.m2049r.xmrwallet.fragment.send;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 
 interface SendConfirm {
-    void sendFailed();
+    void sendFailed(String errorText);
 
     void createTransactionFailed(String errorText);
 
