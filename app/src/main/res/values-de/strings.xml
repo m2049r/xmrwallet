@@ -345,13 +345,13 @@
     <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC - Adresse kann gefälscht sein!</string>
     <string name="send_address_hint">Empfänger XMR/BTC Adresse oder OpenAlias</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">NFC-Tag wird beschrieben</string>
+    <string name="nfc_write_failed">Beschreibung fehlgeschlagen!</string>
+    <string name="nfc_write_successful">Beschreibung erfolgreich</string>
+    <string name="nfc_tag_unsupported">NFC-Tag unterstützt kein NDEF!</string>
+    <string name="nfc_tag_size">NFC-Tag verfügt nur über %d Bytes, statt benötigter %d!</string>
+    <string name="nfc_tag_read_undef">Ich verstehe den NFC-Tag nicht!</string>
+    <string name="nfc_tag_read_what">Mir ist nicht klar, was Du möchtest!</string>
+    <string name="nfc_tag_read_success">NFC-Tag Auslesung erfolgreich!</string>
+    <string name="nfc_tag_tap">NFC verfügbar!</string>
 </resources>
