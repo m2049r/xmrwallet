@@ -162,7 +162,7 @@ public class BarcodeData {
         String noScheme = uri.substring(XMR_SCHEME.length());
         Uri monero = Uri.parse(noScheme);
         Map<String, String> parms = new HashMap<>();
-        String query = monero.getQuery();
+        String query = monero.getEncodedQuery();
         if (query != null) {
             String[] args = query.split("&");
             for (String arg : args) {
