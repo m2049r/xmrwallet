@@ -1,0 +1,347 @@
+<resources>
+    <string name="wallet_activity_name">المحفظه</string>
+
+    <string name="menu_about">عن</string>
+    <string name="menu_privacy">سياسه الخصوصيه</string>
+
+    <string name="menu_share">مشاركه</string>
+    <string name="menu_help">مساعده</string>
+    <string name="menu_info">التفاصيل</string>
+    <string name="menu_receive">إستقبال</string>
+    <string name="menu_rename">تغيير الإسم &#8230;</string>
+    <string name="menu_archive">أرشفه</string>
+    <string name="menu_backup">نسخ احتياطي</string>
+    <string name="menu_changepw">تغيير كلمه المرور</string>
+
+    <string name="password_weak">استمر بالكتابه ضعيفه &#8230;</string>
+    <string name="password_fair">متوسطه &#8230;</string>
+    <string name="password_good">هيا ، يمكنك أن تقدم أفضل!</string>
+    <string name="password_strong">في الطريق &#8230;</string>
+    <string name="password_very_strong">هذه هي! كلمه مرور رائعه</string>
+
+    <string name="label_login_wallets">المحافظ</string>
+    <string name="label_credits">الشكر إلي</string>
+    <string name="label_ok">حسناً</string>
+    <string name="label_cancel">الغاء</string>
+    <string name="label_close">اغلاق</string>
+    <string name="label_wallet_advanced_details">المس للحصول على معلومات مفصلة</string>
+
+    <string name="label_send_success">أرسلت بنجاح</string>
+    <string name="label_send_done">تم</string>
+
+    <string name="label_receive_info_gen_qr_code">المس للحصول على رمز QR</string>
+    <string name="info_send_prio_fees">أولوية أعلى = رسوم أعلى</string>
+
+    <string name="info_xmrto_enabled">تم تمكين الدفع بالبتكوين، انقر للحصول على مزيد من المعلومات.</string>
+    <string name="info_crazypass_enabled">تم تمكين كلمه المرور المجنونه، انقر فوق لمزيد من المعلومات.</string>
+    <string name="info_ledger_enabled">تم تمكين محفظه ليدجر، انقر فوق لمزيد من المعلومات.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>لقد ادخلت عنوان بتكوين.</b><br/>
+        <i>سوف ترسل مونيرو ويستلم الطرف الآخر بتكوين عن طريق خدمه <b>XMR.TO</b> </i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO طلب</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+    <string name="info_send_xmrto_paid">بإنتظار التأكيد</string>
+    <string name="info_send_xmrto_unpaid">بإنتظار الدفع</string>
+    <string name="info_send_xmrto_error">XMR.TO خطأ (%1$s)</string>
+    <string name="info_send_xmrto_sent">تم ارسال البتكوين!</string>
+    <string name="info_send_xmrto_query">استعلام &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>يمكنك ارسال %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b> يعطيك سعر صرف <b>%3$s BTC</b> <u>الأن</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>المبالغ حتى <b>%1$s BTC</b> سوف ترسل <u>فورا</u>!</i>
+    ]]></string>
+
+    <string name="send_available_btc">الرصيد: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">تم دمج معرف الدفع</string>
+    <string name="info_prepare_tx">جاري اعداد معاملتك</string>
+
+    <string name="label_send_progress_xmrto_create">انشاء طلب XMR.TO </string>
+    <string name="label_send_progress_xmrto_query">استعلام طلب XMR.TO</string>
+    <string name="label_send_progress_create_tx">جاري تجهيز معامله مونيرو</string>
+
+    <string name="label_send_progress_queryparms">استعلام معلمات XMR.TO</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO خطأ</string>
+    <string name="text_generic_xmrto_error">Code: %1$d</string>
+
+    <string name="text_retry">المس لإعادة المحاولة</string>
+    <string name="text_noretry_monero">الأن نحن عالقين هنا!</string>
+    <string name="text_noretry">XMR.TO تبدو الخدمه غير متاحه الان!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
+
+    <string name="label_send_settings_advanced">متقدم:</string>
+
+    <string name="label_send_btc_xmrto_info">زور xmr.to للمساعده  &amp; والتتبع</string>
+    <string name="label_send_btc_xmrto_key_lb">المفتاح السري\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO المفتاح السري</string>
+    <string name="label_send_btc_address">عنوان بتكوين المستلم</string>
+    <string name="label_send_btc_amount">الكميه</string>
+
+    <string name="label_send_txid">معرف المعامله</string>
+    <string name="label_send_address">عنوان المستلم</string>
+    <string name="label_send_payment_id">معرف الدفع</string>
+    <string name="label_send_notes">ملاحظات</string>
+
+    <string name="backup_progress">النسخ الاحتياطي قيد التقدم</string>
+    <string name="archive_progress">الأرشيف قيد التقدم</string>
+    <string name="rename_progress">إعادة تسمية قيد التقدم</string>
+    <string name="open_progress">التحقق من الإتصال بالخادم</string>
+    <string name="changepw_progress">تغيير كلمة المرور قيد التقدم</string>
+
+    <string name="service_progress">جاري العمل ربما يأخذ ذلك بعض الوقت!</string>
+
+    <string name="backup_failed">فشل النسخ الاحتياطي!</string>
+    <string name="archive_failed">فشل الأرشفه!</string>
+    <string name="rename_failed">فشل إعادة التسمية!</string>
+    <string name="changepw_failed">فشل تغيير كلمة المرور!</string>
+    <string name="changepw_success">تم تغيير كلمة السر</string>
+
+    <string name="label_daemon">الخادم</string>
+    <string name="prompt_daemon">([&lt;المستخدم&gt;:&lt;كلمه السر&gt;@]&lt;الخادم&gt;[:&lt;المنفذ&gt;])</string>
+    <string name="status_wallet_loading">جاري تحميل المحفظه &#8230;</string>
+    <string name="status_wallet_unloaded">تم حفظ المحفظه</string>
+    <string name="status_wallet_unload_failed">فشل حفظ المحفظه!</string>
+    <string name="status_wallet_connecting">جاري التوصيل &#8230;</string>
+    <string name="status_wallet_connect_failed">فشل الإتصال بالخادم راجع اسم المستخدم وكلمه المرور</string>
+    <string name="status_wallet_connect_timeout">قطع الإتصال بالخادم حاول مجددا او استخدم خادم آخر.</string>
+    <string name="status_wallet_node_invalid">خادم غير صالح استخدم آخر.</string>
+    <string name="status_wallet_connect_ioex">لا يمكن الوصول للخادم حاول مجددا او استخدم آخر.</string>
+
+    <string name="status_wallet_disconnected">انقطع الاتصال</string>
+
+    <string name="status_transaction_failed">فشلت المعامله: %1$s</string>
+
+    <string name="send_xmrto_timeout">انتظرت طويلا صديقي!</string>
+
+    <string name="service_busy">مازلت مشغول بمحفظتك الأخيرة &#8230;</string>
+
+    <string name="prompt_rename">تغيير الإسم %1$s</string>
+
+    <string name="prompt_changepw">عبارة مرور جديدة لـ %1$s</string>
+    <string name="prompt_changepwB">كرر عبارة المرور لـ %1$s</string>
+    <string name="prompt_password">كلمه السر لـ %1$s</string>
+    <string name="prompt_fingerprint_auth">يمكنك أيضًا فتح المحفظة باستخدام بصمة الإصبع.الرجاء لمس المستشعر.</string>
+    <string name="prompt_send_password">تأكيد كلمة المرور</string>
+    <string name="prompt_open_wallet">جاري فتح المحفظه &#8230;</string>
+    <string name="bad_fingerprint">بصمة غير معترف بها. حاول ثانية.</string>
+    <string name="bad_password">كلمة سر خاطئة!</string>
+    <string name="bad_saved_password">كلمة المرور المحفوظة غير صحيحة. الرجاء إدخال كلمة المرور يدويًا.</string>
+    <string name="bad_wallet">المحفظه غير موجوده!</string>
+    <string name="prompt_daemon_missing">يجب تحديد عنوان الخادم!</string>
+    <string name="prompt_wrong_net">المحفظة لا تتطابق مع الشبكة المحددة</string>
+
+    <string name="label_watchonly">(رؤيه فقط)</string>
+
+    <string name="label_wallet_receive">استلام</string>
+    <string name="label_wallet_send">إرسال</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR غير مؤكده</string>
+
+    <string name="service_description">monerujo خدمه</string>
+
+    <string name="status_synced">متزامن:</string>
+    <string name="status_remaining">الكتل المتبقيه</string>
+    <string name="status_syncing">جاري البحث:</string>
+
+    <string name="message_strorage_not_writable">التخزين الخارجي غير قابل للكتابة!</string>
+    <string name="message_strorage_not_permitted">نحن حقا بحاجة إلى أذونات التخزين الخارجية هذه!</string>
+    <string name="message_camera_not_permitted">بدون كاميرا = لا يوجد مسحQR!</string>
+
+    <string name="label_copy_viewkey">مفتاح الرؤيه</string>
+    <string name="label_copy_address">العنوان العام</string>
+    <string name="label_copy_xmrtokey">XMR.TO مفتاح</string>
+    <string name="message_copy_viewkey">تم نسخ مفتاح الرؤيه!</string>
+    <string name="message_copy_xmrtokey">XMR.TO تم نسخ مفتاح!</string>
+    <string name="message_copy_address">تم نسخ عنوان المحفظه!</string>
+    <string name="message_copy_txid">تم نسخ معرف المعامله!</string>
+    <string name="message_nocopy">النسخ معطل لأسباب أمنيه!</string>
+
+    <string name="message_exchange_failed">لا يمكن الحصول علي سعر الصرف. استخدم مونيرو إلي مونيرو او حاول مره اخري</string>
+
+    <string name="generate_title">إنشاء محفظه</string>
+    <string name="generate_name_hint">اسم المحفظه</string>
+    <string name="generate_password_hint">عباره مرور المحفظه</string>
+    <string name="generate_fingerprint_hint">السماح بفتح المحفظة باستخدام بصمة الإصبع</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>مصادقة البصمة</strong>
+        <p>مع تمكين مصادقة بصمة الإصبع ، يمكنك عرض رصيد المحفظة وتلقي الأموال دون إدخال كلمة المرور.</p>
+        <p>ولكن لزياده الحمايه سوف يسألك التطبيق عن كلمه السر إذا كنت تريد عرض تفاصيل المحفظه او إرسال الأموال.</p>
+        <strong>تحذير أمني</strong>
+        <p>أخيراً نريد تذكيرك بأن أي شخص يتمكن من الحصول علي بصماتك سيكون بإمكانه رؤيه رصيدك.</p>
+        <p>علي سبيل المثال يمكن لشخص خبيث فتح المحفظه وانت نائم.</p>
+        <strong>هل أنت متأكد من تمكين هذه الوظيفة؟</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">عبارات المرور غير متطابقة</string>
+    <string name="generate_empty_passwordB"> لا يمكن ان تكون عبارة المرور فارغة</string>
+    <string name="generate_buttonGenerate">انشأ لي محفظة بالفعل!</string>
+    <string name="generate_button_accept">لقد دونت كلمات الإستعاده</string>
+
+    <string name="generate_wallet_name">اعطني اسماً!</string>
+    <string name="generate_wallet_exists">المحفظة موجودة!</string>
+    <string name="generate_wallet_dot">لا يمكن ان تبدأ بـ  .</string>
+    <string name="generate_wallet_creating">جاري إنشاء محفظه</string>
+    <string name="generate_wallet_created">تم إنشاء المحفظه</string>
+    <string name="generate_wallet_create_failed">فشل إنشاء المحفظه</string>
+
+    <string name="generate_restoreheight_error">أدخل رقماً او تاريخ (يوم-شهر-سنه)</string>
+
+    <string name="generate_wallet_type_key">مفاتيح</string>
+    <string name="generate_wallet_type_new">جديده</string>
+    <string name="generate_wallet_type_seed">كلمات الإستعاده</string>
+    <string name="generate_wallet_type_view">رؤيه فقط</string>
+
+    <string name="generate_address_hint">العنوان العام</string>
+    <string name="generate_viewkey_hint">مفتاح الرؤيه</string>
+    <string name="generate_spendkey_hint">مفتاح الإنفاق</string>
+    <string name="generate_mnemonic_hint">ال25 كلمه الخاصه بإستعاده محفظتك</string>
+    <string name="generate_restoreheight_hint">طول الإستعاده أو التاريخ (يوم-شهر-سنه)</string>
+
+    <string name="generate_address_label">العنوان العام</string>
+    <string name="generate_viewkey_label">مفتاح الرؤيه</string>
+    <string name="generate_spendkey_label">مفتاح الإنفاق</string>
+    <string name="generate_mnemonic_label">كلمات الإستعاده</string>
+    <string name="generate_crazypass_label">كلمه سر إستعاده ملفات المحفظه</string>
+
+    <string name="generate_check_key">ادخل مفتاح صالح</string>
+    <string name="generate_check_address">ادخل عنوان صالح</string>
+    <string name="generate_check_mnemonic">ادخل ال25 كلمه من كلمات الإستعاده</string>
+
+    <string name="send_amount_btc_xmr">%1$s (indicative)</string>
+
+    <string name="send_address_hint">عنوان مونيرو او بتكوين المستلم</string>
+    <string name="send_paymentid_hint">معرف الدفع (اختياري)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">ملاحظات خاصه (اختياري)</string>
+    <string name="send_generate_paymentid_hint">إنشاء</string>
+    <string name="send_send_label"> إنفاق مونيرو</string>
+    <string name="send_send_timed_label">إنفاق مونيرو (%1$s)</string>
+    <string name="send_qr_invalid">ليس رمز  QR</string>
+    <string name="send_qr_address_invalid">ليس رمز QR صالح للدفع</string>
+    <string name="send_address_invalid">ليس عنوان صالح</string>
+    <string name="send_title">ارسال</string>
+    <string name="send_available">الرصيد: %1$s XMR</string>
+    <string name="send_address_title">العنوان</string>
+    <string name="send_amount_title">الكميه</string>
+    <string name="send_settings_title">الإعدادات</string>
+    <string name="send_confirm_title">تأكيد</string>
+    <string name="send_success_title">تم</string>
+
+    <string name="send_amount_label">الكميه</string>
+    <string name="send_fee_btc_label">الرسوم (XMR)</string>
+    <string name="send_fee_label">الرسوم</string>
+    <string name="send_total_btc_label">المجمل (XMR)</string>
+    <string name="send_total_label">اجمالي</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s Fee</string>
+
+    <string name="send_create_tx_error_title">خطأ إنشاء معامله</string>
+
+    <string name="tx_list_fee">- Fee %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">خطأ</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Timestamp</string>
+    <string name="tx_id">معرف المعامله</string>
+    <string name="tx_key">مفتاح المعامله</string>
+    <string name="tx_destination">المستلم</string>
+    <string name="tx_destination_btc">المستلم\n(BTC)</string>
+    <string name="tx_paymentId">معرف الدفع</string>
+    <string name="tx_blockheight">الكتله</string>
+    <string name="tx_amount">الكميه</string>
+    <string name="tx_amount_btc">الكميه\n(BTC)</string>
+    <string name="tx_fee">الرسوم</string>
+    <string name="tx_transfers">التحويلات</string>
+    <string name="tx_notes">ملاحظات</string>
+    <string name="tx_notes_hint">(اختياري)</string>
+    <string name="tx_button_notes">حفظ</string>
+    <string name="tx_notes_set_failed">فشل حفظ الملاحظات</string>
+    <string name="tx_title">تفاصيل المعامله</string>
+
+    <string name="tx_pending">قيد الانتظار</string>
+    <string name="tx_failed">فشل</string>
+
+    <string name="receive_paymentid_hint">معرف الدفع (اختياري)</string>
+    <string name="receive_amount_hint">الكميه</string>
+    <string name="receive_cannot_open">لا يمكن فتح المحفظه!</string>
+    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">يجب ان يكون فارغاً مع العناوين المدمجه</string>
+
+    <string name="receive_amount_too_big">الأقصي. %1$s</string>
+    <string name="receive_amount_negative">الأقل. 0</string>
+    <string name="receive_amount_nan">XMR ليس رقم</string>
+
+    <string name="receive_title">استلام</string>
+
+    <string name="details_alert_message">سيتم عرض معلومات حساسه!</string>
+    <string name="details_alert_yes">أنا بمأمن</string>
+    <string name="details_alert_no">العوده!</string>
+    <string name="details_title">التفاصيل</string>
+
+    <string name="archive_alert_message">سيتم عمل نسخة احتياطية من المحفظة ثم حذفها!</string>
+    <string name="archive_alert_yes">نعم, افعل ذلك!</string>
+    <string name="archive_alert_no">لا شكراً!</string>
+
+    <string-array name="priority">
+        <item>الأولوية الافتراضية</item>
+        <item>الأولوية منخفضه</item>
+        <item>الأولوية متوسطه</item>
+        <item>الأولوية قصوي</item>
+    </string-array>
+
+    <string name="fab_create_new">انشاء محفظه جديده</string>
+    <string name="fab_restore_viewonly">استعاده محفظه رؤيه فقط</string>
+    <string name="fab_restore_key">استعاده محفظه من المفاتيح</string>
+    <string name="fab_restore_seed">استعاده محفظه من كلمات الإستعاده</string>
+
+    <string name="accounts_drawer_new">إنشاء حساب</string>
+    <string name="accounts_drawer_title">الحسابات</string>
+    <string name="accounts_new">تم إضافه حساب #%1$d</string>
+    <string name="tx_account">حساب #</string>
+
+    <string name="send_sweepall">إرسال كل الأموال المؤكده في هذا الحساب!</string>
+    <string name="tx_subaddress">العنوان الفرعي #%1$d</string>
+    <string name="generate_address_label_sub">العنوان الفرعي العام #%1$d</string>
+
+    <string name="menu_language">اللغات</string>
+    <string name="language_system_default">استخدم لغه النظام</string>
+
+    <string name="fab_restore_ledger">استعاده من Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">التواصل مع ليدجر</string>
+    <string name="progress_ledger_confirm">التاكيد علي ليدجر مطلوب!</string>
+    <string name="progress_ledger_lookahead">استرجاع العناوين الفرعيه</string>
+    <string name="progress_ledger_verify">التحقق من المفاتيح</string>
+    <string name="progress_ledger_opentx">القيام بعمليات جنونيه</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">من فضلك قم بتوصيل جهاز ليدجر</string>
+
+    <string name="accounts_progress_new">انشاء حساب</string>
+    <string name="accounts_progress_update">تحديث المحفظه</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">جاري كتابه Tag</string>
+    <string name="nfc_write_failed">فشل كتابه Tag!</string>
+    <string name="nfc_write_successful">نجح كتابه Tag</string>
+    <string name="nfc_tag_unsupported">Tag لا يدعم NDEF!</string>
+    <string name="nfc_tag_size">Tag يوفر %d بايت,لكننا بحاجه إلي %d!</string>
+    <string name="nfc_tag_read_undef">لا افهم الـ Tag!</string>
+    <string name="nfc_tag_read_what">لا افهم ماذا تريد!</string>
+    <string name="nfc_tag_read_success">نجح قرائه الـ Tag</string>
+    <string name="nfc_tag_tap">NFC متاح!</string>
+</resources>
