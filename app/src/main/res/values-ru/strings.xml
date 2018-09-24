@@ -121,7 +121,7 @@
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
     <string name="label_daemon">Удаленный узел</string>
-    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="prompt_daemon">([&lt;пользатель&gt;:&lt;пароль&gt;@]&lt;адрес&gt;[:&lt;порт&gt;])</string>
 <<<<<<< HEAD
     <string name="connect_stagenet" translatable="false">Stagenet</string>
     <string name="connect_testnet" translatable="false">Testnet</string>
@@ -223,11 +223,11 @@
     <string name="generate_wallet_type_seed">Фраза</string>
     <string name="generate_wallet_type_view">Просмотр</string>
 
-    <string name="generate_address_hint">Public Address</string>
-    <string name="generate_viewkey_hint">View Key</string>
-    <string name="generate_spendkey_hint">Spend Key</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
-    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
+    <string name="generate_address_hint">Публичный адрес</string>
+    <string name="generate_viewkey_hint">Ключ просмотра</string>
+    <string name="generate_spendkey_hint">Ключ траты</string>
+    <string name="generate_mnemonic_hint">Мнемоническая фраза</string>
+    <string name="generate_restoreheight_hint">Восстановить высоту или дату (YYYY-MM-DD)</string>
 
     <string name="generate_address_label">Публичный адрес</string>
     <string name="generate_viewkey_label">Ключ просмотра</string>
@@ -393,41 +393,41 @@
 <<<<<<< HEAD
 =======
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Язык</string>
+    <string name="language_system_default">Использовать язык системы</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Восстановление из Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">Связь с Ledger</string>
+    <string name="progress_ledger_confirm">Требуется подтверждение в Ledger!</string>
+    <string name="progress_ledger_lookahead">Получение субадрессов</string>
+    <string name="progress_ledger_verify">Проверка ключей</string>
+    <string name="progress_ledger_opentx">Занимаюсь сумасшедшей математикой</string>
+    <string name="progress_ledger_mlsag">Хеширование материалов</string>
+    <string name="open_wallet_ledger_missing">Подключите (переподключите) устройство Ledger</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">Создание аккаунта</string>
+    <string name="accounts_progress_update">Обновление кошелька</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s прикреплен</string>
+    <string name="toast_ledger_detached">%1$s откреплён</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Запись метки</string>
+    <string name="nfc_write_failed">Ошибка записи метки!</string>
+    <string name="nfc_write_successful">Успешная запись метки</string>
+    <string name="nfc_tag_unsupported">Метка не поддерживает NDEF!</string>
+    <string name="nfc_tag_size">Метка предоставляет %d байт, но нам нужно %d!</string>
+    <string name="nfc_tag_read_undef">Я не понимаю эту метку!</string>
+    <string name="nfc_tag_read_what">Я не знаю, чего ты хочешь!</string>
+    <string name="nfc_tag_read_success">Чтение метки завершено успешно</string>
+    <string name="nfc_tag_tap">NFC доступен!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Описание (необязательно)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+    <string name="send_address_not_openalias">Адрес OpenAlias недоступен</string>
+    <string name="send_address_openalias">Безопасность OpenAlias &#x2714;</string>
+    <string name="send_address_resolve_openalias">Разрешения OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias без DNSSEC - адрес может быть подделан</string>
+    <string name="send_address_hint">XMR/BTC адрес получателя или OpenAlias</string>
 >>>>>>> m2049r/master
 </resources>
