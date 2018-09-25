@@ -51,6 +51,7 @@ import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
+import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -718,7 +719,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             intent.putExtra(WalletService.REQUEST_CMD_TX_TAG, tag);
             startService(intent);
             Timber.d("CREATE TX request sent");
-            if (getWallet().isKeyOnDevice())
+            if (getWallet().getDeviceType() == Wallet.Device.Device_Ledger)
                 showLedgerProgressDialog(LedgerProgressDialog.TYPE_SEND);
         } else {
             Timber.e("Service not bound");
@@ -1074,12 +1075,17 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (getWallet().isKeyOnDevice()) {
-                showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
-                dialogOpened = true;
-            } else {
-                showProgressDialog(R.string.accounts_progress_new);
-                dialogOpened = true;
+            switch (getWallet().getDeviceType()) {
+                case Device_Ledger:
+                    showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
+                    dialogOpened = true;
+                    break;
+                case Device_Software:
+                    showProgressDialog(R.string.accounts_progress_new);
+                    dialogOpened = true;
+                    break;
+                default:
+                    throw new IllegalStateException("Hardware backing not supported. At all!");
             }
         }
 

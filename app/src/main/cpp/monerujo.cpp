@@ -778,11 +778,11 @@ Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject insta
     return static_cast<jboolean>(wallet->synchronized());
 }
 
-JNIEXPORT jboolean JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_isKeyOnDevice(JNIEnv *env, jobject instance) {
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getDeviceTypeJ(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    bool key_on_device = wallet->isKeyOnDevice();
-    return static_cast<jboolean>(key_on_device);
+    Bitmonero::Wallet::Device device_type = wallet->getDeviceType();
+    return static_cast<jint>(device_type);
 }
 
 //void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h

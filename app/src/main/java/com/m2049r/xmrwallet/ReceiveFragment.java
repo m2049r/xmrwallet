@@ -514,7 +514,7 @@ public class ReceiveFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (wallet.isKeyOnDevice() && (progressCallback != null)) {
+            if ((wallet.getDeviceType() == Wallet.Device.Device_Ledger) && (progressCallback != null)) {
                 progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_SUBADDRESS);
                 dialogOpened = true;
             }
