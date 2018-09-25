@@ -60,6 +60,12 @@ public class Wallet {
         this.accountIndex = accountIndex;
     }
 
+    public enum Device {
+        Device_Undefined,
+        Device_Software,
+        Device_Ledger
+    };
+
     public enum Status {
         Status_Ok,
         Status_Error,

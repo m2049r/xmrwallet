@@ -228,7 +228,7 @@ public class WalletService extends Service {
 
         void onWalletStarted(boolean success);
 
-        void onWalletOpen(int hardware);
+        void onWalletOpen(Wallet.Device device);
     }
 
     String progressText = null;
@@ -550,8 +550,8 @@ public class WalletService extends Service {
         showProgress(30);
         if (walletMgr.walletExists(path)) {
             Timber.d("open wallet %s", path);
-            int hw = WalletManager.getInstance().queryWalletHardware(path + ".keys", walletPassword);
-            if (observer != null) observer.onWalletOpen(hw);
+            Wallet.Device device = WalletManager.getInstance().queryWalletDevice(path + ".keys", walletPassword);
+            if (observer != null) observer.onWalletOpen(device);
             wallet = walletMgr.openWallet(path, walletPassword);
             showProgress(60);
             Timber.d("wallet opened");
