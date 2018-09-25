@@ -516,13 +516,15 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     boolean haveWallet = false;
 
     @Override
-    public void onWalletOpen(final int hardware) {
-        if (hardware > 0)
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
-                }
-            });
+    public void onWalletOpen(final Wallet.Device device) {
+        switch (device) {
+            case Device_Ledger:
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
+                    }
+                });
+        }
     }
 
     @Override

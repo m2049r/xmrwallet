@@ -178,10 +178,15 @@ public class WalletManager {
     public native boolean verifyWalletPassword(String keys_file_name, String password, boolean watch_only);
 
     public boolean verifyWalletPasswordOnly(String keys_file_name, String password) {
-        return queryWalletHardware(keys_file_name, password) >= 0;
+        return queryWalletDevice(keys_file_name, password) != Wallet.Device.Device_Undefined;
     }
 
-    public native int queryWalletHardware(String keys_file_name, String password);
+    public Wallet.Device queryWalletDevice(String keys_file_name, String password) {
+        int device = queryWalletDeviceJ(keys_file_name, password);
+        return Wallet.Device.values()[device + 1]; // mapping is monero+1=android
+    }
+
+    private native int queryWalletDeviceJ(String keys_file_name, String password);
 
     //public native List<String> findWallets(String path); // this does not work - some error in boost
 

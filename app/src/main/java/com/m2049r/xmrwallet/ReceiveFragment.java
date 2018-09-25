@@ -320,7 +320,8 @@ public class ReceiveFragment extends Fragment {
             super.onPreExecute();
             showProgress();
             if ((walletPath != null)
-                    && (WalletManager.getInstance().queryWalletHardware(walletPath + ".keys", password) == 1)
+                    && (WalletManager.getInstance().queryWalletDevice(walletPath + ".keys", password)
+                    == Wallet.Device.Device_Ledger)
                     && (progressCallback != null)) {
                 progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
                 dialogOpened = true;

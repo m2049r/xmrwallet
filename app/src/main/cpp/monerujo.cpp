@@ -416,17 +416,20 @@ Java_com_m2049r_xmrwallet_model_WalletManager_verifyWalletPassword(JNIEnv *env, 
 
 //virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletHardware(JNIEnv *env, jobject instance,
-                                                                  jstring keys_file_name,
-                                                                  jstring password) {
+Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletDeviceJ(JNIEnv *env, jobject instance,
+                                                                jstring keys_file_name,
+                                                                jstring password) {
     const char *_keys_file_name = env->GetStringUTFChars(keys_file_name, NULL);
     const char *_password = env->GetStringUTFChars(password, NULL);
-    int hardwareId =
-            Bitmonero::WalletManagerFactory::getWalletManager()->
-                    queryWalletHardware(std::string(_keys_file_name), std::string(_password));
+    Bitmonero::Wallet::Device device_type;
+    bool ok = Bitmonero::WalletManagerFactory::getWalletManager()->
+            queryWalletDevice(device_type, std::string(_keys_file_name), std::string(_password));
     env->ReleaseStringUTFChars(keys_file_name, _keys_file_name);
     env->ReleaseStringUTFChars(password, _password);
-    return static_cast<jint>(hardwareId);
+    if (ok)
+        return static_cast<jint>(device_type);
+    else
+        return -1;
 }
 
 JNIEXPORT jobject JNICALL
