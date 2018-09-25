@@ -87,8 +87,8 @@ cd boost_1_58_0
 ```
 Comment out ```using ::fgetpos;``` & ```using ::fsetpos;``` in ```cstdio```.
 ```
-sed -i backup "s|using ::fgetpos;|//using ::fgetpos;|" boost/compatibility/cpp_c_headers/cstdio
-sed -i backup "s|using ::fsetpos;|//using ::fsetpos;|" boost/compatibility/cpp_c_headers/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" boost/compatibility/cpp_c_headers/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" boost/compatibility/cpp_c_headers/cstdio
 ```
 
 Then build & install to ```/opt/android/build/boost``` with
