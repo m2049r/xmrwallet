@@ -18,6 +18,20 @@ android {
         }
     }
 
+    flavorDimensions "version"
+    productFlavors {
+        alpha {
+            applicationIdSuffix ".alpha"
+            versionNameSuffix " (alpha)"
+        }
+        beta {
+            applicationIdSuffix ".beta"
+            versionNameSuffix " (beta)"
+        }
+        prod {
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,6 +41,7 @@ android {
             applicationIdSuffix ".debug"
         }
     }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -62,9 +77,13 @@ android {
             output ->
                 def abiName = output.getFilter(com.android.build.OutputFile.ABI)
                 output.versionCodeOverride = abiCodes.get(abiName, 0) + 10 * variant.versionCode
+                //def flavor = output.getFilter(flavor)
 
                 if (abiName == null) abiName = "universal"
-                def v = "${variant.versionName}".replaceFirst(" .*\$", "").replace(".", "x")
+                def v = "${variant.versionName}".replaceFirst(" '.*' ?", "")
+                        .replace(".", "x")
+                        .replace("(", "-")
+                        .replace(")", "")
                 outputFileName = "$rootProject.ext.apkName-" + v + "_" + abiName + ".apk"
         }
     }
