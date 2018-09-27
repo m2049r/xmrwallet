@@ -1177,6 +1177,8 @@ public class LoginActivity extends BaseActivity
                                 case Device_Ledger:
                                     if (!hasLedger()) {
                                         toast(R.string.open_wallet_ledger_missing);
+                                    } else {
+                                        startWallet(walletName, password, fingerprintUsed);
                                     }
                                     break;
                                 default:

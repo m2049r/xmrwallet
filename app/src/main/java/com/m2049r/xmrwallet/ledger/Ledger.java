@@ -34,11 +34,9 @@ import java.io.IOException;
 import timber.log.Timber;
 
 public class Ledger {
-    // lookahead parameters as suggest on
-    // https://monero.stackexchange.com/a/9902/8977 (Step 8)
-    // by dEBRUYNE
-    static public final int LOOKAHEAD_ACCOUNTS = 3;
-    static public final int LOOKAHEAD_SUBADDRESSES = 100;
+    // 5:20 is same as wallet2.cpp::restore()
+    static public final int LOOKAHEAD_ACCOUNTS = 5;
+    static public final int LOOKAHEAD_SUBADDRESSES = 20;
     static public final String SUBADDRESS_LOOKAHEAD = LOOKAHEAD_ACCOUNTS + ":" + LOOKAHEAD_SUBADDRESSES;
 
     public static final int SW_OK = 0x9000;
