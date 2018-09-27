@@ -208,7 +208,7 @@
     <string name="generate_address_hint">Публичный адрес</string>
     <string name="generate_viewkey_hint">Ключ просмотра</string>
     <string name="generate_spendkey_hint">Ключ траты</string>
-    <string name="generate_mnemonic_hint">Мнемоническая фраза</string>
+    <string name="generate_mnemonic_hint">Мнемоническая фраза (25 слов)</string>
     <string name="generate_restoreheight_hint">Восстановить высоту или дату (YYYY-MM-DD)</string>
 
     <string name="generate_address_label">Публичный адрес</string>
@@ -324,7 +324,7 @@
 
     <string name="fab_restore_ledger">Восстановление из Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Связь с Ledger</string>
+    <string name="progress_ledger_progress">Подключение к Ledger</string>
     <string name="progress_ledger_confirm">Требуется подтверждение в Ledger!</string>
     <string name="progress_ledger_lookahead">Получение субадрессов</string>
     <string name="progress_ledger_verify">Проверка ключей</string>
@@ -351,7 +351,7 @@
     <string name="receive_desc_hint">Описание (необязательно)</string>
 
     <string name="send_address_not_openalias">Адрес OpenAlias недоступен</string>
-    <string name="send_address_openalias">Безопасность OpenAlias &#x2714;</string>
+    <string name="send_address_openalias">OpenAlias безопасен &#x2714;</string>
     <string name="send_address_resolve_openalias">Разрешения OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias без DNSSEC - адрес может быть подделан</string>
     <string name="send_address_hint">XMR/BTC адрес получателя или OpenAlias</string>
