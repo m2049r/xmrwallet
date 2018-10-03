@@ -1,0 +1,355 @@
+<resources>
+    <string name="wallet_activity_name">Rahakott</string>
+
+    <string name="menu_about">Meist</string>
+    <string name="menu_privacy">Privaatsuspoliitika</string>
+
+    <string name="menu_share">Jaga</string>
+    <string name="menu_help">Abi</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_receive">Küsi raha</string>
+    <string name="menu_rename">Nimeta ümber &#8230;</string>
+    <string name="menu_archive">Arhiveeri</string>
+    <string name="menu_backup">Tagavarakoopia</string>
+    <string name="menu_changepw">Vaheta parooli</string>
+
+    <string name="password_weak">Jätka tippimist &#8230;</string>
+    <string name="password_fair">Meh &#8230;</string>
+    <string name="password_good">Sa suudad veelgi paremini!</string>
+    <string name="password_strong">Jõuad peagi kohale &#8230;</string>
+    <string name="password_very_strong">Hurraa, h2kker1 stiilis!</string>
+
+    <string name="label_login_wallets">Rahakotid</string>
+    <string name="label_credits">Autorid</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">Katkesta</string>
+    <string name="label_close">Sulge</string>
+    <string name="label_wallet_advanced_details">Puuduta lisainfo saamiseks</string>
+
+    <string name="label_send_success">Edukalt saadetud</string>
+    <string name="label_send_done">Tehtud</string>
+
+    <string name="label_receive_info_gen_qr_code">Puuduta QR koodi saamiseks</string>
+    <string name="info_send_prio_fees">Suurem tähtsus = kõrgemad teenustasud</string>
+
+    <string name="info_xmrto_enabled">Bitcoini maksed sisse lülitatud, puuduta lisainfo saamiseks.</string>
+    <string name="info_crazypass_enabled">CrAzYpass sisse lülitatud, puuduta lisainfo saamiseks.</string>
+    <string name="info_ledger_enabled">Ledger&apos;i tugi sisse lülitatud, puuduta lisainfo saamiseks.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>Sa sisestasid Bitcoini aadressi.</b><br/>
+        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad Bitcoinid kasutades XMR.TO teenust.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO tellimus</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+    <string name="info_send_xmrto_paid">Ootan kinnitust</string>
+    <string name="info_send_xmrto_unpaid">Ootan makset</string>
+    <string name="info_send_xmrto_error">XMR.TO viga (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC saadetud!</string>
+    <string name="info_send_xmrto_query">Küsin &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>Sa saad saata %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s BTC</b></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>Kuni <b>%1$s BTC</b> saadetakse <u>viivitamatult</u>!</i>
+    ]]></string>
+
+    <string name="send_available_btc">Kontojääk: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">Makse ID integreeritud</string>
+    <string name="info_prepare_tx">Valmistan ülekannet ette</string>
+
+    <string name="label_send_progress_xmrto_create">Loon XMR.TO tellimust</string>
+    <string name="label_send_progress_xmrto_query">Küsin XMR.TO tellimust</string>
+    <string name="label_send_progress_create_tx">Valmistan ette Monero ülekannet</string>
+
+    <string name="label_send_progress_queryparms">Küsin XMR.TO parameetreid</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO viga</string>
+    <string name="text_generic_xmrto_error">Kood: %1$d</string>
+
+    <string name="text_retry">Puuduta uuesti proovimiseks</string>
+    <string name="text_noretry_monero">Nüüd jõudsime küll tupikusse!</string>
+    <string name="text_noretry">Oh ei, XMR.TO ei ole hetkel saadaval!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Kurss: %1$s BTC/XMR)</string>
+
+    <string name="label_send_settings_advanced">Edasijõudnutele:</string>
+
+    <string name="label_send_btc_xmrto_info">Külasta xmr.to lisainfo saamiseks &amp; jälgin</string>
+    <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO privaatvõti</string>
+    <string name="label_send_btc_address">Sihtkoha Bitcoini aadress</string>
+    <string name="label_send_btc_amount">Kogus</string>
+
+    <string name="label_send_txid">Ülekande ID</string>
+    <string name="label_send_address">Sihtkoha address</string>
+    <string name="label_send_payment_id">Makse ID</string>
+    <string name="label_send_notes">Kommentaarid</string>
+
+    <string name="backup_progress">Teostan tagavarakoopiat</string>
+    <string name="archive_progress">Arhiveerin</string>
+    <string name="rename_progress">Nimetan ümber</string>
+    <string name="open_progress">Kontrollin ühendust serveriga</string>
+    <string name="changepw_progress">Vahetan parooli</string>
+
+    <string name="service_progress">Teen ettevalmistusi &#8230;\nSee võib aega võtta!</string>
+
+    <string name="backup_failed">Tagavarakoopia ebaõnnestus!</string>
+    <string name="archive_failed">Arhiveerimine ebaõnnestus!</string>
+    <string name="rename_failed">Ümber nimetamine ebaõnnestus!</string>
+    <string name="changepw_failed">Parooli vahetamine ebaõnnestus!</string>
+    <string name="changepw_success">Parool vahetatud</string>
+
+    <string name="label_daemon">Server</string>
+    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="status_wallet_loading">Laen rahakotti &#8230;</string>
+    <string name="status_wallet_unloaded">Rahakott salvestatud</string>
+    <string name="status_wallet_unload_failed">Rahakoti salvestamine ebaõnnestus!</string>
+    <string name="status_wallet_connecting">Ühendun &#8230;</string>
+    <string name="status_wallet_connect_failed">Serveriga ühendumine ebaõnnestus!\nKontrolli kasutajanime/parooli</string>
+    <string name="status_wallet_connect_timeout">Serveriga ühendumine võttis liiga kaua aega!\nProovi uuesti või vali teine server.</string>
+    <string name="status_wallet_node_invalid">Ebasobilik server!\nVali mõni teine.</string>
+    <string name="status_wallet_connect_ioex">Server ei vastanud!\nProovi uuesti või vali teine server.</string>
+
+    <string name="status_wallet_disconnected">Lahti ühendatud</string>
+
+    <string name="status_transaction_failed">Ülekanne ebaõnnestus: %1$s</string>
+
+    <string name="send_xmrto_timeout">Sõber, sa ootasid liiga kaua!</string>
+
+    <string name="service_busy">Ma tegelen ikka veel su eelmise rahakotiga &#8230;</string>
+
+    <string name="prompt_rename">Nimeta ümber %1$s</string>
+
+    <string name="prompt_changepw">Uus parool rahakotile %1$s</string>
+    <string name="prompt_changepwB">Korda parooli rahakotile %1$s</string>
+    <string name="prompt_password">Prool rahakotile %1$s</string>
+    <string name="prompt_fingerprint_auth">Sa saad rahakoti avamiseks kasutada ka sõrmejälge.\nSelleks puuduta sõrmejäljelugejat.</string>
+    <string name="prompt_send_password">Kinnita parool</string>
+    <string name="prompt_open_wallet">Avan rahakoti&#8230;</string>
+    <string name="bad_fingerprint">Sõrmejälge ei tuntud ära. Proovi uuesti.</string>
+    <string name="bad_password">Vale parool!</string>
+    <string name="bad_saved_password">Salvestatud parool on vale.\nPalun sisesta parool käsitsi.</string>
+    <string name="bad_wallet">Rahakotti pole olemas!</string>
+    <string name="prompt_daemon_missing">Server peab olema valitud!</string>
+    <string name="prompt_wrong_net">Rahakott ei ühildu valitud võrguga</string>
+
+    <string name="label_watchonly">(Ainult vaatamiseks)</string>
+
+    <string name="label_wallet_receive">Küsi raha</string>
+    <string name="label_wallet_send">Saada</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR kinnitamata</string>
+
+    <string name="service_description">monerujo teenus</string>
+
+    <string name="status_synced">Uuendatud:</string>
+    <string name="status_remaining">Plokki veel</string>
+    <string name="status_syncing">Uuendamine:</string>
+
+    <string name="message_strorage_not_writable">Mälusse kirjutamine ei õnnestunud! Paanika-Jaanika!</string>
+    <string name="message_strorage_not_permitted">Mälusse kirjutamine on tegelikult meile väga oluline!</string>
+    <string name="message_camera_not_permitted">Pole kaamerat = pole QR koodide lugemist!</string>
+
+    <string name="label_copy_viewkey">Vaatamise võti</string>
+    <string name="label_copy_address">Avalik aadress</string>
+    <string name="label_copy_xmrtokey">XMR.TO võti</string>
+    <string name="message_copy_viewkey">Vaatamise võti on kopeeritud lõikepuhvrisse!</string>
+    <string name="message_copy_xmrtokey">XMR.TO võti on kopeeritud lõikepuhvrisse!</string>
+    <string name="message_copy_address">Rahakoti aadress on kopeeritud lõikepuhvrisse!</string>
+    <string name="message_copy_txid">Ülekande ID on kopeeritud lõikepuhvrisse!</string>
+    <string name="message_nocopy">Lõikepuhvrisse kopeerimine on turvakaalutlustel keelatud!</string>
+
+    <string name="message_exchange_failed">Vahetuskursi küsimine ebaõnnestus!\nKasuta XMR/XMR või proovi uuesti</string>
+
+    <string name="generate_title">Loo rahakott</string>
+    <string name="generate_name_hint">Rahakoti nimi</string>
+    <string name="generate_password_hint">Rahakoti parool</string>
+    <string name="generate_fingerprint_hint">Luba rahakoti avamine sõrmejäljega</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Sõrmejäljega avamine</strong>
+        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
+        without entering password.</p>
+        <p>But for additional security, monerujo will still require you to enter password when
+        viewing wallet details or sending funds.</p>
+        <strong>Turvahoiatus</strong>
+        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
+        able to peep into your wallet balance.</p>
+        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
+        <strong>Oled kindel, et soovid selle aktiveerida?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">Paroolid ei kattu</string>
+    <string name="generate_empty_passwordB">Parool ei saa olla tühi</string>
+    <string name="generate_buttonGenerate">Loo mulle juba üks rahakott!</string>
+    <string name="generate_button_accept">Olen mnemoonilise seemne üles kirjutanud</string>
+
+    <string name="generate_wallet_name">Anna mulle nimi!</string>
+    <string name="generate_wallet_exists">Rahakott juba eksisteerib!</string>
+    <string name="generate_wallet_dot">Nimi ei saa alata märgiga .</string>
+    <string name="generate_wallet_creating">Loon rahakotti</string>
+    <string name="generate_wallet_created">Rahakott loodud</string>
+    <string name="generate_wallet_create_failed">Rahakoti loomine ebaõnnestus</string>
+
+    <string name="generate_restoreheight_error">Sisesta plokinumber või kuupäev (YYYY-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">Võtmed</string>
+    <string name="generate_wallet_type_new">Uus</string>
+    <string name="generate_wallet_type_seed">Seeme</string>
+    <string name="generate_wallet_type_view">Vaatamiseks</string>
+
+    <string name="generate_address_hint">Avalik aadress</string>
+    <string name="generate_viewkey_hint">Vaatamise võti</string>
+    <string name="generate_spendkey_hint">Kulutamise võti</string>
+    <string name="generate_mnemonic_hint">25-sõnaline mnemooniline seeme</string>
+    <string name="generate_restoreheight_hint">Taastamise plokinumber või kuupäev (YYYY-MM-DD)</string>
+
+    <string name="generate_address_label">Avalik aadress</string>
+    <string name="generate_viewkey_label">Vaatamise võti</string>
+    <string name="generate_spendkey_label">Kulutamise võti</string>
+    <string name="generate_mnemonic_label">Mnemooniline seeme</string>
+    <string name="generate_crazypass_label">Rahakoti failide taastamise parool</string>
+
+    <string name="generate_check_key">Sisesta korrektne võti</string>
+    <string name="generate_check_address">Sisesta korrektne  aadress</string>
+    <string name="generate_check_mnemonic">Sisesta oma 25-sõnaline seeme</string>
+
+    <string name="send_amount_btc_xmr">%1$s (umbkaudne)</string>
+
+    <string name="send_address_hint">Saaja XMR/BTC aadress või OpenAlias</string>
+    <string name="send_paymentid_hint">Makse ID (valikuline)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">Privaatsed kommentaarid (valikuline)</string>
+    <string name="send_generate_paymentid_hint">Genereeri</string>
+    <string name="send_send_label">Saada mu kallid Monerod teele</string>
+    <string name="send_send_timed_label">Saada mu kallid Monerod (%1$s)</string>
+    <string name="send_qr_invalid">See pole QR kood</string>
+    <string name="send_qr_address_invalid">See pole sobiv QR kood</string>
+    <string name="send_address_invalid">See pole sobiv aadress</string>
+    <string name="send_address_not_openalias">OpenAlias aadress pole saadaval</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Lahendan OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias ilma DNSSEC\'ita - aadress võib olla võltsitud</string>
+    <string name="send_title">Saada</string>
+    <string name="send_available">Kontojääk: %1$s XMR</string>
+    <string name="send_address_title">Aadress</string>
+    <string name="send_amount_title">Kogus</string>
+    <string name="send_settings_title">Seaded</string>
+    <string name="send_confirm_title">Kinnita</string>
+    <string name="send_success_title">Tehtud</string>
+
+    <string name="send_amount_label">Kogus</string>
+    <string name="send_fee_btc_label">Teenustasu (XMR)</string>
+    <string name="send_fee_label">Teenustasu</string>
+    <string name="send_total_btc_label">Kokku (XMR)</string>
+    <string name="send_total_label">Kokku</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s teenustasu</string>
+
+    <string name="send_create_tx_error_title">Viga ülekande genereerimisel</string>
+
+    <string name="tx_list_fee">- teenustasu %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">ebaõnnestus</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Aeg</string>
+    <string name="tx_id">Ülekande ID</string>
+    <string name="tx_key">Ülekande võti</string>
+    <string name="tx_destination">Sihtkoht</string>
+    <string name="tx_destination_btc">Sihtkoht\n(BTC)</string>
+    <string name="tx_paymentId">Makse ID</string>
+    <string name="tx_blockheight">Plokk</string>
+    <string name="tx_amount">Kogus</string>
+    <string name="tx_amount_btc">Kogus\n(BTC)</string>
+    <string name="tx_fee">Teenustasu</string>
+    <string name="tx_transfers">Ülekanded</string>
+    <string name="tx_notes">Kommentaarid</string>
+    <string name="tx_notes_hint">(valikuline)</string>
+    <string name="tx_button_notes">Salvesta</string>
+    <string name="tx_notes_set_failed">Kommentaaride salvestamine ebaõnnestus</string>
+    <string name="tx_title">Ülekande lisainfo</string>
+
+    <string name="tx_pending">OOTEL</string>
+    <string name="tx_failed">EBAÕNNESTUS</string>
+
+    <string name="receive_paymentid_hint">Makse ID (valikuline)</string>
+    <string name="receive_amount_hint">Kogus</string>
+    <string name="receive_desc_hint">Kommentaarid (valikuline)</string>
+    <string name="receive_cannot_open">Rahakotti ei õnnestunud avada!</string>
+    <string name="receive_paymentid_invalid">16 või 64 Hex tähemärgid (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">Peab olema tühi koos integreeritud aadressiga</string>
+
+    <string name="receive_amount_too_big">Kuni %1$s</string>
+    <string name="receive_amount_negative">Vähemalt 0</string>
+    <string name="receive_amount_nan">XMR pole arv</string>
+
+    <string name="receive_title">Küsi raha</string>
+
+    <string name="details_alert_message">Nüüd näidatakse tundlikku infot.\nPiilu oma seljataha!</string>
+    <string name="details_alert_yes">Olen turvalises kohas</string>
+    <string name="details_alert_no">Vii mind tagasi!</string>
+    <string name="details_title">Lisainfo</string>
+
+    <string name="archive_alert_message">Rahakotist tehakse tagavarakoopia ja siis see kustutatakse!</string>
+    <string name="archive_alert_yes">Täpselt nii!</string>
+    <string name="archive_alert_no">Ei, tänan!</string>
+
+    <string-array name="priority">
+        <item>Tavaline tähtsus</item>
+        <item>Väike tähtsus</item>
+        <item>Keskmine tähtsus</item>
+        <item>Suur tähtsus</item>
+    </string-array>
+
+    <string name="fab_create_new">Loo uus rahakott</string>
+    <string name="fab_restore_viewonly">Taasta rahakott vaatamiseks</string>
+    <string name="fab_restore_key">Taasta rahakott privaatvõtmetest</string>
+    <string name="fab_restore_seed">Taasta rahakott 25-sõnalisest seemnest</string>
+
+    <string name="accounts_drawer_new">Loo konto</string>
+    <string name="accounts_drawer_title">Kontod</string>
+    <string name="accounts_new">Uus konto lisatud #%1$d</string>
+    <string name="tx_account">Konto #</string>
+
+    <string name="send_sweepall">Saada kõik selle konto kinnitatud vahendid!</string>
+    <string name="tx_subaddress">Alamaadress #%1$d</string>
+    <string name="generate_address_label_sub">Avalik alamaadress #%1$d</string>
+
+    <string name="menu_language">Keel</string>
+    <string name="language_system_default">Kasuta süsteemi keelt</string>
+
+    <string name="fab_restore_ledger">Taasta seadmelt Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Suhtlen seadmega Ledger</string>
+    <string name="progress_ledger_confirm">Seadmelt Ledger on vajalik kinnitus!</string>
+    <string name="progress_ledger_lookahead">Otsin alamaadresse</string>
+    <string name="progress_ledger_verify">Kontrollin võtmeid</string>
+    <string name="progress_ledger_opentx">Arvutan keerulisi tehteid</string>
+    <string name="progress_ledger_mlsag">Segan juppe räsiga</string>
+    <string name="open_wallet_ledger_missing">Palun (taas)ühenda seade Ledger</string>
+
+    <string name="accounts_progress_new">Loon kontot</string>
+    <string name="accounts_progress_update">Uuendan rahakotti</string>
+
+    <string name="toast_ledger_attached">%1$s lisatud</string>
+    <string name="toast_ledger_detached">%1$s eemaldatud</string>
+
+    <string name="progress_nfc_write">Kirjutan silti</string>
+    <string name="nfc_write_failed">Sildi kirjutamine ebaõnnestus!</string>
+    <string name="nfc_write_successful">Sildi kirjutamine õnnestus</string>
+    <string name="nfc_tag_unsupported">Silt ei toeta NDEF\'i!</string>
+    <string name="nfc_tag_size">Sildil on %d baiti, kuid meil on vaja %d!</string>
+    <string name="nfc_tag_read_undef">Ma ei oska seda silti lugeda!</string>
+    <string name="nfc_tag_read_what">Ma ei tea, mida sa tahad!</string>
+    <string name="nfc_tag_read_success">Sildi lugemine õnnestus</string>
+    <string name="nfc_tag_tap">NFC on saadaval!</string>
+</resources>
