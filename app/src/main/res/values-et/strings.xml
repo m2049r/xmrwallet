@@ -34,7 +34,7 @@
 
     <string name="info_xmrto_enabled">Bitcoini maksed sisse lülitatud, puuduta lisainfo saamiseks.</string>
     <string name="info_crazypass_enabled">CrAzYpass sisse lülitatud, puuduta lisainfo saamiseks.</string>
-    <string name="info_ledger_enabled">Ledger&apos;i tugi sisse lülitatud, puuduta lisainfo saamiseks.</string>
+    <string name="info_ledger_enabled">Ledger\'i tugi sisse lülitatud, puuduta lisainfo saamiseks.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Sa sisestasid Bitcoini aadressi.</b><br/>
