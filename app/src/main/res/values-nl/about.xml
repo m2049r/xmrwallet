@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Sluiten</string>
+    <string name="about_whoami">Ik ben monerujo</string>
+    <string name="about_version">Versie %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Makers</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo e.a.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Privacybeleid</h1>
+        <p>Deze pagina geeft informatie over ons beleid met betrekking tot het verzamelen, gebruiken en openbaar maken van persoonlijke gegevens die we ontvangen van gebruikers van onze app (monerujo: Monero-portemonnee).
+        </p>
+        <p>Door deze app te gebruiken ga je akkoord met het verzamelen en gebruiken van gegevens volgens dit beleid.
+        </p>
+        <h2>Verzamelde gegevens</h2>
+        <p>Persoonlijke gegevens zijn alle gegevens waarmee iemand kan worden geïdentificeerd.
+        </p>
+        <p>Monero-sleutels en openbare Monero-adressen worden lokaal verzameld en verwerkt door de app, om transacties in versleutelde vorm te kunnen verwerken en verzenden op het Monero-netwerk.
+        </p>
+        <p>Verder worden er geen persoonlijke gegevens verzameld door de app.</p>
+        <p>Als je de optionele wisselkoersfunctie gebruikt, haalt monerujo de wisselkoers op via de openbare API van coinmarketcap.com.
+        Zie het privacybeleid op https://coinmarketcap.com/privacy voor meer informatie over hoe de gegevens in je aanvragen worden verzameld.</p>
+        <p>Als je de app gebruikt om naar BTC-adressen te betalen, maak je gebruik van de service XMR.TO.
+        Zie hun privacybeleid op https://xmr.to/ voor meer informatie. Monerujo verzendt het BTC-adres en -bedrag van de bestemming naar XMR.TO. Je IP-adres kan ook worden bewaard.</p>
+        <h2>App-machtigingen</h2>
+        <ul>
+        <li>INTERNET: Verbinding maken met het Monero-netwerk via een Monero-node</li>
+        <li>READ_EXTERNAL_STORAGE: Portemonneebestanden lezen die zijn opgeslagen op het apparaat</li>
+        <li>WRITE_EXTERNAL_STORAGE: Schrijven naar portemonneebestanden die zijn opgeslagen op het apparaat</li>
+        <li>WAKE_LOCK: Apparaat actief houden tijdens het synchroniseren</li>
+        <li>CAMERA: QR-codes scannen om Monero te ontvangen</li>
+        </ul>
+        <h2>Wijzigingen van dit Privacybeleid</h2>
+        <p>Dit Privacybeleid kan van tijd tot tijd worden bijgewerkt. We kondigen wijzigingen aan door het nieuwe Privacybeleid te publiceren in de app en op de website www.monerujo.io. We raden je aan om af en toe te controleren of dit Privacybeleid is gewijzigd.
+        <p>Laatste wijziging van dit Privacybeleid: 10 november 2017.
+        </p>
+        <h2>Contact</h2>
+        <p>Als je vragen hebt over ons Privacybeleid, of over hoe je gegevens worden verzameld en verwerkt, kun je een e-mail naar privacy@monerujo.io sturen (in het Engels).
+        </p>
+        ]]></string>
+  
+</resources>

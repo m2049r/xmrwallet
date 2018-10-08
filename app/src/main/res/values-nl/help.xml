@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Portemonnee maken - Nieuw</h1>
+        <p>Als je een nieuw Monero-adres nodig hebt.</p>
+        <p>Voer een unieke naam en wachtwoord in.
+        Met het wachtwoord worden de gegevens in je portemonnee op dit apparaat beveiligd. Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
+        <h2>Schrijf je hersteltekst op!</h2>
+        <p>Op het volgende scherm wordt de hersteltekst (\"mnemonic seed\") van 25 woorden getoond.
+        Dit is het enige dat je nodig hebt om later je portemonnee te herstellen en volledige toegang tot je geld te krijgen.
+        Het is belangrijk om deze gegevens verborgen te houden, want hiermee kan <em>iedereen</em> volledige toegang tot je portemonnee krijgen, met alle gevolgen van dien.</p>
+        <p>Als je het wachtwoord van je portemonnee kwijtraakt, kun je nog steeds je portemonnee herstellen met de hersteltekst.</p>
+        <p>Maar het is niet mogelijk om je hersteltekst terug te vinden als je deze kwijtraakt. Dan ben je ook je geld kwijt!
+        Je kunt de hersteltekst niet veranderen. Als de hersteltekst wordt gestolen of niet langer geheim is, moet je je geld overmaken naar een nieuwe portemonnee (met een nieuwe hersteltekst). Daarom is het het beste dat je back-ups van je hersteltekst maakt door de 25 woorden op te schrijven en op <em>meerdere</em> veilige plekken op te slaan.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Portemonnee maken - Hersteltekst</h1>
+        <p>Als je al een Monero-adres hebt en de transacties wilt ophalen vanuit de blockchain.</p>
+        <p>Voer een unieke naam en wachtwoord in. Met het wachtwoord worden de gegevens in je portemonnee op dit apparaat beveiligd.
+        Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
+        <p>Voer je hersteltekst in het veld \"Hersteltekst\" in.<p>
+        <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
+    ]]></string>
+
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Portemonnee maken - Ledger</h1>
+        <p>Je wilt de portemonnee gebruiken die op je Ledger Nano S staat.</p>
+        <p>Je geheime sleutel wordt nooit opgehaald van je Ledger, dus je moet het apparaat iedere keer aansluiten als je deze portemonnee wilt gebruiken.</p>
+        <p>Voer een unieke naam en wachtwoord in. Met het wachtwoord worden de gegevens in je portemonnee op je Android-apparaat beveiligd. Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
+        <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Portemonnee maken - Sleutels</h1>
+        <p>Als je een Monero-adres herstelt met je sleutels.</p>
+        <p>Voer een unieke naam en wachtwoord in. Met het wachtwoord worden de gegevens in je portemonnee op dit apparaat beveiligd.
+        Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
+        <p>Voer je Monero-adres in het veld \"Openbaar adres\" in, en vul de velden \"Alleen-lezen sleutel\" en \"Bestedingssleutel\" in.<p>
+        <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Portemonnee maken - Alleen-lezen</h1>
+        <p>Als je alleen de binnenkomende transacties voor een portemonnee wilt bekijken.</p>
+        <p>Voer een unieke naam en wachtwoord in. Met het wachtwoord worden de gegevens in je portemonnee op dit apparaat beveiligd.
+        Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
+        <p>Voer je Monero-adres in het veld \"Openbaar adres\" in, en vul het veld \"Alleen-lezen sleutel\" in.<p>
+        <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Portemonneegegevens</h1>
+        <h2>Openbaar adres</h2>
+        Je openbare adres is te vergelijken met een bankrekeningnummer dat je aan iedereen kunt geven zonder het risico te lopen dat je je moneroj kwijtraakt. Anderen gebruiken dit adres om moneroj naar jouw portemonnee te sturen.
+        <h2>Hersteltekst</h2>
+        Dit is het enige dat je nodig hebt om later je portemonnee te herstellen en volledige toegang tot je geld te krijgen. Het is belangrijk om deze gegevens verborgen te houden, want hiermee kan <em>iedereen</em> volledige toegang tot je moneroj krijgen. Als je de hersteltekst nog niet hebt opgeschreven op een veilige plek, doe het dan nu!
+        <h2>Wachtwoord voor portemonneebestanden</h2>
+        Zorg dat je dit wachtwoord opschrijft. Als je dit apparaat opnieuw instelt of de app verwijdert, heb je dit wachtwoord nodig om je portemonnee weer te gebruiken.<br/>
+        <h3>CrAzYpass</h3>
+        Als dit wachtwoord bestaat uit 52 alfanumerieke tekens in groepen van 4 - gefeliciteerd!
+        Je portemonneebestanden worden beveiligd met een 256-bits sleutel die is gegenereerd door beveiligingsfuncties van je apparaat op basis van de wachtzin die je hebt gekozen (door deze te maken of te wijzigen). Dit maakt het erg moeilijk om te hacken!<br/>
+        Deze functie is verplicht voor alle nieuw gemaakte portemonnees.
+        <h3>Ouderwets wachtwoord</h3>
+        Als je wachtzin hierbij staat, zijn je portemonneebestanden niet zo goed beveiligd als wanneer je CrAzYpass gebruikt. Selecteer \"Wachtzin wijzigen\" in het menu om dit op te lossen. Nadat je een nieuwe wachtzin hebt ingevoerd (of dezelfde als de vorige keer), wordt er een nieuwe CrAzYpass voor je gegenereerd, waarmee je portemonneebestanden worden beveiligd. Schrijf deze op!
+        <h3>Portemonnee met CrAzYpass</h3>
+        Als je Monerujo ooit opnieuw moet installeren (bijvoorbeeld als je je telefoon opnieuw hebt ingesteld of als je een nieuwe telefoon hebt) of als je je portemonneebestanden op een ander apparaat of een computer wilt gebruiken, moet je dit herstelwachtwoord invoeren om weer toegang tot je portemonnee te krijgen.<br/>
+        Door \"Wachtzin wijzigen\" te selecteren in het menu kun je een andere wachtzin kiezen. Let op: hierdoor wordt een nieuw herstelwachtwoord gegenereerd. Schrijf het op!
+        <h2>Alleen-lezen sleutel</h2>
+        Met je alleen-lezen sleutel kunnen binnenkomende transacties voor je portemonnee worden gevolgd zonder toestemming te geven om het geld in je portemonnee uit te geven.
+        <h2>Bestedingssleutel</h2>
+        Met je bestedingssleutel kan iedereen de moneroj in je portemonnee uitgeven. Laat deze sleutel dus aan niemand zien; bewaar hem veilig, net als je hersteltekst.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Portemonneelijst</h1>
+        <h2>Node</h2>
+        <p>Monerujo gebruikt een externe node om te communiceren met het Monero-netwerk zonder zelf een exemplaar van de hele blockchain te hoeven downloaden en opslaan. Hier vind je een lijst met populaire externe nodes, of kun je leren hoe je er zelf een draait: https://moneroworld.com/<p>
+        <p>Bepaalde externe nodes zijn vooraf ingesteld in Monerujo. De laatste vijf gebruikte nodes worden onthouden.</p>
+        <h2>Portemonnees</h2>
+        <p>Hier worden je portemonnees weergegeven. Ze zijn opgeslagen in de map <tt>monerujo</tt> in de interne opslag van je apparaat. Je kunt ze vinden in een bestandenverkenner-app.
+        Maak regelmatig back-ups van deze map naar opslag elders, voor het geval dat je apparaat in brand vliegt of wordt gestolen.</p>
+        <p>Selecteer een portemonnee om te openen of tik op de \"+\" om een nieuwe te maken.
+        Of selecteer een van de portemonnee-bewerkingen:</p>
+        <h3>Details</h3>
+        <p>Details, hersteltekst en sleutels weergeven.</p>
+        <h3>Ontvangen</h3>
+        <p>Een QR-code maken voor het ontvangen van moneroj.</p>
+        <h3>Hernoemen</h3>
+        <p>De portemonnee een andere naam geven. De naam van back-ups wordt niet veranderd.</p>
+        <h3>Back-up</h3>
+        <p>Een kopie maken van de portemonnee in de map <tt>backups</tt> in de map <tt>monerujo</tt>. Hierdoor worden eerdere kopieën overschreven.</p>
+        <h3>Archiveren</h3>
+        <p>Een back-up maken en vervolgens de portemonnee verwijderen. De kopie blijft in de map <tt>backups</tt> staan. Heb je je back-ups niet meer nodig? Verwijder ze dan met een bestandenverkenner of verwijder de app veilig.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>De portemonnee</h1>
+        <h2>Scannen</h2>
+        Omdat Monero graag alles geheim houdt, scannen we iedere keer als je een Monerujo-portemonnee opent de blockchain om te kijken of er nieuwe moneroj naar je portemonnee zijn overgemaakt. Hierbij wordt alleen informatie die bij je portemonnee hoort opgeslagen op je telefoon. Soms kan het even duren als je een tijd niet hebt gesynchroniseerd.
+        <h2>Het saldo</h2>
+        <p><b>Help! Het saldo van mijn portemonnee is verdwenen of niet bevestigd!</b><br/>
+        Geen paniek! Wanneer je geld uit je portemonnee verzend, wordt een deel van je saldo tijdelijk aangegeven als onbevestigd.
+        Dit is het gevolg van hoe Monero wordt gemengd op de blockchain en hoe wisselgeld werkt.
+        Lees meer over wisselgeld op https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transactielijst</h2>
+        <p>Een lijst van de transacties van de portemonnee. In een alleen-lezen portemonnee worden alleen binnenkomende transacties weergegeven.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Transactiedetails</h1>
+        <h2>Bestemming</h2>
+        Dit is het openbare adres van de portemonnee waarnaar je Monero verstuurt.
+        <h2>Betalings-ID</h2>
+        Je kunt een Betalings-ID gebruiken om aan te geven waarom je Monero verzendt. Dit is volledig optioneel en blijft vertrouwelijk tussen beide partijen. Een bedrijf kan bijvoorbeeld jouw transactie koppelen aan een artikel dat je hebt gekocht.
+        <h2>Transactie-ID</h2>
+        Met je transactie-ID kun je de versleutelde transactie vinden in een Monero-blockexplorer, bijvoorbeeld <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>Transactiesleutel</h2>
+        Dit is de geheime sleutel van je transactie. Bewaar deze veilig, want als iemand bekendmaakt welke handtekening in een ring van jou is, wordt je transactie openbaar.
+        <h2>Blok</h2>
+        Dit is het blok waarin je transactie is opgenomen.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Verzenden</h1>
+        <h2>Adres ontvanger</h2>
+        <p>Dit is het openbare adres van de portemonnee waar je moneroj naartoe stuurt. Je kunt dit kopiëren via het klembord, een QR-code scannen of het adres handmatig invoeren. Controleer dit nauwkeurig om er zeker van te zijn dat je geen geld naar het verkeerde adres stuurt.</p>
+        <p>Je kunt niet alleen XMR verzenden, maar ook BTC via XMR.TO (zie https://xmr.to
+        voor meer informatie). Zie ook het gedeelte over BTC verzenden hieronder.</p>
+        <h2>Betalings-ID</h2>
+        <p>Je kunt een Betalings-ID gebruiken om aan te geven waarom je Monero verzendt. Dit is volledig optioneel en blijft vertrouwelijk tussen beide partijen. Een bedrijf kan bijvoorbeeld jouw transactie koppelen aan een artikel dat je hebt gekocht.<p>
+        <h2>Ringgrootte</h2>
+        <p>Je kunt kiezen uit een aantal ringgrootten in Monerujo. Als je een beginnende gebruiker bent, raden we je aan om de standaardgrootte 7 te gebruiken. Een ringgrootte van meer dan 7 betekent dat een ring-handtekening meer ondertekenaars bevat. In theorie is dat beter voor een plausibele ontkenning. Maar een hogere ringgrootte kan er ook toe leiden dat je transactie opvalt op de blockchain.</p>
+        <h2>Prioriteit</h2>
+        <p>Deze instelling bepaalt de snelheid waarmee je transactie wordt vastgelegd op de blockchain. Voor een hoge prioriteit betaal je hogere transactiekosten, terwijl een lagere prioriteit goedkoper is. Als je een lage prioriteit instelt, kan het uren duren voordat je transactie wordt vastgelegd op de blockchain. De standaardprioriteit is \"Normaal\".</p>
+        <h1>BTC verzenden</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO is een externe service waarmee je Monero kunt inwisselen voor Bitcoin.
+        We gebruiken de API van XMR.TO om Bitcoin-betalingen te integreren in Monerujo. Neem eens een kijkje op https://xmr.to en besluit zelf of je dit wilt gebruiken. Het Monerujo-team is niet verbonden aan XMR.TO en kan je niet helpen met deze service.</p>
+        <h2>Wisselkoers XMR.TO<h2>
+        <p>Op het scherm \"Bedrag\" worden de huidige waarden voor het gebruik van XMR.TO weergegeven. Hierbij staat de huidige wisselkoers, maar ook het maximale en minimale BTC-bedrag. Houd er rekening mee dat deze koers op dit moment nog niet wordt gegarandeerd. Je ziet hier ook het maximale bedrag waarvoor de BTC-transactie meteen wordt uitgevoerd zonder te wachten op XMR-bevestigingen (zie de FAQ van XMR.TO voor meer informatie). En het mooiste is dat XMR.TO geen extra transactiekosten rekent. Hoe cool is dat?</p>
+        <h2>XMR.TO-opdracht<h2>
+        <p>Op het scherm \"Bevestigen\" wordt de eigenlijke XMR.TO-opdracht weergegeven. Deze opdracht is geldig voor een beperkte tijd. Er wordt afgeteld op de knop \"Uitgeven\". De wisselkoers kan hier anders zijn dan de schatting die op eerdere schermen is weergegeven.</p>
+        <h2>Geheime sleutel XMR.TO<h2>
+        <p>Omdat Monerujo alleen het Monero-gedeelte van je transactie verwerkt, kun je je geheime sleutel voor XMR.TO gebruiken om het Bitcoin-gedeelte van de opdracht te volgen op de XMR.TO-website.</p>
+        <p>Houd er rekening mee dat deze geheime sleutel maar 24 uur geldig is nadat de transactie is gestart!</p>
+        <h2>XMR.TO telt af!</h2>
+        <p>Als de knop heeft afgeteld naar nul, moet je een nieuw aanbod van XMR.TO aanvragen. Ga daarvoor terug naar de vorige stap en open het scherm \"Bevestigen\" opnieuw.</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>BTC verzenden</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO is een externe service waarmee je Monero kunt inwisselen voor Bitcoin.
+        We gebruiken de API van XMR.TO om Bitcoin-betalingen te integreren in Monerujo. Neem eens een kijkje op https://xmr.to en besluit zelf of je dit wilt gebruiken. Het Monerujo-team is niet verbonden aan XMR.TO en kan je niet helpen met deze service.</p>
+        <h2>Wisselkoers XMR.TO<h2>
+        <p>Op het scherm \"Bedrag\" worden de huidige waarden voor het gebruik van XMR.TO weergegeven. Hierbij staat de huidige wisselkoers, maar ook het maximale en minimale BTC-bedrag. Houd er rekening mee dat deze koers op dit moment nog niet wordt gegarandeerd. Je ziet hier ook het maximale bedrag waarvoor de BTC-transactie meteen wordt uitgevoerd zonder te wachten op XMR-bevestigingen (zie de FAQ van XMR.TO voor meer informatie). En het mooiste is dat XMR.TO geen extra transactiekosten rekent. Hoe cool is dat?</p>
+        <h2>XMR.TO-opdracht<h2>
+        <p>Op het scherm \"Bevestigen\" wordt de eigenlijke XMR.TO-opdracht weergegeven. Deze opdracht is geldig voor een beperkte tijd. Er wordt afgeteld op de knop \"Uitgeven\". De wisselkoers kan hier anders zijn dan de schatting die op eerdere schermen is weergegeven.</p>
+        <h2>Geheime sleutel XMR.TO<h2>
+        <p>Omdat Monerujo alleen het Monero-gedeelte van je transactie verwerkt, kun je je geheime sleutel voor XMR.TO gebruiken om het Bitcoin-gedeelte van de opdracht te volgen op de XMR.TO-website.</p>
+        <p>Houd er rekening mee dat deze geheime sleutel maar 24 uur geldig is nadat de transactie is gestart!</p>
+        <h2>XMR.TO telt af!</h2>
+        <p>Als de knop heeft afgeteld naar nul, moet je een nieuw aanbod van XMR.TO aanvragen. Ga daarvoor terug naar de vorige stap en open het scherm \"Bevestigen\" opnieuw.</p>
+    ]]></string>
+</resources>
