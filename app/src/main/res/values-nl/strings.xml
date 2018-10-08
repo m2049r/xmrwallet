@@ -345,12 +345,12 @@
     <string name="nfc_tag_read_success">Tag is gelezen</string>
     <string name="nfc_tag_tap">NFC beschikbaar!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Omschrijving (optioneel)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_not_openalias">OpenAlias-adres niet beschikbaar</string>
+    <string name="send_address_openalias">OpenAlias veilig &#x2714;</string>
+    <string name="send_address_resolve_openalias">OpenAlias omzetten&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias zonder DNSSEC - adres kan nep zijn</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>
