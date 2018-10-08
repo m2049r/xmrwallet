@@ -119,7 +119,7 @@
     <string name="status_wallet_unload_failed">Wallet save failed!</string>
     <string name="status_wallet_connecting">Connecting &#8230;</string>
     <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
-    <string name="status_wallet_connect_wrongversion">Node version incompatible!</string>
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
     <string name="status_wallet_connect_timeout">Node connection timed out!\nTry again or another.</string>
     <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
     <string name="status_wallet_connect_ioex">Cannot reach node!\nTry again or another.</string>
