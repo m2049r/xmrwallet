@@ -324,7 +324,7 @@
     <string name="nfc_write_failed">Misslyckades att skriva till tagg!</string>
     <string name="nfc_write_successful">Skrivning till tagg lyckades</string>
     <string name="nfc_tag_unsupported">Taggen stöder inte NDEF!</string>
-    <string name="nfc_tag_size">Taggen har %d bytes, men vi behöver %d!</string>
+    <string name="nfc_tag_size">Taggen har %1$d bytes, men vi behöver %2$d!</string>
     <string name="nfc_tag_read_undef">Jag förstår inte taggen!</string>
     <string name="nfc_tag_read_what">Jag vet inte vad du vill!</string>
     <string name="nfc_tag_read_success">Lyckades läsa tagg</string>
