@@ -24,10 +24,6 @@ android {
             applicationIdSuffix ".alpha"
             versionNameSuffix " (alpha)"
         }
-        beta {
-            applicationIdSuffix ".beta"
-            versionNameSuffix " (beta)"
-        }
         prod {
         }
     }
