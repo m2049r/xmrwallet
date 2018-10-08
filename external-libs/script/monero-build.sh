@@ -92,7 +92,7 @@ for arch in ${archs[@]}; do
     TARGET_INC_DIR=$lib_root/monero/include
     rm -rf $TARGET_INC_DIR
     mkdir -p $TARGET_INC_DIR
-    cp -a src/wallet/api/wallet2_api.h $TARGET_INC_DIR
+    cp -a $base_dir/src/wallet/api/wallet2_api.h $TARGET_INC_DIR
     
     cd $base_dir
 done
