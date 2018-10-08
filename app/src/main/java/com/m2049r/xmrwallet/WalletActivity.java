@@ -51,6 +51,7 @@ import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
+import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -461,6 +462,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed()");
+        runOnUiThread(new Runnable() {
+            public void run() {
+                updateAccountsBalance();
+            }
+        });
         if (numAccounts != wallet.getNumAccounts()) {
             numAccounts = wallet.getNumAccounts();
             runOnUiThread(new Runnable() {
@@ -516,26 +522,35 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     boolean haveWallet = false;
 
     @Override
-    public void onWalletOpen(final int hardware) {
-        if (hardware > 0)
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
-                }
-            });
+    public void onWalletOpen(final Wallet.Device device) {
+        switch (device) {
+            case Device_Ledger:
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
+                    }
+                });
+        }
     }
 
     @Override
-    public void onWalletStarted(final boolean success) {
+    public void onWalletStarted(final Wallet.ConnectionStatus connStatus) {
         runOnUiThread(new Runnable() {
             public void run() {
                 dismissProgressDialog();
-                if (!success) {
-                    Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
+                switch (connStatus) {
+                    case ConnectionStatus_Disconnected:
+                        Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
+                        break;
+                    case ConnectionStatus_WrongVersion:
+                        Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_wrongversion), Toast.LENGTH_LONG).show();
+                        break;
+                    case ConnectionStatus_Connected:
+                        break;
                 }
             }
         });
-        if (!success) {
+        if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             finish();
         } else {
             haveWallet = true;
@@ -545,6 +560,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
+                    updateAccountsHeader();
                     if (walletFragment != null) {
                         walletFragment.onLoaded();
                     }
@@ -716,7 +732,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             intent.putExtra(WalletService.REQUEST_CMD_TX_TAG, tag);
             startService(intent);
             Timber.d("CREATE TX request sent");
-            if (getWallet().isKeyOnDevice())
+            if (getWallet().getDeviceType() == Wallet.Device.Device_Ledger)
                 showLedgerProgressDialog(LedgerProgressDialog.TYPE_SEND);
         } else {
             Timber.e("Service not bound");
@@ -953,13 +969,22 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     // drawer stuff
-    void updateAccountsList() {
+
+    void updateAccountsBalance() {
         final Wallet wallet = getWallet();
-        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
-        tvName.setText(wallet.getName());
         final TextView tvBalance = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvBalance);
         tvBalance.setText(getString(R.string.accounts_balance,
                 Helper.getDisplayAmount(wallet.getBalanceAll(), 5)));
+    }
+
+    void updateAccountsHeader() {
+        final Wallet wallet = getWallet();
+        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
+        tvName.setText(wallet.getName());
+    }
+
+    void updateAccountsList() {
+        final Wallet wallet = getWallet();
         Menu menu = accountsView.getMenu();
         menu.removeGroup(R.id.accounts_list);
         final int n = wallet.getNumAccounts();
@@ -1072,12 +1097,17 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (getWallet().isKeyOnDevice()) {
-                showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
-                dialogOpened = true;
-            } else {
-                showProgressDialog(R.string.accounts_progress_new);
-                dialogOpened = true;
+            switch (getWallet().getDeviceType()) {
+                case Device_Ledger:
+                    showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
+                    dialogOpened = true;
+                    break;
+                case Device_Software:
+                    showProgressDialog(R.string.accounts_progress_new);
+                    dialogOpened = true;
+                    break;
+                default:
+                    throw new IllegalStateException("Hardware backing not supported. At all!");
             }
         }
 

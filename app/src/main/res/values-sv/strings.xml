@@ -337,4 +337,6 @@
     <string name="send_address_resolve_openalias">Slår upp OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias utan DNSSEC - adressen kan vara förfalskad</string>
     <string name="send_address_hint">Mottagarens XMR/BTC-adress eller OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

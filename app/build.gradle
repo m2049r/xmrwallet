@@ -7,14 +7,24 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 123
-        versionName "1.7.3 'OpenAlias'"
+        versionCode 131
+        versionName "1.8.1 'Bullets And Octane-Pirates'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11"
                 arguments '-DANDROID_STL=c++_shared'
             }
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        alpha {
+            applicationIdSuffix ".alpha"
+            versionNameSuffix " (alpha)"
+        }
+        prod {
         }
     }
 
@@ -27,6 +37,7 @@ android {
             applicationIdSuffix ".debug"
         }
     }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -61,9 +72,13 @@ android {
             output ->
                 def abiName = output.getFilter(com.android.build.OutputFile.ABI)
                 output.versionCodeOverride = abiCodes.get(abiName, 0) + 10 * variant.versionCode
+                //def flavor = output.getFilter(flavor)
 
                 if (abiName == null) abiName = "universal"
-                def v = "${variant.versionName}".replaceFirst(" .*\$", "").replace(".", "x")
+                def v = "${variant.versionName}".replaceFirst(" '.*' ?", "")
+                        .replace(".", "x")
+                        .replace("(", "-")
+                        .replace(")", "")
                 outputFileName = "$rootProject.ext.apkName-" + v + "_" + abiName + ".apk"
         }
     }

@@ -100,7 +100,7 @@
     <string name="open_progress">Skúšam spojenie so serverom</string>
     <string name="changepw_progress">Prebieha zmena hesla</string>
 
-    <string name="service_progress">Balím veci &#8230;\nMôže to chvíľu trvať!</string>
+    <string name="service_progress">Balím si veci &#8230;\nMôže to chvíľu trvať!</string>
 
     <string name="backup_failed">Zálohovanie zlyhalo!</string>
     <string name="archive_failed">Archivácia zlyhala!</string>
@@ -125,7 +125,7 @@
 
     <string name="send_xmrto_timeout">Čakal si príliš dlho kámo!</string>
 
-    <string name="service_busy">Som stále zaneprázdnený poslednou peňaženkou &#8230;</string>
+    <string name="service_busy">Stále ma vyťažuje posledná peňaženka &#8230;</string>
 
     <string name="prompt_rename">Premenuj %1$s</string>
 
@@ -163,8 +163,8 @@
     <string name="label_copy_address">Verejná Adresa</string>
     <string name="label_copy_xmrtokey">Kľúč XMR.TO</string>
     <string name="message_copy_viewkey">Prezerací Kľúč skopírovaný do schránky!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Kľúč skopírovaný do schránky!</string>
-    <string name="message_copy_address">Adresa Peňaženky skopírovaná do schránky!</string>
+    <string name="message_copy_xmrtokey">XMR.TO kľúč skopírovaný do schránky!</string>
+    <string name="message_copy_address">Adresa peňaženky skopírovaná do schránky!</string>
     <string name="message_copy_txid">ID Transakcie skopírované do schránky!</string>
     <string name="message_nocopy">Kopírovanie vypnuté z bezpečnostných dôvodov!</string>
 
@@ -203,14 +203,14 @@
     <string name="generate_wallet_type_view">Prezeracia</string>
 
     <string name="generate_address_hint">Verejná Adresa</string>
-    <string name="generate_viewkey_hint">Prezerací Kľúč</string>
-    <string name="generate_spendkey_hint">Platobný Kľúč</string>
+    <string name="generate_viewkey_hint">Prezerací Kľúč (view key)</string>
+    <string name="generate_spendkey_hint">Platobný Kľúč (spend key)</string>
     <string name="generate_mnemonic_hint">25-slovný mnemotechnický Seed</string>
     <string name="generate_restoreheight_hint">Dátum (YYYY-MM-DD) alebo Výška</string>
 
     <string name="generate_address_label">Verejná Adresa</string>
-    <string name="generate_viewkey_label">Prezerací Kľúč</string>
-    <string name="generate_spendkey_label">Platobný Kľúč</string>
+    <string name="generate_viewkey_label">Prezerací Kľúč (view key)</string>
+    <string name="generate_spendkey_label">Platobný Kľúč (spend key)</string>
     <string name="generate_mnemonic_label">Mnemotechnický Seed</string>
     <string name="generate_crazypass_label">Heslo Súboru Peňaženky</string>
 
@@ -233,7 +233,7 @@
     <string name="send_available">Zostatok: %1$s XMR</string>
     <string name="send_address_title">Adresa</string>
     <string name="send_amount_title">Čiastka</string>
-    <string name="send_settings_title">Nastavenia</string>
+    <string name="send_settings_title">Možnosti</string>
     <string name="send_confirm_title">Potvrdiť</string>
     <string name="send_success_title">Hotovo</string>
 
@@ -256,7 +256,7 @@
 
     <string name="tx_timestamp">časová pečiatka</string>
     <string name="tx_id">TX ID</string>
-    <string name="tx_key">TX Kľúč</string>
+    <string name="tx_key">Kľúč Transakcie</string>
     <string name="tx_destination">Cieľ</string>
     <string name="tx_destination_btc">Cieľová (BTC)</string>
     <string name="tx_paymentId">ID Platby</string>
@@ -264,7 +264,7 @@
     <string name="tx_amount">Suma</string>
     <string name="tx_amount_btc">Čiastka\n(BTC)</string>
     <string name="tx_fee">Poplatok</string>
-    <string name="tx_transfers">Transfery</string>
+    <string name="tx_transfers">Poslaných</string>
     <string name="tx_notes">Poznámky</string>
     <string name="tx_notes_hint">(voliteľné)</string>
     <string name="tx_button_notes">Ulož</string>
@@ -303,9 +303,9 @@
     </string-array>
 
     <string name="fab_create_new">Vytvor novú peňaženku</string>
-    <string name="fab_restore_viewonly">Obnov prezeraciu peňaženku</string>
-    <string name="fab_restore_key">Obnov peňaženku zo súkromných kľúčov</string>
-    <string name="fab_restore_seed">Obnov peňaženku z 25-slovného seedu</string>
+    <string name="fab_restore_viewonly">Obnoviť prezeraciu peňaženku</string>
+    <string name="fab_restore_key">Obnoviť peňaženku zo súkromných kľúčov</string>
+    <string name="fab_restore_seed">Obnoviť peňaženku z 25-slovného seedu</string>
 
     <string name="accounts_drawer_new">Vytvor Účet</string>
     <string name="accounts_drawer_title">Účty</string>
@@ -352,4 +352,6 @@
     <string name="send_address_resolve_openalias">Prekladám OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias bez DNSSEC - adresa môže byť zneužitá</string>
     <string name="send_address_hint">Prijímateľova XMR/BTC Adresa alebo OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

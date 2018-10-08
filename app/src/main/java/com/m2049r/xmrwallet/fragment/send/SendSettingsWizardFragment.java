@@ -36,7 +36,7 @@ import com.m2049r.xmrwallet.util.UserNotes;
 import timber.log.Timber;
 
 public class SendSettingsWizardFragment extends SendWizardFragment {
-    final static public int MIXIN = 6;
+    final static public int MIXIN = 10;
 
     public static SendSettingsWizardFragment newInstance(Listener listener) {
         SendSettingsWizardFragment instance = new SendSettingsWizardFragment();

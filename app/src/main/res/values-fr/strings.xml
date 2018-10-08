@@ -356,4 +356,6 @@
     <string name="send_address_resolve_openalias">Résolution OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
     <string name="send_address_hint">Adresse ou OpenAlias XMR/BTC du Destinataire</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

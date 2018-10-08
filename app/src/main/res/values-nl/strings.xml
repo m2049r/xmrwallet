@@ -351,4 +351,6 @@
     <string name="send_address_openalias">OpenAlias veilig &#x2714;</string>
     <string name="send_address_resolve_openalias">OpenAlias omzetten&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias zonder DNSSEC - adres kan nep zijn</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

@@ -22,12 +22,8 @@ Help us translate Monerujo! You can find instructions [On Taiga](https://taiga.g
 You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
 
 ### Random Notes
-- Based off monero v0.11.1.0
-- currently only android32 (runs on 64-bit as well)
-- works on the testnet & mainnet
-- sync is slow due to 32-bit architecture
+- works on the mainnet & stagenet
 - use your own daemon - it's easy
-- screen stays on until first sync is complete
 - Monerujo means "Monero Wallet" according to https://www.reddit.com/r/Monero/comments/3exy7t/esperanto_corner/
 
 ### TODO
@@ -43,13 +39,8 @@ of the "real" testnet.  After creating a new wallet, make a **new** one by recov
 The official monero client shows the same behaviour.
 
 ### HOW TO BUILD
-No need to build. Binaries are included:
 
-- openssl-1.0.2l
-- monero-v0.12
-- boost_1_58_0
-
-If you want to build them yourself (recommended) check out [the instructions](doc/BUILDING-external-libs.md)
+See [the instructions](doc/BUILDING-external-libs.md)
 
 Then, fire up Android Studio and build the APK.
 

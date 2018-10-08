@@ -60,6 +60,12 @@ public class Wallet {
         this.accountIndex = accountIndex;
     }
 
+    public enum Device {
+        Device_Undefined,
+        Device_Software,
+        Device_Ledger
+    };
+
     public enum Status {
         Status_Ok,
         Status_Error,
@@ -394,5 +400,11 @@ public class Wallet {
         return getSubaddress(accountIndex, getNumSubaddresses(accountIndex) - 1);
     }
 
-    public native boolean isKeyOnDevice();
+    public Wallet.Device getDeviceType() {
+        int device = getDeviceTypeJ();
+        return Wallet.Device.values()[device + 1]; // mapping is monero+1=android
+    }
+
+    private native int getDeviceTypeJ();
+
 }

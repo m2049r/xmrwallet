@@ -416,17 +416,20 @@ Java_com_m2049r_xmrwallet_model_WalletManager_verifyWalletPassword(JNIEnv *env, 
 
 //virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletHardware(JNIEnv *env, jobject instance,
-                                                                  jstring keys_file_name,
-                                                                  jstring password) {
+Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletDeviceJ(JNIEnv *env, jobject instance,
+                                                                jstring keys_file_name,
+                                                                jstring password) {
     const char *_keys_file_name = env->GetStringUTFChars(keys_file_name, NULL);
     const char *_password = env->GetStringUTFChars(password, NULL);
-    int hardwareId =
-            Bitmonero::WalletManagerFactory::getWalletManager()->
-                    queryWalletHardware(std::string(_keys_file_name), std::string(_password));
+    Bitmonero::Wallet::Device device_type;
+    bool ok = Bitmonero::WalletManagerFactory::getWalletManager()->
+            queryWalletDevice(device_type, std::string(_keys_file_name), std::string(_password));
     env->ReleaseStringUTFChars(keys_file_name, _keys_file_name);
     env->ReleaseStringUTFChars(password, _password);
-    return static_cast<jint>(hardwareId);
+    if (ok)
+        return static_cast<jint>(device_type);
+    else
+        return -1;
 }
 
 JNIEXPORT jobject JNICALL
@@ -775,11 +778,11 @@ Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject insta
     return static_cast<jboolean>(wallet->synchronized());
 }
 
-JNIEXPORT jboolean JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_isKeyOnDevice(JNIEnv *env, jobject instance) {
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getDeviceTypeJ(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    bool key_on_device = wallet->isKeyOnDevice();
-    return static_cast<jboolean>(key_on_device);
+    Bitmonero::Wallet::Device device_type = wallet->getDeviceType();
+    return static_cast<jint>(device_type);
 }
 
 //void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
@@ -1383,24 +1386,22 @@ Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jobject i
 // Ledger Stuff
 //
 
-#include "monerujo_ledger.h"
+#include "device_io_monerujo.hpp"
 
 /**
  * @brief LedgerExchange - exchange data with Ledger Device
- * @param pbSendBuffer   - buffer for data to send
- * @param cbSendLength   - length of send buffer
- * @param pbRecvBuffer   - buffer for received data
- * @param pcbRecvLength  - pointer to size of receive buffer
- *                         gets set with length of received data on successful return
- * @return SCARD_S_SUCCESS - success
- *         SCARD_E_NO_READERS_AVAILABLE - no device connected / found
- *         SCARD_E_INSUFFICIENT_BUFFER  - pbRecvBuffer is too small for the response
+ * @param command        - buffer for data to send
+ * @param cmd_len        - length of send to send
+ * @param response       - buffer for received data
+ * @param max_resp_len   - size of receive buffer
+ *
+ * @return length of received data in response or -1 if error
  */
-LONG LedgerExchange(
-        LPCBYTE pbSendBuffer,
-        DWORD cbSendLength,
-        LPBYTE pbRecvBuffer,
-        LPDWORD pcbRecvLength) {
+int  LedgerExchange(
+        unsigned char *command,
+        unsigned int cmd_len,
+        unsigned char *response,
+        unsigned int max_resp_len) {
     LOGD("LedgerExchange");
     JNIEnv *jenv;
     int envStat = attachJVM(&jenv);
@@ -1408,30 +1409,29 @@ LONG LedgerExchange(
 
     jmethodID exchangeMethod = jenv->GetStaticMethodID(class_Ledger, "Exchange", "([B)[B");
 
-    jsize sendLen = static_cast<jsize>(cbSendLength);
+    jsize sendLen = static_cast<jsize>(cmd_len);
     jbyteArray dataSend = jenv->NewByteArray(sendLen);
-    jenv->SetByteArrayRegion(dataSend, 0, sendLen, (jbyte *) pbSendBuffer);
+    jenv->SetByteArrayRegion(dataSend, 0, sendLen, (jbyte *) command);
     jbyteArray dataRecv = (jbyteArray) jenv->CallStaticObjectMethod(class_Ledger, exchangeMethod,
                                                                     dataSend);
     jenv->DeleteLocalRef(dataSend);
     if (dataRecv == nullptr) {
         detachJVM(jenv, envStat);
         LOGD("LedgerExchange SCARD_E_NO_READERS_AVAILABLE");
-        return SCARD_E_NO_READERS_AVAILABLE;
+        return -1;
     }
     jsize len = jenv->GetArrayLength(dataRecv);
-    LOGD("LedgerExchange SCARD_S_SUCCESS %ld/%d", cbSendLength, len);
-    if (len <= *pcbRecvLength) {
-        *pcbRecvLength = static_cast<DWORD>(len);
-        jenv->GetByteArrayRegion(dataRecv, 0, len, (jbyte *) pbRecvBuffer);
+    LOGD("LedgerExchange SCARD_S_SUCCESS %ld/%d", cmd_len, len);
+    if (len <= max_resp_len) {
+        jenv->GetByteArrayRegion(dataRecv, 0, len, (jbyte *) response);
         jenv->DeleteLocalRef(dataRecv);
         detachJVM(jenv, envStat);
-        return SCARD_S_SUCCESS;
+        return static_cast<int>(len);;
     } else {
         jenv->DeleteLocalRef(dataRecv);
         detachJVM(jenv, envStat);
         LOGE("LedgerExchange SCARD_E_INSUFFICIENT_BUFFER");
-        return SCARD_E_INSUFFICIENT_BUFFER;
+        return -1;
     }
 }
 
