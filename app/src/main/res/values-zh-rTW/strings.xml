@@ -353,5 +353,5 @@
     <string name="send_address_no_dnssec">這個 OpenAlias 沒有使用 DNSSEC - 地址有被欺騙的風險</string>
     <string name="send_address_hint">收款者的 XMR/BTC 地址或 OpenAlias</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible!</string>
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>
