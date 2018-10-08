@@ -335,8 +335,8 @@
     <string name="accounts_progress_new">Creando account</string>
     <string name="accounts_progress_update">Aggiornando portafoglio</string>
 
-    <string name="toast_ledger_attached">%1$ allegati</string>
-    <string name="toast_ledger_detached">%1$ allegati</string>
+    <string name="toast_ledger_attached">%1$s allegati</string>
+    <string name="toast_ledger_detached">%1$s allegati</string>
 
     <string name="progress_nfc_write">Scrivendo Tag</string>
     <string name="nfc_write_failed">Scrittura tag fallita!</string>
