@@ -462,6 +462,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed()");
+        runOnUiThread(new Runnable() {
+            public void run() {
+                updateAccountsBalance();
+            }
+        });
         if (numAccounts != wallet.getNumAccounts()) {
             numAccounts = wallet.getNumAccounts();
             runOnUiThread(new Runnable() {
@@ -555,6 +560,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             runOnUiThread(new Runnable() {
                 public void run() {
+                    updateAccountsHeader();
                     if (walletFragment != null) {
                         walletFragment.onLoaded();
                     }
@@ -963,13 +969,22 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     // drawer stuff
-    void updateAccountsList() {
+
+    void updateAccountsBalance() {
         final Wallet wallet = getWallet();
-        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
-        tvName.setText(wallet.getName());
         final TextView tvBalance = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvBalance);
         tvBalance.setText(getString(R.string.accounts_balance,
                 Helper.getDisplayAmount(wallet.getBalanceAll(), 5)));
+    }
+
+    void updateAccountsHeader() {
+        final Wallet wallet = getWallet();
+        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
+        tvName.setText(wallet.getName());
+    }
+
+    void updateAccountsList() {
+        final Wallet wallet = getWallet();
         Menu menu = accountsView.getMenu();
         menu.removeGroup(R.id.accounts_list);
         final int n = wallet.getNumAccounts();
