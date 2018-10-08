@@ -339,7 +339,7 @@
     <string name="nfc_write_failed">Zapísanie Tagu zlyhalo!</string>
     <string name="nfc_write_successful">Zapísanie Tagu úspešné</string>
     <string name="nfc_tag_unsupported">Tag nepodporuje NDEF!</string>
-    <string name="nfc_tag_size">Tag poskytol %d bytes, ale treba %d!</string>
+    <string name="nfc_tag_size">Tag poskytol %1$d bytes, ale treba %2$d!</string>
     <string name="nfc_tag_read_undef">Neruzumiem Tagu!</string>
     <string name="nfc_tag_read_what">Neviem čo tým básnik myslel!</string>
     <string name="nfc_tag_read_success">Čítanie Tagu úspešné</string>

@@ -340,7 +340,7 @@
     <string name="nfc_write_failed">Échec de l\'écriture du Tag !</string>
     <string name="nfc_write_successful">Tag écrit avec succès</string>
     <string name="nfc_tag_unsupported">le Tag ne supporte pas NDEF !</string>
-    <string name="nfc_tag_size">Le Tag donne %d octets, mais il en faut %d !</string>
+    <string name="nfc_tag_size">Le Tag donne %1$d octets, mais il en faut %2$d !</string>
     <string name="nfc_tag_read_undef">Je ne comprend pas le Tag !</string>
     <string name="nfc_tag_read_what">Je ne sais pas ce que vous voulez !</string>
     <string name="nfc_tag_read_success">Tag lut avec succès</string>
