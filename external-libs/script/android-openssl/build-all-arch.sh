@@ -77,7 +77,7 @@ for arch in ${archs[@]}; do
     file libssl.so
     cp libcrypto.a $TARGET_LIB_DIR
     cp libssl.a $TARGET_LIB_DIR
-    
+
     cp -aL $SRC_DIR/openssl-OpenSSL_1_0_2l/include/openssl/ $TARGET_DIR/include
 #    ln -sf $TARGET_DIR/include $TARGET_DIR/arm/include
 

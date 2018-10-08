@@ -35,7 +35,7 @@ for arch in ${archs[@]}; do
     if [ -f "$TARGET_DIR/lib/libsodium.la" ]; then
       continue
     fi
-    
+
     mkdir -p $TARGET_DIR
     echo "building for ${arch}"
 

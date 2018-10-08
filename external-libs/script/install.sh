@@ -25,7 +25,7 @@ for arch in ${archs[@]}; do
 			exit 16
             ;;
     esac
-	
+
 	for package in ${packages[@]}; do
     INPUT_DIR=`pwd`/build/build/$package
 		OUTPUT_DIR=`pwd`/$package/lib/$xarch
@@ -36,7 +36,7 @@ for arch in ${archs[@]}; do
 		if [ $package = "monero" ]; then
 			rm -rf $OUTPUT_DIR/../../include
 		  cp -a $INPUT_DIR/include $OUTPUT_DIR/../..
-		fi		
+		fi
 
 	done
 done
