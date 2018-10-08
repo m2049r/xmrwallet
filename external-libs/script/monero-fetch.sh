@@ -7,7 +7,7 @@ source script/env.sh
 cd $EXTERNAL_LIBS_BUILD_ROOT
 
 url="https://github.com/m2049r/monero"
-version="release-v0.13-prep"
+version="release-v0.13.0-monerujo"
 
 if [ ! -d "monero" ]; then
   git clone ${url} -b ${version}
@@ -15,6 +15,6 @@ if [ ! -d "monero" ]; then
   git submodule update --recursive --init
 else
   cd monero
-  git submodule update --recursive
   git checkout ${version}
+  git submodule update --recursive --init
 fi
