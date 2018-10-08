@@ -319,40 +319,40 @@
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Lingua</string>
+    <string name="language_system_default">Usa lingua di sistema</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Ripristina da Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">In comunicazione con Ledger</string>
+    <string name="progress_ledger_confirm">Conferma su Ledger richiesta!</string>
+    <string name="progress_ledger_lookahead">Recuperando subaddresses</string>
+    <string name="progress_ledger_verify">Verificando le Chiavi</string>
+    <string name="progress_ledger_opentx">Folli calcoli matematici</string>
+    <string name="progress_ledger_mlsag">Hashing in corso</string>
+    <string name="open_wallet_ledger_missing">(Ri)connetti il dispositivo Ledger</string>
 
-    <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
+    <string name="accounts_progress_new">Creando account</string>
+    <string name="accounts_progress_update">Aggiornando portafoglio</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$ allegati</string>
+    <string name="toast_ledger_detached">%1$ allegati</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %d bytes, but we need %d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Scrivendo Tag</string>
+    <string name="nfc_write_failed">Scrittura tag fallita!</string>
+    <string name="nfc_write_successful">Scrittura tag riuscita</string>
+    <string name="nfc_tag_unsupported">La tag non supporta NDEF!</string>
+    <string name="nfc_tag_size">La Tag fornisce %d bytes, ma ne servono %d!</string>
+    <string name="nfc_tag_read_undef">Non capisco la Tag!</string>
+    <string name="nfc_tag_read_what">Non capisco cosa mi hai chiesto!</string>
+    <string name="nfc_tag_read_success">Lettura tag riuscita</string>
+    <string name="nfc_tag_tap">NFC dispobibile!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Descrizione (opzionale)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+    <string name="send_address_not_openalias">Indirizzo OpenAlias non disponibile</string>
+    <string name="send_address_openalias">OpenAlias sicuro &#x2714;</string>
+    <string name="send_address_resolve_openalias">Risolvendo OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias senza DNSSEC - L\'indirizzo potrebbe essere rubato</string>
+    <string name="send_address_hint"> Indirizzo XMR/BTC del ricevente o OpenAlias</string>
 </resources>
