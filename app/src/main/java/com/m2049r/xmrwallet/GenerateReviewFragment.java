@@ -200,7 +200,8 @@ public class GenerateReviewFragment extends Fragment {
             super.onPreExecute();
             showProgress();
             if ((walletPath != null)
-                    && (WalletManager.getInstance().queryWalletHardware(walletPath + ".keys", getPassword()) == 1)
+                    && (WalletManager.getInstance().queryWalletDevice(walletPath + ".keys", getPassword())
+                    == Wallet.Device.Device_Ledger)
                     && (progressCallback != null)) {
                 progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
                 dialogOpened = true;
@@ -231,10 +232,15 @@ public class GenerateReviewFragment extends Fragment {
 
             address = wallet.getAddress();
             seed = wallet.getSeed();
-            if (wallet.isKeyOnDevice()) {
-                viewKey = Ledger.Key();
-            } else {
-                viewKey = wallet.getSecretViewKey();
+            switch (wallet.getDeviceType()) {
+                case Device_Ledger:
+                    viewKey = Ledger.Key();
+                    break;
+                case Device_Software:
+                    viewKey = wallet.getSecretViewKey();
+                    break;
+                default:
+                    throw new IllegalStateException("Hardware backing not supported. At all!");
             }
             spendKey = isWatchOnly ? getActivity().getString(R.string.label_watchonly) : wallet.getSecretSpendKey();
             isWatchOnly = wallet.isWatchOnly();

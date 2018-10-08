@@ -76,10 +76,14 @@ import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
+    static private final String FLAVOR_SUFFIX =
+            (BuildConfig.FLAVOR.equals("prod") ? "" : "." + BuildConfig.FLAVOR)
+                    + (BuildConfig.DEBUG ? "-debug" : "");
+
     static public final String CRYPTO = "XMR";
 
-    static private final String WALLET_DIR = "monerujo" + (BuildConfig.DEBUG ? "-debug" : "");
-    static private final String HOME_DIR = "monero" + (BuildConfig.DEBUG ? "-debug" : "");
+    static private final String WALLET_DIR = "monerujo" + FLAVOR_SUFFIX;
+    static private final String HOME_DIR = "monero" + FLAVOR_SUFFIX;
 
     static public int DISPLAY_DIGITS_INFO = 5;
 

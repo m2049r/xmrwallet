@@ -341,7 +341,7 @@
     <string name="nfc_write_failed">Sikertelen címkeírás!</string>
     <string name="nfc_write_successful">Sikeres címkeírás</string>
     <string name="nfc_tag_unsupported">A címke nem támogatja az NDEF-et!</string>
-    <string name="nfc_tag_size">A címke %d byte-os, de %d kellene!</string>
+    <string name="nfc_tag_size">A címke %1$d byte-os, de %2$d kellene!</string>
     <string name="nfc_tag_read_undef">Nem értem a címkét!</string>
     <string name="nfc_tag_read_what">Nem tudom, mit akarsz!</string>
     <string name="nfc_tag_read_success">Sikeres címkeolvasás</string>
@@ -354,4 +354,6 @@
     <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
     <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

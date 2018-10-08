@@ -335,14 +335,14 @@
     <string name="accounts_progress_new">Creando account</string>
     <string name="accounts_progress_update">Aggiornando portafoglio</string>
 
-    <string name="toast_ledger_attached">%1$ allegati</string>
-    <string name="toast_ledger_detached">%1$ allegati</string>
+    <string name="toast_ledger_attached">%1$s allegati</string>
+    <string name="toast_ledger_detached">%1$s allegati</string>
 
     <string name="progress_nfc_write">Scrivendo Tag</string>
     <string name="nfc_write_failed">Scrittura tag fallita!</string>
     <string name="nfc_write_successful">Scrittura tag riuscita</string>
     <string name="nfc_tag_unsupported">La tag non supporta NDEF!</string>
-    <string name="nfc_tag_size">La Tag fornisce %d bytes, ma ne servono %d!</string>
+    <string name="nfc_tag_size">La Tag fornisce %1$d bytes, ma ne servono %2$d!</string>
     <string name="nfc_tag_read_undef">Non capisco la Tag!</string>
     <string name="nfc_tag_read_what">Non capisco cosa mi hai chiesto!</string>
     <string name="nfc_tag_read_success">Lettura tag riuscita</string>
@@ -355,4 +355,6 @@
     <string name="send_address_resolve_openalias">Risolvendo OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias senza DNSSEC - L\'indirizzo potrebbe essere rubato</string>
     <string name="send_address_hint"> Indirizzo XMR/BTC del ricevente o OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

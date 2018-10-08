@@ -4,9 +4,7 @@
 
 set -e
 
-orig_path=$PATH
-
-packages=(boost openssl monero)
+packages=(boost openssl monero libsodium)
 archs=(arm arm64 x86 x86_64)
 
 for arch in ${archs[@]}; do
@@ -27,17 +25,18 @@ for arch in ${archs[@]}; do
 			exit 16
             ;;
     esac
-	
+
 	for package in ${packages[@]}; do
+    INPUT_DIR=`pwd`/build/build/$package
 		OUTPUT_DIR=`pwd`/$package/lib/$xarch
 		mkdir -p $OUTPUT_DIR
 		rm -f $OUTPUT_DIR/*.a
-		cp -a /opt/android/build/$package/$arch/lib/*.a $OUTPUT_DIR
+		cp -a $INPUT_DIR/$arch/lib/*.a $OUTPUT_DIR
 
-		if [ $package = "monero" -a -d "/opt/android/build/$package/include" ]; then
+		if [ $package = "monero" ]; then
 			rm -rf $OUTPUT_DIR/../../include
-		  cp -a /opt/android/build/$package/include $OUTPUT_DIR/../..
-		fi		
+		  cp -a $INPUT_DIR/include $OUTPUT_DIR/../..
+		fi
 
 	done
 done

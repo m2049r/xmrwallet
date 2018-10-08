@@ -1171,18 +1171,27 @@ public class LoginActivity extends BaseActivity
                             String keyPath = new File(Helper.getWalletRoot(LoginActivity.this),
                                     walletName + ".keys").getAbsolutePath();
                             // check if we need connected hardware
-                            int hw = WalletManager.getInstance().queryWalletHardware(keyPath, password);
-                            if ((hw == 1) && (!hasLedger())) {
-                                toast(R.string.open_wallet_ledger_missing);
-                            } else {
-                                // hw could be < 0  meaning the password is wrong - this gets dealt with later
-                                startWallet(walletName, password, fingerprintUsed);
+                            Wallet.Device device =
+                                    WalletManager.getInstance().queryWalletDevice(keyPath, password);
+                            switch (device) {
+                                case Device_Ledger:
+                                    if (!hasLedger()) {
+                                        toast(R.string.open_wallet_ledger_missing);
+                                    } else {
+                                        startWallet(walletName, password, fingerprintUsed);
+                                    }
+                                    break;
+                                default:
+                                    // device could be undefined meaning the password is wrong
+                                    // this gets dealt with later
+                                    startWallet(walletName, password, fingerprintUsed);
                             }
                         }
                     });
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
+
     }
 
     // USB Stuff - (Ledger)

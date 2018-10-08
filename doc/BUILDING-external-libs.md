@@ -87,8 +87,14 @@ cd boost_1_58_0
 ```
 Comment out ```using ::fgetpos;``` & ```using ::fsetpos;``` in ```cstdio```.
 ```
-sed -i backup "s|using ::fgetpos;|//using ::fgetpos;|" boost/compatibility/cpp_c_headers/cstdio
-sed -i backup "s|using ::fsetpos;|//using ::fsetpos;|" boost/compatibility/cpp_c_headers/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/arm/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/arm/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/arm64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/arm64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/x86/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/x86/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/x86_64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/x86_64/include/c++/4.9.x/cstdio
 ```
 
 Then build & install to ```/opt/android/build/boost``` with

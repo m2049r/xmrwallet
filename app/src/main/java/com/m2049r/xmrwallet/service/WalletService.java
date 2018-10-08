@@ -226,9 +226,9 @@ public class WalletService extends Service {
 
         void onSetNotes(boolean success);
 
-        void onWalletStarted(boolean success);
+        void onWalletStarted(Wallet.ConnectionStatus walletStatus);
 
-        void onWalletOpen(int hardware);
+        void onWalletOpen(Wallet.Device device);
     }
 
     String progressText = null;
@@ -293,9 +293,9 @@ public class WalletService extends Service {
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
-                            boolean success = start(walletId, walletPw);
-                            if (observer != null) observer.onWalletStarted(success);
-                            if (!success) {
+                            Wallet.ConnectionStatus connStatus = start(walletId, walletPw);
+                            if (observer != null) observer.onWalletStarted(connStatus);
+                            if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
                                 errorState = true;
                                 stop();
                             }
@@ -490,7 +490,7 @@ public class WalletService extends Service {
         return true; // true is important so that onUnbind is also called next time
     }
 
-    private boolean start(String walletName, String walletPassword) {
+    private Wallet.ConnectionStatus start(String walletName, String walletPassword) {
         Timber.d("start()");
         startNotfication();
         showProgress(getString(R.string.status_wallet_loading));
@@ -498,9 +498,11 @@ public class WalletService extends Service {
         if (listener == null) {
             Timber.d("start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
-            if ((aWallet == null) || (aWallet.getConnectionStatus() != Wallet.ConnectionStatus.ConnectionStatus_Connected)) {
+            Wallet.ConnectionStatus connStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
+            if (aWallet != null) connStatus = aWallet.getConnectionStatus();
+            if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
                 if (aWallet != null) aWallet.close();
-                return false;
+                return connStatus;
             }
             listener = new MyWalletListener();
             listener.start();
@@ -511,7 +513,7 @@ public class WalletService extends Service {
         // if we try to refresh the history here we get occasional segfaults!
         // doesnt matter since we update as soon as we get a new block anyway
         Timber.d("start() done");
-        return true;
+        return Wallet.ConnectionStatus.ConnectionStatus_Connected;
     }
 
     public void stop() {
@@ -550,8 +552,9 @@ public class WalletService extends Service {
         showProgress(30);
         if (walletMgr.walletExists(path)) {
             Timber.d("open wallet %s", path);
-            int hw = WalletManager.getInstance().queryWalletHardware(path + ".keys", walletPassword);
-            if (observer != null) observer.onWalletOpen(hw);
+            Wallet.Device device = WalletManager.getInstance().queryWalletDevice(path + ".keys", walletPassword);
+            Timber.d("device is %s", device.toString());
+            if (observer != null) observer.onWalletOpen(device);
             wallet = walletMgr.openWallet(path, walletPassword);
             showProgress(60);
             Timber.d("wallet opened");
