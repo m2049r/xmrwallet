@@ -355,5 +355,5 @@
     <string name="nfc_tag_read_success">Tag erfolgreich gelesen</string>
     <string name="nfc_tag_tap">NFC verfügbar!</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible!</string>
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 </resources>

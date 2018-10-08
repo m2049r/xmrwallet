@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
