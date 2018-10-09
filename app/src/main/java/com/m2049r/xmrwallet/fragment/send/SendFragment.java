@@ -58,10 +58,11 @@ import timber.log.Timber;
 public class SendFragment extends Fragment
         implements SendAddressWizardFragment.Listener,
         SendAmountWizardFragment.Listener,
-        SendSettingsWizardFragment.Listener,
         SendConfirmWizardFragment.Listener,
         SendSuccessWizardFragment.Listener,
         OnBackPressedListener, OnUriScannedListener {
+
+    final static public int MIXIN = 10;
 
     private Listener activityCallback;
 
@@ -301,10 +302,9 @@ public class SendFragment extends Fragment
     public class SpendPagerAdapter extends FragmentStatePagerAdapter {
         private static final int POS_ADDRESS = 0;
         private static final int POS_AMOUNT = 1;
-        private static final int POS_SETTINGS = 2;
-        private static final int POS_CONFIRM = 3;
-        private static final int POS_SUCCESS = 4;
-        private int numPages = 4;
+        private static final int POS_CONFIRM = 2;
+        private static final int POS_SUCCESS = 3;
+        private int numPages = 3;
 
         SparseArray<WeakReference<SendWizardFragment>> myFragments = new SparseArray<>();
 
@@ -355,8 +355,6 @@ public class SendFragment extends Fragment
                         return SendAddressWizardFragment.newInstance(SendFragment.this);
                     case POS_AMOUNT:
                         return SendAmountWizardFragment.newInstance(SendFragment.this);
-                    case POS_SETTINGS:
-                        return SendSettingsWizardFragment.newInstance(SendFragment.this);
                     case POS_CONFIRM:
                         return SendConfirmWizardFragment.newInstance(SendFragment.this);
                     case POS_SUCCESS:
@@ -370,8 +368,6 @@ public class SendFragment extends Fragment
                         return SendAddressWizardFragment.newInstance(SendFragment.this);
                     case POS_AMOUNT:
                         return SendBtcAmountWizardFragment.newInstance(SendFragment.this);
-                    case POS_SETTINGS:
-                        return SendSettingsWizardFragment.newInstance(SendFragment.this);
                     case POS_CONFIRM:
                         return SendBtcConfirmWizardFragment.newInstance(SendFragment.this);
                     case POS_SUCCESS:
@@ -393,8 +389,6 @@ public class SendFragment extends Fragment
                     return getString(R.string.send_address_title);
                 case POS_AMOUNT:
                     return getString(R.string.send_amount_title);
-                case POS_SETTINGS:
-                    return getString(R.string.send_settings_title);
                 case POS_CONFIRM:
                     return getString(R.string.send_confirm_title);
                 case POS_SUCCESS:
@@ -407,7 +401,8 @@ public class SendFragment extends Fragment
         @Override
         public int getItemPosition(Object object) {
             Timber.d("getItemPosition %s", String.valueOf(object));
-            if ((object instanceof SendAddressWizardFragment) || (object instanceof SendSettingsWizardFragment)) {
+            if (object instanceof SendAddressWizardFragment) {
+                // keep these pages
                 return POSITION_UNCHANGED;
             } else {
                 return POSITION_NONE;

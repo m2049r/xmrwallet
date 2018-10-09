@@ -174,7 +174,6 @@
     <string name="send_available">Fondos disponibles: %1$s XMR</string>
     <string name="send_address_title">Dirección</string>
     <string name="send_amount_title">Monto</string>
-    <string name="send_settings_title">Ajustes</string>
     <string name="send_confirm_title">Aprobar</string>
     <string name="send_success_title">Hecho</string>
 

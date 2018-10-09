@@ -209,7 +209,6 @@
     <string name="send_available">Balanță: %1$s XMR</string>
     <string name="send_address_title">Adresă</string>
     <string name="send_amount_title">Sumă</string>
-    <string name="send_settings_title">Setări</string>
     <string name="send_confirm_title">Confirmă</string>
     <string name="send_success_title">Gata</string>
 

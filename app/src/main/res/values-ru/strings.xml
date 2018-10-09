@@ -236,7 +236,6 @@
     <string name="send_available">Баланс: %1$s XMR</string>
     <string name="send_address_title">Адрес</string>
     <string name="send_amount_title">Сумма</string>
-    <string name="send_settings_title">Настройки</string>
     <string name="send_confirm_title">Подтверждение</string>
     <string name="send_success_title">Готово</string>
 

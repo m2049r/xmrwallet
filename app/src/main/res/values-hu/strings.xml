@@ -235,7 +235,6 @@
     <string name="send_available">Egyenleg: %1$s XMR</string>
     <string name="send_address_title">Cím</string>
     <string name="send_amount_title">Mennyiség</string>
-    <string name="send_settings_title">Beállítások</string>
     <string name="send_confirm_title">Megerősítés</string>
     <string name="send_success_title">Kész</string>
 

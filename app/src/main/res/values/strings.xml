@@ -248,7 +248,6 @@
     <string name="send_available">Balance: %1$s XMR</string>
     <string name="send_address_title">Address</string>
     <string name="send_amount_title">Amount</string>
-    <string name="send_settings_title">Settings</string>
     <string name="send_confirm_title">Confirm</string>
     <string name="send_success_title">Done</string>
 

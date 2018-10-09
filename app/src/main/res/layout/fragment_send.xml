@@ -53,7 +53,7 @@
             app:activeDot="0"
             app:dotSize="12dp"
             app:inactiveColor="@color/dotGray"
-            app:numberDots="4" />
+            app:numberDots="3" />
 
         <Button
             android:id="@+id/bNext"

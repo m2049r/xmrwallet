@@ -235,7 +235,6 @@
     <string name="send_available">Verfügbar: %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
     <string name="send_amount_title">Betrag</string>
-    <string name="send_settings_title">Einstellungen</string>
     <string name="send_confirm_title">Bestätigen</string>
     <string name="send_success_title">Fertig</string>
 

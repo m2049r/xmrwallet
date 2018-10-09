@@ -233,7 +233,6 @@
     <string name="send_available">Zostatok: %1$s XMR</string>
     <string name="send_address_title">Adresa</string>
     <string name="send_amount_title">Čiastka</string>
-    <string name="send_settings_title">Možnosti</string>
     <string name="send_confirm_title">Potvrdiť</string>
     <string name="send_success_title">Hotovo</string>
 

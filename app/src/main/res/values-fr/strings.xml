@@ -237,7 +237,6 @@
     <string name="send_available">Solde : %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
     <string name="send_amount_title">Montant</string>
-    <string name="send_settings_title">Paramètres</string>
     <string name="send_confirm_title">Confirmation</string>
     <string name="send_success_title">Terminé</string>
 

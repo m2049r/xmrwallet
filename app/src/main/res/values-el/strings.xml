@@ -209,7 +209,6 @@
     <string name="send_available">Υπόλοιπο: %1$s XMR</string>
     <string name="send_address_title">Διεύθυνση</string>
     <string name="send_amount_title">Ποσό</string>
-    <string name="send_settings_title">Ρυθμίσεις</string>
     <string name="send_confirm_title">Επιβεβαίωση</string>
     <string name="send_success_title">Έγινε</string>
 
