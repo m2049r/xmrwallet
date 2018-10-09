@@ -215,7 +215,6 @@
     <string name="send_available">Saldo: %1$s XMR</string>
     <string name="send_address_title">Adress</string>
     <string name="send_amount_title">Belopp</string>
-    <string name="send_settings_title">Inställningar</string>
     <string name="send_confirm_title">Bekräfta</string>
     <string name="send_success_title">Färdig</string>
 

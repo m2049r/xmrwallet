@@ -233,7 +233,6 @@
     <string name="send_available">餘額：%1$s XMR</string>
     <string name="send_address_title">地址</string>
     <string name="send_amount_title">金額</string>
-    <string name="send_settings_title">設定</string>
     <string name="send_confirm_title">確認</string>
     <string name="send_success_title">完成</string>
 

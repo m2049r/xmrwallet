@@ -232,7 +232,6 @@
     <string name="send_available">余额: %1$s XMR</string>
     <string name="send_address_title">地址</string>
     <string name="send_amount_title">金额</string>
-    <string name="send_settings_title">设定</string>
     <string name="send_confirm_title">确认</string>
     <string name="send_success_title">完成</string>
 

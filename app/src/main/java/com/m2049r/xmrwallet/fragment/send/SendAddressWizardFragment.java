@@ -39,6 +39,7 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
+import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.Helper;
@@ -350,6 +351,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 txData.setPaymentId(etPaymentId.getEditText().getText().toString());
             }
             txData.setUserNotes(new UserNotes(etNotes.getEditText().getText().toString()));
+            txData.setPriority(PendingTransaction.Priority.Priority_Default);
+            txData.setMixin(SendFragment.MIXIN);
         }
         return true;
     }
