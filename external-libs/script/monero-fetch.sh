@@ -16,5 +16,6 @@ if [ ! -d "monero" ]; then
 else
   cd monero
   git checkout ${version}
+  git pull
   git submodule update --recursive --init
 fi
