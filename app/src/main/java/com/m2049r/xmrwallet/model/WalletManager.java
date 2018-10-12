@@ -178,16 +178,12 @@ public class WalletManager {
     public native boolean verifyWalletPassword(String keys_file_name, String password, boolean watch_only);
 
     public boolean verifyWalletPasswordOnly(String keys_file_name, String password) {
-        return queryWalletDevice(keys_file_name, password) != Wallet.Device.Device_Undefined;
+        return queryWalletDeviceJ(keys_file_name, password) >= 0;
     }
 
     public Wallet.Device queryWalletDevice(String keys_file_name, String password) {
         int device = queryWalletDeviceJ(keys_file_name, password);
-        Wallet.Device[] types = Wallet.Device.values();
-        // mapping is monero+1=android
-        if ((device < 0) || (device > types.length - 2))
-            device = -1;
-        return types[device + 1];
+        return Wallet.Device.values()[device + 1]; // mapping is monero+1=android
     }
 
     private native int queryWalletDeviceJ(String keys_file_name, String password);
