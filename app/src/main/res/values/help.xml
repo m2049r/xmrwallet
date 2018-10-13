@@ -244,4 +244,14 @@
         <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
         previous step and then coming back to the \"Confirm\" screen.</p>
     ]]></string>
+
+    <string name="help_v9" translatable="false"><![CDATA[
+        <h1>October 2018 Network Upgrade</h1>
+        <p>On or around 18th October 2018, the Monero Network will be upgraded.  Clients and Servers
+        (Nodes) need to be upgraded simultaneously as old & new versions are not compatible.</p>
+        <p>You are running a new V9 client. You need to run or find a V9 node to connect to.</p>
+        <p>Check
+        https://www.reddit.com/r/Monerujo/comments/9n70ys/does_anyone_have_a_list_of_updated_nodes/
+        for more info &amp; support.</p>
+    ]]></string>
 </resources>
