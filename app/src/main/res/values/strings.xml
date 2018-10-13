@@ -399,4 +399,6 @@
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
     <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="info_v9" translatable="false">V9 node required</string>
 </resources>
