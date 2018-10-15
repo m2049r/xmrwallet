@@ -355,5 +355,5 @@
     <string name="send_address_no_dnssec">OpenAlias senza DNSSEC - L\'indirizzo potrebbe essere rubato</string>
     <string name="send_address_hint"> Indirizzo XMR/BTC del ricevente o OpenAlias</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Versione nodo incompatibile - esegui l'upgrade!</string>
 </resources>
