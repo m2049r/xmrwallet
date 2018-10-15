@@ -178,7 +178,7 @@
         <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
         is fully optional and private. For example it can allow a business to reconcile your
         transaction with an item you bought.<p>
-        <h2><em>Ring<em>'i suurus</h2>
+        <h2><em>Ring<em>\'i suurus</h2>
         <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
         we recommend you stick with a ring size of 7. Increasing the ring size above 7 increases
         the amount of signers in a ring signature, theoretically providing increased plausible
