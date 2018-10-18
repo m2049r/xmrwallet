@@ -165,18 +165,6 @@
         <p>Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Moneroj.
         Isto é opcional e privado. Por exemplo, isto permite que um negócio identifique que item
         é que uma determinada transacção está a pagar.</p>
-        <h2>Tamanho do anel</h2>
-        <p>Existem várias opções de tamanho do anel que podes escolher. Se és principiate recomendamos
-        que te mantenhas um tamanho do anel de 7. Aumentar o tamanho acima de 7 aumenta a
-        quantidade de signatários num anel de assinaturas, teoricamente aumentando a possibilidade
-        de negação plausível. Contudo aumentar o tamanho do anel faz com que a tua transacção se
-        destaque na blockchain.</p>
-        <h2>Prioridade</h2>
-        <p>Esta opção determina a velocidade com que a tua transacção será incluída na blockchain.
-        Uma prioridade alta está correlacionada com uma taxa de transacção mais elevada, e o inverso
-        é verdade para uma prioridade baixa. Nota que ao definiras a transacção como sendo de baixa
-        prioridade, pode demorar horas até que seja incluída na blockchain. A prioridade vem, por
-        defeito, a \"Média\".</p>
         <h1>Enviar BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.

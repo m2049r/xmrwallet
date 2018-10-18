@@ -165,17 +165,6 @@
         <h2>Zahlungs-ID</h2>
         <p>Du kannst eine Zahlungs-ID benutzen um den Grund einer Transaktion zwischen zwei Parteien zu identifizieren. Dies ist optional 
 	und nicht öffentlich einsehbar. Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.<p>
-        <h2>Ringgröße</h2>
-        <p>Es gibt verschiedene Ringgrößen in Monerujo aus denen du wählen kannst. Falls du ein neuer Nutzer bist
-        empfehlen wir bei der Standard Ringgröße zu bleiben (aktuell 7). Die Ringgröße zu erhöhen erhöht die Anzahl der Signaturen in einer Ring-Signatur, 
-	was theoretisch das Erraten der richtigen Signatur erschwert. Eine höhere Ringgröße lässt eine Transaktion jedoch 
-	auf der Blockchain auch herausstechen.</p>
-        <h2>Priorität</h2>
-        <p>Diese Einstellung bestimmt wie zügig deine Transaktion in einem Block auf der Blockchain verarbeitet wird.
-	Eine höhere Priorität bedeutet eine höhere Transaktionsgebühr, eine niedrige Priorität bedeutet eine 
-	niedrigere Transaktionsgebühr. Bitte bedenke, dass eine Transaktion mit einer niedrigen Priorität unter Umständen
-	eine Weile benötigt bis sie auf der Blockchain verarbeitet wird. Die Standard-Priorität
-        ist \"Mittel\".</p>
         <h1>BTC Senden</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO ist ein Drittanbieter-Service welcher als Wechselservice von Monero zu Bitcoin fungiert.

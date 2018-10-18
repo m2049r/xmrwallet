@@ -166,17 +166,6 @@
         <p>Fizetési azonosítót (payment ID) használhatsz arra a célra, hogy beazonosítsd, miért történt
         tranzakció két fél között. Ez teljes mértékben opcionális és privát. A fizetési azonosító például
         lehetővé teszi egy üzlet számára a tranzakciód és a megvásárolt tételed összeegyeztetését.<p>
-        <h2>Gyűrűméret</h2>
-        <p>A monerujóban több gyűrűméret közül lehet választani. Ha kezdő felhasználó vagy, javasoljuk
-        a 7-es gyűrűméret használatát. A gyűrűméret 7 fölé emelése növeli a gyűrűaláírásban részt vevő
-        aláírók számát, elméletileg megnöveld elfogadható tagadhatóságot biztosítva, azonban a nagy
-        gyűrűtméret használata miatt a tranzakciód kitűnhet a blokkláncon.</p>
-        <h2>Prioritás</h2>
-        <p>Ez a beállítás határozza meg, hogy milyen gyorsan kerül a tranzakciód a blokkláncba.
-        A magasabb prioritás közvetlen kapcsolatban áll a magasabb tranzakciós költséggel, ennek
-        ellentetje pedig a kis prioritás esetén igaz. Vedd figyelembe, hogy alacsony prioritás mellett
-        órahosszákba is telhet mire a tranzakciód a blokkláncba bekerül. Az alapértelmezett prioritás
-        a közepes.</p>
         <h1>BTC-küldés</h1>
         <h2>XMR.TO</h2>
         <p>Az XMR.TO egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként

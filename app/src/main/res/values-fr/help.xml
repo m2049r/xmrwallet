@@ -180,18 +180,6 @@
         envoyé des Moneroj entre deux parties. C’est totallement privé et optionnel. Il permet par
         exemple à une société de faire concorder votre transaction avec un article que vous avez
         acheté.</p>
-        <h2>Taille du Cercle (Ring Size)</h2>
-        <p>Il y a une taill de cercle à choisir dans Monerujo. Si vous êtes un utilisateur novice
-        nous vous recommandons de rester à la taille de cercle de 7. Augmenter la taille de cerlce
-        au delà de 7 augmente le nombre de signataires dans la signature de cercle, fournissant
-        théoriquement une plus grande dénégation plausible. Cependant, configurer de grandes tailles
-        de cercle peut également faire ressortir votre transaction sur la chaîne de blocs.</p>
-        <h2>Priorité</h2>
-        <p>Ce paramètre détermine la vitesse à laquelle votre transaction sera insérée dans la chaîne
-        de blocs. Une priorité plus élevée sera en lien direct avec des frais de transaction plus
-        élevés, et l’inverse est vrai pour une faible priorité. Veuillez noter que si vous configurez
-        une priorité faible, votre transaction pourrait mettre des heures pour être insérée sur la
-        chaîne de blocs. La priorité par défaut est \"Moyenne\".</p>
         <h1>Envoyer des BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO est un service tierce-partie qui agit commme un change depuis Monero vers Bitcoin.

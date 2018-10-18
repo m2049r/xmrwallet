@@ -182,19 +182,6 @@
         Al ser Monero ofuscado por naturaleza, puedes usar un ID de Pago para identificar un envío de Monero entre
         dos partes. Esto es completamente opcional y privado. Por ejemplo, esto permitiría que un
         negocio pueda asociar inequívocamente tu transacción con un producto que has comprado.</p>
-        <h2>Tamaño del anillo</h2>
-        <p>Hay varios tamaños de anillo (ring size) para elegir en Monerujo. Si eres un
-        usuario principiante te recomendamos que simplemente utilices un tamaño de anillo de 7.
-        Aumentar el tamaño de anillo por encima de 7 incrementa el número de firmantes en una firma
-        de anillo, lo cual teóricamente proporciona una mayor negación plausible. Pero configurar
-        tamaños de anillo altos también puede provocar que tu transacción quede fuera de la
-        cadena de bloques.</p>
-        <h2>Prioridad</h2>
-        <p>Este ajuste determina la velocidad a la que tu transacción será incluída en la cadena
-        de bloques. Una configuración de alta prioridad tendrá una mayor
-        comisión de transacción, y lo opuesto en el caso de una prioridad baja. Por favor,
-        ten en cuenta que si configuras tu transacción con una baja prioridad puede llevar horas
-        hasta que sea incluída en la cadena de bloques. La prioridad por defecto es \"Media\".</p>
         <h1>Enviar BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO es un servicio de terceros que actúa como casa de cambio de Monero a Bitcoin.
