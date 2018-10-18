@@ -168,13 +168,6 @@
         <p>ID Platby môžeš použiť na identifikáciu platby medzi dvoma stranami.
 		Nie je to síce povinný, ale je to súkromný údaj.
         Môžeš tak napríklad prepojiť kupovaný tovar so svojim biznisom.<p>
-        <h2>Veľkosť Kruhu</h2>
-        <p>Existuje niekoľko veľkostí kruhov z ktorých si v Monerujo môžeš vyberať.
-		Ak si začiatočník, doporučujeme veľkosť 7. Zvyšovaním veľkosti kruhu nad hodnotu 7, zvyšujeme počet podpisujúcich v kruhovom podpise.
-		Teoreticky to môže zvýšiť súkromie, avšak príliš vysoké číslo môže spôsobiť spomalenie transakcie.</p>
-        <h2>Priorita</h2>
-        <p>Toto nastavenie určuje rýchlosť, ktorou transakcia bude zaradená do blockchain. Vysoká priorita vyžaduje obvykle vyššie transakčné poplatky a naopak.
-		Majte na pamäti, že pokiaľ nastavíte transakcii nízku prioritu, môže trvať aj hodiny, kým bude zaradená do blockchain. Prednastavená priorita je \"Medium\".</p>
         <h1>Posielanie BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.

@@ -129,10 +129,6 @@
         voor meer informatie). Zie ook het gedeelte over BTC verzenden hieronder.</p>
         <h2>Betalings-ID</h2>
         <p>Je kunt een Betalings-ID gebruiken om aan te geven waarom je Monero verzendt. Dit is volledig optioneel en blijft vertrouwelijk tussen beide partijen. Een bedrijf kan bijvoorbeeld jouw transactie koppelen aan een artikel dat je hebt gekocht.<p>
-        <h2>Ringgrootte</h2>
-        <p>Je kunt kiezen uit een aantal ringgrootten in Monerujo. Als je een beginnende gebruiker bent, raden we je aan om de standaardgrootte 7 te gebruiken. Een ringgrootte van meer dan 7 betekent dat een ring-handtekening meer ondertekenaars bevat. In theorie is dat beter voor een plausibele ontkenning. Maar een hogere ringgrootte kan er ook toe leiden dat je transactie opvalt op de blockchain.</p>
-        <h2>Prioriteit</h2>
-        <p>Deze instelling bepaalt de snelheid waarmee je transactie wordt vastgelegd op de blockchain. Voor een hoge prioriteit betaal je hogere transactiekosten, terwijl een lagere prioriteit goedkoper is. Als je een lage prioriteit instelt, kan het uren duren voordat je transactie wordt vastgelegd op de blockchain. De standaardprioriteit is \"Normaal\".</p>
         <h1>BTC verzenden</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO is een externe service waarmee je Monero kunt inwisselen voor Bitcoin.

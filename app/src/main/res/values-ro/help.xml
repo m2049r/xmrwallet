@@ -158,18 +158,6 @@
         <p>Poți utiliza un ID de plată pentru a identifica suma trimisă între două terțe, acest lucru
 		este complet opțional și privat. Ca exemplu, poate permite identificare într-o activitate comercială
 		pentru a reconcilia pentru un produs pe care l-ați achiziționat.<p>
-        <h2>Dimensiunea inelului</h2>
-        <p>Există o serie de dimensiuni care pot fi folosite la transferul de Monerujo. Dacă ești începător
-        îți recomandăm să setezi minim 7. Setând numărului de inele mai sus de 7, crește
-        numărul de semnatari într-o semnătură de inel, furnizând teoretic o deniabilitate plauzibilă
-		sporită. Cu toate acestea, stabilirea unor dimensiuni mari ale inelului poate face ca tranzacția să
-		rămână neinclusă pentru o perioadă mai lungă.</p>
-        <h2>Prioritatea</h2>
-        <p>Această setare determină viteza la care tranzacția ta va fi inclusă în baza de date distribuită
-        (blockchain). Setarea unei priorități mari se va corela direct cu un comision de tranzacție mai mare,
-		iar opusul este valabil pentru o prioritate scăzută. Reține că în cazul în care setezi o prioritate
-		scăzută tranzacției, poate dura ore până când ea poate fi inclusă in baza de date distribuită (blockchain).
-		Prioritatea este presetată la \"Medium\".</p>
         <h1>Transferul de BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO este un serviciu terță parte care care acționeaza ca un schimb valutar între Monero și Bitcoin.

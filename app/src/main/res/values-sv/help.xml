@@ -153,16 +153,6 @@
         <p>Du kan använda ett Betalnings-ID för att identifiera anledningen du skickat Monero till någon,
         det är valfritt och privat. Till exempel tillåter det en affär att förknippa din transaktion
         med något du köpt.<p>
-        <h2>Ringstorlek</h2>
-        <p>Det finns ett antal av ringstorlekar att välja mellan i Monerujo. Om du är en nybörjare
-        rekommenderar vi att du använder en ringstorlek av 7. Att öka ringstorleken över 7 höjer
-        mängden av signerare i en ringsignaturm, vilket teoretiskt ger högre möjlig förnekning.
-        Men, att välja högre ringstorlekar kan även få din transaktion att stå ut på blockkedjan.</p>
-        <h2>Prioritet</h2>
-        <p>Den här inställningen avgör hur snabbt din transaktion kommer att inkluderas i blockkedjan.
-        En hög prioritetsinställning tar också en högre transaktionsavgift och det motsatta stämmer
-        för låg prioritet. Vänligen notera att om du sätter din transaktion på låg prioritet kan
-        det ta timmar innan den är inkluderad på blockkedjan. Standard prioriteten är \"Medium\".</p>
         <h1>Skicka BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO är en tredjeparts tjänst som byter ut Monero mot Bitcoin. Vi använder XMR.TO API:n

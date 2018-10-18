@@ -141,11 +141,6 @@
         per ulteriori dettagli). Controlla la sezione sull&apos;invio di BTC più avanti.</p>
         <h2>ID Pagamento</h2>
         <p>Puoi usare un ID Pagamento per identificare la causale della transazione. Questa è un&apos;informazione opzionale e privata. Ad esempio può aiutare un venditore ad associare una transazione ricevuta ad un bene da te acquistato.<p>
-        <h2>Dimensione dell&apos;anello (ring size)</h2>
-        <p>Monerujo dà la possibilità di scegliere la dimensione dell&apos;anello (ring size) da utilizzare in una transazione. Se sei un utente poco esperto, ti raccomandiamo di utilizzare una dimensione dell&apos;anello pari a 7. Un numero più alto rispetto a 7 aumenta il numero di firmatari nella firma ad anello così come, teoricamente, la negabilità plausibile. Considera però che selezionare una dimensione dell&apos;anello elevata rischia di mettere in risalto la tua transazione sulla blockchain.</p>
-        <h2>Priorità</h2>
-        <p>Questa impostazione determina la velocità con la quale la tua transazione verrà inclusa nella blockchain. Un&apos;alta priorità si correla ad una commissione di transazione più alta, così come una priorità bassa si correla ad una commissione di transazione più bassa. Considera che se imposti una priorità bassa alla tua transazione, potrebbero trascorrere ore prima che essa sia inserita all&apos;interno della blockchain. La priorità di default è
-        \"Media\".</p>
         <h1>Inviare BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO è un servizio di terze parti che funziona come cambiavaluta da Monero a Bitcoin.
