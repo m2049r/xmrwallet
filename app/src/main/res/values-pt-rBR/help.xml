@@ -228,14 +228,4 @@
       <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
       anterior e faça o processo novamente.</p>
     ]]></string>
-
-    <string name="help_create_ledger"><![CDATA[
-      <h1>Atualização da Network em Outubro de 2018</h1>
-      <p>Em 18 de Outubro de 2018 a rede do Monero recebeu uma atualização de versão. Clientes e servidores (nós)
-      foram atualizados, visto que a versão nova não é compatível com a versão anterior.</p>
-      <p>Você está usando um cliente V9. Será preciso conectar em um nó remoto V9.</p>
-      <p>Consulte a página em inglês
-      https://www.reddit.com/r/Monerujo/comments/9n70ys/does_anyone_have_a_list_of_updated_nodes/
-      para mais informações &amp; suporte.</p>
-    ]]></string>
 </resources>
