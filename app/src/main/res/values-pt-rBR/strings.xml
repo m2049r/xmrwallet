@@ -114,7 +114,7 @@
     <string name="status_wallet_unload_failed">Erro ao salvar carteira</string>
     <string name="status_wallet_connecting">Conectando &#8230;</string>
     <string name="status_wallet_connect_failed">Erro ao conectar!\Verifique o usuário e senha</string>
-    <string name="status_wallet_connect_wrongversion"Versão do nó incompatível - por favor faça a atualização!</string>
+    <string name="status_wallet_connect_wrongversion">Versão do nó incompatível - por favor faça a atualização!</string>
     <string name="status_wallet_connect_timeout">Tempo limite de conexão ao nó!\nTente novamente ou escolha outro.</string>
     <string name="status_wallet_node_invalid">Nó inválido!\nEscolha outro.</string>
     <string name="status_wallet_connect_ioex">Não foi possível conectar ao nó!\nTente novamente ou escolha outro.</string>
