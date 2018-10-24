@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Criar Carteira - Nova</h1>
-        <p>Se você precisa de um novo endereço Monero</p>
+        <p>Se você precisa de um novo endereço Monero!</p>
         <p>Escreva um nome para sua carteira e uma senha forte.
         A senha é utilizada para proteger as informações da carteira. Use uma senha forte -
         ou melhor ainda, uma palavra-passe longa.</p>
@@ -11,7 +11,7 @@
         Essa lista de palavras é a única informação necessária para restaurar sua carteira no futuro
         e recuperar o acesso aos seus fundos.
         Manter a semente num local seguro e privado é muito importante, já que ela dá acesso completo
-        aos teus fundos para <em>qualquer pessoa</em>!
+        aos seus fundos para <em>qualquer pessoa</em>!
         <p>Se você perder ou esquecer sua senha, ainda é possível recuperar a carteira através da semente mnemônica.</p>
         <p>Não existe uma maneira de recuperar a semente mnemônica, se você perdê-la seu dinheiro será perdido junto!
         A semente nunca pode ser alterada. Se ela for roubada ou comprometida de alguma maneira, será
@@ -34,7 +34,7 @@
     <string name="help_create_ledger"><![CDATA[
         <h1>Criar Carteira - Ledger</h1>
         <p>Se você quer usar sua carteira do dispositivo Ledger Nano S.</p>
-        <p>Suas chaves nunca saem do dispositivo da Ledger, então é preciso plugá-lo
+        <p>Suas chaves nunca saem do dispositivo da Ledger, então é preciso conectá-lo
         sempre que você desejar usar a carteira.</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
         Use uma senha forte - ou melhor, use uma longa frase.</p>
@@ -208,7 +208,7 @@
       <h2>XMR.TO</h2>
       <p>XMR.TO é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
       Nós usamos a API do XMR.TO para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://xmr.to
-      e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
+      e decida por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
       e não podemos ajudá-lo caso algo não funcione no serviço.</p>
       <h2>Cotação XMR.TO<h2>
       <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do XMR.TO.

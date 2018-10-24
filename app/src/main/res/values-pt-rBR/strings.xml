@@ -37,7 +37,7 @@
     <string name="info_ledger_enabled">Ledger ativada, toque para mais informações.</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Você colocou um endereço de Bitcoin.</b><br/>
+        <b>Você colocou um endereço Bitcoin.</b><br/>
         <i>Você enviará XMR e o destinatário receberá BTC via o serviço <b>XMR.TO</b></i>
     ]]></string>
 
@@ -52,7 +52,7 @@
     <string name="info_send_xmrto_query">Consultando &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Voc6e pode enviar %1$s &#8212; %2$s BTC</b>.<br/>
+        <b>Você pode enviar %1$s &#8212; %2$s BTC</b>.<br/>
         <i><b>XMR.TO</b> enviou a cotação de <b>%3$s BTC</b> <u>neste momento</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
@@ -99,7 +99,7 @@
     <string name="open_progress">Verificando conexão</string>
     <string name="changepw_progress">Alterando senha</string>
 
-    <string name="service_progress">Finalizando o processo &#8230;\nPode demorar um pouquinho</string>
+    <string name="service_progress">Finalizando o processo &#8230;\nPode demorar um pouco</string>
 
     <string name="backup_failed">Erro ao criar backup!</string>
     <string name="archive_failed">Erro ao arquivar!</string>
@@ -123,7 +123,7 @@
 
     <string name="status_transaction_failed">Transação falhou: %1$s</string>
 
-    <string name="send_xmrto_timeout">Demorou demais, amigo!</string>
+    <string name="send_xmrto_timeout">Demorou demais!</string>
 
     <string name="service_busy">Ainda estou ocupado com a outra carteira &#8230;</string>
 
@@ -157,7 +157,7 @@
 
     <string name="message_strorage_not_writable">Não é possível escrever no disco interno! Pânico!</string>
     <string name="message_strorage_not_permitted">Realmente precisamos de acesso para escrever no disco interno!</string>
-    <string name="message_camera_not_permitted">Sem câmera = Sem escaneio de códigos QR!</string>
+    <string name="message_camera_not_permitted">Sem câmera = Impossível escanear códigos QR!</string>
 
     <string name="label_copy_viewkey">Chave de visualização</string>
     <string name="label_copy_address">Endereço público</string>
@@ -179,19 +179,19 @@
         <p>Com a autenticação por impressão digital ativa, é possível verificar o saldo e receber transações sem escrever a senha.</p>
         <p>Porém por questões de segurança extra, o monerujo seguirá solicitando sua senha para ver detalhes da carteira ou enviar transações.</p>
         <strong>Aviso de Segurança</strong>
-        <p>Nós queremos relembrar que qualquer pessoa com acesso às suas digitais poderá espiar o seu saldo.</p>
+        <p>Queremos lembrar que qualquer pessoa com acesso às suas digitais poderá espiar o seu saldo.</p>
         <p>Por exemplo, uma pessoa com má intenção pode abrir sua carteira usando sua digital enquanto você dorme.</p>
         <strong>Tem certeza que quer ativar esta funcionalidade?</strong>
     ]]></string>
 
     <string name="generate_bad_passwordB">As senhas não são iguais</string>
     <string name="generate_empty_passwordB">A senha não pode estar vazia</string>
-    <string name="generate_buttonGenerate">\'Bora criar essa carteira!</string>
+    <string name="generate_buttonGenerate">Vamos criar essa carteira logo!</string>
     <string name="generate_button_accept">Eu anotei minha semente mnemônica</string>
 
     <string name="generate_wallet_name">Dê-me um nome!</string>
     <string name="generate_wallet_exists">Essa carteira já existe!</string>
-    <string name="generate_wallet_dot">Não posso começar com .</string>
+    <string name="generate_wallet_dot">Não pode começar com .</string>
     <string name="generate_wallet_creating">Criando carteira</string>
     <string name="generate_wallet_created">Carteira criada</string>
     <string name="generate_wallet_create_failed">Erro ao criar carteira</string>
