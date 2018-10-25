@@ -313,7 +313,7 @@
     <string name="accounts_new">Conta adicionada #%1$d</string>
     <string name="tx_account">Conta #</string>
 
-    <string name="send_sweepall">Enviar todo o fundo disponível nesta conta!</string>
+    <string name="send_sweepall">Enviar todo o saldo disponível nesta conta!</string>
     <string name="tx_subaddress">Subendereço #%1$d</string>
     <string name="generate_address_label_sub">Subendereço público #%1$d</string>
 
@@ -343,7 +343,7 @@
     <string name="nfc_tag_size">Tag disponibiliza %1$d bytes, mas precisamos de %2$d!</string>
     <string name="nfc_tag_read_undef">Não consigo ler a tag!</string>
     <string name="nfc_tag_read_what">Não sei o que você quer!</string>
-    <string name="nfc_tag_read_success">Sucesso de leitura da tag</string>
+    <string name="nfc_tag_read_success">Sucesso na leitura da tag</string>
     <string name="nfc_tag_tap">NFC disponível!</string>
 
 </resources>
