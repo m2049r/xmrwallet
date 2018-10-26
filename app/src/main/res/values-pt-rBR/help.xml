@@ -4,8 +4,7 @@
         <h1>Criar Carteira - Nova</h1>
         <p>Se você precisa de um novo endereço Monero!</p>
         <p>Escreva um nome para sua carteira e uma senha forte.
-        A senha é utilizada para proteger as informações da carteira. Use uma senha forte -
-        ou melhor ainda, uma palavra-passe longa.</p>
+        A senha é utilizada para proteger as informações da carteira. Use uma senha forte e comprida.</p>
         <h2>Anote a semente mnemônica!</h2>
         <p>Na próxima tela será exibida a sua \"semente mnemônica\".
         Essa lista de palavras é a única informação necessária para restaurar sua carteira no futuro
@@ -24,7 +23,7 @@
         <h1>Criar Carteira - Semente</h1>
         <p>Se você já tem um endereço Monero e quer restaurar suas transações e fundos!</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
-        Use uma senha forte - ou melhor, use uma longa frase.</p>
+        Use uma senha forte e comprida.</p>
         <p>Escreva a semente no campo \"semente mnemônica\".<p>
         <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
@@ -47,7 +46,7 @@
         <h1>Criar Carteira - Chaves</h1>
         <p>Se você quer restaurar a carteira a partir das chaves privadas</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
-        Use uma senha forte - ou melhor, use uma longa frase.</p>
+        Use uma senha forte e comprida.</p>
         <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha os campos \"Chave de visualização\" e \"Chave de gasto\".</p>
         <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
@@ -58,7 +57,7 @@
         <h1>Criar Carteira - Somente Leitura</h1>
         <p>Se você quer monitorar as transações que chegam na sua carteira.</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
-        Use uma senha forte - ou melhor, use uma longa frase.</p>
+        Use uma senha forte e comprida.</p>
         <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha o campo \"Chave de visualização\".</p>
         <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
