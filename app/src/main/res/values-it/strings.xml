@@ -132,7 +132,7 @@
     <string name="prompt_changepw">Nuova passphrase per %1$s</string>
     <string name="prompt_changepwB">Ripeti passphrase per %1$s</string>
     <string name="prompt_password">Password per %1$s</string>
-    <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale./nTocca il sensore.</string>
+    <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale.\nTocca il sensore.</string>
     <string name="prompt_send_password">Conferma Password</string>
     <string name="prompt_open_wallet">Aprendo il portafoglio&#8230;</string>
     <string name="bad_fingerprint">Impronta digitale non riconosciuta. Prova di nuovo.</string>
@@ -176,14 +176,14 @@
     <string name="generate_fingerprint_hint">Permetti di aprire il portafoglio usando la tua impronta digitale</string>
     <string name="generate_fingerprint_warn">[<![CDATA[
         <strong>Autenticazione tramite impronta digitale</strong>
-        <p>Abilitando l\'autenticazione tramite impronta digitale, puoi visualizzare il tuo bilancio e ricevere fondi
+        <p>Abilitando l\'autenticazione tramite impronta digitale, puoi visualizzare il tuo saldo e ricevere fondi
         senza inserire la password.</p>
         <p>Per sicurezza aggiuntiva, Monerujo richiederà comunque di inserire la password per visualizzare i dettagli
         del tuo portafoglio o inviare denaro.</p>
         <strong>Avviso di sicurezza</strong>
-        <p>Infine, monerujo vuole ricordati che chiunque sia in grado di procurarsi la tua impronta digitale
-        sarà in grado di sbirciare il bilancio del tuo portafoglio.</p>
-        <p>Per esempio, un utente malevolo potrebbe aprire il tuo portafoglio mentre dormi.</p>
+        <p>Infine, Monerujo ci tiene a ricordarti che chiunque sia in grado di procurarsi la tua impronta digitale
+        sarà in grado anche di sbirciare il saldo del tuo portafoglio.</p>
+        <p>Per esempio, un utente malintenzionato potrebbe aprire il tuo portafoglio mentre dormi.</p>
         <strong>Sei sicuro/a di voler abilitare questa funzione?</strong>
     ]]>]</string>
     <string name="generate_bad_passwordB">Le passphrase non corrispondono</string>
@@ -315,8 +315,8 @@
     <string name="tx_account">Account #</string>
 
     <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Subaddress pubblico #%1$d</string>
+    <string name="tx_subaddress">Sottoindirizzo #%1$d</string>
+    <string name="generate_address_label_sub">Sottoindirizzo pubblico #%1$d</string>
 
     <string name="menu_language">Lingua</string>
     <string name="language_system_default">Usa lingua di sistema</string>
@@ -326,7 +326,7 @@
     <string name="progress_ledger_progress">In comunicazione con Ledger</string>
     <string name="progress_ledger_confirm">Conferma su Ledger richiesta!</string>
     <string name="progress_ledger_lookahead">Recuperando subaddresses</string>
-    <string name="progress_ledger_verify">Verificando le Chiavi</string>
+    <string name="progress_ledger_verify">Verificando le chiavi</string>
     <string name="progress_ledger_opentx">Folli calcoli matematici</string>
     <string name="progress_ledger_mlsag">Hashing in corso</string>
     <string name="open_wallet_ledger_missing">(Ri)connetti il dispositivo Ledger</string>
@@ -337,15 +337,15 @@
     <string name="toast_ledger_attached">%1$s allegati</string>
     <string name="toast_ledger_detached">%1$s allegati</string>
 
-    <string name="progress_nfc_write">Scrivendo Tag</string>
+    <string name="progress_nfc_write">Scrivendo tag</string>
     <string name="nfc_write_failed">Scrittura tag fallita!</string>
     <string name="nfc_write_successful">Scrittura tag riuscita</string>
     <string name="nfc_tag_unsupported">La tag non supporta NDEF!</string>
     <string name="nfc_tag_size">La Tag fornisce %1$d bytes, ma ne servono %2$d!</string>
-    <string name="nfc_tag_read_undef">Non capisco la Tag!</string>
+    <string name="nfc_tag_read_undef">Non capisco la tag!</string>
     <string name="nfc_tag_read_what">Non capisco cosa mi hai chiesto!</string>
     <string name="nfc_tag_read_success">Lettura tag riuscita</string>
-    <string name="nfc_tag_tap">NFC dispobibile!</string>
+    <string name="nfc_tag_tap">NFC disponibile!</string>
 
     <string name="receive_desc_hint">Descrizione (opzionale)</string>
 
@@ -355,5 +355,5 @@
     <string name="send_address_no_dnssec">OpenAlias senza DNSSEC - L\'indirizzo potrebbe essere rubato</string>
     <string name="send_address_hint"> Indirizzo XMR/BTC del ricevente o OpenAlias</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Versione del nodo incompatibile - si prega di aggiornare!</string>
 </resources>
