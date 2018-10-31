@@ -23,7 +23,7 @@
     <string name="label_credits">Zásluhy</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Zrušiť</string>
-    <string name="label_close">Zavrieť</string>
+    <string name="label_close">Zatvoriť</string>
     <string name="label_wallet_advanced_details">Klepni pre viac info</string>
 
     <string name="label_send_success">úspešne odoslané</string>
@@ -76,7 +76,7 @@
 
     <string name="text_retry">Klepni pre opakovanie</string>
     <string name="text_noretry_monero">Uviazli sme tu!</string>
-    <string name="text_noretry">Myslím, že XMR.TO nie je momentálne dostupná!</string>
+    <string name="text_noretry">Myslím, že služba XMR.TO nie je momentálne dostupná!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurz: %1$s BTC/XMR)</string>
@@ -113,11 +113,11 @@
     <string name="status_wallet_loading">Načítavam peňaženku &#8230;</string>
     <string name="status_wallet_unloaded">Peňaženka uložená</string>
     <string name="status_wallet_unload_failed">Uloženie zlyhalo!</string>
-    <string name="status_wallet_connecting">Pripájam &#8230;</string>
+    <string name="status_wallet_connecting">pripájam sa &#8230;</string>
     <string name="status_wallet_connect_failed">Spojenie s uzlom zlyhalo!\nSkontroluj užívateľa/heslo</string>
-    <string name="status_wallet_connect_timeout">Pripojenie uzla vypršalo!\nSkús znova, alebo iný uzol.</string>
+    <string name="status_wallet_connect_timeout">Pripojenie uzla vypršalo!\nSkús znova, alebo skús iný uzol.</string>
     <string name="status_wallet_node_invalid">Neplatný uzol!\nSkús iný.</string>
-    <string name="status_wallet_connect_ioex">Nedá sa spojiť s uzlom!\nSkús znova, alebo iný uzol.</string>
+    <string name="status_wallet_connect_ioex">Neviem sa spojiť s uzlom!\nSkús znova, alebo skús iný uzol.</string>
 
     <string name="status_wallet_disconnected">Odpojený</string>
 
@@ -212,13 +212,13 @@
     <string name="generate_viewkey_label">Prezerací Kľúč (view key)</string>
     <string name="generate_spendkey_label">Platobný Kľúč (spend key)</string>
     <string name="generate_mnemonic_label">Mnemotechnický Seed</string>
-    <string name="generate_crazypass_label">Heslo Súboru Peňaženky</string>
+    <string name="generate_crazypass_label">heslo súboru peňaženky</string>
 
     <string name="generate_check_key">Vlož platný Kľúč</string>
     <string name="generate_check_address">Vlož platnú Adresu</string>
     <string name="generate_check_mnemonic">Vlož svoj 25-slovný seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indikatív)</string>
+    <string name="send_amount_btc_xmr">%1$s (odhad)</string>
 
     <string name="send_paymentid_hint">ID Platby (voliteľné)</string>
     <string name="send_amount_hint">0.00</string>
@@ -237,17 +237,17 @@
     <string name="send_success_title">Hotovo</string>
 
     <string name="send_amount_label">Čiastka</string>
-    <string name="send_fee_btc_label">Poplatok (XMR)</string>
-    <string name="send_fee_label">Poplatok</string>
+    <string name="send_fee_btc_label">poplatok (XMR)</string>
+    <string name="send_fee_label">poplatok</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Poplatok</string>
+    <string name="send_fee">+%1$s poplatok</string>
 
     <string name="send_create_tx_error_title">Vytvor Chybu Transakcie</string>
 
-    <string name="tx_list_fee">- Poplatok %1$s</string>
+    <string name="tx_list_fee">- poplatok %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">zlyhala</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -262,7 +262,7 @@
     <string name="tx_blockheight">Blok</string>
     <string name="tx_amount">Suma</string>
     <string name="tx_amount_btc">Čiastka\n(BTC)</string>
-    <string name="tx_fee">Poplatok</string>
+    <string name="tx_fee">poplatok</string>
     <string name="tx_transfers">Poslaných</string>
     <string name="tx_notes">Poznámky</string>
     <string name="tx_notes_hint">(voliteľné)</string>
@@ -287,7 +287,7 @@
 
     <string name="details_alert_message">Budú zobrazené citlivé dáta.\nPozri cez plece!</string>
     <string name="details_alert_yes">Som v bezpečí</string>
-    <string name="details_alert_no">Poď späť!</string>
+    <string name="details_alert_no">Naspäť!</string>
     <string name="details_title">Detaily</string>
 
     <string name="archive_alert_message">Peňaženka bude zálohovaná a následne zmazaná!</string>
@@ -350,7 +350,8 @@
     <string name="send_address_openalias">OpenAlias zabezpečený &#x2714;</string>
     <string name="send_address_resolve_openalias">Prekladám OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias bez DNSSEC - adresa môže byť zneužitá</string>
-    <string name="send_address_hint">Prijímateľova XMR/BTC Adresa alebo OpenAlias</string>
-
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="send_address_hint">Prijímateľova XMR/BTC adresa alebo OpenAlias</string>
+    
+    <string name="info_v9" translatable="false">vyžaduje sa uzol V9 </string>
+    <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
 </resources>
