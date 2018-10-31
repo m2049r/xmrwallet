@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Fechar</string>
+    <string name="about_whoami">Eu sou o monerujo</string>
+    <string name="about_version">Versão %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Créditos</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Política de Privacidade</h1>
+        <p>Esta página explica nossas políticas em relação a coleta, uso e
+        divulgação das informações pessoais que recebemos dos usuários de nosso
+        aplicativo (monerujo: carteira Monero).
+        </p>
+        <p>Ao usar este aplicativo, você concorda com a coleta e uso das
+        informações de acordo com este documento.
+        </p>
+        <h2>Dados Coletados</h2>
+        <p>Dados pessoais consistem em todo tipo de informação que permite identificar um indivíduo.
+        </p>
+        <p>Os endereços públicos e as chaves Monero são armazenados e processados localmente
+        no objetivo de efetuar as transações e transmiti-las à rede Monero de forma encriptada.
+        </p>
+        <p>Outros dados pessoais não são recolhidos pelo aplicativo.</p>
+        <p>Se você utilizar a funcionalidade de conversão (opcional), o monerujo buscará
+        as cotações usando a API pública do coinmarketcap.com.
+        Verifique sua política de privacidade em https://coinmarketcap.com/privacy para
+        detalhes de como as requisições são coletadas.
+        </p>
+        <p>Se você usar nosso aplicativo para fazer pagamentos em BTC, você estará
+        usando o serviço XMR.TO. Verifique sua política de privacidade em https://xmr.to/
+        para detalhes. O monerujo envia o endereço de destino e valor ao serviço. Seu
+        IP também pode ser coletado.
+        <h2>Permissões do aplicativo</h2>
+        <ul>
+        <li>INTERNET : Conectar à rede Monero via um nó remoto</li>
+        <li>READ_EXTERNAL_STORAGE : Ler os arquivos das carteiras no dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Escrever os arquivos das carteiras no dispositivo</li>
+        <li>WAKE_LOCK : Mantém o dispositivo acordado ao sincronizar</li>
+        <li>CAMERA : Escanear códigos QR para transacionar Monero</li>
+        </ul>
+        <h2>Alterações a esta política de privacidade</h2>
+        <p>Nós podemos alterar esta política de privacidade de tempos em tempos.
+        Notificaremos quaisquer alterações atualizando este documento no aplicativo
+        e no website oficial (www.monerujo.io)
+        Aconselhamos que você revisite esta política de privacidade periodicamente.
+        <p>Última atualização: 10 de Novembro de 2017.
+        </p>
+        <h2>Contate-nos</h2>
+        <p>Se tiver alguma questão sobre nossa política de privacidade,
+        ou sobre como os seus dados são recolhidos e processados,
+        por favor envie um email para privacy@monerujo.io.
+        </p>
+        ]]></string>
+</resources>
