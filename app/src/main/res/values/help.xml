@@ -131,23 +131,6 @@
         secure delete app.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>The Balance</h2>
-        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
-        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
-        as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
-        Read more about change at https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaction List</h2>
-        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaction Details</h1>
         <h2>Destination</h2>
@@ -241,5 +224,27 @@
         <p>Check
         https://www.reddit.com/r/Monerujo/comments/9n70ys/does_anyone_have_a_list_of_updated_nodes/
         for more info &amp; support.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>The Wallet</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Scanning</h2>
+        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
+        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
+        stores information to your phone which belongs to your wallet. Sometimes it can take a while
+        because you haven’t synced in a long time.
+        <h2>The Balance</h2>
+        <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
+        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
+        as unconfirmed.
+        This happens as a result of how Monero is exchanged on the blockchain and how change works.
+        Read more about change at https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaction List</h2>
+        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
     ]]></string>
 </resources>

@@ -6,7 +6,6 @@
 
     <string name="menu_share">分享</string>
     <string name="menu_help">幫助</string>
-    <string name="menu_info">詳細資訊</string>
     <string name="menu_receive">收款</string>
     <string name="menu_rename">重新命名 &#8230;</string>
     <string name="menu_archive">封存</string>
@@ -353,4 +352,8 @@
     <string name="send_address_hint">收款者的 XMR/BTC 地址或 OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">節點版本不相容 - 請盡速更新！</string>
+
+    <string name="menu_info">詳細資訊</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

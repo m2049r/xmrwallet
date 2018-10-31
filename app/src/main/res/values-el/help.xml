@@ -99,23 +99,6 @@
         εφαρμογή εξερεύνησης αρχείων ή μια εφαρμογή ασφαλούς διαγραφής.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Το Πορτοφόλι</h1>
-        <h2>Σάρωση</h2>
-        Επειδή το Monero θέλει να κρατάει τα πράγματα ιδιωτικά, κάθε φορά που ανοίγεις ένα πορτοφόλι
-        Monerujo πρέπει να σαρώσουμε όλο το blockchain για να βρεθούν νέα ληφθέντα Moneroj στο πορτοφόλι σας, αυτό
-        αποθηκεύει μόνο πληροφορίες στο τηλέφωνό σου που ανιστοιχούν στο πορτοφόλι σου. Μερικές φορές
-        μπορεί να χρειαστεί λίγος χρόνος γιατί δεν έχεις συγχρονίσει για μεγάλο χρονικό διάστημα.
-        <h2>Το Υπόλοιπο</h2>
-        <p><b>Βοήθεια! Το υπόλοιπο του πορτοφολιού μου εξαφανίστηκε ή ειναι μη επιβεβαιωμένο!</b><br/>
-        Μην πανικοβάλεσαι! Όταν στέλνεις κεφάλαια από το πορτοφόλι σου, ένα μέρος
-        του υπολοίπου σου θα δείχνει για λίγο ως μη επιβεβαιωμένο.
-        Αυτό συμβαίνει σαν αποτέλεσμα του πως το Monero ανταλλάσεται στο blockchain και το πως δουλεύουν τα ρέστα.
-        Διάβασε περισσότερα για τα ρέστα εδώ(Αγγλικά) https://getmonero.org/resources/moneropedia/change.html
-        <h2>Λίστα Συναλλαγών</h2>
-        <p>Μια λίστα απο τις συναλλαγές του πορτοφολιού. Στα πορτοφόλια παρακολούθησης φαίνοντε μόνο οι εισερχόμενες συναλλαγές.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Λεπτομέρειες Συναλλαγής</h1>
         <h2>Προορισμός</h2>
@@ -211,5 +194,27 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Το Πορτοφόλι</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Σάρωση</h2>
+        Επειδή το Monero θέλει να κρατάει τα πράγματα ιδιωτικά, κάθε φορά που ανοίγεις ένα πορτοφόλι
+        Monerujo πρέπει να σαρώσουμε όλο το blockchain για να βρεθούν νέα ληφθέντα Moneroj στο πορτοφόλι σας, αυτό
+        αποθηκεύει μόνο πληροφορίες στο τηλέφωνό σου που ανιστοιχούν στο πορτοφόλι σου. Μερικές φορές
+        μπορεί να χρειαστεί λίγος χρόνος γιατί δεν έχεις συγχρονίσει για μεγάλο χρονικό διάστημα.
+        <h2>Το Υπόλοιπο</h2>
+        <p><b>Βοήθεια! Το υπόλοιπο του πορτοφολιού μου εξαφανίστηκε ή ειναι μη επιβεβαιωμένο!</b><br/>
+        Μην πανικοβάλεσαι! Όταν στέλνεις κεφάλαια από το πορτοφόλι σου, ένα μέρος
+        του υπολοίπου σου θα δείχνει για λίγο ως μη επιβεβαιωμένο.
+        Αυτό συμβαίνει σαν αποτέλεσμα του πως το Monero ανταλλάσεται στο blockchain και το πως δουλεύουν τα ρέστα.
+        Διάβασε περισσότερα για τα ρέστα εδώ(Αγγλικά) https://getmonero.org/resources/moneropedia/change.html
+        <h2>Λίστα Συναλλαγών</h2>
+        <p>Μια λίστα απο τις συναλλαγές του πορτοφολιού. Στα πορτοφόλια παρακολούθησης φαίνοντε μόνο οι εισερχόμενες συναλλαγές.</p>
     ]]></string>
 </resources>

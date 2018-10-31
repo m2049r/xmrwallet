@@ -51,7 +51,6 @@ import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
-import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -91,6 +90,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     private String password;
 
+    private long streetMode = 0;
+
     @Override
     public void onPasswordChanged(String newPassword) {
         password = newPassword;
@@ -127,6 +128,27 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public boolean isSynced() {
         return synced;
+    }
+
+    @Override
+    public boolean isStreetMode() {
+        return streetMode > 0;
+    }
+
+    public void toggleStreetMode() {
+        if (streetMode == 0) {
+            streetMode = getWallet().getDaemonBlockChainHeight();
+        } else {
+            streetMode = 0;
+        }
+        Timber.e("streetMode=" + streetMode);
+        updateAccountsBalance();
+        forceUpdate();
+    }
+
+    @Override
+    public long getStreetModeHeight() {
+        return streetMode;
     }
 
     @Override
@@ -196,7 +218,14 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         MenuItem renameItem = menu.findItem(R.id.action_rename);
         if (renameItem != null)
             renameItem.setVisible(hasWallet() && getWallet().isSynchronized());
-        return true;
+        MenuItem streetmodeItem = menu.findItem(R.id.action_streetmode);
+        if (streetmodeItem != null)
+            if (isStreetMode()) {
+                streetmodeItem.setIcon(R.drawable.gunther_csi_24dp);
+            } else {
+                streetmodeItem.setIcon(R.drawable.gunther_24dp);
+            }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -228,6 +257,15 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 return true;
             case R.id.action_rename:
                 onAccountRename();
+                return true;
+            case R.id.action_streetmode:
+                toggleStreetMode();
+                if (isStreetMode()) {
+                    toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+                } else {
+                    showNet();
+                }
+                invalidateOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -325,6 +363,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
     }
 
+    @Override
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");
         return mBoundService.getWallet();
@@ -971,10 +1010,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     // drawer stuff
 
     void updateAccountsBalance() {
-        final Wallet wallet = getWallet();
-        final TextView tvBalance = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvBalance);
-        tvBalance.setText(getString(R.string.accounts_balance,
-                Helper.getDisplayAmount(wallet.getBalanceAll(), 5)));
+        final TextView tvBalance = accountsView.getHeaderView(0).findViewById(R.id.tvBalance);
+        if (!isStreetMode()) {
+            tvBalance.setText(getString(R.string.accounts_balance,
+                    Helper.getDisplayAmount(getWallet().getBalanceAll(), 5)));
+        } else {
+            tvBalance.setText(null);
+        }
     }
 
     void updateAccountsHeader() {
@@ -1131,4 +1173,16 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+//    @Override
+//    public void invalidateOptionsMenu() {
+//        super.invalidateOptionsMenu();
+//        if (isStreetMode()) {
+//            item.setIcon(R.drawable.gunther_csi_24dp);
+//            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+//        } else {
+//            item.setIcon(R.drawable.gunther_24dp);
+//            showNet();
+//        }
+//    }
 }

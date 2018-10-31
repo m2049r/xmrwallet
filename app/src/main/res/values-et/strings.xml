@@ -6,7 +6,6 @@
 
     <string name="menu_share">Jaga</string>
     <string name="menu_help">Abi</string>
-    <string name="menu_info">Info</string>
     <string name="menu_receive">Küsi raha</string>
     <string name="menu_rename">Nimeta ümber &#8230;</string>
     <string name="menu_archive">Arhiveeri</string>
@@ -352,4 +351,10 @@
     <string name="nfc_tag_read_what">Ma ei tea, mida sa tahad!</string>
     <string name="nfc_tag_read_success">Sildi lugemine õnnestus</string>
     <string name="nfc_tag_tap">NFC on saadaval!</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Details</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

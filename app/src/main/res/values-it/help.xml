@@ -105,20 +105,6 @@
         <p>Effettua un backup e successivamente elimina il portafoglio. La copia rimane nella cartella <tt>backups</tt>. Se non hai più bisogno dei backup, è meglio cancellare i file interessati utilizzando un&apos;applicazione di tipo file explorer o un&apos;applicazione di rimozione dati sicura.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Il portafoglio</h1>
-        <h2>Scansione</h2>
-        Dal momento che a Monero piace tenere le cose private, tutte le volte in cui apri un portafoglio Monerujo dobbiamo effettuare una scansione della blockchain per controllare se nuovi Moneroj sono stati inviati al tuo portafoglio. Questa procedura salva sul tuo telefono informazioni che riguardano il tuo portafoglio. A volte essa può risultare lenta perché la scansione non è stata fatta da parecchio tempo.
-        <h2>Il Saldo</h2>
-        <p><b>Aiuto! Il saldo del mio portafoglio è scomparso o è non confermato!</b><br/>
-        Nessuna paura! Quando invii fondi dal tuo portafoglio, parte del tuo saldo viene temporaneamente visualizzato come non-confermato.
-		Questo è un effetto di come Monero viene scambiato sulla blockchain e di come funzionano i resti.
-        Ulteriori informazioni sui resti su
-        https://getmonero.org/it/resources/moneropedia/change.html
-        <h2>Lista delle transazioni</h2>
-        <p>Una lista delle transazioni relative al portafoglio. Nei portafogli solo-visualizzazione, vengono visualizzate solo le transazioni in ingresso.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Dettagli della transazione</h1>
         <h2>Destinazione</h2>
@@ -182,5 +168,24 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Il portafoglio</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Scansione</h2>
+        Dal momento che a Monero piace tenere le cose private, tutte le volte in cui apri un portafoglio Monerujo dobbiamo effettuare una scansione della blockchain per controllare se nuovi Moneroj sono stati inviati al tuo portafoglio. Questa procedura salva sul tuo telefono informazioni che riguardano il tuo portafoglio. A volte essa può risultare lenta perché la scansione non è stata fatta da parecchio tempo.
+        <h2>Il Saldo</h2>
+        <p><b>Aiuto! Il saldo del mio portafoglio è scomparso o è non confermato!</b><br/>
+        Nessuna paura! Quando invii fondi dal tuo portafoglio, parte del tuo saldo viene temporaneamente visualizzato come non-confermato.
+		Questo è un effetto di come Monero viene scambiato sulla blockchain e di come funzionano i resti.
+        Ulteriori informazioni sui resti su
+        https://getmonero.org/it/resources/moneropedia/change.html
+        <h2>Lista delle transazioni</h2>
+        <p>Una lista delle transazioni relative al portafoglio. Nei portafogli solo-visualizzazione, vengono visualizzate solo le transazioni in ingresso.</p>
     ]]></string>
 </resources>

@@ -6,7 +6,6 @@
 
     <string name="menu_share">Поделиться</string>
     <string name="menu_help">Помощь</string>
-    <string name="menu_info">Информация</string>
     <string name="menu_receive">Получить</string>
     <string name="menu_rename">Переименовать &#8230;</string>
     <string name="menu_archive">Архив</string>
@@ -356,4 +355,8 @@
     <string name="send_address_hint">XMR/BTC адрес получателя или OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Информация</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

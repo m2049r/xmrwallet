@@ -135,8 +135,13 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         Timber.d("onResumeFragment()");
         Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
-        tvFunds.setText(getString(R.string.send_available,
-                Wallet.getDisplayAmount(funds)));
+        if (!sendListener.getActivityCallback().isStreetMode()) {
+            tvFunds.setText(getString(R.string.send_available,
+                    Wallet.getDisplayAmount(funds)));
+        } else {
+            tvFunds.setText(getString(R.string.send_available,
+                    getString(R.string.unknown_amount)));
+        }
         if ((evAmount.getAmount() == null) || evAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
             if ((data != null) && (data.amount != null)) {
@@ -178,8 +183,15 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
                 double availableXmr = 1.0 * funds / 1000000000000L;
                 maxBtc = Math.min(maxBtc, availableXmr * orderParameters.getPrice());
 
-                String availBtcString = df.format(availableXmr * orderParameters.getPrice());
-                String availXmrString = df.format(availableXmr);
+                String availBtcString;
+                String availXmrString;
+                if (!sendListener.getActivityCallback().isStreetMode()) {
+                    availBtcString = df.format(availableXmr * orderParameters.getPrice());
+                    availXmrString = df.format(availableXmr);
+                } else {
+                    availBtcString = getString(R.string.unknown_amount);
+                    availXmrString = availBtcString;
+                }
                 tvFunds.setText(getString(R.string.send_available_btc,
                         availXmrString,
                         availBtcString));

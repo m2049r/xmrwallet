@@ -126,20 +126,6 @@
 		</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Peňaženka</h1>
-        <h2>Skenovanie</h2>
-        Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
-		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.		
-        <h2>Zostatok</h2>
-        <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
-        Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.        
-        Súvisí to s tým ako je Monero navrhnuté a ako funguje zmena v blockchain.
-		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
-        <h2>Zoznam Transakcií</h2>
-        <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detaily Transakcie</h1>
         <h2>Destinácia</h2>
@@ -216,4 +202,22 @@
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z XMR.TO návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
 
+    <string name="help_wallet"><![CDATA[
+        <h1>Peňaženka</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Skenovanie</h2>
+        Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
+		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.
+        <h2>Zostatok</h2>
+        <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
+        Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
+        Súvisí to s tým ako je Monero navrhnuté a ako funguje zmena v blockchain.
+		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
+        <h2>Zoznam Transakcií</h2>
+        <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
+    ]]></string>
 </resources>

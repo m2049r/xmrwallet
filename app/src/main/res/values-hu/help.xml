@@ -119,24 +119,6 @@
         azokat egy fájlkezelő vagy biztonságos tisztítóapplikáció használatával.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>A tárca</h1>
-        <h2>Beolvasás</h2>
-        Mivel a Monero szereti titokban tartani a dolgokat, így a monerujo-tárca minden egyes megnyitásakor
-        beolvasásra kerül a blokklánc, hogy megnézzük, került-e a tárcádba Monero. Ez csakis olyan információt
-        tárol a telefonodon, mely a tárcádhoz tartozik. Ha már hosszú ideje nem szinkronizáltál, a művelet
-        eltarthat egy ideig.
-        <h2>Az egyenleg</h2>
-        <p><b>Segítség! A tárcaegyenlegem eltűnt vagy függőben van!</b><br/>
-        Ne pánikolj! Amikor pénzt küldesz a tárcádból, az egyenleged egy része átmenetileg függőként
-        fog megjelenni.
-        Ez a Monero blokkláncon való kicserélődési módjának és a visszajáró kezelésének eredményeképp van.
-        Erről részletesen a https://getmonero.org/resources/moneropedia/change.html weboldalon olvashatsz.
-        <h2>Tranzakciólista</h2>
-        <p>A tárcához tartozó tranzakciók listája. A csak megtekintésre szolgáló tárcák esetében kizárólag
-        a bejövő tranzakciók kerülnek megjelenítésre.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Tranzakciórészletek</h1>
         <h2>Kedvezményezett címe</h2>
@@ -233,5 +215,28 @@
         <p>Add meg a címhez tartozó első tranzakció blokkszámát a Visszaállítási lánchossz mezőben, de megadhatod dátum
         formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
         használata <em>előttről</em>.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>A tárca</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Beolvasás</h2>
+        Mivel a Monero szereti titokban tartani a dolgokat, így a monerujo-tárca minden egyes megnyitásakor
+        beolvasásra kerül a blokklánc, hogy megnézzük, került-e a tárcádba Monero. Ez csakis olyan információt
+        tárol a telefonodon, mely a tárcádhoz tartozik. Ha már hosszú ideje nem szinkronizáltál, a művelet
+        eltarthat egy ideig.
+        <h2>Az egyenleg</h2>
+        <p><b>Segítség! A tárcaegyenlegem eltűnt vagy függőben van!</b><br/>
+        Ne pánikolj! Amikor pénzt küldesz a tárcádból, az egyenleged egy része átmenetileg függőként
+        fog megjelenni.
+        Ez a Monero blokkláncon való kicserélődési módjának és a visszajáró kezelésének eredményeképp van.
+        Erről részletesen a https://getmonero.org/resources/moneropedia/change.html weboldalon olvashatsz.
+        <h2>Tranzakciólista</h2>
+        <p>A tárcához tartozó tranzakciók listája. A csak megtekintésre szolgáló tárcák esetében kizárólag
+        a bejövő tranzakciók kerülnek megjelenítésre.</p>
     ]]></string>
 </resources>

@@ -71,6 +71,8 @@ public class SendFragment extends Fragment
 
         long getTotalFunds();
 
+        boolean isStreetMode();
+
         void onPrepareSend(String tag, TxData data);
 
         boolean verifyWalletPassword(String password);

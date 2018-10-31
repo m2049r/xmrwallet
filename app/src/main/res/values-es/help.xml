@@ -136,24 +136,6 @@
         deberás borrarlas con un explorador de archivos o una aplicacin de borrado seguro.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>El monedero</h1>
-        <h2>Escaneado</h2>
-        Como a Monero le gusta mantener las cosas privadas, cada vez que abres una cartera de
-        Monerujo es necesario escanear la cadena de bloques para ver si nuevos moneroj han sido
-        enviados a tu dirección. Esto solo almacena en tu teléfono las transacciones que pertenecen a tu
-        monedero. Esto puede llevar un rato si hace tiempo que no sincronizas.
-        <h2>Saldo</h2>
-        <p><b>¡Ayuda! ¡El saldo de mi monedero ha desaparecido o aparece sin confirmar!</b><br/>
-        ¡No entres en pánico! Cuando envias fondos a tu monedero, parte de tu saldo se mostrará
-        temporalmente como sin confirmar.
-        Esto es debido a como funcionan las transacciones y su cambio en Monero. Todo está bien.
-        Puedes leer más al respecto en https://getmonero.org/resources/moneropedia/change.html
-        <h2>Lista de transacciones</h2>
-        <p>Es una lista con las transacciones del monedero. Ten en cuenta que en monederos de solo vista, únicamente se
-        mostrarán las transacciones entrantes y no las salientes, por lo tanto la suma no es indicativa de los fondos disponibles.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalles de la transacción</h1>
         <h2>Destinatario</h2>
@@ -249,5 +231,28 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>El monedero</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Escaneado</h2>
+        Como a Monero le gusta mantener las cosas privadas, cada vez que abres una cartera de
+        Monerujo es necesario escanear la cadena de bloques para ver si nuevos moneroj han sido
+        enviados a tu dirección. Esto solo almacena en tu teléfono las transacciones que pertenecen a tu
+        monedero. Esto puede llevar un rato si hace tiempo que no sincronizas.
+        <h2>Saldo</h2>
+        <p><b>¡Ayuda! ¡El saldo de mi monedero ha desaparecido o aparece sin confirmar!</b><br/>
+        ¡No entres en pánico! Cuando envias fondos a tu monedero, parte de tu saldo se mostrará
+        temporalmente como sin confirmar.
+        Esto es debido a como funcionan las transacciones y su cambio en Monero. Todo está bien.
+        Puedes leer más al respecto en https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de transacciones</h2>
+        <p>Es una lista con las transacciones del monedero. Ten en cuenta que en monederos de solo vista, únicamente se
+        mostrarán las transacciones entrantes y no las salientes, por lo tanto la suma no es indicativa de los fondos disponibles.</p>
     ]]></string>
 </resources>

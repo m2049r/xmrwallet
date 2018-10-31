@@ -117,24 +117,6 @@
         num sistema de gestão de ficheiros ou com uma app que apaga de forma segura.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>A Carteira</h1>
-        <h2>A Examinar</h2>
-        Como o Monero gosta de manter as coisas privadas, cada vez que abres uma carteira Monerujo temos
-        que examinar a blockchain para ver se novos Moneroj foram enviados para a tua carteira. Apenas
-        informação correspondente à tua carteira é guardada no telefone. Por vezes pode demorar algum tempo
-        por já não sincronizares há algum tempo.
-        <h2>O Saldo</h2>
-        <p><b>Ajudem! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
-        Não entres em pânico! Quando envias fundos da tua carteira, algum do teu saldo aparece temporariamente
-        como não confirmado.
-        Isto acontece como resultado da forma como os Moneroj são trocados na blockchain.
-        Podes ler mais sobre iston em https://getmonero.org/resources/moneropedia/change.html
-        <h2>Lista de Transacções</h2>
-        <p>Uma lista de transacções da carteira. Em carteiras de visualização, apenas são mostradas transacções
-        de depósito.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da Transacção</h1>
         <h2>Destino</h2>
@@ -234,5 +216,28 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>A Carteira</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>A Examinar</h2>
+        Como o Monero gosta de manter as coisas privadas, cada vez que abres uma carteira Monerujo temos
+        que examinar a blockchain para ver se novos Moneroj foram enviados para a tua carteira. Apenas
+        informação correspondente à tua carteira é guardada no telefone. Por vezes pode demorar algum tempo
+        por já não sincronizares há algum tempo.
+        <h2>O Saldo</h2>
+        <p><b>Ajudem! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
+        Não entres em pânico! Quando envias fundos da tua carteira, algum do teu saldo aparece temporariamente
+        como não confirmado.
+        Isto acontece como resultado da forma como os Moneroj são trocados na blockchain.
+        Podes ler mais sobre iston em https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de Transacções</h2>
+        <p>Uma lista de transacções da carteira. Em carteiras de visualização, apenas são mostradas transacções
+        de depósito.</p>
     ]]></string>
 </resources>

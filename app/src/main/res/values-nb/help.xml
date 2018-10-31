@@ -119,23 +119,6 @@
 		eller en sikker sletteapp.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Lommeboka</h1>
-        <h2>Skanning</h2>
-        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
-        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
-        lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
-		tid fordi du ikke har synkronisert på en stund.
-        <h2>Saldo</h2>
-        <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
-        Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
-		vist som ubekrefta en liten periode.
-        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
-        Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaksjonsliste</h2>
-        <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaksjonsdetaljer</h1>
         <h2>Destinasjon</h2>
@@ -231,5 +214,27 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Lommeboka</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Skanning</h2>
+        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
+        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
+        lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
+		tid fordi du ikke har synkronisert på en stund.
+        <h2>Saldo</h2>
+        <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
+        Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
+		vist som ubekrefta en liten periode.
+        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
+        Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaksjonsliste</h2>
+        <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
     ]]></string>
 </resources>

@@ -6,7 +6,6 @@
 
     <string name="menu_share">Condividi</string>
     <string name="menu_help">Aiuto</string>
-    <string name="menu_info">Dettagli</string>
     <string name="menu_receive">Ricevi</string>
     <string name="menu_rename">Rinomina &#8230;</string>
     <string name="menu_archive">Archivia</string>
@@ -356,4 +355,8 @@
     <string name="send_address_hint"> Indirizzo XMR/BTC del ricevente o OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Versione del nodo incompatibile - si prega di aggiornare!</string>
+
+    <string name="menu_info">Dettagli</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

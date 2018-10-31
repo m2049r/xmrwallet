@@ -8,7 +8,6 @@
 
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
-    <string name="menu_info">Details</string>
     <string name="menu_receive">Receive</string>
     <string name="menu_rename">Rename &#8230;</string>
     <string name="menu_archive">Archive</string>
@@ -401,4 +400,11 @@
     <string name="nfc_tag_tap">NFC Available!</string>
 
     <string name="info_v9" translatable="false">V9 node required</string>
+
+    <string name="unknown_amount" translatable="false">\?\?\?</string>
+    <string name="text_streetmode" translatable="false">Street Mode</string>
+
+    <string name="menu_info">Show Secrets!</string>
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

@@ -6,7 +6,6 @@
 
     <string name="menu_share">Megosztás</string>
     <string name="menu_help">Segítség</string>
-    <string name="menu_info">Részletek</string>
     <string name="menu_receive">Fogadás</string>
     <string name="menu_rename">Átnevezés&#8230;</string>
     <string name="menu_archive">Archiválás</string>
@@ -355,4 +354,8 @@
     <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Részletek</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

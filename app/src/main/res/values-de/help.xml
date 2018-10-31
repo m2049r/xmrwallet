@@ -121,22 +121,6 @@
 	die App sauber und ordentlich deinstallieren</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Das Wallet</h1>
-        <h2>Scannen</h2>
-        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen einer Monerujo Wallet die Blockchain gescannt
-	um zu überprüfen ob neue Moneroj zu dieser Wallet gesendet wurden. Dies speichert ausschließlich Informationen
-	die zur Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
-        eine Weile her ist.
-        <h2>Das Saldo</h2>
-        <p><b>Hilfe! Mein Wallet Saldo ist verschwunden oder ist unbestätigt!</b><br/>
-        Keine Panik! Wenn du Gelder von deiner Wallet sendest wird ein Teil deines Saldos kurzzeitig als unbestätigt angezeigt.
-        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Monero auf der Blockchain bewegt werden.
-        Lies mehr darüber auf https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaktionsliste</h2>
-        <p>Eine Liste deiner Transaktionen. In View Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetails</h1>
         <h2>Ziel</h2>
@@ -226,5 +210,26 @@
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Das Wallet</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Scannen</h2>
+        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen einer Monerujo Wallet die Blockchain gescannt
+	um zu überprüfen ob neue Moneroj zu dieser Wallet gesendet wurden. Dies speichert ausschließlich Informationen
+	die zur Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
+        eine Weile her ist.
+        <h2>Das Saldo</h2>
+        <p><b>Hilfe! Mein Wallet Saldo ist verschwunden oder ist unbestätigt!</b><br/>
+        Keine Panik! Wenn du Gelder von deiner Wallet sendest wird ein Teil deines Saldos kurzzeitig als unbestätigt angezeigt.
+        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Monero auf der Blockchain bewegt werden.
+        Lies mehr darüber auf https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaktionsliste</h2>
+        <p>Eine Liste deiner Transaktionen. In View Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
     ]]></string>
 </resources>

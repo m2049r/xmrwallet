@@ -127,26 +127,6 @@
         une application d’explorateur de fichiers ou une application de suppression sécurisée.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Le Portefeuille</h1>
-        <h2>Analyse</h2>
-        Comme Monero aime garder les choses confidentielles, nous devons scanner la chaîne de blocs
-        chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveau Moneroj ont été
-        envoyés à votre portefeuille, cela ne stock sur votre appareil que les informations appartenant
-        à votre portefeuille. Parfois cela peut prendre un moment si vous n’avez pas synchronisé depuis
-        longtemps.
-        <h2>Le Solde</h2>
-        <p><b>Au secours ! Le solde de mon portefeuille à disparu ou est non confirmé !</b><br/>
-        Ne paniquez pas ! lorsque vous envoyez des fonds sur votre portefeuille, une partie de votre
-        solde sera temporairement affichée comme non confirmée.
-        Cela se produit à cause de la façon dont Monero est échangé sur la chaîne de blocs et du
-        fonctionnement de la monnaie dans Monero. Aprenez-en plus à propos de la monnaie dans Monero
-        sur https://getmonero.org/fr/resources/moneropedia/change.html
-        <h2>Liste des Transactions</h2>
-        <p>Une listes des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
-        transactions entrantes sont affichées.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Détails de la Transaction</h1>
         <h2>Destination</h2>
@@ -247,5 +227,30 @@
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
         Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Le Portefeuille</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Analyse</h2>
+        Comme Monero aime garder les choses confidentielles, nous devons scanner la chaîne de blocs
+        chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveau Moneroj ont été
+        envoyés à votre portefeuille, cela ne stock sur votre appareil que les informations appartenant
+        à votre portefeuille. Parfois cela peut prendre un moment si vous n’avez pas synchronisé depuis
+        longtemps.
+        <h2>Le Solde</h2>
+        <p><b>Au secours ! Le solde de mon portefeuille à disparu ou est non confirmé !</b><br/>
+        Ne paniquez pas ! lorsque vous envoyez des fonds sur votre portefeuille, une partie de votre
+        solde sera temporairement affichée comme non confirmée.
+        Cela se produit à cause de la façon dont Monero est échangé sur la chaîne de blocs et du
+        fonctionnement de la monnaie dans Monero. Aprenez-en plus à propos de la monnaie dans Monero
+        sur https://getmonero.org/fr/resources/moneropedia/change.html
+        <h2>Liste des Transactions</h2>
+        <p>Une listes des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
+        transactions entrantes sont affichées.</p>
     ]]></string>
 </resources>

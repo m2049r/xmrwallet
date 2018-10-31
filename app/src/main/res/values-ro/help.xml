@@ -107,25 +107,6 @@
 		va trebui să le ștergi folosind un explorator de fișiere sau să ștergi aplicația într-un mod sigur.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Portofelul</h1>
-        <h2>Scanarea</h2>
-        Deoarece Monero păstrează lucrurile într-un mod privat, de fiecare dată când deschizi
-		portofelul Monerujo, noi scanăm baza de date distribuită (blockchain) pentru a vedea dacă
-		ai primit Monero în portofel, această metodă stochează doar informații relevante portofelului tău.
-		Câteodată este necesar un timp îndelungat pentru această operație în cazul în care nu ai fost
-		sincronizat pentru o perioadă îndelungată.
-        <h2>Balanța</h2>
-        <p><b>Ajutor! Balanța portofelului meu a dispărut sau este neconfirmată!</b><br/>
-        Nu te panica! În momentul în care trimițo fonduri din portofelul tău, o parte din balanța
-		va fi arătată ca și neconfirmată. Acest lucru se întâmplă ca urmare a modului în care este
-		schimbat Monero în baza de date distribuită și modul în care se face schimbul.
-		Citește mai multe despre schimb la adresa https://getmonero.org/resources/moneropedia/change.html
-        <h2>Lista tranzacțiilor</h2>
-        <p>O listă a tranzacțiilor portofelului. În portofele create folosind cheia de vizualizare,
-		doar tranzacțiile primite vor fi afișate.</p>
-    ]]></string>
-	
     <string name="help_tx_details"><![CDATA[
         <h1>Detaliile tranzacției</h1>
         <h2>Destinație</h2>
@@ -219,5 +200,29 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Portofelul</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Scanarea</h2>
+        Deoarece Monero păstrează lucrurile într-un mod privat, de fiecare dată când deschizi
+		portofelul Monerujo, noi scanăm baza de date distribuită (blockchain) pentru a vedea dacă
+		ai primit Monero în portofel, această metodă stochează doar informații relevante portofelului tău.
+		Câteodată este necesar un timp îndelungat pentru această operație în cazul în care nu ai fost
+		sincronizat pentru o perioadă îndelungată.
+        <h2>Balanța</h2>
+        <p><b>Ajutor! Balanța portofelului meu a dispărut sau este neconfirmată!</b><br/>
+        Nu te panica! În momentul în care trimițo fonduri din portofelul tău, o parte din balanța
+		va fi arătată ca și neconfirmată. Acest lucru se întâmplă ca urmare a modului în care este
+		schimbat Monero în baza de date distribuită și modul în care se face schimbul.
+		Citește mai multe despre schimb la adresa https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista tranzacțiilor</h2>
+        <p>O listă a tranzacțiilor portofelului. În portofele create folosind cheia de vizualizare,
+		doar tranzacțiile primite vor fi afișate.</p>
     ]]></string>
 </resources>
