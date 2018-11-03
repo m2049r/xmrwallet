@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 134
-        versionName "1.8.4 'Bullets And Octane-Pirates'"
+        versionCode 140
+        versionName "1.9.0 'We Comin' Rougher'"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
