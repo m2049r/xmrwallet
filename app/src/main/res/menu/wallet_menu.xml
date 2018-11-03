@@ -3,31 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_credits"
-        android:icon="@drawable/ic_favorite_white_24dp"
-        android:orderInCategory="10"
-        android:title="@string/label_credits"
+        android:id="@+id/action_streetmode"
+        android:checkable="true"
+        android:icon="@drawable/gunther_24dp"
+        android:orderInCategory="100"
+        android:title="@string/menu_streetmode"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_info"
-        android:icon="@drawable/ic_info_white_24dp"
-        android:orderInCategory="100"
-        android:title="@string/menu_info"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_rename"
-        android:icon="@drawable/ic_edit_white_24dp"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/menu_rename"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_help_wallet"
-        android:icon="@drawable/ic_help_white_24dp"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         android:title="@string/menu_help"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_credits"
+        android:orderInCategory="400"
+        android:title="@string/label_credits"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_info"
+        android:orderInCategory="500"
+        android:title="@string/menu_info"
         app:showAsAction="never" />
 
 </menu>

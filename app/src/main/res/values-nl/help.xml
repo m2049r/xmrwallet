@@ -94,19 +94,6 @@
         <p>Een back-up maken en vervolgens de portemonnee verwijderen. De kopie blijft in de map <tt>backups</tt> staan. Heb je je back-ups niet meer nodig? Verwijder ze dan met een bestandenverkenner of verwijder de app veilig.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>De portemonnee</h1>
-        <h2>Scannen</h2>
-        Omdat Monero graag alles geheim houdt, scannen we iedere keer als je een Monerujo-portemonnee opent de blockchain om te kijken of er nieuwe moneroj naar je portemonnee zijn overgemaakt. Hierbij wordt alleen informatie die bij je portemonnee hoort opgeslagen op je telefoon. Soms kan het even duren als je een tijd niet hebt gesynchroniseerd.
-        <h2>Het saldo</h2>
-        <p><b>Help! Het saldo van mijn portemonnee is verdwenen of niet bevestigd!</b><br/>
-        Geen paniek! Wanneer je geld uit je portemonnee verzend, wordt een deel van je saldo tijdelijk aangegeven als onbevestigd.
-        Dit is het gevolg van hoe Monero wordt gemengd op de blockchain en hoe wisselgeld werkt.
-        Lees meer over wisselgeld op https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transactielijst</h2>
-        <p>Een lijst van de transacties van de portemonnee. In een alleen-lezen portemonnee worden alleen binnenkomende transacties weergegeven.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transactiedetails</h1>
         <h2>Bestemming</h2>
@@ -158,5 +145,23 @@
         <p>Houd er rekening mee dat deze geheime sleutel maar 24 uur geldig is nadat de transactie is gestart!</p>
         <h2>XMR.TO telt af!</h2>
         <p>Als de knop heeft afgeteld naar nul, moet je een nieuw aanbod van XMR.TO aanvragen. Ga daarvoor terug naar de vorige stap en open het scherm \"Bevestigen\" opnieuw.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>De portemonnee</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Scannen</h2>
+        Omdat Monero graag alles geheim houdt, scannen we iedere keer als je een Monerujo-portemonnee opent de blockchain om te kijken of er nieuwe moneroj naar je portemonnee zijn overgemaakt. Hierbij wordt alleen informatie die bij je portemonnee hoort opgeslagen op je telefoon. Soms kan het even duren als je een tijd niet hebt gesynchroniseerd.
+        <h2>Het saldo</h2>
+        <p><b>Help! Het saldo van mijn portemonnee is verdwenen of niet bevestigd!</b><br/>
+        Geen paniek! Wanneer je geld uit je portemonnee verzend, wordt een deel van je saldo tijdelijk aangegeven als onbevestigd.
+        Dit is het gevolg van hoe Monero wordt gemengd op de blockchain en hoe wisselgeld werkt.
+        Lees meer over wisselgeld op https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transactielijst</h2>
+        <p>Een lijst van de transacties van de portemonnee. In een alleen-lezen portemonnee worden alleen binnenkomende transacties weergegeven.</p>
     ]]></string>
 </resources>

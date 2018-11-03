@@ -6,7 +6,6 @@
 
     <string name="menu_share">Delen</string>
     <string name="menu_help">Help</string>
-    <string name="menu_info">Details</string>
     <string name="menu_receive">Ontvangen</string>
     <string name="menu_rename">Hernoemen…</string>
     <string name="menu_archive">Archiveren</string>
@@ -352,4 +351,8 @@
     <string name="send_address_no_dnssec">OpenAlias zonder DNSSEC - adres kan nep zijn</string>
 
     <string name="status_wallet_connect_wrongversion">Incompatibele versie van node. Je moet upgraden!</string>
+
+    <string name="menu_info">Details</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

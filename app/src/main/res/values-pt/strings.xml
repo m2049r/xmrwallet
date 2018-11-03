@@ -6,7 +6,6 @@
 
     <string name="menu_share">Partilhar</string>
     <string name="menu_help">Ajuda</string>
-    <string name="menu_info">Detalhes</string>
     <string name="menu_receive">Receber</string>
     <string name="menu_rename">Renomear &#8230;</string>
     <string name="menu_archive">Arquivar</string>
@@ -357,4 +356,8 @@
     <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Detalhes</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

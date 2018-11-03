@@ -7,7 +7,6 @@
 
     <string name="menu_share">Dela</string>
     <string name="menu_help">Hjälp</string>
-    <string name="menu_info">Detaljer</string>
     <string name="menu_receive">Ta emot</string>
     <string name="menu_rename">Byt namn …</string>
     <string name="menu_archive">Arkivera</string>
@@ -338,4 +337,8 @@
     <string name="send_address_hint">Mottagarens XMR/BTC-adress eller OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Detaljer</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

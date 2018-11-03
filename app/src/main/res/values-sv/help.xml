@@ -107,22 +107,6 @@
         </p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Plånboken</h1>
-        <h2>Inläsning</h2>
-        Eftersom Monero gillar att ha saker privat, läser Monerujo in blockkedjan för att se om du fått
-        nya Moneroj varje gång du öppnar plånboken, det lagras alltså bara information på din mobil som
-        har med din plånbok att göra. Ibland kan det ta lång tid om du inte har synkroniserat på länge.
-        <h2>Saldot</h2>
-        <p><b>Hjälp! Min plånboks saldo har försvunnit eller är inte bekräftat!</b><br/>
-        Få inte panik! När du skickar pengar från din plånbok, visas en del av ditt saldo temporärt
-        som obekräftat.
-        Det här händer på grund av hur Monero är skickat på blockkedjan och hur växel fungerar.
-        Läs mer om växel på https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaktionlista</h2>
-        <p>En lista av plånbokens transaktioner. I vis-plånböcker, visas bara inkommande transaktioner.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetaljer</h1>
         <h2>Destination</h2>
@@ -214,5 +198,26 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Plånboken</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Inläsning</h2>
+        Eftersom Monero gillar att ha saker privat, läser Monerujo in blockkedjan för att se om du fått
+        nya Moneroj varje gång du öppnar plånboken, det lagras alltså bara information på din mobil som
+        har med din plånbok att göra. Ibland kan det ta lång tid om du inte har synkroniserat på länge.
+        <h2>Saldot</h2>
+        <p><b>Hjälp! Min plånboks saldo har försvunnit eller är inte bekräftat!</b><br/>
+        Få inte panik! När du skickar pengar från din plånbok, visas en del av ditt saldo temporärt
+        som obekräftat.
+        Det här händer på grund av hur Monero är skickat på blockkedjan och hur växel fungerar.
+        Läs mer om växel på https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaktionlista</h2>
+        <p>En lista av plånbokens transaktioner. I vis-plånböcker, visas bara inkommande transaktioner.</p>
     ]]></string>
 </resources>

@@ -6,7 +6,6 @@
 
     <string name="menu_share">Zdieľaj</string>
     <string name="menu_help">Pomoc</string>
-    <string name="menu_info">Detaily</string>
     <string name="menu_receive">Prijať</string>
     <string name="menu_rename">Premenovať &#8230;</string>
     <string name="menu_archive">Archivovať</string>
@@ -354,4 +353,8 @@
     
     <string name="info_v9" translatable="false">vyžaduje sa uzol V9 </string>
     <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
+
+    <string name="menu_info">Detaily</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
 </resources>

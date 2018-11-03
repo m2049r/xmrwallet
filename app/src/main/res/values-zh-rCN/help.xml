@@ -101,21 +101,6 @@
         若你再也不需要这钱包则可利用档案浏览器APP或可安全刪除档案APP将之刪除。</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>钱包介面</h1>
-        <h2>扫描</h2>
-        由于Monero的交易是隐私保护的，因此每当你开启Monerujo钱包时我们必须
-        在区块链上扫描是否有最新的Monero被传送到你的钱包中，将会储存仅与你钱包相关的信息在设备中。
-        若你有好一段时间沒有使用钱包，那这个步骤将会支付你一些时间。
-        <h2>余额</h2>
-        <p><b>救命啊! 我的钱包余额不见了/未确认!</b><br/>
-        別紧张，当你发送交易出去时，你的部分余额可能会暂时显示未确认。
-        这只是Monero在区块链上进行找零的过程。
-        想了解更多关于找零的过程请参阅 https://getmonero.org/resources/moneropedia/change.html
-        <h2>交易列表</h2>
-        <p>钱包交易的列表。在唯读钱包中，仅会显示接收到的交易。</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>交易明細</h1>
         <h2>收款地址</h2>
@@ -192,5 +177,25 @@
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>钱包介面</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>扫描</h2>
+        由于Monero的交易是隐私保护的，因此每当你开启Monerujo钱包时我们必须
+        在区块链上扫描是否有最新的Monero被传送到你的钱包中，将会储存仅与你钱包相关的信息在设备中。
+        若你有好一段时间沒有使用钱包，那这个步骤将会支付你一些时间。
+        <h2>余额</h2>
+        <p><b>救命啊! 我的钱包余额不见了/未确认!</b><br/>
+        別紧张，当你发送交易出去时，你的部分余额可能会暂时显示未确认。
+        这只是Monero在区块链上进行找零的过程。
+        想了解更多关于找零的过程请参阅 https://getmonero.org/resources/moneropedia/change.html
+        <h2>交易列表</h2>
+        <p>钱包交易的列表。在唯读钱包中，仅会显示接收到的交易。</p>
     ]]></string>
 </resources>

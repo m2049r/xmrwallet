@@ -130,23 +130,6 @@
         gerenciador de arquivos.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Carteira</h1>
-        <h2>Escaneando</h2>
-        Como o Monero sempre mantém tudo privado, sempre que você abrir sua carteira o Monerujo precisa escanear
-        o blockchain para identificar se você recebeu algum novo Monero. Somente as informações que correspondem à sua
-        carteira são salvas no celular. De vez em quando esse processo demora,
-        principalmente se faz tempo que você não abre a carteira.
-        <h2>Saldo</h2>
-        <p><b>Ajuda! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
-        Não entre em pânico! Quando você envia uma transação, parte do seu saldo temporariamente é marcado
-        como não-confirmado.
-        Isso acontece devido a maneira como o Monero é trocado no blockchain, e como a noção de \"troco\" funciona.
-        Você pode ler mais sobre o assunto aqui: https://getmonero.org/resources/moneropedia/change.html
-        <h2>Lista de transações</h2>
-        <p>Lista de transações da carteira. Nas carteiras \"somente leitura\", somente as transações de entrada aparecem.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da transação</h1>
         <h2>Destino</h2>
@@ -226,5 +209,27 @@
       <h2>Contagem regressiva do XMR.TO</h2>
       <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
       anterior e faça o processo novamente.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Carteira</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Escaneando</h2>
+        Como o Monero sempre mantém tudo privado, sempre que você abrir sua carteira o Monerujo precisa escanear
+        o blockchain para identificar se você recebeu algum novo Monero. Somente as informações que correspondem à sua
+        carteira são salvas no celular. De vez em quando esse processo demora,
+        principalmente se faz tempo que você não abre a carteira.
+        <h2>Saldo</h2>
+        <p><b>Ajuda! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
+        Não entre em pânico! Quando você envia uma transação, parte do seu saldo temporariamente é marcado
+        como não-confirmado.
+        Isso acontece devido a maneira como o Monero é trocado no blockchain, e como a noção de \"troco\" funciona.
+        Você pode ler mais sobre o assunto aqui: https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de transações</h2>
+        <p>Lista de transações da carteira. Nas carteiras \"somente leitura\", somente as transações de entrada aparecem.</p>
     ]]></string>
 </resources>

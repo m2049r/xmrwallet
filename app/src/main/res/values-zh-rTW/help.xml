@@ -95,21 +95,6 @@
         若你再也不需要這錢包則可利用檔案瀏覽器 App 或可安全刪除檔案 App 將之刪除。</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>錢包介面</h1>
-        <h2>掃描</h2>
-        由於 Monero 的交易是隱私保護的，因此每當你開啟 Monerujo
-        錢包時我們必須在區塊鏈上掃描是否有最新的 Monero 被傳送到你的錢包中，這將會儲存僅與你錢包相關的資訊在裝置中。
-        若你有好一段時間沒有使用錢包，那這個步驟將會花費你一些時間。
-        <h2>餘額</h2>
-        <p><b>救命啊！我的錢包餘額不見了/未確認！</b><br/>
-        別緊張，當你發送交易出去時，你的部分餘額可能會暫時顯示未確認。
-        這只是 Monero 在區塊鏈上進行找零的過程。
-        想了解更多關於找零的過程請參閱 https://getmonero.org/resources/moneropedia/change.html
-        <h2>交易列表</h2>
-        <p>錢包交易的列表。在唯讀錢包中，僅會顯示接收到的交易。</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>交易明細</h1>
         <h2>收款地址</h2>
@@ -182,5 +167,25 @@
         <p>請輸入獨一無二的錢包名稱與錢包密碼。這個密碼是用來保護你在這個裝置上的錢包資料，請使用足夠強度的密碼。</p>
         <p>請在欄位「回復高度」輸入這個地址第一筆交易發生的區塊高度。你也可以依照 YYYY-MM-DD
         格式輸入日期。如果你不是很確定，可以輸入這個錢包地址第一次使用<em>之前</em>的區塊高度或日期。</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>錢包介面</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>掃描</h2>
+        由於 Monero 的交易是隱私保護的，因此每當你開啟 Monerujo
+        錢包時我們必須在區塊鏈上掃描是否有最新的 Monero 被傳送到你的錢包中，這將會儲存僅與你錢包相關的資訊在裝置中。
+        若你有好一段時間沒有使用錢包，那這個步驟將會花費你一些時間。
+        <h2>餘額</h2>
+        <p><b>救命啊！我的錢包餘額不見了/未確認！</b><br/>
+        別緊張，當你發送交易出去時，你的部分餘額可能會暫時顯示未確認。
+        這只是 Monero 在區塊鏈上進行找零的過程。
+        想了解更多關於找零的過程請參閱 https://getmonero.org/resources/moneropedia/change.html
+        <h2>交易列表</h2>
+        <p>錢包交易的列表。在唯讀錢包中，僅會顯示接收到的交易。</p>
     ]]></string>
 </resources>

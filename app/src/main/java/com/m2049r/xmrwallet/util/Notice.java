@@ -33,8 +33,6 @@ import com.m2049r.xmrwallet.dialog.HelpFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import timber.log.Timber;
-
 public class Notice {
     private static final String PREFS_NAME = "notice";
     private static List<Notice> notices = null;
@@ -42,11 +40,18 @@ public class Notice {
     private static final String NOTICE_SHOW_XMRTO_ENABLED_LOGIN = "notice_xmrto_enabled_login";
     private static final String NOTICE_SHOW_XMRTO_ENABLED_SEND = "notice_xmrto_enabled_send";
     private static final String NOTICE_SHOW_LEDGER = "notice_ledger_enabled_login";
+    private static final String NOTICE_SHOW_STREET = "notice_streetmode_login";
 
     private static void init() {
         synchronized (Notice.class) {
             if (notices != null) return;
             notices = new ArrayList<>();
+            notices.add(
+                    new Notice(NOTICE_SHOW_STREET,
+                            R.string.info_streetmode_enabled,
+                            R.string.help_wallet,
+                            1)
+            );
             notices.add(
                     new Notice(NOTICE_SHOW_XMRTO_ENABLED_SEND,
                             R.string.info_xmrto_enabled,
