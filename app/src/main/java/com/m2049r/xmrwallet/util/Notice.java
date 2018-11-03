@@ -41,9 +41,7 @@ public class Notice {
 
     private static final String NOTICE_SHOW_XMRTO_ENABLED_LOGIN = "notice_xmrto_enabled_login";
     private static final String NOTICE_SHOW_XMRTO_ENABLED_SEND = "notice_xmrto_enabled_send";
-    private static final String NOTICE_SHOW_CRAZYPASS = "notice_crazypass_enabled_login";
     private static final String NOTICE_SHOW_LEDGER = "notice_ledger_enabled_login";
-    private static final String NOTICE_SHOW_V9 = "notice_v9_login";
 
     private static void init() {
         synchronized (Notice.class) {
@@ -60,12 +58,6 @@ public class Notice {
                             R.string.info_xmrto_enabled,
                             R.string.help_xmrto,
                             1)
-            );
-            notices.add(
-                    new Notice(NOTICE_SHOW_V9,
-                            R.string.info_v9,
-                            R.string.help_v9,
-                            2)
             );
             notices.add(
                     new Notice(NOTICE_SHOW_LEDGER,
