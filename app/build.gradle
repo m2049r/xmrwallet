@@ -9,6 +9,7 @@ android {
         targetSdkVersion 27
         versionCode 140
         versionName "1.9.0 'We Comin' Rougher'"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

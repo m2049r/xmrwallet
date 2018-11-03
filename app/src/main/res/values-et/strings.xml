@@ -239,7 +239,6 @@
     <string name="send_available">Kontojääk: %1$s XMR</string>
     <string name="send_address_title">Aadress</string>
     <string name="send_amount_title">Kogus</string>
-    <string name="send_settings_title">Seaded</string>
     <string name="send_confirm_title">Kinnita</string>
     <string name="send_success_title">Tehtud</string>
 
@@ -346,7 +345,7 @@
     <string name="nfc_write_failed">Sildi kirjutamine ebaõnnestus!</string>
     <string name="nfc_write_successful">Sildi kirjutamine õnnestus</string>
     <string name="nfc_tag_unsupported">Silt ei toeta NDEF\'i!</string>
-    <string name="nfc_tag_size">Sildil on %d baiti, kuid meil on vaja %d!</string>
+    <string name="nfc_tag_size">Sildil on %1$d baiti, kuid meil on vaja %2$d!</string>
     <string name="nfc_tag_read_undef">Ma ei oska seda silti lugeda!</string>
     <string name="nfc_tag_read_what">Ma ei tea, mida sa tahad!</string>
     <string name="nfc_tag_read_success">Sildi lugemine õnnestus</string>
