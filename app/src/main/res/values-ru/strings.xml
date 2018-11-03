@@ -340,7 +340,7 @@
     <string name="nfc_write_failed">Ошибка записи метки!</string>
     <string name="nfc_write_successful">Успешная запись метки</string>
     <string name="nfc_tag_unsupported">Метка не поддерживает NDEF!</string>
-    <string name="nfc_tag_size">Метка предоставляет %d байт, но нам нужно %d!</string>
+    <string name="nfc_tag_size">Метка предоставляет %1$d байт, но нам нужно %2$d!</string>
     <string name="nfc_tag_read_undef">Я не понимаю эту метку!</string>
     <string name="nfc_tag_read_what">Я не знаю, чего ты хочешь!</string>
     <string name="nfc_tag_read_success">Чтение метки завершено успешно</string>
