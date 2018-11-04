@@ -353,7 +353,7 @@
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 
-    <string name="menu_info">Details</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+    <string name="menu_info">Näita salajast infot</string>
+    <string name="menu_streetmode">Avalik režiim</string>
+    <string name="info_streetmode_enabled">Avalik režiim sisse lülitatud, puuduta lisainfo saamiseks.</string>
 </resources>
