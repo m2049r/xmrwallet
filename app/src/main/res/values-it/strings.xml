@@ -357,6 +357,6 @@
     <string name="status_wallet_connect_wrongversion">Versione del nodo incompatibile - si prega di aggiornare!</string>
 
     <string name="menu_info">Dettagli</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+    <string name="menu_streetmode">Modalità strada</string>
+    <string name="info_streetmode_enabled">Modalità strada abilitata, tocca per maggiori informazioni.</string>
 </resources>
