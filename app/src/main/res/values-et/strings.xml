@@ -351,7 +351,7 @@
     <string name="nfc_tag_read_success">Sildi lugemine õnnestus</string>
     <string name="nfc_tag_tap">NFC on saadaval!</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Serveri versioon ei sobi - palun uuenda!</string>
 
     <string name="menu_info">Näita salajast infot</string>
     <string name="menu_streetmode">Avalik režiim</string>
