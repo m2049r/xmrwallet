@@ -353,7 +353,7 @@
 
     <string name="status_wallet_connect_wrongversion">節點版本不相容 - 請盡速更新！</string>
 
-    <string name="menu_info">詳細資訊</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+    <string name="menu_info">顯示私鑰資訊</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">隱私模式</string>
+    <string name="info_streetmode_enabled">隱私模式已可使用，點擊以查看更多資訊。</string>
 </resources>
