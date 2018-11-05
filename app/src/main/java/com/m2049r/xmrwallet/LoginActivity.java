@@ -193,7 +193,8 @@ public class LoginActivity extends BaseActivity
                             Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
                                 @Override
                                 public void action(String walletName, String password, boolean fingerprintUsed) {
-                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
+                                    if (checkDevice(walletName, password))
+                                        startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
                                 }
                             });
                         } else { // this cannot really happen as we prefilter choices
@@ -225,7 +226,8 @@ public class LoginActivity extends BaseActivity
             Helper.promptPassword(LoginActivity.this, walletName, false, new Helper.PasswordAction() {
                 @Override
                 public void action(String walletName, String password, boolean fingerprintUsed) {
-                    startReceive(walletFile, password);
+                    if (checkDevice(walletName, password))
+                        startReceive(walletFile, password);
                 }
             });
         } else { // this cannot really happen as we prefilter choices
@@ -1160,6 +1162,28 @@ public class LoginActivity extends BaseActivity
         }
     }
 
+    boolean checkDevice(String walletName, String password) {
+        String keyPath = new File(Helper.getWalletRoot(LoginActivity.this),
+                walletName + ".keys").getAbsolutePath();
+        // check if we need connected hardware
+        Wallet.Device device =
+                WalletManager.getInstance().queryWalletDevice(keyPath, password);
+        switch (device) {
+            case Device_Ledger:
+                if (!hasLedger()) {
+                    toast(R.string.open_wallet_ledger_missing);
+                } else {
+                    return true;
+                }
+                break;
+            default:
+                // device could be undefined meaning the password is wrong
+                // this gets dealt with later
+                return true;
+        }
+        return false;
+    }
+
     void promptAndStart(WalletNode walletNode) {
         File walletFile = Helper.getWalletFile(this, walletNode.getName());
         if (WalletManager.getInstance().walletExists(walletFile)) {
@@ -1168,24 +1192,9 @@ public class LoginActivity extends BaseActivity
                     new Helper.PasswordAction() {
                         @Override
                         public void action(String walletName, String password, boolean fingerprintUsed) {
-                            String keyPath = new File(Helper.getWalletRoot(LoginActivity.this),
-                                    walletName + ".keys").getAbsolutePath();
-                            // check if we need connected hardware
-                            Wallet.Device device =
-                                    WalletManager.getInstance().queryWalletDevice(keyPath, password);
-                            switch (device) {
-                                case Device_Ledger:
-                                    if (!hasLedger()) {
-                                        toast(R.string.open_wallet_ledger_missing);
-                                    } else {
-                                        startWallet(walletName, password, fingerprintUsed);
-                                    }
-                                    break;
-                                default:
-                                    // device could be undefined meaning the password is wrong
-                                    // this gets dealt with later
-                                    startWallet(walletName, password, fingerprintUsed);
-                            }
+                            if (checkDevice(walletName, password))
+                                startWallet(walletName, password, fingerprintUsed);
+
                         }
                     });
         } else { // this cannot really happen as we prefilter choices
