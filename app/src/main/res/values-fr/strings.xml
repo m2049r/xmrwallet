@@ -355,9 +355,9 @@
     <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
     <string name="send_address_hint">Adresse ou OpenAlias XMR/BTC du Destinataire</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
 
-    <string name="menu_info">Détails</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+    <string name="menu_info">Montrer les secrets !</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Mode Urbain</string>
+    <string name="info_streetmode_enabled">Mode Urbain activé, tapez pour plus d\'infos.</string>
 </resources>
