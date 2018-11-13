@@ -266,18 +266,65 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 onAccountRename();
                 return true;
             case R.id.action_streetmode:
-                toggleStreetMode();
-                if (isStreetMode()) {
-                    toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+                if (isStreetMode()) { // disable streetmode
+                    onDisableStreetMode();
                 } else {
-                    showNet();
+                    onEnableStreetMode();
                 }
-                invalidateOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void updateStreetMode() {
+        if (isStreetMode()) {
+            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+        } else {
+            showNet();
+        }
+        invalidateOptionsMenu();
+
+    }
+
+    private void onEnableStreetMode() {
+        enableStreetMode(true);
+        updateStreetMode();
+    }
+
+    private void onDisableStreetMode() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                            @Override
+                            public void action(String walletName, String password, boolean fingerprintUsed) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        enableStreetMode(false);
+                                        updateStreetMode();
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
+    }
+
 
     public void onWalletChangePassword() {
         try {
