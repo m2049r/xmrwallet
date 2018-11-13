@@ -80,6 +80,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
     public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
+    public static final String REQUEST_STREETMODE = "streetmode";
 
     private NavigationView accountsView;
     private DrawerLayout drawer;
@@ -87,6 +88,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     private Toolbar toolbar;
     private boolean needVerifyIdentity;
+    private boolean requestStreetMode = false;
 
     private String password;
 
@@ -135,13 +137,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return streetMode > 0;
     }
 
-    public void toggleStreetMode() {
-        if (streetMode == 0) {
+    private void enableStreetMode(boolean enable) {
+        if (enable) {
+            needVerifyIdentity = true;
             streetMode = getWallet().getDaemonBlockChainHeight();
         } else {
             streetMode = 0;
         }
-        Timber.e("streetMode=" + streetMode);
         updateAccountsBalance();
         forceUpdate();
     }
@@ -178,6 +180,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
+            // we can set the streetmode height AFTER opening the wallet
+            requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
             password = extras.getString(REQUEST_PW);
             connectWalletService(walletId, password);
         } else {
@@ -259,18 +263,65 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 onAccountRename();
                 return true;
             case R.id.action_streetmode:
-                toggleStreetMode();
-                if (isStreetMode()) {
-                    toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+                if (isStreetMode()) { // disable streetmode
+                    onDisableStreetMode();
                 } else {
-                    showNet();
+                    onEnableStreetMode();
                 }
-                invalidateOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void updateStreetMode() {
+        if (isStreetMode()) {
+            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+        } else {
+            showNet();
+        }
+        invalidateOptionsMenu();
+
+    }
+
+    private void onEnableStreetMode() {
+        enableStreetMode(true);
+        updateStreetMode();
+    }
+
+    private void onDisableStreetMode() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                            @Override
+                            public void action(String walletName, String password, boolean fingerprintUsed) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        enableStreetMode(false);
+                                        updateStreetMode();
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
+                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
+                .show();
+    }
+
 
     public void onWalletChangePassword() {
         try {
@@ -594,6 +645,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             haveWallet = true;
             invalidateOptionsMenu();
+
+            enableStreetMode(requestStreetMode);
 
             final WalletFragment walletFragment = (WalletFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -1173,16 +1226,4 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-//    @Override
-//    public void invalidateOptionsMenu() {
-//        super.invalidateOptionsMenu();
-//        if (isStreetMode()) {
-//            item.setIcon(R.drawable.gunther_csi_24dp);
-//            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
-//        } else {
-//            item.setIcon(R.drawable.gunther_24dp);
-//            showNet();
-//        }
-//    }
 }

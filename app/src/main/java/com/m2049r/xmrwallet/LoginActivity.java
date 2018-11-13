@@ -162,7 +162,7 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public boolean onWalletSelected(String walletName, String daemon) {
+    public boolean onWalletSelected(String walletName, String daemon, boolean streetmode) {
         if (daemon.length() == 0) {
             Toast.makeText(this, getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
             return false;
@@ -170,7 +170,7 @@ public class LoginActivity extends BaseActivity
         if (checkServiceRunning()) return false;
         try {
             WalletNode aWalletNode = new WalletNode(walletName, daemon, WalletManager.getInstance().getNetworkType());
-            new AsyncOpenWallet().execute(aWalletNode);
+            new AsyncOpenWallet(streetmode).execute(aWalletNode);
         } catch (IllegalArgumentException ex) {
             Timber.e(ex.getLocalizedMessage());
             Toast.makeText(this, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -580,12 +580,14 @@ public class LoginActivity extends BaseActivity
         }
     }
 
-    void startWallet(String walletName, String walletPassword, boolean fingerprintUsed) {
+    void startWallet(String walletName, String walletPassword,
+                     boolean fingerprintUsed, boolean streetmode) {
         Timber.d("startWallet()");
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
         intent.putExtra(WalletActivity.REQUEST_FINGERPRINT_USED, fingerprintUsed);
+        intent.putExtra(WalletActivity.REQUEST_STREETMODE, streetmode);
         startActivity(intent);
     }
 
@@ -1098,7 +1100,12 @@ public class LoginActivity extends BaseActivity
         final static int INVALID = 2;
         final static int IOEX = 3;
 
-        WalletNode walletNode;
+        private WalletNode walletNode;
+        private final boolean streetmode;
+
+        public AsyncOpenWallet(boolean streetmode) {
+            this.streetmode = streetmode;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -1147,7 +1154,7 @@ public class LoginActivity extends BaseActivity
                 case OK:
                     Timber.d("selected wallet is .%s.", walletNode.getName());
                     // now it's getting real, onValidateFields if wallet exists
-                    promptAndStart(walletNode);
+                    promptAndStart(walletNode, streetmode);
                     break;
                 case TIMEOUT:
                     Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_timeout), Toast.LENGTH_LONG).show();
@@ -1184,7 +1191,7 @@ public class LoginActivity extends BaseActivity
         return false;
     }
 
-    void promptAndStart(WalletNode walletNode) {
+    void promptAndStart(WalletNode walletNode, final boolean streetmode) {
         File walletFile = Helper.getWalletFile(this, walletNode.getName());
         if (WalletManager.getInstance().walletExists(walletFile)) {
             WalletManager.getInstance().setDaemon(walletNode);
@@ -1193,7 +1200,7 @@ public class LoginActivity extends BaseActivity
                         @Override
                         public void action(String walletName, String password, boolean fingerprintUsed) {
                             if (checkDevice(walletName, password))
-                                startWallet(walletName, password, fingerprintUsed);
+                                startWallet(walletName, password, fingerprintUsed, streetmode);
 
                         }
                     });
