@@ -438,8 +438,10 @@ public class Helper {
                 if (result) {
                     Helper.hideKeyboardAlways((Activity) context);
                     cancelSignal.cancel();
-                    openDialog.dismiss();
-                    openDialog = null;
+                    if (openDialog != null) { // maybe it was cancelled in the meantime
+                        openDialog.dismiss();
+                        openDialog = null;
+                    }
                 } else {
                     if (fingerprintUsed) {
                         incorrectSavedPass.set(true);
@@ -458,7 +460,6 @@ public class Helper {
                         etPassword.setError(context.getString(R.string.bad_password));
                     }
                 }
-
                 loginTask = null;
             }
         }
