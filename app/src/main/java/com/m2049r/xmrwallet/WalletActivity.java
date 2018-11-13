@@ -137,12 +137,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return streetMode > 0;
     }
 
-    public void toggleStreetMode() {
-        enableStreetMode(streetMode == 0);
-    }
-
     private void enableStreetMode(boolean enable) {
         if (enable) {
+            needVerifyIdentity = true;
             streetMode = getWallet().getDaemonBlockChainHeight();
         } else {
             streetMode = 0;
