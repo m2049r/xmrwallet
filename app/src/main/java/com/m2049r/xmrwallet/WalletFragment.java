@@ -379,12 +379,13 @@ public class WalletFragment extends Fragment
             throw new IllegalStateException("WalletService not bound.");
         Wallet.ConnectionStatus daemonConnected = activityCallback.getConnectionStatus();
         if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
-            long daemonHeight = activityCallback.getDaemonHeight();
             if (!wallet.isSynchronized()) {
-                long n = daemonHeight - wallet.getBlockChainHeight();
+                long daemonHeight = activityCallback.getDaemonHeight();
+                long walletHeight = wallet.getBlockChainHeight();
+                long n = daemonHeight - walletHeight;
                 sync = getString(R.string.status_syncing) + " " + formatter.format(n) + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
-                    firstBlock = wallet.getBlockChainHeight();
+                    firstBlock = walletHeight;
                 }
                 int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
                 if (x == 0) x = 101; // indeterminate
