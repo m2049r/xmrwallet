@@ -238,10 +238,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
             return;
         }
-        openWalet(infoItem.name, false);
+        openWallet(infoItem.name, false);
     }
 
-    private void openWalet(String name, boolean streetmode) {
+    private void openWallet(String name, boolean streetmode) {
         if (activityCallback.onWalletSelected(name, getDaemon(), streetmode)) {
             savePrefs();
         }
@@ -251,7 +251,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     public boolean onContextInteraction(MenuItem item, WalletManager.WalletInfo listItem) {
         switch (item.getItemId()) {
             case R.id.action_streetmode:
-                openWalet(listItem.name, true);
+                openWallet(listItem.name, true);
                 break;
             case R.id.action_info:
                 showInfo(listItem.name);
