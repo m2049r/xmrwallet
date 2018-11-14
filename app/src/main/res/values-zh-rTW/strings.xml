@@ -355,5 +355,5 @@
 
     <string name="menu_info">顯示私鑰資訊</string>
     <string name="menu_streetmode">低調模式</string>
-    <string name="info_streetmode_enabled">隱私模式已可使用，點擊以查看更多資訊。</string>
+    <string name="info_streetmode_enabled">低調模式已可使用，點擊以查看更多資訊。</string>
 </resources>
