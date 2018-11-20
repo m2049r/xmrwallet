@@ -102,11 +102,7 @@ public class KeyStoreHelper {
         if (isArm32 != null) return isArm32;
         synchronized (KeyStoreException.class) {
             if (isArm32 != null) return isArm32;
-            if (Build.SUPPORTED_ABIS[0].equals("armeabi-v7a")) {
-                isArm32 = true;
-            } else {
-                isArm32 = false;
-            }
+            isArm32 = Build.SUPPORTED_ABIS[0].equals("armeabi-v7a");
             return isArm32;
         }
     }

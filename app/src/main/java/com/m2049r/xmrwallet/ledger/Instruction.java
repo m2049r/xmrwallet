@@ -53,7 +53,7 @@ public enum Instruction {
 
     INS_GET_RESPONSE(0xc0),
 
-    INS_UNDEFINED(0xff);;
+    INS_UNDEFINED(0xff);
 
     public static Instruction fromByte(byte n) {
         switch (n & 0xFF) {

@@ -43,7 +43,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.data.WalletNode;
+import com.m2049r.xmrwallet.data.Node;
+import com.m2049r.xmrwallet.data.NodeInfo;
 import com.m2049r.xmrwallet.dialog.AboutFragment;
 import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
@@ -64,25 +65,136 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.Socket;
-import java.net.SocketAddress;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
 public class LoginActivity extends BaseActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
         GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener,
-        ReceiveFragment.Listener {
+        ReceiveFragment.Listener, NodeFragment.Listener {
     private static final String GENERATE_STACK = "gen";
 
-    static final int DAEMON_TIMEOUT = 500; // deamon must respond in 500ms
+    private static final String NODES_PREFS_NAME = "nodes";
+    private static final String PREF_DAEMON_STAGENET = "daemon_stagenet";
+    private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
+
+    private NodeInfo node = null;
+
+    Set<NodeInfo> favouriteNodes = new HashSet<>();
+
+    @Override
+    public void setNode(NodeInfo node) {
+        if ((node != null) && (node.getNetworkType() != WalletManager.getInstance().getNetworkType()))
+            throw new IllegalArgumentException("network type does not match");
+        this.node = node;
+        WalletManager.getInstance().setDaemon(node);
+    }
+
+    @Override
+    public Set<NodeInfo> getFavouriteNodes() {
+        return favouriteNodes;
+    }
+
+    @Override
+    public void setFavouriteNodes(Set<NodeInfo> nodes) {
+        Timber.d("adding %d nodes", nodes.size());
+        favouriteNodes.clear();
+        for (NodeInfo node : nodes) {
+            Timber.d("adding %s %b", node, node.isFavourite());
+            if (node.isFavourite())
+                favouriteNodes.add(node);
+        }
+        if (favouriteNodes.isEmpty() && (!nodes.isEmpty())) { // no favourites - pick best ones
+            List<NodeInfo> nodeList = new ArrayList<>(nodes);
+            Collections.sort(nodeList, NodeInfo.BestNodeComparator);
+            int i = 0;
+            for (NodeInfo node : nodeList) {
+                Timber.d("adding %s", node);
+                node.setFavourite(true);
+                favouriteNodes.add(node);
+                if (++i >= 3) break; // add max first 3 nodes
+            }
+            Toast.makeText(this, getString(R.string.node_nobookmark, i), Toast.LENGTH_LONG).show();
+        }
+        saveFavourites();
+    }
+
+    private void loadFavouritesWithNetwork() {
+        Helper.runWithNetwork(new Helper.Action() {
+            @Override
+            public boolean run() {
+                loadFavourites();
+                return true;
+            }
+        });
+    }
+
+    private void loadFavourites() {
+        Timber.d("loadFavourites");
+        favouriteNodes.clear();
+        Map<String, ?> storedNodes = getSharedPreferences(NODES_PREFS_NAME, Context.MODE_PRIVATE).getAll();
+        for (Map.Entry<String, ?> nodeEntry : storedNodes.entrySet()) {
+            if (nodeEntry != null) // just in case, ignore possible future errors
+                addFavourite((String) nodeEntry.getValue());
+        }
+        if (storedNodes.isEmpty()) { // try to load legacy list & remove it (i.e. migrate the data once)
+            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+            switch (WalletManager.getInstance().getNetworkType()) {
+                case NetworkType_Mainnet:
+                    loadLegacyList(sharedPref.getString(PREF_DAEMON_MAINNET, null));
+                    sharedPref.edit().remove(PREF_DAEMON_MAINNET).apply();
+                    break;
+                case NetworkType_Stagenet:
+                    loadLegacyList(sharedPref.getString(PREF_DAEMON_STAGENET, null));
+                    sharedPref.edit().remove(PREF_DAEMON_STAGENET).apply();
+                    break;
+                default:
+                    throw new IllegalStateException("unsupported net " + WalletManager.getInstance().getNetworkType());
+            }
+        }
+    }
+
+    private void saveFavourites() {
+        List<Node> favourites = new ArrayList<>();
+        Timber.d("SAVE");
+        SharedPreferences.Editor editor = getSharedPreferences(NODES_PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.clear();
+        int i = 1;
+        for (Node info : favouriteNodes) {
+            String nodeString = info.toNodeString();
+            editor.putString(Integer.toString(i), nodeString);
+            Timber.d("saved %d:%s", i, nodeString);
+            i++;
+        }
+        editor.apply();
+    }
+
+    private void addFavourite(String nodeString) {
+        NodeInfo nodeInfo = NodeInfo.fromString(nodeString);
+        if (nodeInfo != null) {
+            nodeInfo.setFavourite(true);
+            favouriteNodes.add(nodeInfo);
+        } else
+            Timber.w("nodeString invalid: %s", nodeString);
+    }
+
+    private void loadLegacyList(final String legacyListString) {
+        if (legacyListString == null) return;
+        final String[] nodeStrings = legacyListString.split(";");
+        for (final String nodeString : nodeStrings) {
+            addFavourite(nodeString);
+        }
+    }
 
     private Toolbar toolbar;
 
@@ -120,7 +232,7 @@ public class LoginActivity extends BaseActivity
         }
 
         setContentView(R.layout.activity_login);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -138,11 +250,14 @@ public class LoginActivity extends BaseActivity
                         CreditsFragment.display(getSupportFragmentManager());
                         break;
                     case Toolbar.BUTTON_NONE:
+                        break;
                     default:
                         Timber.e("Button " + type + "pressed - how can this be?");
                 }
             }
         });
+
+        loadFavouritesWithNetwork();
 
         if (Helper.getWritePermission(this)) {
             if (savedInstanceState == null) startLoginFragment();
@@ -162,15 +277,14 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public boolean onWalletSelected(String walletName, String daemon, boolean streetmode) {
-        if (daemon.length() == 0) {
+    public boolean onWalletSelected(String walletName, boolean streetmode) {
+        if (node == null) {
             Toast.makeText(this, getString(R.string.prompt_daemon_missing), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (checkServiceRunning()) return false;
         try {
-            WalletNode aWalletNode = new WalletNode(walletName, daemon, WalletManager.getInstance().getNetworkType());
-            new AsyncOpenWallet(streetmode).execute(aWalletNode);
+            new AsyncOpenWallet(walletName, node, streetmode).execute();
         } catch (IllegalArgumentException ex) {
             Timber.e(ex.getLocalizedMessage());
             Toast.makeText(this, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -211,7 +325,7 @@ public class LoginActivity extends BaseActivity
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.details_alert_message))
+        AlertDialog diag = builder.setMessage(getString(R.string.details_alert_message))
                 .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
                 .show();
@@ -298,8 +412,8 @@ public class LoginActivity extends BaseActivity
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptsView);
 
-        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
-        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+        final EditText etRename = promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = promptsView.findViewById(R.id.tvRenameLabel);
 
         tvRenameLabel.setText(getString(R.string.prompt_rename, walletName));
 
@@ -488,13 +602,16 @@ public class LoginActivity extends BaseActivity
         startGenerateFragment(type);
     }
 
+    @Override
+    public void onNodePrefs() {
+        Timber.d("node prefs");
+        if (checkServiceRunning()) return;
+        startNodeFragment();
+    }
+
     ////////////////////////////////////////
     // LoginFragment.Listener
     ////////////////////////////////////////
-    @Override
-    public SharedPreferences getPrefs() {
-        return getPreferences(Context.MODE_PRIVATE);
-    }
 
     @Override
     public File getStorageRoot() {
@@ -506,9 +623,13 @@ public class LoginActivity extends BaseActivity
 
     @Override
     public void showNet() {
-        switch (WalletManager.getInstance().getNetworkType()) {
+        showNet(WalletManager.getInstance().getNetworkType());
+    }
+
+    private void showNet(NetworkType net) {
+        switch (net) {
             case NetworkType_Mainnet:
-                toolbar.setSubtitle(getString(R.string.connect_mainnet));
+                toolbar.setSubtitle(null);
                 toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
                 break;
             case NetworkType_Testnet:
@@ -520,7 +641,7 @@ public class LoginActivity extends BaseActivity
                 toolbar.setBackgroundResource(R.color.colorPrimaryDark);
                 break;
             default:
-                throw new IllegalStateException("NetworkType unknown: " + WalletManager.getInstance().getNetworkType());
+                throw new IllegalStateException("NetworkType unknown: " + net);
         }
     }
 
@@ -609,7 +730,8 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         Timber.d("onRequestPermissionsResult()");
         switch (requestCode) {
             case Helper.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE:
@@ -658,6 +780,11 @@ public class LoginActivity extends BaseActivity
     void startReviewFragment(Bundle extras) {
         replaceFragment(new GenerateReviewFragment(), null, extras);
         Timber.d("GenerateReviewFragment placed");
+    }
+
+    void startNodeFragment() {
+        replaceFragment(new NodeFragment(), null, null);
+        Timber.d("NodeFragment placed");
     }
 
     void startReceiveFragment(Bundle extras) {
@@ -826,7 +953,8 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void onGenerateLedger(final String name, final String password, final long restoreHeight) {
+    public void onGenerateLedger(final String name, final String password,
+                                 final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
                     @Override
@@ -921,7 +1049,8 @@ public class LoginActivity extends BaseActivity
         }
     }
 
-    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite, boolean ignoreCacheError) {
+    boolean copyWallet(File srcWallet, File dstWallet, boolean overwrite,
+                       boolean ignoreCacheError) {
         if (walletExists(dstWallet, true) && !overwrite) return false;
         boolean success = false;
         File srcDir = srcWallet.getParentFile();
@@ -1029,6 +1158,12 @@ public class LoginActivity extends BaseActivity
             if (((GenerateReviewFragment) f).backOk()) {
                 super.onBackPressed();
             }
+        } else if (f instanceof NodeFragment) {
+            if (!((NodeFragment) f).isRefreshing()) {
+                super.onBackPressed();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.node_refresh_wait), Toast.LENGTH_LONG).show();
+            }
         } else if (f instanceof LoginFragment) {
             if (((LoginFragment) f).isFabOpen()) {
                 ((LoginFragment) f).animateFAB();
@@ -1070,101 +1205,64 @@ public class LoginActivity extends BaseActivity
             case R.id.action_help_list:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_list);
                 return true;
+            case R.id.action_help_node:
+                HelpFragment.display(getSupportFragmentManager(), R.string.help_node);
+                return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
                 return true;
             case R.id.action_language:
                 onChangeLocale();
                 return true;
-            case R.id.action_stagenet:
-                try {
-                    LoginFragment loginFragment = (LoginFragment)
-                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-                    item.setChecked(loginFragment.onStagenetMenuItem());
-                } catch (ClassCastException ex) {
-                    // never mind then
-                }
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void setNetworkType(NetworkType networkType) {
-        WalletManager.getInstance().setNetworkType(networkType);
-    }
-
-    private class AsyncOpenWallet extends AsyncTask<WalletNode, Void, Integer> {
+    // an AsyncTask which tests the node before trying to open the wallet
+    private class AsyncOpenWallet extends AsyncTask<Void, Void, Boolean> {
         final static int OK = 0;
         final static int TIMEOUT = 1;
         final static int INVALID = 2;
         final static int IOEX = 3;
 
-        private WalletNode walletNode;
+        private final String walletName;
+        private final NodeInfo node;
         private final boolean streetmode;
 
-        public AsyncOpenWallet(boolean streetmode) {
+        AsyncOpenWallet(String walletName, NodeInfo node, boolean streetmode) {
+            this.walletName = walletName;
+            this.node = node;
             this.streetmode = streetmode;
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            showProgressDialog(R.string.open_progress, DAEMON_TIMEOUT / 4);
         }
 
         @Override
-        protected Integer doInBackground(WalletNode... params) {
-            if (params.length != 1) return INVALID;
-            this.walletNode = params[0];
-            if (!walletNode.isValid()) return INVALID;
-
-            Timber.d("checking %s", walletNode.getAddress());
-
-            try {
-                long timeDA = new Date().getTime();
-                SocketAddress address = walletNode.getSocketAddress();
-                long timeDB = new Date().getTime();
-                Timber.d("Resolving " + walletNode.getAddress() + " took " + (timeDB - timeDA) + "ms.");
-                Socket socket = new Socket();
-                long timeA = new Date().getTime();
-                socket.connect(address, LoginActivity.DAEMON_TIMEOUT);
-                socket.close();
-                long timeB = new Date().getTime();
-                long time = timeB - timeA;
-                Timber.d("Daemon " + walletNode.getAddress() + " is " + time + "ms away.");
-                return (time < LoginActivity.DAEMON_TIMEOUT ? OK : TIMEOUT);
-            } catch (IOException ex) {
-                Timber.d("Cannot reach daemon %s because %s", walletNode.getAddress(), ex.getMessage());
-                return IOEX;
-            } catch (IllegalArgumentException ex) {
-                Timber.d("Cannot reach daemon %s because %s", walletNode.getAddress(), ex.getMessage());
-                return INVALID;
-            }
+        protected Boolean doInBackground(Void... params) {
+            Timber.d("checking %s", node.getAddress());
+            return node.testRpcService();
         }
 
         @Override
-        protected void onPostExecute(Integer result) {
+        protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
             if (isDestroyed()) {
                 return;
             }
-            dismissProgressDialog();
-            switch (result) {
-                case OK:
-                    Timber.d("selected wallet is .%s.", walletNode.getName());
-                    // now it's getting real, onValidateFields if wallet exists
-                    promptAndStart(walletNode, streetmode);
-                    break;
-                case TIMEOUT:
-                    Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_timeout), Toast.LENGTH_LONG).show();
-                    break;
-                case INVALID:
+            if (result) {
+                Timber.d("selected wallet is .%s.", node.getName());
+                // now it's getting real, onValidateFields if wallet exists
+                promptAndStart(walletName, node, streetmode);
+            } else {
+                if (node.getResponseCode() == 0) { // IOException
                     Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_node_invalid), Toast.LENGTH_LONG).show();
-                    break;
-                case IOEX:
+                } else { // connected but broken
                     Toast.makeText(LoginActivity.this, getString(R.string.status_wallet_connect_ioex), Toast.LENGTH_LONG).show();
-                    break;
+                }
             }
         }
     }
@@ -1191,23 +1289,20 @@ public class LoginActivity extends BaseActivity
         return false;
     }
 
-    void promptAndStart(WalletNode walletNode, final boolean streetmode) {
-        File walletFile = Helper.getWalletFile(this, walletNode.getName());
+    void promptAndStart(String walletName, Node node, final boolean streetmode) {
+        File walletFile = Helper.getWalletFile(this, walletName);
         if (WalletManager.getInstance().walletExists(walletFile)) {
-            WalletManager.getInstance().setDaemon(walletNode);
-            Helper.promptPassword(LoginActivity.this, walletNode.getName(), false,
+            Helper.promptPassword(LoginActivity.this, walletName, false,
                     new Helper.PasswordAction() {
                         @Override
                         public void action(String walletName, String password, boolean fingerprintUsed) {
                             if (checkDevice(walletName, password))
                                 startWallet(walletName, password, fingerprintUsed, streetmode);
-
                         }
                     });
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
         }
-
     }
 
     // USB Stuff - (Ledger)

@@ -87,12 +87,12 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         View view = inflater.inflate(
                 R.layout.fragment_send_confirm, container, false);
 
-        tvTxAddress = (TextView) view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
-        tvTxNotes = (TextView) view.findViewById(R.id.tvTxNotes);
-        tvTxAmount = ((TextView) view.findViewById(R.id.tvTxAmount));
-        tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
-        tvTxTotal = (TextView) view.findViewById(R.id.tvTxTotal);
+        tvTxAddress = view.findViewById(R.id.tvTxAddress);
+        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
+        tvTxNotes = view.findViewById(R.id.tvTxNotes);
+        tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxFee = view.findViewById(R.id.tvTxFee);
+        tvTxTotal = view.findViewById(R.id.tvTxTotal);
 
         llProgress = view.findViewById(R.id.llProgress);
         pbProgressSend = view.findViewById(R.id.pbProgressSend);
@@ -231,7 +231,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(activity);
         alertDialogBuilder.setView(promptsView);
 
-        final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
+        final TextInputLayout etPassword = promptsView.findViewById(R.id.etPassword);
         etPassword.setHint(getString(R.string.prompt_send_password));
 
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {

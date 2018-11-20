@@ -57,9 +57,9 @@ public class SendProgressView extends LinearLayout {
         super.onFinishInflate();
         pbProgress = findViewById(R.id.pbProgress);
         llMessage = findViewById(R.id.llMessage);
-        tvCode = (TextView) findViewById(R.id.tvCode);
-        tvMessage = (TextView) findViewById(R.id.tvMessage);
-        tvSolution = (TextView) findViewById(R.id.tvSolution);
+        tvCode = findViewById(R.id.tvCode);
+        tvMessage = findViewById(R.id.tvMessage);
+        tvSolution = findViewById(R.id.tvSolution);
     }
 
     public void showProgress(String progressText) {

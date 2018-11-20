@@ -124,8 +124,7 @@ public class RestoreHeightTest {
 
     private boolean isInRange(long n, long min, long max) {
         if (n > max) return false;
-        if (n < min) return false;
-        return true;
+        return n >= min;
     }
 
     private long getHeight(String date) {

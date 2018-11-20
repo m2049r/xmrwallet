@@ -57,10 +57,10 @@ public class ProgressDialog extends AlertDialog {
     protected void onCreate(Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_ledger_progress, null);
         pbCircle = view.findViewById(R.id.pbCircle);
-        tvMessage = (TextView) view.findViewById(R.id.tvMessage);
+        tvMessage = view.findViewById(R.id.tvMessage);
         rlProgressBar = view.findViewById(R.id.rlProgressBar);
-        pbBar = (ProgressBar) view.findViewById(R.id.pbBar);
-        tvProgress = (TextView) view.findViewById(R.id.tvProgress);
+        pbBar = view.findViewById(R.id.pbBar);
+        tvProgress = view.findViewById(R.id.tvProgress);
         setView(view);
         //setTitle("blabla");
         //super.setMessage("bubbu");

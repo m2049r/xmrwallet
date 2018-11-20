@@ -16,7 +16,8 @@
 
 package com.m2049r.xmrwallet.model;
 
-import com.m2049r.xmrwallet.data.WalletNode;
+import com.m2049r.xmrwallet.XmrWalletApplication;
+import com.m2049r.xmrwallet.data.Node;
 import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 
@@ -48,7 +49,23 @@ public class WalletManager {
         return WalletManager.Instance;
     }
 
-    //private Map<String, Wallet> managedWallets;
+    public String addressPrefix() {
+        return addressPrefix(getNetworkType());
+    }
+
+    static public String addressPrefix(NetworkType networkType) {
+        switch (networkType) {
+            case NetworkType_Testnet:
+                return "9A-";
+            case NetworkType_Mainnet:
+                return "4-";
+            case NetworkType_Stagenet:
+                return "5-";
+            default:
+                throw new IllegalStateException("Unsupported Network: " + networkType);
+        }
+    }
+
     private Wallet managedWallet = null;
 
     public Wallet getWallet() {
@@ -252,23 +269,26 @@ public class WalletManager {
 //TODO virtual bool checkPayment(const std::string &address, const std::string &txid, const std::string &txkey, const std::string &daemon_address, uint64_t &received, uint64_t &height, std::string &error) const = 0;
 
     private String daemonAddress = null;
-    private NetworkType networkType = null;
+    private final NetworkType networkType = XmrWalletApplication.getNetworkType();
 
     public NetworkType getNetworkType() {
         return networkType;
     }
 
-    //public void setDaemon(String address, NetworkType networkType, String username, String password) {
-    public void setDaemon(WalletNode walletNode) {
-        this.daemonAddress = walletNode.getAddress();
-        this.networkType = walletNode.getNetworkType();
-        this.daemonUsername = walletNode.getUsername();
-        this.daemonPassword = walletNode.getPassword();
-        setDaemonAddressJ(daemonAddress);
-    }
-
-    public void setNetworkType(NetworkType networkType) {
-        this.networkType = networkType;
+    public void setDaemon(Node node) {
+        if (node != null) {
+            this.daemonAddress = node.getAddress();
+            if (networkType != node.getNetworkType())
+                throw new IllegalArgumentException("network type does not match");
+            this.daemonUsername = node.getUsername();
+            this.daemonPassword = node.getPassword();
+            setDaemonAddressJ(daemonAddress);
+        } else {
+            this.daemonAddress = null;
+            this.daemonUsername = "";
+            this.daemonPassword = "";
+            setDaemonAddressJ("");
+        }
     }
 
     public String getDaemonAddress() {

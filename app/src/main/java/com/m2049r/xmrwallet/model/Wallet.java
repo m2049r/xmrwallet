@@ -64,7 +64,7 @@ public class Wallet {
         Device_Undefined,
         Device_Software,
         Device_Ledger
-    };
+    }
 
     public enum Status {
         Status_Ok,

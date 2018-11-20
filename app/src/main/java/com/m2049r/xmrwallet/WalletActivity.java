@@ -349,7 +349,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
 
         setContentView(R.layout.activity_wallet);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -378,13 +378,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             }
         });
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         setDrawerEnabled(false); // disable until synced
 
-        accountsView = (NavigationView) findViewById(R.id.accounts_nav);
+        accountsView = findViewById(R.id.accounts_nav);
         accountsView.setNavigationItemSelectedListener(this);
 
         showNet();
@@ -1074,7 +1074,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     void updateAccountsHeader() {
         final Wallet wallet = getWallet();
-        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
+        final TextView tvName = accountsView.getHeaderView(0).findViewById(R.id.tvName);
         tvName.setText(wallet.getName());
     }
 
@@ -1115,8 +1115,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptsView);
 
-        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
-        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+        final EditText etRename = promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = promptsView.findViewById(R.id.tvRenameLabel);
         final Wallet wallet = getWallet();
         tvRenameLabel.setText(getString(R.string.prompt_rename, wallet.getAccountLabel()));
 

@@ -7,3 +7,7 @@
 .externalNativeBuild
 .DS_Store
 /app/release
+/app/alphaMainnet
+/app/prodMainnet
+/app/alphaStagenet
+/app/prodStagenet

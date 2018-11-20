@@ -29,10 +29,8 @@
     <string name="label_send_done">Tehtud</string>
 
     <string name="label_receive_info_gen_qr_code">Puuduta QR koodi saamiseks</string>
-    <string name="info_send_prio_fees">Suurem tähtsus = kõrgemad teenustasud</string>
 
     <string name="info_xmrto_enabled">Bitcoini maksed sisse lülitatud, puuduta lisainfo saamiseks.</string>
-    <string name="info_crazypass_enabled">CrAzYpass sisse lülitatud, puuduta lisainfo saamiseks.</string>
     <string name="info_ledger_enabled">Ledger\'i tugi sisse lülitatud, puuduta lisainfo saamiseks.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -79,8 +77,6 @@
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurss: %1$s BTC/XMR)</string>
 
-    <string name="label_send_settings_advanced">Edasijõudnutele:</string>
-
     <string name="label_send_btc_xmrto_info">Külasta xmr.to lisainfo saamiseks &amp; jälgin</string>
     <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO privaatvõti</string>
@@ -95,7 +91,6 @@
     <string name="backup_progress">Teostan tagavarakoopiat</string>
     <string name="archive_progress">Arhiveerin</string>
     <string name="rename_progress">Nimetan ümber</string>
-    <string name="open_progress">Kontrollin ühendust serveriga</string>
     <string name="changepw_progress">Vahetan parooli</string>
 
     <string name="service_progress">Teen ettevalmistusi &#8230;\nSee võib aega võtta!</string>
@@ -107,13 +102,11 @@
     <string name="changepw_success">Parool vahetatud</string>
 
     <string name="label_daemon">Server</string>
-    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Laen rahakotti &#8230;</string>
     <string name="status_wallet_unloaded">Rahakott salvestatud</string>
     <string name="status_wallet_unload_failed">Rahakoti salvestamine ebaõnnestus!</string>
     <string name="status_wallet_connecting">Ühendun &#8230;</string>
     <string name="status_wallet_connect_failed">Serveriga ühendumine ebaõnnestus!\nKontrolli kasutajanime/parooli</string>
-    <string name="status_wallet_connect_timeout">Serveriga ühendumine võttis liiga kaua aega!\nProovi uuesti või vali teine server.</string>
     <string name="status_wallet_node_invalid">Ebasobilik server!\nVali mõni teine.</string>
     <string name="status_wallet_connect_ioex">Server ei vastanud!\nProovi uuesti või vali teine server.</string>
 
@@ -194,7 +187,6 @@
     <string name="generate_wallet_dot">Nimi ei saa alata märgiga .</string>
     <string name="generate_wallet_creating">Loon rahakotti</string>
     <string name="generate_wallet_created">Rahakott loodud</string>
-    <string name="generate_wallet_create_failed">Rahakoti loomine ebaõnnestus</string>
 
     <string name="generate_restoreheight_error">Sisesta plokinumber või kuupäev (YYYY-MM-DD)</string>
 
@@ -279,7 +271,6 @@
     <string name="tx_pending">OOTEL</string>
     <string name="tx_failed">EBAÕNNESTUS</string>
 
-    <string name="receive_paymentid_hint">Makse ID (valikuline)</string>
     <string name="receive_amount_hint">Kogus</string>
     <string name="receive_desc_hint">Kommentaarid (valikuline)</string>
     <string name="receive_cannot_open">Rahakotti ei õnnestunud avada!</string>
@@ -290,8 +281,6 @@
     <string name="receive_amount_negative">Vähemalt 0</string>
     <string name="receive_amount_nan">XMR pole arv</string>
 
-    <string name="receive_title">Küsi raha</string>
-
     <string name="details_alert_message">Nüüd näidatakse tundlikku infot.\nPiilu oma seljataha!</string>
     <string name="details_alert_yes">Olen turvalises kohas</string>
     <string name="details_alert_no">Vii mind tagasi!</string>
@@ -301,20 +290,12 @@
     <string name="archive_alert_yes">Täpselt nii!</string>
     <string name="archive_alert_no">Ei, tänan!</string>
 
-    <string-array name="priority">
-        <item>Tavaline tähtsus</item>
-        <item>Väike tähtsus</item>
-        <item>Keskmine tähtsus</item>
-        <item>Suur tähtsus</item>
-    </string-array>
-
     <string name="fab_create_new">Loo uus rahakott</string>
     <string name="fab_restore_viewonly">Taasta rahakott vaatamiseks</string>
     <string name="fab_restore_key">Taasta rahakott privaatvõtmetest</string>
     <string name="fab_restore_seed">Taasta rahakott 25-sõnalisest seemnest</string>
 
     <string name="accounts_drawer_new">Loo konto</string>
-    <string name="accounts_drawer_title">Kontod</string>
     <string name="accounts_new">Uus konto lisatud #%1$d</string>
     <string name="tx_account">Konto #</string>
 
@@ -336,7 +317,6 @@
     <string name="open_wallet_ledger_missing">Palun (taas)ühenda seade Ledger</string>
 
     <string name="accounts_progress_new">Loon kontot</string>
-    <string name="accounts_progress_update">Uuendan rahakotti</string>
 
     <string name="toast_ledger_attached">%1$s lisatud</string>
     <string name="toast_ledger_detached">%1$s eemaldatud</string>
@@ -355,5 +335,31 @@
 
     <string name="menu_info">Näita salajast infot</string>
     <string name="menu_streetmode">Avalik režiim</string>
-    <string name="info_streetmode_enabled">Avalik režiim sisse lülitatud, puuduta lisainfo saamiseks.</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
+    <string name="node_height">Last block updated: %1$s</string>
+    <string name="label_nodes">Nodes</string>
+    <string name="node_name_hint">Node Name (Optional)</string>
+    <string name="node_address_hint">Hostname</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Username (Optional)</string>
+    <string name="node_pass_hint">Password (Optional)</string>
+    <string name="node_host_unresolved">Cannot resolve host</string>
+    <string name="node_host_empty">We need this!</string>
+    <string name="node_port_numeric">Must be numeric</string>
+    <string name="node_port_range">Must be 1&#8211;65535</string>
+    <string name="node_fab_add">Add Node</string>
+    <string name="node_refresh_hint">Touch to refresh!</string>
+    <string name="node_test_error">CONNECTION ERROR %1$d</string>
+    <string name="node_general_error">CONNECTION ERROR</string>
+    <string name="node_auth_error">AUTHENTICATION FAILED</string>
+    <string name="node_result_label">Test Result:</string>
+    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testing IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Please wait for scan to finish</string>
+    <string name="node_create_hint">Touch to select or add nodes</string>
+    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
+    <string name="node_scanning">Scanning network&#8230;</string>
+    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
+    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 </resources>

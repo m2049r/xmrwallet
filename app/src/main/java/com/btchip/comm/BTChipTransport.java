@@ -23,9 +23,9 @@ package com.btchip.comm;
 import com.btchip.BTChipException;
 
 public interface BTChipTransport {
-    public byte[] exchange(byte[] command);
+    byte[] exchange(byte[] command);
 
-    public void close();
+    void close();
 
-    public void setDebug(boolean debugFlag);
+    void setDebug(boolean debugFlag);
 }
