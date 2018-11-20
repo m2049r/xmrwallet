@@ -290,36 +290,18 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     private void onDisableStreetMode() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        Helper.promptPassword(WalletActivity.this, getWallet().getName(), false, new Helper.PasswordAction() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
-                            @Override
-                            public void action(String walletName, String password, boolean fingerprintUsed) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        enableStreetMode(false);
-                                        updateStreetMode();
-                                    }
-                                });
-                            }
-                        });
-                        break;
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        // do nothing
-                        break;
-                }
+            public void action(String walletName, String password, boolean fingerprintUsed) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        enableStreetMode(false);
+                        updateStreetMode();
+                    }
+                });
             }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.details_alert_message))
-                .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
-                .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
-                .show();
+        });
     }
 
 
