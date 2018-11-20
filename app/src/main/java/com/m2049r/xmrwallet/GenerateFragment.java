@@ -85,15 +85,15 @@ public class GenerateFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_generate, container, false);
 
-        etWalletName = (TextInputLayout) view.findViewById(R.id.etWalletName);
-        etWalletPassword = (TextInputLayout) view.findViewById(R.id.etWalletPassword);
-        llFingerprintAuth = (LinearLayout) view.findViewById(R.id.llFingerprintAuth);
-        etWalletMnemonic = (TextInputLayout) view.findViewById(R.id.etWalletMnemonic);
-        etWalletAddress = (TextInputLayout) view.findViewById(R.id.etWalletAddress);
-        etWalletViewKey = (TextInputLayout) view.findViewById(R.id.etWalletViewKey);
-        etWalletSpendKey = (TextInputLayout) view.findViewById(R.id.etWalletSpendKey);
-        etWalletRestoreHeight = (TextInputLayout) view.findViewById(R.id.etWalletRestoreHeight);
-        bGenerate = (Button) view.findViewById(R.id.bGenerate);
+        etWalletName = view.findViewById(R.id.etWalletName);
+        etWalletPassword = view.findViewById(R.id.etWalletPassword);
+        llFingerprintAuth = view.findViewById(R.id.llFingerprintAuth);
+        etWalletMnemonic = view.findViewById(R.id.etWalletMnemonic);
+        etWalletAddress = view.findViewById(R.id.etWalletAddress);
+        etWalletViewKey = view.findViewById(R.id.etWalletViewKey);
+        etWalletSpendKey = view.findViewById(R.id.etWalletSpendKey);
+        etWalletRestoreHeight = view.findViewById(R.id.etWalletRestoreHeight);
+        bGenerate = view.findViewById(R.id.bGenerate);
 
         etWalletMnemonic.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
         etWalletAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);

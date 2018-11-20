@@ -28,10 +28,8 @@
     <string name="label_send_done">Gata</string>
 
     <string name="label_receive_info_gen_qr_code">Atinge pentru codul QR</string>
-    <string name="info_send_prio_fees">Prioritate mare = Comision mare</string>
 
     <string name="info_xmrto_enabled">Plată BTC activată, apasă pentru mai multe informații.</string>
-    <string name="info_crazypass_enabled">CrAzYpass activată, apasă pentru mai multe informații.</string>
     <string name="info_ledger_enabled">Ledger activată, apasă pentru mai multe informații.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -78,8 +76,6 @@
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rată: %1$s BTC/XMR)</string>
 
-    <string name="label_send_settings_advanced">Avansat:</string>
-
     <string name="label_send_btc_xmrto_info">Vizitează xmr.to pentru suport &amp; interogare</string>
     <string name="label_send_btc_xmrto_key_lb">Cheia secretă \nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Cheia secretă XMR.TO </string>
@@ -94,7 +90,6 @@
     <string name="backup_progress">Copie de rezervă în curs</string>
     <string name="archive_progress">Arhivare în curs</string>
     <string name="rename_progress">Redenumire în curd</string>
-    <string name="open_progress">Se verifică conexiunea cu nodul</string>
 
     <string name="service_progress">Impachetăm lucrurile &#8230;\nPoate dura un pic!</string>
 
@@ -103,13 +98,11 @@
     <string name="rename_failed">Redenumirea a eșuat!</string>
 
     <string name="label_daemon">Nodul</string>
-    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Se încarcă portofelul &#8230;</string>
     <string name="status_wallet_unloaded">Portofelul a fost salvat</string>
     <string name="status_wallet_unload_failed">Salvarea portofelului a eșuat!</string>
     <string name="status_wallet_connecting">Se conecteaza &#8230;</string>
     <string name="status_wallet_connect_failed">Conexiunea la nod a eșuat!\nVerifică utilizator/parolă</string>
-    <string name="status_wallet_connect_timeout">Conexiunea la nod a expirat!\nÎncearca din nou sau un altul.</string>
     <string name="status_wallet_node_invalid">Nodul este invalid!\nÎncearcă altul.</string>
     <string name="status_wallet_connect_ioex">Nu se poate ajunge la nod!\nÎncearca din nou sau un altul.</string>
 
@@ -169,7 +162,6 @@
     <string name="generate_wallet_dot">Nu pot începe cu .</string>
     <string name="generate_wallet_creating">Se creează portofel</string>
     <string name="generate_wallet_created">Portofel creat</string>
-    <string name="generate_wallet_create_failed">Crearea portofelului nereușită</string>
 
     <string name="generate_restoreheight_error">Introdu număr sau dată (YYYY-MM-ZZ)</string>
 
@@ -248,7 +240,6 @@
     <string name="tx_pending">ÎN CURS</string>
     <string name="tx_failed">EȘUAT</string>
 
-    <string name="receive_paymentid_hint">Payment ID (facultativ)</string>
     <string name="receive_amount_hint">Sumă</string>
     <string name="receive_cannot_open">Nu pot deschide portofel!</string>
     <string name="receive_paymentid_invalid">16 sau 64 caractere Hex (0&#8211;9,a&#8211;f)</string>
@@ -258,8 +249,6 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR fără valoare</string>
 
-    <string name="receive_title">Primește</string>
-
     <string name="details_alert_message">Acum vor fi afișate date sensibile.\nUită-te peste umărul tău!</string>
     <string name="details_alert_yes">Sunt în siguranță</string>
     <string name="details_alert_no">Du-mă înapoi!</string>
@@ -268,13 +257,6 @@
     <string name="archive_alert_message">Voi face o copie de siguranță a portofelului apoi va fi șters!</string>
     <string name="archive_alert_yes">Da, fă asta!</string>
     <string name="archive_alert_no">Nu mersi!</string>
-
-    <string-array name="priority">
-        <item>Prioritate Implicită</item>
-        <item>Prioritate mică</item>
-        <item>Prioritate medie</item>
-        <item>Prioritate mare</item>
-    </string-array>
 
     <string name="fab_create_new">Creeaza portofel nou</string>
     <string name="fab_restore_viewonly">Restaurează portofel-vizualizare</string>
@@ -308,7 +290,6 @@
     <string name="generate_empty_passwordB">Passphrase may not be empty</string>
     <string name="generate_crazypass_label">Wallet Files Restore Password</string>
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
@@ -329,7 +310,6 @@
     <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
 
     <string name="accounts_progress_new">Creating account</string>
-    <string name="accounts_progress_update">Updating wallet</string>
 
     <string name="toast_ledger_attached">%1$s attached</string>
     <string name="toast_ledger_detached">%1$s detached</string>
@@ -356,5 +336,31 @@
 
     <string name="menu_info">Detalii</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
+    <string name="node_height">Last block updated: %1$s</string>
+    <string name="label_nodes">Nodes</string>
+    <string name="node_name_hint">Node Name (Optional)</string>
+    <string name="node_address_hint">Hostname</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Username (Optional)</string>
+    <string name="node_pass_hint">Password (Optional)</string>
+    <string name="node_host_unresolved">Cannot resolve host</string>
+    <string name="node_host_empty">We need this!</string>
+    <string name="node_port_numeric">Must be numeric</string>
+    <string name="node_port_range">Must be 1&#8211;65535</string>
+    <string name="node_fab_add">Add Node</string>
+    <string name="node_refresh_hint">Touch to refresh!</string>
+    <string name="node_test_error">CONNECTION ERROR %1$d</string>
+    <string name="node_general_error">CONNECTION ERROR</string>
+    <string name="node_auth_error">AUTHENTICATION FAILED</string>
+    <string name="node_result_label">Test Result:</string>
+    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testing IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Please wait for scan to finish</string>
+    <string name="node_create_hint">Touch to select or add nodes</string>
+    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
+    <string name="node_scanning">Scanning network&#8230;</string>
+    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
+    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 </resources>

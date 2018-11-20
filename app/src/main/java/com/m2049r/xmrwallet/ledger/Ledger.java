@@ -126,8 +126,8 @@ public class Ledger {
         if (response.length < 2) {
             throw new BTChipException("Truncated response");
         }
-        lastSW = ((int) (response[response.length - 2] & 0xff) << 8) |
-                (int) (response[response.length - 1] & 0xff);
+        lastSW = ((response[response.length - 2] & 0xff) << 8) |
+                response[response.length - 1] & 0xff;
         byte[] result = new byte[response.length - 2];
         System.arraycopy(response, 0, result, 0, response.length - 2);
         return result;

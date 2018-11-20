@@ -91,22 +91,22 @@ public class GenerateReviewFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_review, container, false);
 
-        scrollview = (ScrollView) view.findViewById(R.id.scrollview);
-        pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
-        tvWalletPassword = (TextView) view.findViewById(R.id.tvWalletPassword);
-        tvWalletAddress = (TextView) view.findViewById(R.id.tvWalletAddress);
-        tvWalletViewKey = (TextView) view.findViewById(R.id.tvWalletViewKey);
-        tvWalletSpendKey = (TextView) view.findViewById(R.id.tvWalletSpendKey);
-        tvWalletMnemonic = (TextView) view.findViewById(R.id.tvWalletMnemonic);
-        bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
-        bAdvancedInfo = (Button) view.findViewById(R.id.bAdvancedInfo);
-        llAdvancedInfo = (LinearLayout) view.findViewById(R.id.llAdvancedInfo);
-        llPassword = (LinearLayout) view.findViewById(R.id.llPassword);
-        llMnemonic = (LinearLayout) view.findViewById(R.id.llMnemonic);
-        llSpendKey = (LinearLayout) view.findViewById(R.id.llSpendKey);
-        llViewKey = (LinearLayout) view.findViewById(R.id.llViewKey);
+        scrollview = view.findViewById(R.id.scrollview);
+        pbProgress = view.findViewById(R.id.pbProgress);
+        tvWalletPassword = view.findViewById(R.id.tvWalletPassword);
+        tvWalletAddress = view.findViewById(R.id.tvWalletAddress);
+        tvWalletViewKey = view.findViewById(R.id.tvWalletViewKey);
+        tvWalletSpendKey = view.findViewById(R.id.tvWalletSpendKey);
+        tvWalletMnemonic = view.findViewById(R.id.tvWalletMnemonic);
+        bCopyAddress = view.findViewById(R.id.bCopyAddress);
+        bAdvancedInfo = view.findViewById(R.id.bAdvancedInfo);
+        llAdvancedInfo = view.findViewById(R.id.llAdvancedInfo);
+        llPassword = view.findViewById(R.id.llPassword);
+        llMnemonic = view.findViewById(R.id.llMnemonic);
+        llSpendKey = view.findViewById(R.id.llSpendKey);
+        llViewKey = view.findViewById(R.id.llViewKey);
 
-        bAccept = (Button) view.findViewById(R.id.bAccept);
+        bAccept = view.findViewById(R.id.bAccept);
 
         boolean allowCopy = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
         tvWalletMnemonic.setTextIsSelectable(allowCopy);
@@ -481,13 +481,13 @@ public class GenerateReviewFragment extends Fragment {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setView(promptsView);
 
-        final TextInputLayout etPasswordA = (TextInputLayout) promptsView.findViewById(R.id.etWalletPasswordA);
+        final TextInputLayout etPasswordA = promptsView.findViewById(R.id.etWalletPasswordA);
         etPasswordA.setHint(getString(R.string.prompt_changepw, walletName));
 
-        final TextInputLayout etPasswordB = (TextInputLayout) promptsView.findViewById(R.id.etWalletPasswordB);
+        final TextInputLayout etPasswordB = promptsView.findViewById(R.id.etWalletPasswordB);
         etPasswordB.setHint(getString(R.string.prompt_changepwB, walletName));
 
-        LinearLayout llFingerprintAuth = (LinearLayout) promptsView.findViewById(R.id.llFingerprintAuth);
+        LinearLayout llFingerprintAuth = promptsView.findViewById(R.id.llFingerprintAuth);
         final Switch swFingerprintAllowed = (Switch) llFingerprintAuth.getChildAt(0);
         if (FingerprintHelper.isDeviceSupported(getActivity())) {
             llFingerprintAuth.setVisibility(View.VISIBLE);

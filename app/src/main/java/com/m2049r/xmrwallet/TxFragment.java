@@ -85,22 +85,22 @@ public class TxFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tx_info, container, false);
 
         cvXmrTo = view.findViewById(R.id.cvXmrTo);
-        tvTxXmrToKey = (TextView) view.findViewById(R.id.tvTxXmrToKey);
-        tvDestinationBtc = (TextView) view.findViewById(R.id.tvDestinationBtc);
-        tvTxAmountBtc = (TextView) view.findViewById(R.id.tvTxAmountBtc);
+        tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
+        tvDestinationBtc = view.findViewById(R.id.tvDestinationBtc);
+        tvTxAmountBtc = view.findViewById(R.id.tvTxAmountBtc);
 
-        tvAccount = (TextView) view.findViewById(R.id.tvAccount);
-        tvTxTimestamp = (TextView) view.findViewById(R.id.tvTxTimestamp);
-        tvTxId = (TextView) view.findViewById(R.id.tvTxId);
-        tvTxKey = (TextView) view.findViewById(R.id.tvTxKey);
-        tvDestination = (TextView) view.findViewById(R.id.tvDestination);
-        tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
-        tvTxBlockheight = (TextView) view.findViewById(R.id.tvTxBlockheight);
-        tvTxAmount = (TextView) view.findViewById(R.id.tvTxAmount);
-        tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
-        tvTxTransfers = (TextView) view.findViewById(R.id.tvTxTransfers);
-        etTxNotes = (TextView) view.findViewById(R.id.etTxNotes);
-        bTxNotes = (Button) view.findViewById(R.id.bTxNotes);
+        tvAccount = view.findViewById(R.id.tvAccount);
+        tvTxTimestamp = view.findViewById(R.id.tvTxTimestamp);
+        tvTxId = view.findViewById(R.id.tvTxId);
+        tvTxKey = view.findViewById(R.id.tvTxKey);
+        tvDestination = view.findViewById(R.id.tvDestination);
+        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
+        tvTxBlockheight = view.findViewById(R.id.tvTxBlockheight);
+        tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxFee = view.findViewById(R.id.tvTxFee);
+        tvTxTransfers = view.findViewById(R.id.tvTxTransfers);
+        etTxNotes = view.findViewById(R.id.etTxNotes);
+        bTxNotes = view.findViewById(R.id.bTxNotes);
 
         etTxNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 

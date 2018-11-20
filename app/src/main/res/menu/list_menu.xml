@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_stagenet"
-        android:checkable="true"
-        android:orderInCategory="100"
-        android:title="@string/menu_stagenet"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_language"
         android:orderInCategory="200"
         android:title="@string/menu_language"

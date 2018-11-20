@@ -92,17 +92,17 @@ public class ReceiveFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_receive, container, false);
 
-        pbProgress = (ProgressBar) view.findViewById(R.id.pbProgress);
-        tvAddressLabel = (TextView) view.findViewById(R.id.tvAddressLabel);
-        tvAddress = (TextView) view.findViewById(R.id.tvAddress);
-        etNotes = (TextInputLayout) view.findViewById(R.id.etNotes);
-        evAmount = (ExchangeView) view.findViewById(R.id.evAmount);
-        qrCode = (ImageView) view.findViewById(R.id.qrCode);
-        tvQrCode = (TextView) view.findViewById(R.id.tvQrCode);
-        qrCodeFull = (ImageView) view.findViewById(R.id.qrCodeFull);
-        etDummy = (EditText) view.findViewById(R.id.etDummy);
-        bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
-        bSubaddress = (Button) view.findViewById(R.id.bSubaddress);
+        pbProgress = view.findViewById(R.id.pbProgress);
+        tvAddressLabel = view.findViewById(R.id.tvAddressLabel);
+        tvAddress = view.findViewById(R.id.tvAddress);
+        etNotes = view.findViewById(R.id.etNotes);
+        evAmount = view.findViewById(R.id.evAmount);
+        qrCode = view.findViewById(R.id.qrCode);
+        tvQrCode = view.findViewById(R.id.tvQrCode);
+        qrCodeFull = view.findViewById(R.id.qrCodeFull);
+        etDummy = view.findViewById(R.id.etDummy);
+        bCopyAddress = view.findViewById(R.id.bCopyAddress);
+        bSubaddress = view.findViewById(R.id.bSubaddress);
 
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
@@ -438,7 +438,7 @@ public class ReceiveFragment extends Fragment {
         Bitmap logoBitmap = Bitmap.createBitmap(qrWidth, qrHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(logoBitmap);
         canvas.drawBitmap(qrBitmap, 0, 0, null);
-        canvas.save(Canvas.ALL_SAVE_FLAG);
+        canvas.save();
         // figure out how to scale the logo
         float scaleSize = 1.0f;
         while ((logoWidth / scaleSize) > (qrWidth / 5) || (logoHeight / scaleSize) > (qrHeight / 5)) {
@@ -482,7 +482,6 @@ public class ReceiveFragment extends Fragment {
         if (context instanceof GenerateReviewFragment.ProgressListener) {
             this.progressCallback = (GenerateReviewFragment.ProgressListener) context;
         }
-
     }
 
     @Override

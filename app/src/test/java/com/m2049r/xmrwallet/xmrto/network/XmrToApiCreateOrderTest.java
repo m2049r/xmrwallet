@@ -71,7 +71,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_shouldBePostMethod()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         xmrToApi.createOrder(0.5, "btcsomething", mockOrderXmrToCallback);
 
@@ -81,7 +81,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_shouldBeContentTypeJson()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         xmrToApi.createOrder(0.5, "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW", mockOrderXmrToCallback);
 
@@ -91,7 +91,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_shouldContainValidBody()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         final String validBody = "{\"btc_amount\":0.1,\"btc_dest_address\":\"19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW\"}";
 
@@ -104,7 +104,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_wasSuccessfulShouldRespondWithOrder()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         final double amount = 1.23456789;
         final String address = "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW";
         final String uuid = "xmrto-abcdef";
@@ -134,7 +134,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_wasNotSuccessfulShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.createOrder(0.5, "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW", new XmrToCallback<CreateOrder>() {
             @Override
@@ -156,7 +156,7 @@ public class XmrToApiCreateOrderTest {
 
     @Test
     public void createOrder_malformedAddressShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(400).
                 setBody("{\"error_msg\":\"malformed bitcoin address\",\"error\":\"XMRTO-ERROR-002\"}"));

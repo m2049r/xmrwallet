@@ -71,7 +71,7 @@ public class XmrToApiOrderParameterTest {
 
     @Test
     public void orderParameter_shouldBeGetMethod()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         xmrToApi.queryOrderParameters(mockParametersXmrToCallback);
 
@@ -81,7 +81,7 @@ public class XmrToApiOrderParameterTest {
 
     @Test
     public void orderParameter_wasSuccessfulShouldRespondWithParameters()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         final boolean isZeroConfEnabled = true;
         final double price = 0.015537;
         final double upperLimit = 20.0;
@@ -114,7 +114,7 @@ public class XmrToApiOrderParameterTest {
 
     @Test
     public void orderParameter_wasNotSuccessfulShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.queryOrderParameters(new XmrToCallback<QueryOrderParameters>() {
             @Override
@@ -136,7 +136,7 @@ public class XmrToApiOrderParameterTest {
 
     @Test
     public void orderParameter_thirdPartyServiceNotAvailableShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(503).
                 setBody("{\"error_msg\":\"third party service not available\",\"error\":\"XMRTO-ERROR-007\"}"));
