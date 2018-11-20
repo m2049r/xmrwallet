@@ -238,7 +238,7 @@
         <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
     ]]></string>
 
-    <string name="help_node" translatable="false"><![CDATA[
+    <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>TL;DR</h2>
         <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
