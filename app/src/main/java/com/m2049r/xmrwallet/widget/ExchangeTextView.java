@@ -177,12 +177,12 @@ public class ExchangeTextView extends LinearLayout
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        tvAmountA = (TextView) findViewById(R.id.tvAmountA);
-        tvAmountB = (TextView) findViewById(R.id.tvAmountB);
-        sCurrencyA = (Spinner) findViewById(R.id.sCurrencyA);
-        sCurrencyB = (Spinner) findViewById(R.id.sCurrencyB);
-        evExchange = (ImageView) findViewById(R.id.evExchange);
-        pbExchange = (ProgressBar) findViewById(R.id.pbExchange);
+        tvAmountA = findViewById(R.id.tvAmountA);
+        tvAmountB = findViewById(R.id.tvAmountB);
+        sCurrencyA = findViewById(R.id.sCurrencyA);
+        sCurrencyB = findViewById(R.id.sCurrencyB);
+        evExchange = findViewById(R.id.evExchange);
+        pbExchange = findViewById(R.id.pbExchange);
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().

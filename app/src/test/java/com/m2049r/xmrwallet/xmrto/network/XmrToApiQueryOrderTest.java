@@ -81,7 +81,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_shouldBePostMethod()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         xmrToApi.queryOrderStatus("xmrto - efMsiU", mockQueryXmrToCallback);
 
@@ -91,7 +91,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_shouldBeContentTypeJson()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         xmrToApi.queryOrderStatus("xmrto - efMsiU", mockQueryXmrToCallback);
 
@@ -101,7 +101,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_shouldContainValidBody()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         final String validBody = "{\"uuid\":\"xmrto - efMsiU\"}";
 
@@ -114,7 +114,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_wasSuccessfulShouldRespondWithOrder()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
 
 //TODO: state enum
 // TODO dates are dates
@@ -204,7 +204,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_wasNotSuccessfulShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.queryOrderStatus("xmrto - efMsiU", new XmrToCallback<QueryOrderStatus>() {
             @Override
@@ -226,7 +226,7 @@ public class XmrToApiQueryOrderTest {
 
     @Test
     public void orderStatus_orderNotFoundShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(404).
                 setBody("{\"error_msg\":\"requested order not found\",\"error\":\"XMRTO-ERROR-006\"}"));

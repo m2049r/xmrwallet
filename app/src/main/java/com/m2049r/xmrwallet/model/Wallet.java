@@ -60,6 +60,12 @@ public class Wallet {
         this.accountIndex = accountIndex;
     }
 
+    public enum Device {
+        Device_Undefined,
+        Device_Software,
+        Device_Ledger
+    }
+
     public enum Status {
         Status_Ok,
         Status_Error,
@@ -150,7 +156,12 @@ public class Wallet {
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
-//    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
+
+    public native void setRestoreHeight(long height);
+
+    public native long getRestoreHeight();
+
+    //    virtual void setRecoveringFromSeed(bool recoveringFromSeed) = 0;
 //    virtual bool connectToDaemon() = 0;
 
     public ConnectionStatus getConnectionStatus() {
@@ -388,5 +399,12 @@ public class Wallet {
     public String getLastSubaddress(int accountIndex) {
         return getSubaddress(accountIndex, getNumSubaddresses(accountIndex) - 1);
     }
+
+    public Wallet.Device getDeviceType() {
+        int device = getDeviceTypeJ();
+        return Wallet.Device.values()[device + 1]; // mapping is monero+1=android
+    }
+
+    private native int getDeviceTypeJ();
 
 }

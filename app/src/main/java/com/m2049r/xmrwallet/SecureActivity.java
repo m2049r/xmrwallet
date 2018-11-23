@@ -16,13 +16,12 @@
 
 package com.m2049r.xmrwallet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.m2049r.xmrwallet.util.Helper;
-
-import java.io.File;
+import com.m2049r.xmrwallet.util.LocaleHelper;
 
 import static android.view.WindowManager.LayoutParams;
 
@@ -32,8 +31,13 @@ public abstract class SecureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG && !BuildConfig.FLAVOR_type.equals("alpha")) {
             getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(LocaleHelper.setLocale(context, LocaleHelper.getLocale(context)));
     }
 }

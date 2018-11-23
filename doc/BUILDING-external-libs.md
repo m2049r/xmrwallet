@@ -46,6 +46,7 @@ git clone https://github.com/m2049r/android-openssl.git
 wget https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz
 cd android-openssl
 tar xfz ../OpenSSL_1_0_2l.tar.gz
+PATH="${PATH}:/opt/android/tool/arm/bin/:/opt/android/tool/arm64/bin/:/opt/android/tool/x86/bin/:/opt/android/tool/x86_64/bin" \
 ANDROID_NDK_ROOT=/opt/android/ndk ./build-all-arch.sh
 ```
 
@@ -85,6 +86,16 @@ cd boost_1_58_0
 ./bootstrap.sh
 ```
 Comment out ```using ::fgetpos;``` & ```using ::fsetpos;``` in ```cstdio```.
+```
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/arm/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/arm/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/arm64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/arm64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/x86/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/x86/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fgetpos;|//using ::fgetpos;|" /opt/android/tool/x86_64/include/c++/4.9.x/cstdio
+sed -ibackup "s|using ::fsetpos;|//using ::fsetpos;|" /opt/android/tool/x86_64/include/c++/4.9.x/cstdio
+```
 
 Then build & install to ```/opt/android/build/boost``` with
 ```Shell
@@ -102,8 +113,9 @@ ln -sf ../include /opt/android/build/boost/x86_64
 ```Shell
 cd /opt/android
 git clone https://github.com/m2049r/monero.git
+cd monero
+git checkout release-v0.12.3
 
-cd /opt/android/monero
 ./build-all-arch.sh
 ```
 

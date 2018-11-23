@@ -107,9 +107,9 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
 
         ViewHolder(View itemView) {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvAddress = (TextView) itemView.findViewById(R.id.tvAddress);
-            ibOptions = (ImageButton) itemView.findViewById(R.id.ibOptions);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvAddress = itemView.findViewById(R.id.tvAddress);
+            ibOptions = itemView.findViewById(R.id.ibOptions);
             ibOptions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

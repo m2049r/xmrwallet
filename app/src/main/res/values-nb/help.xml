@@ -119,23 +119,6 @@
 		eller en sikker sletteapp.</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Lommeboka</h1>
-        <h2>Skanning</h2>
-        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
-        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
-        lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
-		tid fordi du ikke har synkronisert på en stund.
-        <h2>Saldo</h2>
-        <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
-        Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
-		vist som ubekrefta en liten periode.
-        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
-        Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
-        <h2>Transaksjonsliste</h2>
-        <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaksjonsdetaljer</h1>
         <h2>Destinasjon</h2>
@@ -166,18 +149,6 @@
         <p>Du kan bruke betalings-ID til å identifisere hvorfor du sendte Monero mellom to parter. Dette er
         helt frivillig og privat. For eksempel lar det en bedrift tilknytte transaksjonen din med
 		en vare du har kjøpt.<p>
-        <h2>Ringstørrelse</h2>
-        <p>Det er noen ringstørrelser å velge mellom i monerujo. Hvis du er en begynner
-        anbefaler vi å holde seg til en ringstørrelse av 7. Å øke størrelsen over 7 øker antallet
-        signaturer i en ringsignatur, som teoretisk sett gir mer "plausible deniability".
-		Derimot vil en større ringstørrelse gjøre at transaksjonen din blir mer synlig
-		på blokkjeden.</p>
-        <h2>Prioritet</h2>
-        <p>Denne innstillingen bestemmer hvor raskt transaksjonen din skal bli inkludert i blokkjeden.
-		En høy transaksjonsprioritet er direkte tilknytta en høy transaksjonsavgift
-        og det motsatte er sant for lav prioritet. Vær oppmerksom på at hvis du setter prioriteten
-        til lav kan det ta timer før den blir inkludert, basert på nettverkstrafikk. Standard prioritet er
-		\"Middels\".</p>
         <h1>Å sende BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
@@ -233,4 +204,86 @@
         det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Create Wallet - Ledger</h1>
+        <p>You want to recover your wallet from your Ledger Nano S device.</p>
+        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
+        time you want to access your wallet.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
+        device. Use a strong password - even better use a passphrase.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Lommeboka</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Skanning</h2>
+        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
+        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
+        lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
+		tid fordi du ikke har synkronisert på en stund.
+        <h2>Saldo</h2>
+        <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
+        Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
+		vist som ubekrefta en liten periode.
+        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
+        Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transaksjonsliste</h2>
+        <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nodes</h1>
+        <h2>TL;DR</h2>
+        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
+        to choose the best one for you!</p>
+        <h2>What&apos;s a Node?</h2>
+        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
+        the Monero Network without having to download and store a copy of the
+        whole blockchain itself.<p>
+        <h2>Node List</h2>
+        <p>If the list is empty, you can either add new nodes manually or let Monerujo
+        scan the network for you. Or both. Read on&#8230;</p>
+        <p>The node list shows all currently known nodes. Additionally, the timestamp
+        of the latest block known to each node is shown under the node name. An icon
+        representing the node&apos;s response behaviour
+        (which indicates the level of connectivity to be expected)
+        is shown next to each node.</p>
+        <p>Any node in the list can be bookmarked for later use.
+        Nodes which are not bookmarked will be forgotten.<p>
+        <p>Monerujo will choose the optimal bookmarked node each time you use it.
+        It does this by checking the blockheight (how up-to-date
+        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
+        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
+        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
+        <h2>Add a Node</h2>
+        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
+        enter the node details in the following dialog.
+        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
+        mandatory entry.
+        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
+        You can also optionally name the node, so you can identify it easier later on.
+        Some nodes require credentials to use them. Enter the provided username &amp;
+        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
+        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
+        The result may also be an error - usually because the hostname provided is
+        not reachable in a sensible amount of time or the credentials are incorrect.
+        Or the hostname/port combination does not point to an actual Monero Node!
+        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
+        bookmark this node.</p>
+        <h2>Scan for Nodes</h2>
+        <p>Additionally, you can scan the network for nodes. Monerujo will start
+        scanning the network for Remote Nodes on port 18089. It begins by asking your
+        bookmarked nodes for other peers in the Monero P2P network and then continues
+        by asking those for their peers, and so on. If you have no bookmarked nodes
+        (or they don&apos;t tell us about their peers),
+        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
+        scan stops when it finds 10 remote nodes in total.</p>
+    ]]></string>
 </resources>

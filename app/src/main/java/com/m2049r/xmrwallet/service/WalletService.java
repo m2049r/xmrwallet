@@ -17,16 +17,22 @@
 package com.m2049r.xmrwallet.service;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
@@ -36,6 +42,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.LocaleHelper;
 
 import timber.log.Timber;
 
@@ -43,6 +50,7 @@ public class WalletService extends Service {
     public static boolean Running = false;
 
     final static int NOTIFICATION_ID = 2049;
+    final static String CHANNEL_ID = "m_service";
 
     public static final String REQUEST_WALLET = "wallet";
     public static final String REQUEST = "request";
@@ -218,7 +226,9 @@ public class WalletService extends Service {
 
         void onSetNotes(boolean success);
 
-        void onWalletStarted(boolean success);
+        void onWalletStarted(Wallet.ConnectionStatus walletStatus);
+
+        void onWalletOpen(Wallet.Device device);
     }
 
     String progressText = null;
@@ -283,9 +293,9 @@ public class WalletService extends Service {
                         if (walletId != null) {
                             showProgress(getString(R.string.status_wallet_loading));
                             showProgress(10);
-                            boolean success = start(walletId, walletPw);
-                            if (observer != null) observer.onWalletStarted(success);
-                            if (!success) {
+                            Wallet.ConnectionStatus connStatus = start(walletId, walletPw);
+                            if (observer != null) observer.onWalletStarted(connStatus);
+                            if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
                                 errorState = true;
                                 stop();
                             }
@@ -336,19 +346,21 @@ public class WalletService extends Service {
                         Wallet myWallet = getWallet();
                         Timber.d("SEND TX for wallet: %s", myWallet.getName());
                         PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
-                        if ((pendingTransaction == null)
-                                || (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok)) {
+                        if (pendingTransaction == null) {
+                            throw new IllegalArgumentException("PendingTransaction is null"); // die
+                        }
+                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
                             Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
                             final String error = pendingTransaction.getErrorString();
                             myWallet.disposePendingTransaction(); // it's broken anyway
                             if (observer != null) observer.onSendTransactionFailed(error);
                             return;
                         }
-                        final String txid = pendingTransaction.getFirstTxId();
+                        final String txid = pendingTransaction.getFirstTxId(); // tx ids vanish after commit()!
                         boolean success = pendingTransaction.commit("", true);
-                        myWallet.disposePendingTransaction();
-                        if (observer != null) observer.onTransactionSent(txid);
                         if (success) {
+                            myWallet.disposePendingTransaction();
+                            if (observer != null) observer.onTransactionSent(txid);
                             String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
                             if ((notes != null) && (!notes.isEmpty())) {
                                 myWallet.setUserNote(txid, notes);
@@ -360,6 +372,11 @@ public class WalletService extends Service {
                             }
                             if (observer != null) observer.onWalletStored(rc);
                             listener.updated = true;
+                        } else {
+                            final String error = pendingTransaction.getErrorString();
+                            myWallet.disposePendingTransaction();
+                            if (observer != null) observer.onSendTransactionFailed(error);
+                            return;
                         }
                     } else if (cmd.equals(REQUEST_CMD_SETNOTE)) {
                         Wallet myWallet = getWallet();
@@ -418,6 +435,11 @@ public class WalletService extends Service {
         }
     }
 
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(LocaleHelper.setLocale(context, LocaleHelper.getLocale(context)));
+    }
+
     public class WalletServiceBinder extends Binder {
         public WalletService getService() {
             return WalletService.this;
@@ -468,7 +490,7 @@ public class WalletService extends Service {
         return true; // true is important so that onUnbind is also called next time
     }
 
-    private boolean start(String walletName, String walletPassword) {
+    private Wallet.ConnectionStatus start(String walletName, String walletPassword) {
         Timber.d("start()");
         startNotfication();
         showProgress(getString(R.string.status_wallet_loading));
@@ -476,9 +498,11 @@ public class WalletService extends Service {
         if (listener == null) {
             Timber.d("start() loadWallet");
             Wallet aWallet = loadWallet(walletName, walletPassword);
-            if ((aWallet == null) || (aWallet.getConnectionStatus() != Wallet.ConnectionStatus.ConnectionStatus_Connected)) {
+            Wallet.ConnectionStatus connStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
+            if (aWallet != null) connStatus = aWallet.getConnectionStatus();
+            if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
                 if (aWallet != null) aWallet.close();
-                return false;
+                return connStatus;
             }
             listener = new MyWalletListener();
             listener.start();
@@ -489,7 +513,7 @@ public class WalletService extends Service {
         // if we try to refresh the history here we get occasional segfaults!
         // doesnt matter since we update as soon as we get a new block anyway
         Timber.d("start() done");
-        return true;
+        return Wallet.ConnectionStatus.ConnectionStatus_Connected;
     }
 
     public void stop() {
@@ -528,6 +552,9 @@ public class WalletService extends Service {
         showProgress(30);
         if (walletMgr.walletExists(path)) {
             Timber.d("open wallet %s", path);
+            Wallet.Device device = WalletManager.getInstance().queryWalletDevice(path + ".keys", walletPassword);
+            Timber.d("device is %s", device.toString());
+            if (observer != null) observer.onWalletOpen(device);
             wallet = walletMgr.openWallet(path, walletPassword);
             showProgress(60);
             Timber.d("wallet opened");
@@ -548,11 +575,26 @@ public class WalletService extends Service {
     private void startNotfication() {
         Intent notificationIntent = new Intent(this, WalletActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new Notification.Builder(this)
+
+        String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel() : "";
+        Notification notification = new NotificationCompat.Builder(this, channelId)
                 .setContentTitle(getString(R.string.service_description))
+                .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_monerujo)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(NOTIFICATION_ID, notification);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private String createNotificationChannel() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, getString(R.string.service_description),
+                NotificationManager.IMPORTANCE_LOW);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationManager.createNotificationChannel(channel);
+        return CHANNEL_ID;
     }
 }

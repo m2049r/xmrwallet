@@ -12,58 +12,74 @@
         android:layout_margin="8dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:id="@+id/flExchange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="0dp"
-                android:layout_marginStart="8dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_statsup" />
-
-                <ProgressBar
-                    android:id="@+id/pbExchange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:indeterminate="true" />
-            </FrameLayout>
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvBalance"
+                android:id="@+id/tvStreetView"
                 style="@style/MoneroText.Balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:visibility="visible"
-                tools:text="1099700.23001" />
+                android:layout_gravity="center"
+                android:text="@string/menu_streetmode"
+                android:visibility="invisible" />
 
-            <Spinner
-                android:id="@+id/sCurrency"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/llBalance"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:entries="@array/currency"
                 android:gravity="center"
-                android:minWidth="80dp"
-                android:paddingBottom="2dp"
-                android:paddingEnd="4dp"
-                android:paddingStart="4dp"
-                android:paddingTop="0dp"
-                tools:listitem="@layout/item_spinner_balance" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/flExchange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="0dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_statsup" />
+
+                    <ProgressBar
+                        android:id="@+id/pbExchange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:indeterminate="true" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvBalance"
+                    style="@style/MoneroText.Balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    tools:text="1099700.23001" />
+
+                <Spinner
+                    android:id="@+id/sCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:entries="@array/currency"
+                    android:gravity="center"
+                    android:minWidth="80dp"
+                    android:paddingStart="4dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="2dp"
+                    tools:listitem="@layout/item_spinner_balance" />
+            </LinearLayout>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tvUnconfirmedAmount"
@@ -127,10 +143,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="12dp"
             android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
             android:layout_marginTop="12dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="12dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -143,8 +159,8 @@
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_hand"
                 android:enabled="false"
-                android:paddingEnd="16dp"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="@string/label_wallet_receive"
                 android:visibility="invisible" />
 
@@ -157,8 +173,8 @@
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_send"
                 android:enabled="false"
-                android:paddingEnd="16dp"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="@string/label_wallet_send"
                 android:visibility="invisible" />
 

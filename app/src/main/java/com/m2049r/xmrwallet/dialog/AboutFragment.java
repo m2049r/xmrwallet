@@ -32,6 +32,14 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+import timber.log.Timber;
+
 public class AboutFragment extends DialogFragment {
     static final String TAG = "AboutFragment";
 
@@ -52,7 +60,7 @@ public class AboutFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_about, null);
-        ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getString(R.string.about_licenses)));
+        ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getLicencesHtml()));
         ((TextView) view.findViewById(R.id.tvVersion)).setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -65,5 +73,19 @@ public class AboutFragment extends DialogFragment {
                     }
                 });
         return builder.create();
+    }
+
+    private String getLicencesHtml() {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(getContext().getAssets().open("licenses.html"), StandardCharsets.UTF_8))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null)
+                sb.append(line);
+            return sb.toString();
+        } catch (IOException ex) {
+            Timber.e(ex);
+            return ex.getLocalizedMessage();
+        }
     }
 }

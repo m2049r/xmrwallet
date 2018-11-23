@@ -74,9 +74,9 @@ public class SendAmountWizardFragment extends SendWizardFragment {
 
         View view = inflater.inflate(R.layout.fragment_send_amount, container, false);
 
-        tvFunds = (TextView) view.findViewById(R.id.tvFunds);
+        tvFunds = view.findViewById(R.id.tvFunds);
 
-        evAmount = (ExchangeTextView) view.findViewById(R.id.evAmount);
+        evAmount = view.findViewById(R.id.evAmount);
         ((NumberPadView) view.findViewById(R.id.numberPad)).setListener(evAmount);
 
         rlSweep = view.findViewById(R.id.rlSweep);
@@ -88,7 +88,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
             }
         });
 
-        ibSweep = (ImageButton) view.findViewById(R.id.ibSweep);
+        ibSweep = view.findViewById(R.id.ibSweep);
 
         ibSweep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,8 +149,13 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
         maxFunds = 1.0 * funds / 1000000000000L;
-        tvFunds.setText(getString(R.string.send_available,
-                Wallet.getDisplayAmount(funds)));
+        if (!sendListener.getActivityCallback().isStreetMode()) {
+            tvFunds.setText(getString(R.string.send_available,
+                    Wallet.getDisplayAmount(funds)));
+        } else {
+            tvFunds.setText(getString(R.string.send_available,
+                    getString(R.string.unknown_amount)));
+        }
         // getAmount is null if exchange is in progress
         if ((evAmount.getAmount() != null) && evAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();

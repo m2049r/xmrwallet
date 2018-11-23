@@ -204,23 +204,28 @@
 
     <string name="help_wallet"><![CDATA[
         <h1>Peňaženka</h1>
+
         <h2>Mód Ulica</h2>
         <p>Mód Ulica sa povoľuje a vypína v menu, alebo klepnutím na ikonu Guntherovej hlavy. V tomto móde sa váš zostatok nezobrazuje na žiadnej obrazovke,
 		takže svoju peňaženku môžte smelo používať na ulici, v krčme, či na inom  verejnom mieste. Po nastavení sú skryté aj predchádzajúce transakcie, zatiaľ čo nové budú zobrazené,
 		aby ste mohli vidieť či vám odoslalo a dorazilo všetko správne.</p>
+
         <h2>Skenovanie</h2>
         Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
 		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.
         <h2>Zostatok</h2>
         <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
         Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
+
         Súvisí to s tým, ako je Monero navrhnuté a ako funguje zmena v blockchain.
+
 		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
         <h2>Zoznam Transakcií</h2>
         <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
     ]]></string>
 
     <string name="help_node"><![CDATA[
+
         <h1>Uzly</h1>
         <h2>TL;DR</h2>
         <p>Aktuálny zoznam uzlov získaš tak, že potiahneš a pridáš do záložiek 5 uzlov, z ktorých si Monerujo jeden vyberie.</p>

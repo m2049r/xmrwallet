@@ -39,12 +39,19 @@ public class Notice {
 
     private static final String NOTICE_SHOW_XMRTO_ENABLED_LOGIN = "notice_xmrto_enabled_login";
     private static final String NOTICE_SHOW_XMRTO_ENABLED_SEND = "notice_xmrto_enabled_send";
-    private static final String NOTICE_SHOW_CRAZYPASS = "notice_crazypass_enabled_login";
+    private static final String NOTICE_SHOW_LEDGER = "notice_ledger_enabled_login";
+    private static final String NOTICE_SHOW_NODES = "notice_nodes";
 
     private static void init() {
         synchronized (Notice.class) {
             if (notices != null) return;
             notices = new ArrayList<>();
+            notices.add(
+                    new Notice(NOTICE_SHOW_NODES,
+                            R.string.info_nodes_enabled,
+                            R.string.help_node,
+                            1)
+            );
             notices.add(
                     new Notice(NOTICE_SHOW_XMRTO_ENABLED_SEND,
                             R.string.info_xmrto_enabled,
@@ -58,10 +65,10 @@ public class Notice {
                             1)
             );
             notices.add(
-                    new Notice(NOTICE_SHOW_CRAZYPASS,
-                            R.string.info_crazypass_enabled,
-                            R.string.help_details,
-                            2)
+                    new Notice(NOTICE_SHOW_LEDGER,
+                            R.string.info_ledger_enabled,
+                            R.string.help_create_ledger,
+                            1)
             );
         }
     }
@@ -108,7 +115,7 @@ public class Notice {
             }
         });
 
-        ImageButton ib = (ImageButton) ll.findViewById(R.id.ibClose);
+        ImageButton ib = ll.findViewById(R.id.ibClose);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

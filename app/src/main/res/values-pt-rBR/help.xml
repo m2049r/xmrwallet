@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Criar Carteira - Nova</h1>
+        <p>Se você precisa de um novo endereço Monero!</p>
+        <p>Escreva um nome para sua carteira e uma senha forte.
+        A senha é utilizada para proteger as informações da carteira. Use uma senha forte e comprida.</p>
+        <h2>Anote a semente mnemônica!</h2>
+        <p>Na próxima tela será exibida a sua \"semente mnemônica\".
+        Essa lista de palavras é a única informação necessária para restaurar sua carteira no futuro
+        e recuperar o acesso aos seus fundos.
+        Manter a semente num local seguro e privado é muito importante, já que ela dá acesso completo
+        aos seus fundos para <em>qualquer pessoa</em>!
+        <p>Se você perder ou esquecer sua senha, ainda é possível recuperar a carteira através da semente mnemônica.</p>
+        <p>Não existe uma maneira de recuperar a semente mnemônica, se você perdê-la seu dinheiro será perdido junto!
+        A semente nunca pode ser alterada. Se ela for roubada ou comprometida de alguma maneira, será
+        preciso movimentar os fundos para uma nova carteira (com uma nova semente).
+        Portanto é melhor fazer um backup da sua semente
+        mnemônica escrevendo-a a mão e guardando cópias em <em>vários</em> lugares seguros.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Criar Carteira - Semente</h1>
+        <p>Se você já tem um endereço Monero e quer restaurar suas transações e fundos!</p>
+        <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
+        Use uma senha forte e comprida.</p>
+        <p>Escreva a semente no campo \"semente mnemônica\".<p>
+        <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
+        no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
+        coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
+    ]]></string>
+
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Criar Carteira - Ledger</h1>
+        <p>Se você quer usar sua carteira do dispositivo Ledger Nano S.</p>
+        <p>Suas chaves nunca saem do dispositivo da Ledger, então é preciso conectá-lo
+        sempre que você desejar usar a carteira.</p>
+        <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
+        Use uma senha forte - ou melhor, use uma longa frase.</p>
+        <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
+        no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
+        coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Criar Carteira - Chaves</h1>
+        <p>Se você quer restaurar a carteira a partir das chaves privadas</p>
+        <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
+        Use uma senha forte e comprida.</p>
+        <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha os campos \"Chave de visualização\" e \"Chave de gasto\".</p>
+        <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
+        no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
+        coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Criar Carteira - Somente Leitura</h1>
+        <p>Se você quer monitorar as transações que chegam na sua carteira.</p>
+        <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
+        Use uma senha forte e comprida.</p>
+        <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha o campo \"Chave de visualização\".</p>
+        <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
+        no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
+        coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Detalhes da carteira</h1>
+        <h2>Endereço público</h2>
+        Seu endereço público é como se fosse o número da sua conta bancária: você pode compartilhá-lo com qualquer
+        pessoa sem ter medo de perder seu Monero. As pessoas te enviarão Monero usando este endereço.
+        <h2>Semente Mnemônica</h2>
+        Essa é a única informação necessária para recuperar sua carteira no futuro e obter controle absoluto de seus fundos.
+        Manter essa informação privada e segura é muito importante, já que ela dá acesso total dos seus Moneros
+        para <em>qualquer pessoa</em>! Se você não anotou as palavras em um local seguro, faça-o o mais rápido possível!
+        <h2>Senha dos arquivos da carteira</h2>
+        Certifique-se de anotar e se lembrar desta senha. Caso você reinicie o dispositivo ou desinstale a aplicação, será preciso
+        colocar a senha para acessar a carteira novamente.<br/>
+        <h3>SeNHaLoUCa</h3>
+        Se a senha exibida tem 50 caracteres alfanuméricos em grupos de 4 - parabéns!
+        Os arquivos da sua carteira estão protegidos com uma chave de 256-bits gerada pelo seu dispositivo baseada
+        na senha que você escolheu (na hora de criar ou alterar a senha). Isso faz com que a carteira seja extremamente
+        difícil de ser hackeada!<br/>
+        Essa funcionalidade é obrigatória para todas as novas carteiras.
+        <h3>Senhas antigas</h3>
+        Se esta é a sua senha, os arquivos da sua carteira não estão tão protegidos como se estivessem usando a SeNHaLoUCa.
+        Para corrigir este problema, selecione \"Alterar senha\" no menu. Após escrever a nova senha (ou até mesmo a mesma),
+        o aplicativo vai criar a SeNHaLoUCa para você e protegerá seus arquivos com ela.
+        Não esqueça de anotá-la!
+        <h3>Carteiras com SeNHaLoUCa</h3>
+        Se você precisar reinstalar o Monerujo (por exemplo, caso você compre um novo celular), ou se você quiser usar
+        os arquivos da sua carteira em outro dispositivo ou computador, será preciso usar essa senha de restauração para
+        ter acesso à carteira novamente.<br/>
+        Ao selecionar "Alterar senha" no menu, você poderá escolher uma nova senha. Lembre-se que isso vai criar uma nova senha
+        de restauração! Anote-a!
+        <h2>Chave de Visualização</h2>
+        Sua chave de visualização pode ser usada para monitorar as transações que você recebe, sem precisar
+        dar permissão para <strong>gastar</strong> os fundos da sua carteira.
+        <h2>Chave de Gasto</h2>
+        Sua chave de gasto permite gastar o Monero que estiver na sua carteira, então não compartilhe esta chave com ninguém!
+        Mantenha-a segura, assim como a semente mnemônica.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Lista de Carteiras</h1>
+        <h2>Nó</h2>
+        <p>O Monerujo usa nós remotos para se comunicar com a rede Monero sem precisar fazer o
+        download do blockchain inteiro. Você pode consultar uma lista de nós remotos populares
+        e aprender a como usar seu próprio nó em https://moneroworld.com/<p>
+        <p>O Monerujo já possui alguns nós remotos pré-definidos. Os últimos 5 nós usados ficam salvos.</p>
+        <h2>Carteiras</h2>
+        <p>Aqui ficam suas carteiras. Elas estão numa pasta chamada <tt>monerujo</tt> no armazenamento
+        interno do seu dispositivo. Você pode usar um aplicativo de gerenciador de arquivos para vê-las.
+        Você deve fazer backups desta pasta fora do celular regularmente caso seu dispositivo
+        exploda ou seja roubado</p>
+        <p>Selecione uma carteira para abri-la ou toque em \"+\" para criar uma nova.
+        Ou selecione uma das opções:</p>
+        <h3>Detalhes</h3>
+        <p>Mostra mais informações sobre a carteira, semente &amp; chaves.</p>
+        <h3>Receber</h3>
+        <p>Cria um código QR para receber Monero.</p>
+        <h3>Renomear</h3>
+        <p>Renomeia a carteira. Backups não são renomeados.</p>
+        <h3>Backup</h3>
+        <p>Faz uma cópia da carteira na pasta <tt>backups</tt> dentro de <tt>monerujo</tt>
+        sobrescrevendo as cópias anteriores.</p>
+        <h3>arquivar</h3>
+        <p>Faz um backup da carteira e a deleta logo em seguida. A cópia permanece na pasta <tt>backups</tt>.
+        Se você não precisa mais do seu backup recomendamos que você delete o arquivo usando um aplicativo
+        gerenciador de arquivos.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Detalhes da transação</h1>
+        <h2>Destino</h2>
+        O endereço público para onde você enviou Monero.
+        <h2>ID do Pagamento</h2>
+        Você pode usar o ID do Pagamento para identificar a razão pela qual você transacionou com a contraparte.
+        Essa opção é opcional e privada. Por exemplo, lojistas podem reconciliar o seu pagamento com
+        o produto que você comprou.
+        <h2>ID TX</h2>
+        O ID da transação pode ser usado em exploradores de Blockchain do Monero como o
+        <a href="https://xmrchain.net/">https://xmrchain.net/</a> para identificar a transação (ofuscada).
+        <h2>Chave TX (chave da transação)</h2>
+        Essa é a chava privada da sua transação. Matenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
+        qual das assinaturas é a sua, transformando sua transação em transparente para essa pessoa ou entidade.
+        <h2>Bloco</h2>
+        Bloco no qual sua transação foi incluída pelos mineradores.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Enviar</h1>
+        <h2>Endereço destino</h2>
+        <p>Este é o endereço público da carteira na qual você está enviando Monero. Você pode colar da sua área de transferência,
+        escanear um código QR ou escrevê-lo manualmente. Verifique-o múltiplas vezes para garantir que você não está enviando
+        Monero para o endereço errado.</p>
+        <p>Além de enviar XMR, você também pode enviar BTC através do serviço XMR.TO (consulte https://xmr.to para mais detalhes).
+        Consulte a seção de envio de BTC mais abaixo.</p>
+        <h2>ID do Pagamento</h2>
+        <p>Você pode usar o ID do Pagamento para identificar a razão pela qual você transacionou com a contraparte.
+        Essa opção é opcional e privada. Por exemplo, lojistas podem reconciliar o seu pagamento com
+        o produto que você comprou.</p>
+        <h1>Enviando BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
+        Nós usamos a API do XMR.TO para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://xmr.to
+        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
+        e não podemos ajudá-lo caso algo não funcione no serviço.</p>
+        <h2>Cotação XMR.TO<h2>
+        <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do XMR.TO.
+        Nos quais estão incluídos a cotação, assim como os limites máximos e mínimos de envio de BTC.
+        Note que nesse momento a cotação ainda não é garantida. Você também verá o valor máximo no qual
+        a transação será executada de forma instantânea, sem esperar alguma confirmação da transação em XMR.
+        (consulte o FAQ do XMR.TO para mais detalhes). O XMR.TO não cobra taxas extras, legal né?</p>
+        <h2>Ordem XMR.TO<h2>
+        <p>Na tela de confirmação você verá a ordem criada no XMR.TO. A ordem é válida somente por
+        um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
+        ser diferente do que estava indicado na tela anterior.</p>
+        <h2>Chave secreta do XMR.TO<h2>
+        <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
+        XMR.TO para rastrear a parte da transação que é em Bitcoin no website do XMR.TO.</p>
+        <p>Lembre-se que essa chave secreta só é válida por 24 horas depois do início da transação!</p>
+        <h2>Contagem regressiva do XMR.TO</h2>
+        <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
+        anterior e faça o processo novamente.</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+      <h1>Enviando BTC</h1>
+      <h2>XMR.TO</h2>
+      <p>XMR.TO é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
+      Nós usamos a API do XMR.TO para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://xmr.to
+      e decida por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
+      e não podemos ajudá-lo caso algo não funcione no serviço.</p>
+      <h2>Cotação XMR.TO<h2>
+      <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do XMR.TO.
+      Nos quais estão incluídos a cotação, assim como os limites máximos e mínimos de envio de BTC.
+      Note que nesse momento a cotação ainda não é garantida. Você também verá o valor máximo no qual
+      a transação será executada de forma instantânea, sem esperar alguma confirmação da transação em XMR.
+      (consulte o FAQ do XMR.TO para mais detalhes). O XMR.TO não cobra taxas extras, legal né?</p>
+      <h2>Ordem XMR.TO<h2>
+      <p>Na tela de confirmação você verá a ordem criada no XMR.TO. A ordem é válida somente por
+      um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
+      ser diferente do que estava indicado na tela anterior.</p>
+      <h2>Chave secreta do XMR.TO<h2>
+      <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
+      XMR.TO para rastrear a parte da transação que é em Bitcoin no website do XMR.TO.</p>
+      <p>Lembre-se que essa chave secreta só é válida por 24 horas depois do início da transação!</p>
+      <h2>Contagem regressiva do XMR.TO</h2>
+      <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
+      anterior e faça o processo novamente.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>Carteira</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Escaneando</h2>
+        Como o Monero sempre mantém tudo privado, sempre que você abrir sua carteira o Monerujo precisa escanear
+        o blockchain para identificar se você recebeu algum novo Monero. Somente as informações que correspondem à sua
+        carteira são salvas no celular. De vez em quando esse processo demora,
+        principalmente se faz tempo que você não abre a carteira.
+        <h2>Saldo</h2>
+        <p><b>Ajuda! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
+        Não entre em pânico! Quando você envia uma transação, parte do seu saldo temporariamente é marcado
+        como não-confirmado.
+        Isso acontece devido a maneira como o Monero é trocado no blockchain, e como a noção de \"troco\" funciona.
+        Você pode ler mais sobre o assunto aqui: https://getmonero.org/resources/moneropedia/change.html
+        <h2>Lista de transações</h2>
+        <p>Lista de transações da carteira. Nas carteiras \"somente leitura\", somente as transações de entrada aparecem.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nodes</h1>
+        <h2>TL;DR</h2>
+        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
+        to choose the best one for you!</p>
+        <h2>What&apos;s a Node?</h2>
+        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
+        the Monero Network without having to download and store a copy of the
+        whole blockchain itself.<p>
+        <h2>Node List</h2>
+        <p>If the list is empty, you can either add new nodes manually or let Monerujo
+        scan the network for you. Or both. Read on&#8230;</p>
+        <p>The node list shows all currently known nodes. Additionally, the timestamp
+        of the latest block known to each node is shown under the node name. An icon
+        representing the node&apos;s response behaviour
+        (which indicates the level of connectivity to be expected)
+        is shown next to each node.</p>
+        <p>Any node in the list can be bookmarked for later use.
+        Nodes which are not bookmarked will be forgotten.<p>
+        <p>Monerujo will choose the optimal bookmarked node each time you use it.
+        It does this by checking the blockheight (how up-to-date
+        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
+        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
+        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
+        <h2>Add a Node</h2>
+        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
+        enter the node details in the following dialog.
+        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
+        mandatory entry.
+        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
+        You can also optionally name the node, so you can identify it easier later on.
+        Some nodes require credentials to use them. Enter the provided username &amp;
+        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
+        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
+        The result may also be an error - usually because the hostname provided is
+        not reachable in a sensible amount of time or the credentials are incorrect.
+        Or the hostname/port combination does not point to an actual Monero Node!
+        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
+        bookmark this node.</p>
+        <h2>Scan for Nodes</h2>
+        <p>Additionally, you can scan the network for nodes. Monerujo will start
+        scanning the network for Remote Nodes on port 18089. It begins by asking your
+        bookmarked nodes for other peers in the Monero P2P network and then continues
+        by asking those for their peers, and so on. If you have no bookmarked nodes
+        (or they don&apos;t tell us about their peers),
+        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
+        scan stops when it finds 10 remote nodes in total.</p>
+    ]]></string>
+</resources>

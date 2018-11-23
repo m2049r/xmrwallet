@@ -87,12 +87,12 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         View view = inflater.inflate(
                 R.layout.fragment_send_confirm, container, false);
 
-        tvTxAddress = (TextView) view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
-        tvTxNotes = (TextView) view.findViewById(R.id.tvTxNotes);
-        tvTxAmount = ((TextView) view.findViewById(R.id.tvTxAmount));
-        tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
-        tvTxTotal = (TextView) view.findViewById(R.id.tvTxTotal);
+        tvTxAddress = view.findViewById(R.id.tvTxAddress);
+        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
+        tvTxNotes = view.findViewById(R.id.tvTxNotes);
+        tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxFee = view.findViewById(R.id.tvTxFee);
+        tvTxTotal = view.findViewById(R.id.tvTxTotal);
 
         llProgress = view.findViewById(R.id.llProgress);
         pbProgressSend = view.findViewById(R.id.pbProgressSend);
@@ -145,17 +145,22 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     }
 
     @Override
-    public void sendFailed() {
+    public void sendFailed(String errorText) {
         pbProgressSend.setVisibility(View.INVISIBLE);
+        showAlert(getString(R.string.send_create_tx_error_title), errorText);
     }
 
     @Override
     public void createTransactionFailed(String errorText) {
         hideProgress();
+        showAlert(getString(R.string.send_create_tx_error_title), errorText);
+    }
+
+    private void showAlert(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(true).
-                setTitle(getString(R.string.send_create_tx_error_title)).
-                setMessage(errorText).
+                setTitle(title).
+                setMessage(message).
                 create().
                 show();
     }
@@ -226,7 +231,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(activity);
         alertDialogBuilder.setView(promptsView);
 
-        final TextInputLayout etPassword = (TextInputLayout) promptsView.findViewById(R.id.etPassword);
+        final TextInputLayout etPassword = promptsView.findViewById(R.id.etPassword);
         etPassword.setHint(getString(R.string.prompt_send_password));
 
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {
@@ -297,7 +302,8 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         // accept keyboard "ok"
         etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
                     if (getActivityCallback().verifyWalletPassword(pass)) {
                         Helper.hideKeyboardAlways(activity);

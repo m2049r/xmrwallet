@@ -18,6 +18,9 @@
     <color name="moneroBlue">#1F4E97</color>
     <color name="moneroGray">#FD9B9B9B</color>
 
+    <color name="moneroStreetA">#D81F0759</color>
+    <color name="moneroStreetB">#D819001E</color>
+
     <color name="dotGray">#FF4A4A4A</color>
 
     <color name="moneroFab">#61000000</color>

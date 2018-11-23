@@ -16,7 +16,10 @@
 
 package com.m2049r.xmrwallet.model;
 
-import com.m2049r.xmrwallet.data.WalletNode;
+import com.m2049r.xmrwallet.XmrWalletApplication;
+import com.m2049r.xmrwallet.data.Node;
+import com.m2049r.xmrwallet.ledger.Ledger;
+import com.m2049r.xmrwallet.util.RestoreHeight;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +27,7 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import timber.log.Timber;
@@ -45,7 +49,23 @@ public class WalletManager {
         return WalletManager.Instance;
     }
 
-    //private Map<String, Wallet> managedWallets;
+    public String addressPrefix() {
+        return addressPrefix(getNetworkType());
+    }
+
+    static public String addressPrefix(NetworkType networkType) {
+        switch (networkType) {
+            case NetworkType_Testnet:
+                return "9A-";
+            case NetworkType_Mainnet:
+                return "4-";
+            case NetworkType_Stagenet:
+                return "5-";
+            default:
+                throw new IllegalStateException("Unsupported Network: " + networkType);
+        }
+    }
+
     private Wallet managedWallet = null;
 
     public Wallet getWallet() {
@@ -75,6 +95,13 @@ public class WalletManager {
         long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
+        if (wallet.getStatus() == Wallet.Status.Status_Ok) {
+            // (Re-)Estimate restore height based on what we know
+            long oldHeight = wallet.getRestoreHeight();
+            wallet.setRestoreHeight(RestoreHeight.getInstance().getHeight(new Date()));
+            Timber.d("Changed Restore Height from %d to %d", oldHeight, wallet.getRestoreHeight());
+            wallet.setPassword(password); // this rewrites the keys file (which contains the restore height)
+        }
         return wallet;
     }
 
@@ -129,6 +156,23 @@ public class WalletManager {
                                               String viewKeyString,
                                               String spendKeyString);
 
+    public Wallet createWalletFromDevice(File aFile, String password, long restoreHeight,
+                                         String deviceName) {
+        long walletHandle = createWalletFromDeviceJ(aFile.getAbsolutePath(), password,
+                getNetworkType().getValue(), deviceName, restoreHeight,
+                Ledger.SUBADDRESS_LOOKAHEAD);
+        Wallet wallet = new Wallet(walletHandle);
+        manageWallet(wallet);
+        return wallet;
+    }
+
+    private native long createWalletFromDeviceJ(String path, String password,
+                                                int networkType,
+                                                String deviceName,
+                                                long restoreHeight,
+                                                String subaddressLookahead);
+
+
     public native boolean closeJ(Wallet wallet);
 
     public boolean close(Wallet wallet) {
@@ -149,6 +193,17 @@ public class WalletManager {
     public native boolean walletExists(String path);
 
     public native boolean verifyWalletPassword(String keys_file_name, String password, boolean watch_only);
+
+    public boolean verifyWalletPasswordOnly(String keys_file_name, String password) {
+        return queryWalletDeviceJ(keys_file_name, password) >= 0;
+    }
+
+    public Wallet.Device queryWalletDevice(String keys_file_name, String password) {
+        int device = queryWalletDeviceJ(keys_file_name, password);
+        return Wallet.Device.values()[device + 1]; // mapping is monero+1=android
+    }
+
+    private native int queryWalletDeviceJ(String keys_file_name, String password);
 
     //public native List<String> findWallets(String path); // this does not work - some error in boost
 
@@ -214,23 +269,26 @@ public class WalletManager {
 //TODO virtual bool checkPayment(const std::string &address, const std::string &txid, const std::string &txkey, const std::string &daemon_address, uint64_t &received, uint64_t &height, std::string &error) const = 0;
 
     private String daemonAddress = null;
-    private NetworkType networkType = null;
+    private final NetworkType networkType = XmrWalletApplication.getNetworkType();
 
     public NetworkType getNetworkType() {
         return networkType;
     }
 
-    //public void setDaemon(String address, NetworkType networkType, String username, String password) {
-    public void setDaemon(WalletNode walletNode) {
-        this.daemonAddress = walletNode.getAddress();
-        this.networkType = walletNode.getNetworkType();
-        this.daemonUsername = walletNode.getUsername();
-        this.daemonPassword = walletNode.getPassword();
-        setDaemonAddressJ(daemonAddress);
-    }
-
-    public void setNetworkType(NetworkType networkType) {
-        this.networkType = networkType;
+    public void setDaemon(Node node) {
+        if (node != null) {
+            this.daemonAddress = node.getAddress();
+            if (networkType != node.getNetworkType())
+                throw new IllegalArgumentException("network type does not match");
+            this.daemonUsername = node.getUsername();
+            this.daemonPassword = node.getPassword();
+            setDaemonAddressJ(daemonAddress);
+        } else {
+            this.daemonAddress = null;
+            this.daemonUsername = "";
+            this.daemonPassword = "";
+            setDaemonAddressJ("");
+        }
     }
 
     public String getDaemonAddress() {

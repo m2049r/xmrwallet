@@ -101,21 +101,6 @@
         若你再也不需要这钱包则可利用档案浏览器APP或可安全刪除档案APP将之刪除。</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>钱包介面</h1>
-        <h2>扫描</h2>
-        由于Monero的交易是隐私保护的，因此每当你开启Monerujo钱包时我们必须
-        在区块链上扫描是否有最新的Monero被传送到你的钱包中，将会储存仅与你钱包相关的信息在设备中。
-        若你有好一段时间沒有使用钱包，那这个步骤将会支付你一些时间。
-        <h2>余额</h2>
-        <p><b>救命啊! 我的钱包余额不见了/未确认!</b><br/>
-        別紧张，当你发送交易出去时，你的部分余额可能会暂时显示未确认。
-        这只是Monero在区块链上进行找零的过程。
-        想了解更多关于找零的过程请参阅 https://getmonero.org/resources/moneropedia/change.html
-        <h2>交易列表</h2>
-        <p>钱包交易的列表。在唯读钱包中，仅会显示接收到的交易。</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>交易明細</h1>
         <h2>收款地址</h2>
@@ -143,13 +128,6 @@
         <h2>付款ID</h2>
         <p>你可以使用付款ID以帮助识別双方的款项交易。这是选填项目并且完全为隐私保护的。
         举例来說这可以让公司行号辨別你的这笔款项是用来支付某项购买的商品。<p>
-        <h2>Ring size</h2>
-        <p>在Monerujo中你有数种Ring size可以选择，如果你是入门使用者我们建議你使用ring size 7。
-        增加ring size的数量可以增加环状签名的数量，理論上可以增加隐私保护強度(plausible deniability)。
-        但设定高ring size亦会让你的交易网络中更为引人注意。</p>
-        <h2>优先权</h2>
-        <p>这个设定将会影响你的交易被纳入区块的速度。越高优先权的交易将会支付更多的手续费，反之亦然。
-        请注意若你选择低手续费则可能会让你的交易等待数小时才能被纳入区块。预设优先权为\"中等\"。</p>
         <h1>发送BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO 是一个可以将XMR转换为BTC的第三方服务。
@@ -189,4 +167,84 @@
         <p>当倒数计时归零的时候，你将会需要回到上一步再回到\"确认\"页面重新向XMR.TO寻求汇率报价</p>
     ]]></string>
 
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Create Wallet - Ledger</h1>
+        <p>You want to recover your wallet from your Ledger Nano S device.</p>
+        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
+        time you want to access your wallet.</p>
+        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
+        device. Use a strong password - even better use a passphrase.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>钱包介面</h1>
+        <h2>Street Mode</h2>
+        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
+        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
+        other public place. Previous transactions are also hidden. New transactions will be shown, so
+        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>扫描</h2>
+        由于Monero的交易是隐私保护的，因此每当你开启Monerujo钱包时我们必须
+        在区块链上扫描是否有最新的Monero被传送到你的钱包中，将会储存仅与你钱包相关的信息在设备中。
+        若你有好一段时间沒有使用钱包，那这个步骤将会支付你一些时间。
+        <h2>余额</h2>
+        <p><b>救命啊! 我的钱包余额不见了/未确认!</b><br/>
+        別紧张，当你发送交易出去时，你的部分余额可能会暂时显示未确认。
+        这只是Monero在区块链上进行找零的过程。
+        想了解更多关于找零的过程请参阅 https://getmonero.org/resources/moneropedia/change.html
+        <h2>交易列表</h2>
+        <p>钱包交易的列表。在唯读钱包中，仅会显示接收到的交易。</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nodes</h1>
+        <h2>TL;DR</h2>
+        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
+        to choose the best one for you!</p>
+        <h2>What&apos;s a Node?</h2>
+        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
+        the Monero Network without having to download and store a copy of the
+        whole blockchain itself.<p>
+        <h2>Node List</h2>
+        <p>If the list is empty, you can either add new nodes manually or let Monerujo
+        scan the network for you. Or both. Read on&#8230;</p>
+        <p>The node list shows all currently known nodes. Additionally, the timestamp
+        of the latest block known to each node is shown under the node name. An icon
+        representing the node&apos;s response behaviour
+        (which indicates the level of connectivity to be expected)
+        is shown next to each node.</p>
+        <p>Any node in the list can be bookmarked for later use.
+        Nodes which are not bookmarked will be forgotten.<p>
+        <p>Monerujo will choose the optimal bookmarked node each time you use it.
+        It does this by checking the blockheight (how up-to-date
+        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
+        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
+        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
+        <h2>Add a Node</h2>
+        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
+        enter the node details in the following dialog.
+        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
+        mandatory entry.
+        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
+        You can also optionally name the node, so you can identify it easier later on.
+        Some nodes require credentials to use them. Enter the provided username &amp;
+        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
+        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
+        The result may also be an error - usually because the hostname provided is
+        not reachable in a sensible amount of time or the credentials are incorrect.
+        Or the hostname/port combination does not point to an actual Monero Node!
+        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
+        bookmark this node.</p>
+        <h2>Scan for Nodes</h2>
+        <p>Additionally, you can scan the network for nodes. Monerujo will start
+        scanning the network for Remote Nodes on port 18089. It begins by asking your
+        bookmarked nodes for other peers in the Monero P2P network and then continues
+        by asking those for their peers, and so on. If you have no bookmarked nodes
+        (or they don&apos;t tell us about their peers),
+        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
+        scan stops when it finds 10 remote nodes in total.</p>
+    ]]></string>
 </resources>

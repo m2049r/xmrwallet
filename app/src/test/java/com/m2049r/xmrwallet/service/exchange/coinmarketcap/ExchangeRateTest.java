@@ -71,7 +71,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_shouldBeGetMethod()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         exchangeApi.queryExchangeRate("XMR", "EUR", mockExchangeCallback);
 
@@ -81,7 +81,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_shouldHavePairInUrl()
-            throws InterruptedException, TimeoutException {
+            throws InterruptedException {
 
         exchangeApi.queryExchangeRate("XMR", "EUR", mockExchangeCallback);
 
@@ -91,7 +91,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_wasSuccessfulShouldRespondWithRate()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         final String base = "XMR";
         final String quote = "EUR";
         final double rate = 1.56;
@@ -119,7 +119,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_wasSuccessfulShouldRespondWithRateUSD()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         final String base = "XMR";
         final String quote = "USD";
         final double rate = 1.56;
@@ -147,7 +147,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_wasNotSuccessfulShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
 
         exchangeApi.queryExchangeRate("XMR", "USD", new ExchangeCallback() {
@@ -170,7 +170,7 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_unknownAssetShouldCallOnError()
-            throws InterruptedException, JSONException, TimeoutException {
+            throws TimeoutException {
         MockResponse jsonMockResponse = new MockResponse().setBody(
                 createMockExchangeRateErrorResponse());
         mockWebServer.enqueue(jsonMockResponse);

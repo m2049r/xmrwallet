@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/gradient_street" />
+    <item
+        android:height="?attr/actionBarSize"
+        android:drawable="@drawable/texture_cash" />
+</layer-list>

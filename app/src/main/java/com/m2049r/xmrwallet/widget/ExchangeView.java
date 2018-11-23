@@ -162,16 +162,16 @@ public class ExchangeView extends LinearLayout
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        etAmount = (TextInputLayout) findViewById(R.id.etAmount);
-        tvAmountB = (TextView) findViewById(R.id.tvAmountB);
-        sCurrencyA = (Spinner) findViewById(R.id.sCurrencyA);
+        etAmount = findViewById(R.id.etAmount);
+        tvAmountB = findViewById(R.id.tvAmountB);
+        sCurrencyA = findViewById(R.id.sCurrencyA);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner);
         adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
         sCurrencyA.setAdapter(adapter);
-        sCurrencyB = (Spinner) findViewById(R.id.sCurrencyB);
+        sCurrencyB = findViewById(R.id.sCurrencyB);
         sCurrencyB.setAdapter(adapter);
-        evExchange = (ImageView) findViewById(R.id.evExchange);
-        pbExchange = (ProgressBar) findViewById(R.id.pbExchange);
+        evExchange = findViewById(R.id.evExchange);
+        pbExchange = findViewById(R.id.pbExchange);
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
@@ -226,7 +226,8 @@ public class ExchangeView extends LinearLayout
 
         etAmount.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     doExchange();
                     return true;
                 }
@@ -239,7 +240,7 @@ public class ExchangeView extends LinearLayout
             @Override
             public void afterTextChanged(Editable editable) {
                 etAmount.setError(null);
-                //doExchange();
+                clearAmounts();
             }
 
             @Override

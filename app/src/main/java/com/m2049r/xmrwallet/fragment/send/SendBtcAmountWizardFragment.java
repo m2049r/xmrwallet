@@ -30,7 +30,7 @@ import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
+import com.m2049r.xmrwallet.util.OkHttpHelper;
 import com.m2049r.xmrwallet.widget.ExchangeBtcTextView;
 import com.m2049r.xmrwallet.widget.NumberPadView;
 import com.m2049r.xmrwallet.widget.SendProgressView;
@@ -44,7 +44,6 @@ import com.m2049r.xmrwallet.xmrto.network.XmrToApiImpl;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class SendBtcAmountWizardFragment extends SendWizardFragment {
@@ -80,15 +79,15 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
         View view = inflater.inflate(R.layout.fragment_send_btc_amount, container, false);
 
-        tvFunds = (TextView) view.findViewById(R.id.tvFunds);
+        tvFunds = view.findViewById(R.id.tvFunds);
 
-        evParams = (SendProgressView) view.findViewById(R.id.evXmrToParms);
+        evParams = view.findViewById(R.id.evXmrToParms);
         llXmrToParms = view.findViewById(R.id.llXmrToParms);
 
-        tvXmrToParms = (TextView) view.findViewById(R.id.tvXmrToParms);
+        tvXmrToParms = view.findViewById(R.id.tvXmrToParms);
 
-        evAmount = (ExchangeBtcTextView) view.findViewById(R.id.evAmount);
-        numberPad = (NumberPadView) view.findViewById(R.id.numberPad);
+        evAmount = view.findViewById(R.id.evAmount);
+        numberPad = view.findViewById(R.id.numberPad);
         numberPad.setListener(evAmount);
 
         Helper.hideKeyboard(getActivity());
@@ -135,8 +134,13 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         Timber.d("onResumeFragment()");
         Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
-        tvFunds.setText(getString(R.string.send_available,
-                Wallet.getDisplayAmount(funds)));
+        if (!sendListener.getActivityCallback().isStreetMode()) {
+            tvFunds.setText(getString(R.string.send_available,
+                    Wallet.getDisplayAmount(funds)));
+        } else {
+            tvFunds.setText(getString(R.string.send_available,
+                    getString(R.string.unknown_amount)));
+        }
         if ((evAmount.getAmount() == null) || evAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
             if ((data != null) && (data.amount != null)) {
@@ -178,8 +182,15 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
                 double availableXmr = 1.0 * funds / 1000000000000L;
                 maxBtc = Math.min(maxBtc, availableXmr * orderParameters.getPrice());
 
-                String availBtcString = df.format(availableXmr * orderParameters.getPrice());
-                String availXmrString = df.format(availableXmr);
+                String availBtcString;
+                String availXmrString;
+                if (!sendListener.getActivityCallback().isStreetMode()) {
+                    availBtcString = df.format(availableXmr * orderParameters.getPrice());
+                    availXmrString = df.format(availableXmr);
+                } else {
+                    availBtcString = getString(R.string.unknown_amount);
+                    availXmrString = availBtcString;
+                }
                 tvFunds.setText(getString(R.string.send_available_btc,
                         availXmrString,
                         availBtcString));
@@ -251,7 +262,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {
-                    xmrToApi = new XmrToApiImpl(OkHttpClientSingleton.getOkHttpClient(),
+                    xmrToApi = new XmrToApiImpl(OkHttpHelper.getOkHttpClient(),
                             Helper.getXmrToBaseUrl());
                 }
             }

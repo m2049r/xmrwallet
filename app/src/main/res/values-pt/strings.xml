@@ -6,7 +6,6 @@
 
     <string name="menu_share">Partilhar</string>
     <string name="menu_help">Ajuda</string>
-    <string name="menu_info">Detalhes</string>
     <string name="menu_receive">Receber</string>
     <string name="menu_rename">Renomear &#8230;</string>
     <string name="menu_archive">Arquivar</string>
@@ -30,11 +29,9 @@
     <string name="label_send_done">Feito</string>
 
     <string name="label_receive_info_gen_qr_code">Toca para código QR</string>
-    <string name="info_send_prio_fees">Prioridade Alta = Taxas Altas</string>
 
     <string name="info_xmrto_enabled">Pagamento em BTC activado, toca para mais informação.</string>
-
-    <string name="info_crazypass_enabled">passLoUCa activa, toca para mais informação.</string>
+    <string name="info_ledger_enabled">Ledger activa, toca para mais informação.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Introduziu um endereço Bitcoin.</b><br/>
@@ -80,8 +77,6 @@
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rácio: %1$s BTC/XMR)</string>
 
-    <string name="label_send_settings_advanced">Avançado:</string>
-
     <string name="label_send_btc_xmrto_info">Vai a xmr.to para suporte &amp; seguimento</string>
     <string name="label_send_btc_xmrto_key_lb">Chave secreta\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">XMR.TO Chave secreta</string>
@@ -96,7 +91,6 @@
     <string name="backup_progress">A efectuar cópia de segurança</string>
     <string name="archive_progress">A arquivar</string>
     <string name="rename_progress">A renomear</string>
-    <string name="open_progress">A verificar a conecção</string>
     <string name="changepw_progress">A altear a palavra passe</string>
 
     <string name="service_progress">A concluir o processamento &#8230;\nIsto pode demorar!</string>
@@ -108,13 +102,11 @@
     <string name="changepw_success">Palavra passe alterada</string>
 
     <string name="label_daemon">Nó</string>
-    <string name="prompt_daemon">([&lt;utilizador&gt;:&lt;passe&gt;@]&lt;serviço&gt;[:&lt;porta&gt;])</string>
     <string name="status_wallet_loading">A carregar a carteira &#8230;</string>
     <string name="status_wallet_unloaded">Carteira guardada</string>
     <string name="status_wallet_unload_failed">Erro ao gravar a carteira!</string>
     <string name="status_wallet_connecting">A conectar &#8230;</string>
     <string name="status_wallet_connect_failed">Erro ao conectar!\nConfirma o utilizador/palavra passe</string>
-    <string name="status_wallet_connect_timeout">O tempo para a conecção expirou!\nTenta novamente ou outro nó.</string>
     <string name="status_wallet_node_invalid">Nó inválido!\nTenta outro.</string>
     <string name="status_wallet_connect_ioex">Não foi possível chegar ao nó!\nTenta novamente ou outro.</string>
 
@@ -194,7 +186,6 @@
     <string name="generate_wallet_dot">Não pode começar com .</string>
     <string name="generate_wallet_creating">A criar carteira</string>
     <string name="generate_wallet_created">Carteira criada</string>
-    <string name="generate_wallet_create_failed">Erro ao criar a carteira</string>
 
     <string name="generate_restoreheight_error">Introduzir número ou data (AAAA-MM-DD)</string>
 
@@ -208,7 +199,7 @@
     <string name="generate_spendkey_hint">Chave de utilização</string>
     <string name="generate_mnemonic_hint">Chave Mnemónica de 25 Palavras</string>
     <string name="generate_restoreheight_hint">Restaurar de Altura ou Data (AAAA-MM-DD)</string>
-    
+
     <string name="generate_address_label">Endereço público</string>
     <string name="generate_viewkey_label">Chave de visualização</string>
     <string name="generate_spendkey_label">Chave de utilização</string>
@@ -221,12 +212,10 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
 
-    <string name="send_address_hint">Endereço de destino XMR ou BTC</string>
     <string name="send_paymentid_hint">ID do pagamento (opcional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Gerar</string>
-    <string name="send_qr_hint">Capturar</string>
     <string name="send_send_label">Gasta os meus queridos Moneroj</string>
     <string name="send_send_timed_label">Gasta os meus queridos Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Não é um código QR</string>
@@ -236,7 +225,6 @@
     <string name="send_available">Saldo: %1$s XMR</string>
     <string name="send_address_title">Endereço</string>
     <string name="send_amount_title">Quantidade</string>
-    <string name="send_settings_title">Definições</string>
     <string name="send_confirm_title">Confirmar</string>
     <string name="send_success_title">Feito</string>
 
@@ -277,7 +265,6 @@
     <string name="tx_pending">PENDENTE</string>
     <string name="tx_failed">FALHADA</string>
 
-    <string name="receive_paymentid_hint">ID Pagamento (opcional)</string>
     <string name="receive_amount_hint">Quantidade</string>
     <string name="receive_cannot_open">Não foi possível abrir a carteira!</string>
     <string name="receive_paymentid_invalid">16 ou 64 caracteres em hexadecimal (0&#8211;9,a&#8211;f)</string>
@@ -286,8 +273,6 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Mín. 0</string>
     <string name="receive_amount_nan">XMR não é um número</string>
-
-    <string name="receive_title">Receber</string>
 
     <string name="details_alert_message">Dados sensíveis vão ser mostrados.\nOlha à tua volta!</string>
     <string name="details_alert_yes">Estou seguro</string>
@@ -298,13 +283,6 @@
     <string name="archive_alert_yes">Sim, faz isso!</string>
     <string name="archive_alert_no">Não obrigado!</string>
 
-    <string-array name="priority">
-        <item>Prioridade por Defeito</item>
-        <item>Prioridade Baixa</item>
-        <item>Prioridade Média</item>
-        <item>Prioridade Alta</item>
-    </string-array>
-
     <string name="fab_create_new">Criar nova carteira</string>
     <string name="fab_restore_viewonly">Restaurar carteira apenas de visualização</string>
     <string name="fab_restore_key">Restaurar carteira a partir de chaves privadas</string>
@@ -314,11 +292,78 @@
     <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
 
     <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_drawer_title">Accounts</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
     <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_system_default">Use System Language</string>
+
+    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Communicating with Ledger</string>
+    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
+    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
+    <string name="progress_ledger_verify">Verifying keys</string>
+    <string name="progress_ledger_opentx">Doing crazy maths</string>
+    <string name="progress_ledger_mlsag">Hashing stuff</string>
+    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+
+    <string name="accounts_progress_new">Creating account</string>
+
+    <string name="toast_ledger_attached">%1$s attached</string>
+    <string name="toast_ledger_detached">%1$s detached</string>
+
+    <string name="progress_nfc_write">Writing Tag</string>
+    <string name="nfc_write_failed">Writing Tag failed!</string>
+    <string name="nfc_write_successful">Writing Tag successful</string>
+    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
+    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
+    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
+    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
+    <string name="nfc_tag_read_success">Reading Tag successful</string>
+    <string name="nfc_tag_tap">NFC Available!</string>
+
+    <string name="receive_desc_hint">Description (optional)</string>
+
+    <string name="send_address_not_openalias">OpenAlias address not available</string>
+    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+
+    <string name="menu_info">Detalhes</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Street Mode</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
+    <string name="node_height">Last block updated: %1$s</string>
+    <string name="label_nodes">Nodes</string>
+    <string name="node_name_hint">Node Name (Optional)</string>
+    <string name="node_address_hint">Hostname</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Username (Optional)</string>
+    <string name="node_pass_hint">Password (Optional)</string>
+    <string name="node_host_unresolved">Cannot resolve host</string>
+    <string name="node_host_empty">We need this!</string>
+    <string name="node_port_numeric">Must be numeric</string>
+    <string name="node_port_range">Must be 1&#8211;65535</string>
+    <string name="node_fab_add">Add Node</string>
+    <string name="node_refresh_hint">Touch to refresh!</string>
+    <string name="node_test_error">CONNECTION ERROR %1$d</string>
+    <string name="node_general_error">CONNECTION ERROR</string>
+    <string name="node_auth_error">AUTHENTICATION FAILED</string>
+    <string name="node_result_label">Test Result:</string>
+    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testing IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Please wait for scan to finish</string>
+    <string name="node_create_hint">Touch to select or add nodes</string>
+    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
+    <string name="node_scanning">Scanning network&#8230;</string>
+    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
+    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 </resources>
