@@ -347,7 +347,7 @@
     <string name="node_port_hint">Porta</string>
     <string name="node_user_hint">Nome utente (opzionale)</string>
     <string name="node_pass_hint">Password (opzionale)</string>
-    <string name="node_host_unresolved">Non è possibile risolvere l&apos;host</string>
+    <string name="node_host_unresolved">Host non risolvibile</string>
     <string name="node_host_empty">Abbiamo bisogno di questo!</string>
     <string name="node_port_numeric">Deve essere numerico</string>
     <string name="node_port_range">Deve essere 1&#8211;65535</string>
