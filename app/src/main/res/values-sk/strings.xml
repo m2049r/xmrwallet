@@ -6,7 +6,6 @@
 
     <string name="menu_share">Zdieľaj</string>
     <string name="menu_help">Pomoc</string>
-    <string name="menu_info">Detaily</string>
     <string name="menu_receive">Prijať</string>
     <string name="menu_rename">Premenovať &#8230;</string>
     <string name="menu_archive">Archivovať</string>
@@ -23,18 +22,16 @@
     <string name="label_credits">Zásluhy</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Zrušiť</string>
-    <string name="label_close">Zavrieť</string>
+    <string name="label_close">Zatvoriť</string>
     <string name="label_wallet_advanced_details">Klepni pre viac info</string>
 
     <string name="label_send_success">úspešne odoslané</string>
     <string name="label_send_done">Hotovo</string>
 
     <string name="label_receive_info_gen_qr_code">Klepni pre QR kód</string>
-    <string name="info_send_prio_fees">Vyššia priorita = Vyšší poplatok</string>
 
     <string name="info_xmrto_enabled">BTC platby aktivované, klepni pre viac info.</string>
-    <string name="info_crazypass_enabled">CrAzYpass aktivovaný, klepni pre viac info.</string>
-	<string name="info_ledger_enabled">Ledger aktivovaný, klepni pre viac info.</string>
+    <string name="info_ledger_enabled">Ledger aktivovaný, klepni pre viac info.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>Vložil si Bitcoin adresu.</b><br/>
@@ -76,12 +73,10 @@
 
     <string name="text_retry">Klepni pre opakovanie</string>
     <string name="text_noretry_monero">Uviazli sme tu!</string>
-    <string name="text_noretry">Myslím, že XMR.TO nie je momentálne dostupná!</string>
+    <string name="text_noretry">Myslím, že služba XMR.TO nie je momentálne dostupná!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurz: %1$s BTC/XMR)</string>
-
-    <string name="label_send_settings_advanced">Pokročilé:</string>
 
     <string name="label_send_btc_xmrto_info">Navštív XMR.TO pre podporu &amp; tracking</string>
     <string name="label_send_btc_xmrto_key_lb">Tajný kľúč\nXMR.TO</string>
@@ -97,10 +92,9 @@
     <string name="backup_progress">Prebieha Záloha</string>
     <string name="archive_progress">Prebieha Archivácia</string>
     <string name="rename_progress">Prebieha Premenovanie</string>
-    <string name="open_progress">Skúšam spojenie so serverom</string>
     <string name="changepw_progress">Prebieha zmena hesla</string>
 
-    <string name="service_progress">Balím veci &#8230;\nMôže to chvíľu trvať!</string>
+    <string name="service_progress">Balím si veci &#8230;\nMôže to chvíľu trvať!</string>
 
     <string name="backup_failed">Zálohovanie zlyhalo!</string>
     <string name="archive_failed">Archivácia zlyhala!</string>
@@ -109,15 +103,13 @@
     <string name="changepw_success">Heslo zmenené</string>
 
     <string name="label_daemon">Uzol</string>
-    <string name="prompt_daemon">([&lt;meno&gt;:&lt;heslo&gt;@]&lt;server&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Načítavam peňaženku &#8230;</string>
     <string name="status_wallet_unloaded">Peňaženka uložená</string>
     <string name="status_wallet_unload_failed">Uloženie zlyhalo!</string>
-    <string name="status_wallet_connecting">Pripájam &#8230;</string>
+    <string name="status_wallet_connecting">pripájam sa &#8230;</string>
     <string name="status_wallet_connect_failed">Spojenie s uzlom zlyhalo!\nSkontroluj užívateľa/heslo</string>
-    <string name="status_wallet_connect_timeout">Pripojenie uzla vypršalo!\nSkús znova, alebo iný uzol.</string>
     <string name="status_wallet_node_invalid">Neplatný uzol!\nSkús iný.</string>
-    <string name="status_wallet_connect_ioex">Nedá sa spojiť s uzlom!\nSkús znova, alebo iný uzol.</string>
+    <string name="status_wallet_connect_ioex">Neviem sa spojiť s uzlom!\nSkús znova, alebo skús iný uzol.</string>
 
     <string name="status_wallet_disconnected">Odpojený</string>
 
@@ -125,7 +117,7 @@
 
     <string name="send_xmrto_timeout">Čakal si príliš dlho kámo!</string>
 
-    <string name="service_busy">Som stále zaneprázdnený poslednou peňaženkou &#8230;</string>
+    <string name="service_busy">Stále ma vyťažuje posledná peňaženka &#8230;</string>
 
     <string name="prompt_rename">Premenuj %1$s</string>
 
@@ -163,8 +155,8 @@
     <string name="label_copy_address">Verejná Adresa</string>
     <string name="label_copy_xmrtokey">Kľúč XMR.TO</string>
     <string name="message_copy_viewkey">Prezerací Kľúč skopírovaný do schránky!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Kľúč skopírovaný do schránky!</string>
-    <string name="message_copy_address">Adresa Peňaženky skopírovaná do schránky!</string>
+    <string name="message_copy_xmrtokey">XMR.TO kľúč skopírovaný do schránky!</string>
+    <string name="message_copy_address">Adresa peňaženky skopírovaná do schránky!</string>
     <string name="message_copy_txid">ID Transakcie skopírované do schránky!</string>
     <string name="message_nocopy">Kopírovanie vypnuté z bezpečnostných dôvodov!</string>
 
@@ -180,7 +172,7 @@
         <p>Avšak kvôli zvýšeniu bezpečnosti, monerujo bude stále vyžadovať heslo na zobrazenie detailov peňaženky a posielanie.</p>
         <strong>Bezpečnostné Varovanie</strong>
         <p>Monerujo Ti chce pripomenúť, že ktokoľvek kto získa prístup k Tvojim odtlačkom, bude schopný nazrieť do tvojej peňaženky.</p>
-        <p>Napríklad, záškodník niekde v blízkosti, môže otvoriť Tvoju peňaženku keď spíš.</p>
+        <p>Napríklad záškodník niekde v blízkosti môže otvoriť Tvoju peňaženku keď spíš.</p>
         <strong>Si si istý, že chceš povoliť túto funkciu?</strong>
     ]]></string>
     <string name="generate_bad_passwordB">Heslá nie sú rovnaké</string>
@@ -193,7 +185,6 @@
     <string name="generate_wallet_dot">Neslobodno začať s .</string>
     <string name="generate_wallet_creating">Vytváranie peňaženky</string>
     <string name="generate_wallet_created">Peňaženka vytvorená</string>
-    <string name="generate_wallet_create_failed">Vytvorenie peňaženky zlyhalo</string>
 
     <string name="generate_restoreheight_error">Vlož číslo alebo dátum (YYYY-MM-DD)</string>
 
@@ -203,24 +194,23 @@
     <string name="generate_wallet_type_view">Prezeracia</string>
 
     <string name="generate_address_hint">Verejná Adresa</string>
-    <string name="generate_viewkey_hint">Prezerací Kľúč</string>
-    <string name="generate_spendkey_hint">Platobný Kľúč</string>
+    <string name="generate_viewkey_hint">Prezerací Kľúč (view key)</string>
+    <string name="generate_spendkey_hint">Platobný Kľúč (spend key)</string>
     <string name="generate_mnemonic_hint">25-slovný mnemotechnický Seed</string>
-    <string name="generate_restoreheight_hint">Obnov Výšku alebo Dátum (YYYY-MM-DD)</string>
+    <string name="generate_restoreheight_hint">Dátum (YYYY-MM-DD) alebo Výška</string>
 
     <string name="generate_address_label">Verejná Adresa</string>
-    <string name="generate_viewkey_label">Prezerací Kľúč</string>
-    <string name="generate_spendkey_label">Platobný Kľúč</string>
+    <string name="generate_viewkey_label">Prezerací Kľúč (view key)</string>
+    <string name="generate_spendkey_label">Platobný Kľúč (spend key)</string>
     <string name="generate_mnemonic_label">Mnemotechnický Seed</string>
-    <string name="generate_crazypass_label">Heslo Súboru Peňaženky</string>
+    <string name="generate_crazypass_label">heslo súboru peňaženky</string>
 
     <string name="generate_check_key">Vlož platný Kľúč</string>
     <string name="generate_check_address">Vlož platnú Adresu</string>
     <string name="generate_check_mnemonic">Vlož svoj 25-slovný seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indikatív)</string>
+    <string name="send_amount_btc_xmr">%1$s (odhad)</string>
 
-    <string name="send_address_hint">XMR alebo BTC Adresa Príjemcu</string>
     <string name="send_paymentid_hint">ID Platby (voliteľné)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Súkromné Poznámky (voliteľné)</string>
@@ -234,22 +224,21 @@
     <string name="send_available">Zostatok: %1$s XMR</string>
     <string name="send_address_title">Adresa</string>
     <string name="send_amount_title">Čiastka</string>
-    <string name="send_settings_title">Nastavenia</string>
     <string name="send_confirm_title">Potvrdiť</string>
     <string name="send_success_title">Hotovo</string>
 
     <string name="send_amount_label">Čiastka</string>
-    <string name="send_fee_btc_label">Poplatok (XMR)</string>
-    <string name="send_fee_label">Poplatok</string>
+    <string name="send_fee_btc_label">poplatok (XMR)</string>
+    <string name="send_fee_label">poplatok</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Poplatok</string>
+    <string name="send_fee">+%1$s poplatok</string>
 
     <string name="send_create_tx_error_title">Vytvor Chybu Transakcie</string>
 
-    <string name="tx_list_fee">- Poplatok %1$s</string>
+    <string name="tx_list_fee">- poplatok %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">zlyhala</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -257,15 +246,15 @@
 
     <string name="tx_timestamp">časová pečiatka</string>
     <string name="tx_id">TX ID</string>
-    <string name="tx_key">TX Kľúč</string>
+    <string name="tx_key">Kľúč Transakcie</string>
     <string name="tx_destination">Cieľ</string>
     <string name="tx_destination_btc">Cieľová (BTC)</string>
     <string name="tx_paymentId">ID Platby</string>
     <string name="tx_blockheight">Blok</string>
     <string name="tx_amount">Suma</string>
     <string name="tx_amount_btc">Čiastka\n(BTC)</string>
-    <string name="tx_fee">Poplatok</string>
-    <string name="tx_transfers">Transfery</string>
+    <string name="tx_fee">poplatok</string>
+    <string name="tx_transfers">Poslaných</string>
     <string name="tx_notes">Poznámky</string>
     <string name="tx_notes_hint">(voliteľné)</string>
     <string name="tx_button_notes">Ulož</string>
@@ -275,7 +264,6 @@
     <string name="tx_pending">ČAKAJÚCI</string>
     <string name="tx_failed">ZLYHAL</string>
 
-    <string name="receive_paymentid_hint">ID Platby (voliteľné)</string>
     <string name="receive_amount_hint">Suma</string>
     <string name="receive_cannot_open">Nemohol som otvoriť peňaženku!</string>
     <string name="receive_paymentid_invalid">16 alebo 64 hexa znakov (0&#8211;9,a&#8211;f)</string>
@@ -285,42 +273,32 @@
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR nie číslo</string>
 
-    <string name="receive_title">Prijať</string>
-
     <string name="details_alert_message">Budú zobrazené citlivé dáta.\nPozri cez plece!</string>
     <string name="details_alert_yes">Som v bezpečí</string>
-    <string name="details_alert_no">Poď späť!</string>
+    <string name="details_alert_no">Naspäť!</string>
     <string name="details_title">Detaily</string>
 
     <string name="archive_alert_message">Peňaženka bude zálohovaná a následne zmazaná!</string>
     <string name="archive_alert_yes">Áno, poďme na to!</string>
     <string name="archive_alert_no">Nie, díky!</string>
 
-    <string-array name="priority">
-        <item>Priorita Štandard</item>
-        <item>Priorita Nízka</item>
-        <item>Priorita Medium</item>
-        <item>Priorita Vysoká</item>
-    </string-array>
-
     <string name="fab_create_new">Vytvor novú peňaženku</string>
-    <string name="fab_restore_viewonly">Obnov prezeraciu peňaženku</string>
-    <string name="fab_restore_key">Obnov peňaženku zo súkromných kľúčov</string>
-    <string name="fab_restore_seed">Obnov peňaženku z 25-slovného seedu</string>
+    <string name="fab_restore_viewonly">Obnoviť prezeraciu peňaženku</string>
+    <string name="fab_restore_key">Obnoviť peňaženku zo súkromných kľúčov</string>
+    <string name="fab_restore_seed">Obnoviť peňaženku z 25-slovného seedu</string>
 
     <string name="accounts_drawer_new">Vytvor Účet</string>
-    <string name="accounts_drawer_title">Účty</string>
     <string name="accounts_new">Pridaný nový účet #%1$d</string>
     <string name="tx_account">Účet #</string>
 
     <string name="send_sweepall">Pošli všetky potvrdené prostriedky na tomto účte!</string>
     <string name="tx_subaddress">Podadresa #%1$d</string>
     <string name="generate_address_label_sub">Verejná Podadresa #%1$d</string>
-	
+
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
-	
-	<string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
+
+    <string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
 
     <string name="progress_ledger_progress">Komunikácia s Ledger</string>
     <string name="progress_ledger_confirm">Vyžaduje potvrdenie na Ledgeri!</string>
@@ -331,7 +309,6 @@
     <string name="open_wallet_ledger_missing">(znovu) zapoj Ledger</string>
 
     <string name="accounts_progress_new">Vytváram účet</string>
-    <string name="accounts_progress_update">Aktualizujem peňaženku</string>
 
     <string name="toast_ledger_attached">%1$s pripojený</string>
     <string name="toast_ledger_detached">%1$s odpojený</string>
@@ -340,9 +317,49 @@
     <string name="nfc_write_failed">Zapísanie Tagu zlyhalo!</string>
     <string name="nfc_write_successful">Zapísanie Tagu úspešné</string>
     <string name="nfc_tag_unsupported">Tag nepodporuje NDEF!</string>
-    <string name="nfc_tag_size">Tag poskytol %d bytes, ale treba %d!</string>
+    <string name="nfc_tag_size">Tag poskytol %1$d bytes, ale treba %2$d!</string>
     <string name="nfc_tag_read_undef">Neruzumiem Tagu!</string>
     <string name="nfc_tag_read_what">Neviem čo tým básnik myslel!</string>
     <string name="nfc_tag_read_success">Čítanie Tagu úspešné</string>
     <string name="nfc_tag_tap">NFC je dostupné!</string>
+
+    <string name="receive_desc_hint">Popis (voliteľné)</string>
+
+    <string name="send_address_not_openalias">OpenAlias adresa nie je dostupná</string>
+    <string name="send_address_openalias">OpenAlias zabezpečený &#x2714;</string>
+    <string name="send_address_resolve_openalias">Prekladám OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias bez DNSSEC - adresa môže byť zneužitá</string>
+    <string name="send_address_hint">Prijímateľova XMR/BTC adresa alebo OpenAlias</string>
+
+    <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
+
+    <string name="menu_info">Detaily</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Mód Ulica</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC povolený, klepni pre viac info.</string>
+    <string name="node_height">Posledný blok aktualizovaný: %1$s</string>
+    <string name="label_nodes">Uzly</string>
+    <string name="node_name_hint">Názov Uzla (voliteľné)</string>
+    <string name="node_address_hint">Adresa (Hostname)</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Užívateľ (voliteľné)</string>
+    <string name="node_pass_hint">Heslo (voliteľné)</string>
+    <string name="node_host_unresolved">Nemôžem preložiť názov hosta</string>
+    <string name="node_host_empty">Toto treba určite!</string>
+    <string name="node_port_numeric">Musí byť číslo</string>
+    <string name="node_port_range">Musí byť 1&#8211;65535</string>
+    <string name="node_fab_add">Pridať Uzol</string>
+    <string name="node_refresh_hint">Obnoviť!</string>
+    <string name="node_test_error">CHYBA SPOJENIA %1$d</string>
+    <string name="node_general_error">CHYBA SPOJENIA</string>
+    <string name="node_auth_error">Overenie prihlásením zlyhalo</string>
+    <string name="node_result_label">Výsledok testu:</string>
+    <string name="node_result">Výška: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testujem IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Prosím počkajte, kým sa skenovanie nedokončí</string>
+    <string name="node_create_hint">Vyber alebo pridaj uzly</string>
+    <string name="node_pull_hint">Pridaj uzly manuálne alebo potiahni dole pre skenovanie</string>
+    <string name="node_scanning">Skenivanie siete&#8230;</string>
+    <string name="node_nobookmark">Automaticky ukladám %1$d najlepších uzlov</string>
+    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 </resources>
