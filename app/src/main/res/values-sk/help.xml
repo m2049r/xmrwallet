@@ -126,20 +126,6 @@
 		</p>
     ]]></string>
 
-    <string name="help_wallet"><![CDATA[
-        <h1>Peňaženka</h1>
-        <h2>Skenovanie</h2>
-        Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
-		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.		
-        <h2>Zostatok</h2>
-        <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
-        Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.        
-        Súvisí to s tým ako je Monero navrhnuté a ako funguje zmena v blockchain.
-		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
-        <h2>Zoznam Transakcií</h2>
-        <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detaily Transakcie</h1>
         <h2>Destinácia</h2>
@@ -168,13 +154,6 @@
         <p>ID Platby môžeš použiť na identifikáciu platby medzi dvoma stranami.
 		Nie je to síce povinný, ale je to súkromný údaj.
         Môžeš tak napríklad prepojiť kupovaný tovar so svojim biznisom.<p>
-        <h2>Veľkosť Kruhu</h2>
-        <p>Existuje niekoľko veľkostí kruhov z ktorých si v Monerujo môžeš vyberať.
-		Ak si začiatočník, doporučujeme veľkosť 7. Zvyšovaním veľkosti kruhu nad hodnotu 7, zvyšujeme počet podpisujúcich v kruhovom podpise.
-		Teoreticky to môže zvýšiť súkromie, avšak príliš vysoké číslo môže spôsobiť spomalenie transakcie.</p>
-        <h2>Priorita</h2>
-        <p>Toto nastavenie určuje rýchlosť, ktorou transakcia bude zaradená do blockchain. Vysoká priorita vyžaduje obvykle vyššie transakčné poplatky a naopak.
-		Majte na pamäti, že pokiaľ nastavíte transakcii nízku prioritu, môže trvať aj hodiny, kým bude zaradená do blockchain. Prednastavená priorita je \"Medium\".</p>
         <h1>Posielanie BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
@@ -223,4 +202,51 @@
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z XMR.TO návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
 
+    <string name="help_wallet"><![CDATA[
+        <h1>Peňaženka</h1>
+        <h2>Mód Ulica</h2>
+        <p>Mód Ulica sa povoľuje a vypína v menu, alebo klepnutím na ikonu Guntherovej hlavy. V tomto móde sa váš zostatok nezobrazuje na žiadnej obrazovke,
+		takže svoju peňaženku môžte smelo používať na ulici, v krčme, či na inom  verejnom mieste. Po nastavení sú skryté aj predchádzajúce transakcie, zatiaľ čo nové budú zobrazené,
+		aby ste mohli vidieť či vám odoslalo a dorazilo všetko správne.</p>
+        <h2>Skenovanie</h2>
+        Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
+		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.
+        <h2>Zostatok</h2>
+        <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
+        Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
+        Súvisí to s tým, ako je Monero navrhnuté a ako funguje zmena v blockchain.
+		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
+        <h2>Zoznam Transakcií</h2>
+        <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Uzly</h1>
+        <h2>TL;DR</h2>
+        <p>Aktuálny zoznam uzlov získaš tak, že potiahneš a pridáš do záložiek 5 uzlov, z ktorých si Monerujo jeden vyberie.</p>
+        <h2>Čo je Uzol?</h2>
+        <p>Monerujo používa vzdialený uzol (Remote Node, niekedy nazývaný aj Daemon) a peňaženka tak môže komunikovať so sieťou Monero bez toho, aby bolo potrebné sťahovať celú blockchain.<p>
+        <h2>Zoznam Uzlov</h2>
+        <p>Ak je zoznam prázdny, môžeš zadať adresu uzla manuálne, alebo môžeš nechať Monerujo preskúmať celú sieť. Prípadne oboje. Čítaj ďalej...</p>
+        <p>Zoznam uzlov zobrazuje všetky momentálne známe uzly. Pod každým uzlom je zobrazená časová pečiatka jeho posledného bloku.
+		Vedľa je ikonka nodu, ktorá indikuje úroveň pripojenia.</p>
+        <p>Ktorýkoľvek uzol v zozname si môžte pridať do záložiek pre budúce použitie. Uzly, ktoré nebudú uložené, sa z pamäte vymažú.<p>
+        <p>Monerujo vyberie jeden z uložených uzlov pri každom použití. Skontroluje výšku bloku (blockheight) týchto uzlov a zistí, ktorý uzol je ako aktualizovaný, ako dlho trvá odpoveď a podľa toho vyberie pre vás optimálny uzol.</p>
+        <p>Podľa týchto charakteristík je dané aj zoradenie v zozname. Prvý uzol bude ten, ktorý Monerujo vybral práve teraz. Naspodku bude veľmi pomalý uzol s pomalou odozvou, alebo nedostupné uzly.</p>
+        <h2>Pridať Uzol</h2>
+        <p>Dotykom na tlačítko &quot;Pridať Uzol&quot; vložíte detaily vlastného uzla.
+        &quot;Adresa&quot; je hostname alebo IP-adresa uzla. Je to jediné povinné pole.
+        &quot;Port&quot; ak uzol používa iný ako predvolený port (napr. 18089).
+        Môžte si aj pomenovať svoje uzly pre budúce použitie. Je to voliteľné.
+		Niektoré uzly vyžadujú na používanie aj prihlasovacie údaje. V tom prípade napíšte užívateľské meno a heslo do príslušných polí.
+        To by malo stačiť na testovanie týchto nastavení. &quot;Test&quot;
+        &quot;Výsledky Testu&quot; zobrazia výšku, čas odozvy a aktuálnu IP adresu uzla.
+        Vo výsledku môže byť tiež chyba - zvyčajne preto, že uzol nie je dostupný, neodpovedá v požadovanom čase, alebo prihlasovacie údaje nie sú správne.
+		Prípadne kombinácia zadanej adresy a portu neprislúcha žiadnemu uzlu Monero siete!
+        Akonáhle test skončí úspešne (žiadna chyba sa neobjaví) - klepni na &quot;OK&quot; a ulož si daný uzol.</p>
+        <h2>Vyhľadať Uzol</h2>
+        <p>Táto funkcia umožní vyhľadať uzol skenovaním Monero siete. Monerujo začne skenovať sieť a vyhľadávať vzdialené uzly na porte 18089.
+		Začína tým, že sa opýta uzlov vo vašich záložkách na ďalšie uzly v P2P sieti Monero, ktoré sú s nimi spojené, tých sa opýta zas na ďalšie uzly atď. 
+		V prípade, že nemáte žiadne uzly vo svojich záložkách, Monerujo bude skúšať uzly (seed nodes) natvrdo zapísané v kóde Monero. Vyhľadávanie končí ak Monerujo nájde aspoň 10 vzdialených uzlov.</p>
+    ]]></string>
 </resources>
