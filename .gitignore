@@ -6,7 +6,10 @@
 /captures
 .externalNativeBuild
 .DS_Store
+/app/build
 /app/release
+/app/alpha
+/app/prod
 /app/alphaMainnet
 /app/prodMainnet
 /app/alphaStagenet
