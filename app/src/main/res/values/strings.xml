@@ -96,6 +96,7 @@
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
+    <string name="backup_success">Backup successful</string>
     <string name="backup_failed">Backup failed!</string>
     <string name="archive_failed">Archive failed!</string>
     <string name="rename_failed">Rename failed!</string>

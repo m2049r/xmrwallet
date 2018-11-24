@@ -93,6 +93,7 @@
 
     <string name="service_progress">Μάζεμα των πραγμάτων &#8230;\nΑυτό μπορεί να διαρκέσει λίγο!</string>
 
+    <string name="backup_success">Η δημιουργία αντίγραφου ασφαλείας ήταν επιτυχής</string>
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
     <string name="archive_failed">Η αρχειοθέτηση απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>

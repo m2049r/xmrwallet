@@ -47,6 +47,7 @@
 
     <string name="service_progress">Guardando todo\n¡Puede llevar un tiempo!</string>
 
+    <string name="backup_success">Copia de seguridad satisfactoria</string>
     <string name="backup_failed">¡Copia de seguridad fallida!</string>
     <string name="archive_failed">¡Archivado fallido!</string>
     <string name="rename_failed">¡Cambio de nombre fallido!</string>

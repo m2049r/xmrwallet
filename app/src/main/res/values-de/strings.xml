@@ -96,6 +96,7 @@
 
     <string name="service_progress">Fertigstellen &#8230;\nDies kann einen Moment dauern!</string>
 
+    <string name="backup_success">Backup erfolgreich</string>
     <string name="backup_failed">Backup fehlgeschlagen!</string>
     <string name="archive_failed">Archivierung fehlgeschlagen!</string>
     <string name="rename_failed">Umbenennen fehlgeschlagen!</string>

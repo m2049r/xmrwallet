@@ -93,6 +93,7 @@
 
     <string name="service_progress">Impachetăm lucrurile &#8230;\nPoate dura un pic!</string>
 
+    <string name="backup_success">Copia de rezervă creată cu succes</string>
     <string name="backup_failed">Copia de rezervă a eșuat!</string>
     <string name="archive_failed">Arhivarea a eșuat!</string>
     <string name="rename_failed">Redenumirea a eșuat!</string>
