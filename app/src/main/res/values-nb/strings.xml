@@ -94,6 +94,7 @@
 
     <string name="service_progress">Gjør ting ferdig &#8230;\nDette kan ta si tid!</string>
 
+    <string name="backup_success">Backup suksessfull</string>
     <string name="backup_failed">Backup feila!</string>
     <string name="archive_failed">Arkivering feila!</string>
     <string name="rename_failed">Kunne ikke gi nytt navn!</string>

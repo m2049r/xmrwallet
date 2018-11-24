@@ -362,4 +362,6 @@
     <string name="node_scanning">Skenivanie siete&#8230;</string>
     <string name="node_nobookmark">Automaticky ukladám %1$d najlepších uzlov</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+
+    <string name="backup_success">Backup successful</string>
 </resources>

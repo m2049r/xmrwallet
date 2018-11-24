@@ -96,6 +96,7 @@
 
     <string name="service_progress">Remise en ordre &#8230;\nCela peut prendre un moment !</string>
 
+    <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
     <string name="archive_failed">Archivage Échouée !</string>
     <string name="rename_failed">Renommage Échoué !</string>

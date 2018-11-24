@@ -479,6 +479,8 @@ public class LoginActivity extends BaseActivity
             dismissProgressDialog();
             if (!result) {
                 Toast.makeText(LoginActivity.this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(LoginActivity.this, getString(R.string.backup_success), Toast.LENGTH_SHORT).show();
             }
         }
     }

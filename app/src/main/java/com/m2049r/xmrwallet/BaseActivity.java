@@ -50,19 +50,19 @@ public class BaseActivity extends SecureActivity implements GenerateReviewFragme
 
     @Override
     public void showProgressDialog(int msgId) {
-        showProgressDialog(msgId, 0);
+        showProgressDialog(msgId, 250); // don't show dialog for fast operations
     }
 
-    public void showProgressDialog(int msgId, long delay) {
+    public void showProgressDialog(int msgId, long delayMillis) {
         dismissProgressDialog(); // just in case
         progressDialog = new SimpleProgressDialog(BaseActivity.this, msgId);
-        if (delay > 0) {
+        if (delayMillis > 0) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
                     if (progressDialog != null) progressDialog.show();
                 }
-            }, delay);
+            }, delayMillis);
         } else {
             progressDialog.show();
         }

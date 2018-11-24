@@ -362,4 +362,6 @@
     <string name="node_scanning">Scanning network&#8230;</string>
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+
+    <string name="backup_success">Backup successful</string>
 </resources>

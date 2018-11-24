@@ -88,6 +88,7 @@
 
     <string name="service_progress">Gör klart några saker …\nDetta kan ta lite tid!</string>
 
+    <string name="backup_success">Säkerhetskopia sparad</string>
     <string name="backup_failed">Det gick inte att säkerhetskopiera!</string>
     <string name="archive_failed">Det gick inte att arkivera!</string>
     <string name="rename_failed">Det gick inte att byta namn!</string>

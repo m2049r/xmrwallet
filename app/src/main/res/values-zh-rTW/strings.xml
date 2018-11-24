@@ -96,6 +96,7 @@
 
     <string name="service_progress">處理中 &#8230;\n可能需要些許時間！</string>
 
+    <string name="backup_success">備份成功</string>
     <string name="backup_failed">備份失敗！</string>
     <string name="archive_failed">封存失敗！</string>
     <string name="rename_failed">重新命名失敗！</string>
