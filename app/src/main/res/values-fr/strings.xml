@@ -29,10 +29,8 @@
     <string name="label_send_done">Fait</string>
 
     <string name="label_receive_info_gen_qr_code">Toucher pour le QR Code</string>
-    <string name="info_send_prio_fees">Plus Prioritaire = Plus de Frais</string>
 
     <string name="info_xmrto_enabled">Paiement BTC activé, tapez pour plus d\'infos.</string>
-    <string name="info_crazypass_enabled">CrAzYpass activé, tapez pour plus d\'infos.</string>
     <string name="info_ledger_enabled">Ledger activé, tapez pour plus d\'infos.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -80,8 +78,6 @@
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Taux : %1$s BTC/XMR)</string>
 
-    <string name="label_send_settings_advanced">Avancé :</string>
-
     <string name="label_send_btc_xmrto_info">Visitez xmr.to pour l\'assistance &amp; le suivi</string>
     <string name="label_send_btc_xmrto_key_lb">Clef Secrète\nXMR.TO</string>
     <string name="label_send_btc_xmrto_key">Clef Secrète XMR.TO</string>
@@ -96,7 +92,6 @@
     <string name="backup_progress">Sauvegarde en cours</string>
     <string name="archive_progress">Archivage en cours</string>
     <string name="rename_progress">Renommage en cours</string>
-    <string name="open_progress">Vérification de la connexion au démon</string>
     <string name="changepw_progress">Modification du mot de passe en cours</string>
 
     <string name="service_progress">Remise en ordre &#8230;\nCela peut prendre un moment !</string>
@@ -108,13 +103,11 @@
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
     <string name="label_daemon">Nœud</string>
-    <string name="prompt_daemon">([&lt;utilisateur&gt;:&lt;mdp&gt;@]&lt;démon&gt;[:&lt;port&gt;])</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
     <string name="status_wallet_connecting">Connexion &#8230;</string>
     <string name="status_wallet_connect_failed">Connexion au nœud échouée !\nVérifiez utilisateur/mot de passe</string>
-    <string name="status_wallet_connect_timeout">Connexion au nœud sans réponse !\nEssayez à nouveau ou un autre.</string>
     <string name="status_wallet_node_invalid">Nœud invalide !\nEssayez un autre.</string>
     <string name="status_wallet_connect_ioex">Nœud injoignable !\nEssayez à nouveau ou un autre.</string>
 
@@ -196,7 +189,6 @@
     <string name="generate_wallet_dot">Ne peut pas commencer par .</string>
     <string name="generate_wallet_creating">Création du Portefeuille</string>
     <string name="generate_wallet_created">Portefeuille créé</string>
-    <string name="generate_wallet_create_failed">Création du Portefeuille échouée</string>
 
     <string name="generate_restoreheight_error">Entrer un nombre ou une date (YYYY-MM-DD)</string>
 
@@ -276,7 +268,6 @@
     <string name="tx_pending">EN ATTENTE</string>
     <string name="tx_failed">ÉCHOUÉ</string>
 
-    <string name="receive_paymentid_hint">ID de Paiement (optionnel)</string>
     <string name="receive_amount_hint">Montant</string>
     <string name="receive_cannot_open">Ouverture du portefeuille impossible !</string>
     <string name="receive_paymentid_invalid">16 ou 64 caractères héxadécimaux (0&#8211;9,a&#8211;f)</string>
@@ -285,8 +276,6 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR pas un nombre</string>
-
-    <string name="receive_title">Recevoir</string>
 
     <string name="details_alert_message">Des données sensible vont être affichées.\nRegardez autour de vous !</string>
     <string name="details_alert_yes">C\'est bon</string>
@@ -297,20 +286,12 @@
     <string name="archive_alert_yes">Oui, procéder !</string>
     <string name="archive_alert_no">Non merci !</string>
 
-    <string-array name="priority">
-        <item>Priority Défaut</item>
-        <item>Priority Faible</item>
-        <item>Priority Moyenne</item>
-        <item>Priority Élevée</item>
-    </string-array>
-
     <string name="fab_create_new">Créer un nouveau portefeuille</string>
     <string name="fab_restore_viewonly">Restaurer un portefeuille d\'audit</string>
     <string name="fab_restore_key">Restaurer depuis la clef privée</string>
     <string name="fab_restore_seed">Restaurer depuis la phrase mnémonique</string>
 
     <string name="accounts_drawer_new">Créer un Compte</string>
-    <string name="accounts_drawer_title">Comptes</string>
     <string name="accounts_new">Nouveau Compte #%1$d ajouté</string>
     <string name="tx_account">Compte #</string>
 
@@ -329,7 +310,6 @@
     <string name="open_wallet_ledger_missing">Merci de (re)connecter le Ledger</string>
 
     <string name="accounts_progress_new">Création du compte</string>
-    <string name="accounts_progress_update">Mise à jour du portefeuille</string>
 
     <string name="toast_ledger_attached">%1$s connecté</string>
     <string name="toast_ledger_detached">%1$s déconnecté</string>
@@ -355,9 +335,35 @@
     <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
     <string name="send_address_hint">Adresse ou OpenAlias XMR/BTC du Destinataire</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
 
-    <string name="menu_info">Détails</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
-    <string name="info_streetmode_enabled">Street Mode enabled, tap for more info.</string>
+    <string name="menu_info">Montrer les secrets !</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Mode Urbain</string>
+
+    <string name="info_nodes_enabled">Nœud-tomatiC activé, tapez pour plus d\'infos.</string>
+    <string name="node_height">Dernier bloc mis à jour : %1$s</string>
+    <string name="label_nodes">Nœuds</string>
+    <string name="node_name_hint">Nom du Nœud (Optionnel)</string>
+    <string name="node_address_hint">Nom d\'hôte</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Nom d\'utilisateur (Optionnel)</string>
+    <string name="node_pass_hint">Mot de passe (Optionnel)</string>
+    <string name="node_host_unresolved">L\'hôte ne peut pas être résolu</string>
+    <string name="node_host_empty">On a besoin de ça !</string>
+    <string name="node_port_numeric">Doit être un nombre</string>
+    <string name="node_port_range">Doit être de 1 à 65535</string>
+    <string name="node_fab_add">Ajouter un Nœud</string>
+    <string name="node_refresh_hint">Toucher pour raffraichir !</string>
+    <string name="node_test_error">ERREUR DE CONNEXION %1$d</string>
+    <string name="node_general_error">ERREUR DE CONNEXION</string>
+    <string name="node_auth_error">ÉCHEC D\'AUTHENTIFICATION</string>
+    <string name="node_result_label">Résultat du test :</string>
+    <string name="node_result">Hauteur : %1$s (v%2$d), Ping : %3$.0fms, IP : %4$s</string>
+    <string name="node_testing">Test de l\'IP : %1$s &#8230;</string>
+    <string name="node_refresh_wait">Patientez jusq\'à la fin de la recherche</string>
+    <string name="node_create_hint">Toucher pour sélectionner ou ajouter des nœuds</string>
+    <string name="node_pull_hint">Ajouter des nœuds manuellement ou faire glisser vers le bas pour rechercher</string>
+    <string name="node_scanning">Recherche de nœuds&#8230;</string>
+    <string name="node_nobookmark">%1$d meilleurs nœuds mis en favoris automatiquement</string>
+    <string name="label_test">Tester</string><!--note: as in "Test a network connection"-->
 </resources>

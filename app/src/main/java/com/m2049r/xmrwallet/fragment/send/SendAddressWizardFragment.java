@@ -106,10 +106,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         tvPaymentIdIntegrated = view.findViewById(R.id.tvPaymentIdIntegrated);
         llPaymentId = view.findViewById(R.id.llPaymentId);
         llXmrTo = view.findViewById(R.id.llXmrTo);
-        tvXmrTo = (TextView) view.findViewById(R.id.tvXmrTo);
+        tvXmrTo = view.findViewById(R.id.tvXmrTo);
         tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto)));
 
-        etAddress = (TextInputLayout) view.findViewById(R.id.etAddress);
+        etAddress = view.findViewById(R.id.etAddress);
         etAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etAddress.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -168,7 +168,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             }
         });
 
-        etPaymentId = (TextInputLayout) view.findViewById(R.id.etPaymentId);
+        etPaymentId = view.findViewById(R.id.etPaymentId);
         etPaymentId.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etPaymentId.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -197,7 +197,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             }
         });
 
-        bPaymentId = (Button) view.findViewById(R.id.bPaymentId);
+        bPaymentId = view.findViewById(R.id.bPaymentId);
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,7 +205,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             }
         });
 
-        etNotes = (TextInputLayout) view.findViewById(R.id.etNotes);
+        etNotes = view.findViewById(R.id.etNotes);
         etNotes.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
         etNotes.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -219,7 +219,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             }
         });
 
-        cvScan = (CardView) view.findViewById(R.id.bScan);
+        cvScan = view.findViewById(R.id.bScan);
         cvScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,7 +228,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         });
 
 
-        etDummy = (EditText) view.findViewById(R.id.etDummy);
+        etDummy = view.findViewById(R.id.etDummy);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());

@@ -112,18 +112,18 @@ public class SendFragment extends Fragment
         final View view = inflater.inflate(R.layout.fragment_send, container, false);
 
         llNavBar = view.findViewById(R.id.llNavBar);
-        bDone = (Button) view.findViewById(R.id.bDone);
+        bDone = view.findViewById(R.id.bDone);
 
-        dotBar = (DotBar) view.findViewById(R.id.dotBar);
-        bPrev = (Button) view.findViewById(R.id.bPrev);
-        bNext = (Button) view.findViewById(R.id.bNext);
+        dotBar = view.findViewById(R.id.dotBar);
+        bPrev = view.findViewById(R.id.bPrev);
+        bNext = view.findViewById(R.id.bNext);
         arrowPrev = getResources().getDrawable(R.drawable.ic_navigate_prev_white_24dp);
         arrowNext = getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp);
 
-        ViewGroup llNotice = (ViewGroup) view.findViewById(R.id.llNotice);
+        ViewGroup llNotice = view.findViewById(R.id.llNotice);
         Notice.showAll(llNotice, ".*_send");
 
-        spendViewPager = (SpendViewPager) view.findViewById(R.id.pager);
+        spendViewPager = view.findViewById(R.id.pager);
         pagerAdapter = new SpendPagerAdapter(getChildFragmentManager());
         spendViewPager.setOffscreenPageLimit(pagerAdapter.getCount()); // load & keep all pages in cache
         spendViewPager.setAdapter(pagerAdapter);
@@ -183,7 +183,7 @@ public class SendFragment extends Fragment
 
         updatePosition(0);
 
-        etDummy = (EditText) view.findViewById(R.id.etDummy);
+        etDummy = view.findViewById(R.id.etDummy);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());

@@ -131,10 +131,10 @@ public class ExchangeBtcTextView extends LinearLayout
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        tvAmountA = (TextView) findViewById(R.id.tvAmountA);
-        tvAmountB = (TextView) findViewById(R.id.tvAmountB);
-        sCurrencyA = (Spinner) findViewById(R.id.sCurrencyA);
-        sCurrencyB = (Spinner) findViewById(R.id.sCurrencyB);
+        tvAmountA = findViewById(R.id.tvAmountA);
+        tvAmountB = findViewById(R.id.tvAmountB);
+        sCurrencyA = findViewById(R.id.sCurrencyA);
+        sCurrencyB = findViewById(R.id.sCurrencyB);
 
         ArrayAdapter<String> btcAdapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item,

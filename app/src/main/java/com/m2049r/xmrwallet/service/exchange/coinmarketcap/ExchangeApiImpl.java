@@ -107,7 +107,7 @@ public class ExchangeApiImpl implements ExchangeApi {
                         final JSONObject metadata = json.getJSONObject("metadata");
                         if (!metadata.isNull("error")) {
                             final String errorMsg = metadata.getString("error");
-                            callback.onError(new ExchangeException(response.code(), (String) errorMsg));
+                            callback.onError(new ExchangeException(response.code(), errorMsg));
                         } else {
                             final JSONObject jsonResult = json.getJSONObject("data");
                             reportSuccess(jsonResult, swapAssets, callback);

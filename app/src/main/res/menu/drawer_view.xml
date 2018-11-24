@@ -5,7 +5,6 @@
         android:checkableBehavior="single"
         android:orderInCategory="100" />
     <group
-        android:id="@+id/accounts_new"
         android:checkableBehavior="none"
         android:orderInCategory="200">
         <item

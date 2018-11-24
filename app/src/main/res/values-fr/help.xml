@@ -231,26 +231,76 @@
 
     <string name="help_wallet"><![CDATA[
         <h1>Le Portefeuille</h1>
-        <h2>Street Mode</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Mode Urbain</h2>
+        <p>Le mode urbain peut être activé / désactivé dans le menu ou l’icône de la tête de Gunther. Dans
+        ce mode, votre solde n’est visible sur aucun écran afin que vous puissiez utiliser votre
+        portefeuille en toute sécurité dans la rue, un bar ou autre lieu public. Les transactions
+        précédentes sont également masquées. Les nouvelles transactions seront affichées, afin que vous
+        puissiez voir que vous avez envoyé ou reçu vos doux Moneroj !</p>
         <h2>Analyse</h2>
         Comme Monero aime garder les choses confidentielles, nous devons scanner la chaîne de blocs
-        chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveau Moneroj ont été
-        envoyés à votre portefeuille, cela ne stock sur votre appareil que les informations appartenant
+        chaque fois que vous ouvrez un portefeuille Monerujo pour voir si de nouveaux Moneroj ont été
+        envoyés à votre portefeuille, cela ne stocke sur votre appareil que les informations appartenant
         à votre portefeuille. Parfois cela peut prendre un moment si vous n’avez pas synchronisé depuis
         longtemps.
         <h2>Le Solde</h2>
-        <p><b>Au secours ! Le solde de mon portefeuille à disparu ou est non confirmé !</b><br/>
-        Ne paniquez pas ! lorsque vous envoyez des fonds sur votre portefeuille, une partie de votre
+        <p><b>Au secours ! Le solde de mon portefeuille a disparu ou est non confirmé !</b><br/>
+        Ne paniquez pas ! Lorsque vous envoyez des fonds sur votre portefeuille, une partie de votre
         solde sera temporairement affichée comme non confirmée.
         Cela se produit à cause de la façon dont Monero est échangé sur la chaîne de blocs et du
-        fonctionnement de la monnaie dans Monero. Aprenez-en plus à propos de la monnaie dans Monero
+        fonctionnement de la monnaie dans Monero. Apprenez-en plus à propos de la monnaie dans Monero
         sur https://getmonero.org/fr/resources/moneropedia/change.html
         <h2>Liste des Transactions</h2>
         <p>Une listes des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
         transactions entrantes sont affichées.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nœuds</h1>
+        <h2>En résumé</h2>
+        <p>Rafraichit la liste de nœuds en faisant glisser vers le bas &amp; met en favoris 3 à 5 nœuds pour permettre à Monerujo
+        de choisir le meilleur pour vous !</p>
+        <h2>Qu’est-ce qu’un Nœud ?</h2>
+        <p>Monerujo utilise un Nœud distant (parfois appelé un Démon) pour communiquer avec
+        le réseau Monero sans avoir à télécharger et stocker une copie complète de la
+        chaîne de blocs elle-même.<p>
+        <h2>Liste de Nœuds</h2>
+        <p>Si la liste est vide, vous pouvez soit ajouter de nouveaux nœuds manuellement, ou laisser Monerujo
+        scanner le réseau pour vous. Ou les deux. Lire la suite&#8230;</p>
+        <p>La liste des nœuds affiche tous les nœuds connus. De plus, l’horodatage
+        du dernier bloc connu par chaque nœud est indiqué en dessous du nom du nœud. Une icône
+        représenant le comportement de réponse du nœud
+        (qui indique le niveau de connectivité à escompter)
+        est affiché à coté de chaque nœud.</p>
+        <p>N’importe quel nœud de la liste peut être ajouté aux favoris pour un usage ultérieur.
+        Les nœuds qui ne sont pas en favoris seront oubliés.<p>
+        <p>Monerujo choisira le nœud optimal parmi les favoris à chaque fois que vous l’utiliserez.
+        Ceci est fait en vérifiant la hauteur de bloc (à quel point le nœud
+        est à jour ?) de même que le comportement de réponse (à quelle vitesse le nœud répond aux requêtes ?).</p>
+        <p>La liste est triée selon ces caractéristiques, afin que le nœud le plus haut soit celui que Monerujo
+        utilisera tout de suite. Le bas de la liste montrera des nœuds très lents ou indisponibles.</p>
+        <h2>Ajouter un Nœud</h2>
+        <p>En touchant le bouton &quot;Ajouter un Nœud&quot; en bas, il vous sera demandé
+        d’entrer les détails du nœud dans la boite de dialogue suivante.
+        L’&quot;Adresse&quot; est le nom d’hôte ou l’adresse IP du nœud - c’est le seul
+        champ obligatoire.
+        Entrer le &quot;Port&quot; si le nœud ne fonctionne pas sur un port par défaut (p.e. 18089).
+        Vous pouvez optionnellement donner un nom au nœud, afin que vous puissiez plus facilement l’identifier plus tard.
+        Certains nœud nécessitent des identifiants pour les utiliser. Entrer les nom d’utilisateur &amp;
+        mot de passe dans les champs appropriés. Maintenant vous pouvez &quot;Tester&quot; ces paramêtres.
+        Le &quot;Résultat du test&quot; indiquera la hauteur de bloc, le temps de réponse et l’adresse IP actuellement utilisée.
+        Le résultat pourrait également être une erreur - habituellement car le nom d’hôte fourni n’est
+        pas joignable pendant un temps non négligeable, ou que les identifiants sont incorrects.
+        Ou la combinaison nom d’hôte/port ne renvoie pas vers un nœud Monero réel !
+        Une fois que le test réussit (sans erreur) - vous êtes prêt à appuyer sur &quot;OK&quot; pour sauvegarder &amp;
+        mettre ce nœud en favori.</p>
+        <h2>Rechercher des Nœuds</h2>
+        <p>De plus, vous pouvez rechercher des nœuds sur le réseau. Monerujo va commencer à
+        parcourir le réseau à la recherche de nœuds distants sur le port 18089. Il commence par demander à vos
+        nœuds en favoris d’autres homologues dans le réseau Monero P2P puis continue
+        en demandant leurs homologues à ceux-ci, et ainsi de suite. Si vous n’avez pas de nœuds en favoris
+        (ou s’ils ne communiquent pas leurs homologues),
+        Monerujo va communiquer directement avec les nœuds d’ensemencement codés en dur dans Monero. La
+        recherche s’arrête lorsqu’un total de 10 nœuds distant est récupéré.</p>
     ]]></string>
 </resources>

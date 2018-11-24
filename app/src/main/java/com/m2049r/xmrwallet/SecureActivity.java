@@ -31,7 +31,7 @@ public abstract class SecureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG && !BuildConfig.FLAVOR_type.equals("alpha")) {
             getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
         }
     }

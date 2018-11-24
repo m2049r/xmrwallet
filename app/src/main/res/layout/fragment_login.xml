@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp">
@@ -16,35 +17,85 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
+        <TextView
+            style="@style/MoneroLabel.Heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="start|center"
+            android:padding="8dp"
+            android:text="@string/label_daemon" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_toStartOf="@+id/ibOption"
+                android:layout_toEndOf="@id/ibBookmark">
+
+                <ProgressBar
+                    android:id="@+id/pbNode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:id="@+id/llNode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvNodeName"
+                        style="@style/MoneroText.PosAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_refresh_black_24dp"
+                        android:drawablePadding="8dp"
+                        tools:text="monero-v9.monerujo.io" />
+
+                    <TextView
+                        android:id="@+id/tvNodeAddress"
+                        style="@style/MoneroText.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        tools:text="128.130.233.151:18089" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/ibOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:src="@drawable/ic_search_orange_24dp" />
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/etDummy"
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/label_daemon">
-
-            <com.m2049r.xmrwallet.widget.DropDownEditText
-                android:id="@+id/etDaemonAddress"
-                style="@style/MoneroEdit.Small"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:hint="@string/prompt_daemon"
-                android:imeOptions="actionDone"
-                android:inputType="textWebEmailAddress|textNoSuggestions"
-                android:maxLines="1"
-                android:textIsSelectable="true" />
-        </android.support.design.widget.TextInputLayout>
-
         <TextView
             style="@style/MoneroLabel.Heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:gravity="start|center"
             android:padding="8dp"
             android:text="@string/label_login_wallets" />
 
@@ -72,7 +123,7 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:paddingBottom="72dp"
-                app:layoutManager="LinearLayoutManager"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_wallet" />
 
         </FrameLayout>

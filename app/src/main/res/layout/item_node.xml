@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/selector_login">
+
+    <ImageButton
+        android:id="@+id/ibBookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:src="@drawable/ic_bookmark_border_24dp" />
+
+    <LinearLayout
+        android:id="@+id/llNode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:layout_toStartOf="@+id/ivPing"
+        android:layout_toEndOf="@id/ibBookmark"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/MoneroText.PosAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="monero-v9.monerujo.io" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            style="@style/MoneroText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="128.130.233.151:18089" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivPing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_signal_wifi_4_bar_black_24dp" />
+</RelativeLayout>

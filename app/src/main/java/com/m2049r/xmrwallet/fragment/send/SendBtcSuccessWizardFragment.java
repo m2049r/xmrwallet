@@ -30,7 +30,7 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpClientSingleton;
+import com.m2049r.xmrwallet.util.OkHttpHelper;
 import com.m2049r.xmrwallet.xmrto.XmrToException;
 import com.m2049r.xmrwallet.xmrto.api.QueryOrderStatus;
 import com.m2049r.xmrwallet.xmrto.api.XmrToApi;
@@ -40,7 +40,6 @@ import com.m2049r.xmrwallet.xmrto.network.XmrToApiImpl;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class SendBtcSuccessWizardFragment extends SendWizardFragment {
@@ -80,7 +79,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         View view = inflater.inflate(
                 R.layout.fragment_send_btc_success, container, false);
 
-        bCopyTxId = (ImageButton) view.findViewById(R.id.bCopyTxId);
+        bCopyTxId = view.findViewById(R.id.bCopyTxId);
         bCopyTxId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,27 +88,26 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
             }
         });
 
-        tvXmrToAmount = (TextView) view.findViewById(R.id.tvXmrToAmount);
-        tvXmrToStatus = (TextView) view.findViewById(R.id.tvXmrToStatus);
-        ivXmrToStatus = (ImageView) view.findViewById(R.id.ivXmrToStatus);
-        ivXmrToStatusBig = (ImageView) view.findViewById(R.id.ivXmrToStatusBig);
+        tvXmrToAmount = view.findViewById(R.id.tvXmrToAmount);
+        tvXmrToStatus = view.findViewById(R.id.tvXmrToStatus);
+        ivXmrToStatus = view.findViewById(R.id.ivXmrToStatus);
+        ivXmrToStatusBig = view.findViewById(R.id.ivXmrToStatusBig);
 
-        tvTxId = (TextView) view.findViewById(R.id.tvTxId);
-        tvTxAddress = (TextView) view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = (TextView) view.findViewById(R.id.tvTxPaymentId);
-        tvTxAmount = ((TextView) view.findViewById(R.id.tvTxAmount));
-        tvTxFee = (TextView) view.findViewById(R.id.tvTxFee);
+        tvTxId = view.findViewById(R.id.tvTxId);
+        tvTxAddress = view.findViewById(R.id.tvTxAddress);
+        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
+        tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxFee = view.findViewById(R.id.tvTxFee);
 
-        pbXmrto = (ProgressBar) view.findViewById(R.id.pbXmrto);
+        pbXmrto = view.findViewById(R.id.pbXmrto);
         pbXmrto.getIndeterminateDrawable().setColorFilter(0x61000000, android.graphics.PorterDuff.Mode.MULTIPLY);
 
-        tvTxXmrToKey = (TextView) view.findViewById(R.id.tvTxXmrToKey);
+        tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
         tvTxXmrToKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
                 Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
-                ;
             }
         });
 
@@ -257,7 +255,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {
-                    xmrToApi = new XmrToApiImpl(OkHttpClientSingleton.getOkHttpClient(),
+                    xmrToApi = new XmrToApiImpl(OkHttpHelper.getOkHttpClient(),
                             Helper.getXmrToBaseUrl());
                 }
             }

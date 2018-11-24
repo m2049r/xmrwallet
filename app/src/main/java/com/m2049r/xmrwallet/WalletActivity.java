@@ -80,6 +80,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
     public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
+    public static final String REQUEST_STREETMODE = "streetmode";
 
     private NavigationView accountsView;
     private DrawerLayout drawer;
@@ -87,6 +88,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     private Toolbar toolbar;
     private boolean needVerifyIdentity;
+    private boolean requestStreetMode = false;
 
     private String password;
 
@@ -135,13 +137,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return streetMode > 0;
     }
 
-    public void toggleStreetMode() {
-        if (streetMode == 0) {
+    private void enableStreetMode(boolean enable) {
+        if (enable) {
+            needVerifyIdentity = true;
             streetMode = getWallet().getDaemonBlockChainHeight();
         } else {
             streetMode = 0;
         }
-        Timber.e("streetMode=" + streetMode);
         updateAccountsBalance();
         forceUpdate();
     }
@@ -178,6 +180,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
             needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
+            // we can set the streetmode height AFTER opening the wallet
+            requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
             password = extras.getString(REQUEST_PW);
             connectWalletService(walletId, password);
         } else {
@@ -259,18 +263,47 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 onAccountRename();
                 return true;
             case R.id.action_streetmode:
-                toggleStreetMode();
-                if (isStreetMode()) {
-                    toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+                if (isStreetMode()) { // disable streetmode
+                    onDisableStreetMode();
                 } else {
-                    showNet();
+                    onEnableStreetMode();
                 }
-                invalidateOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void updateStreetMode() {
+        if (isStreetMode()) {
+            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
+        } else {
+            showNet();
+        }
+        invalidateOptionsMenu();
+
+    }
+
+    private void onEnableStreetMode() {
+        enableStreetMode(true);
+        updateStreetMode();
+    }
+
+    private void onDisableStreetMode() {
+        Helper.promptPassword(WalletActivity.this, getWallet().getName(), false, new Helper.PasswordAction() {
+            @Override
+            public void action(String walletName, String password, boolean fingerprintUsed) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        enableStreetMode(false);
+                        updateStreetMode();
+                    }
+                });
+            }
+        });
+    }
+
 
     public void onWalletChangePassword() {
         try {
@@ -298,7 +331,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
 
         setContentView(R.layout.activity_wallet);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -327,13 +360,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             }
         });
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         setDrawerEnabled(false); // disable until synced
 
-        accountsView = (NavigationView) findViewById(R.id.accounts_nav);
+        accountsView = findViewById(R.id.accounts_nav);
         accountsView.setNavigationItemSelectedListener(this);
 
         showNet();
@@ -594,6 +627,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             haveWallet = true;
             invalidateOptionsMenu();
+
+            enableStreetMode(requestStreetMode);
 
             final WalletFragment walletFragment = (WalletFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -1021,7 +1056,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     void updateAccountsHeader() {
         final Wallet wallet = getWallet();
-        final TextView tvName = (TextView) accountsView.getHeaderView(0).findViewById(R.id.tvName);
+        final TextView tvName = accountsView.getHeaderView(0).findViewById(R.id.tvName);
         tvName.setText(wallet.getName());
     }
 
@@ -1062,8 +1097,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptsView);
 
-        final EditText etRename = (EditText) promptsView.findViewById(R.id.etRename);
-        final TextView tvRenameLabel = (TextView) promptsView.findViewById(R.id.tvRenameLabel);
+        final EditText etRename = promptsView.findViewById(R.id.etRename);
+        final TextView tvRenameLabel = promptsView.findViewById(R.id.tvRenameLabel);
         final Wallet wallet = getWallet();
         tvRenameLabel.setText(getString(R.string.prompt_rename, wallet.getAccountLabel()));
 
@@ -1173,16 +1208,4 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-//    @Override
-//    public void invalidateOptionsMenu() {
-//        super.invalidateOptionsMenu();
-//        if (isStreetMode()) {
-//            item.setIcon(R.drawable.gunther_csi_24dp);
-//            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
-//        } else {
-//            item.setIcon(R.drawable.gunther_24dp);
-//            showNet();
-//        }
-//    }
 }
