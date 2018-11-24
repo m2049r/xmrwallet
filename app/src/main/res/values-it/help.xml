@@ -242,22 +242,22 @@
     <string name="help_node"><![CDATA[
         <h1>Nodi</h1>
         <h2>In breve</h2>
-        <p>Aggiorna la lista dei nodi tirando giù &amp; segna 3&#8211;5 i nodi per consentire a Monerujo
+        <p>Aggiorna la lista dei nodi tirando giù &amp; contrassegna 3&#8211;5 i nodi per consentire a Monerujo
         di scegliere il migliore per te!</p>
         <h2>Cos&apos;è un nodo?</h2>
         <p>Monerujo usa un nodo remoto (talvolta chiamato Daemon) per comunicare con la
 	rete Monero senza dover scaricare e tenere in memoria una copia
 	dell&apos;intera blockchain</p>
         <h2>Lista dei nodi</h2>
-        <p>Se la lista è vuota, puoi aggiungere nuovi nodi a mano o lasciare che Monerujo
+        <p>Se la lista è vuota, puoi aggiungere nuovi nodi manualmente o lasciare che Monerujo
         effettui la scansione della rete per te. O entrambe le cose. Leggi su&#8230;</p>
         <p>La lista dei nodi mostra tutti i nodi conosciuti. Inoltre, sotto il nome del nodo viene visualizzato il timestamp
         dell&apos;ultimo blocco conosciuto ad ogni nodo. Accanto ad ogni nodo viene visualizzata un&apos;icona che
         rappresenta il comportamento in risposta di quel nodo
         (che in sostanza indica il livello di connettività atteso).</p>
-        <p>Ogni nodo della lista può essere segnato per un utilizzo successivo.
-        Nodi che non vengono segnati saranno dimenticati successivamente.<p>
-        <p>Monerujo sceglie il miglior nodo segnato ogni volta che lo usi.
+        <p>Ogni nodo della lista può essere aggiunto come segnalibro per un utilizzo successivo.
+        Nodi che non vengono aggiunti come segnalibro saranno dimenticati successivamente.<p>
+        <p>Monerujo sceglie il miglior nodo registrato ogni volta che lo usi.
         Il nodo migliore viene selezionato controllando l&apos;altezza di blocco (quanto è aggiornato
         il nodo?) nonché il suo comportamento in risposta (quanto velocemente il nodo risponde alle richieste?).</p>
         <p>La lista è ordinata per queste caratteristiche, in modo tale che il nodo in cima alla lista è quello che Monerujo
@@ -265,22 +265,22 @@
         <h2>Aggiungere un nodo</h2>
         <p>Toccando il pulsante &quot;Aggiungi nodo&quot; in fondo, ti verrà chiesto di
         inserire i dettagli del nodo nella schermata successiva.
-        L&apos;&quot;Indirizzo&quot; è il nome host o l&apos;indirizzo IP del nodo - questo è l&apos;unica informazione necessaria.
-        Inserisci la &quot;Porta&quot; se il nodo rende disponibile una porta diversa da quella di default (es. 18089).
+        L&apos;&quot;Indirizzo&quot; è il nome host o l&apos;indirizzo IP del nodo - questa è l&apos;unica informazione necessaria.
+        Inserisci la &quot;Porta&quot; se il nodo utilizza una porta diversa da quella di default (es. 18089).
         Puoi inoltre assegnare un nome al nodo, in modo tale da poterlo facilmente identificare in futuro.
         Alcuni nodi richiedono delle credenziali per poter essere usati. Inserisci negli appositi campi il nome utente &amp;
-        password forniti. Ora puoi &quot;Effettuare un Test&quot; su queste impostazioni.
+        password forniti. Ora puoi &quot;Effettuare un Test&quot; con queste impostazioni.
         I &quot;Risultati del Test&quot; visualizzeranno l&apos;altezza di blocco, il tempo di risposta e l&apos;IP correntemente utilizzato.
         Il risultato potrebbe essere anche un errore - molte volte perché il nome host fornito non è
         raggiungibile per un ragionevole lasso di tempo o le credenziali non sono corrette.
 	O se la combinazione nome host/porta non punta a un vero nodo Monero!
         Una volta che il test ha dato esito positivo (nessun errore) - hai la possibilità di premere &quot;OK&quot; per salvare&amp;
-        segnare questo nodo.</p>
+        aggiungere questo nodo ai segnalibri.</p>
         <h2>Esegui scansione alla ricerca di nodi</h2>
         <p>Puoi anche eseguire una scansione su rete alla ricerca di nodi. Monerujo inizierà
         la scansione della rete alla ricerca di nodi sulla porta 18089, chiedendo dapprima ai tuoi
-	nodi segnati i loro peer all&apos;interno della rete P2P di Monero per poi proseguire
-	chiedendo peer a questi ultimi e così via. Se no hai nodi segnati
+	nodi salvati i loro peer all&apos;interno della rete P2P di Monero per poi proseguire
+	chiedendo peer a questi ultimi e così via. Se non hai nodi salvati
         (o se essi non ci comunicano i loro peer),
         Monerujo proseguirà con i nodi seed codificati in Monero. La scansione
         termina quando vengono trovati 10 nodi in totale.</p>

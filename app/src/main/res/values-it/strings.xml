@@ -363,6 +363,6 @@
     <string name="node_create_hint">Tocca per selezionare o aggiungere nodi</string>
     <string name="node_pull_hint">Aggiungi nodi manualmente o tira giù per effettuare scansione</string>
     <string name="node_scanning">Scansione rete&#8230;</string>
-    <string name="node_nobookmark">Segnati automaticamente i %1$d nodi migliori</string>
+    <string name="node_nobookmark">Aggiunti automaticamente ai segnalibri i %1$d nodi migliori</string>
     <string name="label_test">Effettua Test</string><!--note: as in "Test a network connection"-->
 </resources>
