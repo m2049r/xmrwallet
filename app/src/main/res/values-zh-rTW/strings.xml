@@ -333,8 +333,8 @@
 
     <string name="status_wallet_connect_wrongversion">節點版本不相容 - 請盡速更新！</string>
 
-    <string name="menu_info">詳細資訊</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
+    <string name="menu_info">顯示私鑰資訊</string>
+    <string name="menu_streetmode">低調模式</string>
 
     <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
     <string name="node_height">Last block updated: %1$s</string>

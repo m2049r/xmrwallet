@@ -171,11 +171,10 @@
 
     <string name="help_wallet"><![CDATA[
         <h1>錢包介面</h1>
-        <h2>Street Mode</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>低調模式</h2>
+        <p>低調模式可以藉由點選 Gunther 的頭像或在選單中啟用/關閉。
+        在這模式中你的帳戶餘額不會顯示在任何的畫面中，因此你可以安全的在街上、酒吧等公共場所使用錢包。
+        先前的交易記錄也會一併被隱藏，但新的交易則會正常顯示，所以你仍然可以看到你即時發送或是收到的 MoneroJ ！</p>
         <h2>掃描</h2>
         由於 Monero 的交易是隱私保護的，因此每當你開啟 Monerujo
         錢包時我們必須在區塊鏈上掃描是否有最新的 Monero 被傳送到你的錢包中，這將會儲存僅與你錢包相關的資訊在裝置中。
