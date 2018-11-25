@@ -55,7 +55,7 @@ public class Section {
     static final public byte SERIALIZE_TYPE_UINT32 = 6;
     static final public byte SERIALIZE_TYPE_UINT16 = 7;
     static final public byte SERIALIZE_TYPE_UINT8 = 8;
-    static final public byte SERIALIZE_TYPE_DUOBLE = 9;
+    static final public byte SERIALIZE_TYPE_DOUBLE = 9;
     static final public byte SERIALIZE_TYPE_STRING = 10;
     static final public byte SERIALIZE_TYPE_BOOL = 11;
     static final public byte SERIALIZE_TYPE_OBJECT = 12;
