@@ -32,6 +32,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
@@ -505,6 +506,10 @@ public class NodeFragment extends Fragment
                     });
                 }
             });
+            // set FLAG_SECURE to prevent screenshots in Release Mode
+            if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+                editDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+            }
 
             etNodePass.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

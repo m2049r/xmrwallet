@@ -62,9 +62,6 @@ public class ProgressDialog extends AlertDialog {
         pbBar = view.findViewById(R.id.pbBar);
         tvProgress = view.findViewById(R.id.tvProgress);
         setView(view);
-        //setTitle("blabla");
-        //super.setMessage("bubbu");
-//        view.invalidate();
         setIndeterminate(indeterminate);
         if (maxValue > 0) {
             setMax(maxValue);

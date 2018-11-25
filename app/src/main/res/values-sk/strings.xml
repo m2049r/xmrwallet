@@ -377,4 +377,9 @@
 
     <string name="street_sweep_amount">VŠETKO!</string> <!-- as in: "everything in the account" = "all the money" -->
 
+    <string name="menu_ledger_seed">Convert Ledger Seed</string>
+    <string name="prompt_ledger_seed">Ledger Seed Words</string>
+    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
+    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
+    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
 </resources>

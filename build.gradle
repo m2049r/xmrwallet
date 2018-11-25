@@ -16,6 +16,9 @@ allprojects {
         maven {
             url "https://maven.google.com"
         }
+        maven {
+            url "https://repository.mulesoft.org/nexus/content/repositories/public/"
+        }
         google()
     }
 }

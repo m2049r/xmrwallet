@@ -1229,6 +1229,12 @@ public class LoginActivity extends BaseActivity
             case R.id.action_language:
                 onChangeLocale();
                 return true;
+            case R.id.action_ledger_seed:
+                Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                if (f instanceof GenerateFragment) {
+                    ((GenerateFragment) f).convertLedgerSeed();
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
