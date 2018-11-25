@@ -407,4 +407,6 @@
     <string name="node_scanning">ネットワークをスキャン中&#8230;</string>
     <string name="node_nobookmark">最良の %1$d ノードを自動でブックマークしました</string>
     <string name="label_test">テスト</string><!--note: as in "Test a network connection"-->
+
+    <string name="backup_success">バックアップ成功</string>
 </resources>
