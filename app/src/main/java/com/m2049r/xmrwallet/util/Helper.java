@@ -81,6 +81,8 @@ public class Helper {
             (BuildConfig.FLAVOR.startsWith("prod") ? "" : "." + BuildConfig.FLAVOR)
                     + (BuildConfig.DEBUG ? "-debug" : "");
 
+    static public final String NOCRAZYPASS_FLAGFILE = ".nocrazypass";
+
     static public final String CRYPTO = "XMR";
 
     static private final String WALLET_DIR = "monerujo" + FLAVOR_SUFFIX;
@@ -345,6 +347,11 @@ public class Helper {
         WalletManager.initLogger(home + "/monerujo", "monerujo.log");
         if (level >= WalletManager.LOGLEVEL_SILENT)
             WalletManager.setLogLevel(level);
+    }
+
+    static public boolean useCrazyPass(Context context) {
+        File flagFile = new File(getWalletRoot(context), NOCRAZYPASS_FLAGFILE);
+        return !flagFile.exists();
     }
 
     // try to figure out what the real wallet password is given the user password

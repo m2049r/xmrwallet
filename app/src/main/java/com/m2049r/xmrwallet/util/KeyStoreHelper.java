@@ -84,7 +84,10 @@ public class KeyStoreHelper {
     }
 
     public static String getCrazyPass(Context context, String password) {
-        return getCrazyPass(context, password, 0);
+        if (Helper.useCrazyPass(context))
+            return getCrazyPass(context, password, 0);
+        else
+            return password;
     }
 
     public static String getBrokenCrazyPass(Context context, String password, int brokenVariant) {
