@@ -282,75 +282,75 @@
     <string name="tx_account"># de cuenta</string>
     <string name="tx_address">Dirección</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="send_sweepall">¡Enviar todos los fondos confirmados en esta cuenta!</string>
+    <string name="tx_subaddress">Subdirecciones #%1$d</string>
+    <string name="generate_address_label_sub">Subdirecciones Públicas #%1$d</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Lenguaje</string>
+    <string name="language_system_default">Usar Idioma del Sistema</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restaurar desde Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">Comunicándose con Ledger</string>
+    <string name="progress_ledger_confirm">¡Confirmación en Ledger requerida!</string>
+    <string name="progress_ledger_lookahead">Recuperando subdirecciones</string>
+    <string name="progress_ledger_verify">Verificando claves</string>
+    <string name="progress_ledger_opentx">Realizando cálculos alocados</string>
+    <string name="progress_ledger_mlsag">Cosas de hash</string>
+    <string name="open_wallet_ledger_missing">Por favor (re)conecta el dispositivo Ledger</string>
 
-    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_new">Creando cuenta</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s adjunto</string>
+    <string name="toast_ledger_detached">%1$s separado</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Escribiento Etiqueta</string>
+    <string name="nfc_write_failed">¡Escritura de Etiqueta fallida!</string>
+    <string name="nfc_write_successful">Escritura de Etiqueta exitosa</string>
+    <string name="nfc_tag_unsupported">¡Etiqueta no soporta NDEF!</string>
+    <string name="nfc_tag_size">La etiqueta provee %1$d bytes, pero necesitamos %2$d!</string>
+    <string name="nfc_tag_read_undef">¡No comprendo la etiqueta!</string>
+    <string name="nfc_tag_read_what">¡No sé lo que pides!</string>
+    <string name="nfc_tag_read_success">Lectura de Etiqueta exitosa</string>
+    <string name="nfc_tag_tap">¡NFC disponible!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Descripción (opcional)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
+    <string name="send_address_not_openalias">Dirección OpenAlias no disponible</string>
+    <string name="send_address_openalias">OpenAlias asegurado &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolviendo OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sin DNSSEC - la drección puede ser falsificada</string>
+    <string name="send_address_hint">Dirección XMR/BTC del receptor u OpenAlias</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
 
     <string name="menu_info">Detalles</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
+    <string name="menu_streetmode">Modo Público</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
-    <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="info_nodes_enabled">Nodo-o-matiC habilitado, toque para más información.</string>
+    <string name="node_height">Último bloque actualizado: %1$s</string>
+    <string name="label_nodes">Nodos</string>
+    <string name="node_name_hint">Nombre del Nodo (Opcional)</string>
+    <string name="node_address_hint">Nombre del Host</string>
+    <string name="node_port_hint">Puerto</string>
+    <string name="node_user_hint">Usuario (Opcional)</string>
+    <string name="node_pass_hint">Contraseña (Opcional)</string>
+    <string name="node_host_unresolved">No se puede resolver el host</string>
+    <string name="node_host_empty">¡Necesitamos esto!</string>
+    <string name="node_port_numeric">Debe ser numérico</string>
+    <string name="node_port_range">Debe ser 1&#8211;65535</string>
+    <string name="node_fab_add">Agregar Nodo</string>
+    <string name="node_refresh_hint">¡Toca para refrescar!</string>
+    <string name="node_test_error">ERROR DE CONECCIÓN %1$d</string>
+    <string name="node_general_error">ERROR DE CONECCIÓN</string>
+    <string name="node_auth_error">AUTENTIFICACIÓN FALLIDA</string>
+    <string name="node_result_label">Resultados de la prueba:</string>
+    <string name="node_result">Altura: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Probando el IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Por favor espera a que termine el escaneo</string>
+    <string name="node_create_hint">Toca para seleccionar o agregar nodos</string>
+    <string name="node_pull_hint">Agregar nodos manualmente o presiona para escanear</string>
+    <string name="node_scanning">Escaneando la red&#8230;</string>
+    <string name="node_nobookmark">Mejores %1$d nodos marcados automáticamente</string>
+    <string name="label_test">Probar</string><!--note: as in "Test a network connection"-->
 </resources>
