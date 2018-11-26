@@ -293,7 +293,6 @@
     <string name="accounts_drawer_new">Konto erstellen</string>
     <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
     <string name="tx_account">Konto #</string>
-    <string name="tx_address">Adresse</string>
 
     <string name="send_sweepall">Versende ALLE(!) verfügbaren Gelder aus diesem Konto</string>
     <string name="tx_subaddress">Subadresse #%1$d</string>
