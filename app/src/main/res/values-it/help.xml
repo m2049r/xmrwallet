@@ -240,51 +240,49 @@
     ]]></string>
 
     <string name="help_node"><![CDATA[
-        <h1>Nodes</h1>
-        <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
-        to choose the best one for you!</p>
-        <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
-        whole blockchain itself.<p>
-        <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
-        scan the network for you. Or both. Read on&#8230;</p>
-        <p>The node list shows all currently known nodes. Additionally, the timestamp
-        of the latest block known to each node is shown under the node name. An icon
-        representing the node&apos;s response behaviour
-        (which indicates the level of connectivity to be expected)
-        is shown next to each node.</p>
-        <p>Any node in the list can be bookmarked for later use.
-        Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
-        It does this by checking the blockheight (how up-to-date
-        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
-        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
-        <h2>Add a Node</h2>
-        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
-        enter the node details in the following dialog.
-        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
-        mandatory entry.
-        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
-        You can also optionally name the node, so you can identify it easier later on.
-        Some nodes require credentials to use them. Enter the provided username &amp;
-        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
-        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
-        The result may also be an error - usually because the hostname provided is
-        not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
-        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
-        bookmark this node.</p>
-        <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
-        scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
-        by asking those for their peers, and so on. If you have no bookmarked nodes
-        (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
-        scan stops when it finds 10 remote nodes in total.</p>
+        <h1>Nodi</h1>
+        <h2>In breve</h2>
+        <p>Aggiorna la lista dei nodi tirando giù &amp; contrassegna 3&#8211;5 i nodi per consentire a Monerujo
+        di scegliere il migliore per te!</p>
+        <h2>Cos&apos;è un nodo?</h2>
+        <p>Monerujo usa un nodo remoto (talvolta chiamato Daemon) per comunicare con la
+	rete Monero senza dover scaricare e tenere in memoria una copia
+	dell&apos;intera blockchain</p>
+        <h2>Lista dei nodi</h2>
+        <p>Se la lista è vuota, puoi aggiungere nuovi nodi manualmente o lasciare che Monerujo
+        effettui la scansione della rete per te. O entrambe le cose. Leggi su&#8230;</p>
+        <p>La lista dei nodi mostra tutti i nodi conosciuti. Inoltre, sotto il nome del nodo viene visualizzato il timestamp
+        dell&apos;ultimo blocco conosciuto ad ogni nodo. Accanto ad ogni nodo viene visualizzata un&apos;icona che
+        rappresenta il comportamento in risposta di quel nodo
+        (che in sostanza indica il livello di connettività atteso).</p>
+        <p>Ogni nodo della lista può essere aggiunto come segnalibro per un utilizzo successivo.
+        Nodi che non vengono aggiunti come segnalibro saranno dimenticati successivamente.<p>
+        <p>Monerujo sceglie il miglior nodo registrato ogni volta che lo usi.
+        Il nodo migliore viene selezionato controllando l&apos;altezza di blocco (quanto è aggiornato
+        il nodo?) nonché il suo comportamento in risposta (quanto velocemente il nodo risponde alle richieste?).</p>
+        <p>La lista è ordinata per queste caratteristiche, in modo tale che il nodo in cima alla lista è quello che Monerujo
+        selezionerebbe adesso. In fondo alla lista compaiono i nodi ritenuti molto lenti o non disponibili.</p>
+        <h2>Aggiungere un nodo</h2>
+        <p>Toccando il pulsante &quot;Aggiungi nodo&quot; in fondo, ti verrà chiesto di
+        inserire i dettagli del nodo nella schermata successiva.
+        L&apos;&quot;Indirizzo&quot; è il nome host o l&apos;indirizzo IP del nodo - questa è l&apos;unica informazione necessaria.
+        Inserisci la &quot;Porta&quot; se il nodo utilizza una porta diversa da quella di default (es. 18089).
+        Puoi inoltre assegnare un nome al nodo, in modo tale da poterlo facilmente identificare in futuro.
+        Alcuni nodi richiedono delle credenziali per poter essere usati. Inserisci negli appositi campi il nome utente &amp;
+        password forniti. Ora puoi &quot;Effettuare un Test&quot; con queste impostazioni.
+        I &quot;Risultati del Test&quot; visualizzeranno l&apos;altezza di blocco, il tempo di risposta e l&apos;IP correntemente utilizzato.
+        Il risultato potrebbe essere anche un errore - molte volte perché il nome host fornito non è
+        raggiungibile per un ragionevole lasso di tempo o le credenziali non sono corrette.
+	O se la combinazione nome host/porta non punta a un vero nodo Monero!
+        Una volta che il test ha dato esito positivo (nessun errore) - hai la possibilità di premere &quot;OK&quot; per salvare&amp;
+        aggiungere questo nodo ai segnalibri.</p>
+        <h2>Esegui scansione alla ricerca di nodi</h2>
+        <p>Puoi anche eseguire una scansione su rete alla ricerca di nodi. Monerujo inizierà
+        la scansione della rete alla ricerca di nodi sulla porta 18089, chiedendo dapprima ai tuoi
+	nodi salvati i loro peer all&apos;interno della rete P2P di Monero per poi proseguire
+	chiedendo peer a questi ultimi e così via. Se non hai nodi salvati
+        (o se essi non ci comunicano i loro peer),
+        Monerujo proseguirà con i nodi seed codificati in Monero. La scansione
+        termina quando vengono trovati 10 nodi in totale.</p>
     ]]></string>
 </resources>
