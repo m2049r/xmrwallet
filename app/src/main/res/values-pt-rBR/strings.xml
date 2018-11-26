@@ -292,6 +292,7 @@
     <string name="accounts_drawer_new">Criar conta</string>
     <string name="accounts_new">Conta adicionada #%1$d</string>
     <string name="tx_account">Conta #</string>
+    <string name="tx_address">Endereço</string>
 
     <string name="send_sweepall">Enviar todo o saldo disponível nesta conta!</string>
     <string name="tx_subaddress">Subendereço #%1$d</string>

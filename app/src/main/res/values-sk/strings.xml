@@ -290,6 +290,7 @@
     <string name="accounts_drawer_new">Vytvor Účet</string>
     <string name="accounts_new">Pridaný nový účet #%1$d</string>
     <string name="tx_account">Účet #</string>
+    <string name="tx_address">Adresa</string>
 
     <string name="send_sweepall">Pošli všetky potvrdené prostriedky na tomto účte!</string>
     <string name="tx_subaddress">Podadresa #%1$d</string>

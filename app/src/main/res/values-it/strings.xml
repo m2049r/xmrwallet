@@ -294,6 +294,7 @@
     <string name="accounts_drawer_new">Crea Account</string>
     <string name="accounts_new">Aggiunto nuovo account #%1$d</string>
     <string name="tx_account">Account #</string>
+    <string name="tx_address">Indirizzo</string>
 
     <string name="send_sweepall">Manda tutti i fondi confermati in questo account!</string>
     <string name="tx_subaddress">Sottoindirizzo #%1$d</string>

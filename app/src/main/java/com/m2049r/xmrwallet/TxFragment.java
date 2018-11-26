@@ -60,6 +60,7 @@ public class TxFragment extends Fragment {
     }
 
     private TextView tvAccount;
+    private TextView tvAddress;
     private TextView tvTxTimestamp;
     private TextView tvTxId;
     private TextView tvTxKey;
@@ -90,6 +91,7 @@ public class TxFragment extends Fragment {
         tvTxAmountBtc = view.findViewById(R.id.tvTxAmountBtc);
 
         tvAccount = view.findViewById(R.id.tvAccount);
+        tvAddress = view.findViewById(R.id.tvAddress);
         tvTxTimestamp = view.findViewById(R.id.tvTxTimestamp);
         tvTxId = view.findViewById(R.id.tvTxId);
         tvTxKey = view.findViewById(R.id.tvTxKey);
@@ -219,12 +221,16 @@ public class TxFragment extends Fragment {
         if (info.txKey == null) {
             info.txKey = activityCallback.getTxKey(info.hash);
         }
+        if (info.address == null) {
+            info.address = activityCallback.getTxAddress(info.account, info.subaddress);
+        }
         loadNotes(info);
 
         activityCallback.setSubtitle(getString(R.string.tx_title));
         activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
 
         tvAccount.setText(getString(R.string.tx_account_formatted, info.account, info.subaddress));
+        tvAddress.setText(info.address);
 
         tvTxTimestamp.setText(TS_FORMATTER.format(new Date(info.timestamp * 1000)));
         tvTxId.setText(info.hash);
@@ -330,6 +336,8 @@ public class TxFragment extends Fragment {
         String getTxKey(String hash);
 
         String getTxNotes(String hash);
+
+        String getTxAddress(int major, int minor);
 
         void onSetNote(String txId, String notes);
 

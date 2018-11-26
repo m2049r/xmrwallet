@@ -290,6 +290,7 @@
     <string name="accounts_drawer_new">Account maken</string>
     <string name="accounts_new">Nieuw account #%1$d toegevoegd</string>
     <string name="tx_account">Accountnr.</string>
+    <string name="tx_address">Adres</string>
 
     <string name="send_sweepall">Al het bevestigde geld in dit account verzenden!</string>
     <string name="tx_subaddress">Subadres #%1$d</string>

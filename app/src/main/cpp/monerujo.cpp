@@ -417,8 +417,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_verifyWalletPassword(JNIEnv *env, 
 //virtual int queryWalletHardware(const std::string &keys_file_name, const std::string &password) const = 0;
 JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_queryWalletDeviceJ(JNIEnv *env, jobject instance,
-                                                                jstring keys_file_name,
-                                                                jstring password) {
+                                                                 jstring keys_file_name,
+                                                                 jstring password) {
     const char *_keys_file_name = env->GetStringUTFChars(keys_file_name, NULL);
     const char *_password = env->GetStringUTFChars(password, NULL);
     Bitmonero::Wallet::Device device_type;
@@ -1185,10 +1185,11 @@ jobject newTransferList(JNIEnv *env, Bitmonero::TransactionInfo *info) {
 
 jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     jmethodID c = env->GetMethodID(class_TransactionInfo, "<init>",
-                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;IIJLjava/util/List;)V");
+                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;IIJLjava/lang/String;Ljava/util/List;)V");
     jobject transfers = newTransferList(env, info);
     jstring _hash = env->NewStringUTF(info->hash().c_str());
     jstring _paymentId = env->NewStringUTF(info->paymentId().c_str());
+    jstring _label = env->NewStringUTF(info->label().c_str());
     uint32_t subaddrIndex = 0;
     if (info->direction() == Bitmonero::TransactionInfo::Direction_In)
         subaddrIndex = *(info->subaddrIndex().begin());
@@ -1205,6 +1206,7 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
                                     info->subaddrAccount(),
                                     subaddrIndex,
                                     info->confirmations(),
+                                    _label,
                                     transfers);
     env->DeleteLocalRef(transfers);
     env->DeleteLocalRef(_hash);
@@ -1397,7 +1399,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jclass cl
  *
  * @return length of received data in response or -1 if error
  */
-int  LedgerExchange(
+int LedgerExchange(
         unsigned char *command,
         unsigned int cmd_len,
         unsigned char *response,

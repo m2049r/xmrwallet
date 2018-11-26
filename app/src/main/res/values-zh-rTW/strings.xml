@@ -291,6 +291,7 @@
     <string name="accounts_drawer_new">新增帳戶</string>
     <string name="accounts_new">已新增帳戶 #%1$d</string>
     <string name="tx_account">帳戶 #</string>
+    <string name="tx_address">地址</string>
 
     <string name="send_sweepall">發送這個帳戶的所有已確認款項！</string>
     <string name="tx_subaddress">子地址 #%1$d</string>
