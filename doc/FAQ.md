@@ -91,3 +91,10 @@ Keep calm and make a new wallet.
 
 ## Why does it make a 'monero' folder?
 This is a new feature of monero core to share certain key images with other monero forks.
+
+## CrAzYpass is awesome - but I don't want it!
+Creating a file named `.nocrazypass` in the wallets folder will disable generation of crazypass for NEW passwords (new wallet or change password).
+The content of the file is not read and is irrelevant.
+Wallets with CrAzYpass will continue working normally. The currently set real wallet password can be checked in the "Show Secrets".
+
+**NB: This feature is for test purposed only - all your XMR will be stolen if you use it!**
