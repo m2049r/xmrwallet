@@ -293,6 +293,7 @@
     <string name="accounts_drawer_new">Создать учетную запись</string>
     <string name="accounts_new">Добавить новую учетную запись #%1$d</string>
     <string name="tx_account">Учетная запись #</string>
+    <string name="tx_address">Адрес</string>
 
     <string name="send_sweepall">Отправить все средства на этот счет!</string>
     <string name="tx_subaddress">Субадрес #%1$d</string>

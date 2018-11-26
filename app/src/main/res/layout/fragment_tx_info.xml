@@ -79,8 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawablePadding="8dp"
                     android:drawableStart="@drawable/ic_xmrto_32dp"
+                    android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/label_send_btc_xmrto_info" />
 
@@ -152,10 +152,10 @@
                                 android:background="@color/dotGray"
                                 android:drawableEnd="@drawable/ic_content_copy_white_24dp"
                                 android:drawablePadding="16dp"
-                                android:paddingBottom="8dp"
-                                android:paddingEnd="8dp"
                                 android:paddingStart="24dp"
                                 android:paddingTop="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="8dp"
                                 android:textColor="@color/white"
                                 tools:text="XMR.TO-d2KQ" />
                         </LinearLayout>
@@ -195,6 +195,24 @@
                     style="@style/MoneroLabel.Small"
                     android:layout_gravity="center_vertical"
                     android:gravity="end"
+                    android:padding="8dp"
+                    android:text="@string/tx_address" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    style="@style/MoneroText"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/MoneroLabel.Small"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
@@ -221,8 +239,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:enabled="true"
-                        android:paddingEnd="8dp"
                         android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
                         android:text="@string/tx_button_notes" />
                 </RelativeLayout>
 

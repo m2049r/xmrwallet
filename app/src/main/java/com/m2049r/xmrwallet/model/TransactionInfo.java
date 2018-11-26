@@ -18,10 +18,8 @@ package com.m2049r.xmrwallet.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.List;
-import java.util.Random;
 
 // this is not the TransactionInfo from the API as that is owned by the TransactionHistory
 // this is a POJO for the TransactionInfoAdapter
@@ -53,11 +51,6 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         }
     }
 
-//    virtual std::set<uint32_t> subaddrIndex() const = 0;
-//    virtual uint32_t subaddrAccount() const = 0;
-//    virtual std::string label() const = 0;
-//    virtual uint64_t confirmations() const = 0;
-
     public Direction direction;
     public boolean isPending;
     public boolean isFailed;
@@ -70,10 +63,12 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
     public int account;
     public int subaddress;
     public long confirmations;
+    public String subaddressLabel;
     public List<Transfer> transfers;
 
     public String txKey = null;
     public String notes = null;
+    public String address = null;
 
     public TransactionInfo(
             int direction,
@@ -88,6 +83,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             int account,
             int subaddress,
             long confirmations,
+            String subaddressLabel,
             List<Transfer> transfers) {
         this.direction = Direction.values()[direction];
         this.isPending = isPending;
@@ -101,6 +97,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.account = account;
         this.subaddress = subaddress;
         this.confirmations = confirmations;
+        this.subaddressLabel = subaddressLabel;
         this.transfers = transfers;
     }
 
@@ -122,9 +119,11 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeInt(account);
         out.writeInt(subaddress);
         out.writeLong(confirmations);
+        out.writeString(subaddressLabel);
         out.writeList(transfers);
         out.writeString(txKey);
         out.writeString(notes);
+        out.writeString(address);
     }
 
     public static final Parcelable.Creator<TransactionInfo> CREATOR = new Parcelable.Creator<TransactionInfo>() {
@@ -150,9 +149,11 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         account = in.readInt();
         subaddress = in.readInt();
         confirmations = in.readLong();
+        subaddressLabel = in.readString();
         transfers = in.readArrayList(Transfer.class.getClassLoader());
         txKey = in.readString();
         notes = in.readString();
+        address = in.readString();
     }
 
     @Override

@@ -169,6 +169,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
+    public String getTxAddress(int major, int minor) {
+        return getWallet().getSubaddress(major, minor);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         Timber.d("onStart()");

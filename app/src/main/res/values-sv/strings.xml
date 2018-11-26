@@ -276,6 +276,7 @@
     <string name="accounts_drawer_new">Skapa konto</string>
     <string name="accounts_new">Nytt konto skapat #%1$d</string>
     <string name="tx_account">Konto #</string>
+    <string name="tx_address">Adress</string>
 
     <string name="send_sweepall">Skicka alla bekräftade pengar i detta konto!</string>
     <string name="tx_subaddress">Underadress #%1$d</string>
