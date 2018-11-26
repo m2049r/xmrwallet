@@ -290,7 +290,6 @@
     <string name="accounts_drawer_new">开新户口</string>
     <string name="accounts_new">已新增户口 #%1$d</string>
     <string name="tx_account">户口 #</string>
-    <string name="tx_address">地址</string>
 
     <string name="send_sweepall">发送这个户口的所有已确认款项！</string>
     <string name="tx_subaddress">附属地址 #%1$d</string>

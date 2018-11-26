@@ -280,7 +280,6 @@
     <string name="accounts_drawer_new">Crear Cuenta</string>
     <string name="accounts_new">Nueva cuenta agregada #%1$d</string>
     <string name="tx_account"># de cuenta</string>
-    <string name="tx_address">Dirección</string>
 
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>

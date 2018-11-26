@@ -115,6 +115,7 @@
                             style="@style/MoneroLabel.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="top"
                             android:gravity="end"
                             android:padding="8dp"
                             android:text="@string/tx_destination_btc" />
@@ -175,43 +176,51 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_account" />
 
-                <TextView
-                    android:id="@+id/tvAccount"
-                    style="@style/MoneroText"
-                    android:gravity="start"
-                    android:padding="8dp"
-                    android:selectAllOnFocus="true"
-                    android:textIsSelectable="true" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvAccount"
+                        style="@style/MoneroText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="start"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:selectAllOnFocus="true"
+                        android:textIsSelectable="true"
+                        tools:text="(0,1)" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        style="@style/MoneroText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvAccount"
+                        android:gravity="start"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:selectAllOnFocus="true"
+                        android:textIsSelectable="true"
+                        tools:text="4BKjy1uVRTPiz4pHyaXXawb82XpzLiowSDd8rEQJGqvN6AD6kWosLQ6VJXW9sghopxXgQSh1RTd54JdvvCRsXiF41xvfeW5" />
+                </RelativeLayout>
             </TableRow>
 
             <TableRow>
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="end"
-                    android:padding="8dp"
-                    android:text="@string/tx_address" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    style="@style/MoneroText"
-                    android:gravity="start"
-                    android:padding="8dp"
-                    android:selectAllOnFocus="true"
-                    android:textIsSelectable="true" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
@@ -250,7 +259,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_destination" />
@@ -268,7 +277,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_paymentId" />
@@ -286,7 +295,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_id" />
@@ -304,7 +313,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_key" />
@@ -322,7 +331,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_blockheight" />
@@ -340,7 +349,7 @@
 
                 <TextView
                     style="@style/MoneroLabel.Small"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="top"
                     android:gravity="end"
                     android:padding="8dp"
                     android:text="@string/tx_transfers" />

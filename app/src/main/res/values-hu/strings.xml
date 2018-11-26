@@ -292,7 +292,6 @@
     <string name="accounts_drawer_new">Számla létrehozása</string>
     <string name="accounts_new">Új számla hozzáadva (#%1$d)</string>
     <string name="tx_account">Számla #</string>
-    <string name="tx_address">Cím</string>
 
     <string name="send_sweepall">Teljes megerősített egyenleg küldése!</string>
     <string name="tx_subaddress">Alcím #%1$d</string>
