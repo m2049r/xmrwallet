@@ -157,7 +157,7 @@
     <string name="message_copy_viewkey">Chave de visualização copiada para a área de transferência!</string>
     <string name="message_copy_xmrtokey">Chave XMR.TO copiada para a área de transferência!</string>
     <string name="message_copy_address">Endereço da carteira copiado para a área de transferência!</string>
-    <string name="message_copy_txid">ID da transacção copiado para a área de transferência!</string>
+    <string name="message_copy_txid">ID da transação copiado para a área de transferência!</string>
     <string name="message_nocopy">Copiar está desativado por razões de segurança!</string>
 
     <string name="message_exchange_failed">Não foi possível obter a cotação!\nUse XMR/XMR ou tente novamente</string>
@@ -325,35 +325,35 @@
     <string name="nfc_tag_read_success">Sucesso na leitura da tag</string>
     <string name="nfc_tag_tap">NFC disponível!</string>
 
-    <string name="menu_info">Detalhes</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
+    <string name="menu_info">Mostrar Segredos!</string>
+    <string name="menu_streetmode">Modo Rua</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
-    <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="info_nodes_enabled">Nó-auto-mágiCo ativado, toque para mais informações.</string>
+    <string name="node_height">Último bloco atualizado em: %1$s</string>
+    <string name="label_nodes">Nós</string>
+    <string name="node_name_hint">Nome do Nó (Opcional)</string>
+    <string name="node_address_hint">Endereço do Host</string>
+    <string name="node_port_hint">Porta</string>
+    <string name="node_user_hint">Usuário (Opcional)</string>
+    <string name="node_pass_hint">Senha (Opcional)</string>
+    <string name="node_host_unresolved">Host não encontrado</string>
+    <string name="node_host_empty">Nós precisamos disso!</string>
+    <string name="node_port_numeric">Deve ser numérico</string>
+    <string name="node_port_range">Deve ser entre 1&#8211;65535</string>
+    <string name="node_fab_add">Adicionar Nó</string>
+    <string name="node_refresh_hint">Toque para atualizar!</string>
+    <string name="node_test_error">ERRO DE CONEXÃO %1$d</string>
+    <string name="node_general_error">ERRO DE CONEXÃO</string>
+    <string name="node_auth_error">FALHA NA AUTENTICAÇÃO</string>
+    <string name="node_result_label">Resultado do Teste:</string>
+    <string name="node_result">Altura: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testando IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Por favor, aguardo o escaneamento terminar</string>
+    <string name="node_create_hint">Toque para selecionar ou adicionar nós</string>
+    <string name="node_pull_hint">Adicione nós manualmente ou puxe para baixo para escanear</string>
+    <string name="node_scanning">Escaneando rede&#8230;</string>
+    <string name="node_nobookmark">Melhores %1$d nós adicionados aos favoritos</string>
+    <string name="label_test">Testar</string><!--note: as in "Test a network connection"-->
 
-    <string name="backup_success">Backup successful</string>
+    <string name="backup_success">Backup feito com successo</string>
 </resources>
