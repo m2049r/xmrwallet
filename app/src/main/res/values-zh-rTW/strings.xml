@@ -338,7 +338,7 @@
     <string name="menu_streetmode">低調模式</string>
 
     <string name="info_nodes_enabled">節點管理工具已啟用，點選了解更多。</string>
-    <string name="node_height">最後區塊更新：%1$s</string>
+    <string name="node_height">最後區塊更新時間：%1$s</string>
     <string name="label_nodes">節點</string>
     <string name="node_name_hint">節點名稱 (選填)</string>
     <string name="node_address_hint">網址</string>
@@ -360,7 +360,7 @@
     <string name="node_refresh_wait">請等待掃描完成</string>
     <string name="node_create_hint">點選以選擇或新增節點</string>
     <string name="node_pull_hint">手動新增節點或下拉畫面以開始掃描</string>
-    <string name="node_scanning">掃描節點中&#8230;</string>
-    <string name="node_nobookmark">已自動加入 %1$d 節點至書籤</string>
+    <string name="node_scanning">掃描節點中 &#8230;</string>
+    <string name="node_nobookmark">已自動加入 %1$d 個節點至書籤</string>
     <string name="label_test">測試節點</string>
 </resources>
