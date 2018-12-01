@@ -123,8 +123,14 @@
         <p>Αυή είναι η δημόσια διεύθυνση πορτοφολιού που στέλνεις Moneroj, μπορείς να το αντιγράψεις
         από το πρόχειρο, να σαρώσεις έναν κωδικό QR ή να το πληκτρολογήσεις. Βεβαιώσου οτι έχεις τριπλο-ελέγξει
         για να είσαι σίγουρος ότι δεν στέλνεις σε λάθος διύθυνση τα κεφάλαια σου.</p>
-        <p>Εκτός από την αποστολή XMR, μπορείς να στείλεις BTC δια μέσου της υπηρεσίας XMR.TO (δες https://xmr.to
-        για πληροφορίες). Δες την ενότητα σχετικά με αποστολή BTC παρακάτω.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>ID Πληρωμής</h2>
         <p>Μπορείς να χρησιμοποιήσεις ένα ID Πληρωμής(Payment ID) για να προσδιορίσεις τον λόγο που στέλνεις Monero
         ανάμεσα σε δύο ενδιαφερόμενους αυτό είναι προεραιτικό και ιδωτικό. Για παράδειγμα μπορεί να επιτρέψει σε μια επιχείρηση
@@ -266,4 +272,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

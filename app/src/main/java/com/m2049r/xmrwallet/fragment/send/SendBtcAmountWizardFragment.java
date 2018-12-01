@@ -120,6 +120,15 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         return true;
     }
 
+    private void setBip70Mode() {
+        TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
+        if (txDataBtc.getBip70() != null) {
+            numberPad.setVisibility(View.INVISIBLE);
+        } else {
+            numberPad.setVisibility(View.VISIBLE);
+        }
+    }
+
     double maxBtc = 0;
     double minBtc = 0;
 
@@ -141,12 +150,13 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             tvFunds.setText(getString(R.string.send_available,
                     getString(R.string.unknown_amount)));
         }
-        if ((evAmount.getAmount() == null) || evAmount.getAmount().isEmpty()) {
-            final BarcodeData data = sendListener.popBarcodeData();
-            if ((data != null) && (data.amount != null)) {
+        final BarcodeData data = sendListener.popBarcodeData();
+        if (data != null) {
+            if (data.amount != null) {
                 evAmount.setAmount(data.amount);
             }
         }
+        setBip70Mode();
         callXmrTo();
     }
 

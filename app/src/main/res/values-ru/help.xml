@@ -146,8 +146,14 @@
         <p>Это публичный адрес кошелька, на который вы отправляете Monero. Вы можете скопировать его
 	из буфера, отсканировать QR-код или ввести вручную. Следует трижды проверить правильность
 	этого адреса, чтобы не отправить монеты на ошибочный адрес.</p>
-        <p>Помимо XMR служба XMR.TO позволяет отправлять BTC (подробности ищите на https://xmr.to).
-	См. раздел по отправке BTC ниже.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>Идентификатор оплаты (Payment ID)</h2>
         <p>Вы можете использовать Payment ID для идентификации причины, по которой Monero передаётся
 	между двумя сторонами. Это опциональная и конфиденциальная операция. Например,
@@ -292,4 +298,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

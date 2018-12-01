@@ -141,8 +141,14 @@
         <p> Este é o endereço público da carteira para a qual vais enviar Moneroj, podes copiar esta
         informação da área de transferência, capturara um código QR, ou introduzir manualmente. Confirma
         atentamente que não estás a enviar para o endereço errado.</p>
-        <p>Em adição a enviar XMR, podes enviar BTC através do serviço XMR.TO (ver https://xmr.to
-        para mais detalhes). Vê a secção de enviar BTC mais abaixo.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>ID do Pagamento</h2>
         <p>Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Moneroj.
         Isto é opcional e privado. Por exemplo, isto permite que um negócio identifique que item
@@ -289,4 +295,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>
