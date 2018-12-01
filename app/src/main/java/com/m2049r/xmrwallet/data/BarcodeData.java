@@ -21,7 +21,10 @@ import android.net.Uri;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.OpenAliasHelper;
+import com.m2049r.xmrwallet.util.PaymentProtocolHelper;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,9 +40,10 @@ public class BarcodeData {
     public static final String OA_XMR_ASSET = "xmr";
     public static final String OA_BTC_ASSET = "btc";
 
-    static final String BTC_SCHEME = "bitcoin:";
+    static final String BTC_SCHEME = "bitcoin";
     static final String BTC_DESCRIPTION = "message";
     static final String BTC_AMOUNT = "amount";
+    static final String BTC_BIP70_PARM = "r";
 
     public enum Asset {
         XMR, BTC
@@ -48,7 +52,8 @@ public class BarcodeData {
     public enum Security {
         NORMAL,
         OA_NO_DNSSEC,
-        OA_DNSSEC
+        OA_DNSSEC,
+        BIP70
     }
 
     final public Asset asset;
@@ -58,56 +63,43 @@ public class BarcodeData {
     final public String amount;
     final public String description;
     final public Security security;
+    final public String bip70;
 
     public BarcodeData(Asset asset, String address) {
-        this.asset = asset;
-        this.address = address;
-        amount = null;
-        paymentId = null;
-        addressName = null;
-        description = null;
-        this.security = Security.NORMAL;
+        this(asset, address, null, null, null, null, Security.NORMAL);
     }
 
     public BarcodeData(Asset asset, String address, String amount) {
-        this.asset = asset;
-        this.address = address;
-        this.amount = amount;
-        paymentId = null;
-        addressName = null;
-        description = null;
-        this.security = Security.NORMAL;
+        this(asset, address, null, null, null, amount, Security.NORMAL);
+    }
+
+    public BarcodeData(Asset asset, String address, String amount, String description, Security security) {
+        this(asset, address, null, null, description, amount, security);
     }
 
     public BarcodeData(Asset asset, String address, String paymentId, String amount) {
-        this.asset = asset;
-        this.address = address;
-        this.paymentId = paymentId;
-        this.amount = amount;
-        addressName = null;
-        description = null;
-        this.security = Security.NORMAL;
+        this(asset, address, null, paymentId, null, amount, Security.NORMAL);
     }
 
     public BarcodeData(Asset asset, String address, String paymentId, String description, String amount) {
-        this.asset = asset;
-        this.address = address;
-        this.paymentId = paymentId;
-        this.description = description;
-        this.amount = amount;
-        addressName = null;
-        this.security = Security.NORMAL;
+        this(asset, address, null, paymentId, description, amount, Security.NORMAL);
     }
 
-    public BarcodeData(Asset asset, String address, String addressName, String paymentId, String description, String amount, Security sec) {
+    public BarcodeData(Asset asset, String address, String addressName, String paymentId, String description, String amount, Security security) {
+        this(asset, address, addressName, null, paymentId, description, amount, security);
+    }
+
+    public BarcodeData(Asset asset, String address, String addressName, String bip70, String paymentId, String description, String amount, Security security) {
         this.asset = asset;
         this.address = address;
+        this.bip70 = bip70;
         this.addressName = addressName;
         this.paymentId = paymentId;
         this.description = description;
         this.amount = amount;
-        this.security = sec;
+        this.security = security;
     }
+
 
     public Uri getUri() {
         return Uri.parse(getUriString());
@@ -145,6 +137,10 @@ public class BarcodeData {
         // check for btc uri
         if (bcData == null) {
             bcData = parseBitcoinUri(qrCode);
+        }
+        // check for btc payment uri (like bitpay)
+        if (bcData == null) {
+            bcData = parseBitcoinPaymentUrl(qrCode);
         }
         // check for naked btc address
         if (bcData == null) {
@@ -228,19 +224,28 @@ public class BarcodeData {
     }
 
     // bitcoin:mpQ84J43EURZHkCnXbyQ4PpNDLLBqdsMW2?amount=0.01
-    static public BarcodeData parseBitcoinUri(String uri) {
-        Timber.d("parseBitcoinUri=%s", uri);
+    // bitcoin:?r=https://bitpay.com/i/xxx
+    static public BarcodeData parseBitcoinUri(String uriString) {
+        Timber.d("parseBitcoinUri=%s", uriString);
 
-        if (uri == null) return null;
+        if (uriString == null) return null;
+        URI uri;
+        try {
+            uri = new URI(uriString);
+        } catch (URISyntaxException ex) {
+            return null;
+        }
+        if (!uri.isOpaque() ||
+                !uri.getScheme().equals(BTC_SCHEME)) return null;
 
-        if (!uri.startsWith(BTC_SCHEME)) return null;
-
-        String noScheme = uri.substring(BTC_SCHEME.length());
-        Uri bitcoin = Uri.parse(noScheme);
+        String[] parts = uri.getRawSchemeSpecificPart().split("[?]");
+        if ((parts.length <= 0) || (parts.length > 2)) {
+            Timber.d("invalid number of parts %d", parts.length);
+            return null;
+        }
         Map<String, String> parms = new HashMap<>();
-        String query = bitcoin.getQuery();
-        if (query != null) {
-            String[] args = query.split("&");
+        if (parts.length == 2) {
+            String[] args = parts[1].split("&");
             for (String arg : args) {
                 String[] namevalue = arg.split("=");
                 if (namevalue.length == 0) {
@@ -250,10 +255,26 @@ public class BarcodeData {
                         namevalue.length > 1 ? Uri.decode(namevalue[1]) : "");
             }
         }
-        String address = bitcoin.getPath();
         String description = parms.get(BTC_DESCRIPTION);
+        String address = parts[0]; // no need to decode as there can bo no special characters
+        if (address.isEmpty()) { // possibly a BIP72 uri
+            String bip70 = parms.get(BTC_BIP70_PARM);
+            if (bip70 == null) {
+                Timber.d("no address and can't find pp url");
+                return null;
+            }
+            if (!PaymentProtocolHelper.isHttp(bip70)) {
+                Timber.d("[%s] is not http url", bip70);
+                return null;
+            }
+            return new BarcodeData(BarcodeData.Asset.BTC, null, null, bip70, null, description, null, Security.NORMAL);
+        }
+        if (!BitcoinAddressValidator.validate(address)) {
+            Timber.d("BTC address (%s) invalid", address);
+            return null;
+        }
         String amount = parms.get(BTC_AMOUNT);
-        if (amount != null) {
+        if ((amount != null) && (!amount.isEmpty())) {
             try {
                 Double.parseDouble(amount);
             } catch (NumberFormatException ex) {
@@ -261,11 +282,22 @@ public class BarcodeData {
                 return null; // we have an amount but its not a number!
             }
         }
-        if (!BitcoinAddressValidator.validate(address)) {
-            Timber.d("address invalid");
+        return new BarcodeData(BarcodeData.Asset.BTC, address, null, description, amount);
+    }
+
+    // https://bitpay.com/invoice?id=xxx
+    // https://bitpay.com/i/KbMdd4EhnLXSbpWGKsaeo6
+    static public BarcodeData parseBitcoinPaymentUrl(String url) {
+        Timber.d("parseBitcoinUri=%s", url);
+
+        if (url == null) return null;
+
+        if (!PaymentProtocolHelper.isHttp(url)) {
+            Timber.d("[%s] is not http url", url);
             return null;
         }
-        return new BarcodeData(BarcodeData.Asset.BTC, address, null, description, amount);
+
+        return new BarcodeData(Asset.BTC, url);
     }
 
     static public BarcodeData parseBitcoinNaked(String address) {

@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.xmrto;
 
+import com.m2049r.xmrwallet.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +35,10 @@ public class XmrToError {
         XMRTO_ERROR_006, // (404) requested order not found	check order UUID
         XMRTO_ERROR_007, // (503) third party service not available	try again later
         XMRTO_ERROR_008, // (503) insufficient funds available	try again later
-        XMRTO_ERROR_009  // (400) invalid request	check request parameters
+        XMRTO_ERROR_009, // (400) invalid request	check request parameters
+        XMRTO_ERROR_010, // (400) payment protocol failed	invalid or outdated data served by url
+        XMRTO_ERROR_011, // (400) malformed payment protocol url	url is malformed or cannot be contacted
+        XMRTO_ERROR_012  // (403) too many requests
     }
 
     public boolean isRetryable() {
@@ -78,6 +83,21 @@ public class XmrToError {
         return errorMsg;
     }
 
+    public int getErrorMsgId() {
+        switch (errorId) {
+            case XMRTO_ERROR_001:
+                return R.string.xmrto_error_001;
+            case XMRTO_ERROR_004:
+                return R.string.xmrto_error_004;
+            case XMRTO_ERROR_010:
+                return R.string.xmrto_error_010;
+            case XMRTO_ERROR_012:
+                return R.string.xmrto_error_012;
+            default:
+                return R.string.xmrto_error;
+        }
+    }
+
     @Override
     public String toString() {
         return getErrorIdString(getErrorId()) + ": " + getErrorMsg();
@@ -97,11 +117,19 @@ public class XmrToError {
         400	XMRTO-ERROR-003	invalid bitcoin amount	check amount data type
         503	XMRTO-ERROR-004	bitcoin amount out of bounds	check min and max amount
         400	XMRTO-ERROR-005	unexpected validation error	contact support
+
+        Errors from Create Order Payment Protocol
+        400 XMRTO-ERROR-010 payment protocol failed 	invalid or outdated data served by url
+        400 XMRTO-ERROR-011 malformed payment protocol url 	url is malformed or cannot be contacted
      */
 
     /* Errors from Query Order
         HTTP code	XMR.TO error code	Error message/reason	Solution
         400	XMRTO-ERROR-009	invalid request	check request parameters
         404	XMRTO-ERROR-006	requested order not found	check order UUID
+     */
+
+    /* General
+        403 XMRTO-ERROR-012 too many requests
      */
 }

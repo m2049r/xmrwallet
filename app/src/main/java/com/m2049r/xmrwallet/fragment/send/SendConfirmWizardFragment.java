@@ -36,7 +36,7 @@ import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.UserNotes;
+import com.m2049r.xmrwallet.data.UserNotes;
 
 import timber.log.Timber;
 

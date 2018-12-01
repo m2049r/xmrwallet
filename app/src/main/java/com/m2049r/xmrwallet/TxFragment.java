@@ -36,7 +36,7 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.UserNotes;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.SimpleDateFormat;

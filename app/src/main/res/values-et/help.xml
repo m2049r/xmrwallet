@@ -155,7 +155,13 @@
         <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
         your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
         ensure you aren’t sending coins to the wrong address.</p>
-        <p>In addition to sending XMR, you can send BTC through the XMR.TO service (see https://xmr.to
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
         for details). See the section on sending BTC below.</p>
         <h2>Makse ID</h2>
         <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
@@ -298,4 +304,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

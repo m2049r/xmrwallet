@@ -133,8 +133,14 @@
         <p>Aceasta este adresa publică a destinatarului la care vrei să trimiți Monero, poți copia
 		această adresă folosind clipboard-ul, scanând codul QR sau introducând-o manual. Verifică
 		de trei ori această adresă pentru a fi sigur că nu trimiți monedele la o adresă greșită.</p>
-        <p>Pe lângă trimiterea de XMR, poți trimite BTC prin intermediul serviciului XMR.TO
-		(vezi https://xmr.to pentru detalii). Vizualizează secțiunea despre trimiterea BTC mai jos.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>Payment ID</h2>
         <p>Poți utiliza un ID de plată pentru a identifica suma trimisă între două terțe, acest lucru
 		este complet opțional și privat. Ca exemplu, poate permite identificare într-o activitate comercială
@@ -274,4 +280,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

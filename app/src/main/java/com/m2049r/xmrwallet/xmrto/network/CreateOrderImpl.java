@@ -18,8 +18,8 @@ package com.m2049r.xmrwallet.xmrto.network;
 
 import android.support.annotation.NonNull;
 
-import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
 import com.m2049r.xmrwallet.xmrto.api.CreateOrder;
+import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +29,7 @@ class CreateOrderImpl implements CreateOrder {
     private final String state;
     private final double btcAmount;
     private final String btcDestAddress;
+    private final String btcBip70;
     private final String uuid;
 
     public Double getBtcAmount() {
@@ -37,6 +38,10 @@ class CreateOrderImpl implements CreateOrder {
 
     public String getBtcDestAddress() {
         return btcDestAddress;
+    }
+
+    public String getBtcBip70() {
+        return btcBip70;
     }
 
     public String getUuid() {
@@ -51,6 +56,10 @@ class CreateOrderImpl implements CreateOrder {
         this.state = jsonObject.getString("state");
         this.btcAmount = jsonObject.getDouble("btc_amount");
         this.btcDestAddress = jsonObject.getString("btc_dest_address");
+        if (jsonObject.has("pp_url"))
+            this.btcBip70 = jsonObject.getString("pp_url");
+        else
+            this.btcBip70 = null;
         this.uuid = jsonObject.getString("uuid");
     }
 
@@ -78,6 +87,30 @@ class CreateOrderImpl implements CreateOrder {
         }
     }
 
+    public static void call(@NonNull final XmrToApiCall api, @NonNull final String url,
+                            @NonNull final XmrToCallback<CreateOrder> callback) {
+        try {
+            final JSONObject request = createRequest(url);
+            api.call("order_create_pp", request, new NetworkCallback() {
+                @Override
+                public void onSuccess(JSONObject jsonObject) {
+                    try {
+                        callback.onSuccess(new CreateOrderImpl(jsonObject));
+                    } catch (JSONException ex) {
+                        callback.onError(ex);
+                    }
+                }
+
+                @Override
+                public void onError(Exception ex) {
+                    callback.onError(ex);
+                }
+            });
+        } catch (JSONException ex) {
+            callback.onError(ex);
+        }
+    }
+
     static JSONObject createRequest(final double amount, final String address) throws JSONException {
         final JSONObject jsonObject = new JSONObject();
         jsonObject.put("btc_amount", amount);
@@ -85,5 +118,10 @@ class CreateOrderImpl implements CreateOrder {
         return jsonObject;
     }
 
+    static JSONObject createRequest(final String ppUrl) throws JSONException {
+        final JSONObject jsonObject = new JSONObject();
+        jsonObject.put("pp_url", ppUrl);
+        return jsonObject;
+    }
 
 }

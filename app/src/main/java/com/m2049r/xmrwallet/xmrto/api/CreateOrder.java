@@ -21,6 +21,8 @@ public interface CreateOrder {
 
     String getBtcDestAddress();
 
+    String getBtcBip70();
+
     String getState();
 
     String getUuid();

@@ -123,8 +123,14 @@
         <h2>收款者地址</h2>
         <p>这是你欲发送Monero过去的钱包地址。你可以从剪贴簿贴上, 扫描QR码或是手动输入。
         请务必再三确认地址正确以免发送至错误的钱包地址</p>
-        <p>除了发送XMR，你还可透过 XMR.TO 服务来发送BTC (请至 https://xmr.to
-        了解更多)，或在下面阅读发送BTC的說明</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>付款ID</h2>
         <p>你可以使用付款ID以帮助识別双方的款项交易。这是选填项目并且完全为隐私保护的。
         举例来說这可以让公司行号辨別你的这笔款项是用来支付某项购买的商品。<p>
@@ -247,4 +253,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

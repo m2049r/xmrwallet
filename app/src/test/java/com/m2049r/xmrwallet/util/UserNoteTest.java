@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.util;
 
+import com.m2049r.xmrwallet.data.UserNotes;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
