@@ -38,6 +38,7 @@ public class BarcodeData {
     public static final String OA_BTC_ASSET = "btc";
 
     static final String BTC_SCHEME = "bitcoin:";
+    static final String BTC_DESCRIPTION = "message";
     static final String BTC_AMOUNT = "amount";
 
     public enum Asset {
@@ -50,28 +51,32 @@ public class BarcodeData {
         OA_DNSSEC
     }
 
-    public Asset asset = null;
-    public String addressName = null;
-    public String address = null;
-    public String paymentId = null;
-    public String amount = null;
-    public String description = null;
-    public Security security = Security.NORMAL;
-
-    public BarcodeData(String uri) {
-        this.asset = asset;
-        this.address = address;
-    }
+    final public Asset asset;
+    final public String address;
+    final public String addressName;
+    final public String paymentId;
+    final public String amount;
+    final public String description;
+    final public Security security;
 
     public BarcodeData(Asset asset, String address) {
         this.asset = asset;
         this.address = address;
+        amount = null;
+        paymentId = null;
+        addressName = null;
+        description = null;
+        this.security = Security.NORMAL;
     }
 
     public BarcodeData(Asset asset, String address, String amount) {
         this.asset = asset;
         this.address = address;
         this.amount = amount;
+        paymentId = null;
+        addressName = null;
+        description = null;
+        this.security = Security.NORMAL;
     }
 
     public BarcodeData(Asset asset, String address, String paymentId, String amount) {
@@ -79,6 +84,9 @@ public class BarcodeData {
         this.address = address;
         this.paymentId = paymentId;
         this.amount = amount;
+        addressName = null;
+        description = null;
+        this.security = Security.NORMAL;
     }
 
     public BarcodeData(Asset asset, String address, String paymentId, String description, String amount) {
@@ -87,14 +95,18 @@ public class BarcodeData {
         this.paymentId = paymentId;
         this.description = description;
         this.amount = amount;
+        addressName = null;
+        this.security = Security.NORMAL;
     }
 
-    public void setAddressName(String name) {
-        addressName = name;
-    }
-
-    public void setSecurity(Security security) {
-        this.security = security;
+    public BarcodeData(Asset asset, String address, String addressName, String paymentId, String description, String amount, Security sec) {
+        this.asset = asset;
+        this.address = address;
+        this.addressName = addressName;
+        this.paymentId = paymentId;
+        this.description = description;
+        this.amount = amount;
+        this.security = sec;
     }
 
     public Uri getUri() {
@@ -140,7 +152,7 @@ public class BarcodeData {
         }
         // check for OpenAlias
         if (bcData == null) {
-            bcData = parseOpenAlias(qrCode);
+            bcData = parseOpenAlias(qrCode, false);
         }
         return bcData;
     }
@@ -175,7 +187,11 @@ public class BarcodeData {
             }
         }
         String address = monero.getPath();
+
         String paymentId = parms.get(XMR_PAYMENTID);
+        // deal with empty payment_id created by non-spec-conforming apps
+        if ((paymentId != null) && paymentId.isEmpty()) paymentId = null;
+
         String description = parms.get(XMR_DESCRIPTION);
         String amount = parms.get(XMR_AMOUNT);
         if (amount != null) {
@@ -235,6 +251,7 @@ public class BarcodeData {
             }
         }
         String address = bitcoin.getPath();
+        String description = parms.get(BTC_DESCRIPTION);
         String amount = parms.get(BTC_AMOUNT);
         if (amount != null) {
             try {
@@ -248,7 +265,7 @@ public class BarcodeData {
             Timber.d("address invalid");
             return null;
         }
-        return new BarcodeData(BarcodeData.Asset.BTC, address, amount);
+        return new BarcodeData(BarcodeData.Asset.BTC, address, null, description, amount);
     }
 
     static public BarcodeData parseBitcoinNaked(String address) {
@@ -264,7 +281,7 @@ public class BarcodeData {
         return new BarcodeData(BarcodeData.Asset.BTC, address);
     }
 
-    static public BarcodeData parseOpenAlias(String oaString) {
+    static public BarcodeData parseOpenAlias(String oaString, boolean dnssec) {
         Timber.d("parseOpenAlias=%s", oaString);
         if (oaString == null) return null;
 
@@ -316,8 +333,8 @@ public class BarcodeData {
             return null;
         }
 
-        BarcodeData bc = new BarcodeData(asset, address, paymentId, description, amount);
-        bc.setAddressName(addressName);
-        return bc;
+        Security sec = dnssec ? BarcodeData.Security.OA_DNSSEC : BarcodeData.Security.OA_NO_DNSSEC;
+
+        return new BarcodeData(asset, address, addressName, paymentId, description, amount, sec);
     }
 }

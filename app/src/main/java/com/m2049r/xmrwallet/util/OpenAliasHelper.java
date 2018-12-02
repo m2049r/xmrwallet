@@ -140,9 +140,8 @@ public class OpenAliasHelper {
                 if (success) {
                     Map<BarcodeData.Asset, BarcodeData> dataMap = new HashMap<>();
                     for (String txt : txts) {
-                        BarcodeData bc = BarcodeData.parseOpenAlias(txt);
+                        BarcodeData bc = BarcodeData.parseOpenAlias(txt, dnssec);
                         if (bc != null) {
-                            bc.setSecurity(dnssec ? BarcodeData.Security.OA_DNSSEC : BarcodeData.Security.OA_NO_DNSSEC);
                             if (!dataMap.containsKey(bc.asset)) {
                                 dataMap.put(bc.asset, bc);
                             }
