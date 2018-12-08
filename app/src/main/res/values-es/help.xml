@@ -222,24 +222,24 @@
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
-        <h1>Create Wallet - Ledger</h1>
-        <p>You want to recover your wallet from your Ledger Nano S device.</p>
-        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
-        time you want to access your wallet.</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
-        device. Use a strong password - even better use a passphrase.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>Crear Monedero - Ledger</h1>
+        <p>Deseas recuperar tu monedero desde tu dispositivo Ledger Nano S.</p>
+        <p>Tus claves secretas nunca dejan el dispositivo Ledger, así que lo necesitas conectado cada
+        vez que deseas acceder a tu monedero.</p>
+        <p>Ingresa un nombre de monedero y contraseña únicos. La contraseña es usada para asegurar tu información del monedero en el dispositivo
+        Android. Usa una contraseña fuerte - o mejor aún, usa una frase de contraseña.</p>
+        <p>Ingresa el número del bloque de la primera transacción usada para esta dirección en el
+        campo \"Altura de restaurado\". También puedes usar una fecha en formato AAAA-MM-DD. Si no estás seguro,
+        ingresa una fecha o altura del bloque aproximada <em>anterior</em> a la primera vez que usaste esta dirección del monedero.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>El monedero</h1>
-        <h2>Street Mode</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        <h2>Modo Público</h2>
+        <p>El Modo Público puede ser habilitado/deshabilitado en el menú o en el icono de Gunther\'s. En este modo, tu
+        balance no se muestra en ninguna pantalla para que puedas usar de manera segura tu monedero en la calle, un pub u
+        otro lugar público. Transacciones anteriores también se ocultan. Nuevas transacciones serán mostradas, para
+        que puedas ver que has enviado/recibido Moneroj.</p>
         <h2>Escaneado</h2>
         Como a Monero le gusta mantener las cosas privadas, cada vez que abres una cartera de
         Monerujo es necesario escanear la cadena de bloques para ver si nuevos moneroj han sido
@@ -257,51 +257,51 @@
     ]]></string>
 
     <string name="help_node"><![CDATA[
-        <h1>Nodes</h1>
+        <h1>Nodos</h1>
         <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
-        to choose the best one for you!</p>
-        <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
-        whole blockchain itself.<p>
-        <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
-        scan the network for you. Or both. Read on&#8230;</p>
-        <p>The node list shows all currently known nodes. Additionally, the timestamp
-        of the latest block known to each node is shown under the node name. An icon
-        representing the node&apos;s response behaviour
-        (which indicates the level of connectivity to be expected)
-        is shown next to each node.</p>
-        <p>Any node in the list can be bookmarked for later use.
-        Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
-        It does this by checking the blockheight (how up-to-date
-        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
-        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
-        <h2>Add a Node</h2>
-        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
-        enter the node details in the following dialog.
-        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
-        mandatory entry.
-        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
-        You can also optionally name the node, so you can identify it easier later on.
-        Some nodes require credentials to use them. Enter the provided username &amp;
-        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
-        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
-        The result may also be an error - usually because the hostname provided is
-        not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
-        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
-        bookmark this node.</p>
-        <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
-        scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
-        by asking those for their peers, and so on. If you have no bookmarked nodes
-        (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
-        scan stops when it finds 10 remote nodes in total.</p>
+        <p>Refresca la lista de nodos al mostrar los marcadores de nodos para permitir a Monerujo
+        elegir el mejor para ti.</p>
+        <h2>¿Qué es un Nodo?h2>
+        <p>Monerujo usa un Nodo Remoto (algunas veces también llamado Daemon) para comunicarse con
+        la red de Monero sin tener que descargar y almacenar una copia de la
+        cadena de bloques completa.<p>
+        <h2>Lista de Nodos</h2>
+        <p>Si la lista está vacía, puedes agregar nuevos nodos manualmente o dejar que Monerujo
+        escanee la red por ti. O ambos.</p>
+        <p>La lista de nodos muestra todos los nodos actualmente conocidos. Adicionalmente, la marca de tiempo
+        del último bloque conocido para cada nodo se muestra bajo el nombre del nodo. Un icono
+        representando el comportamiento de respuesta del nodo
+        (el cual indica el nivel de conectividad esperado)
+        es mostrado seguido de cada nodo.</p>
+        <p>Cualquier nodo en la lista puede ser marcado para un posterior uso.
+        Nodos que no sean marcados serán olvidados.<p>
+        <p>Monerujo elegirá el nodo marcado óptimo cada vez que lo uses.
+        Esto lo hace revisando la altura del bloque (¿qué tan al día
+        está el nodo?) así como el comportamiento de respuesta (¿qué tan rápido responde el nodo a solicitudes?).</p>
+        <p>La lista se ordena por estas características, por lo tanto el primer nodo en la lista sería el que Monerujo
+        elegiría en ese momento. El final de la lista mostraría nodos muy lentos o no disponibles.</p>
+        <h2>Agregar un Nodo</h2>
+        <p>Presionando en el botón &quot;Agregar Nodo&quot; en la parte inferior, se te pedirá que
+        ingreses los detalles del nodo en el siguiente cuadro de diálogo.
+        La &quot;Dirección&quot; es el nombre del host o dirección IP del nodo - esta es la única
+        entrada obligatoria.
+        Ingresa el &quot;Puerto&quot; si el nodo se ejecuta en un puerto que no es por defecto (e.g. 18089).
+        Puedes también nombrar el nodo opcionalmente, para que puedas identificarlo después fácilmente.
+        Algunos nodos requieren credenciales para usarlos. Ingresa el nombre de usuario provisto &amp;
+        contraseña en los campos apropiados. Ahora puedes &quot;Verificar&quot; estos ajustes.
+        Los &quot;Resultados de la Prueba&quot; mostrarán la altura del bloque, tiempo de respuesta y dirección IP real usados.
+        El resultado puede ser también un error - usualmente porque el nombre de host provisto no
+        es alcanzable en una sensible cantidad de tiempo o las credenciales son incorrectas.
+        O la combinación nombre de host/puerto no indican a un nodo de Monero real.
+        Una vez que la prueba sea exitosa (sin error) - estás listo para presionar &quot;OK&quot; para guardar &amp;
+        como marcador este nodo.</p>
+        <h2>Escanear por Nodos</h2>
+        <p>Adicionalmente, puedes escanear la red por nodos. Monerujo empezará
+        escaneando la red por Nodos Remotos con puerto 18089. Comienza preguntando tus
+        nodos marcados por otros compañeros en la red P2P de Monero y después continúa
+        preguntando por nodos a ellos por sus compañeros, y así. Si no tienes nodos marcados
+        (o no nos comunican sobre sus compañeros),
+        Monerujo irá directo a los nodos semilla de Monero codificados en Monero. El
+        escaneo parará cuando encuentre 10 nodos remotos en total.</p>
     ]]></string>
 </resources>
