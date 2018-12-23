@@ -28,7 +28,6 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,7 +44,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
     static final private byte[] HANDSHAKE = handshakeRequest().asByteArray();
     static final private byte[] FLAGS_RESP = flagsResponse().asByteArray();
 
-    final private List<InetSocketAddress> peers = new ArrayList<>();
+    final private List<LevinPeer> peers = new ArrayList<>();
 
     private NodeInfo nodeInfo;
     private OnGetPeers onGetPeersCallback;
@@ -67,7 +66,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
         return !peers.isEmpty();
     }
 
-    public List<InetSocketAddress> getPeers() {
+    public List<LevinPeer> getPeers() {
         return peers;
     }
 
@@ -107,12 +106,18 @@ public class PeerRetriever implements Callable<PeerRetriever> {
     }
 
     private void readAddressList(Section section) {
+        Section data = (Section) section.get("payload_data");
+        int topVersion = (Integer) data.get("top_version");
+        long currentHeight = (Long) data.get("current_height");
+        String topId = HexHelper.bytesToHex((byte[]) data.get("top_id"));
+        Timber.d("PAYLOAD_DATA %d/%d/%s", topVersion, currentHeight, topId);
+
         @SuppressWarnings("unchecked")
         List<Section> peerList = (List<Section>) section.get("local_peerlist_new");
         if (peerList != null) {
             for (Section peer : peerList) {
                 Section adr = (Section) peer.get("adr");
-                Byte type = (Byte) adr.get("type");
+                Integer type = (Integer) adr.get("type");
                 if ((type == null) || (type != 1))
                     continue;
                 Section addr = (Section) adr.get("addr");
@@ -121,7 +126,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
                 Integer ip = (Integer) addr.get("m_ip");
                 if (ip == null)
                     continue;
-                Short sport = (Short) addr.get("m_port");
+                Integer sport = (Integer) addr.get("m_port");
                 if (sport == null)
                     continue;
                 int port = sport;
@@ -133,7 +138,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
                         && !inet.isLoopbackAddress()
                         && !inet.isMulticastAddress()
                         && !inet.isLinkLocalAddress()) {
-                    peers.add(new InetSocketAddress(inet, port));
+                    peers.add(new LevinPeer(inet, port, topVersion, currentHeight, topId));
                 }
             }
         }

@@ -18,7 +18,6 @@ package com.m2049r.levin.scanner;
 
 import com.m2049r.xmrwallet.data.NodeInfo;
 
-import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -176,9 +175,9 @@ public class Dispatcher implements PeerRetriever.OnGetPeers {
     }
 
     private void retrievePeers(PeerRetriever peer) {
-        for (InetSocketAddress socketAddress : peer.getPeers()) {
+        for (LevinPeer levinPeer : peer.getPeers()) {
             if (getMorePeers())
-                retrievePeer(new NodeInfo(socketAddress));
+                retrievePeer(new NodeInfo(levinPeer));
             else
                 break;
         }
