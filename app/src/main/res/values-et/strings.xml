@@ -167,14 +167,11 @@
     <string name="generate_fingerprint_hint">Luba rahakoti avamine sõrmejäljega</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Sõrmejäljega avamine</strong>
-        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
-        without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
-        viewing wallet details or sending funds.</p>
+        <p>Kui sõrmejäljega avamine on sisse lülitatud, saad kontoseisu vaadata ja raha vastu võtta ilma parooli sisestamata.</p>
+        <p>Kuid kõrgema turvalisuse nimel palutakse sul sisestada parool siis, kui vaatad rahakoti infot või saadad raha.</p>
         <strong>Turvahoiatus</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
-        able to peep into your wallet balance.</p>
-        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
+        <p>Lõpetuseks, monerujo tahab sulle meelde tuletada, et igaüks, kes pääseb ligi sinu sõrmejäljele, saab vaadata su kontoseisu.</p>
+        <p>Näiteks on võimalik pahatahtlikel inimestel nii avada su rahakott, kui sa magad.</p>
         <strong>Oled kindel, et soovid selle aktiveerida?</strong>
     ]]></string>
     <string name="generate_bad_passwordB">Paroolid ei kattu</string>
@@ -336,32 +333,32 @@
     <string name="menu_info">Näita salajast infot</string>
     <string name="menu_streetmode">Avalik režiim</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
+    <string name="info_nodes_enabled">Node-o-matiC sisse lülitatud, puuduta lisainfo saamiseks.</string>
+    <string name="node_height">Viimane uuendatud plokk: %1$s</string>
+    <string name="label_nodes">Serverid</string>
+    <string name="node_name_hint">Serveri nimi (valikuline)</string>
+    <string name="node_address_hint">Aadress</string>
     <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_user_hint">Kasutajanimi (valikuline)</string>
+    <string name="node_pass_hint">Parool (valikuline)</string>
+    <string name="node_host_unresolved">Aadressi lahendmine ebaõnnestus</string>
+    <string name="node_host_empty">Meil on seda vaja!</string>
+    <string name="node_port_numeric">Peab olema arv</string>
+    <string name="node_port_range">Peab olema 1&#8211;65535</string>
+    <string name="node_fab_add">Lisa server</string>
+    <string name="node_refresh_hint">Puuduta värskendamiseks!</string>
+    <string name="node_test_error">ÜHENDUSE VIGA %1$d</string>
+    <string name="node_general_error">ÜHENDUSE VIGA</string>
+    <string name="node_auth_error">SISSE LOGIMINE EBAÕNNESTUS</string>
+    <string name="node_result_label">Testi tulemus:</string>
+    <string name="node_result">Kõrgus: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Testimise IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Palun oota otsimise lõpuni</string>
+    <string name="node_create_hint">Puuduta serverite valimiseks või lisamiseks</string>
+    <string name="node_pull_hint">Lisa serverid käsitsi või pühi sõrmega alla, et otsida</string>
+    <string name="node_scanning">Otsin võrgust&#8230;</string>
+    <string name="node_nobookmark">Automaatselt salvestati parimad %1$d serverit</string>
+    <string name="label_test">Testi</string><!--note: as in "Test a network connection"-->
 
-    <string name="backup_success">Backup successful</string>
+    <string name="backup_success">Tagavarakoopia õnnestus</string>
 </resources>
