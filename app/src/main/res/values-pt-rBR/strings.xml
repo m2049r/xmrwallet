@@ -329,7 +329,7 @@
     <string name="menu_streetmode">Modo Rua</string>
 
     <string name="info_nodes_enabled">Nó-auto-mágiCo ativado, toque para mais informações.</string>
-    <string name="node_height">Último bloco atualizado em: %1$s</string>
+    <string name="node_height">Último bloco sincronizado em: %1$s</string>
     <string name="label_nodes">Nós</string>
     <string name="node_name_hint">Nome do Nó (Opcional)</string>
     <string name="node_address_hint">Endereço do Host</string>
@@ -348,7 +348,7 @@
     <string name="node_result_label">Resultado do Teste:</string>
     <string name="node_result">Altura: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
     <string name="node_testing">Testando IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Por favor, aguardo o escaneamento terminar</string>
+    <string name="node_refresh_wait">Por favor, aguarde o escaneamento terminar</string>
     <string name="node_create_hint">Toque para selecionar ou adicionar nós</string>
     <string name="node_pull_hint">Adicione nós manualmente ou puxe para baixo para escanear</string>
     <string name="node_scanning">Escaneando rede&#8230;</string>
