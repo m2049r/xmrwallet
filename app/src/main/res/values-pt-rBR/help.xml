@@ -214,10 +214,10 @@
     <string name="help_wallet"><![CDATA[
         <h1>Carteira</h1>
         <h2>Modo Rua</h2>
-        <p>O modo de rua pode ser ativado/desativado no menu ou no ícone da cabeça do Gunther. Neste modo, o seu
-        saldo não é mostrado em nenhuma tela para que você possa usar sua carteira com segurança na rua, em um bar ou
+        <p>O modo rua pode ser ativado/desativado no menu ou no ícone da cabeça do Gunther. Neste modo, o seu
+        saldo não será exibido em nenhuma tela para que você possa usar sua carteira com segurança na rua, em um bar ou
         outro lugar público. Transações anteriores também serão ocultas. Novas transações serão mostradas, então
-        você pode ver que você enviou/recebeu doces Moneroj!</p>
+        você pode ver que você enviou/recebeu Moneroj!</p>
         <h2>Escaneando</h2>
         Como o Monero sempre mantém tudo privado, sempre que você abrir sua carteira o Monerujo precisa escanear
         o blockchain para identificar se você recebeu algum novo Monero. Somente as informações que correspondem à sua
@@ -246,10 +246,10 @@
         <p>Se a lista estiver vazia, você pode adicionar novos nós manualmente ou deixar que o Monerujo
         escaneie a rede para você. Ou ambos. Leia mais&#8230;</p>
         <p>A lista de nós mostra todos os nós conhecidos atualmente. Além disso, a data e hora
-        do último bloco conhecido para cada nó é mostrado sob o nome do nó. Um ícone
+        do último bloco sincronizado para cada nó é exibido abaixo de seu nome. Um ícone
         representando o comportamento de resposta do nó
         (o que indica o nível de conectividade esperado)
-        é mostrado ao lado de cada nó.</p>
+        é exibido ao lado.</p>
         <p>Qualquer nó na lista pode ser favoritado para uso posterior.
         Os nós que não são marcados como favoritos serão esquecidos.<p>
         <p>O Monerujo escolherá o nó ideal dentre os marcados sempre que você usá-lo.
@@ -274,11 +274,11 @@
         marcar este nó como favorito.</p>
         <h2>Escanear Nós</h2>
         <p>Além disso, você pode verificar a rede em busca de nós. O Monerujo vai começar a
-        escanear a rede para nós remotos na porta 18089. Ele começa perguntando ao seus
+        escanear a rede por nós remotos na porta 18089. Ele começa perguntando ao seus
         nós marcados como favoritos por outros pares na rede P2P do Monero e, em seguida, continua
-        perguntando por seus colegas, e assim por diante. Se você não tem nós marcados como favoritos
+        perguntando por seus pares, e assim por diante. Se você não tem nós marcados como favoritos
         (ou eles não nos dizem sobre seus pares),
         o Monerujo irá direto para os nós codificados direto no Monero em si. O
-        escaneamento para quando 10 nós remotos são encontrados no total.</p>
+        escaneamento termina quando 10 nós remotos são encontrados no total.</p>
     ]]></string>
 </resources>
