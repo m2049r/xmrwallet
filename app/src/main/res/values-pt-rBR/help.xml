@@ -252,16 +252,16 @@
         é exibido ao lado.</p>
         <p>Qualquer nó na lista pode ser favoritado para uso posterior.
         Os nós que não são marcados como favoritos serão esquecidos.<p>
-        <p>O Monerujo escolherá o nó ideal dentre os marcados sempre que você usá-lo.
-        Ele faz isso verificando a altura do bloco (quão atualizado
-        é o nó?) bem como o comportamento da resposta (com que rapidez o nó responde às solicitações?).</p>
+        <p>O Monerujo sempre escolherá o nó ideal dentre os marcados.
+        Ele faz isso verificando a altura do bloco (quão sincronizado
+        está o nó?) bem como o comportamento da resposta (com que rapidez o nó responde às solicitações?).</p>
         <p>A lista é classificada por essas características, portanto, o nó do topo seria o único que o Monerujo
-        escolheria agora. A parte inferior da lista mostraria nós muito lentos ou indisponíveis.</p>
+        escolheria nesse caso. A parte inferior da lista mostraria nós muito lentos ou indisponíveis.</p>
         <h2>Adicionar um Nó</h2>
         <p>Ao tocar no botão &quot;Adicionar nó&quot; na parte inferior, você será solicitado a
-        insirir os detalhes do nó no diálogo seguinte.
+        inserir os detalhes do nó no diálogo seguinte.
         O &quot;Endereço do Host&quot; é o nome do host ou endereço IP do nó - esta é a única
-        entrada obrigatória.
+        informação obrigatória.
         Digite a &quot;Porta&quot; se o nó for executado em uma porta não padrão (por exemplo, 18089).
         Você também pode, opcionalmente, dar um nome ao nó para facilitar sua identificação mais tarde.
         Alguns nós exigem credenciais para serem utilizados. Digite o nome de usuário e
@@ -269,8 +269,8 @@
         Os &quot;Resultados dos Testes&quot; exibirão a altura do bloco, o tempo de resposta e o IP real usado.
         O resultado também pode ser um erro - geralmente porque o nome do host fornecido
         não pôde ser alcançado em um período de tempo razoável ou as credenciais estão incorretas.
-        Ou a combinação Nome do Host/Porta não aponta para um Nó Monero verdadeiro!
-        Depois que o teste passar (sem erro), você estará apto a pressionar &quot;OK&quot; para salvar &amp;
+        Ou a combinação Nome do Host/Porta não aponta para um Nó Monero válido!
+        Depois que o teste passar (sem erro), você poderá pressionar &quot;OK&quot; para salvar &amp;
         marcar este nó como favorito.</p>
         <h2>Escanear Nós</h2>
         <p>Além disso, você pode verificar a rede em busca de nós. O Monerujo vai começar a
