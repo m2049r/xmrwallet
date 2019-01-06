@@ -99,6 +99,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void setNode(NodeInfo node);
 
+        NodeInfo getNode();
+
         Set<NodeInfo> getFavouriteNodes();
 
         boolean hasLedger();
@@ -128,7 +130,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         activityCallback.setTitle(null);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
         activityCallback.showNet();
-        findBestNode();
+        if (activityCallback.getNode() == null)
+            findBestNode();
     }
 
     @Override
@@ -181,7 +184,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             @Override
             public void onClick(View v) {
                 if (activityCallback.getFavouriteNodes().isEmpty())
-                    activityCallback.onNodePrefs();
+                    startNodePrefs();
                 else
                     findBestNode();
             }
@@ -191,8 +194,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         view.findViewById(R.id.ibOption).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (activityCallback != null)
-                    activityCallback.onNodePrefs();
+                startNodePrefs();
             }
         });
 
@@ -475,5 +477,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         tvNodeName.setCompoundDrawablesWithIntrinsicBounds(NodeInfoAdapter.getPingIcon(nodeInfo), 0, 0, 0);
         tvNodeAddress.setText(nodeInfo.getAddress());
         tvNodeAddress.setVisibility(View.VISIBLE);
+    }
+
+    private void startNodePrefs() {
+        activityCallback.setNode(null);
+        activityCallback.onNodePrefs();
     }
 }
