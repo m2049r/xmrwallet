@@ -93,6 +93,11 @@ public class LoginActivity extends BaseActivity
     Set<NodeInfo> favouriteNodes = new HashSet<>();
 
     @Override
+    public NodeInfo getNode() {
+        return node;
+    }
+
+    @Override
     public void setNode(NodeInfo node) {
         if ((node != null) && (node.getNetworkType() != WalletManager.getInstance().getNetworkType()))
             throw new IllegalArgumentException("network type does not match");
