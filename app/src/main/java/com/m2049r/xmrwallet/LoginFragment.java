@@ -130,8 +130,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         activityCallback.setTitle(null);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
         activityCallback.showNet();
-        if (activityCallback.getNode() == null)
+        NodeInfo node = activityCallback.getNode();
+        if (node == null)
             findBestNode();
+        else
+            showNode(node);
     }
 
     @Override
