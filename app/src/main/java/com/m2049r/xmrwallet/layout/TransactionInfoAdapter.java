@@ -91,7 +91,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     public void setInfos(List<TransactionInfo> data) {
         // TODO do stuff with data so we can really recycle elements (i.e. add only new tx)
         // as the TransactionInfo items are always recreated, we cannot recycle
-        this.infoItems.clear();
+        infoItems.clear();
         if (data != null) {
             Timber.d("setInfos %s", data.size());
             infoItems.addAll(data);
@@ -100,6 +100,15 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             Timber.d("setInfos null");
         }
         notifyDataSetChanged();
+    }
+
+    public void removeItem(int position) {
+        infoItems.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public TransactionInfo getItem(int position) {
+        return infoItems.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

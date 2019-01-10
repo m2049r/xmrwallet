@@ -38,6 +38,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -72,6 +73,12 @@ public class WalletFragment extends Fragment
     private Button bSend;
 
     private Spinner sCurrency;
+
+    private List<String> dismissedTransactions = new ArrayList<>();
+
+    public void resetDismissedTransactions() {
+        dismissedTransactions.clear();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,8 +123,43 @@ public class WalletFragment extends Fragment
 
         RecyclerView recyclerView = view.findViewById(R.id.list);
 
-        this.adapter = new TransactionInfoAdapter(getActivity(), this);
+        adapter = new TransactionInfoAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(recyclerView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipeLeft(int position) {
+                                return activityCallback.isStreetMode();
+                            }
+
+                            @Override
+                            public boolean canSwipeRight(int position) {
+                                return activityCallback.isStreetMode();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    dismissedTransactions.add(adapter.getItem(position).hash);
+                                    adapter.removeItem(position);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    dismissedTransactions.add(adapter.getItem(position).hash);
+                                    adapter.removeItem(position);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+        recyclerView.addOnItemTouchListener(swipeTouchListener);
+
 
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,7 +336,9 @@ public class WalletFragment extends Fragment
             Timber.d("StreetHeight=%d", streetHeight);
             for (TransactionInfo info : wallet.getHistory().getAll()) {
                 Timber.d("TxHeight=%d", info.blockheight);
-                if (info.isPending || (info.blockheight >= streetHeight)) list.add(info);
+                if ((info.isPending || (info.blockheight >= streetHeight))
+                        && !dismissedTransactions.contains(info.hash))
+                    list.add(info);
             }
             adapter.setInfos(list);
             adapter.notifyDataSetChanged();
