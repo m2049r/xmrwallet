@@ -118,7 +118,7 @@ dependencies {
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"
-    //testImplementation 'org.json:json:20140107'
-    //testImplementation 'net.jodah:concurrentunit:0.4.2'
+    testImplementation 'org.json:json:20180813'
+    testImplementation 'net.jodah:concurrentunit:0.4.4'
 
 }
