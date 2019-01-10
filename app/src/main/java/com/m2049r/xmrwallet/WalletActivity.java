@@ -144,6 +144,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             streetMode = 0;
         }
+        final WalletFragment walletFragment = (WalletFragment)
+                getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
+        if (walletFragment != null) walletFragment.resetDismissedTransactions();
         updateAccountsBalance();
         forceUpdate();
     }
@@ -286,7 +289,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             showNet();
         }
         invalidateOptionsMenu();
-
     }
 
     private void onEnableStreetMode() {

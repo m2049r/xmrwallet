@@ -113,10 +113,12 @@ dependencies {
     implementation 'dnsjava:dnsjava:2.1.8'
     implementation 'org.jitsi:dnssecjava:1.1.3'
     implementation 'org.slf4j:slf4j-nop:1.7.25'
+    implementation 'com.github.brnunes:swipeablerecyclerview:1.0.2'
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"
-    testImplementation 'org.json:json:20140107'
-    testImplementation 'net.jodah:concurrentunit:0.4.2'
+    testImplementation 'org.json:json:20180813'
+    testImplementation 'net.jodah:concurrentunit:0.4.4'
+
 }
