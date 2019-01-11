@@ -442,12 +442,6 @@ Java_com_m2049r_xmrwallet_model_WalletManager_findWallets(JNIEnv *env, jobject i
     return cpp2java(env, walletPaths);
 }
 
-JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_WalletManager_getErrorString(JNIEnv *env, jobject instance) {
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return env->NewStringUTF(wallet->errorString().c_str());
-}
-
 //TODO virtual bool checkPayment(const std::string &address, const std::string &txid, const std::string &txkey, const std::string &daemon_address, uint64_t &received, uint64_t &height, std::string &error) const = 0;
 
 JNIEXPORT void JNICALL

@@ -264,8 +264,6 @@ public class WalletManager {
         return wallets;
     }
 
-    public native String getErrorString();
-
 //TODO virtual bool checkPayment(const std::string &address, const std::string &txid, const std::string &txkey, const std::string &daemon_address, uint64_t &received, uint64_t &height, std::string &error) const = 0;
 
     private String daemonAddress = null;
