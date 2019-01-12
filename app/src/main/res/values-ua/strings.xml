@@ -111,7 +111,7 @@
     <string name="status_wallet_node_invalid">Помилка віддаленого вузла!\nПопробуйте ще раз.</string>
     <string name="status_wallet_connect_ioex">Неможливо підключиться до віддаленого вузла!\nПопробуйте пізніше.</string>
 
-    <string name="status_wallet_disconnected">Роз&apos;єднано</string>
+    <string name="status_wallet_disconnected">Розєднано</string>
 
     <string name="status_transaction_failed">Помилка транзакції: %1$s</string>
 
@@ -163,7 +163,7 @@
     <string name="message_exchange_failed">Неможливо отримати курс обміну!\nВикористовуйте XMR/XMR або спробуйте ще раз</string>
 
     <string name="generate_title">Створити гаманець</string>
-    <string name="generate_name_hint">ім&apos;я гаманця</string>
+    <string name="generate_name_hint">імя гаманця</string>
     <string name="generate_password_hint">Пароль гаманця</string>
     <string name="generate_fingerprint_hint">Дозволити відкрити гаманець за допомогою відбитка пальця</string>
     <string name="generate_fingerprint_warn"><![CDATA[
@@ -183,7 +183,7 @@
     <string name="generate_buttonGenerate">Зробіть мені вже гаманець!</string>
     <string name="generate_button_accept">Я ввів мнемонічну фразу</string>
 
-    <string name="generate_wallet_name">Придумай мені ім&apos;я!</string>
+    <string name="generate_wallet_name">Придумай мені імя!</string>
     <string name="generate_wallet_exists">Такий гаманець існує!</string>
     <string name="generate_wallet_dot">Не може починатися з .</string>
     <string name="generate_wallet_creating">Створення гаманця</string>
@@ -216,7 +216,7 @@
 
     <string name="send_paymentid_hint">ID платежу (необязательно)</string>
     <string name="send_amount_hint">0.00</string>
-    <string name="send_notes_hint">Персональна замітка (необов&apos;язково)</string>
+    <string name="send_notes_hint">Персональна замітка (необовязково)</string>
     <string name="send_generate_paymentid_hint">Генерація</string>
     <string name="send_send_label">Витратити мої солодкі Moneroj</string>
     <string name="send_send_timed_label">Витратити мої солодкі Moneroj (%1$s)</string>
@@ -259,7 +259,7 @@
     <string name="tx_fee">Комісія</string>
     <string name="tx_transfers">Перекази</string>
     <string name="tx_notes">Замітки</string>
-    <string name="tx_notes_hint">(необов&apos;язково)</string>
+    <string name="tx_notes_hint">(необовязково)</string>
     <string name="tx_button_notes">Збережено</string>
     <string name="tx_notes_set_failed">Помилка збереження замітки</string>
     <string name="tx_title">Детально</string>
@@ -309,12 +309,12 @@
     <string name="progress_ledger_verify">Провірка ключів</string>
     <string name="progress_ledger_opentx">Займаюся божевільною математикою</string>
     <string name="progress_ledger_mlsag">Хешування матеріалів</string>
-    <string name="open_wallet_ledger_missing">Підключіть (повторно під&apos;єднайте) пристрій Ledger</string>
+    <string name="open_wallet_ledger_missing">Підключіть (повторно підєднайте) пристрій Ledger</string>
 
     <string name="accounts_progress_new">Створення облікового запису</string>
 
-    <string name="toast_ledger_attached">%1$s під&apos;єднаний</string>
-    <string name="toast_ledger_detached">%1$s від&apos;єднаний</string>
+    <string name="toast_ledger_attached">%1$s підєднаний</string>
+    <string name="toast_ledger_detached">%1$s відєднаний</string>
 
     <string name="progress_nfc_write">Запис мітки</string>
     <string name="nfc_write_failed">Помилка запису мітки!</string>
@@ -326,7 +326,7 @@
     <string name="nfc_tag_read_success">Читання мітки завершено успішно</string>
     <string name="nfc_tag_tap">NFC доступний!</string>
 
-    <string name="receive_desc_hint">Опис (необов&apos;язково)</string>
+    <string name="receive_desc_hint">Опис (необовязково)</string>
 
     <string name="send_address_not_openalias">Адреса OpenAlias недоступна</string>
     <string name="send_address_openalias">OpenAlias безпечний &#x2714;</string>
