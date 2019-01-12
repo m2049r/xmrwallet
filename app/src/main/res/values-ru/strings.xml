@@ -51,7 +51,7 @@
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Вы можете отправить %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> устанавливает курс обменна <b>%3$s BTC</b> <u>в данный момент</u></i>.
+        <i><b>XMR.TO</b> устанавливает курс обмена <b>%3$s BTC</b> <u>в данный момент</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Сумма до <b>%1$s BTC</b> будет отправлена <u>немедленно</u>!</i>
