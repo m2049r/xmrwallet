@@ -359,9 +359,9 @@
     <string name="node_refresh_wait">Prosím počkajte, kým sa skenovanie nedokončí</string>
     <string name="node_create_hint">Vyber alebo pridaj uzly</string>
     <string name="node_pull_hint">Pridaj uzly manuálne alebo potiahni dole pre skenovanie</string>
-    <string name="node_scanning">Skenivanie siete&#8230;</string>
+    <string name="node_scanning">Prehľadávam sieť&#8230;</string>
     <string name="node_nobookmark">Automaticky ukladám %1$d najlepších uzlov</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
-    <string name="backup_success">Backup successful</string>
+    <string name="backup_success">úspešne zálohované</string>
 </resources>
