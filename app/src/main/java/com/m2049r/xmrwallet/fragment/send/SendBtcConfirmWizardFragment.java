@@ -524,8 +524,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         xmrtoStatus = null;
         showProgress(1, getString(R.string.label_send_progress_xmrto_create));
         TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        double btcAmount = txDataBtc.getBtcAmount();
-        getXmrToApi().createOrder(btcAmount, txDataBtc.getBtcAddress(), new XmrToCallback<CreateOrder>() {
+
+        XmrToCallback<CreateOrder> callback = new XmrToCallback<CreateOrder>() {
             @Override
             public void onSuccess(CreateOrder createOrder) {
                 if (!isResumed) return;
@@ -545,7 +545,13 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                 }
                 processCreateOrderError(ex);
             }
-        });
+        };
+
+        if (txDataBtc.getBip70() != null) {
+            getXmrToApi().createOrder(txDataBtc.getBip70(), callback);
+        } else {
+            getXmrToApi().createOrder(txDataBtc.getBtcAmount(), txDataBtc.getBtcAddress(), callback);
+        }
     }
 
     private QueryOrderStatus xmrtoStatus = null;
@@ -666,7 +672,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
 
     private XmrToApi xmrToApi = null;
 
-    private final XmrToApi getXmrToApi() {
+    private XmrToApi getXmrToApi() {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {

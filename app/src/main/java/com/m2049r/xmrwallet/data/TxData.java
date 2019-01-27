@@ -20,9 +20,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
-import com.m2049r.xmrwallet.util.UserNotes;
-
-import timber.log.Timber;
 
 // https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 public class TxData implements Parcelable {

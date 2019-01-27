@@ -34,7 +34,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.m2049r.xmrwallet.OnBackPressedListener;
 import com.m2049r.xmrwallet.OnUriScannedListener;
@@ -47,7 +46,7 @@ import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.Notice;
-import com.m2049r.xmrwallet.util.UserNotes;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 

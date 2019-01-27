@@ -334,7 +334,6 @@
     <string name="send_address_openalias">Sécurisé OpenAlias &#x2714;</string>
     <string name="send_address_resolve_openalias">Résolution OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
-    <string name="send_address_hint">Adresse ou OpenAlias XMR/BTC du Destinataire</string>
 
     <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
 
@@ -367,4 +366,15 @@
     <string name="node_scanning">Recherche de nœuds&#8230;</string>
     <string name="node_nobookmark">%1$d meilleurs nœuds mis en favoris automatiquement</string>
     <string name="label_test">Tester</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
+    <string name="send_address_hint">Destinataire</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
 </resources>

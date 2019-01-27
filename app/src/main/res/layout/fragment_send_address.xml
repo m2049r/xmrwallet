@@ -47,8 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
                     android:layout_margin="8dp"
-                    android:drawablePadding="8dp"
                     android:drawableStart="@drawable/ic_check_gray_24dp"
+                    android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/info_paymentid_intergrated"
                     android:textSize="18sp"
@@ -83,21 +83,21 @@
                         tools:text="@string/info_xmrto" />
                 </LinearLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/llPaymentId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="4dp"
                     android:orientation="horizontal"
-                    android:visibility="visible"
-                    android:weightSum="10">
+                    android:visibility="visible">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/etPaymentId"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="10"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/bPaymentId"
                         app:counterEnabled="true"
                         app:counterMaxLength="16"
                         app:errorEnabled="true">
@@ -118,12 +118,13 @@
                         style="@style/MoneroText.Button.Small"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
+                        android:layout_alignParentEnd="true"
                         android:layout_gravity="center"
                         android:layout_marginStart="8dp"
-                        android:background="?android:selectableItemBackground"
+                        android:background="?android:selectableItemBackgroundBorderless"
                         android:drawableTop="@drawable/ic_settings_orange_24dp"
                         android:text="@string/send_generate_paymentid_hint" />
-                </LinearLayout>
+                </RelativeLayout>
             </FrameLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -177,8 +178,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:drawablePadding="8dp"
                 android:drawableStart="@drawable/ic_nfc_black_24dp"
+                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="@string/nfc_tag_tap"
                 android:visibility="visible" />

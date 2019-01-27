@@ -59,7 +59,7 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
-import com.m2049r.xmrwallet.util.UserNotes;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -958,8 +958,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
         if (!processed || (onUriScannedListener == null)) {
             Toast.makeText(this, getString(R.string.nfc_tag_read_what), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, getString(R.string.nfc_tag_read_success), Toast.LENGTH_SHORT).show();
         }
     }
 

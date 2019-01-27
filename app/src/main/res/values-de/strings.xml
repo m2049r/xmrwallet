@@ -322,7 +322,6 @@
     <string name="send_address_openalias">OpenAlias sicher &#x2714;</string>
     <string name="send_address_resolve_openalias">Löse OpenAlias auf&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC - Adresse kann gefälscht sein!</string>
-    <string name="send_address_hint">Empfänger XMR/BTC Adresse oder OpenAlias</string>
 
     <string name="progress_nfc_write">Schreibe Tag</string>
     <string name="nfc_write_failed">Schreiben des Tags fehlgeschlagen!</string>
@@ -365,4 +364,14 @@
     <string name="node_scanning">Scanning network&#8230;</string>
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_hint">Empfänger</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
 </resources>

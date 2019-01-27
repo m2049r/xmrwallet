@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.util;
+package com.m2049r.xmrwallet.data;
 
 import com.m2049r.xmrwallet.xmrto.api.QueryOrderStatus;
 

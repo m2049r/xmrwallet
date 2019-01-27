@@ -315,7 +315,6 @@
     <string name="send_address_openalias">OpenAlias säkrad &#x2714;</string>
     <string name="send_address_resolve_openalias">Slår upp OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias utan DNSSEC - adressen kan vara förfalskad</string>
-    <string name="send_address_hint">Mottagarens XMR/BTC-adress eller OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 
@@ -348,4 +347,15 @@
     <string name="node_scanning">Scanning network&#8230;</string>
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
+    <string name="send_address_hint">Mottagaren</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
 </resources>
