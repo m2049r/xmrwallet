@@ -422,4 +422,6 @@
     <string name="xmrto_error_012">Too many requests</string>
 
     <string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
+
+    <string name="street_sweep_amount">EVERYTHING!</string>
 </resources>

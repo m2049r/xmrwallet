@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
 
 import timber.log.Timber;
@@ -54,6 +55,8 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         void enableDone();
 
         SendFragment.Mode getMode();
+
+        SendFragment.Listener getActivityCallback();
     }
 
     ImageButton bCopyTxId;
@@ -120,7 +123,13 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
             tvTxId.setText(committedTx.txId);
             bCopyTxId.setEnabled(true);
             bCopyTxId.setImageResource(R.drawable.ic_content_copy_black_24dp);
-            tvTxAmount.setText(getString(R.string.send_amount, Helper.getDisplayAmount(committedTx.amount)));
+
+            if (sendListener.getActivityCallback().isStreetMode()
+                    && (sendListener.getTxData().getAmount() == Wallet.SWEEP_ALL)) {
+                tvTxAmount.setText(getString(R.string.street_sweep_amount));
+            } else {
+                tvTxAmount.setText(getString(R.string.send_amount, Helper.getDisplayAmount(committedTx.amount)));
+            }
             tvTxFee.setText(getString(R.string.send_fee, Helper.getDisplayAmount(committedTx.fee)));
         }
         sendListener.enableDone();
