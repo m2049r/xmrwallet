@@ -219,7 +219,6 @@
 
     <string name="send_amount_btc_xmr">%1$s (indicative)</string>
 
-    <string name="send_address_hint">Receiver\'s XMR/BTC Address or OpenAlias</string>
     <string name="send_paymentid_hint">Payment ID (optional)</string>
     <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>
@@ -411,4 +410,18 @@
     <string name="node_scanning">Scanning network&#8230;</string>
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_hint">Receiver</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
+
+    <string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
+
+    <string name="street_sweep_amount">EVERYTHING!</string>
 </resources>

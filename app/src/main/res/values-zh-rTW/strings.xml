@@ -330,7 +330,6 @@
     <string name="send_address_openalias">這個 OpenAlias 已確認安全可用 &#x2714;</string>
     <string name="send_address_resolve_openalias">正在解析 OpenAlias &#8230;</string>
     <string name="send_address_no_dnssec">這個 OpenAlias 沒有使用 DNSSEC - 地址有被欺騙的風險</string>
-    <string name="send_address_hint">收款者的 XMR/BTC 地址或 OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">節點版本不相容 - 請盡速更新！</string>
 
@@ -363,4 +362,17 @@
     <string name="node_scanning">掃描節點中 &#8230;</string>
     <string name="node_nobookmark">已自動加入 %1$d 個節點至書籤</string>
     <string name="label_test">測試節點</string>
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
+    <string name="send_address_hint">收款者</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
+
+    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
 </resources>

@@ -18,12 +18,11 @@ package com.m2049r.xmrwallet.data;
 
 import android.os.Parcel;
 
-import com.m2049r.xmrwallet.model.PendingTransaction;
-
 public class TxDataBtc extends TxData {
 
     private String xmrtoUuid;
     private String btcAddress;
+    private String bip70;
     private double btcAmount;
 
     public TxDataBtc() {
@@ -50,6 +49,14 @@ public class TxDataBtc extends TxData {
         this.btcAddress = btcAddress;
     }
 
+    public String getBip70() {
+        return bip70;
+    }
+
+    public void setBip70(String bip70) {
+        this.bip70 = bip70;
+    }
+
     public double getBtcAmount() {
         return btcAmount;
     }
@@ -63,6 +70,7 @@ public class TxDataBtc extends TxData {
         super.writeToParcel(out, flags);
         out.writeString(xmrtoUuid);
         out.writeString(btcAddress);
+        out.writeString(bip70);
         out.writeDouble(btcAmount);
     }
 
@@ -81,16 +89,19 @@ public class TxDataBtc extends TxData {
         super(in);
         xmrtoUuid = in.readString();
         btcAddress = in.readString();
+        bip70 = in.readString();
         btcAmount = in.readDouble();
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(",xmrtoUuid:");
         sb.append(xmrtoUuid);
         sb.append(",btcAddress:");
         sb.append(btcAddress);
+        sb.append(",bip70:");
+        sb.append(bip70);
         sb.append(",btcAmount:");
         sb.append(btcAmount);
         return sb.toString();

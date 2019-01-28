@@ -329,7 +329,6 @@
     <string name="send_address_openalias">OpenAlias zabezpečený &#x2714;</string>
     <string name="send_address_resolve_openalias">Prekladám OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias bez DNSSEC - adresa môže byť zneužitá</string>
-    <string name="send_address_hint">Prijímateľova XMR/BTC adresa alebo OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
 
@@ -364,4 +363,18 @@
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
     <string name="backup_success">úspešne zálohované</string>
+
+    <string name="send_address_resolve_bip70">Prekladám URI platby&#8230;</string>
+    <string name="send_address_not_bip70">Neviem spracovať URI platby</string>
+    <string name="send_address_bip70"> URI platby &#x2714;</string>
+    <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
+    <string name="send_address_hint">Príjemca</string>
+
+    <string name="xmrto_error_001">XMR.TO je offline - skús neskôr</string>
+    <string name="xmrto_error_004">Množstvo BTC je mimo rámca</string>
+    <string name="xmrto_error_010">Neplatná alebo stará URL platby</string>
+    <string name="xmrto_error_012">Príliš veľa požiadaviek</string>
+
+    <string name="street_sweep_amount">VŠETKO!</string> <!-- as in: "everything in the account" = "all the money" -->
+
 </resources>

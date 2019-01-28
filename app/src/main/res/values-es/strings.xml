@@ -319,11 +319,11 @@
     <string name="send_address_openalias">OpenAlias asegurado &#x2714;</string>
     <string name="send_address_resolve_openalias">Resolviendo OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias sin DNSSEC - la drección puede ser falsificada</string>
-    <string name="send_address_hint">Dirección XMR/BTC del receptor u OpenAlias</string>
 
     <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
 
     <string name="menu_info">Detalles</string><!--Changed to: Show Secrets!-->
+
     <string name="menu_streetmode">Modo Público</string>
 
     <string name="info_nodes_enabled">Nodo-o-matiC habilitado, toque para más información.</string>
@@ -352,4 +352,17 @@
     <string name="node_scanning">Escaneando la red&#8230;</string>
     <string name="node_nobookmark">Mejores %1$d nodos marcados automáticamente</string>
     <string name="label_test">Probar</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
+    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
+    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
+    <string name="send_address_hint">Receptor</string>
+
+    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_004">BTC amount out of bounds</string>
+    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
+    <string name="xmrto_error_012">Too many requests</string>
+
+    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
 </resources>

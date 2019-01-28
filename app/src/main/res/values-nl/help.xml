@@ -112,8 +112,14 @@
         <h1>Verzenden</h1>
         <h2>Adres ontvanger</h2>
         <p>Dit is het openbare adres van de portemonnee waar je moneroj naartoe stuurt. Je kunt dit kopiëren via het klembord, een QR-code scannen of het adres handmatig invoeren. Controleer dit nauwkeurig om er zeker van te zijn dat je geen geld naar het verkeerde adres stuurt.</p>
-        <p>Je kunt niet alleen XMR verzenden, maar ook BTC via XMR.TO (zie https://xmr.to
-        voor meer informatie). Zie ook het gedeelte over BTC verzenden hieronder.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>Betalings-ID</h2>
         <p>Je kunt een Betalings-ID gebruiken om aan te geven waarom je Monero verzendt. Dit is volledig optioneel en blijft vertrouwelijk tussen beide partijen. Een bedrijf kan bijvoorbeeld jouw transactie koppelen aan een artikel dat je hebt gekocht.<p>
         <h1>BTC verzenden</h1>
@@ -214,4 +220,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

@@ -65,6 +65,12 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
     }
 
     @Override
+    public void createOrder(@NonNull final String url,
+                            @NonNull final XmrToCallback<CreateOrder> callback) {
+        CreateOrderImpl.call(this, url, callback);
+    }
+
+    @Override
     public void queryOrderStatus(@NonNull final String uuid,
                                  @NonNull final XmrToCallback<QueryOrderStatus> callback) {
         QueryOrderStatusImpl.call(this, uuid, callback);
@@ -113,6 +119,7 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
                 } else {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
+                        Timber.d(json.toString(2));
                         final XmrToError error = new XmrToError(json);
                         Timber.e("xmr.to says %d/%s", response.code(), error.toString());
                         callback.onError(new XmrToException(response.code(), error));

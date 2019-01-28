@@ -36,6 +36,13 @@ public interface XmrToApi {
     void createOrder(final double amount, @NonNull final String address, @NonNull final XmrToCallback<CreateOrder> callback);
 
     /**
+     * Creates an order through BIP70 payment protocol like bitpay
+     *
+     * @param url the BIP70 URL
+     */
+    void createOrder(@NonNull final String url, @NonNull final XmrToCallback<CreateOrder> callback);
+
+    /**
      * Queries the order status for given current order
      *
      * @param uuid     the order uuid

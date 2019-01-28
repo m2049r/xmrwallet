@@ -28,7 +28,7 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.UserNotes;
+import com.m2049r.xmrwallet.data.UserNotes;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

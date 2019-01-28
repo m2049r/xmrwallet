@@ -141,13 +141,19 @@
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
-        <p>Dies ist die öffentliche Adresse des Wallets, an die du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren, 
+        <p>Dies ist die öffentliche Adresse des Wallets, an die du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
 	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist um
         sicherzustellen die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
-        <p>Zusätzlich zum Senden von XMR kannst du auch BTC mittels des XMR.TO Service versenden (siehe https://xmr.to
-        für Details). Siehe den Abschnitt über das Versenden von BTC unten.</p>
+        <p>In addition to using an XMR address, you can also use
+        <ul>
+            <li>an OpenAlias for XMR or BTC</li>
+            <li>a BTC address</li>
+            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+        </u>
+        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        for details). See the section on sending BTC below.</p>
         <h2>Zahlungs-ID</h2>
-        <p>Du kannst eine Zahlungs-ID benutzen um den Grund einer Transaktion zwischen zwei Parteien zu identifizieren. Dies ist optional 
+        <p>Du kannst eine Zahlungs-ID benutzen um den Grund einer Transaktion zwischen zwei Parteien zu identifizieren. Dies ist optional
 	und nicht öffentlich einsehbar. Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.<p>
         <h1>BTC Senden</h1>
         <h2>XMR.TO</h2>
@@ -158,12 +164,12 @@
         <h2>XMR.TO Wechselkurs<h2>
         <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des XMR.TO Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.
-	Außerdem siehst du den Wert bis zu dem eine BTC-Zahlung sofort ausgeführt wird 
-	ohne auf XMR-Bestätigungen warten zu müssen (siehe die XMR.TO FAQ für mehr Details). 
+	Außerdem siehst du den Wert bis zu dem eine BTC-Zahlung sofort ausgeführt wird
+	ohne auf XMR-Bestätigungen warten zu müssen (siehe die XMR.TO FAQ für mehr Details).
         XMR.TO erhebt keine zusätzlichen Gebühren - wie cool ist das denn?</p>
         <h2>XMR.TO Auftrag<h2>
         <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue XMR.TO-Angebot. Dieses Angebot gilt
-        für eine bestimmte Zeit - du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann 
+        für eine bestimmte Zeit - du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
         <h2>Geheimer XMR.TO Schlüssel<h2>
         <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet kann dein geheimer XMR.TO Schlüssel
@@ -281,4 +287,6 @@
         Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
+
+    <!-- Note for translators: new/changed text also in help_send -->
 </resources>
