@@ -148,18 +148,17 @@
         <h2>Adresa Príjemcu</h2>
         <p>Toto je verejná adresa peňaženky kam posielaš Monero. Môžeš ju kopírovať zo schránky, skenovať QR kód alebo vložiť manuálne.
 		Trikrát sa uisti, že neposielaš mince na zlú adresu.</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>Okrem XMR adries, môžte použiť tiež
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+            <li>OpenAlias pre XMR či BTC</li>
+            <li>BTC adresu</li>
+            <li>bitcoin: URI (vrátane BIP70 ako bitpay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
+        Nezabúdajte, že posielanie BTC prebieha cez službu XMR.TO (detaily na https://xmr.to). Pozri sekciu nižšie o posielaní BTC</p>
         <h2>ID Platby</h2>
         <p>ID Platby môžeš použiť na identifikáciu platby medzi dvoma stranami.
 		Nie je to síce povinný, ale je to súkromný údaj.
-        Môžeš tak napríklad prepojiť kupovaný tovar so svojim biznisom.<p>
+        Môžeš tak napríklad prelinkovať transakciu s tovarom, alebo so svojim biznisom.<p>
         <h1>Posielanie BTC</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
@@ -260,5 +259,4 @@
 		V prípade, že nemáte žiadne uzly vo svojich záložkách, Monerujo bude skúšať uzly (seed nodes) natvrdo zapísané v kóde Monero. Vyhľadávanie končí ak Monerujo nájde aspoň 10 vzdialených uzlov.</p>
     ]]></string>
 
-    <!-- Note for translators: new/changed text also in help_send -->
 </resources>
