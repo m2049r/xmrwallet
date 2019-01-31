@@ -116,14 +116,14 @@
         <h2>收款者地址</h2>
         <p>這是你欲發送 Monero 過去的錢包地址。你可以從剪貼簿貼上, 掃描 QR 碼或是手動輸入。
         請務必再三確認地址正確以免發送至錯誤的錢包地址</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>除了使用 XMR 地址以外, 你還可以使用
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+            <li>指向 XMR 或 BTC 地址的 OpenAlias</li>
+            <li>BTC 地址</li>
+            <li>以 bitcoin: 開頭的 URI (包含像 bitpay 所使用的 BIP70 協議)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
+        但請注意一件事情，發送 BTC 的功能是透過 XMR.TO 服務實現的，請參考下方的「發送 BTC」說明
+        (詳見 https://xmr.to 以了解更多)。</p>
         <h2>付款 ID</h2>
         <p>你可以使用付款 ID 以幫助識別雙方的款項交易。這是選填項目並且完全為隱私保護的。
         舉例來說這可以讓公司行號辨別你的這筆款項是用來支付某項購買的商品。<p>
@@ -224,6 +224,4 @@
         如果你沒有任何書籤節點 (或是書籤節點無法提供它們的連接清單)，Monerujo 將會直接從 Monero 內建的種子節點取得清單。
         這個掃描功能將會在總共可用節點的數量達到十個後停止。</p>
     ]]></string>
-
-    <!-- Note for translators: new/changed text also in help_send -->
 </resources>
