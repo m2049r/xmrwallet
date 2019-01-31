@@ -370,7 +370,7 @@
 
     <string name="xmrto_error_001">XMR.TO 無法使用 - 請稍候再試</string>
     <string name="xmrto_error_004">BTC 金額超出限制</string>
-    <string name="xmrto_error_010">非法或過期的付款網址</string>
+    <string name="xmrto_error_010">無效或過期的付款網址</string>
     <string name="xmrto_error_012">請求過於頻繁</string>
 
     <string name="street_sweep_amount">全部！</string>
