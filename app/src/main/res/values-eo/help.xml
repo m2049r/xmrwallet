@@ -153,6 +153,7 @@
         <h1>Transakciaj detaloj</h1>
         <h2>Destino</h2>
         Jen la publika adreso de la monujo al kiu vi sendas Monerojn.
+
         <h2>Paga ID</h2>
         Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
         privata. Ekzemple, tio permesas al komercisto kunligi vian transakcion kun varo kiun vi aĉetis.
@@ -175,9 +176,12 @@
         Jen la publika adreso de la monujo al kiu vi sendas Monerojn. Vi povas kopii tion el via
         tondujo, skani QR-kodo, aŭ mane entajpi ĝin. Kontrolu ĝin trifoje por certiĝi ke vi ne sendas
         monon al malĝusta adreso.</p>
-        <p>Aldone al tio, vi ankaŭ povas sendi bitmonon (BTC) par la XMR.TO-servo (vidu https://xmr.to
-        por detaloj). Vidu sube pri kiel sendi bitmonon.</p>
-
+        <p>Aldone al tio, vi ankaŭ povas uzi
+        <ul>
+            <li>iun OpenAlias por XMR aŭ BTC</li>
+            <li>bitmonan-adreson (BTC)<li>
+            <li>bitmonan pag-URI (inkluzive BIP70 kiel bitpay)</li>
+        </ul>
         <h2>Paga ID</h2>
         <p>Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
         privata. Ekzemple, tio ebligas komercon kunligi vian transakcion kun varo kiun vi aĉetis.</p>
