@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Krei monujon - Nova</h1>
+        <p>Se vi bezonas novan Monero-adreson!</p>
+        <p>Entajpu unikan monujnomon kaj pasvorton.
+        La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via aparato. Uzu fortan
+        pasvorton - eĉ pli bone, uzu pasfrazon.</p>
+        <h2>Skribu vian mnemonikan semon surpapere!</h2>
+        <p>Sur la venonta ekrano, vi trovos vian 25-vortan \"mnemonikan semon\".
+        Estas la nura datumo, kiu bezoniĝos por restaŭri vian monujon en la estonteco, kaj reiĝi
+        estro de via mono!
+        <p>Se vi perdas la pasvorton de via monujo, vi tamen povos restaŭri vian monujon per
+        la mnemonikan semon.
+        <p>Estas neniu ebleco retrovi vian mnemonikan semon. Se vi perdas ĝin, via tuta mono
+        perdiĝas ankaŭ! La mnemonika semo ne ŝanĝeblas, kaj se ĝi ŝteliĝas aŭ endanĝeriĝas,
+        vi devos transigi vian monon al nova monujo (kun nova mnemonika semo). Tial estas
+        plej bone ke vi sekurkopiu vian mnemonikan semon skribante ĝin surpapere, kaj konservu
+        ĝin en <em>pluraj</em> sekuraj lokoj.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Krei monujon - Semo</h1>
+        <p>Se vi jam havas Monero-adreson kaj volas reĉerpi la transkaciojn el la blokĉeno!</p>
+        <p>Entajpu unikan monujnomon kaj pasvorton.
+        La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via aparato. Uzu fortan
+        pasvorton - eĉ pli bone, uzu pasfrazon.</p>
+        <p>Entajpu vian semon en la kampo \"Mnemonika Semo\".</p>
+        <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
+        Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
+        bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
+    ]]></string>
+
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Krei monujon - Ledger</h1>
+        <p>Do vi volas retrovi vian monujon de via Ledger Nano S aparato.</p>
+        <p>Viaj sekretaj ŝlosiloj ne forlasos la Ledger-aparaton, do ĝi estu enkonektita ĉiufoje, kiam
+        vi volas atingi vian monujon.</p>
+        <p>Entajpu unikan monujnomon kaj pasvorton.
+        La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via Android-aparato. Uzu fortan
+        pasvorton - eĉ pli bone, uzu pasfrazon.</p>
+        <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
+        Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
+        bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
+    ]]></string>
+
+
+  <string name="help_create_keys"><![CDATA[
+        <h1>Krei monujon - Ŝlosiloj</h1>
+        <p>Se vi restaŭras vian monujon per viaj ŝlosiloj!</p>
+        <p>Entajpu unikan monujnomon kaj pasvorton.
+        La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via Android-aparato. Uzu fortan
+        pasvorton - eĉ pli bone, uzu pasfrazon.</p>
+        <p>Entajpu vian Monero-adreson en la kamp \"Public Address\" kaj plenigu \"Vida ŝlosilo\" kaj \"Elspezŝlosilo\".</p>
+        <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
+        Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
+        bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Krei monujon - nurvida</h1>
+        <p>Se vi nur volas sekvi transakciojn kiuj alvenas en la monujon!</p>
+        <p>Entajpu unikan monujnomon kaj pasvorton.
+        La pasvorto estas uzita por sekurigi la datumojn restaŭrasde via monujo sur via Android-aparato. Uzu fortan
+        pasvorton - eĉ pli bone, uzu pasfrazon.</p>
+        <p>Entajpu vian Monero-adreson en la kampo \"Publika adreso\" kaj plenigu \"Vida ŝlosilo\".</p>
+        <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
+        Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
+        bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Monujdetaloj</h1>
+        <h2>Publika adreso</h2>
+        Via publika adreso estas kiel via banka kontonumero, kiun vi povas montri al iu ajn, kaj fidi
+        ke vi ne perdos viajn Monerojn. Per tiu adreso, homoj sendos Monerojn al via monujo.
+
+        <h2>Mnemonika semo</h2>
+        Tio estas la nura datumo, kiu bezoniĝas por restaŭri vian monujon en la estonteco, kaj reiĝi
+        estro de via mono! Estas gravege konservi ĝin private kaj sekrete, ĉar ĝi lasus <em>iun ajn</em>
+        forŝteli viajn Monerojn! Se vi je jam skribis ĝin surpapere, bonvolu fari tion tuj!
+
+        <h2>Pasvorto por retrovi monujdosierojn</h2>
+        Certiĝu ke vi skribas tiun pasvorton surpapere. Se vi restartas vian aparaton aŭ malinstalas
+        la aplikaĵon, vi bezonos ĝin por atingi vian monujon denove.<br/>
+
+        <h3>CrAzYpass</h3>
+        Se la ĉi-montrita pasvorto estas 52 ciferoj kaj literoj je kvaropoj, gratulojn!
+        Signifas ke viaj monujdosieroj nun sekuriĝas per 256-bita ŝlosilo, kiun kreis la sekurfunkcioj
+        de via parato, bazante sur la pasfrazo skribita de vi (ĉu ĵus kreite aŭ ĉu nur ŝanĝite).
+        Tiu afero igas la monujon treege malfacile kodrompebla!<br/>
+        Tiu funkcio estas deviga por ĉiuj nove kreitaj monujoj.
+
+        <h3>Malnova pasvorto</h3>
+        Se vi vidas vian pasfrazon ĉi tie, signifas ke viaj monujdosieroj ne tiom sekuras kiel uzante
+        CrAzYpass. Por solvi tion, simple elektu \"Ŝanĝi pasfrazon\" el la menuo. Per tiu nova pasfrazo
+        (kiu ja povas esti la sama kiel antaŭe) la aplikaĵo kreos iun CrAzYpass por vi, kaj sekurigos
+        viajn monujdosierojn per ĝi. Skribu ĝin surpapere!
+
+        <h3>CrAzYpass-monujoj</h3>
+        Se vi iam bezonas reinstali Monerujon (ekz. post restartigo de via telefono aŭ ŝanĝo de telefono)
+        aŭ se vi intencas uzi viajn monujdosierojn kun alia aparato aŭ komputilo, vi devos uzi tiun
+        Restaŭrpasvorton por atingi vian monujon denove.<br/>
+        Elektante \"Ŝanĝi pasfrazon\" el la menuo, vi povos entajpi alian pasfrazon. Atentu pri tio
+        ke nova Restaŭrpasvorto kreiĝos. Srkibu ĝin surpapere!
+
+        <h2>Vida ŝlosilo</h2>
+        Via vida ŝlosilo uzeblas por sekvi transakciojn venantajn al via monujo, sen permesigi
+        elspezon de la mono troviĝanta en via monujo.
+
+        <h2>Elspezŝlosilo</h2>
+        Via elspezŝlosilo ebligas ĉiun ajn elspezi la Monerojn ligitajn kun via monujo, do ne montru
+        ĝin al iu ajn, konservu ĝin sekure, kiel vian Mnemonikan Semon.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Listo de monujoj</h1>
+
+        <h2>Nodo</h2>
+        <p>Monerujo uzas foran nodon por komuniki kun la Monero-Reto sen elŝuti kaj konservi kopion
+        de la tuta blokĉeno. Vi povas trovi liston de popularaj foraj nodoj, aŭ lerni kiel starigi
+        vian propran foran nodon, tie : https://moneroworld.com/</p>
+        <p>Monerujo estas jam antaŭagordita por kelkaj foraj nodoj. Ĝi memoros la kvin laste uzitajn
+        nodojn. </p>
+
+        <h2>Monujoj</h2>
+        <p>Jen viaj monujoj. Ili troviĝas en la <tt>monerujo</tt>dosierujo, en la interna memorilo de
+        via aparato. Vi povas uzi dosieran foliumilon por vidi ilin. Vi devus regule sekurkopii
+        tiun dosierujon, kaze de eksplodo aŭ ŝtelo de via aparato.</p>
+        <p>Elektu monujon por malfermi ĝin, aŭ premu la \"+\" por krei novan.
+        Aŭ elektu iun el tiuj monuj-operacioj:</p>
+
+        <h3>Detaloj</h3>
+        <p>Montras la monujdetalojn, semon kaj ŝlosilojn.</p>
+
+        <h3>Ricevi</h3>
+        <p>Kreas QR-kodon por ricevi Monerojn.</p>
+
+        <h3>Renomi</h3>
+        <p>Renomas la monujon. Sekurkopioj ne renomiĝos.</p>
+
+        <h3>Sekurkopio</h3>
+        <p> Kreas kopion de la monujo en la <tt>sekurkopioj</tt>-dosierujo en la <tt>monerujo</tt>,
+        anstataŭigante antaŭajn kopiojn tie.</p>
+
+        <h3>Arkivo</h3>
+        <p>Kreas sekurkopion kaj forviŝas la monujon poste. La kopio restos en la
+        <tt>sekurkopioj</tt>-dosierujo. Se vi ne plu bezonas viajn sekurkopiojn, vi devus forviŝi ilin
+        per dosiera foliumilo, aŭ sekure forviŝi la aplikaĵon.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Transakciaj detaloj</h1>
+        <h2>Destino</h2>
+        Jen la publika adreso de la monujo al kiu vi sendas Monerojn.
+
+        <h2>Paga ID</h2>
+        Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
+        privata. Ekzemple, tio permesas al komercisto kunligi vian transakcion kun varo kiun vi aĉetis.
+
+        <h2>Transakcia ID</h2>
+        Tio identigas vian transakcion, vi povas uzi ĝin por sekvi vian tro daŭran transakction ĉe
+        Monera blokĉen-esplorilo, kiel <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+
+        <h2>Transakcia ŝlosilo</h2>
+        Tio estas la privata ŝlosilo de la transakcio, vi konservu ĝin sekrete. Se iu triulo vidos
+        ĝin, li malkovros kiun subskribon estas via en unu ringo, tiel malprivatigante vian
+        transakcion.
+        <h2>Bloko</h2>
+        Jen la bloko en kiu via transakcio enskribiĝis.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Sendi</h1>
+        <h2>Adreso de la ricevonto</h2>
+        Jen la publika adreso de la monujo al kiu vi sendas Monerojn. Vi povas kopii tion el via
+        tondujo, skani QR-kodo, aŭ mane entajpi ĝin. Kontrolu ĝin trifoje por certiĝi ke vi ne sendas
+        monon al malĝusta adreso.</p>
+        <p>Aldone al tio, vi ankaŭ povas uzi
+        <ul>
+            <li>iun OpenAlias por XMR aŭ BTC</li>
+            <li>bitmonan-adreson (BTC)<li>
+            <li>bitmonan pag-URI (inkluzive BIP70 kiel bitpay)</li>
+        </ul>
+        <h2>Paga ID</h2>
+        <p>Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
+        privata. Ekzemple, tio ebligas komercon kunligi vian transakcion kun varo kiun vi aĉetis.</p>
+
+        <h1>Sendi BTC</h1>
+
+        <h2>XMR.TO</h2>
+        <p>XMR.TO estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
+        https://xmr.to kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun XMR.TO kaj ne
+        kapablas helpi vin kun ilia servo.</p>
+
+        <h2>Kurzo de XMR.TO<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la XMR.TO-servo. Ili inkludas la
+        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
+        noti ke tiu kurzo ĉiam ŝanĝiĝas. Vi ankaŭ vidos la limon ĝis kiu ĉiu BTC-transakcio pleniĝos
+        tuj, sen atendi XMR-konfirmojn (vidu la informpaĝon de XMR.TO por pliaj detaloj). Bonvolu noti
+        ke XMR.TO ne postulas pliajn honorariojn. Ĉu ne mojose?</p>
+        <h2>Mendo al XMR.TO<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan XMR.TO-mendon. Tiu mendo validas nur dum
+        limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
+        eble malsama ol tiu antaŭe montrita.</p>
+
+        <h2>Sekreta ŝlosilo de XMR.TO<h2>
+        <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
+        XMR.TO-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de XMR.TO.</p>
+        <p>Bonvolu noti, ke tiu sekreta ŝlosilo validas nur 24 horoj post kiam via transakcio
+        komenciĝis!</p>
+        <h2>La retrokalkulo de XMR.TO!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de XMR.TO, reirante al la
+        antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>Elspezi Bitmonon</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO estas ekstera liveranto kiu aga kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
+        https://xmr.to kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun XMR.TO kaj ne
+        kapablas helpi vin kun ilia servo.</p>
+        <h2>Kurzo de XMR.TO<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la XMR.TO-servo. Ili inkludas la
+        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
+        noti ke tiu kurzo ĉiam ŝanĝiĝas. Vi ankaŭ vidos la limon ĝis kiu ĉiu BTC-transakcio pleniĝos
+        tuj, sen atendi XMR-konfirmojn (vidu la informpaĝon de XMR.TO por pliaj detaloj). Bonvolu noti
+        ke XMR.TO ne postulas pliajn honorariojn. Ĉu ne mojose?</p>
+        <h2>Mendo al XMR.TO<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan XMR.TO-mendon. Tiu mendo validas nur dum
+        limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
+        eble malsama de tiu antaŭe montrita.</p>
+
+        <h2>Sekreta ŝlosilo de XMR.TO<h2>
+        <p>Ĉar Monerujo nur traktas la Monero-parton de via transakcio, vi uzu la sekretan
+        XMR.TO-ŝlosilon por sekvi la Bitmono-flankon de via mendo sur la hejmpaĝo de XMR.TO.</p>
+        <p>Bonvolu noti, ke tiu sekreta ŝlosilo validas nur dum 24 horoj post kiam via transakcio
+        komenciĝis!</p>
+        <h2>La retrokalkulo de XMR.TO!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan kurzproponon de XMR.TO, reirante al la
+        antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>La monujo</h1>
+        <h2>Street Mode</h2>
+        <p>Strata moduso enŝaltiĝas/malŝaltiĝas en la menuo aŭ ĉe la bildeto de la vizaĝo de Gunther.
+        En tiu moduso, via saldo ne montriĝos, sur neniu ekrano, tiel vi povas sekure uzi vian
+        monujon surstrate, trinkeje, aŭ ie publike. Antaŭaj transakcioj ankaŭ kaŝiĝas. Nova
+        transakcioj montriĝos, til vi povos vidi ke vi sendis/ricevis dolĉajn Monerojn!</p>
+
+        <h2>Skanado</h2>
+        Ĉar Monero ŝatas privatumi, je ĉiu starto la monujo devas skani la blokĉenon por vidi ĉu
+        novaj Moneroj sendiĝis al via monujo, kaj via aparato memoras nur la informojn kiuj apartenas
+        al via monujo. Povas daŭri iom da tempo fojfoje, des pli se vi ne sinkronizis de longa tempo.
+        <h2>La saldo</h2>
+        <p><b>Helpon! La saldo de mia monujo malaperis aŭ ne konfirmiĝis!</b><br/>
+        Ne paniku! Kiam vi sendas monon al via monujo, iom el via saldo maldaŭre montriĝos nekonfirmite.
+        Tio okazas kiel rezulto de la maniero laŭ kiu Monero sendiĝas sur la blokĉeno, kaj
+        kiel \"restmono\" traktiĝas.
+        Legu pli pri restmono tie: https://getmonero.org/resources/moneropedia/change.html
+        <h2>Transakcia listo</h2>
+        <p>Listo de la transakcioj de la monujo. En vidaj monujoj, nur la envenaj transakcioj montriĝas.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nodoj</h1>
+        <h2>Resumo</h2>
+        <p>Aktualigu la liston de nodoj tirante suben kaj aldonu legosignojn al nodoj por rajtigi
+        Monerujon elekti la plej bonan por vi!</p>
+
+        <h2>Kio estas nodo?</h2>
+        <p>Monerujo uzas foran nodon (kelkfoje nomata \"demono\") por komuniki kun la Monero-reto sen
+        elŝuti la tutan blokĉenon kaj gardi kopion de ĝi.</p>
+
+        <h2>Listo de nodoj</h2>
+        <p>Se la listo malplenas, vi povas mane aldoni novajn nodojn, aŭ lasi Monerujon skani la reton
+        por vi. Aŭ ambaŭ. Legu pli&#8230;</p>
+        <p>La listo de nodoj montras ĉiujn konatajn nodojn. Aldone, la tempindiko de la bloko kiu plej
+        laste koniĝis de ĉiu nodo estas  montrita sub la nodnomo. Apud ĉiu nodo estas bildeto kiu simbolas
+        la respond-sintenon de ĝi (indikilo de la postulinda konekt-nivelo).</p>
+        <p>Ĉiu nodo de la listo povas markiĝi por pli posta uzo. Nodoj kiuj ne markiĝas, forgesiĝos.<p>
+        <p>Ĉiam kiam uzite, Monerujo elektos la plej taŭgan markitan nodon.
+        Tio okazas kontrolante la blokaltecon (kiom ĝisdata estas la nodo?) kaj la respond-sintenon (kiom
+        rapide respondas la nodon?).<p>
+        <p>La listo estas ordigita laŭ tiuj ecoj, do la plej supra nodo uziĝos de Monerujo. La plej subaj
+        nodoj estas ege malrapidaj aŭ nedisponaj.</p>
+
+        <h2>Aldoni nodon</h2>
+        <p>Post tuŝi la &quot;Aldoni Nodon&quot;-butono ĉi-sube, vi devos entajpi la detalojn de la nodo
+        en la sekva formularo.
+        La &quot;Adreso&quot; estas la nomo de la gastiganto aŭ IP-adreso de la nodo - estas la nura
+        deviga entajpo.
+        Entajpu la &quot;Pordont&quot; se la nodo funkcias je nedefaŭlta pordo (ekz. 18089).
+        Vi opcie povas nomi la nodon, tiel ke vi poste rekonu ĝin pli facile.
+        Iuj nodoj postulas ensalutilojn (uzantonomon kaj pasvorton) por uziĝi. Entajpu ilin en la
+        taŭgaj kampoj. Nun vi povas &quot;Testi&quot; tiujn agordojn.
+        La &quot;Testrezulto&quot; aperigos la blokaltecon, la responddaŭron kaj la uzitan IP-adreson.
+        La rezulto eble estos eraro - plej ofte ĉar la provizita nomo de gastiganto ne atingeblas sufiĉe
+        rapide, aŭ ĉar la ensalutiloj ne kongruas.
+        Ankaŭ povas esti ke la kombinaĵo gastigantonomo/pordo ne indikas ekzistantan nodon de Monero!
+        Post la sukceso de la testo (neniu eraro) - vi povas premi &quot;OK&quot; por konservi tiun nodon.</p>
+
+        <h2>Serĉi nodojn</h2>
+        <p>Vi povas aldone skani la reton, serĉante nodojn. Monerujo komencos la skanadon je la pordo 18089.
+        Ĝi komence petos viajn markitajn nodojn je aliaj partoprenantoj de la P2P-reto,
+        kaj poste petos tiujn partoprenantoj je iliaj aliaj konektitaj partoprenantojn,
+        kaj tiel plu.
+        Se vi ne markis nodojn (aŭ se ili ne respondas pri iliaj konektoj), Monerujo direkte petos la
+        pranodojn konservitajn en la kerno de Monero. La skanado haltos kiam 10 foraj nodoj estos trovitaj.</p>
+    ]]></string>
+</resources>
