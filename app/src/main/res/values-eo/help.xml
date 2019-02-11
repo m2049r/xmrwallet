@@ -311,4 +311,17 @@
         Se vi ne markis nodojn (aŭ se ili ne respondas pri iliaj konektoj), Monerujo direkte petos la
         pranodojn konservitajn en la kerno de Monero. La skanado haltos kiam 10 foraj nodoj estos trovitaj.</p>
     ]]></string>
+
+    <string name="help_uri"><![CDATA[
+        <h1>Using a payment link</h1>
+        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <p>
+        1. Open the wallet you want to spend from<br>
+        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
+        3. Touch the "Give" button
+        </p>
+        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+    ]]></string>
+
+    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>

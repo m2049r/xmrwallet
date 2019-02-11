@@ -38,15 +38,16 @@ import android.widget.EditText;
 import com.m2049r.xmrwallet.OnBackPressedListener;
 import com.m2049r.xmrwallet.OnUriScannedListener;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.WalletActivity;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.Notice;
-import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -103,6 +104,14 @@ public class SendFragment extends Fragment
     private Button bDone;
 
     static private int MAX_FALLBACK = Integer.MAX_VALUE;
+
+    public static SendFragment newInstance(String uri) {
+        SendFragment f = new SendFragment();
+        Bundle args = new Bundle();
+        args.putString(WalletActivity.REQUEST_URI, uri);
+        f.setArguments(args);
+        return f;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -186,6 +195,16 @@ public class SendFragment extends Fragment
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());
+
+        Bundle args = getArguments();
+        if (args != null) {
+            String uri = args.getString(WalletActivity.REQUEST_URI);
+            Timber.d("URI: %s", uri);
+            if (uri != null) {
+                barcodeData = BarcodeData.fromQrCode(uri);
+                Timber.d("barcodeData: %s", barcodeData != null ? barcodeData.toString() : "null");
+            }
+        }
 
         return view;
     }
