@@ -224,4 +224,17 @@
         如果你沒有任何書籤節點 (或是書籤節點無法提供它們的連接清單)，Monerujo 將會直接從 Monero 內建的種子節點取得清單。
         這個掃描功能將會在總共可用節點的數量達到十個後停止。</p>
     ]]></string>
+
+    <string name="help_uri"><![CDATA[
+        <h1>Using a payment link</h1>
+        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <p>
+        1. Open the wallet you want to spend from<br>
+        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
+        3. Touch the "Give" button
+        </p>
+        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+    ]]></string>
+
+    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>

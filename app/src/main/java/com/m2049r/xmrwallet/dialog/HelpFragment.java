@@ -67,7 +67,7 @@ public class HelpFragment extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
-        builder.setNegativeButton(R.string.about_close,
+        builder.setNegativeButton(R.string.help_ok,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {

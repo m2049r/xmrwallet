@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
@@ -59,7 +60,6 @@ import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
-import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -81,6 +81,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     public static final String REQUEST_PW = "pw";
     public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
     public static final String REQUEST_STREETMODE = "streetmode";
+    public static final String REQUEST_URI = "uri";
 
     private NavigationView accountsView;
     private DrawerLayout drawer;
@@ -91,6 +92,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     private boolean requestStreetMode = false;
 
     private String password;
+
+    private String uri = null;
 
     private long streetMode = 0;
 
@@ -191,6 +194,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             // we can set the streetmode height AFTER opening the wallet
             requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
             password = extras.getString(REQUEST_PW);
+            uri = extras.getString(REQUEST_URI);
             connectWalletService(walletId, password);
         } else {
             finish();
@@ -512,7 +516,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onSendRequest() {
-        replaceFragment(new SendFragment(), null, null);
+        replaceFragment(SendFragment.newInstance(uri), null, null);
+        uri = null; // only use uri once
     }
 
     @Override
