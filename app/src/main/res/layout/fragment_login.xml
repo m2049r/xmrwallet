@@ -79,9 +79,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:padding="12dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
+                android:padding="12dp"
                 android:src="@drawable/ic_search_orange_24dp" />
         </RelativeLayout>
 
@@ -104,18 +104,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ScrollView
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/ivGunther"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
-
-                <ImageView
-                    android:id="@+id/ivGunther"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:padding="48dp" />
-            </ScrollView>
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:padding="48dp" />
 
             <android.support.v7.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/list"
