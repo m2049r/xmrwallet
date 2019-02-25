@@ -68,5 +68,15 @@
             android:description="@string/service_description"
             android:exported="false"
             android:label="Monero Wallet Service" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.m2049r.xmrwallet.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 </manifest>

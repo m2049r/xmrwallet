@@ -17,19 +17,28 @@
 package com.m2049r.xmrwallet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -56,6 +65,9 @@ import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.ExchangeView;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,8 +81,8 @@ public class ReceiveFragment extends Fragment {
     private TextInputLayout etNotes;
     private ExchangeView evAmount;
     private TextView tvQrCode;
-    private ImageView qrCode;
-    private ImageView qrCodeFull;
+    private ImageView ivQrCode;
+    private ImageView ivQrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
     private Button bSubaddress;
@@ -97,9 +109,9 @@ public class ReceiveFragment extends Fragment {
         tvAddress = view.findViewById(R.id.tvAddress);
         etNotes = view.findViewById(R.id.etNotes);
         evAmount = view.findViewById(R.id.evAmount);
-        qrCode = view.findViewById(R.id.qrCode);
+        ivQrCode = view.findViewById(R.id.qrCode);
         tvQrCode = view.findViewById(R.id.tvQrCode);
-        qrCodeFull = view.findViewById(R.id.qrCodeFull);
+        ivQrCodeFull = view.findViewById(R.id.qrCodeFull);
         etDummy = view.findViewById(R.id.etDummy);
         bCopyAddress = view.findViewById(R.id.bCopyAddress);
         bSubaddress = view.findViewById(R.id.bSubaddress);
@@ -178,25 +190,25 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        qrCode.setOnClickListener(new View.OnClickListener() {
+        ivQrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());
                 etDummy.requestFocus();
                 if (qrValid) {
-                    qrCodeFull.setImageBitmap(((BitmapDrawable) qrCode.getDrawable()).getBitmap());
-                    qrCodeFull.setVisibility(View.VISIBLE);
+                    ivQrCodeFull.setImageBitmap(((BitmapDrawable) ivQrCode.getDrawable()).getBitmap());
+                    ivQrCodeFull.setVisibility(View.VISIBLE);
                 } else {
                     evAmount.doExchange();
                 }
             }
         });
 
-        qrCodeFull.setOnClickListener(new View.OnClickListener() {
+        ivQrCodeFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qrCodeFull.setImageBitmap(null);
-                qrCodeFull.setVisibility(View.GONE);
+                ivQrCodeFull.setImageBitmap(null);
+                ivQrCodeFull.setVisibility(View.GONE);
             }
         });
 
@@ -228,6 +240,81 @@ public class ReceiveFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    private ShareActionProvider shareActionProvider;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, final MenuInflater inflater) {
+        inflater.inflate(R.menu.receive_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+
+        // Fetch and store ShareActionProvider
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+
+        shareActionProvider.setOnShareTargetSelectedListener(new ShareActionProvider.OnShareTargetSelectedListener() {
+            @Override
+            public boolean onShareTargetSelected(ShareActionProvider shareActionProvider, Intent intent) {
+                saveQrCode(); // save it only if we need it
+                return false;
+            }
+        });
+    }
+
+    private void setShareIntent() {
+        if (shareActionProvider != null) {
+            if (qrValid) {
+                shareActionProvider.setShareIntent(getShareIntent());
+            } else {
+                shareActionProvider.setShareIntent(null);
+            }
+        }
+    }
+
+    private void saveQrCode() {
+        if (!qrValid) throw new IllegalStateException("trying to save null qr code!");
+
+        File cachePath = new File(getActivity().getCacheDir(), "images");
+        if (!cachePath.exists())
+            if (!cachePath.mkdirs()) throw new IllegalStateException("cannot create images folder");
+        File png = new File(cachePath, "QR.png");
+        try {
+            FileOutputStream stream = new FileOutputStream(png);
+            Bitmap qrBitmap = ((BitmapDrawable) ivQrCode.getDrawable()).getBitmap();
+            qrBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+        } catch (IOException ex) {
+            Timber.e(ex);
+            // make sure we don't share an old qr code
+            if (!png.delete()) throw new IllegalStateException("cannot delete old qr code");
+            // if we manage to delete it, the URI points to nothing and the user gets a toast with the error
+        }
+    }
+
+    private Intent getShareIntent() {
+        File imagePath = new File(getActivity().getCacheDir(), "images");
+        File png = new File(imagePath, "QR.png");
+        Uri contentUri = FileProvider.getUriForFile(getActivity(),
+                "com.m2049r.xmrwallet.fileprovider", png);
+        if (contentUri != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
+            shareIntent.setDataAndType(contentUri, getActivity().getContentResolver().getType(contentUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, bcData.getUriString());
+            return shareIntent;
+        }
+        return null;
+    }
+
     void enableSubaddressButton(boolean enable) {
         bSubaddress.setEnabled(enable);
         if (enable) {
@@ -242,23 +329,23 @@ public class ReceiveFragment extends Fragment {
         Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
     }
 
-    boolean qrValid = true;
+    private boolean qrValid = false;
 
     void clearQR() {
         if (qrValid) {
-            qrCode.setImageBitmap(null);
+            ivQrCode.setImageBitmap(null);
             qrValid = false;
+            setShareIntent();
             if (isLoaded)
                 tvQrCode.setVisibility(View.VISIBLE);
         }
     }
 
     void setQR(Bitmap qr) {
-        qrCode.setImageBitmap(qr);
+        ivQrCode.setImageBitmap(qr);
         qrValid = true;
+        setShareIntent();
         tvQrCode.setVisibility(View.GONE);
-        Helper.hideKeyboard(getActivity());
-        etDummy.requestFocus();
     }
 
     @Override
@@ -392,7 +479,7 @@ public class ReceiveFragment extends Fragment {
             return;
         }
         bcData = new BarcodeData(BarcodeData.Asset.XMR, address, null, notes, xmrAmount);
-        int size = Math.min(qrCode.getHeight(), qrCode.getWidth());
+        int size = Math.max(ivQrCode.getWidth(), ivQrCode.getHeight());
         Bitmap qr = generate(bcData.getUriString(), size, size);
         if (qr != null) {
             setQR(qr);
@@ -422,8 +509,8 @@ public class ReceiveFragment extends Fragment {
             Bitmap bitmap = Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.RGB_565);
             bitmap = addLogo(bitmap);
             return bitmap;
-        } catch (WriterException e) {
-            e.printStackTrace();
+        } catch (WriterException ex) {
+            Timber.e(ex);
         }
         return null;
     }
