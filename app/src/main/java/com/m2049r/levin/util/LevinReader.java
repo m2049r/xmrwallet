@@ -173,10 +173,10 @@ public class LevinReader {
 
     // this should be in LittleEndianDataInputStream because it has little
     // endian logic
-    private long readRest(int firstByte, int bytes) throws IOException {
+    private long readRest(final int firstByte, final int bytes) throws IOException {
         long result = firstByte;
-        for (int i = 0; i < bytes; i++) {
-            result = result + (in.readUnsignedByte() << 8);
+        for (int i = 1; i < bytes + 1; i++) {
+            result = result + (((long) in.readUnsignedByte()) << (8 * i));
         }
         return result;
     }
