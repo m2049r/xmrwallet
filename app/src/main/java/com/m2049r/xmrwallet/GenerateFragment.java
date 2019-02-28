@@ -95,7 +95,6 @@ public class GenerateFragment extends Fragment {
         etWalletRestoreHeight = view.findViewById(R.id.etWalletRestoreHeight);
         bGenerate = view.findViewById(R.id.bGenerate);
 
-        etWalletMnemonic.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
         etWalletAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etWalletViewKey.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etWalletSpendKey.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
