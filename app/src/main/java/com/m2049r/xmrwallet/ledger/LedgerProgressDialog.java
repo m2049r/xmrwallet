@@ -6,7 +6,6 @@ import android.os.Looper;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.dialog.ProgressDialog;
-import com.m2049r.xmrwallet.model.WalletManager;
 
 import timber.log.Timber;
 

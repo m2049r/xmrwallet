@@ -22,11 +22,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 
 import java.util.Locale;
@@ -78,6 +78,11 @@ public class ProgressDialog extends AlertDialog {
         }
 
         super.onCreate(savedInstanceState);
+
+        // set FLAG_SECURE to prevent screenshots in Release Mode
+        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     public void setProgress(int value, int max) {
