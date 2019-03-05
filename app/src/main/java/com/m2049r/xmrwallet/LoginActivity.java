@@ -1361,30 +1361,31 @@ public class LoginActivity extends BaseActivity
     };
 
     private void connectLedger(UsbManager usbManager, final UsbDevice usbDevice) {
-        try {
-            Ledger.connect(usbManager, usbDevice);
-            registerDetachReceiver();
-            onLedgerAction();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(LoginActivity.this,
-                            getString(R.string.toast_ledger_attached, usbDevice.getProductName()),
-                            Toast.LENGTH_SHORT)
-                            .show();
-                }
-            });
-        } catch (IOException ex) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(LoginActivity.this,
-                            getString(R.string.open_wallet_ledger_missing),
-                            Toast.LENGTH_SHORT)
-                            .show();
-                }
-            });
-        }
+        if (Ledger.ENABLED)
+            try {
+                Ledger.connect(usbManager, usbDevice);
+                registerDetachReceiver();
+                onLedgerAction();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.toast_ledger_attached, usbDevice.getProductName()),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+            } catch (IOException ex) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.open_wallet_ledger_missing),
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+            }
     }
 
     @Override
