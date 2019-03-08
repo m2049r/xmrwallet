@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -45,6 +47,7 @@ import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.RestoreHeight;
+import com.m2049r.xmrwallet.util.ledger.Monero;
 import com.m2049r.xmrwallet.widget.Toolbar;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
@@ -240,9 +243,7 @@ public class GenerateFragment extends Fragment {
                 }
             });
             etWalletAddress.setVisibility(View.VISIBLE);
-            etWalletAddress.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener()
-
-            {
+            etWalletAddress.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                             || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -274,9 +275,7 @@ public class GenerateFragment extends Fragment {
         }
         if (type.equals(TYPE_KEY)) {
             etWalletSpendKey.setVisibility(View.VISIBLE);
-            etWalletSpendKey.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener()
-
-            {
+            etWalletSpendKey.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                             || (actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -303,9 +302,7 @@ public class GenerateFragment extends Fragment {
                 }
             });
         }
-        bGenerate.setOnClickListener(new View.OnClickListener()
-
-        {
+        bGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());
@@ -615,5 +612,81 @@ public class GenerateFragment extends Fragment {
             default:
         }
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    AlertDialog ledgerDialog = null;
+
+    public void convertLedgerSeed() {
+        if (ledgerDialog != null) return;
+        final Activity activity = getActivity();
+        View promptsView = getLayoutInflater().inflate(R.layout.prompt_ledger_seed, null);
+        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(activity);
+        alertDialogBuilder.setView(promptsView);
+
+        final TextInputLayout etSeed = promptsView.findViewById(R.id.etSeed);
+        final TextInputLayout etPassphrase = promptsView.findViewById(R.id.etPassphrase);
+
+        etSeed.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (etSeed.getError() != null) {
+                    etSeed.setError(null);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+            }
+        });
+
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.label_ok), null)
+                .setNegativeButton(getString(R.string.label_cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Helper.hideKeyboardAlways(activity);
+                                etWalletMnemonic.getEditText().getText().clear();
+                                dialog.cancel();
+                                ledgerDialog = null;
+                            }
+                        });
+
+        ledgerDialog = alertDialogBuilder.create();
+
+        ledgerDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String ledgerSeed = etSeed.getEditText().getText().toString();
+                        String ledgerPassphrase = etPassphrase.getEditText().getText().toString();
+                        String moneroSeed = Monero.convert(ledgerSeed, ledgerPassphrase);
+                        if (moneroSeed != null) {
+                            etWalletMnemonic.getEditText().setText(moneroSeed);
+                            ledgerDialog.dismiss();
+                            ledgerDialog = null;
+                        } else {
+                            etSeed.setError(getString(R.string.bad_ledger_seed));
+                        }
+                    }
+                });
+            }
+        });
+
+        // set FLAG_SECURE to prevent screenshots in Release Mode
+        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+            ledgerDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        }
+
+        ledgerDialog.show();
     }
 }

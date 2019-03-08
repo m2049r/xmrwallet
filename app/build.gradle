@@ -115,6 +115,10 @@ dependencies {
     implementation 'org.slf4j:slf4j-nop:1.7.25'
     implementation 'com.github.brnunes:swipeablerecyclerview:1.0.2'
 
+    // https://mvnrepository.com/artifact/com.github.aelstad/keccakj
+    implementation 'com.github.aelstad:keccakj:1.1.0'
+
+
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okHttpVersion"
