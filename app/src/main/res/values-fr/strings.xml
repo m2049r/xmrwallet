@@ -367,22 +367,22 @@
     <string name="node_nobookmark">%1$d meilleurs nœuds mis en favoris automatiquement</string>
     <string name="label_test">Tester</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_resolve_bip70">Résolution de l\'URI de Paiement&#8230;</string>
+    <string name="send_address_not_bip70">Résolution de l\'URI de Paiement impossible</string>
+    <string name="send_address_bip70">URI de Paiement Résolue &#x2714;</string>
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Destinataire</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TO hors ligne - réessayer ultérieurement</string>
+    <string name="xmrto_error_004">Montant BTC hors limites</string>
+    <string name="xmrto_error_010">URL de Paiement invalide ou périmée</string>
+    <string name="xmrto_error_012">Trop de requêtes</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">TOTALITÉ!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Convertir mnémonique Ledger</string>
+    <string name="prompt_ledger_seed">Phrase mnémonique Ledger</string>
+    <string name="prompt_ledger_phrase">Mot de passe Ledger (optionnel)</string>
+    <string name="bad_ledger_seed">Phrase mnémonique Ledger invalide !</string>
+    <string name="prompt_ledger_seed_warn">Saisir votre phrase mnémonique Ledger ici est un risque majeur de sécurité !</string>
 </resources>
