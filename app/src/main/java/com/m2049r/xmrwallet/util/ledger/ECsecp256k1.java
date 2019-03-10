@@ -28,6 +28,7 @@ import java.security.spec.ECPoint;
 
 public class ECsecp256k1 {
     static private final BigInteger TWO = new BigInteger("2");
+    static private final BigInteger THREE = new BigInteger("3");
     static public final BigInteger p = new BigInteger("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", 16);
     static public final BigInteger a = new BigInteger("0000000000000000000000000000000000000000000000000000000000000000", 16);
     static public final BigInteger b = new BigInteger("0000000000000000000000000000000000000000000000000000000000000007", 16);
@@ -61,19 +62,18 @@ public class ECsecp256k1 {
             return s;
         else if (s.equals(ECPoint.POINT_INFINITY))
             return r;
-        BigInteger slope = (r.getAffineY().subtract(s.getAffineY())).multiply(r.getAffineX().subtract(s.getAffineX()).modInverse(p)).mod(p);
+        BigInteger slope = (r.getAffineY().subtract(s.getAffineY()))
+                .multiply(r.getAffineX().subtract(s.getAffineX()).modInverse(p));
         BigInteger Xout = (slope.modPow(TWO, p).subtract(r.getAffineX())).subtract(s.getAffineX()).mod(p);
-        BigInteger Yout = s.getAffineY().negate().mod(p);
-        Yout = Yout.add(slope.multiply(s.getAffineX().subtract(Xout))).mod(p);
+        BigInteger Yout = s.getAffineY().negate().add(slope.multiply(s.getAffineX().subtract(Xout))).mod(p);
         return new ECPoint(Xout, Yout);
     }
 
     public static ECPoint doublePoint(ECPoint r) {
         if (r.equals(ECPoint.POINT_INFINITY))
             return r;
-        BigInteger slope = (r.getAffineX().pow(2)).multiply(new BigInteger("3"));
-        slope = slope.add(a);
-        slope = slope.multiply((r.getAffineY().multiply(TWO)).modInverse(p));
+        BigInteger slope = (r.getAffineX().pow(2)).multiply(THREE).add(a)
+                .multiply((r.getAffineY().multiply(TWO)).modInverse(p));
         BigInteger Xout = slope.pow(2).subtract(r.getAffineX().multiply(TWO)).mod(p);
         BigInteger Yout = (r.getAffineY().negate()).add(slope.multiply(r.getAffineX().subtract(Xout))).mod(p);
         return new ECPoint(Xout, Yout);
