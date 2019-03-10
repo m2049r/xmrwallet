@@ -367,111 +367,107 @@ public class TagUtil {
         }
     }
 
-    /**
-     * @param intent     inttent
-     * @param newKey     new Key to set
-     * @param isCheckSum true or false
-     * @return boolean
-     * @throws Exception Exception
-     */
-    public boolean setNewKey(Intent intent, String newKey, boolean isCheckSum) throws Exception {
-        if (newKey != null && newKey.length() == 32) {
-            if (tagType == TagUtil.TAGUTIL_NfcA)
-                return setNewKey_NfcA(intent, newKey, isCheckSum);
-            else
-                return false;
-        } else
-            throw new Exception("key must be 32 hex string");
-    }
-
-
-    private boolean setNewKey_NfcA(Intent intent, String newKey, boolean isCheckSum) throws Exception {
+    public boolean writeNewKey(Intent intent, String newKey, boolean isCheckSum) throws Exception {
         boolean result = false;
         String action = intent.getAction();
         if (isSupportedAction(action)) {
             try {
-                if (authorised) {
+                if(authorised){
                     String dataString = newKey;
+                    //判断输入的数据
 
                     byte[] dataX = hexStringToBytes(dataString);
                     byte[] dataY = new byte[16];
-                    for (int i = 0; i < 16; i++) {
-                        dataY[i] = dataX[15 - i];
-                        System.out.println("mi" + dataY[i]);
+                    for(int i=0;i<16;i++){
+                        dataY[i] = dataX[15-i];
+                        System.out.println("mi"+dataY[i]);
                     }
                     byte[] data1 = new byte[6];
-                    byte[] data1WithCheckSum = new byte[8];
+                    byte[] data1WithCheckSum= new byte[8];
                     data1[0] = (byte) 0xA2;
-                    data1[1] = (byte) 0x2C;
+                    data1[1] = (byte) 0xF5;
                     System.arraycopy(dataY, 8, data1, 2, 4);
 
                     byte[] data2 = new byte[6];
-                    byte[] data2WithCheckSum = new byte[8];
+                    byte[] data2WithCheckSum= new byte[8];
                     data2[0] = (byte) 0xA2;
-                    data2[1] = (byte) 0x2D;
+                    data2[1] = (byte) 0xF6;
                     System.arraycopy(dataY, 12, data2, 2, 4);
 
                     byte[] data3 = new byte[6];
-                    byte[] data3WithCheckSum = new byte[8];
+                    byte[] data3WithCheckSum= new byte[8];
                     data3[0] = (byte) 0xA2;
-                    data3[1] = (byte) 0x2E;
+                    data3[1] = (byte) 0xF7;
                     System.arraycopy(dataY, 0, data3, 2, 4);
 
                     byte[] data4 = new byte[6];
-                    byte[] data4WithCheckSum = new byte[8];
+                    byte[] data4WithCheckSum= new byte[8];
                     data4[0] = (byte) 0xA2;
-                    data4[1] = (byte) 0x2F;
+                    data4[1] = (byte) 0xF8;
                     System.arraycopy(dataY, 4, data4, 2, 4);
 
-                    if (isCheckSum) {
+//						mfc.connect();
+//						accreditation(mfc,secretKeyDefault);//认证
+
+
+                    if(isCheckSum)
+                    {
                         byte[] checkSum = getCheckSum(data1);
-                        for (int i = 0; i < 6; i++)
-                            data1WithCheckSum[i] = data1[i];
-                        data1WithCheckSum[6] = checkSum[0];
-                        data1WithCheckSum[7] = checkSum[1];
-                        nfcA.transceive(data1WithCheckSum);
-                    } else
+                        for(int i=0;i<6;i++)
+                            data1WithCheckSum[i]=data1[i];
+                        data1WithCheckSum[6]=checkSum[0];
+                        data1WithCheckSum[7]=checkSum[1];
+                        nfcA.transceive(data1WithCheckSum);// 每次读出来的数据为4page的数据
+                    }
+                    else
                         nfcA.transceive(data1);
 
-                    if (isCheckSum) {
+                    if(isCheckSum)
+                    {
                         byte[] checkSum = getCheckSum(data2);
-                        for (int i = 0; i < 6; i++)
-                            data2WithCheckSum[i] = data2[i];
-                        data2WithCheckSum[6] = checkSum[0];
-                        data2WithCheckSum[7] = checkSum[1];
-                        nfcA.transceive(data2WithCheckSum);
-                    } else
+                        for(int i=0;i<6;i++)
+                            data2WithCheckSum[i]=data2[i];
+                        data2WithCheckSum[6]=checkSum[0];
+                        data2WithCheckSum[7]=checkSum[1];
+                        nfcA.transceive(data2WithCheckSum);// 每次读出来的数据为4page的数据
+                    }
+                    else
                         nfcA.transceive(data2);
 
-                    if (isCheckSum) {
+                    if(isCheckSum)
+                    {
                         byte[] checkSum = getCheckSum(data3);
-                        for (int i = 0; i < 6; i++)
-                            data3WithCheckSum[i] = data3[i];
-                        data3WithCheckSum[6] = checkSum[0];
-                        data3WithCheckSum[7] = checkSum[1];
-                        nfcA.transceive(data3WithCheckSum);
-                    } else
+                        for(int i=0;i<6;i++)
+                            data3WithCheckSum[i]=data3[i];
+                        data3WithCheckSum[6]=checkSum[0];
+                        data3WithCheckSum[7]=checkSum[1];
+                        nfcA.transceive(data3WithCheckSum);// 每次读出来的数据为4page的数据
+                    }
+                    else
                         nfcA.transceive(data3);
 
-                    if (isCheckSum) {
+                    if(isCheckSum)
+                    {
                         byte[] checkSum = getCheckSum(data4);
-                        for (int i = 0; i < 6; i++)
-                            data4WithCheckSum[i] = data4[i];
-                        data4WithCheckSum[6] = checkSum[0];
-                        data4WithCheckSum[7] = checkSum[1];
-                        nfcA.transceive(data4WithCheckSum);
-                    } else
+                        for(int i=0;i<6;i++)
+                            data4WithCheckSum[i]=data4[i];
+                        data4WithCheckSum[6]=checkSum[0];
+                        data4WithCheckSum[7]=checkSum[1];
+                        nfcA.transceive(data4WithCheckSum);// 每次读出来的数据为4page的数据
+                    }
+                    else
                         nfcA.transceive(data4);
                     result = true;
 
-                } else {
+                }else{
                     throw new AuthenticationException("please authenticate first!");
                 }
-            } catch (NumberFormatException e) {
-                throw new Exception("new key: " + newKey + " is not correct." + " key must be 32 hex chars");
+            }catch (NumberFormatException e) {
+                throw new Exception("new key: "+newKey+" is not correct." +" key must be 32 hex chars");
             } catch (Exception e) {
                 throw e;
             }
+
         }
         return result;
     }
