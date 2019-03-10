@@ -367,6 +367,14 @@ public class TagUtil {
         }
     }
 
+    /**
+     * set read/write key
+     * @param intent
+     * @param newKey      new key to set
+     * @param isCheckSum  add a checksum byte at the end of the command
+     * @return
+     * @throws Exception
+     */
     public boolean writeNewKey(Intent intent, String newKey, boolean isCheckSum) throws Exception {
         boolean result = false;
         String action = intent.getAction();
@@ -374,7 +382,6 @@ public class TagUtil {
             try {
                 if(authorised){
                     String dataString = newKey;
-                    //判断输入的数据
 
                     byte[] dataX = hexStringToBytes(dataString);
                     byte[] dataY = new byte[16];
@@ -406,10 +413,6 @@ public class TagUtil {
                     data4[1] = (byte) 0xF8;
                     System.arraycopy(dataY, 4, data4, 2, 4);
 
-//						mfc.connect();
-//						accreditation(mfc,secretKeyDefault);//认证
-
-
                     if(isCheckSum)
                     {
                         byte[] checkSum = getCheckSum(data1);
@@ -417,7 +420,7 @@ public class TagUtil {
                             data1WithCheckSum[i]=data1[i];
                         data1WithCheckSum[6]=checkSum[0];
                         data1WithCheckSum[7]=checkSum[1];
-                        nfcA.transceive(data1WithCheckSum);// 每次读出来的数据为4page的数据
+                        nfcA.transceive(data1WithCheckSum);// read 4 pages date
                     }
                     else
                         nfcA.transceive(data1);
@@ -429,7 +432,7 @@ public class TagUtil {
                             data2WithCheckSum[i]=data2[i];
                         data2WithCheckSum[6]=checkSum[0];
                         data2WithCheckSum[7]=checkSum[1];
-                        nfcA.transceive(data2WithCheckSum);// 每次读出来的数据为4page的数据
+                        nfcA.transceive(data2WithCheckSum);
                     }
                     else
                         nfcA.transceive(data2);
@@ -441,7 +444,7 @@ public class TagUtil {
                             data3WithCheckSum[i]=data3[i];
                         data3WithCheckSum[6]=checkSum[0];
                         data3WithCheckSum[7]=checkSum[1];
-                        nfcA.transceive(data3WithCheckSum);// 每次读出来的数据为4page的数据
+                        nfcA.transceive(data3WithCheckSum);
                     }
                     else
                         nfcA.transceive(data3);
@@ -453,7 +456,7 @@ public class TagUtil {
                             data4WithCheckSum[i]=data4[i];
                         data4WithCheckSum[6]=checkSum[0];
                         data4WithCheckSum[7]=checkSum[1];
-                        nfcA.transceive(data4WithCheckSum);// 每次读出来的数据为4page的数据
+                        nfcA.transceive(data4WithCheckSum);
                     }
                     else
                         nfcA.transceive(data4);
