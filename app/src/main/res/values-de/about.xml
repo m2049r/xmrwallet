@@ -17,7 +17,7 @@
         <h1>Datenschutzerklärung</h1>
         <p>Diese Seite informiert dich über unsere Richtlinien bezüglich der Sammlung,
         Nutzung und Weitergabe persönlicher Informationen, die wir von Nutzern unserer
-        App erhalten (monerujo: Monero Wallet).
+        App erhalten (monerujo: Monero-Wallet).
         </p>
         <p>Mit der Nutzung der App stimmst du der Erfassung und Nutzung von Informationen in
         Übereinstimmung mit dieser Erklärung zu.
@@ -29,21 +29,21 @@
 	von Transaktionen lokal gesammelt und verarbeitet und verschlüsselt in das Monero-Netzwerk übertragen.
         </p>
         <p>Andere persönliche Daten werden von der App nicht gesammelt.</p>
-        <p>Wenn du den Umrechner (optional) nutzt fragt Monerujo
+        <p>Wenn du den Umrechner (optional) nutzt, fragt Monerujo
 	den aktuellen Kurs über die öffentliche Schnittstelle von coinmarketcap.com ab.
         Siehe dir ihre Datenschutzerklärung unter https://coinmarketcap.com/privacy für
         Details darüber an, wie Daten in deinen Anfragen gesammelt werden.</p>
 	<p>Wenn du die App zum Bezahlen an BTC-Adressen verwendest, verwendest du den Dienst XMR.TO.
         Weitere Informationen findest du in den Datenschutzerklärung unter https://xmr.to/. 
-	Monerujo schickt dem Anbieter die BTC Zieladresse und den Betrag.
+	Monerujo schickt dem Anbieter die BTC-Zieladresse und den Betrag.
 	Deine IP-Adresse kann dabei aufgezeichnet werden.</p>
         <h2>App-Berechtigungen</h2>
         <ul>
-        <li>INTERNET : Verbinde zum Monero Netzwerk über eine Monero Daemon Node</li>
-        <li>READ_EXTERNAL_STORAGE : Liest die auf dem Gerät gespeicherten Wallet Dateien aus</li>
-        <li>WRITE_EXTERNAL_STORAGE : Schreibt Wallet Dateien auf dem Gerät</li>
+        <li>INTERNET : Verbinde zum Monero-Netzwerk über einen Monero-Hintergrunddienst-Node</li>
+        <li>READ_EXTERNAL_STORAGE : Liest die auf dem Gerät gespeicherten Wallet-Dateien aus</li>
+        <li>WRITE_EXTERNAL_STORAGE : Schreibt Wallet-Dateien auf dem Gerät</li>
         <li>WAKE_LOCK : Halte das Gerät während der Synchronisation wach</li>
-        <li>CAMERA : Scanne QR-Codes um Monero zu erhalten</li>
+        <li>CAMERA : Scanne QR-Codes, um Monero zu erhalten</li>
         </ul>
         <h2>Änderungen an dieser Datenschutzerklärung</h2>
         <p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren.
