@@ -333,53 +333,53 @@
     <string name="nfc_tag_read_success">Tag erfolgreich gelesen</string>
     <string name="nfc_tag_tap">NFC verfügbar!</string>
 
-    <string name="status_wallet_connect_wrongversion">###translation needed###Node version incompatible – please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Hintergrunddienst-Version des Nodes inkompatibel – bitte updaten!</string>
 
-    <string name="menu_info">Details</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">###translation needed###Street Mode</string>
+    <string name="menu_info">Zeige Geheimnisse!</string><!--Changed to: Show Secrets!-->
+    <string name="menu_streetmode">Straßenmodus</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
+    <string name="info_nodes_enabled">Node-o-matiC aktiviert – drücke für mehr Info.</string>
+    <string name="node_height">Letzter aktualisierter Block: %1$s</string>
     <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
+    <string name="node_name_hint">Node-Name (Optional)</string>
+    <string name="node_address_hint">Webadresse</string>
     <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_user_hint">Nutzername (Optional)</string>
+    <string name="node_pass_hint">Passwort (Optional)</string>
+    <string name="node_host_unresolved">Kann Webadresse nicht auflösen</string>
+    <string name="node_host_empty">Wir brauchen das!</string>
+    <string name="node_port_numeric">Muss eine Zahl sein</string>
+    <string name="node_port_range">Muss 1&#8211;65535 sein</string>
+    <string name="node_fab_add">Node hinzufügen</string>
+    <string name="node_refresh_hint">Tippe zum aktualisieren!</string>
+    <string name="node_test_error">VERBINDUNGSFEHLER %1$d</string>
+    <string name="node_general_error">VERBINDUNGSFEHLER</string>
+    <string name="node_auth_error">AUTHENTIFIZIERUNG FEHLGESCHLAGEN</string>
+    <string name="node_result_label">Testergebnis:</string>
+    <string name="node_result">Höhe: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Teste IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Warte bitte, bis die Suche abgeschlossen ist.</string>
+    <string name="node_create_hint">Tippe, um Nodes auszuwählen oder hinzuzufügen</string>
+    <string name="node_pull_hint">Füge manuell Nodes hinzu oder ziehe nach unten, um zu suchen</string>
+    <string name="node_scanning">Durchsuche Netzwerk&#8230;</string>
+    <string name="node_nobookmark">Beste %1$d Nodes automatisch vorgemerkt</string>
+    <string name="label_test">Testen</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_resolve_bip70">Löse Zahlungs-URI&#8230; auf</string>
+    <string name="send_address_not_bip70">Konnte Zahlungs-URI nicht auflösen</string>
+    <string name="send_address_bip70">Zahlungs-URI &#x2714; aufgelöst</string>
     <string name="send_address_hint">Empfänger</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TO nicht erreichbar – versuche es später nochmal</string>
+    <string name="xmrto_error_004">BTC-Betrag außerhalb des gültigen Bereiches</string>
+    <string name="xmrto_error_010">Ungültige oder veraltete Zahlungs-URL</string>
+    <string name="xmrto_error_012">Zu viele Anfragen</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">ALLES!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Konvertiere Ledger-Seed</string>
+    <string name="prompt_ledger_seed">Ledger-Seed-Wörter</string>
+    <string name="prompt_ledger_phrase">Ledger-Passphrase (optional)</string>
+    <string name="bad_ledger_seed">Ungültiger Ledger-Seed!</string>
+    <string name="prompt_ledger_seed_warn">Deinen Ledger-Seed hier einzugeben, stellt ein erhebliches Sicherheitsrisiko dar!</string>
 </resources>
