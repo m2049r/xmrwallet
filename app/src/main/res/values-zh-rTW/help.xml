@@ -226,14 +226,14 @@
     ]]></string>
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>你正在使用付款網址</h1>
+        <p>Monerujo 已經透過付款網址啟動。若要繼續發送資金，請依照下方所述進行操作：</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. 開啟欲發送資金之錢包<br>
+        2. 等待錢包完成同步，以及「發送」按鈕的出現<br>
+        3. 點擊「發送」按鈕
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>詳細的付款資訊將自動填入，請像其他交易一樣，仔細地檢查所填入的資料是否正確。</p>
     ]]></string>
 
     <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
