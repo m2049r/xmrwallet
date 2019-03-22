@@ -365,9 +365,9 @@
     <string name="node_nobookmark">Beste %1$d Nodes automatisch vorgemerkt</string>
     <string name="label_test">Testen</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Löse Zahlungs-URI&#8230; auf</string>
+    <string name="send_address_resolve_bip70">Löse Zahlungs-URI auf&#8230;</string>
     <string name="send_address_not_bip70">Konnte Zahlungs-URI nicht auflösen</string>
-    <string name="send_address_bip70">Zahlungs-URI &#x2714; aufgelöst</string>
+    <string name="send_address_bip70">Zahlungs-URI aufgelöst &#x2714;</string>
     <string name="send_address_hint">Empfänger</string>
 
     <string name="xmrto_error_001">XMR.TO nicht erreichbar – versuche es später nochmal</string>

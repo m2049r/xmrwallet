@@ -34,14 +34,14 @@
         Siehe dir ihre Datenschutzerklärung unter https://coinmarketcap.com/privacy für
         Details darüber an, wie Daten in deinen Anfragen gesammelt werden.</p>
 	<p>Wenn du die App zum Bezahlen an BTC-Adressen verwendest, verwendest du den Dienst XMR.TO.
-        Weitere Informationen findest du in den Datenschutzerklärung unter https://xmr.to/. 
+        Weitere Informationen findest du in der Datenschutzerklärung unter https://xmr.to/. 
 	Monerujo schickt dem Anbieter die BTC-Zieladresse und den Betrag.
 	Deine IP-Adresse kann dabei aufgezeichnet werden.</p>
         <h2>App-Berechtigungen</h2>
         <ul>
         <li>INTERNET : Verbinde zum Monero-Netzwerk über einen Monero-Hintergrunddienst-Node</li>
-        <li>READ_EXTERNAL_STORAGE : Liest die auf dem Gerät gespeicherten Wallet-Dateien aus</li>
-        <li>WRITE_EXTERNAL_STORAGE : Schreibt Wallet-Dateien auf dem Gerät</li>
+        <li>READ_EXTERNAL_STORAGE : Lese die auf dem Gerät gespeicherten Wallet-Dateien aus</li>
+        <li>WRITE_EXTERNAL_STORAGE : Schreibe Wallet-Dateien auf das Gerät</li>
         <li>WAKE_LOCK : Halte das Gerät während der Synchronisation wach</li>
         <li>CAMERA : Scanne QR-Codes, um Monero zu erhalten</li>
         </ul>
