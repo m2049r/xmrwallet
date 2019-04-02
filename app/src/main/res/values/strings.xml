@@ -429,5 +429,5 @@
     <string name="prompt_ledger_seed">Ledger Seed Words</string>
     <string name="prompt_ledger_phrase">Ledger Passphrase (advanced)</string>
     <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
 </resources>
