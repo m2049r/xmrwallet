@@ -22,7 +22,7 @@
         <p>Vlož unikátny názov a heslo peňaženky. 
 		Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
 		Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
-        <p>Vlož svoj Seed do poľa \"Mnemotechnický Seed\".<p>
+        <p>Vlož svoj Seed do políčka \"Mnemotechnický Seed\".<p>
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
 		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
@@ -46,8 +46,8 @@
         <p>Tvoj tajný kľúč nikdy neunikne zo zariadenia Ledger, takže budeš musieť mať Ledger pripojený vždy, keď budeš chcieť pristupovať k svojej peňaženke.</p>
         <p>Vlož unikátny názov a heslo peňaženky.  Heslo je určené na zabezpečenie dát peňaženky na Android zariadení.  
         Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
-        <p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
-		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>	
+        <p>Do políčka \"Obnov Výšku\" vlož číslo bloku prvej transakcie pre túto adresu . Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
+		Ak to nevieš presne, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu. Urýchli to prehľadávanie blockchain.</p>	
     ]]></string>
 	
     <string name="help_create_view"><![CDATA[
@@ -132,7 +132,7 @@
         Toto je verejná adresa peňaženky kde chceš poslať Monero.
 		<h2>ID Platby</h2>
         Môžeš použiť ID Platby na identifikáciu platby medzi dvoma stranami. Nie je to síce povinný, ale je to súkromný údaj.
-		Tak napríklad s týmto môžeš zosúladiť svoj biznis s kúpenou položkou.
+		Tak napríklad s týmto môžeš zosúladiť svoj biznis s kúpenou položkou. Táto funkcia bude v Monero nahradená podadresami.
         <h2>TX ID</h2>
         Toto je ID transakcie, ktoré slúži na identifikáciu transakcie v Monero blockchain exploreri, ako napr. <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>TX KĽÚČ (Transaction Key)</h2>
@@ -217,10 +217,10 @@
 
         <h2>Skenovanie</h2>
         Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
-		Monerujo prechováva len tie informácie, ktoré prislúchajú vašej peňaženke. Niekedy to môže trvať dlho, keď nemáte sychronizovanú peňaženku dlhší čas.
+		Monerujo uchováva len tie informácie, ktoré prislúchajú vašej peňaženke. Pokiaľ nemáte sychronizovanú peňaženku dlhší čas, synchronizácia môže trvať dlho.
         <h2>Zostatok</h2>
         <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
-        Nepanikár! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
+        Nestresuj! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
 
         Súvisí to s tým, ako je Monero navrhnuté a ako funguje zmena v blockchain.
 
@@ -260,15 +260,15 @@
     ]]></string>
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>Používanie platobného linku</h1>
+        <p>Monerujo je spustené z platobného linku. Ak chceš posielať prostriedky, postupuj nasledovne:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. Otvor peňaženku z ktorej chceš platiť<br>
+        2. Počkaj kým sa peňaženka zosynchronizuje a zobrazí sa tlačítko "Poslať" <br>
+        3. Stlač tlačidlo "Poslať"
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>Detaily platby budú vložené automaticky. Skontroluj ich a pokračuj ako obvykle pri ostatných transakciách.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Rozumiem!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
