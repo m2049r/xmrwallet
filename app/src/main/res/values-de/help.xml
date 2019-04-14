@@ -8,15 +8,15 @@
         eine Passwortphrase ist sogar noch besser.</p>
         <h2>Notiere dir deinen mnemonischen Seed!</h2>
         <p>Auf dem folgenden Bildschirm findest du deinen, aus 25 Wörtern bestehenden, \"Mnemonischen Seed\".
-        Dies sind die einzigen Daten, die du benötigst, um deine Wallet zu einem späteren 
+        Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
         Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
         vollen Zugriff auf diese Gelder geben!</p>
-        <p>Falls du dein Passwort verlierst, kannst du immer noch die Wallet mit dem Mnemonischen Seed wiederherstellen.</p>
+        <p>Falls du dein Passwort verlierst, kannst du immer noch das Wallet mit dem Mnemonischen Seed wiederherstellen.</p>
         <p>Es gibt keine Möglichkeit, den Mnemonischen Seed wiederherzustellen.
 	Wenn du ihn verlierst, sind deine Gelder verloren!
         Der Mnemonische Seed kann auch nicht geändert werden, und falls du ihn verlierst oder er anderweitig 
-	kompromittiert wird, musst du deine Gelder auf eine neue Wallet transferieren – inklusive neuem Mnemonischen Seed.
+	kompromittiert wird, musst du deine Gelder auf ein neues Wallet transferieren – inklusive neuem Mnemonischen Seed.
         Deshalb ist es am besten, wenn du deinen Mnemonischen Seed aufschreibst 
 	und sicher und geheim an <em>mehreren</em> Orten aufbewahrst.</p>
     ]]></string>
@@ -45,7 +45,7 @@
 
     <string name="help_create_view"><![CDATA[
         <h1>Wallet erstellen – View</h1>
-        <p>Falls du nur eingehende Transaktionen auf diese Wallet überwachen willst!</p>
+        <p>Falls du nur eingehende Transaktionen auf dieses Wallet überwachen willst!</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
         Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
         <p>Gib deine Monero-Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
@@ -60,35 +60,35 @@
         Die öffentliche Adresse ist wie deine Kontonummer, die du anderen Personen mitteilen kannst, ohne Angst zu haben, dein Geld zu verlieren.
 	Andere Personen werden dir Monero an diese Adresse schicken.
         <h2>Mnemonischer Seed</h2>
-        Dies sind die einzigen Daten, die du benötigst, um deine Wallet zu einem späteren 
+        Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
 	Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
         vollen Zugriff auf diese Gelder geben! Falls du ihn nicht an mehreren, sicheren Stellen aufgeschrieben hast, mach dies bitte jetzt!
         <h2>Wiederherstellungspasswort für Wallet-Dateien</h2>
         Stelle sicher, dieses Passwort aufzuschreiben. Falls du dein Gerät auf Werkseinstellungen zurücksetzt oder
- 	die App deinstallierst, brauchst du dieses Passwort, um Zugriff auf deine Wallet zu erhalten.<br/>
+ 	die App deinstallierst, brauchst du dieses Passwort, um Zugriff auf dein Wallet zu erhalten.<br/>
         <h3>CrAzYpass</h3>
         Falls das hier angezeigte Passwort aus 52 alphanumerischen Zeichen in 4er-Gruppen besteht – Glückwunsch!
         Deine Wallet-Dateien sind nun durch einen 256-Bit-Schlüssel gesichert, der durch Sicherheitsfeatures
  	deines Gerätes aus deiner Passwortphrase erstellt wurde (bei Erstellung oder Änderung der Passwortphrase).
-	Dies macht einen Hack der Walletdateien extrem schwierig!<br/>
+	Dies macht einen Hack der Wallet-Dateien extrem schwierig!<br/>
         Dieses Feature ist verpflichtend für alle neu erstellten Wallets.
         <h3>Legacy-Passwort</h3>
-        Falls du hier deine Passwortphrase siehst, sind deine Walletdateien nicht so gut gesichert wie 
+        Falls du hier deine Passwortphrase siehst, sind deine Wallet-Dateien nicht so gut gesichert wie 
 	bei der Benutzung von CrAzYpass. Um dies zu beheben, wähle einfach \"Passwortphrase ändern\" aus dem Menü. 
 	Nachdem du eine neue Passwortphrase eingegeben hast (auch bei der gleichen wie zuvor) wird die App 
 	ein neues CrAzYpass für dich erstellen und deine Wallet-Dateien sichern. Schreibe es auf!
         <h3>CrAzYpass-Wallets</h3>
         Falls du Monerujo jemals neu installieren musst (zum Beispiel nachdem du dein Gerät auf Werkseinstellungen zurückgesetzt hast
  	oder du ein neues Gerät besitzt) oder die Wallet-Dateien auf einem anderen Gerät oder PC nutzen willst, dann
- 	musst du dieses Wiederherstellungspasswort nutzen, um Zugriff auf deine Wallet zu erhalten.<br/>
+ 	musst du dieses Wiederherstellungspasswort nutzen, um Zugriff auf dein Wallet zu erhalten.<br/>
         Durch die Auswahl \"Passwortphrase ändern\" aus dem Menü kannst du eine andere Passwortphrase wählen. Beachte,
         dass dies ein neues Wiederherstellungspasswort erzeugt. Schreibe es auf!
 	<h2>View-Key</h2>
-        Dein View-Key kann benutzt werden, um eingehende Transaktionen zu dieser Wallet zu überwachen, ohne anderen
+        Dein View-Key kann benutzt werden, um eingehende Transaktionen zu diesem Wallet zu überwachen, ohne anderen
         die Möglichkeit zu geben, Gelder aus diesem Wallet auszugeben.
         <h2>Spend-Key</h2>
-        Der Spend-Key ermöglicht jedem, Monero aus dieser Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
+        Der Spend-Key ermöglicht jedem, Monero aus diesem Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
 	wie den Mnemomischen Seed auf.
     ]]></string>
 
@@ -104,19 +104,19 @@
         im internen Speicher deines Geräts. Du kannst einen Datei-Explorer nutzen, um sie zu finden.
         Du solltest regelmäßig Backups von diesem Ordner machen und diese sicher aufbewahren für den Fall,
         dass dein Gerät EXPLODIERT oder gestohlen wird.</p>
-        <p>Wähle eine Wallet, um sie zu öffnen oder tippe \"+\", um eine neue zu erstellen.
+        <p>Wähle ein Wallet, um sie zu öffnen oder tippe \"+\", um eine neue zu erstellen.
         Oder wähle eine der folgenden Wallet-Optionen:</p>
         <h3>Details</h3>
         <p>Zeige die Wallet-Details, Seed &amp; Keys.</p>
         <h3>Empfangen</h3>
         <p>Generiere einen QR-Code, um Moneroj zu empfangen.</p>
         <h3>Umbenennen</h3>
-        <p>Benenne die Wallet um. Backups werden nicht umbenannt.</p>
+        <p>Benenne das Wallet um. Backups werden nicht umbenannt.</p>
         <h3>Backup</h3>
-        <p>Erstelle eine Kopie der Wallet im <tt>backups</tt> Ordner innerhalb des <tt>monerujo</tt> Ordners.
+        <p>Erstelle eine Kopie des Wallets im <tt>backups</tt> Ordner innerhalb des <tt>monerujo</tt> Ordners.
         Eine bereits vorhandene Kopie wird überschrieben.</p>
         <h3>Archivieren</h3>
-        <p>Erstellt ein Backup und löscht danach die Wallet. Die Kopie verbleibt im <tt>backups</tt>
+        <p>Erstellt ein Backup und löscht danach das Wallet. Die Kopie verbleibt im <tt>backups</tt>
         Ordner. Falls du deine Backups nicht länger benötigst, solltest du sie mit einem Datei-Explorer löschen oder
 	die App sauber und ordentlich deinstallieren.</p>
     ]]></string>
@@ -124,7 +124,7 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetails</h1>
         <h2>Ziel</h2>
-        Dies ist die öffentliche Adresse der Wallet, zu dem du Moneroj gesendet hast.
+        Dies ist die öffentliche Adresse des Wallets, zu dem du Moneroj gesendet hast.
         <h2>Zahlungs-ID</h2>
         Du kannst eine Zahlungs-ID benutzen, um Zahlungen zu identifizieren. Dies ist optional und ist nicht öffentlich einsehbar. 
 		Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.
@@ -141,7 +141,7 @@
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
-        <p>Dies ist die öffentliche Adresse der Wallet, an die du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
+        <p>Dies ist die öffentliche Adresse des Wallets, an das du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
 	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist, um
         sicherzustellen, die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
         <p>Zusätzlich zu einer normalen Monero-Adresse kannst du auch
@@ -208,9 +208,9 @@
 
     <string name="help_create_ledger"><![CDATA[
         <h1>Wallet erstellen – Ledger</h1>
-        <p>Falls du deine Wallet mit einem "Ledger Nano S" wiederherstellen willst!</p>
+        <p>Falls du dein Wallet mit einem "Ledger Nano S" wiederherstellen willst!</p>
         <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät. Es muss also immer eingesteckt sein,
-        wenn du diese Wallet benutzt.</p>
+        wenn du dieses Wallet benutzt.</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
         Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
@@ -222,17 +222,17 @@
         <h1>Die Wallet</h1>
         <h2>Straßenmodus</h2>
         <p>Der Straßenmodus kann im Menü unterhalb Gunthers Kopfsymbol an- und ausgeschaltet werden. In diesem Modus wird dein
-        Guthaben in keinem Menüpunkt angezeigt, sodass du deine Wallet gefahrlos auf der Straße, in einer Bar oder
+        Guthaben in keinem Menüpunkt angezeigt, sodass du dein Wallet gefahrlos auf der Straße, in einer Bar oder
         anderem öffentlichen Ort nutzen kannst. Vorherige Transaktionen sind ebenfalls verborgen. Neue Transaktionen werden angezeigt, damit
         du sehen kannst, wenn du diese genialen Moneroj versendet oder empfangen hast!</p>
         <h2>Scannen</h2>
-        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen einer Monerujo-Wallet die Blockchain gescannt,
-	um zu überprüfen, ob neue Moneroj zu dieser Wallet gesendet wurden. Dies speichert ausschließlich Informationen,
-	die zur Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
+        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen eines Monerujo-Wallets die Blockchain gescannt,
+	um zu überprüfen, ob neue Moneroj zu diesem Wallet gesendet wurden. Dies speichert ausschließlich Informationen,
+	die zum Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
         eine Weile her ist.
         <h2>Das Guthaben</h2>
         <p><b>Hilfe! Mein Wallet-Guthaben ist verschwunden oder ist unbestätigt!</b><br/>
-        Keine Panik! Wenn du Gelder von deiner Wallet sendest, wird ein Teil deines Guthabens kurzzeitig als unbestätigt angezeigt.
+        Keine Panik! Wenn du Gelder von deinem Wallet sendest, wird ein Teil deines Guthabens kurzzeitig als unbestätigt angezeigt.
         Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Moneroj auf der Blockchain bewegt werden.
         Lies mehr darüber auf https://getmonero.org/resources/moneropedia/change.html
         <h2>Transaktionsliste</h2>
@@ -294,8 +294,8 @@
         <h1>Nutzung eines Zahlungslinks</h1>
         <p>Du hast Monerujo mit einem Zahlungslink gestartet. Gehe wie folgt vor, um Gelder zu versenden:</p>
         <p>
-        1. Öffne die Wallet, von der aus du senden möchtest<br>
-        2. Warte, bis die Wallet synchronisiert ist &amp; der "Sende"-Button erscheint<br>
+        1. Öffne das Wallet, von der aus du senden möchtest<br>
+        2. Warte, bis das Wallet synchronisiert ist &amp; der "Sende"-Button erscheint<br>
         3. Drücke den "Sende"-Button
         </p>
         <p>Die Zahlungsdetails werden ausgefüllt. Überprüfe sie und fahre fort wie bei jeder anderen Transaktion.</p>

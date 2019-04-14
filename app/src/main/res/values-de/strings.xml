@@ -106,7 +106,7 @@
     <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Lade Wallet &#8230;</string>
     <string name="status_wallet_unloaded">Wallet gespeichert</string>
-    <string name="status_wallet_unload_failed">Speichern der Wallet fehlgeschlagen!</string>
+    <string name="status_wallet_unload_failed">Speichern des Wallets fehlgeschlagen!</string>
     <string name="status_wallet_connecting">Verbinde &#8230;</string>
     <string name="status_wallet_connect_failed">Verbindung zum Node fehlgeschlagen!\nPrüfe Nutzername/Passwort</string>
     <string name="status_wallet_node_invalid">Node ungültig!\nVersuche anderen.</string>
@@ -118,7 +118,7 @@
 
     <string name="send_xmrto_timeout">Da hast du zu lange gewartet, mein Freund!</string>
 
-    <string name="service_busy">Ich bin noch mit deiner letzten Wallet beschäftigt &#8230;</string>
+    <string name="service_busy">Ich bin noch mit deinem letzten Wallet beschäftigt &#8230;</string>
 
     <string name="prompt_rename">Umbenennen %1$s</string>
 
@@ -166,7 +166,7 @@
     <string name="generate_title">Wallet erstellen</string>
     <string name="generate_name_hint">Wallet-Name</string>
     <string name="generate_password_hint">Wallet-Passwort</string>
-    <string name="generate_fingerprint_hint">Erlaubt das Öffnen der Wallet durch Fingerabdruck-Authentifizierung</string>
+    <string name="generate_fingerprint_hint">Erlaubt das Öffnen des Wallets durch Fingerabdruck-Authentifizierung</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Fingerabdruck-Authentifizierung</strong>
         <p>Mit aktivierter Fingerabdruck-Authentifizierung kannst du ohne Eingabe eines Passworts
@@ -180,7 +180,7 @@
     ]]></string>
     <string name="generate_bad_passwordB">Passwörter stimmen nicht überein</string>
     <string name="generate_empty_passwordB">Passwort darf nicht leer sein</string>
-    <string name="generate_buttonGenerate">Erstell mir jetzt endlich eine Wallet!</string>
+    <string name="generate_buttonGenerate">Erstell mir jetzt endlich ein Wallet!</string>
     <string name="generate_button_accept">Ich habe den Mnemonischen Seed notiert!</string>
 
     <string name="generate_wallet_name">Gib mir einen Namen!</string>
@@ -206,7 +206,7 @@
     <string name="generate_viewkey_label">View-Key</string>
     <string name="generate_spendkey_label">Spend-Key</string>
     <string name="generate_mnemonic_label">Mnemonischer Seed</string>
-    <string name="generate_crazypass_label">Wiederherstellungspasswort für Walletdateien</string>
+    <string name="generate_crazypass_label">Wiederherstellungspasswort für Wallet-Dateien</string>
 
     <string name="generate_check_key">Gib einen gültigen Schlüssel ein</string>
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
@@ -285,7 +285,7 @@
     <string name="archive_alert_yes">Ja, mach das!</string>
     <string name="archive_alert_no">Nein, danke!</string>
 
-    <string name="fab_create_new">Neue Wallet erstellen</string>
+    <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View-Only-Wallet wiederherstellen</string>
     <string name="fab_restore_key">Mit privaten Schlüsseln wiederherstellen</string>
     <string name="fab_restore_seed">Mit 25-Wörter-Seed wiederherstellen</string>
