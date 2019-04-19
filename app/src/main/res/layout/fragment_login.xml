@@ -37,8 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
-                android:layout_toStartOf="@+id/ibOption"
-                android:layout_toEndOf="@id/ibBookmark">
+                android:layout_toStartOf="@+id/ibOption">
 
                 <ProgressBar
                     android:id="@+id/pbNode"
