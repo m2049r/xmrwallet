@@ -34,7 +34,7 @@ import java.io.IOException;
 import timber.log.Timber;
 
 public class Ledger {
-    static final public boolean ENABLED = false;
+    static final public boolean ENABLED = true;
     // 5:20 is same as wallet2.cpp::restore()
     static public final int LOOKAHEAD_ACCOUNTS = 5;
     static public final int LOOKAHEAD_SUBADDRESSES = 20;

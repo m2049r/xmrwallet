@@ -333,56 +333,56 @@
     <string name="send_address_resolve_openalias">Разрешения OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias без DNSSEC - адрес может быть подделан</string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Версия узла несовместима - пожалуйста, обновите!</string>
 
     <string name="menu_info">Информация</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
+    <string name="menu_streetmode">Уличный режим</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
-    <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="info_nodes_enabled">Node-o-matiC включен, нажмите для получения дополнительной информации.</string>
+    <string name="node_height">Последний блок: %1$s</string>
+    <string name="label_nodes">Узлы</string>
+    <string name="node_name_hint">Имя узла (необязательно)</string>
+    <string name="node_address_hint">Имя хоста</string>
+    <string name="node_port_hint">Порт</string>
+    <string name="node_user_hint">Имя пользователя (необязательно)</string>
+    <string name="node_pass_hint">Пароль (необязательно)</string>
+    <string name="node_host_unresolved">Не удается подключиться к узлу</string>
+    <string name="node_host_empty">Нам это нужно!</string>
+    <string name="node_port_numeric">Должен быть числовым</string>
+    <string name="node_port_range">Должен быть 1&#8211;65535</string>
+    <string name="node_fab_add">Добавить узел</string>
+    <string name="node_refresh_hint">Нажмите, чтобы обновить!</string>
+    <string name="node_test_error">ОШИБКА СОЕДИНЕНИЯ %1$d</string>
+    <string name="node_general_error">ОШИБКА СОЕДИНЕНИЯ</string>
+    <string name="node_auth_error">ОШИБКА АУТЕНТИФИКАЦИИ</string>
+    <string name="node_result_label">Результат тестирования:</string>
+    <string name="node_result">Высота: %1$s (v%2$d), Пинг: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Тестирование IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Пожалуйста, дождитесь окончания сканирования</string>
+    <string name="node_create_hint">Нажмите, чтобы выбрать или добавить узлы</string>
+    <string name="node_pull_hint">Добавьте узлы вручную или потяните вниз для сканирования</string>
+    <string name="node_scanning">Сканирование сети&#8230;</string>
+    <string name="node_nobookmark">Автоматически отмечены лучшие %1$d узлы</string>
+    <string name="label_test">Проверка</string><!--note: as in "Test a network connection"-->
 
-    <string name="backup_success">Backup successful</string>
+    <string name="backup_success">Резервное копирование успешно</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_resolve_bip70">Размещение URI платежа&#8230;</string>
+    <string name="send_address_not_bip70">Не удалось разрешить URI платежа</string>
+    <string name="send_address_bip70">URI разрешенного платежа &#x2714;</string>
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
-    <string name="send_address_hint">Получател</string>
+    <string name="send_address_hint">Получатель</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TO недоступен - повторите попытку позже</string>
+    <string name="xmrto_error_004">Сумма BTC выходит за доступные пределы</string>
+    <string name="xmrto_error_010">Неверный или устаревший платежный URL</string>
+    <string name="xmrto_error_012">Превышен лимит запросов</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">ВСЕ!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Преобразовать фразу Ledger</string>
+    <string name="prompt_ledger_seed">Словесная фраза Ledger</string>
+    <string name="prompt_ledger_phrase">Пароль Ledger (необязательно)</string>
+    <string name="bad_ledger_seed">Ошибка фразы Ledger!</string>
+    <string name="prompt_ledger_seed_warn">Если вы пытаетесь ввести сюда фразу Ledger, это серьезная угроза для вашей безопасности!</string>
 </resources>

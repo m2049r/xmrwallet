@@ -60,7 +60,7 @@
     <string name="send_available_btc">Zostatok: %2$s BTC (%1$s XMR)</string>
 
     <string name="info_paymentid_intergrated">Payment ID integrované</string>
-    <string name="info_prepare_tx">Pripravujem tvoju transakciu</string>
+    <string name="info_prepare_tx">Pripravujem transakciu</string>
 
     <string name="label_send_progress_xmrto_create">Vytváram objednávku na XMR.TO</string>
     <string name="label_send_progress_xmrto_query">Pýtam sa na objednávku XMR.TO</string>
@@ -292,8 +292,8 @@
     <string name="tx_account">Účet #</string>
 
     <string name="send_sweepall">Pošli všetky potvrdené prostriedky na tomto účte!</string>
-    <string name="tx_subaddress">Podadresa #%1$d</string>
-    <string name="generate_address_label_sub">Verejná Podadresa #%1$d</string>
+    <string name="tx_subaddress">Subadresa #%1$d</string>
+    <string name="generate_address_label_sub">Verejná Subadresa #%1$d</string>
 
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
@@ -302,7 +302,7 @@
 
     <string name="progress_ledger_progress">Komunikácia s Ledger</string>
     <string name="progress_ledger_confirm">Vyžaduje potvrdenie na Ledgeri!</string>
-    <string name="progress_ledger_lookahead">Načítavam podadresy</string>
+    <string name="progress_ledger_lookahead">Načítavam subadresy</string>
     <string name="progress_ledger_verify">Overovanie kľúčov</string>
     <string name="progress_ledger_opentx">Robím ťažké výpočty</string>
     <string name="progress_ledger_mlsag">Hešujem materiál</string>
@@ -332,7 +332,7 @@
 
     <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
 
-    <string name="menu_info">Detaily</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Ukázať Tajné Kľúče</string><!--Changed to: Show Secrets!-->
 
     <string name="menu_streetmode">Mód Ulica</string>
     <string name="info_nodes_enabled">Node-o-matiC povolený, klepni pre viac info.</string>
@@ -357,7 +357,7 @@
     <string name="node_testing">Testujem IP: %1$s &#8230;</string>
     <string name="node_refresh_wait">Prosím počkajte, kým sa skenovanie nedokončí</string>
     <string name="node_create_hint">Vyber alebo pridaj uzly</string>
-    <string name="node_pull_hint">Pridaj uzly manuálne alebo potiahni dole pre skenovanie</string>
+    <string name="node_pull_hint">Pridaj uzly manuálne alebo potiahni prstom dole a skenuj sieť</string>
     <string name="node_scanning">Prehľadávam sieť&#8230;</string>
     <string name="node_nobookmark">Automaticky ukladám %1$d najlepších uzlov</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
@@ -377,9 +377,9 @@
 
     <string name="street_sweep_amount">VŠETKO!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Konvertuj Ledger Seed</string>
+    <string name="prompt_ledger_seed">Ledger Seed</string>
+    <string name="prompt_ledger_phrase">Ledger fráza (voliteľné)</string>
+    <string name="bad_ledger_seed">Neplatný Ledger Seed!</string>
+    <string name="prompt_ledger_seed_warn">Vloženie Ledger Seedu sem je vážne bezpečnostné riziko!</string>
 </resources>

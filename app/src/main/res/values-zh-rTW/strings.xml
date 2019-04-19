@@ -375,9 +375,9 @@
 
     <string name="street_sweep_amount">全部！</string>
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">轉換 Ledger 種子碼</string>
+    <string name="prompt_ledger_seed">Ledger 種子碼</string>
+    <string name="prompt_ledger_phrase">Ledger 密碼 (選填)</string>
+    <string name="bad_ledger_seed">無效的 Ledger 種子碼！</string>
+    <string name="prompt_ledger_seed_warn">在此輸入 Ledger 種子碼可能存在嚴重的安全風險！</string>
 </resources>

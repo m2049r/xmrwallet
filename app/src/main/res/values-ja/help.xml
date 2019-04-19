@@ -239,14 +239,14 @@
         コピーするか、QRコードから読み取るか、直接入力することができます。
         間違ったアドレスにコインが送金されないように、
         このアドレスは確実に間違いがないことを確認してください。</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>XMRアドレスを使用することに加えて、あなたはまた使用することがあります
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+            <li>XMRやBTCのOpenAlias</li>
+            <li>BTCアドレス</li>
+            <li>bitcoin: URI (bitpayのようなBIP70もいい)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
+        BTCの送信はXMR.TOサービス（https://xmr.to）を介して処理されることに注意してください。 
+        下記のBTCの送信に関するセクションを参照してください。</p>
         <h2>ペイメントID(Payment ID)</h2>
         <p>あなたは2者間でモネロを送金した理由を特定するために
         ペイメントIDを使うことができます。
@@ -431,15 +431,15 @@
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>ペイメントリンクを使用すること</h1>
+        <p>ペイメントリンクでmonerujoを始めました。 送金するには、次の手順に従ってください。</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. 使いたいウォレットを開け<br>
+        2. 同期されて「送金」ボタンを見える時に待て<br>
+        3. 「送金」ボタンをタップし て
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>支払詳細を記入します。それからチェックして、他の取引と同じように進めてください。</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">分かりました！</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>

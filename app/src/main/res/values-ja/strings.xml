@@ -409,22 +409,22 @@
 
     <string name="backup_success">バックアップ成功</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
+    <string name="send_address_resolve_bip70">ペイメントIDの名前解決中&#8230;</string>
+    <string name="send_address_not_bip70">ペイメントIDの名前解決できませんでした</string>
+    <string name="send_address_bip70">ペイメントIDの名前解決しました &#x2714;</string>
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">受け取り手</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TOはオフラインです。もう一度お試しください</string>
+    <string name="xmrto_error_004">BTCの金額は範囲外</string>
+    <string name="xmrto_error_010">ペイメントURLは不正古いです</string>
+    <string name="xmrto_error_012">リクエストは多すぎます</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">残高合計！</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering you Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Ledgerシードを転換</string>
+    <string name="prompt_ledger_seed">Ledgerのニーモニックシード</string>
+    <string name="prompt_ledger_phrase">Ledgerパスフレーズ （オプショナル）</string>
+    <string name="bad_ledger_seed">Ledgerのニーモニックシードは不正!</string>
+    <string name="prompt_ledger_seed_warn">ここにLedgerシードを入力するのは、大きなセキュリティリスクですよ！</string>
 </resources>
