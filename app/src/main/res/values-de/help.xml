@@ -1,124 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
-        <h1>Wallet erstellen - Neu</h1>
-        <p>Falls du eine neue Monero Adresse benötigst!</p>
-        <p>Gib einen eindeutigen Wallet Namen und Passwort ein.
-        Das Passwort schützt deine Wallet Daten auf dem Gerät. Benutze ein starkes Passwort -
+        <h1>Wallet erstellen – Neu</h1>
+        <p>Falls du eine neue Monero-Adresse benötigst!</p>
+        <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein.
+        Das Passwort schützt deine Wallet-Daten auf dem Gerät. Benutze ein starkes Passwort –
         eine Passwortphrase ist sogar noch besser.</p>
         <h2>Notiere dir deinen mnemonischen Seed!</h2>
-        <p>Auf dem folgenden Bildschirm findest du deinen 25-Wort \"Mnemonischen Seed\".
-        Dies sind die einzigen Daten die du benötigst um dein Wallet zu einem späteren 
+        <p>Auf dem folgenden Bildschirm findest du deinen, aus 25 Wörtern bestehenden, \"Mnemonischen Seed\".
+        Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
         Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
         vollen Zugriff auf diese Gelder geben!</p>
         <p>Falls du dein Passwort verlierst, kannst du immer noch das Wallet mit dem Mnemonischen Seed wiederherstellen.</p>
-        <p>Es gibt keine Möglichkeit den Mnemonischen Seed wiederherzustellen.
-	Wenn du ihn verlierst sind deine Gelder verloren!
+        <p>Es gibt keine Möglichkeit, den Mnemonischen Seed wiederherzustellen.
+	Wenn du ihn verlierst, sind deine Gelder verloren!
         Der Mnemonische Seed kann auch nicht geändert werden, und falls du ihn verlierst oder er anderweitig 
-	kompromittiert wird musst du deine Gelder auf ein neues Wallet transferieren, inklusive neuem Mnemonischen Seed.
-        Deshalb ist es am besten wenn du deinen Mnemonischen Seed aufschreibst 
+	kompromittiert wird, musst du deine Gelder auf ein neues Wallet transferieren – inklusive neuem Mnemonischen Seed.
+        Deshalb ist es am besten, wenn du deinen Mnemonischen Seed aufschreibst 
 	und sicher und geheim an <em>mehreren</em> Orten aufbewahrst.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Wallet erstellen - Seed</h1>
-        <p>Falls du schon eine Monero Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
-        <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
-        Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.</p>
+        <h1>Wallet erstellen – Seed</h1>
+        <p>Falls du schon eine Monero-Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
+        <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
+        Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.</p>
         <p>Trage deinen Seed in das Feld \"Mnemonischer Seed\" ein.<p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
-        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
+        ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Wallet erstellen - Schlüssel</h1>
+        <h1>Wallet erstellen – Schlüssel</h1>
         <p>Falls du dein Wallet mit Schlüsseln wiederherstellen willst!</p>
-        <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
-        Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
-        <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
+        <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
+        Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
+        <p>Gib deine Monero-Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
-        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
+        ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Wallet erstellen - View</h1>
-        <p>Falls du nur eingehende Transaktionen auf diese Wallet überwachen willst!</p>
-        <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
-        Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
-        <p>Gib deine Monero Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
+        <h1>Wallet erstellen – View</h1>
+        <p>Falls du nur eingehende Transaktionen auf dieses Wallet überwachen willst!</p>
+        <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
+        Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
+        <p>Gib deine Monero-Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
-        ungefähres Datum oder Blockhöhe <em>bevor</em> du diese Adresse zum ersten mal benutzt hast ein.<p>
+        ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
-        <h1>Wallet Details</h1>
+        <h1>Wallet-Details</h1>
         <h2>Öffentliche Adresse</h2>
-        Die öffentliche Adresse ist wie deine Kontonummer die du anderen Personen mitteilen kannst, ohne Angst zu haben dein Geld zu verlieren.
+        Die öffentliche Adresse ist wie deine Kontonummer, die du anderen Personen mitteilen kannst, ohne Angst zu haben, dein Geld zu verlieren.
 	Andere Personen werden dir Monero an diese Adresse schicken.
         <h2>Mnemonischer Seed</h2>
-        Dies sind die einzigen Daten die du benötigst um dein Wallet zu einem späteren 
+        Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
 	Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>
-        vollen Zugriff auf diese Gelder geben! Falls du ihn nicht an mehreren, sicheren Stellen aufgeschrieben hast mach dies bitte jetzt!
-        <h2>Walletdateien Wiederherstellungspasswort</h2>
-        Stelle sicher dieses Passwort aufzuschreiben. Falls du dein Gerät auf Werkseinstellungen zurücksetzt oder
- 	die App deinstallierst brauchst du dieses Passwort um Zugriff auf dein Wallet zu erhalten.<br/>
+        vollen Zugriff auf diese Gelder geben! Falls du ihn nicht an mehreren, sicheren Stellen aufgeschrieben hast, mach dies bitte jetzt!
+        <h2>Wiederherstellungspasswort für Wallet-Dateien</h2>
+        Stelle sicher, dieses Passwort aufzuschreiben. Falls du dein Gerät auf Werkseinstellungen zurücksetzt oder
+ 	die App deinstallierst, brauchst du dieses Passwort, um Zugriff auf dein Wallet zu erhalten.<br/>
         <h3>CrAzYpass</h3>
-        Falls das hier angezeigte Passwort aus 52 alphanumerischen Zeichen in 4er Gruppen besteht - Glückwunsch!
-        Deine Walletdateien sind nun durch einen 256-Bit-Schlüssel gesichert, der durch Sicherheitsfeatures
+        Falls das hier angezeigte Passwort aus 52 alphanumerischen Zeichen in 4er-Gruppen besteht – Glückwunsch!
+        Deine Wallet-Dateien sind nun durch einen 256-Bit-Schlüssel gesichert, der durch Sicherheitsfeatures
  	deines Gerätes aus deiner Passwortphrase erstellt wurde (bei Erstellung oder Änderung der Passwortphrase).
-	Dies macht einen Hack der Walletdateien extrem schwierig!<br/>
+	Dies macht einen Hack der Wallet-Dateien extrem schwierig!<br/>
         Dieses Feature ist verpflichtend für alle neu erstellten Wallets.
         <h3>Legacy-Passwort</h3>
-        Falls du hier deine Passwortphrase siehst sind deine Walletdateien nicht so gut gesichert wie 
-	bei der Benutzung von CrAzYpass. Um dies zu beheben wähle einfach \"Passwortphrase ändern\" aus dem Menü. 
+        Falls du hier deine Passwortphrase siehst, sind deine Wallet-Dateien nicht so gut gesichert wie 
+	bei der Benutzung von CrAzYpass. Um dies zu beheben, wähle einfach \"Passwortphrase ändern\" aus dem Menü. 
 	Nachdem du eine neue Passwortphrase eingegeben hast (auch bei der gleichen wie zuvor) wird die App 
-	ein neues CrAzYpass für dich erstellen und deine Walletdateien sichern. Schreibe es auf!
+	ein neues CrAzYpass für dich erstellen und deine Wallet-Dateien sichern. Schreibe es auf!
         <h3>CrAzYpass-Wallets</h3>
         Falls du Monerujo jemals neu installieren musst (zum Beispiel nachdem du dein Gerät auf Werkseinstellungen zurückgesetzt hast
- 	oder du ein neues Gerät besitzt) oder die Walletdateien auf einem anderen Gerät oder PC nutzen willst, dann
- 	musst du dieses Wiederherstellungspasswort nutzen um Zugriff auf dein Wallet zu erhalten.<br/>
-        Durch die Auswahl \"Passwortphrase ändern\" aus dem Menü kannst du eine andere Passwortphrase wählen. Beachte 
+ 	oder du ein neues Gerät besitzt) oder die Wallet-Dateien auf einem anderen Gerät oder PC nutzen willst, dann
+ 	musst du dieses Wiederherstellungspasswort nutzen, um Zugriff auf dein Wallet zu erhalten.<br/>
+        Durch die Auswahl \"Passwortphrase ändern\" aus dem Menü kannst du eine andere Passwortphrase wählen. Beachte,
         dass dies ein neues Wiederherstellungspasswort erzeugt. Schreibe es auf!
-	<h2>View key</h2>
-        Dein View Key kann benutzt werden um eingehende Transaktionen zu diesem Wallet zu überwachen ohne anderen
-        die Möglichkeit zu geben Gelder aus diesem Wallet auszugeben.
-        <h2>Spend Key</h2>
-        Der Spend Key ermöglicht jedem Monero aus diesem Wallet auszugeben, also bewahre diesen Spend Key genauso sicher
+	<h2>View-Key</h2>
+        Dein View-Key kann benutzt werden, um eingehende Transaktionen zu diesem Wallet zu überwachen, ohne anderen
+        die Möglichkeit zu geben, Gelder aus diesem Wallet auszugeben.
+        <h2>Spend-Key</h2>
+        Der Spend-Key ermöglicht jedem, Monero aus diesem Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
 	wie den Mnemomischen Seed auf.
     ]]></string>
 
     <string name="help_list"><![CDATA[
-        <h1>Walletliste</h1>
+        <h1>Wallet-Liste</h1>
         <h2>Node</h2>
-        <p>Monerujo benutzt eine Remote Node um mit dem Monero Netzwerk zu kommunizieren ohne
-        die gesamte Blockchain herunterladen zu müssen. Eine Liste bekannter Remote Nodes
-	oder eine Anleitung zum Betreiben einer eigenen Remote Node findest du unter https://moneroworld.com/<p>
-        <p>Monerujo besitzt einige voreingestellte Remote Nodes. Es erinnert sich an die letzten 5 benutzten Nodes.</p>
+        <p>Monerujo benutzt einen Drittanbieter-Node, um mit dem Monero-Netzwerk zu kommunizieren, ohne
+        die gesamte Blockchain herunterladen zu müssen. Eine Liste bekannter Drittanbieter-Nodes
+	oder eine Anleitung zum Betreiben eines eigenen Drittanbieter-Nodes findest du unter https://moneroworld.com/<p>
+        <p>Monerujo besitzt einige voreingestellte Drittanbieter-Nodes. Es erinnert sich an die letzten 5 benutzten Nodes.</p>
         <h2>Wallets</h2>
         <p>Hier siehst du deine Wallets. Sie befinden sich im <tt>monerujo</tt> Ordner
-        im internen Speicher deines Geräts. Du kannst einen Datei-Explorer nutzen um sie zu finden.
+        im internen Speicher deines Geräts. Du kannst einen Datei-Explorer nutzen, um sie zu finden.
         Du solltest regelmäßig Backups von diesem Ordner machen und diese sicher aufbewahren für den Fall,
         dass dein Gerät EXPLODIERT oder gestohlen wird.</p>
-        <p>Wähle ein Wallet um es zu öffnen oder tippe \"+\" um ein neues zu erstellen.
-        Oder wähle eine der folgenden Wallet Optionen:</p>
+        <p>Wähle ein Wallet, um sie zu öffnen oder tippe \"+\", um eine neue zu erstellen.
+        Oder wähle eine der folgenden Wallet-Optionen:</p>
         <h3>Details</h3>
-        <p>Zeige die Walletdetails, Seed &amp; Keys.</p>
+        <p>Zeige die Wallet-Details, Seed &amp; Keys.</p>
         <h3>Empfangen</h3>
-        <p>Generiere einen QR-Code um Moneroj zu empfangen.</p>
+        <p>Generiere einen QR-Code, um Moneroj zu empfangen.</p>
         <h3>Umbenennen</h3>
-        <p>Benenne die Wallet um. Backups werden nicht umbenannt.</p>
+        <p>Benenne das Wallet um. Backups werden nicht umbenannt.</p>
         <h3>Backup</h3>
         <p>Erstelle eine Kopie des Wallets im <tt>backups</tt> Ordner innerhalb des <tt>monerujo</tt> Ordners.
         Eine bereits vorhandene Kopie wird überschrieben.</p>
         <h3>Archivieren</h3>
         <p>Erstellt ein Backup und löscht danach das Wallet. Die Kopie verbleibt im <tt>backups</tt>
-        Ordner. Falls du deine Backups nicht länger benötigst solltest du sie mit einem Datei-Explorer löschen oder
-	die App sauber und ordentlich deinstallieren</p>
+        Ordner. Falls du deine Backups nicht länger benötigst, solltest du sie mit einem Datei-Explorer löschen oder
+	die App sauber und ordentlich deinstallieren.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
@@ -126,57 +126,57 @@
         <h2>Ziel</h2>
         Dies ist die öffentliche Adresse des Wallets, zu dem du Moneroj gesendet hast.
         <h2>Zahlungs-ID</h2>
-        Du kannst eine Zahlungs-ID benutzen um Zahlungen zu identifizieren. Dies ist optional und ist nicht öffentlich einsehbar. 
+        Du kannst eine Zahlungs-ID benutzen, um Zahlungen zu identifizieren. Dies ist optional und ist nicht öffentlich einsehbar. 
 		Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.
-        <h2>TX ID</h2>
-        Dies ist deine Transaktions-ID die du benutzen kannst um verschleierte Transaktionen mit einem Monero
+        <h2>TX-ID</h2>
+        Dies ist deine Transaktions-ID, die du benutzen kannst, um verschleierte Transaktionen mit einem Monero-
         Blockchain-Explorer wie <a href="https://xmrchain.net/">https://xmrchain.net/</a> zu identifizieren.
-        <h2>TX Schlüssel (Transaktionsschlüssel)</h2>
-        Dies ist dein geheimer Transaktionsschlüssel. Bewahre ihn sicher auf da er Dritten deine Signatur in einem Ring offenbart 
+        <h2>TX-Schlüssel (Transaktionsschlüssel)</h2>
+        Dies ist dein geheimer Transaktionsschlüssel. Bewahre ihn sicher auf, da er Dritten deine Signatur in einem Ring offenbart 
 	und deshalb deine Transaktionen transparent macht.
         <h2>Block</h2>
-        Dies ist der Block der deine Transaktion beinhaltet.
+        Dies ist der Block, der deine Transaktion beinhaltet.
     ]]></string>
 
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
-        <p>Dies ist die öffentliche Adresse des Wallets, an die du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
-	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist um
-        sicherzustellen die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>Dies ist die öffentliche Adresse des Wallets, an das du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
+	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist, um
+        sicherzustellen, die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
+        <p>Zusätzlich zu einer normalen Monero-Adresse kannst du auch
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+            <li>einen OpenAlias für XMR oder BTC</li>
+            <li>eine BTC-Adresse</li>
+            <li>eine Bitcoin: URI (inklusive BIP70 – wie BitPay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
+        nutzen. Beachte bitte, dass das Senden von BTC über den Service von XMR.TO erfolgt. (Siehe https://xmr.to
+        für Details). Weitere Details sind weiter unten unter "BTC senden".</p>
         <h2>Zahlungs-ID</h2>
-        <p>Du kannst eine Zahlungs-ID benutzen um den Grund einer Transaktion zwischen zwei Parteien zu identifizieren. Dies ist optional
+        <p>Du kannst eine Zahlungs-ID benutzen, um den Grund einer Transaktion zwischen zwei Parteien zu identifizieren. Dies ist optional
 	und nicht öffentlich einsehbar. Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.<p>
-        <h1>BTC Senden</h1>
+        <h1>BTC senden</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO ist ein Drittanbieter-Service welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die XMR.TO Schnittstelle um Bitcoin Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://xmr.to an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo
-        Team gehört nicht zu XMR.TO und kann keinen Support für ihren Service bieten</p>
-        <h2>XMR.TO Wechselkurs<h2>
-        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des XMR.TO Service. Diese beinhalten den aktuellen Tauschkurs
+        <p>XMR.TO ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
+        Wir nutzen die XMR.TO-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
+        https://xmr.to an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        gehört nicht zu XMR.TO und kann keinen Support für dessen Service bieten.</p>
+        <h2>XMR.TO-Wechselkurs<h2>
+        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des XMR.TO-Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.
-	Außerdem siehst du den Wert bis zu dem eine BTC-Zahlung sofort ausgeführt wird
-	ohne auf XMR-Bestätigungen warten zu müssen (siehe die XMR.TO FAQ für mehr Details).
-        XMR.TO erhebt keine zusätzlichen Gebühren - wie cool ist das denn?</p>
-        <h2>XMR.TO Auftrag<h2>
+	Außerdem siehst du den Wert, bis zu dem eine BTC-Zahlung sofort ausgeführt wird, 
+	ohne auf XMR-Bestätigungen warten zu müssen (siehe die XMR.TO-FAQ für mehr Details).
+        XMR.TO erhebt keine zusätzlichen Gebühren – wie cool ist das denn?</p>
+        <h2>XMR.TO-Auftrag<h2>
         <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue XMR.TO-Angebot. Dieses Angebot gilt
-        für eine bestimmte Zeit - du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
+        für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
-        <h2>Geheimer XMR.TO Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet kann dein geheimer XMR.TO Schlüssel
-        dazu benutzt werden den Bitcoin-Teil deines Auftrags auf der XMR.TO-Homepage zu verfolgen.</p>
+        <h2>Geheimer XMR.TO-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer XMR.TO-Schlüssel
+        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der XMR.TO-Homepage zu verfolgen.</p>
         <p>Dieser geheime Schlüssel ist für 24h nach Start der Transaktion gültig!</p>
-        <h2>XMR.TO Countdown!</h2>
-        <p>Wenn der Countdown 0 erreicht musst du ein neues Angebot von XMR.TO anfordern indem du zum vorherigen Schritt
+        <h2>XMR.TO-Countdown!</h2>
+        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von XMR.TO anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
@@ -184,122 +184,122 @@
         <h1>BTC senden</h1>
         <h2>XMR.TO</h2>
         <p>XMR.TO ist ein Drittanbieter-Service, der als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir verwenden die XMR.TO Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte sieh dir
-        https://xmr.to an und entscheide selbst, ob es etwas ist, was du verwenden möchtest. Das Monerujo
-        Team ist nicht mit XMR.TO verbunden und kann dir bei deren Service nicht helfen.</p>
-        <h2>XMR.TO Wechselkurs<h2>
+        Wir verwenden die XMR.TO-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte sieh dir
+        https://xmr.to an und entscheide selbst, ob es etwas ist, was du verwenden möchtest. Das Monerujo-Team
+        ist nicht mit XMR.TO verbunden und kann keinen Support für dessen Service bieten.</p>
+        <h2>XMR.TO-Wechselkurs<h2>
         <p>Auf dem Bildschirm \"Menge\" werden dir die aktuellen Parameter des XMR.TO-Dienstes angezeigt. Diese
         beinhalten den aktuellen Wechselkurs sowie Ober- und Untergrenzen von BTC. Bitte beachte, dass diese Rate
         zu diesem Zeitpunkt noch nicht garantiert werden kann. Du siehst auch den Betrag, bis zu dem die BTC-Transaktion
-        sofort ausgeführt wird, ohne auf XMR-Bestätigungen zu warten (siehe XMR.TO FAQ für weitere Details). 
-        Bitte beachte, dass XMR.TO keine zusätzlichen Gebühren berechnet - ist doch cool, oder?</p>
-        <h2>XMR.TO Auftrag<h2>
+        sofort ausgeführt wird, ohne auf XMR-Bestätigungen zu warten (siehe XMR.TO-FAQ für weitere Details). 
+        Bitte beachte, dass XMR.TO keine zusätzlichen Gebühren berechnet – ist doch cool, oder?</p>
+        <h2>XMR.TO-Auftrag<h2>
         <p>Auf dem Bildschirm \"Bestätigen\" siehst du das aktuelle XMR.TO-Angebot. Dieses Angebot ist nur für eine
-        bestimmte Zeit gültig - du wirst vielleicht einen Countdown auf dem \"Ausgeben\"-Knopf sehen. Der Wechselkurs 
-        kann sich von dem auf den vorherigen Bildschirmen angezeigten indikativen Wechselkurs unterscheiden.</p>
-        <h2>Geheimer XMR.TO Schlüssel<h2>
-        <p>Da Monerujo nur den Monero Teil deiner Transaktion bearbeitet, kann dein geheimer XMR.TO Schlüssel verwendet werden, 
-        um den Bitcoin Teil der Bestellung auf der XMR.TO-Homepage zu verfolgen.</p>
+        bestimmte Zeit gültig – du wirst vielleicht einen Countdown auf dem \"Ausgeben\"-Knopf sehen. Der Wechselkurs 
+        kann sich von dem auf den vorherigen Bildschirmen angezeigten, indikativen Wechselkurs unterscheiden.</p>
+        <h2>Geheimer XMR.TO-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion bearbeitet, kann dein geheimer XMR.TO-Schlüssel verwendet werden, 
+        um den Bitcoin-Teil der Bestellung auf der XMR.TO-Homepage zu verfolgen.</p>
         <p>Bitte beachte, dass dieser geheime Schlüssel nur bis zu 24 Stunden nach Start der Transaktion gültig ist!</p>
-        <h2>XMR.TO Countdown!</h2>
+        <h2>XMR.TO-Countdown!</h2>
         <p>Sobald der Countdown Null erreicht hat, musst du ein neues Angebot von XMR.TO anfordern,
         indem du zum vorherigen Schritt zurückgehst und dann zum Bildschirm "Bestätigen" zurückkehrst.</p>
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
-        <h1>Wallet erstellen - Ledger</h1>
-        <p>Falls du dein Wallet mit einem Ledger Nano S wiederherstellen willst!</p>
-        <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät, also muss es immer eingesteckt sein,
+        <h1>Wallet erstellen – Ledger</h1>
+        <p>Falls du dein Wallet mit einem "Ledger Nano S" wiederherstellen willst!</p>
+        <p>Dein geheimer Schüssel verlässt nie das Ledger-Gerät. Es muss also immer eingesteckt sein,
         wenn du dieses Wallet benutzt.</p>
-        <p>Gib einen eindeutigen Walletnamen und Passwort ein. Das Passwort schützt deine Walletdaten auf dem Gerät.
-        Benutze ein starkes Passwort - noch besser ist eine Passwortphrase.<p>
+        <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
+        Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
-        ungefähres Datum oder Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
+        ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>Das Wallet</h1>
-        <h2>Street Mode</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        <h1>Die Wallet</h1>
+        <h2>Straßenmodus</h2>
+        <p>Der Straßenmodus kann im Menü unterhalb Gunthers Kopfsymbol an- und ausgeschaltet werden. In diesem Modus wird dein
+        Guthaben in keinem Menüpunkt angezeigt, sodass du dein Wallet gefahrlos auf der Straße, in einer Bar oder
+        anderem öffentlichen Ort nutzen kannst. Vorherige Transaktionen sind ebenfalls verborgen. Neue Transaktionen werden angezeigt, damit
+        du sehen kannst, wenn du diese genialen Moneroj versendet oder empfangen hast!</p>
         <h2>Scannen</h2>
-        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen einer Monerujo Wallet die Blockchain gescannt
-	um zu überprüfen ob neue Moneroj zu dieser Wallet gesendet wurden. Dies speichert ausschließlich Informationen
-	die zur Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
+        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen eines Monerujo-Wallets die Blockchain gescannt,
+	um zu überprüfen, ob neue Moneroj zu diesem Wallet gesendet wurden. Dies speichert ausschließlich Informationen,
+	die zum Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
         eine Weile her ist.
-        <h2>Das Saldo</h2>
-        <p><b>Hilfe! Mein Wallet Saldo ist verschwunden oder ist unbestätigt!</b><br/>
-        Keine Panik! Wenn du Gelder von deiner Wallet sendest wird ein Teil deines Saldos kurzzeitig als unbestätigt angezeigt.
-        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Monero auf der Blockchain bewegt werden.
+        <h2>Das Guthaben</h2>
+        <p><b>Hilfe! Mein Wallet-Guthaben ist verschwunden oder ist unbestätigt!</b><br/>
+        Keine Panik! Wenn du Gelder von deinem Wallet sendest, wird ein Teil deines Guthabens kurzzeitig als unbestätigt angezeigt.
+        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Moneroj auf der Blockchain bewegt werden.
         Lies mehr darüber auf https://getmonero.org/resources/moneropedia/change.html
         <h2>Transaktionsliste</h2>
-        <p>Eine Liste deiner Transaktionen. In View Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
+        <p>Eine Liste deiner Transaktionen. In View-Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
     ]]></string>
 
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
-        <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
-        to choose the best one for you!</p>
-        <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
-        whole blockchain itself.<p>
-        <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
-        scan the network for you. Or both. Read on&#8230;</p>
-        <p>The node list shows all currently known nodes. Additionally, the timestamp
-        of the latest block known to each node is shown under the node name. An icon
-        representing the node&apos;s response behaviour
-        (which indicates the level of connectivity to be expected)
-        is shown next to each node.</p>
-        <p>Any node in the list can be bookmarked for later use.
-        Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
-        It does this by checking the blockheight (how up-to-date
-        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
-        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
-        <h2>Add a Node</h2>
-        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
-        enter the node details in the following dialog.
-        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
-        mandatory entry.
-        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
-        You can also optionally name the node, so you can identify it easier later on.
-        Some nodes require credentials to use them. Enter the provided username &amp;
-        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
-        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
-        The result may also be an error - usually because the hostname provided is
-        not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
-        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
-        bookmark this node.</p>
-        <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
-        scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
-        by asking those for their peers, and so on. If you have no bookmarked nodes
-        (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
-        scan stops when it finds 10 remote nodes in total.</p>
+        <h2>Kurzfassung</h2>
+        <p>Aktualisiere die Liste der Nodes, indem du nach unten ziehst &amp; merke 3&#8211;5 davon vor, um es Monerujo zu ermöglichen, 
+        den bestmöglichen für dich auszuwählen!</p>
+        <h2>Was ist ein Node?</h2>
+        <p>Monerujo nutzt einen Drittanbieter-Node (manchmal auch Hintergrunddienst genannt), um mit 
+        dem Monero-Netzwerk zu kommunizieren, ohne die Blockchain selbst herunterladen und 
+        speichern zu müssen.<p>
+        <h2>Node-Liste</h2>
+        <p>Wenn die Liste leer ist, kannst du entweder selbst manuell neue Nodes hinzufügen oder Monerujo
+        das Netzwerk für dich scannen lassen – oder beides. Weiterlesen&#8230;</p>
+        <p>Die Node-Liste zeigt alle derzeit bekannten Nodes an. Außerdem wird der Zeitstempel
+        des letzten, diesem Node bekannten, Block unter dem Namen eines jeden Nodes angezeigt. Ein Icon,
+        das das Antwortverhalten dieses Nodes anzeigt 
+        (was die zu erwartende Verbindungsqualität anzeigt),
+        wird neben jedem Node angezeigt.</p>
+        <p>Jeder Node in dieser Liste kann für spätere Verwendung vorgemerkt werden.
+        Nicht vorgemerkte Nodes werden vergessen.<p>
+        <p>Jedes Mal, wenn du Monerujo nutzt, wird es aus den vorgemerkten Nodes den optimalen auswählen.
+        Das macht es, indem es die Blockhöhe (wie aktuell
+         ist der Node?) sowie das Antwortverhalten (wie schnell reagiert der Node auf Anfragen?) prüft.</p>
+        <p>Die Liste wird anhand dieser Eigenschaften geordnet. Der oberste Node ist also immer der, den Monerujo
+        momentan auswählen würde. Ganz unten in der Liste würden sehr langsame oder nicht erreichbare Nodes angezeigt werden.</p>
+        <h2>Füge einen Node hinzu</h2>
+        <p>Wenn du den &quot;Node hinzufügen&quot; Button unten berührst, wirst du nach den
+        Node-Details im nachfolgenden Dialog gefragt werden.
+        Die &quot;Adresse&quot; ist die Web- oder IP-Adresse des Nodes – dies ist der einzig
+        notwendige Eintrag.
+        Gebe den &quot;Port&quot; ein, wenn der Node nicht den standardmäßigen Port (also 18089) benutzt.
+        Du kannst auch optional den Node benennen, damit du ihn später einfacher identifizieren kannst.
+        Einige Nodes erfordern Login-Informationen, um sie zu benutzen. Gebe den dir zugekommenen Nutzernamen &amp;
+        das Passwort in die entsprechenden Felder ein. Jetzt kannst du diese Einstellung &quot;Testen&quot;.
+        Die &quot;Testergebnisse&quot; werden die Blockhöhe, Reaktionszeit und verwendete IP anzeigen.
+        Das Ergebnis kann aber auch fehlerbehaftet sein – meistens weil die eingegebene Webadresse
+        im Moment nicht in einer vertretbaren Zeit erreicht werden konnte oder weil die Login-Informationen falsch waren.
+        Oder die Kombination aus Webadresse und Port zeigt nicht auf einen richtigen Monero-Node!
+        Wenn der Test bestanden wird (keine Fehler), kannst du &quot;OK&quot; drücken, um diesen Node zu speichern &amp;
+        vorzumerken.</p>
+        <h2>Suche nach Nodes</h2>
+        <p>Außerdem kannst du das Netzwerk nach Nodes durchsuchen. Monerujo wird
+        das Netzwerk nach Drittanbieter-Nodes auf Port 18089 durchsuchen. Es fängt damit an, deine
+        vorgemerkten Nodes nach anderen Teilnehmern im Monero-P2P-Netzwerk zu fragen und fährt dann damit fort,
+        diese nach ihren Verbindungen zu fragen und so weiter. Wenn du keine vorgemerkten Nodes hast
+        (oder diese uns nicht über ihre Verbindungen informieren),
+        wird sich Monerujo direkt mit den, in Monero fest eingebetteten, Ursprungsnodes verbinden. Die
+        Suche stoppt, wenn insgesamt 10 Nodes gefunden wurden.</p>
     ]]></string>
 
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>Nutzung eines Zahlungslinks</h1>
+        <p>Du hast Monerujo mit einem Zahlungslink gestartet. Gehe wie folgt vor, um Gelder zu versenden:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. Öffne das Wallet, von der aus du senden möchtest<br>
+        2. Warte, bis das Wallet synchronisiert ist &amp; der "Sende"-Button erscheint<br>
+        3. Drücke den "Sende"-Button
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>Die Zahlungsdetails werden ausgefüllt. Überprüfe sie und fahre fort wie bei jeder anderen Transaktion.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Hab\'s verstanden!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
