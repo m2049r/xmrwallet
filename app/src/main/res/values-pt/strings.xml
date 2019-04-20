@@ -288,101 +288,101 @@
     <string name="fab_restore_key">Restaurar carteira a partir de chaves privadas</string>
     <string name="fab_restore_seed">Restaurar carteira a partir da semente de 25 palavras</string>
 
-    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
-    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
+    <string name="bad_saved_password">Palavra passe gravada incorrecta.\nInsere a palavra passe manualmente.</string>
+    <string name="prompt_open_wallet">A abrir a carteira&#8230;</string>
 
-    <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_new">Added new account #%1$d</string>
-    <string name="tx_account">Account #</string>
+    <string name="accounts_drawer_new">Criar Conta</string>
+    <string name="accounts_new">Conta nova adicionada #%1$d</string>
+    <string name="tx_account">Conta #</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
+    <string name="send_sweepall">Enviar todos os fundos confirmados para esta conta!</string>
     <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="generate_address_label_sub">Subaddress Publico #%1$d</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="menu_language">Linguagem</string>
+    <string name="language_system_default">Usar linguagem de sistema</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restaurar de Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">A comunicar com o Ledger</string>
+    <string name="progress_ledger_confirm">Confirmação com Ledger necessária!</string>
+    <string name="progress_ledger_lookahead">Recuperando subaddresses</string>
+    <string name="progress_ledger_verify">Verificando chaves</string>
+    <string name="progress_ledger_opentx">A cozinhar os numeros</string>
+    <string name="progress_ledger_mlsag">Produzindo hashes</string>
+    <string name="open_wallet_ledger_missing">Reconeta o teu Ledger</string>
 
-    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_new">A criar conta</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s Ligado</string>
+    <string name="toast_ledger_detached">%1$s Desligado</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="progress_nfc_write">Escrevendo Tag</string>
+    <string name="nfc_write_failed">A escrita do Tag falhou!</string>
+    <string name="nfc_write_successful">Escrita do Tag bem sucedida</string>
+    <string name="nfc_tag_unsupported">A Tag não suporta NDEF!</string>
+    <string name="nfc_tag_size">A Tag tem %1$d bytes, mas nós precisamos de %2$d!</string>
+    <string name="nfc_tag_read_undef">Eu não percebo a Tag!</string>
+    <string name="nfc_tag_read_what">Eu não percebo o que queres fazer!</string>
+    <string name="nfc_tag_read_success">Leitura do Tag bem sucedida</string>
+    <string name="nfc_tag_tap">NFC Disponivel!</string>
 
-    <string name="receive_desc_hint">Description (optional)</string>
+    <string name="receive_desc_hint">Descrição (opcional)</string>
 
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_not_openalias">Endereço OpenAlias não disponivel.</string>
+    <string name="send_address_openalias">OpenAlias seguro &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolvendo OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sem DNSSEC - endereço pode estar spoofed </string>
 
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
+    <string name="status_wallet_connect_wrongversion">Versão do Nó incompativel - atualizar por favor!</string>
 
-    <string name="menu_info">Detalhes</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Mostrar Segredos</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Street Mode</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
+    <string name="info_nodes_enabled">Node-o-matiC ativado, tocar para mais info.</string>
+    <string name="node_height">Ultimo bloco actualizado: %1$s</string>
+    <string name="label_nodes">Nós</string>
+    <string name="node_name_hint">Nome do Nó (Opcional)</string>
     <string name="node_address_hint">Hostname</string>
     <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
-    <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_user_hint">Nome de usuario (Optional)</string>
+    <string name="node_pass_hint">Palavra passe (Optional)</string>
+    <string name="node_host_unresolved">Não foi possivel resolver host</string>
+    <string name="node_host_empty">Precisamos disto!</string>
+    <string name="node_port_numeric">Tem de ser numérico</string>
+    <string name="node_port_range">Tem de ser 1&#8211;65535</string>
+    <string name="node_fab_add">Adicionar Nó</string>
+    <string name="node_refresh_hint">Tocar para refrescar!</string>
+    <string name="node_test_error">ERRO LIGAÇÃO %1$d</string>
+    <string name="node_general_error">ERRO LIGAÇÂO</string>
+    <string name="node_auth_error">AUTENTIFICAÇÃO FALHOU</string>
+    <string name="node_result_label">Resultado do teste:</string>
+    <string name="node_result">Altura: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">A testar IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Por favor espera que o scan acabe</string>
+    <string name="node_create_hint">Tocar para selecionar Nós.</string>
+    <string name="node_pull_hint">Adicionar Nós manualmente ou puxa para fazer scan</string>
+    <string name="node_scanning">A fazer scan á rede &#8230;</string>
+    <string name="node_nobookmark">Adicionar aos bookmarks os melhores %1$d nós automaticamente</string>
+    <string name="label_test">Testar ligação</string><!--note: as in "Test a network connection"-->
 
-    <string name="backup_success">Backup successful</string>
+    <string name="backup_success">Backup bem sucedido</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
-    <string name="send_address_hint">Receiver</string>
+    <string name="send_address_resolve_bip70">A resolver URI&#8230; de pagamento</string>
+    <string name="send_address_not_bip70">Não foi possivel resolver URI de pagamento</string>
+    <string name="send_address_bip70">Pagemento URI &#x2714; resolvido</string>
+    <string name="send_address_hint">Receptor</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TO offline - tenta mais tarde</string>
+    <string name="xmrto_error_004">Montante de BTC fora dos limites</string>
+    <string name="xmrto_error_010">URL de pagamento invalido ou fora de prazo</string>
+    <string name="xmrto_error_012">Demasiadas solicitações</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">A TOTALIDADE!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Converter semente do Ledger</string>
+    <string name="prompt_ledger_seed">Palavras da semente do Ledger</string>
+    <string name="prompt_ledger_phrase">Palavra passe do Ledger (opcional)</string>
+    <string name="bad_ledger_seed">Semente do Ledger invalida!</string>
+    <string name="prompt_ledger_seed_warn">Introduzir a semente do Ledger aqui comporta um elevado risco de segurança!</string>
 </resources>
