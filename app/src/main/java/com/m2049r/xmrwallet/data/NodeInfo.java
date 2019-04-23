@@ -228,7 +228,7 @@ public class NodeInfo extends Node {
                 responseCode = response.code();
                 if (response.isSuccessful()) {
                     ResponseBody respBody = response.body(); // closed through Response object
-                    if ((respBody != null) && (respBody.contentLength() < 1000)) { // sanity check
+                    if ((respBody != null) && (respBody.contentLength() < 2000)) { // sanity check
                         final JSONObject json = new JSONObject(
                                 respBody.string());
                         final JSONObject header = json.getJSONObject(
