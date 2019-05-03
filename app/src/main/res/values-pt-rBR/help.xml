@@ -291,15 +291,15 @@
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>Usando um link de pagamento</h1>
+        <p>Você abriu o monerujo a partir de um link de pagamento. Para enviar os fundos, siga estes passos:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. Abra a carteira da qual você quer gastar<br>
+        2. Espere que a carteira esteja sincronizada &amp; o botão "Enviar" vai aparecer<br>
+        3. Toque no botão "Enviar"
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>Os detalhes do pagamento serão preenchidos. Confirme-os e siga adiante como qualquer outra transação normal.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Entendi!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
