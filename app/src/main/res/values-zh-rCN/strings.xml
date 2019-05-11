@@ -79,8 +79,8 @@
 <string name="changepw_failed">密码修改失败！</string>
 <string name="changepw_success">密码已修改</string>
 <string name="label_daemon">节点</string>
-<string name="connect_stagenet" translatable="false">Stagenet（供普通用户使用的门罗测试网）</string>
-<string name="connect_testnet" translatable="false">测试网（供开发用户使用的门罗测试网）</string>
+<string name="connect_stagenet" translatable="false">Stagenet</string>
+<string name="connect_testnet" translatable="false">Testnet</string>
 <string name="status_wallet_loading">钱包加载中 &#8230;</string>
 <string name="status_wallet_unloaded">钱包已保存</string>
 <string name="status_wallet_unload_failed">钱包保存失败！</string>
@@ -91,7 +91,7 @@
 <string name="status_wallet_connect_ioex">无法连接至节点\n请重新尝试或连接其它的节点</string>
 <string name="status_wallet_disconnected">已断开连接</string>
 <string name="status_transaction_failed">交易失败: %1$s</string>
-<string name="send_xmrto_timeout">您已经等待足够长的时间了！</string>
+<string name="send_xmrto_timeout">您等待太长时间了！</string>
 <string name="service_busy">仍然处理您之前的钱包中 &#8230;</string>
 <string name="prompt_rename">重命名%1$s</string>
 <string name="prompt_changepw">新密码%1$s</string>
@@ -100,7 +100,7 @@
 <string name="prompt_fingerprint_auth">您也可以选择指纹登录。\n请触摸传感器。</string>
 <string name="prompt_send_password">确认密码</string>
 <string name="prompt_open_wallet">钱包打开中&#8230;</string>
-<string name="bad_fingerprint">无法是被您的指纹，请重试。</string>
+<string name="bad_fingerprint">无法识别您的指纹，请重试。</string>
 <string name="bad_password">密码错误！</string>
 <string name="bad_saved_password">保存的密码无效。\n请手动输入密码。</string>
 <string name="bad_wallet">钱包不存在！</string>
@@ -141,7 +141,7 @@
 ]]></string>
 <string name="generate_bad_passwordB">密码不匹配</string>
 <string name="generate_empty_passwordB">密码请不要为空</string>
-<string name="generate_buttonGenerate">Make me a wallet already!</string>
+<string name="generate_buttonGenerate">创建钱包！</string>
 <string name="generate_button_accept">我已经抄写下了助记种子密语</string>
 <string name="generate_wallet_name">请命名</string>
 <string name="generate_wallet_exists">钱包已存在！</string>
@@ -172,7 +172,7 @@
 <string name="send_amount_hint">0.00</string>
 <string name="send_notes_hint">私密备注 (选填)</string>
 <string name="send_generate_paymentid_hint">生成</string>
-<string name="send_qr_hint" translatable="false">扫描</string>
+<string name="send_qr_hint" translatable="false">Scan</string>
 <string name="send_send_label">发送门罗币</string>
 <string name="send_send_timed_label">发送门罗币 (%1$s)</string>
 <string name="send_qr_invalid">非QR码</string>
@@ -292,21 +292,21 @@
 <string name="progress_ledger_mlsag">哈希中</string>
 <string name="open_wallet_ledger_missing">请（重新）连接Ledger设备</string>
 <string name="accounts_progress_new">账户创建中</string>
-<string name="toast_ledger_attached">%1$s 已附加</string>
-<string name="toast_ledger_detached">%1$s 已从附加中删除</string>
-<string name="progress_nfc_write">标签写入中</string>
-<string name="nfc_write_failed">标签写入失败！</string>
-<string name="nfc_write_successful">标签写入成功</string>
-<string name="nfc_tag_unsupported">标签不支持NDEF!</string>
-<string name="nfc_tag_size">标签提供%1$d字节，但我们需要%2$d!</string>
-<string name="nfc_tag_read_undef">我不了解标签！</string>
+<string name="toast_ledger_attached">%1$s 已连接</string>
+<string name="toast_ledger_detached">%1$s 已断开连接</string>
+<string name="progress_nfc_write">NFC标签写入中</string>
+<string name="nfc_write_failed">NFC标签写入失败！</string>
+<string name="nfc_write_successful">NFC标签写入成功</string>
+<string name="nfc_tag_unsupported">NFC标签不支持NDEF!</string>
+<string name="nfc_tag_size">NFC标签提供%1$d字节，但我们需要%2$d!</string>
+<string name="nfc_tag_read_undef">我不了解NFC标签！</string>
 <string name="nfc_tag_read_what">我不知道你想要什么！</string>
-<string name="nfc_tag_read_success">标签读取成功</string>
+<string name="nfc_tag_read_success">NFC标签读取成功</string>
 <string name="nfc_tag_tap">NFC可用！</string>
 <string name="unknown_amount" translatable="false">\?\?\?</string>
 <string name="menu_info">显示私密信息</string>
 <string name="menu_streetmode">公共场合模式</string>
-<string name="node_wrong_net" translatable="false">只扫描主网的节点！</string>
+<string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
 <string name="info_nodes_enabled">Node-o-matiC已可用，点此了解更多.</string>
 <string name="node_height">同步的最新区块: %1$s</string>
 <string name="label_nodes">节点</string>
@@ -341,8 +341,8 @@
 <string name="xmrto_error_004">比特币金额超出限制</string>
 <string name="xmrto_error_010">无效或过期的支付URL</string>
 <string name="xmrto_error_012">当前请求数过多</string>
-<string name="xmrto_error" translatable="false">XMR.TO服务发生错误</string>
-<string name="street_sweep_amount">所有东西！</string>
+<string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
+<string name="street_sweep_amount">全部资产！</string>
 <string name="menu_ledger_seed">转换Ledger种子密语</string>
 <string name="prompt_ledger_seed">Ledger种子密语</string>
 <string name="prompt_ledger_phrase">Ledger密码(高级模式)</string>
