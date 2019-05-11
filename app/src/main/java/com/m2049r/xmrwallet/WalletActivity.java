@@ -175,6 +175,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
+    public boolean setTxNotes(String txId, String txNotes) {
+        return getWallet().setUserNote(txId, txNotes);
+    }
+
+    @Override
     public String getTxAddress(int major, int minor) {
         return getWallet().getSubaddress(major, minor);
     }
@@ -714,26 +719,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onSetNotes(final boolean success) {
-        try {
-            final TxFragment txFragment = (TxFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    if (!success) {
-                        Toast.makeText(WalletActivity.this, getString(R.string.tx_notes_set_failed), Toast.LENGTH_LONG).show();
-                    }
-                    txFragment.onNotesSet(success);
-                }
-            });
-        } catch (ClassCastException ex) {
-            // not in tx fragment
-            Timber.d(ex.getLocalizedMessage());
-            // never mind
-        }
-    }
-
-    @Override
     public void onProgress(final String text) {
         try {
             final WalletFragment walletFragment = (WalletFragment)
@@ -788,21 +773,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             intent.putExtra(WalletService.REQUEST_CMD_SEND_NOTES, notes.txNotes);
             startService(intent);
             Timber.d("SEND TX request sent");
-        } else {
-            Timber.e("Service not bound");
-        }
-
-    }
-
-    @Override
-    public void onSetNote(String txId, String notes) {
-        if (mIsBound) { // no point in talking to unbound service
-            Intent intent = new Intent(getApplicationContext(), WalletService.class);
-            intent.putExtra(WalletService.REQUEST, WalletService.REQUEST_CMD_SETNOTE);
-            intent.putExtra(WalletService.REQUEST_CMD_SETNOTE_TX, txId);
-            intent.putExtra(WalletService.REQUEST_CMD_SETNOTE_NOTES, notes);
-            startService(intent);
-            Timber.d("SET NOTE request sent");
         } else {
             Timber.e("Service not bound");
         }

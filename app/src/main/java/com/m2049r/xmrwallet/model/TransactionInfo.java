@@ -173,5 +173,4 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             return this.hash.compareTo(another.hash);
         }
     }
-
 }

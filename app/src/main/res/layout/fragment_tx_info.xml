@@ -225,34 +225,14 @@
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
-                <RelativeLayout
+                <EditText
+                    android:id="@+id/etTxNotes"
+                    style="@style/MoneroEdit"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/etTxNotes"
-                        style="@style/MoneroEdit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@+id/bTxNotes"
-                        android:backgroundTint="@color/moneroGray"
-                        android:hint="@string/tx_notes_hint"
-                        android:inputType="textMultiLine" />
-
-                    <Button
-                        android:id="@+id/bTxNotes"
-                        style="@style/MoneroButton.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:enabled="true"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:text="@string/tx_button_notes" />
-                </RelativeLayout>
-
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/moneroGray"
+                    android:hint="@string/tx_notes_hint"
+                    android:inputType="textMultiLine" />
             </TableRow>
 
             <TableRow>

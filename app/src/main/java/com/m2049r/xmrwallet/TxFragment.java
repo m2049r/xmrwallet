@@ -71,7 +71,6 @@ public class TxFragment extends Fragment {
     private TextView tvTxFee;
     private TextView tvTxTransfers;
     private TextView etTxNotes;
-    private Button bTxNotes;
 
     // XMRTO stuff
     private View cvXmrTo;
@@ -102,20 +101,8 @@ public class TxFragment extends Fragment {
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTransfers = view.findViewById(R.id.tvTxTransfers);
         etTxNotes = view.findViewById(R.id.etTxNotes);
-        bTxNotes = view.findViewById(R.id.bTxNotes);
 
         etTxNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
-
-        bTxNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                info.notes = null; // force reload on next view
-                bTxNotes.setEnabled(false);
-                etTxNotes.setEnabled(false);
-                userNotes.setNote(etTxNotes.getText().toString());
-                activityCallback.onSetNote(info.hash, userNotes.txNotes);
-            }
-        });
 
         tvTxXmrToKey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,14 +116,6 @@ public class TxFragment extends Fragment {
         TransactionInfo info = args.getParcelable(ARG_INFO);
         show(info);
         return view;
-    }
-
-    public void onNotesSet(boolean reload) {
-        bTxNotes.setEnabled(true);
-        etTxNotes.setEnabled(true);
-        if (reload) {
-            loadNotes(this.info);
-        }
     }
 
     void shareTxInfo() {
@@ -315,7 +294,6 @@ public class TxFragment extends Fragment {
         }
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -337,9 +315,9 @@ public class TxFragment extends Fragment {
 
         String getTxNotes(String hash);
 
-        String getTxAddress(int major, int minor);
+        boolean setTxNotes(String txId, String txNotes);
 
-        void onSetNote(String txId, String notes);
+        String getTxAddress(int major, int minor);
 
         void setToolbarButton(int type);
 
@@ -356,5 +334,17 @@ public class TxFragment extends Fragment {
             throw new ClassCastException(context.toString()
                     + " must implement Listener");
         }
+    }
+
+    @Override
+    public void onPause() {
+        if (!etTxNotes.getText().toString().equals(userNotes.note)) { // notes have changed
+            // save them
+            userNotes.setNote(etTxNotes.getText().toString());
+            info.notes = userNotes.txNotes;
+            activityCallback.setTxNotes(info.hash, info.notes);
+        }
+        Helper.hideKeyboard(getActivity());
+        super.onPause();
     }
 }
