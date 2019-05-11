@@ -3,195 +3,192 @@
     <string name="help_create_new"><![CDATA[
         <h1>建立全新的钱包</h1>
         <p>如果你需要一个新的Monero钱包地址!</p>
-        <p>请输入一个独特的钱包名称和钱包密码。
-        密码用于保护你在该设备上的钱包资料，请使用足够强度的密码。</p>
-        <h2>请抄写你的种子密语!</h2>
-        <p>在下一个步骤将会显示你的25个字 \"种子密语\"。
+        <p>请输入一个钱包名称（不得重复）和钱包密码。
+        密码用于保护你在钱包在该设备上的信息，请使用高强度的密码（口令更佳）。</p>
+        <h2>请抄写你的助记种子密语!</h2>
+        <p>下一页将会显示你的25个词 \"助记种子密语\"。
         这是你在未来恢复钱包并取得完整权限时所需的唯一信息。
-        妥善保护好这份种子密语是相当重要的事情，因为它可以给予<em>任何人</em>
-        对你的钱包操作的权限!</p>
-        <p>如果你忘记钱包密码，你依然能够使用种子密语来恢复你的钱包。</p>
-        <p>沒有任何方法能够恢复你的种子密语，如果你弄丟了种子密语将会失去你的所有资金!
-        种子密语是无法更改的，若种子密语被窃取或泄露，你将必须立即将资金转移到新的钱包中(对应一份新种子密语)。
-        因此，最好的方式是将种子密语写下来，存储在<em>多个</em>安全的地方。</p>
+        请务必妥善保存好它，因为它可以给予<em>任何人</em>
+        你的钱包的完全使用权限!</p>
+        <p>如果你忘记钱包密码，你依然能够使用助记种子密语来恢复你的钱包。</p>
+        <p>沒有任何方法能够恢复你的种子密语，如果你弄丟了助记种子密语将会失去你的所有资金!
+        助记种子密语是无法更改的，若助记种子密语被窃取或泄露，你将必须立即将资金转移到新的钱包中(对应一份新的助记种子密语)。
+        因此，最好的方式是将助记种子密语写下来，存储在<em>多个</em>安全的地方。</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
         <h1>用种子密语恢复钱包</h1>
-        <p>如果你已经有一个钱包地址并想要在区块链上恢复它!</p>
+        <p>如果你已经拥有一个钱包地址，并想要在区块链上恢复它!</p>
         <p>请输入钱包名称（不得重复）和密码。
-        这个密码是用来保护钱包在该设备上的信息，请使用足够强度的密码。</p>
-        <p>在对应位置输入你的25字种子密语。<p>
-        <p>若你知道你的第一笔交易是发生在哪个区块高度的话，请在\"恢复高度\"中
-        输入数值 - 若此处留空不输入，则将扫描<em>整个</em>区块链以寻找属于你钱包的交易与
-        余额，将会花费<em>较长</em>的时间。</p>
+        这个密码是用来保护钱包在该设备上的信息，请使用高强度的密码（口令更佳）。</p>
+        <p>在对应位置输入你的25词种子密语。<p>
+        <p>请在\"恢复高度\"中输入你在这个地址上的第一笔交易所在的区块高度。你也可以使用YYYY-MM-DD的格式来输入日期。如果你不是十分确定，也可以
+        选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。</p>
     ]]></string>
 
-    <string name="help_create_keys"><![CDATA[
+<string name="help_create_ledger"><![CDATA[
+        <h1>用Ledger恢复钱包</h1>
+        <p>如果你已经拥有一个钱包地址，并想用Ledger Nano S来恢复你的钱包。</p>
+        <p>因为你的密钥时刻存储在Ledger设备中，所以你每次访问钱包的时候，都需要插入Ledger设备。</p>
+        <p>请输入一个钱包名称（不得重复）和钱包密码。
+        密码用于保护你在钱包在该设备上的信息，请使用高强度的密码（口令更佳）。</p>
+        <p>请在\"恢复高度\"中输入你在这个地址上的第一笔交易所在的区块高度。你也可以使用YYYY-MM-DD的格式来输入日期。如果你不是十分确定，也可以
+        选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。</p>
+    ]]></string>
+ 
+   <string name="help_create_keys"><![CDATA[
         <h1>用密钥恢复钱包</h1>
-        <p>如果你已经有一个钱包地址，并想用密钥恢复它。</p>
+        <p>如果你已经拥有一个钱包地址，并想用密钥恢复它。</p>
         <p>请输入钱包名称（不得重复）和密码。
-        这个密码是用来保护钱包在该设备上的信息，请使用足够强度的密码。</p>
-        <p>在栏位\"公开地址\"中输入你的Monero地址并填妥\"查看密钥\"与\"支付密钥\"。</p>
-        <p>若你知道你的第一笔交易是发生在哪个区块高度的話，请在栏位\"恢复高度\"中
-        输入数值 - 若此栏留空则将会扫描<em>整个</em>区块链以寻找属于你钱包的交易与
-        余额，将会支付<em>较长</em>的时间。</p>
+        这个密码是用来保护钱包在该设备上的信息，请使用高强度的密码（口令更佳）。</p>
+        <p>在\"公开地址\"中输入你的Monero地址并填好\"查看密钥\"与\"支付密钥\"。</p>
+        <p>请在\"恢复高度\"中输入你在这个地址上的第一笔交易所在的区块高度。你也可以使用YYYY-MM-DD的格式来输入日期。如果你不是十分确定，也可以选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。
+</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>建立唯读钱包</h1>
-        <p>如果你只是想查看一个钱包的存入金额!</p>
-        <p>请输入不得重复的钱包名称与钱包密码。
-        这个密码是用来保护钱包在该设备上的信息，请使用足够强度的密码。</p>
-        <p>在栏位\"公开地址\"中输入你的Monero地址并填妥\"查看密钥\"。</p>
-        <p>若你知道你的第一笔交易是发生在哪个区块高度的話，请在栏位\"恢复高度\"中
-        输入数值 - 若此栏留空则将会扫描<em>整个</em>区块链以寻找属于你钱包的交易与
-        余额，将会支付<em>较长</em>的时间。</p>
+        <h1>建立只读钱包</h1>
+        <p>如果你想创建一个只可以查看交易的钱包!</p>
+        <p>请输入钱包名称（不得重复）和密码。
+        这个密码是用来保护钱包在该设备上的信息，请使用足够强度的密码（口令更佳）。</p>
+        <p>在\"公开地址\"中输入你的Monero地址并填好\"查看密钥\"。</p>
+        <p>请在\"恢复高度\"中输入你在这个地址上的第一笔交易所在的区块高度。你也可以使用YYYY-MM-DD的格式来输入日期。如果你不是十分确定，也可以选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
         <h1>钱包详细信息</h1>
         <h2>公开地址</h2>
-        你的公开地址就像是银行账号一样可以与他人分享而不需要担心
+        你的公开地址就像是银行账号一样，你可以与他人分享，且不需要担心
         会失去你的Monero，其他人可以透过这个地址发送Monero到你的钱包。
-        <h2>记忆种子码</h2>
-        这是你唯一需要用来恢复钱包的信息并且可以用来取用钱包的完全权限。妥善保护好这份种子码是相当重要的事
-        情，因为它可以给予<em>任何人</em>对你的钱包操作的权限!如果你还尚未在安全的地方抄写保存这份种子码，请尽速进行。
-        <h2>钱包档恢复密码</h2>
-        请务必抄写下此份密码。当你重置手机或重新安裝APP时，你将会需要用它来重新存取钱包档。<br/>
+        <h2>助记种子密语</h2>
+        这是你在未来恢复钱包并取得完整权限时所需的唯一信息。
+请务必妥善保存好它，因为它可以给予<em>任何人</em>
+        你的钱包的完全使用权限!如果你还未保存，请立即进行该步骤。
+        <h2>钱包文件恢复密码</h2>
+        请务必抄写该密码。当你重置手机或重新安裝APP时，你将会需要用它来重新访问钱包。<br/>
         <h3>CrAzYpass加密</h3>
-        若你的密码显示为4组的52英数字元，恭喜你!
-        你的钱包档正由256位元的密钥所保护着，这是本设备基于你自己设定的密码所产生(新建或更改密码时皆会产生)。
-        如此可以大幅提高钱包档被骇客破解的难度。<br/>
-        所有新建立的钱包预设都会启用这个加密功能。
-        <h3>旧式密码</h3>
+        若你的密码显示为4组共52个字母和数字的字符串，恭喜你!
+        你的钱包文件正由256位的密钥所保护着，这是该设备基于你自己设定的密码所产生的(新建或更改密码时皆会产生)。
+        如此可以大幅提高黑客破解钱包文件的难度。<br/>
+        所有新创建的钱包都预设会启用这个加密功能。
+        <h3>旧密码</h3>
         如果你在此看到你的密码，代表着你的钱包并沒有启用CrAzYpass加密以提高安全性。
-        若要启用，只需要在选单中点选\"更改密码\"，在输入新的密码后(即使是与先前的密码相同)，APP将会对
+        若要启用，只需要在菜单中选择\"更改密码\"，在输入新的密码后(即使是与先前的密码相同)，APP将会对
         你的钱包档进行CrAzYpass加密，请将密码抄写下来!
         <h3>CrAzYpass加密的钱包</h3>
-        如果你需要重新安裝 Monerujo (譬如将手机重置或换了新的手机)，或是你想要将钱包档在別的设备或电脑上使用，你将必须
-        使用钱包恢复密码才能重新存取钱包。<br/>
-        当你在选单中点选 \"更改密码\"时，可以更换新的密码，但是请注意这同时会产生一组新的钱包恢复密码，请抄写下来!
+        如果你需要重新安裝 Monerujo (譬如将手机重置或换了新手机)，或是你想要将钱包文件在別的设备或电脑上使用，你将必须
+        使用钱包恢复密码才能重新访问钱包。<br/>
+        当你在菜单中选择 \"更改密码\"时，你可以更换新的密码，但是请注意这同时会产生一组新的钱包恢复密码，请抄写下来!
         <h2>查看密钥</h2>
-        查看密钥可以被用在查看钱包的入账金额而不包含支付钱包资金的权限。
+        查看密钥可以使你查看钱包的入账交易，但你无法使用钱包内的资金。
         <h2>支付密钥</h2>
-        这个支付公钥可以给予任何人支付你的钱包资金的权力，因此不要向任何人泄漏这份密钥，就如同种子码需要被妥善保存。
+        支付密钥可以给予任何人使用你的钱包内资金的权力，因此不要向任何人泄漏这份密钥，如同助记种子密语一样，它需要被妥善保存。
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>钱包列表</h1>
         <h2>节点</h2>
-        <p>Monerujo使用远端节点连接至Monero网络而不需要下载与储存整个区块链。
-        你可以在这个网站找到几个热门的公共远端节点或是学习如何自行架设节点 https://moneroworld.com/</p>
-        <p>Monerujo 会预设数个远端节点可供使用。并且自动记忆最近五个使用过的节点</p>
+        <p>Monerujo使用远程节点连接至Monero网络，且不需要下载与储存整个区块链。
+        你可以在这个网站中找到几个热门的公共远程节点或是学习如何自行架设节点 https://moneroworld.com/ </p>
+        <p>Monerujo 会预设数个远程节点以供使用，并且自动记忆最近五个使用过的节点。</p>
         <h2>钱包</h2>
-        <p>在这你可以看到你的钱包们。他们被储存在位于设备內部储存空间的<tt>monerujo</tt>资料夹中。
-        你可以利用档案浏览器APP找到他们。你应该在设备以外的地方备份他们以免你的设备爆炸或失窃后的损失。</p>
-        <p>选择一个钱包开启或点选\"+\"符号以建立一个新的。或是选择以下的操作:</p>
+        <p>在这里你可以看到你的钱包。他们被储存在位于设备內部存储空间的<tt>monerujo</tt>资料夹中。
+        你可以利用文件浏览器APP找到他们。你应该在设备以外的地方备份他们，以免你的设备爆炸或失窃。</p>
+        <p>选择打开一个钱包或点击\"+\"以建立一个新的钱包。或是进行以下的操作:</p>
         <h3>详细信息</h3>
-        <p>显示钱包详细信息如种子码 &amp; 密钥。</p>
+        <p>显示钱包详细信息，种子密语 &amp; 密钥。</p>
         <h3>接收</h3>
-        <p>产生一个QR码以接收Monero。</p>
+        <p>生成QR码以接收门罗币。</p>
         <h3>重新命名</h3>
         <p>重新命名钱包名称，已备份的钱包不会被更改名称</p>
         <h3>备份</h3>
-        <p>建立一份钱包副本在<tt>monerujo</tt>中的<tt>backups</tt>资料夹內并覆写上一次的备份。</p>
-        <h3>封存</h3>
-        <p>将建立一份备份后刪除钱包，钱包副本将会留存于<tt>backups</tt>资料夹中。
-        若你再也不需要这钱包则可利用档案浏览器APP或可安全刪除档案APP将之刪除。</p>
+        <p>在<tt>monerujo</tt>中的<tt>backups</tt>目录下建立一份钱包副本，并覆盖上一次的备份。</p>
+        <h3>档案</h3>
+        <p>将建立一份备份后刪除钱包。备份将会留存于<tt>backups</tt>目录下。
+        如果你确定不再需要使用该备份，请通过文件浏览器app或手机安全软件删除它。</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
         <h1>交易明細</h1>
         <h2>收款地址</h2>
-        这是你发送Monero过去的钱包地址。
-        <h2>付款ID</h2>
-        你可以使用付款ID以帮助识別双方的款项交易。这是选填项目并且完全为隐私保护的。
-        举例来說这可以让公司行号辨別你的这笔款项是用来支付某项购买的商品。
+        这是你的Monero将要发往的公开地址。
+        <h2>支付ID</h2>
+        你可以使用支付ID来查看交易的原因，该ID为非必填项，且其中信息不会对外公开。
+        举例来说，这可以让商业机构将你的交易和你购买的物品关联起来。
         <h2>交易ID</h2>
-        这是可以用来在Monero区块链浏览器上查询的被隐蔽交易ID。在这里可查询:
-        <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TX KEY (交易密钥)</h2>
-        这是该笔交易的私钥。请妥善保护这组密钥，因为这密钥将可揭露你该笔交易的环状签名
-        而使得该笔交易透明化。
-        <h2>区块</h2>
-        这是包裹该笔交易的区块編号。
+        你可以使用交易ID来在Monero区块链浏览器上查看被隐藏的交易。如：<a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        <h2>交易密钥</h2>
+        这是你的交易私钥，请妥善保存，因为泄露该私钥会暴露你在环中真正的签名，从而导致交易等信息可被他人知晓。        
+	<h2>区块</h2>
+        这是包含你的交易的区块。
     ]]></string>
 
     <string name="help_send"><![CDATA[
         <h1>发送</h1>
         <h2>收款者地址</h2>
-        <p>这是你欲发送Monero过去的钱包地址。你可以从剪贴簿贴上, 扫描QR码或是手动输入。
-        请务必再三确认地址正确以免发送至错误的钱包地址</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>这是你的门罗币将要发往的钱包地址。你可以复制黏贴，扫描QR码或是手动输入。
+        请务必再三确认地址正确，以免你的门罗币发送至错误的钱包地址</p>
+        <p>除了使用门罗地址外，你还可以使用
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
+            <li>门罗或比特币的OpenAlias</li>
+            <li>一个比特币地址</li>
+            <li>一个比特币的URI（如同bitpay，包含BIP70）</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
-        for details). See the section on sending BTC below.</p>
-        <h2>付款ID</h2>
-        <p>你可以使用付款ID以帮助识別双方的款项交易。这是选填项目并且完全为隐私保护的。
-        举例来說这可以让公司行号辨別你的这笔款项是用来支付某项购买的商品。<p>
+        请注意，如果你发往的是比特币地址，那么钱包将自动使用XMR.TO的服务(详情可查看 https://xmr.to
+        ). 查看下面关于发送比特币的信息。</p>
+        <h2>支付ID</h2>
+        <p>
+ 你可以使用支付ID来查看交易的原因，该ID为非必填项，且其中信息不会对外公开。
+        举例来说，这可以让商业机构将你的交易和你购买的物品关联起来。<p>
         <h1>发送BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO 是一个可以将XMR转换为BTC的第三方服务。
+        <p>XMR.TO 是一个可以将门罗币转换为比特币的第三方服务。
         我们利用XMR.TO的API将其服务整合至Monerujo中。请参阅 https://xmr.to 后自行决定是否使用。
-        Monerujo开发团队与XMR.TO并无相关，无法为你解决其服务上的问題</p>
+        Monerujo开发团队与XMR.TO无任何关联，无法为你解决其服务的问题。</p>
         <h2>XMR.TO 汇率<h2>
         <p>在 \"金额\" 的页面中你将看到 XMR.TO 服务的参数。包含了汇率以及BTC金额的上下限。
-        请注意这个阶段显示的汇率并不是确定的。你也可以看到在多少金额之下可以直接发送BTC，而不用等待XMR的确认。
-        (详见 XMR.TO的FAQ以了解更多)。请注意XMR.TO并不额外收取手续费用，是不是很棒呢?</p>
+        请注意这个时刻显示的汇率并不一定是最终的汇率。你也可以看到在无需等待门罗确认的情况下，可以立即执行的比特币交易金额上限。
+        (详见 XMR.TO的FAQ以了解更多)。请注意XMR.TO并不收取额外的手续费用，是不是很棒呢?</p>
         <h2>XMR.TO 订单<h2>
         <p>在 \"确认\" 的页面中，你将可以看到正式的XMR.TO订单。这订单仅在一段时间內有效。
-        你可以在 \"发送\" 的按鈕上看到倒数计时。这时的汇率可能与前一个页面显示的不同</p>
+        你可以在 \"发送\" 的按钮上看到倒数计时。这时的汇率可能与前一个页面显示的不同。</p>
         <h2>XMR.TO 私钥<h2>
-        <p>由于Monerujo仅处理Monero的部分，你的XMR.TO密钥将可用于再XMR.TO的首页上查询追踪BTC部分的交易状況。</p>
+        <p>Monerujo仅处理交易中门罗币的部分，你可以在XMR.TO的首页上，通过XMR.TO密钥查询比特币部分的信息。</p>
         <p>请注意，此密钥仅在交易发起的24小时內有效。</p>
         <h2>XMR.TO 倒数计时!</h2>
-        <p>当倒数计时归零的时候，你将会需要回到上一步再回到\"确认\"页面重新向XMR.TO寻求汇率报价</p>
+        <p>当倒数计时结束的时候，你将需要回到上一步，重新向XMR.TO寻求汇率报价后，再回到\"确认\"页面。</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>发送 BTC</h1>
         <h2>XMR.TO</h2>
-        <p>XMR.TO 是一个可以将XMR转换为BTC的第三方服务。
+        <p>
+XMR.TO 是一个可以将门罗币转换为比特币的第三方服务。
         我们利用XMR.TO的API将其服务整合至Monerujo中。请参阅 https://xmr.to 后自行决定是否使用。
-        Monerujo开发团队与XMR.TO并无相关，无法为你解决其服务上的问題</p>
+        Monerujo开发团队与XMR.TO无任何关联，无法为你解决其服务的问题。
+</p>
         <h2>XMR.TO 汇率<h2>
-        <p>在 \"金额\" 的页面中你将看到 XMR.TO 服务的参数。包含了汇率以及BTC金额的上下限。
-        请注意这个阶段显示的汇率并不是确定的。你也可以看到多少金额的可以进行零确认XMR的BTC发送
-        (详见 XMR.TO的FAQ以了解更多)。请注意XMR.TO并不额外收取手续费用，是不是很棒呢?</p>
+        <p>
+在 \"金额\" 的页面中你将看到 XMR.TO 服务的参数。包含了汇率以及BTC金额的上下限。
+        请注意这个时刻显示的汇率并不一定是最终的汇率。你也可以看到在无需等待门罗确认的情况下，可以立即执行的比特币交易金额上限。
+        (详见 XMR.TO的FAQ以了解更多)。请注意XMR.TO并不收取额外的手续费用，是不是很棒呢?
+</p>
         <h2>XMR.TO 订单<h2>
-        <p>在 \"确认\" 的页面中，你将可以看到正式的XMR.TO订单。这订单仅在一段时间內有效。
-        你可以在 \"发送\" 的按鈕上看到倒数计时。这时的汇率可能与前一个页面显示的不同</p>
+        <p>
+在 \"确认\" 的页面中，你将可以看到正式的XMR.TO订单。这订单仅在一段时间內有效。
+        你可以在 \"发送\" 的按钮上看到倒数计时。这时的汇率可能与前一个页面显示的不同。
+</p>
         <h2>XMR.TO 私钥<h2>
-        <p>由于Monerujo仅处理Monero的部分，你的XMR.TO密钥将可用于再XMR.TO的首页上查询追踪BTC部分的交易状況。</p>
+        <p>Monerujo仅处理交易中门罗币的部分，你可以在XMR.TO的首页上，通过XMR.TO密钥查询比特币部分的信息。</p>
         <p>请注意，此密钥仅在交易发起的24小时內有效。</p>
         <h2>XMR.TO 倒数计时!</h2>
-        <p>当倒数计时归零的时候，你将会需要回到上一步再回到\"确认\"页面重新向XMR.TO寻求汇率报价</p>
-    ]]></string>
-
-    <string name="help_create_ledger"><![CDATA[
-        <h1>Create Wallet - Ledger</h1>
-        <p>You want to recover your wallet from your Ledger Nano S device.</p>
-        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
-        time you want to access your wallet.</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
-        device. Use a strong password - even better use a passphrase.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <p>当倒数计时结束的时候，你将需要回到上一步，重新向XMR.TO寻求汇率报价后，再回到\"确认\"页面。</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>钱包介面</h1>
-        <h2>Street Mode</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        <h1>钱包界面</h1>
+        <h2>公共场合模式</h2>
+        <p>你可以在菜单栏或Gunther顶部图标中激活/禁用公共场合模式。在该模式下，任何页面都不会显示你的余额，你可以放心地在街头、酒吧等公共场合使用你的钱包。它还将隐藏过去的交易记录，显示新的交易记录，以方便确认你已成功发送/接受Monero币！</p>
         <h2>扫描</h2>
         由于Monero的交易是隐私保护的，因此每当你开启Monerujo钱包时我们必须
         在区块链上扫描是否有最新的Monero被传送到你的钱包中，将会储存仅与你钱包相关的信息在设备中。
@@ -206,66 +203,46 @@
     ]]></string>
 
     <string name="help_node"><![CDATA[
-        <h1>Nodes</h1>
-        <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
-        to choose the best one for you!</p>
-        <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
-        whole blockchain itself.<p>
-        <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
-        scan the network for you. Or both. Read on&#8230;</p>
-        <p>The node list shows all currently known nodes. Additionally, the timestamp
-        of the latest block known to each node is shown under the node name. An icon
-        representing the node&apos;s response behaviour
-        (which indicates the level of connectivity to be expected)
-        is shown next to each node.</p>
-        <p>Any node in the list can be bookmarked for later use.
-        Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
-        It does this by checking the blockheight (how up-to-date
-        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
-        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
-        <h2>Add a Node</h2>
-        <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
-        enter the node details in the following dialog.
-        The &quot;Address&quot; is the hostname or IP-address of the node - this is the only
-        mandatory entry.
-        Enter the &quot;Port&quot; if the node runs on a non-default port (e.g. 18089).
-        You can also optionally name the node, so you can identify it easier later on.
-        Some nodes require credentials to use them. Enter the provided username &amp;
-        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
-        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
-        The result may also be an error - usually because the hostname provided is
-        not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
-        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
-        bookmark this node.</p>
-        <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
-        scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
-        by asking those for their peers, and so on. If you have no bookmarked nodes
-        (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
-        scan stops when it finds 10 remote nodes in total.</p>
+        <h1>节点</h1>
+        <h2>以下是精简过后的说明</h2>
+        <p>下拉以刷新节点列表 &amp; 书签 3&#8211;你可以在5个节点中选择最适合的一个！</p>
+        <h2>什么是节点？</h2>
+        <p>Monerujo使用远程节点来与Monero区块链通信，无需下载和储存全部的区块链数据。<p>
+        <h2>节点列表</h2>
+        <p>如果该列表上没有任何节点，那么你可以选择手动添加新节点，或者让Monerujo来为你扫描网络，或者两种方法都尝试下。继续阅读&#8230;</p>
+        <p>节点列表将显示所有已知的节点。此外，节点名下方会显示它们已同步的最新区块的时间戳。节点旁边还有一个图标，显示节点目前的响应表现
+        （你可以以此判断该节点是否易于连接）</p>
+        <p>你也可以将节点加入书签中，以方便之后的使用。没有加入书签的节点将会被遗忘。<p>
+        <p>Monerujo每次将会在节点书签列表中选择一个最优的节点。它选择的机理是检查节点的区块高度（以检查该节点同步的情况）和响应表现
+        （已检查该节点对请求的相应速度）。</p>
+        <p>该列表按以上维度排序，最顶部的节点便是此刻Monerujo选择的最佳节点。位于底部的节点则是Monerujo认为同步速度慢或无法使用的节点。</p>
+        <h2>添加节点</h2>
+        <p>点击底部的 &quot;添加节点&quot;按钮后，你将需要输入一些节点的详细信息。
+        &quot;地址&quot;指的是节点的主机名称或IP地址，这是唯一一个必填项。
+        如果节点在一个非默认设置的端口上运行，请在&quot;端口&quot;中输入相应的值（如18089）。
+        你也可以选择对节点进行命名，以方便你之后识别它们。
+        一些节点将要求你提供证书。在相应的区域输入用户名&amp;和密码。现在你可以&quot;测试&quot;这些设置。
+        &quot;测试结果&quot;将显示区块高度，响应时间和实际使用的IP地址。这些结果可能是错误的，通常是由于提供的主机名无法在合理的时间内连接上，
+        或者是因为所提供的证书不正确，也可能是主机名/端口的组合无法指向一个实际存在的Monero节点！
+        当测试通过后（无错误发生），请点击&quot;OK&quot;按钮以将保存该节点的书签&amp;</p>
+        <h2>扫描节点</h2>
+        <p>除此之外，你可以选择扫描网络来获取可用的节点。Monerujo将从端口18089开始扫描网络以获取远程节点。它将从被你加入书签的节点入手，
+        获取可用的节点，并继续向这些可用的节点，获取更多可用的节点，循环反复。如果你没有将任何节点加入书签（或者是对方不愿意让我们获取可用节点），
+        Monerujo将会直接访问被硬编码进Monero网络的种子节点。当Monerujo找到10个远程节点后，它将停止扫描工作。</p>
     ]]></string>
 
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>使用支付链接</h1>
+        <p>你已经在带有支付链接的情况下启动了Monerujo。为了确保资金成功发送，请遵循以下操作：</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. 打开你想要从中发送资金的钱包<br>
+        2. 等待钱包同步完成&amp;并显示“发送”按钮<br>
+        3. 点击"发送"按钮
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>支付详情将自动填充，请仔细检查，后续操作同其他交易相同。</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">我明白了!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
