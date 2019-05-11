@@ -47,6 +47,7 @@ import timber.log.Timber;
 
 public class NodeInfo extends Node {
     final static public int MIN_MAJOR_VERSION = 9;
+    final static public String RPC_VERSION = "2.0";
 
     private long height = 0;
     private long timestamp = 0;
@@ -231,6 +232,9 @@ public class NodeInfo extends Node {
                     if ((respBody != null) && (respBody.contentLength() < 2000)) { // sanity check
                         final JSONObject json = new JSONObject(
                                 respBody.string());
+                        String rpcVersion = json.getString("jsonrpc");
+                        if (!RPC_VERSION.equals(rpcVersion))
+                            return false;
                         final JSONObject header = json.getJSONObject(
                                 "result").getJSONObject("block_header");
                         height = header.getLong("height");
