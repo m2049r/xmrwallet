@@ -556,6 +556,8 @@ public class Helper {
                     tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
                     tvOpenPrompt.setVisibility(View.VISIBLE);
                     FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
+                } else {
+                    etPassword.requestFocus();
                 }
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
                 button.setOnClickListener(new View.OnClickListener() {
