@@ -46,7 +46,7 @@ import okhttp3.ResponseBody;
 import timber.log.Timber;
 
 public class NodeInfo extends Node {
-    final static public int MIN_MAJOR_VERSION = 9;
+    final static public int MIN_MAJOR_VERSION = 11;
     final static public String RPC_VERSION = "2.0";
 
     private long height = 0;
