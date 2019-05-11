@@ -356,21 +356,21 @@
 
     <string name="backup_success">Backup feito com successo</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
-    <string name="send_address_hint">Receiver</string>
+    <string name="send_address_resolve_bip70">Resolvendo URI do Pagamento&#8230;</string>
+    <string name="send_address_not_bip70">Não foi possível resolver o URI do pagamento</string>
+    <string name="send_address_bip70">URI do Pagamento resolvido &#x2714;</string>
+    <string name="send_address_hint">Destinatário</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">XMR.TO offline - tente novamente mais tarde</string>
+    <string name="xmrto_error_004">Valor BTC fora dos limites</string>
+    <string name="xmrto_error_010">URL de pagamento inválido</string>
+    <string name="xmrto_error_012">Demasiadas solicitações</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">TUDO!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Converter semente da Ledger</string>
+    <string name="prompt_ledger_seed">Palavras da semente da Ledger</string>
+    <string name="prompt_ledger_phrase">Senha da Ledger (opcional)</string>
+    <string name="bad_ledger_seed">Semente da Ledger inválida!</string>
+    <string name="prompt_ledger_seed_warn">Escrever a semente da sua Ledger aqui é um grande risco de segurança!</string>
 </resources>
