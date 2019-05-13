@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-<string name="app_name" translatable="false">monerujo</string>
 <string name="wallet_activity_name">钱包</string>
 <string name="menu_about">关于我们</string>
 <string name="menu_privacy">隐私政策</string>
@@ -79,8 +78,6 @@
 <string name="changepw_failed">密码修改失败！</string>
 <string name="changepw_success">密码已修改</string>
 <string name="label_daemon">节点</string>
-<string name="connect_stagenet" translatable="false">Stagenet</string>
-<string name="connect_testnet" translatable="false">Testnet</string>
 <string name="status_wallet_loading">钱包加载中 &#8230;</string>
 <string name="status_wallet_unloaded">钱包已保存</string>
 <string name="status_wallet_unload_failed">钱包保存失败！</string>
@@ -153,7 +150,6 @@
 <string name="generate_wallet_type_new">新</string>
 <string name="generate_wallet_type_seed">种子密语</string>
 <string name="generate_wallet_type_view">查阅</string>
-<string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
 <string name="generate_address_hint">公开地址</string>
 <string name="generate_viewkey_hint">查阅密钥</string>
 <string name="generate_spendkey_hint">支付密钥</string>
@@ -172,7 +168,6 @@
 <string name="send_amount_hint">0.00</string>
 <string name="send_notes_hint">私密备注 (选填)</string>
 <string name="send_generate_paymentid_hint">生成</string>
-<string name="send_qr_hint" translatable="false">Scan</string>
 <string name="send_send_label">发送门罗币</string>
 <string name="send_send_timed_label">发送门罗币 (%1$s)</string>
 <string name="send_qr_invalid">非QR码</string>
@@ -234,47 +229,10 @@
 <string name="archive_alert_message">即将开始备份钱包，完成后将删除钱包！</string>
 <string name="archive_alert_yes">好的，开始吧！</string>
 <string name="archive_alert_no">不用了，谢谢！</string>
-<string-array name="currency" translatable="false">
-<item>XMR</item>
-<item>EUR</item>
-<item>USD</item>
-<item>JPY</item>
-<item>GBP</item>
-<item>CHF</item>
-<item>CAD</item>
-<item>AUD</item>
-<item>ZAR</item>
-<item>BRL</item>
-<item>CLP</item>
-<item>CNY</item>
-<item>CZK</item>
-<item>DKK</item>
-<item>HKD</item>
-<item>HUF</item>
-<item>IDR</item>
-<item>ILS</item>
-<item>INR</item>
-<item>KRW</item>
-<item>MXN</item>
-<item>MYR</item>
-<item>NOK</item>
-<item>NZD</item>
-<item>PHP</item>
-<item>PKR</item>
-<item>PLN</item>
-<item>RUB</item>
-<item>SEK</item>
-<item>SGD</item>
-<item>THB</item>
-<item>TRY</item>
-<item>TWD</item>
-</string-array>
 <string name="fab_create_new">创建新钱包</string>
 <string name="fab_restore_viewonly">恢复只读钱包</string>
 <string name="fab_restore_key">通过私钥恢复钱包</string>
 <string name="fab_restore_seed">通过25词助记种子密语恢复钱包</string>
-<string name="accounts_balance" translatable="false">%1$s XMR</string>
-<string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
 <string name="accounts_drawer_new">创建账户</string>
 <string name="accounts_new">添加新账户 #%1$d</string>
 <string name="tx_account">账户 #</string>
@@ -303,10 +261,8 @@
 <string name="nfc_tag_read_what">我不知道你想要什么！</string>
 <string name="nfc_tag_read_success">NFC标签读取成功</string>
 <string name="nfc_tag_tap">NFC可用！</string>
-<string name="unknown_amount" translatable="false">\?\?\?</string>
 <string name="menu_info">显示私密信息</string>
 <string name="menu_streetmode">公共场合模式</string>
-<string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
 <string name="info_nodes_enabled">Node-o-matiC已可用，点此了解更多.</string>
 <string name="node_height">同步的最新区块: %1$s</string>
 <string name="label_nodes">节点</string>
@@ -341,7 +297,6 @@
 <string name="xmrto_error_004">比特币金额超出限制</string>
 <string name="xmrto_error_010">无效或过期的支付URL</string>
 <string name="xmrto_error_012">当前请求数过多</string>
-<string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
 <string name="street_sweep_amount">全部资产！</string>
 <string name="menu_ledger_seed">转换Ledger种子密语</string>
 <string name="prompt_ledger_seed">Ledger种子密语</string>
