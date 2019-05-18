@@ -15,33 +15,32 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>隐私政策</h1>
-        <p>本页将帮助你了解 monerujo: Monero Wallet 是如何收集、使用以及披露用户信息。</p>
-        <p>当你使用本 App 时，代表您已经明确同意本隐私政策。</p>
-        <h2>信息收集方式</h2>
-        <p>个人信息资料指：可以辨认个人信息的任意资料。</p>
-        <p>Monerujo 只会在本地端使用您的 Monero 私钥以及公开地址执行必要的处理，并在加密后发送至
-        Monero 网络进行交易。</p>
+        <p>该页将帮助您了解 monerujo: Monero Wallet 是如何收集、使用以及披露用户信息。</p>
+        <p>使用该App，代表您已经明确同意该隐私政策。</p>
+        <h2>收集的信息</h2>
+        <p>个人信息指可用于辨认个人身份的任何信息。</p>
+        <p>Monerujo只会在本地使用您的Monero密钥以及公开地址，以处理交易，并再加密后发往门罗网络。</p>
         <p>其他个人信息都不会被 monerujo 收集。</p>
-        <p>如果你使用外汇的功能(可选用)，monerujo 將通过 coinmarketcap.com 的公开
-        API 抓取当前汇率。如果你想了解自己被收集的信息如何被使用，请访问 https://coinmarketcap.com/privacy
+        <p>如果您使用交易的功能(可选)，monerujo將通过coinmarketcap.com的公开
+        API 获取当前汇率。如果您想了解被收集的信息如何被使用，请访问 https://coinmarketcap.com/privacy
         查看他们的隐私政策。</p>
-        <p>如果你想使用本 App 支付款项至比特币地址，您将使用 XMR.TO 所提供的服务。Monerujo
-        将发送比特币的目标地址以及金额至 XMR.TO，您的 IP 在此时也可能会被收集。详情请至 https://xmr.to/
+        <p>如果您想使用该App支付款项至比特币地址，您将使用 XMR.TO 所提供的服务。Monerujo
+        将发送比特币的目标地址以及金额信息至XMR.TO，您的IP在此时也可能会被收集。请访问 https://xmr.to/
         查看他们的隐私政策。</p>
         <h2>应用程序权限</h2>
         <ul>
-        <li>INTERNET : 通过 Monero 节点连接至 Monero 网络。</li>
-        <li>READ_EXTERNAL_STORAGE : 读取手机上的钱包信息。</li>
-        <li>WRITE_EXTERNAL_STORAGE : 在手机上存储钱包信息。</li>
-        <li>WAKE_LOCK : 与远程节点同步时，防止手机进入待机状态。</li>
-        <li>CAMERA : 扫描二维码以接收 Monero。</li>
+        <li>INTERNET : 通过Monero Daemon节点连接至Monero网络。</li>
+        <li>READ_EXTERNAL_STORAGE : 读取设备上的钱包文件。</li>
+        <li>WRITE_EXTERNAL_STORAGE : 写入设备上的钱包文件。</li>
+        <li>WAKE_LOCK : 同步时，防止手机进入待机状态。</li>
+        <li>CAMERA : 扫描QR码以接收Monero。</li>
         </ul>
         <h2>政策更新</h2>
-        <p>本隐私政策可能会不定时更新。在更新的同时，我們也会在本 App 以及网站 (www.monerujo.io)
-        上公告新的隐私政策或改动条款。但我们仍建议您定时查看本隐私政策以及时了解任何的修改。
+        <p>本隐私政策可能会不定期更新。在更新的同时，我們也会在该App以及网站 (www.monerujo.io)
+        上公告新的隐私政策和改动条款。但我们仍建议您定时查看该隐私政策以及时知晓其变动。
         <p>本隐私政策最后更新日期为 2017 年 11 月 10 日。
         </p>
         <h2>联系我们</h2>
-        <p>如果您对隐私政策或个人资料处理仍有疑问，欢迎发送电子邮件至 privacy@monerujo.io。</p>
+        <p>如果您对隐私政策或个人信息的收集和处理有任何疑问，欢迎发送电子邮件至privacy@monerujo.io。</p>
         ]]></string>
 </resources>
