@@ -353,9 +353,10 @@ public class Wallet {
         if (label.equals(NEW_ACCOUNT_NAME)) {
             String address = getAddress(accountIndex);
             int len = address.length();
-            return address.substring(0, 6) +
+            label = address.substring(0, 6) +
                     "\u2026" + address.substring(len - 6, len);
-        } else return label;
+        }
+        return label;
     }
 
     public String getSubaddressLabel(int addressIndex) {

@@ -64,6 +64,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -186,28 +187,23 @@ public class Helper {
         act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    static public BigDecimal getDecimalAmount(long amount) {
+        return new BigDecimal(amount).scaleByPowerOfTen(-12);
+    }
+
     static public String getDisplayAmount(long amount) {
         return getDisplayAmount(amount, 12);
     }
 
     static public String getDisplayAmount(long amount, int maxDecimals) {
-        return getDisplayAmount(Wallet.getDisplayAmount(amount), maxDecimals);
-    }
-
-    // amountString must have '.' as decimal point
-    private static String getDisplayAmount(String amountString, int maxDecimals) {
-        int lastZero = 0;
-        int decimal = 0;
-        for (int i = amountString.length() - 1; i >= 0; i--) {
-            if ((lastZero == 0) && (amountString.charAt(i) != '0')) lastZero = i + 1;
-            // TODO i18n
-            if (amountString.charAt(i) == '.') {
-                decimal = i + 1;
-                break;
-            }
-        }
-        int cutoff = Math.min(Math.max(lastZero, decimal + 2), decimal + maxDecimals);
-        return amountString.substring(0, cutoff);
+        // a Java bug does not strip zeros properly if the value is 0
+        if (amount == 0) return "0.00";
+        BigDecimal d = getDecimalAmount(amount)
+                .setScale(maxDecimals, BigDecimal.ROUND_HALF_UP)
+                .stripTrailingZeros();
+        if (d.scale() < 2)
+            d = d.setScale(2, BigDecimal.ROUND_UNNECESSARY);
+        return d.toPlainString();
     }
 
     static public String getFormattedAmount(double amount, boolean isXmr) {

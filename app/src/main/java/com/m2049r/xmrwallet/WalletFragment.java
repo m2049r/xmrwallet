@@ -219,7 +219,7 @@ public class WalletFragment extends Fragment
         if (isExchanging) return; // wait for exchange to finish - it will fire this itself then.
         // at this point selection is XMR in case of error
         String displayB;
-        double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // crash if this fails!
+        double amountA = Helper.getDecimalAmount(unlockedBalance).doubleValue();
         if (!Helper.CRYPTO.equals(balanceCurrency)) { // not XMR
             double amountB = amountA * balanceRate;
             displayB = Helper.getFormattedAmount(amountB, false);
@@ -235,10 +235,10 @@ public class WalletFragment extends Fragment
     private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
     void refreshBalance() {
-        double unconfirmedXmr = Double.parseDouble(Helper.getDisplayAmount(balance - unlockedBalance));
+        double unconfirmedXmr = Helper.getDecimalAmount(balance - unlockedBalance).doubleValue();
         showUnconfirmed(unconfirmedXmr);
         if (sCurrency.getSelectedItemPosition() == 0) { // XMR
-            double amountXmr = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // assume this cannot fail!
+            double amountXmr = Helper.getDecimalAmount(unlockedBalance).doubleValue();
             showBalance(Helper.getFormattedAmount(amountXmr, true));
         } else { // not XMR
             String currency = (String) sCurrency.getSelectedItem();
@@ -294,7 +294,7 @@ public class WalletFragment extends Fragment
 
     public void exchangeFailed() {
         sCurrency.setSelection(0, true); // default to XMR
-        double amountXmr = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // assume this cannot fail!
+        double amountXmr = Helper.getDecimalAmount(unlockedBalance).doubleValue();
         showBalance(Helper.getFormattedAmount(amountXmr, true));
         hideExchanging();
     }

@@ -150,8 +150,14 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         final WalletFragment walletFragment = (WalletFragment)
                 getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
         if (walletFragment != null) walletFragment.resetDismissedTransactions();
-        updateAccountsBalance();
         forceUpdate();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateAccountsList();
+                updateAccountsBalance();
+            }
+        });
     }
 
     @Override
@@ -1045,8 +1051,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         Menu menu = accountsView.getMenu();
         menu.removeGroup(R.id.accounts_list);
         final int n = wallet.getNumAccounts();
+        final boolean showBalances = (n > 1) && !isStreetMode();
         for (int i = 0; i < n; i++) {
-            final String label = wallet.getAccountLabel(i);
+            final String label = (showBalances ?
+                    getString(R.string.label_account, wallet.getAccountLabel(i), Helper.getDisplayAmount(wallet.getBalance(i), 2))
+                    : wallet.getAccountLabel(i));
             final MenuItem item = menu.add(R.id.accounts_list, getAccountId(i), 2 * i, label);
             item.setIcon(R.drawable.ic_account_balance_wallet_black_24dp);
             if (i == wallet.getAccountIndex())
