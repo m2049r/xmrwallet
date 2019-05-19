@@ -154,7 +154,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                updateAccountsList();
                 updateAccountsBalance();
             }
         });
@@ -1038,6 +1037,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             tvBalance.setText(null);
         }
+        updateAccountsList();
     }
 
     void updateAccountsHeader() {
