@@ -302,7 +302,7 @@ public class ReceiveFragment extends Fragment {
         File imagePath = new File(getActivity().getCacheDir(), "images");
         File png = new File(imagePath, "QR.png");
         Uri contentUri = FileProvider.getUriForFile(getActivity(),
-                "com.m2049r.xmrwallet.fileprovider", png);
+                BuildConfig.APPLICATION_ID + ".fileprovider", png);
         if (contentUri != null) {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
