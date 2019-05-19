@@ -574,6 +574,7 @@ public class ReceiveFragment extends Fragment {
     @Override
     public void onPause() {
         Timber.d("onPause()");
+        Helper.hideKeyboard(getActivity());
         super.onPause();
     }
 
