@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -279,6 +280,16 @@ public class Helper {
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText(label, text);
         clipboardManager.setPrimaryClip(clip);
+    }
+
+    static public String getClipBoardText(Context context) {
+        final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboardManager.hasPrimaryClip()
+                && clipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+            final ClipData.Item item = clipboardManager.getPrimaryClip().getItemAt(0);
+            return item.getText().toString();
+        }
+        return null;
     }
 
     static private Animation ShakeAnimation;
