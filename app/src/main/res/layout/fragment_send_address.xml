@@ -20,21 +20,46 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/etAddress"
+            <RelativeLayout
+                android:id="@+id/llAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                android:layout_gravity="center"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
 
-                <android.support.design.widget.TextInputEditText
-                    style="@style/MoneroEdit"
-                    android:layout_width="match_parent"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etAddress"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/send_address_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textMultiLine"
-                    android:textAlignment="textStart" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/bPasteAddress"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="16"
+                    app:errorEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/MoneroEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:hint="@string/send_address_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart" />
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/bPasteAddress"
+                    style="@style/MoneroText.Button.Small"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_content_paste_orange_24dp" />
+            </RelativeLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"

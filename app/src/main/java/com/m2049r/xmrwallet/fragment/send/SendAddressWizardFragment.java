@@ -33,7 +33,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
@@ -92,6 +94,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private View llPaymentId;
     private TextView tvXmrTo;
     private View llXmrTo;
+    private ImageButton bPasteAddress;
 
     private boolean resolvingOA = false;
     private boolean resolvingPP = false;
@@ -194,6 +197,21 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
+        bPasteAddress = view.findViewById(R.id.bPasteAddress);
+        bPasteAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String clip = Helper.getClipBoardText(getActivity());
+                if (clip == null) return;
+                // clean it up
+                final String address = clip.replaceAll("[^0-9A-Z-a-z]", "");
+                if (Wallet.isAddressValid(address) || BitcoinAddressValidator.validate(address))
+                    etAddress.getEditText().setText(address);
+                else
+                    Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
             }
         });
 
