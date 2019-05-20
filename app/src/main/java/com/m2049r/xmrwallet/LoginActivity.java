@@ -929,8 +929,11 @@ public class LoginActivity extends BaseActivity
 
                     @Override
                     public boolean createWallet(File aFile, String password) {
+                        NodeInfo currentNode = getNode();
+                        final long restoreHeight =
+                                (currentNode != null) ? currentNode.getHeight() - 20 : -1;
                         Wallet newWallet = WalletManager.getInstance()
-                                .createWallet(aFile, password, MNEMONIC_LANGUAGE);
+                                .createWallet(aFile, password, MNEMONIC_LANGUAGE, restoreHeight);
                         boolean success = (newWallet.getStatus() == Wallet.Status.Status_Ok);
                         if (!success) {
                             Timber.e(newWallet.getErrorString());
