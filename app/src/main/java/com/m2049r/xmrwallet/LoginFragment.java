@@ -440,7 +440,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             Collections.sort(nodesToTest, NodeInfo.BestNodeComparator);
             NodeInfo bestNode = nodesToTest.get(0);
             if (bestNode.isValid())
-                return nodesToTest.get(0);
+                return bestNode;
             else
                 return null;
         }
