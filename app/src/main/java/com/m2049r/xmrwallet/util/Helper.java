@@ -284,10 +284,15 @@ public class Helper {
 
     static public String getClipBoardText(Context context) {
         final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboardManager.hasPrimaryClip()
-                && clipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-            final ClipData.Item item = clipboardManager.getPrimaryClip().getItemAt(0);
-            return item.getText().toString();
+        try {
+            if (clipboardManager.hasPrimaryClip()
+                    && clipboardManager.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+                final ClipData.Item item = clipboardManager.getPrimaryClip().getItemAt(0);
+                return item.getText().toString();
+            }
+        } catch (NullPointerException ex) {
+            // if we have don't find a text in the clipboard
+            return null;
         }
         return null;
     }
