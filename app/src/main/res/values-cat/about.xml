@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_close">Tancar</string>
+    <string name="about_whoami">Sóc en monerujo</string>
+    <string name="about_version">Versió %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Credits</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo, ErCiccione et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Política de Privacitat</h1>
+        <p>Aquesta pàgina us informa de les nostres polítiques relatives a la recopilació,
+         ús i divulgació de la informació personal que rebem dels usuaris de la nostra
+         aplicació (monerujo: Monero Wallet).
+        </p>
+        <p>Mitjançant l'ús d'aquesta aplicació vostè accepta la recopilació i l’ús de la informació d’acord amb aquesta política.
+        </p>
+        <h2>Dades Recopilades</h2>
+        <p>Les dades personals són qualsevol tipus de dades que puguin identificar un individu.
+        </p>
+        <p>Les claus i les adreces públiques de Monero són recollides i processades per l’aplicació de forma local per tal de processar les transaccions i transmetre-les 	a la 	xarxa Monero de forma encriptada.
+        </p>
+        <p>L'aplicació no recopila altres dades personals.</p>
+        <p>Si utilitzeu la funcionalitat d'intercanvi (opcional), monerujo obté el canvi
+         a través de l’API pública de coinmarketcap.com.
+         Consulteu la seva política de privacitat a https://coinmarketcap.com/privacy per a més detalls sobre com es recullen les dades de les vostres peticions</p>
+        <p>Si utilitzeu l’aplicació per pagar a adreces BTC, utilitzareu el servei XMR.TO.
+         Consulteu la seva política de privacitat a https://xmr.to/ per obtenir més informació. Monerujo els envia l'adreça de destinació de BTC i la quantitat. La 	vostra IP 	també podrà ser recollida.</p>
+        <h2>Permisos de la App</h2>
+        <ul>
+        <li>INTERNET : Connectar a la xarxa Monero mitjançant un Node Daemon de Monero</li>
+        <li>READ_EXTERNAL_STORAGE : Llegir els arxius del portamonedes emmagatzemats al dispositiu</li>
+        <li>WRITE_EXTERNAL_STORAGE : Escriure els arxius del portamonedes emmagatzemats al dispositiu</li>
+        <li>WAKE_LOCK : Mantenir el dispositiu despert durant la sincronització</li>
+        <li>CAMERA : Escanejar codis QR per rebre Monero</li>
+        </ul>
+        <h2>Canvis en aquesta Política de Privacitat</h2>
+        <p>És possible que actualitzem aquesta política de privacitat de tant en tant. Li notificarem de qualsevol canvi publicant la nova política de privacitat a 			l’aplicació i al lloc web (www.monerujo.io)
+         Us recomanem que reviseu aquesta política de privacitat periòdicament per conèixer els canvis.
+        <p>Aquesta Política de Privacitat es va actualitzar per darrer cop: 10th November, 2017.
+        </p>
+        <h2>Contacti amb nosaltres</h2>
+        <p>Si teniu alguna consulta sobre la nostra política de privadesa,
+         o com es recullen i processen les vostres dades,
+         si us plau envieu un correu electrònic a privacy@monerujo.io.
+        </p>
+        ]]></string>
+</resources>

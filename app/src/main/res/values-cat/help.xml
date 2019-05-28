@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_create_new"><![CDATA[
+        <h1>Crear Portamonedes - New</h1>
+        <p>Per si necessiteu una nova adreça de Monero!</p>
+        <p>Introduïu un nom i contrasenya únics del portamonedes.
+         La contrasenya s’utilitza per protegir les dades del seu portamonedes en el dispositiu. Utilitzeu una contrasenya sòlida - encara millor si utiliza una frase.</p>
+        <h2>Apunteu la vostra llavor mnemotècnica!</h2>
+        <p>A la pantalla següent trobareu la vostra "Llavor Mnemotècnica" de 25 paraules.
+         Aquestes són les úniques dades necessàries per a recuperar el vostre portamonedes i obtenir accés total als vostres fons.
+         Mantenir-la segura i privada és molt important ja que permet que <em> qualsevol persona</em> tingui accés total als vostres fons!.</p>
+        <p>Si perdeu la contrasenya del portamonedes encara podrieu recuperar-lo amb la llavor Mnemotècnica.</p>
+        <p>La llavor Mnemotècnica tampoc no es pot canviar mai, i si és robada o compromesa d'alguna manera haureu de traslladar els vostres fons a un nou portamonedes (amb una nova 	llavor mnemotècnica). Per tant, es recomana que feu còpies de seguretat de la vostra llavor mnemotècnica escrivint-la i emmagatzemant-la a <em> múltiple </em> llocs de forma 	segura.</p>
+    ]]></string>
+
+    <string name="help_create_seed"><![CDATA[
+        <h1>Crear Portamonedes - Llavor</h1>
+        <p>Si ja teniu una adreça Monero i voleu recuperar les transaccions de la blockchain!</p>
+        <p>Introduïu un nom i contrasenya únics del portamonedes.
+         La contrasenya s’utilitza per protegir les dades del seu portamonedes en el dispositiu. Utilitzeu una contrasenya sòlida - encara millor si utiliza una frase.</p>
+        <p>Introduïu la Llavor en el camp \"Llavor Mnemotècnica\".<p>
+        <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d'haver fer servir aquesta adreça del portamonedes.</p>
+    ]]></string>
+
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Crear Portamonedes - Ledger</h1>
+        <p>Si voleu recuperar el vostre portamonedes desde un dispositiu Ledger Nano S!</p>
+        <p>Les vostres claus secretes no surten mai del dispositiu Ledger, de manera que necessiteu que estigui connectat sempre que vulgueu accedir aal vostre portamonedes.</p>
+        <p>Introduïu un nom i contrasenya únics del portamonedes. La contrasenya s’utilitza per protegir les dades de la seva cartera al dispositiu Android. Utilitzeu una 		contrasenya sòlida - encara millor si utiliza una frase.</p>
+        <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d'haver fer servir aquesta adreça del portamonedes.</p>
+    ]]></string>
+
+    <string name="help_create_keys"><![CDATA[
+        <h1>Crear Portamonedes - Claus</h1>
+        <p>Si voleu recuperar el vostre portamonedes fent servir les vostres claus!</p>
+        <p>Introduïu un nom i contrasenya únics del portamonedes. La contrasenya s’utilitza per protegir les dades de la seva cartera al dispositiu. Utilitzeu una contrasenya sòlida 	- encara millor si utiliza una frase.<p>
+        <p>Introduïu la vostra Adreça Monero en el camp \"Adreça Pública\" i ompliu \"Clau de Visualització\" i  \"Clau de Despesa\" </p>
+        <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el
+         camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d'haver 	fer servir aquesta adreça del portamonedes.</p>
+    ]]></string>
+
+    <string name="help_create_view"><![CDATA[
+        <h1>Crear Portamonedes - Només de Lectura</h1>
+        <p>Si només voleu monitoritzar les transaccions entrants del portamonedes!</p>
+        <p>Introduïu un nom i contrasenya únics del portamonedes. La contrasenya s’utilitza per protegir les dades de la seva cartera al dispositiu. Utilitzeu una contrasenya sòlida 	- encara millor si utiliza una frase.<p>
+        <p>Introduïu la vostra Adreça Monero en el camp \"Adreça Pública\" i ompliu \"Clau de Visualització\".</p>
+        <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d'haver fer servir aquesta adreça del portamonedes.</p>
+    ]]></string>
+
+    <string name="help_details"><![CDATA[
+        <h1>Detalls del portamonedes</h1>
+        <h2>Adreça pública</h2>
+        La vostra adreça pública és com el vostre número de compte bancari que podeu compartir amb qualsevol persona sense haver de tenir por de perdre el vostres Monero. La gent 	enviarà Monero al seu portamonedes mitjançant aquesta adreça.
+        <h2>Clau Mnemotècnica</h2>
+       	Aquestes són les úniques dades necessàries per a recuperar el vostre portamonedes i obtenir accés total als vostres fons.
+         Mantenir-la segura i privada és molt important ja que permet que <em> qualsevol persona</em> tingui accés total als vostres fons! Si no us heu escrit en cap lloc segur, 	feu-ho!
+        <h2>Contrasenya de Recuperació d'Arxius del Portamonedes</h2>
+	Assegureu-vos que heu escrit aquesta contrasenya. Si restabliu el dispositiu o desinstal·leu l’aplicació, la necessitarà per tornar a accedir al seu portamonedes.<br/>
+        <h3>CrAzYsenya</h3>
+        Si la contrasenya que es mostra aquí és de 52 caràcters alfanumèrics en grups de 4 - felicitats!
+        Els fitxers del portamonedes estan protegits amb una clau de 256 bits generada per la funció de seguretat del vostre dispositiu basades en la contrasenya que heu triat 	(durant la creació o al canviar-la). Això ho fa extremadament difícil de piratejar!<br/>
+      	Aquesta opció és obligatoria per a tots els nous portamonedes.
+        <h3>Contrasenya de Llegat</h3>
+	Si veieu la vostra contrasenya aquí, els fitxers del portamonedes no estan tan segurs com quan s'utilitza la CrAzYsenya. Per solucionar-ho, seleccioneu \"Canviar 		Contrasenya\" des del menú. Després d'entrar una nova contrasenya (potser fins i tot la mateixa que abans) l’aplicació generarà una CrAzYsenya per a protegir els vostres 	arxius del portamonedes. Anoteu-la!
+        <h3>CrAzYsenya del Portamonedes</h3>
+	Si mai necessiteu tornar a instal·lar Monerujo (per exemple, després de restablir el telèfon o canviar-lo per un de nou) o voleu utilitzar els arxius del portamonedes en un 	altre dispositiu o PC, cal que ho feu utilitzant aquesta Contrasenya de Recuperació (CrAzYsenya) per tornar a accedir al vostre portamonedes. <br/>
+        En seleccionar \"Canviar Contrasenya\" des del menú, podeu triar una nova contrasenya. Aneu amb compte que això generarà una nova Contrasenya de Recuperació (CrAzYsenya). 	Anoteu-la!
+        <h2>Clau de Visualització</h2>
+   	La vostra clau de visualització es pot utilitzar per monitoritzar les transaccions entrants al vostre portamonedes sense donar-ne permís per gastar els fons a dins seu.
+        <h2>Clau de Despesa</h2>
+        La vostra clau de despesa permet a qualsevol persona gastar els Monero associats al seu portamonedes, així que no ho compartiu amb ningú, mantingueu-la segura com la vostra 	Llavor Mnemotècnica.
+    ]]></string>
+
+    <string name="help_list"><![CDATA[
+        <h1>Llista de Portamonedes</h1>
+        <h2>Node</h2>
+        <p>Monerujo utilitza un node remot per comunicar-se amb la xarxa Monero sense necessitat
+         de descarregar i emmagatzemar una còpia de tota la blockchain sencera. Podeu trobar una llista dels nodes remots més populars o aprendre a configurar el vostre propi node 	remot aquí https://moneroworld.com/<p>
+        <p>Monerujo té alguns Nodes remots incorporats. Se'n recorda dels últims cinc nodes empleats.</p>
+        <h2>Portamonedes</h2>
+        <p>Aquí podeu veure els portamonedes. Es troben a la carpeta <tt> monerujo </tt>
+         dins l’emmagatzematge intern del dispositiu. Podeu utilitzar una aplicació d’exploració d'arxius per veure'ls. Haurieu de fer còpies de seguretat d’aquesta carpeta de 	manera regular en un emmagatzematge extern al dispositiu en cas que el vostre dispositiu exploti o el robin.</p>
+        <p>Seleccioneu una portamonedes per obrir-lo o premeu el botó "+" per crear-ne un de nou.
+         O seleccioneu una de les operacions del portamonedes:</p>
+        <h3>Detalls</h3>
+        <p>Mostra els detalls del portamonedes, la llavor i les seves claus.</p>
+        <h3>Rebre</h3>
+        <p>Crea un codi QR per rebre Moneroj.</p>
+        <h3>Canvi de Nom</h3>
+        <p>Canvia el nom del portamonedes. El canvi de nom no afecta a les còpies de seguretat.</p>
+        <h3>Còpia de Seguretat</h3>
+        <p>Feu una còpia del portamonedes en la carpeta <tt> backups </tt> dins del <tt> monerujo </tt>
+         per a sobreescriure còpies anteriors.</p>
+        <h3>Arxiu</h3>
+        <p>Feu una còpia de seguretat i a continuació elimineu el portamonedes. La còpia es mantindrà a la carpeta <tt> backups </tt>. Si ja no necessiteu les vostres còpies de 	seguretat les haureu d’eliminar amb un explorador d'arxius o una aplicació segura.</p>
+    ]]></string>
+
+    <string name="help_tx_details"><![CDATA[
+        <h1>Detalls de Transacció</h1>
+        <h2>Destí</h2>
+        Aquesta és l'adreça pública del portamonedes on esteu enviant els Monero.
+        <h2>ID de Pagament</h2>
+	Podeu utilitzar un ID de pagament per identificar el motiu pel qual heu enviat a Monero entre dues parts. Això és totalment opcional i privat. Per exemple, això pot permetre 	a una empresa associar la transacció amb un article que heu comprat.
+        <h2>ID de Transacció</h2>
+	Aquest és el vostre ID de transacció que podeu utilitzar per identificar la vostra transacció oculta en un Explorador de Blockchain de Monero com <a href="https://		xmrchain.net/"> https://xmrchain.net/ </a>
+        <h2>Clau de Transacció</h2>
+        Aquesta és la vostra clau privada de transacció, manteniu-la segureta ja que mostrar-la a tercers els revelia quina signatura dins un anell és la vostra, fent que la vostra 	transacció sigui transparent.
+        <h2>Bloc</h2>
+        Aquest és el bloc de la cadena de Monero on la vostra transacció ha estat inclosa.
+    ]]></string>
+
+    <string name="help_send"><![CDATA[
+        <h1>Enviar</h1>
+        <h2>Adreça del Receptor</h2>
+        <p>Aquesta és l'adreça pública del portamonedes a la qual esteu enviant Moneroj. Podeu copiar-la al porta-retalls, escanejar un codi QR o introduir-la manualment. Assegureu-	vos de confirmar-ho a consciencia i que no estigueu enviant monedes a la direcció incorrecta.</p>
+        <p>A més d’utilitzar una adreça XMR, també podeu utilitzar
+        <ul>
+            <li>un OpenAlias per XMR o BTC</li>
+            <li>una adreça BTC</li>
+            <li>un bitcoin: URI (inclòs BIP70 com bitpay)</li>
+        </u>
+        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei XMR.TO (consulteu https://xmr.to per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
+        <h2>ID de Pagament</h2>
+        <p>Podeu utilitzar un ID de pagament per identificar el motiu pel qual heu enviat a Monero entre dues parts. Això és totalment opcional i privat. Per exemple, això pot 	permetre a una empresa associar la transacció amb un article que heu comprat.<p>
+        <h1>Enviant BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+         Nosaltres fem servir l'API XMR.TO per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d'ull a https://xmr.to i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L'equip de 	Monerujo no està associat amb XMR.TO i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi XMR.TO<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei XMR.TO. Aquests
+         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment. També veureu
+         la quantitat fins a la qual la transacció BTC s’executarà instantàniament sense esperar
+         a confirmacions de XMR (consulteu les preguntes freqüents sobre XMR.TO per obtenir més informació). Tingueu en compte que el servei XMR.TO no suposa càrrecs addicionals: oi 	que mola?</p>
+        <h2>Ordre  de compra XMR.TO<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra XMR.TO real. Aquesta comanda és vàlida per a
+         un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
+         ser diferent del mostrat en pantalles anteriors.</p>
+        <h2>Clau Secreta XMR.TO<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per XMR.TO es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de XMR.TO.</p>
+        <p>Tingueu en compte que aquesta clau secreta només és vàlida durant 24 hores després que la transacció
+         ha començat!</p>
+        <h2>Compte enrere XMR.TO!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de XMR.TO tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+    ]]></string>
+
+    <string name="help_xmrto"><![CDATA[
+        <h1>Enviant BTC</h1>
+        <h2>XMR.TO</h2>
+        <p>XMR.TO és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+         Nosaltres fem servir l'API XMR.TO per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d'ull a https://xmr.to i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L'equip de 	Monerujo no està associat amb XMR.TO i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi XMR.TO<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei XMR.TO. Aquests
+         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment. També veureu
+         la quantitat fins a la qual la transacció BTC s’executarà instantàniament sense esperar
+         a confirmacions de XMR (consulteu les preguntes freqüents sobre XMR.TO per obtenir més informació). Tingueu en compte que el servei XMR.TO no suposa càrrecs addicionals: oi 	que mola?</p>
+        <h2>Ordre  de compra XMR.TO<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra XMR.TO real. Aquesta comanda és vàlida per a
+         un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
+         ser diferent del mostrat en pantalles anteriors.</p>
+        <h2>Clau Secreta XMR.TO<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per XMR.TO es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de XMR.TO.</p>
+        <p>Tingueu en compte que aquesta clau secreta només és vàlida durant 24 hores després que la transacció
+         ha començat!</p>
+        <h2>Compte enrere XMR.TO!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de XMR.TO tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+    ]]></string>
+
+    <string name="help_wallet"><![CDATA[
+        <h1>El Portamonedes</h1>
+        <h2>Mode de carrer</h2>
+        <p>El mode de carrer es pot habilitar / desactivar des del menú o a la icona principal de Gunther. En aquest mode, el vostre balanç no es mostra a cap pantalla perquè pugueu 	utilitzar la vostra cartera amb seguretat al carrer, al pub o qualsevol lloc públic. Les transaccions anteriors també estan ocultes. Es mostraran les noves transaccions 	perquè pogueu veure que heu enviat / rebut els vostres estimats Moneroj!</p>
+        <h2>Escanejant</h2>
+        Perquè a Monero li agrada mantenir les coses privades, cada cop que obri un portamonedes Monerujo hem d'escanejar la blockchain per veure si s'han enviat nous moneroj al seu 	portamonedes. Això només emmagatzema l'informació al telèfon que pertany al seu portamonedes. De vegades pot trigar una estona perquè no s’ha sincronitzat en molt de temps.
+        <h2>El Balanç</h2>
+        <p><b>Ajuda! El balanç del meu portamonedes ha desaparegut o consta com a no confirmat!</b><br/>
+        No patiu! Quan envieu fons desde el vostre portamonedes part del balanç apareixerà com a no confirmat de forma temporal.        
+	Això succeeix pel fet de com Monero és intercanviat a través de la blockchain i com es produeix el canvi.
+        Podeu llegir més sobre el canvi a https://getmonero.org/resources/moneropedia/change.html
+        <h2>Llista de Transacció</h2>
+        <p>Llistat de les transaccions del portamonedes. Els portamonedes de visualització només mostraran les transaccions entrants.</p>
+    ]]></string>
+
+    <string name="help_node"><![CDATA[
+        <h1>Nodes</h1>
+        <h2>TL;DR</h2>
+        <p>Actualitzeu la llista de nodes prement cap avall; marqueu 3&#8211;5 nodes per permetre a Monerujo
+         triar el millor per a tu!</p>
+        <h2>Què és un Node?</h2>
+        <p>Monerujo utilitza un Node Remot (de vegades també anomenat daemon) per comunicar-se
+         la xarxa Monero sense haver de descarregar i emmagatzemar una còpia de
+         tota la blockchain mateixa.<p>
+        <h2>Llista de Nodes</h2>
+        <p>Si la llista està buida, podeu afegir nous nodes manualment o deixar que Monerujo
+         escanegi la xarxa per vostè. O ambdós. Llegiu &#8230;</p>
+        <p>La llista de nodes mostra tots els nodes coneguts. A més, la marca de temps
+         de l’últim bloc conegut per a cada node es mostra sota el nom del node. La icona
+         que representa el temps de resposta del node
+         (que indica el nivell de connectivitat estimat)
+         es mostra al costat de cada node.</p>
+        <p>Es pot marcar qualsevol node de la llista per utilitzar-lo més endevant.
+         Es descartaràn els nodes que no hagin estat seleccionats.<p>
+        <p>Monerujo escollirà el node òptim (marcat) cada vegada que l'utilitzeu.
+         Això ho fa mitjançant la comprovació de l'alçada de bloc (com d'actualitzat
+         està el node?), així com el temps de resposta (què tan ràpidament respon el node a les peticions?).</p>
+        <p>La llista s’ordena per aquestes característiques, de manera que el node superior seria el que Monerujo
+         triaria ara mateix. La part inferior de la llista mostraria els nodes més lents o no disponibles.</p>
+        <h2>Afegir Node</h2>
+        <p>Si premeu el botó &quot;Afegir Node&quot; a la part inferior, se us demanarà
+        que introduïu els detalls del node al següent diàleg.
+        El &quot;Adreça&quot; és el nom del servidor o adreça IP del node - aquesta és la única
+        entrada obligatòria.
+        Introduïu el &quot;Port&quot; si el node s'executa en un port no predeterminat (per exemple, 18089).
+        També podeu anomenar opcionalment el node, de manera que el pugueu identificar més fàcilment més endavant.
+        Alguns nodes necessiten credencials per utilitzar-los. Introduïu el nom d’usuari i
+        contrasenya proporcionats als camps corresponents. Ara podeu &quot;Test&quot; aquesta configuració.
+        Els &quot;Resultats de les Proves&quot; mostraran l'alçada de bloc, el temps de resposta i l'IP real.
+        El resultat també pot ser un error - generalment perquè el nom del servidor proporcionat no és
+        accessible dins d'un temps raonable o les credencials són incorrectes.
+        O la combinació de nom del servidor/port no apunta cap a un node real de Monero!
+        Un cop aprovada la prova (sense error), ja estás llest per prémer &quot;D'acord&quot; per desar iamp;
+        marcar aquest node.</p>
+        <h2>Escanejar Nodes</h2>
+        <p>A més, podeu escanejar la xarxa per buscar nodes. Monerujo començarà
+         escanejant la xarxa per als nodes remots al port 18089. Començarà per preguntar als vostres
+         nodes marcats per altres companys de la xarxa P2P de Monero, i després continuarà
+         preguntant-los per als seus companys, etc. Si no teniu cap node marcat
+         (o no ens informen sobre els seus companys),
+         Monerujo anirà directament als nodes de llavor de Monero codificats a dins de Monero.
+         L’escaneig s’atura quan troba un total de 10 nodes remots.</p>
+    ]]></string>
+
+    <string name="help_uri"><![CDATA[
+        <h1>Fer servir un enllaç de pagament</h1>
+        <p>Heu iniciat monerujo amb un enllaç de pagament. Per enviar fons, feu el següent:</p>
+        <p>
+        1. Obrir el portamonedes desde la qual voleu gastar els fons<br>
+        2. Espereu fins que es sincronitzi el portamonedes i el botó de "Donar" apareixi<br>
+        3. Premeu el botó de "Donar"
+        </p>
+        <p>Els detalls de pagament es completaran. Comproveu-les i continueu com a qualsevol altra transacció.</p>
+    ]]></string>
+
+    <string name="help_ok">Ja ho tinc!</string> <!-- Note: "Got it" as in "I understand this" -->
+</resources>
