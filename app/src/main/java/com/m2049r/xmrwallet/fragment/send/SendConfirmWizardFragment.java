@@ -324,8 +324,8 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
                 return false;
             }
         });
-        // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+
+        if (Helper.preventScreenshot()) {
             passwordDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         }
 

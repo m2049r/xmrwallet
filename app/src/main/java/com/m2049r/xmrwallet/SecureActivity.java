@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 
 import static android.view.WindowManager.LayoutParams;
@@ -30,8 +31,7 @@ public abstract class SecureActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+        if (Helper.preventScreenshot()) {
             getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
         }
     }
