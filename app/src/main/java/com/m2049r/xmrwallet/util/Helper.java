@@ -643,6 +643,6 @@ public class Helper {
     }
 
     static public boolean preventScreenshot() {
-        return !(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"));
+        return !(BuildConfig.DEBUG || BuildConfig.FLAVOR_type.equals("alpha"));
     }
 }
