@@ -17,7 +17,6 @@ monero: toolchain libsodium openssl boost monero_dl openssl_sysroot
 
 monero_dl:
 	script/monero-fetch.sh
-#	script/monero-patch.sh
 
 toolchain:
 	script/toolchain-build.sh

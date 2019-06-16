@@ -77,6 +77,7 @@ for arch in ${archs[@]}; do
       -D OPENSSL_SSL_LIBRARY=$lib_root/openssl/$arch/lib/libssl.so \
       -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
       -D MONERUJO_HIDAPI=ON \
+      -D USE_DEVICE_TREZOR=OFF \
       -D LIBSODIUM_INCLUDE_DIR=$lib_root/libsodium/$arch/include \
        $extra_cmake_flags \
        ../..

@@ -137,7 +137,11 @@ set_target_properties(checkpoints PROPERTIES IMPORTED_LOCATION
 
 add_library(device STATIC IMPORTED)
 set_target_properties(device PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libdevice.a)
+        ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libdevice.a)
+
+add_library(device_trezor STATIC IMPORTED)
+set_target_properties(device_trezor PROPERTIES IMPORTED_LOCATION
+        ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libdevice_trezor.a)
 
 add_library(multisig STATIC IMPORTED)
 set_target_properties(multisig PROPERTIES IMPORTED_LOCATION
@@ -146,6 +150,10 @@ set_target_properties(multisig PROPERTIES IMPORTED_LOCATION
 add_library(version STATIC IMPORTED)
 set_target_properties(version PROPERTIES IMPORTED_LOCATION
     ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libversion.a)
+
+add_library(net STATIC IMPORTED)
+set_target_properties(net PROPERTIES IMPORTED_LOCATION
+        ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libnet.a)
 
 #############
 # System
@@ -166,6 +174,7 @@ target_link_libraries(  monerujo
                         mnemonics
                         ringct
                         ringct_basic
+                        net
                         common
                         cncrypto
                         blockchain_db
@@ -176,6 +185,7 @@ target_link_libraries(  monerujo
                         blocks
                         checkpoints
                         device
+                        device_trezor
                         multisig
                         version
 
