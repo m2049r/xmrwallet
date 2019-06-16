@@ -628,23 +628,22 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onWalletStarted(final Wallet.ConnectionStatus connStatus) {
+    public void onWalletStarted(final Wallet.Status walletStatus) {
         runOnUiThread(new Runnable() {
             public void run() {
                 dismissProgressDialog();
-                switch (connStatus) {
-                    case ConnectionStatus_Disconnected:
-                        Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
-                        break;
-                    case ConnectionStatus_WrongVersion:
+                if (walletStatus == null) {
+                    // guess what went wrong
+                    Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_failed), Toast.LENGTH_LONG).show();
+                } else {
+                    if (Wallet.ConnectionStatus.ConnectionStatus_WrongVersion == walletStatus.getConnectionStatus())
                         Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_connect_wrongversion), Toast.LENGTH_LONG).show();
-                        break;
-                    case ConnectionStatus_Connected:
-                        break;
+                    else if (!walletStatus.isOk())
+                        Toast.makeText(WalletActivity.this, walletStatus.getErrorString(), Toast.LENGTH_LONG).show();
                 }
             }
         });
-        if (connStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
+        if ((walletStatus == null) || (Wallet.ConnectionStatus.ConnectionStatus_Connected != walletStatus.getConnectionStatus())) {
             finish();
         } else {
             haveWallet = true;
