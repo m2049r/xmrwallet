@@ -601,8 +601,7 @@ public class Helper {
             }
         });
 
-        // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+        if (Helper.preventScreenshot()) {
             openDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         }
 
@@ -641,5 +640,9 @@ public class Helper {
         } finally {
             StrictMode.setThreadPolicy(currentPolicy);
         }
+    }
+
+    static public boolean preventScreenshot() {
+        return !(BuildConfig.DEBUG || BuildConfig.FLAVOR_type.equals("alpha"));
     }
 }

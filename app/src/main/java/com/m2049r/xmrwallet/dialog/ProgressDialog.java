@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.Locale;
 
@@ -76,8 +77,7 @@ public class ProgressDialog extends AlertDialog {
 
         super.onCreate(savedInstanceState);
 
-        // set FLAG_SECURE to prevent screenshots in Release Mode
-        if (!(BuildConfig.DEBUG && BuildConfig.FLAVOR_type.equals("alpha"))) {
+        if (Helper.preventScreenshot()) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         }
     }
