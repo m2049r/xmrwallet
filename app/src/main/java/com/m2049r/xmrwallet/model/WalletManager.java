@@ -287,7 +287,8 @@ public class WalletManager {
             this.daemonAddress = null;
             this.daemonUsername = "";
             this.daemonPassword = "";
-            setDaemonAddressJ("");
+            //setDaemonAddressJ(""); // don't disconnect as monero code blocks for many seconds!
+            //TODO: need to do something about that later
         }
     }
 
