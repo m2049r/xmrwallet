@@ -1,0 +1,385 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+
+    <string name="wallet_activity_name">Novčanik</string>
+
+    <string name="menu_about">O nama</string>
+    <string name="menu_privacy">Pravila privatnosti</string>
+
+    <string name="menu_share">Podeli</string>
+    <string name="menu_help">Pomoć</string>
+    <string name="menu_receive">Primi</string>
+    <string name="menu_rename">Preimenuj &#8230;</string>
+    <string name="menu_archive">Arhiva</string>
+    <string name="menu_backup">Bekap</string>
+    <string name="menu_changepw">Promeni lozinku</string>
+
+    <string name="password_weak">Nastavi s\'kucanjem &#8230;</string>
+    <string name="password_fair">Dosadno &#8230;</string>
+    <string name="password_good">Daj, možeš bolje!</string>
+    <string name="password_strong">Uskoro stižemo &#8230;</string>
+    <string name="password_very_strong">To bre, h4x0r stil!</string>
+
+    <string name="label_login_wallets">Novčanici</string>
+    <string name="label_credits">Krediti</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">Otkaži</string>
+    <string name="label_close">Zatvori</string>
+    <string name="label_wallet_advanced_details">Takni za detaljne informacije</string>
+
+    <string name="label_send_success">Uspešno poslato</string>
+    <string name="label_send_done">Gotovo</string>
+
+    <string name="label_receive_info_gen_qr_code">Takni za QR kod</string>
+
+    <string name="info_xmrto_enabled">Omogućeno BTC plaćanje, tapni za više info.</string>
+    <string name="info_ledger_enabled">Knjiga računa omogućena, tapni za više info.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>Ubacio/la si Bitkoin adresu.</b><br/>
+        <i>You&apos;će poslati XMR a primalac će dobiti BTC koristeći <b>XMR.TO</b> servis.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">XMR.TO Nalog</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+    <string name="info_send_xmrto_paid">Potvrda u toku</string>
+    <string name="info_send_xmrto_unpaid">Plaćanje u toku</string>
+    <string name="info_send_xmrto_error">XMR.TO Greška (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC Poslato!</string>
+    <string name="info_send_xmrto_query">Ispitivanje &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>Možeš poslati %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b> daje ti devizni kurs od <b>%3$s BTC</b> <u>trenutno</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>Sume do <b>%1$s BTC</b> biće poslate <u>instantly</u>!</i>
+    ]]></string>
+
+    <string name="send_available_btc">Stanje: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">ID plaćanja integrisan</string>
+    <string name="info_prepare_tx">Priprema tvoje transakcije</string>
+
+    <string name="label_send_progress_xmrto_create">Kreiranje XMR.TO Nalog</string>
+    <string name="label_send_progress_xmrto_query">Ispitivanje XMR.TO Nalog</string>
+    <string name="label_send_progress_create_tx">Pripremanje Monero transakcije</string>
+
+    <string name="label_send_progress_queryparms">Ispitivanje XMR.TO parametara</string>
+
+    <string name="label_generic_xmrto_error">XMR.TO GREŠKA</string>
+    <string name="text_generic_xmrto_error">Kod: %1$d</string>
+
+    <string name="text_retry">Takni za novi pokušaj </string>
+    <string name="text_noretry_monero">Sada se zaglavismo!</string>
+    <string name="text_noretry">Uh, XMR.TO izgleda da sad nije dostupan!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
+
+    <string name="label_send_btc_xmrto_info">Poseti xmr.to za bekap &amp; praćenje</string>
+    <string name="label_send_btc_xmrto_key_lb">Tajna šifra\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">XMR.TO Tajna šifra</string>
+    <string name="label_send_btc_address">Odredište BTC adrese</string>
+    <string name="label_send_btc_amount">Suma</string>
+
+    <string name="label_send_txid">ID transakcije</string>
+    <string name="label_send_address">Adresa odredišta</string>
+    <string name="label_send_payment_id">ID plaćanja</string>
+    <string name="label_send_notes">Beleške</string>
+
+    <string name="backup_progress">Bekap u toku</string>
+    <string name="archive_progress">Arhiviranje u toku</string>
+    <string name="rename_progress">Preimenovanje u toku</string>
+    <string name="changepw_progress">Promena lozinke u toku</string>
+
+    <string name="service_progress">Pakovanje &#8230;\nOvo može malo potrajati!</string>
+
+    <string name="backup_success">Bekap uspešan</string>
+    <string name="backup_failed">Bekap neuspeo!</string>
+    <string name="archive_failed">Arhiviranje neuspelo!</string>
+    <string name="rename_failed">Preimenovanje neuspelo!</string>
+    <string name="changepw_failed">Promena lozinke neuspela!</string>
+    <string name="changepw_success">Lozinka promenjena</string>
+
+    <string name="label_daemon">Čvor</string>
+
+    <string name="status_wallet_loading">Otvaranje novčanika &#8230;</string>
+    <string name="status_wallet_unloaded">Novčanik sačuvan</string>
+    <string name="status_wallet_unload_failed">Čuvanje novčanika neuspelo!</string>
+    <string name="status_wallet_connecting">Povezivanje &#8230;</string>
+    <string name="status_wallet_connect_failed">Povezivanje čvora neuspelo!\nCheck username/password</string>
+    <string name="status_wallet_connect_wrongversion">Verzija čvora nekompatibilna - molimo da je nadgradite!</string>
+    <string name="status_wallet_node_invalid">Čvor nije validan!\nTry another.</string>
+    <string name="status_wallet_connect_ioex">Nemože se doći do čvora!\nTry again or another.</string>
+
+    <string name="status_wallet_disconnected">Nepovezano</string>
+
+    <string name="status_transaction_failed">Transakcija neuspela: %1$s</string>
+
+    <string name="send_xmrto_timeout">Predugo si čekao prijatelju!</string>
+
+    <string name="service_busy">Još sam zauzet sa tvojim poslednjim novčanikom &#8230;</string>
+
+    <string name="prompt_rename">Preimenuj %1$s</string>
+
+    <string name="prompt_changepw">Nova fraza-lozinka za %1$s</string>
+    <string name="prompt_changepwB">Ponovi fraza-lozinku za %1$s</string>
+    <string name="prompt_password">Lozinka za %1$s</string>
+    <string name="prompt_fingerprint_auth">Možeš otvoriti novčanik i sa otiskom prsta.\nMolimo takni senzor.</string>
+    <string name="prompt_send_password">Potvrdi lozinku</string>
+    <string name="prompt_open_wallet">Otvaranje novčanika&#8230;</string>
+    <string name="bad_fingerprint">Otisak prsta nije prepoznat. Try again.</string>
+    <string name="bad_password">Netačna lozinka!</string>
+    <string name="bad_saved_password">Sačuvana lozinka nije ispravna.\nMolimo unestite lozinku ručno.</string>
+    <string name="bad_wallet">Novčanik ne postoji!</string>
+    <string name="prompt_daemon_missing">Čvor mora biti podešen!</string>
+    <string name="prompt_wrong_net">Novčanik ne odgovara izabranoj mreži</string>
+
+    <string name="label_watchonly">(Samo za pregled)</string>
+
+    <string name="label_wallet_receive">Primljeno</string>
+    <string name="label_wallet_send">Daj</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR nepotvrđeno</string>
+
+    <string name="service_description">monerujo Servis</string>
+
+    <string name="status_synced">Sinhronizovano:</string>
+    <string name="status_remaining">Preostali blokovi</string>
+    <string name="status_syncing">Skeniranje:</string>
+
+    <string name="message_strorage_not_writable">Eksterno skladište nije zapisivo! Panika!</string>
+    <string name="message_strorage_not_permitted">Stvarno su nam potrebna odobrenja za ta eksterna skladišta!</string>
+    <string name="message_camera_not_permitted">Nema kamere = Nema QR skeniranja!</string>
+
+    <string name="label_copy_viewkey">Vidna šifra</string>
+    <string name="label_copy_address">Javna adresa</string>
+    <string name="label_copy_xmrtokey">XMR.TO šifra</string>
+    <string name="message_copy_viewkey">Vidna šifra kopirana u klipbord!</string>
+    <string name="message_copy_xmrtokey">XMR.TO šifra kopirana u klipbord!</string>
+    <string name="message_copy_address">Adresa novčanika kopirna u klipbord!</string>
+    <string name="message_copy_txid">ID transakcije kopiran u klipord!</string>
+    <string name="message_nocopy">Kopiranje je onemogućeno iz sigurnosnih razloga!</string>
+
+    <string name="message_exchange_failed">Ne može se dobiti kurs!\nUse XMR/XMR or try again</string>
+
+    <string name="generate_title">Kreiraj novčanik</string>
+    <string name="generate_name_hint">Ime novčanika</string>
+    <string name="generate_password_hint">Fraza-lozinka novčanika</string>
+    <string name="generate_fingerprint_hint">Dozvoli otvaranje novčanika otiskom prsta</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Autorizacija otiska prsta</strong>
+        <p>Sa omogućenom autorizacijom otiska prsta možeš videti stanje u novčaniku i primiti sredstva
+        bez unosa lozinke.</p>
+        <p>Ali za dodatnu sigurnost, monerujo će ipak tražiti da uneseš lozinku za
+        pregledanje novčaničkih detalja ili slanje sredstava.</p>
+        <strong>Sigurnosno upozorenje</strong>
+        <p>Konačno, monerujo želi da te podseti da biloko ko može imati tvoj otisak prsta biće
+        sposoban da zaviri u stanje tvog novčanika.</p>
+        <p>Na primer, zlonamerni korisnik iz tvoje okoline može ti otvoriti novčanik dok spavaš.</p>
+        <strong>Da li si siguran da omogućavaš ovu funkciju?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">Fraze-lozinke se ne podudaraju</string>
+    <string name="generate_empty_passwordB">Fraza-lozinka ne može biti prazna</string>
+    <string name="generate_buttonGenerate">Napravi mi već novčanik!</string>
+    <string name="generate_button_accept">Primetio sam mnemoničko seme</string>
+
+    <string name="generate_wallet_name">Daj mi ime!</string>
+    <string name="generate_wallet_exists">Novčanik postoji!</string>
+    <string name="generate_wallet_dot">Nemožeš početi sa .</string>
+    <string name="generate_wallet_creating">Kreiranje novčanika</string>
+    <string name="generate_wallet_created">Novčanik kreiran</string>
+
+    <string name="generate_restoreheight_error">Unesi broj datuma u formatu (YYYY-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">Šifre</string>
+    <string name="generate_wallet_type_new">Novo</string>
+    <string name="generate_wallet_type_seed">Seme</string>
+    <string name="generate_wallet_type_view">Pregled</string>
+    <string name="generate_address_hint">Javna adresa</string>
+    <string name="generate_viewkey_hint">Vidna šifra</string>
+    <string name="generate_spendkey_hint">Šifra potrošnje</string>
+    <string name="generate_mnemonic_hint">Menemonično seme od 25 reči</string>
+    <string name="generate_restoreheight_hint">Obnovi visinu ili datum u formatu (YYYY-MM-DD)</string>
+
+    <string name="generate_address_label">Javna adresa</string>
+    <string name="generate_viewkey_label">Vidna šifra</string>
+    <string name="generate_spendkey_label">Šifra potrošnje</string>
+    <string name="generate_mnemonic_label">Mnemoničko seme</string>
+    <string name="generate_crazypass_label">Fajlovi novčanika obnova lozinke</string>
+
+    <string name="generate_check_key">Unesi validnu šifru</string>
+    <string name="generate_check_address">Unesi validnu adresu</string>
+    <string name="generate_check_mnemonic">Unesi tvoje seme od 25 reči</string>
+
+    <string name="send_amount_btc_xmr">%1$s (indikativno)</string>
+
+    <string name="send_paymentid_hint">ID plaćanja (opciono)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">Privatne beleške (opciono)</string>
+    <string name="send_generate_paymentid_hint">Generiši</string>
+
+    <string name="send_send_label">Potroši moj slatki Moneroj</string>
+    <string name="send_send_timed_label">Potroši moj slatki Moneroj (%1$s)</string>
+    <string name="send_qr_invalid">Nije QR kod</string>
+    <string name="send_qr_address_invalid">Nije validan QR kod za plaćanje</string>
+    <string name="send_address_invalid">Nije validna adresa</string>
+    <string name="send_address_not_openalias">OpenAlias adresa nije dostupna</string>
+    <string name="send_address_openalias">OpenAlias sigurnost &#x2714;</string>
+    <string name="send_address_resolve_openalias">Rešavanje OpenAlias-a&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias bez DNSSEC - adrese može biti lažna</string>
+    <string name="send_title">Pošalji</string>
+    <string name="send_available">Stanje: %1$s XMR</string>
+    <string name="send_address_title">Adresa</string>
+    <string name="send_amount_title">Suma</string>
+    <string name="send_confirm_title">Potvrdi</string>
+    <string name="send_success_title">Urađeno</string>
+
+    <string name="send_amount_label">Suma</string>
+    <string name="send_fee_btc_label">Naknada (XMR)</string>
+    <string name="send_fee_label">Naknada</string>
+    <string name="send_total_btc_label">Ukupno (XMR)</string>
+    <string name="send_total_label">Ukupno</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s naknada</string>
+
+    <string name="send_create_tx_error_title">Kreiraj transakcijsku grešku</string>
+
+    <string name="tx_list_fee">- naknada %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">neuspelo</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Vremenski žig</string>
+    <string name="tx_id">TX ID</string>
+    <string name="tx_key">TX šifra</string>
+    <string name="tx_destination">Odredište</string>
+    <string name="tx_destination_btc">Odredište\n(BTC)</string>
+    <string name="tx_paymentId">ID plaćanja</string>
+    <string name="tx_blockheight">Blok</string>
+    <string name="tx_amount">Suma</string>
+    <string name="tx_amount_btc">Suma\n(BTC)</string>
+    <string name="tx_fee">Naknada</string>
+    <string name="tx_transfers">Transferi</string>
+    <string name="tx_notes">Čvorovi</string>
+    <string name="tx_notes_hint">(opciono)</string>
+    <string name="tx_button_notes">Sačuvaj</string>
+    <string name="tx_notes_set_failed">Čuvanje čvorova neuspelo</string>
+    <string name="tx_title">Detalji transakcije</string>
+
+    <string name="tx_pending">NA ČEKANJU</string>
+    <string name="tx_failed">NEUSPELO</string>
+
+    <string name="receive_amount_hint">Suma</string>
+    <string name="receive_desc_hint">Opis (opciono)</string>
+    <string name="receive_cannot_open">Nemoguće otvaranje novčanika!</string>
+    <string name="receive_paymentid_invalid">16 ili 64 heks. znakova (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">Mora biti prazno sa integrisanom adresom</string>
+
+    <string name="receive_amount_too_big">Maks. %1$s</string>
+    <string name="receive_amount_negative">Min. 0</string>
+    <string name="receive_amount_nan">XMR nije broj</string>
+
+    <string name="details_alert_message">Osetljivi podaci će biti pokazani.\nLook over your shoulder!</string>
+    <string name="details_alert_yes">Siguran sam</string>
+    <string name="details_alert_no">Vrati me nazad!</string>
+    <string name="details_title">Detalji</string>
+
+    <string name="archive_alert_message">Novčanik će biti bekapovan a potom obrisan!</string>
+    <string name="archive_alert_yes">Da, uradi to!</string>
+    <string name="archive_alert_no">Ne, hvala!</string>
+
+    <string name="fab_create_new">Kreiraj novi novčanik</string>
+    <string name="fab_restore_viewonly">Obnovi novčanik za pregled</string>
+    <string name="fab_restore_key">Povrati novčanik iz privatnih šifri</string>
+    <string name="fab_restore_seed">Povrati novčanik iz semena od 25 reči</string>
+
+    <string name="accounts_drawer_new">Kreiraj račun</string>
+    <string name="accounts_new">Dodat nov račun #%1$d</string>
+    <string name="tx_account">Račun #</string>
+
+    <string name="send_sweepall">Pošalji sva potvrđena sredstva na ovaj račun!</string>
+    <string name="tx_subaddress">Subadresa #%1$d</string>
+    <string name="generate_address_label_sub">Javna subadresa #%1$d</string>
+
+    <string name="menu_language">Jezik</string>
+    <string name="language_system_default">Koristi sistemski jezik</string>
+
+    <string name="fab_restore_ledger">Povrati iz knjige računa nano S</string>
+
+    <string name="progress_ledger_progress">Komunikacija sa knjigom računa</string>
+    <string name="progress_ledger_confirm">Potrebna potvrda iz knjige računa!</string>
+    <string name="progress_ledger_lookahead">Povratak subadresa</string>
+    <string name="progress_ledger_verify">Verifikovanje šifri</string>
+    <string name="progress_ledger_opentx">Ludačko računanje</string>
+    <string name="progress_ledger_mlsag">Hašovane stvari</string>
+    <string name="open_wallet_ledger_missing">Molimo ponovo spojite uređaj knjige računa</string>
+
+    <string name="accounts_progress_new">Kreiranje računa</string>
+
+    <string name="toast_ledger_attached">%1$s zakačeno</string>
+    <string name="toast_ledger_detached">%1$s otkačeno</string>
+
+    <string name="progress_nfc_write">Pisanje taga</string>
+    <string name="nfc_write_failed">Pisanje taga neuspelo!</string>
+    <string name="nfc_write_successful">Pisanje taga uspešno</string>
+    <string name="nfc_tag_unsupported">Tag ne podržava NDEF!</string>
+    <string name="nfc_tag_size">Tag omogućava %1$d bajta, međutim nama treba %2$d!</string>
+    <string name="nfc_tag_read_undef">Ne razumem tag!</string>
+    <string name="nfc_tag_read_what">Ne znam šta si mislio!</string>
+    <string name="nfc_tag_read_success">Čitanje taga uspešno</string>
+    <string name="nfc_tag_tap">NFC dostupno!</string>
+
+    <string name="menu_info">Pokaži tajne!</string>
+    <string name="menu_streetmode">Ulični mod</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC (skener udaljenog čvora) omogućen, tapni za više info.</string>
+    <string name="node_height">Poslednji blok ažuriran: %1$s</string>
+    <string name="label_nodes">Čvorovi</string>
+    <string name="node_name_hint">Ime čvora (opciono)</string>
+    <string name="node_address_hint">Ime hosta</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Ime korisnika (opciono)</string>
+    <string name="node_pass_hint">Lozinka (opciono)</string>
+    <string name="node_host_unresolved">Nemoguće je prepoznati hosta</string>
+    <string name="node_host_empty">Ovo nam treba!</string>
+    <string name="node_port_numeric">Mora biti numerički</string>
+    <string name="node_port_range">Mora biti 1&#8211;65535</string>
+    <string name="node_fab_add">Dodaj čvor</string>
+    <string name="node_refresh_hint">Takni da osvežiš!</string>
+    <string name="node_test_error">KONEKCIJSKA GREŠKA %1$d</string>
+    <string name="node_general_error">KONEKCIJSKA GREŠKA</string>
+    <string name="node_auth_error">NEUSPELA AUTORIZACIJA</string>
+    <string name="node_result_label">Rezultat testa:</string>
+    <string name="node_result">Visina: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Provera IP-a: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Molimo sačekajte da se skeniranje završi</string>
+    <string name="node_create_hint">Takni da izabereš ili dodaš čvorove</string>
+    <string name="node_pull_hint">Dodaj čvorove ručno ili povuci dole za skeniranje</string>
+    <string name="node_scanning">Skeniranje mreže&#8230;</string>
+    <string name="node_nobookmark">Automatski označeni najbolji %1$d čvorovi</string>
+    <string name="label_test">Testiranje</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Rešavanje plaćanja URI&#8230;</string>
+    <string name="send_address_not_bip70">Nemoguće rešavanje plaćanja URI</string>
+    <string name="send_address_bip70">rešavanje plaćanja URI &#x2714;</string>
+    <string name="send_address_hint">Primalac</string>
+
+    <string name="xmrto_error_001">XMR.TO van mreže - pokušajte kasnije ponovo</string>
+    <string name="xmrto_error_004">BTC iznos izvan granica</string>
+    <string name="xmrto_error_010">Nevalidan ili neažuriran URL plaćanja</string>
+    <string name="xmrto_error_012">Previše zahteva</string>
+
+    <string name="street_sweep_amount">SVE!</string>
+
+    <string name="menu_ledger_seed">Pretvori seme iz knjige računa</string>
+    <string name="prompt_ledger_seed">Reči semena iz knjige računa </string>
+    <string name="prompt_ledger_phrase">Fraza-lozinka iz knjige računa(napredno)</string>
+    <string name="bad_ledger_seed">Nevalidno seme iz knjige računa!</string>
+    <string name="prompt_ledger_seed_warn">Unošenje tvog semena iz knjige računa na ovom mestu ima veliki sigurnosni rizik!</string>
+
+</resources>
