@@ -1,0 +1,382 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+    <string name="wallet_activity_name">Portamonedes</string>
+
+    <string name="menu_about">Sobre</string>
+    <string name="menu_privacy">Política de Privacitat</string>
+
+    <string name="menu_share">Compartir</string>
+    <string name="menu_help">Ajuda</string>
+    <string name="menu_receive">Rebre</string>
+    <string name="menu_rename">Canvi de nom &#8230;</string>
+    <string name="menu_archive">Arxivar</string>
+    <string name="menu_backup">Còpia de seguretat</string>
+    <string name="menu_changepw">Canvi de contrasenya</string>
+
+    <string name="password_weak">Segueix escrivint &#8230;</string>
+    <string name="password_fair">Més o menys... &#8230;</string>
+    <string name="password_good">Vinga, ho pots fer millor!</string>
+    <string name="password_strong">Força bé, pero millorbale &#8230;</string>
+    <string name="password_very_strong">Genial, ets tot un hacker!</string>
+
+    <string name="label_login_wallets">Portamonedes</string>
+    <string name="label_credits">Crèdits</string>
+    <string name="label_ok">D\'acord</string>
+    <string name="label_cancel">Cancel·lar</string>
+    <string name="label_close">Tancar</string>
+    <string name="label_wallet_advanced_details">Premi aquí per informació més detallada</string>
+
+    <string name="label_send_success">Enviat correctament!</string>
+    <string name="label_send_done">Fet</string>
+
+    <string name="label_receive_info_gen_qr_code">Premi aquí per mostrar codi QR</string>
+
+    <string name="info_xmrto_enabled">Pagament amb BTC habilitat, premi aquí per més informació.</string>
+    <string name="info_ledger_enabled">Ledger habilitat, premi aquí per més informació.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>Heu introduït una adreça de Bitcoin.</b><br/>
+        <i>Està a punt d\'enviar XMR i el destinatari rebrà BTC a través del servei <b>XMR.TO</b> service.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">Ordre XMR.TO</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+
+    <string name="info_send_xmrto_paid">Confirmació Pendent</string>
+    <string name="info_send_xmrto_unpaid">Pagament Pendent</string>
+    <string name="info_send_xmrto_error">Error de XMR.TO (%1$s)</string>
+    <string name="info_send_xmrto_sent">BTC Enviats!</string>
+    <string name="info_send_xmrto_query">Consultant &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>You can send %1$s &#8212; %2$s BTC</b>.<br/>
+        <i><b>XMR.TO</b> està oferint una tasa de canvi de <b>%3$s BTC</b> <u>en aquest moment</u></i>.
+    ]]></string>
+    <string name="info_send_xmrto_zeroconf"><![CDATA[
+        <i>Quantitats fins a <b>%1$s BTC</b> seran enviats <u>a l\'instant</u>!</i>
+    ]]></string>
+
+    <string name="send_available_btc">Balanç: %2$s BTC (%1$s XMR)</string>
+
+    <string name="info_paymentid_intergrated">ID de pagment integrat</string>
+    <string name="info_prepare_tx">Preparant la seva transacció</string>
+
+    <string name="label_send_progress_xmrto_create">Creant ordre XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">Consultant ordre XMR.TO</string>
+    <string name="label_send_progress_create_tx">Preparant transacció Monero</string>
+
+    <string name="label_send_progress_queryparms">Consultant paràmetres XMR.TO</string>
+
+    <string name="label_generic_xmrto_error">ERROR XMR.TO</string>
+    <string name="text_generic_xmrto_error">Codi: %1$d</string>
+
+    <string name="text_retry">Premi aquí per tornar-ho a intentar</string>
+    <string name="text_noretry_monero">Vatua l\'olla! Sembla ser que estem encallats!</string>
+    <string name="text_noretry">Ups, sembla que XMR.TO no està disponible ara mateix!</string>
+
+    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Canvi: %1$s BTC/XMR)</string>
+
+    <string name="label_send_btc_xmrto_info">Visita xmr.to per suport i seguiment</string>
+    <string name="label_send_btc_xmrto_key_lb">Clau secreta\nXMR.TO</string>
+    <string name="label_send_btc_xmrto_key">Clau secreta XMR.TO</string>
+    <string name="label_send_btc_address">Adreça BTC de destí</string>
+    <string name="label_send_btc_amount">Quantitat</string>
+
+    <string name="label_send_txid">ID de transacció</string>
+    <string name="label_send_address">Adreça de destí</string>
+    <string name="label_send_payment_id">ID de pagament</string>
+    <string name="label_send_notes">Notes</string>
+
+    <string name="backup_progress">Còpia de seguretat en curs</string>
+    <string name="archive_progress">Arxiu en curs</string>
+    <string name="rename_progress">Canvi de nom en curs</string>
+    <string name="changepw_progress">Canvi de contrasenya en curs</string>
+
+    <string name="service_progress">Posant les coses al see bloc &#8230;\nAixò pot trigar una estona!</string>
+
+    <string name="backup_success">Còpia de seguretat amb èxit</string>
+    <string name="backup_failed">Còpia de seguretat fallida!</string>
+    <string name="archive_failed">Arxiu fallit!</string>
+    <string name="rename_failed">Canvi de nom fallit!</string>
+    <string name="changepw_failed">Canvi de contrasenya fallit!</string>
+    <string name="changepw_success">La contrasenya ha canviat</string>
+
+    <string name="label_daemon">Node</string>
+    <string name="status_wallet_loading">Carregant Portamonedes &#8230;</string>
+    <string name="status_wallet_unloaded">Portamonedes desat</string>
+    <string name="status_wallet_unload_failed">Ha fallat el desat del portamonedas!</string>
+    <string name="status_wallet_connecting">Connectant &#8230;</string>
+    <string name="status_wallet_connect_failed">Ha fallat la connexió del node!\nComprovar nom d\'usuari/contrasenya</string>
+    <string name="status_wallet_connect_wrongversion">Versió del node incompatible - actualitzi si us plau!</string>
+    <string name="status_wallet_node_invalid">Node invàlid!\nProvi un altre.</string>
+    <string name="status_wallet_connect_ioex">No es pot arribar al node!\nTorni-ho a intentar o esculpí un altre.</string>
+
+    <string name="status_wallet_disconnected">Desconectat</string>
+
+    <string name="status_transaction_failed">Transacció fallida: %1$s</string>
+
+    <string name="send_xmrto_timeout">Has esperat massa temps, estaquirot!</string>
+
+    <string name="service_busy">Encara estic ocupat amb el teu últim portamonedes &#8230;</string>
+
+    <string name="prompt_rename">Canvi de nom %1$s</string>
+
+    <string name="prompt_changepw">Nova contrasenya per %1$s</string>
+    <string name="prompt_changepwB">Repetir contrasenya per %1$s</string>
+    <string name="prompt_password">Contrasenya per %1$s</string>
+    <string name="prompt_fingerprint_auth">Pots obrir el portamonedes fent servir l\'empremta digital.\nPremi el sensor.</string>
+    <string name="prompt_send_password">Confirmi contrasenya</string>
+    <string name="prompt_open_wallet">Obrint el portamonedes&#8230;</string>
+    <string name="bad_fingerprint">Empremta no reconeguda. Torni-ho a intentar.</string>
+    <string name="bad_password">Contrasenya incorrecta!</string>
+    <string name="bad_saved_password">La contrasenya desada és incorrecta.\nIntrodueixi la contrasenya manualment.</string>
+    <string name="bad_wallet">El portamonedes no existeix!</string>
+    <string name="prompt_daemon_missing">S\'ha de configurar el node!</string>
+    <string name="prompt_wrong_net">El portamonedes no coincideix amb la xarxa seleccionada</string>
+
+    <string name="label_watchonly">(Només de Visualització)</string>
+
+    <string name="label_wallet_receive">Rebre</string>
+    <string name="label_wallet_send">Enviar</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR sense confirmar</string>
+
+    <string name="service_description">Servei de monerujo</string>
+
+    <string name="status_synced">Sincronitzat:</string>
+    <string name="status_remaining">Blocs restants</string>
+    <string name="status_syncing">Escanejant:</string>
+
+    <string name="message_strorage_not_writable">L’emmagatzematge extern no es pot escriure! Pànic!</string>
+    <string name="message_strorage_not_permitted">De veritat que necessitem els permisos per l\'Emmagatzematge Extern!</string>
+    <string name="message_camera_not_permitted">Sense càmara = Cap escaneig QR!</string>
+
+    <string name="label_copy_viewkey">Clau de visualització</string>
+    <string name="label_copy_address">Adreça Pública</string>
+    <string name="label_copy_xmrtokey">Clau de XMR.TO</string>
+    <string name="message_copy_viewkey">Clau de visualització copiada al porta-retalls!</string>
+    <string name="message_copy_xmrtokey">Clau de XMR.TO copiada al porta-retalls!</string>
+    <string name="message_copy_address">Adreça del portamonedes copiada al porta-retalls!</string>
+    <string name="message_copy_txid">ID de transacció copiada al porta-retalls!</string>
+    <string name="message_nocopy">S\'ha inhabilitat la funció de copiar per raons de seguretat!</string>
+
+    <string name="message_exchange_failed">No s\'ha pogut obtenir el tipus de canvi!\nUtilitzi XMR/XMR o torni-ho a intentar</string>
+
+    <string name="generate_title">Crear portamonedes</string>
+    <string name="generate_name_hint">Nom del portamonedes</string>
+    <string name="generate_password_hint">Contrasenya del portamonedes</string>
+    <string name="generate_fingerprint_hint">Permetre obrir el portamonedes amb l\'empremta digital</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Autenticació d’empremta digitals</strong>
+        <p>Amb l’autenticació d’empremta digital habilitada podeu veure el balanç del portamonedes i rebre fons
+         sense la necessitat d'introduir la contrasenya.</p>
+        <p>Per a més seguretat, monerujo encara us demanarà que introduïu la contrasenya per
+         veure els detalls del portamonedes o enviar fons.</p>
+        <strong>Advertència de seguretat</strong>
+        <p>Finalment, monerujo vol recordar-li que qualsevol que pugui obtenir la seva empremta digital serà
+         capaç d’observar el balanç del seu portamonedes.</p>
+        <p>Per exemple, un usuari maliciós del vostre voltant pot obrir la vostra cartera quan esteu dormint.</p>
+        <strong>Esteu segurs d'habilitar aquesta funcionalitat?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">La contrasenya no coincideix</string>
+    <string name="generate_empty_passwordB">La contrasenya no pot estar buida</string>
+    <string name="generate_buttonGenerate">Fes-me un portamonedes ara mateix!</string>
+    <string name="generate_button_accept">Ja ho he apuntat tot!</string>
+
+    <string name="generate_wallet_name">Dona\'m un nom!</string>
+    <string name="generate_wallet_exists">El portamonedes ja existeix!</string>
+    <string name="generate_wallet_dot">No pot començar amb .</string>
+    <string name="generate_wallet_creating">Creant portamonedes</string>
+    <string name="generate_wallet_created">Portamonedes creat</string>
+
+    <string name="generate_restoreheight_error">Introduïu un número o una data (AAAA-MM-DD)</string>
+
+    <string name="generate_wallet_type_key">Claus</string>
+    <string name="generate_wallet_type_new">Nou</string>
+    <string name="generate_wallet_type_seed">Llavor</string>
+    <string name="generate_wallet_type_view">Visualitzar</string>
+
+    <string name="generate_address_hint">Adreça Pública</string>
+    <string name="generate_viewkey_hint">Clau de Visualització</string>
+    <string name="generate_spendkey_hint">Clau de Despeses</string>
+    <string name="generate_mnemonic_hint">Llavor Mnemòtica de 25 paraules</string>
+    <string name="generate_restoreheight_hint">Restablir Alçada o Data (AAAA-MM-DD)</string>
+
+    <string name="generate_address_label">Adreça Pública</string>
+    <string name="generate_viewkey_label">Clau de Visualització</string>
+    <string name="generate_spendkey_label">Clau de Despeses</string>
+    <string name="generate_mnemonic_label">Llavor Mnemòtica</string>
+    <string name="generate_crazypass_label">Contrasenya de Restauració per l\'Arxiu del Portamonedes</string>
+
+    <string name="generate_check_key">Introduïu una clau vàlida</string>
+    <string name="generate_check_address">Introduïu una adreça vàlida</string>
+    <string name="generate_check_mnemonic">Introduïu la vostra llavor de 25 paraules</string>
+
+    <string name="send_amount_btc_xmr">%1$s (indicatiu)</string>
+
+    <string name="send_paymentid_hint">ID de pagament (opcional)</string>
+    <string name="send_amount_hint">0.00</string>
+    <string name="send_notes_hint">Notes privades (opcional)</string>
+    <string name="send_generate_paymentid_hint">Generar</string>
+    <string name="send_send_label">Spend my sweet Moneroj</string>
+    <string name="send_send_timed_label">Gastar els meus estimats Moneroj (%1$s)</string>
+    <string name="send_qr_invalid">No es un codi QR</string>
+    <string name="send_qr_address_invalid">No es un codi de pagament QR vàlid</string>
+    <string name="send_address_invalid">No es una adreça vàlida</string>
+    <string name="send_address_not_openalias">La direcció OpenAlias no està disponible</string>
+    <string name="send_address_openalias">OpenAlias segur &#x2714;</string>
+    <string name="send_address_resolve_openalias">Resolent OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sense DNSSEC - l\'adreça pot ser compromesa</string>
+    <string name="send_title">Enviar</string>
+    <string name="send_available">Balanç: %1$s XMR</string>
+    <string name="send_address_title">Adreça</string>
+    <string name="send_amount_title">Quantitat</string>
+    <string name="send_confirm_title">Confirmar</string>
+    <string name="send_success_title">Fet</string>
+
+    <string name="send_amount_label">Quantitat</string>
+    <string name="send_fee_btc_label">Comissió (XMR)</string>
+    <string name="send_fee_label">Comissió</string>
+    <string name="send_total_btc_label">Total (XMR)</string>
+    <string name="send_total_label">Total</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s Comissió</string>
+
+    <string name="send_create_tx_error_title">Error creant la transacció</string>
+
+    <string name="tx_list_fee">- Comissió %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">fallit</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Marca de temps</string>
+    <string name="tx_id">ID de transacció</string>
+    <string name="tx_key">Clau de transacció</string>
+    <string name="tx_destination">Destí</string>
+    <string name="tx_destination_btc">Destí\n(BTC)</string>
+    <string name="tx_paymentId">ID de pagament</string>
+    <string name="tx_blockheight">Bloc</string>
+    <string name="tx_amount">Quantitat</string>
+    <string name="tx_amount_btc">Quantitat\n(BTC)</string>
+    <string name="tx_fee">Comissió</string>
+    <string name="tx_transfers">Transferències</string>
+    <string name="tx_notes">Notes</string>
+    <string name="tx_notes_hint">(opcional)</string>
+    <string name="tx_button_notes">Desa</string>
+    <string name="tx_notes_set_failed">Desat de notes fallit</string>
+    <string name="tx_title">Detalls de Transacció</string>
+
+    <string name="tx_pending">PENDENT</string>
+    <string name="tx_failed">FALLIT</string>
+
+    <string name="receive_amount_hint">Quantitat</string>
+    <string name="receive_desc_hint">Descripció (opcional)</string>
+    <string name="receive_cannot_open">No s\'ha pogut obrir el portamonedes!</string>
+    <string name="receive_paymentid_invalid">16 or 64 Hex caràcters (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_integrated_paymentid_invalid">ha d\'estar buit amb una adreça integrada</string>
+
+    <string name="receive_amount_too_big">Màx. %1$s</string>
+    <string name="receive_amount_negative">Mín. 0</string>
+    <string name="receive_amount_nan">XMR no és un número</string>
+
+    <string name="details_alert_message">Ara es mostrarà informació delicada.\nEsteu a l\'aguait!</string>
+    <string name="details_alert_yes">Estic segur</string>
+    <string name="details_alert_no">Torna\'m enrere!</string>
+    <string name="details_title">Detalls</string>
+
+    <string name="archive_alert_message">Es farà una còpia de seguretat del portamonedes i s\'esborrarà.</string>
+    <string name="archive_alert_yes">Si, fes-ho!</string>
+    <string name="archive_alert_no">No gràcies!</string>
+
+    <string name="fab_create_new">Crear un nou portamonedes</string>
+    <string name="fab_restore_viewonly">Restablir portamonedes de només lectura</string>
+    <string name="fab_restore_key">Restablir portamonedes desde les claus privades</string>
+    <string name="fab_restore_seed">Restablir portamonedes desde la llavor de 25 paraules</string>
+
+    <string name="accounts_drawer_new">Crear Compte</string>
+    <string name="accounts_new">Nou compte afegit #%1$d</string>
+    <string name="tx_account">Compte #</string>
+
+    <string name="send_sweepall">Envia tots els fons confirmats cap aquest compte!</string>
+    <string name="tx_subaddress">Subadreces #%1$d</string>
+    <string name="generate_address_label_sub">Subadreces Públiques #%1$d</string>
+
+    <string name="menu_language">Idioma</string>
+    <string name="language_system_default">Utilitzar Idioma del Sistema</string>
+
+    <string name="fab_restore_ledger">Restablir desde Ledger Nano S</string>
+
+    <string name="progress_ledger_progress">Comunicant amb Ledger</string>
+    <string name="progress_ledger_confirm">Es requereix confirmació en Ledger!</string>
+    <string name="progress_ledger_lookahead">Recuperant subadreces</string>
+    <string name="progress_ledger_verify">Verificant claus</string>
+    <string name="progress_ledger_opentx">Fent càlculs ben bojos</string>
+    <string name="progress_ledger_mlsag">Hashing per aquí i per allà</string>
+    <string name="open_wallet_ledger_missing">Si us plau (re)conecteu el dispositiu Ledger</string>
+
+    <string name="accounts_progress_new">Creant compte</string>
+
+    <string name="toast_ledger_attached">%1$s adjunt</string>
+    <string name="toast_ledger_detached">%1$s separat</string>
+
+    <string name="progress_nfc_write">Escrivint etiquetatge</string>
+    <string name="nfc_write_failed">Escriptura d\'Etiquetatge fallit!</string>
+    <string name="nfc_write_successful">Escriptura d\'Etiquetatge exitosa</string>
+    <string name="nfc_tag_unsupported">L\'etiquetatge no suporta NDEF!</string>
+    <string name="nfc_tag_size">L\'etiquetatge proporciona %1$d bits, però es necessiten %2$d!</string>
+    <string name="nfc_tag_read_undef">No entenc l\'etiquetatge!</string>
+    <string name="nfc_tag_read_what">No sé què vols!</string>
+    <string name="nfc_tag_read_success">Lectura d\'etiquetatge exitosa</string>
+    <string name="nfc_tag_tap">NFC Disponible!</string>
+
+    <string name="menu_info">Mostra Secrets!</string>
+    <string name="menu_streetmode">Mode de Carrer</string>
+
+    <string name="info_nodes_enabled">Node-o-matiC habilitat, premi aquí per més informació.</string>
+    <string name="node_height">Últim bloc actualitzat: %1$s</string>
+    <string name="label_nodes">Nodes</string>
+    <string name="node_name_hint">Nom del Node (Opcional)</string>
+    <string name="node_address_hint">Nom del servidor</string>
+    <string name="node_port_hint">Port</string>
+    <string name="node_user_hint">Nom d\'usuari (Opcional)</string>
+    <string name="node_pass_hint">Contrasenya (Opcional)</string>
+    <string name="node_host_unresolved">No es pot resoldre el servidor</string>
+    <string name="node_host_empty">Necessitem això!</string>
+    <string name="node_port_numeric">Ha d\'ésser numéric</string>
+    <string name="node_port_range">Ha d\'ésser 1&#8211;65535</string>
+    <string name="node_fab_add">Afegir Node</string>
+    <string name="node_refresh_hint">Premi aquí per refrescar!</string>
+    <string name="node_test_error">ERROR DE CONEXIÓ %1$d</string>
+    <string name="node_general_error">ERROR DE CONEXIÓ</string>
+    <string name="node_auth_error">AUTENTICACIÓ FALLIDA</string>
+    <string name="node_result_label">Resultat del test:</string>
+    <string name="node_result">Alçada: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">Provant l\'IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Si us plau, esperi a que finalitzi l\'escaneig</string>
+    <string name="node_create_hint">Premi aquí per seleccionar o afegir nodes</string>
+    <string name="node_pull_hint">Afegir nodes de forma manual o tireu cap avall per escanejar</string>
+    <string name="node_scanning">Escanejant la xarxa&#8230;</string>
+    <string name="node_nobookmark">S\'han marcat de forma automàtica els millors %1$d nodes</string>
+    <string name="label_test">Provar</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_resolve_bip70">Resolució del Pagament URI&#8230;</string>
+    <string name="send_address_not_bip70">No s\'ha pogut resoldre el pagament URI</string>
+    <string name="send_address_bip70">S\'ha resolt el pagament URI &#x2714;</string>
+    <string name="send_address_hint">Receptor</string>
+
+    <string name="xmrto_error_001">XMR.TO fora de línia - intenti-ho més tard</string>
+    <string name="xmrto_error_004">Quantitat de BTC fora dels límits</string>
+    <string name="xmrto_error_010">URL de pagament no vàlida o obsoleta</string>
+    <string name="xmrto_error_012">Massa peticions</string>
+
+    <string name="street_sweep_amount">TOT!</string>
+
+    <string name="menu_ledger_seed">Convertir la llavor del Ledger</string>
+    <string name="prompt_ledger_seed">Paraules de la llavor del Ledger</string>
+    <string name="prompt_ledger_phrase">Contrasenya Ledger (avançat)</string>
+    <string name="bad_ledger_seed">Llavor de Ledger no vàlida!</string>
+    <string name="prompt_ledger_seed_warn">Introduir la vostra llavor del Ledger aquí té un elevat risc de seguretat!</string>
+</resources>
