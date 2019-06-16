@@ -1382,8 +1382,6 @@ Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jclass cl
 // Ledger Stuff
 //
 
-#include "device_io_monerujo.hpp"
-
 /**
  * @brief LedgerExchange - exchange data with Ledger Device
  * @param command        - buffer for data to send
@@ -1417,7 +1415,7 @@ int LedgerExchange(
         return -1;
     }
     jsize len = jenv->GetArrayLength(dataRecv);
-    LOGD("LedgerExchange SCARD_S_SUCCESS %ld/%d", cmd_len, len);
+    LOGD("LedgerExchange SCARD_S_SUCCESS %u/%d", cmd_len, len);
     if (len <= max_resp_len) {
         jenv->GetByteArrayRegion(dataRecv, 0, len, (jbyte *) response);
         jenv->DeleteLocalRef(dataRecv);
