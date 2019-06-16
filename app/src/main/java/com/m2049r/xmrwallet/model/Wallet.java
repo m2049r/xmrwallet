@@ -16,6 +16,9 @@
 
 package com.m2049r.xmrwallet.model;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
@@ -30,6 +33,47 @@ public class Wallet {
 
     static {
         System.loadLibrary("monerujo");
+    }
+
+    static public class Status {
+        Status(int status, String errorString) {
+            this.status = StatusEnum.values()[status];
+            this.errorString = errorString;
+        }
+
+        final private StatusEnum status;
+        final private String errorString;
+        @Nullable
+        private ConnectionStatus connectionStatus; // optional
+
+        public StatusEnum getStatus() {
+            return status;
+        }
+
+        public String getErrorString() {
+            return errorString;
+        }
+
+        public void setConnectionStatus(@Nullable ConnectionStatus connectionStatus) {
+            this.connectionStatus = connectionStatus;
+        }
+
+        @Nullable
+        public ConnectionStatus getConnectionStatus() {
+            return connectionStatus;
+        }
+
+        public boolean isOk() {
+            return (getStatus() == StatusEnum.Status_Ok)
+                    && ((getConnectionStatus() == null) ||
+                    (getConnectionStatus() == ConnectionStatus.ConnectionStatus_Connected));
+        }
+
+        @Override
+        @NonNull
+        public String toString() {
+            return "Wallet.Status: (" + status + "/" + errorString + ", " + connectionStatus;
+        }
     }
 
     private int accountIndex = 0;
@@ -66,7 +110,7 @@ public class Wallet {
         Device_Ledger
     }
 
-    public enum Status {
+    public enum StatusEnum {
         Status_Ok,
         Status_Error,
         Status_Critical
@@ -85,12 +129,16 @@ public class Wallet {
     public native void setSeedLanguage(String language);
 
     public Status getStatus() {
-        return Wallet.Status.values()[getStatusJ()];
+        return statusWithErrorString();
     }
 
-    private native int getStatusJ();
+    public Status getFullStatus() {
+        Wallet.Status walletStatus = statusWithErrorString();
+        walletStatus.setConnectionStatus(getConnectionStatus());
+        return walletStatus;
+    }
 
-    public native String getErrorString();
+    private native Status statusWithErrorString();
 
     public native boolean setPassword(String password);
 

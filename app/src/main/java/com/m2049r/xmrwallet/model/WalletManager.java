@@ -95,7 +95,7 @@ public class WalletManager {
         long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
-        if (wallet.getStatus() == Wallet.Status.Status_Ok) {
+        if (wallet.getStatus().isOk()) {
             // (Re-)Estimate restore height based on what we know
             final long oldHeight = wallet.getRestoreHeight();
             final long restoreHeight =

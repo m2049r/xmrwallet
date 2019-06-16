@@ -192,7 +192,7 @@ public class GenerateReviewFragment extends Fragment {
         String viewKey;
         String spendKey;
         boolean isWatchOnly;
-        Wallet.Status status;
+        Wallet.Status walletStatus;
 
         boolean dialogOpened = false;
 
@@ -224,9 +224,9 @@ public class GenerateReviewFragment extends Fragment {
                 closeWallet = true;
             }
             name = wallet.getName();
-            status = wallet.getStatus();
-            if (status != Wallet.Status.Status_Ok) {
-                Timber.e(wallet.getErrorString());
+            walletStatus = wallet.getStatus();
+            if (!walletStatus.isOk()) {
+                Timber.e(walletStatus.getErrorString());
                 if (closeWallet) wallet.close();
                 return false;
             }
@@ -287,10 +287,10 @@ public class GenerateReviewFragment extends Fragment {
                         GenerateReviewFragment.VIEW_TYPE_ACCEPT.equals(type) ? Toolbar.BUTTON_NONE : Toolbar.BUTTON_BACK);
             } else {
                 // TODO show proper error message and/or end the fragment?
-                tvWalletAddress.setText(status.toString());
-                tvWalletMnemonic.setText(status.toString());
-                tvWalletViewKey.setText(status.toString());
-                tvWalletSpendKey.setText(status.toString());
+                tvWalletAddress.setText(walletStatus.toString());
+                tvWalletMnemonic.setText(walletStatus.toString());
+                tvWalletViewKey.setText(walletStatus.toString());
+                tvWalletSpendKey.setText(walletStatus.toString());
             }
             hideProgress();
         }
@@ -414,12 +414,13 @@ public class GenerateReviewFragment extends Fragment {
         }
 
         boolean ok = false;
-        if (wallet.getStatus() == Wallet.Status.Status_Ok) {
+        Wallet.Status walletStatus = wallet.getStatus();
+        if (walletStatus.isOk()) {
             wallet.setPassword(newPassword);
             wallet.store();
             ok = true;
         } else {
-            Timber.e(wallet.getErrorString());
+            Timber.e(walletStatus.getErrorString());
         }
         if (closeWallet) wallet.close();
         return ok;
