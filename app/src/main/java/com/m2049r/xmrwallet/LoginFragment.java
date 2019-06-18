@@ -439,10 +439,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             }
             Collections.sort(nodesToTest, NodeInfo.BestNodeComparator);
             NodeInfo bestNode = nodesToTest.get(0);
-            if (bestNode.isValid())
+            if (bestNode.isValid()) {
+                activityCallback.setNode(bestNode);
                 return bestNode;
-            else
+            } else {
+                activityCallback.setNode(null);
                 return null;
+            }
         }
 
         @Override
@@ -450,7 +453,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             if (!isAdded()) return;
             pbNode.setVisibility(View.INVISIBLE);
             llNode.setVisibility(View.VISIBLE);
-            activityCallback.setNode(result);
             if (result != null) {
                 Timber.d("found a good node %s", result.toString());
                 showNode(result);
