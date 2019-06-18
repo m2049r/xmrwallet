@@ -290,7 +290,7 @@ public class WalletService extends Service {
                             showProgress(10);
                             Wallet.Status walletStatus = start(walletId, walletPw);
                             if (observer != null) observer.onWalletStarted(walletStatus);
-                            if (!walletStatus.isOk()) {
+                            if ((walletStatus == null) || !walletStatus.isOk()) {
                                 errorState = true;
                                 stop();
                             }
