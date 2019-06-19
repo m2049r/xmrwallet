@@ -15,6 +15,7 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:padding="12dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
         android:src="@drawable/ic_bookmark_border_24dp" />
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_margin="8dp"
         android:layout_toStartOf="@+id/ivPing"
         android:layout_toEndOf="@id/ibBookmark"
