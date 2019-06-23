@@ -39,7 +39,7 @@
 	Deine IP-Adresse kann dabei aufgezeichnet werden.</p>
         <h2>App-Berechtigungen</h2>
         <ul>
-        <li>INTERNET : Verbinde zum Monero-Netzwerk über einen Monero-Hintergrunddienst-Node</li>
+        <li>INTERNET : Verbinde zum Monero-Netzwerk über einen Monero-Node</li>
         <li>READ_EXTERNAL_STORAGE : Lese die auf dem Gerät gespeicherten Wallet-Dateien aus</li>
         <li>WRITE_EXTERNAL_STORAGE : Schreibe Wallet-Dateien auf das Gerät</li>
         <li>WAKE_LOCK : Halte das Gerät während der Synchronisation wach</li>

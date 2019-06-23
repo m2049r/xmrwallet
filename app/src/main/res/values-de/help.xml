@@ -245,7 +245,7 @@
         <p>Aktualisiere die Liste der Nodes, indem du nach unten ziehst &amp; merke 3&#8211;5 davon vor, um es Monerujo zu ermöglichen, 
         den bestmöglichen für dich auszuwählen!</p>
         <h2>Was ist ein Node?</h2>
-        <p>Monerujo nutzt einen Drittanbieter-Node (manchmal auch Hintergrunddienst genannt), um mit 
+        <p>Monerujo nutzt einen Drittanbieter-Node (manchmal auch Monero Knoten oder Daemon genannt), um mit
         dem Monero-Netzwerk zu kommunizieren, ohne die Blockchain selbst herunterladen und 
         speichern zu müssen.<p>
         <h2>Node-Liste</h2>
