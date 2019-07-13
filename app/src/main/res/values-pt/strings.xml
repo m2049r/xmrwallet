@@ -385,4 +385,6 @@
     <string name="prompt_ledger_phrase">Palavra passe do Ledger (opcional)</string>
     <string name="bad_ledger_seed">Semente do Ledger invalida!</string>
     <string name="prompt_ledger_seed_warn">Introduzir a semente do Ledger aqui comporta um elevado risco de segurança!</string>
+
+    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

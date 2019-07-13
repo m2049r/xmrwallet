@@ -46,8 +46,12 @@ public class BTChipTransportAndroidHID implements BTChipTransport {
         HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
         for (UsbDevice device : deviceList.values()) {
             Timber.d("%04X:%04X %s, %s", device.getVendorId(), device.getProductId(), device.getManufacturerName(), device.getProductName());
-            if ((device.getVendorId() == VID) && (device.getProductId() == PID_HID)) {
-                return device;
+            if (device.getVendorId() == VID) {
+                final int deviceProductId = device.getProductId();
+                for (int pid : PID_HIDS) {
+                    if (deviceProductId == pid)
+                        return device;
+                }
             }
         }
         return null;
@@ -74,7 +78,7 @@ public class BTChipTransportAndroidHID implements BTChipTransport {
     }
 
     private static final int VID = 0x2C97;
-    private static final int PID_HID = 0x0001;
+    private static final int[] PID_HIDS = {0x0001, 0x0004};
 
     private UsbDeviceConnection connection;
     private UsbInterface dongleInterface;

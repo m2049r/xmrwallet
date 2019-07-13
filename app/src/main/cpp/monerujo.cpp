@@ -1310,7 +1310,6 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getFirstTxIdJ(JNIEnv *env, jo
         return nullptr;
 }
 
-
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobject instance) {
     Bitmonero::PendingTransaction *tx = getHandle<Bitmonero::PendingTransaction>(env, instance);
@@ -1394,6 +1393,11 @@ JNIEXPORT void JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_setLogLevel(JNIEnv *env, jclass clazz,
                                                           jint level) {
     Bitmonero::WalletManagerFactory::setLogLevel(level);
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_moneroVersion(JNIEnv *env, jclass clazz) {
+    return env->NewStringUTF(MONERO_VERSION);
 }
 
 //
