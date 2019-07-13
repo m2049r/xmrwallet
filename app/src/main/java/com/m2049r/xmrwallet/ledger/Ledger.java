@@ -27,9 +27,11 @@ import com.btchip.BTChipException;
 import com.btchip.comm.BTChipTransport;
 import com.btchip.comm.android.BTChipTransportAndroidHID;
 import com.m2049r.xmrwallet.BuildConfig;
+import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import timber.log.Timber;
 
@@ -40,9 +42,11 @@ public class Ledger {
     static public final int LOOKAHEAD_SUBADDRESSES = 20;
     static public final String SUBADDRESS_LOOKAHEAD = LOOKAHEAD_ACCOUNTS + ":" + LOOKAHEAD_SUBADDRESSES;
 
+    private static final byte PROTOCOL_VERSION = 0x02;
     public static final int SW_OK = 0x9000;
     public static final int SW_INS_NOT_SUPPORTED = 0x6D00;
     public static final int OK[] = {SW_OK};
+    public static final int MINIMUM_LEDGER_VERSION = (1 << 16) + (3 << 8) + (1); // 1.3.1
 
     public static UsbDevice findDevice(UsbManager usbManager) {
         if (!ENABLED) return null;
@@ -89,6 +93,21 @@ public class Ledger {
         }
     }
 
+    static public boolean check() {
+        if (Instance == null) return false;
+        byte[] moneroVersion = WalletManager.moneroVersion().getBytes(StandardCharsets.US_ASCII);
+
+        try {
+            byte[] resp = Instance.exchangeApduNoOpt(Instruction.INS_RESET, moneroVersion, OK);
+            int deviceVersion = (resp[0] << 16) + (resp[1] << 8) + (resp[2]);
+            if (deviceVersion < MINIMUM_LEDGER_VERSION)
+                return false;
+        } catch (BTChipException ex) { // comm error - probably wrong app started on device
+            return false;
+        }
+        return true;
+    }
+
     final private BTChipTransport transport;
     final private String name;
     private int lastSW = 0;
@@ -112,7 +131,7 @@ public class Ledger {
     synchronized private byte[] exchangeRaw(byte[] apdu) {
         if (transport == null)
             throw new IllegalStateException("No transport (probably closed previously)");
-        Timber.i("exchangeRaw %02x", apdu[1]);
+        Timber.d("exchangeRaw %02x", apdu[1]);
         Instruction ins = Instruction.fromByte(apdu[1]);
         if (listener != null) listener.onInstructionSend(ins, apdu);
         sniffOut(ins, apdu);
@@ -120,7 +139,6 @@ public class Ledger {
         if (listener != null) listener.onInstructionReceive(ins, data);
         sniffIn(data);
         return data;
-
     }
 
     private byte[] exchange(byte[] apdu) throws BTChipException {
@@ -148,66 +166,17 @@ public class Ledger {
         throw new BTChipException("Invalid status", lastSW);
     }
 
-    private byte[] exchangeApdu(byte cla, byte ins, byte p1, byte p2, byte[] data, int acceptedSW[]) throws BTChipException {
-        byte[] apdu = new byte[data.length + 5];
-        apdu[0] = cla;
-        apdu[1] = ins;
-        apdu[2] = p1;
-        apdu[3] = p2;
-        apdu[4] = (byte) (data.length);
-        System.arraycopy(data, 0, apdu, 5, data.length);
+    private byte[] exchangeApduNoOpt(Instruction instruction, byte[] data, int acceptedSW[])
+            throws BTChipException {
+        byte[] apdu = new byte[data.length + 6];
+        apdu[0] = PROTOCOL_VERSION;
+        apdu[1] = instruction.getByteValue();
+        apdu[2] = 0; // p1
+        apdu[3] = 0; // p2
+        apdu[4] = (byte) (data.length + 1); // +1 because the opt byte is part of the data
+        apdu[5] = 0; // opt
+        System.arraycopy(data, 0, apdu, 6, data.length);
         return exchangeCheck(apdu, acceptedSW);
-    }
-
-    private byte[] exchangeApdu(byte cla, byte ins, byte p1, byte p2, int length, int acceptedSW[]) throws BTChipException {
-        byte[] apdu = new byte[5];
-        apdu[0] = cla;
-        apdu[1] = ins;
-        apdu[2] = p1;
-        apdu[3] = p2;
-        apdu[4] = (byte) (length);
-        return exchangeCheck(apdu, acceptedSW);
-    }
-
-    private byte[] exchangeApduSplit(byte cla, byte ins, byte p1, byte p2, byte[] data, int acceptedSW[]) throws BTChipException {
-        int offset = 0;
-        byte[] result = null;
-        while (offset < data.length) {
-            int blockLength = ((data.length - offset) > 255 ? 255 : data.length - offset);
-            byte[] apdu = new byte[blockLength + 5];
-            apdu[0] = cla;
-            apdu[1] = ins;
-            apdu[2] = p1;
-            apdu[3] = p2;
-            apdu[4] = (byte) (blockLength);
-            System.arraycopy(data, offset, apdu, 5, blockLength);
-            result = exchangeCheck(apdu, acceptedSW);
-            offset += blockLength;
-        }
-        return result;
-    }
-
-    private byte[] exchangeApduSplit2(byte cla, byte ins, byte p1, byte p2, byte[] data, byte[] data2, int acceptedSW[]) throws BTChipException {
-        int offset = 0;
-        byte[] result = null;
-        int maxBlockSize = 255 - data2.length;
-        while (offset < data.length) {
-            int blockLength = ((data.length - offset) > maxBlockSize ? maxBlockSize : data.length - offset);
-            boolean lastBlock = ((offset + blockLength) == data.length);
-            byte[] apdu = new byte[blockLength + 5 + (lastBlock ? data2.length : 0)];
-            apdu[0] = cla;
-            apdu[1] = ins;
-            apdu[2] = p1;
-            apdu[3] = p2;
-            apdu[4] = (byte) (blockLength + (lastBlock ? data2.length : 0));
-            System.arraycopy(data, offset, apdu, 5, blockLength);
-            if (lastBlock) {
-                System.arraycopy(data2, 0, apdu, 5 + blockLength, data2.length);
-            }
-            result = exchangeCheck(apdu, acceptedSW);
-            offset += blockLength;
-        }
-        return result;
     }
 
     public interface Listener {
@@ -251,7 +220,6 @@ public class Ledger {
         if (ins == Instruction.INS_GET_KEY) {
             snoopKey = (apdu[2] == 2);
         }
-
     }
 
     private void sniffIn(byte[] data) {

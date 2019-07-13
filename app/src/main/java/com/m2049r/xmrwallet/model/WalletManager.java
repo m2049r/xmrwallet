@@ -354,4 +354,6 @@ public class WalletManager {
     static public native void logWarning(String category, String message);
 
     static public native void logError(String category, String message);
+
+    static public native String moneroVersion();
 }

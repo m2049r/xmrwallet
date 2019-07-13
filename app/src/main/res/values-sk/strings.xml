@@ -382,4 +382,6 @@
     <string name="prompt_ledger_phrase">Ledger fráza (voliteľné)</string>
     <string name="bad_ledger_seed">Neplatný Ledger Seed!</string>
     <string name="prompt_ledger_seed_warn">Vloženie Ledger Seedu sem je vážne bezpečnostné riziko!</string>
+
+    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

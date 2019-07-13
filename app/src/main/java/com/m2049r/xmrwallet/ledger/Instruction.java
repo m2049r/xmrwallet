@@ -134,6 +134,10 @@ public enum Instruction {
         return value;
     }
 
+    public byte getByteValue() {
+        return (byte) (value & 0xFF);
+    }
+
     private int value;
 
     Instruction(int value) {

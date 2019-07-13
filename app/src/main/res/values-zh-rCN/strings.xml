@@ -303,4 +303,6 @@
 <string name="prompt_ledger_phrase">Ledger密码(高级模式)</string>
 <string name="bad_ledger_seed">无效的Ledger种子密语！</string>
 <string name="prompt_ledger_seed_warn">在此输入您的Ledger种子密语将会产生风险！</string>
+
+<string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>
