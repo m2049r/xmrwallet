@@ -381,5 +381,7 @@
     <string name="bad_ledger_seed">無效的 Ledger 種子碼！</string>
     <string name="prompt_ledger_seed_warn">在此輸入 Ledger 種子碼可能存在嚴重的安全風險！</string>
 
+    <string name="label_restoreheight">Restore Height</string>
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

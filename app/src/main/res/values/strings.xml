@@ -433,5 +433,7 @@
 
     <string name="label_account" translatable="false">%1$s (%2$s)</string>
 
+    <string name="label_restoreheight">Restore Height</string>
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

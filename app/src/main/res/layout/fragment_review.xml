@@ -78,6 +78,32 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/data_top"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/label_restoreheight" />
+
+            <TextView
+                android:id="@+id/tvWalletHeight"
+                style="@style/MoneroText.Monospace.Mnemonic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/data_top"
+                android:background="@drawable/backgound_seed"
+                android:textAlignment="center"
+                tools:text="1,878,151" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/llPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

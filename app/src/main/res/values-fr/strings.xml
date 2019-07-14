@@ -386,5 +386,7 @@
     <string name="bad_ledger_seed">Phrase mnémonique Ledger invalide !</string>
     <string name="prompt_ledger_seed_warn">Saisir votre phrase mnémonique Ledger ici est un risque majeur de sécurité !</string>
 
+    <string name="label_restoreheight">Hauteur de restauration</string> <!-- Restore Height -->
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

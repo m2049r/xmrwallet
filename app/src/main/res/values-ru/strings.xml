@@ -386,5 +386,7 @@
     <string name="bad_ledger_seed">Ошибка фразы Ledger!</string>
     <string name="prompt_ledger_seed_warn">Если вы пытаетесь ввести сюда фразу Ledger, это серьезная угроза для вашей безопасности!</string>
 
+    <string name="label_restoreheight">Восстановить высоту</string> <!-- Restore Height -->
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

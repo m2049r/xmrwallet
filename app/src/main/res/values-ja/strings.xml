@@ -428,5 +428,7 @@
     <string name="bad_ledger_seed">Ledgerのニーモニックシードは不正!</string>
     <string name="prompt_ledger_seed_warn">ここにLedgerシードを入力するのは、大きなセキュリティリスクですよ！</string>
 
+    <string name="label_restoreheight">Restore Height</string>
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>
