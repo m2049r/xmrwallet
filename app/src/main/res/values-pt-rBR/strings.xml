@@ -374,5 +374,7 @@
     <string name="bad_ledger_seed">Semente da Ledger inválida!</string>
     <string name="prompt_ledger_seed_warn">Escrever a semente da sua Ledger aqui é um grande risco de segurança!</string>
 
+    <string name="label_restoreheight">Restaurar da altura</string> <!-- Restore Height -->
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>

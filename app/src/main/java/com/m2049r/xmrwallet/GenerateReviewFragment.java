@@ -55,6 +55,8 @@ import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
+import java.text.NumberFormat;
+
 import timber.log.Timber;
 
 public class GenerateReviewFragment extends Fragment {
@@ -72,6 +74,7 @@ public class GenerateReviewFragment extends Fragment {
     private TextView tvWalletPassword;
     private TextView tvWalletAddress;
     private TextView tvWalletMnemonic;
+    private TextView tvWalletHeight;
     private TextView tvWalletViewKey;
     private TextView tvWalletSpendKey;
     private ImageButton bCopyAddress;
@@ -99,6 +102,7 @@ public class GenerateReviewFragment extends Fragment {
         tvWalletViewKey = view.findViewById(R.id.tvWalletViewKey);
         tvWalletSpendKey = view.findViewById(R.id.tvWalletSpendKey);
         tvWalletMnemonic = view.findViewById(R.id.tvWalletMnemonic);
+        tvWalletHeight = view.findViewById(R.id.tvWalletHeight);
         bCopyAddress = view.findViewById(R.id.bCopyAddress);
         bAdvancedInfo = view.findViewById(R.id.bAdvancedInfo);
         llAdvancedInfo = view.findViewById(R.id.llAdvancedInfo);
@@ -188,6 +192,7 @@ public class GenerateReviewFragment extends Fragment {
     private class AsyncShow extends AsyncTask<String, Void, Boolean> {
         String name;
         String address;
+        long height;
         String seed;
         String viewKey;
         String spendKey;
@@ -232,6 +237,7 @@ public class GenerateReviewFragment extends Fragment {
             }
 
             address = wallet.getAddress();
+            height = wallet.getRestoreHeight();
             seed = wallet.getSeed();
             switch (wallet.getDeviceType()) {
                 case Device_Ledger:
@@ -264,6 +270,7 @@ public class GenerateReviewFragment extends Fragment {
                 llPassword.setVisibility(View.VISIBLE);
                 tvWalletPassword.setText(getPassword());
                 tvWalletAddress.setText(address);
+                tvWalletHeight.setText(NumberFormat.getInstance().format(height));
                 if (!seed.isEmpty()) {
                     llMnemonic.setVisibility(View.VISIBLE);
                     tvWalletMnemonic.setText(seed);
@@ -288,6 +295,7 @@ public class GenerateReviewFragment extends Fragment {
             } else {
                 // TODO show proper error message and/or end the fragment?
                 tvWalletAddress.setText(walletStatus.toString());
+                tvWalletHeight.setText(walletStatus.toString());
                 tvWalletMnemonic.setText(walletStatus.toString());
                 tvWalletViewKey.setText(walletStatus.toString());
                 tvWalletSpendKey.setText(walletStatus.toString());

@@ -382,5 +382,7 @@
     <string name="bad_ledger_seed">Nevalidno seme iz knjige računa!</string>
     <string name="prompt_ledger_seed_warn">Unošenje tvog semena iz knjige računa na ovom mestu ima veliki sigurnosni rizik!</string>
 
+    <string name="label_restoreheight">Obnovi visinu</string> <!-- Restore Height -->
+
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 </resources>
