@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">残高: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">ペイメントID組み込み済み</string>
+    <string name="info_paymentid_integrated">&#x2714; ペイメントID組み込み済み</string>
     <string name="info_prepare_tx">取引を準備しています</string>
 
     <string name="label_send_progress_xmrto_create">XMR.TO の注文を作成しています</string>

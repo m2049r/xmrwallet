@@ -53,19 +53,11 @@
         </LinearLayout>
     </FrameLayout>
 
-    <com.m2049r.xmrwallet.widget.ExchangeBtcTextView
-        android:id="@+id/evAmount"
+    <com.m2049r.xmrwallet.widget.ExchangeBtcEditText
+        android:id="@+id/etAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical" />
-
-    <com.m2049r.xmrwallet.widget.NumberPadView
-        android:id="@+id/numberPad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:gravity="center" />
-
 </LinearLayout>

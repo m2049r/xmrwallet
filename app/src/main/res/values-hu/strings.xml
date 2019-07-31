@@ -58,7 +58,7 @@
 
     <string name="send_available_btc">Egyenleg: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Fizetési azonosító integrálva</string>
+    <string name="info_paymentid_integrated">&#x2714; Fizetési azonosító integrálva</string>
     <string name="info_prepare_tx">Tranzakció előkészítése</string>
 
     <string name="label_send_progress_xmrto_create">XMR.TO megrendelés létrehozása</string>

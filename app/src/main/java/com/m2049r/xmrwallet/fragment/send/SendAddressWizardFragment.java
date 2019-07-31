@@ -144,23 +144,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                         if (bip70 != null) {
                             // looks good - resolve through xmr.to
                             processBip70(bip70);
-                            next = null;
-                        } else if (checkAddress()) {
-                            if (llPaymentId.getVisibility() == View.VISIBLE) {
-                                next = etPaymentId;
-                            } else {
-                                next = etNotes;
-                            }
                         }
-                    }
-                    if (next != null) {
-                        final View focus = next;
-                        etAddress.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                focus.requestFocus();
-                            }
-                        });
                     }
                 }
             }
@@ -176,6 +160,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     Timber.d("isIntegratedAddress");
                     etPaymentId.getEditText().getText().clear();
                     llPaymentId.setVisibility(View.INVISIBLE);
+                    etAddress.setError(getString(R.string.info_paymentid_integrated));
                     tvPaymentIdIntegrated.setVisibility(View.VISIBLE);
                     llXmrTo.setVisibility(View.INVISIBLE);
                     sendListener.setMode(SendFragment.Mode.XMR);
@@ -208,9 +193,12 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 if (clip == null) return;
                 // clean it up
                 final String address = clip.replaceAll("[^0-9A-Z-a-z]", "");
-                if (Wallet.isAddressValid(address) || BitcoinAddressValidator.validate(address))
-                    etAddress.getEditText().setText(address);
-                else
+                if (Wallet.isAddressValid(address) || BitcoinAddressValidator.validate(address)) {
+                    final EditText et = etAddress.getEditText();
+                    et.setText(address);
+                    et.setSelection(et.getText().length());
+                    etAddress.requestFocus();
+                } else
                     Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
             }
         });
@@ -248,7 +236,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         bPaymentId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etPaymentId.getEditText().setText((Wallet.generatePaymentId()));
+                final EditText et = etPaymentId.getEditText();
+                et.setText((Wallet.generatePaymentId()));
+                et.setSelection(et.getText().length());
+                etPaymentId.requestFocus();
             }
         });
 
@@ -259,7 +250,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                         || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     etDummy.requestFocus();
-                    Helper.hideKeyboard(getActivity());
                     return true;
                 }
                 return false;
@@ -277,7 +267,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etDummy = view.findViewById(R.id.etDummy);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.requestFocus();
-        Helper.hideKeyboard(getActivity());
 
         View tvNfc = view.findViewById(R.id.tvNfc);
         NfcManager manager = (NfcManager) getContext().getSystemService(Context.NFC_SERVICE);
@@ -551,7 +540,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     public void onResumeFragment() {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
-        Helper.hideKeyboard(getActivity());
         etDummy.requestFocus();
     }
 

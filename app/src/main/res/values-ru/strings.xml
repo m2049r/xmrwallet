@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">Баланс: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Интегрированный ID платежа</string>
+    <string name="info_paymentid_integrated">&#x2714; Интегрированный ID платежа</string>
     <string name="info_prepare_tx">Подготовка транзакции</string>
 
     <string name="label_send_progress_xmrto_create">Создание заказа XMR.TO</string>

@@ -44,7 +44,7 @@
 <i>至多<b>%1$s BTC</b>将会<u>即刻</u>发送!</i>
 ]]></string>
     <string name="send_available_btc">余额: %2$s BTC (%1$s XMR)</string>
-    <string name="info_paymentid_intergrated">支付ID已集成</string>
+    <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
     <string name="label_send_progress_xmrto_create">创建XMR.TO订单</string>
     <string name="label_send_progress_xmrto_query">XMR.TO订单查询中</string>

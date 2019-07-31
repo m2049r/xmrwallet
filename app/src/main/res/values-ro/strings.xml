@@ -57,7 +57,7 @@
 
     <string name="send_available_btc">Balanță: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Payment ID integrat</string>
+    <string name="info_paymentid_integrated">&#x2714; Payment ID integrat</string>
     <string name="info_prepare_tx">Se pregătește tranzacția</string>
 
     <string name="label_send_progress_xmrto_create">Creearea ordinului XMR.TO</string>

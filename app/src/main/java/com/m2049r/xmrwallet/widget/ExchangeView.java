@@ -48,27 +48,15 @@ import java.util.Locale;
 
 import timber.log.Timber;
 
-// TODO combine this with ExchangeTextView
-
-public class ExchangeView extends LinearLayout
-        implements NumberPadView.NumberPadListener {
-
-    public void enableSoftKeyboard(final boolean isEnabled) {
-        etAmount.getEditText().setShowSoftInputOnFocus(isEnabled);
-    }
-
-    public boolean focus() {
-        return etAmount.requestFocus();
-    }
+public class ExchangeView extends LinearLayout {
+    String xmrAmount = null;
+    String notXmrAmount = null;
 
     public void enable(boolean enable) {
         etAmount.setEnabled(enable);
         sCurrencyA.setEnabled(enable);
         sCurrencyB.setEnabled(enable);
     }
-
-    String xmrAmount = null;
-    String notXmrAmount = null;
 
     void setXmr(String xmr) {
         xmrAmount = xmr;
@@ -481,32 +469,5 @@ public class ExchangeView extends LinearLayout
 
     public void setOnFailedExchangeListener(OnFailedExchangeListener listener) {
         onFailedExchangeListener = listener;
-    }
-
-    @Override
-    public void onDigitPressed(final int digit) {
-        etAmount.getEditText().append(String.valueOf(digit));
-    }
-
-    @Override
-    public void onPointPressed() {
-        //TODO locale?
-        if (etAmount.getEditText().getText().toString().indexOf('.') == -1) {
-            etAmount.getEditText().append(".");
-        }
-    }
-
-    @Override
-    public void onBackSpacePressed() {
-        Editable editable = etAmount.getEditText().getText();
-        int length = editable.length();
-        if (length > 0) {
-            editable.delete(length - 1, length);
-        }
-    }
-
-    @Override
-    public void onClearAll() {
-        etAmount.getEditText().getText().clear();
     }
 }

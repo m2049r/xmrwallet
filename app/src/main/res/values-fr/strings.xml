@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">Solde : %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">ID de Paiement intégré</string>
+    <string name="info_paymentid_integrated">&#x2714; ID de Paiement intégré</string>
     <string name="info_prepare_tx">Préparation de votre transaction</string>
 
     <string name="label_send_progress_xmrto_create">Création de l\'ordre XMR.TO</string>
