@@ -75,7 +75,7 @@
                     android:drawableStart="@drawable/ic_check_gray_24dp"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/info_paymentid_intergrated"
+                    android:text="@string/info_paymentid_integrated"
                     android:textSize="18sp"
                     android:visibility="invisible" />
 

@@ -19,9 +19,12 @@
 package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,8 +34,7 @@ import com.m2049r.xmrwallet.util.Helper;
 
 import timber.log.Timber;
 
-public class ExchangeBtcTextView extends LinearLayout
-        implements NumberPadView.NumberPadListener {
+public class ExchangeBtcEditText extends LinearLayout {
 
     String btcAmount = null;
     String xmrAmount = null;
@@ -67,7 +69,7 @@ public class ExchangeBtcTextView extends LinearLayout
     }
 
     void shakeAmountField() {
-        tvAmountA.startAnimation(Helper.getShakeAnimation(getContext()));
+        etAmountA.startAnimation(Helper.getShakeAnimation(getContext()));
     }
 
     void shakeExchangeField() {
@@ -86,31 +88,35 @@ public class ExchangeBtcTextView extends LinearLayout
 
     public void setAmount(String btcAmount) {
         this.btcAmount = btcAmount;
-        tvAmountA.setText(btcAmount);
+        etAmountA.setText(btcAmount);
         xmrAmount = null;
         exchange();
+    }
+
+    public void setEditable(boolean editable) {
+        etAmountA.setEnabled(editable);
     }
 
     public String getAmount() {
         return btcAmount;
     }
 
-    TextView tvAmountA;
+    EditText etAmountA;
     TextView tvAmountB;
     Spinner sCurrencyA;
     Spinner sCurrencyB;
 
-    public ExchangeBtcTextView(Context context) {
+    public ExchangeBtcEditText(Context context) {
         super(context);
         initializeViews(context);
     }
 
-    public ExchangeBtcTextView(Context context, AttributeSet attrs) {
+    public ExchangeBtcEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         initializeViews(context);
     }
 
-    public ExchangeBtcTextView(Context context,
+    public ExchangeBtcEditText(Context context,
                                AttributeSet attrs,
                                int defStyle) {
         super(context, attrs, defStyle);
@@ -125,13 +131,28 @@ public class ExchangeBtcTextView extends LinearLayout
     private void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.view_exchange_btc_text, this);
+        inflater.inflate(R.layout.view_exchange_btc_edit, this);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        tvAmountA = findViewById(R.id.tvAmountA);
+        etAmountA = findViewById(R.id.etAmountA);
+        etAmountA.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                exchange();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+        });
         tvAmountB = findViewById(R.id.tvAmountB);
         sCurrencyA = findViewById(R.id.sCurrencyA);
         sCurrencyB = findViewById(R.id.sCurrencyB);
@@ -146,12 +167,14 @@ public class ExchangeBtcTextView extends LinearLayout
                 new String[]{"XMR"});
         sCurrencyB.setAdapter(xmrAdapter);
         sCurrencyB.setEnabled(false);
+        etAmountA.setFocusable(true);
+        etAmountA.setFocusableInTouchMode(true);
     }
 
     double xmrBtcRate = 0;
 
     public void exchange() {
-        btcAmount = tvAmountA.getText().toString();
+        btcAmount = etAmountA.getText().toString();
         if (!btcAmount.isEmpty() && (xmrBtcRate > 0)) {
             double xmr = xmrBtcRate * Double.parseDouble(btcAmount);
             xmrAmount = Helper.getFormattedAmount(xmr, true);
@@ -160,39 +183,5 @@ public class ExchangeBtcTextView extends LinearLayout
         }
         tvAmountB.setText(getResources().getString(R.string.send_amount_btc_xmr, xmrAmount));
         Timber.d("%s BTC =%f> %s XMR", btcAmount, xmrBtcRate, xmrAmount);
-    }
-
-    // deal with attached numpad
-    @Override
-    public void onDigitPressed(final int digit) {
-        tvAmountA.append(String.valueOf(digit));
-        exchange();
-    }
-
-    @Override
-    public void onPointPressed() {
-        //TODO locale?
-        if (tvAmountA.getText().toString().indexOf('.') == -1) {
-            if (tvAmountA.getText().toString().isEmpty()) {
-                tvAmountA.append("0");
-            }
-            tvAmountA.append(".");
-        }
-    }
-
-    @Override
-    public void onBackSpacePressed() {
-        String entry = tvAmountA.getText().toString();
-        int length = entry.length();
-        if (length > 0) {
-            tvAmountA.setText(entry.substring(0, entry.length() - 1));
-            exchange();
-        }
-    }
-
-    @Override
-    public void onClearAll() {
-        tvAmountA.setText(null);
-        exchange();
     }
 }

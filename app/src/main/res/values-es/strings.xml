@@ -30,7 +30,7 @@
 
     <string name="label_receive_info_gen_qr_code">Toca para mostrar código QR</string>
 
-    <string name="info_paymentid_intergrated">ID de pago integrado</string>
+    <string name="info_paymentid_integrated">&#x2714; ID de pago integrado</string>
     <string name="info_prepare_tx">Preparando tu transacción</string>
 
     <string name="message_copy_txid">¡ID de transacción copiado al portapapeles!</string>

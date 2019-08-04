@@ -58,7 +58,7 @@
 
     <string name="send_available_btc">Kontojääk: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Makse ID integreeritud</string>
+    <string name="info_paymentid_integrated">&#x2714; Makse ID integreeritud</string>
     <string name="info_prepare_tx">Valmistan ülekannet ette</string>
 
     <string name="label_send_progress_xmrto_create">Loon XMR.TO tellimust</string>

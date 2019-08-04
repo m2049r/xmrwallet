@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">Stanje: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">ID plaćanja integrisan</string>
+    <string name="info_paymentid_integrated">&#x2714; ID plaćanja integrisan</string>
     <string name="info_prepare_tx">Priprema tvoje transakcije</string>
 
     <string name="label_send_progress_xmrto_create">Kreiranje XMR.TO Nalog</string>

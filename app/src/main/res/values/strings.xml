@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">Balance: %2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">Payment ID integrated</string>
+    <string name="info_paymentid_integrated">&#x2714; Payment ID integrated</string>
     <string name="info_prepare_tx">Preparing your transaction</string>
 
     <string name="label_send_progress_xmrto_create">Creating XMR.TO Order</string>

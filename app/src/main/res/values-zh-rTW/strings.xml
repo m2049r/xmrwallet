@@ -59,7 +59,7 @@
 
     <string name="send_available_btc">餘額：%2$s BTC (%1$s XMR)</string>
 
-    <string name="info_paymentid_intergrated">已加入付款 ID</string>
+    <string name="info_paymentid_integrated">&#x2714; 已加入付款 ID</string>
     <string name="info_prepare_tx">正在準備你的交易</string>
 
     <string name="label_send_progress_xmrto_create">建立 XMR.TO 訂單</string>

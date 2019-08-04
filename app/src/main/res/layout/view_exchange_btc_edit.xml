@@ -17,8 +17,8 @@
             android:gravity="center"
             android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/tvAmountA"
+        <EditText
+            android:id="@+id/etAmountA"
             style="@style/MoneroText.Balance.Orange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,10 +26,12 @@
             android:layout_marginStart="16dp"
             android:layout_weight="3"
             android:hint="@string/send_amount_hint"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
             android:padding="4dp"
             android:singleLine="true"
+            android:textAlignment="textStart"
             tools:text="87.00000" />
-
     </LinearLayout>
 
     <LinearLayout

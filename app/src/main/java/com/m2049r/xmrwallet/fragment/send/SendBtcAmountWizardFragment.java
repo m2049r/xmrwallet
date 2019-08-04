@@ -31,8 +31,7 @@ import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.widget.ExchangeBtcTextView;
-import com.m2049r.xmrwallet.widget.NumberPadView;
+import com.m2049r.xmrwallet.widget.ExchangeBtcEditText;
 import com.m2049r.xmrwallet.widget.SendProgressView;
 import com.m2049r.xmrwallet.xmrto.XmrToError;
 import com.m2049r.xmrwallet.xmrto.XmrToException;
@@ -62,8 +61,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     }
 
     private TextView tvFunds;
-    private ExchangeBtcTextView evAmount;
-    private NumberPadView numberPad;
+    private ExchangeBtcEditText etAmount;
 
     private TextView tvXmrToParms;
     private SendProgressView evParams;
@@ -86,24 +84,20 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
         tvXmrToParms = view.findViewById(R.id.tvXmrToParms);
 
-        evAmount = view.findViewById(R.id.evAmount);
-        numberPad = view.findViewById(R.id.numberPad);
-        numberPad.setListener(evAmount);
-
-        Helper.hideKeyboard(getActivity());
-
+        etAmount = view.findViewById(R.id.etAmount);
+        etAmount.requestFocus();
         return view;
     }
 
 
     @Override
     public boolean onValidateFields() {
-        if (!evAmount.validate(maxBtc, minBtc)) {
+        if (!etAmount.validate(maxBtc, minBtc)) {
             return false;
         }
         if (sendListener != null) {
             TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-            String btcString = evAmount.getAmount();
+            String btcString = etAmount.getAmount();
             if (btcString != null) {
                 try {
                     double btc = Double.parseDouble(btcString);
@@ -122,10 +116,12 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
     private void setBip70Mode() {
         TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        if (txDataBtc.getBip70() != null) {
-            numberPad.setVisibility(View.INVISIBLE);
+        if (txDataBtc.getBip70() == null) {
+            etAmount.setEditable(true);
+            Helper.showKeyboard(getActivity());
         } else {
-            numberPad.setVisibility(View.VISIBLE);
+            etAmount.setEditable(false);
+            Helper.hideKeyboard(getActivity());
         }
     }
 
@@ -141,7 +137,6 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     public void onResumeFragment() {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
-        Helper.hideKeyboard(getActivity());
         final long funds = getTotalFunds();
         if (!sendListener.getActivityCallback().isStreetMode()) {
             tvFunds.setText(getString(R.string.send_available,
@@ -153,7 +148,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         final BarcodeData data = sendListener.popBarcodeData();
         if (data != null) {
             if (data.amount != null) {
-                evAmount.setAmount(data.amount);
+                etAmount.setAmount(data.amount);
             }
         }
         setBip70Mode();
@@ -171,7 +166,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         getView().post(new Runnable() {
             @Override
             public void run() {
-                evAmount.setRate(1.0d / orderParameters.getPrice());
+                etAmount.setRate(1.0d / orderParameters.getPrice());
                 NumberFormat df = NumberFormat.getInstance(Locale.US);
                 df.setMaximumFractionDigits(6);
                 String min = df.format(orderParameters.getLowerLimit());
@@ -211,7 +206,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     }
 
     private void processOrderParmsError(final Exception ex) {
-        evAmount.setRate(0);
+        etAmount.setRate(0);
         orderParameters = null;
         maxBtc = 0;
         minBtc = 0;

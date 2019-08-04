@@ -21,8 +21,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
@@ -30,8 +28,7 @@ import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.widget.ExchangeTextView;
-import com.m2049r.xmrwallet.widget.NumberPadView;
+import com.m2049r.xmrwallet.widget.ExchangeEditText;
 
 import timber.log.Timber;
 
@@ -59,8 +56,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     }
 
     private TextView tvFunds;
-    private ExchangeTextView evAmount;
-    private View llAmount;
+    private ExchangeEditText etAmount;
     private View rlSweep;
     private ImageButton ibSweep;
 
@@ -75,12 +71,9 @@ public class SendAmountWizardFragment extends SendWizardFragment {
         View view = inflater.inflate(R.layout.fragment_send_amount, container, false);
 
         tvFunds = view.findViewById(R.id.tvFunds);
-
-        evAmount = view.findViewById(R.id.evAmount);
-        ((NumberPadView) view.findViewById(R.id.numberPad)).setListener(evAmount);
-
+        etAmount = view.findViewById(R.id.etAmount);
         rlSweep = view.findViewById(R.id.rlSweep);
-        llAmount = view.findViewById(R.id.llAmount);
+
         view.findViewById(R.id.ivSweep).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +90,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
             }
         });
 
-        Helper.hideKeyboard(getActivity());
-
+        etAmount.requestFocus();
         return view;
     }
 
@@ -107,11 +99,11 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     private void sweepAll(boolean spendAllMode) {
         if (spendAllMode) {
             ibSweep.setVisibility(View.INVISIBLE);
-            llAmount.setVisibility(View.GONE);
+            etAmount.setVisibility(View.GONE);
             rlSweep.setVisibility(View.VISIBLE);
         } else {
             ibSweep.setVisibility(View.VISIBLE);
-            llAmount.setVisibility(View.VISIBLE);
+            etAmount.setVisibility(View.VISIBLE);
             rlSweep.setVisibility(View.GONE);
         }
         this.spendAllMode = spendAllMode;
@@ -124,12 +116,12 @@ public class SendAmountWizardFragment extends SendWizardFragment {
                 sendListener.getTxData().setAmount(Wallet.SWEEP_ALL);
             }
         } else {
-            if (!evAmount.validate(maxFunds)) {
+            if (!etAmount.validate(maxFunds)) {
                 return false;
             }
 
             if (sendListener != null) {
-                String xmr = evAmount.getAmount();
+                String xmr = etAmount.getAmount();
                 if (xmr != null) {
                     sendListener.getTxData().setAmount(Wallet.getAmountFromString(xmr));
                 } else {
@@ -146,7 +138,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     public void onResumeFragment() {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
-        Helper.hideKeyboard(getActivity());
+        Helper.showKeyboard(getActivity());
         final long funds = getTotalFunds();
         maxFunds = 1.0 * funds / 1000000000000L;
         if (!sendListener.getActivityCallback().isStreetMode()) {
@@ -157,10 +149,10 @@ public class SendAmountWizardFragment extends SendWizardFragment {
                     getString(R.string.unknown_amount)));
         }
         // getAmount is null if exchange is in progress
-        if ((evAmount.getAmount() != null) && evAmount.getAmount().isEmpty()) {
+        if ((etAmount.getAmount() != null) && etAmount.getAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
             if ((data != null) && (data.amount != null)) {
-                evAmount.setAmount(data.amount);
+                etAmount.setAmount(data.amount);
             }
         }
     }
