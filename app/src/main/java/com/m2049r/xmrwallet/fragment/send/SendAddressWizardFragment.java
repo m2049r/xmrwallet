@@ -140,7 +140,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                         next = null;
                     } else {
                         // maybe a bip72 or 70 URI
-                        String bip70 = PaymentProtocolHelper.getBip70(enteredAddress);
+                        final String bip70 = PaymentProtocolHelper.getBip70(enteredAddress);
                         if (bip70 != null) {
                             // looks good - resolve through xmr.to
                             processBip70(bip70);
@@ -198,8 +198,16 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     et.setText(address);
                     et.setSelection(et.getText().length());
                     etAddress.requestFocus();
-                } else
-                    Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
+                } else {
+                    final String bip70 = PaymentProtocolHelper.getBip70(clip);
+                    if (bip70 != null) {
+                        final EditText et = etAddress.getEditText();
+                        et.setText(clip);
+                        et.setSelection(et.getText().length());
+                        processBip70(bip70);
+                    } else
+                        Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
