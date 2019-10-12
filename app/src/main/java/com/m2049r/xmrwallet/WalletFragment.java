@@ -50,9 +50,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import timber.log.Timber;
 
@@ -220,7 +218,7 @@ public class WalletFragment extends Fragment
         // at this point selection is XMR in case of error
         String displayB;
         double amountA = Helper.getDecimalAmount(unlockedBalance).doubleValue();
-        if (!Helper.CRYPTO.equals(balanceCurrency)) { // not XMR
+        if (!Helper.BASE_CRYPTO.equals(balanceCurrency)) { // not XMR
             double amountB = amountA * balanceRate;
             displayB = Helper.getFormattedAmount(amountB, false);
         } else { // XMR
@@ -229,7 +227,7 @@ public class WalletFragment extends Fragment
         showBalance(displayB);
     }
 
-    String balanceCurrency = Helper.CRYPTO;
+    String balanceCurrency = Helper.BASE_CRYPTO;
     double balanceRate = 1.0;
 
     private final ExchangeApi exchangeApi = Helper.getExchangeApi();
@@ -245,7 +243,7 @@ public class WalletFragment extends Fragment
             Timber.d(currency);
             if (!currency.equals(balanceCurrency) || (balanceRate <= 0)) {
                 showExchanging();
-                exchangeApi.queryExchangeRate(Helper.CRYPTO, currency,
+                exchangeApi.queryExchangeRate(Helper.BASE_CRYPTO, currency,
                         new ExchangeCallback() {
                             @Override
                             public void onSuccess(final ExchangeRate exchangeRate) {
@@ -301,10 +299,10 @@ public class WalletFragment extends Fragment
 
     public void exchange(final ExchangeRate exchangeRate) {
         hideExchanging();
-        if (!Helper.CRYPTO.equals(exchangeRate.getBaseCurrency())) {
+        if (!Helper.BASE_CRYPTO.equals(exchangeRate.getBaseCurrency())) {
             Timber.e("Not XMR");
             sCurrency.setSelection(0, true);
-            balanceCurrency = Helper.CRYPTO;
+            balanceCurrency = Helper.BASE_CRYPTO;
             balanceRate = 1.0;
         } else {
             int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());

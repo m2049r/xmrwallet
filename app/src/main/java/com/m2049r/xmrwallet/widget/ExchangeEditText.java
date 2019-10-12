@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r
+ * Copyright (c) 2017-2019 m2049r
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,50 +36,45 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.m2049r.xmrwallet.R;
-import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import timber.log.Timber;
 
 public class ExchangeEditText extends LinearLayout {
 
-    String xmrAmount = null;
-    String notXmrAmount = null;
-
-    void setXmr(String xmr) {
-        xmrAmount = xmr;
-        if (onNewAmountListener != null) {
-            onNewAmountListener.onNewAmount(xmr);
+    private double getEnteredAmount() {
+        String enteredAmount = etAmountA.getText().toString();
+        try {
+            return Double.parseDouble(enteredAmount);
+        } catch (NumberFormatException ex) {
+            Timber.i(ex.getLocalizedMessage());
         }
+        return 0;
     }
 
-    public boolean validate(double max) {
+    public boolean validate(double max, double min) {
         Timber.d("inProgress=%b", isExchangeInProgress());
         if (isExchangeInProgress()) {
             shakeExchangeField();
             return false;
         }
         boolean ok = true;
-        if (xmrAmount != null) {
-            try {
-                double amount = Double.parseDouble(xmrAmount);
-                if (amount > max) {
-                    ok = false;
-                }
-                if (amount <= 0) { /////////////////////////////
-                    ok = false;
-                }
-            } catch (NumberFormatException ex) {
-                // this cannot be
-                Timber.e(ex.getLocalizedMessage());
+        String enteredAmount = etAmountA.getText().toString();
+        try {
+            double amount = Double.parseDouble(enteredAmount);
+            if ((amount < min) || (amount > max)) {
                 ok = false;
             }
-        } else {
+        } catch (NumberFormatException ex) {
+            // this cannot be
+            Timber.e(ex.getLocalizedMessage());
             ok = false;
         }
         if (!ok) {
@@ -95,22 +91,29 @@ public class ExchangeEditText extends LinearLayout {
         tvAmountB.startAnimation(Helper.getShakeAnimation(getContext()));
     }
 
-    public void setAmount(String xmrAmount) {
-        if (xmrAmount != null) {
-            setCurrencyA(0);
-            etAmountA.setText(xmrAmount);
-            setXmr(xmrAmount);
-            this.notXmrAmount = null;
-            doExchange();
+    public void setAmount(String nativeAmount) {
+        if (nativeAmount != null) {
+            etAmountA.setText(nativeAmount);
+            tvAmountB.setText(null);
+            if (sCurrencyA.getSelectedItemPosition() != 0)
+                sCurrencyA.setSelection(0, true); // set native currency & trigger exchange
+            else
+                doExchange();
         } else {
-            setXmr(null);
-            this.notXmrAmount = null;
             tvAmountB.setText(null);
         }
     }
 
-    public String getAmount() {
-        return xmrAmount;
+    public void setEditable(boolean editable) {
+        etAmountA.setEnabled(editable);
+    }
+
+    public String getNativeAmount() {
+        if (isExchangeInProgress()) return null;
+        if (sCurrencyA.getSelectedItemPosition() == 0)
+            return getCleanAmountString(etAmountA.getText().toString());
+        else
+            return getCleanAmountString(tvAmountB.getText().toString());
     }
 
     EditText etAmountA;
@@ -119,23 +122,6 @@ public class ExchangeEditText extends LinearLayout {
     Spinner sCurrencyB;
     ImageView evExchange;
     ProgressBar pbExchange;
-
-
-    public void setCurrencyA(int currency) {
-        if ((currency != 0) && (getCurrencyB() != 0)) {
-            setCurrencyB(0);
-        }
-        sCurrencyA.setSelection(currency, true);
-        doExchange();
-    }
-
-    public void setCurrencyB(int currency) {
-        if ((currency != 0) && (getCurrencyA() != 0)) {
-            setCurrencyA(0);
-        }
-        sCurrencyB.setSelection(currency, true);
-        doExchange();
-    }
 
     public int getCurrencyA() {
         return sCurrencyA.getSelectedItemPosition();
@@ -167,11 +153,31 @@ public class ExchangeEditText extends LinearLayout {
      *
      * @param context the current context for the view.
      */
-    private void initializeViews(Context context) {
+    void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_exchange_edit, this);
     }
+
+    void setCurrencyAdapter(Spinner spinner) {
+        List<String> currencies = new ArrayList<>();
+        currencies.add(Helper.BASE_CRYPTO);
+        setCurrencyAdapter(spinner, currencies);
+    }
+
+    protected void setCurrencyAdapter(Spinner spinner, List<String> currencies) {
+        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, currencies);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+    }
+
+    void setInitialSpinnerSelections(Spinner baseSpinner, Spinner quoteSpinner) {
+        baseSpinner.setSelection(0, true);
+        quoteSpinner.setSelection(0, true);
+    }
+
+    private boolean isInitialized = false;
 
     @Override
     protected void onFinishInflate() {
@@ -198,16 +204,28 @@ public class ExchangeEditText extends LinearLayout {
         evExchange = findViewById(R.id.evExchange);
         pbExchange = findViewById(R.id.pbExchange);
 
+        setCurrencyAdapter(sCurrencyA);
+        setCurrencyAdapter(sCurrencyB);
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                setInitialSpinnerSelections(sCurrencyA, sCurrencyB);
+                isInitialized = true;
+                startExchange();
+            }
+        });
+
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
                 setColorFilter(getResources().getColor(R.color.trafficGray),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
-
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position != 0) { // if not XMR, select XMR on other
+                if (!isInitialized) return;
+                if (position != 0) { // if not native, select native on other
                     sCurrencyB.setSelection(0, true);
                 }
                 doExchange();
@@ -222,7 +240,8 @@ public class ExchangeEditText extends LinearLayout {
         sCurrencyB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position != 0) { // if not XMR, select XMR on other
+                if (!isInitialized) return;
+                if (position != 0) { // if not native, select native on other
                     sCurrencyA.setSelection(0, true);
                 }
                 doExchange();
@@ -235,43 +254,56 @@ public class ExchangeEditText extends LinearLayout {
         });
     }
 
-    public void doExchange() {
-        tvAmountB.setText(null);
-        // use cached exchange rate if we have it
-        if (!isExchangeInProgress()) {
-            String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
-            String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
-            if ((enteredCurrencyA + enteredCurrencyB).equals(assetPair)) {
-                if (prepareExchange()) {
-                    exchange(assetRate);
-                } else {
-                    clearAmounts();
-                }
-            } else {
-                clearAmounts();
-                startExchange();
-            }
+    private boolean exchangeRateCacheIsUsable() {
+        return (exchangeRateCache != null) &&
+                ((exchangeRateCache.getBaseCurrency().equals(sCurrencyA.getSelectedItem()) &&
+                        exchangeRateCache.getQuoteCurrency().equals(sCurrencyB.getSelectedItem())) ||
+                        (exchangeRateCache.getBaseCurrency().equals(sCurrencyB.getSelectedItem()) &&
+                                exchangeRateCache.getQuoteCurrency().equals(sCurrencyA.getSelectedItem())));
+    }
+
+    private double exchangeRateFromCache() {
+        if (!exchangeRateCacheIsUsable()) return 0;
+        if (exchangeRateCache.getBaseCurrency().equals(sCurrencyA.getSelectedItem())) {
+            return exchangeRateCache.getRate();
         } else {
-            clearAmounts();
+            return 1.0d / exchangeRateCache.getRate();
         }
     }
 
-    private void clearAmounts() {
-        Timber.d("clearAmounts");
-        if ((xmrAmount != null) || (notXmrAmount != null)) {
-            tvAmountB.setText(null);
-            setXmr(null);
-            notXmrAmount = null;
+    public void doExchange() {
+        if (!isInitialized) return;
+        tvAmountB.setText(null);
+        if (getCurrencyA() == getCurrencyB()) {
+            exchange(1);
+            return;
+        }
+        // use cached exchange rate if we have it
+        if (!isExchangeInProgress()) {
+            double rate = exchangeRateFromCache();
+            if (rate > 0) {
+                if (prepareExchange()) {
+                    exchange(rate);
+                }
+            } else {
+                startExchange();
+            }
         }
     }
 
     private final ExchangeApi exchangeApi = Helper.getExchangeApi();
 
+    // starts exchange through exchange api
     void startExchange() {
-        showProgress();
         String currencyA = (String) sCurrencyA.getSelectedItem();
         String currencyB = (String) sCurrencyB.getSelectedItem();
-        exchangeApi.queryExchangeRate(currencyA, currencyB,
+        if ((currencyA == null) || (currencyB == null)) return; // nothing to do
+        execExchange(currencyA, currencyB);
+    }
+
+    void execExchange(String currencyA, String currencyB) {
+        showProgress();
+        queryExchangeRate(currencyA, currencyB,
                 new ExchangeCallback() {
                     @Override
                     public void onSuccess(final ExchangeRate exchangeRate) {
@@ -297,35 +329,30 @@ public class ExchangeEditText extends LinearLayout {
                 });
     }
 
-    public void exchange(double rate) {
-        Timber.d("%s / %s", xmrAmount, notXmrAmount);
-        if (getCurrencyA() == 0) {
-            if (xmrAmount == null) return;
-            if (!xmrAmount.isEmpty() && (rate > 0)) {
-                double amountB = rate * Double.parseDouble(xmrAmount);
-                notXmrAmount = Helper.getFormattedAmount(amountB, getCurrencyB() == 0);
+    void queryExchangeRate(final String base, final String quote, ExchangeCallback callback) {
+        exchangeApi.queryExchangeRate(base, quote, callback);
+    }
+
+    private void exchange(double rate) {
+        double amount = getEnteredAmount();
+        if (rate > 0) {
+            tvAmountB.setText(Helper.getFormattedAmount(rate * amount));
+        } else {
+            tvAmountB.setText(null);
+            Timber.w("No rate!");
+        }
+    }
+
+    private String getCleanAmountString(String enteredAmount) {
+        try {
+            double amount = Double.parseDouble(enteredAmount);
+            if (amount >= 0) {
+                return Helper.getFormattedAmount(amount);
             } else {
-                notXmrAmount = "";
+                return null;
             }
-            tvAmountB.setText(notXmrAmount);
-            Timber.d("%s / %s", xmrAmount, notXmrAmount);
-        } else if (getCurrencyB() == 0) {
-            if (notXmrAmount == null) return;
-            if (!notXmrAmount.isEmpty() && (rate > 0)) {
-                double amountB = rate * Double.parseDouble(notXmrAmount);
-                setXmr(Helper.getFormattedAmount(amountB, true));
-            } else {
-                setXmr("");
-            }
-            tvAmountB.setText(xmrAmount);
-            if (xmrAmount == null) {
-                shakeAmountField();
-            }
-        } else { // no XMR currency - cannot happen!
-            Timber.e("No XMR currency!");
-            setXmr(null);
-            notXmrAmount = null;
-            return;
+        } catch (NumberFormatException ex) {
+            return null;
         }
     }
 
@@ -333,38 +360,14 @@ public class ExchangeEditText extends LinearLayout {
         Timber.d("prepareExchange()");
         String enteredAmount = etAmountA.getText().toString();
         if (!enteredAmount.isEmpty()) {
-            String cleanAmount = "";
-            if (getCurrencyA() == 0) {
-                // sanitize the input
-                long xmr = Wallet.getAmountFromString(enteredAmount);
-                if (xmr >= 0) {
-                    cleanAmount = Helper.getDisplayAmount(xmr);
-                } else {
-                    cleanAmount = null;
-                }
-                setXmr(cleanAmount);
-                notXmrAmount = null;
-                Timber.d("cleanAmount = %s", cleanAmount);
-                if (cleanAmount == null) {
-                    shakeAmountField();
-                    return false;
-                }
-            } else if (getCurrencyB() == 0) { // we use B & 0 here for the else below ...
-                // sanitize the input
-                double amountA = Double.parseDouble(enteredAmount);
-                cleanAmount = String.format(Locale.US, "%.2f", amountA);
-                setXmr(null);
-                notXmrAmount = cleanAmount;
-            } else { // no XMR currency - cannot happen!
-                Timber.e("No XMR currency!");
-                setXmr(null);
-                notXmrAmount = null;
+            String cleanAmount = getCleanAmountString(enteredAmount);
+            Timber.d("cleanAmount = %s", cleanAmount);
+            if (cleanAmount == null) {
+                shakeAmountField();
                 return false;
             }
-            Timber.d("prepareExchange() %s", cleanAmount);
         } else {
-            setXmr("");
-            notXmrAmount = "";
+            return false;
         }
         return true;
     }
@@ -372,33 +375,30 @@ public class ExchangeEditText extends LinearLayout {
     public void exchangeFailed() {
         hideProgress();
         exchange(0);
-        if (onFailedExchangeListener != null) {
-            onFailedExchangeListener.onFailedExchange();
-        }
     }
 
-    String assetPair = null;
-    double assetRate = 0;
+    // cache for exchange rate
+    ExchangeRate exchangeRateCache = null;
 
     public void exchange(ExchangeRate exchangeRate) {
         hideProgress();
-        // first, make sure this is what we want
-        String enteredCurrencyA = (String) sCurrencyA.getSelectedItem();
-        String enteredCurrencyB = (String) sCurrencyB.getSelectedItem();
-        if (!exchangeRate.getBaseCurrency().equals(enteredCurrencyA)
-                || !exchangeRate.getQuoteCurrency().equals(enteredCurrencyB)) {
+        // make sure this is what we want
+        if (!exchangeRate.getBaseCurrency().equals(sCurrencyA.getSelectedItem()) ||
+                !exchangeRate.getQuoteCurrency().equals(sCurrencyB.getSelectedItem())) {
             // something's wrong
-            Timber.e("Currencies don't match!");
+            Timber.i("Currencies don't match! A: %s==%s B: %s==%s",
+                    exchangeRate.getBaseCurrency(), sCurrencyA.getSelectedItem(),
+                    exchangeRate.getQuoteCurrency(), sCurrencyB.getSelectedItem());
             return;
         }
-        assetPair = enteredCurrencyA + enteredCurrencyB;
-        assetRate = exchangeRate.getRate();
+
+        exchangeRateCache = exchangeRate;
         if (prepareExchange()) {
             exchange(exchangeRate.getRate());
         }
     }
 
-    private void showProgress() {
+    void showProgress() {
         pbExchange.setVisibility(View.VISIBLE);
     }
 
@@ -408,36 +408,5 @@ public class ExchangeEditText extends LinearLayout {
 
     private void hideProgress() {
         pbExchange.setVisibility(View.INVISIBLE);
-    }
-
-    // Hooks
-    public interface OnNewAmountListener {
-        void onNewAmount(String xmr);
-    }
-
-    OnNewAmountListener onNewAmountListener;
-
-    public void setOnNewAmountListener(OnNewAmountListener listener) {
-        onNewAmountListener = listener;
-    }
-
-    public interface OnAmountInvalidatedListener {
-        void onAmountInvalidated();
-    }
-
-    OnAmountInvalidatedListener onAmountInvalidatedListener;
-
-    public void setOnAmountInvalidatedListener(OnAmountInvalidatedListener listener) {
-        onAmountInvalidatedListener = listener;
-    }
-
-    public interface OnFailedExchangeListener {
-        void onFailedExchange();
-    }
-
-    OnFailedExchangeListener onFailedExchangeListener;
-
-    public void setOnFailedExchangeListener(OnFailedExchangeListener listener) {
-        onFailedExchangeListener = listener;
     }
 }

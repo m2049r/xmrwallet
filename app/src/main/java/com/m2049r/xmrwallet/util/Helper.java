@@ -58,7 +58,6 @@ import android.widget.TextView;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
-import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 
@@ -85,7 +84,7 @@ public class Helper {
 
     static public final String NOCRAZYPASS_FLAGFILE = ".nocrazypass";
 
-    static public final String CRYPTO = "XMR";
+    static public final String BASE_CRYPTO = "XMR";
 
     static private final String WALLET_DIR = "monerujo" + FLAVOR_SUFFIX;
     static private final String HOME_DIR = "monero" + FLAVOR_SUFFIX;
@@ -207,20 +206,30 @@ public class Helper {
         return d.toPlainString();
     }
 
-    static public String getFormattedAmount(double amount, boolean isXmr) {
+    static public String getFormattedAmount(double amount, boolean isCrypto) {
         // at this point selection is XMR in case of error
         String displayB;
-        if (isXmr) { // XMR
-            long xmr = Wallet.getAmountFromDouble(amount);
-            if ((xmr > 0) || (amount == 0)) {
+        if (isCrypto) {
+            if ((amount >= 0) || (amount == 0)) {
                 displayB = String.format(Locale.US, "%,.5f", amount);
             } else {
                 displayB = null;
             }
-        } else { // not XMR
+        } else { // not crypto
             displayB = String.format(Locale.US, "%,.2f", amount);
         }
         return displayB;
+    }
+
+    // min 2 significant digits after decimal point
+    static public String getFormattedAmount(double amount) {
+        if ((amount >= 1.0d) || (amount == 0))
+            return String.format(Locale.US, "%,.2f", amount);
+        else { // amount < 1
+            int decimals = 1 - (int) Math.floor(Math.log10(amount));
+            if (decimals > 12) decimals = 12;
+            return String.format(Locale.US, "%,." + decimals + "f", amount);
+        }
     }
 
     static public Bitmap getBitmap(Context context, int drawableId) {
@@ -624,7 +633,7 @@ public class Helper {
     }
 
     static public ExchangeApi getExchangeApi() {
-        return new com.m2049r.xmrwallet.service.exchange.coinmarketcap.ExchangeApiImpl(OkHttpHelper.getOkHttpClient());
+        return new com.m2049r.xmrwallet.service.exchange.krakenEcb.ExchangeApiImpl(OkHttpHelper.getOkHttpClient());
     }
 
     public interface Action {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2018 m2049r et al.
+ * Copyright (c) 2017-2019 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.service.exchange.coinmarketcap;
+package com.m2049r.xmrwallet.service.exchange.kraken;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
@@ -36,9 +36,9 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import timber.log.Timber;
 
 public class ExchangeApiImpl implements ExchangeApi {
-    static final String CRYPTO_ID = "328";
 
     @NonNull
     private final OkHttpClient okHttpClient;
@@ -47,14 +47,13 @@ public class ExchangeApiImpl implements ExchangeApi {
 
     //so we can inject the mockserver url
     @VisibleForTesting
-    ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
-
+    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
         this.okHttpClient = okHttpClient;
         this.baseUrl = baseUrl;
     }
 
     public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://api.coinmarketcap.com/v2/ticker/"));
+        this(okHttpClient, HttpUrl.parse("https://api.kraken.com/0/public/Ticker"));
     }
 
     @Override
@@ -66,29 +65,25 @@ public class ExchangeApiImpl implements ExchangeApi {
             return;
         }
 
-        boolean inverse = false;
-        String fiat = null;
+        boolean invertQuery;
 
-        if (baseCurrency.equals(Helper.CRYPTO)) {
-            fiat = quoteCurrency;
-            inverse = false;
-        }
 
-        if (quoteCurrency.equals(Helper.CRYPTO)) {
-            fiat = baseCurrency;
-            inverse = true;
-        }
-
-        if (fiat == null) {
-            callback.onError(new IllegalArgumentException("no fiat specified"));
+        if (Helper.BASE_CRYPTO.equals(baseCurrency)) {
+            invertQuery = false;
+        } else if (Helper.BASE_CRYPTO.equals(quoteCurrency)) {
+            invertQuery = true;
+        } else {
+            callback.onError(new IllegalArgumentException("no crypto specified"));
             return;
         }
 
-        final boolean swapAssets = inverse;
+        Timber.d("queryExchangeRate: i %b, b %s, q %s", invertQuery, baseCurrency, quoteCurrency);
+        final boolean invert = invertQuery;
+        final String base = invert ? quoteCurrency : baseCurrency;
+        final String quote = invert ? baseCurrency : quoteCurrency;
 
         final HttpUrl url = baseUrl.newBuilder()
-                .addEncodedPathSegments(CRYPTO_ID + "/")
-                .addQueryParameter("convert", fiat)
+                .addQueryParameter("pair", base + (quote.equals("BTC") ? "XBT" : quote))
                 .build();
 
         final Request httpRequest = createHttpRequest(url);
@@ -104,13 +99,13 @@ public class ExchangeApiImpl implements ExchangeApi {
                 if (response.isSuccessful()) {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
-                        final JSONObject metadata = json.getJSONObject("metadata");
-                        if (!metadata.isNull("error")) {
-                            final String errorMsg = metadata.getString("error");
+                        final JSONArray jsonError = json.getJSONArray("error");
+                        if (jsonError.length() > 0) {
+                            final String errorMsg = jsonError.getString(0);
                             callback.onError(new ExchangeException(response.code(), errorMsg));
                         } else {
-                            final JSONObject jsonResult = json.getJSONObject("data");
-                            reportSuccess(jsonResult, swapAssets, callback);
+                            final JSONObject jsonResult = json.getJSONObject("result");
+                            reportSuccess(jsonResult, invert, callback);
                         }
                     } catch (JSONException ex) {
                         callback.onError(new ExchangeException(ex.getLocalizedMessage()));
