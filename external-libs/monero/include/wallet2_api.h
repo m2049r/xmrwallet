@@ -812,6 +812,26 @@ struct Wallet
      * @return PendingTransaction
      */
     virtual PendingTransaction*  restoreMultisigTransaction(const std::string& signData) = 0;
+
+    /*!
+     * \brief createTransactionMultDest creates transaction with multiple destinations. if dst_addr is an integrated address, payment_id is ignored
+     * \param dst_addr                  vector of destination address as string
+     * \param payment_id                optional payment_id, can be empty string
+     * \param amount                    vector of amounts
+     * \param mixin_count               mixin count. if 0 passed, wallet will use default value
+     * \param subaddr_account           subaddress account from which the input funds are taken
+     * \param subaddr_indices           set of subaddress indices to use for transfer or sweeping. if set empty, all are chosen when sweeping, and one or more are automatically chosen when transferring. after execution, returns the set of actually used indices
+     * \param priority
+     * \return                          PendingTransaction object. caller is responsible to check PendingTransaction::status()
+     *                                  after object returned
+     */
+
+    virtual PendingTransaction * createTransactionMultDest(const std::vector<std::string> &dst_addr, const std::string &payment_id,
+                                                   optional<std::vector<uint64_t>> amount, uint32_t mixin_count,
+                                                   PendingTransaction::Priority = PendingTransaction::Priority_Low,
+                                                   uint32_t subaddr_account = 0,
+                                                   std::set<uint32_t> subaddr_indices = {}) = 0;
+
     /*!
      * \brief createTransaction creates transaction. if dst_addr is an integrated address, payment_id is ignored
      * \param dst_addr          destination address as string
@@ -890,6 +910,19 @@ struct Wallet
      */
     virtual void setDefaultMixin(uint32_t arg) = 0;
 
+    /*!
+     * \brief setCacheAttribute - attach an arbitrary string to a wallet cache attribute
+     * \param key - the key
+     * \param val - the value
+     * \return true if successful, false otherwise
+     */
+    virtual bool setCacheAttribute(const std::string &key, const std::string &val) = 0;
+    /*!
+     * \brief getCacheAttribute - return an arbitrary string attached to a wallet cache attribute
+     * \param key - the key
+     * \return the attached string, or empty string if there is none
+     */
+    virtual std::string getCacheAttribute(const std::string &key) const = 0;
     /*!
      * \brief setUserNote - attach an arbitrary string note to a txid
      * \param txid - the transaction id to attach the note to
@@ -1003,6 +1036,9 @@ struct Wallet
 
     //! cold-device protocol key image sync
     virtual uint64_t coldKeyImageSync(uint64_t &spent, uint64_t &unspent) = 0;
+
+    //! shows address on device display
+    virtual void deviceShowAddress(uint32_t accountIndex, uint32_t addressIndex, const std::string &paymentId) = 0;
 };
 
 /**
