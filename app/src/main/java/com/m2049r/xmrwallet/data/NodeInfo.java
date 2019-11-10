@@ -235,6 +235,8 @@ public class NodeInfo extends Node {
                         String rpcVersion = json.getString("jsonrpc");
                         if (!RPC_VERSION.equals(rpcVersion))
                             return false;
+                        if (!json.has("credits")) // introduced in monero v0.15.0
+                            return false;
                         final JSONObject header = json.getJSONObject(
                                 "result").getJSONObject("block_header");
                         height = header.getLong("height");
