@@ -84,16 +84,17 @@
             android:id="@+id/evAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etNotes"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 style="@style/MoneroEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +102,6 @@
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:textAlignment="textStart" />
-
         </android.support.design.widget.TextInputLayout>
 
         <RelativeLayout
@@ -128,8 +128,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawablePadding="4dp"
                     android:drawableStart="@drawable/ic_info_outline_gray_24dp"
+                    android:drawablePadding="4dp"
                     android:text="@string/label_receive_info_gen_qr_code"
                     android:textAlignment="center"
                     android:textSize="16sp"
@@ -149,8 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:drawablePadding="8dp"
                 android:drawableStart="@drawable/ic_nfc_black_24dp"
+                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="@string/nfc_tag_tap"
                 android:visibility="visible" />

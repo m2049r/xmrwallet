@@ -18,11 +18,13 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etWalletName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:counterEnabled="true"
                 app:counterMaxLength="20"
+                android:layout_marginEnd="4dp"
                 app:errorEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
@@ -39,7 +41,9 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etWalletPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
+                android:layout_marginStart="4dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
@@ -78,6 +82,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletMnemonic"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -95,6 +100,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletAddress"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -115,6 +121,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletViewKey"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -134,6 +141,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletSpendKey"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -153,6 +161,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletRestoreHeight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
