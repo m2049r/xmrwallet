@@ -29,6 +29,7 @@
                 android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:id="@+id/etAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -118,6 +119,7 @@
                     android:visibility="visible">
 
                     <android.support.design.widget.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                         android:id="@+id/etPaymentId"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -153,11 +155,12 @@
             </FrameLayout>
 
             <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:id="@+id/etNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <android.support.design.widget.TextInputEditText
                     style="@style/MoneroEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

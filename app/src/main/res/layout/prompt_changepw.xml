@@ -12,6 +12,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletPasswordA"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">
@@ -28,6 +29,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etWalletPasswordB"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/section_top"

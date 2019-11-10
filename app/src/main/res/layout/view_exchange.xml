@@ -21,6 +21,7 @@
 
         <com.m2049r.xmrwallet.widget.CTextInputLayout
             android:id="@+id/etAmount"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

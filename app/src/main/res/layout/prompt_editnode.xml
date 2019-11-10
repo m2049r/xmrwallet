@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical">
 
@@ -22,6 +22,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etNodeHost"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
@@ -41,6 +42,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etNodePort"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -61,6 +63,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/etNodeName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/data_top">
@@ -85,6 +88,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etNodeUser"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -103,6 +107,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/etNodePass"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -142,8 +147,8 @@
                 style="@style/MoneroText.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_alignBaseline="@+id/tvResultLabel"
+                android:layout_marginStart="4dp"
                 android:layout_toEndOf="@+id/tvResultLabel"
                 android:textAlignment="textStart"
                 tools:text="Blockheight: 1710998 (v9), Ping: 187ms" />
