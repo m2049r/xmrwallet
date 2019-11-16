@@ -297,40 +297,40 @@
     <string name="archive_alert_no">No thanks!</string>
 
     <string-array name="currency" translatable="false">
-        <item>XMR</item>
         <item>EUR</item>
         <item>USD</item>
         <item>JPY</item>
         <item>GBP</item>
         <item>CHF</item>
         <item>CAD</item>
-        <item>AUD</item>
-        <item>ZAR</item>
 
+        <item>AUD</item>
+        <item>BGN</item>
         <item>BRL</item>
-        <item>CLP</item>
         <item>CNY</item>
         <item>CZK</item>
         <item>DKK</item>
         <item>HKD</item>
+        <item>HRK</item>
         <item>HUF</item>
         <item>IDR</item>
         <item>ILS</item>
         <item>INR</item>
+        <item>ISK</item>
         <item>KRW</item>
         <item>MXN</item>
         <item>MYR</item>
         <item>NOK</item>
         <item>NZD</item>
         <item>PHP</item>
-        <item>PKR</item>
         <item>PLN</item>
+        <item>RON</item>
         <item>RUB</item>
         <item>SEK</item>
         <item>SGD</item>
         <item>THB</item>
         <item>TRY</item>
-        <item>TWD</item>
+        <item>ZAR</item>
     </string-array>
 
     <string name="fab_create_new">Create new wallet</string>

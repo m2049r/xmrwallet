@@ -31,7 +31,8 @@ import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.widget.ExchangeBtcEditText;
+import com.m2049r.xmrwallet.widget.ExchangeEditText;
+import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
 import com.m2049r.xmrwallet.widget.SendProgressView;
 import com.m2049r.xmrwallet.xmrto.XmrToError;
 import com.m2049r.xmrwallet.xmrto.XmrToException;
@@ -61,7 +62,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     }
 
     private TextView tvFunds;
-    private ExchangeBtcEditText etAmount;
+    private ExchangeOtherEditText etAmount;
 
     private TextView tvXmrToParms;
     private SendProgressView evParams;
@@ -97,7 +98,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         }
         if (sendListener != null) {
             TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-            String btcString = etAmount.getAmount();
+            String btcString = etAmount.getNativeAmount();
             if (btcString != null) {
                 try {
                     double btc = Double.parseDouble(btcString);
@@ -166,7 +167,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         getView().post(new Runnable() {
             @Override
             public void run() {
-                etAmount.setRate(1.0d / orderParameters.getPrice());
+                etAmount.setExchangeRate(1.0d / orderParameters.getPrice());
                 NumberFormat df = NumberFormat.getInstance(Locale.US);
                 df.setMaximumFractionDigits(6);
                 String min = df.format(orderParameters.getLowerLimit());
@@ -206,7 +207,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     }
 
     private void processOrderParmsError(final Exception ex) {
-        etAmount.setRate(0);
+        etAmount.setExchangeRate(0);
         orderParameters = null;
         maxBtc = 0;
         minBtc = 0;

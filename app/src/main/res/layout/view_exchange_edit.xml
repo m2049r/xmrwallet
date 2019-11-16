@@ -14,7 +14,6 @@
             android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:entries="@array/currency"
             android:gravity="center"
             android:textAlignment="center" />
 
@@ -52,7 +51,6 @@
             android:layout_width="56sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:entries="@array/currency"
             android:gravity="center"
             android:textAlignment="center" />
 

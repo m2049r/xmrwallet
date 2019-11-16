@@ -116,12 +116,12 @@ public class SendAmountWizardFragment extends SendWizardFragment {
                 sendListener.getTxData().setAmount(Wallet.SWEEP_ALL);
             }
         } else {
-            if (!etAmount.validate(maxFunds)) {
+            if (!etAmount.validate(maxFunds, 0)) {
                 return false;
             }
 
             if (sendListener != null) {
-                String xmr = etAmount.getAmount();
+                String xmr = etAmount.getNativeAmount();
                 if (xmr != null) {
                     sendListener.getTxData().setAmount(Wallet.getAmountFromString(xmr));
                 } else {
@@ -148,8 +148,8 @@ public class SendAmountWizardFragment extends SendWizardFragment {
             tvFunds.setText(getString(R.string.send_available,
                     getString(R.string.unknown_amount)));
         }
-        // getAmount is null if exchange is in progress
-        if ((etAmount.getAmount() != null) && etAmount.getAmount().isEmpty()) {
+        // getNativeAmount is null if exchange is in progress
+        if ((etAmount.getNativeAmount() != null) && etAmount.getNativeAmount().isEmpty()) {
             final BarcodeData data = sendListener.popBarcodeData();
             if ((data != null) && (data.amount != null)) {
                 etAmount.setAmount(data.amount);

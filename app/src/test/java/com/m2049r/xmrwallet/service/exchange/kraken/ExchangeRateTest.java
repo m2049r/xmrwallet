@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2018 m2049r et al.
+ * Copyright (c) 2017 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.service.exchange.coinmarketcap;
+package com.m2049r.xmrwallet.service.exchange.kraken;
 
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
@@ -71,9 +71,9 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_shouldBeGetMethod()
-            throws InterruptedException {
+            throws InterruptedException, TimeoutException {
 
-        exchangeApi.queryExchangeRate("XMR", "EUR", mockExchangeCallback);
+        exchangeApi.queryExchangeRate("XMR", "USD", mockExchangeCallback);
 
         RecordedRequest request = mockWebServer.takeRequest();
         assertEquals("GET", request.getMethod());
@@ -81,48 +81,20 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_shouldHavePairInUrl()
-            throws InterruptedException {
+            throws InterruptedException, TimeoutException {
 
-        exchangeApi.queryExchangeRate("XMR", "EUR", mockExchangeCallback);
+        exchangeApi.queryExchangeRate("XMR", "USD", mockExchangeCallback);
 
         RecordedRequest request = mockWebServer.takeRequest();
-        assertEquals("/328/?convert=EUR", request.getPath());
+        assertEquals("/?pair=XMRUSD", request.getPath());
     }
 
     @Test
     public void queryExchangeRate_wasSuccessfulShouldRespondWithRate()
-            throws TimeoutException {
-        final String base = "XMR";
-        final String quote = "EUR";
-        final double rate = 1.56;
-        MockResponse jsonMockResponse = new MockResponse().setBody(
-                createMockExchangeRateResponse(base, quote, rate));
-        mockWebServer.enqueue(jsonMockResponse);
-
-        exchangeApi.queryExchangeRate(base, quote, new ExchangeCallback() {
-            @Override
-            public void onSuccess(final ExchangeRate exchangeRate) {
-                waiter.assertEquals(exchangeRate.getBaseCurrency(), base);
-                waiter.assertEquals(exchangeRate.getQuoteCurrency(), quote);
-                waiter.assertEquals(exchangeRate.getRate(), rate);
-                waiter.resume();
-            }
-
-            @Override
-            public void onError(final Exception e) {
-                waiter.fail(e);
-                waiter.resume();
-            }
-        });
-        waiter.await();
-    }
-
-    @Test
-    public void queryExchangeRate_wasSuccessfulShouldRespondWithRateUSD()
-            throws TimeoutException {
+            throws InterruptedException, JSONException, TimeoutException {
         final String base = "XMR";
         final String quote = "USD";
-        final double rate = 1.56;
+        final double rate = 100;
         MockResponse jsonMockResponse = new MockResponse().setBody(
                 createMockExchangeRateResponse(base, quote, rate));
         mockWebServer.enqueue(jsonMockResponse);
@@ -147,9 +119,8 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_wasNotSuccessfulShouldCallOnError()
-            throws TimeoutException {
+            throws InterruptedException, JSONException, TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
-
         exchangeApi.queryExchangeRate("XMR", "USD", new ExchangeCallback() {
             @Override
             public void onSuccess(final ExchangeRate exchangeRate) {
@@ -170,11 +141,10 @@ public class ExchangeRateTest {
 
     @Test
     public void queryExchangeRate_unknownAssetShouldCallOnError()
-            throws TimeoutException {
-        MockResponse jsonMockResponse = new MockResponse().setBody(
-                createMockExchangeRateErrorResponse());
-        mockWebServer.enqueue(jsonMockResponse);
-
+            throws InterruptedException, JSONException, TimeoutException {
+        mockWebServer.enqueue(new MockResponse().
+                setResponseCode(200).
+                setBody("{\"error\":[\"EQuery:Unknown asset pair\"]}"));
         exchangeApi.queryExchangeRate("XMR", "ABC", new ExchangeCallback() {
             @Override
             public void onSuccess(final ExchangeRate exchangeRate) {
@@ -187,7 +157,7 @@ public class ExchangeRateTest {
                 waiter.assertTrue(e instanceof ExchangeException);
                 ExchangeException ex = (ExchangeException) e;
                 waiter.assertTrue(ex.getCode() == 200);
-                waiter.assertEquals(ex.getErrorMsg(), "id not found");
+                waiter.assertEquals(ex.getErrorMsg(), "EQuery:Unknown asset pair");
                 waiter.resume();
             }
 
@@ -195,52 +165,22 @@ public class ExchangeRateTest {
         waiter.await();
     }
 
-    private String createMockExchangeRateResponse(final String base, final String quote, final double rate) {
+    static public String createMockExchangeRateResponse(final String base, final String quote, final double rate) {
         return "{\n" +
-                "    \"data\": {\n" +
-                "        \"id\": 328, \n" +
-                "        \"name\": \"Monero\", \n" +
-                "        \"symbol\": \"" + base + "\", \n" +
-                "        \"website_slug\": \"monero\", \n" +
-                "        \"rank\": 12, \n" +
-                "        \"circulating_supply\": 16112286.0, \n" +
-                "        \"total_supply\": 16112286.0, \n" +
-                "        \"max_supply\": null, \n" +
-                "        \"quotes\": {\n" +
-                "            \"USD\": {\n" +
-                "                \"price\": " + rate + ", \n" +
-                "                \"volume_24h\": 35763700.0, \n" +
-                "                \"market_cap\": 2559791130.0, \n" +
-                "                \"percent_change_1h\": -0.16, \n" +
-                "                \"percent_change_24h\": -3.46, \n" +
-                "                \"percent_change_7d\": 1.49\n" +
-                "            }, \n" +
-                (!"USD".equals(quote) ? (
-                        "            \"" + quote + "\": {\n" +
-                                "                \"price\": " + rate + ", \n" +
-                                "                \"volume_24h\": 30377728.701265607, \n" +
-                                "                \"market_cap\": 2174289586.0, \n" +
-                                "                \"percent_change_1h\": -0.16, \n" +
-                                "                \"percent_change_24h\": -3.46, \n" +
-                                "                \"percent_change_7d\": 1.49\n" +
-                                "            }\n") : "") +
-                "        }, \n" +
-                "        \"last_updated\": 1528492746\n" +
-                "    }, \n" +
-                "    \"metadata\": {\n" +
-                "        \"timestamp\": 1528492705, \n" +
-                "        \"error\": null\n" +
-                "    }\n" +
-                "}";
-    }
-
-    private String createMockExchangeRateErrorResponse() {
-        return "{\n" +
-                "    \"data\": null, \n" +
-                "    \"metadata\": {\n" +
-                "        \"timestamp\": 1525137187, \n" +
-                "        \"error\": \"id not found\"\n" +
-                "    }\n" +
+                "   \"error\":[],\n" +
+                "   \"result\":{\n" +
+                "       \"X" + base + "Z" + quote + "\":{\n" +
+                "           \"a\":[\"" + rate + "\",\"322\",\"322.000\"],\n" +
+                "           \"b\":[\"" + rate + "\",\"76\",\"76.000\"],\n" +
+                "           \"c\":[\"" + rate + "\",\"2.90000000\"],\n" +
+                "           \"v\":[\"4559.03962053\",\"5231.33235586\"],\n" +
+                "           \"p\":[\"" + rate + "\",\"" + rate + "\"],\n" +
+                "           \"t\":[801,1014],\n" +
+                "           \"l\":[\"" + (rate * 0.8) + "\",\"" + rate + "\"],\n" +
+                "           \"h\":[\"" + (rate * 1.2) + "\",\"" + rate + "\"],\n" +
+                "           \"o\":\"" + rate + "\"\n" +
+                "       }\n" +
+                "   }\n" +
                 "}";
     }
 }
