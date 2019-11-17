@@ -79,6 +79,23 @@ public class GenerateFragment extends Fragment {
 
     private String type = null;
 
+    private void clearErrorOnTextEntry(final TextInputLayout textInputLayout) {
+        textInputLayout.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                textInputLayout.setError(null);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,6 +127,23 @@ public class GenerateFragment extends Fragment {
                 }
             }
         });
+        clearErrorOnTextEntry(etWalletName);
+
+        etWalletPassword.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                checkPassword();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+
         etWalletMnemonic.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -118,6 +152,8 @@ public class GenerateFragment extends Fragment {
                 }
             }
         });
+        clearErrorOnTextEntry(etWalletMnemonic);
+
         etWalletAddress.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -126,6 +162,8 @@ public class GenerateFragment extends Fragment {
                 }
             }
         });
+        clearErrorOnTextEntry(etWalletAddress);
+
         etWalletViewKey.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -134,6 +172,8 @@ public class GenerateFragment extends Fragment {
                 }
             }
         });
+        clearErrorOnTextEntry(etWalletViewKey);
+
         etWalletSpendKey.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -142,6 +182,7 @@ public class GenerateFragment extends Fragment {
                 }
             }
         });
+        clearErrorOnTextEntry(etWalletSpendKey);
 
         Helper.showKeyboard(getActivity());
 
@@ -307,21 +348,6 @@ public class GenerateFragment extends Fragment {
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());
                 generateWallet();
-            }
-        });
-
-        etWalletPassword.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                checkPassword();
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
 
