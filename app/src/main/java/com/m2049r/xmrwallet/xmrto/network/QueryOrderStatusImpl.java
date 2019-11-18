@@ -52,6 +52,7 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
     private double xmrAmountRemaining; // "xmr_amount_remaining": <amount_in_xmr_that_the_user_must_still_send_as_float>,
     private int xmrNumConfirmationsRemaining; // "xmr_num_confirmations_remaining": <num_xmr_confirmations_remaining_before_bitcoins_will_be_sent_as_integer>,
     private double xmrPriceBtc; // "xmr_price_btc": <price_of_1_btc_in_xmr_as_offered_by_service_as_float>,
+    private String xmrReceivingSubaddress; // <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
     private String xmrReceivingAddress; // "xmr_receiving_address": "xmr_old_style_address_user_can_send_funds_to_as_string",
     private String xmrReceivingIntegratedAddress; // "xmr_receiving_integrated_address": "xmr_integrated_address_user_needs_to_send_funds_to_as_string",
     private int xmrRecommendedMixin; // "xmr_recommended_mixin": <xmr_recommended_mixin_as_integer>,
@@ -113,6 +114,10 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
 
     public double getXmrPriceBtc() {
         return xmrPriceBtc;
+    }
+
+    public String getXmrReceivingSubaddress() {
+        return xmrReceivingSubaddress;
     }
 
     public String getXmrReceivingAddress() {
@@ -208,6 +213,7 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
             xmrAmountRemaining = jsonObject.getDouble("xmr_amount_remaining"); // "xmr_amount_remaining": <amount_in_xmr_that_the_user_must_still_send_as_float>,
             xmrNumConfirmationsRemaining = jsonObject.getInt("xmr_num_confirmations_remaining"); // "xmr_num_confirmations_remaining": <num_xmr_confirmations_remaining_before_bitcoins_will_be_sent_as_integer>,
             xmrPriceBtc = jsonObject.getDouble("xmr_price_btc"); // "xmr_price_btc": <price_of_1_btc_in_xmr_as_offered_by_service_as_float>,
+            xmrReceivingSubaddress = jsonObject.getString("xmr_receiving_subaddress"); // <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
             xmrReceivingAddress = jsonObject.getString("xmr_receiving_address"); // "xmr_receiving_address": "xmr_old_style_address_user_can_send_funds_to_as_string",
             xmrReceivingIntegratedAddress = jsonObject.getString("xmr_receiving_integrated_address"); // "xmr_receiving_integrated_address": "xmr_integrated_address_user_needs_to_send_funds_to_as_string",
             xmrRecommendedMixin = jsonObject.getInt("xmr_recommended_mixin"); // "xmr_recommended_mixin": <xmr_recommended_mixin_as_integer>,

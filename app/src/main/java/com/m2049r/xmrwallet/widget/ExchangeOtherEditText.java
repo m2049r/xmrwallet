@@ -128,11 +128,11 @@ public class ExchangeOtherEditText extends ExchangeEditText {
         // first deal with XMR/baseCurrency & baseCurrency/XMR
 
         if (currencyA.equals(Helper.BASE_CRYPTO) && (currencyB.equals(baseCurrency))) {
-            localExchange(currencyA, currencyB, exchangeRate);
+            localExchange(currencyA, currencyB, 1.0d / exchangeRate);
             return;
         }
         if (currencyA.equals(baseCurrency) && (currencyB.equals(Helper.BASE_CRYPTO))) {
-            localExchange(currencyA, currencyB, 1.0d / exchangeRate);
+            localExchange(currencyA, currencyB, exchangeRate);
             return;
         }
 

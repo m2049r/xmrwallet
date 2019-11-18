@@ -457,8 +457,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         }
         showProgress(3, getString(R.string.label_send_progress_create_tx));
         TxData txData = sendListener.getTxData();
-        txData.setDestinationAddress(xmrtoStatus.getXmrReceivingAddress());
-        txData.setPaymentId(xmrtoStatus.getXmrRequiredPaymentIdShort());
+        txData.setDestinationAddress(xmrtoStatus.getXmrReceivingSubaddress());
         txData.setAmount(Wallet.getAmountFromDouble(xmrtoStatus.getXmrAmountTotal()));
         getActivityCallback().onPrepareSend(xmrtoStatus.getUuid(), txData);
     }

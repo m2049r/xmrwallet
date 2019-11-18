@@ -132,6 +132,7 @@ public class XmrToApiQueryOrderTest {
         final double xmrAmountRemaining = 6.464;
         final int xmrNumConfirmationsRemaining = -1;
         final double xmrPriceBtc = 0.0154703;
+        final String xmrReceivingSubaddress = "83BGzCTthheE2KxNTBPnPJjJUthYPfDfCf3ENSVQcpga8RYSxNz9qCz1qp9MLye9euMjckGi11cRdeVGqsVqTLgH8w5fJ1D";
         final String xmrReceivingAddress = "44TVPcCSHebEQp4LnapPkhb2pondb2Ed7GJJLc6TkKwtSyumUnQ6QzkCCkojZycH2MRfLcujCM7QR1gdnRULRraV4UpB5n4";
         final String xmrReceivingIntegratedAddress = "4EAAQR1vtv7EQp4LnapPkhb2pondb2Ed7GJJLc6TkKwtSyumUnQ6QzkCCkojZycH2MRfLcujCM7QR1gdnRULRraV6B5rRtHLeXGQSECXy9";
         final int xmrRecommendedMixin = 5;
@@ -155,6 +156,7 @@ public class XmrToApiQueryOrderTest {
                         xmrAmountRemaining,
                         xmrNumConfirmationsRemaining,
                         xmrPriceBtc,
+                        xmrReceivingSubaddress,
                         xmrReceivingAddress,
                         xmrReceivingIntegratedAddress,
                         xmrRecommendedMixin,
@@ -184,6 +186,7 @@ public class XmrToApiQueryOrderTest {
                 waiter.assertEquals(orderStatus.getXmrAmountRemaining(), xmrAmountRemaining);
                 waiter.assertEquals(orderStatus.getXmrNumConfirmationsRemaining(), xmrNumConfirmationsRemaining);
                 waiter.assertEquals(orderStatus.getXmrPriceBtc(), xmrPriceBtc);
+                waiter.assertEquals(orderStatus.getXmrReceivingSubaddress(), xmrReceivingSubaddress);
                 waiter.assertEquals(orderStatus.getXmrReceivingAddress(), xmrReceivingAddress);
                 waiter.assertEquals(orderStatus.getXmrReceivingIntegratedAddress(), xmrReceivingIntegratedAddress);
                 waiter.assertEquals(orderStatus.getXmrRecommendedMixin(), xmrRecommendedMixin);
@@ -267,6 +270,7 @@ public class XmrToApiQueryOrderTest {
             final double xmrAmountRemaining,
             final int xmrNumConfirmationsRemaining,
             final double xmrPriceBtc,
+            final String xmrReceivingSubaddress,
             final String xmrReceivingAddress,
             final String xmrReceivingIntegratedAddress,
             final int xmrRecommendedMixin,
@@ -281,6 +285,7 @@ public class XmrToApiQueryOrderTest {
                 "    \"btc_amount\":\"" + btcAmount + "\",\n" +
                 "    \"btc_dest_address\":\"" + btcDestAddress + "\",\n" +
                 "    \"xmr_required_amount\":\"" + xmrRequiredAmount + "\",\n" +
+                "    \"xmr_receiving_subaddress\":\"" + xmrReceivingSubaddress + "\",\n" +
                 "    \"xmr_receiving_address\":\"" + xmrReceivingAddress + "\",\n" +
                 "    \"xmr_receiving_integrated_address\":\"" + xmrReceivingIntegratedAddress + "\",\n" +
                 "    \"xmr_required_payment_id_long\":\"" + xmrRequiredPaymentIdLong + "\",\n" +

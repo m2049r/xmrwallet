@@ -73,6 +73,8 @@ public interface QueryOrderStatus {
 
     String getXmrReceivingAddress(); // "xmr_receiving_address": "xmr_old_style_address_user_can_send_funds_to_as_string",
 
+    String getXmrReceivingSubaddress(); // <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
+
     String getXmrReceivingIntegratedAddress(); // "xmr_receiving_integrated_address": "xmr_integrated_address_user_needs_to_send_funds_to_as_string",
 
     int getXmrRecommendedMixin(); // "xmr_recommended_mixin": <xmr_recommended_mixin_as_integer>,
