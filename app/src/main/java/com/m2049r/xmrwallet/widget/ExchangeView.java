@@ -44,6 +44,9 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import timber.log.Timber;
@@ -147,6 +150,15 @@ public class ExchangeView extends LinearLayout {
         inflater.inflate(R.layout.view_exchange, this);
     }
 
+    void setCurrencyAdapter(Spinner spinner) {
+        List<String> currencies = new ArrayList<>();
+        currencies.add(Helper.BASE_CRYPTO);
+        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, currencies);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -160,6 +172,9 @@ public class ExchangeView extends LinearLayout {
         sCurrencyB.setAdapter(adapter);
         evExchange = findViewById(R.id.evExchange);
         pbExchange = findViewById(R.id.pbExchange);
+
+        setCurrencyAdapter(sCurrencyA);
+        setCurrencyAdapter(sCurrencyB);
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
