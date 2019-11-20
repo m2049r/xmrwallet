@@ -50,6 +50,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import timber.log.Timber;
@@ -112,9 +113,12 @@ public class WalletFragment extends Fragment
         ivSynced = view.findViewById(R.id.ivSynced);
 
         sCurrency = view.findViewById(R.id.sCurrency);
-        ArrayAdapter currencyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance);
-        currencyAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
-        sCurrency.setAdapter(currencyAdapter);
+        List<String> currencies = new ArrayList<>();
+        currencies.add(Helper.BASE_CRYPTO);
+        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner_balance, currencies);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sCurrency.setAdapter(spinnerAdapter);
 
         bSend = view.findViewById(R.id.bSend);
         bReceive = view.findViewById(R.id.bReceive);
