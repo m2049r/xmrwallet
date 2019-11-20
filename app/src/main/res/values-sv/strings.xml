@@ -249,7 +249,7 @@
 
     <string name="receive_amount_hint">Belopp</string>
     <string name="receive_cannot_open">Det gick inte att öppna plånboken!</string>
-    <string name="receive_paymentid_invalid">16 eller 64 hexadecimala tecken (0–9, a–f)</string>
+    <string name="receive_paymentid_invalid">16 hexadecimala tecken (0–9, a–f)</string>
     <string name="receive_integrated_paymentid_invalid">Måste vara tomt med en integrerad adress</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

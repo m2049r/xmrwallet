@@ -275,7 +275,7 @@
     <string name="receive_amount_hint">Quantitat</string>
     <string name="receive_desc_hint">Descripció (opcional)</string>
     <string name="receive_cannot_open">No s\'ha pogut obrir el portamonedes!</string>
-    <string name="receive_paymentid_invalid">16 or 64 Hex caràcters (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 Hex caràcters (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">ha d\'estar buit amb una adreça integrada</string>
 
     <string name="receive_amount_too_big">Màx. %1$s</string>

@@ -270,7 +270,7 @@
 
     <string name="receive_amount_hint">Ammontare</string>
     <string name="receive_cannot_open">Impossibile aprire il portafoglio!</string>
-    <string name="receive_paymentid_invalid">16 o 64 caratteri esadecimali (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 caratteri esadecimali (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Deve essere vuoto con un indirizzo integrato</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

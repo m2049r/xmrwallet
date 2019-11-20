@@ -265,7 +265,7 @@
 
     <string name="receive_amount_hint">Bedrag</string>
     <string name="receive_cannot_open">Kan portemonnee niet openen!</string>
-    <string name="receive_paymentid_invalid">16 of 64 hexadecimale tekens (0–9, a–f)</string>
+    <string name="receive_paymentid_invalid">16 hexadecimale tekens (0–9, a–f)</string>
     <string name="receive_integrated_paymentid_invalid">Moet leeg zijn bij een geïntegreerd adres</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

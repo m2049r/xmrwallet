@@ -270,7 +270,7 @@
     <string name="receive_amount_hint">Kogus</string>
     <string name="receive_desc_hint">Kommentaarid (valikuline)</string>
     <string name="receive_cannot_open">Rahakotti ei õnnestunud avada!</string>
-    <string name="receive_paymentid_invalid">16 või 64 Hex tähemärgid (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 Hex tähemärgid (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Peab olema tühi koos integreeritud aadressiga</string>
 
     <string name="receive_amount_too_big">Kuni %1$s</string>

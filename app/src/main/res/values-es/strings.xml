@@ -204,7 +204,7 @@
 
     <string name="receive_amount_hint">Monto</string>
     <string name="receive_cannot_open">¡No se ha podido abrir el monedero!</string>
-    <string name="receive_paymentid_invalid">16 o 64 caracteres hexadecimales (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 caracteres hexadecimales (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Debe estar vacío con una dirección integrada</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

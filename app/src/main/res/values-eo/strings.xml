@@ -275,7 +275,7 @@
     <string name="receive_amount_hint">Kvanto</string>
     <string name="receive_desc_hint">Priskribo (opcia)</string>
     <string name="receive_cannot_open">Ne sukcesis malfermi la monujon!</string>
-    <string name="receive_paymentid_invalid">16 aŭ 64 deksesumaj signoj (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 deksesumaj signoj (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Tio restu malplena kiam integrita adreso uziĝas</string>
 
     <string name="receive_amount_too_big">Maks. %1$s</string>

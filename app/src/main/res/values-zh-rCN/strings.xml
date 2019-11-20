@@ -217,7 +217,7 @@
     <string name="receive_amount_hint">金额</string>
     <string name="receive_desc_hint">描述 (选填)</string>
     <string name="receive_cannot_open">无法打开钱包！</string>
-    <string name="receive_paymentid_invalid">16或64十六进制字符 (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16十六进制字符 (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">集成地址的交易ID必须为空</string>
     <string name="receive_amount_too_big">上限 %1$s</string>
     <string name="receive_amount_negative">下限 0</string>

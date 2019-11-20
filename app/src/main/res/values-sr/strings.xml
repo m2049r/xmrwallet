@@ -277,7 +277,7 @@
     <string name="receive_amount_hint">Suma</string>
     <string name="receive_desc_hint">Opis (opciono)</string>
     <string name="receive_cannot_open">Nemoguće otvaranje novčanika!</string>
-    <string name="receive_paymentid_invalid">16 ili 64 heks. znakova (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 heks. znakova (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Mora biti prazno sa integrisanom adresom</string>
 
     <string name="receive_amount_too_big">Maks. %1$s</string>

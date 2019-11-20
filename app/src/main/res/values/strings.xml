@@ -280,7 +280,7 @@
     <string name="receive_amount_hint">Amount</string>
     <string name="receive_desc_hint">Description (optional)</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
-    <string name="receive_paymentid_invalid">16 or 64 Hex characters (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 Hex characters (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

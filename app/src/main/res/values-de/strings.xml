@@ -269,7 +269,7 @@
 
     <string name="receive_amount_hint">Betrag</string>
     <string name="receive_cannot_open">Konnte Wallet nicht öffnen!</string>
-    <string name="receive_paymentid_invalid">16 oder 64 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Muss bei einer integrierten Adresse leer sein</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
