@@ -266,7 +266,7 @@
 
     <string name="receive_amount_hint">Suma</string>
     <string name="receive_cannot_open">Nemohol som otvoriť peňaženku!</string>
-    <string name="receive_paymentid_invalid">16 alebo 64 hexa znakov (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 hexa znakov (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Musí byť prázdna s integrovanou adresou</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

@@ -267,7 +267,7 @@
 
     <string name="receive_amount_hint">金額</string>
     <string name="receive_cannot_open">無法開啟錢包！</string>
-    <string name="receive_paymentid_invalid">16 或 64 Hex 字元 (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 Hex 字元 (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">使用整合地址時必須為空白</string>
 
     <string name="receive_amount_too_big">最大值 %1$s</string>

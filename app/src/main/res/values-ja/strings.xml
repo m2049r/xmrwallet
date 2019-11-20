@@ -276,7 +276,7 @@
     <string name="receive_amount_hint">数量</string>
     <string name="receive_desc_hint">説明 (オプション)</string>
     <string name="receive_cannot_open">ウォレットを開けませんでした!</string>
-    <string name="receive_paymentid_invalid">16 または 64 文字の16進数 (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 文字の16進数 (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">インテグレーテッドアドレスでは空でなければなりません</string>
 
     <string name="receive_amount_too_big">最大. %1$s</string>

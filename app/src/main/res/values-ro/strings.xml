@@ -243,7 +243,7 @@
 
     <string name="receive_amount_hint">Sumă</string>
     <string name="receive_cannot_open">Nu pot deschide portofel!</string>
-    <string name="receive_paymentid_invalid">16 sau 64 caractere Hex (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 caractere Hex (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Trebuie să fie gol cu adresă integrată</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

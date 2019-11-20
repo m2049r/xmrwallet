@@ -267,7 +267,7 @@
 
     <string name="receive_amount_hint">Valor</string>
     <string name="receive_cannot_open">Não foi possível abrir a carteira!</string>
-    <string name="receive_paymentid_invalid">16 ou 64 caracteres em hexadecimal (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 caracteres em hexadecimal (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Deve estar vazio ao usar endereços integrados</string>
 
     <string name="receive_amount_too_big">Máx. %1$s</string>

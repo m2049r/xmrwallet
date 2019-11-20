@@ -269,7 +269,7 @@
 
     <string name="receive_amount_hint">Сума</string>
     <string name="receive_cannot_open">Не вдалося відкрити гаманець!</string>
-    <string name="receive_paymentid_invalid">Система зчислення - 16 или 64(0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">Система зчислення - 16 (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Повинно бути порожнім при використанні інтегрованої адреси</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

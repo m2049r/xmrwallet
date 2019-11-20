@@ -271,7 +271,7 @@
 
     <string name="receive_amount_hint">Montant</string>
     <string name="receive_cannot_open">Ouverture du portefeuille impossible !</string>
-    <string name="receive_paymentid_invalid">16 ou 64 caractères héxadécimaux (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 caractères héxadécimaux (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Doit être vide avec une adresse intégrée</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>

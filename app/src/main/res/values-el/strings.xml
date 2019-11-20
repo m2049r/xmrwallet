@@ -243,7 +243,7 @@
 
     <string name="receive_amount_hint">Ποσό</string>
     <string name="receive_cannot_open">Δεν ήταν δυνατό το άνοιγμα του πορτοφολιού!</string>
-    <string name="receive_paymentid_invalid">16 ή 64 χαρακτήρες Hex (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 χαρακτήρες Hex (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Πρέπει να είναι άδειο με ενσωματωμένη διεύθυνση</string>
 
     <string name="receive_amount_too_big">Μέγιστο %1$s</string>

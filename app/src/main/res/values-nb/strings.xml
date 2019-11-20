@@ -268,7 +268,7 @@
 
     <string name="receive_amount_hint">Mengde</string>
     <string name="receive_cannot_open">Kunne ikke åpne lommebok!</string>
-    <string name="receive_paymentid_invalid">16 eller 64 heks-karakterer (0&#8211;9,a&#8211;f)</string>
+    <string name="receive_paymentid_invalid">16 heks-karakterer (0&#8211;9,a&#8211;f)</string>
     <string name="receive_integrated_paymentid_invalid">Må være tom med integrert adresse</string>
 
     <string name="receive_amount_too_big">Maks. %1$s</string>
