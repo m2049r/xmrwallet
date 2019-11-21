@@ -67,9 +67,9 @@ public class ExchangeEditText extends LinearLayout {
             return false;
         }
         boolean ok = true;
-        String enteredAmount = etAmountA.getText().toString();
+        String nativeAmount = getNativeAmount();
         try {
-            double amount = Double.parseDouble(enteredAmount);
+            double amount = Double.parseDouble(nativeAmount);
             if ((amount < min) || (amount > max)) {
                 ok = false;
             }
