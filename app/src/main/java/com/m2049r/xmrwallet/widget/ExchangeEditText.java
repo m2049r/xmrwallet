@@ -44,6 +44,7 @@ import com.m2049r.xmrwallet.util.Helper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -66,9 +67,9 @@ public class ExchangeEditText extends LinearLayout {
             return false;
         }
         boolean ok = true;
-        String enteredAmount = etAmountA.getText().toString();
+        String nativeAmount = getNativeAmount();
         try {
-            double amount = Double.parseDouble(enteredAmount);
+            double amount = Double.parseDouble(nativeAmount);
             if ((amount < min) || (amount > max)) {
                 ok = false;
             }
@@ -110,7 +111,7 @@ public class ExchangeEditText extends LinearLayout {
 
     public String getNativeAmount() {
         if (isExchangeInProgress()) return null;
-        if (sCurrencyA.getSelectedItemPosition() == 0)
+        if (getCurrencyA() == 0)
             return getCleanAmountString(etAmountA.getText().toString());
         else
             return getCleanAmountString(tvAmountB.getText().toString());
@@ -336,7 +337,7 @@ public class ExchangeEditText extends LinearLayout {
     private void exchange(double rate) {
         double amount = getEnteredAmount();
         if (rate > 0) {
-            tvAmountB.setText(Helper.getFormattedAmount(rate * amount));
+            tvAmountB.setText(Helper.getFormattedAmount(rate * amount, getCurrencyB() == 0));
         } else {
             tvAmountB.setText(null);
             Timber.w("No rate!");
@@ -347,7 +348,7 @@ public class ExchangeEditText extends LinearLayout {
         try {
             double amount = Double.parseDouble(enteredAmount);
             if (amount >= 0) {
-                return Helper.getFormattedAmount(amount);
+                return String.format(Locale.US, "%,.12f", amount);
             } else {
                 return null;
             }
