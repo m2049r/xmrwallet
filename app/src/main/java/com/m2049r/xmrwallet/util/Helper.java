@@ -227,6 +227,7 @@ public class Helper {
             return String.format(Locale.US, "%,.2f", amount);
         else { // amount < 1
             int decimals = 1 - (int) Math.floor(Math.log10(amount));
+            if (decimals < 2) decimals = 2;
             if (decimals > 12) decimals = 12;
             return String.format(Locale.US, "%,." + decimals + "f", amount);
         }
