@@ -29,19 +29,16 @@ public class TxData implements Parcelable {
 
     public TxData(TxData txData) {
         this.dstAddr = txData.dstAddr;
-        this.paymentId = txData.paymentId;
         this.amount = txData.amount;
         this.mixin = txData.mixin;
         this.priority = txData.priority;
     }
 
     public TxData(String dstAddr,
-                  String paymentId,
                   long amount,
                   int mixin,
                   PendingTransaction.Priority priority) {
         this.dstAddr = dstAddr;
-        this.paymentId = paymentId;
         this.amount = amount;
         this.mixin = mixin;
         this.priority = priority;
@@ -49,10 +46,6 @@ public class TxData implements Parcelable {
 
     public String getDestinationAddress() {
         return dstAddr;
-    }
-
-    public String getPaymentId() {
-        return paymentId;
     }
 
     public long getAmount() {
@@ -69,10 +62,6 @@ public class TxData implements Parcelable {
 
     public void setDestinationAddress(String dstAddr) {
         this.dstAddr = dstAddr;
-    }
-
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
     }
 
     public void setAmount(long amount) {
@@ -96,7 +85,6 @@ public class TxData implements Parcelable {
     }
 
     private String dstAddr;
-    private String paymentId;
     private long amount;
     private int mixin;
     private PendingTransaction.Priority priority;
@@ -106,7 +94,6 @@ public class TxData implements Parcelable {
     @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(dstAddr);
-        out.writeString(paymentId);
         out.writeLong(amount);
         out.writeInt(mixin);
         out.writeInt(priority.getValue());
@@ -125,7 +112,6 @@ public class TxData implements Parcelable {
 
     protected TxData(Parcel in) {
         dstAddr = in.readString();
-        paymentId = in.readString();
         amount = in.readLong();
         mixin = in.readInt();
         priority = PendingTransaction.Priority.fromInteger(in.readInt());
@@ -142,14 +128,12 @@ public class TxData implements Parcelable {
         StringBuffer sb = new StringBuffer();
         sb.append("dstAddr:");
         sb.append(dstAddr);
-        sb.append(",paymentId:");
-        sb.append(paymentId);
         sb.append(",amount:");
         sb.append(amount);
         sb.append(",mixin:");
         sb.append(mixin);
         sb.append(",priority:");
-        sb.append(String.valueOf(priority));
+        sb.append(priority);
         return sb.toString();
     }
 }

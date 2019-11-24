@@ -70,7 +70,6 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     }
 
     private TextView tvTxAddress;
-    private TextView tvTxPaymentId;
     private TextView tvTxNotes;
     private TextView tvTxAmount;
     private TextView tvTxFee;
@@ -90,7 +89,6 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
                 R.layout.fragment_send_confirm, container, false);
 
         tvTxAddress = view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
         tvTxNotes = view.findViewById(R.id.tvTxNotes);
         tvTxAmount = view.findViewById(R.id.tvTxAmount);
         tvTxFee = view.findViewById(R.id.tvTxFee);
@@ -192,12 +190,6 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
 
         final TxData txData = sendListener.getTxData();
         tvTxAddress.setText(txData.getDestinationAddress());
-        String paymentId = txData.getPaymentId();
-        if ((paymentId != null) && (!paymentId.isEmpty())) {
-            tvTxPaymentId.setText(txData.getPaymentId());
-        } else {
-            tvTxPaymentId.setText("-");
-        }
         UserNotes notes = sendListener.getTxData().getUserNotes();
         if ((notes != null) && (!notes.note.isEmpty())) {
             tvTxNotes.setText(notes.note);

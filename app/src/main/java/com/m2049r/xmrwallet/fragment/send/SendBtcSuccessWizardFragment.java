@@ -138,12 +138,6 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
 
         btcData = (TxDataBtc) sendListener.getTxData();
         tvTxAddress.setText(btcData.getDestinationAddress());
-        String paymentId = btcData.getPaymentId();
-        if ((paymentId != null) && (!paymentId.isEmpty())) {
-            tvTxPaymentId.setText(btcData.getPaymentId());
-        } else {
-            tvTxPaymentId.setText("-");
-        }
 
         final PendingTx committedTx = sendListener.getCommittedTx();
         if (committedTx != null) {
