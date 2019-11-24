@@ -86,8 +86,8 @@
             style="@style/MoneroText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
             android:textAlignment="textStart"
             tools:text="fcb12cbe9f43d4e8b9ee54f48d450a89a6937946db856506820df0539571801d" />
 
@@ -103,32 +103,10 @@
             style="@style/MoneroText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
             android:textAlignment="textStart"
             tools:text="4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/MoneroText.Confirm.Label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_send_payment_id" />
-
-            <TextView
-                android:id="@+id/tvTxPaymentId"
-                style="@style/MoneroText.Confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                tools:text="d666a38d4a28fb38" />
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

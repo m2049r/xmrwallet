@@ -298,22 +298,21 @@ public class Wallet {
     public PendingTransaction createTransaction(TxData txData) {
         return createTransaction(
                 txData.getDestinationAddress(),
-                txData.getPaymentId(),
                 txData.getAmount(),
                 txData.getMixin(),
                 txData.getPriority());
     }
 
-    public PendingTransaction createTransaction(String dst_addr, String payment_id,
+    public PendingTransaction createTransaction(String dst_addr,
                                                 long amount, int mixin_count,
                                                 PendingTransaction.Priority priority) {
         disposePendingTransaction();
         int _priority = priority.getValue();
         long txHandle =
                 (amount == SWEEP_ALL ?
-                        createSweepTransaction(dst_addr, payment_id, mixin_count, _priority,
+                        createSweepTransaction(dst_addr, "", mixin_count, _priority,
                                 accountIndex) :
-                        createTransactionJ(dst_addr, payment_id, amount, mixin_count, _priority,
+                        createTransactionJ(dst_addr, "", amount, mixin_count, _priority,
                                 accountIndex));
         pendingTransaction = new PendingTransaction(txHandle);
         return pendingTransaction;

@@ -59,42 +59,36 @@ public class BarcodeData {
     final public Asset asset;
     final public String address;
     final public String addressName;
-    final public String paymentId;
     final public String amount;
     final public String description;
     final public Security security;
     final public String bip70;
 
     public BarcodeData(Asset asset, String address) {
-        this(asset, address, null, null, null, null, Security.NORMAL);
+        this(asset, address, null, null, null, Security.NORMAL);
     }
 
     public BarcodeData(Asset asset, String address, String amount) {
-        this(asset, address, null, null, null, amount, Security.NORMAL);
+        this(asset, address, null, null, amount, Security.NORMAL);
     }
 
     public BarcodeData(Asset asset, String address, String amount, String description, Security security) {
-        this(asset, address, null, null, description, amount, security);
-    }
-
-    public BarcodeData(Asset asset, String address, String paymentId, String amount) {
-        this(asset, address, null, paymentId, null, amount, Security.NORMAL);
+        this(asset, address, null, description, amount, security);
     }
 
     public BarcodeData(Asset asset, String address, String paymentId, String description, String amount) {
-        this(asset, address, null, paymentId, description, amount, Security.NORMAL);
+        this(asset, address, null, description, amount, Security.NORMAL);
     }
 
-    public BarcodeData(Asset asset, String address, String addressName, String paymentId, String description, String amount, Security security) {
-        this(asset, address, addressName, null, paymentId, description, amount, security);
+    public BarcodeData(Asset asset, String address, String addressName, String description, String amount, Security security) {
+        this(asset, address, addressName, null, description, amount, security);
     }
 
-    public BarcodeData(Asset asset, String address, String addressName, String bip70, String paymentId, String description, String amount, Security security) {
+    public BarcodeData(Asset asset, String address, String addressName, String bip70, String description, String amount, Security security) {
         this.asset = asset;
         this.address = address;
         this.bip70 = bip70;
         this.addressName = addressName;
-        this.paymentId = paymentId;
         this.description = description;
         this.amount = amount;
         this.security = security;
@@ -110,11 +104,6 @@ public class BarcodeData {
         StringBuilder sb = new StringBuilder();
         sb.append(BarcodeData.XMR_SCHEME).append(address);
         boolean first = true;
-        if ((paymentId != null) && !paymentId.isEmpty()) {
-            sb.append("?");
-            first = false;
-            sb.append(BarcodeData.XMR_PAYMENTID).append('=').append(paymentId);
-        }
         if ((description != null) && !description.isEmpty()) {
             sb.append(first ? "?" : "&");
             first = false;
@@ -185,8 +174,11 @@ public class BarcodeData {
         String address = monero.getPath();
 
         String paymentId = parms.get(XMR_PAYMENTID);
-        // deal with empty payment_id created by non-spec-conforming apps
-        if ((paymentId != null) && paymentId.isEmpty()) paymentId = null;
+        // no support for payment ids!
+        if (paymentId != null) {
+            Timber.e("no support for payment ids!");
+            return null;
+        }
 
         String description = parms.get(XMR_DESCRIPTION);
         String amount = parms.get(XMR_AMOUNT);
@@ -197,10 +189,6 @@ public class BarcodeData {
                 Timber.d(ex.getLocalizedMessage());
                 return null; // we have an amount but its not a number!
             }
-        }
-        if ((paymentId != null) && !Wallet.isPaymentIdValid(paymentId)) {
-            Timber.d("paymentId invalid");
-            return null;
         }
 
         if (!Wallet.isAddressValid(address)) {
@@ -267,7 +255,7 @@ public class BarcodeData {
                 Timber.d("[%s] is not http url", bip70);
                 return null;
             }
-            return new BarcodeData(BarcodeData.Asset.BTC, null, null, bip70, null, description, null, Security.NORMAL);
+            return new BarcodeData(BarcodeData.Asset.BTC, null, null, bip70, description, null, Security.NORMAL);
         }
         if (!BitcoinAddressValidator.validate(address)) {
             Timber.d("BTC address (%s) invalid", address);
