@@ -103,7 +103,7 @@
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
     <string name="label_daemon">Удаленный узел</string>
-    <string name="status_wallet_loading">Загрузка кошелека &#8230;</string>
+    <string name="status_wallet_loading">Загрузка кошелька &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
     <string name="status_wallet_connecting">Подключение &#8230;</string>
@@ -388,5 +388,5 @@
 
     <string name="label_restoreheight">Восстановить высоту</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Запуск приложения Monero на %1$s</string>
 </resources>
