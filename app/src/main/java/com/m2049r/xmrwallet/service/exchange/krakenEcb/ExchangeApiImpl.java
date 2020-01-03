@@ -18,7 +18,7 @@
 
 package com.m2049r.xmrwallet.service.exchange.krakenEcb;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;

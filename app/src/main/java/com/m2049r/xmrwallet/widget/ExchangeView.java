@@ -21,7 +21,6 @@ package com.m2049r.xmrwallet.widget;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -37,11 +36,13 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.xmrwallet.util.ColorHelper;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.ArrayList;
@@ -178,9 +179,8 @@ public class ExchangeView extends LinearLayout {
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(R.color.trafficGray),
+                setColorFilter(getResources().getColor(ColorHelper.getThemedResourceId(getContext(), R.attr.colorPrimaryVariant)),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
-
 
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -203,12 +203,6 @@ public class ExchangeView extends LinearLayout {
                 if (position != 0) { // if not XMR, select XMR on other
                     sCurrencyA.setSelection(0, true);
                 }
-                parentView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ((TextView) parentView.getChildAt(0)).setTextColor(getResources().getColor(R.color.moneroGray));
-                    }
-                });
                 doExchange();
             }
 

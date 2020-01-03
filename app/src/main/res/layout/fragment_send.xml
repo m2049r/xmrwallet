@@ -35,7 +35,7 @@
 
         <Button
             android:id="@+id/bPrev"
-            style="@style/MoneroButton"
+            style="@style/MoneroButton.NoPadding"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -48,16 +48,16 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/gradientOrange"
-            app:activeColor="@color/white"
+            android:background="?android:attr/colorBackground"
+            app:activeColor="?attr/colorSecondary"
             app:activeDot="0"
             app:dotSize="12dp"
-            app:inactiveColor="@color/dotGray"
+            app:inactiveColor="?attr/colorSecondaryVariant"
             app:numberDots="3" />
 
         <Button
             android:id="@+id/bNext"
-            style="@style/MoneroButton"
+            style="@style/MoneroButton.NoPadding"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

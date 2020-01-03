@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -59,15 +58,13 @@
                 tools:text="2017-10-09 12:44:13 +0200" />
         </LinearLayout>
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cvXmrTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:visibility="gone"
-            card_view:cardCornerRadius="2dp"
-            card_view:cardElevation="8dp"
             card_view:contentPadding="8dp">
 
             <LinearLayout
@@ -80,10 +77,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawableStart="@drawable/ic_xmrto_32dp"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/label_send_btc_xmrto_info" />
+                    android:text="@string/label_send_btc_xmrto_info"
+                    card_view:drawableStartCompat="@drawable/ic_xmrto_32dp" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -105,7 +102,7 @@
                             android:gravity="start"
                             android:padding="8dp"
                             android:selectAllOnFocus="true"
-                            android:textColor="@color/gradientOrange"
+                            android:textColor="@color/gradientLeft"
                             android:textIsSelectable="true"
                             tools:text="1.008 BTC" />
                     </TableRow>
@@ -129,8 +126,8 @@
                             android:gravity="start"
                             android:padding="8dp"
                             android:selectAllOnFocus="true"
-                            android:text="mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9"
-                            android:textIsSelectable="true" />
+                            android:textIsSelectable="true"
+                            tools:text="mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9" />
                     </TableRow>
 
                     <TableRow>
@@ -151,14 +148,14 @@
                                 style="@style/MoneroText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/dotGray"
-                                android:drawableEnd="@drawable/ic_content_copy_white_24dp"
+                                android:background="?android:attr/colorBackground"
                                 android:drawablePadding="16dp"
                                 android:paddingStart="24dp"
                                 android:paddingTop="8dp"
                                 android:paddingEnd="8dp"
                                 android:paddingBottom="8dp"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorPrimary"
+                                card_view:drawableEndCompat="@drawable/ic_content_copy_24dp"
                                 tools:text="XMR.TO-d2KQ" />
                         </LinearLayout>
                     </TableRow>
@@ -166,7 +163,7 @@
                 </TableLayout>
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -226,20 +223,19 @@
                     android:padding="8sp"
                     android:text="@string/tx_notes" />
 
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputEditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etTxNotes"
                         style="@style/MoneroEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/moneroGray"
                         android:hint="@string/tx_notes_hint"
                         android:inputType="textMultiLine" />
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
             </TableRow>
 
             <TableRow>

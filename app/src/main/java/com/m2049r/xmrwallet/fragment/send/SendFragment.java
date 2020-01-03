@@ -18,13 +18,7 @@ package com.m2049r.xmrwallet.fragment.send;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.text.InputType;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -34,6 +28,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.m2049r.xmrwallet.OnBackPressedListener;
 import com.m2049r.xmrwallet.OnUriScannedListener;
@@ -93,8 +93,6 @@ public class SendFragment extends Fragment
     }
 
     private EditText etDummy;
-    private Drawable arrowPrev;
-    private Drawable arrowNext;
 
     private View llNavBar;
     private DotBar dotBar;
@@ -125,8 +123,6 @@ public class SendFragment extends Fragment
         dotBar = view.findViewById(R.id.dotBar);
         bPrev = view.findViewById(R.id.bPrev);
         bNext = view.findViewById(R.id.bNext);
-        arrowPrev = getResources().getDrawable(R.drawable.ic_navigate_prev_white_24dp);
-        arrowNext = getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp);
 
         ViewGroup llNotice = view.findViewById(R.id.llNotice);
         Notice.showAll(llNotice, ".*_send");
@@ -214,16 +210,16 @@ public class SendFragment extends Fragment
         CharSequence nextLabel = pagerAdapter.getPageTitle(position + 1);
         bNext.setText(nextLabel);
         if (nextLabel != null) {
-            bNext.setCompoundDrawablesWithIntrinsicBounds(null, null, arrowNext, null);
+            bNext.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_navigate_next_white_24dp, 0);
         } else {
-            bNext.setCompoundDrawables(null, null, null, null);
+            bNext.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
         CharSequence prevLabel = pagerAdapter.getPageTitle(position - 1);
         bPrev.setText(prevLabel);
         if (prevLabel != null) {
-            bPrev.setCompoundDrawablesWithIntrinsicBounds(arrowPrev, null, null, null);
+            bPrev.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_navigate_prev_white_24dp, 0, 0, 0);
         } else {
-            bPrev.setCompoundDrawables(null, null, null, null);
+            bPrev.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
     }
 

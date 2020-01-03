@@ -28,13 +28,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
@@ -51,7 +51,7 @@ import timber.log.Timber;
 public class ExchangeEditText extends LinearLayout {
 
     private double getEnteredAmount() {
-        String enteredAmount = etAmountA.getText().toString();
+        String enteredAmount = etAmountA.getEditText().getText().toString();
         try {
             return Double.parseDouble(enteredAmount);
         } catch (NumberFormatException ex) {
@@ -98,7 +98,7 @@ public class ExchangeEditText extends LinearLayout {
 
     public void setAmount(String nativeAmount) {
         if (nativeAmount != null) {
-            etAmountA.setText(nativeAmount);
+            etAmountA.getEditText().setText(nativeAmount);
             tvAmountB.setText(null);
             if (sCurrencyA.getSelectedItemPosition() != 0)
                 sCurrencyA.setSelection(0, true); // set native currency & trigger exchange
@@ -116,12 +116,12 @@ public class ExchangeEditText extends LinearLayout {
     public String getNativeAmount() {
         if (isExchangeInProgress()) return null;
         if (getCurrencyA() == 0)
-            return getCleanAmountString(etAmountA.getText().toString());
+            return getCleanAmountString(etAmountA.getEditText().getText().toString());
         else
             return getCleanAmountString(tvAmountB.getText().toString());
     }
 
-    EditText etAmountA;
+    TextInputLayout etAmountA;
     TextView tvAmountB;
     Spinner sCurrencyA;
     Spinner sCurrencyB;
@@ -188,7 +188,7 @@ public class ExchangeEditText extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         etAmountA = findViewById(R.id.etAmountA);
-        etAmountA.addTextChangedListener(new TextWatcher() {
+        etAmountA.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 doExchange();
@@ -223,7 +223,7 @@ public class ExchangeEditText extends LinearLayout {
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(R.color.trafficGray),
+                setColorFilter(getResources().getColor(R.color.progress_circle),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -363,7 +363,7 @@ public class ExchangeEditText extends LinearLayout {
 
     boolean prepareExchange() {
         Timber.d("prepareExchange()");
-        String enteredAmount = etAmountA.getText().toString();
+        String enteredAmount = etAmountA.getEditText().getText().toString();
         if (!enteredAmount.isEmpty()) {
             String cleanAmount = getCleanAmountString(enteredAmount);
             Timber.d("cleanAmount = %s", cleanAmount);

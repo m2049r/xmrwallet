@@ -19,24 +19,24 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
@@ -242,9 +242,9 @@ public class TxFragment extends Fragment {
         } else if (info.isPending) {
             setTxColour(ContextCompat.getColor(getContext(), R.color.tx_pending));
         } else if (info.direction == TransactionInfo.Direction.Direction_In) {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_green));
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_plus));
         } else {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_red));
+            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_minus));
         }
         Set<String> destinations = new HashSet<>();
         StringBuffer sb = new StringBuffer();

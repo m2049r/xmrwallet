@@ -77,8 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="?android:selectableItemBackground"
-                android:enabled="false"
-                android:src="@drawable/ic_content_nocopy_black_24dp" />
+                android:src="@drawable/ic_content_copy_24dp" />
         </LinearLayout>
 
         <TextView

@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.xmrto.network;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
 import com.m2049r.xmrwallet.xmrto.api.QueryOrderParameters;

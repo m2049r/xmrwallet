@@ -2,19 +2,19 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
+    <ImageButton
         android:id="@+id/bCredits"
-        style="@style/ToolBarStyle.ActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_favorite_white_24dp"
-        android:text="@string/label_credits" />
+        android:background="@android:color/transparent"
+        android:padding="4dp"
+        android:src="@drawable/ic_favorite_white_24dp" />
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp">
 
         <ImageView
             android:id="@+id/toolbarImage"

@@ -16,7 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,14 +26,6 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,6 +36,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.UserNotes;
@@ -58,6 +60,7 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.ColorHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -312,11 +315,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     private void updateStreetMode() {
-        if (isStreetMode()) {
-            toolbar.setBackgroundResource(R.drawable.backgound_toolbar_streetmode);
-        } else {
-            showNet();
-        }
         invalidateOptionsMenu();
     }
 
@@ -426,10 +424,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
                 break;
             case NetworkType_Testnet:
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             case NetworkType_Stagenet:
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
@@ -667,7 +665,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             haveWallet = true;
             invalidateOptionsMenu();
 
-            enableStreetMode(requestStreetMode);
+            if (requestStreetMode) onEnableStreetMode();
 
             final WalletFragment walletFragment = (WalletFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -872,7 +870,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
         builder.setMessage(getString(R.string.details_alert_message))
                 .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
@@ -1093,7 +1091,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         final LayoutInflater li = LayoutInflater.from(this);
         final View promptsView = li.inflate(R.layout.prompt_rename, null);
 
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
         alertDialogBuilder.setView(promptsView);
 
         final EditText etRename = promptsView.findViewById(R.id.etRename);

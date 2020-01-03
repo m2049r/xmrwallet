@@ -18,7 +18,6 @@ package com.m2049r.xmrwallet.util;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -38,8 +37,6 @@ import android.os.Build;
 import android.os.CancellationSignal;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.content.ContextCompat;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.text.Editable;
@@ -55,6 +52,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
@@ -424,7 +426,7 @@ public class Helper {
         LayoutInflater li = LayoutInflater.from(context);
         final View promptsView = li.inflate(R.layout.prompt_password, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(context);
         alertDialogBuilder.setView(promptsView);
 
         final TextInputLayout etPassword = promptsView.findViewById(R.id.etPassword);

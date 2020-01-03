@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,8 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
@@ -43,8 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="?android:selectableItemBackground"
-                android:clickable="false"
-                android:src="@drawable/ic_content_nocopy_black_24dp" />
+                android:src="@drawable/ic_content_copy_24dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,19 +64,13 @@
                 android:textAlignment="center"
                 tools:text="9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/bSubaddress"
-                style="@style/MoneroText.Button.Small"
                 android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="56dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="0"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:drawableTop="@drawable/ic_settings_orange_24dp"
-                android:text="@string/send_generate_paymentid_hint"
-                android:textColor="@color/moneroGray"
-                android:visibility="visible" />
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/ic_refresh_24dp" />
 
         </LinearLayout>
 
@@ -88,13 +82,13 @@
             android:layout_marginBottom="16dp"
             android:orientation="vertical" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etNotes"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 style="@style/MoneroEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,24 +96,24 @@
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:textAlignment="textStart" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cvQrCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_above="@id/tvNfc"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="16dp"
+                android:backgroundTint="#ffffffff"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                card_view:cardCornerRadius="2dp"
-                card_view:cardElevation="8dp"
                 card_view:contentPadding="4dp">
 
                 <TextView
@@ -128,20 +122,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawableStart="@drawable/ic_info_outline_gray_24dp"
                     android:drawablePadding="4dp"
                     android:text="@string/label_receive_info_gen_qr_code"
                     android:textAlignment="center"
                     android:textSize="16sp"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    card_view:drawableStartCompat="@drawable/ic_info_outline_gray_24dp" />
 
                 <ImageView
                     android:id="@+id/qrCode"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:background="#00000000" />
-            </android.support.v7.widget.CardView>
+                    android:adjustViewBounds="true" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvNfc"
@@ -149,11 +142,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:drawableStart="@drawable/ic_nfc_black_24dp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="@string/nfc_tag_tap"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:drawableStartCompat="@drawable/ic_nfc_black_24dp" />
         </RelativeLayout>
     </LinearLayout>
 

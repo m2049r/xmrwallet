@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="LinearLayout">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="4dp">
 
         <Spinner
             android:id="@+id/sCurrencyA"
@@ -17,18 +16,24 @@
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
-            android:minWidth="56dp" />
+            android:minWidth="56dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/etAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.m2049r.xmrwallet.widget.CTextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etAmount"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:counterEnabled="false"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sCurrencyA"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 style="@style/MoneroEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,25 +43,25 @@
                 android:inputType="numberDecimal"
                 tools:text="87.00000" />
 
-        </com.m2049r.xmrwallet.widget.CTextInputLayout>
-    </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="4dp">
 
         <Spinner
             android:id="@+id/sCurrencyB"
-            style="@style/MoneroSpinnerGray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:entries="@array/currency"
             android:gravity="center"
             android:minWidth="56dp"
-            android:textAlignment="center" />
+            app:layout_constraintBaseline_toBaselineOf="@id/tvAmountB"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvAmountB"
@@ -65,18 +70,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
             android:layout_marginStart="16dp"
-            android:layout_weight="3"
             android:padding="4dp"
             android:singleLine="true"
             android:text="--"
+            app:layout_constraintEnd_toStartOf="@id/flExchange"
+            app:layout_constraintStart_toEndOf="@id/sCurrencyB"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="87.00000" />
 
         <FrameLayout
+            android:id="@+id/flExchange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="8sp"
             android:layout_marginEnd="0sp"
-            android:layout_marginStart="8sp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvAmountB"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/evExchange"
@@ -94,7 +106,7 @@
                 android:visibility="invisible" />
         </FrameLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>
 

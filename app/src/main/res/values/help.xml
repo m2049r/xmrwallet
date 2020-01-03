@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="help_create_new"><![CDATA[
         <h1>Create Wallet - New</h1>
         <p>If you need a new Monero Address!</p>

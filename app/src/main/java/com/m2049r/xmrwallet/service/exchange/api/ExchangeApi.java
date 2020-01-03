@@ -18,7 +18,7 @@
 package com.m2049r.xmrwallet.service.exchange.api;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 
 public interface ExchangeApi {

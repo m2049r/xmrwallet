@@ -1,43 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ToolBarStyle.Base" parent="">
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-    </style>
-
-    <style name="ToolBarStyle" parent="ToolBarStyle.Base" />
-
-    <style name="ToolBarStyle.Event" parent="ToolBarStyle">
-        <item name="titleTextAppearance">@style/TextAppearance.Widget.Event.Toolbar.Title</item>
-    </style>
-
-    <style name="ToolBarStyle.ActionButton" parent="Widget.AppCompat.ActionButton">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.Widget.Event.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <!-- Text styling can be done here-->
-    </style>
-
-
-    <style name="MyMaterialTheme" parent="Theme.AppCompat.Light">
+    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.DayNight">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimary">@color/moneroText</item>
-        <item name="colorAccent">@color/gradientPink</item>
+        <item name="colorPrimary">@color/monerujoPrimary</item>
+        <item name="colorPrimaryVariant">@color/monerujoPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/monerujoBackground</item>
+        <item name="colorSecondary">@color/monerujoPink</item>
+        <item name="colorSecondaryVariant">@color/monerujoPrimary</item>
+        <item name="colorOnSecondary">@color/monerujoBackground</item>
+        <item name="colorError">@color/monerujoOrange</item>
+        <item name="colorOnError">@color/monerujoPrimary</item>
+        <item name="colorSurface">@color/monerujoBackground</item>
+        <item name="colorOnSurface">@color/monerujoPrimary</item>
+        <item name="android:colorBackground">@color/monerujoBackground</item>
+        <item name="colorOnBackground">@color/monerujoE</item>
+        <item name="android:textColorPrimary">@color/monerujoPrimary</item>
+        <item name="android:textColorSecondary">@color/monerujoPrimary</item>
 
-        <item name="android:spinnerItemStyle">@style/MoneroSpinnerItem</item>
-        <item name="android:spinnerStyle">@style/MoneroSpinner</item>
+        <item name="android:statusBarColor">@color/gradientTop</item>
+
+        <item name="materialCardViewStyle">@style/AppCard</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+
     </style>
 
+    <style name="MonerujoToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="materialThemeOverlay">@style/MonerujoToolbarOverlay</item>
+    </style>
+
+    <style name="MonerujoToolbarOverlay">
+        <item name="colorControlNormal">@color/monerujoToolbarText</item>
+    </style>
+
+    <style name="AppCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">8dp</item>
+        <item name="cardCornerRadius">1dp</item>
+    </style>
+
+    <style name="AppButton" parent="@style/Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/MaterialButtonShapeAppearanceOverlay</item>
+    </style>
+
+    <style name="MaterialButtonShapeAppearanceOverlay">
+        <item name="cornerSize">0dp</item>
+    </style>
+
+
     <style name="MoneroLabel" parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:textColor">?colorPrimary</item>
-        <item name="android:textColorHint">@color/moneroText</item>
+        <!--item name="android:textColor">?attr/colorPrimaryVariant</item-->
+        <!--item name="android:textColorHint">@color/moneroText</item-->
     </style>
 
     <style name="MoneroLabel.Small">
@@ -45,7 +59,7 @@
     </style>
 
     <style name="MoneroLabel.Gray">
-        <item name="android:textColor">@color/moneroGray</item>
+        <!--item name="android:textColor">@color/moneroGray</item-->
     </style>
 
     <style name="MoneroLabel.Caps">
@@ -53,111 +67,111 @@
     </style>
 
     <style name="MoneroLabel.Caps.White">
-        <item name="android:textColor">@color/moneroWhite</item>
+        <!--item name="android:textColor">@color/moneroWhite</item-->
     </style>
 
     <style name="MoneroLabel.Caps.Black">
-        <item name="android:textColor">@color/moneroBlack</item>
+        <!--item name="android:textColor">@color/moneroBlack</item_-->
     </style>
 
     <style name="MoneroText.Funds">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/moneroFab</item>
+        <!--item name="android:textColor">@color/moneroFab</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.Info">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/moneroFab</item>
+        <!--item name="android:textColor">@color/moneroFab</item-->
     </style>
 
     <style name="MoneroText.Balance">
         <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/moneroBlack</item>
+        <!--item name="android:textColor">@color/moneroBlack</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.Balance.Orange">
-        <item name="android:textColor">@color/gradientOrange</item>
+        <!--item name="android:textColor">@color/gradientOrange</item-->
     </style>
 
     <style name="MoneroText.Unconfirmed">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/moneroGray</item>
+        <!--item name="android:textColor">@color/moneroGray</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.PosAmount">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/moneroBlack</item>
+        <!--item name="android:textColor">@color/moneroBlack</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText.PosFee">
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">#FF898989</item>
+        <!--item name="android:textColor">#FF898989</item-->
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="MoneroText.PosNote">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">#FF4A4A4A</item>
+        <!--item name="android:textColor">#FF4A4A4A</item-->
         <item name="android:textStyle">italic</item>
     </style>
 
     <style name="MoneroText.PosDate">
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">#FF616161</item>
+        <!--item name="android:textColor">#FF616161</item-->
         <item name="android:textStyle">normal</item>
     </style>
 
     <!-- textSize is in dp here to match the layout of the numpad-->
     <style name="MoneroLabel.NumPad">
         <item name="android:textSize">36sp</item>
-        <item name="android:textColor">@color/moneroBlack</item>
+        <!--item name="android:textColor">@color/moneroBlack</item-->
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="MoneroLabel.Title">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/monerujoToolbarText</item>
     </style>
 
     <style name="MoneroLabel.Subtitle">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/moneroWhite</item>
+        <item name="android:textColor">@color/monerujoToolbarText</item>
     </style>
 
     <style name="MoneroLabel.Heading">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/moneroFab</item>
+        <!--item name="android:textColor">@color/moneroFab</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroLabel.Heading.Donation">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/gradientPink</item>
+        <!--item name="android:textColor">@color/gradientPink</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroFab" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/moneroFab</item>
+        <!--item name="android:textColor">@color/moneroFab</item-->
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MoneroText" parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:textColor">?colorPrimary</item>
-        <item name="android:textColorHint">@color/moneroText</item>
+        <!--item name="android:textColor">@color/darkMain</item-->
+        <!--item name="android:textColorHint">@color/moneroText</item-->
     </style>
 
     <style name="MoneroText.Gray">
-        <item name="android:textColor">@color/moneroGray</item>
+        <!--item name="android:textColor">@color/moneroGray</item-->
     </style>
 
     <style name="MoneroText.Black">
-        <item name="android:textColor">@color/moneroBlack</item>
+        <!--item name="android:textColor">@color/moneroBlack</item-->
     </style>
 
     <style name="MoneroText.Monospace">
@@ -198,7 +212,7 @@
 
     <style name="MoneroText.Success">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/dotGray</item>
+        <!--item name="android:textColor">@color/dotGray</item-->
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -209,7 +223,7 @@
 
     <style name="MoneroText.Button" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/gradientOrange</item>
+        <!--item name="android:textColor">@color/gradientOrange</item-->
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -218,41 +232,66 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="MoneroButton" parent="@style/Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_selector</item>
-        <item name="android:textColor">@color/moneroWhite</item>
+    <style name="MoneroButton" parent="@style/Widget.MaterialComponents.Button">
+        <!--item name="android:background">@drawable/button_selector</item-->
+        <!--item name="android:textColor">@color/moneroWhite</item-->
         <item name="android:textAppearance">@style/MoneroLabel</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <style name="MoneroButton.Green">
         <item name="android:background">@drawable/button_selector_green</item>
     </style>
 
+    <style name="MoneroButton.Small">
+        <item name="android:textSize">12sp</item>
+
+        <!--item name="android:textStyle">bold</item-->
+    </style>
+
+    <style name="MoneroButton.NoPadding" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <!--item name="android:textStyle">bold</item-->
+    </style>
+
+    <style name="MoneroButton.NoPadding.Smaller">
+        <item name="android:textSize">10sp</item>
+        <!--item name="android:textStyle">bold</item-->
+    </style>
+
+    <style name="MoneroButton.Wallet" />
+
     <style name="MoneroButton.Take">
-        <item name="android:background">@color/take</item>
+        <!--item name="android:background">@color/take</item-->
     </style>
 
     <style name="MoneroButton.Give">
-        <item name="android:background">@color/give</item>
+        <!--item name="android:background">@color/give</item-->
     </style>
 
     <style name="MoneroEdit" parent="MoneroText">
-        <item name="android:textColor">?colorPrimary</item>
-        <item name="android:backgroundTint">@color/gradientPink</item>
+        <!--item name="android:textColor">?colorPrimary</item-->
+        <!--item name="android:backgroundTint">@color/gradientPink</item-->
     </style>
 
 
-    <style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
+    <!--style name="MoneroSpinner" parent="@style/Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/backgound_spinner</item>
-    </style>
+    </style-->
 
     <style name="MoneroSpinnerItem" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textAppearance">@style/MoneroTextAppearanceSpinnerItem</item>
     </style>
 
     <style name="MoneroTextAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/gradientOrange</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="MoneroSpinnerItem.Balance">
@@ -261,11 +300,17 @@
     </style>
 
 
-    <style name="MoneroSpinnerGray" parent="@style/Widget.AppCompat.Spinner">
+    <!--style name="MoneroSpinnerGray" parent="@style/Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/backgound_spinner_gray</item>
-    </style>
+    </style-->
 
     <style name="ExtendedFAB" parent="MoneroButton">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="MoneroIconButton.Small" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?colorPrimaryVariant</item>
+        <item name="iconTint">?colorPrimaryVariant</item>
     </style>
 </resources>

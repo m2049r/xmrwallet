@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llNotice"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    android:background="@color/moneroBlue"
+    android:background="@color/monerujoBlue"
     android:orientation="horizontal">
 
     <TextView
@@ -16,10 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:drawablePadding="8dp"
-        android:drawableStart="@drawable/ic_info_white_24dp"
         android:gravity="start|center_vertical"
         android:padding="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/monerujoToolbarText"
+        app:drawableStartCompat="@drawable/ic_info_white_24dp"
         tools:text="This is an important notice!" />
 
     <ImageButton

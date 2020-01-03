@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.fragment.send;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.m2049r.xmrwallet.layout.SpendViewPager;
 

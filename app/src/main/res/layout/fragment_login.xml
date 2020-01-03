@@ -58,8 +58,8 @@
                         style="@style/MoneroText.PosAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_refresh_black_24dp"
                         android:drawablePadding="8dp"
+                        app:drawableStartCompat="@drawable/ic_refresh_black_24dp"
                         tools:text="monero-v9.monerujo.io" />
 
                     <TextView
@@ -81,7 +81,7 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
                 android:padding="12dp"
-                android:src="@drawable/ic_search_orange_24dp" />
+                android:src="@drawable/ic_search_24dp" />
         </RelativeLayout>
 
         <EditText
@@ -98,26 +98,35 @@
             android:padding="8dp"
             android:text="@string/label_login_wallets" />
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/ivGunther"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
                 android:layout_gravity="center"
-                android:padding="48dp" />
+                android:scaleType="centerCrop" />
 
-            <android.support.v7.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+            <TextView
+                android:id="@+id/tvGuntherSays"
+                style="@style/MoneroText.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="128dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/gunther_says" />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:paddingBottom="72dp"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_wallet" />
 
         </FrameLayout>

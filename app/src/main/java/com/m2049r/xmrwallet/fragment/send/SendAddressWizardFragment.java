@@ -19,8 +19,6 @@ package com.m2049r.xmrwallet.fragment.send;
 import android.content.Context;
 import android.nfc.NfcManager;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
@@ -36,6 +34,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
@@ -86,7 +85,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private EditText etDummy;
     private TextInputLayout etAddress;
     private TextInputLayout etNotes;
-    private CardView cvScan;
+    private View cvScan;
     private View tvPaymentIdIntegrated;
     private TextView tvXmrTo;
     private View llXmrTo;
