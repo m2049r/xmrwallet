@@ -7,7 +7,7 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 201
+        versionCode 202
         versionName "1.12.12 'Caerbannog'"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
