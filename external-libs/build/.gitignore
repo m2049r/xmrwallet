@@ -1,0 +1,3 @@
+artifacts/
+distfiles/
+.docker_image
