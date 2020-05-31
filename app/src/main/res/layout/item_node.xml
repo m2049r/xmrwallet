@@ -18,7 +18,7 @@
         android:padding="12dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        android:src="@drawable/ic_bookmark_border_24dp" />
+        android:src="@drawable/ic_favorite_border_24dp" />
 
     <LinearLayout
         android:id="@+id/llNode"
