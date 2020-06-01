@@ -34,4 +34,9 @@
         android:title="@string/menu_info"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_rescan"
+        android:orderInCategory="600"
+        android:title="@string/menu_rescan"
+        app:showAsAction="never" />
 </menu>
