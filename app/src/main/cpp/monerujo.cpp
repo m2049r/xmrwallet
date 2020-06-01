@@ -785,7 +785,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_getDaemonBlockChainTargetHeight(JNIEnv *e
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_isSynchronized(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_isSynchronizedJ(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
     return static_cast<jboolean>(wallet->synchronized());
 }
@@ -908,6 +908,16 @@ Java_com_m2049r_xmrwallet_model_Wallet_refreshAsync(JNIEnv *env, jobject instanc
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
     wallet->refreshAsync();
 }
+
+//TODO virtual bool rescanBlockchain() = 0;
+
+//virtual void rescanBlockchainAsync() = 0;
+JNIEXPORT void JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_rescanBlockchainAsync(JNIEnv *env, jobject instance) {
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    wallet->rescanBlockchainAsync();
+}
+
 
 //TODO virtual void setAutoRefreshInterval(int millis) = 0;
 //TODO virtual int autoRefreshInterval() const = 0;

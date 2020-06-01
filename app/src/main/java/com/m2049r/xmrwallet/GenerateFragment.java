@@ -438,7 +438,7 @@ public class GenerateFragment extends Fragment {
             height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
         } catch (ParseException ex) {
         }
-        if (height <= 0)
+        if ((height <= 0) && (restoreHeight.length() == 8))
             try {
                 // is it a date without dashes?
                 SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
