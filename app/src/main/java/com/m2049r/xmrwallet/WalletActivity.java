@@ -217,6 +217,20 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         releaseWakeLock();
     }
 
+    private void onWalletRescan() {
+        try {
+            final WalletFragment walletFragment = (WalletFragment)
+                    getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
+            getWallet().rescanBlockchainAsync();
+            synced = false;
+            walletFragment.unsync();
+            invalidateOptionsMenu();
+        } catch (ClassCastException ex) {
+            Timber.d(ex.getLocalizedMessage());
+            // keep calm and carry on
+        }
+    }
+
     @Override
     protected void onStop() {
         Timber.d("onStop()");
@@ -243,7 +257,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem renameItem = menu.findItem(R.id.action_rename);
         if (renameItem != null)
-            renameItem.setVisible(hasWallet() && getWallet().isSynchronized());
+            renameItem.setEnabled(hasWallet() && getWallet().isSynchronized());
         MenuItem streetmodeItem = menu.findItem(R.id.action_streetmode);
         if (streetmodeItem != null)
             if (isStreetMode()) {
@@ -251,12 +265,18 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             } else {
                 streetmodeItem.setIcon(R.drawable.gunther_24dp);
             }
+        final MenuItem rescanItem = menu.findItem(R.id.action_rescan);
+        if (rescanItem != null)
+            rescanItem.setEnabled(isSynced());
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_rescan:
+                onWalletRescan();
+                return true;
             case R.id.action_info:
                 onWalletDetails();
                 return true;

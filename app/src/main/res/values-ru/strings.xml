@@ -389,4 +389,6 @@
     <string name="label_restoreheight">Восстановить высоту</string> <!-- Restore Height -->
 
     <string name="toast_ledger_start_app">Запуск приложения Monero на %1$s</string>
+
+    <string name="menu_rescan">Rescan!</string>
 </resources>
