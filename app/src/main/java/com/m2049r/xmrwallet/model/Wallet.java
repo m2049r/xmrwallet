@@ -248,7 +248,13 @@ public class Wallet {
 
     public native long getDaemonBlockChainTargetHeight();
 
-    public native boolean isSynchronized();
+    public native boolean isSynchronizedJ();
+
+    public boolean isSynchronized() {
+        final long daemonHeight = getDaemonBlockChainHeight();
+        if (daemonHeight == 0) return false;
+        return isSynchronizedJ() && (getBlockChainHeight() == daemonHeight);
+    }
 
     public static native String getDisplayAmount(long amount);
 
@@ -277,6 +283,8 @@ public class Wallet {
     public native boolean refresh();
 
     public native void refreshAsync();
+
+    public native void rescanBlockchainAsync();
 
 //TODO virtual void setAutoRefreshInterval(int millis) = 0;
 //TODO virtual int autoRefreshInterval() const = 0;
