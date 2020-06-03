@@ -111,7 +111,7 @@
     <string name="status_wallet_node_invalid">Помилка віддаленого вузла!\nСпробуйте ще раз.</string>
     <string name="status_wallet_connect_ioex">Неможливо підключиться до віддаленого вузла!\nПопробуйте пізніше.</string>
 
-    <string name="status_wallet_disconnected">Роз&apos;єднано</string>
+    <string name="status_wallet_disconnected">Роз\'єднано</string>
 
     <string name="status_transaction_failed">Помилка транзакції: %1$s</string>
 
@@ -163,7 +163,7 @@
     <string name="message_exchange_failed">Неможливо отримати курс обміну!\nВикористовуйте XMR/XMR або спробуйте ще раз</string>
 
     <string name="generate_title">Створити гаманець</string>
-    <string name="generate_name_hint">Ім&apos;я гаманця</string>
+    <string name="generate_name_hint">Ім\'я гаманця</string>
     <string name="generate_password_hint">Пароль гаманця</string>
     <string name="generate_fingerprint_hint">Дозволити відкрити гаманець за допомогою відбитка пальця</string>
     <string name="generate_fingerprint_warn"><![CDATA[
@@ -183,7 +183,7 @@
     <string name="generate_buttonGenerate">Зробіть мені вже гаманець!</string>
     <string name="generate_button_accept">Я ввів мнемонічну фразу</string>
 
-    <string name="generate_wallet_name">Придумай мені ім&apos;я!</string>
+    <string name="generate_wallet_name">Придумай мені ім\'я!</string>
     <string name="generate_wallet_exists">Такий гаманець існує!</string>
     <string name="generate_wallet_dot">Не може починатися з .</string>
     <string name="generate_wallet_creating">Створення гаманця</string>
@@ -214,9 +214,9 @@
 
     <string name="send_amount_btc_xmr">%1$s (приблизно)</string>
 
-    <string name="send_paymentid_hint">ID платежу (необов&apos;язково)</string>
+    <string name="send_paymentid_hint">ID платежу (необов\'язково)</string>
     <string name="send_amount_hint">0.00</string>
-    <string name="send_notes_hint">Персональна замітка (необов&apos;язково)</string>
+    <string name="send_notes_hint">Персональна замітка (необов\'язково)</string>
     <string name="send_generate_paymentid_hint">Генерація</string>
     <string name="send_send_label">Витратити мої солодкі Moneroj</string>
     <string name="send_send_timed_label">Витратити мої солодкі Moneroj (%1$s)</string>
@@ -259,7 +259,7 @@
     <string name="tx_fee">Комісія</string>
     <string name="tx_transfers">Перекази</string>
     <string name="tx_notes">Замітки</string>
-    <string name="tx_notes_hint">(необов&apos;язково)</string>
+    <string name="tx_notes_hint">(необов\'язково)</string>
     <string name="tx_button_notes">Збережено</string>
     <string name="tx_notes_set_failed">Помилка збереження замітки</string>
     <string name="tx_title">Детально</string>
@@ -326,7 +326,7 @@
     <string name="nfc_tag_read_success">Читання мітки завершено успішно</string>
     <string name="nfc_tag_tap">NFC доступний!</string>
 
-    <string name="receive_desc_hint">Опис (необов&apos;язково)</string>
+    <string name="receive_desc_hint">Опис (необов\'язково)</string>
 
     <string name="send_address_not_openalias">Адреса OpenAlias недоступна</string>
     <string name="send_address_openalias">OpenAlias безпечний &#x2714;</string>
@@ -341,10 +341,10 @@
     <string name="info_nodes_enabled">Node-o-matiC включений, натисніть щоб отримати більше інформації.</string>
     <string name="node_height">Останній блок: %1$s</string>
     <string name="label_nodes">Вузли</string>
-    <string name="node_name_hint">Ім&apos;я вузла (опційно)</string>
-    <string name="node_address_hint">Ім&apos;я хоста</string>
+    <string name="node_name_hint">Ім\'я вузла (опційно)</string>
+    <string name="node_address_hint">Ім\'я хоста</string>
     <string name="node_port_hint">Порт</string>
-    <string name="node_user_hint">Ім&apos;я користувача (опційно)</string>
+    <string name="node_user_hint">Ім\'я користувача (опційно)</string>
     <string name="node_pass_hint">Пароль (опційно)</string>
     <string name="node_host_unresolved">Не вдається підключитися до вузлу</string>
     <string name="node_host_empty">Нам це потрібно!</string>
@@ -352,8 +352,8 @@
     <string name="node_port_range">Повинно бути 1&#8211;65535</string>
     <string name="node_fab_add">Добавити вузол</string>
     <string name="node_refresh_hint">Натисніть, щоб обновити!</string>
-    <string name="node_test_error">ПОМИЛКА З&apos;ЄДНАННЯ %1$d</string>
-    <string name="node_general_error">ПОМИЛКА З&apos;ЄДНАННЯ</string>
+    <string name="node_test_error">ПОМИЛКА З\'ЄДНАННЯ %1$d</string>
+    <string name="node_general_error">ПОМИЛКА З\'ЄДНАННЯ</string>
     <string name="node_auth_error">ПОМИЛКА АУТЕНТИФІКАЦІЇ</string>
     <string name="node_result_label">Результат Тестування:</string>
     <string name="node_result">Висота: %1$s (v%2$d), Пінг: %3$.0fms, IP: %4$s</string>
@@ -382,7 +382,7 @@
 
     <string name="menu_ledger_seed">Конвертувати фразу Ledger</string>
     <string name="prompt_ledger_seed">Словесна фраза Ledger</string>
-    <string name="prompt_ledger_phrase">Пароль Ledger (необов&apos;язково)</string>
+    <string name="prompt_ledger_phrase">Пароль Ledger (необов\'язково)</string>
     <string name="bad_ledger_seed">Помилка Ledger фрази!</string>
     <string name="prompt_ledger_seed_warn">Вводячи сюди Ledger фразу являється серйозною загрозою для вашої безпеки!</string>
 
