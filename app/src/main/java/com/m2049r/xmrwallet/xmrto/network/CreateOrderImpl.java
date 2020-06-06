@@ -113,7 +113,8 @@ class CreateOrderImpl implements CreateOrder {
 
     static JSONObject createRequest(final double amount, final String address) throws JSONException {
         final JSONObject jsonObject = new JSONObject();
-        jsonObject.put("btc_amount", amount);
+        jsonObject.put("amount", amount);
+        jsonObject.put("amount_currency", "BTC");
         jsonObject.put("btc_dest_address", address);
         return jsonObject;
     }

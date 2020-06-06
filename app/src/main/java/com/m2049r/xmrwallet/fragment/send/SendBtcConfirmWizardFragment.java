@@ -457,8 +457,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         }
         showProgress(3, getString(R.string.label_send_progress_create_tx));
         TxData txData = sendListener.getTxData();
-        txData.setDestinationAddress(xmrtoStatus.getXmrReceivingSubaddress());
-        txData.setAmount(Wallet.getAmountFromDouble(xmrtoStatus.getXmrAmountTotal()));
+        txData.setDestinationAddress(xmrtoStatus.getReceivingSubaddress());
+        txData.setAmount(Wallet.getAmountFromDouble(xmrtoStatus.getIncomingAmountTotal()));
         getActivityCallback().onPrepareSend(xmrtoStatus.getUuid(), txData);
     }
 
@@ -572,22 +572,22 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                     NumberFormat df = NumberFormat.getInstance(Locale.US);
                     df.setMaximumFractionDigits(12);
                     String btcAmount = df.format(status.getBtcAmount());
-                    String xmrAmountTotal = df.format(status.getXmrAmountTotal());
+                    String xmrAmountTotal = df.format(status.getIncomingAmountTotal());
                     tvTxBtcAmount.setText(getString(R.string.text_send_btc_amount, btcAmount, xmrAmountTotal));
-                    String xmrPriceBtc = df.format(status.getXmrPriceBtc());
+                    String xmrPriceBtc = df.format(status.getIncomingPriceBtc());
                     tvTxBtcRate.setText(getString(R.string.text_send_btc_rate, xmrPriceBtc));
 
-                    double calcRate = status.getBtcAmount() / status.getXmrPriceBtc();
-                    Timber.i("Rates: %f / %f", calcRate, status.getXmrPriceBtc());
+                    double calcRate = status.getBtcAmount() / status.getIncomingPriceBtc();
+                    Timber.d("Rates: %f / %f", calcRate, status.getIncomingPriceBtc());
 
                     tvTxBtcAddress.setText(status.getBtcDestAddress()); // TODO test if this is different?
 
-                    Timber.i("Expires @ %s, in %s seconds", status.getExpiresAt().toString(), status.getSecondsTillTimeout());
+                    Timber.d("Expires @ %s, in %s seconds", status.getExpiresAt().toString(), status.getSecondsTillTimeout());
 
-                    Timber.i("Status = %s", status.getState().toString());
+                    Timber.d("Status = %s", status.getState().toString());
                     tvTxXmrToKey.setText(status.getUuid());
 
-                    Timber.d("AmountRemaining=%f, XmrAmountTotal=%f", status.getXmrAmountRemaining(), status.getXmrAmountTotal());
+                    Timber.d("AmountRemaining=%f, XmrAmountTotal=%f", status.getRemainingAmountIncoming(), status.getIncomingAmountTotal());
                     hideProgress();
                     startSendTimer();
                     prepareSend();

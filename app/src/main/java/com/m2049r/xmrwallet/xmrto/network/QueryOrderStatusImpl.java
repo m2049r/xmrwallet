@@ -42,23 +42,17 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
     private String btcDestAddress; // "btc_dest_address": "<requested_destination_address_as_string>",
     private String uuid; // "uuid": "<unique_order_identifier_as_12_character_string>"
     // the following are only returned if the state is "after" TO_BE_CREATED
-    private int btcNumConfirmations; // "btc_num_confirmations": <btc_num_confirmations_as_integer>,
-    private int btcNumConfirmationsBeforePurge; // "btc_num_confirmations_before_purge": <btc_num_confirmations_before_purge_as_integer>,
-    private String btcTransactionId; // "btc_transaction_id": "<btc_transaction_id_as_string>",
+    //private int btcNumConfirmations; // "btc_num_confirmations": <btc_num_confirmations_as_integer>,
+    private int btcNumConfirmationsThreshold; // "btc_num_confirmations_threshold": <btc_num_confirmations_threshold_as_integer>,
     private Date createdAt; // "created_at": "<timestamp_as_string>",
     private Date expiresAt; // "expires_at": "<timestamp_as_string>",
     private int secondsTillTimeout; // "seconds_till_timeout": <seconds_till_timeout_as_integer>,
-    private double xmrAmountTotal; // "xmr_amount_total": <amount_in_xmr_for_this_order_as_float>,
-    private double xmrAmountRemaining; // "xmr_amount_remaining": <amount_in_xmr_that_the_user_must_still_send_as_float>,
-    private int xmrNumConfirmationsRemaining; // "xmr_num_confirmations_remaining": <num_xmr_confirmations_remaining_before_bitcoins_will_be_sent_as_integer>,
-    private double xmrPriceBtc; // "xmr_price_btc": <price_of_1_btc_in_xmr_as_offered_by_service_as_float>,
-    private String xmrReceivingSubaddress; // <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
-    private String xmrReceivingAddress; // "xmr_receiving_address": "xmr_old_style_address_user_can_send_funds_to_as_string",
-    private String xmrReceivingIntegratedAddress; // "xmr_receiving_integrated_address": "xmr_integrated_address_user_needs_to_send_funds_to_as_string",
-    private int xmrRecommendedMixin; // "xmr_recommended_mixin": <xmr_recommended_mixin_as_integer>,
-    private double xmrRequiredAmount; // "xmr_required_amount": <xmr_amount_user_needs_to_send_as_float>,
-    private String xmrRequiredPaymentIdLong; // "xmr_required_payment_id_long": "xmr_payment_id_user_needs_to_include_when_using_old_stlye_address_as_string"
-    private String xmrRequiredPaymentIdShort; // "xmr_required_payment_id_short": "xmr_payment_id_included_in_integrated_address_as_string"
+    private double incomingAmountTotal; // "incoming_amount_total": <amount_in_incoming_currency_for_this_order_as_float>,
+    private double remainingAmountIncoming; // "remaining_amount_incoming": <amount_in_incoming_currency_that_the_user_must_still_send_as_float>,
+    private int incomingNumConfirmationsRemaining; // "incoming_num_confirmations_remaining": <num_incoming_currency_confirmations_remaining_before_bitcoins_will_be_sent_as_integer>,
+    private double incomingPriceBtc; // "incoming_price_btc": <price_of_1_incoming_in_btc_currency_as_offered_by_service_as_float>,
+    private String receivingSubaddress; // "receiving_subaddress": <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
+    private int recommendedMixin; // "recommended_mixin": <recommended_mixin_as_integer>,
 
     public QueryOrderStatus.State getState() {
         return state;
@@ -76,16 +70,8 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
         return uuid;
     }
 
-    public int getBtcNumConfirmations() {
-        return btcNumConfirmations;
-    }
-
-    public int getBtcNumConfirmationsBeforePurge() {
-        return btcNumConfirmationsBeforePurge;
-    }
-
-    public String getBtcTransactionId() {
-        return btcTransactionId;
+    public int getBtcNumConfirmationsThreshold() {
+        return btcNumConfirmationsThreshold;
     }
 
     public Date getCreatedAt() {
@@ -100,48 +86,28 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
         return secondsTillTimeout;
     }
 
-    public double getXmrAmountTotal() {
-        return xmrAmountTotal;
+    public double getIncomingAmountTotal() {
+        return incomingAmountTotal;
     }
 
-    public double getXmrAmountRemaining() {
-        return xmrAmountRemaining;
+    public double getRemainingAmountIncoming() {
+        return remainingAmountIncoming;
     }
 
-    public int getXmrNumConfirmationsRemaining() {
-        return xmrNumConfirmationsRemaining;
+    public int getIncomingNumConfirmationsRemaining() {
+        return incomingNumConfirmationsRemaining;
     }
 
-    public double getXmrPriceBtc() {
-        return xmrPriceBtc;
+    public double getIncomingPriceBtc() {
+        return incomingPriceBtc;
     }
 
-    public String getXmrReceivingSubaddress() {
-        return xmrReceivingSubaddress;
+    public String getReceivingSubaddress() {
+        return receivingSubaddress;
     }
 
-    public String getXmrReceivingAddress() {
-        return xmrReceivingAddress;
-    }
-
-    public String getXmrReceivingIntegratedAddress() {
-        return xmrReceivingIntegratedAddress;
-    }
-
-    public int getXmrRecommendedMixin() {
-        return xmrRecommendedMixin;
-    }
-
-    public double getXmrRequiredAmount() {
-        return xmrRequiredAmount;
-    }
-
-    public String getXmrRequiredPaymentIdLong() {
-        return xmrRequiredPaymentIdLong;
-    }
-
-    public String getXmrRequiredPaymentIdShort() {
-        return xmrRequiredPaymentIdShort;
+    public int getRecommendedMixin() {
+        return recommendedMixin;
     }
 
     public boolean isCreated() {
@@ -197,29 +163,22 @@ class QueryOrderStatusImpl implements QueryOrderStatus {
         uuid = jsonObject.getString("uuid"); // "uuid": "<unique_order_identifier_as_12_character_string>"
 
         if (isCreated()) {
-            btcNumConfirmations = jsonObject.getInt("btc_num_confirmations"); // "btc_num_confirmations": <btc_num_confirmations_as_integer>,
-            btcNumConfirmationsBeforePurge = jsonObject.getInt("btc_num_confirmations_before_purge"); // "btc_num_confirmations_before_purge": <btc_num_confirmations_before_purge_as_integer>,
-            btcTransactionId = jsonObject.getString("btc_transaction_id"); // "btc_transaction_id": "<btc_transaction_id_as_string>",
+            btcNumConfirmationsThreshold = jsonObject.getInt("btc_num_confirmations_threshold");
             try {
-                String created = jsonObject.getString("created_at"); // "created_at": "<timestamp_as_string>",
+                String created = jsonObject.getString("created_at");
                 createdAt = parseDate(created);
-                String expires = jsonObject.getString("expires_at"); // "expires_at": "<timestamp_as_string>",
+                String expires = jsonObject.getString("expires_at");
                 expiresAt = parseDate(expires);
             } catch (ParseException ex) {
                 throw new JSONException(ex.getLocalizedMessage());
             }
-            secondsTillTimeout = jsonObject.getInt("seconds_till_timeout"); // "seconds_till_timeout": <seconds_till_timeout_as_integer>,
-            xmrAmountTotal = jsonObject.getDouble("xmr_amount_total"); // "xmr_amount_total": <amount_in_xmr_for_this_order_as_float>,
-            xmrAmountRemaining = jsonObject.getDouble("xmr_amount_remaining"); // "xmr_amount_remaining": <amount_in_xmr_that_the_user_must_still_send_as_float>,
-            xmrNumConfirmationsRemaining = jsonObject.getInt("xmr_num_confirmations_remaining"); // "xmr_num_confirmations_remaining": <num_xmr_confirmations_remaining_before_bitcoins_will_be_sent_as_integer>,
-            xmrPriceBtc = jsonObject.getDouble("xmr_price_btc"); // "xmr_price_btc": <price_of_1_btc_in_xmr_as_offered_by_service_as_float>,
-            xmrReceivingSubaddress = jsonObject.getString("xmr_receiving_subaddress"); // <xmr_subaddress_user_needs_to_send_funds_to_as_string>,
-            xmrReceivingAddress = jsonObject.getString("xmr_receiving_address"); // "xmr_receiving_address": "xmr_old_style_address_user_can_send_funds_to_as_string",
-            xmrReceivingIntegratedAddress = jsonObject.getString("xmr_receiving_integrated_address"); // "xmr_receiving_integrated_address": "xmr_integrated_address_user_needs_to_send_funds_to_as_string",
-            xmrRecommendedMixin = jsonObject.getInt("xmr_recommended_mixin"); // "xmr_recommended_mixin": <xmr_recommended_mixin_as_integer>,
-            xmrRequiredAmount = jsonObject.getDouble("xmr_required_amount"); // "xmr_required_amount": <xmr_amount_user_needs_to_send_as_float>,
-            xmrRequiredPaymentIdLong = jsonObject.getString("xmr_required_payment_id_long"); // "xmr_required_payment_id_long": "xmr_payment_id_user_needs_to_include_when_using_old_stlye_address_as_string"
-            xmrRequiredPaymentIdShort = jsonObject.getString("xmr_required_payment_id_short"); // "xmr_required_payment_id_short": "xmr_payment_id_included_in_integrated_address_as_string"
+            secondsTillTimeout = jsonObject.getInt("seconds_till_timeout");
+            incomingAmountTotal = jsonObject.getDouble("incoming_amount_total");
+            remainingAmountIncoming = jsonObject.getDouble("remaining_amount_incoming");
+            incomingNumConfirmationsRemaining = jsonObject.getInt("incoming_num_confirmations_remaining");
+            incomingPriceBtc = jsonObject.getDouble("incoming_price_btc");
+            receivingSubaddress = jsonObject.getString("receiving_subaddress");
+            recommendedMixin = jsonObject.getInt("recommended_mixin");
         }
     }
 

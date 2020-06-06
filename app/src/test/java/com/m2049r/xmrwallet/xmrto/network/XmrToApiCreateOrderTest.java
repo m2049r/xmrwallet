@@ -93,7 +93,7 @@ public class XmrToApiCreateOrderTest {
     public void createOrder_shouldContainValidBody()
             throws InterruptedException {
 
-        final String validBody = "{\"btc_amount\":0.1,\"btc_dest_address\":\"19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW\"}";
+        final String validBody = "{\"amount\":0.1,\"amount_currency\":\"BTC\",\"btc_dest_address\":\"19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW\"}";
 
         xmrToApi.createOrder(0.1, "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW", mockOrderXmrToCallback);
 
