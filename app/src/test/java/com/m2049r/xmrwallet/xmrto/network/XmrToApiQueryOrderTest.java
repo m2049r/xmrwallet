@@ -122,9 +122,7 @@ public class XmrToApiQueryOrderTest {
         final double btcAmount = 0.1;
         final String btcDestAddress = "1FhnVJi2V1k4MqXm2nHoEbY5LV7FPai7bb";
         final String uuid = "xmrto - efMsiU";
-        final int btcNumConfirmations = 0;
         final int btcNumConfirmationsBeforePurge = 144;
-        final String btcTransactionId = "";
         final String createdAt = "2017-11-17T12:20:02Z";
         final String expiresAt = "2017-11-17T12:35:02Z";
         final int secondsTillTimeout = 882;
@@ -133,12 +131,7 @@ public class XmrToApiQueryOrderTest {
         final int xmrNumConfirmationsRemaining = -1;
         final double xmrPriceBtc = 0.0154703;
         final String xmrReceivingSubaddress = "83BGzCTthheE2KxNTBPnPJjJUthYPfDfCf3ENSVQcpga8RYSxNz9qCz1qp9MLye9euMjckGi11cRdeVGqsVqTLgH8w5fJ1D";
-        final String xmrReceivingAddress = "44TVPcCSHebEQp4LnapPkhb2pondb2Ed7GJJLc6TkKwtSyumUnQ6QzkCCkojZycH2MRfLcujCM7QR1gdnRULRraV4UpB5n4";
-        final String xmrReceivingIntegratedAddress = "4EAAQR1vtv7EQp4LnapPkhb2pondb2Ed7GJJLc6TkKwtSyumUnQ6QzkCCkojZycH2MRfLcujCM7QR1gdnRULRraV6B5rRtHLeXGQSECXy9";
         final int xmrRecommendedMixin = 5;
-        final double xmrRequiredAmount = 6.464;
-        final String xmrRequiredPaymentIdLong = "56beabc3ca6d52a78c9a44cefebeb870054d8b367cc7065bff1bdb553caca85c";
-        final String xmrRequiredPaymentIdShort = "eeb6086436b267cf";
 
         MockResponse jsonMockResponse = new MockResponse().setBody(
                 createMockQueryOrderResponse(
@@ -146,9 +139,7 @@ public class XmrToApiQueryOrderTest {
                         btcAmount,
                         btcDestAddress,
                         uuid,
-                        btcNumConfirmations,
                         btcNumConfirmationsBeforePurge,
-                        btcTransactionId,
                         createdAt,
                         expiresAt,
                         secondsTillTimeout,
@@ -157,12 +148,7 @@ public class XmrToApiQueryOrderTest {
                         xmrNumConfirmationsRemaining,
                         xmrPriceBtc,
                         xmrReceivingSubaddress,
-                        xmrReceivingAddress,
-                        xmrReceivingIntegratedAddress,
-                        xmrRecommendedMixin,
-                        xmrRequiredAmount,
-                        xmrRequiredPaymentIdLong,
-                        xmrRequiredPaymentIdShort));
+                        xmrRecommendedMixin));
         mockWebServer.enqueue(jsonMockResponse);
 
         xmrToApi.queryOrderStatus(uuid, new XmrToCallback<QueryOrderStatus>() {
@@ -172,9 +158,7 @@ public class XmrToApiQueryOrderTest {
                 waiter.assertEquals(orderStatus.getBtcAmount(), btcAmount);
                 waiter.assertEquals(orderStatus.getBtcDestAddress(), btcDestAddress);
                 waiter.assertEquals(orderStatus.getUuid(), uuid);
-                waiter.assertEquals(orderStatus.getBtcNumConfirmations(), btcNumConfirmations);
-                waiter.assertEquals(orderStatus.getBtcNumConfirmationsBeforePurge(), btcNumConfirmationsBeforePurge);
-                waiter.assertEquals(orderStatus.getBtcTransactionId(), btcTransactionId);
+                waiter.assertEquals(orderStatus.getBtcNumConfirmationsThreshold(), btcNumConfirmationsBeforePurge);
                 try {
                     waiter.assertEquals(orderStatus.getCreatedAt(), ParseDate(createdAt));
                     waiter.assertEquals(orderStatus.getExpiresAt(), ParseDate(expiresAt));
@@ -182,17 +166,12 @@ public class XmrToApiQueryOrderTest {
                     waiter.fail(ex);
                 }
                 waiter.assertEquals(orderStatus.getSecondsTillTimeout(), secondsTillTimeout);
-                waiter.assertEquals(orderStatus.getXmrAmountTotal(), xmrAmountTotal);
-                waiter.assertEquals(orderStatus.getXmrAmountRemaining(), xmrAmountRemaining);
-                waiter.assertEquals(orderStatus.getXmrNumConfirmationsRemaining(), xmrNumConfirmationsRemaining);
-                waiter.assertEquals(orderStatus.getXmrPriceBtc(), xmrPriceBtc);
-                waiter.assertEquals(orderStatus.getXmrReceivingSubaddress(), xmrReceivingSubaddress);
-                waiter.assertEquals(orderStatus.getXmrReceivingAddress(), xmrReceivingAddress);
-                waiter.assertEquals(orderStatus.getXmrReceivingIntegratedAddress(), xmrReceivingIntegratedAddress);
-                waiter.assertEquals(orderStatus.getXmrRecommendedMixin(), xmrRecommendedMixin);
-                waiter.assertEquals(orderStatus.getXmrRequiredAmount(), xmrRequiredAmount);
-                waiter.assertEquals(orderStatus.getXmrRequiredPaymentIdLong(), xmrRequiredPaymentIdLong);
-                waiter.assertEquals(orderStatus.getXmrRequiredPaymentIdShort(), xmrRequiredPaymentIdShort);
+                waiter.assertEquals(orderStatus.getIncomingAmountTotal(), xmrAmountTotal);
+                waiter.assertEquals(orderStatus.getRemainingAmountIncoming(), xmrAmountRemaining);
+                waiter.assertEquals(orderStatus.getIncomingNumConfirmationsRemaining(), xmrNumConfirmationsRemaining);
+                waiter.assertEquals(orderStatus.getIncomingPriceBtc(), xmrPriceBtc);
+                waiter.assertEquals(orderStatus.getReceivingSubaddress(), xmrReceivingSubaddress);
+                waiter.assertEquals(orderStatus.getRecommendedMixin(), xmrRecommendedMixin);
                 waiter.resume();
             }
 
@@ -260,9 +239,7 @@ public class XmrToApiQueryOrderTest {
             final double btcAmount,
             final String btcDestAddress,
             final String uuid,
-            final int btcNumConfirmations,
             final int btcNumConfirmationsBeforePurge,
-            final String btcTransactionId,
             final String createdAt,
             final String expiresAt,
             final int secondsTillTimeout,
@@ -271,35 +248,23 @@ public class XmrToApiQueryOrderTest {
             final int xmrNumConfirmationsRemaining,
             final double xmrPriceBtc,
             final String xmrReceivingSubaddress,
-            final String xmrReceivingAddress,
-            final String xmrReceivingIntegratedAddress,
-            final int xmrRecommendedMixin,
-            final double xmrRequiredAmount,
-            final String xmrRequiredPaymentIdLong,
-            final String xmrRequiredPaymentIdShort
+            final int xmrRecommendedMixin
     ) {
         return "{\n" +
-                "    \"xmr_price_btc\": \"" + xmrPriceBtc + "\",\n" +
+                "    \"incoming_price_btc\": \"" + xmrPriceBtc + "\",\n" +
                 "    \"uuid\":\"" + uuid + "\",\n" +
                 "    \"state\":\"" + state + "\",\n" +
                 "    \"btc_amount\":\"" + btcAmount + "\",\n" +
                 "    \"btc_dest_address\":\"" + btcDestAddress + "\",\n" +
-                "    \"xmr_required_amount\":\"" + xmrRequiredAmount + "\",\n" +
-                "    \"xmr_receiving_subaddress\":\"" + xmrReceivingSubaddress + "\",\n" +
-                "    \"xmr_receiving_address\":\"" + xmrReceivingAddress + "\",\n" +
-                "    \"xmr_receiving_integrated_address\":\"" + xmrReceivingIntegratedAddress + "\",\n" +
-                "    \"xmr_required_payment_id_long\":\"" + xmrRequiredPaymentIdLong + "\",\n" +
-                "    \"xmr_required_payment_id_short\":\"" + xmrRequiredPaymentIdShort + "\",\n" +
+                "    \"receiving_subaddress\":\"" + xmrReceivingSubaddress + "\",\n" +
                 "    \"created_at\":\"" + createdAt + "\",\n" +
                 "    \"expires_at\":\"" + expiresAt + "\",\n" +
                 "    \"seconds_till_timeout\":\"" + secondsTillTimeout + "\",\n" +
-                "    \"xmr_amount_total\":\"" + xmrAmountTotal + "\",\n" +
-                "    \"xmr_amount_remaining\":\"" + xmrAmountRemaining + "\",\n" +
-                "    \"xmr_num_confirmations_remaining\":\"" + xmrNumConfirmationsRemaining + "\",\n" +
-                "    \"xmr_recommended_mixin\":\"" + xmrRecommendedMixin + "\",\n" +
-                "    \"btc_num_confirmations_before_purge\":\"" + btcNumConfirmationsBeforePurge + "\",\n" +
-                "    \"btc_num_confirmations\":\"" + btcNumConfirmations + "\",\n" +
-                "    \"btc_transaction_id\":\"" + btcTransactionId + "\""
+                "    \"incoming_amount_total\":\"" + xmrAmountTotal + "\",\n" +
+                "    \"remaining_amount_incoming\":\"" + xmrAmountRemaining + "\",\n" +
+                "    \"incoming_num_confirmations_remaining\":\"" + xmrNumConfirmationsRemaining + "\",\n" +
+                "    \"recommended_mixin\":\"" + xmrRecommendedMixin + "\",\n" +
+                "    \"btc_num_confirmations_threshold\":\"" + btcNumConfirmationsBeforePurge + "\",\n"
                 + "}";
     }
 }

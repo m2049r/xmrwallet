@@ -323,9 +323,9 @@ public class Helper {
     static public HttpUrl getXmrToBaseUrl() {
         if ((WalletManager.getInstance() == null)
                 || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
-            return HttpUrl.parse("https://test.xmr.to/api/v2/xmr2btc/");
+            return HttpUrl.parse("https://test.xmr.to/api/v3/xmr2btc/");
         } else {
-            return HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/");
+            return HttpUrl.parse("https://xmr.to/api/v3/xmr2btc/");
         }
     }
 

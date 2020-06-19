@@ -53,11 +53,6 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
         this.baseUrl = baseUrl;
     }
 
-    public XmrToApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://xmr.to/api/v2/xmr2btc/"));
-    }
-
-
     @Override
     public void createOrder(final double amount, @NonNull final String address,
                             @NonNull final XmrToCallback<CreateOrder> callback) {
