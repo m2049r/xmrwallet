@@ -17,12 +17,15 @@
 package com.m2049r.xmrwallet.ledger;
 
 public enum Instruction {
+
     INS_NONE(0x00),
     INS_RESET(0x02),
     INS_GET_KEY(0x20),
+    INS_DISPLAY_ADDRESS(0x21),
     INS_PUT_KEY(0x22),
     INS_GET_CHACHA8_PREKEY(0x24),
     INS_VERIFY_KEY(0x26),
+    INS_MANAGE_SEEDWORDS(0x28),
 
     INS_SECRET_KEY_TO_PUBLIC_KEY(0x30),
     INS_GEN_KEY_DERIVATION(0x32),
@@ -30,6 +33,7 @@ public enum Instruction {
     INS_DERIVE_PUBLIC_KEY(0x36),
     INS_DERIVE_SECRET_KEY(0x38),
     INS_GEN_KEY_IMAGE(0x3A),
+
     INS_SECRET_KEY_ADD(0x3C),
     INS_SECRET_KEY_SUB(0x3E),
     INS_GENERATE_KEYPAIR(0x40),
@@ -45,15 +49,20 @@ public enum Instruction {
     INS_SET_SIGNATURE_MODE(0x72),
     INS_GET_ADDITIONAL_KEY(0x74),
     INS_STEALTH(0x76),
+    INS_GEN_COMMITMENT_MASK(0x77),
     INS_BLIND(0x78),
     INS_UNBLIND(0x7A),
+    INS_GEN_TXOUT_KEYS(0x7B),
     INS_VALIDATE(0x7C),
+    INS_PREFIX_HASH(0x7D),
     INS_MLSAG(0x7E),
     INS_CLOSE_TX(0x80),
 
-    INS_GET_RESPONSE(0xc0),
+    INS_GET_TX_PROOF(0xA0),
 
-    INS_UNDEFINED(0xff);
+    INS_GET_RESPONSE(0xC0),
+
+    INS_UNDEFINED(0xFF);
 
     public static Instruction fromByte(byte n) {
         switch (n & 0xFF) {

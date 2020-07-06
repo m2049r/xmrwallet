@@ -51,6 +51,7 @@ public class LedgerProgressDialog extends ProgressDialog implements Ledger.Liste
                     switch (ins) {
                         case INS_RESET: // ledger may ask for confirmation - maybe a bug?
                         case INS_GET_KEY: // ledger asks for confirmation to send keys
+                        case INS_DISPLAY_ADDRESS:
                             setIndeterminate(true);
                             setMessage(getContext().getString(R.string.progress_ledger_confirm));
                             break;
@@ -101,6 +102,11 @@ public class LedgerProgressDialog extends ProgressDialog implements Ledger.Liste
                                 setIndeterminate(true);
                                 setMessage(getContext().getString(R.string.progress_ledger_mlsag));
                             }
+                            break;
+                        case INS_PREFIX_HASH:
+                            if ((apdu[2] != 1) || (apdu[3] != 0)) break;
+                            setIndeterminate(true);
+                            setMessage(getContext().getString(R.string.progress_ledger_confirm));
                             break;
                         case INS_VALIDATE:
                             if ((apdu[2] != 1) || (apdu[3] != 1)) break;
