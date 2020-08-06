@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_close">Inchide</string>
+    <string name="about_close">Închide</string>
     <string name="about_whoami">Eu sunt monerujo</string>
     <string name="about_version">Versiunea %1$s (%2$d)</string>
 
@@ -15,11 +15,11 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>Politică de confidențialitate</h1>
-        <p>Această pagină vă informează despre politicile privind colectarea,
+        <p>Această pagină te informează despre politicile privind colectarea,
         utilizarea și divulgarea informațiilor personale pe care le primim de la
-        utilizatorii aplicației noastre (monerujo: Portofelul Monero ).
+        utilizatorii aplicației noastre (monerujo: Portofelul Monero).
         </p>
-        <p>Folosind această aplicație, sunteți de acord cu colectarea și utilizarea informațiilor
+        <p>Folosind această aplicație, ești de acord cu colectarea și utilizarea informațiilor
 		în conformitate cu această politică.
         </p>
         <h2>Informații colectate</h2>
@@ -30,10 +30,10 @@
 		rețeaua Monero într-o formă criptată.
         </p>
         <p>Alte date personale nu sunt colectate de către aplicație.</p>
-        <p>În cazul în care folosiți funcția de schimb monetar USD/EUR (facultativ), monerujo preia rata de schimb
+        <p>În cazul în care folosești funcția de schimb monetar USD/EUR (facultativ), monerujo preia rata de schimb
         prin intermediul API-ului public al kraken.com.
-        Vizualizeaza politica de confidențialitate la adresa https://www.kraken.com/legal/privacy pentru a vedea
-		cum este procesata informația ( În special secțiunea "Information We Collect Automatically").</p>
+        Vizualizează politica de confidențialitate la adresa https://www.kraken.com/legal/privacy pentru a vedea
+		cum este procesată informația (În special secțiunea "Information We Collect Automatically").</p>
         <p>În cazul in care folosești aplicația pentru a face o plată către o adresă de portofel BTC,
 		vei folosi serviciul oferit de XMR.TO.
         Vizualizează politica lor de confidențialitate la adresa https://xmr.to/ pentru detalii. Monerujo le va trimite lor 
@@ -47,16 +47,16 @@
         <li>CAMERA : Scanează codurile QR pentru a primi Monero</li>
         </ul>
         <h2>Modificări ale acestei politici de confidențialitate</h2>
-        <p>Modificări ale acestei politici de confidențialitate pot aprea din când în când.
-		Vă vom notifica cu privire la orice modificare postând noua politică de confidențialitate în aplicație
-		sau pe siteul nostru (www.monerujo.io)
-        Vă recomandăm să revizuiți periodic această politică de confidențialitate pentru orice modificări aparute.
-        <p>Această politică de confidențialitate a fost modificată la data de: 10 Noiembrie, 2017.
+        <p>Modificări ale acestei politici de confidențialitate pot apărea din când în când.
+		Te vom notifica cu privire la orice modificare, postând noua politică de confidențialitate în aplicație
+		sau pe site-ul nostru (www.monerujo.io)
+        Îți recomandăm să revizuiești periodic această politică de confidențialitate pentru orice modificări apărute.
+        <p>Această politică de confidențialitate a fost modificată la data de: 10 noiembrie, 2017.
         </p>
         <h2>Contactează-ne</h2>
-        <p>Pentru orice întrbari legate de politica de confidențialitate,
+        <p>Pentru orice întrebări legate de politica de confidențialitate,
         sau despre cum este informația colectată și procesată,
-        vă rugăm să ne scrieți la privacy@monerujo.io.
+        te rugăm să ne scrii la privacy@monerujo.io.
         </p>
         ]]></string>
 </resources>
