@@ -75,7 +75,7 @@ public class SendFragment extends Fragment
 
         void onPrepareSend(String tag, TxData data);
 
-        boolean verifyWalletPassword(String password);
+        String getWalletName();
 
         void onSend(UserNotes notes);
 

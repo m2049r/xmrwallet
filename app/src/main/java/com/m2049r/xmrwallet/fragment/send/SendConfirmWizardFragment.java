@@ -141,7 +141,12 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
 
     void send() {
         sendListener.commitTransaction();
-        pbProgressSend.setVisibility(View.VISIBLE);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pbProgressSend.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -225,103 +230,16 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     }
 
     public void preSend() {
-        final Activity activity = getActivity();
-        View promptsView = getLayoutInflater().inflate(R.layout.prompt_password, null);
-        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(activity);
-        alertDialogBuilder.setView(promptsView);
-
-        final TextInputLayout etPassword = promptsView.findViewById(R.id.etPassword);
-        etPassword.setHint(getString(R.string.prompt_send_password));
-
-        etPassword.getEditText().addTextChangedListener(new TextWatcher() {
+        Helper.promptPassword(getContext(), getActivityCallback().getWalletName(), false, new Helper.PasswordAction() {
             @Override
-            public void afterTextChanged(Editable s) {
-                if (etPassword.getError() != null) {
-                    etPassword.setError(null);
-                }
+            public void act(String walletName, String password, boolean fingerprintUsed) {
+                send();
             }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
+            public void fail(String walletName, String password, boolean fingerprintUsed) {
+                bSend.setEnabled(true); // allow to try again
             }
         });
-
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton(getString(R.string.label_ok), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        String pass = etPassword.getEditText().getText().toString();
-                        if (getActivityCallback().verifyWalletPassword(pass)) {
-                            dialog.dismiss();
-                            Helper.hideKeyboardAlways(activity);
-                            send();
-                        } else {
-                            etPassword.setError(getString(R.string.bad_password));
-                        }
-                    }
-                })
-                .setNegativeButton(getString(R.string.label_cancel),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Helper.hideKeyboardAlways(activity);
-                                dialog.cancel();
-                                bSend.setEnabled(true); // allow to try again
-                            }
-                        });
-
-        final android.app.AlertDialog passwordDialog = alertDialogBuilder.create();
-        passwordDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                Button button = ((android.app.AlertDialog) dialog).getButton(android.app.AlertDialog.BUTTON_POSITIVE);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String pass = etPassword.getEditText().getText().toString();
-                        if (getActivityCallback().verifyWalletPassword(pass)) {
-                            Helper.hideKeyboardAlways(activity);
-                            passwordDialog.dismiss();
-                            send();
-                        } else {
-                            etPassword.setError(getString(R.string.bad_password));
-                        }
-                    }
-                });
-            }
-        });
-
-        Helper.showKeyboard(passwordDialog);
-
-        // accept keyboard "ok"
-        etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    String pass = etPassword.getEditText().getText().toString();
-                    if (getActivityCallback().verifyWalletPassword(pass)) {
-                        Helper.hideKeyboardAlways(activity);
-                        passwordDialog.dismiss();
-                        send();
-                    } else {
-                        etPassword.setError(getString(R.string.bad_password));
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        if (Helper.preventScreenshot()) {
-            passwordDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
-        }
-
-        passwordDialog.show();
     }
 
     // creates a pending transaction and calls us back with transactionCreated()

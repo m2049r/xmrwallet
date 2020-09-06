@@ -417,7 +417,7 @@ public class Helper {
     }
 
     static AlertDialog openDialog = null; // for preventing opening of multiple dialogs
-    static AsyncTask<Void, Void, Boolean> loginTask = null;
+    static AsyncTask<Void, Void, Boolean> passwordTask = null;
 
     static public void promptPassword(final Context context, final String wallet, boolean fingerprintDisabled, final PasswordAction action) {
         if (openDialog != null) return; // we are already asking for password
@@ -442,11 +442,11 @@ public class Helper {
 
         final AtomicBoolean incorrectSavedPass = new AtomicBoolean(false);
 
-        class LoginWalletTask extends AsyncTask<Void, Void, Boolean> {
+        class PasswordTask extends AsyncTask<Void, Void, Boolean> {
             private String pass;
             private boolean fingerprintUsed;
 
-            LoginWalletTask(String pass, boolean fingerprintUsed) {
+            PasswordTask(String pass, boolean fingerprintUsed) {
                 this.pass = pass;
                 this.fingerprintUsed = fingerprintUsed;
             }
@@ -488,7 +488,7 @@ public class Helper {
                         etPassword.setError(context.getString(R.string.bad_password));
                     }
                 }
-                loginTask = null;
+                passwordTask = null;
             }
         }
 
@@ -521,9 +521,9 @@ public class Helper {
                             public void onClick(DialogInterface dialog, int id) {
                                 Helper.hideKeyboardAlways((Activity) context);
                                 cancelSignal.cancel();
-                                if (loginTask != null) {
-                                    loginTask.cancel(true);
-                                    loginTask = null;
+                                if (passwordTask != null) {
+                                    passwordTask.cancel(true);
+                                    passwordTask = null;
                                 }
                                 dialog.cancel();
                                 openDialog = null;
@@ -552,9 +552,9 @@ public class Helper {
                 public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
                     try {
                         String userPass = KeyStoreHelper.loadWalletUserPass(context, wallet);
-                        if (loginTask == null) {
-                            loginTask = new LoginWalletTask(userPass, true);
-                            loginTask.execute();
+                        if (passwordTask == null) {
+                            passwordTask = new PasswordTask(userPass, true);
+                            passwordTask.execute();
                         }
                     } catch (KeyStoreHelper.BrokenPasswordStoreException ex) {
                         etPassword.setError(context.getString(R.string.bad_password));
@@ -586,9 +586,9 @@ public class Helper {
                     @Override
                     public void onClick(View view) {
                         String pass = etPassword.getEditText().getText().toString();
-                        if (loginTask == null) {
-                            loginTask = new LoginWalletTask(pass, false);
-                            loginTask.execute();
+                        if (passwordTask == null) {
+                            passwordTask = new PasswordTask(pass, false);
+                            passwordTask.execute();
                         }
                     }
                 });
@@ -601,9 +601,9 @@ public class Helper {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                         || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     String pass = etPassword.getEditText().getText().toString();
-                    if (loginTask == null) {
-                        loginTask = new LoginWalletTask(pass, false);
-                        loginTask.execute();
+                    if (passwordTask == null) {
+                        passwordTask = new PasswordTask(pass, false);
+                        passwordTask.execute();
                     }
                     return true;
                 }
@@ -620,15 +620,18 @@ public class Helper {
     }
 
     public interface PasswordAction {
-        void action(String walletName, String password, boolean fingerprintUsed);
+        void act(String walletName, String password, boolean fingerprintUsed);
+
+        void fail(String walletName, String password, boolean fingerprintUsed);
     }
 
     static private boolean processPasswordEntry(Context context, String walletName, String pass, boolean fingerprintUsed, PasswordAction action) {
         String walletPassword = Helper.getWalletPassword(context, walletName, pass);
         if (walletPassword != null) {
-            action.action(walletName, walletPassword, fingerprintUsed);
+            action.act(walletName, walletPassword, fingerprintUsed);
             return true;
         } else {
+            action.fail(walletName, walletPassword, fingerprintUsed);
             return false;
         }
     }

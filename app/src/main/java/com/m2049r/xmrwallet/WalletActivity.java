@@ -88,7 +88,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     private ActionBarDrawerToggle drawerToggle;
 
     private Toolbar toolbar;
-    private boolean needVerifyIdentity;
     private boolean requestStreetMode = false;
 
     private String password;
@@ -142,7 +141,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     private void enableStreetMode(boolean enable) {
         if (enable) {
-            needVerifyIdentity = true;
             streetMode = getWallet().getDaemonBlockChainHeight();
         } else {
             streetMode = 0;
@@ -200,7 +198,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         if (extras != null) {
             acquireWakeLock();
             String walletId = extras.getString(REQUEST_ID);
-            needVerifyIdentity = extras.getBoolean(REQUEST_FINGERPRINT_USED);
             // we can set the streetmode height AFTER opening the wallet
             requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
             password = extras.getString(REQUEST_PW);
@@ -333,7 +330,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     private void onDisableStreetMode() {
         Helper.promptPassword(WalletActivity.this, getWallet().getName(), false, new Helper.PasswordAction() {
             @Override
-            public void action(String walletName, String password, boolean fingerprintUsed) {
+            public void act(String walletName, String password, boolean fingerprintUsed) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -341,6 +338,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                         updateStreetMode();
                     }
                 });
+            }
+
+            @Override
+            public void fail(String walletName, String password, boolean fingerprintUsed) {
             }
         });
     }
@@ -855,17 +856,16 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                         final Bundle extras = new Bundle();
                         extras.putString(GenerateReviewFragment.REQUEST_TYPE, GenerateReviewFragment.VIEW_TYPE_WALLET);
 
-                        if (needVerifyIdentity) {
-                            Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
-                                @Override
-                                public void action(String walletName, String password, boolean fingerprintUsed) {
-                                    replaceFragment(new GenerateReviewFragment(), null, extras);
-                                    needVerifyIdentity = false;
-                                }
-                            });
-                        } else {
-                            replaceFragment(new GenerateReviewFragment(), null, extras);
-                        }
+                        Helper.promptPassword(WalletActivity.this, getWallet().getName(), true, new Helper.PasswordAction() {
+                            @Override
+                            public void act(String walletName, String password, boolean fingerprintUsed) {
+                                replaceFragment(new GenerateReviewFragment(), null, extras);
+                            }
+
+                            @Override
+                            public void fail(String walletName, String password, boolean fingerprintUsed) {
+                            }
+                        });
 
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -1001,12 +1001,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public long getTotalFunds() {
         return getWallet().getUnlockedBalance();
-    }
-
-    @Override
-    public boolean verifyWalletPassword(String password) {
-        String walletPassword = Helper.getWalletPassword(getApplicationContext(), getWalletName(), password);
-        return walletPassword != null;
     }
 
     @Override
