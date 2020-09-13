@@ -81,7 +81,7 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
     }
 
     int agreeCounter = 0;
-    boolean agreed[] = new boolean[OnBoardingScreen.values().length];
+    boolean[] agreed = new boolean[OnBoardingScreen.values().length];
 
     @Override
     public void setAgreeClicked(int position, boolean isChecked) {
