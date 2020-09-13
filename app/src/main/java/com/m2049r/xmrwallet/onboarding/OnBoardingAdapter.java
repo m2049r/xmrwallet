@@ -39,7 +39,7 @@ public class OnBoardingAdapter extends PagerAdapter {
 
         boolean isAgreeClicked(int position);
 
-        void setButtonState();
+        void setButtonState(int position);
     }
 
     private final Context context;
@@ -68,10 +68,8 @@ public class OnBoardingAdapter extends PagerAdapter {
             agree.setOnClickListener(v -> {
                 listener.setAgreeClicked(position, ((CheckBox) v).isChecked());
             });
-            listener.setButtonState();
         }
         collection.addView(view);
-        Timber.d("add " + position);
         return view;
     }
 
