@@ -315,9 +315,13 @@ public class LoginActivity extends BaseActivity
                         if (WalletManager.getInstance().walletExists(walletFile)) {
                             Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
                                 @Override
-                                public void action(String walletName, String password, boolean fingerprintUsed) {
+                                public void act(String walletName, String password, boolean fingerprintUsed) {
                                     if (checkDevice(walletName, password))
                                         startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
+                                }
+
+                                @Override
+                                public void fail(String walletName, String password, boolean fingerprintUsed) {
                                 }
                             });
                         } else { // this cannot really happen as we prefilter choices
@@ -348,9 +352,13 @@ public class LoginActivity extends BaseActivity
         if (WalletManager.getInstance().walletExists(walletFile)) {
             Helper.promptPassword(LoginActivity.this, walletName, false, new Helper.PasswordAction() {
                 @Override
-                public void action(String walletName, String password, boolean fingerprintUsed) {
+                public void act(String walletName, String password, boolean fingerprintUsed) {
                     if (checkDevice(walletName, password))
                         startReceive(walletFile, password);
+                }
+
+                @Override
+                public void fail(String walletName, String password, boolean fingerprintUsed) {
                 }
             });
         } else { // this cannot really happen as we prefilter choices
@@ -1306,10 +1314,15 @@ public class LoginActivity extends BaseActivity
             Helper.promptPassword(LoginActivity.this, walletName, false,
                     new Helper.PasswordAction() {
                         @Override
-                        public void action(String walletName, String password, boolean fingerprintUsed) {
+                        public void act(String walletName, String password, boolean fingerprintUsed) {
                             if (checkDevice(walletName, password))
                                 startWallet(walletName, password, fingerprintUsed, streetmode);
                         }
+
+                        @Override
+                        public void fail(String walletName, String password, boolean fingerprintUsed) {
+                        }
+
                     });
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
