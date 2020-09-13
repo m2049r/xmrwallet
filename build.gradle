@@ -34,4 +34,5 @@ ext {
     mockitoVersion = '1.10.19'
     timberVersion = '4.7.1'
     supportVersion = '28.0.0'
+    constraintVersion = "2.0.1"
 }
