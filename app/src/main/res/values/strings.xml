@@ -441,17 +441,16 @@
 
     <string name="onboarding_agree">I get it!</string>
     <string name="onboarding_button_next">Next</string>
+    <string name="onboarding_button_ready">I\'m ready!</string>
 
     <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet Monero (XMR) in them.</string>
-    <string name="onboarding_seed_title">Write down your seed</string>
+    <string name="onboarding_seed_title">Write down your seeds</string>
     <string name="onboarding_seed_information">Your seed is secret and we cannot help you recover it. It unlocks your money to whoever has it. If you lose it, you lose your beloved Monero.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
     <string name="onboarding_xmrto_information">Monerujo has XMR.to support builtin. You can send BTC by spending XMR. Just paste or scan a BTC address when sending.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between searching for public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'ll be able to authorize sending XMR with just your fingerprint.
-        If you prefer to secure sending by password, please disable fingerprint access for that wallet.</string>
-
+    <string name="onboarding_fpsend_information">You\'ll now be able to authorize sending XMR with just your fingerprint if you have it enabled on your wallets. To force the password for sending, please disable fingerprint access.</string>
 </resources>

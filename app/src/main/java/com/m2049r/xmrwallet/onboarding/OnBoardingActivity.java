@@ -23,22 +23,24 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.m2049r.xmrwallet.LoginActivity;
 import com.m2049r.xmrwallet.R;
 
 public class OnBoardingActivity extends AppCompatActivity implements OnBoardingAdapter.Listener {
 
-    private ViewPager pager;
+    private OnBoardingViewPager pager;
     private OnBoardingAdapter pagerAdapter;
-    private int mustAgreePages = 0;
+    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
 
-        final View nextButton = findViewById(R.id.buttonNext);
+        nextButton = findViewById(R.id.buttonNext);
 
         pager = findViewById(R.id.pager);
         pagerAdapter = new OnBoardingAdapter(getApplicationContext(), this);
@@ -48,14 +50,18 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
         pager.setPageMargin(pixels);
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
-            public void onPageSelected(int i) {
-                setButtonState();
+            public void onPageSelected(int position) {
+                setButtonState(position);
             }
         });
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         if (pagerAdapter.getCount() > 1) {
             tabLayout.setupWithViewPager(pager, true);
+            LinearLayout tabStrip = ((LinearLayout) tabLayout.getChildAt(0));
+            for (int i = 0; i < tabStrip.getChildCount(); i++) {
+                tabStrip.getChildAt(i).setClickable(false);
+            }
         } else {
             tabLayout.setVisibility(View.GONE);
         }
@@ -70,8 +76,10 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
         });
 
         for (int i = 0; i < OnBoardingScreen.values().length; i++) {
-            if (OnBoardingScreen.values()[i].isMustAgree()) mustAgreePages++;
+            agreed[i] = !OnBoardingScreen.values()[i].isMustAgree();
         }
+
+        setButtonState(0);
     }
 
     private void finishOnboarding() {
@@ -80,18 +88,12 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
         finish();
     }
 
-    int agreeCounter = 0;
     boolean[] agreed = new boolean[OnBoardingScreen.values().length];
 
     @Override
     public void setAgreeClicked(int position, boolean isChecked) {
-        if (isChecked) {
-            agreeCounter++;
-        } else {
-            agreeCounter--;
-        }
         agreed[position] = isChecked;
-        setButtonState();
+        setButtonState(position);
     }
 
     @Override
@@ -100,11 +102,16 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
     }
 
     @Override
-    public void setButtonState() {
+    public void setButtonState(int position) {
+        nextButton.setEnabled(agreed[position]);
+        if (nextButton.isEnabled())
+            pager.setAllowedSwipeDirection(OnBoardingViewPager.SwipeDirection.ALL);
+        else
+            pager.setAllowedSwipeDirection(OnBoardingViewPager.SwipeDirection.LEFT);
         if (pager.getCurrentItem() + 1 == pagerAdapter.getCount()) { // last page
-            findViewById(R.id.buttonNext).setEnabled(mustAgreePages == agreeCounter);
+            nextButton.setText(R.string.onboarding_button_ready);
         } else {
-            findViewById(R.id.buttonNext).setEnabled(true);
+            nextButton.setText(R.string.onboarding_button_next);
         }
     }
 }
