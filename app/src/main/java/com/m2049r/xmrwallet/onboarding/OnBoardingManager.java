@@ -31,7 +31,7 @@ public class OnBoardingManager {
     private static final String ONBOARDING_SHOWN = "ONBOARDING_SHOWN";
 
     public static boolean shouldShowOnBoarding(final Context context) {
-        return !getSharedPreferences(context).contains(ONBOARDING_SHOWN) && KeyStoreHelper.hasStoredPasswords(context);
+        return !getSharedPreferences(context).contains(ONBOARDING_SHOWN);
     }
 
     public static void setOnBoardingShown(final Context context) {
