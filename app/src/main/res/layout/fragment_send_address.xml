@@ -36,7 +36,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/bPasteAddress"
                     app:counterEnabled="true"
-                    app:counterMaxLength="16"
+                    app:counterMaxLength="95"
                     app:errorEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
