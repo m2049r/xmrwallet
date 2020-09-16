@@ -24,13 +24,11 @@ import android.support.v7.app.AppCompatActivity;
 import com.m2049r.xmrwallet.onboarding.OnBoardingActivity;
 import com.m2049r.xmrwallet.onboarding.OnBoardingManager;
 
-import timber.log.Timber;
-
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (OnBoardingManager.shouldShowOnBoarding(getApplicationContext()) || BuildConfig.DEBUG) {
+        if (OnBoardingManager.shouldShowOnBoarding(getApplicationContext())) {
             startActivity(new Intent(this, OnBoardingActivity.class));
         } else {
             startActivity(new Intent(this, LoginActivity.class));
