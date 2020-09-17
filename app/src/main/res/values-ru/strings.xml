@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">ID транзакции</string>
     <string name="label_send_address">Адрес назначения</string>
-    <string name="label_send_payment_id">ID платежа</string>
     <string name="label_send_notes">Примечание</string>
 
     <string name="backup_progress">Выполняется резервное копирование</string>
@@ -125,7 +124,6 @@
     <string name="prompt_changepwB">Повторите пароль для %1$s</string>
     <string name="prompt_password">Пароль для %1$s</string>
     <string name="prompt_fingerprint_auth">Теперь вы можете открыть кошелек с помощью отпечатков пальцев.\nПожалуйста коснитесь датчика.</string>
-    <string name="prompt_send_password">Подтверждение пароля</string>
     <string name="prompt_open_wallet">Открытие кошелька&#8230;</string>
     <string name="bad_fingerprint">Отпечаток пальца не распознается. Попробуйте ещё раз.</string>
     <string name="bad_password">Неверный пароль!</string>
@@ -212,10 +210,6 @@
     <string name="generate_check_address">Введите действующий адрес</string>
     <string name="generate_check_mnemonic">Введите вашу мнемоническую фразу</string>
 
-    <string name="send_amount_btc_xmr">%1$s (приблизительно)</string>
-
-    <string name="send_paymentid_hint">ID платежа (необязательно)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Персональная заметка (необязательно)</string>
     <string name="send_generate_paymentid_hint">Генерация</string>
     <string name="send_send_label">Потратьте мои сладкие Moneroj</string>
@@ -260,8 +254,6 @@
     <string name="tx_transfers">Переводы</string>
     <string name="tx_notes">Заметки</string>
     <string name="tx_notes_hint">(необязательно)</string>
-    <string name="tx_button_notes">Сохранено</string>
-    <string name="tx_notes_set_failed">Ошибка сохранения заметки</string>
     <string name="tx_title">Подробно</string>
 
     <string name="tx_pending">ОЖИДАНИЕ</string>
@@ -269,8 +261,6 @@
 
     <string name="receive_amount_hint">Сумма</string>
     <string name="receive_cannot_open">Не удалось открыть кошелек!</string>
-    <string name="receive_paymentid_invalid">Система счисления - 16 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Должно быть пустым со встроенным адресом</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -323,7 +313,6 @@
     <string name="nfc_tag_size">Метка предоставляет %1$d байт, но нам нужно %2$d!</string>
     <string name="nfc_tag_read_undef">Я не понимаю эту метку!</string>
     <string name="nfc_tag_read_what">Я не знаю, чего ты хочешь!</string>
-    <string name="nfc_tag_read_success">Чтение метки завершено успешно</string>
     <string name="nfc_tag_tap">NFC доступен!</string>
 
     <string name="receive_desc_hint">Описание (необязательно)</string>

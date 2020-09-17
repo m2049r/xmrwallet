@@ -64,7 +64,6 @@
     <string name="label_send_btc_amount">金额</string>
     <string name="label_send_txid">交易ID</string>
     <string name="label_send_address">收款地址</string>
-    <string name="label_send_payment_id">支付ID</string>
     <string name="label_send_notes">备注</string>
     <string name="backup_progress">备份中</string>
     <string name="archive_progress">存档中</string>
@@ -95,7 +94,6 @@
     <string name="prompt_changepwB">重复新密码%1$s</string>
     <string name="prompt_password">密码%1$s</string>
     <string name="prompt_fingerprint_auth">您也可以选择指纹登录。\n请触摸传感器。</string>
-    <string name="prompt_send_password">确认密码</string>
     <string name="prompt_open_wallet">钱包打开中&#8230;</string>
     <string name="bad_fingerprint">无法识别您的指纹，请重试。</string>
     <string name="bad_password">密码错误！</string>
@@ -163,9 +161,6 @@
     <string name="generate_check_key">输入有效密钥</string>
     <string name="generate_check_address">输入有效地址</string>
     <string name="generate_check_mnemonic">请输入您的25词助记种子密语</string>
-    <string name="send_amount_btc_xmr">%1$s (参考)</string>
-    <string name="send_paymentid_hint">支付ID (选填)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">私密备注 (选填)</string>
     <string name="send_generate_paymentid_hint">生成</string>
     <string name="send_send_label">发送门罗币</string>
@@ -209,16 +204,12 @@
     <string name="tx_transfers">转账</string>
     <string name="tx_notes">备注</string>
     <string name="tx_notes_hint">(选填)</string>
-    <string name="tx_button_notes">保存</string>
-    <string name="tx_notes_set_failed">备注保存失败</string>
     <string name="tx_title">交易明细</string>
     <string name="tx_pending">待处理中</string>
     <string name="tx_failed">失败</string>
     <string name="receive_amount_hint">金额</string>
     <string name="receive_desc_hint">描述 (选填)</string>
     <string name="receive_cannot_open">无法打开钱包！</string>
-    <string name="receive_paymentid_invalid">16十六进制字符 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">集成地址的交易ID必须为空</string>
     <string name="receive_amount_too_big">上限 %1$s</string>
     <string name="receive_amount_negative">下限 0</string>
     <string name="receive_amount_nan">请输入数字</string>
@@ -259,7 +250,6 @@
     <string name="nfc_tag_size">NFC标签提供%1$d字节，但我们需要%2$d!</string>
     <string name="nfc_tag_read_undef">我不了解NFC标签！</string>
     <string name="nfc_tag_read_what">我不知道你想要什么！</string>
-    <string name="nfc_tag_read_success">NFC标签读取成功</string>
     <string name="nfc_tag_tap">NFC可用！</string>
     <string name="menu_info">显示私密信息</string>
     <string name="menu_streetmode">公共场合模式</string>

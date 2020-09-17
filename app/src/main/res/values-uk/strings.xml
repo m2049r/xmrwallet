@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">ID транзакції</string>
     <string name="label_send_address">Адреса призначення</string>
-    <string name="label_send_payment_id">ID платежу</string>
     <string name="label_send_notes">Примітка</string>
 
     <string name="backup_progress">Виконується резервне копіювання</string>
@@ -125,7 +124,6 @@
     <string name="prompt_changepwB">Повторіть пароль для %1$s</string>
     <string name="prompt_password">Пароль для %1$s</string>
     <string name="prompt_fingerprint_auth">Тепер ви можете відкрити гаманець за допомогою відбитка пальця.\nБудь ласка торкніться датчика.</string>
-    <string name="prompt_send_password">Підтвердження пароля</string>
     <string name="prompt_open_wallet">Відкриття гаманця&#8230;</string>
     <string name="bad_fingerprint">Відбиток пальця не розпізнається. Спробуйте ще раз.</string>
     <string name="bad_password">Невірний пароль!!</string>
@@ -212,10 +210,6 @@
     <string name="generate_check_address">Введіть діючу адресу</string>
     <string name="generate_check_mnemonic">Введіть вашу мнемонічну фразу</string>
 
-    <string name="send_amount_btc_xmr">%1$s (приблизно)</string>
-
-    <string name="send_paymentid_hint">ID платежу (необов\'язково)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Персональна замітка (необов\'язково)</string>
     <string name="send_generate_paymentid_hint">Генерація</string>
     <string name="send_send_label">Витратити мої солодкі Moneroj</string>
@@ -260,8 +254,6 @@
     <string name="tx_transfers">Перекази</string>
     <string name="tx_notes">Замітки</string>
     <string name="tx_notes_hint">(необов\'язково)</string>
-    <string name="tx_button_notes">Збережено</string>
-    <string name="tx_notes_set_failed">Помилка збереження замітки</string>
     <string name="tx_title">Детально</string>
 
     <string name="tx_pending">ОЧІКУВАННЯ</string>
@@ -269,8 +261,6 @@
 
     <string name="receive_amount_hint">Сума</string>
     <string name="receive_cannot_open">Не вдалося відкрити гаманець!</string>
-    <string name="receive_paymentid_invalid">Система зчислення - 16 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Повинно бути порожнім при використанні інтегрованої адреси</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -323,7 +313,6 @@
     <string name="nfc_tag_size">Мітка надає %1$d байт, але нам потрібно %2$d!</string>
     <string name="nfc_tag_read_undef">Я не розумію цю мітку!</string>
     <string name="nfc_tag_read_what">Я не знаю, що ти хочеш!</string>
-    <string name="nfc_tag_read_success">Читання мітки завершено успішно</string>
     <string name="nfc_tag_tap">NFC доступний!</string>
 
     <string name="receive_desc_hint">Опис (необов\'язково)</string>

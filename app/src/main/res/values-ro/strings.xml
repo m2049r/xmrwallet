@@ -84,7 +84,6 @@
 
     <string name="label_send_txid">ID Tranzacție </string>
     <string name="label_send_address">Adresă destinație</string>
-    <string name="label_send_payment_id">Payment ID</string>
     <string name="label_send_notes">Notițe</string>
 
     <string name="backup_progress">Copie de rezervă în curs</string>
@@ -118,7 +117,6 @@
     <string name="prompt_rename">Redenumește %1$s</string>
 
     <string name="prompt_password">Parola pentru %1$s</string>
-    <string name="prompt_send_password">Confirmă Parola</string>
     <string name="bad_password">Parolă incorectă!</string>
     <string name="bad_wallet">Portofelul nu există!</string>
     <string name="prompt_daemon_missing">Adresa nodului trebuie setată!</string>
@@ -186,10 +184,6 @@
     <string name="generate_check_address">Introdu Adresă validă</string>
     <string name="generate_check_mnemonic">Introdu cele 25 de cuvinte</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicativ)</string>
-
-    <string name="send_paymentid_hint">Payment ID (facultativ)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notițe private (facultativ)</string>
     <string name="send_generate_paymentid_hint">Generează</string>
     <string name="send_send_label">Spend my sweet Moneroj</string>
@@ -234,8 +228,6 @@
     <string name="tx_transfers">Transferuri</string>
     <string name="tx_notes">Notițe</string>
     <string name="tx_notes_hint">(facultativ)</string>
-    <string name="tx_button_notes">Salvează</string>
-    <string name="tx_notes_set_failed">Salvare notițe eșuată</string>
     <string name="tx_title">Detalii tranzacție</string>
 
     <string name="tx_pending">ÎN CURS</string>
@@ -243,8 +235,6 @@
 
     <string name="receive_amount_hint">Sumă</string>
     <string name="receive_cannot_open">Nu pot deschide portofel!</string>
-    <string name="receive_paymentid_invalid">16 caractere Hex (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Trebuie să fie gol cu adresă integrată</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -322,7 +312,6 @@
     <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
     <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
 
     <string name="receive_desc_hint">Description (optional)</string>

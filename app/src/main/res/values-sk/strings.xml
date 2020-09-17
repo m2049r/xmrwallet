@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">ID Transakcie</string>
     <string name="label_send_address">Cieľová Addresa</string>
-    <string name="label_send_payment_id">ID Platby</string>
     <string name="label_send_notes">Poznámky</string>
 
     <string name="backup_progress">Prebieha Záloha</string>
@@ -125,7 +124,6 @@
     <string name="prompt_changepwB">Opakuj heslo pre %1$s</string>
     <string name="prompt_password">Heslo pre %1$s</string>
     <string name="prompt_fingerprint_auth">Môžeš tiež otvoriť peňaženku pomocou odtlačku prsta.\nDotkni sa senzora.</string>
-    <string name="prompt_send_password">Potvrď heslo</string>
     <string name="prompt_open_wallet">Otváram peňaženku&#8230;</string>
     <string name="bad_fingerprint">Odtlačok som nerozoznal. Skús znova.</string>
     <string name="bad_password">Nesprávne heslo!</string>
@@ -209,10 +207,6 @@
     <string name="generate_check_address">Vlož platnú Adresu</string>
     <string name="generate_check_mnemonic">Vlož svoj 25-slovný seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (odhad)</string>
-
-    <string name="send_paymentid_hint">ID Platby (voliteľné)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Súkromné Poznámky (voliteľné)</string>
     <string name="send_generate_paymentid_hint">Generuj</string>
     <string name="send_send_label">Odošli Monero</string>
@@ -257,8 +251,6 @@
     <string name="tx_transfers">Poslaných</string>
     <string name="tx_notes">Poznámky</string>
     <string name="tx_notes_hint">(voliteľné)</string>
-    <string name="tx_button_notes">Ulož</string>
-    <string name="tx_notes_set_failed">Uloženie poznámky zlyhalo</string>
     <string name="tx_title">Detaily Transakcie</string>
 
     <string name="tx_pending">ČAKAJÚCI</string>
@@ -266,8 +258,6 @@
 
     <string name="receive_amount_hint">Suma</string>
     <string name="receive_cannot_open">Nemohol som otvoriť peňaženku!</string>
-    <string name="receive_paymentid_invalid">16 hexa znakov (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Musí byť prázdna s integrovanou adresou</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -320,7 +310,6 @@
     <string name="nfc_tag_size">Tag poskytol %1$d bytes, ale treba %2$d!</string>
     <string name="nfc_tag_read_undef">Neruzumiem Tagu!</string>
     <string name="nfc_tag_read_what">Neviem čo tým básnik myslel!</string>
-    <string name="nfc_tag_read_success">Čítanie Tagu úspešné</string>
     <string name="nfc_tag_tap">NFC je dostupné!</string>
 
     <string name="receive_desc_hint">Popis (voliteľné)</string>

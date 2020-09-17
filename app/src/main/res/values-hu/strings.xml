@@ -85,7 +85,6 @@
 
     <string name="label_send_txid">Tranzakcióazonosító</string>
     <string name="label_send_address">Kedvezményezett címe</string>
-    <string name="label_send_payment_id">Fizetési azonosító</string>
     <string name="label_send_notes">Közlemény</string>
 
     <string name="backup_progress">Biztonsági mentés folyamatban</string>
@@ -124,7 +123,6 @@
     <string name="prompt_changepwB">Ismételd meg a(z) %1$s tárca új jelszavát</string>
     <string name="prompt_password">A(z) %1$s tárca jelszava</string>
     <string name="prompt_fingerprint_auth">Ujjlenyomattal is megnyithatod a tárcát.\nKérlek, érintsd meg a szenzort.</string>
-    <string name="prompt_send_password">Jelszó megerősítése</string>
     <string name="prompt_open_wallet">Tárca megnyitása&#8230;</string>
     <string name="bad_fingerprint">Az ujjlenyomat nem felismerhető. Próbáld újra.</string>
     <string name="bad_password">Helytelen jelszó!</string>
@@ -211,10 +209,6 @@
     <string name="generate_check_address">Adj meg egy valós címet</string>
     <string name="generate_check_mnemonic">Add meg a 25 szavas magod</string>
 
-    <string name="send_amount_btc_xmr">%1$s (előrejelzés)</string>
-
-    <string name="send_paymentid_hint">Fizetési azonosító (opcionális)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Privát közlemény (opcionális)</string>
     <string name="send_generate_paymentid_hint">Generálás</string>
     <string name="send_send_label">Édes, drága Monero elköltése</string>
@@ -259,8 +253,6 @@
     <string name="tx_transfers">Transzferek</string>
     <string name="tx_notes">Közlemény</string>
     <string name="tx_notes_hint">(opcionális)</string>
-    <string name="tx_button_notes">Mentés</string>
-    <string name="tx_notes_set_failed">A közlemény mentése sikertelen</string>
     <string name="tx_title">Tranzakciórészletek</string>
 
     <string name="tx_pending">FÜGGŐBEN</string>
@@ -268,8 +260,6 @@
 
     <string name="receive_amount_hint">Mennyiség</string>
     <string name="receive_cannot_open">Nem sikerült megnyitni a tárcát!</string>
-    <string name="receive_paymentid_invalid">16 hexadecimális karakter (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Integrált cím esetén üresnek kell lennie</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -322,7 +312,6 @@
     <string name="nfc_tag_size">A címke %1$d byte-os, de %2$d kellene!</string>
     <string name="nfc_tag_read_undef">Nem értem a címkét!</string>
     <string name="nfc_tag_read_what">Nem tudom, mit akarsz!</string>
-    <string name="nfc_tag_read_success">Sikeres címkeolvasás</string>
     <string name="nfc_tag_tap">NFC elérhető!</string>
 
     <string name="receive_desc_hint">Description (optional)</string>

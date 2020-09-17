@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">交易 ID</string>
     <string name="label_send_address">收款地址</string>
-    <string name="label_send_payment_id">付款 ID</string>
     <string name="label_send_notes">附註</string>
 
     <string name="backup_progress">備份中</string>
@@ -126,7 +125,6 @@
     <string name="prompt_changepwB">重複輸入 %1$s 的密碼</string>
     <string name="prompt_password">%1$s 的密碼</string>
     <string name="prompt_fingerprint_auth">你也可以使用指紋來開啟錢包。\n請輕觸你的指紋感應器。</string>
-    <string name="prompt_send_password">確認密碼</string>
     <string name="prompt_open_wallet">正在開啟錢包 &#8230;</string>
     <string name="bad_fingerprint">無法辨識指紋，請再試一次。</string>
     <string name="bad_password">密碼錯誤！</string>
@@ -210,10 +208,6 @@
     <string name="generate_check_address">輸入有效的地址</string>
     <string name="generate_check_mnemonic">輸入你的 25 字種子碼</string>
 
-    <string name="send_amount_btc_xmr">%1$s (參考價)</string>
-
-    <string name="send_paymentid_hint">付款 ID (選填)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">註記 (選填)</string>
     <string name="send_generate_paymentid_hint">產生</string>
     <string name="send_send_label">發送我的 Monero</string>
@@ -258,8 +252,6 @@
     <string name="tx_transfers">轉帳</string>
     <string name="tx_notes">附註</string>
     <string name="tx_notes_hint">(選填)</string>
-    <string name="tx_button_notes">儲存</string>
-    <string name="tx_notes_set_failed">附註儲存失敗</string>
     <string name="tx_title">交易明細</string>
 
     <string name="tx_pending">等待確認中</string>
@@ -267,8 +259,6 @@
 
     <string name="receive_amount_hint">金額</string>
     <string name="receive_cannot_open">無法開啟錢包！</string>
-    <string name="receive_paymentid_invalid">16 Hex 字元 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">使用整合地址時必須為空白</string>
 
     <string name="receive_amount_too_big">最大值 %1$s</string>
     <string name="receive_amount_negative">最小值 0</string>
@@ -321,7 +311,6 @@
     <string name="nfc_tag_size">此 NFC 標籤可存放 %1$d 位元組，但需要 %2$d 位元組！</string>
     <string name="nfc_tag_read_undef">無法辨識此 NFC 標籤！</string>
     <string name="nfc_tag_read_what">無法執行此 NFC 標籤的操作！</string>
-    <string name="nfc_tag_read_success">已成功讀取此 NFC 標籤</string>
     <string name="nfc_tag_tap">可使用 NFC 標籤</string>
 
     <string name="receive_desc_hint">附註 (選填)</string>

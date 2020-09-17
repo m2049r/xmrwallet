@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">ID Transazione</string>
     <string name="label_send_address">Indirizzo di Destinazione</string>
-    <string name="label_send_payment_id">ID Pagamento</string>
     <string name="label_send_notes">Note</string>
 
     <string name="backup_progress">Backup in corso</string>
@@ -126,7 +125,6 @@
     <string name="prompt_changepwB">Ripeti passphrase per %1$s</string>
     <string name="prompt_password">Password per %1$s</string>
     <string name="prompt_fingerprint_auth">Puoi aprire il portafoglio anche usando la tua impronta digitale.\nTocca il sensore.</string>
-    <string name="prompt_send_password">Conferma Password</string>
     <string name="prompt_open_wallet">Aprendo il portafoglio&#8230;</string>
     <string name="bad_fingerprint">Impronta digitale non riconosciuta. Prova di nuovo.</string>
     <string name="bad_password">Password errata!</string>
@@ -213,10 +211,6 @@
     <string name="generate_check_address">Inserisci un indirizzo valido</string>
     <string name="generate_check_mnemonic">Inserisci il tuo seed di 25 parole</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
-
-    <string name="send_paymentid_hint">ID pagamento (opzionale)</string>
-    <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Note private (opzionali)</string>
     <string name="send_generate_paymentid_hint">Genera</string>
     <string name="send_send_label">Spendi i miei bei Moneroj</string>
@@ -261,8 +255,6 @@
     <string name="tx_transfers">Trasferimenti</string>
     <string name="tx_notes">Note</string>
     <string name="tx_notes_hint">(opzionale)</string>
-    <string name="tx_button_notes">Salva</string>
-    <string name="tx_notes_set_failed">Salvataggio note fallito</string>
     <string name="tx_title">Dettagli della transazione</string>
 
     <string name="tx_pending">IN ATTESA</string>
@@ -270,8 +262,6 @@
 
     <string name="receive_amount_hint">Ammontare</string>
     <string name="receive_cannot_open">Impossibile aprire il portafoglio!</string>
-    <string name="receive_paymentid_invalid">16 caratteri esadecimali (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Deve essere vuoto con un indirizzo integrato</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -324,7 +314,6 @@
     <string name="nfc_tag_size">La Tag fornisce %1$d bytes, ma ne servono %2$d!</string>
     <string name="nfc_tag_read_undef">Non capisco la tag!</string>
     <string name="nfc_tag_read_what">Non capisco cosa mi hai chiesto!</string>
-    <string name="nfc_tag_read_success">Lettura tag riuscita</string>
     <string name="nfc_tag_tap">NFC disponibile!</string>
 
     <string name="receive_desc_hint">Descrizione (opzionale)</string>
