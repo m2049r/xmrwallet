@@ -149,11 +149,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 getSupportFragmentManager().findFragmentByTag(WalletFragment.class.getName());
         if (walletFragment != null) walletFragment.resetDismissedTransactions();
         forceUpdate();
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+        runOnUiThread(() -> {
+            if (getWallet() != null)
                 updateAccountsBalance();
-            }
         });
     }
 
@@ -577,10 +575,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public boolean onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed()");
-        runOnUiThread(new Runnable() {
-            public void run() {
+        runOnUiThread(() -> {
+            if (getWallet() != null)
                 updateAccountsBalance();
-            }
         });
         if (numAccounts != wallet.getNumAccounts()) {
             numAccounts = wallet.getNumAccounts();
