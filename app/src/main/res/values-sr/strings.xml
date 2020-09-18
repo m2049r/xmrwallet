@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">ID transakcije</string>
     <string name="label_send_address">Adresa odredišta</string>
-    <string name="label_send_payment_id">ID plaćanja</string>
     <string name="label_send_notes">Beleške</string>
 
     <string name="backup_progress">Bekap u toku</string>
@@ -128,7 +127,6 @@
     <string name="prompt_changepwB">Ponovi fraza-lozinku za %1$s</string>
     <string name="prompt_password">Lozinka za %1$s</string>
     <string name="prompt_fingerprint_auth">Možeš otvoriti novčanik i sa otiskom prsta.\nMolimo takni senzor.</string>
-    <string name="prompt_send_password">Potvrdi lozinku</string>
     <string name="prompt_open_wallet">Otvaranje novčanika&#8230;</string>
     <string name="bad_fingerprint">Otisak prsta nije prepoznat. Try again.</string>
     <string name="bad_password">Netačna lozinka!</string>
@@ -214,10 +212,6 @@
     <string name="generate_check_address">Unesi validnu adresu</string>
     <string name="generate_check_mnemonic">Unesi tvoje seme od 25 reči</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indikativno)</string>
-
-    <string name="send_paymentid_hint">ID plaćanja (opciono)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Privatne beleške (opciono)</string>
     <string name="send_generate_paymentid_hint">Generiši</string>
 
@@ -267,8 +261,6 @@
     <string name="tx_transfers">Transferi</string>
     <string name="tx_notes">Čvorovi</string>
     <string name="tx_notes_hint">(opciono)</string>
-    <string name="tx_button_notes">Sačuvaj</string>
-    <string name="tx_notes_set_failed">Čuvanje čvorova neuspelo</string>
     <string name="tx_title">Detalji transakcije</string>
 
     <string name="tx_pending">NA ČEKANJU</string>
@@ -277,8 +269,6 @@
     <string name="receive_amount_hint">Suma</string>
     <string name="receive_desc_hint">Opis (opciono)</string>
     <string name="receive_cannot_open">Nemoguće otvaranje novčanika!</string>
-    <string name="receive_paymentid_invalid">16 heks. znakova (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Mora biti prazno sa integrisanom adresom</string>
 
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -331,7 +321,6 @@
     <string name="nfc_tag_size">Tag omogućava %1$d bajta, međutim nama treba %2$d!</string>
     <string name="nfc_tag_read_undef">Ne razumem tag!</string>
     <string name="nfc_tag_read_what">Ne znam šta si mislio!</string>
-    <string name="nfc_tag_read_success">Čitanje taga uspešno</string>
     <string name="nfc_tag_tap">NFC dostupno!</string>
 
     <string name="menu_info">Pokaži tajne!</string>

@@ -84,7 +84,6 @@
 
     <string name="label_send_txid">Transaksjons-ID</string>
     <string name="label_send_address">Destinasjonsadresse</string>
-    <string name="label_send_payment_id">Betalings-ID</string>
     <string name="label_send_notes">Notater</string>
 
     <string name="backup_progress">Backup pågår</string>
@@ -124,7 +123,6 @@
     <string name="prompt_changepwB">[Gjenta passord for %1$s]</string>
     <string name="prompt_password">Passord for %1$s</string>
     <string name="prompt_fingerprint_auth">[You can also open wallet using fingerprint.\nPlease touch sensor.]</string>
-    <string name="prompt_send_password">Bekreft passord</string>
     <string name="prompt_open_wallet">[Opening the wallet&#8230;]</string>
     <string name="bad_fingerprint">[Fingerprint not recognized. Try again.]</string>
     <string name="bad_password">Feil passord!</string>
@@ -211,10 +209,6 @@
     <string name="generate_check_address">Skriv inn gyldig adresse</string>
     <string name="generate_check_mnemonic">Skriv inn ditt 25-ord lange seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (veiledende)</string>
-
-    <string name="send_paymentid_hint">Betalings-ID (valgfritt)</string>
-    <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Privat notat (valgfritt)</string>
     <string name="send_generate_paymentid_hint">Generer</string>
     <string name="send_send_label">Bruk mine søte moneroj</string>
@@ -259,8 +253,6 @@
     <string name="tx_transfers">Overføringer</string>
     <string name="tx_notes">Notater</string>
     <string name="tx_notes_hint">(valgfritt)</string>
-    <string name="tx_button_notes">Lagre</string>
-    <string name="tx_notes_set_failed">Lagra notater feila</string>
     <string name="tx_title">Transaksjonsdetaljer</string>
 
     <string name="tx_pending">VENTENDE</string>
@@ -268,8 +260,6 @@
 
     <string name="receive_amount_hint">Mengde</string>
     <string name="receive_cannot_open">Kunne ikke åpne lommebok!</string>
-    <string name="receive_paymentid_invalid">16 heks-karakterer (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Må være tom med integrert adresse</string>
 
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -322,7 +312,6 @@
     <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
     <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
 
     <string name="receive_desc_hint">Description (optional)</string>

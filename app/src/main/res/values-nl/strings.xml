@@ -85,7 +85,6 @@
 
     <string name="label_send_txid">Transactie-ID</string>
     <string name="label_send_address">Doeladres</string>
-    <string name="label_send_payment_id">Betalings-ID</string>
     <string name="label_send_notes">Opmerkingen</string>
 
     <string name="backup_progress">Back-up wordt gemaakt</string>
@@ -124,7 +123,6 @@
     <string name="prompt_changepwB">Herhaal wachtzin voor %1$s</string>
     <string name="prompt_password">Wachtwoord voor %1$s</string>
     <string name="prompt_fingerprint_auth">Je kunt ook je vingerafdruk gebruiken.\nRaak de sensor aan.</string>
-    <string name="prompt_send_password">Bevestig wachtwoord</string>
     <string name="prompt_open_wallet">Portemonnee openen…</string>
     <string name="bad_fingerprint">Vingerafdruk niet herkend. Probeer het opnieuw.</string>
     <string name="bad_password">Onjuist wachtwoord!</string>
@@ -208,10 +206,6 @@
     <string name="generate_check_address">Voer geldig adres in</string>
     <string name="generate_check_mnemonic">Voer je 25 woorden in</string>
 
-    <string name="send_amount_btc_xmr">%1$s (schatting)</string>
-
-    <string name="send_paymentid_hint">Betalings-ID (optioneel)</string>
-    <string name="send_amount_hint">0,00</string>
     <string name="send_notes_hint">Opmerkingen voor jezelf (optioneel)</string>
     <string name="send_generate_paymentid_hint">Genereren</string>
     <string name="send_send_label">Geef mijn mooie moneroj uit</string>
@@ -256,8 +250,6 @@
     <string name="tx_transfers">Betalingen</string>
     <string name="tx_notes">Opmerkingen</string>
     <string name="tx_notes_hint">(optioneel)</string>
-    <string name="tx_button_notes">Opslaan</string>
-    <string name="tx_notes_set_failed">Opmerkingen opslaan mislukt</string>
     <string name="tx_title">Transactiedetails</string>
 
     <string name="tx_pending">WACHTEN</string>
@@ -265,8 +257,6 @@
 
     <string name="receive_amount_hint">Bedrag</string>
     <string name="receive_cannot_open">Kan portemonnee niet openen!</string>
-    <string name="receive_paymentid_invalid">16 hexadecimale tekens (0–9, a–f)</string>
-    <string name="receive_integrated_paymentid_invalid">Moet leeg zijn bij een geïntegreerd adres</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -319,7 +309,6 @@
     <string name="nfc_tag_size">Tag levert %1$d bytes, maar we hebben er %2$d nodig!</string>
     <string name="nfc_tag_read_undef">Ik begrijp de Tag niet!</string>
     <string name="nfc_tag_read_what">Ik weet niet wat je wilt!</string>
-    <string name="nfc_tag_read_success">Tag is gelezen</string>
     <string name="nfc_tag_tap">NFC beschikbaar!</string>
 
     <string name="receive_desc_hint">Omschrijving (optioneel)</string>

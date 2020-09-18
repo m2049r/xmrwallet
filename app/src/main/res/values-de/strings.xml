@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">Transaktions-ID</string>
     <string name="label_send_address">Zieladresse</string>
-    <string name="label_send_payment_id">Zahlungs-ID</string>
     <string name="label_send_notes">Notizen</string>
 
     <string name="backup_progress">Backup wird erstellt</string>
@@ -126,7 +125,6 @@
     <string name="prompt_changepwB">Passwort für %1$s wiederholen</string>
     <string name="prompt_password">Passwort für %1$s</string>
     <string name="prompt_fingerprint_auth">Fingerabdruck-Authentifizierung möglich.\nBitte Sensor berühren.</string>
-    <string name="prompt_send_password">Passwort bestätigen</string>
     <string name="prompt_open_wallet">Öffne Wallet &#8230;</string>
     <string name="bad_fingerprint">Fingerabdruck nicht erkannt. Nochmals versuchen.</string>
     <string name="bad_password">Falsches Passwort!</string>
@@ -212,10 +210,6 @@
     <string name="generate_check_address">Gib eine gültige Adresse ein</string>
     <string name="generate_check_mnemonic">Gib deinen, 25 Wörter langen, Seed ein</string>
 
-    <string name="send_amount_btc_xmr">%1$s (Anhaltswert)</string>
-
-    <string name="send_paymentid_hint">Zahlungs-ID (optional)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notizen (optional)</string>
     <string name="send_generate_paymentid_hint">Erzeuge</string>
     <string name="send_send_label">Gib meine wertvollen Moneroj aus</string>
@@ -260,8 +254,6 @@
     <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notizen</string>
     <string name="tx_notes_hint">(optional)</string>
-    <string name="tx_button_notes">Speichern</string>
-    <string name="tx_notes_set_failed">Notizen speichern fehlgeschlagen</string>
     <string name="tx_title">Transaktionsdetails</string>
 
     <string name="tx_pending">AUSSTEHEND</string>
@@ -269,8 +261,6 @@
 
     <string name="receive_amount_hint">Betrag</string>
     <string name="receive_cannot_open">Konnte Wallet nicht öffnen!</string>
-    <string name="receive_paymentid_invalid">16 Hex-Zeichen (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Muss bei einer integrierten Adresse leer sein</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -330,7 +320,6 @@
     <string name="nfc_tag_size">Tag bietet %1$d Bytes, aber wir brauchen %2$d!</string>
     <string name="nfc_tag_read_undef">Ich verstehe den Tag nicht!</string>
     <string name="nfc_tag_read_what">Ich weiß nicht, was du willst!</string>
-    <string name="nfc_tag_read_success">Tag erfolgreich gelesen</string>
     <string name="nfc_tag_tap">NFC verfügbar!</string>
 
     <string name="status_wallet_connect_wrongversion">Node Version inkompatibel – bitte updaten!</string>

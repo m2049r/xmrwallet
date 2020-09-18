@@ -85,7 +85,6 @@
 
     <string name="label_send_txid">ID da Transação</string>
     <string name="label_send_address">Endereço de destino</string>
-    <string name="label_send_payment_id">ID do pagamento</string>
     <string name="label_send_notes">Notas</string>
 
     <string name="backup_progress">Criando backup</string>
@@ -125,7 +124,6 @@
     <string name="prompt_changepwB">Repetir senha para %1$s</string>
     <string name="prompt_password">Senha para %1$s</string>
     <string name="prompt_fingerprint_auth">Também é possível abrir a carteira usando sua impressão digital.\nPor favor, use o sensor.</string>
-    <string name="prompt_send_password">Confirmar senha</string>
     <string name="prompt_open_wallet">Abrindo a carteira&#8230;</string>
     <string name="bad_fingerprint">Impressão digital não reconhecida. Tente novamente.</string>
     <string name="bad_password">Senha incorreta!</string>
@@ -210,10 +208,6 @@
     <string name="generate_check_address">Escreva um endereço válido</string>
     <string name="generate_check_mnemonic">Escreva a semente de 25 palavras</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
-
-    <string name="send_paymentid_hint">ID do pagamento (opcional)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas (opcional)</string>
     <string name="send_generate_paymentid_hint">Gerar</string>
     <string name="send_send_label">Gastar meu querido Monero!</string>
@@ -258,8 +252,6 @@
     <string name="tx_transfers">Transferências</string>
     <string name="tx_notes">Notas</string>
     <string name="tx_notes_hint">(opcional)</string>
-    <string name="tx_button_notes">Salvar</string>
-    <string name="tx_notes_set_failed">Erro ao salvar as notas</string>
     <string name="tx_title">Detalhes da Transação</string>
 
     <string name="tx_pending">PENDENTE</string>
@@ -267,8 +259,6 @@
 
     <string name="receive_amount_hint">Valor</string>
     <string name="receive_cannot_open">Não foi possível abrir a carteira!</string>
-    <string name="receive_paymentid_invalid">16 caracteres em hexadecimal (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Deve estar vazio ao usar endereços integrados</string>
 
     <string name="receive_amount_too_big">Máx. %1$s</string>
     <string name="receive_amount_negative">Mín. 0</string>
@@ -321,7 +311,6 @@
     <string name="nfc_tag_size">Tag disponibiliza %1$d bytes, mas precisamos de %2$d!</string>
     <string name="nfc_tag_read_undef">Não consigo ler a tag!</string>
     <string name="nfc_tag_read_what">Não sei o que você quer!</string>
-    <string name="nfc_tag_read_success">Sucesso na leitura da tag</string>
     <string name="nfc_tag_tap">NFC disponível!</string>
 
     <string name="menu_info">Mostrar Segredos!</string>

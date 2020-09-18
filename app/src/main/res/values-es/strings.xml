@@ -37,7 +37,6 @@
 
     <string name="label_send_txid">ID de Transacción</string>
     <string name="label_send_address">Dirección de Destino</string>
-    <string name="label_send_payment_id">ID de Pago</string>
     <string name="label_send_notes">Notas</string>
 
     <string name="backup_progress">Copia de seguridad en progreso</string>
@@ -75,7 +74,6 @@
     <string name="prompt_changepwB">Repetir contraseña para %1$s</string>
     <string name="prompt_password">Contraseña para %1$s</string>
     <string name="prompt_fingerprint_auth">Puedes poner tu dedo en el sensor para autorizar con tu huella.</string>
-    <string name="prompt_send_password">Confirmar Contraseña</string>
     <string name="prompt_open_wallet">Abriendo el monedero&#8230;</string>
     <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
@@ -159,8 +157,6 @@
     <string name="generate_check_address">Introduce una dirección válida</string>
     <string name="generate_check_mnemonic">Introduce tu semilla de 25 palabras</string>
 
-    <string name="send_paymentid_hint">ID de Pago (opcional)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Notas Privadas (opcional)</string>
     <string name="send_generate_paymentid_hint">Generar</string>
     <string name="send_qr_invalid">No es un Código QR de monero</string>
@@ -195,8 +191,6 @@
     <string name="tx_transfers">Transferencias</string>
     <string name="tx_notes">Notas</string>
     <string name="tx_notes_hint">(opcional)</string>
-    <string name="tx_button_notes">Guardar</string>
-    <string name="tx_notes_set_failed">El guardado de las notas ha fallado</string>
     <string name="tx_title">Detalles de la Transacción</string>
 
     <string name="tx_pending">PENDIENTE</string>
@@ -204,8 +198,6 @@
 
     <string name="receive_amount_hint">Monto</string>
     <string name="receive_cannot_open">¡No se ha podido abrir el monedero!</string>
-    <string name="receive_paymentid_invalid">16 caracteres hexadecimales (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Debe estar vacío con una dirección integrada</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -261,7 +253,6 @@
     <string name="send_xmrto_timeout">Oye, esperaste demasiado!</string>
     <string name="label_copy_xmrtokey">Clave XMR.TO</string>
     <string name="message_copy_xmrtokey">¡Clave XMR.TO copiada al portapapeles!</string>
-    <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
     <string name="send_send_label">Enviar mis preciados moneroj</string>
     <string name="send_send_timed_label">Gastar mis preciados moneroj (%1$s)</string>
     <string name="send_address_invalid">No es una dirección válida</string>
@@ -310,7 +301,6 @@
     <string name="nfc_tag_size">La etiqueta provee %1$d bytes, pero necesitamos %2$d!</string>
     <string name="nfc_tag_read_undef">¡No comprendo la etiqueta!</string>
     <string name="nfc_tag_read_what">¡No sé lo que pides!</string>
-    <string name="nfc_tag_read_success">Lectura de Etiqueta exitosa</string>
     <string name="nfc_tag_tap">¡NFC disponible!</string>
 
     <string name="receive_desc_hint">Descripción (opcional)</string>

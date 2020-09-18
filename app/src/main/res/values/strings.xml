@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">Transaction ID</string>
     <string name="label_send_address">Destination Address</string>
-    <string name="label_send_payment_id">Payment ID</string>
     <string name="label_send_notes">Notes</string>
 
     <string name="backup_progress">Backup in progress</string>
@@ -129,7 +128,6 @@
     <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
     <string name="prompt_password">Password for %1$s</string>
     <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
-    <string name="prompt_send_password">Confirm Password</string>
     <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
     <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
     <string name="bad_password">Incorrect password!</string>
@@ -217,10 +215,6 @@
     <string name="generate_check_address">Enter valid Address</string>
     <string name="generate_check_mnemonic">Enter your 25 word seed</string>
 
-    <string name="send_amount_btc_xmr">%1$s (indicative)</string>
-
-    <string name="send_paymentid_hint">Payment ID (optional)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">Private Notes (optional)</string>
     <string name="send_generate_paymentid_hint">Generate</string>
     <string name="send_qr_hint" translatable="false">Scan</string>
@@ -270,8 +264,6 @@
     <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notes</string>
     <string name="tx_notes_hint">(optional)</string>
-    <string name="tx_button_notes">Save</string>
-    <string name="tx_notes_set_failed">Notes saved failed</string>
     <string name="tx_title">Transaction Details</string>
 
     <string name="tx_pending">PENDING</string>
@@ -280,8 +272,6 @@
     <string name="receive_amount_hint">Amount</string>
     <string name="receive_desc_hint">Description (optional)</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
-    <string name="receive_paymentid_invalid">16 Hex characters (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
@@ -374,7 +364,6 @@
     <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
     <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_read_success">Reading Tag successful</string>
     <string name="nfc_tag_tap">NFC Available!</string>
 
     <string name="unknown_amount" translatable="false">\?\?\?</string>

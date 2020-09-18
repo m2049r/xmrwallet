@@ -229,10 +229,6 @@
         <item name="android:background">@drawable/button_selector_green</item>
     </style>
 
-    <style name="MoneroButton.Small">
-        <item name="android:textSize">11sp</item>
-    </style>
-
     <style name="MoneroButton.Take">
         <item name="android:background">@color/take</item>
     </style>

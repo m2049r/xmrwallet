@@ -86,7 +86,6 @@
 
     <string name="label_send_txid">取引ID</string>
     <string name="label_send_address">送金先アドレス</string>
-    <string name="label_send_payment_id">ペイメントID</string>
     <string name="label_send_notes">メモ</string>
 
     <string name="backup_progress">バックアップ中</string>
@@ -128,7 +127,6 @@
     <string name="prompt_changepwB">%1$s の新しいパスフレーズを再入力</string>
     <string name="prompt_password">%1$s のパスワード</string>
     <string name="prompt_fingerprint_auth">あなたは指紋でもウォレットを開くことができます。\nセンサーにタッチしてください。</string>
-    <string name="prompt_send_password">パスワードを確認</string>
     <string name="prompt_open_wallet">ウォレットを開いています&#8230;</string>
     <string name="bad_fingerprint">指紋が認識できません。もう一度試してください。</string>
     <string name="bad_password">パスワードが違います!</string>
@@ -213,10 +211,6 @@
     <string name="generate_check_address">有効なアドレスを入力してください</string>
     <string name="generate_check_mnemonic">25 単語のシードを入力してください</string>
 
-    <string name="send_amount_btc_xmr">%1$s (指定)</string>
-
-    <string name="send_paymentid_hint">ペイメントID (オプション)</string>
-    <string name="send_amount_hint">0.00</string>
     <string name="send_notes_hint">プライベートノート (オプション)</string>
     <string name="send_generate_paymentid_hint">生成</string>
     <string name="send_qr_hint" translatable="false">スキャン</string>
@@ -266,8 +260,6 @@
     <string name="tx_transfers">送金</string>
     <string name="tx_notes">メモ</string>
     <string name="tx_notes_hint">(オプション)</string>
-    <string name="tx_button_notes">保存</string>
-    <string name="tx_notes_set_failed">メモの保存に失敗しました</string>
     <string name="tx_title">取引詳細</string>
 
     <string name="tx_pending">待機中</string>
@@ -276,8 +268,6 @@
     <string name="receive_amount_hint">数量</string>
     <string name="receive_desc_hint">説明 (オプション)</string>
     <string name="receive_cannot_open">ウォレットを開けませんでした!</string>
-    <string name="receive_paymentid_invalid">16 文字の16進数 (0&#8211;9,a&#8211;f)</string>
-    <string name="receive_integrated_paymentid_invalid">インテグレーテッドアドレスでは空でなければなりません</string>
 
     <string name="receive_amount_too_big">最大. %1$s</string>
     <string name="receive_amount_negative">最小. 0</string>
@@ -333,7 +323,6 @@
     <string name="nfc_tag_size">タグは %1$d バイトを提供していますが, 私達は %2$d が必要です!</string>
     <string name="nfc_tag_read_undef">タグを理解できません!</string>
     <string name="nfc_tag_read_what">あなたが何をしたいのかわかりません!</string>
-    <string name="nfc_tag_read_success">タグ読み込み成功</string>
     <string name="nfc_tag_tap">NFCが利用可能です!</string>
 
     <string name="unknown_amount" translatable="false">\?\?\?</string>
