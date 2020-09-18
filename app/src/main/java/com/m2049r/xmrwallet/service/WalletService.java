@@ -281,97 +281,114 @@ public class WalletService extends Service {
                 case START_SERVICE: {
                     Bundle extras = msg.getData();
                     String cmd = extras.getString(REQUEST, null);
-                    if (cmd.equals(REQUEST_CMD_LOAD)) {
-                        String walletId = extras.getString(REQUEST_WALLET, null);
-                        String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
-                        Timber.d("LOAD wallet %s", walletId);
-                        if (walletId != null) {
-                            showProgress(getString(R.string.status_wallet_loading));
-                            showProgress(10);
-                            Wallet.Status walletStatus = start(walletId, walletPw);
-                            if (observer != null) observer.onWalletStarted(walletStatus);
-                            if ((walletStatus == null) || !walletStatus.isOk()) {
-                                errorState = true;
-                                stop();
+                    switch (cmd) {
+                        case REQUEST_CMD_LOAD:
+                            String walletId = extras.getString(REQUEST_WALLET, null);
+                            String walletPw = extras.getString(REQUEST_CMD_LOAD_PW, null);
+                            Timber.d("LOAD wallet %s", walletId);
+                            if (walletId != null) {
+                                showProgress(getString(R.string.status_wallet_loading));
+                                showProgress(10);
+                                Wallet.Status walletStatus = start(walletId, walletPw);
+                                if (observer != null) observer.onWalletStarted(walletStatus);
+                                if ((walletStatus == null) || !walletStatus.isOk()) {
+                                    errorState = true;
+                                    stop();
+                                }
                             }
-                        }
-                    } else if (cmd.equals(REQUEST_CMD_STORE)) {
-                        Wallet myWallet = getWallet();
-                        Timber.d("STORE wallet: %s", myWallet.getName());
-                        boolean rc = myWallet.store();
-                        Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
-                        if (!rc) {
-                            Timber.w("Wallet store failed: %s", myWallet.getStatus().getErrorString());
-                        }
-                        if (observer != null) observer.onWalletStored(rc);
-                    } else if (cmd.equals(REQUEST_CMD_TX)) {
-                        Wallet myWallet = getWallet();
-                        Timber.d("CREATE TX for wallet: %s", myWallet.getName());
-                        myWallet.disposePendingTransaction(); // remove any old pending tx
-                        TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
-                        String txTag = extras.getString(REQUEST_CMD_TX_TAG);
-                        PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
-                        PendingTransaction.Status status = pendingTransaction.getStatus();
-                        Timber.d("transaction status %s", status);
-                        if (status != PendingTransaction.Status.Status_Ok) {
-                            Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
-                        }
-                        if (observer != null) {
-                            observer.onTransactionCreated(txTag, pendingTransaction);
-                        } else {
-                            myWallet.disposePendingTransaction();
-                        }
-                    } else if (cmd.equals(REQUEST_CMD_SWEEP)) {
-                        Wallet myWallet = getWallet();
-                        Timber.d("SWEEP TX for wallet: %s", myWallet.getName());
-                        myWallet.disposePendingTransaction(); // remove any old pending tx
-                        String txTag = extras.getString(REQUEST_CMD_TX_TAG);
-                        PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
-                        PendingTransaction.Status status = pendingTransaction.getStatus();
-                        Timber.d("transaction status %s", status);
-                        if (status != PendingTransaction.Status.Status_Ok) {
-                            Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
-                        }
-                        if (observer != null) {
-                            observer.onTransactionCreated(txTag, pendingTransaction);
-                        } else {
-                            myWallet.disposePendingTransaction();
-                        }
-                    } else if (cmd.equals(REQUEST_CMD_SEND)) {
-                        Wallet myWallet = getWallet();
-                        Timber.d("SEND TX for wallet: %s", myWallet.getName());
-                        PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
-                        if (pendingTransaction == null) {
-                            throw new IllegalArgumentException("PendingTransaction is null"); // die
-                        }
-                        if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
-                            Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
-                            final String error = pendingTransaction.getErrorString();
-                            myWallet.disposePendingTransaction(); // it's broken anyway
-                            if (observer != null) observer.onSendTransactionFailed(error);
-                            return;
-                        }
-                        final String txid = pendingTransaction.getFirstTxId(); // tx ids vanish after commit()!
-                        boolean success = pendingTransaction.commit("", true);
-                        if (success) {
-                            myWallet.disposePendingTransaction();
-                            if (observer != null) observer.onTransactionSent(txid);
-                            String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
-                            if ((notes != null) && (!notes.isEmpty())) {
-                                myWallet.setUserNote(txid, notes);
-                            }
+                            break;
+                        case REQUEST_CMD_STORE: {
+                            Wallet myWallet = getWallet();
+                            if (myWallet == null) break;
+                            Timber.d("STORE wallet: %s", myWallet.getName());
                             boolean rc = myWallet.store();
                             Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
                             if (!rc) {
                                 Timber.w("Wallet store failed: %s", myWallet.getStatus().getErrorString());
                             }
                             if (observer != null) observer.onWalletStored(rc);
-                            listener.updated = true;
-                        } else {
-                            final String error = pendingTransaction.getErrorString();
-                            myWallet.disposePendingTransaction();
-                            if (observer != null) observer.onSendTransactionFailed(error);
-                            return;
+                            break;
+                        }
+                        case REQUEST_CMD_TX: {
+                            Wallet myWallet = getWallet();
+                            if (myWallet == null) break;
+                            Timber.d("CREATE TX for wallet: %s", myWallet.getName());
+                            myWallet.disposePendingTransaction(); // remove any old pending tx
+
+                            TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
+                            String txTag = extras.getString(REQUEST_CMD_TX_TAG);
+                            PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
+                            PendingTransaction.Status status = pendingTransaction.getStatus();
+                            Timber.d("transaction status %s", status);
+                            if (status != PendingTransaction.Status.Status_Ok) {
+                                Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
+                            }
+                            if (observer != null) {
+                                observer.onTransactionCreated(txTag, pendingTransaction);
+                            } else {
+                                myWallet.disposePendingTransaction();
+                            }
+                            break;
+                        }
+                        case REQUEST_CMD_SWEEP: {
+                            Wallet myWallet = getWallet();
+                            if (myWallet == null) break;
+                            Timber.d("SWEEP TX for wallet: %s", myWallet.getName());
+                            myWallet.disposePendingTransaction(); // remove any old pending tx
+
+                            String txTag = extras.getString(REQUEST_CMD_TX_TAG);
+                            PendingTransaction pendingTransaction = myWallet.createSweepUnmixableTransaction();
+                            PendingTransaction.Status status = pendingTransaction.getStatus();
+                            Timber.d("transaction status %s", status);
+                            if (status != PendingTransaction.Status.Status_Ok) {
+                                Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
+                            }
+                            if (observer != null) {
+                                observer.onTransactionCreated(txTag, pendingTransaction);
+                            } else {
+                                myWallet.disposePendingTransaction();
+                            }
+                            break;
+                        }
+                        case REQUEST_CMD_SEND: {
+                            Wallet myWallet = getWallet();
+                            if (myWallet == null) break;
+                            Timber.d("SEND TX for wallet: %s", myWallet.getName());
+                            PendingTransaction pendingTransaction = myWallet.getPendingTransaction();
+                            if (pendingTransaction == null) {
+                                throw new IllegalArgumentException("PendingTransaction is null"); // die
+                            }
+                            if (pendingTransaction.getStatus() != PendingTransaction.Status.Status_Ok) {
+                                Timber.e("PendingTransaction is %s", pendingTransaction.getStatus());
+                                final String error = pendingTransaction.getErrorString();
+                                myWallet.disposePendingTransaction(); // it's broken anyway
+                                if (observer != null) observer.onSendTransactionFailed(error);
+                                return;
+                            }
+                            final String txid = pendingTransaction.getFirstTxId(); // tx ids vanish after commit()!
+
+                            boolean success = pendingTransaction.commit("", true);
+                            if (success) {
+                                myWallet.disposePendingTransaction();
+                                if (observer != null) observer.onTransactionSent(txid);
+                                String notes = extras.getString(REQUEST_CMD_SEND_NOTES);
+                                if ((notes != null) && (!notes.isEmpty())) {
+                                    myWallet.setUserNote(txid, notes);
+                                }
+                                boolean rc = myWallet.store();
+                                Timber.d("wallet stored: %s with rc=%b", myWallet.getName(), rc);
+                                if (!rc) {
+                                    Timber.w("Wallet store failed: %s", myWallet.getStatus().getErrorString());
+                                }
+                                if (observer != null) observer.onWalletStored(rc);
+                                listener.updated = true;
+                            } else {
+                                final String error = pendingTransaction.getErrorString();
+                                myWallet.disposePendingTransaction();
+                                if (observer != null) observer.onSendTransactionFailed(error);
+                                return;
+                            }
+                            break;
                         }
                     }
                 }
