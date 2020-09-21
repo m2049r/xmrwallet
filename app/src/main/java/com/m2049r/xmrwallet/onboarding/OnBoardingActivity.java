@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 
 import com.m2049r.xmrwallet.LoginActivity;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.util.KeyStoreHelper;
 
 public class OnBoardingActivity extends AppCompatActivity implements OnBoardingAdapter.Listener {
 
@@ -74,6 +75,9 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
                 pager.setCurrentItem(item + 1);
             }
         });
+
+        // let old users who have fingerprint wallets already agree for fingerprint sending
+        OnBoardingScreen.FPSEND.setMustAgree(KeyStoreHelper.hasStoredPasswords(this));
 
         for (int i = 0; i < OnBoardingScreen.values().length; i++) {
             agreed[i] = !OnBoardingScreen.values()[i].isMustAgree();

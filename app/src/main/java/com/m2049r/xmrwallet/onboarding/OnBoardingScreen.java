@@ -28,7 +28,7 @@ enum OnBoardingScreen {
     private final int title;
     private final int information;
     private final int drawable;
-    private final boolean mustAgree;
+    private boolean mustAgree;
 
     OnBoardingScreen(final int title, final int information, final int drawable, final boolean mustAgree) {
         this.title = title;
@@ -51,5 +51,9 @@ enum OnBoardingScreen {
 
     public boolean isMustAgree() {
         return mustAgree;
+    }
+
+    public boolean setMustAgree(boolean mustAgree) {
+        return this.mustAgree = mustAgree;
     }
 }
