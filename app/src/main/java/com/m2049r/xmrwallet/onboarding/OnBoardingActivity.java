@@ -83,6 +83,7 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
     }
 
     private void finishOnboarding() {
+        nextButton.setEnabled(false);
         OnBoardingManager.setOnBoardingShown(getApplicationContext());
         startActivity(new Intent(this, LoginActivity.class));
         finish();
