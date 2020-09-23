@@ -16,24 +16,15 @@
 
 package com.m2049r.xmrwallet.fragment.send;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
@@ -353,7 +344,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             }
 
             public void fail(String walletName, String password, boolean fingerprintUsed) {
-                bSend.setEnabled(sendCountdown > 0); // allow to try again
+                getActivity().runOnUiThread(() -> {
+                    bSend.setEnabled(sendCountdown > 0); // allow to try again
+                });
             }
         });
     }

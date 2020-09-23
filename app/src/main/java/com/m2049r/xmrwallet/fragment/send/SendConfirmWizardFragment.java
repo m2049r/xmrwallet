@@ -16,29 +16,19 @@
 
 package com.m2049r.xmrwallet.fragment.send;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.TxData;
+import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.data.UserNotes;
 
 import timber.log.Timber;
 
@@ -237,7 +227,9 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
             }
 
             public void fail(String walletName, String password, boolean fingerprintUsed) {
-                bSend.setEnabled(true); // allow to try again
+                getActivity().runOnUiThread(() -> {
+                    bSend.setEnabled(true); // allow to try again
+                });
             }
         });
     }
