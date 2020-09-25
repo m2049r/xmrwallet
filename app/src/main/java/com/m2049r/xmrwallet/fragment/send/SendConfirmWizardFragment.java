@@ -131,12 +131,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
 
     void send() {
         sendListener.commitTransaction();
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                pbProgressSend.setVisibility(View.VISIBLE);
-            }
-        });
+        getActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
     }
 
     @Override
