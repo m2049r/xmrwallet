@@ -204,7 +204,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         ((TxDataBtc) sendListener.getTxData()).setXmrtoUuid(xmrtoStatus.getUuid());
         // TODO make method in TxDataBtc to set both of the above in one go
         sendListener.commitTransaction();
-        pbProgressSend.setVisibility(View.VISIBLE);
+        getActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
     }
 
     @Override
