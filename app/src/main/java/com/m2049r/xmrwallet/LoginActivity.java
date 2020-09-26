@@ -85,6 +85,7 @@ public class LoginActivity extends BaseActivity
     private static final String GENERATE_STACK = "gen";
 
     private static final String NODES_PREFS_NAME = "nodes";
+    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
     private static final String PREF_DAEMON_STAGENET = "daemon_stagenet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
 
@@ -162,6 +163,10 @@ public class LoginActivity extends BaseActivity
                 case NetworkType_Stagenet:
                     loadLegacyList(sharedPref.getString(PREF_DAEMON_STAGENET, null));
                     sharedPref.edit().remove(PREF_DAEMON_STAGENET).apply();
+                    break;
+                case NetworkType_Testnet:
+                    loadLegacyList(sharedPref.getString(PREF_DAEMON_TESTNET, null));
+                    sharedPref.edit().remove(PREF_DAEMON_TESTNET).apply();
                     break;
                 default:
                     throw new IllegalStateException("unsupported net " + WalletManager.getInstance().getNetworkType());

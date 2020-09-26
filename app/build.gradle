@@ -28,6 +28,11 @@ android {
             applicationIdSuffix '.stage'
             versionNameSuffix ' (stage)'
         }
+        devnet {
+            dimension 'net'
+            applicationIdSuffix '.test'
+            versionNameSuffix ' (test)'
+        }
         alpha {
             dimension 'type'
             applicationIdSuffix '.alpha'
