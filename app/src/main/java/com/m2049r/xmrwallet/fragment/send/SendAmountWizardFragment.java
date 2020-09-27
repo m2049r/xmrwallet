@@ -148,12 +148,9 @@ public class SendAmountWizardFragment extends SendWizardFragment {
             tvFunds.setText(getString(R.string.send_available,
                     getString(R.string.unknown_amount)));
         }
-        // getNativeAmount is null if exchange is in progress
-        if ((etAmount.getNativeAmount() != null) && etAmount.getNativeAmount().isEmpty()) {
-            final BarcodeData data = sendListener.popBarcodeData();
-            if ((data != null) && (data.amount != null)) {
-                etAmount.setAmount(data.amount);
-            }
+        final BarcodeData data = sendListener.popBarcodeData();
+        if ((data != null) && (data.amount != null)) {
+            etAmount.setAmount(data.amount);
         }
     }
 
