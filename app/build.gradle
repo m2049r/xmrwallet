@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 501
-        versionName "1.15.1 'Dark Fork'"
+        versionCode 502
+        versionName "1.15.2 'Dark Fork'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
