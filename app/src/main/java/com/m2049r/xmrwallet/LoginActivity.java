@@ -16,7 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -30,10 +29,6 @@ import android.hardware.usb.UsbManager;
 import android.media.MediaScannerConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -43,6 +38,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.m2049r.xmrwallet.data.Node;
 import com.m2049r.xmrwallet.data.NodeInfo;
 import com.m2049r.xmrwallet.dialog.AboutFragment;
@@ -55,10 +58,13 @@ import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
+import com.m2049r.xmrwallet.util.ColorHelper;
+import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.util.NightmodeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
@@ -69,7 +75,6 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -85,6 +90,7 @@ public class LoginActivity extends BaseActivity
     private static final String GENERATE_STACK = "gen";
 
     private static final String NODES_PREFS_NAME = "nodes";
+    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
     private static final String PREF_DAEMON_STAGENET = "daemon_stagenet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
 
@@ -162,6 +168,10 @@ public class LoginActivity extends BaseActivity
                 case NetworkType_Stagenet:
                     loadLegacyList(sharedPref.getString(PREF_DAEMON_STAGENET, null));
                     sharedPref.edit().remove(PREF_DAEMON_STAGENET).apply();
+                    break;
+                case NetworkType_Testnet:
+                    loadLegacyList(sharedPref.getString(PREF_DAEMON_TESTNET, null));
+                    sharedPref.edit().remove(PREF_DAEMON_TESTNET).apply();
                     break;
                 default:
                     throw new IllegalStateException("unsupported net " + WalletManager.getInstance().getNetworkType());
@@ -337,8 +347,8 @@ public class LoginActivity extends BaseActivity
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        AlertDialog diag = builder.setMessage(getString(R.string.details_alert_message))
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
+        builder.setMessage(getString(R.string.details_alert_message))
                 .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
                 .show();
@@ -426,7 +436,7 @@ public class LoginActivity extends BaseActivity
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt_rename, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
         alertDialogBuilder.setView(promptsView);
 
         final EditText etRename = promptsView.findViewById(R.id.etRename);
@@ -581,7 +591,7 @@ public class LoginActivity extends BaseActivity
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
         builder.setMessage(getString(R.string.archive_alert_message))
                 .setTitle(walletName)
                 .setPositiveButton(getString(R.string.archive_alert_yes), dialogClickListener)
@@ -653,11 +663,11 @@ public class LoginActivity extends BaseActivity
                 break;
             case NetworkType_Testnet:
                 toolbar.setSubtitle(getString(R.string.connect_testnet));
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             case NetworkType_Stagenet:
                 toolbar.setSubtitle(getString(R.string.connect_stagenet));
-                toolbar.setBackgroundResource(R.color.colorPrimaryDark);
+                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("NetworkType unknown: " + net);
@@ -1124,41 +1134,54 @@ public class LoginActivity extends BaseActivity
 
     public void onChangeLocale() {
         final ArrayList<Locale> availableLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
-        String[] localeDisplayName = new String[1 + availableLocales.size()];
-
-        Collections.sort(availableLocales, new Comparator<Locale>() {
-            @Override
-            public int compare(Locale locale1, Locale locale2) {
-                String localeString1 = LocaleHelper.getDisplayName(locale1, true);
-                String localeString2 = LocaleHelper.getDisplayName(locale2, true);
-                return localeString1.compareTo(localeString2);
-            }
+        Collections.sort(availableLocales, (locale1, locale2) -> {
+            String localeString1 = LocaleHelper.getDisplayName(locale1, true);
+            String localeString2 = LocaleHelper.getDisplayName(locale2, true);
+            return localeString1.compareTo(localeString2);
         });
 
-        localeDisplayName[0] = getString(R.string.language_system_default);
-        for (int i = 1; i < localeDisplayName.length; i++) {
-            Locale locale = availableLocales.get(i - 1);
-            localeDisplayName[i] = LocaleHelper.getDisplayName(locale, true);
+        String[] localeDisplayNames = new String[1 + availableLocales.size()];
+        localeDisplayNames[0] = getString(R.string.language_system_default);
+        for (int i = 1; i < localeDisplayNames.length; i++) {
+            localeDisplayNames[i] = LocaleHelper.getDisplayName(availableLocales.get(i - 1), true);
         }
 
         int currentLocaleIndex = 0;
-        String currentLocaleName = LocaleHelper.getLocale(LoginActivity.this);
-        if (!currentLocaleName.isEmpty()) {
-            Locale currentLocale = Locale.forLanguageTag(currentLocaleName);
-            String currentLocalizedString = LocaleHelper.getDisplayName(currentLocale, true);
-            currentLocaleIndex = Arrays.asList(localeDisplayName).indexOf(currentLocalizedString);
+        String currentLocaleTag = LocaleHelper.getPreferredLanguageTag(LoginActivity.this);
+        if (!currentLocaleTag.isEmpty()) {
+            Locale currentLocale = Locale.forLanguageTag(currentLocaleTag);
+            String currentLocaleName = LocaleHelper.getDisplayName(currentLocale, true);
+            currentLocaleIndex = Arrays.asList(localeDisplayNames).indexOf(currentLocaleName);
+            if (currentLocaleIndex < 0) currentLocaleIndex = 0;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(LoginActivity.this);
         builder.setTitle(getString(R.string.menu_language));
-        builder.setSingleChoiceItems(localeDisplayName, currentLocaleIndex, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.dismiss();
+        builder.setSingleChoiceItems(localeDisplayNames, currentLocaleIndex, (dialog, i) -> {
+            dialog.dismiss();
 
-                LocaleHelper.setLocale(LoginActivity.this,
-                        (i == 0) ? "" : availableLocales.get(i - 1).toLanguageTag());
-                startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+            LocaleHelper.setAndSaveLocale(this,
+                    (i == 0) ? "" : availableLocales.get(i - 1).toLanguageTag());
+            startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+        });
+        builder.show();
+    }
+
+    public void onChangeTheme() {
+        final DayNightMode currentDayNightSetting = DayNightMode.getValue(AppCompatDelegate.getDefaultNightMode());
+        // selection will be empty if UNKNOWN
+
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(LoginActivity.this);
+        builder.setTitle(getString(R.string.menu_daynight));
+
+        String[] modeNames = getResources().getStringArray(R.array.daynight_themes);
+
+        builder.setSingleChoiceItems(modeNames, currentDayNightSetting.ordinal(), (dialog, i) -> {
+            dialog.dismiss();
+            final DayNightMode mode = DayNightMode.values()[i];
+            if (currentDayNightSetting != mode) {
+                NightmodeHelper.setAndSavePreferredNightmode(LoginActivity.this, mode);
+                LoginActivity.this.recreate();
             }
         });
         builder.show();
@@ -1226,6 +1249,9 @@ public class LoginActivity extends BaseActivity
                 return true;
             case R.id.action_language:
                 onChangeLocale();
+                return true;
+            case R.id.action_theme:
+                onChangeTheme();
                 return true;
             case R.id.action_ledger_seed:
                 Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);

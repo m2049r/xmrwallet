@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -77,8 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="?android:selectableItemBackground"
-                android:enabled="false"
-                android:src="@drawable/ic_content_nocopy_black_24dp" />
+                android:src="@drawable/ic_content_copy_24dp" />
         </LinearLayout>
 
         <TextView
@@ -107,14 +105,11 @@
             android:textAlignment="textStart"
             tools:text="4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk" />
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cvXmrTo"
+        <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="8dp"
-            card_view:cardCornerRadius="2dp"
-            card_view:cardElevation="8dp"
+            android:layout_marginBottom="16dp"
             card_view:contentPadding="8dp">
 
             <LinearLayout
@@ -140,7 +135,7 @@
                             android:layout_gravity="center"
                             android:backgroundTintMode="src_in"
                             android:indeterminate="true"
-                            android:indeterminateTint="@color/moneroFab" />
+                            android:indeterminateTint="?attr/colorOnPrimary" />
 
                         <ImageView
                             android:id="@+id/ivXmrToStatus"
@@ -209,14 +204,14 @@
                         style="@style/MoneroText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/dotGray"
-                        android:drawableEnd="@drawable/ic_content_copy_white_24dp"
+                        android:background="?android:attr/colorBackground"
                         android:drawablePadding="8dp"
-                        android:paddingBottom="8dp"
-                        android:paddingEnd="8dp"
                         android:paddingStart="16dp"
                         android:paddingTop="8dp"
-                        android:textColor="@color/white"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:textColor="?attr/colorPrimary"
+                        card_view:drawableEndCompat="@drawable/ic_content_copy_24dp"
                         tools:text="XMR.TO-d2KQ" />
 
                     <TextView
@@ -226,13 +221,13 @@
                         android:layout_gravity="start"
                         android:layout_marginTop="8dp"
                         android:drawablePadding="4dp"
-                        android:drawableStart="@drawable/ic_info_outline_gray_24dp"
                         android:gravity="center"
                         android:text="@string/label_send_btc_xmrto_info"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        card_view:drawableStartCompat="@drawable/ic_info_outline_gray_24dp" />
                 </LinearLayout>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>

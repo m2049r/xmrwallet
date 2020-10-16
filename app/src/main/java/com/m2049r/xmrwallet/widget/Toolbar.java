@@ -23,15 +23,16 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.m2049r.xmrwallet.R;
 
 import timber.log.Timber;
 
-public class Toolbar extends android.support.v7.widget.Toolbar {
+public class Toolbar extends MaterialToolbar {
     public interface OnButtonListener {
         void onButton(int type);
     }
@@ -45,7 +46,7 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     ImageView toolbarImage;
     TextView toolbarTitle;
     TextView toolbarSubtitle;
-    Button bCredits;
+    ImageButton bCredits;
 
     public Toolbar(Context context) {
         super(context);
@@ -125,33 +126,27 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         switch (type) {
             case BUTTON_BACK:
                 Timber.d("BUTTON_BACK");
-                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back_white_24dp, 0, 0, 0);
-                bCredits.setText(null);
+                bCredits.setImageResource(R.drawable.ic_arrow_back_white_24dp);
                 bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CLOSE:
                 Timber.d("BUTTON_CLOSE");
-                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bCredits.setText(R.string.label_close);
+                bCredits.setImageResource(R.drawable.ic_close_white_24dp);
                 bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CREDITS:
                 Timber.d("BUTTON_CREDITS");
-                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_favorite_white_24dp, 0, 0, 0);
-                bCredits.setText(R.string.label_credits);
+                bCredits.setImageResource(R.drawable.ic_favorite_white_24dp);
                 bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CANCEL:
                 Timber.d("BUTTON_CANCEL");
-                bCredits.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bCredits.setText(R.string.label_cancel);
+                bCredits.setImageResource(R.drawable.ic_close_white_24dp);
                 bCredits.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_NONE:
             default:
                 Timber.d("BUTTON_NONE");
-                bCredits.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                bCredits.setText(null);
                 bCredits.setVisibility(View.INVISIBLE);
         }
         buttonType = type;

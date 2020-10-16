@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="tx_green">@color/take</color>
-    <color name="tx_red">@color/give</color>
-    <color name="tx_pending">@color/moneroFab</color>
-    <color name="tx_failed">@color/moneroBlack</color>
+    <color name="gradientBottom">#FF006B</color>
+    <color name="gradientTop">#FF6105</color>
 
-    <color name="gradientOrange">#FFFF6105</color>
-    <color name="gradientPink">#FFF0006B</color>
+    <color name="gradientLeft">@color/monerujoOrange</color>
+    <color name="gradientRight">@color/monerujoPink</color>
 
-    <color name="trafficGray">#9B9B9B</color>
+    <color name="monerujoToolbarText">@color/monerujoBackground</color>
 
-    <color name="take">#FF417505</color>
-    <color name="give">#FFFF6105</color>
+    <color name="monerujoBackground">#FFF6EF</color>
+    <color name="monerujoPrimary">#2D1A2E</color>
+    <color name="monerujoPrimaryVariant">#CCC3BD</color>
+    <color name="monerujoOrange">#FA5544</color>
+    <color name="monerujoGreen">#00C691</color>
+    <color name="monerujoPink">#F0006B</color>
+    <color name="monerujoE">#FFFDFB</color>
 
-    <color name="moneroWhite">#ffffff</color>
-    <color name="moneroBlack">#000000</color>
-    <color name="moneroBlue">#1f4e97</color>
-    <color name="moneroGray">#FD9B9B9B</color>
-
+    <color name="monerujoReceive">@color/monerujoGreen</color>
+    <color name="monerujoGive">@color/monerujoOrange</color>
     <color name="moneroStreetA">#D81F0759</color>
     <color name="moneroStreetB">#D819001E</color>
 
-    <color name="dotGray">#FF4A4A4A</color>
+    <color name="wifi">@color/monerujoPrimary</color>
+    <color name="progress_circle">@color/monerujoPrimaryVariant</color>
 
-    <color name="moneroFab">#61000000</color>
-    <color name="moneroText">#FF616161</color>
+    <color name="tx_failed">@color/monerujoPrimaryVariant</color>
+    <color name="tx_pending">@color/monerujoPrimaryVariant</color>
+    <color name="tx_plus">@color/monerujoGreen</color>
+    <color name="tx_minus">@color/monerujoOrange</color>
 
+    <color name="monerujoBlue">#1f4e97</color>
 
-    <color name="colorPrimaryDark">#61221A</color>
-    <!--color name="colorAccent">#009ADA</color-->
-    <color name="colorAccent">@color/gradientPink</color>
-
-    <color name="white">#ffffff</color>
 </resources>

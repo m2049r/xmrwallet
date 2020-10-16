@@ -31,9 +31,10 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
@@ -429,7 +430,7 @@ public class WalletService extends Service {
 
     @Override
     protected void attachBaseContext(Context context) {
-        super.attachBaseContext(LocaleHelper.setLocale(context, LocaleHelper.getLocale(context)));
+        super.attachBaseContext(LocaleHelper.setPreferredLocale(context));
     }
 
     public class WalletServiceBinder extends Binder {

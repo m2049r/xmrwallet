@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.service.exchange.kraken;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;

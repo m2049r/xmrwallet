@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
@@ -38,8 +39,7 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="80dp"
                 android:background="?android:selectableItemBackground"
-                android:clickable="false"
-                android:src="@drawable/ic_content_nocopy_black_24dp" />
+                android:src="@drawable/ic_content_copy_24dp" />
         </FrameLayout>
 
         <TextView
@@ -128,7 +128,7 @@
                 tools:text="2ExEN7droBLzWW2CEE2d7kv7E/iCZwNn:hKwUmg3:hg" />
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bAccept"
             style="@style/MoneroButton"
             android:layout_width="match_parent"
@@ -137,25 +137,25 @@
             android:text="@string/generate_button_accept"
             android:visibility="gone" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bAdvancedInfo"
-            style="@style/MoneroFab"
+            style="@style/MoneroIconButton.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/section_top"
             android:background="?android:selectableItemBackground"
             android:drawablePadding="4dp"
-            android:drawableStart="@drawable/ic_add_circle_outline"
             android:text="@string/label_wallet_advanced_details"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:icon="@drawable/ic_add_circle_outline" />
 
         <LinearLayout
             android:id="@+id/llAdvancedInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:layout_marginTop="@dimen/data_top"
+            android:layout_marginBottom="24dp"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -185,7 +185,7 @@
                         android:layout_gravity="end"
                         android:layout_marginEnd="80dp"
                         android:background="?android:selectableItemBackground"
-                        android:src="@drawable/ic_content_copy_black_24dp" />
+                        android:src="@drawable/ic_content_copy_24dp" />
                 </FrameLayout>
 
                 <TextView

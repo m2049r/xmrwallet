@@ -8,7 +8,6 @@ import android.preference.PreferenceManager;
 import com.m2049r.xmrwallet.R;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Locale;
 
 public class LocaleHelper {
@@ -17,6 +16,7 @@ public class LocaleHelper {
 
     public static ArrayList<Locale> getAvailableLocales(Context context) {
         ArrayList<Locale> locales = new ArrayList<>();
+        // R.string.available_locales gets generated in build.gradle by enumerating values-* folders
         String[] availableLocales = context.getString(R.string.available_locales).split(",");
 
         for (String localeName : availableLocales) {
@@ -36,20 +36,22 @@ public class LocaleHelper {
         return displayName;
     }
 
-    public static String getLocale(Context context) {
-        return getPreferredLocale(context);
+    public static Context setPreferredLocale(Context context) {
+        return setLocale(context, getPreferredLanguageTag(context));
     }
 
-    public static Context setLocale(Context context, String locale) {
-        setPreferredLocale(context, locale);
+    public static Context setAndSaveLocale(Context context, String langaugeTag) {
+        savePreferredLangaugeTag(context, langaugeTag);
+        return setLocale(context, langaugeTag);
+    }
 
-        Locale newLocale = (locale.isEmpty()) ? SYSTEM_DEFAULT_LOCALE : Locale.forLanguageTag(locale);
+    private static Context setLocale(Context context, String languageTag) {
+        Locale locale = (languageTag.isEmpty()) ? SYSTEM_DEFAULT_LOCALE : Locale.forLanguageTag(languageTag);
+        Locale.setDefault(locale);
+
         Configuration configuration = context.getResources().getConfiguration();
-
-        Locale.setDefault(newLocale);
-
-        configuration.setLocale(newLocale);
-        configuration.setLayoutDirection(newLocale);
+        configuration.setLocale(locale);
+        configuration.setLayoutDirection(locale);
 
         return context.createConfigurationContext(configuration);
     }
@@ -68,13 +70,18 @@ public class LocaleHelper {
                 + str.substring(firstCodePointLen);
     }
 
-    private static String getPreferredLocale(Context context) {
+    public static Locale getPreferredLocale(Context context) {
+        String languageTag = getPreferredLanguageTag(context);
+        return languageTag.isEmpty() ? SYSTEM_DEFAULT_LOCALE : Locale.forLanguageTag(languageTag);
+    }
+
+    public static String getPreferredLanguageTag(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(PREFERRED_LOCALE_KEY, "");
     }
 
     @SuppressLint("ApplySharedPref")
-    private static void setPreferredLocale(Context context, String locale) {
+    private static void savePreferredLangaugeTag(Context context, String locale) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
                 .putString(PREFERRED_LOCALE_KEY, locale).commit();
     }

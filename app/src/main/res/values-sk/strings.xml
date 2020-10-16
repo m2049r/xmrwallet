@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">Peňaženka</string>
 
@@ -377,4 +378,28 @@
     <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
 
     <string name="menu_rescan">Rescan!</string>
+
+    <string name="onboarding_agree">I get it!</string>
+    <string name="onboarding_button_next">Next</string>
+    <string name="onboarding_button_ready">I\'m ready!</string>
+
+    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
+    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
+    <string name="onboarding_seed_title">Keep your seed safe</string>
+    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
+    <string name="onboarding_xmrto_title">Send Bitcoin</string>
+    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_nodes_title">Nodes, your way</string>
+    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
+    <string name="onboarding_fpsend_title">Send with fingerprint</string>
+    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+
+    <string name="menu_daynight">Dark Mode</string>
+    <string-array name="daynight_themes">
+        <item>Auto</item>
+        <item>Day</item>
+        <item>Night</item>
+    </string-array>
+    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+
 </resources>

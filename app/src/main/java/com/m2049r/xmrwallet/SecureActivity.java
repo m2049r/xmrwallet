@@ -17,12 +17,17 @@
 package com.m2049r.xmrwallet;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
+
+import java.util.Locale;
 
 import static android.view.WindowManager.LayoutParams;
 
@@ -37,7 +42,36 @@ public abstract class SecureActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void attachBaseContext(Context context) {
-        super.attachBaseContext(LocaleHelper.setLocale(context, LocaleHelper.getLocale(context)));
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        applyOverrideConfiguration(new Configuration());
+    }
+
+    @Override
+    public void applyOverrideConfiguration(Configuration newConfig) {
+        super.applyOverrideConfiguration(updateConfigurationIfSupported(newConfig));
+    }
+
+    private Configuration updateConfigurationIfSupported(Configuration config) {
+        // Configuration.getLocales is added after 24 and Configuration.locale is deprecated in 24
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (!config.getLocales().isEmpty()) {
+                return config;
+            }
+        } else {
+            if (config.locale != null) {
+                return config;
+            }
+        }
+
+        Locale locale = LocaleHelper.getPreferredLocale(this);
+        if (locale != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                config.setLocale(locale);
+            } else {
+                config.locale = locale;
+            }
+        }
+        return config;
     }
 }

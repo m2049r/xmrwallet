@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="colorPrimary">@color/monerujoPrimary</item>
+        <item name="colorPrimaryVariant">@color/monerujoPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/monerujoE</item>
+        <item name="colorSecondary">@color/monerujoPink</item>
+        <item name="colorSecondaryVariant">@color/monerujoE</item>
+        <item name="colorOnSecondary">@color/monerujoPrimary</item>
+        <item name="colorError">@color/monerujoOrange</item>
+        <item name="colorOnError">@color/monerujoE</item>
+        <item name="colorSurface">@color/monerujoE</item>
+        <item name="colorOnSurface">@color/monerujoPrimary</item>
+        <item name="colorOnBackground">@color/monerujoE</item>
+        <item name="android:colorBackground">@color/monerujoBackground</item>
+        <item name="android:textColorPrimary">@color/monerujoPrimary</item>
+        <item name="android:textColorSecondary">@color/monerujoPrimary</item>
+
+        <item name="android:statusBarColor">@color/monerujoBackground</item>
+        <item name="android:navigationBarColor">@color/monerujoBackground</item>
+
+        <item name="materialCardViewStyle">@style/AppCard</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+    </style>
+
+    <style name="AppCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">1dp</item>
+    </style>
+
+</resources>

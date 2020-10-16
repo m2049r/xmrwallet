@@ -76,12 +76,10 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
                 R.layout.fragment_send_success, container, false);
 
         bCopyTxId = view.findViewById(R.id.bCopyTxId);
-        bCopyTxId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
-                Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
-            }
+        bCopyTxId.setEnabled(false);
+        bCopyTxId.setOnClickListener(v -> {
+            Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
+            Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
         });
 
         tvTxId = view.findViewById(R.id.tvTxId);
@@ -116,7 +114,6 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         if (committedTx != null) {
             tvTxId.setText(committedTx.txId);
             bCopyTxId.setEnabled(true);
-            bCopyTxId.setImageResource(R.drawable.ic_content_copy_black_24dp);
 
             if (sendListener.getActivityCallback().isStreetMode()
                     && (sendListener.getTxData().getAmount() == Wallet.SWEEP_ALL)) {

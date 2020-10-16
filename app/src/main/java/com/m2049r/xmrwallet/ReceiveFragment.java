@@ -25,12 +25,6 @@ import android.net.Uri;
 import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -42,7 +36,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -50,6 +43,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.content.FileProvider;
+import androidx.core.view.MenuItemCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -82,10 +82,11 @@ public class ReceiveFragment extends Fragment {
     private ExchangeView evAmount;
     private TextView tvQrCode;
     private ImageView ivQrCode;
+    private View cvQrCode;
     private ImageView ivQrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
-    private Button bSubaddress;
+    private ImageButton bSubaddress;
 
     private Wallet wallet = null;
     private boolean isMyWallet = false;
@@ -109,6 +110,7 @@ public class ReceiveFragment extends Fragment {
         tvAddress = view.findViewById(R.id.tvAddress);
         etNotes = view.findViewById(R.id.etNotes);
         evAmount = view.findViewById(R.id.evAmount);
+        cvQrCode = view.findViewById(R.id.cvQrCode);
         ivQrCode = view.findViewById(R.id.qrCode);
         tvQrCode = view.findViewById(R.id.tvQrCode);
         ivQrCodeFull = view.findViewById(R.id.qrCodeFull);
@@ -118,13 +120,9 @@ public class ReceiveFragment extends Fragment {
 
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        bCopyAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                copyAddress();
-            }
-        });
+        bCopyAddress.setOnClickListener(v -> copyAddress());
         enableCopyAddress(false);
+        enableSubaddressButton(false);
 
         evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
             @Override
@@ -190,7 +188,7 @@ public class ReceiveFragment extends Fragment {
             }
         });
 
-        ivQrCode.setOnClickListener(new View.OnClickListener() {
+        cvQrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Helper.hideKeyboard(getActivity());
@@ -315,13 +313,8 @@ public class ReceiveFragment extends Fragment {
         return null;
     }
 
-    void enableSubaddressButton(boolean enable) {
+    private void enableSubaddressButton(boolean enable) {
         bSubaddress.setEnabled(enable);
-        if (enable) {
-            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_orange_24dp, 0, 0);
-        } else {
-            bSubaddress.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_gray_24dp, 0, 0);
-        }
     }
 
     void copyAddress() {
@@ -371,16 +364,13 @@ public class ReceiveFragment extends Fragment {
         listenerCallback.setSubtitle(wallet.getAccountLabel());
         tvAddress.setText(wallet.getAddress());
         enableCopyAddress(true);
+        enableSubaddressButton(true);
         hideProgress();
         generateQr();
     }
 
     private void enableCopyAddress(boolean enable) {
-        bCopyAddress.setClickable(enable);
-        if (enable)
-            bCopyAddress.setImageResource(R.drawable.ic_content_copy_black_24dp);
-        else
-            bCopyAddress.setImageResource(R.drawable.ic_content_nocopy_black_24dp);
+        bCopyAddress.setEnabled(enable);
     }
 
     private void loadAndShow(String walletPath, String password) {

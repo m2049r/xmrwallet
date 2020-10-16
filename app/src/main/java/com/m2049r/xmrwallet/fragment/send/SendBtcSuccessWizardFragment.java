@@ -80,12 +80,10 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
                 R.layout.fragment_send_btc_success, container, false);
 
         bCopyTxId = view.findViewById(R.id.bCopyTxId);
-        bCopyTxId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
-                Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
-            }
+        bCopyTxId.setEnabled(false);
+        bCopyTxId.setOnClickListener(v -> {
+            Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
+            Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
         });
 
         tvXmrToAmount = view.findViewById(R.id.tvXmrToAmount);
@@ -143,7 +141,6 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         if (committedTx != null) {
             tvTxId.setText(committedTx.txId);
             bCopyTxId.setEnabled(true);
-            bCopyTxId.setImageResource(R.drawable.ic_content_copy_black_24dp);
             tvTxAmount.setText(getString(R.string.send_amount, Helper.getDisplayAmount(committedTx.amount)));
             tvTxFee.setText(getString(R.string.send_fee, Helper.getDisplayAmount(committedTx.fee)));
             if (btcData != null) {

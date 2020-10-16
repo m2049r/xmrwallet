@@ -17,7 +17,6 @@ package com.m2049r.xmrwallet.dialog;
  * limitations under the License.
  */
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +24,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;

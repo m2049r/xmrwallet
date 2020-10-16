@@ -19,11 +19,6 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,6 +33,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.m2049r.xmrwallet.data.NodeInfo;
 import com.m2049r.xmrwallet.layout.NodeInfoAdapter;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
@@ -63,6 +64,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private List<WalletManager.WalletInfo> walletList = new ArrayList<>();
     private List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
 
+    private View tvGuntherSays;
     private ImageView ivGunther;
     private TextView tvNodeName;
     private TextView tvNodeAddress;
@@ -143,6 +145,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         Timber.d("onCreateView");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        tvGuntherSays = view.findViewById(R.id.tvGuntherSays);
         ivGunther = view.findViewById(R.id.ivGunther);
         fabScreen = view.findViewById(R.id.fabScreen);
         fab = view.findViewById(R.id.fab);
@@ -275,13 +278,15 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         if (displayedList.isEmpty()) {
             fab.startAnimation(fab_pulse);
             if (ivGunther.getDrawable() == null) {
-                ivGunther.setImageResource(R.drawable.gunther_desaturated);
+                ivGunther.setImageResource(R.drawable.ic_emptygunther);
+                tvGuntherSays.setVisibility(View.VISIBLE);
             }
         } else {
             fab.clearAnimation();
             if (ivGunther.getDrawable() != null) {
                 ivGunther.setImageDrawable(null);
             }
+            tvGuntherSays.setVisibility(View.GONE);
         }
 
         // remove information of non-existent wallet

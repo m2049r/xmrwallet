@@ -20,9 +20,12 @@ package com.m2049r.xmrwallet;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 
 import com.m2049r.xmrwallet.model.NetworkType;
+import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.LocaleHelper;
+import com.m2049r.xmrwallet.util.NightmodeHelper;
 
 import timber.log.Timber;
 
@@ -34,18 +37,23 @@ public class XmrWalletApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+        NightmodeHelper.setPreferredNightmode(this);
     }
 
     @Override
     protected void attachBaseContext(Context context) {
-        super.attachBaseContext(LocaleHelper.setLocale(context, LocaleHelper.getLocale(context)));
+        super.attachBaseContext(LocaleHelper.setPreferredLocale(context));
     }
 
     @Override
     public void onConfigurationChanged(Configuration configuration) {
         super.onConfigurationChanged(configuration);
-        LocaleHelper.updateSystemDefaultLocale(configuration.locale);
-        LocaleHelper.setLocale(XmrWalletApplication.this, LocaleHelper.getLocale(XmrWalletApplication.this));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleHelper.updateSystemDefaultLocale(configuration.getLocales().get(0));
+        } else {
+            LocaleHelper.updateSystemDefaultLocale(configuration.locale);
+        }
+        LocaleHelper.setPreferredLocale(this);
     }
 
     static public NetworkType getNetworkType() {
@@ -54,7 +62,7 @@ public class XmrWalletApplication extends Application {
                 return NetworkType.NetworkType_Mainnet;
             case "stagenet":
                 return NetworkType.NetworkType_Stagenet;
-            case "testnet":
+            case "devnet": // flavors cannot start with "test"
                 return NetworkType.NetworkType_Testnet;
             default:
                 throw new IllegalStateException("unknown net flavor " + BuildConfig.FLAVOR_net);

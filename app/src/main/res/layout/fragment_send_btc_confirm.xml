@@ -6,16 +6,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:foreground="?android:attr/selectableItemBackground"
-            card_view:cardCornerRadius="2dp"
-            card_view:cardElevation="8dp"
             card_view:contentPadding="8dp">
 
             <LinearLayout
@@ -47,23 +45,23 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:drawablePadding="8dp"
-                            android:drawableStart="@drawable/ic_xmrto_32dp"
                             android:gravity="center_vertical"
-                            android:text="@string/label_send_btc_xmrto_key" />
+                            android:text="@string/label_send_btc_xmrto_key"
+                            card_view:drawableStartCompat="@drawable/ic_xmrto_32dp" />
 
                         <TextView
                             android:id="@+id/tvTxXmrToKey"
                             style="@style/MoneroText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@color/dotGray"
-                            android:drawableEnd="@drawable/ic_content_copy_white_24dp"
+                            android:background="?android:attr/colorBackground"
                             android:drawablePadding="16dp"
-                            android:paddingBottom="8dp"
-                            android:paddingEnd="8dp"
                             android:paddingStart="24dp"
                             android:paddingTop="8dp"
-                            android:textColor="@color/white"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="?attr/colorPrimary"
+                            card_view:drawableEndCompat="@drawable/ic_content_copy_24dp"
                             tools:text="XMR.TO-d2KQ" />
 
                         <TextView
@@ -78,8 +76,8 @@
                             style="@style/MoneroText.Confirm.Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
                             android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/label_send_btc_address"
                             android:textAlignment="textStart" />
 
@@ -96,8 +94,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@android:color/darker_gray" />
 
                 <FrameLayout
@@ -145,13 +143,13 @@
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <com.m2049r.xmrwallet.widget.SendProgressView
                 android:id="@+id/evStageC"

@@ -16,11 +16,9 @@
 
 package com.m2049r.xmrwallet.service.exchange.krakenEcb;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
-
-import java.util.Date;
 
 class ExchangeRateImpl implements ExchangeRate {
     private final String baseCurrency;

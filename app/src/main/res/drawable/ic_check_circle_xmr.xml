@@ -4,7 +4,7 @@
     android:viewportHeight="58.0"
     android:viewportWidth="58.0">
     <path
-        android:fillColor="@color/gradientPink"
+        android:fillColor="@color/monerujoPink"
         android:pathData="M17.11,23.49L13.05,27.55L26.1,40.6L55.1,11.6L51.04,7.54L26.1,32.48L17.11,23.49L17.11,23.49ZM52.2,29C52.2,41.76 41.76,52.2 29,52.2C16.24,52.2 5.8,41.76 5.8,29C5.8,16.24 16.24,5.8 29,5.8C31.32,5.8 33.35,6.09 35.38,6.67L40.02,2.03C36.54,0.87 32.77,0 29,0C13.05,0 0,13.05 0,29C0,44.95 13.05,58 29,58C44.95,58 58,44.95 58,29L52.2,29L52.2,29Z"
         android:strokeColor="#00000000"
         android:strokeWidth="1" />

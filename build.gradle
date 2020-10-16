@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.1.0'
     }
 }
 
@@ -29,7 +29,7 @@ task clean(type: Delete) {
 
 ext {
     apkName = 'monerujo'
-    okHttpVersion = '3.12.0'
+    okHttpVersion = '4.3.0'
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     timberVersion = '4.7.1'

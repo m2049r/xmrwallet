@@ -20,7 +20,7 @@ package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.widget.AppCompatAutoCompleteTextView;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 
 public class DropDownEditText extends AppCompatAutoCompleteTextView {

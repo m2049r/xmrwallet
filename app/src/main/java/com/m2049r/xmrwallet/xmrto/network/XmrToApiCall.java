@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.xmrto.network;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 
