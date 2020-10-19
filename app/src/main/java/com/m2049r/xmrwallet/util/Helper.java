@@ -167,7 +167,9 @@ public class Helper {
 
     static public void showKeyboard(Activity act) {
         InputMethodManager imm = (InputMethodManager) act.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(act.getCurrentFocus(), InputMethodManager.SHOW_IMPLICIT);
+        final View focus = act.getCurrentFocus();
+        if (focus != null)
+            imm.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT);
     }
 
     static public void hideKeyboard(Activity act) {
