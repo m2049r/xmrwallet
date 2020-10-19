@@ -159,17 +159,22 @@ public class BarcodeData {
         String noScheme = uri.substring(XMR_SCHEME.length());
         Uri monero = Uri.parse(noScheme);
         Map<String, String> parms = new HashMap<>();
-        String query = monero.getEncodedQuery();
-        if (query != null) {
-            String[] args = query.split("&");
-            for (String arg : args) {
-                String[] namevalue = arg.split("=");
-                if (namevalue.length == 0) {
-                    continue;
+        try {
+            String query = monero.getEncodedQuery();
+            if (query != null) {
+                String[] args = query.split("&");
+                for (String arg : args) {
+                    String[] namevalue = arg.split("=");
+                    if (namevalue.length == 0) {
+                        continue;
+                    }
+                    parms.put(Uri.decode(namevalue[0]).toLowerCase(),
+                            namevalue.length > 1 ? Uri.decode(namevalue[1]) : "");
                 }
-                parms.put(Uri.decode(namevalue[0]).toLowerCase(),
-                        namevalue.length > 1 ? Uri.decode(namevalue[1]) : "");
             }
+        } catch (Exception e) {
+            Timber.d(e.getLocalizedMessage());
+            return null; // Undefined behavior for invalid input to getEncodedQuery.
         }
         String address = monero.getPath();
 
