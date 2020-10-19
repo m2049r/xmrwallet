@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 502
-        versionName "1.15.2 'Dark Fork'"
+        versionCode 503
+        versionName "1.15.3 'Dark Fork'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -92,8 +92,7 @@ android {
         variant.outputs.all {
             output ->
                 def abiName = output.getFilter(com.android.build.OutputFile.ABI)
-                output.versionCodeOverride = abiCodes.get(abiName, 0) + 10 * variant.versionCode
-                //def flavor = output.getFilter(flavor)
+                output.versionCodeOverride = abiCodes.get(abiName, 0) + 10 * versionCode
 
                 if (abiName == null) abiName = "universal"
                 def v = "${variant.versionName}".replaceFirst(" '.*' ?", "")
