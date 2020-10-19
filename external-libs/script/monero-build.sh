@@ -48,6 +48,7 @@ for arch in ${archs[@]}; do
 
     TARGET_LIB_DIR=$lib_root/monero/$arch/lib
     if [ -f "$TARGET_LIB_DIR/libwallet_api.a" ]; then
+      echo "$TARGET_LIB_DIR/libwallet_api.a exists"
       continue
     fi
 
