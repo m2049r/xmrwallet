@@ -579,10 +579,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         });
         if (numAccounts != wallet.getNumAccounts()) {
             numAccounts = wallet.getNumAccounts();
-            runOnUiThread(new Runnable() {
-                public void run() {
+            runOnUiThread(() -> {
+                if (getWallet() != null)
                     updateAccountsList();
-                }
             });
         }
         try {
