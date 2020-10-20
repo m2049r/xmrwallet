@@ -610,6 +610,8 @@ public class ReceiveFragment extends Fragment {
             super.onPostExecute(result);
             if (dialogOpened)
                 progressCallback.dismissProgressDialog();
+            if (!isAdded()) // never mind then
+                return;
             tvAddress.setText(newSubaddress);
             tvAddressLabel.setText(getString(R.string.generate_address_label_sub,
                     wallet.getNumSubaddresses() - 1));
