@@ -21,8 +21,8 @@ import com.burgstaller.okhttp.CachingAuthenticatorDecorator;
 import com.burgstaller.okhttp.digest.CachingAuthenticator;
 import com.burgstaller.okhttp.digest.Credentials;
 import com.burgstaller.okhttp.digest.DigestAuthenticator;
-import com.m2049r.levin.scanner.Dispatcher;
 import com.m2049r.levin.scanner.LevinPeer;
+import com.m2049r.xmrwallet.util.NodePinger;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
 
 import org.json.JSONException;
@@ -67,7 +67,6 @@ public class NodeInfo extends Node {
         try {
             return new NodeInfo(nodeString);
         } catch (IllegalArgumentException ex) {
-            Timber.w(ex);
             return null;
         }
     }
@@ -145,23 +144,20 @@ public class NodeInfo extends Node {
         return isSuccessful() && (majorVersion >= MIN_MAJOR_VERSION) && (responseTime < Double.MAX_VALUE);
     }
 
-    static public Comparator<NodeInfo> BestNodeComparator = new Comparator<NodeInfo>() {
-        @Override
-        public int compare(NodeInfo o1, NodeInfo o2) {
-            if (o1.isValid()) {
-                if (o2.isValid()) { // both are valid
-                    // higher node wins
-                    int heightDiff = (int) (o2.height - o1.height);
-                    if (Math.abs(heightDiff) > Dispatcher.HEIGHT_WINDOW)
-                        return heightDiff;
-                    // if they are (nearly) equal, faster node wins
-                    return (int) Math.signum(o1.responseTime - o2.responseTime);
-                } else {
-                    return -1;
-                }
+    static public Comparator<NodeInfo> BestNodeComparator = (o1, o2) -> {
+        if (o1.isValid()) {
+            if (o2.isValid()) { // both are valid
+                // higher node wins
+                int heightDiff = (int) (o2.height - o1.height);
+                if (heightDiff != 0)
+                    return heightDiff;
+                // if they are equal, faster node wins
+                return (int) Math.signum(o1.responseTime - o2.responseTime);
             } else {
-                return 1;
+                return -1;
             }
+        } else {
+            return 1;
         }
     };
 
@@ -200,7 +196,15 @@ public class NodeInfo extends Node {
         return testRpcService(rpcPort);
     }
 
+    public boolean testRpcService(NodePinger.Listener listener) {
+        boolean result = testRpcService(rpcPort);
+        if (listener != null)
+            listener.publish(this);
+        return result;
+    }
+
     private boolean testRpcService(int port) {
+        Timber.d("Testing %s", toNodeString());
         clear();
         try {
             OkHttpClient client = OkHttpHelper.getEagerClient();
@@ -248,7 +252,7 @@ public class NodeInfo extends Node {
             }
         } catch (IOException | JSONException ex) {
             // failure
-            Timber.d(ex.getMessage());
+            Timber.d(ex);
         }
         return false;
     }

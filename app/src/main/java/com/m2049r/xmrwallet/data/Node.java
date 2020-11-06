@@ -26,6 +26,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
 
+import lombok.Getter;
+import lombok.Setter;
 import timber.log.Timber;
 
 public class Node {
@@ -33,15 +35,29 @@ public class Node {
     static public final String STAGENET = "stagenet";
     static public final String TESTNET = "testnet";
 
+    @Getter
     private String name = null;
+    @Getter
     final private NetworkType networkType;
     InetAddress hostAddress;
+    @Getter
     private String host;
+    @Getter
+    @Setter
     int rpcPort = 0;
     private int levinPort = 0;
+    @Getter
+    @Setter
     private String username = "";
+    @Getter
+    @Setter
     private String password = "";
+    @Getter
+    @Setter
     private boolean favourite = false;
+    @Getter
+    @Setter
+    private boolean selected = false;
 
     @Override
     public int hashCode() {
@@ -193,7 +209,6 @@ public class Node {
         this.levinPort = socketAddress.getPort();
         this.username = "";
         this.password = "";
-        //this.name = socketAddress.getHostName(); // triggers DNS so we don't do it by default
     }
 
     public String getAddress() {
@@ -204,31 +219,11 @@ public class Node {
         return hostAddress.getHostAddress();
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public int getRpcPort() {
-        return rpcPort;
-    }
-
     public void setHost(String host) throws UnknownHostException {
         if ((host == null) || (host.isEmpty()))
             throw new UnknownHostException("loopback not supported (yet?)");
         this.host = host;
         this.hostAddress = InetAddress.getByName(host);
-    }
-
-    public void setUsername(String user) {
-        username = user;
-    }
-
-    public void setPassword(String pass) {
-        password = pass;
-    }
-
-    public void setRpcPort(int port) {
-        this.rpcPort = port;
     }
 
     public void setName() {
@@ -241,30 +236,6 @@ public class Node {
             this.name = hostAddress.getHostName();
         else
             this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public NetworkType getNetworkType() {
-        return networkType;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean isFavourite() {
-        return favourite;
-    }
-
-    public void setFavourite(boolean favourite) {
-        this.favourite = favourite;
     }
 
     public void toggleFavourite() {

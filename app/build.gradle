@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     buildToolsVersion '29.0.2'
     defaultConfig {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 503
-        versionName "1.15.3 'Dark Fork'"
+        targetSdkVersion 30
+        versionCode 600
+        versionName "1.16.0 'Karmic Nodes'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -117,7 +117,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
@@ -138,4 +138,7 @@ dependencies {
     testImplementation "com.squareup.okhttp3:mockwebserver:4.9.0"
     testImplementation 'org.json:json:20180813'
     testImplementation 'net.jodah:concurrentunit:0.4.4'
+
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }

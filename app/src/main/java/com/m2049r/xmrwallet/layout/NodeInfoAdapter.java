@@ -17,8 +17,6 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +24,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.NodeInfo;
+import com.m2049r.xmrwallet.util.ColorHelper;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.net.HttpURLConnection;
 import java.text.SimpleDateFormat;
@@ -35,7 +38,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -44,6 +46,8 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     public interface OnInteractionListener {
         void onInteraction(View view, NodeInfo item);
+
+        void onLongInteraction(View view, NodeInfo item);
     }
 
     private final List<NodeInfo> nodeItems = new ArrayList<>();
@@ -106,7 +110,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         final ImageButton ibBookmark;
         final TextView tvName;
         final TextView tvIp;
@@ -119,13 +123,16 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             tvName = itemView.findViewById(R.id.tvName);
             tvIp = itemView.findViewById(R.id.tvAddress);
             ivPing = itemView.findViewById(R.id.ivPing);
-            ibBookmark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    nodeItem.toggleFavourite();
-                    showStar();
+            ibBookmark.setOnClickListener(v -> {
+                nodeItem.toggleFavourite();
+                showStar();
+                if (!nodeItem.isFavourite()) {
+                    nodeItem.setSelected(false);
+                    notifyDataSetChanged();
                 }
             });
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         private void showStar() {
@@ -139,15 +146,16 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         void bind(int position) {
             nodeItem = nodeItems.get(position);
             tvName.setText(nodeItem.getName());
-            final String ts = TS_FORMATTER.format(new Date(nodeItem.getTimestamp() * 1000));
             ivPing.setImageResource(getPingIcon(nodeItem));
             if (nodeItem.isValid()) {
-                tvIp.setText(context.getString(R.string.node_height, ts));
+                Helper.showTimeDifference(tvIp, nodeItem.getTimestamp());
             } else {
                 tvIp.setText(getResponseErrorText(context, nodeItem.getResponseCode()));
+                tvIp.setTextColor(ColorHelper.getThemedColor(tvIp.getContext(), R.attr.colorError));
             }
-            itemView.setOnClickListener(this);
+            itemView.setSelected(nodeItem.isSelected());
             itemView.setClickable(itemsClickable);
+            itemView.setEnabled(itemsClickable);
             ibBookmark.setClickable(itemsClickable);
             showStar();
         }
@@ -160,6 +168,17 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
                     listener.onInteraction(view, nodeItems.get(position));
                 }
             }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (listener != null) {
+                int position = getAdapterPosition(); // gets item position
+                if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
+                    listener.onLongInteraction(view, nodeItems.get(position));
+                }
+            }
+            return true;
         }
     }
 

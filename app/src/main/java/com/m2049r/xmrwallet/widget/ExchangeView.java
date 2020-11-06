@@ -179,7 +179,7 @@ public class ExchangeView extends LinearLayout {
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(ColorHelper.getThemedResourceId(getContext(), R.attr.colorPrimaryVariant)),
+                setColorFilter(ColorHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
