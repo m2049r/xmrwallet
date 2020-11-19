@@ -8,4 +8,10 @@
         android:orderInCategory="500"
         android:title="@string/menu_help"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_default_nodes"
+        android:orderInCategory="500"
+        android:title="@string/menu_default_nodes"
+        app:showAsAction="never" />
 </menu>

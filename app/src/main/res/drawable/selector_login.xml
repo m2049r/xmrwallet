@@ -6,6 +6,12 @@
         </shape>
     </item>
 
+    <item android:state_selected="true">
+        <shape>
+            <solid android:color="@color/monerujoPinkAlpha" />
+        </shape>
+    </item>
+
     <item android:state_pressed="false">
         <shape>
             <solid android:color="@android:color/transparent" />

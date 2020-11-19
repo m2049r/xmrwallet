@@ -11,6 +11,7 @@
     <color name="monerujoOrange">#FF6252</color>
     <color name="monerujoGreen">#27C79C</color>
     <color name="monerujoPink">#FF1A80</color>
+    <color name="monerujoPinkAlpha">#20FF1A80</color>
     <color name="monerujoE">#2D1A2E</color>
 
 </resources>

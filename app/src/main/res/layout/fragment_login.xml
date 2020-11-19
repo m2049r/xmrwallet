@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
-                android:layout_toStartOf="@+id/ibOption">
+                android:layout_toStartOf="@+id/ibRenew">
 
                 <ProgressBar
                     android:id="@+id/pbNode"
@@ -49,7 +49,7 @@
                     android:id="@+id/llNode"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:background="?android:attr/selectableItemBackground"
                     android:gravity="start|center_vertical"
                     android:orientation="vertical">
 
@@ -73,7 +73,7 @@
             </FrameLayout>
 
             <ImageButton
-                android:id="@+id/ibOption"
+                android:id="@+id/ibRenew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -81,7 +81,7 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
                 android:padding="12dp"
-                android:src="@drawable/ic_search_24dp" />
+                android:src="@drawable/ic_renew_24dp" />
         </RelativeLayout>
 
         <EditText

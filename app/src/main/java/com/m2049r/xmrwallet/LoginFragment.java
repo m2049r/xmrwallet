@@ -45,6 +45,7 @@ import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
+import com.m2049r.xmrwallet.util.NodePinger;
 import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -105,6 +106,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         Set<NodeInfo> getFavouriteNodes();
 
+        Set<NodeInfo> getOrPopulateFavourites();
+
         boolean hasLedger();
     }
 
@@ -132,11 +135,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         activityCallback.setTitle(null);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
         activityCallback.showNet();
-        NodeInfo node = activityCallback.getNode();
-        if (node == null)
-            findBestNode();
-        else
-            showNode(node);
+        pingSelectedNode();
     }
 
     @Override
@@ -186,23 +185,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         pbNode = view.findViewById(R.id.pbNode);
         llNode = view.findViewById(R.id.llNode);
-        llNode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (activityCallback.getFavouriteNodes().isEmpty())
-                    startNodePrefs();
-                else
-                    findBestNode();
-            }
-        });
+        llNode.setOnClickListener(v -> startNodePrefs());
         tvNodeName = view.findViewById(R.id.tvNodeName);
         tvNodeAddress = view.findViewById(R.id.tvNodeAddress);
-        view.findViewById(R.id.ibOption).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startNodePrefs();
-            }
-        });
+        view.findViewById(R.id.ibRenew).setOnClickListener(v -> findBestNode());
 
         Helper.hideKeyboard(getActivity());
 
@@ -421,32 +407,57 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     public void findBestNode() {
-        new AsyncFindBestNode().execute();
+        new AsyncFindBestNode().execute(AsyncFindBestNode.FIND_BEST);
     }
 
-    private class AsyncFindBestNode extends AsyncTask<Void, Void, NodeInfo> {
+    public void pingSelectedNode() {
+        new AsyncFindBestNode().execute(AsyncFindBestNode.PING_SELECTED);
+    }
+
+    private NodeInfo autoselect(Set<NodeInfo> nodes) {
+        if (nodes.isEmpty()) return null;
+        NodePinger.execute(nodes, null);
+        List<NodeInfo> nodeList = new ArrayList<>(nodes);
+        Collections.sort(nodeList, NodeInfo.BestNodeComparator);
+        return nodeList.get(0);
+    }
+
+    private class AsyncFindBestNode extends AsyncTask<Integer, Void, NodeInfo> {
+        final static int PING_SELECTED = 0;
+        final static int FIND_BEST = 1;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             pbNode.setVisibility(View.VISIBLE);
             llNode.setVisibility(View.INVISIBLE);
-            activityCallback.setNode(null);
         }
 
         @Override
-        protected NodeInfo doInBackground(Void... params) {
-            List<NodeInfo> nodesToTest = new ArrayList<>(activityCallback.getFavouriteNodes());
-            Timber.d("testing best node from %d", nodesToTest.size());
-            if (nodesToTest.isEmpty()) return null;
-            for (NodeInfo node : nodesToTest) {
-                node.testRpcService(); // TODO: do this in parallel?
-                // no: it's better if it looks like it's doing something
-            }
-            Collections.sort(nodesToTest, NodeInfo.BestNodeComparator);
-            NodeInfo bestNode = nodesToTest.get(0);
-            if (bestNode.isValid()) {
-                activityCallback.setNode(bestNode);
-                return bestNode;
+        protected NodeInfo doInBackground(Integer... params) {
+            Set<NodeInfo> favourites = activityCallback.getOrPopulateFavourites();
+            NodeInfo selectedNode;
+            if (params[0] == FIND_BEST) {
+                selectedNode = autoselect(favourites);
+            } else if (params[0] == PING_SELECTED) {
+                selectedNode = activityCallback.getNode();
+                if (!activityCallback.getFavouriteNodes().contains(selectedNode))
+                    selectedNode = null; // it's not in the favourites (any longer)
+                if (selectedNode == null)
+                    for (NodeInfo node : favourites) {
+                        if (node.isSelected()) {
+                            selectedNode = node;
+                            break;
+                        }
+                    }
+                if (selectedNode == null) { // autoselect
+                    selectedNode = autoselect(favourites);
+                } else
+                    selectedNode.testRpcService();
+            } else throw new IllegalStateException();
+            if ((selectedNode != null) && selectedNode.isValid()) {
+                activityCallback.setNode(selectedNode);
+                return selectedNode;
             } else {
                 activityCallback.setNode(null);
                 return null;
@@ -462,17 +473,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 Timber.d("found a good node %s", result.toString());
                 showNode(result);
             } else {
-                if (!activityCallback.getFavouriteNodes().isEmpty()) {
-                    tvNodeName.setText(getResources().getText(R.string.node_refresh_hint));
-                    tvNodeName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_refresh_black_24dp, 0, 0, 0);
-                    tvNodeAddress.setText(null);
-                    tvNodeAddress.setVisibility(View.GONE);
-                } else {
-                    tvNodeName.setText(getResources().getText(R.string.node_create_hint));
-                    tvNodeName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                    tvNodeAddress.setText(null);
-                    tvNodeAddress.setVisibility(View.GONE);
-                }
+                tvNodeName.setText(getResources().getText(R.string.node_create_hint));
+                tvNodeName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                tvNodeAddress.setText(null);
+                tvNodeAddress.setVisibility(View.GONE);
             }
         }
 
@@ -485,12 +489,11 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private void showNode(NodeInfo nodeInfo) {
         tvNodeName.setText(nodeInfo.getName());
         tvNodeName.setCompoundDrawablesWithIntrinsicBounds(NodeInfoAdapter.getPingIcon(nodeInfo), 0, 0, 0);
-        tvNodeAddress.setText(nodeInfo.getAddress());
+        Helper.showTimeDifference(tvNodeAddress, nodeInfo.getTimestamp());
         tvNodeAddress.setVisibility(View.VISIBLE);
     }
 
     private void startNodePrefs() {
-        activityCallback.setNode(null);
         activityCallback.onNodePrefs();
     }
 }
