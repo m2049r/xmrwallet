@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 600
-        versionName "1.16.0 'Karmic Nodes'"
+        versionCode 601
+        versionName "1.16.1 'Karmic Nodes'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
