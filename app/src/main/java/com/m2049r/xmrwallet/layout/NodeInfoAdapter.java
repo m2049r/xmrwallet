@@ -112,6 +112,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         final ImageButton ibBookmark;
+        final View pbBookmark;
         final TextView tvName;
         final TextView tvIp;
         final ImageView ivPing;
@@ -120,6 +121,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         ViewHolder(View itemView) {
             super(itemView);
             ibBookmark = itemView.findViewById(R.id.ibBookmark);
+            pbBookmark = itemView.findViewById(R.id.pbBookmark);
             tvName = itemView.findViewById(R.id.tvName);
             tvIp = itemView.findViewById(R.id.tvAddress);
             ivPing = itemView.findViewById(R.id.ivPing);
@@ -161,6 +163,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             itemView.setClickable(itemsClickable);
             itemView.setEnabled(itemsClickable);
             ibBookmark.setClickable(itemsClickable);
+            pbBookmark.setVisibility(nodeItem.isSelecting() ? View.VISIBLE : View.INVISIBLE);
             showStar();
         }
 
@@ -169,7 +172,10 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             if (listener != null) {
                 int position = getAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
-                    listener.onInteraction(view, nodeItems.get(position));
+                    final NodeInfo node = nodeItems.get(position);
+                    node.setSelecting(true);
+                    allowClick(false);
+                    listener.onInteraction(view, node);
                 }
             }
         }

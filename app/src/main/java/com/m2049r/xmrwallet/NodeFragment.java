@@ -59,6 +59,7 @@ import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -214,9 +215,15 @@ public class NodeFragment extends Fragment
             nodeItem.setFavourite(true);
             activityCallback.setFavouriteNodes(nodeList);
         }
-        nodeItem.setSelected(true);
-        activityCallback.setNode(nodeItem); // this marks it as selected & saves it as well
-        nodesAdapter.dataSetChanged(); // to refresh test results
+        AsyncTask.execute(() -> {
+            activityCallback.setNode(nodeItem); // this marks it as selected & saves it as well
+            nodeItem.setSelecting(false);
+            try {
+                Objects.requireNonNull(getActivity()).runOnUiThread(() -> nodesAdapter.allowClick(true));
+            } catch (NullPointerException ex) {
+                // it's ok
+            }
+        });
     }
 
     // open up edit dialog
