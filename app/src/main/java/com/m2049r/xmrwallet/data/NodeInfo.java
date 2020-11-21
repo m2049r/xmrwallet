@@ -36,6 +36,8 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import lombok.Getter;
+import lombok.Setter;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -49,12 +51,21 @@ public class NodeInfo extends Node {
     final static public int MIN_MAJOR_VERSION = 14;
     final static public String RPC_VERSION = "2.0";
 
+    @Getter
     private long height = 0;
+    @Getter
     private long timestamp = 0;
+    @Getter
     private int majorVersion = 0;
+    @Getter
     private double responseTime = Double.MAX_VALUE;
+    @Getter
     private int responseCode = 0;
+    @Getter
     private boolean tested = false;
+    @Getter
+    @Setter
+    private boolean selecting = false;
 
     public void clear() {
         height = 0;
@@ -63,10 +74,6 @@ public class NodeInfo extends Node {
         responseCode = 0;
         timestamp = 0;
         tested = false;
-    }
-
-    public boolean isTested() {
-        return tested;
     }
 
     static public NodeInfo fromString(String nodeString) {
@@ -116,26 +123,6 @@ public class NodeInfo extends Node {
 
     public NodeInfo() {
         super();
-    }
-
-    public long getHeight() {
-        return height;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public int getMajorVersion() {
-        return majorVersion;
-    }
-
-    public double getResponseTime() {
-        return responseTime;
-    }
-
-    public int getResponseCode() {
-        return responseCode;
     }
 
     public boolean isSuccessful() {
