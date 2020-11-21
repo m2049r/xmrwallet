@@ -147,11 +147,15 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             nodeItem = nodeItems.get(position);
             tvName.setText(nodeItem.getName());
             ivPing.setImageResource(getPingIcon(nodeItem));
-            if (nodeItem.isValid()) {
-                Helper.showTimeDifference(tvIp, nodeItem.getTimestamp());
+            if (nodeItem.isTested()) {
+                if (nodeItem.isValid()) {
+                    Helper.showTimeDifference(tvIp, nodeItem.getTimestamp());
+                } else {
+                    tvIp.setText(getResponseErrorText(context, nodeItem.getResponseCode()));
+                    tvIp.setTextColor(ColorHelper.getThemedColor(tvIp.getContext(), R.attr.colorError));
+                }
             } else {
-                tvIp.setText(getResponseErrorText(context, nodeItem.getResponseCode()));
-                tvIp.setTextColor(ColorHelper.getThemedColor(tvIp.getContext(), R.attr.colorError));
+                tvIp.setText(context.getResources().getString(R.string.node_testing, nodeItem.getHostAddress()));
             }
             itemView.setSelected(nodeItem.isSelected());
             itemView.setClickable(itemsClickable);
