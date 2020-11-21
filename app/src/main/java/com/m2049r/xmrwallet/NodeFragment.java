@@ -563,7 +563,6 @@ public class NodeFragment extends Fragment
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                nodeInfo.clear();
                 tvResult.setText(getString(R.string.node_testing, nodeInfo.getHostAddress()));
             }
 

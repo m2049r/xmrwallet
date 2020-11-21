@@ -40,10 +40,7 @@ public class NodePinger {
         final ExecutorService exeService = Executors.newFixedThreadPool(NUM_THREADS);
         List<Callable<Boolean>> taskList = new ArrayList<>();
         for (NodeInfo node : nodes) {
-            taskList.add(() -> {
-                node.clear();
-                return node.testRpcService(listener);
-            });
+            taskList.add(() -> node.testRpcService(listener));
         }
 
         try {

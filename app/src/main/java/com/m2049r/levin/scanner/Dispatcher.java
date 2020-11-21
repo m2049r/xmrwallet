@@ -185,7 +185,6 @@ public class Dispatcher implements PeerRetriever.OnGetPeers {
 
     public void seedPeers(Collection<NodeInfo> seedNodes) {
         for (NodeInfo node : seedNodes) {
-            node.clear();
             if (node.isFavourite()) {
                 rpcNodes.add(node);
                 if (listener != null) listener.onGet(node);

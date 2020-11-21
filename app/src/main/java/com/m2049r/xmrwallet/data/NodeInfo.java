@@ -46,7 +46,7 @@ import okhttp3.ResponseBody;
 import timber.log.Timber;
 
 public class NodeInfo extends Node {
-    final static public int MIN_MAJOR_VERSION = 11;
+    final static public int MIN_MAJOR_VERSION = 14;
     final static public String RPC_VERSION = "2.0";
 
     private long height = 0;
@@ -54,6 +54,7 @@ public class NodeInfo extends Node {
     private int majorVersion = 0;
     private double responseTime = Double.MAX_VALUE;
     private int responseCode = 0;
+    private boolean tested = false;
 
     public void clear() {
         height = 0;
@@ -61,6 +62,11 @@ public class NodeInfo extends Node {
         responseTime = Double.MAX_VALUE;
         responseCode = 0;
         timestamp = 0;
+        tested = false;
+    }
+
+    public boolean isTested() {
+        return tested;
     }
 
     static public NodeInfo fromString(String nodeString) {
@@ -188,7 +194,7 @@ public class NodeInfo extends Node {
     }
 
     private static final int HTTP_TIMEOUT = OkHttpHelper.HTTP_TIMEOUT;
-    public static final double PING_GOOD = HTTP_TIMEOUT / 3; //ms
+    public static final double PING_GOOD = HTTP_TIMEOUT / 3.0; //ms
     public static final double PING_MEDIUM = 2 * PING_GOOD; //ms
     public static final double PING_BAD = HTTP_TIMEOUT;
 
@@ -251,8 +257,9 @@ public class NodeInfo extends Node {
                 }
             }
         } catch (IOException | JSONException ex) {
-            // failure
             Timber.d(ex);
+        } finally {
+            tested = true;
         }
         return false;
     }
