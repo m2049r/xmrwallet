@@ -191,7 +191,7 @@ public class BarcodeData {
             }
         }
 
-        if (!Wallet.isAddressValid(address)) {
+        if ((address == null) || !Wallet.isAddressValid(address)) {
             Timber.d("address invalid");
             return null;
         }
