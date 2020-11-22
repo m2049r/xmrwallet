@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:name=".XmrWalletApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
