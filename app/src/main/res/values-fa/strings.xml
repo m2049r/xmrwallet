@@ -1,462 +1,407 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-    <string name="app_name" translatable="false">monerujo</string>
-    <string name="wallet_activity_name">Wallet</string>
+    <string name="wallet_activity_name">کیف پول</string>
 
-    <string name="menu_about">About</string>
-    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_about">درباره</string>
+    <string name="menu_privacy">سیاست حفظ حریم خصوصی</string>
 
-    <string name="menu_share">Share</string>
-    <string name="menu_help">Help</string>
-    <string name="menu_receive">Receive</string>
-    <string name="menu_rename">Rename &#8230;</string>
-    <string name="menu_archive">Archive</string>
-    <string name="menu_backup">Backup</string>
-    <string name="menu_changepw">Change Passphrase</string>
+    <string name="menu_share">اشتراک گذاری</string>
+    <string name="menu_help">کمک</string>
+    <string name="menu_receive">دریافت</string>
+    <string name="menu_rename"> تغییر نام &#8230;</string>
+    <string name="menu_archive">بايگانی کردن</string>
+    <string name="menu_backup">پشتیبان گیری</string>
+    <string name="menu_changepw">تغییر رمزعبور</string>
 
-    <string name="password_weak">Continue typing &#8230;</string>
-    <string name="password_fair">Meh &#8230;</string>
-    <string name="password_good">C\'mon, you can do better!</string>
-    <string name="password_strong">Getting there &#8230;</string>
-    <string name="password_very_strong">Yeah baby, h4x0r style!</string>
+    <string name="password_weak"> &#8230;نوشتن را ادامه دهید</string>
+    <string name="password_fair"> &#8230;اوم</string>
+    <string name="password_good">زودباش، بهتر از اینم میشه</string>
+    <string name="password_strong"> &#8230;کم مونده</string>
+    <string name="password_very_strong">همینه، روش h4x0r!</string>
 
-    <string name="label_login_wallets">Wallets</string>
-    <string name="label_credits">Credits</string>
-    <string name="label_ok">OK</string>
-    <string name="label_cancel">Cancel</string>
-    <string name="label_close">Close</string>
-    <string name="label_wallet_advanced_details">Touch for detailed information</string>
+    <string name="label_login_wallets">کیف پول ها</string>
+    <string name="label_credits">سازندگان</string>
+    <string name="label_ok">باشه</string>
+    <string name="label_cancel">انصراف</string>
+    <string name="label_close">بستن</string>
+    <string name="label_wallet_advanced_details">برای مشاهده جزئیات من را لمس کن</string>
 
-    <string name="label_send_success">Successfully sent</string>
-    <string name="label_send_done">Done</string>
+    <string name="label_send_success">با موفقيت ارسال شد</string>
+    <string name="label_send_done">انجام شد</string>
 
-    <string name="label_receive_info_gen_qr_code">Touch for QR Code</string>
+    <string name="label_receive_info_gen_qr_code">برای مشاهده کد QR من را لمس کن</string>
 
-    <string name="info_xmrto_enabled">BTC payment enabled, tap for more info.</string>
-    <string name="info_ledger_enabled">Ledger enabled, tap for more info.</string>
+    <string name="info_xmrto_enabled">پرداخت با بیتکوین فعال است. برای اطلاعات بیشتر من را لمس کن</string>
+    <string name="info_ledger_enabled">کیف پول سخت افزاری فعال است. برای اطلاعات بیشتر من را لمس کن</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>You entered a Bitcoin address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get BTC using the <b>XMR.TO</b> service.</i>
+        <b>شما یک آدرس بیتکوین وارد کرده اید</b><br/>
+        <i>شما مونرو ارسال خواهید کرد و گیرنده توسط این سرویس <b>XMR.TO</b> بیتکوین دریافت خواهد کرد</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
+    <string name="info_send_xmrto_success_order_label">سفارش XMR.TO </string>
 
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s بیت کوین</string>
 
-    <string name="info_send_xmrto_paid">Confirmation Pending</string>
-    <string name="info_send_xmrto_unpaid">Payment Pending</string>
-    <string name="info_send_xmrto_error">XMR.TO Error (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC Sent!</string>
-    <string name="info_send_xmrto_query">Querying &#8230;</string>
+    <string name="info_send_xmrto_paid">درانتظار تائيديه</string>
+    <string name="info_send_xmrto_unpaid">درانتظار پرداخت</string>
+    <string name="info_send_xmrto_error">XMR.TO خطای (%1$s)</string>
+    <string name="info_send_xmrto_sent">بیتکوین ارسال شد</string>
+    <string name="info_send_xmrto_query"> &#8230;درحال بررسی</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>You can send %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> is giving you an exchange rate of <b>%3$s BTC</b> <u>right now</u></i>.
+        <b>  %1$s &#8212; %2$s شما می توانید این مقدار بیتکوین ارسال کنید</b>.<br/>
+        <i><b>XMR.TO</b> نرخ تبادل در این لحظه<b>%3$s BTC</b> </i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Amounts up to <b>%1$s BTC</b> will be sent <u>instantly</u>!</i>
+        <i>حداکثر این مقدار بیتکوین فورا ارسال خواهد شد  <b>%1$s BTC</b></i>
     ]]></string>
 
-    <string name="send_available_btc">Balance: %2$s BTC (%1$s XMR)</string>
+    <string name="send_available_btc"> %2$s BTC (%1$s XMR) :موجودی</string>
 
-    <string name="info_paymentid_integrated">&#x2714; Payment ID integrated</string>
-    <string name="info_prepare_tx">Preparing your transaction</string>
+    <string name="info_paymentid_integrated">&#x2714; شناسه پرداخت اضافه شد</string>
+    <string name="info_prepare_tx">درحال آماده سازی تراکنش شما</string>
 
-    <string name="label_send_progress_xmrto_create">Creating XMR.TO Order</string>
-    <string name="label_send_progress_xmrto_query">Querying XMR.TO Order</string>
-    <string name="label_send_progress_create_tx">Preparing Monero Transaction</string>
+    <string name="label_send_progress_xmrto_create">درحال ساخت سفارش XMR.TO</string>
+    <string name="label_send_progress_xmrto_query">درحال استعلام سفارش XMR.TO</string>
+    <string name="label_send_progress_create_tx">درحال آماده سازی تراکنش مونرو</string>
 
-    <string name="label_send_progress_queryparms">Querying XMR.TO parameters</string>
+    <string name="label_send_progress_queryparms">درحال استعلام مقادیر XMR.TO</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO ERROR</string>
-    <string name="text_generic_xmrto_error">Code: %1$d</string>
+    <string name="label_generic_xmrto_error">خطای XMR.TO</string>
+    <string name="text_generic_xmrto_error"> %1$d :کد</string>
 
-    <string name="text_retry">Touch to retry</string>
-    <string name="text_noretry_monero">Now we\'re stuck here!</string>
-    <string name="text_noretry">Uh-oh, XMR.TO does not seem be available right now!</string>
+    <string name="text_retry">برای امتحان دوباره مرا لمس کن</string>
+    <string name="text_noretry_monero">مشکلی پیش آمده</string>
+    <string name="text_noretry">متاسفانه XMR.TO در دسترس نمی باشد</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_rate">(%1$s BTC/XMR :نرخ تبادل)</string>
 
-    <string name="label_send_btc_xmrto_info">Visit xmr.to for support &amp; tracking</string>
-    <string name="label_send_btc_xmrto_key_lb">Secret Key\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Secret Key</string>
-    <string name="label_send_btc_address">Destination BTC Address</string>
-    <string name="label_send_btc_amount">Amount</string>
+    <string name="label_send_btc_xmrto_info">برای پشتیبانی و پیگیری به XMR.TO مراجعه کنید</string>
+    <string name="label_send_btc_xmrto_key_lb">\nXMR.TO کلید خصوصی</string>
+    <string name="label_send_btc_xmrto_key">کلید خصوصی XMR.TO</string>
+    <string name="label_send_btc_address">آدرس بیتکوین مقصد</string>
+    <string name="label_send_btc_amount">مقدار</string>
 
-    <string name="label_send_txid">Transaction ID</string>
-    <string name="label_send_address">Destination Address</string>
-    <string name="label_send_notes">Notes</string>
+    <string name="label_send_txid">شناسه تراکنش</string>
+    <string name="label_send_address">آدرس مقصد</string>
+    <string name="label_send_notes">یادداشت ها</string>
 
-    <string name="backup_progress">Backup in progress</string>
-    <string name="archive_progress">Archive in progress</string>
-    <string name="rename_progress">Rename in progress</string>
-    <string name="changepw_progress">Change Password in progress</string>
+    <string name="backup_progress">درحال پشتیبان گیری</string>
+    <string name="archive_progress">درحال بایگانی</string>
+    <string name="rename_progress">درحال تغییر نام</string>
+    <string name="changepw_progress">درحال تغییر رمز عبور</string>
 
-    <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
+    <string name="service_progress">&#8230;ممکن است مدتی طول بکشد\n درحال آماده سازی</string>
 
-    <string name="backup_success">Backup successful</string>
-    <string name="backup_failed">Backup failed!</string>
-    <string name="archive_failed">Archive failed!</string>
-    <string name="rename_failed">Rename failed!</string>
-    <string name="changepw_failed">Change Password failed!</string>
-    <string name="changepw_success">Password changed</string>
+    <string name="backup_success">پشتیبان گیری با موفقیت انجام شد</string>
+    <string name="backup_failed">پشتیبان گیری ناموفق بود!</string>
+    <string name="archive_failed">بایگانی ناموفق بود!</string>
+    <string name="rename_failed">تغییر نام ناموفق بود!</string>
+    <string name="changepw_failed">تغییر رمز عبور ناموفق بود!</string>
+    <string name="changepw_success">رمز عبور تغییر کرد</string>
 
-    <string name="label_daemon">Node</string>
-    <string name="connect_stagenet" translatable="false">Stagenet</string>
-    <string name="connect_testnet" translatable="false">Testnet</string>
-    <string name="status_wallet_loading">Loading Wallet &#8230;</string>
-    <string name="status_wallet_unloaded">Wallet saved</string>
-    <string name="status_wallet_unload_failed">Wallet save failed!</string>
-    <string name="status_wallet_connecting">Connecting &#8230;</string>
-    <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
-    <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
-    <string name="status_wallet_connect_ioex">Cannot reach node!\nTry again or another.</string>
+    <string name="label_daemon">نود</string>
+    <string name="status_wallet_loading"> &#8230; درحال بارگذاری</string>
+    <string name="status_wallet_unloaded">کیف پول ذخیره شد</string>
+    <string name="status_wallet_unload_failed">ذخیره کیف پول ناموفق بود!</string>
+    <string name="status_wallet_connecting"> &#8230; در حال اتصال</string>
+    <string name="status_wallet_connect_failed">اتصال گره/نود ناموفق بود! \n لطفا نام کاربری/رمزعبور را بررسی کنید</string>
+    <string name="status_wallet_connect_wrongversion">نسخه نود/گره ناسازگار است. لطفا آن را بروزرسانی کنید</string>
+    <string name="status_wallet_node_invalid">نود/گره نامعتبر است! \n نود دیگری امتحان کنید</string>
+    <string name="status_wallet_connect_ioex">نمی توان به این نود وصل شد  \n دوباره یا نود دیگری امتحان کنید</string>
 
-    <string name="status_wallet_disconnected">Disconnected</string>
+    <string name="status_wallet_disconnected">متصل نیست</string>
 
-    <string name="status_transaction_failed">Transaction failed: %1$s</string>
+    <string name="status_transaction_failed"> %1$s تراکنش ناموفق بود:</string>
 
-    <string name="send_xmrto_timeout">You waited too long my friend!</string>
+    <string name="send_xmrto_timeout">دوست عزیز، خیلی منتظر موندیا!</string>
 
-    <string name="service_busy">I am still busy with your last wallet &#8230;</string>
+    <string name="service_busy"> &#8230; من هنوز مشغول کار با کیف پول قبلیتان هستم</string>
 
-    <string name="prompt_rename">Rename %1$s</string>
+    <string name="prompt_rename">%1$s تغییر نام</string>
 
-    <string name="prompt_changepw">New Passphrase for %1$s</string>
-    <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
-    <string name="prompt_password">Password for %1$s</string>
-    <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
-    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
-    <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
-    <string name="bad_password">Incorrect password!</string>
-    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
-    <string name="bad_wallet">Wallet does not exist!</string>
-    <string name="prompt_daemon_missing">Node must be set!</string>
-    <string name="prompt_wrong_net">Wallet does not match selected net</string>
+    <string name="prompt_changepw"> %1$s رمز عبور جدید برای</string>
+    <string name="prompt_changepwB"> %1$s تکرار رمز عبور جدید برای</string>
+    <string name="prompt_password"> %1$s رمز عبور برای</string>
+    <string name="prompt_fingerprint_auth">شما با اثرانگشت خود نیز می توانید کیف پولتان را باز کنید.\nلطفا حسگر را لمس کنید.</string>
+    <string name="prompt_open_wallet">&#8230; درحال باز کردن کیف پول</string>
+    <string name="bad_fingerprint">اثرانگشت تشخیص داده نشد .دوباره امتحان کنید</string>
+    <string name="bad_password">رمزعبور اشتباه است!</string>
+    <string name="bad_saved_password">رمز عبور ذخیره شده صحیح نمی باشد.\n لطفا رمز عبور را به صورت دستی وارد کنید</string>
+    <string name="bad_wallet">کیف پول وجود ندارد!</string>
+    <string name="prompt_daemon_missing">نود/گره باید تنظیم شود</string>
+    <string name="prompt_wrong_net">کیف پول با شبکه انتخابی مطابقت ندارد</string>
 
-    <string name="label_watchonly">(Watch Only)</string>
+    <string name="label_watchonly">(فقط برای مشاهده)</string>
 
-    <string name="label_wallet_receive">Receive</string>
-    <string name="label_wallet_send">Give</string>
+    <string name="label_wallet_receive">دریافت</string>
+    <string name="label_wallet_send">ارسال</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR تائيد نشده</string>
 
-    <string name="service_description">monerujo Service</string>
+    <string name="service_description">سرویس Monerujo</string>
 
-    <string name="status_synced">Synced:</string>
-    <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Scanning:</string>
+    <string name="status_synced">همگام شده:</string>
+    <string name="status_remaining">بلوک باقی مانده</string>
+    <string name="status_syncing">درحال بررسی:</string>
 
-    <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
-    <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
+    <string name="message_strorage_not_writable">فضای ذخیره سازی خارجی قابل نوشتن نیست! نگران کننده است</string>
+    <string name="message_strorage_not_permitted">ما واقعاً به آن مجوزهای ذخیره سازی خارجی نیاز داریم!</string>
+    <string name="message_camera_not_permitted">بدون دوربین = بدون اسکن کد QR</string>
 
     <string name="label_copy_viewkey">View Key</string>
-    <string name="label_copy_address">Public Address</string>
+    <string name="label_copy_address">آدرس عمومی</string>
     <string name="label_copy_xmrtokey">XMR.TO Key</string>
-    <string name="message_copy_viewkey">View Key copied to clipboard!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Key copied to clipboard!</string>
-    <string name="message_copy_address">Wallet Address copied to clipboard!</string>
-    <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
-    <string name="message_nocopy">Copy disabled for security reasons!</string>
+    <string name="message_copy_viewkey">View Key در کلیپ بورد کپی شد!</string>
+    <string name="message_copy_xmrtokey">XMR.TO Key در کلیپ بورد کپی شد!</string>
+    <string name="message_copy_address">آدرس کیف پول در کلیپ بورد کپی شد!</string>
+    <string name="message_copy_txid">شناسه تراکنش در کلیپ بورد کپی شد!</string>
+    <string name="message_nocopy">کپی کردن برای دلایل امنیتی غیر فعال شد</string>
 
-    <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
+    <string name="message_exchange_failed">نرخ تبادل، قابل مشاهده نیست\n از XMR/XMR استفاده یا دوباره تلاش کنید</string>
 
-    <string name="generate_title">Create Wallet</string>
-    <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Passphrase</string>
-    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_title">ساخت کیف پول</string>
+    <string name="generate_name_hint">نام کیف پول</string>
+    <string name="generate_password_hint">رمزعبور کیف پول</string>
+    <string name="generate_fingerprint_hint">پذیرفتن استفاده از اثرانگشت برای بازکردن کیف پول</string>
     <string name="generate_fingerprint_warn"><![CDATA[
-        <strong>Fingerprint Authentication</strong>
-        <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
-        without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
-        viewing wallet details or sending funds.</p>
-        <strong>Security Warning</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
-        able to peep into your wallet balance.</p>
-        <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
-        <strong>Are you sure to enable this function?</strong>
+        <strong>احراز اثرانگشت</strong>
+        <p>با فعال کردن احراز اثرانگشت، شما می توانید موجودی 
+کیف پول خود را ببینید و بدون وارد کردن رمز عبور، مونرو دریافت کنید</p>
+        <p>اما برای امنیت بیشتر ، monerujo همچنان از شما می خواهد که رمز عبورتان را
+  در هنگام مشاهده جزئیات کیف پول یا ارسال مونرو، وارد کنید
+</p>
+        <strong>هشدار امنیتی</strong>
+        <p>سرانجام ، monerujo می خواهد به شما یادآوری کند که هر کسی که بتواند به اثر انگشت 
+شما دسترسی پیدا کند، می تواند موجودی کیف پول شما را ببینید.</p>
+        <p>به عنوان مثال، یک کاربر مخرب در اطراف شما می تواند کیف پول شما را هنگامی که خوابید باز کند.</p>
+        <strong>آیا مطمئن هستید که این ویژگی را فعال می کنید؟</strong>
     ]]></string>
-    <string name="generate_bad_passwordB">Passphrases do not match</string>
-    <string name="generate_empty_passwordB">Passphrase may not be empty</string>
-    <string name="generate_buttonGenerate">Make me a wallet already!</string>
-    <string name="generate_button_accept">I have noted the mnemonic seed</string>
+    <string name="generate_bad_passwordB">رمزعبور مطابقت ندارد</string>
+    <string name="generate_empty_passwordB">رمزعبور نمی تواند خالی باشد</string>
+    <string name="generate_buttonGenerate">برای من یک کیف پول درست کن</string>
+    <string name="generate_button_accept">من عبارت بازیابی را یادداشت کرده ام</string>
 
-    <string name="generate_wallet_name">Give me a name!</string>
-    <string name="generate_wallet_exists">Wallet exists!</string>
-    <string name="generate_wallet_dot">Cannot begin with .</string>
-    <string name="generate_wallet_creating">Creating wallet</string>
-    <string name="generate_wallet_created">Wallet created</string>
+    <string name="generate_wallet_name">نامی برایم انتخاب کن</string>
+    <string name="generate_wallet_exists">این کیف پول وجود دارد!</string>
+    <string name="generate_wallet_dot">نمی تواند با نقطه شروع شود</string>
+    <string name="generate_wallet_creating">درحال ساخت کیف پول</string>
+    <string name="generate_wallet_created">کیف پول ساخته شد</string>
 
-    <string name="generate_restoreheight_error">Enter Number or Date (YYYY-MM-DD)</string>
+    <string name="generate_restoreheight_error">عدد یا تاریخ را وارد کن (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_type_key">Keys</string>
-    <string name="generate_wallet_type_new">New</string>
-    <string name="generate_wallet_type_seed">Seed</string>
-    <string name="generate_wallet_type_view">View</string>
-    <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
-
-    <string name="generate_address_hint">Public Address</string>
+    <string name="generate_wallet_type_key">کلیدها</string>
+    <string name="generate_wallet_type_new">جدید</string>
+    <string name="generate_wallet_type_seed">عبارت بازیابی</string>
+    <string name="generate_wallet_type_view">مشاهده ای</string>
+    <string name="generate_address_hint">آدرس عمومی</string>
     <string name="generate_viewkey_hint">View Key</string>
     <string name="generate_spendkey_hint">Spend Key</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
-    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
+    <string name="generate_mnemonic_hint">عبارت بازیابی 25 کلمه ای</string>
+    <string name="generate_restoreheight_hint">بلوک بازیابی یا تاریخ (YYYY-MM-DD)</string>
 
-    <string name="generate_address_label">Public Address</string>
+    <string name="generate_address_label">آدرس عمومی</string>
     <string name="generate_viewkey_label">View Key</string>
     <string name="generate_spendkey_label">Spend Key</string>
-    <string name="generate_mnemonic_label">Mnemonic Seed</string>
-    <string name="generate_crazypass_label">Wallet Files Restore Password</string>
+    <string name="generate_mnemonic_label">عبارت بازیابی</string>
+    <string name="generate_crazypass_label">رمزعبور بازیابی کیف پول</string>
 
-    <string name="generate_check_key">Enter valid Key</string>
-    <string name="generate_check_address">Enter valid Address</string>
-    <string name="generate_check_mnemonic">Enter your 25 word seed</string>
+    <string name="generate_check_key">کلید معتبری وارد کنید</string>
+    <string name="generate_check_address">آدرس معتبری وارد کنید</string>
+    <string name="generate_check_mnemonic">عبارت بازیابی 25 کلمه ای خود را وارد کنید</string>
 
-    <string name="send_notes_hint">Private Notes (optional)</string>
-    <string name="send_generate_paymentid_hint">Generate</string>
-    <string name="send_qr_hint" translatable="false">Scan</string>
-    <string name="send_send_label">Spend my sweet Moneroj</string>
-    <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
-    <string name="send_qr_invalid">Not a QR Code</string>
-    <string name="send_qr_address_invalid">Not a valid payment QR code</string>
-    <string name="send_address_invalid">Not a valid address</string>
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_title">Send</string>
-    <string name="send_available">Balance: %1$s XMR</string>
-    <string name="send_address_title">Address</string>
-    <string name="send_amount_title">Amount</string>
-    <string name="send_confirm_title">Confirm</string>
-    <string name="send_success_title">Done</string>
+    <string name="send_notes_hint">یادداشت خصوصی (اختیاری)</string>
+    <string name="send_generate_paymentid_hint">بوجود آوردن</string>
+    <string name="send_send_label">مونرو های شیرین مرا خرج کن!</string>
+    <string name="send_send_timed_label"> (%1$s) مونرو های شیرین مرا خرج کن</string>
+    <string name="send_qr_invalid">کد QR نیست!</string>
+    <string name="send_qr_address_invalid">کد QR پرداخت نامعتبر است</string>
+    <string name="send_address_invalid">آدرس نامعتبر است</string>
+    <string name="send_address_not_openalias">OpenAlias موجود نمی باشد</string>
+    <string name="send_address_openalias">OpenAlias امن &#x2714;</string>
+    <string name="send_address_resolve_openalias">درحال یافتن OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias بدون DNSSEC - ممکن است آدرسی در کار نباشد!</string>
+    <string name="send_title">ارسال</string>
+    <string name="send_available">%1$s XMR موجودی</string>
+    <string name="send_address_title">آدرس</string>
+    <string name="send_amount_title">مقدار</string>
+    <string name="send_confirm_title">تائید</string>
+    <string name="send_success_title">انجام شد</string>
 
-    <string name="send_amount_label">Amount</string>
-    <string name="send_fee_btc_label">Fee (XMR)</string>
-    <string name="send_fee_label">Fee</string>
-    <string name="send_total_btc_label">Total (XMR)</string>
-    <string name="send_total_label">Total</string>
+    <string name="send_amount_label">مقدار</string>
+    <string name="send_fee_btc_label">کارمزد (XMR)</string>
+    <string name="send_fee_label">کارمزد</string>
+    <string name="send_total_btc_label">جمع کل (XMR)</string>
+    <string name="send_total_label">جمع کل</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Fee</string>
+    <string name="send_fee">+%1$s کارمزد</string>
 
-    <string name="send_create_tx_error_title">Create Transaction Error</string>
+    <string name="send_create_tx_error_title">خطای ساخت تراکنش</string>
 
-    <string name="tx_list_fee">- Fee %1$s</string>
+    <string name="tx_list_fee"> %1$s -کارمزد</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
-    <string name="tx_list_failed_text">failed</string>
+    <string name="tx_list_failed_text">ناموفق بود</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_timestamp">Timestamp</string>
-    <string name="tx_id">TX ID</string>
-    <string name="tx_key">TX Key</string>
-    <string name="tx_destination">Destination</string>
-    <string name="tx_destination_btc">Destination\n(BTC)</string>
-    <string name="tx_paymentId">Payment ID</string>
-    <string name="tx_blockheight">Block</string>
-    <string name="tx_amount">Amount</string>
-    <string name="tx_amount_btc">Amount\n(BTC)</string>
-    <string name="tx_fee">Fee</string>
-    <string name="tx_transfers">Transfers</string>
-    <string name="tx_notes">Notes</string>
-    <string name="tx_notes_hint">(optional)</string>
-    <string name="tx_title">Transaction Details</string>
+    <string name="tx_timestamp">زمان</string>
+    <string name="tx_id">شناسه تراکنش</string>
+    <string name="tx_key">کلید تراکنش</string>
+    <string name="tx_destination">مقصد</string>
+    <string name="tx_destination_btc">مقصد\n(BTC)</string>
+    <string name="tx_paymentId">شناسه پرداخت</string>
+    <string name="tx_blockheight">بلوک</string>
+    <string name="tx_amount">مقدار</string>
+    <string name="tx_amount_btc">مقدار\n(BTC)</string>
+    <string name="tx_fee">کارمزد</string>
+    <string name="tx_transfers">گردش حساب</string>
+    <string name="tx_notes">يادداشت ها</string>
+    <string name="tx_notes_hint">(اختیاری)</string>
+    <string name="tx_title">جزئیات تراکنش ها</string>
 
-    <string name="tx_pending">PENDING</string>
-    <string name="tx_failed">FAILED</string>
+    <string name="tx_pending">درحال انتظار</string>
+    <string name="tx_failed">ناموفق بود</string>
 
-    <string name="receive_amount_hint">Amount</string>
-    <string name="receive_desc_hint">Description (optional)</string>
-    <string name="receive_cannot_open">Could not open wallet!</string>
+    <string name="receive_amount_hint">مقدار</string>
+    <string name="receive_desc_hint">توضیحات (اختیاری)</string>
+    <string name="receive_cannot_open">کیف پول باز نشد</string>
 
-    <string name="receive_amount_too_big">Max. %1$s</string>
-    <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR not a number</string>
+    <string name="receive_amount_too_big">%1$s حداکثر</string>
+    <string name="receive_amount_negative">حداقل 0</string>
+    <string name="receive_amount_nan">XMR عدد صحیحی نیست</string>
 
-    <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
-    <string name="details_alert_yes">I\'m safe</string>
-    <string name="details_alert_no">Take me back!</string>
-    <string name="details_title">Details</string>
+    <string name="details_alert_message">حالا اطلاعات حساس نشان داده می شوند\n جوانب را در نظر بگیر!</string>
+    <string name="details_alert_yes">من ایمن هستم</string>
+    <string name="details_alert_no">مرا برگردان!</string>
+    <string name="details_title">جزئیات</string>
 
-    <string name="archive_alert_message">The wallet will be backed up and then deleted!</string>
-    <string name="archive_alert_yes">Yes, do that!</string>
-    <string name="archive_alert_no">No thanks!</string>
+    <string name="archive_alert_message">از این کیف پول پشتیبانی تهیه و سپس حذف خواهد شد</string>
+    <string name="archive_alert_yes">بله، انجام بده!</string>
+    <string name="archive_alert_no">نه ممنون!</string>
 
-    <string-array name="currency" translatable="false">
-        <item>EUR</item>
-        <item>USD</item>
-        <item>JPY</item>
-        <item>GBP</item>
-        <item>CHF</item>
-        <item>CAD</item>
+    <string name="fab_create_new">کیف پول جدید ایجاد کن</string>
+    <string name="fab_restore_viewonly">بازیابی کیف پول فقط برای مشاهده</string>
+    <string name="fab_restore_key">بازیابی کیف پول با کلیدهای خصوصی</string>
+    <string name="fab_restore_seed">بازیابی کیف پول با عبارت بازیابی 25 کلمه ای</string>
+    <string name="accounts_drawer_new">ساخت حساب</string>
+    <string name="accounts_new"> #%1$d حساب جدید اضافه شد</string>
+    <string name="tx_account">حساب #</string>
 
-        <item>AUD</item>
-        <item>BGN</item>
-        <item>BRL</item>
-        <item>CNY</item>
-        <item>CZK</item>
-        <item>DKK</item>
-        <item>HKD</item>
-        <item>HRK</item>
-        <item>HUF</item>
-        <item>IDR</item>
-        <item>ILS</item>
-        <item>INR</item>
-        <item>ISK</item>
-        <item>KRW</item>
-        <item>MXN</item>
-        <item>MYR</item>
-        <item>NOK</item>
-        <item>NZD</item>
-        <item>PHP</item>
-        <item>PLN</item>
-        <item>RON</item>
-        <item>RUB</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>THB</item>
-        <item>TRY</item>
-        <item>ZAR</item>
-    </string-array>
+    <string name="send_sweepall">تمام مونروهای تائید شده را به این حساب ارسال کن</string>
+    <string name="tx_subaddress"> #%1$d آدرس های زيرمجموعه</string>
+    <string name="generate_address_label_sub"> #%1$d آدرس های زيرمجموعه عمومی</string>
 
-    <string name="fab_create_new">Create new wallet</string>
-    <string name="fab_restore_viewonly">Restore view-only wallet</string>
-    <string name="fab_restore_key">Restore wallet from private keys</string>
-    <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+    <string name="menu_language">زبان</string>
+    <string name="language_system_default">استفاده از زبان دستگاه</string>
 
-    <string name="accounts_balance" translatable="false">%1$s XMR</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+    <string name="fab_restore_ledger">بازیابی از Ledger Nano S</string>
 
-    <string name="accounts_drawer_new">Create Account</string>
-    <string name="accounts_new">Added new account #%1$d</string>
-    <string name="tx_account">Account #</string>
+    <string name="progress_ledger_progress">درحال برقراری ارتباط با Ledger</string>
+    <string name="progress_ledger_confirm">تائید با Ledger لازم است</string>
+    <string name="progress_ledger_lookahead">بازیابی آدرس های زيرمجموعه</string>
+    <string name="progress_ledger_verify">درحال تائید کلیدها</string>
+    <string name="progress_ledger_opentx">درحال انجام محاسبات ریاضی دیوانه وار!</string>
+    <string name="progress_ledger_mlsag">چیزهایی درمورد توابع هش</string>
+    <string name="open_wallet_ledger_missing">لطفا دستگاه Ledger را (دوباره) وصل کنید</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="accounts_progress_new">درحال ساخت حساب</string>
 
-    <string name="menu_language">Language</string>
-    <string name="language_system_default">Use System Language</string>
+    <string name="toast_ledger_attached">%1$s متصل شد</string>
+    <string name="toast_ledger_detached">%1$s جدا شد</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
-
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
-
-    <string name="accounts_progress_new">Creating account</string>
-
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
-
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
-
-    <string name="unknown_amount" translatable="false">\?\?\?</string>
-
-    <string name="menu_info">Show Secrets!</string>
-    <string name="menu_streetmode">Street Mode</string>
-
-    <string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
-
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
+    <string name="progress_nfc_write">درحال نوشتن برچسب</string>
+    <string name="nfc_write_failed">نوشتن برچسب ناموفق بود</string>
+    <string name="nfc_write_successful">نوشتن برچسب موفق بود</string>
+    <string name="nfc_tag_unsupported">برچسب از NDEF پشتیبانی نمی کند</string>
+    <string name="nfc_tag_size"> %1$d برچسب این مقدار بایت ارائه می دهد 
+%2$d اما به این مقدار نیاز داریم</string>
+    <string name="nfc_tag_read_undef">من این برچسب را نمی فهمم!</string>
+    <string name="nfc_tag_read_what">من نمی دانم چه می خواهی</string>
+    <string name="nfc_tag_tap">NFC دردسترس است!</string>
+    <string name="menu_info">نمایش اطلاعات خصوصی</string>
+    <string name="menu_streetmode">حالت خیابان</string>
+    <string name="info_nodes_enabled">Node-o-matiC فعال شد. برای اطلاعات بیشتر مرا لمس کن</string>
+    <string name="node_height">%1$s آخرین بلوک بروز شده:</string>
+    <string name="label_nodes">گره/نود</string>
+    <string name="node_name_hint">نام نود (اختیاری)</string>
     <string name="node_address_hint">Hostname</string>
     <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
+    <string name="node_user_hint">نام کاربری (اختیاری)</string>
+    <string name="node_pass_hint">رمزعبور (اختیاری)</string>
+    <string name="node_host_unresolved">این هاست یافت نشد</string>
+    <string name="node_host_empty">ما به این نیاز داریم</string>
+    <string name="node_port_numeric">باید بصورت عدد باشد</string>
+    <string name="node_port_range"> 1&#8211;65535 باید اینگونه باشد</string>
+    <string name="node_fab_add">افزودن نود/گره</string>
+    <string name="node_refresh_hint">برای بروزشدن مرا لمس کن!</string>
+    <string name="node_test_error"> %1$d خطای ارتباط</string>
+    <string name="node_general_error">خطای ارتباط</string>
+    <string name="node_auth_error">احراز ناموفق بود</string>
+    <string name="node_result_label">نتیجه آزمون:</string>
     <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
     <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_refresh_wait">لطفا منتظر بمانید تا بررسی به پایان برسد</string>
+    <string name="node_create_hint">برای انتخاب یا افزودن نودها مرا را لمس کنید</string>
+    <string name="node_pull_hint">نود ها را به صورت دستی اضافه کنید یا برای بررسی ، پایین بکشید</string>
+    <string name="node_scanning">&#8230; درحال بررسی شبکه</string>
+    <string name="node_nobookmark"> %1$d بصورت خودکار بهترین نود ها نشانه گذاری شدند</string>
+    <string name="label_test">امتحان</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
-    <string name="send_address_hint">Receiver</string>
+    <string name="send_address_resolve_bip70">&#8230; درحال یافتن یو-آر-آی پرداخت</string>
+    <string name="send_address_not_bip70">یو-آر-آی پرداخت یافت نشد</string>
+    <string name="send_address_bip70"> &#x2714; یو-آر-آی پرداخت، پیدا شد</string>
+    <string name="send_address_hint">دریافت کننده</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
+    <string name="xmrto_error_001">وبسایت XMR.TO آفلاین است. بعدا دوباره تلاش کنید</string>
+    <string name="xmrto_error_004">مقدار بیتکوین خارج از محدوده است</string>
+    <string name="xmrto_error_010">یو-آر-ال پرداخت، نامعتبر یا منسوخ شده است</string>
+    <string name="xmrto_error_012">درخواست های بسیار زیاد</string>
 
-    <string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
+    <string name="street_sweep_amount">همه چیز!</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string>
+    <string name="menu_ledger_seed">تبدیل عبارت بازیابی Ledger</string>
+    <string name="prompt_ledger_seed">عبارت بازیابی Ledger</string>
+    <string name="prompt_ledger_phrase">رمزعبور Ledger (پیشرفته)</string>
+    <string name="bad_ledger_seed">عبارت بازیابی Ledger نامعتبر!</string>
+    <string name="prompt_ledger_seed_warn">وارد کردن عبارت بازیابی Ledger در اینجا یک خطر بزرگ امنیتی است!</string>
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (advanced)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
 
-    <string name="label_account" translatable="false">%1$s (%2$s)</string>
+    <string name="label_restoreheight">ارتفاع بلوک بازیابی</string>
 
-    <string name="label_restoreheight">Restore Height</string>
+    <string name="toast_ledger_start_app"> %1$s اجرای برنامه مونرو روی</string>
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="menu_rescan">بررسی دوباره!</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="onboarding_agree">فهمیدم!</string>
+    <string name="onboarding_button_next">بعدی</string>
+    <string name="onboarding_button_ready">من آماده ام</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_welcome_title">خوش آمدید به Monerujo</string>
+    <string name="onboarding_welcome_information">این برنامه به شما امکان ایجاد و استفاده از کیف پول های مونرو را می دهد. شما می توانید مونرو های شیرین خود را در آن ذخیره کنید</string>
+    <string name="onboarding_seed_title">عبارت بازیابی خود را امن نگه دارید</string>
+    <string name="onboarding_seed_information">عبارت بازیابی به هر کسی که آن را داشته باشد، دسترسی کامل می دهد. اگر آن را گم کنید ما نمی توانیم به شما در بازیابی آن کمکی کنیم و مونرو های محبوب خود را از دست می دهید</string>
+    <string name="onboarding_xmrto_title">ارسال بیتکوین</string>
+    <string name="onboarding_xmrto_information">این برنامه از وبسایت ایکس-ام-آر دات تی-او پشتیبانی می کند که می توانید با وارد کردن یا اسکن یک آدرس بیتکوین و با خرج کردن مونرو، بیتکوین ارسال کنید</string>
+    <string name="onboarding_nodes_title">نود/گره ها راه شما</string>
+    <string name="onboarding_nodes_information">نود ها شما را به شبکه مونرو متصل می کنند، از بین نود های عمومی یا نود شخصی خود یکی را انتخاب کنید</string>
+    <string name="onboarding_fpsend_title">ارسال با اثرانگشت</string>
+    <string name="onboarding_fpsend_information">درصورت فعالسازی شما می توانید با اثر انگشت خود مونرو ارسال کنید. برای درخواست رمزعبور، فقط دسترسی به اثرانگشت را غيرفعال کنید</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
-
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">حالت تاریک</string>
     <string-array name="daynight_themes">
-        <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>خودکار</item>
+        <item>روز</item>
+        <item>شب</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">اینجا چیزی نیست \n لطفا کیف پولی بسازید یا بازیابی کنید</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">بازیابی نود/گره های پيشفرض</string>
+    <string name="toast_default_nodes">درحال بازیابی...</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now"> %1$d آخرین بلوک، ثانیه پیش</string>
+    <string name="node_updated_mins"> %1$d آخرین بلوک، دقیقه پیش</string>
+    <string name="node_updated_hours">%1$d آخرین بلوک، ساعت پیش</string>
+    <string name="node_updated_days">%1$d آخرین بلوک، روز پیش</string>
 </resources>
