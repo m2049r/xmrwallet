@@ -354,7 +354,7 @@
     <string name="xmrto_error_001">XMR.TO offline - tente novamente mais tarde</string>
     <string name="xmrto_error_004">Valor BTC fora dos limites</string>
     <string name="xmrto_error_010">URL de pagamento inválido</string>
-    <string name="xmrto_error_012">Demasiadas solicitações</string>
+    <string name="xmrto_error_012">Solicitações em excesso</string>
 
     <string name="street_sweep_amount">TUDO!</string> <!-- as in: "everything in the account" = "all the money" -->
 
@@ -366,38 +366,38 @@
 
     <string name="label_restoreheight">Restaurar da altura</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Iniciar o App Monero em %1$s</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">Reescanear!</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_agree">Eu entendi!</string>
+    <string name="onboarding_button_next">Próximo</string>
+    <string name="onboarding_button_ready">Estou pronto!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">Bem-vindo a Monerujo!</string>
+    <string name="onboarding_welcome_information">Esse aplicativo permite que você crie e use carteiras Monero. Você poderá guardar seus queridos moneroj aqui.</string>
+    <string name="onboarding_seed_title">Mantenha sua semente em segurança</string>
+    <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneroj.</string>
+    <string name="onboarding_xmrto_title">Enviar Bitcoin</string>
+    <string name="onboarding_xmrto_information">A Monerujo possui o XMR.to integrado. Basta colar ou escaner um endereço Bitcoin e você estará enviando BTC, mas gastando em XMR.</string>
+    <string name="onboarding_nodes_title">"Nós", do seu jeito</string>
+    <string name="onboarding_nodes_information">Os nós conectam você à rede Monero. Escolha entre nós públicos ou seja completamente "cypherpunk" e utilize seu próprio nó.</string>
+    <string name="onboarding_fpsend_title">Enviar usando a digital</string>
+    <string name="onboarding_fpsend_information">Agora é possível enviar XMR apenas com sua digital, caso ela esteja habilitada. Para solicitar a senha, basta desativar acesso à digital.</string>
 
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">Modo Escuro</string>
     <string-array name="daynight_themes">
-        <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>Automático</item>
+        <item>Claro</item>
+        <item>Escuro</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">Não há nada aqui\nPor favor, crie ou restaure uma carteira</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">Restaurar nós padrão</string>
+    <string name="toast_default_nodes">Restauração em andamento…</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">Último Bloco: %1$d segundos atrás</string>
+    <string name="node_updated_mins">Último Bloco: %1$d minutos atrás</string>
+    <string name="node_updated_hours">Último Bloco: %1$d horas atrás</string>
+    <string name="node_updated_days">Último Bloco: %1$d dias atrás</string>
 </resources>
