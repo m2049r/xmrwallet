@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.api;
+package com.m2049r.xmrwallet.service.shift;
 
-public interface XmrToCallback<T> {
+public interface ShiftCallback<T> {
 
     void onSuccess(T t);
 

@@ -146,68 +146,53 @@
         <ul>
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
-        <h2>Fizetési azonosító</h2>
-        <p>Fizetési azonosítót (payment ID) használhatsz arra a célra, hogy beazonosítsd, miért történt
-        tranzakció két fél között. Ez teljes mértékben opcionális és privát. A fizetési azonosító például
-        lehetővé teszi egy üzlet számára a tranzakciód és a megvásárolt tételed összeegyeztetését.<p>
         <h1>BTC-küldés</h1>
-        <h2>XMR.TO</h2>
-        <p>Az XMR.TO egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az XMR.TO API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://xmr.to weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az XMR.TO-val és nem tudnak segítséget nyújtani a
+        <h2>SideShift.ai</h2>
+        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>XMR.TO árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az XMR.TO szolgáltatás paraméterei. Ez magában
+        <h2>SideShift.ai árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
-        hogy ez az árfolyam ekkor még nem garantált. Megjelenítésre kerül az a mennyiség is, amely mellett
-        a BTC-tranzakció azonnal megvalósításra kerül XMR-megerősítések nélkül (részletekért olvad el az
-        XMR.TO oldalán a gyakran ismételt kérdéseket). Az XMR.TO nem számol fel extra költségeket - milyen
-        király már ez?</p>
-        <h2>XMR.TO megrendelés<h2>
+        hogy ez az árfolyam ekkor még nem garantált.</p>
+        <h2>SideShift.ai megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>XMR.TO titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az XMR.TO titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az XMR.TO kezdőlapján.</p>
-        <p>Kérjük vedd figyelembe, hogy ez a titkos kulcs csak a tranzakció kezdetétől számított
-        24 óráig érvényes!</p>
-        <h2>XMR.TO visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az XMR.TO-tól azáltal, hogy
+        <h2>SideShift.ai titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
+        <h2>SideShift.ai visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTC-küldés</h1>
-        <h2>XMR.TO</h2>
-        <p>Az XMR.TO egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az XMR.TO API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://xmr.to weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az XMR.TO-val és nem tudnak segítséget nyújtani a
+        <h2>SideShift.ai</h2>
+        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>XMR.TO árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az XMR.TO szolgáltatás paraméterei. Ez magában
+        <h2>SideShift.ai árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
-        hogy ez az árfolyam ekkor még nem garantált. Megjelenítésre kerül az a mennyiség is, amely mellett
-        a BTC-tranzakció azonnal megvalósításra kerül XMR-megerősítések nélkül (részletekért olvad el az
-        XMR.TO oldalán a gyakran ismételt kérdéseket). Az XMR.TO nem számol fel extra költségeket - milyen
-        király már ez?</p>
-        <h2>XMR.TO megrendelés<h2>
+        hogy ez az árfolyam ekkor még nem garantált.</p>
+        <h2>SideShift.ai megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>XMR.TO titkos kulcs<h2>
-        <p>ivel a monerujo csak a tranzakciód Monero részét kezeli, így az XMR.TO titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az XMR.TO kezdőlapján.</p>
-        <p>Kérjük vedd figyelembe, hogy ez a titkos kulcs csak a tranzakció kezdetétől számított
-        24 óráig érvényes!</p>
-        <h2>XMR.TO visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az XMR.TO-tól azáltal, hogy
+        <h2>SideShift.ai titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
+        <h2>SideShift.ai visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 

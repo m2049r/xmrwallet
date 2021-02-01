@@ -117,52 +117,41 @@
         <ul>
             <li>un OpenAlias per XMR o BTC</li>
             <li>una adreça BTC</li>
-            <li>un bitcoin: URI (inclòs BIP70 com bitpay)</li>
         </u>
-        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei XMR.TO (consulteu https://xmr.to per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
-        <h2>ID de Pagament</h2>
-        <p>Podeu utilitzar un ID de pagament per identificar el motiu pel qual heu enviat a Monero entre dues parts. Això és totalment opcional i privat. Per exemple, això pot 	permetre a una empresa associar la transacció amb un article que heu comprat.<p>
+        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei SideShift.ai (consulteu https://sideshift.ai per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
         <h1>Enviant BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-         Nosaltres fem servir l’API XMR.TO per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://xmr.to i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb XMR.TO i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi XMR.TO<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei XMR.TO. Aquests
-         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment. També veureu
-         la quantitat fins a la qual la transacció BTC s’executarà instantàniament sense esperar
-         a confirmacions de XMR (consulteu les preguntes freqüents sobre XMR.TO per obtenir més informació). Tingueu en compte que el servei XMR.TO no suposa càrrecs addicionals: oi 	que mola?</p>
-        <h2>Ordre  de compra XMR.TO<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra XMR.TO real. Aquesta comanda és vàlida per a
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+         Nosaltres fem servir l’API SideShift.ai per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://sideshift.ai i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb SideShift.ai i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi SideShift.ai<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei SideShift.ai. Aquests
+         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
+        <h2>Ordre  de compra SideShift.ai<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra SideShift.ai real. Aquesta comanda és vàlida per a
          un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
          ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta XMR.TO<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per XMR.TO es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de XMR.TO.</p>
-        <p>Tingueu en compte que aquesta clau secreta només és vàlida durant 24 hores després que la transacció
-         ha començat!</p>
-        <h2>Compte enrere XMR.TO!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de XMR.TO tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+        <h2>Clau Secreta SideShift.ai<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per SideShift.ai es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de SideShift.ai.</p>
+        <h2>Compte enrere SideShift.ai!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de SideShift.ai tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Enviant BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-         Nosaltres fem servir l’API XMR.TO per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://xmr.to i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb XMR.TO i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi XMR.TO<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei XMR.TO. Aquests
-         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment. També veureu
-         la quantitat fins a la qual la transacció BTC s’executarà instantàniament sense esperar
-         a confirmacions de XMR (consulteu les preguntes freqüents sobre XMR.TO per obtenir més informació). Tingueu en compte que el servei XMR.TO no suposa càrrecs addicionals: oi 	que mola?</p>
-        <h2>Ordre  de compra XMR.TO<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra XMR.TO real. Aquesta comanda és vàlida per a
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+         Nosaltres fem servir l’API SideShift.ai per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://sideshift.ai i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb SideShift.ai i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi SideShift.ai<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei SideShift.ai. Aquests
+         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
+        <h2>Ordre  de compra SideShift.ai<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra SideShift.ai real. Aquesta comanda és vàlida per a
          un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
          ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta XMR.TO<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per XMR.TO es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de XMR.TO.</p>
-        <p>Tingueu en compte que aquesta clau secreta només és vàlida durant 24 hores després que la transacció
-         ha començat!</p>
-        <h2>Compte enrere XMR.TO!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de XMR.TO tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+        <h2>Clau Secreta SideShift.ai<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per SideShift.ai es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de SideShift.ai.</p>
+        <h2>Compte enrere SideShift.ai!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de SideShift.ai tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[

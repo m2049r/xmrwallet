@@ -36,22 +36,22 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Sa sisestasid Bitcoini aadressi.</b><br/>
-        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad Bitcoinid kasutades XMR.TO teenust.</i>
+        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad Bitcoinid kasutades SideShift.ai teenust.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO tellimus</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai tellimus</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Ootan kinnitust</string>
     <string name="info_send_xmrto_unpaid">Ootan makset</string>
-    <string name="info_send_xmrto_error">XMR.TO viga (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai viga (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC saadetud!</string>
     <string name="info_send_xmrto_query">Küsin &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Sa saad saata %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s BTC</b></i>.
+        <i><b>SideShift.ai</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s BTC</b></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Kuni <b>%1$s BTC</b> saadetakse <u>viivitamatult</u>!</i>
@@ -62,25 +62,25 @@
     <string name="info_paymentid_integrated">&#x2714; Makse ID integreeritud</string>
     <string name="info_prepare_tx">Valmistan ülekannet ette</string>
 
-    <string name="label_send_progress_xmrto_create">Loon XMR.TO tellimust</string>
-    <string name="label_send_progress_xmrto_query">Küsin XMR.TO tellimust</string>
+    <string name="label_send_progress_xmrto_create">Loon SideShift.ai tellimust</string>
+    <string name="label_send_progress_xmrto_query">Küsin SideShift.ai tellimust</string>
     <string name="label_send_progress_create_tx">Valmistan ette Monero ülekannet</string>
 
-    <string name="label_send_progress_queryparms">Küsin XMR.TO parameetreid</string>
+    <string name="label_send_progress_queryparms">Küsin SideShift.ai parameetreid</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO viga</string>
+    <string name="label_generic_xmrto_error">SideShift.ai viga</string>
     <string name="text_generic_xmrto_error">Kood: %1$d</string>
 
     <string name="text_retry">Puuduta uuesti proovimiseks</string>
     <string name="text_noretry_monero">Nüüd jõudsime küll tupikusse!</string>
-    <string name="text_noretry">Oh ei, XMR.TO ei ole hetkel saadaval!</string>
+    <string name="text_noretry">Oh ei, SideShift.ai ei ole hetkel saadaval!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurss: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Külasta xmr.to lisainfo saamiseks &amp; jälgin</string>
-    <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO privaatvõti</string>
+    <string name="label_send_btc_xmrto_info">Külasta SideShift.ai lisainfo saamiseks &amp; jälgin</string>
+    <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai privaatvõti</string>
     <string name="label_send_btc_address">Sihtkoha Bitcoini aadress</string>
     <string name="label_send_btc_amount">Kogus</string>
 
@@ -151,9 +151,9 @@
 
     <string name="label_copy_viewkey">Vaatamise võti</string>
     <string name="label_copy_address">Avalik aadress</string>
-    <string name="label_copy_xmrtokey">XMR.TO võti</string>
+    <string name="label_copy_xmrtokey">Võti</string>
     <string name="message_copy_viewkey">Vaatamise võti on kopeeritud lõikepuhvrisse!</string>
-    <string name="message_copy_xmrtokey">XMR.TO võti on kopeeritud lõikepuhvrisse!</string>
+    <string name="message_copy_xmrtokey">Võti on kopeeritud lõikepuhvrisse!</string>
     <string name="message_copy_address">Rahakoti aadress on kopeeritud lõikepuhvrisse!</string>
     <string name="message_copy_txid">Ülekande ID on kopeeritud lõikepuhvrisse!</string>
     <string name="message_nocopy">Lõikepuhvrisse kopeerimine on turvakaalutlustel keelatud!</string>
@@ -351,13 +351,10 @@
 
     <string name="backup_success">Tagavarakoopia õnnestus</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Saaja</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
     <string name="xmrto_error_004">BTC amount out of bounds</string>
     <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
     <string name="xmrto_error_012">Too many requests</string>
@@ -385,7 +382,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -406,4 +403,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

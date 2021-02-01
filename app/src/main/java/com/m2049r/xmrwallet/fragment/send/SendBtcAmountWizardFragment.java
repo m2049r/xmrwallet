@@ -19,7 +19,6 @@ package com.m2049r.xmrwallet.fragment.send;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +30,14 @@ import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.widget.ExchangeEditText;
 import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
 import com.m2049r.xmrwallet.widget.SendProgressView;
-import com.m2049r.xmrwallet.xmrto.XmrToError;
-import com.m2049r.xmrwallet.xmrto.XmrToException;
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderParameters;
-import com.m2049r.xmrwallet.xmrto.api.XmrToApi;
-import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
-import com.m2049r.xmrwallet.xmrto.network.XmrToApiImpl;
+import com.m2049r.xmrwallet.service.shift.ShiftError;
+import com.m2049r.xmrwallet.service.shift.ShiftException;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -93,8 +91,12 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
     @Override
     public boolean onValidateFields() {
+        Timber.i(maxBtc + "/" + minBtc);
         if (!etAmount.validate(maxBtc, minBtc)) {
             return false;
+        }
+        if (orderParameters == null) {
+            return false; // this should never happen
         }
         if (sendListener != null) {
             TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
@@ -102,8 +104,9 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             if (btcString != null) {
                 try {
                     double btc = Double.parseDouble(btcString);
-                    Timber.d("setAmount %f", btc);
+                    Timber.d("setBtcAmount %f", btc);
                     txDataBtc.setBtcAmount(btc);
+                    txDataBtc.setAmount(btc / orderParameters.getPrice());
                 } catch (NumberFormatException ex) {
                     Timber.d(ex.getLocalizedMessage());
                     txDataBtc.setBtcAmount(0);
@@ -113,17 +116,6 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             }
         }
         return true;
-    }
-
-    private void setBip70Mode() {
-        TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        if (txDataBtc.getBip70() == null) {
-            etAmount.setEditable(true);
-            Helper.showKeyboard(getActivity());
-        } else {
-            etAmount.setEditable(false);
-            Helper.hideKeyboard(getActivity());
-        }
     }
 
     double maxBtc = 0;
@@ -152,7 +144,6 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
                 etAmount.setAmount(data.amount);
             }
         }
-        setBip70Mode();
         callXmrTo();
     }
 
@@ -164,45 +155,37 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
     private void processOrderParms(final QueryOrderParameters orderParameters) {
         this.orderParameters = orderParameters;
-        getView().post(new Runnable() {
-            @Override
-            public void run() {
-                etAmount.setExchangeRate(1.0d / orderParameters.getPrice());
-                NumberFormat df = NumberFormat.getInstance(Locale.US);
-                df.setMaximumFractionDigits(6);
-                String min = df.format(orderParameters.getLowerLimit());
-                String max = df.format(orderParameters.getUpperLimit());
-                String rate = df.format(orderParameters.getPrice());
-                Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms, min, max, rate));
-                if (orderParameters.isZeroConfEnabled()) {
-                    String zeroConf = df.format(orderParameters.getZeroConfMaxAmount());
-                    Spanned zeroConfText = Html.fromHtml(getString(R.string.info_send_xmrto_zeroconf, zeroConf));
-                    xmrParmText = (Spanned) TextUtils.concat(xmrParmText, " ", zeroConfText);
-                }
-                tvXmrToParms.setText(xmrParmText);
-                maxBtc = orderParameters.getUpperLimit();
-                minBtc = orderParameters.getLowerLimit();
-                Timber.d("minBtc=%f / maxBtc=%f", minBtc, maxBtc);
+        getView().post(() -> {
+            final double price = orderParameters.getPrice();
+            etAmount.setExchangeRate(1 / price);
+            maxBtc = price * orderParameters.getUpperLimit();
+            minBtc = price * orderParameters.getLowerLimit();
+            Timber.d("minBtc=%f / maxBtc=%f", minBtc, maxBtc);
+            NumberFormat df = NumberFormat.getInstance(Locale.US);
+            df.setMaximumFractionDigits(6);
+            String min = df.format(minBtc);
+            String max = df.format(maxBtc);
+            String rate = df.format(price);
+            Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms, min, max, rate));
+            tvXmrToParms.setText(xmrParmText);
 
-                final long funds = getTotalFunds();
-                double availableXmr = 1.0 * funds / 1000000000000L;
-                maxBtc = Math.min(maxBtc, availableXmr * orderParameters.getPrice());
+            final long funds = getTotalFunds();
+            double availableXmr = 1.0 * funds / 1000000000000L;
 
-                String availBtcString;
-                String availXmrString;
-                if (!sendListener.getActivityCallback().isStreetMode()) {
-                    availBtcString = df.format(availableXmr * orderParameters.getPrice());
-                    availXmrString = df.format(availableXmr);
-                } else {
-                    availBtcString = getString(R.string.unknown_amount);
-                    availXmrString = availBtcString;
-                }
-                tvFunds.setText(getString(R.string.send_available_btc,
-                        availXmrString,
-                        availBtcString));
-                llXmrToParms.setVisibility(View.VISIBLE);
-                evParams.hideProgress();
+            String availBtcString;
+            String availXmrString;
+            if (!sendListener.getActivityCallback().isStreetMode()) {
+                availBtcString = df.format(availableXmr * price);
+                availXmrString = df.format(availableXmr);
+            } else {
+                availBtcString = getString(R.string.unknown_amount);
+                availXmrString = availBtcString;
             }
+            tvFunds.setText(getString(R.string.send_available_btc,
+                    availXmrString,
+                    availBtcString));
+            llXmrToParms.setVisibility(View.VISIBLE);
+            evParams.hideProgress();
         });
     }
 
@@ -212,44 +195,38 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         maxBtc = 0;
         minBtc = 0;
         Timber.e(ex);
-        getView().post(new Runnable() {
-            @Override
-            public void run() {
-                if (ex instanceof XmrToException) {
-                    XmrToException xmrEx = (XmrToException) ex;
-                    XmrToError xmrErr = xmrEx.getError();
-                    if (xmrErr != null) {
-                        if (xmrErr.isRetryable()) {
-                            evParams.showMessage(xmrErr.getErrorId().toString(), xmrErr.getErrorMsg(),
-                                    getString(R.string.text_retry));
-                            evParams.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    evParams.setOnClickListener(null);
-                                    callXmrTo();
-                                }
-                            });
-                        } else {
-                            evParams.showMessage(xmrErr.getErrorId().toString(), xmrErr.getErrorMsg(),
-                                    getString(R.string.text_noretry));
-                        }
+        getView().post(() -> {
+            if (ex instanceof ShiftException) {
+                ShiftException xmrEx = (ShiftException) ex;
+                ShiftError xmrErr = xmrEx.getError();
+                if (xmrErr != null) {
+                    if (xmrErr.isRetryable()) {
+                        evParams.showMessage(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
+                                getString(R.string.text_retry));
+                        evParams.setOnClickListener(v -> {
+                            evParams.setOnClickListener(null);
+                            callXmrTo();
+                        });
                     } else {
-                        evParams.showMessage(getString(R.string.label_generic_xmrto_error),
-                                getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
+                        evParams.showMessage(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
                                 getString(R.string.text_noretry));
                     }
                 } else {
                     evParams.showMessage(getString(R.string.label_generic_xmrto_error),
-                            ex.getLocalizedMessage(),
+                            getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
                             getString(R.string.text_noretry));
                 }
+            } else {
+                evParams.showMessage(getString(R.string.label_generic_xmrto_error),
+                        ex.getLocalizedMessage(),
+                        getString(R.string.text_noretry));
             }
         });
     }
 
     private void callXmrTo() {
         evParams.showProgress(getString(R.string.label_send_progress_queryparms));
-        getXmrToApi().queryOrderParameters(new XmrToCallback<QueryOrderParameters>() {
+        getXmrToApi().queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
             @Override
             public void onSuccess(final QueryOrderParameters orderParameters) {
                 processOrderParms(orderParameters);
@@ -262,13 +239,13 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         });
     }
 
-    private XmrToApi xmrToApi = null;
+    private SideShiftApi xmrToApi = null;
 
-    private XmrToApi getXmrToApi() {
+    private SideShiftApi getXmrToApi() {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {
-                    xmrToApi = new XmrToApiImpl(OkHttpHelper.getOkHttpClient(),
+                    xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
                             Helper.getXmrToBaseUrl());
                 }
             }

@@ -36,22 +36,22 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Ubacio/la si Bitkoin adresu.</b><br/>
-        <i>You&apos;će poslati XMR a primalac će dobiti BTC koristeći <b>XMR.TO</b> servis.</i>
+        <i>You&apos;će poslati XMR a primalac će dobiti BTC koristeći <b>SideShift.ai</b> servis.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO Nalog</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai Nalog</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Potvrda u toku</string>
     <string name="info_send_xmrto_unpaid">Plaćanje u toku</string>
-    <string name="info_send_xmrto_error">XMR.TO Greška (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai Greška (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC Poslato!</string>
     <string name="info_send_xmrto_query">Ispitivanje &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Možeš poslati %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> daje ti devizni kurs od <b>%3$s BTC</b> <u>trenutno</u></i>.
+        <i><b>SideShift.ai</b> daje ti devizni kurs od <b>%3$s BTC</b> <u>trenutno</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Sume do <b>%1$s BTC</b> biće poslate <u>instantly</u>!</i>
@@ -62,25 +62,25 @@
     <string name="info_paymentid_integrated">&#x2714; ID plaćanja integrisan</string>
     <string name="info_prepare_tx">Priprema tvoje transakcije</string>
 
-    <string name="label_send_progress_xmrto_create">Kreiranje XMR.TO Nalog</string>
-    <string name="label_send_progress_xmrto_query">Ispitivanje XMR.TO Nalog</string>
+    <string name="label_send_progress_xmrto_create">Kreiranje SideShift.ai Nalog</string>
+    <string name="label_send_progress_xmrto_query">Ispitivanje SideShift.ai Nalog</string>
     <string name="label_send_progress_create_tx">Pripremanje Monero transakcije</string>
 
-    <string name="label_send_progress_queryparms">Ispitivanje XMR.TO parametara</string>
+    <string name="label_send_progress_queryparms">Ispitivanje SideShift.ai parametara</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO GREŠKA</string>
+    <string name="label_generic_xmrto_error">SideShift.ai GREŠKA</string>
     <string name="text_generic_xmrto_error">Kod: %1$d</string>
 
     <string name="text_retry">Takni za novi pokušaj </string>
     <string name="text_noretry_monero">Sada se zaglavismo!</string>
-    <string name="text_noretry">Uh, XMR.TO izgleda da sad nije dostupan!</string>
+    <string name="text_noretry">Uh, SideShift.ai izgleda da sad nije dostupan!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Poseti xmr.to za bekap &amp; praćenje</string>
-    <string name="label_send_btc_xmrto_key_lb">Tajna šifra\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Tajna šifra</string>
+    <string name="label_send_btc_xmrto_info">Poseti SideShift.ai za bekap &amp; praćenje</string>
+    <string name="label_send_btc_xmrto_key_lb">Tajna šifra\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai Tajna šifra</string>
     <string name="label_send_btc_address">Odredište BTC adrese</string>
     <string name="label_send_btc_amount">Suma</string>
 
@@ -154,9 +154,9 @@
 
     <string name="label_copy_viewkey">Vidna šifra</string>
     <string name="label_copy_address">Javna adresa</string>
-    <string name="label_copy_xmrtokey">XMR.TO šifra</string>
+    <string name="label_copy_xmrtokey">Šifra</string>
     <string name="message_copy_viewkey">Vidna šifra kopirana u klipbord!</string>
-    <string name="message_copy_xmrtokey">XMR.TO šifra kopirana u klipbord!</string>
+    <string name="message_copy_xmrtokey">Šifra kopirana u klipbord!</string>
     <string name="message_copy_address">Adresa novčanika kopirna u klipbord!</string>
     <string name="message_copy_txid">ID transakcije kopiran u klipord!</string>
     <string name="message_nocopy">Kopiranje je onemogućeno iz sigurnosnih razloga!</string>
@@ -353,12 +353,9 @@
     <string name="node_nobookmark">Automatski označeni najbolji %1$d čvorovi</string>
     <string name="label_test">Testiranje</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Rešavanje plaćanja URI&#8230;</string>
-    <string name="send_address_not_bip70">Nemoguće rešavanje plaćanja URI</string>
-    <string name="send_address_bip70">rešavanje plaćanja URI &#x2714;</string>
     <string name="send_address_hint">Primalac</string>
 
-    <string name="xmrto_error_001">XMR.TO van mreže - pokušajte kasnije ponovo</string>
+    <string name="xmrto_error_001">SideShift.ai van mreže - pokušajte kasnije ponovo</string>
     <string name="xmrto_error_004">BTC iznos izvan granica</string>
     <string name="xmrto_error_010">Nevalidan ili neažuriran URL plaćanja</string>
     <string name="xmrto_error_012">Previše zahteva</string>
@@ -386,7 +383,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -407,4 +404,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

@@ -16,6 +16,9 @@
 
 package com.m2049r.xmrwallet.fragment.send;
 
+import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,13 +32,13 @@ import android.widget.Toast;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxDataBtc;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.ShiftException;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
+import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.xmrto.XmrToException;
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderStatus;
-import com.m2049r.xmrwallet.xmrto.api.XmrToApi;
-import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
-import com.m2049r.xmrwallet.xmrto.network.XmrToApiImpl;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -52,9 +55,8 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
 
     SendSuccessWizardFragment.Listener sendListener;
 
-    public SendBtcSuccessWizardFragment setSendListener(SendSuccessWizardFragment.Listener listener) {
+    public void setSendListener(SendSuccessWizardFragment.Listener listener) {
         this.sendListener = listener;
-        return this;
     }
 
     ImageButton bCopyTxId;
@@ -69,6 +71,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
     private ImageView ivXmrToStatusBig;
     private ProgressBar pbXmrto;
     private TextView tvTxXmrToKey;
+    private TextView tvXmrToSupport;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,13 +104,13 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         pbXmrto.getIndeterminateDrawable().setColorFilter(0x61000000, android.graphics.PorterDuff.Mode.MULTIPLY);
 
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
-        tvTxXmrToKey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
-                Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
-            }
+        tvTxXmrToKey.setOnClickListener(v -> {
+            Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
+            Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
         });
+
+        tvXmrToSupport = view.findViewById(R.id.tvXmrToSupport);
+        tvXmrToSupport.setPaintFlags(tvXmrToSupport.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         return view;
     }
@@ -149,7 +152,12 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
                 String btcAmount = df.format(btcData.getBtcAmount());
                 tvXmrToAmount.setText(getString(R.string.info_send_xmrto_success_btc, btcAmount));
                 //TODO         btcData.getBtcAddress();
-                tvTxXmrToKey.setText(btcData.getXmrtoUuid());
+                tvTxXmrToKey.setText(btcData.getXmrtoOrderId());
+                tvXmrToSupport.setOnClickListener(v -> {
+                    Uri orderUri = getXmrToApi().getQueryOrderUri(btcData.getXmrtoOrderId());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, orderUri);
+                    startActivity(intent);
+                });
                 queryOrder();
             } else {
                 throw new IllegalStateException("btcData is null");
@@ -158,33 +166,23 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         sendListener.enableDone();
     }
 
-    private final int QUERY_INTERVAL = 1000; // ms
-
     private void processQueryOrder(final QueryOrderStatus status) {
-        Timber.d("processQueryOrder %s for %s", status.getState().toString(), status.getUuid());
-        if (!btcData.getXmrtoUuid().equals(status.getUuid()))
+        Timber.d("processQueryOrder %s for %s", status.getState().toString(), status.getOrderId());
+        if (!btcData.getXmrtoOrderId().equals(status.getOrderId()))
             throw new IllegalStateException("UUIDs do not match!");
         if (isResumed && (getView() != null))
-            getView().post(new Runnable() {
-                @Override
-                public void run() {
-                    showXmrToStatus(status);
-                    if (!status.isTerminal()) {
-                        getView().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                queryOrder();
-                            }
-                        }, QUERY_INTERVAL);
-                    }
+            getView().post(() -> {
+                showXmrToStatus(status);
+                if (!status.isTerminal()) {
+                    getView().postDelayed(this::queryOrder, SideShiftApi.QUERY_INTERVAL);
                 }
             });
     }
 
     private void queryOrder() {
-        Timber.d("queryOrder(%s)", btcData.getXmrtoUuid());
+        Timber.d("queryOrder(%s)", btcData.getXmrtoOrderId());
         if (!isResumed) return;
-        getXmrToApi().queryOrderStatus(btcData.getXmrtoUuid(), new XmrToCallback<QueryOrderStatus>() {
+        getXmrToApi().queryOrderStatus(btcData.getXmrtoOrderId(), new ShiftCallback<QueryOrderStatus>() {
             @Override
             public void onSuccess(QueryOrderStatus status) {
                 if (!isAdded()) return;
@@ -194,38 +192,34 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
             @Override
             public void onError(final Exception ex) {
                 if (!isResumed) return;
-                Timber.e(ex);
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (ex instanceof XmrToException) {
-                            Toast.makeText(getActivity(), ((XmrToException) ex).getError().getErrorMsg(), Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(getActivity(), ex.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                        }
+                Timber.w(ex);
+                getActivity().runOnUiThread(() -> {
+                    if (ex instanceof ShiftException) {
+                        Toast.makeText(getActivity(), ((ShiftException) ex).getError().getErrorMsg(), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getActivity(), ex.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
         });
     }
 
-    private int statusResource = 0;
-
     void showXmrToStatus(final QueryOrderStatus status) {
+        int statusResource = 0;
         if (status.isError()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_error, status.toString()));
             statusResource = R.drawable.ic_error_red_24dp;
             pbXmrto.getIndeterminateDrawable().setColorFilter(0xff8b0000, android.graphics.PorterDuff.Mode.MULTIPLY);
-        } else if (status.isSent()) {
+        } else if (status.isSent() || status.isPaid()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_sent));
             statusResource = R.drawable.ic_success_green_24dp;
             pbXmrto.getIndeterminateDrawable().setColorFilter(0xFF417505, android.graphics.PorterDuff.Mode.MULTIPLY);
+        } else if (status.isWaiting()) {
+            tvXmrToStatus.setText(getString(R.string.info_send_xmrto_unpaid));
+            statusResource = R.drawable.ic_pending_orange_24dp;
+            pbXmrto.getIndeterminateDrawable().setColorFilter(0xFFFF6105, android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isPending()) {
-            if (status.isPaid()) {
-                tvXmrToStatus.setText(getString(R.string.info_send_xmrto_paid));
-            } else {
-                tvXmrToStatus.setText(getString(R.string.info_send_xmrto_unpaid));
-            }
+            tvXmrToStatus.setText(getString(R.string.info_send_xmrto_paid));
             statusResource = R.drawable.ic_pending_orange_24dp;
             pbXmrto.getIndeterminateDrawable().setColorFilter(0xFFFF6105, android.graphics.PorterDuff.Mode.MULTIPLY);
         } else {
@@ -240,13 +234,13 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         }
     }
 
-    private XmrToApi xmrToApi = null;
+    private SideShiftApi xmrToApi = null;
 
-    private final XmrToApi getXmrToApi() {
+    private SideShiftApi getXmrToApi() {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {
-                    xmrToApi = new XmrToApiImpl(OkHttpHelper.getOkHttpClient(),
+                    xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
                             Helper.getXmrToBaseUrl());
                 }
             }

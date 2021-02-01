@@ -2,7 +2,7 @@
  *******************************************************************************
  *   BTChip Bitcoin Hardware Wallet Java API
  *   (c) 2014 BTChip - 1BTChip7VfTnrPra5jqci7ejnMguuHogTn
- *   (c) m2049r
+ *   Copyright (c) 2018 m2049r
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.

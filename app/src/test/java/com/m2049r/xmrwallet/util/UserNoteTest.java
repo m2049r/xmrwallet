@@ -29,7 +29,8 @@ public class UserNoteTest {
     @Test
     public void createFromTxNote_noNote() {
         UserNotes userNotes = new UserNotes("{xmrto-iyrpxU,0.009BTC,mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9}");
-        assertTrue("xmrto-iyrpxU".equals(userNotes.xmrtoKey));
+        assertTrue("xmrto".equals(userNotes.xmrtoTag));
+        assertTrue("iyrpxU".equals(userNotes.xmrtoKey));
         assertTrue("0.009".equals(userNotes.xmrtoAmount));
         assertTrue("mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9".equals(userNotes.xmrtoDestination));
         assertTrue(userNotes.note.isEmpty());
@@ -38,7 +39,8 @@ public class UserNoteTest {
     @Test
     public void createFromTxNote_withNote() {
         UserNotes userNotes = new UserNotes("{xmrto-iyrpxU,0.009BTC,mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9} aNote");
-        assertTrue("xmrto-iyrpxU".equals(userNotes.xmrtoKey));
+        assertTrue("xmrto".equals(userNotes.xmrtoTag));
+        assertTrue("iyrpxU".equals(userNotes.xmrtoKey));
         assertTrue("0.009".equals(userNotes.xmrtoAmount));
         assertTrue("mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9".equals(userNotes.xmrtoDestination));
         assertTrue("aNote".equals(userNotes.note));
@@ -47,20 +49,11 @@ public class UserNoteTest {
     @Test
     public void createFromTxNote_withNoteNoSpace() {
         UserNotes userNotes = new UserNotes("{xmrto-iyrpxU,0.009BTC,mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9}aNote");
-        assertTrue("xmrto-iyrpxU".equals(userNotes.xmrtoKey));
+        assertTrue("xmrto".equals(userNotes.xmrtoTag));
+        assertTrue("iyrpxU".equals(userNotes.xmrtoKey));
         assertTrue("0.009".equals(userNotes.xmrtoAmount));
         assertTrue("mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9".equals(userNotes.xmrtoDestination));
         assertTrue("aNote".equals(userNotes.note));
-    }
-
-    @Test
-    public void createFromTxNote_brokenA() {
-        String brokenNote = "{mrto-iyrpxU,0.009BTC,mjn127C5wRQCULksMYMFHLp9UTdQuCfbZ9}";
-        UserNotes userNotes = new UserNotes(brokenNote);
-        assertNull(userNotes.xmrtoKey);
-        assertNull(userNotes.xmrtoAmount);
-        assertNull(userNotes.xmrtoDestination);
-        assertTrue(brokenNote.equals(userNotes.note));
     }
 
     @Test

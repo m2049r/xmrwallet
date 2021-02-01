@@ -56,6 +56,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -468,7 +469,7 @@ public class ReceiveFragment extends Fragment {
             Timber.d("CLEARQR");
             return;
         }
-        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, null, notes, xmrAmount);
+        bcData = new BarcodeData(BarcodeData.Asset.XMR, address, notes, xmrAmount);
         int size = Math.max(ivQrCode.getWidth(), ivQrCode.getHeight());
         Bitmap qr = generate(bcData.getUriString(), size, size);
         if (qr != null) {

@@ -159,78 +159,51 @@
         <ul>
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
-        <h2>Makse ID</h2>
-        <p>You can use a Payment ID to identify the reason you sent Monero between two parties. This
-        is fully optional and private. For example it can allow a business to reconcile your
-        transaction with an item you bought.<p>
-        <h2><em>Ring<em>\'i suurus</h2>
-        <p>There are a number of ring sizes to choose from in Monerujo. If you are a beginner user
-        we recommend you stick with a ring size of 7. Increasing the ring size above 7 increases
-        the amount of signers in a ring signature, theoretically providing increased plausible
-        deniability. However setting high ring sizes can also make your transaction stand out on
-        the blockchain.</p>
-        <h2>Tähtsus</h2>
-        <p>This setting determines the speed at which your transaction will be included in the
-        blockchain. A high priority setting will correlate directly with a higher transaction fee
-        and the inverse is true for a low priority. Please note that if you set your transaction to
-        a low priority it can be hours before it is included on the blockchain. The default priority
-        is \"Medium\".</p>
         <h1>Bitcoini (BTC) saatmine</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO vahetuskurss<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
+        We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
+        https://sideshift.ai and decide for yourself if this is something you want to use. The Monerujo
+        Team is not associated with SideShift.ai and cannot help you with their service.</p>
+        <h2>SideShift.ai vahetuskurss<h2>
+        <p>On the \"Amount\" screen you will be shown the current parameters of the SideShift.ai service. These
         include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO tellimus<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
+        rate is not guaranteed at this point.</p>
+        <h2>SideShift.ai tellimus<h2>
+        <p>On the \"Confirm\" screen, you will see the actual SideShift.ai order. This order is valid for
         a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
         be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO privaatvõti<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO loendur</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
+        <h2>SideShift.ai privaatvõti<h2>
+        <p>Since Monerujo only handles the Monero part of your transaction your SideShift.ai secret key
+        can be used to track the Bitcoin part of your order on the SideShift.ai homepage.</p>
+        <h2>SideShift.ai loendur</h2>
+        <p>Once the countdown reaches zero, you need to get a new quote from SideShift.ai by going back to the
         previous step and then coming back to the \"Confirm\" screen.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Bitcoini (BTC) saatmine</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the XMR.TO API to integrate Bitcoin payments into Monerujo. Please check out
-        https://xmr.to and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with XMR.TO and cannot help you with their service.</p>
-        <h2>XMR.TO vahetuskurss<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the XMR.TO service. These
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
+        We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
+        https://sideshift.ai and decide for yourself if this is something you want to use. The Monerujo
+        Team is not associated with SideShift.ai and cannot help you with their service.</p>
+        <h2>SideShift.ai vahetuskurss<h2>
+        <p>On the \"Amount\" screen you will be shown the current parameters of the SideShift.ai service. These
         include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point. You will also see
-        the amount up to which the BTC transaction will be executed instantly without waiting for
-        XMR confirmations (see the XMR.TO FAQ for more details). Please note, that XMR.TO does
-        not charge extra fees - how cool is that?</p>
-        <h2>XMR.TO tellimus<h2>
-        <p>On the \"Confirm\" screen, you will see the actual XMR.TO order. This order is valid for
+        rate is not guaranteed at this point.</p>
+        <h2>SideShift.ai tellimus<h2>
+        <p>On the \"Confirm\" screen, you will see the actual SideShift.ai order. This order is valid for
         a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
         be different to the indicative one shown on previous screens.</p>
-        <h2>XMR.TO privaatvõti<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your XMR.TO secret key
-        can be used to track the Bitcoin part of your order on the XMR.TO homepage.</p>
-        <p>Please note, that this secret key is only valid for 24 hours after the transaction is
-        started!</p>
-        <h2>XMR.TO loendur</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from XMR.TO by going back to the
+        <h2>SideShift.ai privaatvõti<h2>
+        <p>Since Monerujo only handles the Monero part of your transaction your SideShift.ai secret key
+        can be used to track the Bitcoin part of your order on the SideShift.ai homepage.</p>
+        <h2>SideShift.ai loendur</h2>
+        <p>Once the countdown reaches zero, you need to get a new quote from SideShift.ai by going back to the
         previous step and then coming back to the \"Confirm\" screen.</p>
     ]]></string>
 

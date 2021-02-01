@@ -180,66 +180,58 @@
         <ul>
             <li>iun OpenAlias por XMR aŭ BTC</li>
             <li>bitmonan-adreson (BTC)<li>
-            <li>bitmonan pag-URI (inkluzive BIP70 kiel bitpay)</li>
         </ul>
-        <h2>Paga ID</h2>
-        <p>Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
-        privata. Ekzemple, tio ebligas komercon kunligi vian transakcion kun varo kiun vi aĉetis.</p>
+        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        for details). See the section on sending BTC below.</p>
 
         <h1>Sendi BTC</h1>
 
-        <h2>XMR.TO</h2>
-        <p>XMR.TO estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
         interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://xmr.to kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun XMR.TO kaj ne
+        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
-        <h2>Kurzo de XMR.TO<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la XMR.TO-servo. Ili inkludas la
+        <h2>Kurzo de SideShift.ai<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
         nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
-        noti ke tiu kurzo ĉiam ŝanĝiĝas. Vi ankaŭ vidos la limon ĝis kiu ĉiu BTC-transakcio pleniĝos
-        tuj, sen atendi XMR-konfirmojn (vidu la informpaĝon de XMR.TO por pliaj detaloj). Bonvolu noti
-        ke XMR.TO ne postulas pliajn honorariojn. Ĉu ne mojose?</p>
-        <h2>Mendo al XMR.TO<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan XMR.TO-mendon. Tiu mendo validas nur dum
+        noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
+        <h2>Mendo al SideShift.ai<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
         limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
         eble malsama ol tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de XMR.TO<h2>
+        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
         <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
-        XMR.TO-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de XMR.TO.</p>
-        <p>Bonvolu noti, ke tiu sekreta ŝlosilo validas nur 24 horoj post kiam via transakcio
-        komenciĝis!</p>
-        <h2>La retrokalkulo de XMR.TO!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de XMR.TO, reirante al la
+        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
+        <h2>La retrokalkulo de SideShift.ai!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Elspezi Bitmonon</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO estas ekstera liveranto kiu aga kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
-        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://xmr.to kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun XMR.TO kaj ne
-        kapablas helpi vin kun ilia servo.</p>
-        <h2>Kurzo de XMR.TO<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la XMR.TO-servo. Ili inkludas la
-        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
-        noti ke tiu kurzo ĉiam ŝanĝiĝas. Vi ankaŭ vidos la limon ĝis kiu ĉiu BTC-transakcio pleniĝos
-        tuj, sen atendi XMR-konfirmojn (vidu la informpaĝon de XMR.TO por pliaj detaloj). Bonvolu noti
-        ke XMR.TO ne postulas pliajn honorariojn. Ĉu ne mojose?</p>
-        <h2>Mendo al XMR.TO<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan XMR.TO-mendon. Tiu mendo validas nur dum
-        limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
-        eble malsama de tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de XMR.TO<h2>
-        <p>Ĉar Monerujo nur traktas la Monero-parton de via transakcio, vi uzu la sekretan
-        XMR.TO-ŝlosilon por sekvi la Bitmono-flankon de via mendo sur la hejmpaĝo de XMR.TO.</p>
-        <p>Bonvolu noti, ke tiu sekreta ŝlosilo validas nur dum 24 horoj post kiam via transakcio
-        komenciĝis!</p>
-        <h2>La retrokalkulo de XMR.TO!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan kurzproponon de XMR.TO, reirante al la
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
+        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        kapablas helpi vin kun ilia servo.</p>
+
+        <h2>Kurzo de SideShift.ai<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
+        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
+        noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
+        <h2>Mendo al SideShift.ai<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
+        limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
+        eble malsama ol tiu antaŭe montrita.</p>
+
+        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
+        <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
+        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
+        <h2>La retrokalkulo de SideShift.ai!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 

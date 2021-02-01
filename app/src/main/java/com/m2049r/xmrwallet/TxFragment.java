@@ -16,8 +16,11 @@
 
 package com.m2049r.xmrwallet;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -25,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +81,9 @@ public class TxFragment extends Fragment {
     private TextView tvTxXmrToKey;
     private TextView tvDestinationBtc;
     private TextView tvTxAmountBtc;
+    private TextView tvXmrToSupport;
+    private TextView tvXmrToKeyLabel;
+    private ImageView tvXmrToLogo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,6 +95,9 @@ public class TxFragment extends Fragment {
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
         tvDestinationBtc = view.findViewById(R.id.tvDestinationBtc);
         tvTxAmountBtc = view.findViewById(R.id.tvTxAmountBtc);
+        tvXmrToSupport = view.findViewById(R.id.tvXmrToSupport);
+        tvXmrToKeyLabel = view.findViewById(R.id.tvXmrToKeyLabel);
+        tvXmrToLogo = view.findViewById(R.id.tvXmrToLogo);
 
         tvAccount = view.findViewById(R.id.tvAccount);
         tvAddress = view.findViewById(R.id.tvAddress);
@@ -104,12 +114,9 @@ public class TxFragment extends Fragment {
 
         etTxNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
-        tvTxXmrToKey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
-                Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
-            }
+        tvTxXmrToKey.setOnClickListener(v -> {
+            Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
+            Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
         });
 
         Bundle args = getArguments();
@@ -283,12 +290,36 @@ public class TxFragment extends Fragment {
         showBtcInfo();
     }
 
+    @SuppressLint("SetTextI18n")
     void showBtcInfo() {
         if (userNotes.xmrtoKey != null) {
             cvXmrTo.setVisibility(View.VISIBLE);
-            tvTxXmrToKey.setText(userNotes.xmrtoKey);
+            String key = userNotes.xmrtoKey;
+            if ("xmrto".equals(userNotes.xmrtoTag)) { // legacy xmr.to service :(
+                key = "xmrto-" + key;
+            }
+            tvTxXmrToKey.setText(key);
             tvDestinationBtc.setText(userNotes.xmrtoDestination);
             tvTxAmountBtc.setText(userNotes.xmrtoAmount + " BTC");
+            switch (userNotes.xmrtoTag) {
+                case "xmrto":
+                    tvXmrToSupport.setVisibility(View.GONE);
+                    tvXmrToKeyLabel.setVisibility(View.INVISIBLE);
+                    tvXmrToLogo.setImageResource(R.drawable.ic_xmrto_logo);
+                    break;
+                case "side": // defaults in layout - just add underline
+                    tvXmrToSupport.setPaintFlags(tvXmrToSupport.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                    tvXmrToSupport.setOnClickListener(v -> {
+                        Uri uri = Uri.parse("https://sideshift.ai/orders/" + userNotes.xmrtoKey);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    });
+                    break;
+                default:
+                    tvXmrToSupport.setVisibility(View.GONE);
+                    tvXmrToKeyLabel.setVisibility(View.INVISIBLE);
+                    tvXmrToLogo.setVisibility(View.GONE);
+            }
         } else {
             cvXmrTo.setVisibility(View.GONE);
         }

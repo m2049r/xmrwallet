@@ -137,62 +137,51 @@
         <ul>
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
-        <h2>Payment ID</h2>
-        <p>Poți utiliza un ID de plată pentru a identifica suma trimisă între două terțe, acest lucru
-		este complet opțional și privat. Ca exemplu, poate permite identificare într-o activitate comercială
-		pentru a reconcilia pentru un produs pe care l-ați achiziționat.<p>
         <h1>Transferul de BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO este un serviciu terță parte care care acționeaza ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul XMR.TO pentru a integra plățile Bitcoin în Monerujo. Verifică
-        https://xmr.to and și decide singur dacă este un serviciu pe care dorești să îl folosești. Echipa Monerujo
-        nu este asociată în niciun fel cu XMR.TO și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb al XMR.TO<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii ai serviciului XMR.TO. Aceștia includ cursul de
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai este un serviciu terță parte care care acționeaza ca un schimb valutar între Monero și Bitcoin.
+        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Verifică
+        https://sideshift.ai and și decide singur dacă este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
+        <h2>Rata de schimb al SideShift.ai<h2>
+        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii ai serviciului SideShift.ai. Aceștia includ cursul de
 		schimb actual precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
-		nu sunt garantate în acest moment. Vei vedea, de asemenea, suma până la care tranzacția BTC va fi
-        executată instantaneu fără a aștepta confirmarea XMR (verifică FAQ-ul XMR.TO pentru detalii). Notează că, XMR.TO
-		nu percepe comisioane extra - nu e așa că este cool?</p>
-        <h2>Dispoziție XMR.TO<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea comanda actuală a XMR.TO. Această comandă este valabilă pentru
+		nu sunt garantate în acest moment.</p>
+        <h2>Dispoziție SideShift.ai<h2>
+        <p>Pe ecranul cu \"Confirm\", vei vedea comanda actuală a SideShift.ai. Această comandă este valabilă pentru
 		un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 		fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă XMR.TO<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a XMR.TO
-        poate fi folosită pentru a urmari partea Bitcoin a comenzii tale de pe site-ul XMR.TO.</p>
-        <p>Te rog notează, că această cheie secretă este validă doar pentru 24 ore din momentul începerii tranzacției!</p>
-        <h2>Numerotarea inversă XMR.TO</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obți o noua cotație de la XMR.TO mergând
+        <h2>Cheia secretă SideShift.ai<h2>
+        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
+        poate fi folosită pentru a urmari partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
+        <h2>Numerotarea inversă SideShift.ai</h2>
+        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obți o noua cotație de la SideShift.ai mergând
 		înapoi la pasul anterior apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Transferul de BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO este un serviciu terță parte care care acționeaza ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul XMR.TO pentru a integra plățile Bitcoin în Monerujo. Verifică
-        https://xmr.to and și decide singur dacă este un serviciu pe care dorești să îl folosești.
-		Echipa Monerujo nu este asociată în niciun fel cu XMR.TO și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb al XMR.TO<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii ai serviciului XMR.TO. Aceștia includ cursul de
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai este un serviciu terță parte care care acționeaza ca un schimb valutar între Monero și Bitcoin.
+        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Verifică
+        https://sideshift.ai and și decide singur dacă este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
+        <h2>Rata de schimb al SideShift.ai<h2>
+        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii ai serviciului SideShift.ai. Aceștia includ cursul de
 		schimb actual precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
-		nu sunt garantate în acest moment. Vei vedea, de asemenea, suma până la care tranzacția BTC va fi
-        executată instantaneu fără a aștepta confirmarea XMR (verifică FAQ-ul XMR.TO pentru detalii). Notează că, XMR.TO
-		nu percepe comisioane extra - nu e așa că este cool?</p>
-        <h2>Dispoziție XMR.TO<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea comanda actuală a XMR.TO. Această comandă este valabilă pentru
+		nu sunt garantate în acest moment.</p>
+        <h2>Dispoziție SideShift.ai<h2>
+        <p>Pe ecranul cu \"Confirm\", vei vedea comanda actuală a SideShift.ai. Această comandă este valabilă pentru
 		un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 		fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă XMR.TO<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a XMR.TO
-        poate fi folosită pentru a urmari partea Bitcoin a comenzii tale de pe site-ul XMR.TO.</p>
-        <p>Te rog notează, că această cheie secretă este validă doar pentru 24 ore din momentul începerii tranzacției!</p>
-        <h2>Numerotarea inversă XMR.TO</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obți o noua cotație de la XMR.TO mergând
+        <h2>Cheia secretă SideShift.ai<h2>
+        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
+        poate fi folosită pentru a urmari partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
+        <h2>Numerotarea inversă SideShift.ai</h2>
+        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obți o noua cotație de la SideShift.ai mergând
 		înapoi la pasul anterior apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
 

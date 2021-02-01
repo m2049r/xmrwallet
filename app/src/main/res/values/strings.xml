@@ -37,22 +37,22 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>You entered a Bitcoin address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get BTC using the <b>XMR.TO</b> service.</i>
+        <i>You&apos;ll send XMR and the receiver will get BTC using the <b>SideShift.ai</b> service.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO Order</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai Order</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Confirmation Pending</string>
     <string name="info_send_xmrto_unpaid">Payment Pending</string>
-    <string name="info_send_xmrto_error">XMR.TO Error (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai Error (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC Sent!</string>
     <string name="info_send_xmrto_query">Querying &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>You can send %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>XMR.TO</b> is giving you an exchange rate of <b>%3$s BTC</b> <u>right now</u></i>.
+        <i><b>SideShift.ai</b> is giving you an exchange rate of <b>%3$s BTC</b> <u>right now</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Amounts up to <b>%1$s BTC</b> will be sent <u>instantly</u>!</i>
@@ -63,25 +63,25 @@
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrated</string>
     <string name="info_prepare_tx">Preparing your transaction</string>
 
-    <string name="label_send_progress_xmrto_create">Creating XMR.TO Order</string>
-    <string name="label_send_progress_xmrto_query">Querying XMR.TO Order</string>
+    <string name="label_send_progress_xmrto_create">Creating SideShift.ai Order</string>
+    <string name="label_send_progress_xmrto_query">Querying SideShift.ai Order</string>
     <string name="label_send_progress_create_tx">Preparing Monero Transaction</string>
 
-    <string name="label_send_progress_queryparms">Querying XMR.TO parameters</string>
+    <string name="label_send_progress_queryparms">Querying SideShift.ai parameters</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO ERROR</string>
+    <string name="label_generic_xmrto_error">SideShift.ai ERROR</string>
     <string name="text_generic_xmrto_error">Code: %1$d</string>
 
     <string name="text_retry">Touch to retry</string>
     <string name="text_noretry_monero">Now we\'re stuck here!</string>
-    <string name="text_noretry">Uh-oh, XMR.TO does not seem be available right now!</string>
+    <string name="text_noretry">Uh-oh, SideShift.ai does not seem be available right now!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visit xmr.to for support &amp; tracking</string>
-    <string name="label_send_btc_xmrto_key_lb">Secret Key\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Secret Key</string>
+    <string name="label_send_btc_xmrto_info">Visit SideShift.ai for support &amp; tracking</string>
+    <string name="label_send_btc_xmrto_key_lb">Secret Key\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai Secret Key</string>
     <string name="label_send_btc_address">Destination BTC Address</string>
     <string name="label_send_btc_amount">Amount</string>
 
@@ -156,9 +156,9 @@
 
     <string name="label_copy_viewkey">View Key</string>
     <string name="label_copy_address">Public Address</string>
-    <string name="label_copy_xmrtokey">XMR.TO Key</string>
+    <string name="label_copy_xmrtokey">Key</string>
     <string name="message_copy_viewkey">View Key copied to clipboard!</string>
-    <string name="message_copy_xmrtokey">XMR.TO Key copied to clipboard!</string>
+    <string name="message_copy_xmrtokey">Key copied to clipboard!</string>
     <string name="message_copy_address">Wallet Address copied to clipboard!</string>
     <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
     <string name="message_nocopy">Copy disabled for security reasons!</string>
@@ -401,17 +401,14 @@
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
     <string name="send_address_hint">Receiver</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
     <string name="xmrto_error_004">BTC amount out of bounds</string>
     <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
     <string name="xmrto_error_012">Too many requests</string>
 
-    <string name="xmrto_error" translatable="false">XMR.TO Service Error</string>
+    <string name="xmrto_error" translatable="false">SideShift.ai Service Error</string>
 
     <string name="street_sweep_amount">EVERYTHING!</string>
 
@@ -438,7 +435,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -459,4 +456,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

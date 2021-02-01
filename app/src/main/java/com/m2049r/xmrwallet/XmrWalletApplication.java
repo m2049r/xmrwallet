@@ -16,14 +16,13 @@
 
 package com.m2049r.xmrwallet;
 
-
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 
+import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.model.NetworkType;
-import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.NightmodeHelper;
 

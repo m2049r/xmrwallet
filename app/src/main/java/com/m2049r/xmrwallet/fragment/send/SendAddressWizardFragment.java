@@ -34,6 +34,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
@@ -45,9 +47,6 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OpenAliasHelper;
-import com.m2049r.xmrwallet.util.PaymentProtocolHelper;
-import com.m2049r.xmrwallet.xmrto.XmrToError;
-import com.m2049r.xmrwallet.xmrto.XmrToException;
 
 import java.util.Map;
 
@@ -92,8 +91,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     private ImageButton bPasteAddress;
 
     private boolean resolvingOA = false;
-    private boolean resolvingPP = false;
-    private String resolvedPP = null;
 
     OnScanListener onScanListener;
 
@@ -125,20 +122,11 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    View next = etAddress;
                     String enteredAddress = etAddress.getEditText().getText().toString().trim();
                     String dnsOA = dnsFromOpenAlias(enteredAddress);
                     Timber.d("OpenAlias is %s", dnsOA);
                     if (dnsOA != null) {
                         processOpenAlias(dnsOA);
-                        next = null;
-                    } else {
-                        // maybe a bip72 or 70 URI
-                        final String bip70 = PaymentProtocolHelper.getBip70(enteredAddress);
-                        if (bip70 != null) {
-                            // looks good - resolve through xmr.to
-                            processBip70(bip70);
-                        }
                     }
                 }
             }
@@ -147,8 +135,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 Timber.d("AFTER: %s", editable.toString());
-                if (editable.toString().equals(resolvedPP)) return; // no change required
-                resolvedPP = null;
                 etAddress.setError(null);
                 if (isIntegratedAddress()) {
                     Timber.d("isIntegratedAddress");
@@ -156,7 +142,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     tvPaymentIdIntegrated.setVisibility(View.VISIBLE);
                     llXmrTo.setVisibility(View.INVISIBLE);
                     sendListener.setMode(SendFragment.Mode.XMR);
-                } else if (isBitcoinAddress() || (resolvedPP != null)) {
+                } else if (isBitcoinAddress()) {
                     Timber.d("isBitcoinAddress");
                     setBtcMode();
                 } else {
@@ -190,14 +176,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     et.setSelection(et.getText().length());
                     etAddress.requestFocus();
                 } else {
-                    final String bip70 = PaymentProtocolHelper.getBip70(clip);
-                    if (bip70 != null) {
-                        final EditText et = etAddress.getEditText();
-                        et.setText(clip);
-                        et.setSelection(et.getText().length());
-                        processBip70(bip70);
-                    } else
-                        Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -273,62 +252,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         } // else ignore
     }
 
-    private void processBip70(final String bip70) {
-        Timber.d("RESOLVED PP: %s", resolvedPP);
-        if (resolvingPP) return; // already resolving - just wait
-        resolvingPP = true;
-        sendListener.popBarcodeData();
-        etAddress.setError(getString(R.string.send_address_resolve_bip70));
-        PaymentProtocolHelper.resolve(bip70, new PaymentProtocolHelper.OnResolvedListener() {
-            @Override
-            public void onResolved(BarcodeData.Asset asset, String address, double amount, String resolvedBip70) {
-                resolvingPP = false;
-                if (asset != BarcodeData.Asset.BTC)
-                    throw new IllegalArgumentException("only BTC here");
-
-                if (resolvedBip70 == null)
-                    throw new IllegalArgumentException("success means we have a pp_url - else die");
-
-                final BarcodeData barcodeData =
-                        new BarcodeData(BarcodeData.Asset.BTC, address, null,
-                                resolvedBip70, null, String.valueOf(amount),
-                                BarcodeData.Security.BIP70);
-                etNotes.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Timber.d("security is %s", barcodeData.security);
-                        processScannedData(barcodeData);
-                        etNotes.requestFocus();
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(final Exception ex) {
-                resolvingPP = false;
-                etAddress.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        int errorMsgId = R.string.send_address_not_bip70;
-                        if (ex instanceof XmrToException) {
-                            XmrToError error = ((XmrToException) ex).getError();
-                            if (error != null) {
-                                errorMsgId = error.getErrorMsgId();
-                            }
-                        }
-                        etAddress.setError(getString(errorMsgId));
-                    }
-                });
-                Timber.d("PP FAILED");
-            }
-        });
-    }
-
     private boolean checkAddressNoError() {
         String address = etAddress.getEditText().getText().toString();
         return Wallet.isAddressValid(address)
-                || BitcoinAddressValidator.validate(address)
-                || (resolvedPP != null);
+                || BitcoinAddressValidator.validate(address);
     }
 
     private boolean checkAddress() {
@@ -365,11 +292,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             Timber.d("OpenAlias is %s", dnsOA);
             if (dnsOA != null) {
                 processOpenAlias(dnsOA);
-            } else {
-                String bip70 = PaymentProtocolHelper.getBip70(enteredAddress);
-                if (bip70 != null) {
-                    processBip70(bip70);
-                }
             }
             return false;
         }
@@ -377,15 +299,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         if (sendListener != null) {
             TxData txData = sendListener.getTxData();
             if (txData instanceof TxDataBtc) {
-                if (resolvedPP != null) {
-                    // take the value from the field nonetheless as this is what the user sees
-                    // (in case we have a bug somewhere)
-                    ((TxDataBtc) txData).setBip70(etAddress.getEditText().getText().toString());
-                    ((TxDataBtc) txData).setBtcAddress(null);
-                } else {
-                    ((TxDataBtc) txData).setBtcAddress(etAddress.getEditText().getText().toString());
-                    ((TxDataBtc) txData).setBip70(null);
-                }
+                ((TxDataBtc) txData).setBtcAddress(etAddress.getEditText().getText().toString());
                 txData.setDestinationAddress(null);
             } else {
                 txData.setDestinationAddress(etAddress.getEditText().getText().toString());
@@ -398,7 +312,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnScanListener) {
             onScanListener = (OnScanListener) context;
@@ -424,21 +338,11 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     }
 
     public void processScannedData() {
-        resolvedPP = null;
         BarcodeData barcodeData = sendListener.getBarcodeData();
         if (barcodeData != null) {
             Timber.d("GOT DATA");
 
-            if (barcodeData.bip70 != null) {
-                setBtcMode();
-                if (barcodeData.security == BarcodeData.Security.BIP70) {
-                    resolvedPP = barcodeData.bip70;
-                    etAddress.setError(getString(R.string.send_address_bip70));
-                } else {
-                    processBip70(barcodeData.bip70);
-                }
-                etAddress.getEditText().setText(barcodeData.bip70);
-            } else if (barcodeData.address != null) {
+            if (barcodeData.address != null) {
                 etAddress.getEditText().setText(barcodeData.address);
                 if (checkAddress()) {
                     if (barcodeData.security == BarcodeData.Security.OA_NO_DNSSEC)
