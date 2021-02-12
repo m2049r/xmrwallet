@@ -212,19 +212,20 @@
                         android:paddingBottom="8dp"
                         android:textColor="?attr/colorPrimary"
                         card_view:drawableEndCompat="@drawable/ic_content_copy_24dp"
-                        tools:text="XMR.TO-d2KQ" />
+                        tools:text="f173118220f1461841da" />
 
                     <TextView
-                        style="@style/MoneroText"
+                        android:id="@+id/tvXmrToSupport"
+                        style="@style/MoneroText.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawablePadding="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:drawablePadding="8dp"
                         android:gravity="center"
                         android:text="@string/label_send_btc_xmrto_info"
-                        android:textSize="12sp"
-                        card_view:drawableStartCompat="@drawable/ic_info_outline_gray_24dp" />
+                        card_view:drawableEndCompat="@drawable/ic_baseline_launch_24" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

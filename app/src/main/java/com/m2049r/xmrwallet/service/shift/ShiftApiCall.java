@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.network;
+package com.m2049r.xmrwallet.service.shift;
+
+import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 
-interface NetworkCallback {
+public interface ShiftApiCall {
 
-    void onSuccess(JSONObject jsonObject);
+    void call(@NonNull final String path, @NonNull final NetworkCallback callback);
 
-    void onError(Exception ex);
-
+    void call(@NonNull final String path, final JSONObject request, @NonNull final NetworkCallback callback);
 }

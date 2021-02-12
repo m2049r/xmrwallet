@@ -16,16 +16,16 @@
 
 package com.m2049r.xmrwallet.data;
 
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderStatus;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import timber.log.Timber;
-
 public class UserNotes {
     public String txNotes = "";
     public String note = "";
+    public String xmrtoTag = null;
     public String xmrtoKey = null;
     public String xmrtoAmount = null; // could be a double - but we are not doing any calculations
     public String xmrtoDestination = null;
@@ -35,13 +35,14 @@ public class UserNotes {
             return;
         }
         this.txNotes = txNotes;
-        Pattern p = Pattern.compile("^\\{(xmrto-\\w{6}),([0-9.]*)BTC,(\\w*)\\} ?(.*)");
+        Pattern p = Pattern.compile("^\\{([a-z]+)-(\\w{6,}),([0-9.]*)BTC,(\\w*)\\} ?(.*)");
         Matcher m = p.matcher(txNotes);
         if (m.find()) {
-            xmrtoKey = m.group(1);
-            xmrtoAmount = m.group(2);
-            xmrtoDestination = m.group(3);
-            note = m.group(4);
+            xmrtoTag = m.group(1);
+            xmrtoKey = m.group(2);
+            xmrtoAmount = m.group(3);
+            xmrtoDestination = m.group(4);
+            note = m.group(5);
         } else {
             note = txNotes;
         }
@@ -56,12 +57,14 @@ public class UserNotes {
         txNotes = buildTxNote();
     }
 
-    public void setXmrtoStatus(QueryOrderStatus xmrtoStatus) {
-        if (xmrtoStatus != null) {
-            xmrtoKey = xmrtoStatus.getUuid();
-            xmrtoAmount = String.valueOf(xmrtoStatus.getBtcAmount());
-            xmrtoDestination = xmrtoStatus.getBtcDestAddress();
+    public void setXmrtoOrder(CreateOrder order) {
+        if (order != null) {
+            xmrtoTag = order.TAG;
+            xmrtoKey = order.getOrderId();
+            xmrtoAmount = Helper.getDisplayAmount(order.getBtcAmount());
+            xmrtoDestination = order.getBtcAddress();
         } else {
+            xmrtoTag = null;
             xmrtoKey = null;
             xmrtoAmount = null;
             xmrtoDestination = null;
@@ -70,11 +73,13 @@ public class UserNotes {
     }
 
     private String buildTxNote() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (xmrtoKey != null) {
             if ((xmrtoAmount == null) || (xmrtoDestination == null))
                 throw new IllegalArgumentException("Broken notes");
             sb.append("{");
+            sb.append(xmrtoTag);
+            sb.append("-");
             sb.append(xmrtoKey);
             sb.append(",");
             sb.append(xmrtoAmount);

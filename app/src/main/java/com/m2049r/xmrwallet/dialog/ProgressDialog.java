@@ -27,7 +27,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.util.Helper;
 

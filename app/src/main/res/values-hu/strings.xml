@@ -36,22 +36,22 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Bitcoin-címet adtál meg.</b><br/>
-        <i>XMR-t fogsz küldeni, a fogadó pedig BTC-t fog kapni az <b>XMR.TO</b> szolgáltatásán keresztül.</i>
+        <i>XMR-t fogsz küldeni, a fogadó pedig BTC-t fog kapni az <b>SideShift.ai</b> szolgáltatásán keresztül.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO megrendelés</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai megrendelés</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Megerősítés folyamatban</string>
     <string name="info_send_xmrto_unpaid">Kifizetés folyamatban</string>
-    <string name="info_send_xmrto_error">XMR.TO-hiba (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai-hiba (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC elküldve!</string>
     <string name="info_send_xmrto_query">Lekérdezés&#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Elküldhetsz: %1$s &#8212; %2$s BTC</b>.<br/>
-        <i>Az <b>XMR.TO</b> <u>aktuális</u> árfolyama: <b>%3$s BTC</b></i>.
+        <i>Az <b>SideShift.ai</b> <u>aktuális</u> árfolyama: <b>%3$s BTC</b></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>A legfeljebb <b>%1$s BTC</b> nagyságú összegek <u>azonnal</u> elküldésre kerülnek!</i>
@@ -62,25 +62,25 @@
     <string name="info_paymentid_integrated">&#x2714; Fizetési azonosító integrálva</string>
     <string name="info_prepare_tx">Tranzakció előkészítése</string>
 
-    <string name="label_send_progress_xmrto_create">XMR.TO megrendelés létrehozása</string>
-    <string name="label_send_progress_xmrto_query">XMR.TO megrendelés lekérdezése</string>
+    <string name="label_send_progress_xmrto_create">SideShift.ai megrendelés létrehozása</string>
+    <string name="label_send_progress_xmrto_query">SideShift.ai megrendelés lekérdezése</string>
     <string name="label_send_progress_create_tx">Monero-tranzakció előkészítése</string>
 
-    <string name="label_send_progress_queryparms">XMR.TO paraméterek lekérdezése</string>
+    <string name="label_send_progress_queryparms">SideShift.ai paraméterek lekérdezése</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO HIBA</string>
+    <string name="label_generic_xmrto_error">SideShift.ai HIBA</string>
     <string name="text_generic_xmrto_error">Kód: %1$d</string>
 
     <string name="text_retry">Koppints az újrapróbálkozáshoz</string>
     <string name="text_noretry_monero">Itt most elakadtunk!</string>
-    <string name="text_noretry">Ajjaj! Úgy néz ki, az XMR.TO most nem elérhető!</string>
+    <string name="text_noretry">Ajjaj! Úgy néz ki, az SideShift.ai most nem elérhető!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Arány: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Segítségért és nyomonkövetésért látogass el az XMR.TO weboldalra</string>
-    <string name="label_send_btc_xmrto_key_lb">Titkos kulcs\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO titkos kulcs</string>
+    <string name="label_send_btc_xmrto_info">Segítségért és nyomonkövetésért látogass el az SideShift.ai weboldalra</string>
+    <string name="label_send_btc_xmrto_key_lb">Titkos kulcs\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai titkos kulcs</string>
     <string name="label_send_btc_address">Kedvezményezett BTC-címe</string>
     <string name="label_send_btc_amount">Mennyiség</string>
 
@@ -151,9 +151,9 @@
 
     <string name="label_copy_viewkey">Figyelőkulcs</string>
     <string name="label_copy_address">Nyilvános cím</string>
-    <string name="label_copy_xmrtokey">XMR.TO kulcs</string>
+    <string name="label_copy_xmrtokey">Kulcs</string>
     <string name="message_copy_viewkey">Figyelőkulcs vágólapra másolva!</string>
-    <string name="message_copy_xmrtokey">XMR.TO kulcs vágólapra másolva!</string>
+    <string name="message_copy_xmrtokey">Kulcs vágólapra másolva!</string>
     <string name="message_copy_address">Tárcacím vágólapra másolva!</string>
     <string name="message_copy_txid">Tranzakcióazonosító vágólapra másolva!</string>
     <string name="message_nocopy">A másolás biztonsági okokból tiltásra került!</string>
@@ -356,12 +356,9 @@
 
     <string name="backup_success">Backup successful</string>
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
     <string name="send_address_hint">Receiver</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
     <string name="xmrto_error_004">BTC amount out of bounds</string>
     <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
     <string name="xmrto_error_012">Too many requests</string>
@@ -389,7 +386,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -410,4 +407,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

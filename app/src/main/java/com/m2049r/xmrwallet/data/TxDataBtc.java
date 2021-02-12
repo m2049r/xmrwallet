@@ -18,11 +18,20 @@ package com.m2049r.xmrwallet.data;
 
 import android.os.Parcel;
 
-public class TxDataBtc extends TxData {
+import androidx.annotation.NonNull;
 
-    private String xmrtoUuid;
+import lombok.Getter;
+import lombok.Setter;
+
+public class TxDataBtc extends TxData {
+    @Getter
+    @Setter
+    private String xmrtoOrderId; // shown in success screen
+    @Getter
+    @Setter
     private String btcAddress;
-    private String bip70;
+    @Getter
+    @Setter
     private double btcAmount;
 
     public TxDataBtc() {
@@ -33,44 +42,11 @@ public class TxDataBtc extends TxData {
         super(txDataBtc);
     }
 
-    public String getXmrtoUuid() {
-        return xmrtoUuid;
-    }
-
-    public void setXmrtoUuid(String xmrtoUuid) {
-        this.xmrtoUuid = xmrtoUuid;
-    }
-
-    public String getBtcAddress() {
-        return btcAddress;
-    }
-
-    public void setBtcAddress(String btcAddress) {
-        this.btcAddress = btcAddress;
-    }
-
-    public String getBip70() {
-        return bip70;
-    }
-
-    public void setBip70(String bip70) {
-        this.bip70 = bip70;
-    }
-
-    public double getBtcAmount() {
-        return btcAmount;
-    }
-
-    public void setBtcAmount(double btcAmount) {
-        this.btcAmount = btcAmount;
-    }
-
     @Override
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);
-        out.writeString(xmrtoUuid);
+        out.writeString(xmrtoOrderId);
         out.writeString(btcAddress);
-        out.writeString(bip70);
         out.writeDouble(btcAmount);
     }
 
@@ -87,21 +63,19 @@ public class TxDataBtc extends TxData {
 
     protected TxDataBtc(Parcel in) {
         super(in);
-        xmrtoUuid = in.readString();
+        xmrtoOrderId = in.readString();
         btcAddress = in.readString();
-        bip70 = in.readString();
         btcAmount = in.readDouble();
     }
 
+    @NonNull
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(",xmrtoUuid:");
-        sb.append(xmrtoUuid);
+        sb.append("xmrtoOrderId:");
+        sb.append(xmrtoOrderId);
         sb.append(",btcAddress:");
         sb.append(btcAddress);
-        sb.append(",bip70:");
-        sb.append(bip70);
         sb.append(",btcAmount:");
         sb.append(btcAmount);
         return sb.toString();

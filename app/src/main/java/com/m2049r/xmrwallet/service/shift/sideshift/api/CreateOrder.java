@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2021 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,27 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.network;
+package com.m2049r.xmrwallet.service.shift.sideshift.api;
 
-import androidx.annotation.NonNull;
+import java.util.Date;
 
-import org.json.JSONObject;
+public interface CreateOrder {
+    String TAG = "side";
 
-interface XmrToApiCall {
+    double getBtcAmount();
 
-    void call(@NonNull final String path, @NonNull final NetworkCallback callback);
+    String getBtcAddress();
 
-    void call(@NonNull final String path, final JSONObject request, @NonNull final NetworkCallback callback);
+    String getQuoteId();
+
+    String getOrderId();
+
+    double getXmrAmount();
+
+    String getXmrAddress();
+
+    Date getCreatedAt(); // createdAt
+
+    Date getExpiresAt(); // expiresAt
+
 }

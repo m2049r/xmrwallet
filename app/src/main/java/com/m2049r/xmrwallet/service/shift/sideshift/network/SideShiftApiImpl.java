@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2021 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,23 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.network;
+package com.m2049r.xmrwallet.service.shift.sideshift.network;
+
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.m2049r.xmrwallet.service.shift.NetworkCallback;
+import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.ShiftError;
+import com.m2049r.xmrwallet.service.shift.ShiftException;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.xmrto.XmrToError;
-import com.m2049r.xmrwallet.xmrto.XmrToException;
-import com.m2049r.xmrwallet.xmrto.api.CreateOrder;
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderParameters;
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderStatus;
-import com.m2049r.xmrwallet.xmrto.api.XmrToApi;
-import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,41 +46,44 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import timber.log.Timber;
 
-public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
+public class SideShiftApiImpl implements SideShiftApi, ShiftApiCall {
 
     @NonNull
     private final OkHttpClient okHttpClient;
 
     private final HttpUrl baseUrl;
 
-    public XmrToApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
+    public SideShiftApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
         this.okHttpClient = okHttpClient;
         this.baseUrl = baseUrl;
     }
 
     @Override
-    public void createOrder(final double amount, @NonNull final String address,
-                            @NonNull final XmrToCallback<CreateOrder> callback) {
-        CreateOrderImpl.call(this, amount, address, callback);
+    public void queryOrderParameters(@NonNull final ShiftCallback<QueryOrderParameters> callback) {
+        QueryOrderParametersImpl.call(this, callback);
     }
 
     @Override
-    public void createOrder(@NonNull final String url,
-                            @NonNull final XmrToCallback<CreateOrder> callback) {
-        CreateOrderImpl.call(this, url, callback);
+    public void requestQuote(final double xmrAmount, @NonNull final ShiftCallback<RequestQuote> callback) {
+        RequestQuoteImpl.call(this, xmrAmount, callback);
+    }
+
+    @Override
+    public void createOrder(final String quoteId, @NonNull final String btcAddress,
+                            @NonNull final ShiftCallback<CreateOrder> callback) {
+        CreateOrderImpl.call(this, quoteId, btcAddress, callback);
     }
 
     @Override
     public void queryOrderStatus(@NonNull final String uuid,
-                                 @NonNull final XmrToCallback<QueryOrderStatus> callback) {
+                                 @NonNull final ShiftCallback<QueryOrderStatus> callback) {
         QueryOrderStatusImpl.call(this, uuid, callback);
     }
 
     @Override
-    public void queryOrderParameters(@NonNull final XmrToCallback<QueryOrderParameters> callback) {
-        QueryOrderParametersImpl.call(this, callback);
+    public Uri getQueryOrderUri(String orderId) {
+        return Uri.parse("https://sideshift.ai/orders/" + orderId);
     }
-
 
     @Override
     public void call(@NonNull final String path, @NonNull final NetworkCallback callback) {
@@ -85,24 +93,18 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
     @Override
     public void call(@NonNull final String path, final JSONObject request, @NonNull final NetworkCallback callback) {
         final HttpUrl url = baseUrl.newBuilder()
-                .addPathSegment(path)
-                .addPathSegment("") // xmr.to needs a trailing slash!
+                .addPathSegments(path)
                 .build();
-
-        Timber.d(url.toString());
         final Request httpRequest = createHttpRequest(request, url);
-        Timber.d(httpRequest.toString());
-        Timber.d(request == null ? "null request" : request.toString());
 
         okHttpClient.newCall(httpRequest).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(final Call call, final IOException ex) {
-                Timber.d("A");
                 callback.onError(ex);
             }
 
             @Override
-            public void onResponse(final Call call, final Response response) throws IOException {
+            public void onResponse(@NonNull final Call call, @NonNull final Response response) throws IOException {
                 Timber.d("onResponse code=%d", response.code());
                 if (response.isSuccessful()) {
                     try {
@@ -115,11 +117,11 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
                         Timber.d(json.toString(2));
-                        final XmrToError error = new XmrToError(json);
-                        Timber.e("xmr.to says %d/%s", response.code(), error.toString());
-                        callback.onError(new XmrToException(response.code(), error));
+                        final ShiftError error = new ShiftError(json);
+                        Timber.w("%s says %d/%s", CreateOrder.TAG, response.code(), error.toString());
+                        callback.onError(new ShiftException(response.code(), error));
                     } catch (JSONException ex) {
-                        callback.onError(new XmrToException(response.code()));
+                        callback.onError(new ShiftException(response.code()));
                     }
                 }
             }
@@ -128,8 +130,7 @@ public class XmrToApiImpl implements XmrToApi, XmrToApiCall {
 
     private Request createHttpRequest(final JSONObject request, final HttpUrl url) {
         if (request != null) {
-            final RequestBody body = RequestBody.create(
-                    MediaType.parse("application/json"), request.toString());
+            final RequestBody body = RequestBody.create(request.toString(), MediaType.parse("application/json"));
             return OkHttpHelper.getPostRequest(url, body);
         } else {
             return OkHttpHelper.getGetRequest(url);

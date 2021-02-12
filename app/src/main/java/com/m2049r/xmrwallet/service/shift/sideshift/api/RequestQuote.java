@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2021 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.api;
+package com.m2049r.xmrwallet.service.shift.sideshift.api;
 
-public interface CreateOrder {
-    Double getBtcAmount();
+import java.util.Date;
 
-    String getBtcDestAddress();
+public interface RequestQuote {
 
-    String getBtcBip70();
+    double getBtcAmount(); // settleAmount
 
-    String getState();
+    String getId(); // id
 
-    String getUuid();
+    Date getCreatedAt(); // createdAt
 
+    Date getExpiresAt(); // expiresAt
+
+    double getXmrAmount(); // depositAmount
+
+    double getPrice(); // rate
 }

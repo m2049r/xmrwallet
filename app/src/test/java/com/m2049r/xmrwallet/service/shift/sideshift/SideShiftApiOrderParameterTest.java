@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto.network;
+package com.m2049r.xmrwallet.service.shift.sideshift;
 
-import com.m2049r.xmrwallet.xmrto.api.XmrToCallback;
-import com.m2049r.xmrwallet.xmrto.XmrToError;
-import com.m2049r.xmrwallet.xmrto.XmrToException;
-import com.m2049r.xmrwallet.xmrto.api.QueryOrderParameters;
-import com.m2049r.xmrwallet.xmrto.api.XmrToApi;
+import com.m2049r.xmrwallet.service.shift.ShiftException;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 
 import net.jodah.concurrentunit.Waiter;
 
-import org.json.JSONException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,17 +39,17 @@ import okhttp3.mockwebserver.RecordedRequest;
 
 import static org.junit.Assert.assertEquals;
 
-public class XmrToApiOrderParameterTest {
+public class SideShiftApiOrderParameterTest {
 
     private MockWebServer mockWebServer;
 
-    private XmrToApi xmrToApi;
+    private SideShiftApi xmrToApi;
 
-    private OkHttpClient okHttpClient = new OkHttpClient();
+    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
-    XmrToCallback<QueryOrderParameters> mockParametersXmrToCallback;
+    ShiftCallback<QueryOrderParameters> mockParametersXmrToCallback;
 
     @Before
     public void setUp() throws Exception {
@@ -61,7 +60,7 @@ public class XmrToApiOrderParameterTest {
 
         MockitoAnnotations.initMocks(this);
 
-        xmrToApi = new XmrToApiImpl(okHttpClient, mockWebServer.url("/"));
+        xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
     }
 
     @After
@@ -82,24 +81,20 @@ public class XmrToApiOrderParameterTest {
     @Test
     public void orderParameter_wasSuccessfulShouldRespondWithParameters()
             throws TimeoutException {
-        final boolean isZeroConfEnabled = true;
-        final double price = 0.015537;
+        final double rate = 0.015537;
         final double upperLimit = 20.0;
         final double lowerLimit = 0.001;
-        final double zeroConfMaxAmount = 0.1;
 
         MockResponse jsonMockResponse = new MockResponse().setBody(
-                createMockOrderParameterResponse(isZeroConfEnabled, price, upperLimit, lowerLimit, zeroConfMaxAmount));
+                createMockOrderParameterResponse(rate, upperLimit, lowerLimit));
         mockWebServer.enqueue(jsonMockResponse);
 
-        xmrToApi.queryOrderParameters(new XmrToCallback<QueryOrderParameters>() {
+        xmrToApi.queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
             @Override
             public void onSuccess(final QueryOrderParameters orderParameter) {
                 waiter.assertEquals(orderParameter.getLowerLimit(), lowerLimit);
                 waiter.assertEquals(orderParameter.getUpperLimit(), upperLimit);
-                waiter.assertEquals(orderParameter.getPrice(), price);
-                waiter.assertEquals(orderParameter.getZeroConfMaxAmount(), zeroConfMaxAmount);
-                waiter.assertEquals(orderParameter.isZeroConfEnabled(), isZeroConfEnabled);
+                waiter.assertEquals(orderParameter.getPrice(), rate);
                 waiter.resume();
             }
 
@@ -116,7 +111,7 @@ public class XmrToApiOrderParameterTest {
     public void orderParameter_wasNotSuccessfulShouldCallOnError()
             throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
-        xmrToApi.queryOrderParameters(new XmrToCallback<QueryOrderParameters>() {
+        xmrToApi.queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
             @Override
             public void onSuccess(final QueryOrderParameters orderParameter) {
                 waiter.fail();
@@ -125,8 +120,8 @@ public class XmrToApiOrderParameterTest {
 
             @Override
             public void onError(final Exception e) {
-                waiter.assertTrue(e instanceof XmrToException);
-                waiter.assertTrue(((XmrToException) e).getCode() == 500);
+                waiter.assertTrue(e instanceof ShiftException);
+                waiter.assertTrue(((ShiftException) e).getCode() == 500);
                 waiter.resume();
             }
 
@@ -135,12 +130,12 @@ public class XmrToApiOrderParameterTest {
     }
 
     @Test
-    public void orderParameter_thirdPartyServiceNotAvailableShouldCallOnError()
+    public void orderParameter_SettleMethodInvalidShouldCallOnError()
             throws TimeoutException {
         mockWebServer.enqueue(new MockResponse().
-                setResponseCode(503).
-                setBody("{\"error_msg\":\"third party service not available\",\"error\":\"XMRTO-ERROR-007\"}"));
-        xmrToApi.queryOrderParameters(new XmrToCallback<QueryOrderParameters>() {
+                setResponseCode(500).
+                setBody("{\"error\":{\"message\":\"Settle method not found\"}}"));
+        xmrToApi.queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
             @Override
             public void onSuccess(final QueryOrderParameters orderParameter) {
                 waiter.fail();
@@ -149,12 +144,11 @@ public class XmrToApiOrderParameterTest {
 
             @Override
             public void onError(final Exception e) {
-                waiter.assertTrue(e instanceof XmrToException);
-                XmrToException xmrEx = (XmrToException) e;
-                waiter.assertTrue(xmrEx.getCode() == 503);
+                waiter.assertTrue(e instanceof ShiftException);
+                ShiftException xmrEx = (ShiftException) e;
+                waiter.assertTrue(xmrEx.getCode() == 500);
                 waiter.assertNotNull(xmrEx.getError());
-                waiter.assertEquals(xmrEx.getError().getErrorId(), XmrToError.Error.XMRTO_ERROR_007);
-                waiter.assertEquals(xmrEx.getError().getErrorMsg(), "third party service not available");
+                waiter.assertEquals(xmrEx.getError().getErrorMsg(), "Settle method not found");
                 waiter.resume();
             }
 
@@ -163,17 +157,13 @@ public class XmrToApiOrderParameterTest {
     }
 
     private String createMockOrderParameterResponse(
-            final boolean isZeroConfEnabled,
-            final double price,
+            final double rate,
             final double upperLimit,
-            final double lowerLimit,
-            final double zeroConfMaxAmount) {
-        return "{\n"
-                + "    \"zero_conf_enabled\": \"" + isZeroConfEnabled + "\",\n"
-                + "    \"price\": \"" + price + "\",\n"
-                + "    \"upper_limit\": \"" + upperLimit + "\",\n"
-                + "    \"lower_limit\": \"" + lowerLimit + "\",\n"
-                + "    \"zero_conf_max_amount\": \"" + zeroConfMaxAmount + "\"\n"
-                + "}";
+            final double lowerLimit) {
+        return "{\n" +
+                "  \"rate\": \"" + rate + "\",\n" +
+                "  \"min\": \"" + lowerLimit + "\",\n" +
+                "  \"max\": \"" + upperLimit + "\"\n" +
+                "}";
     }
 }

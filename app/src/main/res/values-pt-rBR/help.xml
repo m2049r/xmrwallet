@@ -158,63 +158,52 @@
         <ul>
             <li>um OpenAlias para XMR ou BTC</li>
             <li>um endereço BTC</li>
-            <li>um URI bitcoin: (incluindo o BIP70 usado em serviços como o bitpay)</li>
         </u>
-        Observe que o envio de BTC é processado pelo serviço XMR.TO (veja https://xmr.to para detalhes).
+        Observe que o envio de BTC é processado pelo serviço SideShift.ai (veja https://sideshift.ai para detalhes).
         Consulte a seção sobre envio de BTC abaixo.</p>
-        <h2>ID do Pagamento</h2>
-        <p>Você pode usar o ID do Pagamento para identificar a razão pela qual você transacionou com a contraparte.
-        Essa opção é opcional e privada. Por exemplo, lojistas podem reconciliar o seu pagamento com
-        o produto que você comprou.</p>
         <h1>Enviando BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
-        Nós usamos a API do XMR.TO para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://xmr.to
-        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
+        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://sideshift.ai
+        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o SideShift.ai
         e não podemos ajudá-lo caso algo não funcione no serviço.</p>
-        <h2>Cotação XMR.TO<h2>
-        <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do XMR.TO.
+        <h2>Cotação SideShift.ai<h2>
+        <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do SideShift.ai.
         Nos quais estão incluídos a cotação, assim como os limites máximos e mínimos de envio de BTC.
-        Note que nesse momento a cotação ainda não é garantida. Você também verá o valor máximo no qual
-        a transação será executada de forma instantânea, sem esperar alguma confirmação da transação em XMR.
-        (consulte o FAQ do XMR.TO para mais detalhes). O XMR.TO não cobra taxas extras, legal né?</p>
-        <h2>Ordem XMR.TO<h2>
-        <p>Na tela de confirmação você verá a ordem criada no XMR.TO. A ordem é válida somente por
+        Note que nesse momento a cotação ainda não é garantida.</p>
+        <h2>Ordem SideShift.ai<h2>
+        <p>Na tela de confirmação você verá a ordem criada no SideShift.ai. A ordem é válida somente por
         um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
         ser diferente do que estava indicado na tela anterior.</p>
-        <h2>Chave secreta do XMR.TO<h2>
+        <h2>Chave secreta do SideShift.ai<h2>
         <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
-        XMR.TO para rastrear a parte da transação que é em Bitcoin no website do XMR.TO.</p>
-        <p>Lembre-se que essa chave secreta só é válida por 24 horas depois do início da transação!</p>
-        <h2>Contagem regressiva do XMR.TO</h2>
-        <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
+        SideShift.ai para rastrear a parte da transação que é em Bitcoin no website do SideShift.ai.</p>
+        <h2>Contagem regressiva do SideShift.ai</h2>
+        <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao SideShift.ai. Volte para a tela
         anterior e faça o processo novamente.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-      <h1>Enviando BTC</h1>
-      <h2>XMR.TO</h2>
-      <p>XMR.TO é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
-      Nós usamos a API do XMR.TO para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://xmr.to
-      e decida por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o XMR.TO
-      e não podemos ajudá-lo caso algo não funcione no serviço.</p>
-      <h2>Cotação XMR.TO<h2>
-      <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do XMR.TO.
-      Nos quais estão incluídos a cotação, assim como os limites máximos e mínimos de envio de BTC.
-      Note que nesse momento a cotação ainda não é garantida. Você também verá o valor máximo no qual
-      a transação será executada de forma instantânea, sem esperar alguma confirmação da transação em XMR.
-      (consulte o FAQ do XMR.TO para mais detalhes). O XMR.TO não cobra taxas extras, legal né?</p>
-      <h2>Ordem XMR.TO<h2>
-      <p>Na tela de confirmação você verá a ordem criada no XMR.TO. A ordem é válida somente por
-      um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
-      ser diferente do que estava indicado na tela anterior.</p>
-      <h2>Chave secreta do XMR.TO<h2>
-      <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
-      XMR.TO para rastrear a parte da transação que é em Bitcoin no website do XMR.TO.</p>
-      <p>Lembre-se que essa chave secreta só é válida por 24 horas depois do início da transação!</p>
-      <h2>Contagem regressiva do XMR.TO</h2>
-      <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao XMR.TO. Volte para a tela
-      anterior e faça o processo novamente.</p>
+        <h1>Enviando BTC</h1>
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
+        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://sideshift.ai
+        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o SideShift.ai
+        e não podemos ajudá-lo caso algo não funcione no serviço.</p>
+        <h2>Cotação SideShift.ai<h2>
+        <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do SideShift.ai.
+        Nos quais estão incluídos a cotação, assim como os limites máximos e mínimos de envio de BTC.
+        Note que nesse momento a cotação ainda não é garantida.</p>
+        <h2>Ordem SideShift.ai<h2>
+        <p>Na tela de confirmação você verá a ordem criada no SideShift.ai. A ordem é válida somente por
+        um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
+        ser diferente do que estava indicado na tela anterior.</p>
+        <h2>Chave secreta do SideShift.ai<h2>
+        <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
+        SideShift.ai para rastrear a parte da transação que é em Bitcoin no website do SideShift.ai.</p>
+        <h2>Contagem regressiva do SideShift.ai</h2>
+        <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao SideShift.ai. Volte para a tela
+        anterior e faça o processo novamente.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[

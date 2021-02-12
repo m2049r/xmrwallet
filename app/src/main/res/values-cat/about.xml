@@ -30,8 +30,8 @@
         <p>Si utilitzeu la funcionalitat d’intercanvi (opcional), monerujo obté el canvi
          a través de l’API pública de coinmarketcap.com.
          Consulteu la seva política de privacitat a https://coinmarketcap.com/privacy per a més detalls sobre com es recullen les dades de les vostres peticions</p>
-        <p>Si utilitzeu l’aplicació per pagar a adreces BTC, utilitzareu el servei XMR.TO.
-         Consulteu la seva política de privacitat a https://xmr.to/ per obtenir més informació. Monerujo els envia l’adreça de destinació de BTC i la quantitat. La 	vostra IP 	també podrà ser recollida.</p>
+        <p>Si utilitzeu l’aplicació per pagar a adreces BTC, utilitzareu el servei SideShift.ai.
+         Consulteu la seva política de privacitat a https://sideshift.ai/ per obtenir més informació. Monerujo els envia l’adreça de destinació de BTC i la quantitat. La 	vostra IP 	també podrà ser recollida.</p>
         <h2>Permisos de la App</h2>
         <ul>
         <li>INTERNET : Connectar a la xarxa Monero mitjançant un Node Daemon de Monero</li>

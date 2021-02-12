@@ -27,8 +27,8 @@
         <p>Verder worden er geen persoonlijke gegevens verzameld door de app.</p>
         <p>Als je de optionele wisselkoersfunctie gebruikt, haalt monerujo de wisselkoers op via de openbare API van coinmarketcap.com.
         Zie het privacybeleid op https://coinmarketcap.com/privacy voor meer informatie over hoe de gegevens in je aanvragen worden verzameld.</p>
-        <p>Als je de app gebruikt om naar BTC-adressen te betalen, maak je gebruik van de service XMR.TO.
-        Zie hun privacybeleid op https://xmr.to/ voor meer informatie. Monerujo verzendt het BTC-adres en -bedrag van de bestemming naar XMR.TO. Je IP-adres kan ook worden bewaard.</p>
+        <p>Als je de app gebruikt om naar BTC-adressen te betalen, maak je gebruik van de service SideShift.ai.
+        Zie hun privacybeleid op https://sideshift.ai/ voor meer informatie. Monerujo verzendt het BTC-adres en -bedrag van de bestemming naar SideShift.ai. Je IP-adres kan ook worden bewaard.</p>
         <h2>App-machtigingen</h2>
         <ul>
         <li>INTERNET: Verbinding maken met het Monero-netwerk via een Monero-node</li>

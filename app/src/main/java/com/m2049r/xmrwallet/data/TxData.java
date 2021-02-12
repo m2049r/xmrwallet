@@ -20,6 +20,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.m2049r.xmrwallet.model.PendingTransaction;
+import com.m2049r.xmrwallet.model.Wallet;
 
 // https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
 public class TxData implements Parcelable {
@@ -52,6 +53,10 @@ public class TxData implements Parcelable {
         return amount;
     }
 
+    public double getAmountAsDouble() {
+        return 1.0 * amount / 1000000000000L;
+    }
+
     public int getMixin() {
         return mixin;
     }
@@ -66,6 +71,10 @@ public class TxData implements Parcelable {
 
     public void setAmount(long amount) {
         this.amount = amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = Wallet.getAmountFromDouble(amount);
     }
 
     public void setMixin(int mixin) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r et al.
+ * Copyright (c) 2017-2021 m2049r et al.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,20 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.xmrto;
+package com.m2049r.xmrwallet.service.shift;
 
-public class XmrToException extends Exception {
-    private int code;
-    private XmrToError error;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-    public XmrToException(final int code) {
-        super();
+@RequiredArgsConstructor
+public class ShiftException extends Exception {
+    @Getter
+    private final int code;
+    @Getter
+    private final ShiftError error;
+
+    public ShiftException(int code) {
         this.code = code;
         this.error = null;
-    }
-
-    public XmrToException(final int code, final XmrToError error) {
-        super();
-        this.code = code;
-        this.error = error;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public XmrToError getError() {
-        return error;
     }
 }

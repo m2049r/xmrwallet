@@ -34,19 +34,19 @@
     <string name="info_xmrto_enabled">BTC-betalning aktiverad, tryck för mer info.</string>
     <string name="info_ledger_enabled">Ledger aktiverat, tryck för mer info.</string>
 
-    <string name="info_xmrto"><![CDATA[<b>Du har angivit en Bitcoin-adress.</b><br/> <i>Du kommer att skicka XMR och mottagaren får BTC via tjänsten <b>XMR.TO</b>.</i>]]></string>
+    <string name="info_xmrto"><![CDATA[<b>Du har angivit en Bitcoin-adress.</b><br/> <i>Du kommer att skicka XMR och mottagaren får BTC via tjänsten <b>SideShift.ai</b>.</i>]]></string>
 
-    <string name="info_send_xmrto_success_order_label">XMR.TO-beställning</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai-beställning</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Väntar på bekräftelse</string>
     <string name="info_send_xmrto_unpaid">Väntar på betalning</string>
-    <string name="info_send_xmrto_error">XMR.TO-fel (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai-fel (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC skickades!</string>
     <string name="info_send_xmrto_query">Frågar …</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[<b>Du kan skicka %1$s &#8212; %2$s BTC</b>.<br/> <i><b>XMR.TO</b> ger dig <u>just nu</u> en växelkurs på <b>%3$s BTC</b></i>.]]></string>
+    <string name="info_send_xmrto_parms"><![CDATA[<b>Du kan skicka %1$s &#8212; %2$s BTC</b>.<br/> <i><b>SideShift.ai</b> ger dig <u>just nu</u> en växelkurs på <b>%3$s BTC</b></i>.]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[<i>Belopp upp till <b>%1$s BTC</b> skickas <u>omedelbart</u>!</i>]]></string>
 
     <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
@@ -54,25 +54,25 @@
     <string name="info_paymentid_integrated">&#x2714; Betalnings-ID integrerat</string>
     <string name="info_prepare_tx">Förbereder din transaktion</string>
 
-    <string name="label_send_progress_xmrto_create">Skapar XMR.TO-beställning</string>
-    <string name="label_send_progress_xmrto_query">Frågar XMR.TO-beställningen</string>
+    <string name="label_send_progress_xmrto_create">Skapar SideShift.ai-beställning</string>
+    <string name="label_send_progress_xmrto_query">Frågar SideShift.ai-beställningen</string>
     <string name="label_send_progress_create_tx">Förbereder Monero-transaktion</string>
 
-    <string name="label_send_progress_queryparms">Frågar xmr.to-parametrar</string>
+    <string name="label_send_progress_queryparms">Frågar SideShift.ai-parametrar</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO-FEL</string>
+    <string name="label_generic_xmrto_error">SideShift.ai-FEL</string>
     <string name="text_generic_xmrto_error">Kod: %1$d</string>
 
     <string name="text_retry">Tryck för att försöka igen</string>
     <string name="text_noretry_monero">Nu har vi kört fast!</string>
-    <string name="text_noretry">Åh nej, XMR.TO verkar inte vara tillgänglig just nu!</string>
+    <string name="text_noretry">Åh nej, SideShift.ai verkar inte vara tillgänglig just nu!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurs: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Besök xmr.to för support &amp; spårning</string>
-    <string name="label_send_btc_xmrto_key_lb">Hemlig nyckel\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO hemlig nyckel</string>
+    <string name="label_send_btc_xmrto_info">Besök SideShift.ai för support &amp; spårning</string>
+    <string name="label_send_btc_xmrto_key_lb">Hemlig nyckel\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai hemlig nyckel</string>
     <string name="label_send_btc_address">Måladress för BTC</string>
     <string name="label_send_btc_amount">Belopp</string>
 
@@ -142,9 +142,9 @@
 
     <string name="label_copy_viewkey">Granskningsnyckel</string>
     <string name="label_copy_address">Publik adress</string>
-    <string name="label_copy_xmrtokey">XMR.TO-nyckel</string>
+    <string name="label_copy_xmrtokey">Nyckel</string>
     <string name="message_copy_viewkey">Granskningsnyckel kopierades till urklipp!</string>
-    <string name="message_copy_xmrtokey">XMR.TO-nyckel kopierades till urklipp!</string>
+    <string name="message_copy_xmrtokey">Nyckel kopierades till urklipp!</string>
     <string name="message_copy_address">Plånboksadress kopierades till urklipp!</string>
     <string name="message_copy_txid">Transaktions-ID kopierades till urklipp!</string>
     <string name="message_nocopy">Kopiering är inaktiverad av säkerhetskäl!</string>
@@ -337,13 +337,10 @@
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Mottagaren</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
     <string name="xmrto_error_004">BTC amount out of bounds</string>
     <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
     <string name="xmrto_error_012">Too many requests</string>
@@ -371,7 +368,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -392,4 +389,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

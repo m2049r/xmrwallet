@@ -226,16 +226,14 @@ public class Helper {
         return displayB;
     }
 
-    // min 2 significant digits after decimal point
-    static public String getFormattedAmount(double amount) {
-        if ((amount >= 1.0d) || (amount == 0))
-            return String.format(Locale.US, "%,.2f", amount);
-        else { // amount < 1
-            int decimals = 1 - (int) Math.floor(Math.log10(amount));
-            if (decimals < 2) decimals = 2;
-            if (decimals > 12) decimals = 12;
-            return String.format(Locale.US, "%,." + decimals + "f", amount);
-        }
+    static public String getDisplayAmount(double amount) {
+        // a Java bug does not strip zeros properly if the value is 0
+        BigDecimal d = new BigDecimal(amount)
+                .setScale(12, BigDecimal.ROUND_HALF_UP)
+                .stripTrailingZeros();
+        if (d.scale() < 1)
+            d = d.setScale(1, BigDecimal.ROUND_UNNECESSARY);
+        return d.toPlainString();
     }
 
     static public Bitmap getBitmap(Context context, int drawableId) {
@@ -328,9 +326,9 @@ public class Helper {
     static public HttpUrl getXmrToBaseUrl() {
         if ((WalletManager.getInstance() == null)
                 || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
-            return HttpUrl.parse("https://test.xmr.to/api/v3/xmr2btc/");
+            throw new IllegalStateException("Only mainnet not supported");
         } else {
-            return HttpUrl.parse("https://xmr.to/api/v3/xmr2btc/");
+            return HttpUrl.parse("https://sideshift.ai/api/v1/");
         }
     }
 

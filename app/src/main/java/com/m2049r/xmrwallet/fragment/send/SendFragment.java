@@ -563,22 +563,4 @@ public class SendFragment extends Fragment
         inflater.inflate(R.menu.send_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    // xmr.to info box
-    private static final String PREF_SHOW_XMRTO_ENABLED = "info_xmrto_enabled_send";
-
-    boolean showXmrtoEnabled = true;
-
-    void loadPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        showXmrtoEnabled = sharedPref.getBoolean(PREF_SHOW_XMRTO_ENABLED, true);
-    }
-
-    void saveXmrToPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(PREF_SHOW_XMRTO_ENABLED, showXmrtoEnabled);
-        editor.apply();
-    }
-
 }

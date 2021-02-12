@@ -35,22 +35,22 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Έβαλες μια διεύθυνση bitcoin.</b><br/>
-        <i>Θα στείλεις XMR και ο παραλήπτης θα πάρει BTC μέσο της υπηρεσίας <b>XMR.TO</b>.</i>
+        <i>Θα στείλεις XMR και ο παραλήπτης θα πάρει BTC μέσο της υπηρεσίας <b>SideShift.ai</b>.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">Εντολή XMR.TO</string>
+    <string name="info_send_xmrto_success_order_label">Εντολή SideShift.ai</string>
 
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
 
     <string name="info_send_xmrto_paid">Επιβεβαίωση Εκκρεμεί</string>
     <string name="info_send_xmrto_unpaid">Πληρωμή σε εκκρεμότητα</string>
-    <string name="info_send_xmrto_error">XMR.TO Σφάλμα (%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai Σφάλμα (%1$s)</string>
     <string name="info_send_xmrto_sent">BTC Αποστάλθηκαν!</string>
     <string name="info_send_xmrto_query">Αίτηση &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Μπορείς να στείλεις %1$s &#8212; %2$s BTC</b>.<br/>
-        <i>Το <b>XMR.TO</b> σου δίνει ισοτιμία ανταλλαγής <b>%3$s BTC</b> <u>αυτή τη στιγμή</u></i>.
+        <i>Το <b>SideShift.ai</b> σου δίνει ισοτιμία ανταλλαγής <b>%3$s BTC</b> <u>αυτή τη στιγμή</u></i>.
     ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
         <i>Ποσά μέχρι <b>%1$s BTC</b> θα σταλούν <u>άμεσα</u>!</i>
@@ -61,25 +61,25 @@
     <string name="info_paymentid_integrated">&#x2714; ID πληρωμής ενσωματωμένο</string>
     <string name="info_prepare_tx">Προετοιμασία της συναλλαγής σου</string>
 
-    <string name="label_send_progress_xmrto_create">Δημιουργία εντολής με XMR.TO</string>
-    <string name="label_send_progress_xmrto_query">Αίτηση εντολής στο XMR.TO</string>
+    <string name="label_send_progress_xmrto_create">Δημιουργία εντολής με SideShift.ai</string>
+    <string name="label_send_progress_xmrto_query">Αίτηση εντολής στο SideShift.ai</string>
     <string name="label_send_progress_create_tx">Προετοιμασά συναλλαγής Monero</string>
 
-    <string name="label_send_progress_queryparms">Αίτηση στο xmr.to για παραμέτρους</string>
+    <string name="label_send_progress_queryparms">Αίτηση στο SideShift.ai για παραμέτρους</string>
 
-    <string name="label_generic_xmrto_error">XMR.TO ΣΦΑΛΜΑ</string>
+    <string name="label_generic_xmrto_error">SideShift.ai ΣΦΑΛΜΑ</string>
     <string name="text_generic_xmrto_error">Κωδικός σφάλματος: %1$d</string>
 
     <string name="text_retry">Πάτησε για να προσπαθήσεις ξανά</string>
     <string name="text_noretry_monero">Τώρα έχουμε κολλήσει εδώ!</string>
-    <string name="text_noretry">Ωχ,το XMR.TO φαίνεται να μην ειναι προσωρινά διαθέσιμο!</string>
+    <string name="text_noretry">Ωχ,το SideShift.ai φαίνεται να μην ειναι προσωρινά διαθέσιμο!</string>
 
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Επίσκεψη στο xmr.to για υποστήριξη &amp; με εντοπισμό συναλλαγής</string>
-    <string name="label_send_btc_xmrto_key_lb">Μυστικό Κλειδί\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO Μυστικό Κλειδί</string>
+    <string name="label_send_btc_xmrto_info">Επίσκεψη στο SideShift.ai για υποστήριξη &amp; με εντοπισμό συναλλαγής</string>
+    <string name="label_send_btc_xmrto_key_lb">Μυστικό Κλειδί\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai Μυστικό Κλειδί</string>
     <string name="label_send_btc_address">BTC Διεύθυνση Παραλήπτη</string>
     <string name="label_send_btc_amount">Ποσό</string>
 
@@ -142,9 +142,9 @@
 
     <string name="label_copy_viewkey">Κλειδί Προβολής(View Key)</string>
     <string name="label_copy_address">Δημόσια Διεύθυνση(Public Address)</string>
-    <string name="label_copy_xmrtokey">Κλειδή XMR.TO</string>
+    <string name="label_copy_xmrtokey">Κλειδή</string>
     <string name="message_copy_viewkey">Το Κλειδί Προβολής αντιγράφηκε στο πρόχειρο!</string>
-    <string name="message_copy_xmrtokey">Το Κλειδή XMR.TO αντιγράφηκε στο πρόχειρο!</string>
+    <string name="message_copy_xmrtokey">Το Κλειδή αντιγράφηκε στο πρόχειρο!</string>
     <string name="message_copy_address">Η διύθυνση πορτοφολιού αντιγράφηκε στο πρόχειρο!</string>
     <string name="message_copy_txid">Το ID συναλλαγής αντιγράφηκε στο πρόχειρο!</string>
     <string name="message_nocopy">Η αντιγραφή είναι απενεργοποιημένη για λόγους ασφαλείας!</string>
@@ -354,12 +354,9 @@
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">Resolving Payment URI&#8230;</string>
-    <string name="send_address_not_bip70">Could not resolve Payment URI</string>
-    <string name="send_address_bip70">Resolved Payment URI &#x2714;</string>
     <string name="send_address_hint">Receiver</string>
 
-    <string name="xmrto_error_001">XMR.TO offline - try again later</string>
+    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
     <string name="xmrto_error_004">BTC amount out of bounds</string>
     <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
     <string name="xmrto_error_012">Too many requests</string>
@@ -387,7 +384,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -408,4 +405,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>

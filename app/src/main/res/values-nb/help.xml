@@ -147,66 +147,51 @@
         <ul>
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
-            <li>a bitcoin: URI (including BIP70 like bitpay)</li>
         </u>
-        Please note, that sending BTC is processed through the XMR.TO service (see https://xmr.to
+        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
-        <h2>Betalings-ID</h2>
-        <p>Du kan bruke betalings-ID til å identifisere hvorfor du sendte Monero mellom to parter. Dette er
-        helt frivillig og privat. For eksempel lar det en bedrift tilknytte transaksjonen din med
-		en vare du har kjøpt.<p>
         <h1>Å sende BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker XMR.TO-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://xmr.to og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
-        er ikke assosierte med XMR.TO og kan ikke hjelpe deg med deres tjeneste.</p>
-        <h2>XMR.TO vekslingskurs<h2>
-        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til XMR.TO-tjenesten. Disse
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
+        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
+        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        er ikke assosierte med SideShift.ai og kan ikke hjelpe deg med deres tjeneste.</p>
+        <h2>SideShift.ai vekslingskurs<h2>
+        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til SideShift.ai-tjenesten. Disse
         inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
-        kursen ikke er garantert på dette punktet. Du vil også se
-        den øvre grensa for at BTC-transaksjonen skal gå igjennom uten å vente på
-        XMR-bekreftelser (se XMR.TO-FAQen for fler detaljer). Legg merke til at XMR.TO
-        ikke har noen ekstra avgifter - hvor kult er ikke det?</p>
-        <h2>XMR.TO ordre<h2>
-        <p>På \"Bekreft\" skjermen, vil du se den faktiske XMR.TO ordren. Denne ordren er gyldig for
+        kursen ikke er garantert på dette punktet.</p>
+        <h2>SideShift.ai ordre<h2>
+        <p>På \"Bekreft\" skjermen, vil du se den faktiske SideShift.ai ordren. Denne ordren er gyldig for
         en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
         enn den veiledende kursen vist på de tidligere skjermene.</p>
-        <h2>XMR.TO hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din XMR.TO hemmelige nøkkel
-        bli brukt til å spore BTC-transaksjonen på XMR.TO sine hjemmesider.</p>
-        <p>Vær oppmerksom på at denne nøkkelen kun er tilgjengelig for 24-timer etter transaksjonen
-		har blitt utført!</p>
-        <h2>XMR.TO nedtelling!</h2>
-        <p>Når nedtellinga når null, må du få en ny kvote fra XMR.TO ved å gå tilbake til
+        <h2>SideShift.ai hemmelig nøkkel<h2>
+        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
+        bli brukt til å spore BTC-transaksjonen på SideShift.ai sine hjemmesider.</p>
+        <h2>SideShift.ai nedtelling!</h2>
+        <p>Når nedtellinga når null, må du få en ny kvote fra SideShift.ai ved å gå tilbake til
         det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Å sende BTC</h1>
-        <h2>XMR.TO</h2>
-        <p>XMR.TO er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker XMR.TO-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://xmr.to og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
-        er ikke assosierte med XMR.TO og kan ikke hjelpe deg med deres tjeneste.</p>
-        <h2>XMR.TO vekslingskurs<h2>
-        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til XMR.TO-tjenesten. Disse
+        <h2>SideShift.ai</h2>
+        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
+        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
+        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        er ikke assosierte med SideShift.ai og kan ikke hjelpe deg med deres tjeneste.</p>
+        <h2>SideShift.ai vekslingskurs<h2>
+        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til SideShift.ai-tjenesten. Disse
         inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
-        kursen ikke er garantert på dette punktet. Du vil også se
-        den øvre grensa for at BTC-transaksjonen skal gå igjennom uten å vente på
-        XMR-bekreftelser (se XMR.TO-FAQen for fler detaljer). Legg merke til at XMR.TO
-        ikke har noen ekstra avgifter - hvor kult er ikke det?</p>
-        <h2>XMR.TO ordre<h2>
-        <p>På \"Bekreft\" skjermen, vil du se den faktiske XMR.TO ordren. Denne ordren er gyldig for
+        kursen ikke er garantert på dette punktet.</p>
+        <h2>SideShift.ai ordre<h2>
+        <p>På \"Bekreft\" skjermen, vil du se den faktiske SideShift.ai ordren. Denne ordren er gyldig for
         en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
         enn den veiledende kursen vist på de tidligere skjermene.</p>
-        <h2>XMR.TO hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din XMR.TO hemmelige nøkkel
-        bli brukt til å spore BTC-transaksjonen på XMR.TO sine hjemmesider.</p>
-        <p>Vær oppmerksom på at denne nøkkelen kun er tilgjengelig for 24-timer etter transaksjonen
-		har blitt utført!</p>
-		<h2>XMR.TO nedtelling!</h2>
-        <p>Når nedtellinga når null, må du få en ny kvote fra XMR.TO ved å gå tilbake til
+        <h2>SideShift.ai hemmelig nøkkel<h2>
+        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
+        bli brukt til å spore BTC-transaksjonen på SideShift.ai sine hjemmesider.</p>
+        <h2>SideShift.ai nedtelling!</h2>
+        <p>Når nedtellinga når null, må du få en ny kvote fra SideShift.ai ved å gå tilbake til
         det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
     ]]></string>
 

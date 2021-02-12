@@ -301,24 +301,21 @@ public class LoginActivity extends BaseActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setOnButtonListener(new Toolbar.OnButtonListener() {
-            @Override
-            public void onButton(int type) {
-                switch (type) {
-                    case Toolbar.BUTTON_BACK:
-                        onBackPressed();
-                        break;
-                    case Toolbar.BUTTON_CLOSE:
-                        finish();
-                        break;
-                    case Toolbar.BUTTON_CREDITS:
-                        CreditsFragment.display(getSupportFragmentManager());
-                        break;
-                    case Toolbar.BUTTON_NONE:
-                        break;
-                    default:
-                        Timber.e("Button " + type + "pressed - how can this be?");
-                }
+        toolbar.setOnButtonListener(type -> {
+            switch (type) {
+                case Toolbar.BUTTON_BACK:
+                    onBackPressed();
+                    break;
+                case Toolbar.BUTTON_CLOSE:
+                    finish();
+                    break;
+                case Toolbar.BUTTON_CREDITS:
+                    CreditsFragment.display(getSupportFragmentManager());
+                    break;
+                case Toolbar.BUTTON_NONE:
+                    break;
+                default:
+                    Timber.e("Button " + type + "pressed - how can this be?");
             }
         });
 
@@ -366,34 +363,31 @@ public class LoginActivity extends BaseActivity
     public void onWalletDetails(final String walletName) {
         Timber.d("details for wallet .%s.", walletName);
         if (checkServiceRunning()) return;
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
-                        if (WalletManager.getInstance().walletExists(walletFile)) {
-                            Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
-                                @Override
-                                public void act(String walletName, String password, boolean fingerprintUsed) {
-                                    if (checkDevice(walletName, password))
-                                        startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
-                                }
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    final File walletFile = Helper.getWalletFile(LoginActivity.this, walletName);
+                    if (WalletManager.getInstance().walletExists(walletFile)) {
+                        Helper.promptPassword(LoginActivity.this, walletName, true, new Helper.PasswordAction() {
+                            @Override
+                            public void act(String walletName1, String password, boolean fingerprintUsed) {
+                                if (checkDevice(walletName1, password))
+                                    startDetails(walletFile, password, GenerateReviewFragment.VIEW_TYPE_DETAILS);
+                            }
 
-                                @Override
-                                public void fail(String walletName, String password, boolean fingerprintUsed) {
-                                }
-                            });
-                        } else { // this cannot really happen as we prefilter choices
-                            Timber.e("Wallet missing: %s", walletName);
-                            Toast.makeText(LoginActivity.this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
-                        }
-                        break;
+                            @Override
+                            public void fail(String walletName1, String password, boolean fingerprintUsed) {
+                            }
+                        });
+                    } else { // this cannot really happen as we prefilter choices
+                        Timber.e("Wallet missing: %s", walletName);
+                        Toast.makeText(LoginActivity.this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
 
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        // do nothing
-                        break;
-                }
+                case DialogInterface.BUTTON_NEGATIVE:
+                    // do nothing
+                    break;
             }
         };
 

@@ -28,18 +28,18 @@
     <string name="info_ledger_enabled">已支持Ledger硬件钱包，点此了解更多</string>
     <string name="info_xmrto"><![CDATA[
 <b>您输入了一个比特币地址</b><br/>
-<i>您发送的门罗币将通过<b>XMR.TO</b>服务，转换为比特币发送给对方。</i>
+<i>您发送的门罗币将通过<b>SideShift.ai</b>服务，转换为比特币发送给对方。</i>
 ]]></string>
-    <string name="info_send_xmrto_success_order_label">XMR.TO订单</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai订单</string>
     <string name="info_send_xmrto_success_btc">%1$s BTC</string>
     <string name="info_send_xmrto_paid">等待确认中</string>
     <string name="info_send_xmrto_unpaid">等待支付中</string>
-    <string name="info_send_xmrto_error">XMR.TO错误(%1$s)</string>
+    <string name="info_send_xmrto_error">SideShift.ai错误(%1$s)</string>
     <string name="info_send_xmrto_sent">成功发送比特币！</string>
     <string name="info_send_xmrto_query">查询中&#8230;</string>
     <string name="info_send_xmrto_parms"><![CDATA[
 <b>您可以发送%1$s &#8212; %2$s BTC</b>.<br/>
-<i><u>此刻</u><b>XMR.TO</b>的汇率是<b>%3$s BTC</b> </i>.
+<i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s BTC</b> </i>.
 ]]></string>
     <string name="info_send_xmrto_zeroconf"><![CDATA[
 <i>至多<b>%1$s BTC</b>将会<u>即刻</u>发送!</i>
@@ -47,20 +47,20 @@
     <string name="send_available_btc">余额: %2$s BTC (%1$s XMR)</string>
     <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
-    <string name="label_send_progress_xmrto_create">创建XMR.TO订单</string>
-    <string name="label_send_progress_xmrto_query">XMR.TO订单查询中</string>
+    <string name="label_send_progress_xmrto_create">创建SideShift.ai订单</string>
+    <string name="label_send_progress_xmrto_query">SideShift.ai订单查询中</string>
     <string name="label_send_progress_create_tx">Monero交易准备中</string>
-    <string name="label_send_progress_queryparms">XMR.TO参数查询中</string>
-    <string name="label_generic_xmrto_error">XMR.TO错误</string>
+    <string name="label_send_progress_queryparms">SideShift.ai参数查询中</string>
+    <string name="label_generic_xmrto_error">SideShift.ai错误</string>
     <string name="text_generic_xmrto_error">代码: %1$d</string>
     <string name="text_retry">再次尝试</string>
     <string name="text_noretry_monero">我们遇到了困难！</string>
-    <string name="text_noretry">抱歉, XMR.TO服务现在似乎不可用</string>
+    <string name="text_noretry">抱歉, SideShift.ai服务现在似乎不可用</string>
     <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
-    <string name="label_send_btc_xmrto_info">访问xmr.to以获得更多支持</string>
-    <string name="label_send_btc_xmrto_key_lb">密钥\nXMR.TO</string>
-    <string name="label_send_btc_xmrto_key">XMR.TO密钥</string>
+    <string name="label_send_btc_xmrto_info">访问SideShift.ai以获得更多支持</string>
+    <string name="label_send_btc_xmrto_key_lb">密钥\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai密钥</string>
     <string name="label_send_btc_address">比特币收款地址</string>
     <string name="label_send_btc_amount">金额</string>
     <string name="label_send_txid">交易ID</string>
@@ -115,9 +115,9 @@
     <string name="message_camera_not_permitted">不开通的相机权限的话便无法扫描QR码！</string>
     <string name="label_copy_viewkey">查阅密钥</string>
     <string name="label_copy_address">公开地址</string>
-    <string name="label_copy_xmrtokey">XMR.TO密钥</string>
+    <string name="label_copy_xmrtokey">密钥</string>
     <string name="message_copy_viewkey">查阅密钥已复制到剪贴板！</string>
-    <string name="message_copy_xmrtokey">XMR.TO密钥已复制到剪贴板！</string>
+    <string name="message_copy_xmrtokey">密钥已复制到剪贴板！</string>
     <string name="message_copy_address">钱包地址已复制到剪贴板！</string>
     <string name="message_copy_txid">交易ID已复制到剪贴板！</string>
     <string name="message_nocopy">因安全原因，复制功能已被禁用！</string>
@@ -280,11 +280,8 @@
     <string name="node_scanning">网络扫描中&#8230;</string>
     <string name="node_nobookmark">已自动将最佳%1$d节点加入书签</string>
     <string name="label_test">测试</string><!--note: as in "Test a network connection"-->
-    <string name="send_address_resolve_bip70">解析支付URI &#8230;</string>
-    <string name="send_address_not_bip70">无法解析支付URI</string>
-    <string name="send_address_bip70">支付URI已解析 &#x2714;</string>
     <string name="send_address_hint">收款人</string>
-    <string name="xmrto_error_001">XMR.TO离线-请稍后重试</string>
+    <string name="xmrto_error_001">SideShift.ai离线-请稍后重试</string>
     <string name="xmrto_error_004">比特币金额超出限制</string>
     <string name="xmrto_error_010">无效或过期的支付URL</string>
     <string name="xmrto_error_012">当前请求数过多</string>
@@ -310,7 +307,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has XMR.to support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -331,4 +328,7 @@
     <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
     <string name="node_updated_hours">Last Block: %1$d hours ago</string>
     <string name="node_updated_days">Last Block: %1$d days ago</string>
+
+    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_checkamount">Check amount and try again</string>
 </resources>
