@@ -524,7 +524,7 @@ public class NodeFragment extends Fragment
                     .setNegativeButton(getString(R.string.label_cancel),
                             (dialog, id) -> {
                                 closeDialog();
-                                nodesAdapter.dataSetChanged(); // to refresh test results
+                                nodesAdapter.setNodes(); // to refresh test results
                             });
 
             editDialog = alertDialogBuilder.create();
@@ -588,7 +588,7 @@ public class NodeFragment extends Fragment
                     if (nodeBackup == null) {
                         nodesAdapter.addNode(nodeInfo);
                     } else {
-                        nodesAdapter.dataSetChanged();
+                        nodesAdapter.setNodes();
                     }
                 }
             }

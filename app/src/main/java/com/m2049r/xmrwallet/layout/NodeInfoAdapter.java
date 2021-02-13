@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
@@ -63,6 +64,26 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         TS_FORMATTER.setTimeZone(tz);
     }
 
+    private static class NodeDiff extends DiffCallback<NodeInfo> {
+
+        public NodeDiff(List<NodeInfo> oldList, List<NodeInfo> newList) {
+            super(oldList, newList);
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).equals(
+                    mNewList.get(newItemPosition)
+            );
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).toNodeString().equals(mNewList.get(newItemPosition).toNodeString())
+                    &&  mOldList.get(oldItemPosition).isSelected() == mNewList.get(newItemPosition).isSelected() ;
+        }
+    }
+
     @Override
     public @NonNull
     ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -82,25 +103,28 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
     }
 
     public void addNode(NodeInfo node) {
+        List<NodeInfo> newItems = new ArrayList<>(nodeItems);
         if (!nodeItems.contains(node))
-            nodeItems.add(node);
-        dataSetChanged(); // in case the nodeinfo has changed
+            newItems.add(node);
+        setNodes(newItems); // in case the nodeinfo has changed
     }
 
-    public void dataSetChanged() {
-        Collections.sort(nodeItems, NodeInfo.BestNodeComparator);
-        notifyDataSetChanged();
-    }
-
-    public void setNodes(Collection<NodeInfo> data) {
-        nodeItems.clear();
-        if (data != null) {
-            for (NodeInfo node : data) {
-                if (!nodeItems.contains(node))
-                    nodeItems.add(node);
-            }
+    public void setNodes(Collection<NodeInfo> newItemsCollection) {
+        List<NodeInfo> newItems;
+        if(newItemsCollection !=null) {
+            newItems = new ArrayList<>(newItemsCollection);
+            Collections.sort(newItems, NodeInfo.BestNodeComparator);
+        } else {
+            newItems = new ArrayList<>();
         }
-        dataSetChanged();
+        final NodeInfoAdapter.NodeDiff diffCallback = new NodeInfoAdapter.NodeDiff(nodeItems,newItems);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+        nodeItems.clear();
+        nodeItems.addAll(newItems);
+        diffResult.dispatchUpdatesTo(this);
+    }
+    public void setNodes() {
+        setNodes(nodeItems);
     }
 
     private boolean itemsClickable = true;
@@ -130,7 +154,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
                 showStar();
                 if (!nodeItem.isFavourite()) {
                     nodeItem.setSelected(false);
-                    notifyDataSetChanged();
+                    setNodes(nodeItems);
                 }
             });
             itemView.setOnClickListener(this);

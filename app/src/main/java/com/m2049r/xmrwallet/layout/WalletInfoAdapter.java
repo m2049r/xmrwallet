@@ -17,14 +17,16 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.WalletManager;
@@ -62,6 +64,24 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         TimeZone tz = cal.getTimeZone(); //get the local time zone.
         DATETIME_FORMATTER.setTimeZone(tz);
     }
+    private static class WalletInfoDiff extends DiffCallback<WalletManager.WalletInfo> {
+
+        public WalletInfoDiff(List<WalletManager.WalletInfo> oldList, List<WalletManager.WalletInfo> newList) {
+            super(oldList, newList);
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).name.equals(
+                    mNewList.get(newItemPosition).name
+            );
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).compareTo(mNewList.get(newItemPosition)) == 0;
+        }
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -84,19 +104,21 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         return infoItems.get(position);
     }
 
-    public void setInfos(List<WalletManager.WalletInfo> data) {
-        // TODO do stuff with data so we can really recycle elements (i.e. add only new tx)
-        // as the WalletInfo items are always recreated, we cannot recycle
-        infoItems.clear();
-        if (data != null) {
-            Timber.d("setInfos %s", data.size());
-            infoItems.addAll(data);
-            Collections.sort(infoItems);
-        } else {
+    public void setInfos(List<WalletManager.WalletInfo> newItems) {
+        if(newItems == null) {
+            newItems = new ArrayList<>();
             Timber.d("setInfos null");
+        } else {
+            Timber.d("setInfos %s", newItems.size());
         }
-        notifyDataSetChanged();
+        Collections.sort(newItems);
+        final DiffCallback<WalletManager.WalletInfo> diffCallback = new WalletInfoAdapter.WalletInfoDiff(infoItems,newItems);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+        infoItems.clear();
+        infoItems.addAll(newItems);
+        diffResult.dispatchUpdatesTo(this);
     }
+
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView tvName;
