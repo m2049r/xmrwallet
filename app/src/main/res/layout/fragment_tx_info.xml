@@ -91,7 +91,7 @@
                             android:layout_gravity="center_vertical"
                             android:gravity="end"
                             android:padding="8dp"
-                            android:text="@string/tx_amount_btc" />
+                            android:text="@string/tx_amount" />
 
                         <TextView
                             android:id="@+id/tvTxAmountBtc"
@@ -113,7 +113,7 @@
                             android:layout_gravity="top"
                             android:gravity="end"
                             android:padding="8dp"
-                            android:text="@string/tx_destination_btc" />
+                            android:text="@string/tx_destination" />
 
                         <TextView
                             android:id="@+id/tvDestinationBtc"
@@ -148,7 +148,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="?android:attr/colorBackground"
                                 android:drawablePadding="16dp"
-                                android:paddingStart="24dp"
+                                android:paddingStart="8dp"
                                 android:paddingTop="8dp"
                                 android:paddingEnd="8dp"
                                 android:paddingBottom="8dp"

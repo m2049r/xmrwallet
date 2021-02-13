@@ -24,6 +24,7 @@ import com.m2049r.xmrwallet.util.DateHelper;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,7 +56,7 @@ class RequestQuoteImpl implements RequestQuote {
         // sanity checks
         final String depositMethod = jsonObject.getString("depositMethod");
         final String settleMethod = jsonObject.getString("settleMethod");
-        if (!"xmr".equals(depositMethod) || !SideShiftApi.ASSET.equals(settleMethod))
+        if (!"xmr".equals(depositMethod) || !ServiceHelper.ASSET.equals(settleMethod))
             throw new IllegalStateException();
 
         btcAmount = jsonObject.getDouble("settleAmount");
@@ -106,7 +107,7 @@ class RequestQuoteImpl implements RequestQuote {
     static JSONObject createRequest(final double xmrAmount) throws JSONException {
         final JSONObject jsonObject = new JSONObject();
         jsonObject.put("depositMethod", "xmr");
-        jsonObject.put("settleMethod", SideShiftApi.ASSET);
+        jsonObject.put("settleMethod", ServiceHelper.ASSET);
         // #sideshift is silly and likes numbers as strings
         String amount = AmountFormatter.format(xmrAmount);
         jsonObject.put("depositAmount", amount);

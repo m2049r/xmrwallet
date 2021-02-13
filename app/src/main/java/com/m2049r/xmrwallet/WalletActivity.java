@@ -921,7 +921,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public boolean onScanned(String qrCode) {
         // #gurke
-        BarcodeData bcData = BarcodeData.fromQrCode(qrCode);
+        BarcodeData bcData = BarcodeData.fromString(qrCode);
         if (bcData != null) {
             popFragmentStack(null);
             Timber.d("AAA");

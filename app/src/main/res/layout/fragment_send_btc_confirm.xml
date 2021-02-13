@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:orientation="vertical"
-                        android:visibility="invisible">
+                        android:visibility="visible">
 
                         <TextView
                             style="@style/MoneroText.Confirm.Label"
@@ -101,7 +101,7 @@
                             android:drawablePadding="8dp"
                             android:gravity="center_vertical"
                             android:text="@string/label_send_btc_xmrto_key"
-                            card_view:drawableStartCompat="@drawable/ic_xmrto_32dp" />
+                            card_view:drawableStartCompat="@drawable/ic_sideshift_circle" />
 
                         <TextView
                             android:id="@+id/tvTxXmrToKey"
@@ -127,6 +127,7 @@
                             android:text="@string/label_send_btc_xmrto_info" />
 
                         <TextView
+                            android:id="@+id/tvTxBtcAddressLabel"
                             style="@style/MoneroText.Confirm.Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

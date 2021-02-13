@@ -29,16 +29,17 @@ import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.widget.SendProgressView;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftError;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.widget.SendProgressView;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -67,6 +68,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     private TextView tvTxBtcAmount;
     private TextView tvTxBtcRate;
     private TextView tvTxBtcAddress;
+    private TextView tvTxBtcAddressLabel;
     private TextView tvTxXmrToKey;
     private TextView tvTxFee;
     private TextView tvTxTotal;
@@ -84,6 +86,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                 R.layout.fragment_send_btc_confirm, container, false);
 
         tvTxBtcAddress = view.findViewById(R.id.tvTxBtcAddress);
+        tvTxBtcAddressLabel = view.findViewById(R.id.tvTxBtcAddressLabel);
         tvTxBtcAmount = view.findViewById(R.id.tvTxBtcAmount);
         tvTxBtcRate = view.findViewById(R.id.tvTxBtcRate);
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
@@ -259,6 +262,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         if (sendListener.getMode() != SendFragment.Mode.BTC) {
             throw new IllegalStateException("Mode is not BTC!");
         }
+        if (!((TxDataBtc) sendListener.getTxData()).getBtcSymbol().toLowerCase().equals(ServiceHelper.ASSET))
+            throw new IllegalStateException("Asset Symbol is wrong!");
         Helper.hideKeyboard(getActivity());
         llStageA.setVisibility(View.INVISIBLE);
         evStageA.hideProgress();
@@ -392,9 +397,10 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             df.setMaximumFractionDigits(12);
             final String btcAmount = df.format(xmrtoQuote.getBtcAmount());
             final String xmrAmountTotal = df.format(xmrtoQuote.getXmrAmount());
-            tvTxBtcAmount.setText(getString(R.string.text_send_btc_amount, btcAmount, xmrAmountTotal));
+            tvTxBtcAmount.setText(getString(R.string.text_send_btc_amount,
+                    btcAmount, xmrAmountTotal, txDataBtc.getBtcSymbol()));
             final String xmrPriceBtc = df.format(xmrtoQuote.getPrice());
-            tvTxBtcRate.setText(getString(R.string.text_send_btc_rate, xmrPriceBtc));
+            tvTxBtcRate.setText(getString(R.string.text_send_btc_rate, xmrPriceBtc, txDataBtc.getBtcSymbol()));
             hideProgress();
         });
         stageB(requestQuote.getId());
@@ -477,13 +483,14 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
         // verify amount & destination
         if ((order.getBtcAmount() != txDataBtc.getBtcAmount())
-                || (!order.getBtcAddress().equals(txDataBtc.getBtcAddress()))) {
+                || (!txDataBtc.validateAddress(order.getBtcAddress()))) {
             throw new IllegalStateException("Order does not fulfill quote!"); // something is terribly wrong - die
         }
         xmrtoOrder = order;
         getView().post(() -> {
             tvTxXmrToKey.setText(order.getOrderId());
             tvTxBtcAddress.setText(order.getBtcAddress());
+            tvTxBtcAddressLabel.setText(getString(R.string.label_send_btc_address, txDataBtc.getBtcSymbol()));
             hideProgress();
             Timber.d("Expires @ %s", order.getExpiresAt().toString());
             final int timeout = (int) (order.getExpiresAt().getTime() - order.getCreatedAt().getTime()) / 1000 - 60; // -1 minute buffer
@@ -561,7 +568,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             synchronized (this) {
                 if (xmrToApi == null) {
                     xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
-                            Helper.getXmrToBaseUrl());
+                            ServiceHelper.getXmrToBaseUrl());
                 }
             }
         }

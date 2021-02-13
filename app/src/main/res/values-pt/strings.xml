@@ -35,29 +35,26 @@
     <string name="info_ledger_enabled">Ledger activa, toca para mais informação.</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Introduziu um endereço Bitcoin.</b><br/>
-        <i>Vai enviar em XMR e o destinatário vai receber BTC através do serviço <b>SideShift.ai</b></i>
+        <b>Introduziu um endereço %1$s.</b><br/>
+        <i>Vai enviar em XMR e o destinatário vai receber %1$s através do serviço <b>SideShift.ai</b></i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai Order</string>
 
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmação Pendente</string>
     <string name="info_send_xmrto_unpaid">Pagamento Pendente</string>
     <string name="info_send_xmrto_error">Erro SideShift.ai (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC Enviadas!</string>
+    <string name="info_send_xmrto_sent">%1$s Enviadas!</string>
     <string name="info_send_xmrto_query">A comunicar &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Pode enviar %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>SideShift.ai</b> está com uma taxa de conversão de <b>%3$s BTC</b> <u>neste momento</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Quantidades até <b>%1$s BTC</b> serão enviadas <u>instantaneament</u>!</i>
+        <b>Pode enviar %1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><b>SideShift.ai</b> está com uma taxa de conversão de <b>%3$s %4$s/XMR</b> <u>neste momento</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
+    <string name="send_available_btc">Saldo: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID do pagamento integrado</string>
     <string name="info_prepare_tx">A preparar a transacção</string>
@@ -75,13 +72,13 @@
     <string name="text_noretry_monero">Agora estamos emperrados aqui!</string>
     <string name="text_noretry">Ups, SideShift.ai não parece estar disponível neste momento!</string>
 
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rácio: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Rácio: %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">Vai a SideShift.ai para suporte &amp; seguimento</string>
     <string name="label_send_btc_xmrto_key_lb">Chave secreta\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai Chave secreta</string>
-    <string name="label_send_btc_address">Endereço BTC de destino</string>
+    <string name="label_send_btc_address">Endereço %1$s de destino</string>
     <string name="label_send_btc_amount">Quantidade</string>
 
     <string name="label_send_txid">ID da Transacção</string>
@@ -244,11 +241,9 @@
     <string name="tx_id">ID TX</string>
     <string name="tx_key">Chave TX</string>
     <string name="tx_destination">Destino</string>
-    <string name="tx_destination_btc">Destino\n(BTC)</string>
     <string name="tx_paymentId">ID Pagamento</string>
     <string name="tx_blockheight">Bloco</string>
     <string name="tx_amount">Quantidade</string>
-    <string name="tx_amount_btc">Quantidade\n(BTC)</string>
     <string name="tx_fee">Taxa</string>
     <string name="tx_transfers">Transferências</string>
     <string name="tx_notes">Notas</string>
@@ -360,11 +355,6 @@
 
     <string name="send_address_hint">Receptor</string>
 
-    <string name="xmrto_error_001">SideShift.ai offline - tenta mais tarde</string>
-    <string name="xmrto_error_004">Montante de BTC fora dos limites</string>
-    <string name="xmrto_error_010">URL de pagamento invalido ou fora de prazo</string>
-    <string name="xmrto_error_012">Demasiadas solicitações</string>
-
     <string name="street_sweep_amount">A TOTALIDADE!</string> <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Converter semente do Ledger</string>
@@ -387,8 +377,8 @@
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_title">Send Crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -412,4 +402,18 @@
 
     <string name="shift_noquote">Cannot get quote</string>
     <string name="shift_checkamount">Check amount and try again</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Ambiguous address.</b><br/>
+        <i>Please select the type above.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Please enter or scan a %1$s address.</b><br/>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Please enter or scan a Monero address.</b>
+    ]]></string>
 </resources>

@@ -24,7 +24,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_xmrto_32dp"
+                android:src="@drawable/ic_xmrto_btc"
                 android:visibility="visible" />
 
             <LinearLayout

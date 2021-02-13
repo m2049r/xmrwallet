@@ -25,6 +25,8 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
@@ -46,12 +48,15 @@ public class ExchangeOtherEditText extends ExchangeEditText {
 
     public void setExchangeRate(double rate) {
         exchangeRate = rate;
-        post(new Runnable() {
-            @Override
-            public void run() {
-                startExchange();
-            }
-        });
+        post(this::startExchange);
+    }
+
+    public void setBaseCurrency(@NonNull String symbol) {
+        if (symbol.equals(baseCurrency)) return;
+        baseCurrency = symbol;
+        setCurrencyAdapter(sCurrencyA);
+        setCurrencyAdapter(sCurrencyB);
+        post(this::postInitialize);
     }
 
     private void setBaseCurrency(Context context, AttributeSet attrs) {
@@ -184,12 +189,7 @@ public class ExchangeOtherEditText extends ExchangeEditText {
                     @Override
                     public void onError(final Exception e) {
                         Timber.e(e.getLocalizedMessage());
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                exchangeFailed();
-                            }
-                        });
+                        new Handler(Looper.getMainLooper()).post(() -> exchangeFailed());
                     }
                 });
     }

@@ -300,7 +300,7 @@ public class TxFragment extends Fragment {
             }
             tvTxXmrToKey.setText(key);
             tvDestinationBtc.setText(userNotes.xmrtoDestination);
-            tvTxAmountBtc.setText(userNotes.xmrtoAmount + " BTC");
+            tvTxAmountBtc.setText(userNotes.xmrtoAmount + " "+ userNotes.xmrtoCurrency);
             switch (userNotes.xmrtoTag) {
                 case "xmrto":
                     tvXmrToSupport.setVisibility(View.GONE);

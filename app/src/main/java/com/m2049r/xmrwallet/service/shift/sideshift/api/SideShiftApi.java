@@ -23,8 +23,6 @@ import androidx.annotation.NonNull;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 
 public interface SideShiftApi {
-
-    String ASSET = "btc";
     int QUERY_INTERVAL = 5000; // ms
 
     /**

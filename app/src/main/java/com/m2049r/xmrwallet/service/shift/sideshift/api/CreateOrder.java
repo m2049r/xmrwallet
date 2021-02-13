@@ -21,6 +21,8 @@ import java.util.Date;
 public interface CreateOrder {
     String TAG = "side";
 
+    String getBtcCurrency();
+
     double getBtcAmount();
 
     String getBtcAddress();

@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.util;
+package com.m2049r.xmrwallet.util.validator;
 
 // mostly based on https://rosettacode.org/wiki/Bitcoin/address_validation#Java
 
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 
@@ -28,28 +29,47 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class BitcoinAddressValidator {
-
     private static final String ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
-    public static boolean validate(String addrress) {
-        boolean testnet = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
-        if (validate(addrress, testnet)) return true;
-        return validateBech32Segwit(addrress, testnet);
+    public static Crypto validate(String address) {
+        for (BitcoinAddressType type : BitcoinAddressType.values()) {
+            if (validate(address, type))
+                return Crypto.valueOf(type.name());
+        }
+        return null;
     }
 
-    public static boolean validate(String addrress, boolean testnet) {
+    // just for tests
+    public static boolean validateBTC(String addrress, boolean testnet) {
+        return validate(addrress, BitcoinAddressType.BTC, testnet);
+    }
+
+    public static boolean validate(String addrress, BitcoinAddressType type, boolean testnet) {
+        if (validate(addrress, testnet ? type.getTestnet() : type.getProduction()))
+            return true;
+        if (type.hasBech32())
+            return validateBech32Segwit(addrress, type, testnet);
+        else
+            return false;
+    }
+
+    public static boolean validate(String addrress, BitcoinAddressType type) {
+        final boolean testnet = WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet;
+        return validate(addrress, type, testnet);
+    }
+
+    public static boolean validate(String addrress, byte[] addressTypes) {
         if (addrress.length() < 26 || addrress.length() > 35)
             return false;
         byte[] decoded = decodeBase58To25Bytes(addrress);
         if (decoded == null)
             return false;
-
         int v = decoded[0] & 0xFF;
-        if (!testnet) {
-            if ((v != 0x00) && (v != 0x05)) return false;
-        } else {
-            if ((v != 0x6f) && (v != 0xc4)) return false;
+        boolean nok = true;
+        for (byte b : addressTypes) {
+            nok = nok && (v != (b & 0xFF));
         }
+        if (nok) return false;
 
         byte[] hash1 = sha256(Arrays.copyOfRange(decoded, 0, 21));
         byte[] hash2 = sha256(hash1);
@@ -95,18 +115,20 @@ public class BitcoinAddressValidator {
 
     private static final String DATA_CHARS = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
 
-    public static boolean validateBech32Segwit(String bech32, boolean testnet) {
+    public static boolean validateBech32Segwit(String bech32, BitcoinAddressType type, boolean testnet) {
         if (!bech32.equals(bech32.toLowerCase()) && !bech32.equals(bech32.toUpperCase())) {
             return false; // mixing upper and lower case not allowed
         }
         bech32 = bech32.toLowerCase();
 
-        if (testnet && !bech32.startsWith("tb1")) return false;
-        if (!testnet && !bech32.startsWith("bc1")) return false;
+        if (!bech32.startsWith(type.getBech32Prefix(testnet))) return false;
 
-        if ((bech32.length() < 14) || (bech32.length() > 74)) return false;
-        int mod = bech32.length() % 8;
-        if ((mod == 0) || (mod == 3) || (mod == 5)) return false;
+        final int hrpLength = type.getBech32Prefix(testnet).length();
+
+        if ((bech32.length() < (12 + hrpLength)) || (bech32.length() > (72 + hrpLength)))
+            return false;
+        int mod = (bech32.length() - hrpLength) % 8;
+        if ((mod == 6) || (mod == 1) || (mod == 3)) return false;
 
         int sep = -1;
         final byte[] bytes = bech32.getBytes(StandardCharsets.US_ASCII);
@@ -117,7 +139,7 @@ public class BitcoinAddressValidator {
             if (bytes[i] == 49) sep = i; // 49 := '1' in ASCII
         }
 
-        if (sep != 2) return false; // bech32 always has len(hrp)==2
+        if (sep != hrpLength) return false;
         if (sep > bytes.length - 7) {
             return false; // min 6 bytes data
         }
@@ -158,12 +180,12 @@ public class BitcoinAddressValidator {
     private static byte[] hrpExpand(byte[] hrp) {
         final byte[] expanded = new byte[(2 * hrp.length) + 1];
         int i = 0;
-        for (int j = 0; j < hrp.length; j++) {
-            expanded[i++] = (byte) (hrp[j] >> 5);
+        for (byte b : hrp) {
+            expanded[i++] = (byte) (b >> 5);
         }
         expanded[i++] = 0;
-        for (int j = 0; j < hrp.length; j++) {
-            expanded[i++] = (byte) (hrp[j] & 0x1f);
+        for (byte b : hrp) {
+            expanded[i++] = (byte) (b & 0x1f);
         }
         return expanded;
     }

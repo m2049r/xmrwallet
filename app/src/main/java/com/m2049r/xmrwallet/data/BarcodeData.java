@@ -18,69 +18,57 @@ package com.m2049r.xmrwallet.data;
 
 import android.net.Uri;
 
-import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.OpenAliasHelper;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import lombok.ToString;
 import timber.log.Timber;
 
+@ToString
 public class BarcodeData {
-
-    public static final String XMR_SCHEME = "monero:";
-    public static final String XMR_PAYMENTID = "tx_payment_id";
-    public static final String XMR_AMOUNT = "tx_amount";
-    public static final String XMR_DESCRIPTION = "tx_description";
-
-    public static final String OA_XMR_ASSET = "xmr";
-    public static final String OA_BTC_ASSET = "btc";
-
-    static final String BTC_SCHEME = "bitcoin";
-    static final String BTC_DESCRIPTION = "message";
-    static final String BTC_AMOUNT = "amount";
-
-    public enum Asset {
-        XMR, BTC
-    }
-
     public enum Security {
         NORMAL,
         OA_NO_DNSSEC,
         OA_DNSSEC
     }
 
-    final public Asset asset;
+    final public Crypto asset;
+    final public List<Crypto> ambiguousAssets;
     final public String address;
     final public String addressName;
     final public String amount;
     final public String description;
     final public Security security;
 
-    public BarcodeData(Asset asset, String address) {
-        this(asset, address, null, null, null, Security.NORMAL);
+    public BarcodeData(List<Crypto> assets, String address) {
+        if (assets.isEmpty())
+            throw new IllegalArgumentException("no assets specified");
+        this.addressName = null;
+        this.description = null;
+        this.amount = null;
+        this.security = Security.NORMAL;
+        this.address = address;
+        if (assets.size() == 1) {
+            this.asset = assets.get(0);
+            this.ambiguousAssets = null;
+        } else {
+            this.asset = null;
+            this.ambiguousAssets = assets;
+        }
     }
 
-    public BarcodeData(Asset asset, String address, String amount) {
-        this(asset, address, null, null, amount, Security.NORMAL);
-    }
-
-    public BarcodeData(Asset asset, String address, String amount, String description, Security security) {
-        this(asset, address, null, description, amount, security);
-    }
-
-    public BarcodeData(Asset asset, String address, String paymentId, String description, String amount) {
+    public BarcodeData(Crypto asset, String address, String description, String amount) {
         this(asset, address, null, description, amount, Security.NORMAL);
     }
 
-    public BarcodeData(Asset asset, String address, String description, String amount) {
-        this(asset, address, null, description, amount, Security.NORMAL);
-    }
-
-    public BarcodeData(Asset asset, String address, String addressName, String description, String amount, Security security) {
+    public BarcodeData(Crypto asset, String address, String addressName, String description, String amount, Security security) {
+        this.ambiguousAssets = null;
         this.asset = asset;
         this.address = address;
         this.addressName = addressName;
@@ -94,133 +82,54 @@ public class BarcodeData {
     }
 
     public String getUriString() {
-        if (asset != Asset.XMR) throw new IllegalStateException("We can only do XMR stuff!");
+        if (asset != Crypto.XMR) throw new IllegalStateException("We can only do XMR stuff!");
         StringBuilder sb = new StringBuilder();
-        sb.append(BarcodeData.XMR_SCHEME).append(address);
+        sb.append(Crypto.XMR.getUriScheme()).append(address);
         boolean first = true;
         if ((description != null) && !description.isEmpty()) {
             sb.append(first ? "?" : "&");
             first = false;
-            sb.append(BarcodeData.XMR_DESCRIPTION).append('=').append(Uri.encode(description));
+            sb.append(Crypto.XMR.getUriMessage()).append('=').append(Uri.encode(description));
         }
         if ((amount != null) && !amount.isEmpty()) {
             sb.append(first ? "?" : "&");
-            sb.append(BarcodeData.XMR_AMOUNT).append('=').append(amount);
+            sb.append(Crypto.XMR.getUriAmount()).append('=').append(amount);
         }
         return sb.toString();
     }
 
-    static public BarcodeData fromQrCode(String qrCode) {
-        // check for monero uri
-        BarcodeData bcData = parseMoneroUri(qrCode);
-        // check for naked monero address / integrated address
-        if (bcData == null) {
-            bcData = parseMoneroNaked(qrCode);
-        }
-        // check for btc uri
-        if (bcData == null) {
-            bcData = parseBitcoinUri(qrCode);
-        }
-        // check for naked btc address
-        if (bcData == null) {
-            bcData = parseBitcoinNaked(qrCode);
-        }
-        // check for OpenAlias
-        if (bcData == null) {
-            bcData = parseOpenAlias(qrCode, false);
-        }
-        return bcData;
-    }
-
-    /**
-     * Parse and decode a monero scheme string. It is here because it needs to validate the data.
-     *
-     * @param uri String containing a monero URL
-     * @return BarcodeData object or null if uri not valid
-     */
-
-    static public BarcodeData parseMoneroUri(String uri) {
-        Timber.d("parseMoneroUri=%s", uri);
-
-        if (uri == null) return null;
-
-        if (!uri.startsWith(XMR_SCHEME)) return null;
-
-        String noScheme = uri.substring(XMR_SCHEME.length());
-        Uri monero = Uri.parse(noScheme);
-        Map<String, String> parms = new HashMap<>();
-        String query = monero.getEncodedQuery();
-        if (query != null) {
-            String[] args = query.split("&");
-            for (String arg : args) {
-                String[] namevalue = arg.split("=");
-                if (namevalue.length == 0) {
-                    continue;
-                }
-                parms.put(Uri.decode(namevalue[0]).toLowerCase(),
-                        namevalue.length > 1 ? Uri.decode(namevalue[1]) : "");
+    static private BarcodeData parseNaked(String address) {
+        List<Crypto> possibleAssets = new ArrayList<>();
+        for (Crypto crypto : Crypto.values()) {
+            if (crypto.validate(address)) {
+                possibleAssets.add(crypto);
             }
         }
-        String address = monero.getPath();
-
-        String paymentId = parms.get(XMR_PAYMENTID);
-        // no support for payment ids!
-        if (paymentId != null) {
-            Timber.e("no support for payment ids!");
+        if (possibleAssets.isEmpty())
             return null;
-        }
-
-        String description = parms.get(XMR_DESCRIPTION);
-        String amount = parms.get(XMR_AMOUNT);
-        if (amount != null) {
-            try {
-                Double.parseDouble(amount);
-            } catch (NumberFormatException ex) {
-                Timber.d(ex.getLocalizedMessage());
-                return null; // we have an amount but its not a number!
-            }
-        }
-
-        if ((address == null) || !Wallet.isAddressValid(address)) {
-            Timber.d("address invalid");
-            return null;
-        }
-        return new BarcodeData(Asset.XMR, address, description, amount);
+        return new BarcodeData(possibleAssets, address);
     }
 
-    static public BarcodeData parseMoneroNaked(String address) {
-        Timber.d("parseMoneroNaked=%s", address);
+    static public BarcodeData parseUri(String uriString) {
+        Timber.d("parseBitUri=%s", uriString);
 
-        if (address == null) return null;
-
-        if (!Wallet.isAddressValid(address)) {
-            Timber.d("address invalid");
-            return null;
-        }
-
-        return new BarcodeData(Asset.XMR, address);
-    }
-
-    // bitcoin:mpQ84J43EURZHkCnXbyQ4PpNDLLBqdsMW2?amount=0.01
-    // bitcoin:?r=https://bitpay.com/i/xxx
-    static public BarcodeData parseBitcoinUri(String uriString) {
-        Timber.d("parseBitcoinUri=%s", uriString);
-
-        if (uriString == null) return null;
         URI uri;
         try {
             uri = new URI(uriString);
         } catch (URISyntaxException ex) {
             return null;
         }
-        if (!uri.isOpaque() ||
-                !uri.getScheme().equals(BTC_SCHEME)) return null;
+        if (!uri.isOpaque()) return null;
+        final String scheme = uri.getScheme();
+        Crypto crypto = Crypto.withScheme(scheme);
+        if (crypto == null) return null;
 
         String[] parts = uri.getRawSchemeSpecificPart().split("[?]");
         if ((parts.length <= 0) || (parts.length > 2)) {
             Timber.d("invalid number of parts %d", parts.length);
             return null;
         }
+
         Map<String, String> parms = new HashMap<>();
         if (parts.length == 2) {
             String[] args = parts[1].split("&");
@@ -233,17 +142,19 @@ public class BarcodeData {
                         namevalue.length > 1 ? Uri.decode(namevalue[1]) : "");
             }
         }
-        String description = parms.get(BTC_DESCRIPTION);
-        String address = parts[0]; // no need to decode as there can bo no special characters
+
+        String addressName = parms.get(crypto.getUriLabel());
+        String description = parms.get(crypto.getUriMessage());
+        String address = parts[0]; // no need to decode as there can be no special characters
         if (address.isEmpty()) {
             Timber.d("no address");
             return null;
         }
-        if (!BitcoinAddressValidator.validate(address)) {
-            Timber.d("BTC address (%s) invalid", address);
+        if (!crypto.validate(address)) {
+            Timber.d("%s address (%s) invalid", crypto, address);
             return null;
         }
-        String amount = parms.get(BTC_AMOUNT);
+        String amount = parms.get(crypto.getUriAmount());
         if ((amount != null) && (!amount.isEmpty())) {
             try {
                 Double.parseDouble(amount);
@@ -252,20 +163,21 @@ public class BarcodeData {
                 return null; // we have an amount but its not a number!
             }
         }
-        return new BarcodeData(BarcodeData.Asset.BTC, address, description, amount);
+        return new BarcodeData(crypto, address, addressName, description, amount, Security.NORMAL);
     }
 
-    static public BarcodeData parseBitcoinNaked(String address) {
-        Timber.d("parseBitcoinNaked=%s", address);
 
-        if (address == null) return null;
-
-        if (!BitcoinAddressValidator.validate(address)) {
-            Timber.d("address invalid");
-            return null;
+    static public BarcodeData fromString(String qrCode) {
+        BarcodeData bcData = parseUri(qrCode);
+        if (bcData == null) {
+            // maybe it's naked?
+            bcData = parseNaked(qrCode);
         }
-
-        return new BarcodeData(BarcodeData.Asset.BTC, address);
+        if (bcData == null) {
+            // check for OpenAlias
+            bcData = parseOpenAlias(qrCode, false);
+        }
+        return bcData;
     }
 
     static public BarcodeData parseOpenAlias(String oaString, boolean dnssec) {
@@ -281,29 +193,16 @@ public class BarcodeData {
         String address = oaAttrs.get(OpenAliasHelper.OA1_ADDRESS);
         if (address == null) return null;
 
-        Asset asset;
-        if (OA_XMR_ASSET.equals(oaAsset)) {
-            if (!Wallet.isAddressValid(address)) {
-                Timber.d("XMR address invalid");
-                return null;
-            }
-            asset = Asset.XMR;
-        } else if (OA_BTC_ASSET.equals(oaAsset)) {
-            if (!BitcoinAddressValidator.validate(address)) {
-                Timber.d("BTC address invalid");
-                return null;
-            }
-            asset = Asset.BTC;
-        } else {
+        Crypto crypto = Crypto.withSymbol(oaAsset);
+        if (crypto == null) {
             Timber.i("Unsupported OpenAlias asset %s", oaAsset);
             return null;
         }
-
-        String paymentId = oaAttrs.get(OpenAliasHelper.OA1_PAYMENTID);
-        if (paymentId != null) {
-            Timber.e("paymentId not supported");
+        if (!crypto.validate(address)) {
+            Timber.d("%s address invalid", crypto);
             return null;
         }
+
         String description = oaAttrs.get(OpenAliasHelper.OA1_DESCRIPTION);
         if (description == null) {
             description = oaAttrs.get(OpenAliasHelper.OA1_NAME);
@@ -322,6 +221,10 @@ public class BarcodeData {
 
         Security sec = dnssec ? BarcodeData.Security.OA_DNSSEC : BarcodeData.Security.OA_NO_DNSSEC;
 
-        return new BarcodeData(asset, address, addressName, description, amount, sec);
+        return new BarcodeData(crypto, address, addressName, description, amount, sec);
+    }
+
+    public boolean isAmbiguous() {
+        return ambiguousAssets != null;
     }
 }

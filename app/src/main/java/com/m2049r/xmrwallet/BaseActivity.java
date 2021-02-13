@@ -213,7 +213,7 @@ public class BaseActivity extends SecureActivity implements GenerateReviewFragme
                 if (uri == null) {
                     Toast.makeText(this, getString(R.string.nfc_tag_read_undef), Toast.LENGTH_LONG).show();
                 } else {
-                    BarcodeData bc = BarcodeData.fromQrCode(uri.toString());
+                    BarcodeData bc = BarcodeData.fromString(uri.toString());
                     if (bc == null)
                         Toast.makeText(this, getString(R.string.nfc_tag_read_undef), Toast.LENGTH_LONG).show();
                     else
