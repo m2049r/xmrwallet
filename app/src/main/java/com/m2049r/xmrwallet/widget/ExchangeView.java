@@ -44,6 +44,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.ColorHelper;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -311,7 +312,7 @@ public class ExchangeView extends LinearLayout {
         }
     }
 
-    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
+    private final ExchangeApi exchangeApi = ServiceHelper.getExchangeApi();
 
     void startExchange() {
         showProgress();

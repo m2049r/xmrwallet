@@ -26,6 +26,9 @@ import lombok.Setter;
 public class TxDataBtc extends TxData {
     @Getter
     @Setter
+    private String btcSymbol; // the actual non-XMR thing we're sending
+    @Getter
+    @Setter
     private String xmrtoOrderId; // shown in success screen
     @Getter
     @Setter
@@ -45,6 +48,7 @@ public class TxDataBtc extends TxData {
     @Override
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);
+        out.writeString(btcSymbol);
         out.writeString(xmrtoOrderId);
         out.writeString(btcAddress);
         out.writeDouble(btcAmount);
@@ -63,6 +67,7 @@ public class TxDataBtc extends TxData {
 
     protected TxDataBtc(Parcel in) {
         super(in);
+        btcSymbol = in.readString();
         xmrtoOrderId = in.readString();
         btcAddress = in.readString();
         btcAmount = in.readDouble();
@@ -74,10 +79,23 @@ public class TxDataBtc extends TxData {
         StringBuilder sb = new StringBuilder();
         sb.append("xmrtoOrderId:");
         sb.append(xmrtoOrderId);
+        sb.append(",btcSymbol:");
+        sb.append(btcSymbol);
         sb.append(",btcAddress:");
         sb.append(btcAddress);
         sb.append(",btcAmount:");
         sb.append(btcAmount);
         return sb.toString();
+    }
+
+    public boolean validateAddress(@NonNull String address) {
+        if ((btcSymbol == null) || (btcAddress == null)) return false;
+        final Crypto crypto = Crypto.withSymbol(btcSymbol);
+        if (crypto == null) return false;
+        if (crypto.isCasefull()) { // compare as-is
+            return address.equals(btcAddress);
+        } else { // normalize & compare (e.g. ETH with and without checksum capitals
+            return address.toLowerCase().equals(btcAddress.toLowerCase());
+        }
     }
 }

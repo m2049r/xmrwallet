@@ -19,10 +19,10 @@
             <ImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_gravity="top"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="24dp"
                 android:padding="6dp"
-                android:src="@drawable/ic_check_circle_xmr" />
+                android:src="@drawable/ic_monero" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
 
                 <TextView
                     android:id="@+id/tvTxAmount"
-                    style="@style/MoneroText.Balance.Orange"
+                    style="@style/MoneroText.Balance.Orange.Smaller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -108,7 +108,7 @@
         <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
             card_view:contentPadding="8dp">
 
@@ -128,6 +128,13 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
 
+                        <ImageView
+                            android:id="@+id/ivXmrToIcon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_xmrto_btc" />
+
                         <ProgressBar
                             android:id="@+id/pbXmrto"
                             android:layout_width="match_parent"
@@ -141,7 +148,7 @@
                             android:id="@+id/ivXmrToStatus"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:layout_gravity="center"
+                            android:layout_gravity="bottom|right"
                             android:src="@drawable/ic_pending_orange_24dp"
                             android:visibility="visible" />
 
@@ -151,15 +158,6 @@
                             android:layout_height="72dp"
                             android:layout_gravity="center"
                             android:visibility="invisible" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="top|start"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="0dp"
-                            android:src="@drawable/ic_xmrto_whitestroke_24px" />
-
                     </FrameLayout>
 
                     <TextView
@@ -206,9 +204,7 @@
                         android:layout_height="wrap_content"
                         android:background="?android:attr/colorBackground"
                         android:drawablePadding="8dp"
-                        android:paddingStart="16dp"
                         android:paddingTop="8dp"
-                        android:paddingEnd="8dp"
                         android:paddingBottom="8dp"
                         android:textColor="?attr/colorPrimary"
                         card_view:drawableEndCompat="@drawable/ic_content_copy_24dp"
@@ -219,7 +215,7 @@
                         style="@style/MoneroText.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="start"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:drawablePadding="8dp"

@@ -40,6 +40,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,6 +185,12 @@ public class ExchangeEditText extends LinearLayout {
 
     private boolean isInitialized = false;
 
+    void postInitialize() {
+        setInitialSpinnerSelections(sCurrencyA, sCurrencyB);
+        isInitialized = true;
+        startExchange();
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -212,14 +219,7 @@ public class ExchangeEditText extends LinearLayout {
         setCurrencyAdapter(sCurrencyA);
         setCurrencyAdapter(sCurrencyB);
 
-        post(new Runnable() {
-            @Override
-            public void run() {
-                setInitialSpinnerSelections(sCurrencyA, sCurrencyB);
-                isInitialized = true;
-                startExchange();
-            }
-        });
+        post(this::postInitialize);
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
@@ -296,7 +296,7 @@ public class ExchangeEditText extends LinearLayout {
         }
     }
 
-    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
+    private final ExchangeApi exchangeApi = ServiceHelper.getExchangeApi();
 
     // starts exchange through exchange api
     void startExchange() {

@@ -21,6 +21,7 @@ package com.m2049r.xmrwallet.util;
 import android.os.AsyncTask;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.data.Crypto;
 
 import org.jitsi.dnssec.validator.ValidatingResolver;
 import org.xbill.DNS.DClass;
@@ -52,7 +53,6 @@ public class OpenAliasHelper {
     public static final String OA1_NAME = "recipient_name";
     public static final String OA1_DESCRIPTION = "tx_description";
     public static final String OA1_AMOUNT = "tx_amount";
-    public static final String OA1_PAYMENTID = "tx_payment_id";
 
     public static final int DNS_LOOKUP_TIMEOUT = 2500; // ms
 
@@ -65,7 +65,7 @@ public class OpenAliasHelper {
     }
 
     public interface OnResolvedListener {
-        void onResolved(Map<BarcodeData.Asset, BarcodeData> dataMap);
+        void onResolved(Map<Crypto, BarcodeData> dataMap);
 
         void onFailure();
     }
@@ -138,7 +138,7 @@ public class OpenAliasHelper {
         public void onPostExecute(Boolean success) {
             if (resolvedListener != null)
                 if (success) {
-                    Map<BarcodeData.Asset, BarcodeData> dataMap = new HashMap<>();
+                    Map<Crypto, BarcodeData> dataMap = new HashMap<>();
                     for (String txt : txts) {
                         BarcodeData bc = BarcodeData.parseOpenAlias(txt, dnssec);
                         if (bc != null) {

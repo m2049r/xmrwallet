@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:layout_marginStart="56dp"
         tools:text="@string/send_available_btc" />
 
     <FrameLayout
@@ -34,11 +34,11 @@
             android:visibility="invisible">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="top"
                 android:paddingTop="8dp"
-                android:src="@drawable/ic_xmrto_32dp" />
+                android:src="@drawable/ic_sideshift_circle" />
 
             <TextView
                 android:id="@+id/tvXmrToParms"

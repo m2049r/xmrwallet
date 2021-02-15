@@ -73,14 +73,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
         // * I don't know why this is the case but I don't have the time to figure out.
         Handler handler = new Handler();
-        handler.postDelayed(new
-
-                                    Runnable() {
-                                        @Override
-                                        public void run() {
-                                            mScannerView.resumeCameraPreview(ScannerFragment.this);
-                                        }
-                                    }, 2000);
+        handler.postDelayed(() -> mScannerView.resumeCameraPreview(ScannerFragment.this), 2000);
     }
 
     @Override

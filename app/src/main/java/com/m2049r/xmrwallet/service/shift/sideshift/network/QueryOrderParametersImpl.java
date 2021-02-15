@@ -23,6 +23,7 @@ import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +54,7 @@ class QueryOrderParametersImpl implements QueryOrderParameters {
 
     public static void call(@NonNull final ShiftApiCall api,
                             @NonNull final ShiftCallback<QueryOrderParameters> callback) {
-        api.call("pairs/xmr/" + SideShiftApi.ASSET, new NetworkCallback() {
+        api.call("pairs/xmr/" + ServiceHelper.ASSET, new NetworkCallback() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
                 try {

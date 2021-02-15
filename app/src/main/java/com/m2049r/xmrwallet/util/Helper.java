@@ -323,15 +323,6 @@ public class Helper {
         return ShakeAnimation;
     }
 
-    static public HttpUrl getXmrToBaseUrl() {
-        if ((WalletManager.getInstance() == null)
-                || (WalletManager.getInstance().getNetworkType() != NetworkType.NetworkType_Mainnet)) {
-            throw new IllegalStateException("Only mainnet not supported");
-        } else {
-            return HttpUrl.parse("https://sideshift.ai/api/v1/");
-        }
-    }
-
     private final static char[] HexArray = "0123456789ABCDEF".toCharArray();
 
     public static String bytesToHex(byte[] data) {
@@ -637,10 +628,6 @@ public class Helper {
             action.fail(walletName, walletPassword, fingerprintUsed);
             return false;
         }
-    }
-
-    static public ExchangeApi getExchangeApi() {
-        return new com.m2049r.xmrwallet.service.exchange.krakenEcb.ExchangeApiImpl(OkHttpHelper.getOkHttpClient());
     }
 
     public interface Action {

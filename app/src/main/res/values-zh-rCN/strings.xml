@@ -27,24 +27,21 @@
     <string name="info_xmrto_enabled">已支持比特币支付，点此了解更多</string>
     <string name="info_ledger_enabled">已支持Ledger硬件钱包，点此了解更多</string>
     <string name="info_xmrto"><![CDATA[
-<b>您输入了一个比特币地址</b><br/>
-<i>您发送的门罗币将通过<b>SideShift.ai</b>服务，转换为比特币发送给对方。</i>
-]]></string>
+      <b>您输入了一个%1$s地址</b><br/>
+      <i>您发送的门罗币将通过<b>SideShift.ai</b>服务，转换为%1$s发送给对方。</i>
+    ]]></string>
     <string name="info_send_xmrto_success_order_label">SideShift.ai订单</string>
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
     <string name="info_send_xmrto_paid">等待确认中</string>
     <string name="info_send_xmrto_unpaid">等待支付中</string>
     <string name="info_send_xmrto_error">SideShift.ai错误(%1$s)</string>
-    <string name="info_send_xmrto_sent">成功发送比特币！</string>
+    <string name="info_send_xmrto_sent">成功发送%1$s！</string>
     <string name="info_send_xmrto_query">查询中&#8230;</string>
     <string name="info_send_xmrto_parms"><![CDATA[
-<b>您可以发送%1$s &#8212; %2$s BTC</b>.<br/>
-<i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s BTC</b> </i>.
-]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-<i>至多<b>%1$s BTC</b>将会<u>即刻</u>发送!</i>
-]]></string>
-    <string name="send_available_btc">余额: %2$s BTC (%1$s XMR)</string>
+        <b>您可以发送%1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s %4$s/XMR</b> </i>.
+    ]]></string>
+    <string name="send_available_btc">余额: %2$s %3$s (%1$s XMR)</string>
     <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
     <string name="label_send_progress_xmrto_create">创建SideShift.ai订单</string>
@@ -56,12 +53,12 @@
     <string name="text_retry">再次尝试</string>
     <string name="text_noretry_monero">我们遇到了困难！</string>
     <string name="text_noretry">抱歉, SideShift.ai服务现在似乎不可用</string>
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
     <string name="label_send_btc_xmrto_info">访问SideShift.ai以获得更多支持</string>
     <string name="label_send_btc_xmrto_key_lb">密钥\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai密钥</string>
-    <string name="label_send_btc_address">比特币收款地址</string>
+    <string name="label_send_btc_address">%1$s收款地址</string>
     <string name="label_send_btc_amount">金额</string>
     <string name="label_send_txid">交易ID</string>
     <string name="label_send_address">收款地址</string>
@@ -196,11 +193,9 @@
     <string name="tx_id">交易ID</string>
     <string name="tx_key">交易密钥</string>
     <string name="tx_destination">目标地址</string>
-    <string name="tx_destination_btc">目标地址\n(BTC)</string>
     <string name="tx_paymentId">支付ID</string>
     <string name="tx_blockheight">区块</string>
     <string name="tx_amount">金额</string>
-    <string name="tx_amount_btc">金额\n(BTC)</string>
     <string name="tx_fee">手续费</string>
     <string name="tx_transfers">转账</string>
     <string name="tx_notes">备注</string>
@@ -281,10 +276,6 @@
     <string name="node_nobookmark">已自动将最佳%1$d节点加入书签</string>
     <string name="label_test">测试</string><!--note: as in "Test a network connection"-->
     <string name="send_address_hint">收款人</string>
-    <string name="xmrto_error_001">SideShift.ai离线-请稍后重试</string>
-    <string name="xmrto_error_004">比特币金额超出限制</string>
-    <string name="xmrto_error_010">无效或过期的支付URL</string>
-    <string name="xmrto_error_012">当前请求数过多</string>
     <string name="street_sweep_amount">全部资产！</string>
     <string name="menu_ledger_seed">转换Ledger种子密语</string>
     <string name="prompt_ledger_seed">Ledger种子密语</string>
@@ -306,8 +297,8 @@
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_title">Send Crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -331,4 +322,18 @@
 
     <string name="shift_noquote">Cannot get quote</string>
     <string name="shift_checkamount">Check amount and try again</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Ambiguous address.</b><br/>
+        <i>Please select the type above.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Please enter or scan a %1$s address.</b><br/>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Please enter or scan a Monero address.</b>
+    ]]></string>
 </resources>

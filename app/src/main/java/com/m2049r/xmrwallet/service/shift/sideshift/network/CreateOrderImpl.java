@@ -25,6 +25,7 @@ import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.util.DateHelper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +36,8 @@ import java.util.Date;
 import lombok.Getter;
 
 class CreateOrderImpl implements CreateOrder {
+    @Getter
+    private final String btcCurrency;
     @Getter
     private final double btcAmount;
     @Getter
@@ -56,9 +59,10 @@ class CreateOrderImpl implements CreateOrder {
         // sanity checks
         final String depositMethod = jsonObject.getString("depositMethodId");
         final String settleMethod = jsonObject.getString("settleMethodId");
-        if (!"xmr".equals(depositMethod) || !SideShiftApi.ASSET.equals(settleMethod))
+        if (!"xmr".equals(depositMethod) || !ServiceHelper.ASSET.equals(settleMethod))
             throw new IllegalStateException();
 
+        btcCurrency = settleMethod.toUpperCase();
         btcAmount = jsonObject.getDouble("settleAmount");
         JSONObject settleAddress = jsonObject.getJSONObject("settleAddress");
         btcAddress = settleAddress.getString("address");

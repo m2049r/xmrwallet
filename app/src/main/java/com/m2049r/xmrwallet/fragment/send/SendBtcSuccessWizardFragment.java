@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.data.PendingTx;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
@@ -39,6 +40,7 @@ import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -62,10 +64,10 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
     ImageButton bCopyTxId;
     private TextView tvTxId;
     private TextView tvTxAddress;
-    private TextView tvTxPaymentId;
     private TextView tvTxAmount;
     private TextView tvTxFee;
     private TextView tvXmrToAmount;
+    private ImageView ivXmrToIcon;
     private TextView tvXmrToStatus;
     private ImageView ivXmrToStatus;
     private ImageView ivXmrToStatusBig;
@@ -90,13 +92,13 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         });
 
         tvXmrToAmount = view.findViewById(R.id.tvXmrToAmount);
+        ivXmrToIcon = view.findViewById(R.id.ivXmrToIcon);
         tvXmrToStatus = view.findViewById(R.id.tvXmrToStatus);
         ivXmrToStatus = view.findViewById(R.id.ivXmrToStatus);
         ivXmrToStatusBig = view.findViewById(R.id.ivXmrToStatusBig);
 
         tvTxId = view.findViewById(R.id.tvTxId);
         tvTxAddress = view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
         tvTxAmount = view.findViewById(R.id.tvTxAmount);
         tvTxFee = view.findViewById(R.id.tvTxFee);
 
@@ -150,9 +152,11 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
                 NumberFormat df = NumberFormat.getInstance(Locale.US);
                 df.setMaximumFractionDigits(12);
                 String btcAmount = df.format(btcData.getBtcAmount());
-                tvXmrToAmount.setText(getString(R.string.info_send_xmrto_success_btc, btcAmount));
+                tvXmrToAmount.setText(getString(R.string.info_send_xmrto_success_btc, btcAmount, btcData.getBtcSymbol()));
                 //TODO         btcData.getBtcAddress();
                 tvTxXmrToKey.setText(btcData.getXmrtoOrderId());
+                final Crypto crypto = Crypto.withSymbol(btcData.getBtcSymbol());
+                ivXmrToIcon.setImageResource(crypto.getIconEnabledId());
                 tvXmrToSupport.setOnClickListener(v -> {
                     Uri orderUri = getXmrToApi().getQueryOrderUri(btcData.getXmrtoOrderId());
                     Intent intent = new Intent(Intent.ACTION_VIEW, orderUri);
@@ -211,7 +215,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
             statusResource = R.drawable.ic_error_red_24dp;
             pbXmrto.getIndeterminateDrawable().setColorFilter(0xff8b0000, android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isSent() || status.isPaid()) {
-            tvXmrToStatus.setText(getString(R.string.info_send_xmrto_sent));
+            tvXmrToStatus.setText(getString(R.string.info_send_xmrto_sent, btcData.getBtcSymbol()));
             statusResource = R.drawable.ic_success_green_24dp;
             pbXmrto.getIndeterminateDrawable().setColorFilter(0xFF417505, android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isWaiting()) {
@@ -228,6 +232,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         ivXmrToStatus.setImageResource(statusResource);
         if (status.isTerminal()) {
             pbXmrto.setVisibility(View.INVISIBLE);
+            ivXmrToIcon.setVisibility(View.GONE);
             ivXmrToStatus.setVisibility(View.GONE);
             ivXmrToStatusBig.setImageResource(statusResource);
             ivXmrToStatusBig.setVisibility(View.VISIBLE);
@@ -241,7 +246,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
             synchronized (this) {
                 if (xmrToApi == null) {
                     xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
-                            Helper.getXmrToBaseUrl());
+                            ServiceHelper.getXmrToBaseUrl());
                 }
             }
         }

@@ -29,14 +29,12 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:id="@+id/etAddress"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/bPasteAddress"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="95"
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -61,57 +59,94 @@
                     android:src="@drawable/ic_content_paste_24dp" />
             </RelativeLayout>
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvPaymentIdIntegrated"
-                    style="@style/MoneroText.Info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center_vertical"
-                    android:layout_margin="8dp"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:text="@string/info_paymentid_integrated"
-                    android:textSize="18sp"
-                    android:visibility="invisible"
-                    app:drawableStartCompat="@drawable/ic_check_gray_24dp" />
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/llXmrTo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="invisible">
+                    android:weightSum="6">
 
-                    <ImageView
+                    <ImageButton
+                        android:id="@+id/ibXMR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:paddingTop="8dp"
-                        android:src="@drawable/gunther_24dp" />
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_monero" />
 
-                    <TextView
-                        android:id="@+id/tvXmrTo"
-                        style="@style/MoneroText.Info"
-                        android:layout_width="match_parent"
+                    <ImageButton
+                        android:id="@+id/ibBTC"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:gravity="start|top"
-                        android:singleLine="false"
-                        android:textSize="18sp"
-                        tools:text="@string/info_xmrto" />
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_xmrto_btc_off" />
+
+                    <ImageButton
+                        android:id="@+id/ibLTC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_xmrto_ltc_off" />
+
+                    <ImageButton
+                        android:id="@+id/ibETH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_xmrto_eth_off" />
+
+                    <ImageButton
+                        android:id="@+id/ibDASH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_xmrto_dash_off" />
+
+                    <ImageButton
+                        android:id="@+id/ibDOGE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_xmrto_doge_off" />
                 </LinearLayout>
-            </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvXmrTo"
+                    style="@style/MoneroText.Info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:drawablePadding="8dp"
+                    android:gravity="start"
+                    android:singleLine="false"
+                    android:text="@string/label_send_btc_xmrto_key"
+                    android:textSize="18sp"
+                    android:visibility="invisible"
+                    app:drawableStartCompat="@drawable/gunther_24dp"
+                    tools:text="@string/info_xmrto" />
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/etNotes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

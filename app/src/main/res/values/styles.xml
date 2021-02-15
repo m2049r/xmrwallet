@@ -95,6 +95,11 @@
         <!--item name="android:textColor">@color/gradientOrange</item-->
     </style>
 
+    <style name="MoneroText.Balance.Orange.Smaller">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
     <style name="MoneroText.Unconfirmed">
         <item name="android:textSize">14sp</item>
         <!--item name="android:textColor">@color/moneroGray</item-->
