@@ -35,29 +35,26 @@
     <string name="info_ledger_enabled">Ledger\'i tugi sisse lülitatud, puuduta lisainfo saamiseks.</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Sa sisestasid Bitcoini aadressi.</b><br/>
-        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad Bitcoinid kasutades SideShift.ai teenust.</i>
+        <b>Sa sisestasid %1$s aadressi.</b><br/>
+        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad %1$s kasutades SideShift.ai teenust.</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai tellimus</string>
 
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Ootan kinnitust</string>
     <string name="info_send_xmrto_unpaid">Ootan makset</string>
     <string name="info_send_xmrto_error">SideShift.ai viga (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC saadetud!</string>
+    <string name="info_send_xmrto_sent">%1$s saadetud!</string>
     <string name="info_send_xmrto_query">Küsin &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Sa saad saata %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>SideShift.ai</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s BTC</b></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Kuni <b>%1$s BTC</b> saadetakse <u>viivitamatult</u>!</i>
+        <b>Sa saad saata %1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><b>SideShift.ai</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s %4$s/XMR</b></i>.
     ]]></string>
 
-    <string name="send_available_btc">Kontojääk: %2$s BTC (%1$s XMR)</string>
+    <string name="send_available_btc">Kontojääk: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Makse ID integreeritud</string>
     <string name="info_prepare_tx">Valmistan ülekannet ette</string>
@@ -75,13 +72,13 @@
     <string name="text_noretry_monero">Nüüd jõudsime küll tupikusse!</string>
     <string name="text_noretry">Oh ei, SideShift.ai ei ole hetkel saadaval!</string>
 
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Kurss: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Kurss: %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">Külasta SideShift.ai lisainfo saamiseks &amp; jälgin</string>
     <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai privaatvõti</string>
-    <string name="label_send_btc_address">Sihtkoha Bitcoini aadress</string>
+    <string name="label_send_btc_address">Sihtkoha %1$s aadress</string>
     <string name="label_send_btc_amount">Kogus</string>
 
     <string name="label_send_txid">Ülekande ID</string>
@@ -246,11 +243,9 @@
     <string name="tx_id">Ülekande ID</string>
     <string name="tx_key">Ülekande võti</string>
     <string name="tx_destination">Sihtkoht</string>
-    <string name="tx_destination_btc">Sihtkoht\n(BTC)</string>
     <string name="tx_paymentId">Makse ID</string>
     <string name="tx_blockheight">Plokk</string>
     <string name="tx_amount">Kogus</string>
-    <string name="tx_amount_btc">Kogus\n(BTC)</string>
     <string name="tx_fee">Teenustasu</string>
     <string name="tx_transfers">Ülekanded</string>
     <string name="tx_notes">Kommentaarid</string>
@@ -354,11 +349,6 @@
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Saaja</string>
 
-    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
-
     <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Convert Ledger Seed</string>
@@ -381,8 +371,8 @@
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_title">Send Crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -406,4 +396,18 @@
 
     <string name="shift_noquote">Cannot get quote</string>
     <string name="shift_checkamount">Check amount and try again</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Ambiguous address.</b><br/>
+        <i>Please select the type above.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Please enter or scan a %1$s address.</b><br/>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Please enter or scan a Monero address.</b>
+    ]]></string>
 </resources>

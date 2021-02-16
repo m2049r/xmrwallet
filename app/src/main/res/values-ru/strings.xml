@@ -35,30 +35,27 @@
     <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Вы ввели Bitcoin адрес.</b><br/>
-        <i>Отправляйте XMR, получатель получит BTC, используя сервис SideShift.ai</i>
+        <b>Вы ввели %1$s адрес.</b><br/>
+        <i>Отправляйте XMR, получатель получит %1$s, используя сервис SideShift.ai</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">Заказ SideShift.ai</string>
 
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">Ожидание подтверждения</string>
     <string name="info_send_xmrto_unpaid">Ожидание платежа</string>
     <string name="info_send_xmrto_error">Ошибка SideShift.ai (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC успешно отправлены!</string>
+    <string name="info_send_xmrto_sent">%1$s успешно отправлены!</string>
     <string name="info_send_xmrto_query">Запрос &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Вы можете отправить %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>SideShift.ai</b> устанавливает курс обмена <b>%3$s BTC</b> <u>в данный момент</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Сумма до <b>%1$s BTC</b> будет отправлена <u>немедленно</u>!</i>
+        <b>Вы можете отправить %1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><b>SideShift.ai</b> устанавливает курс обмена <b>%3$s %4$s/XMR</b> <u>в данный момент</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Баланс: %2$s BTC (%1$s XMR)</string>
+    <string name="send_available_btc">Баланс: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Интегрированный ID платежа</string>
     <string name="info_prepare_tx">Подготовка транзакции</string>
@@ -76,13 +73,13 @@
     <string name="text_noretry_monero">Теперь мы застряли здесь!</string>
     <string name="text_noretry">Ой-ой! Кажется SideShift.ai недоступен в данный момент!</string>
 
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Курс: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">Посетите SideShift.ai для получения помощи &amp;</string>
     <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai секретный ключ</string>
-    <string name="label_send_btc_address">Адрес получателя BTC</string>
+    <string name="label_send_btc_address">Адрес получателя %1$s</string>
     <string name="label_send_btc_amount">Сумма</string>
 
     <string name="label_send_txid">ID транзакции</string>
@@ -246,11 +243,9 @@
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
     <string name="tx_destination">Адресат</string>
-    <string name="tx_destination_btc">Адресат\n(BTC)</string>
     <string name="tx_paymentId">ID платежа</string>
     <string name="tx_blockheight">Блок</string>
     <string name="tx_amount">Сумма</string>
-    <string name="tx_amount_btc">Сумма\n(BTC)</string>
     <string name="tx_fee">Комиссия</string>
     <string name="tx_transfers">Переводы</string>
     <string name="tx_notes">Заметки</string>
@@ -360,11 +355,6 @@
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Получатель</string>
 
-    <string name="xmrto_error_001">SideShift.ai недоступен - повторите попытку позже</string>
-    <string name="xmrto_error_004">Сумма BTC выходит за доступные пределы</string>
-    <string name="xmrto_error_010">Неверный или устаревший платежный URL</string>
-    <string name="xmrto_error_012">Превышен лимит запросов</string>
-
     <string name="street_sweep_amount">ВСЕ!</string> <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Преобразовать фразу Ledger</string>
@@ -387,8 +377,8 @@
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_title">Send Crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -412,4 +402,18 @@
 
     <string name="shift_noquote">Cannot get quote</string>
     <string name="shift_checkamount">Check amount and try again</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Ambiguous address.</b><br/>
+        <i>Please select the type above.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Please enter or scan a %1$s address.</b><br/>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Please enter or scan a Monero address.</b>
+    ]]></string>
 </resources>

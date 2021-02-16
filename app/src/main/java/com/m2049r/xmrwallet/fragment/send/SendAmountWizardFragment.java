@@ -42,9 +42,8 @@ public class SendAmountWizardFragment extends SendWizardFragment {
 
     Listener sendListener;
 
-    public SendAmountWizardFragment setSendListener(Listener listener) {
+    public void setSendListener(Listener listener) {
         this.sendListener = listener;
-        return this;
     }
 
     interface Listener {

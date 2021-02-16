@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.util.Helper;
@@ -167,7 +168,13 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
             UserNotes userNotes = new UserNotes(infoItem.notes);
             if (userNotes.xmrtoKey != null) {
-                ivTxType.setVisibility(View.VISIBLE);
+                final Crypto crypto = Crypto.withSymbol(userNotes.xmrtoCurrency);
+                if (crypto != null) {
+                    ivTxType.setImageResource(crypto.getIconEnabledId());
+                    ivTxType.setVisibility(View.VISIBLE);
+                } else {// otherwirse pretend we don't know it's a shift
+                    ivTxType.setVisibility(View.GONE);
+                }
             } else {
                 ivTxType.setVisibility(View.GONE); // gives us more space for the amount
             }

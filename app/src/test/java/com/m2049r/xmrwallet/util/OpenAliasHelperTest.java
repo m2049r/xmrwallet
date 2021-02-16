@@ -39,7 +39,7 @@ public class OpenAliasHelperTest {
     public void asset() {
         Map<String, String> attrs = OpenAliasHelper.parse(MONERUJO);
         assertNotNull(attrs);
-        assertTrue(BarcodeData.OA_XMR_ASSET.equals(attrs.get(OpenAliasHelper.OA1_ASSET)));
+        assertTrue("xmr".equals(attrs.get(OpenAliasHelper.OA1_ASSET)));
     }
 
     @Test

@@ -28,16 +28,16 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
-import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
-import com.m2049r.xmrwallet.widget.SendProgressView;
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftError;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
+import com.m2049r.xmrwallet.widget.SendProgressView;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -85,6 +85,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
         etAmount = view.findViewById(R.id.etAmount);
         etAmount.requestFocus();
+
         return view;
     }
 
@@ -130,20 +131,26 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
     public void onResumeFragment() {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
+        final String btcSymbol = ((TxDataBtc) sendListener.getTxData()).getBtcSymbol();
+        if (!btcSymbol.toLowerCase().equals(ServiceHelper.ASSET))
+            throw new IllegalStateException("Asset Symbol is wrong!");
         final long funds = getTotalFunds();
         if (!sendListener.getActivityCallback().isStreetMode()) {
             tvFunds.setText(getString(R.string.send_available,
                     Wallet.getDisplayAmount(funds)));
+            //TODO
         } else {
             tvFunds.setText(getString(R.string.send_available,
                     getString(R.string.unknown_amount)));
         }
+        etAmount.setAmount("");
         final BarcodeData data = sendListener.popBarcodeData();
         if (data != null) {
             if (data.amount != null) {
                 etAmount.setAmount(data.amount);
             }
         }
+        etAmount.setBaseCurrency(btcSymbol);
         callXmrTo();
     }
 
@@ -166,7 +173,9 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             String min = df.format(minBtc);
             String max = df.format(maxBtc);
             String rate = df.format(price);
-            Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms, min, max, rate));
+            final TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
+            Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms,
+                    min, max, rate, txDataBtc.getBtcSymbol()));
             tvXmrToParms.setText(xmrParmText);
 
             final long funds = getTotalFunds();
@@ -183,7 +192,8 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             }
             tvFunds.setText(getString(R.string.send_available_btc,
                     availXmrString,
-                    availBtcString));
+                    availBtcString,
+                    ((TxDataBtc) sendListener.getTxData()).getBtcSymbol()));
             llXmrToParms.setVisibility(View.VISIBLE);
             evParams.hideProgress();
         });
@@ -246,7 +256,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             synchronized (this) {
                 if (xmrToApi == null) {
                     xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
-                            Helper.getXmrToBaseUrl());
+                            ServiceHelper.getXmrToBaseUrl());
                 }
             }
         }

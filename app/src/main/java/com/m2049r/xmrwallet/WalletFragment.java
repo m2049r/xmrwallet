@@ -49,6 +49,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
@@ -240,7 +241,7 @@ public class WalletFragment extends Fragment
     String balanceCurrency = Helper.BASE_CRYPTO;
     double balanceRate = 1.0;
 
-    private final ExchangeApi exchangeApi = Helper.getExchangeApi();
+    private final ExchangeApi exchangeApi = ServiceHelper.getExchangeApi();
 
     void refreshBalance() {
         double unconfirmedXmr = Helper.getDecimalAmount(balance - unlockedBalance).doubleValue();

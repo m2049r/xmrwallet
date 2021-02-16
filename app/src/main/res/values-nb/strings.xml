@@ -35,28 +35,25 @@
     <string name="info_ledger_enabled">Ledger tilgjengelig, trykk for mer info.</string>
 
     <string name="info_xmrto"><![CDATA[
-        <b>Du skrev inn en Bitcoin addresse.</b><br/>
-        <i>Du vil sende XMR og mottakeren vil få BTC gjennom <b>SideShift.ai</b> tjenesten.</i>
+        <b>Du skrev inn en %1$s addresse.</b><br/>
+        <i>Du vil sende XMR og mottakeren vil få %1$s gjennom <b>SideShift.ai</b> tjenesten.</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai Ordre</string>
-    <string name="info_send_xmrto_success_btc">%1$s BTC</string>
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Bekreftelse venter</string>
     <string name="info_send_xmrto_unpaid">Betaling venter</string>
     <string name="info_send_xmrto_error">SideShift.ai error (%1$s)</string>
-    <string name="info_send_xmrto_sent">BTC sendt!</string>
+    <string name="info_send_xmrto_sent">%1$s sendt!</string>
     <string name="info_send_xmrto_query">Spør &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Du kan sende %1$s &#8212; %2$s BTC</b>.<br/>
-        <i><b>SideShift.ai</b> gir deg en vekslingskurs på <b>%3$s BTC</b> <u>akkurat nå</u></i>.
-    ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>Mengder opp til <b>%1$s BTC</b> vil bli sendt <u>umiddelbart</u>!</i>
+        <b>Du kan sende %1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><b>SideShift.ai</b> gir deg en vekslingskurs på <b>%3$s %4$s/XMR</b> <u>akkurat nå</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Saldo: %2$s BTC (%1$s XMR)</string>
+    <string name="send_available_btc">Saldo: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Betalings ID integrert</string>
     <string name="info_prepare_tx">Forbereder din transaksjon</string>
@@ -74,13 +71,13 @@
     <string name="text_noretry_monero">Nå sitter vi fast her!</string>
     <string name="text_noretry">Ops, det ser ikke ut til at SideShift.ai er tilgjengelig for øyeblikket!</string>
 
-    <string name="text_send_btc_amount">%1$s BTC = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s BTC/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">Besøk SideShift.ai for støtte og sporing</string>
     <string name="label_send_btc_xmrto_key_lb">Hemmelig nøkkel\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai Hemmelig nøkkel</string>
-    <string name="label_send_btc_address">BTC destinasjonsadresse</string>
+    <string name="label_send_btc_address">%1$s destinasjonsadresse</string>
     <string name="label_send_btc_amount">Mengde</string>
 
     <string name="label_send_txid">Transaksjons-ID</string>
@@ -245,11 +242,9 @@
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX-nøkkel</string>
     <string name="tx_destination">Destinasjon</string>
-    <string name="tx_destination_btc">Destinasjon\n(BTC)</string>
     <string name="tx_paymentId">Betalings-ID</string>
     <string name="tx_blockheight">Blokk</string>
     <string name="tx_amount">Mengde</string>
-    <string name="tx_amount_btc">Mengde\n(BTC)</string>
     <string name="tx_fee">Avgift</string>
     <string name="tx_transfers">Overføringer</string>
     <string name="tx_notes">Notater</string>
@@ -356,11 +351,6 @@
 
     <string name="send_address_hint">Receiver</string>
 
-    <string name="xmrto_error_001">SideShift.ai offline - try again later</string>
-    <string name="xmrto_error_004">BTC amount out of bounds</string>
-    <string name="xmrto_error_010">Invalid or outdated Payment URL</string>
-    <string name="xmrto_error_012">Too many requests</string>
-
     <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Convert Ledger Seed</string>
@@ -383,8 +373,8 @@
     <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Bitcoin</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a Bitcoin address and you\'ll be sending BTC by spending XMR.</string>
+    <string name="onboarding_xmrto_title">Send Crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -408,4 +398,18 @@
 
     <string name="shift_noquote">Cannot get quote</string>
     <string name="shift_checkamount">Check amount and try again</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Ambiguous address.</b><br/>
+        <i>Please select the type above.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Please enter or scan a %1$s address.</b><br/>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Please enter or scan a Monero address.</b>
+    ]]></string>
 </resources>

@@ -28,6 +28,7 @@ public class UserNotes {
     public String xmrtoTag = null;
     public String xmrtoKey = null;
     public String xmrtoAmount = null; // could be a double - but we are not doing any calculations
+    public String xmrtoCurrency = null;
     public String xmrtoDestination = null;
 
     public UserNotes(final String txNotes) {
@@ -35,14 +36,15 @@ public class UserNotes {
             return;
         }
         this.txNotes = txNotes;
-        Pattern p = Pattern.compile("^\\{([a-z]+)-(\\w{6,}),([0-9.]*)BTC,(\\w*)\\} ?(.*)");
+        Pattern p = Pattern.compile("^\\{([a-z]+)-(\\w{6,}),([0-9.]*)([A-Z]+),(\\w*)\\} ?(.*)");
         Matcher m = p.matcher(txNotes);
         if (m.find()) {
             xmrtoTag = m.group(1);
             xmrtoKey = m.group(2);
             xmrtoAmount = m.group(3);
-            xmrtoDestination = m.group(4);
-            note = m.group(5);
+            xmrtoCurrency = m.group(4);
+            xmrtoDestination = m.group(5);
+            note = m.group(6);
         } else {
             note = txNotes;
         }
@@ -62,6 +64,7 @@ public class UserNotes {
             xmrtoTag = order.TAG;
             xmrtoKey = order.getOrderId();
             xmrtoAmount = Helper.getDisplayAmount(order.getBtcAmount());
+            xmrtoCurrency = order.getBtcCurrency();
             xmrtoDestination = order.getBtcAddress();
         } else {
             xmrtoTag = null;
@@ -83,7 +86,8 @@ public class UserNotes {
             sb.append(xmrtoKey);
             sb.append(",");
             sb.append(xmrtoAmount);
-            sb.append("BTC,");
+            sb.append(xmrtoCurrency);
+            sb.append(",");
             sb.append(xmrtoDestination);
             sb.append("}");
             if ((note != null) && (!note.isEmpty()))

@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -92,8 +93,6 @@ public class SendFragment extends Fragment
         void setOnUriScannedListener(OnUriScannedListener onUriScannedListener);
     }
 
-    private EditText etDummy;
-
     private View llNavBar;
     private DotBar dotBar;
     private Button bPrev;
@@ -101,7 +100,7 @@ public class SendFragment extends Fragment
 
     private Button bDone;
 
-    static private int MAX_FALLBACK = Integer.MAX_VALUE;
+    static private final int MAX_FALLBACK = Integer.MAX_VALUE;
 
     public static SendFragment newInstance(String uri) {
         SendFragment f = new SendFragment();
@@ -166,28 +165,18 @@ public class SendFragment extends Fragment
             }
         });
 
-        bPrev.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                spendViewPager.previous();
-            }
-        });
+        bPrev.setOnClickListener(v -> spendViewPager.previous());
 
-        bNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                spendViewPager.next();
-            }
-        });
+        bNext.setOnClickListener(v -> spendViewPager.next());
 
-        bDone.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Timber.d("bDone.onClick");
-                activityCallback.onFragmentDone();
-            }
+        bDone.setOnClickListener(v -> {
+            Timber.d("bDone.onClick");
+            activityCallback.onFragmentDone();
         });
 
         updatePosition(0);
 
-        etDummy = view.findViewById(R.id.etDummy);
+        final EditText etDummy = view.findViewById(R.id.etDummy);
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etDummy.requestFocus();
         Helper.hideKeyboard(getActivity());
@@ -197,7 +186,7 @@ public class SendFragment extends Fragment
             String uri = args.getString(WalletActivity.REQUEST_URI);
             Timber.d("URI: %s", uri);
             if (uri != null) {
-                barcodeData = BarcodeData.fromQrCode(uri);
+                barcodeData = BarcodeData.fromString(uri);
                 Timber.d("barcodeData: %s", barcodeData != null ? barcodeData.toString() : "null");
             }
         }
@@ -236,7 +225,7 @@ public class SendFragment extends Fragment
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         Timber.d("onAttach %s", context);
         super.onAttach(context);
         if (context instanceof Listener) {
@@ -300,12 +289,7 @@ public class SendFragment extends Fragment
                 default:
                     throw new IllegalArgumentException("Mode " + String.valueOf(aMode) + " unknown!");
             }
-            getView().post(new Runnable() {
-                @Override
-                public void run() {
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            });
+            getView().post(() -> pagerAdapter.notifyDataSetChanged());
             Timber.d("New Mode = %s", mode.toString());
         }
     }
@@ -338,8 +322,9 @@ public class SendFragment extends Fragment
             return numPages;
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
             Timber.d("instantiateItem %d", position);
             SendWizardFragment fragment = (SendWizardFragment) super.instantiateItem(container, position);
             myFragments.put(position, new WeakReference<>(fragment));
@@ -347,20 +332,21 @@ public class SendFragment extends Fragment
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             Timber.d("destroyItem %d", position);
             myFragments.remove(position);
             super.destroyItem(container, position, object);
         }
 
         public SendWizardFragment getFragment(int position) {
-            WeakReference ref = myFragments.get(position);
+            WeakReference<SendWizardFragment> ref = myFragments.get(position);
             if (ref != null)
                 return myFragments.get(position).get();
             else
                 return null;
         }
 
+        @NonNull
         @Override
         public SendWizardFragment getItem(int position) {
             Timber.d("getItem(%d) CREATE", position);
@@ -415,7 +401,7 @@ public class SendFragment extends Fragment
         }
 
         @Override
-        public int getItemPosition(Object object) {
+        public int getItemPosition(@NonNull Object object) {
             Timber.d("getItemPosition %s", String.valueOf(object));
             if (object instanceof SendAddressWizardFragment) {
                 // keep these pages
