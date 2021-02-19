@@ -16,11 +16,12 @@
 
 package com.m2049r.xmrwallet.service.shift.sideshift;
 
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import net.jodah.concurrentunit.Waiter;
 
@@ -61,11 +62,13 @@ public class SideShiftApiCreateOrderTest {
         MockitoAnnotations.initMocks(this);
 
         xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
+        ServiceHelper.ASSET="btc"; // all tests run with BTC
     }
 
     @After
     public void tearDown() throws Exception {
         mockWebServer.shutdown();
+        ServiceHelper.ASSET = null;
     }
 
     @Test
@@ -110,9 +113,8 @@ public class SideShiftApiCreateOrderTest {
         final String quoteId = "01234567-89ab-cdef-0123-456789abcdef";
         final String orderId = "09090909090909090911";
         MockResponse jsonMockResponse = new MockResponse().setBody(
-                createMockCreateOrderResponse(btcAmount,btcAddress, xmrAmount, quoteId, orderId));
+                createMockCreateOrderResponse(btcAmount, btcAddress, xmrAmount, quoteId, orderId));
         mockWebServer.enqueue(jsonMockResponse);
-
         xmrToApi.createOrder(quoteId, btcAddress, new ShiftCallback<CreateOrder>() {
             @Override
             public void onSuccess(final CreateOrder order) {

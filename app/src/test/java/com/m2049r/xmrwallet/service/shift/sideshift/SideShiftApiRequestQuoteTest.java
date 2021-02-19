@@ -22,6 +22,7 @@ import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import net.jodah.concurrentunit.Waiter;
 
@@ -62,11 +63,13 @@ public class SideShiftApiRequestQuoteTest {
         MockitoAnnotations.initMocks(this);
 
         xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
+        ServiceHelper.ASSET="btc"; // all tests run with BTC
     }
 
     @After
     public void tearDown() throws Exception {
         mockWebServer.shutdown();
+        ServiceHelper.ASSET = null;
     }
 
     @Test
