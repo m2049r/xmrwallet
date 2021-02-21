@@ -358,57 +358,57 @@
     <string name="bad_ledger_seed">無效的 Ledger 種子碼！</string>
     <string name="prompt_ledger_seed_warn">在此輸入 Ledger 種子碼可能存在嚴重的安全風險！</string>
 
-    <string name="label_restoreheight">Restore Height</string>
+    <string name="label_restoreheight">回復高度</string>
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">在 %1$s 上啟動 Monero APP</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">重新掃描！</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_agree">我知道了！</string>
+    <string name="onboarding_button_next">下一步</string>
+    <string name="onboarding_button_ready">我準備好了！</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">歡迎使用 Monerujo！</string>
+    <string name="onboarding_welcome_information">這個 APP 可以讓你建立和使用 Monero 錢包。你可以在此儲存你心愛的 moneroj。</string>
+    <string name="onboarding_seed_title">保管好你的種子碼</string>
+    <string name="onboarding_seed_information">種子碼提供任何人完整的權限。如果你遺失了種子碼，我們無法幫你找回它，且你將失去你心愛的 moneroj。</string>
+    <string name="onboarding_xmrto_title">發送加密貨幣</string>
+    <string name="onboarding_xmrto_information">Monerujo 內建 SideShift.ai 服務。只要貼上或掃描 BTC、LTC、ETH、DASH 或 DOGE 地址，你就可以直接使用 XMR 來發送這些加密貨幣。</string>
+    <string name="onboarding_nodes_title">節點選擇，由你作主</string>
+    <string name="onboarding_nodes_information">你必須透過節點連線至 Monero 交易網路。選擇使用公共節點或是很密碼龐克式地使用你自己的節點。</string>
+    <string name="onboarding_fpsend_title">使用指紋辨識發送交易</string>
+    <string name="onboarding_fpsend_information">你可以啟用指紋辨識來讓發送交易更輕鬆。若要使用密碼，只需停用指紋辨識功能即可。</string>
 
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">深色模式</string>
     <string-array name="daynight_themes">
-        <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>自動</item>
+        <item>白天</item>
+        <item>黑夜</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">這裡還沒有東西\n請建立或是回復一個錢包</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">恢復為預設節點</string>
+    <string name="toast_default_nodes">已經正在恢復</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">最後區塊： %1$d 秒鐘前</string>
+    <string name="node_updated_mins">最後區塊： %1$d 分鐘前</string>
+    <string name="node_updated_hours">最後區塊： %1$d 小時前</string>
+    <string name="node_updated_days">最後區塊： %1$d 天前</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">無法取得報價</string>
+    <string name="shift_checkamount">確認金額後再試一次</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>有岐義的地址。</b><br/>
+        <i>請從上面選擇類型。</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <b>請輸入或是掃描 %1$s 的地址。</b><br/>
+        <i>你&apos;將會發送 XMR 而接受者將會收到由 <b>SideShift.ai</b> 服務兌換的 %2$s 。</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>請輸入或掃描一個 Monero 地址。</b>
     ]]></string>
 </resources>
