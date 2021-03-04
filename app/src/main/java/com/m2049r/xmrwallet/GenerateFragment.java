@@ -50,9 +50,8 @@ import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 import com.m2049r.xmrwallet.util.ledger.Monero;
+import com.m2049r.xmrwallet.widget.PasswordEntryView;
 import com.m2049r.xmrwallet.widget.Toolbar;
-import com.nulabinc.zxcvbn.Strength;
-import com.nulabinc.zxcvbn.Zxcvbn;
 
 import java.io.File;
 import java.text.ParseException;
@@ -70,7 +69,7 @@ public class GenerateFragment extends Fragment {
     static final String TYPE_VIEWONLY = "view";
 
     private TextInputLayout etWalletName;
-    private TextInputLayout etWalletPassword;
+    private PasswordEntryView etWalletPassword;
     private LinearLayout llFingerprintAuth;
     private TextInputLayout etWalletAddress;
     private TextInputLayout etWalletMnemonic;
@@ -130,21 +129,6 @@ public class GenerateFragment extends Fragment {
             }
         });
         clearErrorOnTextEntry(etWalletName);
-
-        etWalletPassword.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                checkPassword();
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
 
         etWalletMnemonic.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -354,43 +338,8 @@ public class GenerateFragment extends Fragment {
         });
 
         etWalletName.requestFocus();
-        initZxcvbn();
 
         return view;
-    }
-
-    Zxcvbn zxcvbn = new Zxcvbn();
-
-    // initialize zxcvbn engine in background thread
-    private void initZxcvbn() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                zxcvbn.measure("");
-            }
-        }).start();
-    }
-
-    private void checkPassword() {
-        String password = etWalletPassword.getEditText().getText().toString();
-        if (!password.isEmpty()) {
-            Strength strength = zxcvbn.measure(password);
-            int msg;
-            double guessesLog10 = strength.getGuessesLog10();
-            if (guessesLog10 < 10)
-                msg = R.string.password_weak;
-            else if (guessesLog10 < 11)
-                msg = R.string.password_fair;
-            else if (guessesLog10 < 12)
-                msg = R.string.password_good;
-            else if (guessesLog10 < 13)
-                msg = R.string.password_strong;
-            else
-                msg = R.string.password_very_strong;
-            etWalletPassword.setError(getResources().getString(msg));
-        } else {
-            etWalletPassword.setError(null);
-        }
     }
 
     private boolean checkName() {
@@ -654,24 +603,7 @@ public class GenerateFragment extends Fragment {
         final TextInputLayout etSeed = promptsView.findViewById(R.id.etSeed);
         final TextInputLayout etPassphrase = promptsView.findViewById(R.id.etPassphrase);
 
-        etSeed.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (etSeed.getError() != null) {
-                    etSeed.setError(null);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-            }
-        });
+        clearErrorOnTextEntry(etSeed);
 
         alertDialogBuilder
                 .setCancelable(false)
