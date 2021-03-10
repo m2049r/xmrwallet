@@ -230,5 +230,5 @@
         <p>詳細的付款資訊將自動填入，請像其他交易一樣，仔細地檢查所填入的資料是否正確。</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">我知道了！</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
