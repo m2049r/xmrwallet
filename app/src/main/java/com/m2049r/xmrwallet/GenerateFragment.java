@@ -429,7 +429,7 @@ public class GenerateFragment extends Fragment {
     }
 
     private long getHeight() {
-        long height = 0;
+        long height = -1;
 
         String restoreHeight = etWalletRestoreHeight.getEditText().getText().toString().trim();
         if (restoreHeight.isEmpty()) return -1;
@@ -440,7 +440,7 @@ public class GenerateFragment extends Fragment {
             height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
         } catch (ParseException ex) {
         }
-        if ((height <= 0) && (restoreHeight.length() == 8))
+        if ((height < 0) && (restoreHeight.length() == 8))
             try {
                 // is it a date without dashes?
                 SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
@@ -448,7 +448,7 @@ public class GenerateFragment extends Fragment {
                 height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
             } catch (ParseException ex) {
             }
-        if (height <= 0)
+        if (height < 0)
             try {
                 // or is it a height?
                 height = Long.parseLong(restoreHeight);
