@@ -56,6 +56,7 @@ import com.m2049r.xmrwallet.util.FingerprintHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.widget.PasswordEntryView;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
@@ -473,7 +474,7 @@ public class GenerateReviewFragment extends Fragment {
         AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(getActivity());
         alertDialogBuilder.setView(promptsView);
 
-        final TextInputLayout etPasswordA = promptsView.findViewById(R.id.etWalletPasswordA);
+        final PasswordEntryView etPasswordA = promptsView.findViewById(R.id.etWalletPasswordA);
         etPasswordA.setHint(getString(R.string.prompt_changepw, walletName));
 
         final TextInputLayout etPasswordB = promptsView.findViewById(R.id.etWalletPasswordB);
@@ -509,9 +510,6 @@ public class GenerateReviewFragment extends Fragment {
         etPasswordA.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if (etPasswordA.getError() != null) {
-                    etPasswordA.setError(null);
-                }
                 if (etPasswordB.getError() != null) {
                     etPasswordB.setError(null);
                 }
@@ -531,9 +529,6 @@ public class GenerateReviewFragment extends Fragment {
         etPasswordB.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                if (etPasswordA.getError() != null) {
-                    etPasswordA.setError(null);
-                }
                 if (etPasswordB.getError() != null) {
                     etPasswordB.setError(null);
                 }
@@ -564,29 +559,20 @@ public class GenerateReviewFragment extends Fragment {
                         });
 
         openDialog = alertDialogBuilder.create();
-        openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(final DialogInterface dialog) {
-                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String newPasswordA = etPasswordA.getEditText().getText().toString();
-                        String newPasswordB = etPasswordB.getEditText().getText().toString();
-                        // disallow empty passwords
-                        if (newPasswordA.isEmpty()) {
-                            etPasswordA.setError(getString(R.string.generate_empty_passwordB));
-                        } else if (!newPasswordA.equals(newPasswordB)) {
-                            etPasswordB.setError(getString(R.string.generate_bad_passwordB));
-                        } else {
-                            new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
-                            Helper.hideKeyboardAlways(getActivity());
-                            openDialog.dismiss();
-                            openDialog = null;
-                        }
-                    }
-                });
-            }
+        openDialog.setOnShowListener(dialog -> {
+            Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+            button.setOnClickListener(view -> {
+                String newPasswordA = etPasswordA.getEditText().getText().toString();
+                String newPasswordB = etPasswordB.getEditText().getText().toString();
+                if (!newPasswordA.equals(newPasswordB)) {
+                    etPasswordB.setError(getString(R.string.generate_bad_passwordB));
+                } else {
+                    new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
+                    Helper.hideKeyboardAlways(getActivity());
+                    openDialog.dismiss();
+                    openDialog = null;
+                }
+            });
         });
 
         // accept keyboard "ok"
@@ -597,9 +583,7 @@ public class GenerateReviewFragment extends Fragment {
                     String newPasswordA = etPasswordA.getEditText().getText().toString();
                     String newPasswordB = etPasswordB.getEditText().getText().toString();
                     // disallow empty passwords
-                    if (newPasswordA.isEmpty()) {
-                        etPasswordA.setError(getString(R.string.generate_empty_passwordB));
-                    } else if (!newPasswordA.equals(newPasswordB)) {
+                    if (!newPasswordA.equals(newPasswordB)) {
                         etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                     } else {
                         new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));

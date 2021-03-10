@@ -29,13 +29,17 @@
                 android:textAlignment="textStart" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.m2049r.xmrwallet.widget.PasswordEntryView
             android:id="@+id/etWalletPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/header_top_first"
-            app:errorEnabled="true">
+            app:boxStrokeErrorColor="@color/monerujoPrimary"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_smiley_gunther_filled"
+            app:errorIconTint="@color/monerujoPrimary"
+            app:errorTextColor="@color/monerujoPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/MoneroEdit"
@@ -46,7 +50,7 @@
                 android:inputType="textVisiblePassword"
                 android:textAlignment="textStart" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.m2049r.xmrwallet.widget.PasswordEntryView>
 
         <LinearLayout
             android:id="@+id/llFingerprintAuth"

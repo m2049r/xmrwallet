@@ -59,9 +59,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
-import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
-import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,7 +75,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import okhttp3.HttpUrl;
 import timber.log.Timber;
 
 public class Helper {
