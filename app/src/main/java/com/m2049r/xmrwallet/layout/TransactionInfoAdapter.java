@@ -90,8 +90,11 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         @Override
         public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).isPending == mNewList.get(newItemPosition).isPending &&
-                    mOldList.get(oldItemPosition).isFailed == mNewList.get(newItemPosition).isFailed ;
+            final TransactionInfo oldItem = mOldList.get(oldItemPosition);
+            final TransactionInfo newItem = mNewList.get(newItemPosition);
+            return oldItem.isPending == newItem.isPending
+                    && oldItem.isFailed == newItem.isFailed
+                    && oldItem.direction == newItem.direction;
         }
     }
 
