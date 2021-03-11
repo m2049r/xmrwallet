@@ -258,7 +258,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         walletList.addAll(walletInfos);
         filterList();
         adapter.setInfos(displayedList);
-        adapter.notifyDataSetChanged();
 
         // deal with Gunther & FAB animation
         if (displayedList.isEmpty()) {

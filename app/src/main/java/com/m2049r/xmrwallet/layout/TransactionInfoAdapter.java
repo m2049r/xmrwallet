@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
@@ -73,6 +74,27 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         DATETIME_FORMATTER.setTimeZone(tz);
     }
 
+
+    private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
+
+        public TransactionInfoDiff(List<TransactionInfo> oldList, List<TransactionInfo> newList) {
+            super(oldList, newList);
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).hash.equals(
+                    mNewList.get(newItemPosition).hash
+            );
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldList.get(oldItemPosition).isPending == mNewList.get(newItemPosition).isPending &&
+                    mOldList.get(oldItemPosition).isFailed == mNewList.get(newItemPosition).isFailed ;
+        }
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -90,23 +112,26 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         return infoItems.size();
     }
 
-    public void setInfos(List<TransactionInfo> data) {
-        // TODO do stuff with data so we can really recycle elements (i.e. add only new tx)
-        // as the TransactionInfo items are always recreated, we cannot recycle
-        infoItems.clear();
-        if (data != null) {
-            Timber.d("setInfos %s", data.size());
-            infoItems.addAll(data);
-            Collections.sort(infoItems);
-        } else {
+    public void setInfos(List<TransactionInfo> newItems) {
+        if(newItems == null) {
+            newItems = new ArrayList<>();
             Timber.d("setInfos null");
+        } else {
+            Timber.d("setInfos %s", newItems.size());
         }
-        notifyDataSetChanged();
+        Collections.sort(newItems);
+        final DiffCallback<TransactionInfo> diffCallback = new TransactionInfoAdapter.TransactionInfoDiff(infoItems,newItems);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+        infoItems.clear();
+        infoItems.addAll(newItems);
+        diffResult.dispatchUpdatesTo(this);
     }
 
     public void removeItem(int position) {
-        infoItems.remove(position);
-        notifyItemRemoved(position);
+        List<TransactionInfo> newItems = new ArrayList<>(infoItems);
+        if (newItems.size()>position)
+            newItems.remove(position);
+        setInfos(newItems); // in case the nodeinfo has changed
     }
 
     public TransactionInfo getItem(int position) {

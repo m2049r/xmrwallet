@@ -154,7 +154,6 @@ public class WalletFragment extends Fragment
                                     dismissedTransactions.add(adapter.getItem(position).hash);
                                     adapter.removeItem(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
 
                             @Override
@@ -163,7 +162,6 @@ public class WalletFragment extends Fragment
                                     dismissedTransactions.add(adapter.getItem(position).hash);
                                     adapter.removeItem(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
                         });
 
@@ -352,7 +350,6 @@ public class WalletFragment extends Fragment
                     list.add(info);
             }
             adapter.setInfos(list);
-            adapter.notifyDataSetChanged();
         }
         updateStatus(wallet);
     }
