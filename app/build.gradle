@@ -7,8 +7,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 708
-        versionName "1.17.8 'Druk'"
+        versionCode 709
+        versionName "1.17.9 'Druk'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
