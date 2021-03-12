@@ -227,8 +227,7 @@ public class NodeInfo extends Node {
                 if (response.isSuccessful()) {
                     ResponseBody respBody = response.body(); // closed through Response object
                     if ((respBody != null) && (respBody.contentLength() < 2000)) { // sanity check
-                        final JSONObject json = new JSONObject(
-                                respBody.string());
+                        final JSONObject json = new JSONObject(respBody.string());
                         String rpcVersion = json.getString("jsonrpc");
                         if (!RPC_VERSION.equals(rpcVersion))
                             return false;

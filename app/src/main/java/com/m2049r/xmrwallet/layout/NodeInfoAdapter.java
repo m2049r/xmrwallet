@@ -77,8 +77,14 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
         @Override
         public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).toNodeString().equals(mNewList.get(newItemPosition).toNodeString())
-                    && (mOldList.get(oldItemPosition).isSelected() == mNewList.get(newItemPosition).isSelected());
+            final NodeInfo oldItem = mOldList.get(oldItemPosition);
+            final NodeInfo newItem = mNewList.get(newItemPosition);
+            return (oldItem.getTimestamp() == newItem.getTimestamp())
+                    && (oldItem.isTested() == newItem.isTested())
+                    && (oldItem.isValid() == newItem.isValid())
+                    && (oldItem.getResponseTime() == newItem.getResponseTime())
+                    && (oldItem.isSelected() == newItem.isSelected())
+                    && (oldItem.getName().equals(newItem.getName()));
         }
     }
 
