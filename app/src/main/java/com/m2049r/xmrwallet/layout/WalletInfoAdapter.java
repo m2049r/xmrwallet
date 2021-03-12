@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,6 +65,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         TimeZone tz = cal.getTimeZone(); //get the local time zone.
         DATETIME_FORMATTER.setTimeZone(tz);
     }
+
     private static class WalletInfoDiff extends DiffCallback<WalletManager.WalletInfo> {
 
         public WalletInfoDiff(List<WalletManager.WalletInfo> oldList, List<WalletManager.WalletInfo> newList) {
@@ -72,9 +74,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).name.equals(
-                    mNewList.get(newItemPosition).name
-            );
+            return mOldList.get(oldItemPosition).name.equals(mNewList.get(newItemPosition).name);
         }
 
         @Override
@@ -83,6 +83,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         }
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -105,20 +106,19 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
     }
 
     public void setInfos(List<WalletManager.WalletInfo> newItems) {
-        if(newItems == null) {
+        if (newItems == null) {
             newItems = new ArrayList<>();
             Timber.d("setInfos null");
         } else {
             Timber.d("setInfos %s", newItems.size());
         }
         Collections.sort(newItems);
-        final DiffCallback<WalletManager.WalletInfo> diffCallback = new WalletInfoAdapter.WalletInfoDiff(infoItems,newItems);
+        final DiffCallback<WalletManager.WalletInfo> diffCallback = new WalletInfoAdapter.WalletInfoDiff(infoItems, newItems);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
         infoItems.clear();
         infoItems.addAll(newItems);
         diffResult.dispatchUpdatesTo(this);
     }
-
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView tvName;
@@ -132,35 +132,24 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
             tvName = itemView.findViewById(R.id.tvName);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             ibOptions = itemView.findViewById(R.id.ibOptions);
-            ibOptions.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (popupOpen) return;
-                    //creating a popup menu
-                    PopupMenu popup = new PopupMenu(context, ibOptions);
-                    //inflating menu from xml resource
-                    popup.inflate(R.menu.list_context_menu);
-                    popupOpen = true;
-                    //adding click listener
-                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            if (listener != null) {
-                                return listener.onContextInteraction(item, infoItem);
-                            }
-                            return false;
-                        }
-                    });
-                    //displaying the popup
-                    popup.show();
-                    popup.setOnDismissListener(new PopupMenu.OnDismissListener() {
-                        @Override
-                        public void onDismiss(PopupMenu menu) {
-                            popupOpen = false;
-                        }
-                    });
+            ibOptions.setOnClickListener(view -> {
+                if (popupOpen) return;
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(context, ibOptions);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.list_context_menu);
+                popupOpen = true;
+                //adding click listener
+                popup.setOnMenuItemClickListener(item -> {
+                    if (listener != null) {
+                        return listener.onContextInteraction(item, infoItem);
+                    }
+                    return false;
+                });
+                //displaying the popup
+                popup.show();
+                popup.setOnDismissListener(menu -> popupOpen = false);
 
-                }
             });
             itemView.setOnClickListener(this);
         }

@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,10 +48,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    private int outboundColour;
-    private int inboundColour;
-    private int pendingColour;
-    private int failedColour;
+    private final int outboundColour;
+    private final int inboundColour;
+    private final int pendingColour;
+    private final int failedColour;
 
     public interface OnInteractionListener {
         void onInteraction(View view, TransactionInfo item);
@@ -59,7 +60,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     private final List<TransactionInfo> infoItems;
     private final OnInteractionListener listener;
 
-    private Context context;
+    private final Context context;
 
     public TransactionInfoAdapter(Context context, OnInteractionListener listener) {
         this.context = context;
@@ -74,7 +75,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         DATETIME_FORMATTER.setTimeZone(tz);
     }
 
-
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
 
         public TransactionInfoDiff(List<TransactionInfo> oldList, List<TransactionInfo> newList) {
@@ -83,22 +83,23 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).hash.equals(
-                    mNewList.get(newItemPosition).hash
-            );
+            return mOldList.get(oldItemPosition).hash.equals(mNewList.get(newItemPosition).hash);
         }
 
         @Override
         public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).isPending == mNewList.get(newItemPosition).isPending &&
-                    mOldList.get(oldItemPosition).isFailed == mNewList.get(newItemPosition).isFailed ;
+            final TransactionInfo oldItem = mOldList.get(oldItemPosition);
+            final TransactionInfo newItem = mNewList.get(newItemPosition);
+            return (oldItem.direction == newItem.direction)
+                    && (oldItem.isPending == newItem.isPending)
+                    && (oldItem.isFailed == newItem.isFailed);
         }
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_transaction, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_transaction, parent, false);
         return new ViewHolder(view);
     }
 
@@ -113,14 +114,14 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     public void setInfos(List<TransactionInfo> newItems) {
-        if(newItems == null) {
+        if (newItems == null) {
             newItems = new ArrayList<>();
             Timber.d("setInfos null");
         } else {
             Timber.d("setInfos %s", newItems.size());
         }
         Collections.sort(newItems);
-        final DiffCallback<TransactionInfo> diffCallback = new TransactionInfoAdapter.TransactionInfoDiff(infoItems,newItems);
+        final DiffCallback<TransactionInfo> diffCallback = new TransactionInfoAdapter.TransactionInfoDiff(infoItems, newItems);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
         infoItems.clear();
         infoItems.addAll(newItems);
@@ -129,7 +130,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     public void removeItem(int position) {
         List<TransactionInfo> newItems = new ArrayList<>(infoItems);
-        if (newItems.size()>position)
+        if (newItems.size() > position)
             newItems.remove(position);
         setInfos(newItems); // in case the nodeinfo has changed
     }

@@ -23,6 +23,7 @@ public abstract class DiffCallback<T> extends DiffUtil.Callback {
     public int getNewListSize() {
         return mNewList.size();
     }
+
     public abstract boolean areItemsTheSame(int oldItemPosition, int newItemPosition);
 
     public abstract boolean areContentsTheSame(int oldItemPosition, int newItemPosition);

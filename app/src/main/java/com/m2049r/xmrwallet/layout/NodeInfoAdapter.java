@@ -54,7 +54,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
     private final List<NodeInfo> nodeItems = new ArrayList<>();
     private final OnInteractionListener listener;
 
-    private Context context;
+    private final Context context;
 
     public NodeInfoAdapter(Context context, OnInteractionListener listener) {
         this.context = context;
@@ -72,23 +72,20 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).equals(
-                    mNewList.get(newItemPosition)
-            );
+            return mOldList.get(oldItemPosition).equals(mNewList.get(newItemPosition));
         }
 
         @Override
         public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
             return mOldList.get(oldItemPosition).toNodeString().equals(mNewList.get(newItemPosition).toNodeString())
-                    &&  mOldList.get(oldItemPosition).isSelected() == mNewList.get(newItemPosition).isSelected() ;
+                    && (mOldList.get(oldItemPosition).isSelected() == mNewList.get(newItemPosition).isSelected());
         }
     }
 
     @Override
     public @NonNull
     ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_node, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_node, parent, false);
         return new ViewHolder(view);
     }
 
@@ -111,18 +108,19 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     public void setNodes(Collection<NodeInfo> newItemsCollection) {
         List<NodeInfo> newItems;
-        if(newItemsCollection !=null) {
+        if (newItemsCollection != null) {
             newItems = new ArrayList<>(newItemsCollection);
             Collections.sort(newItems, NodeInfo.BestNodeComparator);
         } else {
             newItems = new ArrayList<>();
         }
-        final NodeInfoAdapter.NodeDiff diffCallback = new NodeInfoAdapter.NodeDiff(nodeItems,newItems);
+        final NodeInfoAdapter.NodeDiff diffCallback = new NodeInfoAdapter.NodeDiff(nodeItems, newItems);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
         nodeItems.clear();
         nodeItems.addAll(newItems);
         diffResult.dispatchUpdatesTo(this);
     }
+
     public void setNodes() {
         setNodes(nodeItems);
     }
