@@ -64,12 +64,14 @@ public class Node {
         return hostAddress.hashCode();
     }
 
-    // Nodes are equal if they are the same host address & are on the same network
+    // Nodes are equal if they are the same host address:port & are on the same network
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Node)) return false;
         final Node anotherNode = (Node) other;
-        return (hostAddress.equals(anotherNode.hostAddress) && (networkType == anotherNode.networkType));
+        return (hostAddress.equals(anotherNode.hostAddress)
+                && (rpcPort == anotherNode.rpcPort)
+                && (networkType == anotherNode.networkType));
     }
 
     static public Node fromString(String nodeString) {
