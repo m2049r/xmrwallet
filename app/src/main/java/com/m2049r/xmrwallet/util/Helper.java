@@ -23,7 +23,6 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -484,7 +483,6 @@ public class Helper {
         }
 
         etPassword.getEditText().addTextChangedListener(new TextWatcher() {
-
             @Override
             public void afterTextChanged(Editable s) {
                 if (etPassword.getError() != null) {
@@ -508,17 +506,16 @@ public class Helper {
                 .setCancelable(false)
                 .setPositiveButton(context.getString(R.string.label_ok), null)
                 .setNegativeButton(context.getString(R.string.label_cancel),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Helper.hideKeyboardAlways((Activity) context);
-                                cancelSignal.cancel();
-                                if (passwordTask != null) {
-                                    passwordTask.cancel(true);
-                                    passwordTask = null;
-                                }
-                                dialog.cancel();
-                                openDialog = null;
+                        (dialog, id) -> {
+                            action.fail(wallet);
+                            Helper.hideKeyboardAlways((Activity) context);
+                            cancelSignal.cancel();
+                            if (passwordTask != null) {
+                                passwordTask.cancel(true);
+                                passwordTask = null;
                             }
+                            dialog.cancel();
+                            openDialog = null;
                         });
         openDialog = alertDialogBuilder.create();
 
@@ -561,45 +558,37 @@ public class Helper {
             };
         }
 
-        openDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                if (fingerprintAuthAllowed && fingerprintAuthCallback != null) {
-                    tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
-                    tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
-                    tvOpenPrompt.setVisibility(View.VISIBLE);
-                    FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
-                } else {
-                    etPassword.requestFocus();
-                }
-                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String pass = etPassword.getEditText().getText().toString();
-                        if (passwordTask == null) {
-                            passwordTask = new PasswordTask(pass, false);
-                            passwordTask.execute();
-                        }
-                    }
-                });
+        openDialog.setOnShowListener(dialog -> {
+            if (fingerprintAuthAllowed && fingerprintAuthCallback != null) {
+                tvOpenPrompt.setCompoundDrawablesRelativeWithIntrinsicBounds(icFingerprint, null, null, null);
+                tvOpenPrompt.setText(context.getText(R.string.prompt_fingerprint_auth));
+                tvOpenPrompt.setVisibility(View.VISIBLE);
+                FingerprintHelper.authenticate(context, cancelSignal, fingerprintAuthCallback);
+            } else {
+                etPassword.requestFocus();
             }
+            Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+            button.setOnClickListener(view -> {
+                String pass = etPassword.getEditText().getText().toString();
+                if (passwordTask == null) {
+                    passwordTask = new PasswordTask(pass, false);
+                    passwordTask.execute();
+                }
+            });
         });
 
         // accept keyboard "ok"
-        etPassword.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    String pass = etPassword.getEditText().getText().toString();
-                    if (passwordTask == null) {
-                        passwordTask = new PasswordTask(pass, false);
-                        passwordTask.execute();
-                    }
-                    return true;
+        etPassword.getEditText().setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                    || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                String pass = etPassword.getEditText().getText().toString();
+                if (passwordTask == null) {
+                    passwordTask = new PasswordTask(pass, false);
+                    passwordTask.execute();
                 }
-                return false;
+                return true;
             }
+            return false;
         });
 
         if (Helper.preventScreenshot()) {
@@ -613,7 +602,7 @@ public class Helper {
     public interface PasswordAction {
         void act(String walletName, String password, boolean fingerprintUsed);
 
-        void fail(String walletName, String password, boolean fingerprintUsed);
+        void fail(String walletName);
     }
 
     static private boolean processPasswordEntry(Context context, String walletName, String pass, boolean fingerprintUsed, PasswordAction action) {
@@ -622,7 +611,7 @@ public class Helper {
             action.act(walletName, walletPassword, fingerprintUsed);
             return true;
         } else {
-            action.fail(walletName, walletPassword, fingerprintUsed);
+            action.fail(walletName);
             return false;
         }
     }

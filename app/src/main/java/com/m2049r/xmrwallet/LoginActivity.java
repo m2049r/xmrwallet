@@ -376,7 +376,7 @@ public class LoginActivity extends BaseActivity
                             }
 
                             @Override
-                            public void fail(String walletName1, String password, boolean fingerprintUsed) {
+                            public void fail(String walletName) {
                             }
                         });
                     } else { // this cannot really happen as we prefilter choices
@@ -412,7 +412,7 @@ public class LoginActivity extends BaseActivity
                 }
 
                 @Override
-                public void fail(String walletName, String password, boolean fingerprintUsed) {
+                public void fail(String walletName) {
                 }
             });
         } else { // this cannot really happen as we prefilter choices
@@ -1400,7 +1400,7 @@ public class LoginActivity extends BaseActivity
                         }
 
                         @Override
-                        public void fail(String walletName, String password, boolean fingerprintUsed) {
+                        public void fail(String walletName) {
                         }
 
                     });

@@ -227,7 +227,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
                 send();
             }
 
-            public void fail(String walletName, String password, boolean fingerprintUsed) {
+            public void fail(String walletName) {
                 getActivity().runOnUiThread(() -> {
                     bSend.setEnabled(true); // allow to try again
                 });

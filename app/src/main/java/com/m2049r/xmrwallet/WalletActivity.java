@@ -337,7 +337,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             }
 
             @Override
-            public void fail(String walletName, String password, boolean fingerprintUsed) {
+            public void fail(String walletName) {
             }
         });
     }
@@ -854,7 +854,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                             }
 
                             @Override
-                            public void fail(String walletName, String password, boolean fingerprintUsed) {
+                            public void fail(String walletName) {
                             }
                         });
 
