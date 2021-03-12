@@ -332,7 +332,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                 send();
             }
 
-            public void fail(String walletName, String password, boolean fingerprintUsed) {
+            public void fail(String walletName) {
                 getActivity().runOnUiThread(() -> {
                     bSend.setEnabled(sendCountdown > 0); // allow to try again
                 });
