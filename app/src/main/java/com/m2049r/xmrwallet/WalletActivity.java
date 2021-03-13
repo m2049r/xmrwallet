@@ -60,7 +60,7 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.ColorHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -424,10 +424,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 toolbar.setBackgroundResource(R.drawable.backgound_toolbar_mainnet);
                 break;
             case NetworkType_Testnet:
-                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             case NetworkType_Stagenet:
-                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
@@ -548,10 +548,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onTxDetailsRequest(TransactionInfo info) {
+    public void onTxDetailsRequest(View view, TransactionInfo info) {
         Bundle args = new Bundle();
         args.putParcelable(TxFragment.ARG_INFO, info);
-        replaceFragment(new TxFragment(), null, args);
+        replaceFragmentWithTransition(view, new TxFragment(), null, args);
     }
 
     @Override
@@ -826,6 +826,17 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             getSupportFragmentManager().popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
+    }
+
+    void replaceFragmentWithTransition(View view, Fragment newFragment, String stackName, Bundle extras) {
+        if (extras != null) {
+            newFragment.setArguments(extras);
+        }
+        getSupportFragmentManager().beginTransaction()
+                .addSharedElement(view, getString(R.string.tx_details_transition_name))
+                .replace(R.id.fragment_container, newFragment)
+                .addToBackStack(stackName)
+                .commit();
     }
 
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {

@@ -656,8 +656,8 @@ public class Helper {
         }
         view.setText(msg);
         if (hours >= STALE_NODE_HOURS)
-            view.setTextColor(ColorHelper.getThemedColor(view.getContext(), R.attr.colorError));
+            view.setTextColor(ThemeHelper.getThemedColor(view.getContext(), R.attr.colorError));
         else
-            view.setTextColor(ColorHelper.getThemedColor(view.getContext(), android.R.attr.textColorPrimary));
+            view.setTextColor(ThemeHelper.getThemedColor(view.getContext(), android.R.attr.textColorPrimary));
     }
 }

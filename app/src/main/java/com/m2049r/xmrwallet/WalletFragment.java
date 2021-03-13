@@ -42,6 +42,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
+import com.google.android.material.transition.MaterialElevationScale;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -332,7 +333,13 @@ public class WalletFragment extends Fragment
     // Callbacks from TransactionInfoAdapter
     @Override
     public void onInteraction(final View view, final TransactionInfo infoItem) {
-        activityCallback.onTxDetailsRequest(infoItem);
+        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
+        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setExitTransition(exitTransition);
+        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
+        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setReenterTransition(reenterTransition);
+        activityCallback.onTxDetailsRequest(view, infoItem);
     }
 
     // called from activity
@@ -478,7 +485,7 @@ public class WalletFragment extends Fragment
 
         void onSendRequest();
 
-        void onTxDetailsRequest(TransactionInfo info);
+        void onTxDetailsRequest(View view, TransactionInfo info);
 
         boolean isSynced();
 

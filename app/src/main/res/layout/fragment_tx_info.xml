@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:transitionName="@string/tx_details_transition_name">
 
     <LinearLayout
         android:layout_width="match_parent"

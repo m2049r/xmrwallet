@@ -17,19 +17,26 @@
 package com.m2049r.xmrwallet.util;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.util.TypedValue;
 
-import com.m2049r.xmrwallet.R;
+import androidx.annotation.ColorInt;
 
-public class ColorHelper {
+public class ThemeHelper {
     static public int getThemedResourceId(Context ctx, int attrId) {
-        TypedArray styledAttributes = ctx.getTheme().obtainStyledAttributes(R.style.MyMaterialTheme, new int[]{attrId});
-        return styledAttributes.getResourceId(0, 0);
+        final TypedValue typedValue = new TypedValue();
+        if (ctx.getTheme().resolveAttribute(attrId, typedValue, true))
+            return typedValue.resourceId;
+        else
+            return 0;
     }
 
+    @ColorInt
     static public int getThemedColor(Context ctx, int attrId) {
-        TypedArray styledAttributes = ctx.getTheme().obtainStyledAttributes(R.style.MyMaterialTheme, new int[]{attrId});
-        return styledAttributes.getColor(0, Color.BLACK);
+        final TypedValue typedValue = new TypedValue();
+        if (ctx.getTheme().resolveAttribute(attrId, typedValue, true))
+            return typedValue.data;
+        else
+            return Color.BLACK;
     }
 }

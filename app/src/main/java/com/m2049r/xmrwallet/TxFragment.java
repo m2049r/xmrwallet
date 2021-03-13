@@ -36,10 +36,12 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.transition.MaterialContainerTransform;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -300,7 +302,7 @@ public class TxFragment extends Fragment {
             }
             tvTxXmrToKey.setText(key);
             tvDestinationBtc.setText(userNotes.xmrtoDestination);
-            tvTxAmountBtc.setText(userNotes.xmrtoAmount + " "+ userNotes.xmrtoCurrency);
+            tvTxAmountBtc.setText(userNotes.xmrtoAmount + " " + userNotes.xmrtoCurrency);
             switch (userNotes.xmrtoTag) {
                 case "xmrto":
                     tvXmrToSupport.setVisibility(View.GONE);
@@ -329,6 +331,11 @@ public class TxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        final MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.setDrawingViewId(R.id.fragment_container);
+        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), R.attr.colorSurface));
+        setSharedElementEnterTransition(transform);
     }
 
     @Override

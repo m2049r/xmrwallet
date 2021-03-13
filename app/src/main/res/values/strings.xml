@@ -471,4 +471,8 @@
         <item>Ethereum</item>
         <item>Litecoin</item>
     </string-array>
+
+    <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
+    <string name="tx_details_transition_name" translatable="false">tx_transition</string>
+
 </resources>
