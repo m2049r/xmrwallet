@@ -30,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.NodeInfo;
-import com.m2049r.xmrwallet.util.ColorHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.net.HttpURLConnection;
@@ -182,7 +182,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
                     Helper.showTimeDifference(tvIp, nodeItem.getTimestamp());
                 } else {
                     tvIp.setText(getResponseErrorText(context, nodeItem.getResponseCode()));
-                    tvIp.setTextColor(ColorHelper.getThemedColor(tvIp.getContext(), R.attr.colorError));
+                    tvIp.setTextColor(ThemeHelper.getThemedColor(context, R.attr.colorError));
                 }
             } else {
                 tvIp.setText(context.getResources().getString(R.string.node_testing, nodeItem.getHostAddress()));

@@ -59,7 +59,7 @@ import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.ColorHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
@@ -78,7 +78,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -707,11 +706,11 @@ public class LoginActivity extends BaseActivity
                 break;
             case NetworkType_Testnet:
                 toolbar.setSubtitle(getString(R.string.connect_testnet));
-                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             case NetworkType_Stagenet:
                 toolbar.setSubtitle(getString(R.string.connect_stagenet));
-                toolbar.setBackgroundResource(ColorHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("NetworkType unknown: " + net);

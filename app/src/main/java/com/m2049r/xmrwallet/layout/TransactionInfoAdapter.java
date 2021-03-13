@@ -40,6 +40,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import timber.log.Timber;
@@ -92,7 +93,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             final TransactionInfo newItem = mNewList.get(newItemPosition);
             return (oldItem.direction == newItem.direction)
                     && (oldItem.isPending == newItem.isPending)
-                    && (oldItem.isFailed == newItem.isFailed);
+                    && (oldItem.isFailed == newItem.isFailed)
+                    && (Objects.equals(oldItem.notes, newItem.notes));
         }
     }
 
@@ -165,7 +167,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         }
 
         void bind(int position) {
-            this.infoItem = infoItems.get(position);
+            infoItem = infoItems.get(position);
+            itemView.setTransitionName(context.getString(R.string.tx_item_transition_name, infoItem.hash));
 
             UserNotes userNotes = new UserNotes(infoItem.notes);
             if (userNotes.xmrtoKey != null) {
