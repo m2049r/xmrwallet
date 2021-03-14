@@ -36,6 +36,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.transition.MaterialContainerTransform;
 import com.m2049r.xmrwallet.OnBackPressedListener;
 import com.m2049r.xmrwallet.OnUriScannedListener;
 import com.m2049r.xmrwallet.R;
@@ -49,6 +50,7 @@ import com.m2049r.xmrwallet.layout.SpendViewPager;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.Notice;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -538,10 +540,14 @@ public class SendFragment extends Fragment
         enableNavigation();
     }
 
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        final MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.setDrawingViewId(R.id.fragment_container);
+        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), R.attr.colorSurface));
+        setSharedElementEnterTransition(transform);
     }
 
     @Override

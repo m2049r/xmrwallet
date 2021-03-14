@@ -474,5 +474,9 @@
 
     <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
     <string name="tx_details_transition_name" translatable="false">tx_transition</string>
+    <string name="receive_transition_name" translatable="false">receive_transition</string>
+    <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
+    <string name="send_transition_name" translatable="false">send_transition</string>
+    <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
 
 </resources>

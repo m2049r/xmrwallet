@@ -43,7 +43,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
@@ -60,9 +59,9 @@ import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -542,8 +541,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onSendRequest() {
-        replaceFragment(SendFragment.newInstance(uri), null, null);
+    public void onSendRequest(View view) {
+        replaceFragmentWithTransition(view, SendFragment.newInstance(uri), null, null);
         uri = null; // only use uri once
     }
 
@@ -832,8 +831,18 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         if (extras != null) {
             newFragment.setArguments(extras);
         }
+        int transition;
+        if (newFragment instanceof TxFragment)
+            transition = R.string.tx_details_transition_name;
+        else if (newFragment instanceof ReceiveFragment)
+            transition = R.string.receive_transition_name;
+        else if (newFragment instanceof SendFragment)
+            transition = R.string.send_transition_name;
+        else
+            throw new IllegalStateException("expecting known transition");
+
         getSupportFragmentManager().beginTransaction()
-                .addSharedElement(view, getString(R.string.tx_details_transition_name))
+                .addSharedElement(view, getString(transition))
                 .replace(R.id.fragment_container, newFragment)
                 .addToBackStack(stackName)
                 .commit();
@@ -843,10 +852,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         if (extras != null) {
             newFragment.setArguments(extras);
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, newFragment);
-        transaction.addToBackStack(stackName);
-        transaction.commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, newFragment)
+                .addToBackStack(stackName)
+                .commit();
     }
 
     private void onWalletDetails() {
@@ -983,20 +993,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onWalletReceive() {
-        startReceive(getWallet().getAddress());
-    }
-
-    void startReceive(String address) {
+    public void onWalletReceive(View view) {
+        final String address = getWallet().getAddress();
         Timber.d("startReceive()");
         Bundle b = new Bundle();
         b.putString("address", address);
         b.putString("name", getWalletName());
-        startReceiveFragment(b);
-    }
-
-    void startReceiveFragment(Bundle extras) {
-        replaceFragment(new ReceiveFragment(), null, extras);
+        replaceFragmentWithTransition(view, new ReceiveFragment(), null, b);
         Timber.d("ReceiveFragment placed");
     }
 

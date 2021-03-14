@@ -165,6 +165,7 @@
                     android:layout_weight="1"
                     android:enabled="false"
                     android:text="@string/label_wallet_receive"
+                    android:transitionName="@string/receive_btn_transition_name"
                     app:icon="@drawable/ic_hand" />
 
                 <Button
@@ -176,6 +177,7 @@
                     android:layout_weight="1"
                     android:enabled="false"
                     android:text="@string/label_wallet_send"
+                    android:transitionName="@string/send_btn_transition_name"
                     app:icon="@drawable/ic_send" />
 
             </LinearLayout>

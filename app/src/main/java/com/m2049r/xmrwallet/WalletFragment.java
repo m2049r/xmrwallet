@@ -36,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -104,6 +105,13 @@ public class WalletFragment extends Fragment
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet, container, false);
 
+        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
+        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setExitTransition(exitTransition);
+        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
+        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setReenterTransition(reenterTransition);
+
         ivStreetGunther = view.findViewById(R.id.ivStreetGunther);
         tvStreetView = view.findViewById(R.id.tvStreetView);
         llBalance = view.findViewById(R.id.llBalance);
@@ -169,18 +177,8 @@ public class WalletFragment extends Fragment
         recyclerView.addOnItemTouchListener(swipeTouchListener);
 
 
-        bSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activityCallback.onSendRequest();
-            }
-        });
-        bReceive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activityCallback.onWalletReceive();
-            }
-        });
+        bSend.setOnClickListener(v -> activityCallback.onSendRequest(v));
+        bReceive.setOnClickListener(v -> activityCallback.onWalletReceive(v));
 
         sCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -201,6 +199,16 @@ public class WalletFragment extends Fragment
         activityCallback.forceUpdate();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        postponeEnterTransition();
+        view.getViewTreeObserver().addOnPreDrawListener(() -> {
+            startPostponedEnterTransition();
+            return true;
+        });
     }
 
     void showBalance(String balance) {
@@ -483,7 +491,7 @@ public class WalletFragment extends Fragment
 
         long getDaemonHeight(); //mBoundService.getDaemonHeight();
 
-        void onSendRequest();
+        void onSendRequest(View view);
 
         void onTxDetailsRequest(View view, TransactionInfo info);
 
@@ -497,7 +505,7 @@ public class WalletFragment extends Fragment
 
         String getTxKey(String txId);
 
-        void onWalletReceive();
+        void onWalletReceive(View view);
 
         boolean hasWallet();
 

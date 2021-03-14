@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:transitionName="@string/send_transition_name">
 
     <LinearLayout
         android:id="@+id/llNotice"
