@@ -36,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -57,13 +58,14 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import timber.log.Timber;
 
 public class WalletFragment extends Fragment
         implements TransactionInfoAdapter.OnInteractionListener {
     private TransactionInfoAdapter adapter;
-    private NumberFormat formatter = NumberFormat.getInstance();
+    private final NumberFormat formatter = NumberFormat.getInstance();
 
     private TextView tvStreetView;
     private LinearLayout llBalance;
@@ -80,7 +82,7 @@ public class WalletFragment extends Fragment
 
     private Spinner sCurrency;
 
-    private List<String> dismissedTransactions = new ArrayList<>();
+    private final List<String> dismissedTransactions = new ArrayList<>();
 
     public void resetDismissedTransactions() {
         dismissedTransactions.clear();
@@ -93,7 +95,7 @@ public class WalletFragment extends Fragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         if (activityCallback.hasWallet())
             inflater.inflate(R.menu.wallet_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -103,6 +105,13 @@ public class WalletFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet, container, false);
+
+        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
+        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setExitTransition(exitTransition);
+        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
+        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setReenterTransition(reenterTransition);
 
         ivStreetGunther = view.findViewById(R.id.ivStreetGunther);
         tvStreetView = view.findViewById(R.id.tvStreetView);
@@ -124,7 +133,7 @@ public class WalletFragment extends Fragment
         List<String> currencies = new ArrayList<>();
         currencies.add(Helper.BASE_CRYPTO);
         currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner_balance, currencies);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), R.layout.item_spinner_balance, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sCurrency.setAdapter(spinnerAdapter);
 
@@ -169,18 +178,8 @@ public class WalletFragment extends Fragment
         recyclerView.addOnItemTouchListener(swipeTouchListener);
 
 
-        bSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activityCallback.onSendRequest();
-            }
-        });
-        bReceive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activityCallback.onWalletReceive();
-            }
-        });
+        bSend.setOnClickListener(v -> activityCallback.onSendRequest(v));
+        bReceive.setOnClickListener(v -> activityCallback.onWalletReceive(v));
 
         sCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -201,6 +200,16 @@ public class WalletFragment extends Fragment
         activityCallback.forceUpdate();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        postponeEnterTransition();
+        view.getViewTreeObserver().addOnPreDrawListener(() -> {
+            startPostponedEnterTransition();
+            return true;
+        });
     }
 
     void showBalance(String balance) {
@@ -260,24 +269,14 @@ public class WalletFragment extends Fragment
                             @Override
                             public void onSuccess(final ExchangeRate exchangeRate) {
                                 if (isAdded())
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            exchange(exchangeRate);
-                                        }
-                                    });
+                                    new Handler(Looper.getMainLooper()).post(() -> exchange(exchangeRate));
                             }
 
                             @Override
                             public void onError(final Exception e) {
                                 Timber.e(e.getLocalizedMessage());
                                 if (isAdded())
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            exchangeFailed();
-                                        }
-                                    });
+                                    new Handler(Looper.getMainLooper()).post(() -> exchangeFailed());
                             }
                         });
             } else {
@@ -418,7 +417,6 @@ public class WalletFragment extends Fragment
     void setActivityTitle(Wallet wallet) {
         if (wallet == null) return;
         walletTitle = wallet.getName();
-        String watchOnly = (wallet.isWatchOnly() ? getString(R.string.label_watchonly) : "");
         walletSubtitle = wallet.getAccountLabel();
         activityCallback.setTitle(walletTitle, walletSubtitle);
         Timber.d("wallet title is %s", walletTitle);
@@ -442,7 +440,7 @@ public class WalletFragment extends Fragment
         balance = wallet.getBalance();
         unlockedBalance = wallet.getUnlockedBalance();
         refreshBalance();
-        String sync = "";
+        String sync;
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");
         Wallet.ConnectionStatus daemonConnected = activityCallback.getConnectionStatus();
@@ -483,7 +481,7 @@ public class WalletFragment extends Fragment
 
         long getDaemonHeight(); //mBoundService.getDaemonHeight();
 
-        void onSendRequest();
+        void onSendRequest(View view);
 
         void onTxDetailsRequest(View view, TransactionInfo info);
 
@@ -497,7 +495,7 @@ public class WalletFragment extends Fragment
 
         String getTxKey(String txId);
 
-        void onWalletReceive();
+        void onWalletReceive(View view);
 
         boolean hasWallet();
 
@@ -511,7 +509,7 @@ public class WalletFragment extends Fragment
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Listener) {
             this.activityCallback = (Listener) context;
@@ -554,7 +552,7 @@ public class WalletFragment extends Fragment
         //TODO figure out why gunther disappears on return from send although he is still set
         if (enable) {
             if (streetGunther == null)
-                streetGunther = ContextCompat.getDrawable(getContext(), R.drawable.ic_gunther_streetmode);
+                streetGunther = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.ic_gunther_streetmode);
             ivStreetGunther.setImageDrawable(streetGunther);
         } else
             ivStreetGunther.setImageDrawable(null);

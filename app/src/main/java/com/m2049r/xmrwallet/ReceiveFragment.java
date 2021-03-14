@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -43,6 +44,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.content.FileProvider;
@@ -50,13 +52,13 @@ import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.transition.MaterialContainerTransform;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
@@ -64,6 +66,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.ExchangeView;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -72,6 +75,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -84,7 +88,6 @@ public class ReceiveFragment extends Fragment {
     private ExchangeView evAmount;
     private TextView tvQrCode;
     private ImageView ivQrCode;
-    private View cvQrCode;
     private ImageView ivQrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
@@ -112,7 +115,6 @@ public class ReceiveFragment extends Fragment {
         tvAddress = view.findViewById(R.id.tvAddress);
         etNotes = view.findViewById(R.id.etNotes);
         evAmount = view.findViewById(R.id.evAmount);
-        cvQrCode = view.findViewById(R.id.cvQrCode);
         ivQrCode = view.findViewById(R.id.qrCode);
         tvQrCode = view.findViewById(R.id.tvQrCode);
         ivQrCodeFull = view.findViewById(R.id.qrCodeFull);
@@ -126,40 +128,31 @@ public class ReceiveFragment extends Fragment {
         enableCopyAddress(false);
         enableSubaddressButton(false);
 
-        evAmount.setOnNewAmountListener(new ExchangeView.OnNewAmountListener() {
-            @Override
-            public void onNewAmount(String xmr) {
-                Timber.d("new amount = %s", xmr);
-                generateQr();
-            }
+        evAmount.setOnNewAmountListener(xmr -> {
+            Timber.d("new amount = %s", xmr);
+            generateQr();
         });
 
-        evAmount.setOnFailedExchangeListener(new ExchangeView.OnFailedExchangeListener() {
-            @Override
-            public void onFailedExchange() {
-                if (isAdded()) {
-                    clearQR();
-                    Toast.makeText(getActivity(), getString(R.string.message_exchange_failed), Toast.LENGTH_LONG).show();
-                }
+        evAmount.setOnFailedExchangeListener(() -> {
+            if (isAdded()) {
+                clearQR();
+                Toast.makeText(getActivity(), getString(R.string.message_exchange_failed), Toast.LENGTH_LONG).show();
             }
         });
 
         final EditText notesEdit = etNotes.getEditText();
         notesEdit.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        notesEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    generateQr();
-                    return true;
-                }
-                return false;
+        notesEdit.setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                    || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                generateQr();
+                return true;
             }
+            return false;
         });
         notesEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -169,47 +162,33 @@ public class ReceiveFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
-        bSubaddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enableSubaddressButton(false);
-                enableCopyAddress(false);
+        bSubaddress.setOnClickListener(v -> {
+            enableSubaddressButton(false);
+            enableCopyAddress(false);
 
-                final Runnable newAddress = new Runnable() {
-                    public void run() {
-                        getNewSubaddress();
-                    }
-                };
+            final Runnable newAddress = this::getNewSubaddress;
 
-                tvAddress.animate().alpha(0).setDuration(250)
-                        .withEndAction(newAddress).start();
+            tvAddress.animate().alpha(0).setDuration(250)
+                    .withEndAction(newAddress).start();
+        });
+
+        view.findViewById(R.id.cvQrCode).setOnClickListener(v -> {
+            Helper.hideKeyboard(getActivity());
+            etDummy.requestFocus();
+            if (qrValid) {
+                ivQrCodeFull.setImageBitmap(((BitmapDrawable) ivQrCode.getDrawable()).getBitmap());
+                ivQrCodeFull.setVisibility(View.VISIBLE);
+            } else {
+                evAmount.doExchange();
             }
         });
 
-        cvQrCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.hideKeyboard(getActivity());
-                etDummy.requestFocus();
-                if (qrValid) {
-                    ivQrCodeFull.setImageBitmap(((BitmapDrawable) ivQrCode.getDrawable()).getBitmap());
-                    ivQrCodeFull.setVisibility(View.VISIBLE);
-                } else {
-                    evAmount.doExchange();
-                }
-            }
-        });
-
-        ivQrCodeFull.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ivQrCodeFull.setImageBitmap(null);
-                ivQrCodeFull.setVisibility(View.GONE);
-            }
+        ivQrCodeFull.setOnClickListener(v -> {
+            ivQrCodeFull.setImageBitmap(null);
+            ivQrCodeFull.setVisibility(View.GONE);
         });
 
         showProgress();
@@ -244,12 +223,17 @@ public class ReceiveFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        final MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.setDrawingViewId(R.id.fragment_container);
+        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(Objects.requireNonNull(getContext()), R.attr.colorSurface));
+        setSharedElementEnterTransition(transform);
     }
 
     private ShareActionProvider shareActionProvider;
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, final MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.receive_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
 
@@ -320,7 +304,7 @@ public class ReceiveFragment extends Fragment {
     }
 
     void copyAddress() {
-        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_address), tvAddress.getText().toString());
+        Helper.clipBoardCopy(Objects.requireNonNull(getActivity()), getString(R.string.label_copy_address), tvAddress.getText().toString());
         Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
     }
 
@@ -381,6 +365,7 @@ public class ReceiveFragment extends Fragment {
 
     GenerateReviewFragment.ProgressListener progressCallback = null;
 
+    @SuppressLint("StaticFieldLeak")
     private class AsyncShow extends AsyncTask<Void, Void, Boolean> {
         final private String walletPath;
         final private String password;
@@ -434,8 +419,8 @@ public class ReceiveFragment extends Fragment {
         new AsyncStore().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class AsyncStore extends AsyncTask<String, Void, Boolean> {
-
         @Override
         protected Boolean doInBackground(String... params) {
             if (params.length != 0) return false;
@@ -520,12 +505,12 @@ public class ReceiveFragment extends Fragment {
         canvas.save();
         // figure out how to scale the logo
         float scaleSize = 1.0f;
-        while ((logoWidth / scaleSize) > (qrWidth / 5) || (logoHeight / scaleSize) > (qrHeight / 5)) {
+        while ((logoWidth / scaleSize) > (qrWidth / 5.) || (logoHeight / scaleSize) > (qrHeight / 5.)) {
             scaleSize *= 2;
         }
         float sx = 1.0f / scaleSize;
-        canvas.scale(sx, sx, qrWidth / 2, qrHeight / 2);
-        canvas.drawBitmap(logo, (qrWidth - logoWidth) / 2, (qrHeight - logoHeight) / 2, null);
+        canvas.scale(sx, sx, qrWidth / 2f, qrHeight / 2f);
+        canvas.drawBitmap(logo, (qrWidth - logoWidth) / 2f, (qrHeight - logoHeight) / 2f, null);
         canvas.restore();
         return logoBitmap;
     }
@@ -550,7 +535,7 @@ public class ReceiveFragment extends Fragment {
     Listener listenerCallback = null;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Listener) {
             this.listenerCallback = (Listener) context;
@@ -585,6 +570,7 @@ public class ReceiveFragment extends Fragment {
         new AsyncSubaddress().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class AsyncSubaddress extends AsyncTask<Void, Void, Boolean> {
         private String newSubaddress;
 
@@ -619,11 +605,7 @@ public class ReceiveFragment extends Fragment {
                     wallet.getNumSubaddresses() - 1));
             generateQr();
             enableCopyAddress(true);
-            final Runnable resetSize = new Runnable() {
-                public void run() {
-                    tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
-                }
-            };
+            final Runnable resetSize = () -> tvAddress.animate().setDuration(125).scaleX(1).scaleY(1).start();
             tvAddress.animate().alpha(1).setDuration(125)
                     .scaleX(1.2f).scaleY(1.2f)
                     .withEndAction(resetSize).start();
