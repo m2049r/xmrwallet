@@ -47,7 +47,7 @@
 
     <string name="service_progress">Guardando todo\n¡Puede llevar un tiempo!</string>
 
-    <string name="backup_success">Copia de seguridad satisfactoria</string>
+    <string name="backup_success">Copia de seguridad exitosa</string>
     <string name="backup_failed">¡Copia de seguridad fallida!</string>
     <string name="archive_failed">¡Archivado fallido!</string>
     <string name="rename_failed">¡Cambio de nombre fallido!</string>
@@ -56,7 +56,7 @@
 
     <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Cargando monedero&#8230;</string>
-    <string name="status_wallet_unloaded">Monedero guardada</string>
+    <string name="status_wallet_unloaded">Monedero guardado</string>
     <string name="status_wallet_unload_failed">¡Guardado de monedero fallido!</string>
     <string name="status_wallet_connecting">Conectando&#8230;</string>
     <string name="status_wallet_connect_failed">¡Conexión con el nodo fallida!\nComprueba el usuario/contraseña</string>
@@ -78,7 +78,7 @@
     <string name="prompt_open_wallet">Abriendo el monedero&#8230;</string>
     <string name="bad_fingerprint">Huella no reconocida. Inténtalo nuevamente.</string>
     <string name="bad_password">¡Contraseña incorrecta!</string>
-    <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngresela manualmente.</string>
+    <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngrésala manualmente.</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
     <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
@@ -90,27 +90,27 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR sin confirmar</string>
 
-    <string name="service_description">Servicio de monerujo</string>
+    <string name="service_description">Servicio de Monerujo</string>
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">bloques restantes</string>
     <string name="status_syncing">Escaneando:</string>
 
     <string name="message_strorage_not_writable">¡No se puede escribir en el almacenamiento externo! ¡Pánico!</string>
-    <string name="message_strorage_not_permitted">¡De verdad necesitamos esos permisos para el almacenamiento externo!</string>
+    <string name="message_strorage_not_permitted">¡De verdad necesitamos ese permiso para el almacenamiento externo!</string>
     <string name="message_camera_not_permitted">Sin cámara = ¡Sin escaneo de QR!</string>
 
     <string name="label_copy_viewkey">Clave de Vista</string>
     <string name="label_copy_address">Dirección Pública</string>
     <string name="message_copy_viewkey">¡Clave de vista copiada al portapapeles!</string>
     <string name="message_copy_address">¡Dirección del monedero copiada al portapapeles!</string>
-    <string name="message_nocopy">¡La copia está desactivada por motivos de seguridad!</string>
+    <string name="message_nocopy">¡Copia desactivada por motivos de seguridad!</string>
 
     <string name="message_exchange_failed">¡No se ha podido obtener la tasa de cambio!\nUsa XMR/XMR o inténtalo de nuevo</string>
 
     <string name="generate_title">Crear monedero</string>
     <string name="generate_name_hint">Nombre del monedero</string>
-    <string name="generate_password_hint">Frase de Contraseña</string>
+    <string name="generate_password_hint">Frase de contraseña</string>
     <string name="generate_fingerprint_hint">Permitir abrir usando huella dactilar</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Autenticación por huella</strong>
@@ -209,9 +209,9 @@
     <string name="details_alert_no">¡Llévame de vuelta!</string>
     <string name="details_title">Detalles</string>
 
-    <string name="archive_alert_message">¡El monedero será copiada y después borrada!</string>
-    <string name="archive_alert_yes">¡Sí, haz eso!</string>
-    <string name="archive_alert_no">¡No gracias!</string>
+    <string name="archive_alert_message">¡El monedero será copiado y después borrado!</string>
+    <string name="archive_alert_yes">¡Sí, hazlo!</string>
+    <string name="archive_alert_no">¡No, gracias!</string>
 
     <string name="fab_create_new">Crear nuevo monedero</string>
     <string name="fab_restore_viewonly">Restaurar monedero de sólo vista</string>
@@ -248,7 +248,7 @@
     <string name="label_send_btc_xmrto_key">Clave secreta SideShift.ai</string>
     <string name="label_send_btc_address">Dirección %1$s destino</string>
     <string name="label_send_btc_amount">Monto</string>
-    <string name="send_xmrto_timeout">Oye, esperaste demasiado!</string>
+    <string name="send_xmrto_timeout">Oye, tardaste demasiado!</string>
     <string name="label_copy_xmrtokey">Clave</string>
     <string name="message_copy_xmrtokey">¡Clave copiada al portapapeles!</string>
     <string name="send_send_label">Enviar mis preciados moneroj</string>
@@ -258,7 +258,7 @@
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_amount">%1$s XMR</string>
     <string name="send_fee">+%1$s Comisión</string>
-    <string name="about_whoami">Soy monerujo</string>
+    <string name="about_whoami">Soy Monerujo</string>
     <string name="info_send_xmrto_success_order_label">Orden SideShift.ai</string>
 
     <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
@@ -342,65 +342,65 @@
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Receptor</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">TODO!</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
-    <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
+    <string name="menu_ledger_seed">Convertir semilla de Ledger</string>
+    <string name="prompt_ledger_seed">Palabras de la semilla de Ledger</string>
+    <string name="prompt_ledger_phrase">Contraseña de Ledger (opcional)</string>
+    <string name="bad_ledger_seed">¡Semilla de Ledger inválida!</string>
+    <string name="prompt_ledger_seed_warn">¡Ingresar tu semilla de Ledger aquí implica un riesgo importante!</string>
 
     <string name="label_restoreheight">Altura de Restauración</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Arrancar aplicación de Monero en %1$s</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">¡Re-escanear!</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_agree">¡Entendido!</string>
+    <string name="onboarding_button_next">Siguiente</string>
+    <string name="onboarding_button_ready">¡Estoy listo!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">¡Bienvenido a Monerujo!</string>
+    <string name="onboarding_welcome_information">Esta aplicación te permite crear y usar monederos de Monero. Puedes guardar tus dulces moneroj en ellos.</string>
+    <string name="onboarding_seed_title">Mantén segura tu semilla</string>
+    <string name="onboarding_seed_information">La semilla otorga acceso total a quien la posee. Si la pierdes, nadie puede ayudarte a recuperarla y perderás tus preciados moneroj.</string>
+    <string name="onboarding_xmrto_title">Enviar Criptos</string>
+    <string name="onboarding_xmrto_information">Monerujo tiene SideShift.ai incorporado. Simplemente pega o escanea una dirección de BTC, LTC, ETH, DASH o DOGE y podrás enviar esas monedas usando tu XMR.</string>
+    <string name="onboarding_nodes_title">Nodos, a tu manera</string>
+    <string name="onboarding_nodes_information">Los nodos son tu conexión con la red de Monero. Elige entre usar nodos públicos, o ir totalmente ciberpunk conectándote al tuyo propio.</string>
+    <string name="onboarding_fpsend_title">Enviar con tu huella</string>
+    <string name="onboarding_fpsend_information">Ahora puedes enviar XMR con sólo tu huella dactilar si lo deseas. Para forzar el pedido de contraseña, simplemente desactiva la opción de huella.</string>
 
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">Tema</string>
     <string-array name="daynight_themes">
-        <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>Automático</item>
+        <item>Claro</item>
+        <item>Oscuro</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">No hay nada aquí.\nPor favor crea o restaura un monedero.</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">Restaurar los nodos por defecto</string>
+    <string name="toast_default_nodes">Restauración ya en proceso…</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">Último bloque hace %1$d segundos</string>
+    <string name="node_updated_mins">Último bloque hace %1$d minutos</string>
+    <string name="node_updated_hours">Último bloque hace %1$d horas</string>
+    <string name="node_updated_days">Último bloque hace %1$d días</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">No pudo obtenerse una cotización</string>
+    <string name="shift_checkamount">Revisa el monto y trata nuevamente</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>Dirección ambigua.</b><br/>
+        <i>Por favor selecciona la moneda deseada.</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <b>Por favor ingresa o escanea una dirección %1$s.</b><br/>
+        <i>Vas a enviar XMR y el receptor obtendrá %2$s a través de <b>SideShift.ai</b></i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Por favor ingresa o escanea una dirección de Monero.</b>
     ]]></string>
 </resources>
