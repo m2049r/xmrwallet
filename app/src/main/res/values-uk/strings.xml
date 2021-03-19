@@ -8,7 +8,7 @@
     <string name="menu_share">Поділитися</string>
     <string name="menu_help">Допомога</string>
     <string name="menu_receive">Отримати</string>
-    <string name="menu_rename">Перейменувати &#8230;</string>
+    <string name="menu_rename">Перейменувати</string>
     <string name="menu_archive">Архів</string>
     <string name="menu_backup">Резервна копія</string>
     <string name="menu_changepw">Змінити пароль</string>
@@ -281,8 +281,8 @@
     <string name="tx_account">Обліковий запис #</string>
 
     <string name="send_sweepall">Надіслати всі кошти на цей рахунок!</string>
-    <string name="tx_subaddress">Субадрес #%1$d</string>
-    <string name="generate_address_label_sub">Публічна субадреса #%1$d</string>
+    <string name="tx_subaddress">Субадрес</string>
+    <string name="generate_address_label_sub">Публічна субадреса #%1$d: %2$s</string>
 
     <string name="menu_language">Мова</string>
     <string name="language_system_default">Використовувати мову системи</string>
@@ -416,4 +416,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

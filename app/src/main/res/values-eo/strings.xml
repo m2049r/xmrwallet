@@ -8,7 +8,7 @@
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_help">Helpo</string>
     <string name="menu_receive">Ricevi</string>
-    <string name="menu_rename">Renomi &#8230;</string>
+    <string name="menu_rename">Renomi</string>
     <string name="menu_archive">Arkivo</string>
     <string name="menu_backup">Sekurkopio</string>
     <string name="menu_changepw">Ŝanĝi pasfrazon</string>
@@ -287,8 +287,8 @@
     <string name="tx_account">Konto #</string>
 
     <string name="send_sweepall">Sendi ĉiujn konfirmitajn monsumojn al tiu konto!</string>
-    <string name="tx_subaddress">Subadreso #%1$d</string>
-    <string name="generate_address_label_sub">Publika subadreso #%1$d</string>
+    <string name="tx_subaddress">Subadreso</string>
+    <string name="generate_address_label_sub">Publika subadreso #%1$d: %2$s</string>
 
     <string name="menu_language">Lingvo</string>
     <string name="language_system_default">Uzi la sistemlingvon</string>
@@ -412,4 +412,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

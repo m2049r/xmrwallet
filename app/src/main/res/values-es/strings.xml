@@ -8,7 +8,7 @@
     <string name="menu_share">Compartir</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_receive">Recibir</string>
-    <string name="menu_rename">Renombrar &#8230;</string>
+    <string name="menu_rename">Renombrar</string>
     <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
     <string name="menu_changepw">Cambiar contraseña</string>
@@ -269,8 +269,8 @@
     <string name="tx_account"># de cuenta</string>
 
     <string name="send_sweepall">¡Enviar todos los fondos confirmados en esta cuenta!</string>
-    <string name="tx_subaddress">Subdirecciones #%1$d</string>
-    <string name="generate_address_label_sub">Subdirecciones Públicas #%1$d</string>
+    <string name="tx_subaddress">Subdirección</string>
+    <string name="generate_address_label_sub">Subdirecciones Públicas #%1$d: %2$s</string>
 
     <string name="menu_language">Lenguaje</string>
     <string name="language_system_default">Usar Idioma del Sistema</string>
@@ -334,7 +334,7 @@
     <string name="node_testing">Probando el IP: %1$s &#8230;</string>
     <string name="node_refresh_wait">Por favor espera a que termine el escaneo</string>
     <string name="node_create_hint">Toca para seleccionar o agregar nodos</string>
-    <string name="node_pull_hint">Agregar nodos manualmente o presiona para escanear</string>
+    <string name="node_pull_hint">Agrega nodos manualmente o tira para buscar</string>
     <string name="node_scanning">Escaneando la red&#8230;</string>
     <string name="node_nobookmark">Mejores %1$d nodos marcados automáticamente</string>
     <string name="label_test">Probar</string><!--note: as in "Test a network connection"-->
@@ -403,4 +403,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Por favor ingresa o escanea una dirección de Monero.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subdirecciones</string>
+    <string name="subbaddress_name_hint">Nombre de la subdirección</string>
+    <string name="max_subaddress_warning">Demasiadas direcciones sin usar. ¡Usa alguna antes de crear más!</string>
+    <string name="max_account_warning">Demasiadas cuentas sin usar. ¡Usa alguna antes de crear más!</string>
+    <string name="subaddress_tx_label">Transacciones recibidas en esta subdirección:</string>
+    <string name="subaddress_notx_label">Aún no hay transacciones recibidas en esta subdirección.</string>
+    <string name="subaddress_select_label">Elige una subdirección</string>
+    <string name="subaddress_details_hint">Presiona largo para ver detalles</string>
+
 </resources>

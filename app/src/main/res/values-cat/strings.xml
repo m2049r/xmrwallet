@@ -8,7 +8,7 @@
     <string name="menu_share">Compartir</string>
     <string name="menu_help">Ajuda</string>
     <string name="menu_receive">Rebre</string>
-    <string name="menu_rename">Canvi de nom &#8230;</string>
+    <string name="menu_rename">Canvi de nom</string>
     <string name="menu_archive">Arxivar</string>
     <string name="menu_backup">Còpia de seguretat</string>
     <string name="menu_changepw">Canvi de contrasenya</string>
@@ -287,8 +287,8 @@
     <string name="tx_account">Compte #</string>
 
     <string name="send_sweepall">Envia tots els fons confirmats cap aquest compte!</string>
-    <string name="tx_subaddress">Subadreces #%1$d</string>
-    <string name="generate_address_label_sub">Subadreces Públiques #%1$d</string>
+    <string name="tx_subaddress">Subadreces</string>
+    <string name="generate_address_label_sub">Subadreces Públiques #%1$d: %2$s</string>
 
     <string name="menu_language">Idioma</string>
     <string name="language_system_default">Utilitzar Idioma del Sistema</string>
@@ -410,4 +410,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

@@ -71,18 +71,18 @@ public class TransactionHistory {
 //    }
 
     public void refresh() {
-        List<TransactionInfo> t = refreshJ();
-        Timber.d("refreshed %d", t.size());
-        for (Iterator<TransactionInfo> iterator = t.iterator(); iterator.hasNext(); ) {
+        List<TransactionInfo> transactionInfos = refreshJ();
+        Timber.d("refreshed %d", transactionInfos.size());
+        for (Iterator<TransactionInfo> iterator = transactionInfos.iterator(); iterator.hasNext(); ) {
             TransactionInfo info = iterator.next();
-            if (info.account != accountIndex) {
+            if (info.accountIndex != accountIndex) {
                 iterator.remove();
                 Timber.d("removed %s", info.hash);
             } else {
                 Timber.d("kept %s", info.hash);
             }
         }
-        transactions = t;
+        transactions = transactionInfos;
     }
 
     private native List<TransactionInfo> refreshJ();

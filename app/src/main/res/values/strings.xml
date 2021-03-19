@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
@@ -9,7 +9,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
     <string name="menu_receive">Receive</string>
-    <string name="menu_rename">Rename &#8230;</string>
+    <string name="menu_rename">Rename</string>
     <string name="menu_archive">Archive</string>
     <string name="menu_backup">Backup</string>
     <string name="menu_changepw">Change Passphrase</string>
@@ -325,15 +325,15 @@
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
 
     <string name="accounts_balance" translatable="false">%1$s XMR</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d)</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d) &nbsp;&lt;span style=\"background-color: #%3$s; color: #%4$s;\"&gt;&nbsp;%5$s&nbsp;&lt;/span&gt;</string>
 
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
 
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="tx_subaddress">Subaddress</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d: %2$s</string>
 
     <string name="menu_language">Language</string>
     <string name="language_system_default">Use System Language</string>
@@ -474,9 +474,25 @@
 
     <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
     <string name="tx_details_transition_name" translatable="false">tx_transition</string>
-    <string name="receive_transition_name" translatable="false">receive_transition</string>
     <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
-    <string name="send_transition_name" translatable="false">send_transition</string>
+    <string name="receive_transition_name" translatable="false">receive_transition</string>
     <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
+    <string name="send_transition_name" translatable="false">send_transition</string>
+    <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
+    <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
+    <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
+
+    <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
+    <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
+    <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
 
 </resources>

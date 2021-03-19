@@ -82,8 +82,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletDetails(String wallet);
 
-        void onWalletReceive(String wallet);
-
         void onWalletRename(String name);
 
         void onWalletBackup(String name);
@@ -223,9 +221,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             case R.id.action_info:
                 showInfo(listItem.name);
                 break;
-            case R.id.action_receive:
-                showReceive(listItem.name);
-                break;
             case R.id.action_rename:
                 activityCallback.onWalletRename(listItem.name);
                 break;
@@ -288,10 +283,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     private void showInfo(@NonNull String name) {
         activityCallback.onWalletDetails(name);
-    }
-
-    private void showReceive(@NonNull String name) {
-        activityCallback.onWalletReceive(name);
     }
 
     @Override

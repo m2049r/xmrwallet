@@ -206,9 +206,8 @@
                         android:paddingStart="8dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="8dp"
-                        android:selectAllOnFocus="true"
-                        android:textIsSelectable="true"
-                        tools:text="(0,1)" />
+                        android:transitionName="@string/subaddress_txinfo_transition_name"
+                        tools:text="(0,1) #17" />
 
                     <TextView
                         android:id="@+id/tvAddress"

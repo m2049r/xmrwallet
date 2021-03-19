@@ -22,7 +22,9 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.InputType;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,12 +39,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.transition.MaterialContainerTransform;
+import com.google.android.material.transition.MaterialElevationScale;
+import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
@@ -51,6 +55,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TimeZone;
+
+import timber.log.Timber;
 
 public class TxFragment extends Fragment {
 
@@ -88,10 +94,15 @@ public class TxFragment extends Fragment {
     private ImageView tvXmrToLogo;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tx_info, container, false);
+
+        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
+        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setExitTransition(exitTransition);
+        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
+        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
+        setReenterTransition(reenterTransition);
 
         cvXmrTo = view.findViewById(R.id.cvXmrTo);
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
@@ -121,9 +132,8 @@ public class TxFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
         });
 
-        Bundle args = getArguments();
-        TransactionInfo info = args.getParcelable(ARG_INFO);
-        show(info);
+        info = getArguments().getParcelable(ARG_INFO);
+        show();
         return view;
     }
 
@@ -192,7 +202,7 @@ public class TxFragment extends Fragment {
     TransactionInfo info = null;
     UserNotes userNotes = null;
 
-    void loadNotes(TransactionInfo info) {
+    void loadNotes() {
         if ((userNotes == null) || (info.notes == null)) {
             info.notes = activityCallback.getTxNotes(info.hash);
         }
@@ -205,19 +215,28 @@ public class TxFragment extends Fragment {
         tvTxFee.setTextColor(clr);
     }
 
-    private void show(TransactionInfo info) {
+    private void showSubaddressLabel() {
+        final Subaddress subaddress = activityCallback.getWalletSubaddress(info.accountIndex, info.addressIndex);
+        final Context ctx = getContext();
+        Spanned label = Html.fromHtml(ctx.getString(R.string.tx_account_formatted,
+                info.accountIndex, info.addressIndex,
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                subaddress.getDisplayLabel()));
+        tvAccount.setText(label);
+        tvAccount.setOnClickListener(v -> activityCallback.showSubaddress(v, info.addressIndex));
+    }
+
+    private void show() {
         if (info.txKey == null) {
             info.txKey = activityCallback.getTxKey(info.hash);
         }
         if (info.address == null) {
-            info.address = activityCallback.getTxAddress(info.account, info.subaddress);
+            info.address = activityCallback.getTxAddress(info.accountIndex, info.addressIndex);
         }
-        loadNotes(info);
+        loadNotes();
 
-        activityCallback.setSubtitle(getString(R.string.tx_title));
-        activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
-
-        tvAccount.setText(getString(R.string.tx_account_formatted, info.account, info.subaddress));
+        showSubaddressLabel();
         tvAddress.setText(info.address);
 
         tvTxTimestamp.setText(TS_FORMATTER.format(new Date(info.timestamp * 1000)));
@@ -256,8 +275,8 @@ public class TxFragment extends Fragment {
             setTxColour(ContextCompat.getColor(getContext(), R.color.tx_minus));
         }
         Set<String> destinations = new HashSet<>();
-        StringBuffer sb = new StringBuffer();
-        StringBuffer dstSb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder dstSb = new StringBuilder();
         if (info.transfers != null) {
             boolean newline = false;
             for (Transfer transfer : info.transfers) {
@@ -281,14 +300,12 @@ public class TxFragment extends Fragment {
             }
         } else {
             sb.append("-");
-            dstSb.append(info.direction ==
-                    TransactionInfo.Direction.Direction_In ?
-                    activityCallback.getWalletSubaddress(info.account, info.subaddress) :
+            dstSb.append(info.direction == TransactionInfo.Direction.Direction_In ?
+                    activityCallback.getWalletSubaddress(info.accountIndex, info.addressIndex).getAddress() :
                     "-");
         }
         tvTxTransfers.setText(sb.toString());
         tvDestination.setText(dstSb.toString());
-        this.info = info;
         showBtcInfo();
     }
 
@@ -334,7 +351,7 @@ public class TxFragment extends Fragment {
         final MaterialContainerTransform transform = new MaterialContainerTransform();
         transform.setDrawingViewId(R.id.fragment_container);
         transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), R.attr.colorSurface));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
         setSharedElementEnterTransition(transform);
     }
 
@@ -347,7 +364,7 @@ public class TxFragment extends Fragment {
     Listener activityCallback;
 
     public interface Listener {
-        String getWalletSubaddress(int accountIndex, int subaddressIndex);
+        Subaddress getWalletSubaddress(int accountIndex, int subaddressIndex);
 
         String getTxKey(String hash);
 
@@ -360,6 +377,8 @@ public class TxFragment extends Fragment {
         void setToolbarButton(int type);
 
         void setSubtitle(String subtitle);
+
+        void showSubaddress(View view, final int subaddressIndex);
 
     }
 
@@ -384,5 +403,14 @@ public class TxFragment extends Fragment {
         }
         Helper.hideKeyboard(getActivity());
         super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Timber.d("onResume()");
+        activityCallback.setSubtitle(getString(R.string.tx_title));
+        activityCallback.setToolbarButton(Toolbar.BUTTON_BACK);
+        showSubaddressLabel();
     }
 }

@@ -8,7 +8,7 @@
     <string name="menu_share">Dela</string>
     <string name="menu_help">Hjälp</string>
     <string name="menu_receive">Ta emot</string>
-    <string name="menu_rename">Byt namn …</string>
+    <string name="menu_rename">Byt namn</string>
     <string name="menu_archive">Arkivera</string>
     <string name="menu_backup">Säkerhetskopiera</string>
     <string name="menu_changepw">Ändra lösenfras</string>
@@ -271,8 +271,8 @@
     <string name="tx_account">Konto #</string>
 
     <string name="send_sweepall">Skicka alla bekräftade pengar i detta konto!</string>
-    <string name="tx_subaddress">Underadress #%1$d</string>
-    <string name="generate_address_label_sub">Publik underadress #%1$d</string>
+    <string name="tx_subaddress">Underadress</string>
+    <string name="generate_address_label_sub">Publik underadress #%1$d: %2$s</string>
 
     <string name="menu_language">Språk</string>
     <string name="language_system_default">Använd systemets språk</string>
@@ -404,4 +404,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

@@ -7,11 +7,6 @@
         android:title="@string/menu_streetmode" />
 
     <item
-        android:id="@+id/action_receive"
-        android:orderInCategory="100"
-        android:title="@string/menu_receive" />
-
-    <item
         android:id="@+id/action_rename"
         android:orderInCategory="200"
         android:title="@string/menu_rename" />

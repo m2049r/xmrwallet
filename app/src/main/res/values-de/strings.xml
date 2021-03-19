@@ -8,7 +8,7 @@
     <string name="menu_share">Teilen</string>
     <string name="menu_help">Hilfe</string>
     <string name="menu_receive">Empfangen</string>
-    <string name="menu_rename">Umbenennen &#8230;</string>
+    <string name="menu_rename">Umbenennen</string>
     <string name="menu_archive">Archivieren</string>
     <string name="menu_backup">Backup</string>
     <string name="menu_changepw">Passwort ändern</string>
@@ -280,8 +280,8 @@
     <string name="tx_account">Konto #</string>
 
     <string name="send_sweepall">Versende ALLE(!) verfügbaren Gelder aus diesem Konto</string>
-    <string name="tx_subaddress">Subadresse #%1$d</string>
-    <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d</string>
+    <string name="tx_subaddress">Subadresse</string>
+    <string name="generate_address_label_sub">Öffentliche Subadresse #%1$d: %2$s</string>
 
     <string name="menu_language">Sprache</string>
     <string name="language_system_default">Benutze Systemsprache</string>
@@ -412,4 +412,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

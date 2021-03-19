@@ -19,13 +19,17 @@ package com.m2049r.xmrwallet.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.m2049r.xmrwallet.data.Subaddress;
+
 import java.util.List;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 // this is not the TransactionInfo from the API as that is owned by the TransactionHistory
 // this is a POJO for the TransactionInfoAdapter
 public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> {
-    static final String TAG = "TransactionInfo";
-
+    @RequiredArgsConstructor
     public enum Direction {
         Direction_In(0),
         Direction_Out(1);
@@ -40,15 +44,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             return null;
         }
 
-        public int getValue() {
-            return value;
-        }
-
-        private int value;
-
-        Direction(int value) {
-            this.value = value;
-        }
+        @Getter
+        private final int value;
     }
 
     public Direction direction;
@@ -60,8 +57,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
     public String hash;
     public long timestamp;
     public String paymentId;
-    public int account;
-    public int subaddress;
+    public int accountIndex;
+    public int addressIndex;
     public long confirmations;
     public String subaddressLabel;
     public List<Transfer> transfers;
@@ -80,8 +77,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             String hash,
             long timestamp,
             String paymentId,
-            int account,
-            int subaddress,
+            int accountIndex,
+            int addressIndex,
             long confirmations,
             String subaddressLabel,
             List<Transfer> transfers) {
@@ -94,11 +91,18 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.hash = hash;
         this.timestamp = timestamp;
         this.paymentId = paymentId;
-        this.account = account;
-        this.subaddress = subaddress;
+        this.accountIndex = accountIndex;
+        this.addressIndex = addressIndex;
         this.confirmations = confirmations;
         this.subaddressLabel = subaddressLabel;
         this.transfers = transfers;
+    }
+
+    public String getDisplayLabel() {
+        if (subaddressLabel.isEmpty() || (Subaddress.DEFAULT_LABEL_FORMATTER.matcher(subaddressLabel).matches()))
+            return ("#" + addressIndex);
+        else
+            return subaddressLabel;
     }
 
     public String toString() {
@@ -116,8 +120,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeString(hash);
         out.writeLong(timestamp);
         out.writeString(paymentId);
-        out.writeInt(account);
-        out.writeInt(subaddress);
+        out.writeInt(accountIndex);
+        out.writeInt(addressIndex);
         out.writeLong(confirmations);
         out.writeString(subaddressLabel);
         out.writeList(transfers);
@@ -146,8 +150,8 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         hash = in.readString();
         timestamp = in.readLong();
         paymentId = in.readString();
-        account = in.readInt();
-        subaddress = in.readInt();
+        accountIndex = in.readInt();
+        addressIndex = in.readInt();
         confirmations = in.readLong();
         subaddressLabel = in.readString();
         transfers = in.readArrayList(Transfer.class.getClassLoader());

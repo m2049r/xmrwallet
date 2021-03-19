@@ -26,18 +26,27 @@
             android:indeterminate="true"
             android:visibility="gone" />
 
+        <TextView
+            style="@style/MoneroText.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/tx_subaddress"
+            android:textAlignment="textStart" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvAddressLabel"
-                style="@style/MoneroLabel.Heading"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:text="@string/generate_address_label" />
+                android:id="@+id/tvAddress"
+                style="@style/MoneroText.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                tools:text="TAG 9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
 
             <ImageButton
                 android:id="@+id/bCopyAddress"
@@ -45,33 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="?android:selectableItemBackground"
+                android:padding="8dp"
                 android:src="@drawable/ic_content_copy_24dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:id="@+id/tvAddress"
-                style="@style/MoneroText.Medium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="10"
-                android:textAlignment="center"
-                tools:text="9wZnnNctRc7RaLya1rxykH21dUwfQpNGmVLjAvkvqe7nKT2Mw848AJNGMunW5xjoSZ5vCCU3uDnUoVqSSHxzRtQBE3f6crx" />
-
-            <ImageButton
-                android:id="@+id/bSubaddress"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="8dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@drawable/ic_refresh_24dp" />
 
         </LinearLayout>
 

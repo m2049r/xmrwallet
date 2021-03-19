@@ -193,6 +193,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="MoneroText.Label.Subaddress">
+        <item name="android:background">@color/monerujoGreen</item>
+        <item name="android:textColor">@color/monerujoBackground</item>
+    </style>
+
     <style name="MoneroText.Confirm">
         <item name="android:textSize">16sp</item>
     </style>

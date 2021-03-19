@@ -59,13 +59,13 @@ import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.util.NightmodeHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
@@ -86,8 +86,7 @@ import timber.log.Timber;
 
 public class LoginActivity extends BaseActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
-        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener,
-        ReceiveFragment.Listener, NodeFragment.Listener {
+        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, NodeFragment.Listener {
     private static final String GENERATE_STACK = "gen";
 
     private static final String NODES_PREFS_NAME = "nodes";
@@ -395,28 +394,6 @@ public class LoginActivity extends BaseActivity
                 .setPositiveButton(getString(R.string.details_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.details_alert_no), dialogClickListener)
                 .show();
-    }
-
-    @Override
-    public void onWalletReceive(String walletName) {
-        Timber.d("receive for wallet .%s.", walletName);
-        if (checkServiceRunning()) return;
-        final File walletFile = Helper.getWalletFile(this, walletName);
-        if (WalletManager.getInstance().walletExists(walletFile)) {
-            Helper.promptPassword(LoginActivity.this, walletName, false, new Helper.PasswordAction() {
-                @Override
-                public void act(String walletName, String password, boolean fingerprintUsed) {
-                    if (checkDevice(walletName, password))
-                        startReceive(walletFile, password);
-                }
-
-                @Override
-                public void fail(String walletName) {
-                }
-            });
-        } else { // this cannot really happen as we prefilter choices
-            Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
-        }
     }
 
     private class AsyncRename extends AsyncTask<String, Void, Boolean> {
@@ -797,14 +774,6 @@ public class LoginActivity extends BaseActivity
         startReviewFragment(b);
     }
 
-    void startReceive(File walletFile, String password) {
-        Timber.d("startReceive()");
-        Bundle b = new Bundle();
-        b.putString("path", walletFile.getAbsolutePath());
-        b.putString("password", password);
-        startReceiveFragment(b);
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
@@ -861,11 +830,6 @@ public class LoginActivity extends BaseActivity
     void startNodeFragment() {
         replaceFragment(new NodeFragment(), null, null);
         Timber.d("NodeFragment placed");
-    }
-
-    void startReceiveFragment(Bundle extras) {
-        replaceFragment(new ReceiveFragment(), null, extras);
-        Timber.d("ReceiveFragment placed");
     }
 
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {

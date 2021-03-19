@@ -17,6 +17,8 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,6 @@ import java.util.TimeZone;
 import timber.log.Timber;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private final int outboundColour;
@@ -94,6 +95,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             return (oldItem.direction == newItem.direction)
                     && (oldItem.isPending == newItem.isPending)
                     && (oldItem.isFailed == newItem.isFailed)
+                    && (oldItem.subaddressLabel.equals(newItem.subaddressLabel))
                     && (Objects.equals(oldItem.notes, newItem.notes));
         }
     }
@@ -211,14 +213,25 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 setTxColour(outboundColour);
             }
 
+            String tag = null;
+            String info = "";
+            if ((infoItem.addressIndex != 0) && (infoItem.direction == TransactionInfo.Direction.Direction_In))
+                tag = infoItem.getDisplayLabel();
             if ((userNotes.note.isEmpty())) {
-                this.tvPaymentId.setText(infoItem.paymentId.equals("0000000000000000") ?
-                        (infoItem.subaddress != 0 ?
-                                (context.getString(R.string.tx_subaddress, infoItem.subaddress)) :
-                                "") :
-                        infoItem.paymentId);
+                if (!infoItem.paymentId.equals("0000000000000000")) {
+                    info = infoItem.paymentId;
+                }
             } else {
-                this.tvPaymentId.setText(userNotes.note);
+                info = userNotes.note;
+            }
+            if (tag == null) {
+                tvPaymentId.setText(info);
+            } else {
+                Spanned label = Html.fromHtml(context.getString(R.string.tx_details_notes,
+                        Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoGreen) & 0xFFFFFF),
+                        Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoBackground) & 0xFFFFFF),
+                        tag, info.isEmpty() ? "" : ("&nbsp; " + info)));
+                tvPaymentId.setText(label);
             }
 
             this.tvDateTime.setText(getDateTime(infoItem.timestamp));

@@ -48,7 +48,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
     public interface OnInteractionListener {
         void onInteraction(View view, NodeInfo item);
 
-        void onLongInteraction(View view, NodeInfo item);
+        boolean onLongInteraction(View view, NodeInfo item);
     }
 
     private final List<NodeInfo> nodeItems = new ArrayList<>();
@@ -213,10 +213,10 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             if (listener != null) {
                 int position = getAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
-                    listener.onLongInteraction(view, nodeItems.get(position));
+                    return listener.onLongInteraction(view, nodeItems.get(position));
                 }
             }
-            return true;
+            return false;
         }
     }
 

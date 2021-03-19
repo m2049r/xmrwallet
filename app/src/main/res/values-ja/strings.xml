@@ -8,7 +8,7 @@
     <string name="menu_share">共有</string>
     <string name="menu_help">ヘルプ</string>
     <string name="menu_receive">受取り</string>
-    <string name="menu_rename">名前の変更 &#8230;</string>
+    <string name="menu_rename">名前の変更</string>
     <string name="menu_archive">アーカイブ</string>
     <string name="menu_backup">バックアップ</string>
     <string name="menu_changepw">パスフレーズの変更</string>
@@ -287,8 +287,8 @@
     <string name="tx_account">アカウント #</string>
 
     <string name="send_sweepall">このアカウントの承認された資産をすべて送金する!</string>
-    <string name="tx_subaddress">サブアドレス#%1$d</string>
-    <string name="generate_address_label_sub">公開サブアドレス #%1$d</string>
+    <string name="tx_subaddress">サブアドレス</string>
+    <string name="generate_address_label_sub">公開サブアドレス #%1$d: %2$s</string>
 
     <string name="menu_language">言語</string>
     <string name="language_system_default">システムの言語を使う</string>
@@ -415,4 +415,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

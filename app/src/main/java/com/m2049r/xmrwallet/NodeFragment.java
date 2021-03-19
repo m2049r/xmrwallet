@@ -228,24 +228,23 @@ public class NodeFragment extends Fragment
 
     // open up edit dialog
     @Override
-    public void onLongInteraction(final View view, final NodeInfo nodeItem) {
+    public boolean onLongInteraction(final View view, final NodeInfo nodeItem) {
         Timber.d("onLongInteraction");
         EditDialog diag = createEditDialog(nodeItem);
         if (diag != null) {
             diag.show();
         }
+        return true;
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id) {
-            case R.id.fab:
-                EditDialog diag = createEditDialog(null);
-                if (diag != null) {
-                    diag.show();
-                }
-                break;
+        if (id == R.id.fab) {
+            EditDialog diag = createEditDialog(null);
+            if (diag != null) {
+                diag.show();
+            }
         }
     }
 
