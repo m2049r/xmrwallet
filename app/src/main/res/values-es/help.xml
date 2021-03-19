@@ -301,15 +301,15 @@
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>Usando un vínculo de pago</h1>
+        <p>Acabas de iniciar Monerujo con un vínculo de pago. Para poder enviar fondos, por favor haz lo siguiente:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. Abre el monedero desde el cual quieras gastar<br>
+        2. Espera hasta que esté sincronizado y el botón de "Enviar" aparezca<br>
+        3. Presiona el botón de "Enviar"
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>Los detalles del pago ya estarán completos. Revísalos y prosigue como con cualquier otra transacción.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">¡Entendido!</string> <!-- Note: "Got it" as in "I understand this" -->
 </resources>
