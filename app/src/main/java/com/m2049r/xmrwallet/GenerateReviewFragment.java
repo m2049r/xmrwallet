@@ -307,7 +307,6 @@ public class GenerateReviewFragment extends Fragment {
         void dismissProgressDialog();
     }
 
-
     public interface AcceptListener {
         void onAccept(String name, String password);
     }

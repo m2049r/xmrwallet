@@ -8,7 +8,7 @@
     <string name="menu_share">Podeli</string>
     <string name="menu_help">Pomoć</string>
     <string name="menu_receive">Primi</string>
-    <string name="menu_rename">Preimenuj &#8230;</string>
+    <string name="menu_rename">Preimenuj</string>
     <string name="menu_archive">Arhiva</string>
     <string name="menu_backup">Bekap</string>
     <string name="menu_changepw">Promeni lozinku</string>
@@ -288,8 +288,8 @@
     <string name="tx_account">Račun #</string>
 
     <string name="send_sweepall">Pošalji sva potvrđena sredstva na ovaj račun!</string>
-    <string name="tx_subaddress">Subadresa #%1$d</string>
-    <string name="generate_address_label_sub">Javna subadresa #%1$d</string>
+    <string name="tx_subaddress">Subadresa</string>
+    <string name="generate_address_label_sub">Javna subadresa #%1$d: %2$s</string>
 
     <string name="menu_language">Jezik</string>
     <string name="language_system_default">Koristi sistemski jezik</string>
@@ -411,4 +411,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

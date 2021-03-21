@@ -8,7 +8,7 @@
     <string name="menu_share">分享</string>
     <string name="menu_help">幫助</string>
     <string name="menu_receive">收款</string>
-    <string name="menu_rename">重新命名 &#8230;</string>
+    <string name="menu_rename">重新命名</string>
     <string name="menu_archive">封存</string>
     <string name="menu_backup">備份</string>
     <string name="menu_changepw">更改密碼</string>
@@ -279,8 +279,8 @@
     <string name="tx_account">帳戶 #</string>
 
     <string name="send_sweepall">發送這個帳戶的所有已確認款項！</string>
-    <string name="tx_subaddress">子地址 #%1$d</string>
-    <string name="generate_address_label_sub">公開子地址 #%1$d</string>
+    <string name="tx_subaddress">子地址</string>
+    <string name="generate_address_label_sub">公開子地址 #%1$d: %2$s</string>
 
     <string name="menu_language">語言</string>
     <string name="language_system_default">使用系統語言</string>
@@ -411,4 +411,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>請輸入或掃描一個 Monero 地址。</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

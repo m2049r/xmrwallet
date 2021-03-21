@@ -547,7 +547,7 @@ public class SendFragment extends Fragment
         final MaterialContainerTransform transform = new MaterialContainerTransform();
         transform.setDrawingViewId(R.id.fragment_container);
         transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(Objects.requireNonNull(getContext()), R.attr.colorSurface));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
         setSharedElementEnterTransition(transform);
     }
 

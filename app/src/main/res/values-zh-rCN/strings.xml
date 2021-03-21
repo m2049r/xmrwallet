@@ -6,7 +6,7 @@
     <string name="menu_share">分享</string>
     <string name="menu_help">帮助</string>
     <string name="menu_receive">收款</string>
-    <string name="menu_rename">重命名 &#8230;</string>
+    <string name="menu_rename">重命名</string>
     <string name="menu_archive">存档</string>
     <string name="menu_backup">备份</string>
     <string name="menu_changepw">修改密码</string>
@@ -224,8 +224,8 @@
     <string name="accounts_new">添加新账户 #%1$d</string>
     <string name="tx_account">账户 #</string>
     <string name="send_sweepall">发送这个账户中所有已确认的资金！</string>
-    <string name="tx_subaddress">子地址 #%1$d</string>
-    <string name="generate_address_label_sub">公开子地址#%1$d</string>
+    <string name="tx_subaddress">子地址</string>
+    <string name="generate_address_label_sub">公开子地址#%1$d: %2$s</string>
     <string name="menu_language">语言</string>
     <string name="language_system_default">使用系统默认语言</string>
     <string name="fab_restore_ledger">通过Ledger Nano S恢复</string>
@@ -336,4 +336,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

@@ -31,10 +31,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.widget.Toast;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.widget.Toast;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.dialog.ProgressDialog;
@@ -46,7 +47,8 @@ import java.io.IOException;
 
 import timber.log.Timber;
 
-public class BaseActivity extends SecureActivity implements GenerateReviewFragment.ProgressListener {
+public class BaseActivity extends SecureActivity
+        implements GenerateReviewFragment.ProgressListener, SubaddressFragment.ProgressListener {
 
     ProgressDialog progressDialog = null;
 

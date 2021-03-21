@@ -38,6 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -48,6 +49,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.dialog.CreditsFragment;
@@ -78,7 +80,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         ScannerFragment.OnScannedListener, ReceiveFragment.Listener,
         SendAddressWizardFragment.OnScanListener,
         WalletFragment.DrawerLocker,
-        NavigationView.OnNavigationItemSelectedListener {
+        NavigationView.OnNavigationItemSelectedListener,
+        SubaddressFragment.Listener,
+        SubaddressInfoFragment.Listener {
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
@@ -291,6 +295,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             HelpFragment.display(getSupportFragmentManager(), R.string.help_send);
         } else if (itemId == R.id.action_rename) {
             onAccountRename();
+        } else if (itemId == R.id.action_subaddresses) {
+            showSubaddresses(true);
         } else if (itemId == R.id.action_streetmode) {
             if (isStreetMode()) { // disable streetmode
                 onDisableStreetMode();
@@ -764,8 +770,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public String getWalletSubaddress(int accountIndex, int subaddressIndex) {
-        return getWallet().getSubaddress(accountIndex, subaddressIndex);
+    public Subaddress getWalletSubaddress(int accountIndex, int subaddressIndex) {
+        return getWallet().getSubaddressObject(accountIndex, subaddressIndex);
     }
 
     public String getWalletName() {
@@ -791,6 +797,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             transition = R.string.receive_transition_name;
         else if (newFragment instanceof SendFragment)
             transition = R.string.send_transition_name;
+        else if (newFragment instanceof SubaddressInfoFragment)
+            transition = R.string.subaddress_info_transition_name;
         else
             throw new IllegalStateException("expecting known transition");
 
@@ -889,7 +897,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             Timber.i("Waiting for permissions");
         }
-
     }
 
     @Override
@@ -934,7 +941,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 startScanFragment = true;
             } else {
                 String msg = getString(R.string.message_camera_not_permitted);
-                Timber.e(msg);
                 Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             }
         }
@@ -970,6 +976,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             super.onBackPressed();
         }
+        Helper.hideKeyboard(this);
     }
 
     @Override
@@ -1095,6 +1102,11 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         dialog.show();
     }
 
+    public void setAccountIndex(int accountIndex) {
+        getWallet().setAccountIndex(accountIndex);
+        selectedSubaddressIndex = 0;
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         final int id = item.getItemId();
@@ -1105,7 +1117,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             int accountIdx = accountIds.indexOf(id);
             if (accountIdx >= 0) {
                 Timber.d("found @%d", accountIdx);
-                getWallet().setAccountIndex(accountIdx);
+                setAccountIndex(accountIdx);
             }
             forceUpdate();
             drawer.closeDrawer(GravityCompat.START);
@@ -1113,8 +1125,22 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return true;
     }
 
+    private int lastUsedAccount() {
+        int lastUsedAccount = 0;
+        for (TransactionInfo info : getWallet().getHistory().getAll()) {
+            if (info.accountIndex > lastUsedAccount)
+                lastUsedAccount = info.accountIndex;
+        }
+        return lastUsedAccount;
+    }
+
     private void addAccount() {
-        new AsyncAddAccount().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+        final Wallet wallet = getWallet();
+        final int maxAccounts = lastUsedAccount() + wallet.getDeviceType().getAccountLookahead();
+        if (wallet.getNumAccounts() < maxAccounts)
+            new AsyncAddAccount().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR);
+        else
+            Toast.makeText(this, getString(R.string.max_account_warning), Toast.LENGTH_LONG).show();
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -1142,7 +1168,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         protected Boolean doInBackground(Void... params) {
             if (params.length != 0) return false;
             getWallet().addAccount();
-            getWallet().setAccountIndex(getWallet().getNumAccounts() - 1);
+            setAccountIndex(getWallet().getNumAccounts() - 1);
             return true;
         }
 
@@ -1157,5 +1183,35 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     getString(R.string.accounts_new, getWallet().getNumAccounts() - 1),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // we store the index only and always retrieve a new Subaddress object
+    // to ensure we get the current label
+    private int selectedSubaddressIndex = 0;
+
+    @Override
+    public Subaddress getSelectedSubaddress() {
+        return getWallet().getSubaddressObject(selectedSubaddressIndex);
+    }
+
+    @Override
+    public void onSubaddressSelected(@Nullable final Subaddress subaddress) {
+        selectedSubaddressIndex = subaddress.getAddressIndex();
+        onBackPressed();
+    }
+
+    @Override
+    public void showSubaddresses(boolean managerMode) {
+        final Bundle b = new Bundle();
+        if (managerMode)
+            b.putString(SubaddressFragment.KEY_MODE, SubaddressFragment.MODE_MANAGER);
+        replaceFragment(new SubaddressFragment(), null, b);
+    }
+
+    @Override
+    public void showSubaddress(View view, final int subaddressIndex) {
+        final Bundle b = new Bundle();
+        b.putInt("subaddressIndex", subaddressIndex);
+        replaceFragmentWithTransition(view, new SubaddressInfoFragment(), null, b);
     }
 }

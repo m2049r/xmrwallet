@@ -17,6 +17,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_subaddresses"
+        android:orderInCategory="250"
+        android:title="@string/subbaddress_title"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_help_wallet"
         android:orderInCategory="300"
         android:title="@string/menu_help"

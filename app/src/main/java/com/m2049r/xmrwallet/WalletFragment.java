@@ -79,6 +79,7 @@ public class WalletFragment extends Fragment
     private Button bSend;
     private ImageView ivStreetGunther;
     private Drawable streetGunther = null;
+    RecyclerView txlist;
 
     private Spinner sCurrency;
 
@@ -105,13 +106,6 @@ public class WalletFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet, container, false);
-
-        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
-        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setExitTransition(exitTransition);
-        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setReenterTransition(reenterTransition);
 
         ivStreetGunther = view.findViewById(R.id.ivStreetGunther);
         tvStreetView = view.findViewById(R.id.tvStreetView);
@@ -140,13 +134,19 @@ public class WalletFragment extends Fragment
         bSend = view.findViewById(R.id.bSend);
         bReceive = view.findViewById(R.id.bReceive);
 
-        RecyclerView recyclerView = view.findViewById(R.id.list);
-
+        txlist = view.findViewById(R.id.list);
         adapter = new TransactionInfoAdapter(getActivity(), this);
-        recyclerView.setAdapter(adapter);
+        txlist.setAdapter(adapter);
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                if ((positionStart == 0) && (txlist.computeVerticalScrollOffset() == 0))
+                    txlist.scrollToPosition(positionStart);
+            }
+        });
 
-        SwipeableRecyclerViewTouchListener swipeTouchListener =
-                new SwipeableRecyclerViewTouchListener(recyclerView,
+        txlist.addOnItemTouchListener(
+                new SwipeableRecyclerViewTouchListener(txlist,
                         new SwipeableRecyclerViewTouchListener.SwipeListener() {
                             @Override
                             public boolean canSwipeLeft(int position) {
@@ -173,10 +173,7 @@ public class WalletFragment extends Fragment
                                     adapter.removeItem(position);
                                 }
                             }
-                        });
-
-        recyclerView.addOnItemTouchListener(swipeTouchListener);
-
+                        }));
 
         bSend.setOnClickListener(v -> activityCallback.onSendRequest(v));
         bReceive.setOnClickListener(v -> activityCallback.onWalletReceive(v));
@@ -338,24 +335,35 @@ public class WalletFragment extends Fragment
         final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
         reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
         setReenterTransition(reenterTransition);
+
         activityCallback.onTxDetailsRequest(view, infoItem);
     }
 
     // called from activity
 
+
+    // if account index has changed scroll to top?
+    private int accountIndex = 0;
+
     public void onRefreshed(final Wallet wallet, final boolean full) {
         Timber.d("onRefreshed(%b)", full);
+
         if (full) {
             List<TransactionInfo> list = new ArrayList<>();
             final long streetHeight = activityCallback.getStreetModeHeight();
             Timber.d("StreetHeight=%d", streetHeight);
             for (TransactionInfo info : wallet.getHistory().getAll()) {
-                Timber.d("TxHeight=%d", info.blockheight);
+                Timber.d("TxHeight=%d, Label=%s", info.blockheight, info.subaddressLabel);
                 if ((info.isPending || (info.blockheight >= streetHeight))
                         && !dismissedTransactions.contains(info.hash))
                     list.add(info);
             }
             adapter.setInfos(list);
+            if (accountIndex != wallet.getAccountIndex()) {
+                accountIndex = wallet.getAccountIndex();
+                txlist.scrollToPosition(0);
+            }
+
         }
         updateStatus(wallet);
     }
@@ -522,9 +530,10 @@ public class WalletFragment extends Fragment
     @Override
     public void onResume() {
         super.onResume();
+        setExitTransition(null);
+        setReenterTransition(null);
         Timber.d("onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
-        //activityCallback.setToolbarButton(Toolbar.BUTTON_CLOSE); // TODO: Close button somewhere else
         activityCallback.setToolbarButton(Toolbar.BUTTON_NONE);
         setProgress(syncProgress);
         setProgress(syncText);

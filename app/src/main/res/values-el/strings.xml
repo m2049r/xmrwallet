@@ -8,7 +8,7 @@
     <string name="menu_share">Μοιράσου</string>
     <string name="menu_help">Βοήθεια</string>
     <string name="menu_receive">Λήψη</string>
-    <string name="menu_rename">Μετονομασία &#8230;</string>
+    <string name="menu_rename">Μετονομασία</string>
     <string name="menu_archive">Αρχειοθέτησε</string>
     <string name="menu_backup">Δημιουργία αντίγραφου ασφαλείας</string>
 
@@ -280,8 +280,8 @@
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
     <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress #%1$d</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d</string>
+    <string name="tx_subaddress">Subaddress</string>
+    <string name="generate_address_label_sub">Public Subaddress #%1$d: %2$s</string>
 
     <string name="menu_language">Language</string>
     <string name="language_system_default">Use System Language</string>
@@ -412,4 +412,14 @@
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
+
+    <string name="subbaddress_title">Subaddresses</string>
+    <string name="subbaddress_name_hint">Subaddress Name</string>
+    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
+    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
+    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
+    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
+    <string name="subaddress_select_label">Select a subaddress</string>
+    <string name="subaddress_details_hint">Long-press for details</string>
+
 </resources>

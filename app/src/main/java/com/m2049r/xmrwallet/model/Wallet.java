@@ -19,6 +19,7 @@ package com.m2049r.xmrwallet.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.TxData;
 
 import java.io.File;
@@ -26,6 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import timber.log.Timber;
 
 public class Wallet {
@@ -104,10 +107,14 @@ public class Wallet {
         this.accountIndex = accountIndex;
     }
 
+    @RequiredArgsConstructor
+    @Getter
     public enum Device {
-        Device_Undefined,
-        Device_Software,
-        Device_Ledger
+        Device_Undefined(0, 0),
+        Device_Software(50, 200),
+        Device_Ledger(5, 20);
+        private final int accountLookahead;
+        private final int subaddressLookahead;
     }
 
     public enum StatusEnum {
@@ -159,6 +166,15 @@ public class Wallet {
     }
 
     private native String getAddressJ(int accountIndex, int addressIndex);
+
+    public Subaddress getSubaddressObject(int accountIndex, int subAddressIndex) {
+        return new Subaddress(accountIndex, subAddressIndex,
+                getSubaddress(subAddressIndex), getSubaddressLabel(subAddressIndex));
+    }
+
+    public Subaddress getSubaddressObject(int subAddressIndex) {
+        return getSubaddressObject(accountIndex, subAddressIndex);
+    }
 
     public native String getPath();
 
@@ -426,6 +442,11 @@ public class Wallet {
 
     public void setAccountLabel(int accountIndex, String label) {
         setSubaddressLabel(accountIndex, 0, label);
+    }
+
+    public void setSubaddressLabel(int addressIndex, String label) {
+        setSubaddressLabel(accountIndex, addressIndex, label);
+        getHistory().refreshWithNotes(this);
     }
 
     public native void setSubaddressLabel(int accountIndex, int addressIndex, String label);
