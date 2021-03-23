@@ -45,8 +45,8 @@ import java.util.List;
 
 import timber.log.Timber;
 
-// TODO: live update - i.e. use onRefreshed() somehow
-public class SubaddressInfoFragment extends Fragment implements TransactionInfoAdapter.OnInteractionListener {
+public class SubaddressInfoFragment extends Fragment
+        implements TransactionInfoAdapter.OnInteractionListener, OnBlockUpdateListener {
     private TransactionInfoAdapter adapter;
 
     private Subaddress subaddress;
@@ -121,6 +121,11 @@ public class SubaddressInfoFragment extends Fragment implements TransactionInfoA
             tvTxLabel.setText(R.string.subaddress_notx_label);
         else
             tvTxLabel.setText(R.string.subaddress_tx_label);
+    }
+
+    @Override
+    public void onBlockUpdate(Wallet wallet) {
+        onRefreshed(wallet);
     }
 
     // Callbacks from TransactionInfoAdapter
