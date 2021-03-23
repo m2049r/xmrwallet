@@ -363,7 +363,6 @@ public class WalletFragment extends Fragment
                 accountIndex = wallet.getAccountIndex();
                 txlist.scrollToPosition(0);
             }
-
         }
         updateStatus(wallet);
     }
