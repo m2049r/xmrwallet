@@ -388,30 +388,30 @@
     <string name="node_updated_hours">Último Bloco: %1$d horas atrás</string>
     <string name="node_updated_days">Último Bloco: %1$d dias atrás</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">Não foi possível obter a cotação</string>
+    <string name="shift_checkamount">Verifique o valor e tente novamente</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>Endereço ambíguo.</b><br/>
+        <i>Por favor, selecione o tipo acima.</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <b>Favor inserir ou escanear um endereço %1$s.</b><br/>
+        <i>Você enviará XMR e o destinatário irá receber %2$s através do serviço <b>SideShift.ai</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Favor inserir ou escanear um endereço Monero.</b>
     ]]></string>
 
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
+    <string name="subbaddress_title">Subendereços</string>
+    <string name="subbaddress_name_hint">Nome do Subendereço</string>
+    <string name="max_subaddress_warning">Muitos endereços não utilizados - use alguns antes de criar novos!</string>
+    <string name="max_account_warning">Muitas contas não utilizadas - use algumas para poder criar novas!</string>
+    <string name="subaddress_tx_label">Transações para esse subendereço:</string>
+    <string name="subaddress_notx_label">Nenhuma transação para esse subendereço ainda</string>
+    <string name="subaddress_select_label">Selecione um subendereço</string>
+    <string name="subaddress_details_hint">Toque e segure para mais detalhes</string>
 
 </resources>
