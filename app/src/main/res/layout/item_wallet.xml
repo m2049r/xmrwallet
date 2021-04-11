@@ -18,19 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
-            android:layout_toStartOf="@+id/ibOptions"
-            tools:text="My Wallet" />
-
-        <TextView
-            android:id="@+id/tvAddress"
-            style="@style/MoneroText.Small"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvName"
-            android:layout_marginStart="48dp"
             android:layout_marginBottom="16dp"
             android:layout_toStartOf="@+id/ibOptions"
-            tools:text="4AdkPJox...g3viqCuk" />
+            tools:text="My Wallet" />
 
         <ImageButton
             android:id="@+id/ibOptions"

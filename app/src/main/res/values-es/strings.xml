@@ -9,7 +9,6 @@
     <string name="menu_help">Ayuda</string>
     <string name="menu_receive">Recibir</string>
     <string name="menu_rename">Renombrar</string>
-    <string name="menu_archive">Archivar</string>
     <string name="menu_backup">Copia de seguridad</string>
     <string name="menu_changepw">Cambiar contraseña</string>
 
@@ -49,7 +48,6 @@
 
     <string name="backup_success">Copia de seguridad exitosa</string>
     <string name="backup_failed">¡Copia de seguridad fallida!</string>
-    <string name="archive_failed">¡Archivado fallido!</string>
     <string name="rename_failed">¡Cambio de nombre fallido!</string>
     <string name="changepw_failed">¡Cambio de contraseña fallido!</string>
     <string name="changepw_success">Contraseña cambiada</string>
@@ -209,9 +207,9 @@
     <string name="details_alert_no">¡Llévame de vuelta!</string>
     <string name="details_title">Detalles</string>
 
-    <string name="archive_alert_message">¡El monedero será copiado y después borrado!</string>
-    <string name="archive_alert_yes">¡Sí, hazlo!</string>
-    <string name="archive_alert_no">¡No, gracias!</string>
+    <string name="delete_alert_message">¡El monedero será borrado!</string>
+    <string name="delete_alert_yes">¡Sí, hazlo!</string>
+    <string name="delete_alert_no">¡No, gracias!</string>
 
     <string name="fab_create_new">Crear nuevo monedero</string>
     <string name="fab_restore_viewonly">Restaurar monedero de sólo vista</string>
@@ -413,4 +411,9 @@
     <string name="subaddress_select_label">Elige una subdirección</string>
     <string name="subaddress_details_hint">Presiona largo para ver detalles</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

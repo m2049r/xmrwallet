@@ -7,7 +7,6 @@
     <string name="menu_help">帮助</string>
     <string name="menu_receive">收款</string>
     <string name="menu_rename">重命名</string>
-    <string name="menu_archive">存档</string>
     <string name="menu_backup">备份</string>
     <string name="menu_changepw">修改密码</string>
     <string name="password_weak">强度不够哦 &#8230;</string>
@@ -70,7 +69,6 @@
     <string name="service_progress">整合中&#8230;\n这将花上不少时间</string>
     <string name="backup_success">备份成功</string>
     <string name="backup_failed">备份失败！</string>
-    <string name="archive_failed">存档失败！</string>
     <string name="rename_failed">重命名失败！</string>
     <string name="changepw_failed">密码修改失败！</string>
     <string name="changepw_success">密码已修改</string>
@@ -213,9 +211,8 @@
     <string name="details_alert_yes">安全</string>
     <string name="details_alert_no">返回上一步</string>
     <string name="details_title">详情</string>
-    <string name="archive_alert_message">即将开始备份钱包，完成后将删除钱包！</string>
-    <string name="archive_alert_yes">好的，开始吧！</string>
-    <string name="archive_alert_no">不用了，谢谢！</string>
+    <string name="delete_alert_yes">好的，开始吧！</string>
+    <string name="delete_alert_no">不用了，谢谢！</string>
     <string name="fab_create_new">创建新钱包</string>
     <string name="fab_restore_viewonly">恢复只读钱包</string>
     <string name="fab_restore_key">通过私钥恢复钱包</string>
@@ -346,4 +343,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

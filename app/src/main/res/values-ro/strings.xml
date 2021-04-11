@@ -9,7 +9,6 @@
     <string name="menu_help">Ajutor</string>
     <string name="menu_receive">Primește</string>
     <string name="menu_rename">Redenumește</string>
-    <string name="menu_archive">Arhivă</string>
     <string name="menu_backup">Backup</string>
 
     <string name="password_weak">Continuă &#8230;</string>
@@ -92,7 +91,6 @@
 
     <string name="backup_success">Copia de rezervă creată cu succes</string>
     <string name="backup_failed">Copia de rezervă a eșuat!</string>
-    <string name="archive_failed">Arhivarea a eșuat!</string>
     <string name="rename_failed">Redenumirea a eșuat!</string>
 
     <string name="label_daemon">Nodul</string>
@@ -241,9 +239,8 @@
     <string name="details_alert_no">Du-mă înapoi!</string>
     <string name="details_title">Detalii</string>
 
-    <string name="archive_alert_message">Voi face o copie de siguranță a portofelului apoi va fi șters!</string>
-    <string name="archive_alert_yes">Da, fă asta!</string>
-    <string name="archive_alert_no">Nu mersi!</string>
+    <string name="delete_alert_yes">Da, fă asta!</string>
+    <string name="delete_alert_no">Nu mersi!</string>
 
     <string name="fab_create_new">Creeaza portofel nou</string>
     <string name="fab_restore_viewonly">Restaurează portofel-vizualizare</string>
@@ -422,4 +419,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

@@ -9,7 +9,6 @@
     <string name="menu_help">Helpo</string>
     <string name="menu_receive">Ricevi</string>
     <string name="menu_rename">Renomi</string>
-    <string name="menu_archive">Arkivo</string>
     <string name="menu_backup">Sekurkopio</string>
     <string name="menu_changepw">Ŝanĝi pasfrazon</string>
 
@@ -94,7 +93,6 @@
 
     <string name="backup_success">Sekurkopio sukcesis!</string>
     <string name="backup_failed">Sekurkopio malsukcesis!</string>
-    <string name="archive_failed">Arkivado malsukcesis!</string>
     <string name="rename_failed">Renomado malsukcesis!</string>
     <string name="changepw_failed">Pasvortŝanĝo malsukcesis!</string>
     <string name="changepw_success">Pasvortŝanĝo sukcesis!</string>
@@ -273,9 +271,8 @@
     <string name="details_alert_no">Malantaŭen!</string>
     <string name="details_title">Detaloj</string>
 
-    <string name="archive_alert_message">La monujo sekurkopiĝos kaj poste forviŝiĝos!</string>
-    <string name="archive_alert_yes">Jes, faru tion!</string>
-    <string name="archive_alert_no">Ne dankon!</string>
+    <string name="delete_alert_yes">Jes, faru tion!</string>
+    <string name="delete_alert_no">Ne dankon!</string>
 
     <string name="fab_create_new">Krei novan monujon</string>
     <string name="fab_restore_viewonly">Restaŭri nurvidan monujon</string>
@@ -422,4 +419,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

@@ -9,7 +9,6 @@
     <string name="menu_help">Aide</string>
     <string name="menu_receive">Recevoir</string>
     <string name="menu_rename">Renommer</string>
-    <string name="menu_archive">Archiver</string>
     <string name="menu_backup">Sauvegarder</string>
     <string name="menu_changepw">Modifier Phrase secrète</string>
 
@@ -95,7 +94,6 @@
 
     <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
-    <string name="archive_failed">Archivage Échouée !</string>
     <string name="rename_failed">Renommage Échoué !</string>
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
@@ -269,9 +267,9 @@
     <string name="details_alert_no">Non merci !</string>
     <string name="details_title">Détails</string>
 
-    <string name="archive_alert_message">Le portefeuille sera sauvegardé puis supprimé !</string>
-    <string name="archive_alert_yes">Oui, procéder !</string>
-    <string name="archive_alert_no">Non merci !</string>
+    <string name="delete_alert_message">Le portefeuille sera supprimé !</string>
+    <string name="delete_alert_yes">Oui, procéder !</string>
+    <string name="delete_alert_no">Non merci !</string>
 
     <string name="fab_create_new">Créer un nouveau portefeuille</string>
     <string name="fab_restore_viewonly">Restaurer un portefeuille d\'audit</string>
@@ -426,4 +424,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

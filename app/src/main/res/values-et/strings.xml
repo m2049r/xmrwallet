@@ -9,7 +9,6 @@
     <string name="menu_help">Abi</string>
     <string name="menu_receive">Küsi raha</string>
     <string name="menu_rename">Nimeta ümber</string>
-    <string name="menu_archive">Arhiveeri</string>
     <string name="menu_backup">Tagavarakoopia</string>
     <string name="menu_changepw">Vaheta parooli</string>
 
@@ -93,7 +92,6 @@
     <string name="service_progress">Teen ettevalmistusi &#8230;\nSee võib aega võtta!</string>
 
     <string name="backup_failed">Tagavarakoopia ebaõnnestus!</string>
-    <string name="archive_failed">Arhiveerimine ebaõnnestus!</string>
     <string name="rename_failed">Ümber nimetamine ebaõnnestus!</string>
     <string name="changepw_failed">Parooli vahetamine ebaõnnestus!</string>
     <string name="changepw_success">Parool vahetatud</string>
@@ -268,9 +266,8 @@
     <string name="details_alert_no">Vii mind tagasi!</string>
     <string name="details_title">Lisainfo</string>
 
-    <string name="archive_alert_message">Rahakotist tehakse tagavarakoopia ja siis see kustutatakse!</string>
-    <string name="archive_alert_yes">Täpselt nii!</string>
-    <string name="archive_alert_no">Ei, tänan!</string>
+    <string name="delete_alert_yes">Täpselt nii!</string>
+    <string name="delete_alert_no">Ei, tänan!</string>
 
     <string name="fab_create_new">Loo uus rahakott</string>
     <string name="fab_restore_viewonly">Taasta rahakott vaatamiseks</string>
@@ -420,4 +417,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

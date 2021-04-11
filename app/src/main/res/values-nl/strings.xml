@@ -9,7 +9,6 @@
     <string name="menu_help">Help</string>
     <string name="menu_receive">Ontvangen</string>
     <string name="menu_rename">Hernoemen</string>
-    <string name="menu_archive">Archiveren</string>
     <string name="menu_backup">Back-up</string>
     <string name="menu_changepw">Wachtzin wijzigen</string>
 
@@ -93,7 +92,6 @@
     <string name="service_progress">Bezig met voltooien…\nDit kan even duren.</string>
 
     <string name="backup_failed">Back-up mislukt!</string>
-    <string name="archive_failed">Archiveren mislukt!</string>
     <string name="rename_failed">Hernoemen mislukt!</string>
     <string name="changepw_failed">Wachtwoord wijzigen mislukt!</string>
     <string name="changepw_success">Wachtwoord is gewijzigd</string>
@@ -263,9 +261,9 @@
     <string name="details_alert_no">Ga terug!</string>
     <string name="details_title">Details</string>
 
-    <string name="archive_alert_message">Er wordt een back-up gemaakt en daarna wordt de portemonnee verwijderd!</string>
-    <string name="archive_alert_yes">Ja, doe dat!</string>
-    <string name="archive_alert_no">Nee, niet doen!</string>
+    <string name="delete_alert_message">Er wordt de portemonnee verwijderd!</string>
+    <string name="delete_alert_yes">Ja, doe dat!</string>
+    <string name="delete_alert_no">Nee, niet doen!</string>
 
     <string name="fab_create_new">Nieuwe portemonnee</string>
     <string name="fab_restore_viewonly">Alleen-lezen portemonnee herstellen</string>
@@ -422,4 +420,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

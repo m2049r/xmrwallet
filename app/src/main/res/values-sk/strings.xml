@@ -9,7 +9,6 @@
     <string name="menu_help">Pomoc</string>
     <string name="menu_receive">Prijať</string>
     <string name="menu_rename">Premenovať</string>
-    <string name="menu_archive">Archivovať</string>
     <string name="menu_backup">Záloha</string>
     <string name="menu_changepw">Zmena Hesla</string>
 
@@ -94,7 +93,6 @@
     <string name="service_progress">Balím si veci &#8230;\nMôže to chvíľu trvať!</string>
 
     <string name="backup_failed">Zálohovanie zlyhalo!</string>
-    <string name="archive_failed">Archivácia zlyhala!</string>
     <string name="rename_failed">Premenovanie zlyhalo!</string>
     <string name="changepw_failed">Zmena hesla zlyhala!</string>
     <string name="changepw_success">Heslo zmenené</string>
@@ -264,9 +262,9 @@
     <string name="details_alert_no">Naspäť!</string>
     <string name="details_title">Detaily</string>
 
-    <string name="archive_alert_message">Peňaženka bude zálohovaná a následne zmazaná!</string>
-    <string name="archive_alert_yes">Áno, poďme na to!</string>
-    <string name="archive_alert_no">Nie, díky!</string>
+    <string name="delete_alert_message">Peňaženka bude zmazaná!</string>
+    <string name="delete_alert_yes">Áno, poďme na to!</string>
+    <string name="delete_alert_no">Nie, díky!</string>
 
     <string name="fab_create_new">Vytvor novú peňaženku</string>
     <string name="fab_restore_viewonly">Obnoviť prezeraciu peňaženku</string>
@@ -423,4 +421,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

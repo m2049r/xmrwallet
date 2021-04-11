@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 801
-        versionName "1.18.1 'ChAdOx1'"
+        targetSdkVersion 30
+        versionCode 900
+        versionName "1.19.0.2 'XXX'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

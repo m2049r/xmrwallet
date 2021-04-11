@@ -19,7 +19,7 @@
     <item
         android:id="@+id/action_archive"
         android:orderInCategory="400"
-        android:title="@string/menu_archive" />
+        android:title="@string/menu_delete" />
 
     <item
         android:id="@+id/action_info"

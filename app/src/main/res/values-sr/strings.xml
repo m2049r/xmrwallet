@@ -9,7 +9,6 @@
     <string name="menu_help">Pomoć</string>
     <string name="menu_receive">Primi</string>
     <string name="menu_rename">Preimenuj</string>
-    <string name="menu_archive">Arhiva</string>
     <string name="menu_backup">Bekap</string>
     <string name="menu_changepw">Promeni lozinku</string>
 
@@ -94,7 +93,6 @@
 
     <string name="backup_success">Bekap uspešan</string>
     <string name="backup_failed">Bekap neuspeo!</string>
-    <string name="archive_failed">Arhiviranje neuspelo!</string>
     <string name="rename_failed">Preimenovanje neuspelo!</string>
     <string name="changepw_failed">Promena lozinke neuspela!</string>
     <string name="changepw_success">Lozinka promenjena</string>
@@ -274,9 +272,9 @@
     <string name="details_alert_no">Vrati me nazad!</string>
     <string name="details_title">Detalji</string>
 
-    <string name="archive_alert_message">Novčanik će biti bekapovan a potom obrisan!</string>
-    <string name="archive_alert_yes">Da, uradi to!</string>
-    <string name="archive_alert_no">Ne, hvala!</string>
+    <string name="delete_alert_message">Novčanik će biti obrisan!</string>
+    <string name="delete_alert_yes">Da, uradi to!</string>
+    <string name="delete_alert_no">Ne, hvala!</string>
 
     <string name="fab_create_new">Kreiraj novi novčanik</string>
     <string name="fab_restore_viewonly">Obnovi novčanik za pregled</string>
@@ -421,4 +419,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>
