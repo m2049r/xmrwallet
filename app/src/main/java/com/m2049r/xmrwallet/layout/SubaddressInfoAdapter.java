@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.Subaddress;
+import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,12 +111,14 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         final TextView tvName;
         final TextView tvAddress;
+        final TextView tvAmount;
         Subaddress item;
 
         ViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvAddress = itemView.findViewById(R.id.tvAddress);
+            tvAmount = itemView.findViewById(R.id.tx_amount);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
         }
@@ -129,6 +132,12 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
                     item.getAddressIndex(), item.getSquashedAddress());
             tvName.setText(label.isEmpty() ? address : label);
             tvAddress.setText(address);
+            final long amount = item.getAmount();
+            if (amount > 0)
+                tvAmount.setText(context.getString(R.string.tx_list_amount_positive,
+                        Helper.getDisplayAmount(amount, Helper.DISPLAY_DIGITS_INFO)));
+            else
+                tvAmount.setText("");
         }
 
         @Override

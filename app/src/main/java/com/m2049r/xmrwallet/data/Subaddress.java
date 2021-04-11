@@ -18,12 +18,13 @@ package com.m2049r.xmrwallet.data;
 
 import java.util.regex.Pattern;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class Subaddress implements Comparable<Subaddress> {
@@ -35,6 +36,9 @@ public class Subaddress implements Comparable<Subaddress> {
     final private String address;
     @Getter
     private final String label;
+    @Getter
+    @Setter
+    private long amount;
 
     @Override
     public int compareTo(Subaddress another) { // newer is <

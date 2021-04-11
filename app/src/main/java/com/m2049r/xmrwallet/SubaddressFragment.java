@@ -48,7 +48,7 @@ import lombok.RequiredArgsConstructor;
 import timber.log.Timber;
 
 public class SubaddressFragment extends Fragment implements SubaddressInfoAdapter.OnInteractionListener,
-        View.OnClickListener {
+        View.OnClickListener, OnBlockUpdateListener {
     static public final String KEY_MODE = "mode";
     static public final String MODE_MANAGER = "manager";
 
@@ -167,6 +167,11 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
             list.add(wallet.getSubaddressObject(i));
         }
         adapter.setInfos(list);
+    }
+
+    @Override
+    public void onBlockUpdate(Wallet wallet) {
+        loadList();
     }
 
     @Override
