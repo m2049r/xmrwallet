@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2020, The Monero Project
+// Copyright (c) 2014-2019, AEON, The Monero Project
 // 
 // All rights reserved.
 // 
@@ -37,7 +37,6 @@
 #include <set>
 #include <ctime>
 #include <iostream>
-#include <stdexcept>
 
 //  Public interface for libwallet library
 namespace Monero {
@@ -325,20 +324,6 @@ struct MultisigState {
     uint32_t total;
 };
 
-
-struct DeviceProgress {
-    DeviceProgress(): m_progress(0), m_indeterminate(false) {}
-    DeviceProgress(double progress, bool indeterminate=false): m_progress(progress), m_indeterminate(indeterminate) {}
-
-    virtual double progress() const { return m_progress; }
-    virtual bool indeterminate() const { return m_indeterminate; }
-
-protected:
-    double m_progress;
-    bool m_indeterminate;
-};
-
-struct Wallet;
 struct WalletListener
 {
     virtual ~WalletListener() = 0;
@@ -379,41 +364,6 @@ struct WalletListener
      * @brief refreshed - called when wallet refreshed by background thread or explicitly refreshed by calling "refresh" synchronously
      */
     virtual void refreshed() = 0;
-
-    /**
-     * @brief called by device if the action is required
-     */
-    virtual void onDeviceButtonRequest(uint64_t code) { (void)code; }
-
-    /**
-     * @brief called by device if the button was pressed
-     */
-    virtual void onDeviceButtonPressed() { }
-
-    /**
-     * @brief called by device when PIN is needed
-     */
-    virtual optional<std::string> onDevicePinRequest() {
-        throw std::runtime_error("Not supported");
-    }
-
-    /**
-     * @brief called by device when passphrase entry is needed
-     */
-    virtual optional<std::string> onDevicePassphraseRequest(bool & on_device) {
-        on_device = true;
-        return optional<std::string>();
-    }
-
-    /**
-     * @brief Signalizes device operation progress
-     */
-    virtual void onDeviceProgress(const DeviceProgress & event) { (void)event; };
-
-    /**
-     * @brief If the listener is created before the wallet this enables to set created wallet object
-     */
-    virtual void onSetWallet(Wallet * wallet) { (void)wallet; };
 };
 
 
@@ -425,8 +375,7 @@ struct Wallet
 {
     enum Device {
         Device_Software = 0,
-        Device_Ledger = 1,
-        Device_Trezor = 2
+        Device_Ledger = 1
     };
 
     enum Status {
@@ -452,8 +401,6 @@ struct Wallet
     //! returns both error and error string atomically. suggested to use in instead of status() and errorString()
     virtual void statusWithErrorString(int& status, std::string& errorString) const = 0;
     virtual bool setPassword(const std::string &password) = 0;
-    virtual bool setDevicePin(const std::string &pin) { (void)pin; return false; };
-    virtual bool setDevicePassphrase(const std::string &passphrase) { (void)passphrase; return false; };
     virtual std::string address(uint32_t accountIndex = 0, uint32_t addressIndex = 0) const = 0;
     std::string mainAddress() const { return address(0, 0); }
     virtual std::string path() const = 0;
@@ -507,11 +454,6 @@ struct Wallet
     virtual std::string publicMultisigSignerKey() const = 0;
 
     /*!
-     * \brief stop - interrupts wallet refresh() loop once (doesn't stop background refresh thread)
-     */
-    virtual void stop() = 0;
-
-    /*!
      * \brief store - stores wallet to file.
      * \param path - main filename to store wallet to. additionally stores address file and keys file.
      *               to store to the same file - just pass empty string;
@@ -538,10 +480,9 @@ struct Wallet
      * \param daemon_username
      * \param daemon_password
      * \param lightWallet - start wallet in light mode, connect to a openmonero compatible server.
-     * \param proxy_address - set proxy address, empty string to disable
      * \return  - true on success
      */
-    virtual bool init(const std::string &daemon_address, uint64_t upper_transaction_size_limit = 0, const std::string &daemon_username = "", const std::string &daemon_password = "", bool use_ssl = false, bool lightWallet = false, const std::string &proxy_address = "") = 0;
+    virtual bool init(const std::string &daemon_address, uint64_t upper_transaction_size_limit = 0, const std::string &daemon_username = "", const std::string &daemon_password = "", bool use_ssl = false, bool lightWallet = false) = 0;
 
    /*!
     * \brief createWatchOnly - Creates a watch only wallet
@@ -600,7 +541,6 @@ struct Wallet
     virtual ConnectionStatus connected() const = 0;
     virtual void setTrustedDaemon(bool arg) = 0;
     virtual bool trustedDaemon() const = 0;
-    virtual bool setProxy(const std::string &address) = 0;
     virtual uint64_t balance(uint32_t accountIndex = 0) const = 0;
     uint64_t balanceAll() const {
         uint64_t result = 0;
@@ -634,12 +574,6 @@ struct Wallet
     */
     virtual uint64_t approximateBlockChainHeight() const = 0;
 
-    /**
-    * @brief estimateBlockChainHeight - returns estimate blockchain height. More accurate than approximateBlockChainHeight,
-    *                                   uses daemon height and falls back to calculation from date/time
-    * @return
-    **/ 
-    virtual uint64_t estimateBlockChainHeight() const = 0;
     /**
      * @brief daemonBlockChainHeight - returns daemon blockchain height
      * @return 0 - in case error communicating with the daemon.
@@ -708,17 +642,6 @@ struct Wallet
      * @brief refreshAsync - refreshes wallet asynchronously.
      */
     virtual void refreshAsync() = 0;
-
-    /**
-     * @brief rescanBlockchain - rescans the wallet, updating transactions from daemon
-     * @return - true if refreshed successfully;
-     */
-    virtual bool rescanBlockchain() = 0;
-
-    /**
-     * @brief rescanBlockchainAsync - rescans wallet asynchronously, starting from genesys
-     */
-    virtual void rescanBlockchainAsync() = 0;
 
     /**
      * @brief setAutoRefreshInterval - setup interval for automatic refresh.
@@ -819,32 +742,12 @@ struct Wallet
      * @return PendingTransaction
      */
     virtual PendingTransaction*  restoreMultisigTransaction(const std::string& signData) = 0;
-
-    /*!
-     * \brief createTransactionMultDest creates transaction with multiple destinations. if dst_addr is an integrated address, payment_id is ignored
-     * \param dst_addr                  vector of destination address as string
-     * \param payment_id                optional payment_id, can be empty string
-     * \param amount                    vector of amounts
-     * \param mixin_count               mixin count. if 0 passed, wallet will use default value
-     * \param subaddr_account           subaddress account from which the input funds are taken
-     * \param subaddr_indices           set of subaddress indices to use for transfer or sweeping. if set empty, all are chosen when sweeping, and one or more are automatically chosen when transferring. after execution, returns the set of actually used indices
-     * \param priority
-     * \return                          PendingTransaction object. caller is responsible to check PendingTransaction::status()
-     *                                  after object returned
-     */
-
-    virtual PendingTransaction * createTransactionMultDest(const std::vector<std::string> &dst_addr, const std::string &payment_id,
-                                                   optional<std::vector<uint64_t>> amount, uint32_t mixin_count,
-                                                   PendingTransaction::Priority = PendingTransaction::Priority_Low,
-                                                   uint32_t subaddr_account = 0,
-                                                   std::set<uint32_t> subaddr_indices = {}) = 0;
-
     /*!
      * \brief createTransaction creates transaction. if dst_addr is an integrated address, payment_id is ignored
      * \param dst_addr          destination address as string
      * \param payment_id        optional payment_id, can be empty string
      * \param amount            amount
-     * \param mixin_count       mixin count. if 0 passed, wallet will use default value
+     * \param ring_size         ring size. if 0 passed, wallet will use default value
      * \param subaddr_account   subaddress account from which the input funds are taken
      * \param subaddr_indices   set of subaddress indices to use for transfer or sweeping. if set empty, all are chosen when sweeping, and one or more are automatically chosen when transferring. after execution, returns the set of actually used indices
      * \param priority
@@ -853,7 +756,7 @@ struct Wallet
      */
 
     virtual PendingTransaction * createTransaction(const std::string &dst_addr, const std::string &payment_id,
-                                                   optional<uint64_t> amount, uint32_t mixin_count,
+                                                   optional<uint64_t> amount, uint32_t ring_size,
                                                    PendingTransaction::Priority = PendingTransaction::Priority_Low,
                                                    uint32_t subaddr_account = 0,
                                                    std::set<uint32_t> subaddr_indices = {}) = 0;
@@ -886,14 +789,6 @@ struct Wallet
      */
     virtual void disposeTransaction(PendingTransaction * t) = 0;
 
-    /*!
-     * \brief Estimates transaction fee.
-     * \param destinations Vector consisting of <address, amount> pairs.
-     * \return Estimated fee.
-     */
-    virtual uint64_t estimateTransactionFee(const std::vector<std::pair<std::string, uint64_t>> &destinations,
-                                            PendingTransaction::Priority priority) const = 0;
-
    /*!
     * \brief exportKeyImages - exports key images to file
     * \param filename
@@ -915,29 +810,16 @@ struct Wallet
     virtual SubaddressAccount * subaddressAccount() = 0;
     virtual void setListener(WalletListener *) = 0;
     /*!
-     * \brief defaultMixin - returns number of mixins used in transactions
+     * \brief defaultRingSize - returns ring size used in transactions
      * \return
      */
-    virtual uint32_t defaultMixin() const = 0;
+    virtual uint32_t defaultRingSize() const = 0;
     /*!
-     * \brief setDefaultMixin - setum number of mixins to be used for new transactions
+     * \brief setDefaultRingSize - setum ring size to be used for new transactions
      * \param arg
      */
-    virtual void setDefaultMixin(uint32_t arg) = 0;
+    virtual void setDefaultRingSize(uint32_t arg) = 0;
 
-    /*!
-     * \brief setCacheAttribute - attach an arbitrary string to a wallet cache attribute
-     * \param key - the key
-     * \param val - the value
-     * \return true if successful, false otherwise
-     */
-    virtual bool setCacheAttribute(const std::string &key, const std::string &val) = 0;
-    /*!
-     * \brief getCacheAttribute - return an arbitrary string attached to a wallet cache attribute
-     * \param key - the key
-     * \return the attached string, or empty string if there is none
-     */
-    virtual std::string getCacheAttribute(const std::string &key) const = 0;
     /*!
      * \brief setUserNote - attach an arbitrary string note to a txid
      * \param txid - the transaction id to attach the note to
@@ -1048,12 +930,6 @@ struct Wallet
      * \return Device they are on
      */
     virtual Device getDeviceType() const = 0;
-
-    //! cold-device protocol key image sync
-    virtual uint64_t coldKeyImageSync(uint64_t &spent, uint64_t &unspent) = 0;
-
-    //! shows address on device display
-    virtual void deviceShowAddress(uint32_t accountIndex, uint32_t addressIndex, const std::string &paymentId) = 0;
 };
 
 /**
@@ -1083,10 +959,9 @@ struct WalletManager
      * \param  password       Password of wallet file
      * \param  nettype        Network type
      * \param  kdf_rounds     Number of rounds for key derivation function
-     * \param  listener       Wallet listener to set to the wallet after creation
      * \return                Wallet instance (Wallet::status() needs to be called to check if opened successfully)
      */
-    virtual Wallet * openWallet(const std::string &path, const std::string &password, NetworkType nettype, uint64_t kdf_rounds = 1, WalletListener * listener = nullptr) = 0;
+    virtual Wallet * openWallet(const std::string &path, const std::string &password, NetworkType nettype, uint64_t kdf_rounds = 1) = 0;
     Wallet * openWallet(const std::string &path, const std::string &password, bool testnet = false)     // deprecated
     {
         return openWallet(path, password, testnet ? TESTNET : MAINNET);
@@ -1100,12 +975,10 @@ struct WalletManager
      * \param  nettype        Network type
      * \param  restoreHeight  restore from start height
      * \param  kdf_rounds     Number of rounds for key derivation function
-     * \param  seed_offset    Seed offset passphrase (optional)
      * \return                Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
      */
     virtual Wallet * recoveryWallet(const std::string &path, const std::string &password, const std::string &mnemonic,
-                                    NetworkType nettype = MAINNET, uint64_t restoreHeight = 0, uint64_t kdf_rounds = 1,
-                                    const std::string &seed_offset = {}) = 0;
+                                    NetworkType nettype = MAINNET, uint64_t restoreHeight = 0, uint64_t kdf_rounds = 1) = 0;
     Wallet * recoveryWallet(const std::string &path, const std::string &password, const std::string &mnemonic,
                                     bool testnet = false, uint64_t restoreHeight = 0)           // deprecated
     {
@@ -1200,7 +1073,6 @@ struct WalletManager
      * \param  restoreHeight        restore from start height (0 sets to current height)
      * \param  subaddressLookahead  Size of subaddress lookahead (empty sets to some default low value)
      * \param  kdf_rounds           Number of rounds for key derivation function
-     * \param  listener             Wallet listener to set to the wallet after creation
      * \return                      Wallet instance (Wallet::status() needs to be called to check if recovered successfully)
      */
     virtual Wallet * createWalletFromDevice(const std::string &path,
@@ -1209,8 +1081,7 @@ struct WalletManager
                                             const std::string &deviceName,
                                             uint64_t restoreHeight = 0,
                                             const std::string &subaddressLookahead = "",
-                                            uint64_t kdf_rounds = 1,
-                                            WalletListener * listener = nullptr) = 0;
+                                            uint64_t kdf_rounds = 1) = 0;
 
     /*!
      * \brief Closes wallet. In case operation succeeded, wallet object deleted. in case operation failed, wallet object not deleted
@@ -1300,14 +1171,7 @@ struct WalletManager
     virtual std::string resolveOpenAlias(const std::string &address, bool &dnssec_valid) const = 0;
 
     //! checks for an update and returns version, hash and url
-    static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(
-        const std::string &software,
-        std::string subdir,
-        const char *buildtag = nullptr,
-        const char *current_version = nullptr);
-
-    //! sets proxy address, empty string to disable
-    virtual bool setProxy(const std::string &address) = 0;
+    static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, std::string subdir);
 };
 
 

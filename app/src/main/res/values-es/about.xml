@@ -16,7 +16,7 @@
         <h1>Política de Privacidad</h1>
         <p>Esta página le informa de nuestras políticas con respecto a la recopilación, uso
         y divulgación de la información personal que recibimos de los usuarios de nuestra app
-        (monerujo: Monero Wallet).
+        (monerujoAE: Aeon Wallet).
         </p>
         <p>Al usar esta app, acepta la recopilación y uso de información en acuerdo con
         esta política.
@@ -24,22 +24,22 @@
         <h2>Datos Recopilados</h2>
         <p>Los datos personales son cualquier tipo de dato que podrían identificar a un individuo.
         </p>
-        <p>Las claves y direcciones públicas de Monero son recopiladas y procesadas por la app
+        <p>Las claves y direcciones públicas de Aeon son recopiladas y procesadas por la app
         localmente con el propósito de procesar la transacciones y transmitirlas en la red de
-        Monero de forma cifrada.
+        Aeon de forma cifrada.
         </p>
         <p>Otros datos personales no son recopilados por la app.</p>
-        <p>Si utiliza la funcionalidad de cambio (opcional), monerujo obtiene la tasa
+        <p>Si utiliza la funcionalidad de cambio (opcional), monerujoAE obtiene la tasa
         de cambio a través de la API pública de coinmarketcap.com.
         Vea su política de privadad en https://coinmarketcap.com/privacy para conocer más
         detalles acerca de como se recopilan los datos de sus peticiones.</p>
         <h2>Permisos de la App</h2>
         <ul>
-        <li>INTERNET : Conectar a la red de Monero a través de un Daemon Nodo de Monero</li>
+        <li>INTERNET : Conectar a la red de Aeon a través de un Daemon Nodo de Aeon</li>
         <li>READ_EXTERNAL_STORAGE : Leer los ficheros de la cartera almacenados en el dispositivo</li>
         <li>WRITE_EXTERNAL_STORAGE : Escribir los ficheros de la cartera almacenados en el dispositivo</li>
         <li>WAKE_LOCK : Mantener el dispositivo despierto durante la sincronización</li>
-        <li>CAMERA : Escanear códigos QR para recibir Monero</li>
+        <li>CAMERA : Escanear códigos QR para recibir Aeon</li>
         </ul>
         <h2>Cambios a esta Política de Privacidad</h2>
         <p>Es posible que actualicemos esta política de privacidad de vez en cuando. Le

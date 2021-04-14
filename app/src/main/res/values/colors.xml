@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gradientBottom">#FF006B</color>
-    <color name="gradientTop">#FF6105</color>
+    <color name="gradientBottom">#FF39d9fd</color>
+    <color name="gradientTop">#FF1059c6</color>
 
     <color name="gradientLeft">@color/monerujoOrange</color>
     <color name="gradientRight">@color/monerujoPink</color>
@@ -11,10 +11,10 @@
     <color name="monerujoBackground">#FFF6EF</color>
     <color name="monerujoPrimary">#2D1A2E</color>
     <color name="monerujoPrimaryVariant">#CCC3BD</color>
-    <color name="monerujoOrange">#FA5544</color>
+    <color name="monerujoOrange">#FF1059c6</color>
     <color name="monerujoGreen">#00C691</color>
-    <color name="monerujoPink">#F0006B</color>
-    <color name="monerujoPinkAlpha">#20F0006B</color>
+    <color name="monerujoPink">#FF39d9fd</color>
+    <color name="monerujoPinkAlpha">#2039d9fd</color>
     <color name="monerujoE">#FFFDFB</color>
 
     <color name="monerujoReceive">@color/monerujoGreen</color>
@@ -28,7 +28,7 @@
     <color name="tx_failed">@color/monerujoPrimaryVariant</color>
     <color name="tx_pending">@color/monerujoPrimaryVariant</color>
     <color name="tx_plus">@color/monerujoGreen</color>
-    <color name="tx_minus">@color/monerujoOrange</color>
+    <color name="tx_minus">#F0006B</color>
 
     <color name="monerujoBlue">#1f4e97</color>
 

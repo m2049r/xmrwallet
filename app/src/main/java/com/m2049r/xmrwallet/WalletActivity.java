@@ -225,19 +225,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         releaseWakeLock();
     }
 
-    private void onWalletRescan() {
-        try {
-            final WalletFragment walletFragment = getWalletFragment();
-            getWallet().rescanBlockchainAsync();
-            synced = false;
-            walletFragment.unsync();
-            invalidateOptionsMenu();
-        } catch (ClassCastException ex) {
-            Timber.d(ex.getLocalizedMessage());
-            // keep calm and carry on
-        }
-    }
-
     @Override
     protected void onStop() {
         Timber.d("onStop()");
@@ -272,18 +259,13 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             } else {
                 streetmodeItem.setIcon(R.drawable.gunther_24dp);
             }
-        final MenuItem rescanItem = menu.findItem(R.id.action_rescan);
-        if (rescanItem != null)
-            rescanItem.setEnabled(isSynced());
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();
-        if (itemId == R.id.action_rescan) {
-            onWalletRescan();
-        } else if (itemId == R.id.action_info) {
+        if (itemId == R.id.action_info) {
             onWalletDetails();
         } else if (itemId == R.id.action_credits) {
             CreditsFragment.display(getSupportFragmentManager());

@@ -309,8 +309,6 @@ public class Wallet {
 
     public native void refreshAsync();
 
-    public native void rescanBlockchainAsync();
-
 //TODO virtual void setAutoRefreshInterval(int millis) = 0;
 //TODO virtual int autoRefreshInterval() const = 0;
 
@@ -399,10 +397,6 @@ public class Wallet {
     public void setListener(WalletListener listener) {
         this.listenerHandle = setListenerJ(listener);
     }
-
-    public native int getDefaultMixin();
-
-    public native void setDefaultMixin(int mixin);
 
     public native boolean setUserNote(String txid, String note);
 

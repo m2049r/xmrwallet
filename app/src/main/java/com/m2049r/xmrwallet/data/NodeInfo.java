@@ -48,7 +48,7 @@ import okhttp3.ResponseBody;
 import timber.log.Timber;
 
 public class NodeInfo extends Node {
-    final static public int MIN_MAJOR_VERSION = 14;
+    final static public int MIN_MAJOR_VERSION = 9;
     final static public String RPC_VERSION = "2.0";
 
     @Getter
@@ -232,8 +232,6 @@ public class NodeInfo extends Node {
                         if (!RPC_VERSION.equals(rpcVersion))
                             return false;
                         final JSONObject result = json.getJSONObject("result");
-                        if (!result.has("credits")) // introduced in monero v0.15.0
-                            return false;
                         final JSONObject header = result.getJSONObject("block_header");
                         height = header.getLong("height");
                         timestamp = header.getLong("timestamp");

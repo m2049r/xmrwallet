@@ -35,7 +35,7 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Du skrev inn en %1$s addresse.</b><br/>
-        <i>Du vil sende XMR og mottakeren vil få %1$s gjennom <b>SideShift.ai</b> tjenesten.</i>
+        <i>Du vil sende AEON og mottakeren vil få %1$s gjennom <b>SideShift.ai</b> tjenesten.</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai Ordre</string>
@@ -49,17 +49,17 @@
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Du kan sende %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> gir deg en vekslingskurs på <b>%3$s %4$s/XMR</b> <u>akkurat nå</u></i>.
+        <i><b>SideShift.ai</b> gir deg en vekslingskurs på <b>%3$s %4$s/AEON</b> <u>akkurat nå</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Saldo: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Saldo: %2$s %3$s (%1$s AEON)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Betalings ID integrert</string>
     <string name="info_prepare_tx">Forbereder din transaksjon</string>
 
     <string name="label_send_progress_xmrto_create">Lager SideShift.ai ordre</string>
     <string name="label_send_progress_xmrto_query">Spør etter SideShift.ai ordre</string>
-    <string name="label_send_progress_create_tx">Forbereder Monero transaksjon</string>
+    <string name="label_send_progress_create_tx">Forbereder Aeon transaksjon</string>
 
     <string name="label_send_progress_queryparms">Spør etter SideShift.ai parametre</string>
 
@@ -70,8 +70,8 @@
     <string name="text_noretry_monero">Nå sitter vi fast her!</string>
     <string name="text_noretry">Ops, det ser ikke ut til at SideShift.ai er tilgjengelig for øyeblikket!</string>
 
-    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s AEON</string>
+    <string name="text_send_btc_rate">(Rate: %1$s %2$s/AEON)</string>
 
     <string name="label_send_btc_xmrto_info">Besøk SideShift.ai for støtte og sporing</string>
     <string name="label_send_btc_xmrto_key_lb">Hemmelig nøkkel\nSideShift.ai</string>
@@ -132,9 +132,9 @@
     <string name="label_wallet_receive">Motta</string>
     <string name="label_wallet_send">Gi</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR ubekrefta</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s AEON ubekrefta</string>
 
-    <string name="service_description">monerujo tjeneste</string>
+    <string name="service_description">monerujoAE tjeneste</string>
 
     <string name="status_synced">Synkronisert:</string>
     <string name="status_remaining">Gjenværende blokker</string>
@@ -153,7 +153,7 @@
     <string name="message_copy_txid">Transaksjons-ID kopiert til utklippstavle!</string>
     <string name="message_nocopy">Kopiering skrudd av for sikkerhetsgrunner!</string>
 
-    <string name="message_exchange_failed">Kan ikke hente vekslingskurs!\nBruk XMR/XMR eller prøv igjen</string>
+    <string name="message_exchange_failed">Kan ikke hente vekslingskurs!\nBruk AEON/AEON eller prøv igjen</string>
 
     <string name="generate_title">Lag lommebok</string>
     <string name="generate_name_hint">Lommeboknavn</string>
@@ -163,10 +163,10 @@
         <strong>Fingerprint Authentication</strong>
         <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
         without entering password.</p>
-        <p>But for additional security, monerujo will still require you to enter password when
+        <p>But for additional security, monerujoAE will still require you to enter password when
         viewing wallet details or sending funds.</p>
         <strong>Security Warning</strong>
-        <p>Finally, monerujo wants to remind you that anyone who can get your fingerprint will be
+        <p>Finally, monerujoAE wants to remind you that anyone who can get your fingerprint will be
         able to peep into your wallet balance.</p>
         <p>For instance, a malicious user around you can open your wallet when you are asleep.</p>
         <strong>Are you sure to enable this function?</strong>
@@ -207,25 +207,25 @@
 
     <string name="send_notes_hint">Privat notat (valgfritt)</string>
     <string name="send_generate_paymentid_hint">Generer</string>
-    <string name="send_send_label">Bruk mine søte moneroj</string>
-    <string name="send_send_timed_label">Bruk mine søte moneroj (%1$s)</string>
+    <string name="send_send_label">Bruk mine søte Aeon</string>
+    <string name="send_send_timed_label">Bruk mine søte Aeon (%1$s)</string>
     <string name="send_qr_invalid">Ikke en QR-kode</string>
     <string name="send_qr_address_invalid">Ikke en gyldig betalings-QR-kode</string>
     <string name="send_address_invalid">Ikke en gyldig adresse</string>
     <string name="send_title">Send</string>
-    <string name="send_available">Saldo: %1$s XMR</string>
+    <string name="send_available">Saldo: %1$s AEON</string>
     <string name="send_address_title">Adresse</string>
     <string name="send_amount_title">Mengde</string>
     <string name="send_confirm_title">Bekreft</string>
     <string name="send_success_title">Ferdig</string>
 
     <string name="send_amount_label">Antall</string>
-    <string name="send_fee_btc_label">Avgift (XMR)</string>
+    <string name="send_fee_btc_label">Avgift (AEON)</string>
     <string name="send_fee_label">Avgift</string>
-    <string name="send_total_btc_label">Totalt (XMR)</string>
+    <string name="send_total_btc_label">Totalt (AEON)</string>
     <string name="send_total_label">Totalt</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s avgift</string>
 
     <string name="send_create_tx_error_title">Error med å lage transaksjon</string>
@@ -257,7 +257,7 @@
 
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR ikke et tall</string>
+    <string name="receive_amount_nan">AEON ikke et tall</string>
 
     <string name="details_alert_message">Sensitive data vil nå bli vist.\nSe over skulderen din!</string>
     <string name="details_alert_yes">Jeg er trygg</string>
@@ -358,7 +358,7 @@
 
     <string name="label_restoreheight">Restore Height</string>
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Start Aeon App on %1$s</string>
 
     <string name="menu_rescan">Rescan!</string>
 
@@ -366,16 +366,16 @@
     <string name="onboarding_button_next">Next</string>
     <string name="onboarding_button_ready">I\'m ready!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
+    <string name="onboarding_welcome_title">Welcome to monerujoAE!</string>
+    <string name="onboarding_welcome_information">This app allows you to create and use Aeon wallets. You can store your sweet Aeon in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
+    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved Aeon.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
+    <string name="onboarding_xmrto_information">monerujoAE has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending AEON.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
+    <string name="onboarding_nodes_information">Nodes connect you to the Aeon network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_fpsend_information">You\'re now able to send AEON with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
 
     <string name="menu_daynight">Dark Mode</string>
     <string-array name="daynight_themes">
@@ -403,11 +403,11 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send AEON and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Please enter or scan a Aeon address.</b>
     ]]></string>
 
     <string name="subbaddress_title">Subaddresses</string>

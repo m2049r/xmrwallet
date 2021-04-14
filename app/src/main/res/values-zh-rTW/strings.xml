@@ -35,7 +35,7 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>你輸入了 %1$s 地址</b><br/>
-        <i>你將會發送 XMR 而收款方將會收到 %1$s (由 <b>SideShift.ai</b> 提供轉換)</i>
+        <i>你將會發送 AEON 而收款方將會收到 %1$s (由 <b>SideShift.ai</b> 提供轉換)</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai 訂單</string>
@@ -51,17 +51,17 @@
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>你可發送 %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> 提供的<u>即時</u>匯率為 <b>%3$s %4$s/XMR</b></i>.
+        <i><b>SideShift.ai</b> 提供的<u>即時</u>匯率為 <b>%3$s %4$s/AEON</b></i>.
     ]]></string>
 
-    <string name="send_available_btc">餘額：%2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">餘額：%2$s %3$s (%1$s AEON)</string>
 
     <string name="info_paymentid_integrated">&#x2714; 已加入付款 ID</string>
     <string name="info_prepare_tx">正在準備你的交易</string>
 
     <string name="label_send_progress_xmrto_create">建立 SideShift.ai 訂單</string>
     <string name="label_send_progress_xmrto_query">查詢 SideShift.ai 訂單</string>
-    <string name="label_send_progress_create_tx">正在準備 Monero 交易</string>
+    <string name="label_send_progress_create_tx">正在準備 Aeon 交易</string>
 
     <string name="label_send_progress_queryparms">正在查詢 SideShift.ai 參數</string>
 
@@ -72,8 +72,8 @@
     <string name="text_noretry_monero">我們卡住了！</string>
     <string name="text_noretry">不好，SideShift.ai 現在似乎無法提供服務！</string>
 
-    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(匯率：%1$s %2$s/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s AEON</string>
+    <string name="text_send_btc_rate">(匯率：%1$s %2$s/AEON)</string>
 
     <string name="label_send_btc_xmrto_info">參訪 SideShift.ai 以獲得支援及追蹤交易</string>
     <string name="label_send_btc_xmrto_key_lb">私鑰\nSideShift.ai</string>
@@ -134,9 +134,9 @@
     <string name="label_wallet_receive">接收</string>
     <string name="label_wallet_send">發送</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 XMR </string>
+    <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 AEON </string>
 
-    <string name="service_description">monerujo 服務</string>
+    <string name="service_description">monerujoAE 服務</string>
 
     <string name="status_synced">已同步區塊：</string>
     <string name="status_remaining">剩餘區塊</string>
@@ -155,7 +155,7 @@
     <string name="message_copy_txid">交易 ID 已複製至剪貼簿！</string>
     <string name="message_nocopy">因安全因素已停用複製功能！</string>
 
-    <string name="message_exchange_failed">無法取得匯率！\n使用 XMR/XMR 或重試</string>
+    <string name="message_exchange_failed">無法取得匯率！\n使用 AEON/AEON 或重試</string>
 
     <string name="generate_title">建立錢包</string>
     <string name="generate_name_hint">錢包名稱</string>
@@ -166,7 +166,7 @@
         <p>啟用指紋驗證後，無需輸入密碼，就可以查看錢包餘額並接收資金。</p>
         <p>但為安全起見，查看錢包詳細資訊或發送資金時，仍須輸入密碼。</p>
         <strong>安全警告</strong>
-        <p>最後，monerujo 提醒您，任何可以取得您指紋的人都能夠窺視您的錢包餘額。</p>
+        <p>最後，monerujoAE 提醒您，任何可以取得您指紋的人都能夠窺視您的錢包餘額。</p>
         <p>例如，您身邊的惡意使用者可以趁您睡著時使用您的指紋開啟錢包。</p>
         <strong>您確定要啟用本功能嗎？</strong>
     ]]></string>
@@ -206,25 +206,25 @@
 
     <string name="send_notes_hint">註記 (選填)</string>
     <string name="send_generate_paymentid_hint">產生</string>
-    <string name="send_send_label">發送我的 Monero</string>
-    <string name="send_send_timed_label">發送我的 Monero (%1$s)</string>
+    <string name="send_send_label">發送我的 Aeon</string>
+    <string name="send_send_timed_label">發送我的 Aeon (%1$s)</string>
     <string name="send_qr_invalid">這不是 QR 碼</string>
     <string name="send_qr_address_invalid">這不是有效的付款 QR 碼</string>
     <string name="send_address_invalid">這不是有效的地址</string>
     <string name="send_title">發送</string>
-    <string name="send_available">餘額：%1$s XMR</string>
+    <string name="send_available">餘額：%1$s AEON</string>
     <string name="send_address_title">地址</string>
     <string name="send_amount_title">金額</string>
     <string name="send_confirm_title">確認</string>
     <string name="send_success_title">完成</string>
 
     <string name="send_amount_label">金額</string>
-    <string name="send_fee_btc_label">手續費 (XMR)</string>
+    <string name="send_fee_btc_label">手續費 (AEON)</string>
     <string name="send_fee_label">手續費</string>
-    <string name="send_total_btc_label">總計 (XMR)</string>
+    <string name="send_total_btc_label">總計 (AEON)</string>
     <string name="send_total_label">總計</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s 手續費</string>
 
     <string name="send_create_tx_error_title">建立交易錯誤</string>
@@ -256,7 +256,7 @@
 
     <string name="receive_amount_too_big">最大值 %1$s</string>
     <string name="receive_amount_negative">最小值 0</string>
-    <string name="receive_amount_nan">輸入的 XMR 不是數字</string>
+    <string name="receive_amount_nan">輸入的 AEON 不是數字</string>
 
     <string name="details_alert_message">將會顯示敏感資訊。\n請注意周遭安全！</string>
     <string name="details_alert_yes">我現在很安全</string>
@@ -357,7 +357,7 @@
 
     <string name="label_restoreheight">回復高度</string>
 
-    <string name="toast_ledger_start_app">在 %1$s 上啟動 Monero APP</string>
+    <string name="toast_ledger_start_app">在 %1$s 上啟動 Aeon APP</string>
 
     <string name="menu_rescan">重新掃描！</string>
 
@@ -365,14 +365,14 @@
     <string name="onboarding_button_next">下一步</string>
     <string name="onboarding_button_ready">我準備好了！</string>
 
-    <string name="onboarding_welcome_title">歡迎使用 Monerujo！</string>
-    <string name="onboarding_welcome_information">這個 APP 可以讓你建立和使用 Monero 錢包。你可以在此儲存你心愛的 moneroj。</string>
+    <string name="onboarding_welcome_title">歡迎使用 monerujoAE！</string>
+    <string name="onboarding_welcome_information">這個 APP 可以讓你建立和使用 Aeon 錢包。你可以在此儲存你心愛的 Aeon。</string>
     <string name="onboarding_seed_title">保管好你的種子碼</string>
-    <string name="onboarding_seed_information">種子碼提供任何人完整的權限。如果你遺失了種子碼，我們無法幫你找回它，且你將失去你心愛的 moneroj。</string>
+    <string name="onboarding_seed_information">種子碼提供任何人完整的權限。如果你遺失了種子碼，我們無法幫你找回它，且你將失去你心愛的 Aeon。</string>
     <string name="onboarding_xmrto_title">發送加密貨幣</string>
-    <string name="onboarding_xmrto_information">Monerujo 內建 SideShift.ai 服務。只要貼上或掃描 BTC、LTC、ETH、DASH 或 DOGE 地址，你就可以直接使用 XMR 來發送這些加密貨幣。</string>
+    <string name="onboarding_xmrto_information">monerujoAE 內建 SideShift.ai 服務。只要貼上或掃描 BTC、LTC、ETH、DASH 或 DOGE 地址，你就可以直接使用 AEON 來發送這些加密貨幣。</string>
     <string name="onboarding_nodes_title">節點選擇，由你作主</string>
-    <string name="onboarding_nodes_information">你必須透過節點連線至 Monero 交易網路。選擇使用公共節點或是很密碼龐克式地使用你自己的節點。</string>
+    <string name="onboarding_nodes_information">你必須透過節點連線至 Aeon 交易網路。選擇使用公共節點或是很密碼龐克式地使用你自己的節點。</string>
     <string name="onboarding_fpsend_title">使用指紋辨識發送交易</string>
     <string name="onboarding_fpsend_information">你可以啟用指紋辨識來讓發送交易更輕鬆。若要使用密碼，只需停用指紋辨識功能即可。</string>
 
@@ -402,11 +402,11 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>請輸入或是掃描 %1$s 的地址。</b><br/>
-        <i>你&apos;將會發送 XMR 而接受者將會收到由 <b>SideShift.ai</b> 服務兌換的 %2$s 。</i>
+        <i>你&apos;將會發送 AEON 而接受者將會收到由 <b>SideShift.ai</b> 服務兌換的 %2$s 。</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>請輸入或掃描一個 Monero 地址。</b>
+        <b>請輸入或掃描一個 Aeon 地址。</b>
     ]]></string>
 
     <string name="subbaddress_title">Subaddresses</string>

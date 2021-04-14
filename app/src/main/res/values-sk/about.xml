@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_close">Zatvoriť</string>
-    <string name="about_whoami">ja som monerujo</string>
+    <string name="about_whoami">ja som monerujoAE</string>
     <string name="about_version">Verzia %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
@@ -16,27 +16,27 @@
     <string name="privacy_policy"><![CDATA[
         <h1>Zásady ochrany osobných údajov</h1>
         <p>Na tejto stránke nájdete informácie o zásadách ochrany v súvislosti so zbieraním a spracovávaním osobných údajov, 
-		ktoré získame od užívateľov našej apky (monerujo: Monero Wallet).
+		ktoré získame od užívateľov našej apky (monerujoAE: Aeon Wallet).
         </p>
         <p>Používaním tejto aplikácie súhlasíš so zbieraním a spracovávaním informácií v súlade s týmito pravidlami.
 		</p>
         <h2>Zbierané Dáta</h2>
         <p>Osobné dáta sú také dáta, na základe ktorých by bolo možné identifikovať jedinca.</p>
-        <p>Monero kľúče a verejné adresy sú zbierané a spracovávané aplikáciou lokálne na účely 
-		spracovania a prenosu transakcie v Monero sieti.</p>
+        <p>Aeon kľúče a verejné adresy sú zbierané a spracovávané aplikáciou lokálne na účely 
+		spracovania a prenosu transakcie v Aeon sieti.</p>
         <p>Iné osobné data nie sú zbierané a spracovávané.</p>
-        <p>Pokiaľ používaš (voliteľnú) funkciu zmenárne, monerujo vyhľadá výmenný kurz cez verejné API portálu coinmarketcap.com.
+        <p>Pokiaľ používaš (voliteľnú) funkciu zmenárne, monerujoAE vyhľadá výmenný kurz cez verejné API portálu coinmarketcap.com.
         Pre viac detailov pozri zásady ochrany osobných údajov na https://coinmarketcap.com/privacy kde je uvedené aké dáta zbierajú</p>
         <p>Pokiaľ používaš aplikáciu pre platby na BTC adresy, využívaš služby SideShift.ai.
-        Pre viac detailov pozri zásady ochrany osobných údajov na https://sideshift.ai/ . Monerujo im posiela cieľovú BTC
+        Pre viac detailov pozri zásady ochrany osobných údajov na https://sideshift.ai/ . monerujoAE im posiela cieľovú BTC
         addresu príjemcu a posielané množstvo. Tvoju IP bude tiež možné zaznamenať. </p>
         <h2>Povolenia</h2>
         <ul>
-        <li>INTERNET : Pripojiť do Monero siete cez vzdialený Monero uzol</li>
+        <li>INTERNET : Pripojiť do Aeon siete cez vzdialený Aeon uzol</li>
         <li>READ_EXTERNAL_STORAGE : Čítať súbory peňaženky uložené v zariadení</li>
         <li>WRITE_EXTERNAL_STORAGE : Zapisovať do súborov peňaženky uložených v zariadení</li>
         <li>WAKE_LOCK : Udržať zariadenie prebudené počas synchronizácie</li>
-        <li>CAMERA : Snímať QR kódy na posielanie a obdržanie Monero</li>
+        <li>CAMERA : Snímať QR kódy na posielanie a obdržanie Aeon</li>
         </ul>
         <h2>Zmeny v týchto zásadách</h2>
         <p>Je možné, že z času načas sa tieto zásady upravia, či doplnia, na čo budete včas upozornení aplikáciou

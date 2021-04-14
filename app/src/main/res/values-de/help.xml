@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Wallet erstellen – Neu</h1>
-        <p>Falls du eine neue Monero-Adresse benötigst!</p>
+        <p>Falls du eine neue Aeon-Adresse benötigst!</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein.
         Das Passwort schützt deine Wallet-Daten auf dem Gerät. Benutze ein starkes Passwort –
         eine Passwortphrase ist sogar noch besser.</p>
@@ -23,7 +23,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Wallet erstellen – Seed</h1>
-        <p>Falls du schon eine Monero-Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
+        <p>Falls du schon eine Aeon-Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
         Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.</p>
         <p>Trage deinen Seed in das Feld \"Mnemonischer Seed\" ein.<p>
@@ -37,7 +37,7 @@
         <p>Falls du dein Wallet mit Schlüsseln wiederherstellen willst!</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
         Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
-        <p>Gib deine Monero-Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
+        <p>Gib deine Aeon-Adresse im Feld \"Öffentliche Adresse\" ein und fülle die Felder \"View Key\" und \"Spend Key\" aus.</p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
@@ -48,7 +48,7 @@
         <p>Falls du nur eingehende Transaktionen auf dieses Wallet überwachen willst!</p>
         <p>Gib einen eindeutigen Wallet-Namen und ein Passwort ein. Das Passwort schützt deine Wallet-Daten auf dem Gerät.
         Benutze ein starkes Passwort – noch besser ist eine Passwortphrase.<p>
-        <p>Gib deine Monero-Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
+        <p>Gib deine Aeon-Adresse im Feld \"Öffentliche Adresse\" ein und fülle das Feld \"View Key\" aus.</p>
         <p>Gib die Blocknummer der ersten Transaktion dieser Adresse in das Feld \"Restore Height\" ein.
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
@@ -58,7 +58,7 @@
         <h1>Wallet-Details</h1>
         <h2>Öffentliche Adresse</h2>
         Die öffentliche Adresse ist wie deine Kontonummer, die du anderen Personen mitteilen kannst, ohne Angst zu haben, dein Geld zu verlieren.
-	Andere Personen werden dir Monero an diese Adresse schicken.
+	Andere Personen werden dir Aeon an diese Adresse schicken.
         <h2>Mnemonischer Seed</h2>
         Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
@@ -79,7 +79,7 @@
 	Nachdem du eine neue Passwortphrase eingegeben hast (auch bei der gleichen wie zuvor) wird die App 
 	ein neues CrAzYpass für dich erstellen und deine Wallet-Dateien sichern. Schreibe es auf!
         <h3>CrAzYpass-Wallets</h3>
-        Falls du Monerujo jemals neu installieren musst (zum Beispiel nachdem du dein Gerät auf Werkseinstellungen zurückgesetzt hast
+        Falls du monerujoAE jemals neu installieren musst (zum Beispiel nachdem du dein Gerät auf Werkseinstellungen zurückgesetzt hast
  	oder du ein neues Gerät besitzt) oder die Wallet-Dateien auf einem anderen Gerät oder PC nutzen willst, dann
  	musst du dieses Wiederherstellungspasswort nutzen, um Zugriff auf dein Wallet zu erhalten.<br/>
         Durch die Auswahl \"Passwortphrase ändern\" aus dem Menü kannst du eine andere Passwortphrase wählen. Beachte,
@@ -88,19 +88,19 @@
         Dein View-Key kann benutzt werden, um eingehende Transaktionen zu diesem Wallet zu überwachen, ohne anderen
         die Möglichkeit zu geben, Gelder aus diesem Wallet auszugeben.
         <h2>Spend-Key</h2>
-        Der Spend-Key ermöglicht jedem, Monero aus diesem Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
+        Der Spend-Key ermöglicht jedem, Aeon aus diesem Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
 	wie den Mnemomischen Seed auf.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Wallet-Liste</h1>
         <h2>Node</h2>
-        <p>Monerujo benutzt einen Drittanbieter-Node, um mit dem Monero-Netzwerk zu kommunizieren, ohne
+        <p>monerujoAE benutzt einen Drittanbieter-Node, um mit dem Aeon-Netzwerk zu kommunizieren, ohne
         die gesamte Blockchain herunterladen zu müssen. Eine Liste bekannter Drittanbieter-Nodes
-	oder eine Anleitung zum Betreiben eines eigenen Drittanbieter-Nodes findest du unter https://moneroworld.com/<p>
-        <p>Monerujo besitzt einige voreingestellte Drittanbieter-Nodes. Es erinnert sich an die letzten 5 benutzten Nodes.</p>
+	oder eine Anleitung zum Betreiben eines eigenen Drittanbieter-Nodes findest du unter https://nodes.aeon.run//<p>
+        <p>monerujoAE besitzt einige voreingestellte Drittanbieter-Nodes. Es erinnert sich an die letzten 5 benutzten Nodes.</p>
         <h2>Wallets</h2>
-        <p>Hier siehst du deine Wallets. Sie befinden sich im <tt>monerujo</tt> Ordner
+        <p>Hier siehst du deine Wallets. Sie befinden sich im <tt>monerujoAE</tt> Ordner
         im internen Speicher deines Geräts. Du kannst einen Datei-Explorer nutzen, um sie zu finden.
         Du solltest regelmäßig Backups von diesem Ordner machen und diese sicher aufbewahren für den Fall,
         dass dein Gerät EXPLODIERT oder gestohlen wird.</p>
@@ -109,11 +109,11 @@
         <h3>Details</h3>
         <p>Zeige die Wallet-Details, Seed &amp; Keys.</p>
         <h3>Empfangen</h3>
-        <p>Generiere einen QR-Code, um Moneroj zu empfangen.</p>
+        <p>Generiere einen QR-Code, um Aeon zu empfangen.</p>
         <h3>Umbenennen</h3>
         <p>Benenne das Wallet um. Backups werden nicht umbenannt.</p>
         <h3>Backup</h3>
-        <p>Erstelle eine Kopie des Wallets im <tt>backups</tt> Ordner innerhalb des <tt>monerujo</tt> Ordners.
+        <p>Erstelle eine Kopie des Wallets im <tt>backups</tt> Ordner innerhalb des <tt>monerujoAE</tt> Ordners.
         Eine bereits vorhandene Kopie wird überschrieben.</p>
         <h3>Archivieren</h3>
         <p>Erstellt ein Backup und löscht danach das Wallet. Die Kopie verbleibt im <tt>backups</tt>
@@ -124,12 +124,12 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetails</h1>
         <h2>Ziel</h2>
-        Dies ist die öffentliche Adresse des Wallets, zu dem du Moneroj gesendet hast.
+        Dies ist die öffentliche Adresse des Wallets, zu dem du Aeon gesendet hast.
         <h2>Zahlungs-ID</h2>
         Du kannst eine Zahlungs-ID benutzen, um Zahlungen zu identifizieren. Dies ist optional und ist nicht öffentlich einsehbar. 
 		Zum Beispiel kann ein Unternehmen damit Zahlungen und Verkäufe miteinander verbinden.
         <h2>TX-ID</h2>
-        Dies ist deine Transaktions-ID, die du benutzen kannst, um verschleierte Transaktionen mit einem Monero-
+        Dies ist deine Transaktions-ID, die du benutzen kannst, um verschleierte Transaktionen mit einem Aeon-
         Blockchain-Explorer wie <a href="https://xmrchain.net/">https://xmrchain.net/</a> zu identifizieren.
         <h2>TX-Schlüssel (Transaktionsschlüssel)</h2>
         Dies ist dein geheimer Transaktionsschlüssel. Bewahre ihn sicher auf, da er Dritten deine Signatur in einem Ring offenbart 
@@ -141,21 +141,21 @@
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
-        <p>Dies ist die öffentliche Adresse des Wallets, an das du Moneroj sendest. Du kannst sie aus der Zwischenablage kopieren,
+        <p>Dies ist die öffentliche Adresse des Wallets, an das du Aeon sendest. Du kannst sie aus der Zwischenablage kopieren,
 	einen QR-Code scannen oder sie manuell eingeben. Vergewissere dich, dass es die richtige Adresse ist, um
-        sicherzustellen, die Moneroj nicht irrtümlich an eine falsche Adresse zu senden.</p>
-        <p>Zusätzlich zu einer normalen Monero-Adresse kannst du auch
+        sicherzustellen, die Aeon nicht irrtümlich an eine falsche Adresse zu senden.</p>
+        <p>Zusätzlich zu einer normalen Aeon-Adresse kannst du auch
         <ul>
-            <li>einen OpenAlias für XMR oder BTC</li>
+            <li>einen OpenAlias für AEON oder BTC</li>
             <li>eine BTC-Adresse</li>
         </u>
         nutzen. Beachte bitte, dass das Senden von BTC über den Service von SideShift.ai erfolgt. (Siehe https://sideshift.ai
         für Details). Weitere Details sind weiter unten unter "BTC senden".</p>
         <h1>BTC senden</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Aeon zu Bitcoin fungiert.
+        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in monerujoAE zu integrieren. Bitte schaue dir
+        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das monerujoAE-Team
         gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
         <h2>SideShift.ai-Wechselkurs<h2>
         <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
@@ -165,7 +165,7 @@
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
         <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
+        <p>Da monerujoAE nur den Aeon-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
         dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
         <h2>SideShift.ai-Countdown!</h2>
         <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
@@ -175,9 +175,9 @@
     <string name="help_xmrto"><![CDATA[
         <h1>BTC senden</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Aeon zu Bitcoin fungiert.
+        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in monerujoAE zu integrieren. Bitte schaue dir
+        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das monerujoAE-Team
         gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
         <h2>SideShift.ai-Wechselkurs<h2>
         <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
@@ -187,7 +187,7 @@
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
         <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
+        <p>Da monerujoAE nur den Aeon-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
         dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
         <h2>SideShift.ai-Countdown!</h2>
         <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
@@ -212,16 +212,16 @@
         <p>Der Straßenmodus kann im Menü unterhalb Gunthers Kopfsymbol an- und ausgeschaltet werden. In diesem Modus wird dein
         Guthaben in keinem Menüpunkt angezeigt, sodass du dein Wallet gefahrlos auf der Straße, in einer Bar oder
         anderem öffentlichen Ort nutzen kannst. Vorherige Transaktionen sind ebenfalls verborgen. Neue Transaktionen werden angezeigt, damit
-        du sehen kannst, wenn du diese genialen Moneroj versendet oder empfangen hast!</p>
+        du sehen kannst, wenn du diese genialen Aeon versendet oder empfangen hast!</p>
         <h2>Scannen</h2>
-        Weil Monero gerne Dinge geheim hält, wird nach jedem Öffnen eines Monerujo-Wallets die Blockchain gescannt,
-	um zu überprüfen, ob neue Moneroj zu diesem Wallet gesendet wurden. Dies speichert ausschließlich Informationen,
+        Weil Aeon gerne Dinge geheim hält, wird nach jedem Öffnen eines monerujoAE-Wallets die Blockchain gescannt,
+	um zu überprüfen, ob neue Aeon zu diesem Wallet gesendet wurden. Dies speichert ausschließlich Informationen,
 	die zum Wallet auf diesem Gerät gehören. Manchmal kann dies etwas länger dauern, falls die letzte Synchronisierung
         eine Weile her ist.
         <h2>Das Guthaben</h2>
         <p><b>Hilfe! Mein Wallet-Guthaben ist verschwunden oder ist unbestätigt!</b><br/>
         Keine Panik! Wenn du Gelder von deinem Wallet sendest, wird ein Teil deines Guthabens kurzzeitig als unbestätigt angezeigt.
-        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Moneroj auf der Blockchain bewegt werden.
+        Dies geschieht aufgrund der zugrunde liegenden Technologie und wie Aeon auf der Blockchain bewegt werden.
         Lies mehr darüber auf https://getmonero.org/resources/moneropedia/change.html
         <h2>Transaktionsliste</h2>
         <p>Eine Liste deiner Transaktionen. In View-Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
@@ -230,14 +230,14 @@
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>Kurzfassung</h2>
-        <p>Aktualisiere die Liste der Nodes, indem du nach unten ziehst &amp; merke 3&#8211;5 davon vor, um es Monerujo zu ermöglichen, 
+        <p>Aktualisiere die Liste der Nodes, indem du nach unten ziehst &amp; merke 3&#8211;5 davon vor, um es monerujoAE zu ermöglichen, 
         den bestmöglichen für dich auszuwählen!</p>
         <h2>Was ist ein Node?</h2>
-        <p>Monerujo nutzt einen Drittanbieter-Node (manchmal auch Monero Knoten oder Daemon genannt), um mit
-        dem Monero-Netzwerk zu kommunizieren, ohne die Blockchain selbst herunterladen und 
+        <p>monerujoAE nutzt einen Drittanbieter-Node (manchmal auch Aeon Knoten oder Daemon genannt), um mit
+        dem Aeon-Netzwerk zu kommunizieren, ohne die Blockchain selbst herunterladen und 
         speichern zu müssen.<p>
         <h2>Node-Liste</h2>
-        <p>Wenn die Liste leer ist, kannst du entweder selbst manuell neue Nodes hinzufügen oder Monerujo
+        <p>Wenn die Liste leer ist, kannst du entweder selbst manuell neue Nodes hinzufügen oder monerujoAE
         das Netzwerk für dich scannen lassen – oder beides. Weiterlesen&#8230;</p>
         <p>Die Node-Liste zeigt alle derzeit bekannten Nodes an. Außerdem wird der Zeitstempel
         des letzten, diesem Node bekannten, Block unter dem Namen eines jeden Nodes angezeigt. Ein Icon,
@@ -246,10 +246,10 @@
         wird neben jedem Node angezeigt.</p>
         <p>Jeder Node in dieser Liste kann für spätere Verwendung vorgemerkt werden.
         Nicht vorgemerkte Nodes werden vergessen.<p>
-        <p>Jedes Mal, wenn du Monerujo nutzt, wird es aus den vorgemerkten Nodes den optimalen auswählen.
+        <p>Jedes Mal, wenn du monerujoAE nutzt, wird es aus den vorgemerkten Nodes den optimalen auswählen.
         Das macht es, indem es die Blockhöhe (wie aktuell
          ist der Node?) sowie das Antwortverhalten (wie schnell reagiert der Node auf Anfragen?) prüft.</p>
-        <p>Die Liste wird anhand dieser Eigenschaften geordnet. Der oberste Node ist also immer der, den Monerujo
+        <p>Die Liste wird anhand dieser Eigenschaften geordnet. Der oberste Node ist also immer der, den monerujoAE
         momentan auswählen würde. Ganz unten in der Liste würden sehr langsame oder nicht erreichbare Nodes angezeigt werden.</p>
         <h2>Füge einen Node hinzu</h2>
         <p>Wenn du den &quot;Node hinzufügen&quot; Button unten berührst, wirst du nach den
@@ -263,16 +263,16 @@
         Die &quot;Testergebnisse&quot; werden die Blockhöhe, Reaktionszeit und verwendete IP anzeigen.
         Das Ergebnis kann aber auch fehlerbehaftet sein – meistens weil die eingegebene Webadresse
         im Moment nicht in einer vertretbaren Zeit erreicht werden konnte oder weil die Login-Informationen falsch waren.
-        Oder die Kombination aus Webadresse und Port zeigt nicht auf einen richtigen Monero-Node!
+        Oder die Kombination aus Webadresse und Port zeigt nicht auf einen richtigen Aeon-Node!
         Wenn der Test bestanden wird (keine Fehler), kannst du &quot;OK&quot; drücken, um diesen Node zu speichern &amp;
         vorzumerken.</p>
         <h2>Suche nach Nodes</h2>
-        <p>Außerdem kannst du das Netzwerk nach Nodes durchsuchen. Monerujo wird
+        <p>Außerdem kannst du das Netzwerk nach Nodes durchsuchen. monerujoAE wird
         das Netzwerk nach Drittanbieter-Nodes auf Port 18089 durchsuchen. Es fängt damit an, deine
-        vorgemerkten Nodes nach anderen Teilnehmern im Monero-P2P-Netzwerk zu fragen und fährt dann damit fort,
+        vorgemerkten Nodes nach anderen Teilnehmern im Aeon-P2P-Netzwerk zu fragen und fährt dann damit fort,
         diese nach ihren Verbindungen zu fragen und so weiter. Wenn du keine vorgemerkten Nodes hast
         (oder diese uns nicht über ihre Verbindungen informieren),
-        wird sich Monerujo direkt mit den, in Monero fest eingebetteten, Ursprungsnodes verbinden. Die
+        wird sich monerujoAE direkt mit den, in Aeon fest eingebetteten, Ursprungsnodes verbinden. Die
         Suche stoppt, wenn insgesamt 10 Nodes gefunden wurden.</p>
     ]]></string>
 
@@ -280,7 +280,7 @@
 
     <string name="help_uri"><![CDATA[
         <h1>Nutzung eines Zahlungslinks</h1>
-        <p>Du hast Monerujo mit einem Zahlungslink gestartet. Gehe wie folgt vor, um Gelder zu versenden:</p>
+        <p>Du hast monerujoAE mit einem Zahlungslink gestartet. Gehe wie folgt vor, um Gelder zu versenden:</p>
         <p>
         1. Öffne das Wallet, von der aus du senden möchtest<br>
         2. Warte, bis das Wallet synchronisiert ist &amp; der "Sende"-Button erscheint<br>

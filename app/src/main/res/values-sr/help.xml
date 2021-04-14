@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Create Wallet - New</h1>
-        <p>If you need a new Monero Address!</p>
+        <p>If you need a new Aeon Address!</p>
         <p>Enter a unique wallet name and password.
         The password is used for securing your wallet data on the device. Use a strong password -
         even better use a passphrase.</p>
@@ -22,7 +22,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
+        <p>If you already have a Aeon Address and want to recover the transactions from the blockchain!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.</p>
         <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
@@ -48,7 +48,7 @@
         <p>If you are recovering your wallet using your keys!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
+        <p>Enter your Aeon Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
@@ -59,7 +59,7 @@
         <p>If you just want to monitor incoming transactions to a wallet!</p>
         <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
         Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
+        <p>Enter your Aeon Address in the field \"Public Address\" and fill out the \"View Key\".</p>
         <p>Enter the block number of the first transaction used for this address in the
         field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
         enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
@@ -69,11 +69,11 @@
         <h1>Wallet Details</h1>
         <h2>Public address</h2>
         Your public address is like your bank account number you can share this with anyone without
-        having to fear losing your Monero. People will send Monero to your wallet using this address.
+        having to fear losing your Aeon. People will send Aeon to your wallet using this address.
         <h2>Mnemonic Seed</h2>
         This is the only data needed to recover your wallet at a later point and gain full access to
         your funds. Keeping this private and secure is very important, as it gives <em>anyone</em> full
-        access to your Monero! If you haven’t written this down somewhere safe please do!
+        access to your Aeon! If you haven’t written this down somewhere safe please do!
         <h2>Wallet Files Recovery Password</h2>
         Make sure you write this password down. If you reset your device or uninstall the app, you
         will need it to access your wallet again.<br/>
@@ -89,7 +89,7 @@
         a new passphrase (maybe even the same one as before) the app will generate a CrAzYpass for
         you and secure your wallet files with it. Write it down!
         <h3>CrAzYpass wallets</h3>
-        If you ever need to reinstall Monerujo (for example after resetting your phone or switching
+        If you ever need to reinstall monerujoAE (for example after resetting your phone or switching
         to a new one) or you want to use your wallet files on a different device or PC, you have to
         use this Recovery Password in order to access your wallet again.<br/>
         By selecting \"Change Passphrase\" from the menu, you can choose another passphrase. Beware
@@ -98,19 +98,19 @@
         Your view key can be used to monitor incoming transactions to your wallet without giving
         permission to spend the funds inside your wallet.
         <h2>Spend key</h2>
-        Your spend key allows anyone to spend the Monero associated with your wallet, so don’t tell
+        Your spend key allows anyone to spend the Aeon associated with your wallet, so don’t tell
         anyone this key, keep it safe like your Mnemonic Seed.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Wallet List</h1>
         <h2>Node</h2>
-        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
+        <p>monerujoAE uses a Remote Node to communicate with the Aeon Network without having
         to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
-        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
+        remote nodes or learn how to run your own remote node here https://nodes.aeon.run//<p>
+        <p>monerujoAE comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
         <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
+        <p>Here you see your wallets. They are located in the <tt>monerujoAE</tt> folder
         in the internal storage of your device. You can use a file explorer app to see them.
         You should make backups of this folder on a regular basis to off-device storage in
         case your device explodes or gets stolen.</p>
@@ -119,11 +119,11 @@
         <h3>Details</h3>
         <p>Show the wallet details, seed &amp; keys.</p>
         <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
+        <p>Make a QR code for receiving Aeon.</p>
         <h3>Rename</h3>
         <p>Rename the wallet. Backups are not renamed.</p>
         <h3>Backup</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
+        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujoAE</tt>
         overwriting previous copies there.</p>
         <h3>Archive</h3>
         <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
@@ -134,13 +134,13 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Transaction Details</h1>
         <h2>Destination</h2>
-        This is the public address of the wallet you sent Monero to
+        This is the public address of the wallet you sent Aeon to
         <h2>PaymentID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
+        You can use a Payment ID to identify the reason you sent Aeon between two parties this is
         fully optional and private. For example it can allow a Business to reconcile your transaction
         with an item you bought.
         <h2>TX ID</h2>
-        This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
+        This is your Transaction ID you can use it to identify your obfuscated transaction on a Aeon
         Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>TX KEY (Transaction Key)</h2>
         This is your transaction private key, keep this safe as revealing this to a third party
@@ -152,21 +152,21 @@
     <string name="help_send"><![CDATA[
         <h1>Send</h1>
         <h2>Receiver’s address</h2>
-        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
+        <p>This is the public address of the wallet you are sending Aeon to, you can copy this from
         your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
         ensure you aren’t sending coins to the wrong address.</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>In addition to using an AEON address, you can also use
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
+            <li>an OpenAlias for AEON or BTC</li>
             <li>a BTC address</li>
         </u>
         Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
         <h1>Sending BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
-        https://sideshift.ai and decide for yourself if this is something you want to use. The Monerujo
+        <p>SideShift.ai is a third party service which acts as an exchange from Aeon to Bitcoin.
+        We use the SideShift.ai API to integrate Bitcoin payments into monerujoAE. Please check out
+        https://sideshift.ai and decide for yourself if this is something you want to use. The monerujoAE
         Team is not associated with SideShift.ai and cannot help you with their service.</p>
         <h2>SideShift.ai Exchange Rate<h2>
         <p>On the \"Amount\" screen you will be shown the current parameters of the SideShift.ai service. These
@@ -177,7 +177,7 @@
         a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
         be different to the indicative one shown on previous screens.</p>
         <h2>SideShift.ai Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your SideShift.ai secret key
+        <p>Since monerujoAE only handles the Aeon part of your transaction your SideShift.ai secret key
         can be used to track the Bitcoin part of your order on the SideShift.ai homepage.</p>
         <h2>SideShift.ai Countdown!</h2>
         <p>Once the countdown reaches zero, you need to get a new quote from SideShift.ai by going back to the
@@ -187,9 +187,9 @@
     <string name="help_xmrto"><![CDATA[
         <h1>Sending BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
-        https://sideshift.ai and decide for yourself if this is something you want to use. The Monerujo
+        <p>SideShift.ai is a third party service which acts as an exchange from Aeon to Bitcoin.
+        We use the SideShift.ai API to integrate Bitcoin payments into monerujoAE. Please check out
+        https://sideshift.ai and decide for yourself if this is something you want to use. The monerujoAE
         Team is not associated with SideShift.ai and cannot help you with their service.</p>
         <h2>SideShift.ai Exchange Rate<h2>
         <p>On the \"Amount\" screen you will be shown the current parameters of the SideShift.ai service. These
@@ -200,7 +200,7 @@
         a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
         be different to the indicative one shown on previous screens.</p>
         <h2>SideShift.ai Secret Key<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your SideShift.ai secret key
+        <p>Since monerujoAE only handles the Aeon part of your transaction your SideShift.ai secret key
         can be used to track the Bitcoin part of your order on the SideShift.ai homepage.</p>
         <h2>SideShift.ai Countdown!</h2>
         <p>Once the countdown reaches zero, you need to get a new quote from SideShift.ai by going back to the
@@ -213,17 +213,17 @@
         <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
         balance is not shown on any screen so you can safely use your wallet on the street, a pub or
         other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        you can see that you have sent/received sweet Aeon!</p>
         <h2>Scanning</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
+        Because Aeon likes to keep things private, every time you open a monerujoAE wallet we have to
+        scan the blockchain to see if any new Aeon have been sent to your wallet, this only
         stores information to your phone which belongs to your wallet. Sometimes it can take a while
         because you haven’t synced in a long time.
         <h2>The Balance</h2>
         <p><b>Help! My wallet balance has disappeared or is unconfirmed!</b><br/>
         Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
         as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
+        This happens as a result of how Aeon is exchanged on the blockchain and how change works.
         Read more about change at https://getmonero.org/resources/moneropedia/change.html
         <h2>Transaction List</h2>
         <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
@@ -232,14 +232,14 @@
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
+        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow monerujoAE
         to choose the best one for you!</p>
         <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
+        <p>monerujoAE uses a Remote Node (sometimes also called Daemon) to communicate with
+        the Aeon Network without having to download and store a copy of the
         whole blockchain itself.<p>
         <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
+        <p>If the list is empty, you can either add new nodes manually or let monerujoAE
         scan the network for you. Or both. Read on&#8230;</p>
         <p>The node list shows all currently known nodes. Additionally, the timestamp
         of the latest block known to each node is shown under the node name. An icon
@@ -248,10 +248,10 @@
         is shown next to each node.</p>
         <p>Any node in the list can be bookmarked for later use.
         Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
+        <p>monerujoAE will choose the optimal bookmarked node each time you use it.
         It does this by checking the blockheight (how up-to-date
         is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
+        <p>The list is sorted by these characteristics, so the top node would be the one monerujoAE
         would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
         <h2>Add a Node</h2>
         <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
@@ -265,22 +265,22 @@
         The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
         The result may also be an error - usually because the hostname provided is
         not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
+        Or the hostname/port combination does not point to an actual Aeon Node!
         Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
         bookmark this node.</p>
         <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
+        <p>Additionally, you can scan the network for nodes. monerujoAE will start
         scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
+        bookmarked nodes for other peers in the Aeon P2P network and then continues
         by asking those for their peers, and so on. If you have no bookmarked nodes
         (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
+        monerujoAE will go straight to the Aeon seed nodes hardcoded into Aeon. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
 
     <string name="help_uri"><![CDATA[
         <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <p>You have started monerujoAE with a payment link. In order to send funds, please do the following:</p>
         <p>
         1. Open the wallet you want to spend from<br>
         2. Wait until the wallet is synced &amp; the "Give" button appears<br>

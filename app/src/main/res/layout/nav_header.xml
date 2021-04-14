@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="end"
-        tools:text="12.34 XMR" />
+        tools:text="12.34 AEON" />
 
 </RelativeLayout>

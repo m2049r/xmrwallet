@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:textAlignment="textEnd"
-                    tools:text="143.008000 XMR" />
+                    tools:text="143.008000 AEON" />
 
                 <TextView
                     android:id="@+id/tvTxFee"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_close">Sulge</string>
-    <string name="about_whoami">Ma olen monerujo</string>
+    <string name="about_whoami">Ma olen monerujoAE</string>
     <string name="about_version">Versioon %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
@@ -16,7 +16,7 @@
     <string name="privacy_policy"><![CDATA[
         <h1>Privaatsuspoliitika</h1>
         <p>See leht informeerib sind personaalsete andmete kogumise, kasutamise ja
-        avaldamise osas, mida saame meie äpi (monerujo: Monero Wallet) kasutajatelt.
+        avaldamise osas, mida saame meie äpi (monerujoAE: Aeon Wallet) kasutajatelt.
         </p>
         <p>Äppi kasutades nõustute teabe kogumise ja kasutamisega vastavalt sellele
         poliitikale.
@@ -24,25 +24,25 @@
         <h2>Kogutud andmed</h2>
         <p>Isikuandmed on igasugused andmed, mis võivad isikut tuvastada.
         </p>
-        <p>Monero võtmeid ja avalikke aadresse kogutakse ja töödeldakse äpisiseselt
-        tehingute töötlemiseks ja edastatakse Monero võrku krüptitud kujul.
+        <p>Aeon võtmeid ja avalikke aadresse kogutakse ja töödeldakse äpisiseselt
+        tehingute töötlemiseks ja edastatakse Aeon võrku krüptitud kujul.
         </p>
         <p>Rakendus ei kogu muid isikuandmeid.</p>
-        <p>Kui kasutate vahetusfunktsiooni, kasutab monerujo selleks coinmarketcap.com\'i
+        <p>Kui kasutate vahetusfunktsiooni, kasutab monerujoAE selleks coinmarketcap.com\'i
         avaliku API funktsiooni. Vaadake nende privaatsuspoliitikat aadressil
         https://coinmarketcap.com/privacy, et saada üksikasju, kuidas teie päringute kohta
         andmeid kogutakse.</p>
         <p>Kui kasutate äppi BTC-aadressitele raha saatmiseks, siis kasutatakse selleks
         SideShift.ai teenust. Lisateabe saamiseks vaadake nende privaatsuspoliitikat aadressil
-        https://sideshift.ai/. Monerujo saadab neile BTC sihtkoha aadressi ja summa. Koguda
+        https://sideshift.ai/. monerujoAE saadab neile BTC sihtkoha aadressi ja summa. Koguda
         võidakse ka teie IP aadressi.</p>
         <h2>Äpi õigused</h2>
         <ul>
-        <li>INTERNET : Monero võrguga ühenduse loomine Monero Daemoni sõlmpunkti kaudu</li>
+        <li>INTERNET : Aeon võrguga ühenduse loomine Aeon Daemoni sõlmpunkti kaudu</li>
         <li>READ_EXTERNAL_STORAGE : Seadmesse salvestatud rahakoti failide lugemiseks</li>
         <li>WRITE_EXTERNAL_STORAGE : Rahakoti failide seadmesse salvestamiseks</li>
         <li>WAKE_LOCK : Sünkroonimise ajal hoiab seadme ärkvel</li>
-        <li>CAMERA : QR-koodi lugemine Monero saamiseks</li>
+        <li>CAMERA : QR-koodi lugemine Aeon saamiseks</li>
         </ul>
         <h2>Privaatsuspoliitika muudatused</h2>
         <p>Me võime aeg-ajalt seda privaatsuspoliitikat uuendada. Teatame teile kõigist

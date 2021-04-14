@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Criar Carteira - Nova</h1>
-        <p>Se precisas de um endereço Monero novo!</p>
+        <p>Se precisas de um endereço Aeon novo!</p>
         <p>Introduz nome e palavra passe únicos para a carteira.
         A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte -
         melhor ainda é utilizar uma frase passe.</p>
@@ -22,7 +22,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Crirar Carteira - Semente</h1>
-        <p>Se já tens um Endereço Monero e queres recuperar as transacções da blockchain!</p>
+        <p>Se já tens um Endereço Aeon e queres recuperar as transacções da blockchain!</p>
         <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
         <p>Introduz a tua Semente no campo \"Semente Mnemónica\".<p>
         <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
@@ -34,7 +34,7 @@
         <h1>Criar Carteira - Chaves</h1>
         <p>Se estás a recuperar a tua carteira a partir das tuas chaves!</p>
         <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
-        <p>Introduz o teu Endereço Monero no campo \"Endereço público\" e preenche a \"Chave de Visualização\" e a \"Chave de utilização\".</p>
+        <p>Introduz o teu Endereço Aeon no campo \"Endereço público\" e preenche a \"Chave de Visualização\" e a \"Chave de utilização\".</p>
         <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
         \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
         encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
@@ -44,7 +44,7 @@
         <h1>Criar Carteira - Visualização</h1>
         <p>Se apenas queres ver as transacções de depósito numa carteira!</p>
         <p>Introduz nome e palavra passe únicos para a carteira. A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte - melhor ainda é utilizar uma frase passe.</p>
-        <p>Introduz o teu Endereço Monero no campo \"Endereço público\" e preenche a \"Chave de Visualização\".</p>
+        <p>Introduz o teu Endereço Aeon no campo \"Endereço público\" e preenche a \"Chave de Visualização\".</p>
         <p>Se sabes o número do bloco da primeira transacção deste endereço, introduz no campo
         \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
         encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
@@ -54,12 +54,12 @@
         <h1>Detalhes da Carteira</h1>
         <h2>Endereço público</h2>
         O teu endereço público é como o teu número de conta bancário e podes partilhá-lo livremente
-        sem qualquer receio de perderes os teus Monero. As pessoas enviam dinheiro para a tua carteira
+        sem qualquer receio de perderes os teus Aeon. As pessoas enviam dinheiro para a tua carteira
         através deste endereço.
         <h2>Semente Mnemónica</h2>
         Este é o único dado necessário para recuperar a tua carteira no futuro e ganhar acesso total aos
         teus fundos. Manter esta informação privada e protegida é muito importante, já que dá a <em>qualquer</em>
-        pessoa acesso aos teus Monero! Se não escreveste a semente nalgum sítio seguro, por favor fá-lo!
+        pessoa acesso aos teus Aeon! Se não escreveste a semente nalgum sítio seguro, por favor fá-lo!
         <h2>Palavra passe dos Ficheiros da Carteira</h2>
         Certifica-te que escreves esta palavra passe. Se formatares o teu dispositivo ou desinstalares esta
         app, vais precisar precisar disto para acederes à tua carteira.<br/>
@@ -75,7 +75,7 @@
         menu. Após introduzir a nova palavra passe (podes usar a mesma) a aplicação gera uma passLoUCa para
         ti e protege os ficheiros da tua carteira com ela. Escreve-a nalgum lado!
         <h3>Carteiras com passLoUCa</h3>
-        Se precisares de reinstalar o Monerujo (por exemplo, depois de formatares o telemóvel ou trocares
+        Se precisares de reinstalar o monerujoAE (por exemplo, depois de formatares o telemóvel ou trocares
         para um novo) ou quiseres utilizar os ficheiros da carteira num dispositivo diferente ou PC, tens
         que usar esta Palavra passe de Recuperação de forma a aceder à tua carteira novamente.<br/>
         Ao seleccionar \"Alterar palavra passe\" do menu, podes escolher uma palavra passe nova. Cuidado
@@ -84,19 +84,19 @@
         A tua chave de visualização pode ser usada para ver as transacções de depósito sem dar permissão
         para gastar os fundos da tua carteira.
         <h2>Spend key</h2>
-        A tua chave de utilização permite a qualquer pessoa de gaster os Monero associados à tua carteira,
+        A tua chave de utilização permite a qualquer pessoa de gaster os Aeon associados à tua carteira,
         por isso não a reveles a ninguém, mantém-a segura assim como a tua Semente Mnemónica.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Lista de Carteiras</h1>
         <h2>Nó</h2>
-        <p>O Monerujo utiliza um Nó Remoto para comunicar com a rede Monero sem ter que descarregar e
+        <p>O monerujoAE utiliza um Nó Remoto para comunicar com a rede Aeon sem ter que descarregar e
         guardar uma cópia da blockchain inteira. Podes encontrar uma lista de nós remotos populares ou
-        aprende como correr o teu próprio nó remoto em https://moneroworld.com/<p>
-        <p>O Monerujo vem com alguns Nós Remotos predefinidos. O histórico dos últimos 5 nós é guardado.</p>
+        aprende como correr o teu próprio nó remoto em https://nodes.aeon.run//<p>
+        <p>O monerujoAE vem com alguns Nós Remotos predefinidos. O histórico dos últimos 5 nós é guardado.</p>
         <h2>Carteiras</h2>
-        <p>Aqui vês as tuas carteiras. Estão localizadas na pasta <tt>monerujo</tt>
+        <p>Aqui vês as tuas carteiras. Estão localizadas na pasta <tt>monerujoAE</tt>
         na memória interna do teu dispositivo. Podes utilizar um explorador de ficheiros
         para vê-las. Deves fazer cópias de segurança desta pasta regularmente para outro
         dispositivo para o caso dele explodir ou ser roubado.</p>
@@ -105,12 +105,12 @@
         <h3>Detalhes</h3>
         <p>Mostra os detalhes da carteira, semente &amp; chaves.</p>
         <h3>Receber</h3>
-        <p>Cria um código QR para receber Moneroj.</p>
+        <p>Cria um código QR para receber Aeon.</p>
         <h3>Renomear</h3>
         <p>Renomeia a carteira. As cópias de segurança não são renomeadas.</p>
         <h3>Cópia de segurança</h3>
         <p>Faz uma cópia da carteira na pasta <tt>cópias de segurança</tt> dentro do
-        <tt>monerujo</tt> reescrevendo cópias anteriores que lá estejam.</p>
+        <tt>monerujoAE</tt> reescrevendo cópias anteriores que lá estejam.</p>
         <h3>Arquivar</h3>
         <p>Faz uma cópia de segurança e de seguida apaga a carteira. a cópia permanece na pasta de
         <tt>cópias de segurança</tt>. Se já não precisas das tuas cópias de segurança, deves apagá-las
@@ -120,14 +120,14 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da Transacção</h1>
         <h2>Destino</h2>
-        O endereço público para o qual enviaste Moneroj
+        O endereço público para o qual enviaste Aeon
         <h2>ID do Pagamento</h2>
-        Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Moneroj.
+        Utiliza-se o ID do Pagamento para identificar a razão porque foram transaccionados Aeon.
         Isto é opcional e privado. Por exemplo, isto permite que um negócio identifique que item
         é que uma determinada transacção está a pagar.
         <h2>ID TX</h2>
         Este é o ID da tua Transacção que podes utilizar para identificar a tua transacção ofuscada
-        num explorador da Monero Blockchain como o <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        num explorador da Aeon Blockchain como o <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>Chave TX (Chave da Transacção)</h2>
         Esta é a chave privada da tua transacção, mantém-a segura já que revelá-la a um terceiro
         revela qual a tua assinatura num anel, fazendo com que a tua transacção seja transparente.
@@ -138,22 +138,22 @@
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Endereço do Destinatário</h2>
-        <p> Este é o endereço público da carteira para a qual vais enviar Moneroj, podes copiar esta
+        <p> Este é o endereço público da carteira para a qual vais enviar Aeon, podes copiar esta
         informação da área de transferência, capturara um código QR, ou introduzir manualmente. Confirma
         atentamente que não estás a enviar para o endereço errado.</p>
-        <p>Para alem de usar um endereço de XMR também podes usar
+        <p>Para alem de usar um endereço de AEON também podes usar
         <ul>
-            <li>Um OpenAlias para XMR ou BTC</li>
+            <li>Um OpenAlias para AEON ou BTC</li>
             <li>um endereço de BTC</li>
         </u>
 	Não deixar de notar que, enviar BTC é processado através do serviço SideShift.ai (ver https://sideshift.ai
 	para detalhes). Ver a secção enviar BTC.</p>
         <h1>Enviar BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
-        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no Monerujo. Por favor
+        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Aeon para Bitcoin.
+        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no monerujoAE. Por favor
         vai a https://sideshift.ai e decide por ti próprio se queres utilizar este serviço. A equipa
-        do Monerujo não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
+        do monerujoAE não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
         <h2>Taxa de câmbio SideShift.ai<h2>
         <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço SideShift.ai. Estes
         incluem a taxa de câmbio assim como os limites superiores e inferiores em BTC. Nota que
@@ -164,7 +164,7 @@
         botão de \"Enviar\". A taxa de câmbio pode ser diferente da taxa indicativa mostrada
         nos ecrãs anteriores.</p>
         <h2>Chave Secreta SideShift.ai<h2>
-        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta SideShift.ai
+        <p>Como o monerujoAE só controla a parte Aeon da transacção, a chave secreta SideShift.ai
         pode ser utilizada para monitorar a parte Bitcoin da transacção na página pricipal do
         SideShift.ai.</p>
         <h2>Contagem decrescente SideShift.ai!</h2>
@@ -175,10 +175,10 @@
     <string name="help_xmrto"><![CDATA[
         <h1>Enviar BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
-        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no Monerujo. Por favor
+        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Aeon para Bitcoin.
+        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no monerujoAE. Por favor
         vai a https://sideshift.ai e decide por ti próprio se queres utilizar este serviço. A equipa
-        do Monerujo não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
+        do monerujoAE não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
         <h2>Taxa de câmbio SideShift.ai<h2>
         <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço SideShift.ai. Estes
         incluem a taxa de câmbio assim como os limites superiores e inferiores em BTC. Nota que
@@ -189,7 +189,7 @@
         botão de \"Enviar\". A taxa de câmbio pode ser diferente da taxa indicativa mostrada
         nos ecrãs anteriores.</p>
         <h2>Chave Secreta SideShift.ai<h2>
-        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta SideShift.ai
+        <p>Como o monerujoAE só controla a parte Aeon da transacção, a chave secreta SideShift.ai
         pode ser utilizada para monitorar a parte Bitcoin da transacção na página pricipal do
         SideShift.ai.</p>
         <h2>Contagem decrescente SideShift.ai!</h2>
@@ -216,17 +216,17 @@
         <p>O Street mode pode ser ligado/desligado no menu ou na cabeça do icon Gunther. Neste modo
 	o teu saldo não é mostrado no teu ecrã para que possas usar a tua carteira de forma segura 
 	na rua, num bar ou outro local publico. As transações anteriores são também escondidas. As novas 
-	transações serão mostradas, para que cossas ver se enviaste/recebeste os teus preciosos Moneroj!</p>
+	transações serão mostradas, para que cossas ver se enviaste/recebeste os teus preciosos Aeon!</p>
         <h2>A Examinar</h2>
-        Como o Monero gosta de manter as coisas privadas, cada vez que abres uma carteira Monerujo temos
-        que examinar a blockchain para ver se novos Moneroj foram enviados para a tua carteira. Apenas
+        Como o Aeon gosta de manter as coisas privadas, cada vez que abres uma carteira monerujoAE temos
+        que examinar a blockchain para ver se novos Aeon foram enviados para a tua carteira. Apenas
         informação correspondente à tua carteira é guardada no telefone. Por vezes pode demorar algum tempo
         por já não sincronizares há algum tempo.
         <h2>O Saldo</h2>
         <p><b>Ajudem! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
         Não entres em pânico! Quando envias fundos da tua carteira, algum do teu saldo aparece temporariamente
         como não confirmado.
-        Isto acontece como resultado da forma como os Moneroj são trocados na blockchain.
+        Isto acontece como resultado da forma como os Aeon são trocados na blockchain.
         Podes ler mais sobre iston em https://getmonero.org/resources/moneropedia/change.html
         <h2>Lista de Transacções</h2>
         <p>Uma lista de transacções da carteira. Em carteiras de visualização, apenas são mostradas transacções
@@ -237,23 +237,23 @@
         <h1>Nós</h1>
         <h2>TL;DR</h2>
 	<p>Refresca a lista de Nós puxando para baixo &amp; favorito 3&#8211;5 nós para permitir que
-	o Monerujo escolha o melhor para ti!</p>
+	o monerujoAE escolha o melhor para ti!</p>
         <h2>O que é&apos;s um Nó?</h2>
-	<p>O Monerujo usa um Nó remoto (por vezes chamado Daemon) para comunicar com a Rede do Monero
+	<p>O monerujoAE usa um Nó remoto (por vezes chamado Daemon) para comunicar com a Rede do Aeon
 	sem ter de descarregar e gravar uma copia inteira da blockchain.</p>
         <h2>Lista de Nós</h2>
-	<p>Se a lista estiver vazia, podes adicionar um Nó manualmente ou deixar o Monerujo fazer um
+	<p>Se a lista estiver vazia, podes adicionar um Nó manualmente ou deixar o monerujoAE fazer um
 	scan à Rede por ti. Ou ambos. Continuar a ler em&#8230;</p>
       	<p>A lista de nós mostra todos os nós actualmente conhecidos. Adicionalmente, o timestamp do
 	ultimo bloco conhecido é listado em cada nome do nó. Um icon a representar o tempo de resposta
 	do nó&apos; (que indica o nivel de conetividade esperado) é mostrado junto de cada nó.</p>
         <p>Qualquer nó na lista pode ser adicionado aos favoritos por forma a usar mais tarde.
 	Nós que não forem adicionados como favoritos serão esquecidos.<p>
-        <p>O Monerujo irá escolher o melhor nó favorito cada vez que o usas.
+        <p>O monerujoAE irá escolher o melhor nó favorito cada vez que o usas.
 	Faz isto verificando a Altura (quanto mais actualizado esta cada nó) assim como a velocidade de
 	resposta (quão rapido responde este nó?).</p>
         <p>A lista é disposta consoante estas caracteristicas, assim sendo no topo estará o nó que o 
-	Monerujo escolheria a cada momento. No fundo da lista ficam os nós mais lentos ou indisponiveis.</p>
+	monerujoAE escolheria a cada momento. No fundo da lista ficam os nós mais lentos ou indisponiveis.</p>
         <h2>Adicionar um Nó</h2>
 	<p>Tocando no botão &quot;Adicionar Nó&quot; no fundo, poderás adicionar os detalhes 
 	na janela de dialogo.
@@ -265,15 +265,15 @@
         Os &quot;Resultados do Teste&quot; mostrarão a altura do bloco, tempo de resposta e IP usados.
 	O resultado pode também ser um erro - geralmente porque o Endereço introduzido está indisponivel
 	dentro de tempo util ou as credenciais estão incorretas.
-	Ou a combinação endereço/porta não aponta para um Nó de Monero!
+	Ou a combinação endereço/porta não aponta para um Nó de Aeon!
 	Assim que o teste passar (sem erros) - podes&apos;pressionar &quot;OK&quot; para gravar &amp; 
         favorito este nó.</p>
         <h2>Procurar Nós</h2>
-	<p>Adicionalmente, podes procurar nós na Rede de Monero. O Monerujo vai realizar
+	<p>Adicionalmente, podes procurar nós na Rede de Aeon. O monerujoAE vai realizar
 	uma busca na rede por nós remotos na porta 18089. Vai começar por procurar nos teus
-	nós favoritos por outros pares na rede P2P do Monero e depois continua perguntando 
+	nós favoritos por outros pares na rede P2P do Aeon e depois continua perguntando 
 	a esses pares, e por ai fora. Se não tiveres nenhum nó favorito na tua lista o 
-	Monerujo irá usar directamente os nós base que estão inscritos no codigo do Monero.
+	monerujoAE irá usar directamente os nós base que estão inscritos no codigo do Aeon.
 	A procura irá parar assim que encontrar 10 nós remotos no total.</p>
     ]]></string>
 
@@ -281,7 +281,7 @@
 
     <string name="help_uri"><![CDATA[
         <h1>Usando Endereço de Pagamento</h1>
-	<p>Iniciaste o Monerujo com um endereço de pagamento. Para enviar fundos, por favor faz o seguinte:</p>
+	<p>Iniciaste o monerujoAE com um endereço de pagamento. Para enviar fundos, por favor faz o seguinte:</p>
         <p>
 	1. Abre a carteira de onde pretendes gastar<br>
 	2. Espera até a carteira sincronizar &amp; e o botão "Enviar" aparecer<br>

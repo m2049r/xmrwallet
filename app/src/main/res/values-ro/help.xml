@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Creează Portofel - Nou</h1>
-        <p>Dacă ai nevoie de o adresă nouă pentru Monero!</p>
+        <p>Dacă ai nevoie de o adresă nouă pentru Aeon!</p>
         <p>Introdu un nume unic al portofelului și o parolă. Parola este folosită pentru a securiza informațiile portofelului
 	de pe dispozitiv. Folosește o parolă dificilă - folosește chiar o frază.</p>
         <h2>Notează-ți Semnătura Mnemonică!</h2>
@@ -19,7 +19,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Creează Portofel - Semnătură</h1>
-        <p>În cazul în care deții deja o adresă de portofel pentru Monero și dorești să îți recuperezi tranzacțiile din baza
+        <p>În cazul în care deții deja o adresă de portofel pentru Aeon și dorești să îți recuperezi tranzacțiile din baza
 	de date distribuită (blockchain)</p>
         <p>Introdu un nume unic al portofelului și o parolă. Parola este folosită pentru a securiza informațiile portofelului
 	de pe dispozitiv. Folosește o parolă dificilă - folosește chiar o frază.</p>
@@ -46,7 +46,7 @@
         <p>Dacă încerci recuperarea portofelului folosind cheile de acces!</p>
         <p>Introdu un nume unic al portofelului și o parolă. Parola este folosită pentru a securiza informațiile
 	portofelului de pe dispozitiv. Folosește o parolă dificilă - folosește chiar o frază.<p>
-        <p>Introdu adresa portofelului tău Monero în câmpul \"Adresă publică\", completează câmpul \"Cheie vizualizare\" 
+        <p>Introdu adresa portofelului tău Aeon în câmpul \"Adresă publică\", completează câmpul \"Cheie vizualizare\" 
 	și \"Cheie consum\".</p>
         <p>În cazul în care știi monoblocul în care a fost procesată prima ta tranzacție folosind această adresă,
         te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ.
@@ -58,7 +58,7 @@
         <p>În cazul în care dorești să vizualizezi tranzacțiile primite!</p>
         <p>Introdu un nume unic al portofelului și o parolă. Parola este folosită pentru a securiza informațiile
 	portofelului de pe dispozitiv. Folosește o parolă dificilă - folosește chiar o frază.<p>
-        <p>Introdu adresa portofelului tău Monero în câmpul \"Adresă publică\" și completează câmpul
+        <p>Introdu adresa portofelului tău Aeon în câmpul \"Adresă publică\" și completează câmpul
 	\"Cheie vizualizare\".</p>
         <p>În cazul în care știi monoblocul în care a fost procesată prima ta tranzacție folosind această adresă,
         te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ.
@@ -69,7 +69,7 @@
         <h1>Detalii Portofel</h1>
         <h2>Adresă publică</h2>
         Adresa publică a protofelului reprezintă, ca și exemplu, un cont bancar, număr pe care îl poți împărtăși
-	cu oricine fără a avea teama de a pierde din balanța Monero. Oricine poate trimite Monero către portofelul
+	cu oricine fără a avea teama de a pierde din balanța Aeon. Oricine poate trimite Aeon către portofelul
 	tău folosind această adresă.
         <h2>Semnătura Mnemonică</h2>
         Aceasta este singura informație necesară pentru recuperarea portofelului tău într-un moment ulterior
@@ -91,7 +91,7 @@
         unei noi parole (inclusiv una folosită anterior) aplicația va genera un CrAzYpass pentru
         tine și va securiza fișierele portofelului cu ajutorul lui. Notează-l!
         <h3>Portofele CrAzYpass</h3>
-        Dacă dorești să reinstalezi Monerujo (ca exemplu, după resetarea telefonului sau trecerea
+        Dacă dorești să reinstalezi MonerujoAE (ca exemplu, după resetarea telefonului sau trecerea
         la unul nou) sau dorești să utilizezi fișierele portofelului pe un alt dispozitiv sau PC, folosește
         Parola de Recuperare pentru a accesa portofelul din nou.<br/>
         La selectarea \"Schimbă Parola\" din meniu, poți alege o parolă nouă. Aceasta va genera
@@ -100,21 +100,21 @@
         Cheia ta de vizualizare poate fi folosită pentru a monitoriza tranzacțiile primite fără a da permisiunea
 	de a cheltui fondurile aflate în portofelul tău.
         <h2>Cheie consum</h2>
-        Cheia ta de consum permite oricui să cheltuie fondurile Monero asociate cu portofelul tău, așa că nu
+        Cheia ta de consum permite oricui să cheltuie fondurile Aeon asociate cu portofelul tău, așa că nu
 	divulga nimănui această cheie și păstreaz-o în siguranță precum Semnătura Mnemonică.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Listă Portofele</h1>
         <h2>Nod</h2>
-        <p>Monerujo folosește un dispozitiv la distanță (remote node) pentru a comunica cu Rețeaua Monero
+        <p>MonerujoAE folosește un dispozitiv la distanță (remote node) pentru a comunica cu Rețeaua Aeon
 	fără a descărca și a stoca o copie a întregii baze de date distribuite (blockchain). Poți găsi o listă
 	populară de noduri de asamblare aflate la distanța, sau despre cum să creezi un nod de asamblare personal,
-	la adresa https://moneroworld.com/<p>
-        <p>Monerujo vine cu o listă presetată de noduri de asamblare aflate la distanță (remote nodes).
-	De asemenea, Monerujo reține ultimele cinci noduri folosite.</p>
+	la adresa https://nodes.aeon.run/<p>
+        <p>MonerujoAE vine cu o listă presetată de noduri de asamblare aflate la distanță (remote nodes).
+	De asemenea, MonerujoAE reține ultimele cinci noduri folosite.</p>
         <h2>Portofele</h2>
-        <p>Aici sunt afișate portofelele tale. Ele sunt salvate în dosarul <tt>monerujo</tt> aflat în
+        <p>Aici sunt afișate portofelele tale. Ele sunt salvate în dosarul <tt>monerujoAE</tt> aflat în
 	memoria internă a dispozitivului tău. Poți să utilizezi un manager de fișiere pentru a le vedea.
 	Ar trebui să efectuezi, în mod regulat, copii de siguranță ale acestui dosar pe alte dispozitive,
 	în cazul în care dispozitivul tău va avea o disfuncționalitate sau va fi furat.</p>
@@ -123,11 +123,11 @@
         <h3>Detalii</h3>
         <p>Arată detaliile portofelului, Semnătură &amp; chei de acces.</p>
         <h3>Primește</h3>
-        <p>Creează un cod QR pentru a primi Monero.</p>
+        <p>Creează un cod QR pentru a primi Aeon.</p>
         <h3>Redenumește</h3>
         <p>Redenumește portofelul. Copiile de siguranță (backups) nu sunt redenumite în această operațiune.</p>
         <h3>Copie de siguranță</h3>
-        <p>Creează o copie de siguranță în dosarul <tt>backups</tt> aflat în dosarul <tt>monerujo</tt> 
+        <p>Creează o copie de siguranță în dosarul <tt>backups</tt> aflat în dosarul <tt>monerujoAE</tt> 
 	suprascriind copiile anterioare.</p>
         <h3>Arhivează</h3>
         <p>Efectuează o copie de siguranță și apoi șterge fișierul portofelului. Copia va rămâne
@@ -138,14 +138,14 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Detalii tranzacție</h1>
         <h2>Destinație</h2>
-        Aceasta este adresa publică la care tu ai trimis Monero
+        Aceasta este adresa publică la care tu ai trimis Aeon
         <h2>PaymentID</h2>
         Poți utiliza un ID de plată pentru a identifica suma trimisă între două terțe,
 	acest lucru este complet opțional și privat. Ca exemplu, poate permite identificarea
 	plății pentru un produs achiziționat.
         <h2>TX ID</h2>
         Acesta este ID-ul Tranzacției și poate fi folosit pentru a identifica tranzacția ta obfuscată
-	pe un explorator al bazei de date distribuită (Blockchain) a Monero, ca cel
+	pe un explorator al bazei de date distribuită (Blockchain) a Aeon, ca cel
 	de pe <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>TX KEY (Cheie Tranzacție)</h2>
         Aceasta este cheia privată a tranzacției, care trebuie păstrată în siguranță,
@@ -158,21 +158,21 @@
     <string name="help_send"><![CDATA[
         <h1>Trimitere</h1>
         <h2>Adresa destinatarului</h2>
-        <p>Aceasta este adresa publică a destinatarului la care vrei să trimiți Monero, poți copia
+        <p>Aceasta este adresa publică a destinatarului la care vrei să trimiți Aeon, poți copia
 	această adresă folosind clipboard-ul, scanând codul QR sau introducând-o manual. Verifică
 	repetat această adresă pentru a fi sigur că trimiți monedele la o adresă corectă.</p>
-        <p>Pe lângă adresa XMR, poți folosi
+        <p>Pe lângă adresa AEON, poți folosi
         <ul>
-            <li>un OpenAlias pentru XMR sau BTC</li>
+            <li>un OpenAlias pentru AEON sau BTC</li>
             <li>o adresă BTC</li>
         </u>
         Atenție, transferul BTC este procesat de serviciul SideShift.ai (vezi https://sideshift.ai
         pentru detalii). Vezi mai jos secțiunea Transfer BTC.</p>
         <h1>Transfer BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Aeon și Bitcoin.
+        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în MonerujoAE. Vezi
+        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa MonerujoAE
         nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
         <h2>Rata de schimb a SideShift.ai<h2>
         <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului SideShift.ai. Aceștia includ cursul de
@@ -183,7 +183,7 @@
 	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 	fi diferită de cea indicată pe ecranele anterioare.</p>
         <h2>Cheia secretă SideShift.ai<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
+        <p>Din moment ce MonerujoAE gestionează numai partea Aeon din tranzacția ta, cheia secretă a SideShift.ai
         poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
         <h2>Numerotarea inversă SideShift.ai</h2>
         <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la SideShift.ai mergând
@@ -193,9 +193,9 @@
     <string name="help_xmrto"><![CDATA[
         <h1>Transfer BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Aeon și Bitcoin.
+        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în MonerujoAE. Vezi
+        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa MonerujoAE
         nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
         <h2>Rata de schimb a SideShift.ai<h2>
         <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului SideShift.ai. Aceștia includ cursul de
@@ -206,7 +206,7 @@
 	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 	fi diferită de cea indicată pe ecranele anterioare.</p>
         <h2>Cheia secretă SideShift.ai<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
+        <p>Din moment ce MonerujoAE gestionează numai partea Aeon din tranzacția ta, cheia secretă a SideShift.ai
         poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
         <h2>Numerotarea inversă SideShift.ai</h2>
         <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la SideShift.ai mergând
@@ -219,17 +219,17 @@
         <p>Modul stradă poate fi activat/dezactivat în meniu sau la atingerea iconiței cu capul lui Gunther. În acest mod,
         balanța nu e afișată pe niciun ecran, așă că poți utiliza portofelul în stradă, bar sau
         alt loc public. Tranzacțiile anterioare la fel sunt ascunse. Tranzacțiile noi vor fi afișate, ca
-        să poți vizualiza scumpul Monero trimis/primit!</p>
+        să poți vizualiza scumpul Aeon trimis/primit!</p>
         <h2>Scanarea</h2>
-        Deoarece Monero păstrează lucrurile într-un mod privat, de fiecare dată când deschizi
-	portofelul Monerujo, vom scana baza de date distribuită (blockchain) pentru a vedea dacă
-	ai primit Monero în portofel, această metodă stochează doar informații relevante portofelului tău.
+        Deoarece Aeon păstrează lucrurile într-un mod privat, de fiecare dată când deschizi
+	portofelul MonerujoAE, vom scana baza de date distribuită (blockchain) pentru a vedea dacă
+	ai primit Aeon în portofel, această metodă stochează doar informații relevante portofelului tău.
 	Uneori poate dura ceva timp, fiindcă portofelul n-a fost sincronizat demult.
         <h2>Balanța</h2>
         <p><b>Ajutor! Balanța portofelului meu a dispărut sau este neconfirmată!</b><br/>
         Nu te panica! În momentul în care trimiți fonduri din portofelul tău, o parte din balanță
 	va fi arătată ca neconfirmată. Acest lucru se întâmplă ca urmare a modului în care este
-	schimbat Monero în baza de date distribuită și modul în care se face schimbul.
+	schimbat Aeon în baza de date distribuită și modul în care se face schimbul.
 	Citește mai multe despre schimb la adresa https://getmonero.org/resources/moneropedia/change.html
         <h2>Listă tranzacții</h2>
         <p>O listă a tranzacțiilor portofelului. În portofele create folosind cheia de vizualizare,
@@ -239,14 +239,14 @@
     <string name="help_node"><![CDATA[
         <h1>Noduri</h1>
         <h2>TL;DR</h2>
-        <p>Actualizează lista de noduri prin tragerea în jos &amp; marchează 3&#8211;5 noduri pentru a permite lui Monerujo
+        <p>Actualizează lista de noduri prin tragerea în jos &amp; marchează 3&#8211;5 noduri pentru a permite lui MonerujoAE
         să-l aleagă pe cel mai bun!</p>
         <h2>Ce este un Nod?</h2>
-        <p>Monerujo folosește un nod la distanță (cunoscut și ca Daemon) pentru a comunica cu
-        Rețeaua Monero fără a descărca și stoca o copie a
+        <p>MonerujoAE folosește un nod la distanță (cunoscut și ca Daemon) pentru a comunica cu
+        Rețeaua Aeon fără a descărca și stoca o copie a
         întregului blockchain.<p>
         <h2>Listă Noduri</h2>
-        <p>Dacă lista este goală, fie adaugi manual noduri noi sau îl lași pe Monerujo
+        <p>Dacă lista este goală, fie adaugi manual noduri noi sau îl lași pe MonerujoAE
         să scaneze rețeaua pentru tine. Sau ambele. Mai mullt&#8230;</p>
         <p>Lista de noduri conține toate nodurile cunoscute în prezent. Mai mult, marca temporală
         a ultimului monobloc cunoscută fiecărui nod este afișată sub numele nodului. Calitatea răspunsului
@@ -254,10 +254,10 @@
         plasată lângă fiecare nod.</p>
         <p>Orice nod din listă poate fi marcat pentru a fi utilizat mai târziu.
         Nodurile care nu sunt marcate vor fi uitate.<p>
-        <p>Monerujo va selecta nodul optim marcat la fiecare utilizare.
+        <p>MonerujoAE va selecta nodul optim marcat la fiecare utilizare.
         Aceasta are loc atât prin verificarea numărului monoblocului (cât de actual
         e nodul?), cât și prin calitatea răspunsului nodului (cât de repede sunt procesate cererile?).</p>
-        <p>Lista e sortată după aceste caracteristici, așă că acum Monerujo va alege nodul
+        <p>Lista e sortată după aceste caracteristici, așă că acum MonerujoAE va alege nodul
         cel mai bun. Josul listei va conține noduri foarte lente sau indisponibile.</p>
         <h2>Adaugă un Nod</h2>
         <p>La atingerea butonului &quot;Adaugă Nod&quot; din josul ecranului, va trebui
@@ -271,16 +271,16 @@
         &quot;Rezultatul Testării&quot; va conține numărul monoblocului, timpul de răspuns și adresa IP folosită.
         Rezultatul poate fi și o eroare - de obicei pentru că hostname-ul comunicat nu
         poate fi accesat în timp rezonabil sau datele sunt incorecte.
-        Sau combinația hostname/port nu contactează un Nod Monero actual!
+        Sau combinația hostname/port nu contactează un Nod Aeon actual!
         Odată ce testarea e pozitivă (fără erori) - atinge &quot;OK&quot; pentru a salva &amp;
         marca acest nod.</p>
         <h2>Scanare Noduri</h2>
-        <p>În plus, poți scana rețeaua pentru noduri. Monerujo va începe
+        <p>În plus, poți scana rețeaua pentru noduri. MonerujoAE va începe
         scanarea rețelei pentru noduri la distanță cu portul 18089. Primele sunt solicitate
-        nodurile marcate, care vor furniza alți parteneri în rețeaua P2P Monero care, la rândul lor,
+        nodurile marcate, care vor furniza alți parteneri în rețeaua P2P Aeon care, la rândul lor,
         vor căuta alții, și așa mai departe. Dacă nu ai noduri marcate
         (sau ele nu comunică informația partenerilor),
-        Monerujo va accesa nodurile integrate în Monero. Scanarea
+        MonerujoAE va accesa nodurile integrate în Aeon. Scanarea
         se finalizează odată ce s-au găsit 10 noduri la distanță.</p>
     ]]></string>
 
@@ -288,7 +288,7 @@
 
     <string name="help_uri"><![CDATA[
         <h1>Utilizarea unui link de plată</h1>
-        <p>Ai accesat monerujo cu un link de plată. Pentru a trimite fonduri, te rugăm să efectuezi următoarele:</p>
+        <p>Ai accesat monerujoAE cu un link de plată. Pentru a trimite fonduri, te rugăm să efectuezi următoarele:</p>
         <p>
         1. Deschide portofelul pe care dorești să-l folosești<br>
         2. Așteaptă să se sincronizeze portofelul &amp; butonul "Trimite" va fi disponibil<br>

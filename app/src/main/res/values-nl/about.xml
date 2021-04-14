@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_close">Sluiten</string>
-    <string name="about_whoami">Ik ben monerujo</string>
+    <string name="about_whoami">Ik ben monerujoAE</string>
     <string name="about_version">Versie %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
@@ -15,27 +15,27 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>Privacybeleid</h1>
-        <p>Deze pagina geeft informatie over ons beleid met betrekking tot het verzamelen, gebruiken en openbaar maken van persoonlijke gegevens die we ontvangen van gebruikers van onze app (monerujo: Monero-portemonnee).
+        <p>Deze pagina geeft informatie over ons beleid met betrekking tot het verzamelen, gebruiken en openbaar maken van persoonlijke gegevens die we ontvangen van gebruikers van onze app (monerujoAE: Aeon-portemonnee).
         </p>
         <p>Door deze app te gebruiken ga je akkoord met het verzamelen en gebruiken van gegevens volgens dit beleid.
         </p>
         <h2>Verzamelde gegevens</h2>
         <p>Persoonlijke gegevens zijn alle gegevens waarmee iemand kan worden geïdentificeerd.
         </p>
-        <p>Monero-sleutels en openbare Monero-adressen worden lokaal verzameld en verwerkt door de app, om transacties in versleutelde vorm te kunnen verwerken en verzenden op het Monero-netwerk.
+        <p>Aeon-sleutels en openbare Aeon-adressen worden lokaal verzameld en verwerkt door de app, om transacties in versleutelde vorm te kunnen verwerken en verzenden op het Aeon-netwerk.
         </p>
         <p>Verder worden er geen persoonlijke gegevens verzameld door de app.</p>
-        <p>Als je de optionele wisselkoersfunctie gebruikt, haalt monerujo de wisselkoers op via de openbare API van coinmarketcap.com.
+        <p>Als je de optionele wisselkoersfunctie gebruikt, haalt monerujoAE de wisselkoers op via de openbare API van coinmarketcap.com.
         Zie het privacybeleid op https://coinmarketcap.com/privacy voor meer informatie over hoe de gegevens in je aanvragen worden verzameld.</p>
         <p>Als je de app gebruikt om naar BTC-adressen te betalen, maak je gebruik van de service SideShift.ai.
-        Zie hun privacybeleid op https://sideshift.ai/ voor meer informatie. Monerujo verzendt het BTC-adres en -bedrag van de bestemming naar SideShift.ai. Je IP-adres kan ook worden bewaard.</p>
+        Zie hun privacybeleid op https://sideshift.ai/ voor meer informatie. monerujoAE verzendt het BTC-adres en -bedrag van de bestemming naar SideShift.ai. Je IP-adres kan ook worden bewaard.</p>
         <h2>App-machtigingen</h2>
         <ul>
-        <li>INTERNET: Verbinding maken met het Monero-netwerk via een Monero-node</li>
+        <li>INTERNET: Verbinding maken met het Aeon-netwerk via een Aeon-node</li>
         <li>READ_EXTERNAL_STORAGE: Portemonneebestanden lezen die zijn opgeslagen op het apparaat</li>
         <li>WRITE_EXTERNAL_STORAGE: Schrijven naar portemonneebestanden die zijn opgeslagen op het apparaat</li>
         <li>WAKE_LOCK: Apparaat actief houden tijdens het synchroniseren</li>
-        <li>CAMERA: QR-codes scannen om Monero te ontvangen</li>
+        <li>CAMERA: QR-codes scannen om Aeon te ontvangen</li>
         </ul>
         <h2>Wijzigingen van dit Privacybeleid</h2>
         <p>Dit Privacybeleid kan van tijd tot tijd worden bijgewerkt. We kondigen wijzigingen aan door het nieuwe Privacybeleid te publiceren in de app en op de website www.monerujo.io. We raden je aan om af en toe te controleren of dit Privacybeleid is gewijzigd.

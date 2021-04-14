@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum Crypto {
-    XMR("XMR", true, "monero:tx_amount:recipient_name:tx_description", R.id.ibXMR, R.drawable.ic_monero, R.drawable.ic_monero_bw, Wallet::isAddressValid),
+    XMR("AEON", true, "aeon:tx_amount:recipient_name:tx_description", R.id.ibXMR, R.drawable.ic_monero, R.drawable.ic_monero_bw, Wallet::isAddressValid),
     BTC("BTC", true, "bitcoin:amount:label:message", R.id.ibBTC, R.drawable.ic_xmrto_btc, R.drawable.ic_xmrto_btc_off, address -> {
         return BitcoinAddressValidator.validate(address, BitcoinAddressType.BTC);
     }),

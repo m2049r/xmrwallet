@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gradientBottom">#430078</color>
+    <color name="gradientBottom">@color/monerujoOrange</color>
     <color name="gradientTop">@color/monerujoBackground</color>
 
     <color name="monerujoToolbarText">@color/monerujoPrimary</color>
@@ -8,10 +8,11 @@
     <color name="monerujoBackground">#200C22</color>
     <color name="monerujoPrimary">#FFF6EF</color>
     <color name="monerujoPrimaryVariant">#CCC3BD</color>
-    <color name="monerujoOrange">#FF6252</color>
+    <color name="monerujoOrange">#FF1059c6</color>
     <color name="monerujoGreen">#27C79C</color>
-    <color name="monerujoPink">#FF1A80</color>
-    <color name="monerujoPinkAlpha">#20FF1A80</color>
+    <color name="monerujoPink">#FF39d9fd</color>
+    <color name="monerujoPinkAlpha">#2039d9fd</color>
     <color name="monerujoE">#2D1A2E</color>
 
+    <color name="tx_minus">#FF1A80</color>
 </resources>

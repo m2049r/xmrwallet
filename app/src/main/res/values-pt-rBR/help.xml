@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Criar Carteira - Nova</h1>
-        <p>Se você precisa de um novo endereço Monero!</p>
+        <p>Se você precisa de um novo endereço Aeon!</p>
         <p>Escreva um nome para sua carteira e uma senha forte.
         A senha é utilizada para proteger as informações da carteira. Use uma senha forte e comprida.</p>
         <h2>Anote a semente mnemônica!</h2>
@@ -21,7 +21,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Criar Carteira - Semente</h1>
-        <p>Se você já tem um endereço Monero e quer restaurar suas transações e fundos!</p>
+        <p>Se você já tem um endereço Aeon e quer restaurar suas transações e fundos!</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
         Use uma senha forte e comprida.</p>
         <p>Escreva a semente no campo \"semente mnemônica\".<p>
@@ -47,7 +47,7 @@
         <p>Se você quer restaurar a carteira a partir das chaves privadas</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
         Use uma senha forte e comprida.</p>
-        <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha os campos \"Chave de visualização\" e \"Chave de gasto\".</p>
+        <p>Escreva seu endereço Aeon no campo \"Endereço público\" e preencha os campos \"Chave de visualização\" e \"Chave de gasto\".</p>
         <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
@@ -58,7 +58,7 @@
         <p>Se você quer monitorar as transações que chegam na sua carteira.</p>
         <p>Escreva um nome e senha únicos para sua carteira. A senha é utilizada para proteger os dados no Android.
         Use uma senha forte e comprida.</p>
-        <p>Escreva seu endereço Monero no campo \"Endereço público\" e preencha o campo \"Chave de visualização\".</p>
+        <p>Escreva seu endereço Aeon no campo \"Endereço público\" e preencha o campo \"Chave de visualização\".</p>
         <p>Caso lembre, escreva a altura (ID) do bloco da primeira transação que você fez neste endereço
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
@@ -68,10 +68,10 @@
         <h1>Detalhes da carteira</h1>
         <h2>Endereço público</h2>
         Seu endereço público é como se fosse o número da sua conta bancária: você pode compartilhá-lo com qualquer
-        pessoa sem ter medo de perder seu Monero. As pessoas te enviarão Monero usando este endereço.
+        pessoa sem ter medo de perder seu Aeon. As pessoas te enviarão Aeon usando este endereço.
         <h2>Semente Mnemônica</h2>
         Essa é a única informação necessária para recuperar sua carteira no futuro e obter controle absoluto de seus fundos.
-        Manter essa informação privada e segura é muito importante, já que ela dá acesso total dos seus Moneros
+        Manter essa informação privada e segura é muito importante, já que ela dá acesso total dos seus Aeons
         para <em>qualquer pessoa</em>! Se você não anotou as palavras em um local seguro, faça-o o mais rápido possível!
         <h2>Senha dos arquivos da carteira</h2>
         Certifique-se de anotar e se lembrar desta senha. Caso você reinicie o dispositivo ou desinstale a aplicação, será preciso
@@ -88,7 +88,7 @@
         o aplicativo vai criar a SeNHaLoUCa para você e protegerá seus arquivos com ela.
         Não esqueça de anotá-la!
         <h3>Carteiras com SeNHaLoUCa</h3>
-        Se você precisar reinstalar o Monerujo (por exemplo, caso você compre um novo celular), ou se você quiser usar
+        Se você precisar reinstalar o monerujoAE (por exemplo, caso você compre um novo celular), ou se você quiser usar
         os arquivos da sua carteira em outro dispositivo ou computador, será preciso usar essa senha de restauração para
         ter acesso à carteira novamente.<br/>
         Ao selecionar "Alterar senha" no menu, você poderá escolher uma nova senha. Lembre-se que isso vai criar uma nova senha
@@ -97,19 +97,19 @@
         Sua chave de visualização pode ser usada para monitorar as transações que você recebe, sem precisar
         dar permissão para <strong>gastar</strong> os fundos da sua carteira.
         <h2>Chave de Gasto</h2>
-        Sua chave de gasto permite gastar o Monero que estiver na sua carteira, então não compartilhe esta chave com ninguém!
+        Sua chave de gasto permite gastar o Aeon que estiver na sua carteira, então não compartilhe esta chave com ninguém!
         Mantenha-a segura, assim como a semente mnemônica.
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Lista de Carteiras</h1>
         <h2>Nó</h2>
-        <p>O Monerujo usa nós remotos para se comunicar com a rede Monero sem precisar fazer o
+        <p>O monerujoAE usa nós remotos para se comunicar com a rede Aeon sem precisar fazer o
         download do blockchain inteiro. Você pode consultar uma lista de nós remotos populares
-        e aprender a como usar seu próprio nó em https://moneroworld.com/<p>
-        <p>O Monerujo já possui alguns nós remotos pré-definidos. Os últimos 5 nós usados ficam salvos.</p>
+        e aprender a como usar seu próprio nó em https://nodes.aeon.run//<p>
+        <p>O monerujoAE já possui alguns nós remotos pré-definidos. Os últimos 5 nós usados ficam salvos.</p>
         <h2>Carteiras</h2>
-        <p>Aqui ficam suas carteiras. Elas estão numa pasta chamada <tt>monerujo</tt> no armazenamento
+        <p>Aqui ficam suas carteiras. Elas estão numa pasta chamada <tt>monerujoAE</tt> no armazenamento
         interno do seu dispositivo. Você pode usar um aplicativo de gerenciador de arquivos para vê-las.
         Você deve fazer backups desta pasta fora do celular regularmente caso seu dispositivo
         exploda ou seja roubado</p>
@@ -118,11 +118,11 @@
         <h3>Detalhes</h3>
         <p>Mostra mais informações sobre a carteira, semente &amp; chaves.</p>
         <h3>Receber</h3>
-        <p>Cria um código QR para receber Monero.</p>
+        <p>Cria um código QR para receber Aeon.</p>
         <h3>Renomear</h3>
         <p>Renomeia a carteira. Backups não são renomeados.</p>
         <h3>Backup</h3>
-        <p>Faz uma cópia da carteira na pasta <tt>backups</tt> dentro de <tt>monerujo</tt>
+        <p>Faz uma cópia da carteira na pasta <tt>backups</tt> dentro de <tt>monerujoAE</tt>
         sobrescrevendo as cópias anteriores.</p>
         <h3>arquivar</h3>
         <p>Faz um backup da carteira e a deleta logo em seguida. A cópia permanece na pasta <tt>backups</tt>.
@@ -133,13 +133,13 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da transação</h1>
         <h2>Destino</h2>
-        O endereço público para onde você enviou Monero.
+        O endereço público para onde você enviou Aeon.
         <h2>ID do Pagamento</h2>
         Você pode usar o ID do Pagamento para identificar a razão pela qual você transacionou com a contraparte.
         Essa opção é opcional e privada. Por exemplo, lojistas podem reconciliar o seu pagamento com
         o produto que você comprou.
         <h2>ID TX</h2>
-        O ID da transação pode ser usado em exploradores de Blockchain do Monero como o
+        O ID da transação pode ser usado em exploradores de Blockchain do Aeon como o
         <a href="https://xmrchain.net/">https://xmrchain.net/</a> para identificar a transação (ofuscada).
         <h2>Chave TX (chave da transação)</h2>
         Essa é a chava privada da sua transação. Matenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
@@ -151,21 +151,21 @@
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Endereço destino</h2>
-        <p>Este é o endereço público da carteira na qual você está enviando Monero. Você pode colar da sua área de transferência,
+        <p>Este é o endereço público da carteira na qual você está enviando Aeon. Você pode colar da sua área de transferência,
         escanear um código QR ou escrevê-lo manualmente. Verifique-o múltiplas vezes para garantir que você não está enviando
-        Monero para o endereço errado.</p>
-        <p>Além de enviar para um endereço XMR, você também pode enviar para
+        Aeon para o endereço errado.</p>
+        <p>Além de enviar para um endereço AEON, você também pode enviar para
         <ul>
-            <li>um OpenAlias para XMR ou BTC</li>
+            <li>um OpenAlias para AEON ou BTC</li>
             <li>um endereço BTC</li>
         </u>
         Observe que o envio de BTC é processado pelo serviço SideShift.ai (veja https://sideshift.ai para detalhes).
         Consulte a seção sobre envio de BTC abaixo.</p>
         <h1>Enviando BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
-        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://sideshift.ai
-        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o SideShift.ai
+        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Aeon para Bitcoin.
+        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira monerujoAE. Consulte https://sideshift.ai
+        e decide por sua própria conta se este é um serviço que você quer usar. A equipe monerujoAE não está associada com o SideShift.ai
         e não podemos ajudá-lo caso algo não funcione no serviço.</p>
         <h2>Cotação SideShift.ai<h2>
         <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do SideShift.ai.
@@ -176,7 +176,7 @@
         um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
         ser diferente do que estava indicado na tela anterior.</p>
         <h2>Chave secreta do SideShift.ai<h2>
-        <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
+        <p>Como o monerujoAE somente lida com a parte da transação que é em Aeon, você pode usar sua chave secreta do
         SideShift.ai para rastrear a parte da transação que é em Bitcoin no website do SideShift.ai.</p>
         <h2>Contagem regressiva do SideShift.ai</h2>
         <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao SideShift.ai. Volte para a tela
@@ -186,9 +186,9 @@
     <string name="help_xmrto"><![CDATA[
         <h1>Enviando BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Monero para Bitcoin.
-        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira Monerujo. Consulte https://sideshift.ai
-        e decide por sua própria conta se este é um serviço que você quer usar. A equipe Monerujo não está associada com o SideShift.ai
+        <p>SideShift.ai é um serviço terceiro que age como casa de câmbio de Aeon para Bitcoin.
+        Nós usamos a API do SideShift.ai para integrar pagamentos em Bitcoin direto na carteira monerujoAE. Consulte https://sideshift.ai
+        e decide por sua própria conta se este é um serviço que você quer usar. A equipe monerujoAE não está associada com o SideShift.ai
         e não podemos ajudá-lo caso algo não funcione no serviço.</p>
         <h2>Cotação SideShift.ai<h2>
         <p>Na tela que exibe o valor da transação você poderá consultar os parâmetros do SideShift.ai.
@@ -199,7 +199,7 @@
         um período limitado - você pode observar uma contagem regressiva no botão de confirmação. A cotação pode
         ser diferente do que estava indicado na tela anterior.</p>
         <h2>Chave secreta do SideShift.ai<h2>
-        <p>Como o Monerujo somente lida com a parte da transação que é em Monero, você pode usar sua chave secreta do
+        <p>Como o monerujoAE somente lida com a parte da transação que é em Aeon, você pode usar sua chave secreta do
         SideShift.ai para rastrear a parte da transação que é em Bitcoin no website do SideShift.ai.</p>
         <h2>Contagem regressiva do SideShift.ai</h2>
         <p>Quando o contador chega a zero será preciso iniciar uma nova ordem e solicitar uma nova cotação ao SideShift.ai. Volte para a tela
@@ -212,17 +212,17 @@
         <p>O modo rua pode ser ativado/desativado no menu ou no ícone da cabeça do Gunther. Neste modo, o seu
         saldo não será exibido em nenhuma tela para que você possa usar sua carteira com segurança na rua, em um bar ou
         outro lugar público. Transações anteriores também serão ocultas. Novas transações serão mostradas, então
-        você pode ver que você enviou/recebeu Moneroj!</p>
+        você pode ver que você enviou/recebeu Aeon!</p>
         <h2>Escaneando</h2>
-        Como o Monero sempre mantém tudo privado, sempre que você abrir sua carteira o Monerujo precisa escanear
-        o blockchain para identificar se você recebeu algum novo Monero. Somente as informações que correspondem à sua
+        Como o Aeon sempre mantém tudo privado, sempre que você abrir sua carteira o monerujoAE precisa escanear
+        o blockchain para identificar se você recebeu algum novo Aeon. Somente as informações que correspondem à sua
         carteira são salvas no celular. De vez em quando esse processo demora,
         principalmente se faz tempo que você não abre a carteira.
         <h2>Saldo</h2>
         <p><b>Ajuda! O saldo da minha carteira desapareceu ou está não-confirmado!</b><br/>
         Não entre em pânico! Quando você envia uma transação, parte do seu saldo temporariamente é marcado
         como não-confirmado.
-        Isso acontece devido a maneira como o Monero é trocado no blockchain, e como a noção de \"troco\" funciona.
+        Isso acontece devido a maneira como o Aeon é trocado no blockchain, e como a noção de \"troco\" funciona.
         Você pode ler mais sobre o assunto aqui: https://getmonero.org/resources/moneropedia/change.html
         <h2>Lista de transações</h2>
         <p>Lista de transações da carteira. Nas carteiras \"somente leitura\", somente as transações de entrada aparecem.</p>
@@ -231,14 +231,14 @@
     <string name="help_node"><![CDATA[
         <h1>Nós</h1>
         <h2>TL;DR</h2>
-        <p>Atualize a lista de nós puxando para baixo &amp; favorite 3&#8211;5 nós para permitir que o Monerujo
+        <p>Atualize a lista de nós puxando para baixo &amp; favorite 3&#8211;5 nós para permitir que o monerujoAE
         escolha o melhor para você!</p>
         <h2>O que é um Nó?</h2>
-        <p>O Monerujo usa um nó remoto (às vezes também chamado de Daemon) para se comunicar com
-        a Rede Monero sem ter que baixar e armazenar uma cópia do
+        <p>O monerujoAE usa um nó remoto (às vezes também chamado de Daemon) para se comunicar com
+        a Rede Aeon sem ter que baixar e armazenar uma cópia do
         blockchain inteiro.<p>
         <h2>Lista de Nós</h2>
-        <p>Se a lista estiver vazia, você pode adicionar novos nós manualmente ou deixar que o Monerujo
+        <p>Se a lista estiver vazia, você pode adicionar novos nós manualmente ou deixar que o monerujoAE
         escaneie a rede para você. Ou ambos. Leia mais&#8230;</p>
         <p>A lista de nós mostra todos os nós conhecidos atualmente. Além disso, a data e hora
         do último bloco sincronizado para cada nó é exibido abaixo de seu nome. Um ícone
@@ -247,10 +247,10 @@
         é exibido ao lado.</p>
         <p>Qualquer nó na lista pode ser favoritado para uso posterior.
         Os nós que não são marcados como favoritos serão esquecidos.<p>
-        <p>O Monerujo sempre escolherá o nó ideal dentre os marcados.
+        <p>O monerujoAE sempre escolherá o nó ideal dentre os marcados.
         Ele faz isso verificando a altura do bloco (quão sincronizado
         está o nó?) bem como o comportamento da resposta (com que rapidez o nó responde às solicitações?).</p>
-        <p>A lista é classificada por essas características, portanto, o nó do topo seria o único que o Monerujo
+        <p>A lista é classificada por essas características, portanto, o nó do topo seria o único que o monerujoAE
         escolheria nesse caso. A parte inferior da lista mostraria nós muito lentos ou indisponíveis.</p>
         <h2>Adicionar um Nó</h2>
         <p>Ao tocar no botão &quot;Adicionar nó&quot; na parte inferior, você será solicitado a
@@ -264,16 +264,16 @@
         Os &quot;Resultados dos Testes&quot; exibirão a altura do bloco, o tempo de resposta e o IP real usado.
         O resultado também pode ser um erro - geralmente porque o nome do host fornecido
         não pôde ser alcançado em um período de tempo razoável ou as credenciais estão incorretas.
-        Ou a combinação Nome do Host/Porta não aponta para um Nó Monero válido!
+        Ou a combinação Nome do Host/Porta não aponta para um Nó Aeon válido!
         Depois que o teste passar (sem erro), você poderá pressionar &quot;OK&quot; para salvar &amp;
         marcar este nó como favorito.</p>
         <h2>Escanear Nós</h2>
-        <p>Além disso, você pode verificar a rede em busca de nós. O Monerujo vai começar a
+        <p>Além disso, você pode verificar a rede em busca de nós. O monerujoAE vai começar a
         escanear a rede por nós remotos na porta 18089. Ele começa perguntando ao seus
-        nós marcados como favoritos por outros pares na rede P2P do Monero e, em seguida, continua
+        nós marcados como favoritos por outros pares na rede P2P do Aeon e, em seguida, continua
         perguntando por seus pares, e assim por diante. Se você não tem nós marcados como favoritos
         (ou eles não nos dizem sobre seus pares),
-        o Monerujo irá direto para os nós codificados direto no Monero em si. O
+        o monerujoAE irá direto para os nós codificados direto no Aeon em si. O
         escaneamento termina quando 10 nós remotos são encontrados no total.</p>
     ]]></string>
 
@@ -281,7 +281,7 @@
 
     <string name="help_uri"><![CDATA[
         <h1>Usando um link de pagamento</h1>
-        <p>Você abriu o monerujo a partir de um link de pagamento. Para enviar os fundos, siga estes passos:</p>
+        <p>Você abriu o monerujoAE a partir de um link de pagamento. Para enviar os fundos, siga estes passos:</p>
         <p>
         1. Abra a carteira da qual você quer gastar<br>
         2. Espere que a carteira esteja sincronizada &amp; o botão "Enviar" vai aparecer<br>

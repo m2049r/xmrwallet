@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Krei monujon - Nova</h1>
-        <p>Se vi bezonas novan Monero-adreson!</p>
+        <p>Se vi bezonas novan Aeon-adreson!</p>
         <p>Entajpu unikan monujnomon kaj pasvorton.
         La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via aparato. Uzu fortan
         pasvorton - eĉ pli bone, uzu pasfrazon.</p>
@@ -21,7 +21,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Krei monujon - Semo</h1>
-        <p>Se vi jam havas Monero-adreson kaj volas reĉerpi la transkaciojn el la blokĉeno!</p>
+        <p>Se vi jam havas Aeon-adreson kaj volas reĉerpi la transkaciojn el la blokĉeno!</p>
         <p>Entajpu unikan monujnomon kaj pasvorton.
         La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via aparato. Uzu fortan
         pasvorton - eĉ pli bone, uzu pasfrazon.</p>
@@ -51,7 +51,7 @@
         <p>Entajpu unikan monujnomon kaj pasvorton.
         La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via Android-aparato. Uzu fortan
         pasvorton - eĉ pli bone, uzu pasfrazon.</p>
-        <p>Entajpu vian Monero-adreson en la kamp \"Public Address\" kaj plenigu \"Vida ŝlosilo\" kaj \"Elspezŝlosilo\".</p>
+        <p>Entajpu vian Aeon-adreson en la kamp \"Public Address\" kaj plenigu \"Vida ŝlosilo\" kaj \"Elspezŝlosilo\".</p>
         <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
@@ -63,7 +63,7 @@
         <p>Entajpu unikan monujnomon kaj pasvorton.
         La pasvorto estas uzita por sekurigi la datumojn restaŭrasde via monujo sur via Android-aparato. Uzu fortan
         pasvorton - eĉ pli bone, uzu pasfrazon.</p>
-        <p>Entajpu vian Monero-adreson en la kampo \"Publika adreso\" kaj plenigu \"Vida ŝlosilo\".</p>
+        <p>Entajpu vian Aeon-adreson en la kampo \"Publika adreso\" kaj plenigu \"Vida ŝlosilo\".</p>
         <p>Entajpu la bloknumeron de la unua transakcio okazinta por tiu adreso en la kampon \"Restaŭralteco\".
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
@@ -73,12 +73,12 @@
         <h1>Monujdetaloj</h1>
         <h2>Publika adreso</h2>
         Via publika adreso estas kiel via banka kontonumero, kiun vi povas montri al iu ajn, kaj fidi
-        ke vi ne perdos viajn Monerojn. Per tiu adreso, homoj sendos Monerojn al via monujo.
+        ke vi ne perdos viajn Aeonn. Per tiu adreso, homoj sendos Aeonn al via monujo.
 
         <h2>Mnemonika semo</h2>
         Tio estas la nura datumo, kiu bezoniĝas por restaŭri vian monujon en la estonteco, kaj reiĝi
         estro de via mono! Estas gravege konservi ĝin private kaj sekrete, ĉar ĝi lasus <em>iun ajn</em>
-        forŝteli viajn Monerojn! Se vi je jam skribis ĝin surpapere, bonvolu fari tion tuj!
+        forŝteli viajn Aeonn! Se vi je jam skribis ĝin surpapere, bonvolu fari tion tuj!
 
         <h2>Pasvorto por retrovi monujdosierojn</h2>
         Certiĝu ke vi skribas tiun pasvorton surpapere. Se vi restartas vian aparaton aŭ malinstalas
@@ -98,7 +98,7 @@
         viajn monujdosierojn per ĝi. Skribu ĝin surpapere!
 
         <h3>CrAzYpass-monujoj</h3>
-        Se vi iam bezonas reinstali Monerujon (ekz. post restartigo de via telefono aŭ ŝanĝo de telefono)
+        Se vi iam bezonas reinstali monerujoAEn (ekz. post restartigo de via telefono aŭ ŝanĝo de telefono)
         aŭ se vi intencas uzi viajn monujdosierojn kun alia aparato aŭ komputilo, vi devos uzi tiun
         Restaŭrpasvorton por atingi vian monujon denove.<br/>
         Elektante \"Ŝanĝi pasfrazon\" el la menuo, vi povos entajpi alian pasfrazon. Atentu pri tio
@@ -109,7 +109,7 @@
         elspezon de la mono troviĝanta en via monujo.
 
         <h2>Elspezŝlosilo</h2>
-        Via elspezŝlosilo ebligas ĉiun ajn elspezi la Monerojn ligitajn kun via monujo, do ne montru
+        Via elspezŝlosilo ebligas ĉiun ajn elspezi la Aeonn ligitajn kun via monujo, do ne montru
         ĝin al iu ajn, konservu ĝin sekure, kiel vian Mnemonikan Semon.
     ]]></string>
 
@@ -117,14 +117,14 @@
         <h1>Listo de monujoj</h1>
 
         <h2>Nodo</h2>
-        <p>Monerujo uzas foran nodon por komuniki kun la Monero-Reto sen elŝuti kaj konservi kopion
+        <p>monerujoAE uzas foran nodon por komuniki kun la Aeon-Reto sen elŝuti kaj konservi kopion
         de la tuta blokĉeno. Vi povas trovi liston de popularaj foraj nodoj, aŭ lerni kiel starigi
-        vian propran foran nodon, tie : https://moneroworld.com/</p>
-        <p>Monerujo estas jam antaŭagordita por kelkaj foraj nodoj. Ĝi memoros la kvin laste uzitajn
+        vian propran foran nodon, tie : https://nodes.aeon.run//</p>
+        <p>monerujoAE estas jam antaŭagordita por kelkaj foraj nodoj. Ĝi memoros la kvin laste uzitajn
         nodojn. </p>
 
         <h2>Monujoj</h2>
-        <p>Jen viaj monujoj. Ili troviĝas en la <tt>monerujo</tt>dosierujo, en la interna memorilo de
+        <p>Jen viaj monujoj. Ili troviĝas en la <tt>monerujoAE</tt>dosierujo, en la interna memorilo de
         via aparato. Vi povas uzi dosieran foliumilon por vidi ilin. Vi devus regule sekurkopii
         tiun dosierujon, kaze de eksplodo aŭ ŝtelo de via aparato.</p>
         <p>Elektu monujon por malfermi ĝin, aŭ premu la \"+\" por krei novan.
@@ -134,13 +134,13 @@
         <p>Montras la monujdetalojn, semon kaj ŝlosilojn.</p>
 
         <h3>Ricevi</h3>
-        <p>Kreas QR-kodon por ricevi Monerojn.</p>
+        <p>Kreas QR-kodon por ricevi Aeonn.</p>
 
         <h3>Renomi</h3>
         <p>Renomas la monujon. Sekurkopioj ne renomiĝos.</p>
 
         <h3>Sekurkopio</h3>
-        <p> Kreas kopion de la monujo en la <tt>sekurkopioj</tt>-dosierujo en la <tt>monerujo</tt>,
+        <p> Kreas kopion de la monujo en la <tt>sekurkopioj</tt>-dosierujo en la <tt>monerujoAE</tt>,
         anstataŭigante antaŭajn kopiojn tie.</p>
 
         <h3>Arkivo</h3>
@@ -152,7 +152,7 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Transakciaj detaloj</h1>
         <h2>Destino</h2>
-        Jen la publika adreso de la monujo al kiu vi sendas Monerojn.
+        Jen la publika adreso de la monujo al kiu vi sendas Aeonn.
 
         <h2>Paga ID</h2>
         Vi povas uzi pagan IDon por identigi la kialon de la transakcio. Tio estas tute opcia kaj
@@ -173,12 +173,12 @@
     <string name="help_send"><![CDATA[
         <h1>Sendi</h1>
         <h2>Adreso de la ricevonto</h2>
-        Jen la publika adreso de la monujo al kiu vi sendas Monerojn. Vi povas kopii tion el via
+        Jen la publika adreso de la monujo al kiu vi sendas Aeonn. Vi povas kopii tion el via
         tondujo, skani QR-kodo, aŭ mane entajpi ĝin. Kontrolu ĝin trifoje por certiĝi ke vi ne sendas
         monon al malĝusta adreso.</p>
         <p>Aldone al tio, vi ankaŭ povas uzi
         <ul>
-            <li>iun OpenAlias por XMR aŭ BTC</li>
+            <li>iun OpenAlias por AEON aŭ BTC</li>
             <li>bitmonan-adreson (BTC)<li>
         </ul>
         Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
@@ -187,14 +187,14 @@
         <h1>Sendi BTC</h1>
 
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
-        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Aeon al Bitmono. Ni uzas la
+        interfacon de AEON.TR por integrigi pagojn de bitmono en monerujoAE. Bonvolu mem legi ĉe
+        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La monerujoAE-teamo ne asocias kun SideShift.ai kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
         <h2>Kurzo de SideShift.ai<h2>
         <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
-        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
+        nunan AEON/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
         <h2>Mendo al SideShift.ai<h2>
         <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
@@ -202,7 +202,7 @@
         eble malsama ol tiu antaŭe montrita.</p>
 
         <h2>Sekreta ŝlosilo de SideShift.ai<h2>
-        <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
+        <p>Ĉar monerujoAE nur traktas la Aeon-flankon de via transakcio, vi uzu la sekretan
         SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
         <h2>La retrokalkulo de SideShift.ai!</h2>
         <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
@@ -213,14 +213,14 @@
         <h1>Elspezi Bitmonon</h1>
 
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
-        interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Aeon al Bitmono. Ni uzas la
+        interfacon de AEON.TR por integrigi pagojn de bitmono en monerujoAE. Bonvolu mem legi ĉe
+        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La monerujoAE-teamo ne asocias kun SideShift.ai kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
         <h2>Kurzo de SideShift.ai<h2>
         <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
-        nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
+        nunan AEON/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
         <h2>Mendo al SideShift.ai<h2>
         <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
@@ -228,7 +228,7 @@
         eble malsama ol tiu antaŭe montrita.</p>
 
         <h2>Sekreta ŝlosilo de SideShift.ai<h2>
-        <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
+        <p>Ĉar monerujoAE nur traktas la Aeon-flankon de via transakcio, vi uzu la sekretan
         SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
         <h2>La retrokalkulo de SideShift.ai!</h2>
         <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
@@ -241,16 +241,16 @@
         <p>Strata moduso enŝaltiĝas/malŝaltiĝas en la menuo aŭ ĉe la bildeto de la vizaĝo de Gunther.
         En tiu moduso, via saldo ne montriĝos, sur neniu ekrano, tiel vi povas sekure uzi vian
         monujon surstrate, trinkeje, aŭ ie publike. Antaŭaj transakcioj ankaŭ kaŝiĝas. Nova
-        transakcioj montriĝos, til vi povos vidi ke vi sendis/ricevis dolĉajn Monerojn!</p>
+        transakcioj montriĝos, til vi povos vidi ke vi sendis/ricevis dolĉajn Aeonn!</p>
 
         <h2>Skanado</h2>
-        Ĉar Monero ŝatas privatumi, je ĉiu starto la monujo devas skani la blokĉenon por vidi ĉu
-        novaj Moneroj sendiĝis al via monujo, kaj via aparato memoras nur la informojn kiuj apartenas
+        Ĉar Aeon ŝatas privatumi, je ĉiu starto la monujo devas skani la blokĉenon por vidi ĉu
+        novaj Aeon sendiĝis al via monujo, kaj via aparato memoras nur la informojn kiuj apartenas
         al via monujo. Povas daŭri iom da tempo fojfoje, des pli se vi ne sinkronizis de longa tempo.
         <h2>La saldo</h2>
         <p><b>Helpon! La saldo de mia monujo malaperis aŭ ne konfirmiĝis!</b><br/>
         Ne paniku! Kiam vi sendas monon al via monujo, iom el via saldo maldaŭre montriĝos nekonfirmite.
-        Tio okazas kiel rezulto de la maniero laŭ kiu Monero sendiĝas sur la blokĉeno, kaj
+        Tio okazas kiel rezulto de la maniero laŭ kiu Aeon sendiĝas sur la blokĉeno, kaj
         kiel \"restmono\" traktiĝas.
         Legu pli pri restmono tie: https://getmonero.org/resources/moneropedia/change.html
         <h2>Transakcia listo</h2>
@@ -261,23 +261,23 @@
         <h1>Nodoj</h1>
         <h2>Resumo</h2>
         <p>Aktualigu la liston de nodoj tirante suben kaj aldonu legosignojn al nodoj por rajtigi
-        Monerujon elekti la plej bonan por vi!</p>
+        monerujoAEn elekti la plej bonan por vi!</p>
 
         <h2>Kio estas nodo?</h2>
-        <p>Monerujo uzas foran nodon (kelkfoje nomata \"demono\") por komuniki kun la Monero-reto sen
+        <p>monerujoAE uzas foran nodon (kelkfoje nomata \"demono\") por komuniki kun la Aeon-reto sen
         elŝuti la tutan blokĉenon kaj gardi kopion de ĝi.</p>
 
         <h2>Listo de nodoj</h2>
-        <p>Se la listo malplenas, vi povas mane aldoni novajn nodojn, aŭ lasi Monerujon skani la reton
+        <p>Se la listo malplenas, vi povas mane aldoni novajn nodojn, aŭ lasi monerujoAEn skani la reton
         por vi. Aŭ ambaŭ. Legu pli&#8230;</p>
         <p>La listo de nodoj montras ĉiujn konatajn nodojn. Aldone, la tempindiko de la bloko kiu plej
         laste koniĝis de ĉiu nodo estas  montrita sub la nodnomo. Apud ĉiu nodo estas bildeto kiu simbolas
         la respond-sintenon de ĝi (indikilo de la postulinda konekt-nivelo).</p>
         <p>Ĉiu nodo de la listo povas markiĝi por pli posta uzo. Nodoj kiuj ne markiĝas, forgesiĝos.<p>
-        <p>Ĉiam kiam uzite, Monerujo elektos la plej taŭgan markitan nodon.
+        <p>Ĉiam kiam uzite, monerujoAE elektos la plej taŭgan markitan nodon.
         Tio okazas kontrolante la blokaltecon (kiom ĝisdata estas la nodo?) kaj la respond-sintenon (kiom
         rapide respondas la nodon?).<p>
-        <p>La listo estas ordigita laŭ tiuj ecoj, do la plej supra nodo uziĝos de Monerujo. La plej subaj
+        <p>La listo estas ordigita laŭ tiuj ecoj, do la plej supra nodo uziĝos de monerujoAE. La plej subaj
         nodoj estas ege malrapidaj aŭ nedisponaj.</p>
 
         <h2>Aldoni nodon</h2>
@@ -292,21 +292,21 @@
         La &quot;Testrezulto&quot; aperigos la blokaltecon, la responddaŭron kaj la uzitan IP-adreson.
         La rezulto eble estos eraro - plej ofte ĉar la provizita nomo de gastiganto ne atingeblas sufiĉe
         rapide, aŭ ĉar la ensalutiloj ne kongruas.
-        Ankaŭ povas esti ke la kombinaĵo gastigantonomo/pordo ne indikas ekzistantan nodon de Monero!
+        Ankaŭ povas esti ke la kombinaĵo gastigantonomo/pordo ne indikas ekzistantan nodon de Aeon!
         Post la sukceso de la testo (neniu eraro) - vi povas premi &quot;OK&quot; por konservi tiun nodon.</p>
 
         <h2>Serĉi nodojn</h2>
-        <p>Vi povas aldone skani la reton, serĉante nodojn. Monerujo komencos la skanadon je la pordo 18089.
+        <p>Vi povas aldone skani la reton, serĉante nodojn. monerujoAE komencos la skanadon je la pordo 18089.
         Ĝi komence petos viajn markitajn nodojn je aliaj partoprenantoj de la P2P-reto,
         kaj poste petos tiujn partoprenantoj je iliaj aliaj konektitaj partoprenantojn,
         kaj tiel plu.
-        Se vi ne markis nodojn (aŭ se ili ne respondas pri iliaj konektoj), Monerujo direkte petos la
-        pranodojn konservitajn en la kerno de Monero. La skanado haltos kiam 10 foraj nodoj estos trovitaj.</p>
+        Se vi ne markis nodojn (aŭ se ili ne respondas pri iliaj konektoj), monerujoAE direkte petos la
+        pranodojn konservitajn en la kerno de Aeon. La skanado haltos kiam 10 foraj nodoj estos trovitaj.</p>
     ]]></string>
 
     <string name="help_uri"><![CDATA[
         <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <p>You have started monerujoAE with a payment link. In order to send funds, please do the following:</p>
         <p>
         1. Open the wallet you want to spend from<br>
         2. Wait until the wallet is synced &amp; the "Give" button appears<br>

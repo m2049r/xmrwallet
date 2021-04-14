@@ -38,22 +38,22 @@
     <string name="info_send_xmrto_query">查询中&#8230;</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>您可以发送%1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s %4$s/XMR</b> </i>.
+        <i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s %4$s/AEON</b> </i>.
     ]]></string>
-    <string name="send_available_btc">余额: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">余额: %2$s %3$s (%1$s AEON)</string>
     <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
     <string name="label_send_progress_xmrto_create">创建SideShift.ai订单</string>
     <string name="label_send_progress_xmrto_query">SideShift.ai订单查询中</string>
-    <string name="label_send_progress_create_tx">Monero交易准备中</string>
+    <string name="label_send_progress_create_tx">Aeon交易准备中</string>
     <string name="label_send_progress_queryparms">SideShift.ai参数查询中</string>
     <string name="label_generic_xmrto_error">SideShift.ai错误</string>
     <string name="text_generic_xmrto_error">代码: %1$d</string>
     <string name="text_retry">再次尝试</string>
     <string name="text_noretry_monero">我们遇到了困难！</string>
     <string name="text_noretry">抱歉, SideShift.ai服务现在似乎不可用</string>
-    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s AEON</string>
+    <string name="text_send_btc_rate">(Rate: %1$s %2$s/AEON)</string>
     <string name="label_send_btc_xmrto_info">访问SideShift.ai以获得更多支持</string>
     <string name="label_send_btc_xmrto_key_lb">密钥\nSideShift.ai</string>
     <string name="label_send_btc_xmrto_key">SideShift.ai密钥</string>
@@ -100,8 +100,8 @@
     <string name="label_watchonly">(只读)</string>
     <string name="label_wallet_receive">收款</string>
     <string name="label_wallet_send">发送</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR未确认</string>
-    <string name="service_description">monerujo服务</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s AEON未确认</string>
+    <string name="service_description">monerujoAE服务</string>
     <string name="status_synced">已同步：</string>
     <string name="status_remaining">区块剩余</string>
     <string name="status_syncing">扫描中：</string>
@@ -116,7 +116,7 @@
     <string name="message_copy_address">钱包地址已复制到剪贴板！</string>
     <string name="message_copy_txid">交易ID已复制到剪贴板！</string>
     <string name="message_nocopy">因安全原因，复制功能已被禁用！</string>
-    <string name="message_exchange_failed">无法获取汇率！\n使用XMR/XMR或重新尝试</string>
+    <string name="message_exchange_failed">无法获取汇率！\n使用AEON/AEON或重新尝试</string>
     <string name="generate_title">创建新钱包</string>
     <string name="generate_name_hint">钱包名</string>
     <string name="generate_password_hint">钱包密码</string>
@@ -124,9 +124,9 @@
     <string name="generate_fingerprint_warn"><![CDATA[
 <strong>指纹授权</strong>
 <p>启用指纹授权后，无需输入密码，也可查看钱包余额和收款。</p>
-<p>出于安全性的考量，若要查看钱包明细和汇款，monerujo还是会要求您输入密码。</p>
+<p>出于安全性的考量，若要查看钱包明细和汇款，monerujoAE还是会要求您输入密码。</p>
 <strong>安全警告</strong>
-<p>最后monerujo提醒您，任何取得您指纹的人，都能够进入您的账户。</p>
+<p>最后monerujoAE提醒您，任何取得您指纹的人，都能够进入您的账户。</p>
 <p>比如，他人可能趁您熟睡时，使用您的指纹登录您的账户。</p>
 <strong>您确定要开启此功能？</strong>
 ]]></string>
@@ -169,17 +169,17 @@
     <string name="send_address_resolve_openalias">解析OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias无DNSSEC - 这可能是个假地址</string>
     <string name="send_title">发送</string>
-    <string name="send_available">余额: %1$s XMR</string>
+    <string name="send_available">余额: %1$s AEON</string>
     <string name="send_address_title">地址</string>
     <string name="send_amount_title">金额</string>
     <string name="send_confirm_title">确认</string>
     <string name="send_success_title">完成</string>
     <string name="send_amount_label">金额</string>
-    <string name="send_fee_btc_label">手续费 (XMR)</string>
+    <string name="send_fee_btc_label">手续费 (AEON)</string>
     <string name="send_fee_label">手续费</string>
-    <string name="send_total_btc_label">合计 (XMR)</string>
+    <string name="send_total_btc_label">合计 (AEON)</string>
     <string name="send_total_label">合计</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s 手续费</string>
     <string name="send_create_tx_error_title">创建交易发生错误</string>
     <string name="tx_list_fee">- 手续费 %1$s</string>
@@ -282,7 +282,7 @@
 
     <string name="label_restoreheight">Restore Height</string>
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Start Aeon App on %1$s</string>
 
     <string name="menu_rescan">Rescan!</string>
 
@@ -290,16 +290,16 @@
     <string name="onboarding_button_next">Next</string>
     <string name="onboarding_button_ready">I\'m ready!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
+    <string name="onboarding_welcome_title">Welcome to monerujoAE!</string>
+    <string name="onboarding_welcome_information">This app allows you to create and use Aeon wallets. You can store your sweet Aeon in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
+    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved Aeon.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
+    <string name="onboarding_xmrto_information">monerujoAE has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending AEON.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
+    <string name="onboarding_nodes_information">Nodes connect you to the Aeon network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_fpsend_information">You\'re now able to send AEON with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
 
     <string name="menu_daynight">Dark Mode</string>
     <string-array name="daynight_themes">
@@ -327,11 +327,11 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send AEON and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Please enter or scan a Aeon address.</b>
     ]]></string>
 
     <string name="subbaddress_title">Subaddresses</string>

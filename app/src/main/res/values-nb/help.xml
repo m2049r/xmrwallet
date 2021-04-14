@@ -2,7 +2,7 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Lage lommebok - Ny</h1>
-        <p>Hvis du trenger en ny Monero addresse!</p>
+        <p>Hvis du trenger en ny Aeon addresse!</p>
         <p>Skriv inn et unikt lommebok navn og passord.
         Passordet blir brukt til å sikre lommebokdataene på enheten. Bruk et sterkt passord -
         helst en passordfrase.</p>
@@ -22,7 +22,7 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Lage lommebook - Seed</h1>
-        <p>Hvis du allerede har en Monero addresse og vil gjennoprette transaksjonene fra blokkjeden!</p>
+        <p>Hvis du allerede har en Aeon addresse og vil gjennoprette transaksjonene fra blokkjeden!</p>
         <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
         Bruk et sterkt passord, helst en passordfrase.</p>
         <p>Skriv inn seedet ditt i feltet \"Mnemonisk Seed\".<p>
@@ -36,7 +36,7 @@
         <p>Hvis du gjenoppretter lommeboka di ved hjelp av nøkler!</p>
         <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
         Bruk et sterkt passord, helst en passordfrase.<p>
-        <p>Skriv inn Monero-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View Key\" and \"Spend Key\".</p>
+        <p>Skriv inn Aeon-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View Key\" and \"Spend Key\".</p>
         <p>Hvis du kjenner til blokkhøyden til den første transaksjonen til denne addressen,
 		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
         transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.<</p>
@@ -47,7 +47,7 @@
         <p>Hvis du bare vil følge med på innkommende transaksjoner til en lommebok!</p>
         <p>Skriv inn et unikt lommebok navn og passord. Passordet er brukt for å sikre lommebokdataene på denne enheten.
         Bruk et sterkt passord, helst en passordfrase.<p>
-        <p>Skriv inn Monero-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View-nøkkel\".</p>
+        <p>Skriv inn Aeon-addressen din i feltet \"Offentlig Addresse\" og fyll ut \"View-nøkkel\".</p>
         <p>Hvis du kjenner til blokkhøyden til den første transaksjonen til denne addressen,
 		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
         transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.</p>
@@ -57,11 +57,11 @@
         <h1>Lommebokdetaljer</h1>
         <h2>Offentlig nøkkel</h2>
         Den offentlige addressen din er som bankkontonummeret ditt, som du kan dele med folk
-		uten å være redd for å miste penger. Det er denne folk sender Monero til.
+		uten å være redd for å miste penger. Det er denne folk sender Aeon til.
         <h2>Mnemonisk Seed</h2>
         Dette er den eneste dataen du trenger for å gjenoprette lommeboka di senere,
 		og få full tilgang til pengene dine. Å holde denne privat er veldig viktig, siden den gir <em>hvem som helst</em> full
-        tilgang til dine moneroj! Hvis du ikke har skrevet den ned, vær så snill og gjør det!
+        tilgang til dine Aeon! Hvis du ikke har skrevet den ned, vær så snill og gjør det!
         <h2>Lommebokfiler gjenoprettelsespassord</h2>
         Vær sikker på at du skriver ned dette passordet. Hvis du nullstiller enheten eller avinstallerer appen, vil
         du trenge tilgang til lommeboka di igjen.<br/>
@@ -77,7 +77,7 @@
         ett nytt passord (kanskje til og med det samme som før) vil appen generere et CrAzYpass for
         deg og sikre lommebokfilene dine med det. Skriv det ned!
         <h3>CrAzYpass lommebøker</h3>
-        Hvis du noen gang trenger å reinstallere monerujo (for eksempel etter å ha nullstilt enheten eller bytta
+        Hvis du noen gang trenger å reinstallere monerujoAE (for eksempel etter å ha nullstilt enheten eller bytta
         til en ny en) eller du vil bruke lommebokfilene dine på en annen enhet eller PC, må du bruke
         dette gjenoppretelsespassordet for å få tilgang til lommeboka di igjen.<br/>
         Ved å velge \"Change Passphrase\" fra menyen, kan du velge et annet passord. Vær oppmerksom
@@ -86,19 +86,19 @@
         View-nøkkelen din gir andre tilgang til å se innkommende transaksjoner, uten å gi dem
 		tilgang til å bruke penger.
         <h2>Spend-nøkkel</h2>
-        Spend-nøkkelen gir alle tillatelse til å bruke moneroene dine, så hold den like
+        Spend-nøkkelen gir alle tillatelse til å bruke Aeonene dine, så hold den like
 		trygt som det mnemoniske seedet ditt!
     ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Lommebokliste</h1>
         <h2>Node</h2>
-        <p>Monerujo bruker en ekstern node for å kommunisere med Monero-nettverket, uten å måtte
+        <p>monerujoAE bruker en ekstern node for å kommunisere med Aeon-nettverket, uten å måtte
         laste ned og oppbevare en kopi av blokkjeden selv. Du kan finne en liste over populære
-        eksterne noder eller lære hvordan du driver din egen eksterne node her: https://moneroworld.com/<p>
-        <p>Monerujo kommer med noen eksterne noder lagt inn. Den husker de fem siste nodene du har brukt.</p>
+        eksterne noder eller lære hvordan du driver din egen eksterne node her: https://nodes.aeon.run//<p>
+        <p>monerujoAE kommer med noen eksterne noder lagt inn. Den husker de fem siste nodene du har brukt.</p>
         <h2>Lommebøker</h2>
-        <p>Her ser du lommebøkene dine. De ligger i <tt>monerujo</tt> mappa
+        <p>Her ser du lommebøkene dine. De ligger i <tt>monerujoAE</tt> mappa
         på den interne lagringa for enheten din. Du kan bruke en filutforsker for å se dem.
         Du burde ta backup av denne mappa en gang i blant til en ekstern enhet i tilfelle
         enheten din eksploderer eller blir stjelt.</p>
@@ -107,11 +107,11 @@
         <h3>Detaljer</h3>
         <p>Viser lommebokdetaljene, seed og nøkler.</p>
         <h3>Motta</h3>
-        <p>Lag en QR-kode for å motta Monero.</p>
+        <p>Lag en QR-kode for å motta Aeon.</p>
         <h3>Gi nytt navn</h3>
         <p>Gi nytt navn til lommeboka. Backuper blir ikke omgjort.</p>
         <h3>Backup</h3>
-        <p>Lag en kopi av lommeboka til <tt>backups</tt> mappa inni <tt>monerujo</tt>
+        <p>Lag en kopi av lommeboka til <tt>backups</tt> mappa inni <tt>monerujoAE</tt>
         og overskriv tidligere kopier.</p>
         <h3>Arkiver</h3>
         <p>Lag en backup og slett lommeboka etterpå. Kopien blir igjen i <tt>backups</tt>
@@ -122,13 +122,13 @@
     <string name="help_tx_details"><![CDATA[
         <h1>Transaksjonsdetaljer</h1>
         <h2>Destinasjon</h2>
-        Dette er den offentlige adressen til lommeboka du sendte Monero til.
+        Dette er den offentlige adressen til lommeboka du sendte Aeon til.
         <h2>Betalings-ID</h2>
-        Du kan bruke betalings-ID til å identifisere hvorfor du sendte Monero mellom to parter. Dette er
+        Du kan bruke betalings-ID til å identifisere hvorfor du sendte Aeon mellom to parter. Dette er
         helt frivillig og privat. For eksempel lar det en bedrift tilknytte transaksjonen din med
 		en vare du har kjøpt.
         <h2>TX-ID</h2>
-        Dette er transaksjons-IDen din, som du kan bruke til å identifisere transaksjonen din på den obfuskerte Monero blokkjeden, ved å bruke en
+        Dette er transaksjons-IDen din, som du kan bruke til å identifisere transaksjonen din på den obfuskerte Aeon blokkjeden, ved å bruke en
         blokkjedeutforsker som <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>TX-nøkkel (Transaksjonsnøkkel)</h2>
         Dette er din private transaksjonsnøkkel. Hold den privat, siden å gi den til en tredjepart
@@ -140,21 +140,21 @@
     <string name="help_send"><![CDATA[
         <h1>Send</h1>
         <h2>Mottakers adresse</h2>
-        <p>Dette er den offentlige adressen til lommeboka du skal sende moneroj til, som du kan
+        <p>Dette er den offentlige adressen til lommeboka du skal sende Aeon til, som du kan
 		kopiere fra utklippstavla, skanne fra en QR-kode eller skrive inn manuellt. Vær sikker på at du trippelsjekker dette
-        for å forsikre deg om at du ikke sender moneroj til feil adresse.</p>
-        <p>In addition to using an XMR address, you can also use
+        for å forsikre deg om at du ikke sender Aeon til feil adresse.</p>
+        <p>In addition to using an AEON address, you can also use
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
+            <li>an OpenAlias for AEON or BTC</li>
             <li>a BTC address</li>
         </u>
         Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
         <h1>Å sende BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Aeon til Bitcoin.
+        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i monerujoAE. Sjekk ut
+        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. monerujoAE-utviklerne
         er ikke assosierte med SideShift.ai og kan ikke hjelpe deg med deres tjeneste.</p>
         <h2>SideShift.ai vekslingskurs<h2>
         <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til SideShift.ai-tjenesten. Disse
@@ -165,7 +165,7 @@
         en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
         enn den veiledende kursen vist på de tidligere skjermene.</p>
         <h2>SideShift.ai hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
+        <p>Fordi monerujoAE bare håndterer AEON delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
         bli brukt til å spore BTC-transaksjonen på SideShift.ai sine hjemmesider.</p>
         <h2>SideShift.ai nedtelling!</h2>
         <p>Når nedtellinga når null, må du få en ny kvote fra SideShift.ai ved å gå tilbake til
@@ -175,9 +175,9 @@
     <string name="help_xmrto"><![CDATA[
         <h1>Å sende BTC</h1>
         <h2>SideShift.ai</h2>
-        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
+        <p>SideShift.ai er en tredjepartstjeneste som lar deg veksle Aeon til Bitcoin.
+        Vi bruker SideShift.ai-APIen til å integrere BTC-betalinger i monerujoAE. Sjekk ut
+        https://sideshift.ai og bestem for deg selv om dette er noe du vil bruke. monerujoAE-utviklerne
         er ikke assosierte med SideShift.ai og kan ikke hjelpe deg med deres tjeneste.</p>
         <h2>SideShift.ai vekslingskurs<h2>
         <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til SideShift.ai-tjenesten. Disse
@@ -188,7 +188,7 @@
         en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
         enn den veiledende kursen vist på de tidligere skjermene.</p>
         <h2>SideShift.ai hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
+        <p>Fordi monerujoAE bare håndterer AEON delen av transaksjonen din, kan din SideShift.ai hemmelige nøkkel
         bli brukt til å spore BTC-transaksjonen på SideShift.ai sine hjemmesider.</p>
         <h2>SideShift.ai nedtelling!</h2>
         <p>Når nedtellinga når null, må du få en ny kvote fra SideShift.ai ved å gå tilbake til
@@ -213,17 +213,17 @@
         <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
         balance is not shown on any screen so you can safely use your wallet on the street, a pub or
         other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        you can see that you have sent/received sweet Aeon!</p>
         <h2>Skanning</h2>
-        Fordi Monero liker å holde ting privat, må vi hver gang du åpner en lommebok i Monerujo
-        skanne blokkjeden for å se om noen nye moneroj har blitt sendt til lommeboka di, som bare
+        Fordi Aeon liker å holde ting privat, må vi hver gang du åpner en lommebok i monerujoAE
+        skanne blokkjeden for å se om noen nye Aeon har blitt sendt til lommeboka di, som bare
         lagrer informasjon til telefonen din som tilhører lommeboka. Noen ganger kan det ta litt
 		tid fordi du ikke har synkronisert på en stund.
         <h2>Saldo</h2>
         <p><b>Hjelp! Kontosaldoen min har blitt borte, eller noe er ubekrefta!</b><br/>
         Ikke få panikk! Når du sender penger fra lommeboka di, vil noe av saldoen din bli
 		vist som ubekrefta en liten periode.
-        Dette er et resultat av hvordan Monero veksles på blokkjeden og hvordan vekslepenger funker.
+        Dette er et resultat av hvordan Aeon veksles på blokkjeden og hvordan vekslepenger funker.
         Les mer om vekslepenger på https://getmonero.org/resources/moneropedia/change.html
         <h2>Transaksjonsliste</h2>
         <p>En liste over lommeboktransaksjonene. In view lommebøker, kan man bare se innkommende transaksjoner.</p>
@@ -232,14 +232,14 @@
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
+        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow monerujoAE
         to choose the best one for you!</p>
         <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
+        <p>monerujoAE uses a Remote Node (sometimes also called Daemon) to communicate with
+        the Aeon Network without having to download and store a copy of the
         whole blockchain itself.<p>
         <h2>Node List</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
+        <p>If the list is empty, you can either add new nodes manually or let monerujoAE
         scan the network for you. Or both. Read on&#8230;</p>
         <p>The node list shows all currently known nodes. Additionally, the timestamp
         of the latest block known to each node is shown under the node name. An icon
@@ -248,10 +248,10 @@
         is shown next to each node.</p>
         <p>Any node in the list can be bookmarked for later use.
         Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
+        <p>monerujoAE will choose the optimal bookmarked node each time you use it.
         It does this by checking the blockheight (how up-to-date
         is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
+        <p>The list is sorted by these characteristics, so the top node would be the one monerujoAE
         would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
         <h2>Add a Node</h2>
         <p>By touching the &quot;Add Node&quot; button at the bottom, you will be asked to
@@ -265,16 +265,16 @@
         The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
         The result may also be an error - usually because the hostname provided is
         not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
+        Or the hostname/port combination does not point to an actual Aeon Node!
         Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
         bookmark this node.</p>
         <h2>Scan for Nodes</h2>
-        <p>Additionally, you can scan the network for nodes. Monerujo will start
+        <p>Additionally, you can scan the network for nodes. monerujoAE will start
         scanning the network for Remote Nodes on port 18089. It begins by asking your
-        bookmarked nodes for other peers in the Monero P2P network and then continues
+        bookmarked nodes for other peers in the Aeon P2P network and then continues
         by asking those for their peers, and so on. If you have no bookmarked nodes
         (or they don&apos;t tell us about their peers),
-        Monerujo will go straight to the Monero seed nodes hardcoded into Monero. The
+        monerujoAE will go straight to the Aeon seed nodes hardcoded into Aeon. The
         scan stops when it finds 10 remote nodes in total.</p>
     ]]></string>
 
@@ -282,7 +282,7 @@
 
     <string name="help_uri"><![CDATA[
         <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <p>You have started monerujoAE with a payment link. In order to send funds, please do the following:</p>
         <p>
         1. Open the wallet you want to spend from<br>
         2. Wait until the wallet is synced &amp; the "Give" button appears<br>

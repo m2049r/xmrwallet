@@ -2,7 +2,7 @@
 <resources>
     <string name="wallet_activity_name">ウォレット</string>
 
-    <string name="menu_about">Monerujoについて</string>
+    <string name="menu_about">monerujoAEについて</string>
     <string name="menu_privacy">プライバシーポリシー</string>
 
     <string name="menu_share">共有</string>
@@ -35,7 +35,7 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>あなたが入力したのは%1$sのアドレスです。</b><br/>
-        <i>あなたはXMRを送金し、受け手は SideShift.ai のサービスを利用して%1$sを受取ります。</i>
+        <i>あなたはAEONを送金し、受け手は SideShift.ai のサービスを利用して%1$sを受取ります。</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">SideShift.ai の注文</string>
@@ -50,10 +50,10 @@
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>%1$s から %2$s %4$s を送金することができます。</b><br/>
-        <i><b>SideShift.ai</b> での交換レートは<u>現在</u><b>%3$s %4$s/XMR</b>です。</i>
+        <i><b>SideShift.ai</b> での交換レートは<u>現在</u><b>%3$s %4$s/AEON</b>です。</i>
     ]]></string>
 
-    <string name="send_available_btc">残高: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">残高: %2$s %3$s (%1$s AEON)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ペイメントID組み込み済み</string>
     <string name="info_prepare_tx">取引を準備しています</string>
@@ -71,8 +71,8 @@
     <string name="text_noretry_monero">私達はここで立ち往生のようです!</string>
     <string name="text_noretry">あーあ、 SideShift.ai は現在利用不能のようです!</string>
 
-    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(レート: %1$s %2$s/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s AEON</string>
+    <string name="text_send_btc_rate">(レート: %1$s %2$s/AEON)</string>
 
     <string name="label_send_btc_xmrto_info">サポートと追跡については SideShift.ai をご覧ください</string>
     <string name="label_send_btc_xmrto_key_lb">シークレットキー\nSideShift.ai</string>
@@ -135,9 +135,9 @@
     <string name="label_wallet_receive">受取り</string>
     <string name="label_wallet_send">送金</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR が未承認</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s AEON が未承認</string>
 
-    <string name="service_description">monerujo のサービス</string>
+    <string name="service_description">monerujoAE のサービス</string>
 
     <string name="status_synced">同期済み:</string>
     <string name="status_remaining">残りのブロック</string>
@@ -156,7 +156,7 @@
     <string name="message_copy_txid">取引IDがクリップボードにコピーされました!</string>
     <string name="message_nocopy">セキュリティ上の理由でコピーは無効化されています!</string>
 
-    <string name="message_exchange_failed">取引レートを取得できません!\nXMR/XMR を使うかもう一度試してください</string>
+    <string name="message_exchange_failed">取引レートを取得できません!\nAEON/AEON を使うかもう一度試してください</string>
 
     <string name="generate_title">ウォレット作成</string>
     <string name="generate_name_hint">ウォレットの名前</string>
@@ -165,7 +165,7 @@
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>指紋認証</strong>
         <p>指紋認証を有効化すると、あなたはウォレット残高の閲覧と資産の受取をパスワード無しで行なえます。</p>
-        <p>しかしセキュリティのため、monerujoはウォレットの詳細の閲覧と送金にはパスワードを要します。</p>
+        <p>しかしセキュリティのため、monerujoAEはウォレットの詳細の閲覧と送金にはパスワードを要します。</p>
         <strong>セキュリティ警告</strong>
         <p>そして最後に、あなたの指紋を入手できる人間は誰でもあなたのウォレット残高を覗くことができます。</p>
         <p>例えば、あなたの周りの邪悪な人間が、あなたが寝ている間にウォレットを開くかもしれません。</p>
@@ -219,19 +219,19 @@
     <string name="send_address_resolve_openalias">OpenAliasを解決しています&#8230;</string>
     <string name="send_address_no_dnssec">DNSSECのないOpenAliasです - アドレスが偽造されているかもしれません</string>
     <string name="send_title">送金</string>
-    <string name="send_available">残高: %1$s XMR</string>
+    <string name="send_available">残高: %1$s AEON</string>
     <string name="send_address_title">アドレス</string>
     <string name="send_amount_title">数量</string>
     <string name="send_confirm_title">確認</string>
     <string name="send_success_title">完了</string>
 
     <string name="send_amount_label">数量</string>
-    <string name="send_fee_btc_label">手数料 (XMR)</string>
+    <string name="send_fee_btc_label">手数料 (AEON)</string>
     <string name="send_fee_label">手数料</string>
-    <string name="send_total_btc_label">合計 (XMR)</string>
+    <string name="send_total_btc_label">合計 (AEON)</string>
     <string name="send_total_label">合計</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s 手数料</string>
 
     <string name="send_create_tx_error_title">取引作成エラー</string>
@@ -264,7 +264,7 @@
 
     <string name="receive_amount_too_big">最大. %1$s</string>
     <string name="receive_amount_negative">最小. 0</string>
-    <string name="receive_amount_nan">XMR が数字ではありません</string>
+    <string name="receive_amount_nan">AEON が数字ではありません</string>
 
     <string name="details_alert_message">機密データは表示されません\n背後に人がいないことを確認してください!</string>
     <string name="details_alert_yes">私は安全です</string>
@@ -361,7 +361,7 @@
 
     <string name="label_restoreheight">Restore Height</string>
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Start Aeon App on %1$s</string>
 
     <string name="menu_rescan">Rescan!</string>
 
@@ -369,16 +369,16 @@
     <string name="onboarding_button_next">Next</string>
     <string name="onboarding_button_ready">I\'m ready!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
+    <string name="onboarding_welcome_title">Welcome to monerujoAE!</string>
+    <string name="onboarding_welcome_information">This app allows you to create and use Aeon wallets. You can store your sweet Aeon in them.</string>
     <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
+    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved Aeon.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
+    <string name="onboarding_xmrto_information">monerujoAE has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending AEON.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
+    <string name="onboarding_nodes_information">Nodes connect you to the Aeon network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_fpsend_information">You\'re now able to send AEON with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
 
     <string name="menu_daynight">Dark Mode</string>
     <string-array name="daynight_themes">
@@ -406,11 +406,11 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send AEON and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Please enter or scan a Aeon address.</b>
     ]]></string>
 
     <string name="subbaddress_title">Subaddresses</string>

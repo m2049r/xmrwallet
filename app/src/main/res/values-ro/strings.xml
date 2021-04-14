@@ -34,7 +34,7 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Ai introdus o adresă de %1$s.</b><br/>
-        <i>Vei trimite XMR și destinatarul va primi %1$s folosind serviciul <b>SideShift.ai</b>.</i>
+        <i>Vei trimite AEON și destinatarul va primi %1$s folosind serviciul <b>SideShift.ai</b>.</i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">Ordin SideShift.ai</string>
@@ -49,17 +49,17 @@
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Poți trimite %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> îți oferă un curs de <b>%3$s %4$s/XMR</b> <u>în acest moment</u></i>.
+        <i><b>SideShift.ai</b> îți oferă un curs de <b>%3$s %4$s/AEON</b> <u>în acest moment</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Balanță: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Balanță: %2$s %3$s (%1$s AEON)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrat</string>
     <string name="info_prepare_tx">Se pregătește tranzacția</string>
 
     <string name="label_send_progress_xmrto_create">Creearea ordinului SideShift.ai</string>
     <string name="label_send_progress_xmrto_query">Interogare ordin SideShift.ai</string>
-    <string name="label_send_progress_create_tx">Pregătirea tranzacției Monero</string>
+    <string name="label_send_progress_create_tx">Pregătirea tranzacției Aeon</string>
 
     <string name="label_send_progress_queryparms">Interogare parametrii SideShift.ai</string>
 
@@ -70,8 +70,8 @@
     <string name="text_noretry_monero">Pff.. ne-am blocat acum!</string>
     <string name="text_noretry">Oh, serviciul SideShift.ai este momentan indisponibil!</string>
 
-    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rată: %1$s %2$s/XMR)</string>
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s AEON</string>
+    <string name="text_send_btc_rate">(Rată: %1$s %2$s/AEON)</string>
 
     <string name="label_send_btc_xmrto_info">Vizitează SideShift.ai pentru suport &amp; interogare</string>
     <string name="label_send_btc_xmrto_key_lb">Cheia secretă \nSideShift.ai</string>
@@ -123,9 +123,9 @@
     <string name="label_wallet_receive">Primește</string>
     <string name="label_wallet_send">Trimite</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR neconfirmat</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s AEON neconfirmat</string>
 
-    <string name="service_description">Serviciul monerujo</string>
+    <string name="service_description">Serviciul monerujoAE</string>
 
     <string name="status_synced">Sincronizat:</string>
     <string name="status_remaining">Monoblocuri rămase</string>
@@ -144,7 +144,7 @@
     <string name="message_copy_txid">ID tranzacție copiat în clipboard!</string>
     <string name="message_nocopy">Copierea dezactivată din motive de securitate!</string>
 
-    <string name="message_exchange_failed">Nu pot accesa rata de schimb!\nFolosește XMR/XMR sau reîncearcă</string>
+    <string name="message_exchange_failed">Nu pot accesa rata de schimb!\nFolosește AEON/AEON sau reîncearcă</string>
 
     <string name="generate_title">Creează portofel</string>
     <string name="generate_name_hint">Nume portofel</string>
@@ -182,25 +182,25 @@
 
     <string name="send_notes_hint">Notițe private (opțional)</string>
     <string name="send_generate_paymentid_hint">Generează</string>
-    <string name="send_send_label">Ține scumpii mei Moneroj</string>
-    <string name="send_send_timed_label">Ține scumpii mei Moneroj (%1$s)</string>
+    <string name="send_send_label">Ține scumpii mei Aeon</string>
+    <string name="send_send_timed_label">Ține scumpii mei Aeon (%1$s)</string>
     <string name="send_qr_invalid">Cod QR invalid</string>
     <string name="send_qr_address_invalid">Cod QR de plată invalid</string>
     <string name="send_address_invalid">Adresă invalidă</string>
     <string name="send_title">Trimitere</string>
-    <string name="send_available">Balanță: %1$s XMR</string>
+    <string name="send_available">Balanță: %1$s AEON</string>
     <string name="send_address_title">Adresă</string>
     <string name="send_amount_title">Sumă</string>
     <string name="send_confirm_title">Confirmă</string>
     <string name="send_success_title">Gata</string>
 
     <string name="send_amount_label">Sumă</string>
-    <string name="send_fee_btc_label">Comision (XMR)</string>
+    <string name="send_fee_btc_label">Comision (AEON)</string>
     <string name="send_fee_label">Comision</string>
-    <string name="send_total_btc_label">Total (XMR)</string>
+    <string name="send_total_btc_label">Total (AEON)</string>
     <string name="send_total_label">Total</string>
 
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount">%1$s AEON</string>
     <string name="send_fee">+%1$s Comision</string>
 
     <string name="send_create_tx_error_title">Eroare creare tranzacție</string>
@@ -232,7 +232,7 @@
 
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR fără valoare</string>
+    <string name="receive_amount_nan">AEON fără valoare</string>
 
     <string name="details_alert_message">Acum vor fi afișate date sensibile.\nUită-te peste umărul tău!</string>
     <string name="details_alert_yes">Sunt în siguranță</string>
@@ -262,10 +262,10 @@
         <strong>Autentificare amprentă digitală</strong>
         <p>Având autentificarea amprentă digitală activată, poți vizualiza balanța portofelului și primi fonduri
         fără a introduce parola.</p>
-        <p>Pentru securitate suplimentară, monerujo va solicita să introduci parola atunci când
+        <p>Pentru securitate suplimentară, monerujoAE va solicita să introduci parola atunci când
         vizualizezi informația portofelului sau trimiți fonduri.</p>
         <strong>Avertisment de securitate</strong>
-        <p>În final, monerujo îți reamintește că oricine va avea amprenta ta digitală va putea
+        <p>În final, monerujoAE îți reamintește că oricine va avea amprenta ta digitală va putea
         să urmărească balanța portofelului tău.</p>
         <p>Ca exemplu, un utilizator malițios din preajma ta ar putea deschide portofelul atunci când dormi.</p>
         <strong>Sigur dorești să activezi această opțiune?</strong>
@@ -358,7 +358,7 @@
 
     <string name="label_restoreheight">Restaurează Monobloc</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Pornește aplicația Monero la %1$s</string>
+    <string name="toast_ledger_start_app">Pornește aplicația Aeon la %1$s</string>
 
     <string name="menu_rescan">Rescanează!</string>
 
@@ -366,16 +366,16 @@
     <string name="onboarding_button_next">Următorul</string>
     <string name="onboarding_button_ready">Sunt gata!</string>
 
-    <string name="onboarding_welcome_title">Bun venit la Monerujo!</string>
-    <string name="onboarding_welcome_information">Această aplicație îți permite să creezi și folosești portofele Monero. Poți stoca scumpii tăi moneroj în ele.</string>
+    <string name="onboarding_welcome_title">Bun venit la MonerujoAE!</string>
+    <string name="onboarding_welcome_information">Această aplicație îți permite să creezi și folosești portofele Aeon. Poți stoca scumpii tăi Aeon în ele.</string>
     <string name="onboarding_seed_title">Păstrează semnătura ta în singuranță</string>
-    <string name="onboarding_seed_information">Semnătura oferă accces deplin celui ce o are. Dacă o pierzi, nu te putem ajuta să o recuperezi și pierzi dulcii tăi moneroj.</string>
+    <string name="onboarding_seed_information">Semnătura oferă accces deplin celui ce o are. Dacă o pierzi, nu te putem ajuta să o recuperezi și pierzi dulcii tăi Aeon.</string>
     <string name="onboarding_xmrto_title">Trimite Cripto</string>
-    <string name="onboarding_xmrto_information">Monerujo are integrat serviciul SideShift.ai. Doar inserează sau scanează o adresă BTC, LTC, ETH, DASH sau DOGE și vei trimite aceste monede cu XMR.</string>
+    <string name="onboarding_xmrto_information">MonerujoAE are integrat serviciul SideShift.ai. Doar inserează sau scanează o adresă BTC, LTC, ETH, DASH sau DOGE și vei trimite aceste monede cu AEON.</string>
     <string name="onboarding_nodes_title">Noduri, cum îți dorești</string>
-    <string name="onboarding_nodes_information">Nodurile te conectează la rețeaua Monero. Alege între noduri publice sau fii un cypherpunk și pornește unul propriu.</string>
+    <string name="onboarding_nodes_information">Nodurile te conectează la rețeaua Aeon. Alege între noduri publice sau fii un cypherpunk și pornește unul propriu.</string>
     <string name="onboarding_fpsend_title">Trimite cu amprentă</string>
-    <string name="onboarding_fpsend_information">Acum poți trimite XMR cu doar amprenta personală, în cazul în care a fost activată. Pentru a o face cu parola, dezactivează accesul la amprentă.</string>
+    <string name="onboarding_fpsend_information">Acum poți trimite AEON cu doar amprenta personală, în cazul în care a fost activată. Pentru a o face cu parola, dezactivează accesul la amprentă.</string>
 
     <string name="menu_daynight">Mod întunecat</string>
     <string-array name="daynight_themes">
@@ -403,11 +403,11 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Te rugăm să introduci sau scanezi o adresă %1$s.</b><br/>
-        <i>Vei trimite XMR și destinatarul va primi %2$s folosind serviciul <b>SideShift.ai</b>.</i>
+        <i>Vei trimite AEON și destinatarul va primi %2$s folosind serviciul <b>SideShift.ai</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Te rugăm să introduci sau scanezi o adresă Monero.</b>
+        <b>Te rugăm să introduci sau scanezi o adresă Aeon.</b>
     ]]></string>
 
     <string name="subbaddress_title">Subadrese</string>

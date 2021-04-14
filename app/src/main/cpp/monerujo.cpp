@@ -809,16 +809,8 @@ Java_com_m2049r_xmrwallet_util_KeyStoreHelper_slowHash(JNIEnv *env, jclass clazz
     }
 
     jbyte *buffer = env->GetByteArrayElements(data, nullptr);
-    switch (brokenVariant) {
-        case 1:
-            slow_hash_broken(buffer, hash, 1);
-            break;
-        case 2:
-            slow_hash_broken(buffer, hash, 0);
-            break;
-        default: // not broken
             slow_hash(buffer, (size_t) size, hash);
-    }
+
     env->ReleaseByteArrayElements(data, buffer, JNI_ABORT); // do not update java byte[]
     jbyteArray result = env->NewByteArray(HASH_SIZE);
     env->SetByteArrayRegion(result, 0, HASH_SIZE, (jbyte *) hash);
@@ -911,14 +903,6 @@ Java_com_m2049r_xmrwallet_model_Wallet_refreshAsync(JNIEnv *env, jobject instanc
 }
 
 //TODO virtual bool rescanBlockchain() = 0;
-
-//virtual void rescanBlockchainAsync() = 0;
-JNIEXPORT void JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_rescanBlockchainAsync(JNIEnv *env, jobject instance) {
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    wallet->rescanBlockchainAsync();
-}
-
 
 //TODO virtual void setAutoRefreshInterval(int millis) = 0;
 //TODO virtual int autoRefreshInterval() const = 0;
@@ -1024,18 +1008,6 @@ Java_com_m2049r_xmrwallet_model_Wallet_setListenerJ(JNIEnv *env, jobject instanc
         wallet->setListener(listener);
         return reinterpret_cast<jlong>(listener);
     }
-}
-
-JNIEXPORT jint JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getDefaultMixin(JNIEnv *env, jobject instance) {
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return wallet->defaultMixin();
-}
-
-JNIEXPORT void JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_setDefaultMixin(JNIEnv *env, jobject instance, jint mixin) {
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return wallet->setDefaultMixin(mixin);
 }
 
 JNIEXPORT jboolean JNICALL

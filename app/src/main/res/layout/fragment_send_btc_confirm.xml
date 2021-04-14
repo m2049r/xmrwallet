@@ -54,7 +54,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            tools:text="1.75 BTC = 84.118438761777 XMR" />
+                            tools:text="1.75 BTC = 84.118438761777 AEON" />
 
                         <TextView
                             android:id="@+id/tvTxBtcRate"
@@ -63,7 +63,7 @@
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
                             android:textSize="16sp"
-                            tools:text="(Rate: 0.020804 BTC/XMR)" />
+                            tools:text="(Rate: 0.020804 BTC/AEON)" />
                     </LinearLayout>
                 </FrameLayout>
 

@@ -19,7 +19,7 @@
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/ibSweep"
             android:gravity="center"
-            tools:text="Balance: 70.198276354123 XMR" />
+            tools:text="Balance: 70.198276354123 AEON" />
 
         <ImageButton
             android:id="@+id/ibSweep"

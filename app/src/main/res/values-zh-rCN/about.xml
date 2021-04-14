@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_close">关闭</string>
-    <string name="about_whoami">我是 monerujo</string>
+    <string name="about_whoami">我是 monerujoAE</string>
     <string name="about_version">版本 %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
@@ -15,25 +15,25 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>隐私政策</h1>
-        <p>该页将帮助您了解 monerujo: Monero Wallet 是如何收集、使用以及披露用户信息。</p>
+        <p>该页将帮助您了解 monerujoAE: Aeon Wallet 是如何收集、使用以及披露用户信息。</p>
         <p>使用该App，代表您已经明确同意该隐私政策。</p>
         <h2>收集的信息</h2>
         <p>个人信息指可用于辨认个人身份的任何信息。</p>
-        <p>Monerujo只会在本地使用您的Monero密钥以及公开地址，以处理交易，并再加密后发往门罗网络。</p>
-        <p>其他个人信息都不会被 monerujo 收集。</p>
-        <p>如果您使用交易的功能(可选)，monerujo將通过coinmarketcap.com的公开
+        <p>monerujoAE只会在本地使用您的Aeon密钥以及公开地址，以处理交易，并再加密后发往门罗网络。</p>
+        <p>其他个人信息都不会被 monerujoAE 收集。</p>
+        <p>如果您使用交易的功能(可选)，monerujoAE將通过coinmarketcap.com的公开
         API 获取当前汇率。如果您想了解被收集的信息如何被使用，请访问 https://coinmarketcap.com/privacy
         查看他们的隐私政策。</p>
-        <p>如果您想使用该App支付款项至比特币地址，您将使用 SideShift.ai 所提供的服务。Monerujo
+        <p>如果您想使用该App支付款项至比特币地址，您将使用 SideShift.ai 所提供的服务。monerujoAE
         将发送比特币的目标地址以及金额信息至SideShift.ai，您的IP在此时也可能会被收集。请访问 https://sideshift.ai/
         查看他们的隐私政策。</p>
         <h2>应用程序权限</h2>
         <ul>
-        <li>INTERNET : 通过Monero Daemon节点连接至Monero网络。</li>
+        <li>INTERNET : 通过Aeon Daemon节点连接至Aeon网络。</li>
         <li>READ_EXTERNAL_STORAGE : 读取设备上的钱包文件。</li>
         <li>WRITE_EXTERNAL_STORAGE : 写入设备上的钱包文件。</li>
         <li>WAKE_LOCK : 同步时，防止手机进入待机状态。</li>
-        <li>CAMERA : 扫描QR码以接收Monero。</li>
+        <li>CAMERA : 扫描QR码以接收Aeon。</li>
         </ul>
         <h2>政策更新</h2>
         <p>本隐私政策可能会不定期更新。在更新的同时，我們也会在该App以及网站 (www.monerujo.io)
