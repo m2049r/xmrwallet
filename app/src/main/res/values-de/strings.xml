@@ -9,7 +9,7 @@
     <string name="menu_help">Hilfe</string>
     <string name="menu_receive">Empfangen</string>
     <string name="menu_rename">Umbenennen</string>
-    <string name="menu_archive">Archivieren</string>
+    <string name="menu_delete">Löschen</string>
     <string name="menu_backup">Backup</string>
     <string name="menu_changepw">Passwort ändern</string>
 
@@ -94,7 +94,7 @@
 
     <string name="backup_success">Backup erfolgreich</string>
     <string name="backup_failed">Backup fehlgeschlagen!</string>
-    <string name="archive_failed">Archivierung fehlgeschlagen!</string>
+    <string name="delete_failed">Löschen fehlgeschlagen!</string>
     <string name="rename_failed">Umbenennen fehlgeschlagen!</string>
     <string name="changepw_failed">Passwort ändern fehlgeschlagen!</string>
     <string name="changepw_success">Passwort geändert</string>
@@ -266,9 +266,9 @@
     <string name="details_alert_no">Nein, doch nicht!</string>
     <string name="details_title">Details</string>
 
-    <string name="archive_alert_message">Das Wallet wird archiviert und dann gelöscht!</string>
-    <string name="archive_alert_yes">Ja, mach das!</string>
-    <string name="archive_alert_no">Nein, danke!</string>
+    <string name="delete_alert_message">Das Wallet wird gelöscht!</string>
+    <string name="delete_alert_yes">Ja, mach das!</string>
+    <string name="delete_alert_no">Nein, danke!</string>
 
     <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View-Only-Wallet wiederherstellen</string>
@@ -422,4 +422,6 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

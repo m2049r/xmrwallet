@@ -74,7 +74,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
 
         @Override
         public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            return mOldList.get(oldItemPosition).name.equals(mNewList.get(newItemPosition).name);
+            return mOldList.get(oldItemPosition).getName().equals(mNewList.get(newItemPosition).getName());
         }
 
         @Override
@@ -86,9 +86,9 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_wallet, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wallet, parent, false)
+        );
     }
 
     @Override
@@ -122,7 +122,6 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView tvName;
-        final TextView tvAddress;
         final ImageButton ibOptions;
         WalletManager.WalletInfo infoItem;
         boolean popupOpen = false;
@@ -130,7 +129,6 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         ViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
-            tvAddress = itemView.findViewById(R.id.tvAddress);
             ibOptions = itemView.findViewById(R.id.ibOptions);
             ibOptions.setOnClickListener(view -> {
                 if (popupOpen) return;
@@ -160,8 +158,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
 
         void bind(int position) {
             infoItem = infoItems.get(position);
-            tvName.setText(infoItem.name);
-            tvAddress.setText(infoItem.address.substring(0, 16) + "...");
+            tvName.setText(infoItem.getName());
         }
 
         @Override

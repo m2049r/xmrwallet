@@ -9,7 +9,6 @@
     <string name="menu_help">Βοήθεια</string>
     <string name="menu_receive">Λήψη</string>
     <string name="menu_rename">Μετονομασία</string>
-    <string name="menu_archive">Αρχειοθέτησε</string>
     <string name="menu_backup">Δημιουργία αντίγραφου ασφαλείας</string>
 
     <string name="password_weak">Συνέχισε να πληκτρολογείς &#8230;</string>
@@ -92,7 +91,6 @@
 
     <string name="backup_success">Η δημιουργία αντίγραφου ασφαλείας ήταν επιτυχής</string>
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
-    <string name="archive_failed">Η αρχειοθέτηση απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>
 
     <string name="label_daemon">Κόμβος(Δαίμονας)</string>
@@ -241,9 +239,8 @@
     <string name="details_alert_no">Πήγαινε με πίσω!</string>
     <string name="details_title">Λεπτομέρειες</string>
 
-    <string name="archive_alert_message">Το πορτοφόλι θα δημιουργήσει αντίγραφο ασφαλείας και στη συνέχεια θα διαγραφεί!</string>
-    <string name="archive_alert_yes">Ναι, κάνε αυτό!</string>
-    <string name="archive_alert_no">Όχι ευχαριστώ!</string>
+    <string name="delete_alert_yes">Ναι, κάνε αυτό!</string>
+    <string name="delete_alert_no">Όχι ευχαριστώ!</string>
 
     <string name="fab_create_new">Δημιουργία νέου πορτοφολιού</string>
     <string name="fab_restore_viewonly">Επαναφορά πορτοφολιού προβολής-μόνο</string>
@@ -422,4 +419,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

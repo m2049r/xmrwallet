@@ -21,15 +21,13 @@ import com.m2049r.xmrwallet.data.Node;
 import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import lombok.Getter;
 import timber.log.Timber;
 
 public class WalletManager {
@@ -103,7 +101,8 @@ public class WalletManager {
             wallet.setRestoreHeight(restoreHeight);
             Timber.d("Changed Restore Height from %d to %d", oldHeight, wallet.getRestoreHeight());
             wallet.setPassword(password); // this rewrites the keys file (which contains the restore height)
-        }
+        } else
+            Timber.e(wallet.getStatus().toString());
         return wallet;
     }
 
@@ -210,44 +209,20 @@ public class WalletManager {
     //public native List<String> findWallets(String path); // this does not work - some error in boost
 
     public class WalletInfo implements Comparable<WalletInfo> {
-        public File path;
-        public String name;
-        public String address;
+        @Getter
+        final private File path;
+        @Getter
+        final private String name;
+
+        public WalletInfo(File wallet) {
+            path = wallet.getParentFile();
+            name = wallet.getName();
+        }
 
         @Override
         public int compareTo(WalletInfo another) {
-            int n = name.toLowerCase().compareTo(another.name.toLowerCase());
-            if (n != 0) {
-                return n;
-            } else { // wallet names are the same
-                return address.compareTo(another.address);
-            }
+            return name.toLowerCase().compareTo(another.name.toLowerCase());
         }
-    }
-
-    public WalletInfo getWalletInfo(File wallet) {
-        WalletInfo info = new WalletInfo();
-        info.path = wallet.getParentFile();
-        info.name = wallet.getName();
-        File addressFile = new File(info.path, info.name + ".address.txt");
-        //Timber.d(addressFile.getAbsolutePath());
-        info.address = "??????";
-        BufferedReader addressReader = null;
-        try {
-            addressReader = new BufferedReader(new FileReader(addressFile));
-            info.address = addressReader.readLine();
-        } catch (IOException ex) {
-            Timber.d(ex.getLocalizedMessage());
-        } finally {
-            if (addressReader != null) {
-                try {
-                    addressReader.close();
-                } catch (IOException ex) {
-                    // that's just too bad
-                }
-            }
-        }
-        return info;
     }
 
     public List<WalletInfo> findWallets(File path) {
@@ -261,7 +236,7 @@ public class WalletManager {
         for (int i = 0; i < found.length; i++) {
             String filename = found[i].getName();
             File f = new File(found[i].getParent(), filename.substring(0, filename.length() - 5)); // 5 is length of ".keys"+1
-            wallets.add(getWalletInfo(f));
+            wallets.add(new WalletInfo(f));
         }
         return wallets;
     }

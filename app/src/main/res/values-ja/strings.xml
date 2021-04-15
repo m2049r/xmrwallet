@@ -9,7 +9,6 @@
     <string name="menu_help">ヘルプ</string>
     <string name="menu_receive">受取り</string>
     <string name="menu_rename">名前の変更</string>
-    <string name="menu_archive">アーカイブ</string>
     <string name="menu_backup">バックアップ</string>
     <string name="menu_changepw">パスフレーズの変更</string>
 
@@ -93,7 +92,6 @@
     <string name="service_progress">準備中 &#8230;\nしばらく時間がかかるかもしれません!</string>
 
     <string name="backup_failed">バックアップに失敗しました!</string>
-    <string name="archive_failed">アーカイブに失敗しました!</string>
     <string name="rename_failed">名前の変更に失敗しました!</string>
     <string name="changepw_failed">パスワード変更に失敗しました!</string>
     <string name="changepw_success">パスワードが変更されました</string>
@@ -273,9 +271,8 @@
     <string name="details_alert_no">戻ります!</string>
     <string name="details_title">詳細</string>
 
-    <string name="archive_alert_message">ウォレットはバックアップされてから削除されます!</string>
-    <string name="archive_alert_yes">はい、お願いします!</string>
-    <string name="archive_alert_no">いいえ、結構です!</string>
+    <string name="delete_alert_yes">はい、お願いします!</string>
+    <string name="delete_alert_no">いいえ、結構です!</string>
 
     <string name="fab_create_new">新しいウォレットの作成</string>
     <string name="fab_restore_viewonly">閲覧専用ウォレットを復元</string>
@@ -425,4 +422,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

@@ -9,7 +9,6 @@
     <string name="menu_help">幫助</string>
     <string name="menu_receive">收款</string>
     <string name="menu_rename">重新命名</string>
-    <string name="menu_archive">封存</string>
     <string name="menu_backup">備份</string>
     <string name="menu_changepw">更改密碼</string>
 
@@ -95,7 +94,6 @@
 
     <string name="backup_success">備份成功</string>
     <string name="backup_failed">備份失敗！</string>
-    <string name="archive_failed">封存失敗！</string>
     <string name="rename_failed">重新命名失敗！</string>
     <string name="changepw_failed">密碼更改失敗！</string>
     <string name="changepw_success">密碼更改成功</string>
@@ -265,9 +263,8 @@
     <string name="details_alert_no">不看了！</string>
     <string name="details_title">詳細資訊</string>
 
-    <string name="archive_alert_message">錢包檔案將會被備份並且於列表中刪除！</string>
-    <string name="archive_alert_yes">好的！</string>
-    <string name="archive_alert_no">不了！</string>
+    <string name="delete_alert_yes">好的！</string>
+    <string name="delete_alert_no">不了！</string>
 
     <string name="fab_create_new">建立新錢包</string>
     <string name="fab_restore_viewonly">回復唯讀錢包</string>
@@ -421,4 +418,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

@@ -33,4 +33,9 @@
         android:title="@string/menu_daynight"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_restore"
+        android:orderInCategory="600"
+        android:title="@string/menu_restore"
+        app:showAsAction="never" />
 </menu>

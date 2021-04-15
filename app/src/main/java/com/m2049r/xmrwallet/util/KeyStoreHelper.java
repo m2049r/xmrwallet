@@ -24,8 +24,9 @@ import android.os.Build;
 import android.security.KeyPairGeneratorSpec;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
-import androidx.annotation.NonNull;
 import android.util.Base64;
+
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -165,6 +166,11 @@ public class KeyStoreHelper {
         }
         context.getSharedPreferences(SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE).edit()
                 .remove(wallet).apply();
+    }
+
+    public static void copyWalletUserPass(Context context, String srcWallet, String dstWallet) throws BrokenPasswordStoreException {
+        final String pass = loadWalletUserPass(context, srcWallet);
+        saveWalletUserPass(context, dstWallet, pass);
     }
 
     /**
