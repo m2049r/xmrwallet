@@ -57,6 +57,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
@@ -78,7 +79,10 @@ import timber.log.Timber;
 public class Helper {
     static public final String NOCRAZYPASS_FLAGFILE = ".nocrazypass";
 
-    static public final String BASE_CRYPTO = "XMR";
+    static public final String BASE_CRYPTO = Crypto.XMR.getSymbol();
+
+    static public final boolean SHOW_EXCHANGERATES = true;
+    static public final boolean ALLOW_SHIFT = true;
 
     static private final String WALLET_DIR = "wallets";
     static private final String MONERO_DIR = "monero";

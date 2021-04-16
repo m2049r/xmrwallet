@@ -18,14 +18,15 @@ package com.m2049r.xmrwallet.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
@@ -44,12 +45,13 @@ public class Notice {
         synchronized (Notice.class) {
             if (notices != null) return;
             notices = new ArrayList<>();
-            notices.add(
-                    new Notice(NOTICE_SHOW_XMRTO_ENABLED_SEND,
-                            R.string.info_xmrto_enabled,
-                            R.string.help_xmrto,
-                            1)
-            );
+            if (Helper.ALLOW_SHIFT)
+                notices.add(
+                        new Notice(NOTICE_SHOW_XMRTO_ENABLED_SEND,
+                                R.string.info_xmrto_enabled,
+                                R.string.help_xmrto,
+                                1)
+                );
             notices.add(
                     new Notice(NOTICE_SHOW_LEDGER,
                             R.string.info_ledger_enabled,
