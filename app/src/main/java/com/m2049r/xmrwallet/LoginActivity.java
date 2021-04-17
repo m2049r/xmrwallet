@@ -985,16 +985,16 @@ public class LoginActivity extends BaseActivity
         File dstDir = dstWallet.getParentFile();
         String dstName = dstWallet.getName();
         try {
-            try {
+            copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
+            try { // cache & address.txt are optional files
                 copyFile(new File(srcDir, srcName), new File(dstDir, dstName));
+                copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             } catch (IOException ex) {
                 Timber.d("CACHE %s", ignoreCacheError);
                 if (!ignoreCacheError) { // ignore cache backup error if backing up (can be resynced)
                     throw ex;
                 }
             }
-            copyFile(new File(srcDir, srcName + ".keys"), new File(dstDir, dstName + ".keys"));
-            copyFile(new File(srcDir, srcName + ".address.txt"), new File(dstDir, dstName + ".address.txt"));
             success = true;
         } catch (IOException ex) {
             Timber.e("wallet copy failed: %s", ex.getMessage());
