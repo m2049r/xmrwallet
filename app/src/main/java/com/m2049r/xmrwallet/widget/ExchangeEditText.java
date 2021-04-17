@@ -172,7 +172,8 @@ public class ExchangeEditText extends LinearLayout {
     }
 
     protected void setCurrencyAdapter(Spinner spinner, List<String> currencies) {
-        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        if (Helper.SHOW_EXCHANGERATES)
+            currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);

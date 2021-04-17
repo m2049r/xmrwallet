@@ -45,10 +45,6 @@ VERSION:
 	echo MONERUJO `git -C . branch | grep "^\*" | sed 's/^..//'` with MONERO `git -C monero branch | grep "^\*" | sed 's/^..//'` > VERSION
 
 clean:
-	-docker container rm monero-android-arm64 -f
-	-docker container rm monero-android-arm32 -f
-	-docker container rm monero-android-x86_64 -f
-	-docker container rm monero-android-x86 -f
 	-rm -rf arm64-v8a
 	-rm -rf armeabi-v7a
 	-rm -rf x86_64
@@ -57,6 +53,10 @@ clean:
 	-rm -f VERSION
 
 distclean: clean
+	-docker container rm monero-android-arm64 -f
+	-docker container rm monero-android-arm32 -f
+	-docker container rm monero-android-x86_64 -f
+	-docker container rm monero-android-x86 -f
 	-docker image rm monero-android-arm64 -f
 	-docker image rm monero-android-arm32 -f
 	-docker image rm monero-android-x86_64 -f
