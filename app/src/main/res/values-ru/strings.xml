@@ -9,7 +9,6 @@
     <string name="menu_help">Помощь</string>
     <string name="menu_receive">Получить</string>
     <string name="menu_rename">Переименовать</string>
-    <string name="menu_archive">Архив</string>
     <string name="menu_backup">Резервная копия</string>
     <string name="menu_changepw">Изменить пароль</string>
 
@@ -94,7 +93,6 @@
     <string name="service_progress">Для данного действия &#8230;\nМожет потребоваться некоторое время!</string>
 
     <string name="backup_failed">Резервное копирование произошло с ошибкой!</string>
-    <string name="archive_failed">Архивирование произошло с ошибкой!</string>
     <string name="rename_failed">Переименование произошло с ошибкой!</string>
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
     <string name="changepw_success">Изменение пароля выполено успешно</string>
@@ -267,9 +265,9 @@
     <string name="details_alert_no">Верните меня обратно!</string>
     <string name="details_title">Подробная информация</string>
 
-    <string name="archive_alert_message">Этот кошелек будет скопирован, а затем удален!</string>
-    <string name="archive_alert_yes">Да, сделай это!</string>
-    <string name="archive_alert_no">Нет, спасибо!</string>
+    <string name="delete_alert_message">Этот кошелек будет удален!</string>
+    <string name="delete_alert_yes">Да, сделай это!</string>
+    <string name="delete_alert_no">Нет, спасибо!</string>
 
     <string name="fab_create_new">Создать новый кошелек</string>
     <string name="fab_restore_viewonly">Восстановить кошелек только для просмотра</string>
@@ -426,4 +424,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

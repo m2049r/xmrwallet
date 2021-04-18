@@ -173,7 +173,16 @@ public class Wallet {
     }
 
     public Subaddress getSubaddressObject(int subAddressIndex) {
-        return getSubaddressObject(accountIndex, subAddressIndex);
+        Subaddress subaddress = getSubaddressObject(accountIndex, subAddressIndex);
+        long amount = 0;
+        for (TransactionInfo info : getHistory().getAll()) {
+            if ((info.addressIndex == subAddressIndex)
+                    && (info.direction == TransactionInfo.Direction.Direction_In)) {
+                amount += info.amount;
+            }
+        }
+        subaddress.setAmount(amount);
+        return subaddress;
     }
 
     public native String getPath();

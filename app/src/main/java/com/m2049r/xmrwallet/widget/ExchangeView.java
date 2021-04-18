@@ -155,7 +155,8 @@ public class ExchangeView extends LinearLayout {
     void setCurrencyAdapter(Spinner spinner) {
         List<String> currencies = new ArrayList<>();
         currencies.add(Helper.BASE_CRYPTO);
-        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        if (Helper.SHOW_EXCHANGERATES)
+            currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
@@ -167,11 +168,7 @@ public class ExchangeView extends LinearLayout {
         etAmount = findViewById(R.id.etAmount);
         tvAmountB = findViewById(R.id.tvAmountB);
         sCurrencyA = findViewById(R.id.sCurrencyA);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner);
-        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_item);
-        sCurrencyA.setAdapter(adapter);
         sCurrencyB = findViewById(R.id.sCurrencyB);
-        sCurrencyB.setAdapter(adapter);
         evExchange = findViewById(R.id.evExchange);
         pbExchange = findViewById(R.id.pbExchange);
 

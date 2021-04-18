@@ -31,7 +31,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,8 +61,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     private WalletInfoAdapter adapter;
 
-    private List<WalletManager.WalletInfo> walletList = new ArrayList<>();
-    private List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
+    private final List<WalletManager.WalletInfo> walletList = new ArrayList<>();
 
     private View tvGuntherSays;
     private ImageView ivGunther;
@@ -86,7 +84,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletBackup(String name);
 
-        void onWalletArchive(String walletName);
+        void onWalletRestore();
+
+        void onWalletDelete(String walletName);
 
         void onAddWallet(String type);
 
@@ -110,7 +110,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Listener) {
             this.activityCallback = (Listener) context;
@@ -200,12 +200,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     // Wallet touched
     @Override
     public void onInteraction(final View view, final WalletManager.WalletInfo infoItem) {
-        String addressPrefix = WalletManager.getInstance().addressPrefix();
-        if (addressPrefix.indexOf(infoItem.address.charAt(0)) < 0) {
-            Toast.makeText(getActivity(), getString(R.string.prompt_wrong_net), Toast.LENGTH_LONG).show();
-            return;
-        }
-        openWallet(infoItem.name, false);
+        openWallet(infoItem.getName(), false);
     }
 
     private void openWallet(String name, boolean streetmode) {
@@ -214,48 +209,32 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     @Override
     public boolean onContextInteraction(MenuItem item, WalletManager.WalletInfo listItem) {
-        switch (item.getItemId()) {
-            case R.id.action_streetmode:
-                openWallet(listItem.name, true);
-                break;
-            case R.id.action_info:
-                showInfo(listItem.name);
-                break;
-            case R.id.action_rename:
-                activityCallback.onWalletRename(listItem.name);
-                break;
-            case R.id.action_backup:
-                activityCallback.onWalletBackup(listItem.name);
-                break;
-            case R.id.action_archive:
-                activityCallback.onWalletArchive(listItem.name);
-                break;
-            default:
-                return super.onContextItemSelected(item);
+        final int id = item.getItemId();
+        if (id == R.id.action_streetmode) {
+            openWallet(listItem.getName(), true);
+        } else if (id == R.id.action_info) {
+            showInfo(listItem.getName());
+        } else if (id == R.id.action_rename) {
+            activityCallback.onWalletRename(listItem.getName());
+        } else if (id == R.id.action_backup) {
+            activityCallback.onWalletBackup(listItem.getName());
+        } else if (id == R.id.action_archive) {
+            activityCallback.onWalletDelete(listItem.getName());
+        } else {
+            return super.onContextItemSelected(item);
         }
         return true;
-    }
-
-    private void filterList() {
-        displayedList.clear();
-        String addressPrefix = WalletManager.getInstance().addressPrefix();
-        for (WalletManager.WalletInfo s : walletList) {
-            if (addressPrefix.indexOf(s.address.charAt(0)) >= 0) displayedList.add(s);
-        }
     }
 
     public void loadList() {
         Timber.d("loadList()");
         WalletManager mgr = WalletManager.getInstance();
-        List<WalletManager.WalletInfo> walletInfos =
-                mgr.findWallets(activityCallback.getStorageRoot());
         walletList.clear();
-        walletList.addAll(walletInfos);
-        filterList();
-        adapter.setInfos(displayedList);
+        walletList.addAll(mgr.findWallets(activityCallback.getStorageRoot()));
+        adapter.setInfos(walletList);
 
         // deal with Gunther & FAB animation
-        if (displayedList.isEmpty()) {
+        if (walletList.isEmpty()) {
             fab.startAnimation(fab_pulse);
             if (ivGunther.getDrawable() == null) {
                 ivGunther.setImageResource(R.drawable.ic_emptygunther);
@@ -274,7 +253,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getAll().keySet();
         for (WalletManager.WalletInfo s : walletList) {
-            removedWallets.remove(s.name);
+            removedWallets.remove(s.getName());
         }
         for (String name : removedWallets) {
             KeyStoreHelper.removeWalletUserPass(getActivity(), name);
@@ -292,7 +271,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -362,37 +341,29 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     @Override
     public void onClick(View v) {
-        int id = v.getId();
+        final int id = v.getId();
         Timber.d("onClick %d/%d", id, R.id.fabLedger);
-        switch (id) {
-            case R.id.fab:
-                animateFAB();
-                break;
-            case R.id.fabNew:
-                fabScreen.setVisibility(View.INVISIBLE);
-                isFabOpen = false;
-                activityCallback.onAddWallet(GenerateFragment.TYPE_NEW);
-                break;
-            case R.id.fabView:
-                animateFAB();
-                activityCallback.onAddWallet(GenerateFragment.TYPE_VIEWONLY);
-                break;
-            case R.id.fabKey:
-                animateFAB();
-                activityCallback.onAddWallet(GenerateFragment.TYPE_KEY);
-                break;
-            case R.id.fabSeed:
-                animateFAB();
-                activityCallback.onAddWallet(GenerateFragment.TYPE_SEED);
-                break;
-            case R.id.fabLedger:
-                Timber.d("FAB_LEDGER");
-                animateFAB();
-                activityCallback.onAddWallet(GenerateFragment.TYPE_LEDGER);
-                break;
-            case R.id.fabScreen:
-                animateFAB();
-                break;
+        if (id == R.id.fab) {
+            animateFAB();
+        } else if (id == R.id.fabNew) {
+            fabScreen.setVisibility(View.INVISIBLE);
+            isFabOpen = false;
+            activityCallback.onAddWallet(GenerateFragment.TYPE_NEW);
+        } else if (id == R.id.fabView) {
+            animateFAB();
+            activityCallback.onAddWallet(GenerateFragment.TYPE_VIEWONLY);
+        } else if (id == R.id.fabKey) {
+            animateFAB();
+            activityCallback.onAddWallet(GenerateFragment.TYPE_KEY);
+        } else if (id == R.id.fabSeed) {
+            animateFAB();
+            activityCallback.onAddWallet(GenerateFragment.TYPE_SEED);
+        } else if (id == R.id.fabLedger) {
+            Timber.d("FAB_LEDGER");
+            animateFAB();
+            activityCallback.onAddWallet(GenerateFragment.TYPE_LEDGER);
+        } else if (id == R.id.fabScreen) {
+            animateFAB();
         }
     }
 

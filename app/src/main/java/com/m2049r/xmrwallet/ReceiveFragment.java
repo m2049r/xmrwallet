@@ -385,24 +385,18 @@ public class ReceiveFragment extends Fragment {
     }
 
     private Bitmap addLogo(Bitmap qrBitmap) {
+        // addume logo & qrcode are both square
         Bitmap logo = getMoneroLogo();
-        int qrWidth = qrBitmap.getWidth();
-        int qrHeight = qrBitmap.getHeight();
-        int logoWidth = logo.getWidth();
-        int logoHeight = logo.getHeight();
+        final int qrSize = qrBitmap.getWidth();
+        final int logoSize = logo.getWidth();
 
-        Bitmap logoBitmap = Bitmap.createBitmap(qrWidth, qrHeight, Bitmap.Config.ARGB_8888);
+        Bitmap logoBitmap = Bitmap.createBitmap(qrSize, qrSize, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(logoBitmap);
         canvas.drawBitmap(qrBitmap, 0, 0, null);
         canvas.save();
-        // figure out how to scale the logo
-        float scaleSize = 1.0f;
-        while ((logoWidth / scaleSize) > (qrWidth / 5.) || (logoHeight / scaleSize) > (qrHeight / 5.)) {
-            scaleSize *= 2;
-        }
-        float sx = 1.0f / scaleSize;
-        canvas.scale(sx, sx, qrWidth / 2f, qrHeight / 2f);
-        canvas.drawBitmap(logo, (qrWidth - logoWidth) / 2f, (qrHeight - logoHeight) / 2f, null);
+        final float sx = 0.2f * qrSize / logoSize;
+        canvas.scale(sx, sx, qrSize / 2f, qrSize / 2f);
+        canvas.drawBitmap(logo, (qrSize - logoSize) / 2f, (qrSize - logoSize) / 2f, null);
         canvas.restore();
         return logoBitmap;
     }

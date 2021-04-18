@@ -9,7 +9,6 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_receive">Receber</string>
     <string name="menu_rename">Renomear</string>
-    <string name="menu_archive">Arquivar</string>
     <string name="menu_backup">Cópia de segurança</string>
     <string name="menu_changepw">Alterar palavra passe</string>
 
@@ -93,7 +92,6 @@
     <string name="service_progress">A concluir o processamento &#8230;\nIsto pode demorar!</string>
 
     <string name="backup_failed">Cópia de segurança falhou!</string>
-    <string name="archive_failed">Erro ao arquivar!</string>
     <string name="rename_failed">Erro ao renomear!</string>
     <string name="changepw_failed">Erro ao alterar a palavra passe!</string>
     <string name="changepw_success">Palavra passe alterada</string>
@@ -265,9 +263,8 @@
     <string name="details_alert_no">Volta atrás!</string>
     <string name="details_title">Detalhes</string>
 
-    <string name="archive_alert_message">Vai ser feita uma cópia de segurança da carteira e depois será apagada!</string>
-    <string name="archive_alert_yes">Sim, faz isso!</string>
-    <string name="archive_alert_no">Não obrigado!</string>
+    <string name="delete_alert_yes">Sim, faz isso!</string>
+    <string name="delete_alert_no">Não obrigado!</string>
 
     <string name="fab_create_new">Criar nova carteira</string>
     <string name="fab_restore_viewonly">Restaurar carteira apenas de visualização</string>
@@ -426,4 +423,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

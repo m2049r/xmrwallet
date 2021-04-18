@@ -34,7 +34,6 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.CancellationSignal;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.system.ErrnoException;
 import android.system.Os;
@@ -58,6 +57,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.model.WalletManager;
 
 import java.io.File;
@@ -77,16 +77,15 @@ import javax.net.ssl.HttpsURLConnection;
 import timber.log.Timber;
 
 public class Helper {
-    static private final String FLAVOR_SUFFIX =
-            (BuildConfig.FLAVOR.startsWith("prod") ? "" : "." + BuildConfig.FLAVOR)
-                    + (BuildConfig.DEBUG ? "-debug" : "");
-
     static public final String NOCRAZYPASS_FLAGFILE = ".nocrazypass";
 
-    static public final String BASE_CRYPTO = "XMR";
+    static public final String BASE_CRYPTO = Crypto.XMR.getSymbol();
 
-    static private final String WALLET_DIR = "monerujo" + FLAVOR_SUFFIX;
-    static private final String HOME_DIR = "monero" + FLAVOR_SUFFIX;
+    static public final boolean SHOW_EXCHANGERATES = true;
+    static public final boolean ALLOW_SHIFT = true;
+
+    static private final String WALLET_DIR = "wallets";
+    static private final String MONERO_DIR = "monero";
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
@@ -95,12 +94,7 @@ public class Helper {
     }
 
     static public File getStorage(Context context, String folderName) {
-        if (!isExternalStorageWritable()) {
-            String msg = context.getString(R.string.message_strorage_not_writable);
-            Timber.e(msg);
-            throw new IllegalStateException(msg);
-        }
-        File dir = new File(Environment.getExternalStorageDirectory(), folderName);
+        File dir = new File(context.getFilesDir(), folderName);
         if (!dir.exists()) {
             Timber.i("Creating %s", dir.getAbsolutePath());
             dir.mkdirs(); // try to make it
@@ -111,24 +105,6 @@ public class Helper {
             throw new IllegalStateException(msg);
         }
         return dir;
-    }
-
-    static public final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
-
-    static public boolean getWritePermission(Activity context) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            if (context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
-                Timber.w("Permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                context.requestPermissions(permissions, PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return true;
-        }
     }
 
     static public final int PERMISSIONS_REQUEST_CAMERA = 7;
@@ -154,12 +130,6 @@ public class Helper {
         File f = new File(walletDir, aWalletName);
         Timber.d("wallet=%s size= %d", f.getAbsolutePath(), f.length());
         return f;
-    }
-
-    /* Checks if external storage is available for read and write */
-    private static boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
     }
 
     static public void showKeyboard(Activity act) {
@@ -339,7 +309,7 @@ public class Helper {
 
     static public void setMoneroHome(Context context) {
         try {
-            String home = getStorage(context, HOME_DIR).getAbsolutePath();
+            String home = getStorage(context, MONERO_DIR).getAbsolutePath();
             Os.setenv("HOME", home, true);
         } catch (ErrnoException ex) {
             throw new IllegalStateException(ex);
@@ -355,7 +325,7 @@ public class Helper {
 
     // TODO make the log levels refer to the  WalletManagerFactory::LogLevel enum ?
     static public void initLogger(Context context, int level) {
-        String home = getStorage(context, HOME_DIR).getAbsolutePath();
+        String home = getStorage(context, MONERO_DIR).getAbsolutePath();
         WalletManager.initLogger(home + "/monerujo", "monerujo.log");
         if (level >= WalletManager.LOGLEVEL_SILENT)
             WalletManager.setLogLevel(level);

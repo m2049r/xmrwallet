@@ -9,7 +9,6 @@
     <string name="menu_help">Допомога</string>
     <string name="menu_receive">Отримати</string>
     <string name="menu_rename">Перейменувати</string>
-    <string name="menu_archive">Архів</string>
     <string name="menu_backup">Резервна копія</string>
     <string name="menu_changepw">Змінити пароль</string>
 
@@ -94,7 +93,6 @@
     <string name="service_progress">Для даної дії &#8230;\nМоже знадобитися деякий час!</string>
 
     <string name="backup_failed">Резервне копіювання відбулося з помилкою!</string>
-    <string name="archive_failed">Архівування відбулося з помилкою!</string>
     <string name="rename_failed">Перейменування відбулося з помилкою!</string>
     <string name="changepw_failed">Зміна паролю відбулася з помилкою!</string>
     <string name="changepw_success">Зміну паролю виконано успішно</string>
@@ -267,9 +265,9 @@
     <string name="details_alert_no">Поверніть мене назад!</string>
     <string name="details_title">Детальна інформація</string>
 
-    <string name="archive_alert_message">Цей гаманець буде скопійовано, а потім знищено!</string>
-    <string name="archive_alert_yes">Так, зроби це!</string>
-    <string name="archive_alert_no">Ні, дякую!</string>
+    <string name="delete_alert_message">Цей гаманець буде знищено!</string>
+    <string name="delete_alert_yes">Так, зроби це!</string>
+    <string name="delete_alert_no">Ні, дякую!</string>
 
     <string name="fab_create_new">Створити новий гаманець</string>
     <string name="fab_restore_viewonly">Відновити гаманець тільки для перегляду</string>
@@ -426,4 +424,9 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

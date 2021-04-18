@@ -9,7 +9,6 @@
     <string name="menu_help">Hjälp</string>
     <string name="menu_receive">Ta emot</string>
     <string name="menu_rename">Byt namn</string>
-    <string name="menu_archive">Arkivera</string>
     <string name="menu_backup">Säkerhetskopiera</string>
     <string name="menu_changepw">Ändra lösenfras</string>
 
@@ -94,7 +93,6 @@
 
     <string name="backup_success">Säkerhetskopia sparad</string>
     <string name="backup_failed">Det gick inte att säkerhetskopiera!</string>
-    <string name="archive_failed">Det gick inte att arkivera!</string>
     <string name="rename_failed">Det gick inte att byta namn!</string>
     <string name="changepw_failed">Det gick inte att ändra lösenord!</string>
     <string name="changepw_success">Lösenordet har ändrats</string>
@@ -254,9 +252,8 @@
     <string name="details_alert_no">Ta mig tillbaka!</string>
     <string name="details_title">Detaljer</string>
 
-    <string name="archive_alert_message">Plånboken kommer att säkerhetskopieras och sedan tas bort!</string>
-    <string name="archive_alert_yes">Ja, gör det!</string>
-    <string name="archive_alert_no">Nej tack!</string>
+    <string name="delete_alert_yes">Ja, gör det!</string>
+    <string name="delete_alert_no">Nej tack!</string>
 
     <string name="fab_create_new">Skapa ny plånbok</string>
     <string name="fab_restore_viewonly">Återställ granskningsplånbok</string>
@@ -414,4 +411,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

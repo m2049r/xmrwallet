@@ -126,7 +126,8 @@ public class WalletFragment extends Fragment
         sCurrency = view.findViewById(R.id.sCurrency);
         List<String> currencies = new ArrayList<>();
         currencies.add(Helper.BASE_CRYPTO);
-        currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
+        if (Helper.SHOW_EXCHANGERATES)
+            currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), R.layout.item_spinner_balance, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sCurrency.setAdapter(spinnerAdapter);

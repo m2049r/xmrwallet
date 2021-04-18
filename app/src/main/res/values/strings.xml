@@ -10,7 +10,7 @@
     <string name="menu_help">Help</string>
     <string name="menu_receive">Receive</string>
     <string name="menu_rename">Rename</string>
-    <string name="menu_archive">Archive</string>
+    <string name="menu_delete">Delete</string>
     <string name="menu_backup">Backup</string>
     <string name="menu_changepw">Change Passphrase</string>
 
@@ -86,16 +86,16 @@
     <string name="label_send_address">Destination Address</string>
     <string name="label_send_notes">Notes</string>
 
-    <string name="backup_progress">Backup in progress</string>
-    <string name="archive_progress">Archive in progress</string>
-    <string name="rename_progress">Rename in progress</string>
+    <string name="backup_progress">Backup in progress</string><!--TODO deleteme-->
+    <string name="archive_progress">Archive in progress</string><!--TODO deleteme-->
+    <string name="rename_progress">Rename in progress</string><!--TODO deleteme-->
     <string name="changepw_progress">Change Password in progress</string>
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
     <string name="backup_success">Backup successful</string>
     <string name="backup_failed">Backup failed!</string>
-    <string name="archive_failed">Archive failed!</string>
+    <string name="delete_failed">Delete failed!</string>
     <string name="rename_failed">Rename failed!</string>
     <string name="changepw_failed">Change Password failed!</string>
     <string name="changepw_success">Password changed</string>
@@ -132,7 +132,7 @@
     <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="prompt_daemon_missing">Node must be set!</string>
-    <string name="prompt_wrong_net">Wallet does not match selected net</string>
+    <string name="prompt_wrong_net">Wallet does not match selected net</string><!--TODO deleteme-->
 
     <string name="label_watchonly">(Watch Only)</string>
 
@@ -278,9 +278,9 @@
     <string name="details_alert_no">Take me back!</string>
     <string name="details_title">Details</string>
 
-    <string name="archive_alert_message">The wallet will be backed up and then deleted!</string>
-    <string name="archive_alert_yes">Yes, do that!</string>
-    <string name="archive_alert_no">No thanks!</string>
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="delete_alert_yes">Yes, do that!</string>
+    <string name="delete_alert_no">No thanks!</string>
 
     <string-array name="currency" translatable="false">
         <item>EUR</item>
@@ -495,4 +495,6 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>

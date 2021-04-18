@@ -9,7 +9,6 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_receive">Rebre</string>
     <string name="menu_rename">Canvi de nom</string>
-    <string name="menu_archive">Arxivar</string>
     <string name="menu_backup">Còpia de seguretat</string>
     <string name="menu_changepw">Canvi de contrasenya</string>
 
@@ -94,7 +93,6 @@
 
     <string name="backup_success">Còpia de seguretat amb èxit</string>
     <string name="backup_failed">Còpia de seguretat fallida!</string>
-    <string name="archive_failed">Arxiu fallit!</string>
     <string name="rename_failed">Canvi de nom fallit!</string>
     <string name="changepw_failed">Canvi de contrasenya fallit!</string>
     <string name="changepw_success">La contrasenya ha canviat</string>
@@ -273,9 +271,8 @@
     <string name="details_alert_no">Torna\'m enrere!</string>
     <string name="details_title">Detalls</string>
 
-    <string name="archive_alert_message">Es farà una còpia de seguretat del portamonedes i s\'esborrarà.</string>
-    <string name="archive_alert_yes">Si, fes-ho!</string>
-    <string name="archive_alert_no">No gràcies!</string>
+    <string name="delete_alert_yes">Si, fes-ho!</string>
+    <string name="delete_alert_no">No gràcies!</string>
 
     <string name="fab_create_new">Crear un nou portamonedes</string>
     <string name="fab_restore_viewonly">Restablir portamonedes de només lectura</string>
@@ -420,4 +417,10 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
+    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Delete failed!</string>
+
+    <string name="menu_restore">Import wallet</string>
+    <string name="restore_failed">Import failed!</string>
 </resources>
