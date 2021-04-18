@@ -30,7 +30,7 @@ public class LegacyStorageHelper {
     static public void migrateWallets(Context context) {
         try {
             if (isStorageMigrated(context)) return;
-            if (!hasWritePermission(context)) {
+            if (!hasReadPermission(context)) {
                 // nothing to migrate, so don't try again
                 setStorageMigrated(context);
                 return;
@@ -121,9 +121,9 @@ public class LegacyStorageHelper {
         return dir;
     }
 
-    private static boolean hasWritePermission(Context context) {
+    private static boolean hasReadPermission(Context context) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            return context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED;
+            return context.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED;
         } else {
             return true;
         }
