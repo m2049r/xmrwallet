@@ -239,8 +239,8 @@
     <string name="details_alert_no">Du-mă înapoi!</string>
     <string name="details_title">Detalii</string>
 
-    <string name="archive_alert_yes">Da, fă asta!</string>
-    <string name="archive_alert_no">Nu mersi!</string>
+    <string name="delete_alert_yes">Da, fă asta!</string>
+    <string name="delete_alert_no">Nu mersi!</string>
 
     <string name="fab_create_new">Creează portofel nou</string>
     <string name="fab_restore_viewonly">Restaurează portofel vizualizare</string>
