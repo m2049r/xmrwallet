@@ -53,6 +53,7 @@ public class LegacyStorageHelper {
     public void migrate() {
         String addressPrefix = WalletManager.getInstance().addressPrefix();
         File[] wallets = srcDir.listFiles((dir, filename) -> filename.endsWith(".keys"));
+        if (wallets == null) return;
         for (File wallet : wallets) {
             final String walletName = wallet.getName().substring(0, wallet.getName().length() - ".keys".length());
             if (addressPrefix.indexOf(getAddress(walletName).charAt(0)) < 0) {

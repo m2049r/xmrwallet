@@ -26,6 +26,8 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class RestoreHeight {
+    static final int DIFFICULTY_TARGET = 120; // seconds
+
     static private RestoreHeight Singleton = null;
 
     static public RestoreHeight getInstance() {
@@ -190,7 +192,7 @@ public class RestoreHeight {
         } else {
             long days = TimeUnit.DAYS.convert(query.getTimeInMillis() - prevTime,
                     TimeUnit.MILLISECONDS);
-            height = Math.round(prevBc + 1.0 * days * (24 * 60 / 2));
+            height = Math.round(prevBc + 1.0 * days * (24f * 60 * 60 / DIFFICULTY_TARGET));
         }
         return height;
     }

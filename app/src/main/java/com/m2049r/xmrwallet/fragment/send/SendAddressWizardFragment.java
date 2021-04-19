@@ -183,6 +183,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     selectedCrypto = Crypto.XMR;
                     sendListener.setMode(SendFragment.Mode.XMR);
                 }
+                if (!Helper.ALLOW_SHIFT) return;
                 if ((selectedCrypto == null) && isEthAddress(address)) {
                     Timber.d("isEthAddress");
                     possibleCryptos.add(Crypto.ETH);
@@ -465,7 +466,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     possibleCryptos.add(barcodeData.asset);
                     selectedCrypto = barcodeData.asset;
                 }
-                updateCryptoButtons(false);
+                if (Helper.ALLOW_SHIFT)
+                    updateCryptoButtons(false);
                 if (checkAddress()) {
                     if (barcodeData.security == BarcodeData.Security.OA_NO_DNSSEC)
                         etAddress.setError(getString(R.string.send_address_no_dnssec));

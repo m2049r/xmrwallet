@@ -30,6 +30,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.ledger.Ledger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +53,13 @@ public class Notice {
                                 R.string.help_xmrto,
                                 1)
                 );
-            notices.add(
-                    new Notice(NOTICE_SHOW_LEDGER,
-                            R.string.info_ledger_enabled,
-                            R.string.help_create_ledger,
-                            1)
-            );
+            if (Ledger.ENABLED)
+                notices.add(
+                        new Notice(NOTICE_SHOW_LEDGER,
+                                R.string.info_ledger_enabled,
+                                R.string.help_create_ledger,
+                                1)
+                );
         }
     }
 
