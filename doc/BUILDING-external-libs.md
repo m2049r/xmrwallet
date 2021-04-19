@@ -22,4 +22,4 @@ Linux: `ln -s ~/monero ~/xmrwallet/external-libs/monero`
 
 Windows: `mklink /D "C:\Users\<USERNAME>\xmrwallet\external-libs\monero" "C:\Users\<USERNAME>\monero"`
 
-5. Start Docker and then run `make` in `external-libs` folder. It will fail at end on Windows, but if wallet2_api.h in include folder, the build was successful. 
+5. Start Docker and then run `make` in `external-libs` folder. It will fail at end on Windows, but if `wallet2_api.h` exists in `include` folder, the build was successful. 
