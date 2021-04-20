@@ -61,9 +61,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                android:resource="@xml/usb_device_filter" />
         </activity>
         <activity
             android:name=".onboarding.OnBoardingActivity"

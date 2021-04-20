@@ -26,6 +26,8 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class RestoreHeight {
+    static final int DIFFICULTY_TARGET = 120; // seconds
+
     static private RestoreHeight Singleton = null;
 
     static public RestoreHeight getInstance() {

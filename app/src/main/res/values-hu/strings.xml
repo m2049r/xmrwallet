@@ -421,10 +421,13 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
-    <string name="delete_alert_message">The wallet will be deleted!</string>
+    <string name="delete_alert_message">This wallet will be deleted!</string>
     <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
     <string name="delete_failed">Delete failed!</string>
 
     <string name="menu_restore">Import wallet</string>
     <string name="restore_failed">Import failed!</string>
+
+    <string name="menu_deletecache">Reset wallet!</string>
+    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
 </resources>
