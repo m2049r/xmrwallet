@@ -167,7 +167,7 @@ public class ExchangeApiImpl implements ExchangeApi {
     private Calendar fetchDate = null;
 
     synchronized private ExchangeRate getRate(String currency) throws ExchangeException {
-        Timber.e("Getting %s", currency);
+        Timber.d("Getting %s", currency);
         final Double rate = fxEntries.get(currency);
         if (rate == null) throw new ExchangeException(404, "Currency not supported: " + currency);
         return new ExchangeRateImpl(currency, rate, fxDate.getTime());
