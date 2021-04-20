@@ -557,6 +557,31 @@ public class LoginActivity extends BaseActivity
                 .show();
     }
 
+    @Override
+    public void onWalletDeleteCache(final String walletName) {
+        Timber.d("delete cache for wallet ." + walletName + ".");
+        if (checkServiceRunning()) return;
+        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    if (!deleteWalletCache(Helper.getWalletFile(LoginActivity.this, walletName))) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.delete_failed), Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    // do nothing
+                    break;
+            }
+        };
+
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
+        builder.setMessage(getString(R.string.deletecache_alert_message, walletName))
+                .setTitle(walletName)
+                .setPositiveButton(getString(R.string.delete_alert_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.delete_alert_no), dialogClickListener)
+                .show();
+    }
+
     void reloadWalletList() {
         Timber.d("reloadWalletList()");
         try {
@@ -1021,6 +1046,18 @@ public class LoginActivity extends BaseActivity
         }
         Timber.d("deleteWallet is %s", success);
         KeyStoreHelper.removeWalletUserPass(this, walletFile.getName());
+        return success;
+    }
+
+    boolean deleteWalletCache(File walletFile) {
+        Timber.d("deleteWalletCache %s", walletFile.getAbsolutePath());
+        File dir = walletFile.getParentFile();
+        String name = walletFile.getName();
+        boolean success = true;
+        File cacheFile = new File(dir, name);
+        if (cacheFile.exists()) {
+            success = cacheFile.delete();
+        }
         return success;
     }
 

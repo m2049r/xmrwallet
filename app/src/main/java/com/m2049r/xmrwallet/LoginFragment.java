@@ -88,6 +88,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         void onWalletDelete(String walletName);
 
+        void onWalletDeleteCache(String walletName);
+
         void onAddWallet(String type);
 
         void onNodePrefs();
@@ -220,6 +222,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             activityCallback.onWalletBackup(listItem.getName());
         } else if (id == R.id.action_archive) {
             activityCallback.onWalletDelete(listItem.getName());
+        } else if (id == R.id.action_deletecache) {
+            activityCallback.onWalletDeleteCache(listItem.getName());
         } else {
             return super.onContextItemSelected(item);
         }

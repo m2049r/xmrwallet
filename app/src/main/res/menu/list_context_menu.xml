@@ -26,4 +26,8 @@
         android:orderInCategory="500"
         android:title="@string/menu_info" />
 
+    <item
+        android:id="@+id/action_deletecache"
+        android:orderInCategory="500"
+        android:title="@string/menu_deletecache" />
 </menu>
