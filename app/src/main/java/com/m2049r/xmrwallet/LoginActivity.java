@@ -474,6 +474,7 @@ public class LoginActivity extends BaseActivity
     @Override
     public void onWalletBackup(String walletName) {
         Timber.d("backup for wallet ." + walletName + ".");
+        // overwrite any pending backup request
         zipBackup = new ZipBackup(this, walletName);
 
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
@@ -500,14 +501,18 @@ public class LoginActivity extends BaseActivity
             if (data == null) {
                 // nothing selected
                 Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+                zipBackup = null;
                 return;
             }
             try {
+                if (zipBackup == null) return; // ignore unsolicited request
                 zipBackup.writeTo(data.getData());
                 Toast.makeText(this, getString(R.string.backup_success), Toast.LENGTH_SHORT).show();
             } catch (IOException ex) {
                 Timber.e(ex);
                 Toast.makeText(this, getString(R.string.backup_failed), Toast.LENGTH_LONG).show();
+            } finally {
+                zipBackup = null;
             }
         } else if (requestCode == RESTORE_BACKUP_INTENT) {
             if (data == null) {
