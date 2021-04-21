@@ -3,7 +3,7 @@
 AEON_BRANCH=`git -C aeon branch | grep "^\*" | sed 's/^..//'`
 AEONRUJO_BRANCH=`git -C . branch | grep "^\*" | sed 's/^..//'`
 
-all: arm64-v8a include VERSION
+all: arm64-v8a x86_64 include VERSION
 
 arm64-v8a: aeon
 	-rm -rf arm64-v8a

@@ -40,14 +40,14 @@ RUN cd /usr \
 ENV PATH /usr/cmake-${CMAKE_VERSION}-Linux-x86_64/bin:$PATH
 
 ## Boost
-ARG BOOST_VERSION=1_68_0
-ARG BOOST_VERSION_DOT=1.68.0
-ARG BOOST_HASH=7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7
+ARG BOOST_VERSION=1_62_0
+ARG BOOST_VERSION_DOT=1.62.0
+ARG BOOST_HASH=440a59f8bc4023dbe6285c9998b0f7fa288468b889746b1ef00e8b36c559dce1
 RUN set -ex \
-    && curl -s -L -o  boost_${BOOST_VERSION}.tar.bz2 https://dl.bintray.com/boostorg/release/${BOOST_VERSION_DOT}/source/boost_${BOOST_VERSION}.tar.bz2 \
-    && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.bz2" | sha256sum -c \
-    && tar -xvf boost_${BOOST_VERSION}.tar.bz2 \
-    && rm -f boost_${BOOST_VERSION}.tar.bz2 \
+    && curl -s -L -o  boost_${BOOST_VERSION}.tar.gz https://downloads.sourceforge.net/project/boost/boost/${BOOST_VERSION_DOT}/boost_${BOOST_VERSION}.tar.gz \
+    && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
+    && tar -xvf boost_${BOOST_VERSION}.tar.gz \
+    && rm -f boost_${BOOST_VERSION}.tar.gz \
     && cd boost_${BOOST_VERSION} \
     && ./bootstrap.sh --prefix=${PREFIX}
 
