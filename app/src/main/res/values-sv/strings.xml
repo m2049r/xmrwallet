@@ -308,85 +308,85 @@
     <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
 
     <string name="menu_info">Detaljer</string><!--Changed to: Show Secrets!-->
-    <string name="menu_streetmode">Street Mode</string>
+    <string name="menu_streetmode">Gatu Mode</string>
 
-    <string name="info_nodes_enabled">Node-o-matiC enabled, tap for more info.</string>
-    <string name="node_height">Last block updated: %1$s</string>
-    <string name="label_nodes">Nodes</string>
-    <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
+    <string name="info_nodes_enabled">Node-o-matiC aktiverad, tryck för mer info.</string>
+    <string name="node_height">Senaste blocket uppdaterat: %1$s</string>
+    <string name="label_nodes">Noder</string>
+    <string name="node_name_hint">Node Namn (Frivillig)</string>
+    <string name="node_address_hint">Värdnamn</string>
     <string name="node_port_hint">Port</string>
-    <string name="node_user_hint">Username (Optional)</string>
-    <string name="node_pass_hint">Password (Optional)</string>
-    <string name="node_host_unresolved">Cannot resolve host</string>
-    <string name="node_host_empty">We need this!</string>
-    <string name="node_port_numeric">Must be numeric</string>
-    <string name="node_port_range">Must be 1&#8211;65535</string>
-    <string name="node_fab_add">Add Node</string>
-    <string name="node_refresh_hint">Touch to refresh!</string>
-    <string name="node_test_error">CONNECTION ERROR %1$d</string>
-    <string name="node_general_error">CONNECTION ERROR</string>
-    <string name="node_auth_error">AUTHENTICATION FAILED</string>
-    <string name="node_result_label">Test Result:</string>
+    <string name="node_user_hint">Användare (Frivillig)</string>
+    <string name="node_pass_hint">Lösenord (Frivillig)</string>
+    <string name="node_host_unresolved">Det går inte att lösa värden</string>
+    <string name="node_host_empty">Vi behöver det här!</string>
+    <string name="node_port_numeric"Måste vara numeriskt</string>
+    <string name="node_port_range">Måste vara 1&#8211;65535</string>
+    <string name="node_fab_add">Addera nod</string>
+    <string name="node_refresh_hint">Tryck för att uppdatera!</string>
+    <string name="node_test_error">ANSLUTNINGSFEL %1$d</string>
+    <string name="node_general_error">ANSLUTNINGSFEL</string>
+    <string name="node_auth_error">AUTENTISERING MISSLYCKADES</string>
+    <string name="node_result_label">Test result:</string>
     <string name="node_result">Height: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testing IP: %1$s &#8230;</string>
-    <string name="node_refresh_wait">Please wait for scan to finish</string>
-    <string name="node_create_hint">Touch to select or add nodes</string>
-    <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
-    <string name="node_scanning">Scanning network&#8230;</string>
-    <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
-    <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_testing">Testar IP: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Vänta tills scanningen är klar</string>
+    <string name="node_create_hint">Tryck för att välja eller addera nod</string>
+    <string name="node_pull_hint">Addera nod manuellt eller dra ner för att scanna</string>
+    <string name="node_scanning">Scannar nätverket&#8230;</string>
+    <string name="node_nobookmark">Automatiskt bokmärk bäst %1$d noder</string>
+    <string name="label_test">Testa</string><!--note: as in "Test a network connection"-->
 
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Mottagaren</string>
 
-    <string name="street_sweep_amount">EVERYTHING!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">SKICKA ALLT</string> <!-- as in: "everything in the account" = "all the money" -->
 
-    <string name="menu_ledger_seed">Convert Ledger Seed</string>
+    <string name="menu_ledger_seed">Konvertera Ledger Seed</string>
     <string name="prompt_ledger_seed">Ledger Seed Words</string>
-    <string name="prompt_ledger_phrase">Ledger Passphrase (optional)</string>
-    <string name="bad_ledger_seed">Invalid Ledger Seed!</string>
-    <string name="prompt_ledger_seed_warn">Entering your Ledger Seed here is a major security risk!</string>
+    <string name="prompt_ledger_phrase">Ledger lösenfras (frivillig)</string>
+    <string name="bad_ledger_seed">Ogilitigt Ledger Seed!</string>
+    <string name="prompt_ledger_seed_warn">Att ange din Ledger Seed här är en stor säkerhetsrisk!</string>
 
     <string name="label_restoreheight">Återställningshöjd</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Starta Monero app på %1$s</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">Skanna om!</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_agree">Jag förstår!</string>
+    <string name="onboarding_button_next">Nästa</string>
+    <string name="onboarding_button_ready">Jag är redo!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">Välkommen till Monerujo!</string>
+    <string name="onboarding_welcome_information">Denna app tillåter dig att skapa och använda Monero plånböcker. Du kan förvara dina kära moneroj i dem.</string>
+    <string name="onboarding_seed_title">Håll dina seed i säkert förvar.</string>
+    <string name="onboarding_seed_information">Seed ger full åtkomst till den som har den. Om du förlorar det, kan vi inte hjälpa dig och du förlorar dina kära moneroj.</string>
+    <string name="onboarding_xmrto_title">Skicka krypto</string>
+    <string name="onboarding_xmrto_information">Monerujo har SideShift.ai support inbyggt. Bara klistra in eller scanna en BTC, LTC, ETH, DASH or DOGE address och du skickar dessa krypto genom att spendera XMR.</string>
+    <string name="onboarding_nodes_title">Noder, på ditt sätt.</string>
+    <string name="onboarding_nodes_information">Noder ansluter dig till Monero-nätverket. Välj mellan offentliga noder eller gå all-in "cypherpunk" med din egen.</string>
+    <string name="onboarding_fpsend_title">Skicka med fingeravtryck</string>
+    <string name="onboarding_fpsend_information">Du kan nu skicka XMR med bara ditt fingeravtryck om du aktiverar det. För att begära lösenordet, inaktivera bara fingeravtrycksåtkomst.</string>
 
     <string name="menu_daynight">Dark Mode</string>
     <string-array name="daynight_themes">
         <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>Dag</item>
+        <item>Natt</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">Det finns inget här\nSkapa eller återställ en plånbok</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">Återställ standardnoder</string>
+    <string name="toast_default_nodes">Återställer redan pågående ...</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">Senaste Block: %1$d sekunder sen</string>
+    <string name="node_updated_mins">Senaste Block: %1$d minuter sen</string>
+    <string name="node_updated_hours">Senaste Block: %1$d timmar sen</string>
+    <string name="node_updated_days">Senaste Block: %1$d dagar sen</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">Kan inte få offert</string>
+    <string name="shift_checkamount">Kontrollera beloppet och försök igen</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
         <b>Ambiguous address.</b><br/>
@@ -402,22 +402,22 @@
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
 
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
+    <string name="subbaddress_title">Subaddresser</string>
+    <string name="subbaddress_name_hint">Subaddresser namn</string>
+    <string name="max_subaddress_warning">För många oanvända adresser - använd några för att skapa flera!</string>
+    <string name="max_account_warning">För många oanvända adresser - använd några för att skapa flera!</string>
+    <string name="subaddress_tx_label">Transaktioner för denna subadress:</string>
+    <string name="subaddress_notx_label">Inga transaktioner för denna subadress ännu</string>
+    <string name="subaddress_select_label">Välj en subadress</string>
+    <string name="subaddress_details_hint">Tryck länge för mer detaljerad info</string>
 
-    <string name="delete_alert_message">This wallet will be deleted!</string>
-    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Delete failed!</string>
+    <string name="delete_alert_message">Denna plånbok kommer förstöras!</string>
+    <string name="menu_delete">Förstöra</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Förstöringen misslyckades!</string>
 
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
+    <string name="menu_restore">Importera plånbok</string>
+    <string name="restore_failed">Importeringen misslyckad!</string>
 
-    <string name="menu_deletecache">Reset wallet!</string>
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
+    <string name="menu_deletecache">Återställ plånbok!</string>
+    <string name="deletecache_alert_message">Denna plånbok kommer att återställas och förlorar all off-chain data (som anteckningar, konto- och subadresser, privata transaktionsnycklar, ...)! Använd ENDAST detta om den här plånboken är skadad och inte laddas!</string>
 </resources>
