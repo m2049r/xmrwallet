@@ -12,8 +12,8 @@ RUN curl -s -O https://dl.google.com/android/repository/sdk-tools-linux-${ANDROI
     && rm -f sdk-tools-linux-${ANDROID_SDK_REVISION}.zip
 
 ## INSTALL ANDROID NDK
-ENV ANDROID_NDK_REVISION 17b
-ENV ANDROID_NDK_HASH 5dfbbdc2d3ba859fed90d0e978af87c71a91a5be1f6e1c40ba697503d48ccecd
+ENV ANDROID_NDK_REVISION 17c
+ENV ANDROID_NDK_HASH 3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589
 RUN curl -s -O https://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
     && echo "${ANDROID_NDK_HASH}  android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip" | sha256sum -c \
     && unzip android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
@@ -24,7 +24,7 @@ ENV ANDROID_SDK_ROOT ${WORKDIR}/tools
 ENV ANDROID_NDK_ROOT ${WORKDIR}/android-ndk-r${ANDROID_NDK_REVISION}
 ENV PREFIX /opt/android/prefix
 
-ENV TOOLCHAIN_DIR ${WORKDIR}/toolchain-arm
+ENV TOOLCHAIN_DIR ${WORKDIR}/toolchain
 RUN ${ANDROID_NDK_ROOT}/build/tools/make_standalone_toolchain.py \
          --arch arm64 \
          --api 21 \
@@ -32,9 +32,11 @@ RUN ${ANDROID_NDK_ROOT}/build/tools/make_standalone_toolchain.py \
          --stl=libc++
 
 #INSTALL cmake
-ENV CMAKE_VERSION 3.12.1
+ARG CMAKE_VERSION=3.13.0
+ARG CMAKE_HASH=1c6612f3c6dd62959ceaa96c4b64ba7785132de0b9cbc719eea6fe1365cc8d94
 RUN cd /usr \
-    && curl -s -O https://cmake.org/files/v3.12/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
+    && curl -L -s -O https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
+    && echo "${CMAKE_HASH}  cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz" | sha256sum -c \
     && tar -xzf /usr/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
     && rm -f /usr/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
 ENV PATH /usr/cmake-${CMAKE_VERSION}-Linux-x86_64/bin:$PATH
@@ -57,8 +59,8 @@ ENV PATH $TOOLCHAIN_DIR/aarch64-linux-android/bin:$TOOLCHAIN_DIR/bin:$PATH
 ARG NPROC=1
 
 # Build iconv for lib boost locale
-ENV ICONV_VERSION 1.15
-ENV ICONV_HASH  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
+ENV ICONV_VERSION 1.16
+ENV ICONV_HASH e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04
 RUN curl -s -O http://ftp.gnu.org/pub/gnu/libiconv/libiconv-${ICONV_VERSION}.tar.gz \
     && echo "${ICONV_HASH}  libiconv-${ICONV_VERSION}.tar.gz" | sha256sum -c \
     && tar -xzf libiconv-${ICONV_VERSION}.tar.gz \
@@ -103,20 +105,22 @@ RUN curl -s -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz 
     && make install
 
 # ZMQ
-ARG ZMQ_VERSION=master
-ARG ZMQ_HASH=501d0815bf2b0abb93be8214fc66519918ef6c40
+# 4.2.5 doesn't compile under 64bit android architectures (see issue #3131)
+ARG ZMQ_VERSION=v4.3.0
+ARG ZMQ_HASH=eff190d5031d313451505f323d3dd1c38ab9c25c
 RUN git clone https://github.com/zeromq/libzmq.git -b ${ZMQ_VERSION} \
     && cd libzmq \
-    && git checkout ${ZMQ_HASH} \
+    && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
     && ./autogen.sh \
     && CC=clang CXX=clang++ ./configure --prefix=${PREFIX} --host=aarch64-linux-android --enable-static --disable-shared \
     && make -j${NPROC} \
     && make install
 
 # zmq.hpp
-ARG CPPZMQ_VERSION=v4.2.3
-ARG CPPZMQ_HASH=6aa3ab686e916cb0e62df7fa7d12e0b13ae9fae6
-RUN git clone https://github.com/zeromq/cppzmq.git -b ${CPPZMQ_VERSION} \
+ARG CPPZMQ_VERSION=v4.3.0
+ARG CPPZMQ_HASH=213da0b04ae3b4d846c9abc46bab87f86bfb9cf4
+RUN set -ex \
+    && git clone https://github.com/zeromq/cppzmq.git -b ${CPPZMQ_VERSION} \
     && cd cppzmq \
     && test `git rev-parse HEAD` = ${CPPZMQ_HASH} || exit 1 \
     && cp *.hpp ${PREFIX}/include
