@@ -320,7 +320,7 @@
     <string name="node_pass_hint">Lösenord (Frivillig)</string>
     <string name="node_host_unresolved">Det går inte att lösa värden</string>
     <string name="node_host_empty">Vi behöver det här!</string>
-    <string name="node_port_numeric"Måste vara numeriskt</string>
+    <string name="node_port_numeric">Måste vara numeriskt</string>
     <string name="node_port_range">Måste vara 1&#8211;65535</string>
     <string name="node_fab_add">Addera nod</string>
     <string name="node_refresh_hint">Tryck för att uppdatera!</string>
