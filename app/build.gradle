@@ -3,12 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     buildToolsVersion '29.0.3'
+    ndkVersion '17.2.4988734'
     defaultConfig {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1003
-        versionName "2.0.3 'Puginarug'"
+        versionName "2.0.3.1 'Puginarug'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
