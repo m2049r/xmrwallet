@@ -267,7 +267,7 @@
     <string name="details_alert_no">Non merci !</string>
     <string name="details_title">Détails</string>
 
-    <string name="delete_alert_message">Le portefeuille sera supprimé !</string>
+    <string name="delete_alert_message">Ce portefeuille sera supprimé. Vos fonds seront perdus à jamais, sauf si vous disposez de votre semence ou d\'une sauvegarde fonctionnelle pour les récupérer.</string>
     <string name="delete_alert_yes">Oui, procéder !</string>
     <string name="delete_alert_no">Non merci !</string>
 

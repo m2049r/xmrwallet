@@ -272,7 +272,7 @@
     <string name="details_alert_no">Vrati me nazad!</string>
     <string name="details_title">Detalji</string>
 
-    <string name="delete_alert_message">Novčanik će biti obrisan!</string>
+    <string name="delete_alert_message">Ovaj novčanik će biti obrisan. Vaša sredstva će zauvek nestati ako nemate svoje seme ili ispravnu rezervnu kopiju da biste ih vratili.</string>
     <string name="delete_alert_yes">Da, uradi to!</string>
     <string name="delete_alert_no">Ne, hvala!</string>
 

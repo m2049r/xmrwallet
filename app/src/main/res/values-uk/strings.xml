@@ -265,7 +265,7 @@
     <string name="details_alert_no">Поверніть мене назад!</string>
     <string name="details_title">Детальна інформація</string>
 
-    <string name="delete_alert_message">Цей гаманець буде знищено!</string>
+    <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення. </string>
     <string name="delete_alert_yes">Так, зроби це!</string>
     <string name="delete_alert_no">Ні, дякую!</string>
 

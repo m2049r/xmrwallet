@@ -262,7 +262,7 @@
     <string name="details_alert_no">Naspäť!</string>
     <string name="details_title">Detaily</string>
 
-    <string name="delete_alert_message">Peňaženka bude zmazaná!</string>
+    <string name="delete_alert_message">Táto peňaženka bude zmazaná. Vaše finančné prostriedky budú navždy preč, pokiaľ nemáte svoj seed alebo funkčnú zálohu na ich obnovenie.</string>
     <string name="delete_alert_yes">Áno, poďme na to!</string>
     <string name="delete_alert_no">Nie, díky!</string>
 

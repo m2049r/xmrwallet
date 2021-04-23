@@ -207,7 +207,7 @@
     <string name="details_alert_no">¡Llévame de vuelta!</string>
     <string name="details_title">Detalles</string>
 
-    <string name="delete_alert_message">¡El monedero será borrado!</string>
+    <string name="delete_alert_message">Este monedero será borrado. Tus fondos se irán para siempre a menos que tengas tu semilla o una copia de seguridad funcional para recuperarlo.</string>
     <string name="delete_alert_yes">¡Sí, hazlo!</string>
     <string name="delete_alert_no">¡No, gracias!</string>
 
