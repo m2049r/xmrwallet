@@ -36,7 +36,7 @@ RUN set -x \
 
 #INSTALL cmake
 ARG CMAKE_VERSION=3.13.0
-ARG CMAKE_HASH=1c6612f3c6dd62959ceaa96c4b64ba7785132de0b9cbc719eea6fe1365cc8d94 
+ARG CMAKE_HASH=1c6612f3c6dd62959ceaa96c4b64ba7785132de0b9cbc719eea6fe1365cc8d94
 RUN set -x \
     && cd /usr \
     && curl -L -s -O https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
@@ -119,7 +119,6 @@ ARG ZMQ_HASH=eff190d5031d313451505f323d3dd1c38ab9c25c
 RUN set -x \
     && git clone https://github.com/zeromq/libzmq.git -b ${ZMQ_VERSION} \
     && cd libzmq \
-    && git checkout ${ZMQ_HASH} \
     && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
     && ./autogen.sh \
     && CC=clang CXX=clang++ ./configure --prefix=${PREFIX} --host=x86_64-linux-android --enable-static --disable-shared \

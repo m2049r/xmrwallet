@@ -34,6 +34,7 @@ import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OkHttpHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
@@ -179,7 +180,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
             tvXmrToParms.setText(xmrParmText);
 
             final long funds = getTotalFunds();
-            double availableXmr = 1.0 * funds / 1000000000000L;
+            double availableXmr = 1.0 * funds / Helper.ONE_XMR;
 
             String availBtcString;
             String availXmrString;

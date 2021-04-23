@@ -9,7 +9,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1003
-        versionName "2.0.3 'Puginarug'"
+        versionName "2.0.3.1 'Puginarug'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
