@@ -349,11 +349,13 @@ public class ExchangeEditText extends LinearLayout {
         }
     }
 
+    private static final String CLEAN_FORMAT = "%." + Helper.XMR_DECIMALS + "f";
+
     private String getCleanAmountString(String enteredAmount) {
         try {
             double amount = Double.parseDouble(enteredAmount);
             if (amount >= 0) {
-                return String.format(Locale.US, "%,.12f", amount);
+                return String.format(Locale.US, CLEAN_FORMAT, amount);
             } else {
                 return null;
             }
