@@ -411,7 +411,7 @@
     <string name="subaddress_select_label">Välj en subadress</string>
     <string name="subaddress_details_hint">Tryck länge för mer detaljerad info</string>
 
-    <string name="delete_alert_message">Denna plånbok kommer förstöras!</string>
+    <string name="delete_alert_message">Denna plånbok kommer att raderas. Dina pengar kommer att vara borta för alltid om du inte har din seed eller en fungerande säkerhetskopia för att återställa dem.</string>
     <string name="menu_delete">Förstöra</string><!-- like: "Delete wallet!" -->
     <string name="delete_failed">Förstöringen misslyckades!</string>
 

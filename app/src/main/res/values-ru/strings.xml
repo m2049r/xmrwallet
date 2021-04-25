@@ -265,7 +265,7 @@
     <string name="details_alert_no">Верните меня обратно!</string>
     <string name="details_title">Подробная информация</string>
 
-    <string name="delete_alert_message">Этот кошелек будет удален!</string>
+    <string name="delete_alert_message">Этот кошелек будет удален. Твои деньги исчезнут навсегда, если у тебя нет сид-фразы или рабочей резервной копии для их восстановления.</string>
     <string name="delete_alert_yes">Да, сделай это!</string>
     <string name="delete_alert_no">Нет, спасибо!</string>
 

@@ -261,7 +261,7 @@
     <string name="details_alert_no">Ga terug!</string>
     <string name="details_title">Details</string>
 
-    <string name="delete_alert_message">Er wordt de portemonnee verwijderd!</string>
+    <string name="delete_alert_message">Deze portemonnee zal worden verwijderd. Uw geld zal voor altijd weg zijn, tenzij u uw zaad of een werkende back-up hebt om het te herstellen.</string>
     <string name="delete_alert_yes">Ja, doe dat!</string>
     <string name="delete_alert_no">Nee, niet doen!</string>
 

@@ -266,7 +266,7 @@
     <string name="details_alert_no">Torna indietro!</string>
     <string name="details_title">Dettagli</string>
 
-    <string name="delete_alert_message">Il portafoglio verrà eliminato!</string>
+    <string name="delete_alert_message">Questo portafoglio sarà cancellato. I tuoi fondi saranno andati per sempre a meno che tu non abbia il tuo seme o un backup funzionante per recuperarli.</string>
     <string name="delete_alert_yes">Sì, procedi!</string>
     <string name="delete_alert_no">No grazie!</string>
 
@@ -366,7 +366,7 @@
 
     <string name="menu_rescan">Rescan!</string>
 
-    <string name="onboarding_agree">I get it!</string>
+    <string name="onboarding_agree">Ho capito!</string>
     <string name="onboarding_button_next">Next</string>
     <string name="onboarding_button_ready">I\'m ready!</string>
 

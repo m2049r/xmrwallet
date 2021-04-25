@@ -418,7 +418,7 @@
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
 
-    <string name="delete_alert_message">This wallet will be deleted!</string>
+    <string name="delete_alert_message">This wallet will be deleted. Your funds will be gone forever unless you have your seed or a working backup to recover it.</string>
     <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
     <string name="delete_failed">Delete failed!</string>
 

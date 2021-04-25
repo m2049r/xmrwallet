@@ -266,7 +266,7 @@
     <string name="details_alert_no">Nein, doch nicht!</string>
     <string name="details_title">Details</string>
 
-    <string name="delete_alert_message">Das Wallet wird gelöscht!</string>
+    <string name="delete_alert_message">Das Wallet wird gelöscht. Dein Geld wird für immer verloren sein, außer wenn Du den Seed oder ein funktionierendes Backup hast um es wiederherzustellen.</string>
     <string name="delete_alert_yes">Ja, mach das!</string>
     <string name="delete_alert_no">Nein, danke!</string>
 

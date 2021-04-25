@@ -44,6 +44,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.m2049r.xmrwallet.data.DefaultNodes;
 import com.m2049r.xmrwallet.data.Node;
@@ -554,12 +555,18 @@ public class LoginActivity extends BaseActivity
             }
         };
 
-        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
-        builder.setMessage(getString(R.string.delete_alert_message))
+        final AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
+        final AlertDialog confirm = builder.setMessage(getString(R.string.delete_alert_message))
                 .setTitle(walletName)
                 .setPositiveButton(getString(R.string.delete_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.delete_alert_no), dialogClickListener)
+                .setView(View.inflate(builder.getContext(), R.layout.checkbox_confirm, null))
                 .show();
+        confirm.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+        final MaterialCheckBox checkBox = confirm.findViewById(R.id.checkbox);
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            confirm.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(isChecked);
+        });
     }
 
     @Override
@@ -579,12 +586,18 @@ public class LoginActivity extends BaseActivity
             }
         };
 
-        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
-        builder.setMessage(getString(R.string.deletecache_alert_message, walletName))
+        final AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
+        final AlertDialog confirm = builder.setMessage(getString(R.string.deletecache_alert_message))
                 .setTitle(walletName)
                 .setPositiveButton(getString(R.string.delete_alert_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.delete_alert_no), dialogClickListener)
+                .setView(View.inflate(builder.getContext(), R.layout.checkbox_confirm, null))
                 .show();
+        confirm.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+        final MaterialCheckBox checkBox = confirm.findViewById(R.id.checkbox);
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            confirm.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(isChecked);
+        });
     }
 
     void reloadWalletList() {
