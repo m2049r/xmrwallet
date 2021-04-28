@@ -30,6 +30,9 @@
 - Archive (=Backup and delete)
 - 3 Default nodes + History of last 5 used nodes
 
+## How does the wallet get an exchange rate?
+/app/src/main/java/com/m2049r/xmrwallet/util/ServiceHelper.java currently specifies to use Kraken's exchange API.
+
 ## How do I use a node with username & password?
 ```username:password@node.address:portnumber```
 
