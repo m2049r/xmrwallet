@@ -22,6 +22,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="-8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
             android:src="@drawable/ic_logo_horizontol_xmrujo"
             android:visibility="visible" />
 
