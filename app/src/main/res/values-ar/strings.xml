@@ -93,7 +93,7 @@
     <string name="rename_progress">جار إعادة التسمية</string>
     <string name="changepw_progress">جار تغيير كلمة المرور</string>
 
-    <string name="service_progress">جار اختتام الأمور &*8230;\nقد يستغرق هذا برهةً!</string>
+    <string name="service_progress">جار اختتام الأمور &#8230;\nقد يستغرق هذا برهةً!</string>
 
     <string name="backup_success">نجح النسخ الاحتياطي</string>
     <string name="backup_failed">فشل النسخ الاحتياطي!</string>
@@ -350,7 +350,7 @@
     <string name="nfc_write_failed">فشلت كتابة العلامة</string>
     <string name="nfc_write_successful">نجحت كتابة العلامة</string>
     <string name="nfc_tag_unsupported">العلامة لا تدعم NDEF!</string>
-    <string name="nfc_tag_size">العلامة تزود %!&$لأ بايتاً، لكننا نحتاج %@$ل!</string>
+    <string name="nfc_tag_size">العلامة تزود %1$dلأ بايتاً، لكننا نحتاج %2$ل!</string>
     <string name="nfc_tag_read_undef">لا أفهم العلامة!</string>
     <string name="nfc_tag_read_what">لا أعرف ماذا تريد!</string>
     <string name="nfc_tag_tap">NFC متوفر!</string>
@@ -435,7 +435,7 @@
     <string name="menu_default_nodes">أرجع العقد الافتراضية</string>
     <string name="toast_default_nodes">الاسترجاع يتقدم بالفعل...</string>
 
-    <string name="node_updated_now">الكتلة الأخيرة: منذ %1&d ثوان</string>
+    <string name="node_updated_now">الكتلة الأخيرة: منذ %1$d ثوان</string>
     <string name="node_updated_mins">الكتلة الخيرة: منذ %1$d ساعة</string>
     <string name="node_updated_hours">الكتلة الأخيرة: منذ %1$d ساعة</string>
     <string name="node_updated_days">الكتلة الأخيرة: منذ %1$d أيام</string>
