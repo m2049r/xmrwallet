@@ -114,7 +114,7 @@
 
     <string name="status_wallet_disconnected">منقطعة</string>
 
-    <string name="status_transaction_failed">فشلت المعاملة: $s1%</string>
+    <string name="status_transaction_failed">فشلت المعاملة: %1$d</string>
 
     <string name="send_xmrto_timeout">!انتظرت طويلاً يا صاحبي!</strig>
 
