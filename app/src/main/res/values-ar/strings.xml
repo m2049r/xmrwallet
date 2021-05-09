@@ -116,7 +116,7 @@
 
     <string name="status_transaction_failed">فشلت المعاملة: %1$d</string>
 
-    <string name="send_xmrto_timeout">!انتظرت طويلاً يا صاحبي!</strig>
+    <string name="send_xmrto_timeout">!انتظرت طويلاً يا صاحبي!</string>
 
     <string name="service_busy">&#8230;ما زلت مشغولاً بمحفظتك الأخيرة </string>
 
