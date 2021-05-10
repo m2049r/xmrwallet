@@ -88,7 +88,7 @@
     <string name="label_send_address">عنوان الوجهة</string>
     <string name="label_send_notes">ملاحظات</string>
 
-    <string name="backup_progress">جار إنشاء النسخة الاحتياطية/string>
+    <string name="backup_progress">جار إنشاء النسخة الاحتياطية</string>
     <string name="archive_progress">جار الأرشفة</string>
     <string name="rename_progress">جار إعادة التسمية</string>
     <string name="changepw_progress">جار تغيير كلمة المرور</string>
@@ -160,7 +160,7 @@
     <string name="message_copy_txid">نسخ معرف المعاملة إلى الحافظة!</string>
     <string name="message_nocopy">النسخ معطل لأسباب أمنية!</string>
 
-    <string name="message_exchange_failed"لا يمكن الحصول على سعر الصرف!\nاستعمل XMR/XMR أو حاول مجدداً</string>
+    <string name="message_exchange_failed">لا يمكن الحصول على سعر الصرف!\nاستعمل XMR/XMR أو حاول مجدداً</string>
 
     <string name="generate_title">أنشئ محفظة</string>
     <string name="generate_name_hint">اسم المحفظة</string>
@@ -212,7 +212,7 @@
     <string name="send_notes_hint">الملاحظات الخاصة (اختياري)</string>
     <string name="send_generate_paymentid_hint">ولد</string>
     <string name="send_send_label">أنفق مونيرواتي الحبيبة</string>
-    <string name="send_send_timed_label">أرسل مونيرواتي الحبيبة (%1&s)</string>
+    <string name="send_send_timed_label">أرسل مونيرواتي الحبيبة (%1$s)</string>
     <string name="send_qr_invalid">ليس رمز استجابة سريعة (QR)</string>
     <string name="send_qr_address_invalid">ليس رمزاً حصيحاً</string>
     <string name="send_address_invalid">ليس عنواناً صحيحاً</string>
@@ -278,6 +278,8 @@
     <string name="archive_alert_message">ستحذف المحفظة بعد القيام بنسخة إحتياطية!</string>
     <string name="archive_alert_yes">نعم، افعل ذلك!</string>
     <string name="archive_alert_no">لا شكراً!</string>
+    
+    <string-array name="currency" translatable="false">
 
         <item>EUR</item>
         <item>USD</item>
