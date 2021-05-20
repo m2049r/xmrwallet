@@ -74,10 +74,10 @@ class RequestQuoteImpl implements RequestQuote {
         price = jsonObject.getDouble("rate");
     }
 
-    public static void call(@NonNull final ShiftApiCall api, final double xmrAmount,
+    public static void call(@NonNull final ShiftApiCall api, final double btcAmount,
                             @NonNull final ShiftCallback<RequestQuote> callback) {
         try {
-            final JSONObject request = createRequest(xmrAmount);
+            final JSONObject request = createRequest(btcAmount);
             api.call("quotes", request, new NetworkCallback() {
                 @Override
                 public void onSuccess(JSONObject jsonObject) {
@@ -104,13 +104,13 @@ class RequestQuoteImpl implements RequestQuote {
      * @param xmrAmount how much XMR to shift to BTC
      */
 
-    static JSONObject createRequest(final double xmrAmount) throws JSONException {
+    static JSONObject createRequest(final double btcAmount) throws JSONException {
         final JSONObject jsonObject = new JSONObject();
         jsonObject.put("depositMethod", "xmr");
         jsonObject.put("settleMethod", ServiceHelper.ASSET);
         // #sideshift is silly and likes numbers as strings
-        String amount = AmountFormatter.format(xmrAmount);
-        jsonObject.put("depositAmount", amount);
+        String amount = AmountFormatter.format(btcAmount);
+        jsonObject.put("settleAmount", amount);
         return jsonObject;
     }
 

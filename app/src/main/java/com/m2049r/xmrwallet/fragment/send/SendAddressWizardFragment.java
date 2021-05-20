@@ -349,7 +349,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private boolean checkAddress() {
         boolean ok = checkAddressNoError();
-        if (!ok) {
+        if (possibleCryptos.isEmpty()) {
             etAddress.setError(getString(R.string.send_address_invalid));
         } else {
             etAddress.setError(null);
