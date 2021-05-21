@@ -359,40 +359,22 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     }
 
     private RequestQuote xmrtoQuote = null;
-    private int stageARetries = 0;
-    private final int RETRIES = 3;
-    private double stageAPrice = 0;
 
     private void processStageA(final RequestQuote requestQuote) {
         Timber.d("processCreateOrder %s", requestQuote.getId());
         TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        // verify the BTC amount is correct (price can change and we can only specify XMR amount)
+        // verify the BTC amount is correct
         if (requestQuote.getBtcAmount() != txDataBtc.getBtcAmount()) {
-            if (--stageARetries <= 0) {
-                Timber.d("Failed to get quote");
-                getView().post(() ->
-                        showStageError(ShiftError.Error.SERVICE.toString(),
-                                getString(R.string.shift_noquote),
-                                getString(R.string.shift_checkamount)));
-                return; // just stop for now
-            }
-            if (stageAPrice == requestQuote.getPrice()) {
-                // same price but different BTC amount - something else is wrong (e.g. too many decimals)
-                Timber.d("Price unchanged");
-                getView().post(() ->
-                        showStageError(ShiftError.Error.SERVICE.toString(),
-                                getString(R.string.shift_noquote),
-                                getString(R.string.shift_checkamount)));
-                return; // just stop for now
-            }
-            stageAPrice = requestQuote.getPrice();
-            // recalc XMR and try again
-            txDataBtc.setAmount(txDataBtc.getBtcAmount() / requestQuote.getPrice());
-            getView().post(this::stageAOneShot);
-            return; // stageA will run in the main thread
+            Timber.d("Failed to get quote");
+            getView().post(() -> showStageError(ShiftError.Error.SERVICE.toString(),
+                    getString(R.string.shift_noquote),
+                    getString(R.string.shift_checkamount)));
+            return; // just stop for now
         }
         xmrtoQuote = requestQuote;
+        txDataBtc.setAmount(xmrtoQuote.getXmrAmount());
         getView().post(() -> {
+            // show data from the actual quote as that is what is used to
             NumberFormat df = NumberFormat.getInstance(Locale.US);
             df.setMaximumFractionDigits(12);
             final String btcAmount = df.format(xmrtoQuote.getBtcAmount());
@@ -438,18 +420,12 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     }
 
     private void stageA() {
-        stageARetries = RETRIES;
-        stageAOneShot();
-    }
-
-    private void stageAOneShot() {
         if (!isResumed) return;
         Timber.d("Request Quote");
         xmrtoQuote = null;
         xmrtoOrder = null;
         showProgress(1, getString(R.string.label_send_progress_xmrto_create));
         TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        stageAPrice = 0;
 
         ShiftCallback<RequestQuote> callback = new ShiftCallback<RequestQuote>() {
             @Override
@@ -473,7 +449,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             }
         };
 
-        getXmrToApi().requestQuote(txDataBtc.getAmountAsDouble(), callback);
+        getXmrToApi().requestQuote(txDataBtc.getBtcAmount(), callback);
     }
 
     private CreateOrder xmrtoOrder = null;

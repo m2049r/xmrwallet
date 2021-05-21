@@ -95,7 +95,7 @@ public class SideShiftApiRequestQuoteTest {
     @Test
     public void requestQuote_shouldContainValidBody() throws InterruptedException {
 
-        final String validBody = "{\"depositAmount\":\"1.01\",\"settleMethod\":\"btc\",\"depositMethod\":\"xmr\"}";
+        final String validBody = "{\"settleAmount\":\"1.01\",\"settleMethod\":\"btc\",\"depositMethod\":\"xmr\"}";
         xmrToApi.requestQuote(1.01, mockXmrToCallback);
 
         RecordedRequest request = mockWebServer.takeRequest();
@@ -106,18 +106,18 @@ public class SideShiftApiRequestQuoteTest {
     @Test
     public void requestQuote_wasSuccessfulShouldRespondWithQuote()
             throws TimeoutException {
-        final double xmrAmount = 1.01;
+        final double btcAmount = 1.01;
         final double rate = 0.00397838;
         final String uuid = "66fc0749-f320-4361-b0fb-7873576cba67";
         MockResponse jsonMockResponse = new MockResponse().setBody(
-                createMockRequestQuoteResponse(xmrAmount, rate, uuid));
+                createMockRequestQuoteResponse(btcAmount, rate, uuid));
         mockWebServer.enqueue(jsonMockResponse);
 
-        xmrToApi.requestQuote(xmrAmount, new ShiftCallback<RequestQuote>() {
+        xmrToApi.requestQuote(btcAmount, new ShiftCallback<RequestQuote>() {
             @Override
             public void onSuccess(final RequestQuote quote) {
-                waiter.assertEquals(quote.getBtcAmount(), xmrAmount * rate);
-                waiter.assertEquals(quote.getXmrAmount(), xmrAmount);
+                waiter.assertEquals(quote.getXmrAmount(), btcAmount / rate);
+                waiter.assertEquals(quote.getBtcAmount(), btcAmount);
                 waiter.assertEquals(quote.getId(), uuid);
                 waiter.resume();
             }
@@ -181,17 +181,17 @@ public class SideShiftApiRequestQuoteTest {
         waiter.await();
     }
 
-    private String createMockRequestQuoteResponse(final double xmrAmount, final double rate,
+    private String createMockRequestQuoteResponse(final double btcAmount, final double rate,
                                                   final String uuid) {
 
         return "{\n" +
                 "\"createdAt\":\"2021-02-04T13:09:14.484Z\",\n" +
-                "\"depositAmount\":\"" + xmrAmount + "\",\n" +
+                "\"settleAmount\":\"" + btcAmount + "\",\n" +
                 "\"depositMethod\":\"xmr\",\n" +
                 "\"expiresAt\":\"2021-02-04T13:24:14.484Z\",\n" +
                 "\"id\":\"" + uuid + "\",\n" +
                 "\"rate\":\"" + rate + "\",\n" +
-                "\"settleAmount\":\"" + (xmrAmount * rate) + "\",\n" +
+                "\"depositAmount\":\"" + (btcAmount / rate) + "\",\n" +
                 "\"settleMethod\":\"btc\"\n" +
                 "}";
     }

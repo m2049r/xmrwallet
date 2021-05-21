@@ -64,8 +64,8 @@ public class SideShiftApiImpl implements SideShiftApi, ShiftApiCall {
     }
 
     @Override
-    public void requestQuote(final double xmrAmount, @NonNull final ShiftCallback<RequestQuote> callback) {
-        RequestQuoteImpl.call(this, xmrAmount, callback);
+    public void requestQuote(final double btcAmount, @NonNull final ShiftCallback<RequestQuote> callback) {
+        RequestQuoteImpl.call(this, btcAmount, callback);
     }
 
     @Override
