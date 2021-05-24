@@ -31,8 +31,7 @@ public class LegacyStorageHelper {
         try {
             if (isStorageMigrated(context)) return;
             if (!hasReadPermission(context)) {
-                // nothing to migrate, so don't try again
-                setStorageMigrated(context);
+                // can't migrate - don't remember this, as the user may turn on permissions later
                 return;
             }
             final File oldRoot = getWalletRoot();

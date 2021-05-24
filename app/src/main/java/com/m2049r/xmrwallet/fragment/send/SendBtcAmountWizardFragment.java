@@ -90,7 +90,6 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         return view;
     }
 
-
     @Override
     public boolean onValidateFields() {
         Timber.i(maxBtc + "/" + minBtc);
