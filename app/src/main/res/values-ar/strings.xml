@@ -441,4 +441,61 @@
     <string name="node_updated_mins">الكتلة الخيرة: منذ %1$d ساعة</string>
     <string name="node_updated_hours">الكتلة الأخيرة: منذ %1$d ساعة</string>
     <string name="node_updated_days">الكتلة الأخيرة: منذ %1$d أيام</string>
-</resources>
+
+     <string name="shift_noquote">لا يمكن الحصول على سعر</string>
+     <string name="shift_checkamount">تأكد من البلغ و حاول مجدداً</string>
+     <string name="info_xmrto_ambiguous"><![CDATA[
+          <b>عنوان مبهم.</b><br/>
+          <i>رجاء حدد النوع أعلاه. </i>
+ ]]></string>
+
+      <string name="info_xmrto_help"><![CDATA[
+          <b>رجاء أدخل أو امسح عنوان %1$s</b><br/>
+          <i>سترسل XMR و سيتلقى المستلم %2$s باستعمال خدمة <b>SideShift.ai</b></i>
+      ]]></string>
+
+      <string name="info_xmrto_help_xmr"><![CDATA[
+          <b>رجاء أدخل أو امسح عنوان مونيرو</b>
+      ]]></string>
+	
+      <!-- order must be the same as in com.m2049r.xmrwallet.data.Crypto-->
+      <string-array name="cryptos" translatable="false">
+          <item>Monero</item>
+          <item>Bitcoin</item>
+          <item>Dash</item>
+          <item>Dogecoin</item>
+          <item>Ethereum</item>
+          <item>Litecoin</item>
+      </string-array>
+
+      <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
+      <string name="tx_details_transition_name" translatable="false">tx_transition</string>
+      <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
+      <string name="receive_transition_name" translatable="false">receive_transition</string>
+      <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
+      <string name="send_transition_name" translatable="false">send_transition</string>
+      <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
+      <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
+      <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
+
+      <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color:
+   #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
+      <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: 
+#%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
+      <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
+
+      <string name="subbaddress_title">العناوين الفرعية</string>
+      <string name="subbaddress_name_hint">اسم العنوان الفرعي</string>
+      <string name="max_subaddress_warning">عناوين غير مستعملة كثيرة - استعمل بعضها لتتمكن من إنشاء المزيد!</string>
+      <string name="max_account_warning">حسابات غير مستعملة كثيرة - استعمل بعضها لتتمكن من إنشاء المزيد!</string>
+      <string name="subaddress_tx_label">المعاملات لهذا العنوان الفرعي:</string>
+      <string name="subaddress_notx_label">لا معاملات لهذا العنوان الفرعي بعد</string>
+      <string name="subaddress_select_label">اختر عنواناً فرعياً</string>
+      <string name="subaddress_details_hint">المس طويلاً  للتفاصيل</string>
+
+      <string name="menu_restore">استورد محفظة</string>
+      <string name="restore_failed">فشل الاستيراد</string>
+
+      <string name="menu_deletecache">أعد ضبط المحفظة!</string>
+      <string name="deletecache_alert_message">ستتم إعادة ضبط هذه المحفظة ، وفقدان جميع البيانات خارج السلسلة (مثل الملاحظات ، وأسماء الحسابات والعناوين الفرعية ، ومفاتيح المعاملات الخاصة ، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة و لا تحمل!</string>
+ </resources>
