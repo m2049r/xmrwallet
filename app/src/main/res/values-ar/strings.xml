@@ -420,19 +420,6 @@
          <b>رجاء أدخل أو امسح عنوان مونيرو</b>
     ]]></string>
 
-    <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
-    <string name="tx_details_transition_name" translatable="false">tx_transition</string>
-    <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
-    <string name="receive_transition_name" translatable="false">receive_transition</string>
-    <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
-    <string name="send_transition_name" translatable="false">send_transition</string>
-    <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
-    <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
-    <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
-
-    <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
-    <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
-
     <string name="subbaddress_title">العناوين الفرعية</string>
     <string name="subbaddress_name_hint">اسم العنوان الفرعي</string>
     <string name="max_subaddress_warning">عناوين غير مستعملة كثيرة - استعمل بعضها لتتمكن من إنشاء المزيد!</string>
