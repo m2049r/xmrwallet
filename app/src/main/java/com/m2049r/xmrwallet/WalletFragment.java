@@ -58,7 +58,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -128,7 +127,7 @@ public class WalletFragment extends Fragment
         currencies.add(Helper.BASE_CRYPTO);
         if (Helper.SHOW_EXCHANGERATES)
             currencies.addAll(Arrays.asList(getResources().getStringArray(R.array.currency)));
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), R.layout.item_spinner_balance, currencies);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(requireContext(), R.layout.item_spinner_balance, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sCurrency.setAdapter(spinnerAdapter);
 
@@ -346,13 +345,18 @@ public class WalletFragment extends Fragment
     // if account index has changed scroll to top?
     private int accountIndex = 0;
 
-    public void onRefreshed(final Wallet wallet, final boolean full) {
+    public void onRefreshed(final Wallet wallet, boolean full) {
         Timber.d("onRefreshed(%b)", full);
 
+        if (adapter.needsTransactionUpdateOnNewBlock()) {
+            wallet.getHistory().refresh();
+            full = true;
+        }
         if (full) {
             List<TransactionInfo> list = new ArrayList<>();
             final long streetHeight = activityCallback.getStreetModeHeight();
             Timber.d("StreetHeight=%d", streetHeight);
+            wallet.getHistory().refresh();
             for (TransactionInfo info : wallet.getHistory().getAll()) {
                 Timber.d("TxHeight=%d, Label=%s", info.blockheight, info.subaddressLabel);
                 if ((info.isPending || (info.blockheight >= streetHeight))
@@ -561,7 +565,7 @@ public class WalletFragment extends Fragment
         //TODO figure out why gunther disappears on return from send although he is still set
         if (enable) {
             if (streetGunther == null)
-                streetGunther = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.ic_gunther_streetmode);
+                streetGunther = ContextCompat.getDrawable(requireContext(), R.drawable.ic_gunther_streetmode);
             ivStreetGunther.setImageDrawable(streetGunther);
         } else
             ivStreetGunther.setImageDrawable(null);
