@@ -578,7 +578,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         try {
             final WalletFragment walletFragment = getWalletFragment();
             if (wallet.isSynchronized()) {
-                Timber.d("onRefreshed() synced");
                 releaseWakeLock(RELEASE_WAKE_LOCK_DELAY); // the idea is to stay awake until synced
                 if (!synced) { // first sync
                     onProgress(-1);

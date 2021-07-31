@@ -914,7 +914,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_refreshAsync(JNIEnv *env, jobject instanc
 
 //virtual void rescanBlockchainAsync() = 0;
 JNIEXPORT void JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_rescanBlockchainAsync(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_rescanBlockchainAsyncJ(JNIEnv *env, jobject instance) {
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
     wallet->rescanBlockchainAsync();
 }
