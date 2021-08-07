@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -19,13 +20,43 @@
             android:layout_weight="9"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/ivTxType"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_xmrto_btc"
-                android:visibility="visible" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivTxType"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_xmrto_btc"
+                    android:visibility="visible" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/pbConfirmations"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:indeterminate="false"
+                    android:max="10"
+                    android:progress="8"
+                    android:visibility="visible"
+                    app:indicatorInset="0dp"
+                    app:indicatorSize="30dp"
+                    app:trackThickness="4dp" />
+
+                <TextView
+                    android:id="@+id/tvConfirmations"
+                    style="@style/MoneroText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingBottom="1dp"
+                    android:text="8"
+                    android:visibility="visible" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,8 +88,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="13"
             android:gravity="start"
             tools:text="0123456789abcdef" />
