@@ -108,28 +108,33 @@ public class WalletService extends Service {
             Timber.d("unconfirmedMoneyReceived() %d @ %s", amount, txId);
         }
 
-        int lastTxCount = 0;
+        private long lastBlockTime = 0;
+        private int lastTxCount = 0;
 
         public void newBlock(long height) {
             final Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            Timber.d("newBlock() @ %d with observer %s", height, observer);
-            if (observer != null) {
-                boolean fullRefresh = false;
-                updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
-                if (!wallet.isSynchronized()) {
-                    updated = true;
-                    // we want to see our transactions as they come in
-                    wallet.getHistory().refresh();
-                    int txCount = wallet.getHistory().getCount();
-                    if (txCount > lastTxCount) {
-                        // update the transaction list only if we have more than before
-                        lastTxCount = txCount;
-                        fullRefresh = true;
+            // don't flood with an update for every block ...
+            if (lastBlockTime < System.currentTimeMillis() - 2000) {
+                lastBlockTime = System.currentTimeMillis();
+                Timber.d("newBlock() @ %d with observer %s", height, observer);
+                if (observer != null) {
+                    boolean fullRefresh = false;
+                    updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
+                    if (!wallet.isSynchronized()) {
+                        updated = true;
+                        // we want to see our transactions as they come in
+                        wallet.getHistory().refresh();
+                        int txCount = wallet.getHistory().getCount();
+                        if (txCount > lastTxCount) {
+                            // update the transaction list only if we have more than before
+                            lastTxCount = txCount;
+                            fullRefresh = true;
+                        }
                     }
+                    if (observer != null)
+                        observer.onRefreshed(wallet, fullRefresh);
                 }
-                if (observer != null)
-                    observer.onRefreshed(wallet, fullRefresh);
             }
         }
 
