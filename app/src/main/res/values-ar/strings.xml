@@ -9,7 +9,6 @@
     <string name="menu_help">ساعدني</string>
     <string name="menu_receive">استلم</string>
     <string name="menu_rename">أعد التسمية &#8230;</string>
-    <string name="menu_archive">أرشف</string>
     <string name="menu_backup">انشئ نسخة احتياطية</string>
     <string name="menu_changepw">غير كلمة المرور</string>
 
@@ -53,9 +52,6 @@
         <b>يمكنك إرسال %1$s &#8212; %2$s BTC</b>.<br/>
         <i><b>Sideshift.ai</b> يعطيك سعر صرف <b>%3$s BTC</b> <u>حالياً</u></i>.
     ]]></string>
-    <string name="info_send_xmrto_zeroconf"><![CDATA[
-        <i>مبالغ حتى <b>%1$s BTC</b> سترسل <u>فوراً</u>!</i>
-    ]]></string>
 
     <string name="send_available_btc">الرصيد: %2$s BTC (%1$s XMR)</string>
 
@@ -97,7 +93,6 @@
 
     <string name="backup_success">نجح النسخ الاحتياطي</string>
     <string name="backup_failed">فشل النسخ الاحتياطي!</string>
-    <string name="archive_failed">فشلت الأرشفة!</string>
     <string name="rename_failed">فشلت إعادة التسمية!</string>
     <string name="changepw_failed">فشل تغيير كلمة السر!</string>
     <string name="changepw_success">تم تغيير كلمة السر</string>
@@ -248,11 +243,9 @@
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX Key</string>
     <string name="tx_destination">الوجهة</string>
-    <string name="tx_destination_btc">الوجهة\n(BTC)</string>
     <string name="tx_paymentId">معرف الدفع</string>
     <string name="tx_blockheight">الكتلة</string>
     <string name="tx_amount">المبلغ</string>
-    <string name="tx_amount_btc">المبلغ\n(BTC)</string>
     <string name="tx_fee">الرسوم</string>
     <string name="tx_transfers">التحويلات</string>
     <string name="tx_notes">ملاحظات</string>
@@ -274,10 +267,6 @@
     <string name="details_alert_yes">أنا في أمان</string>
     <string name="details_alert_no">أرجعني!</string>
     <string name="details_title">التفاصيل</string>
-
-    <string name="archive_alert_message">ستحذف المحفظة بعد القيام بنسخة إحتياطية!</string>
-    <string name="archive_alert_yes">نعم، افعل ذلك!</string>
-    <string name="archive_alert_no">لا شكراً!</string>
 
     <string name="fab_create_new">أنشئ محفظة جديدة</string>
     <string name="fab_restore_viewonly">استرجع محفظة رؤية-فقط</string>
@@ -349,15 +338,7 @@
     <string name="node_nobookmark">علمت أفضل %1$d عقد تلقائياً</string>
     <string name="label_test">اختبر</string><!--note: as in "Test a network connection"-->
 
-    <string name="send_address_resolve_bip70">URI&#8230; جار حل معرف المصادر الموحد للدفع</string>
-    <string name="send_address_not_bip70">لم نتمكن من حل معرف المصادر الموحد للدفع</string>
-    <string name="send_address_bip70">&#x2714; حل معرف المصادر الموحد للدفع</string>
     <string name="send_address_hint">المستلم</string>
-
-    <string name="xmrto_error_001">Sideshift.ai غير متصل - حاول مجدداً لاحقاً</string>
-    <string name="xmrto_error_004">مبلغ BTC خارج الحدود</string>
-    <string name="xmrto_error_010">عنوان الدفع قديم أو غير صحيح</string>
-    <string name="xmrto_error_012">طلبات كثيرة جداً</string>
 
     <string name="street_sweep_amount">كل شيء!</string>
 
