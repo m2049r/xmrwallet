@@ -30,6 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.data.UserNotes;
@@ -48,7 +49,9 @@ import java.util.TimeZone;
 import timber.log.Timber;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-    private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private final static int MAX_CONFIRMATIONS = 10;
+
+    private final static SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private final int outboundColour;
     private final int inboundColour;
@@ -77,6 +80,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         DATETIME_FORMATTER.setTimeZone(tz);
     }
 
+    public boolean needsTransactionUpdateOnNewBlock() {
+        return (infoItems.size() > 0) && (infoItems.get(0).confirmations < MAX_CONFIRMATIONS);
+    }
+
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
 
         public TransactionInfoDiff(List<TransactionInfo> oldList, List<TransactionInfo> newList) {
@@ -95,6 +102,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             return (oldItem.direction == newItem.direction)
                     && (oldItem.isPending == newItem.isPending)
                     && (oldItem.isFailed == newItem.isFailed)
+                    && (oldItem.confirmations == newItem.confirmations)
                     && (oldItem.subaddressLabel.equals(newItem.subaddressLabel))
                     && (Objects.equals(oldItem.notes, newItem.notes));
         }
@@ -149,6 +157,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         final TextView tvFee;
         final TextView tvPaymentId;
         final TextView tvDateTime;
+        final CircularProgressIndicator pbConfirmations;
+        final TextView tvConfirmations;
         TransactionInfo infoItem;
 
         ViewHolder(View itemView) {
@@ -158,6 +168,9 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             tvFee = itemView.findViewById(R.id.tx_fee);
             tvPaymentId = itemView.findViewById(R.id.tx_paymentid);
             tvDateTime = itemView.findViewById(R.id.tx_datetime);
+            pbConfirmations = itemView.findViewById(R.id.pbConfirmations);
+            pbConfirmations.setMax(MAX_CONFIRMATIONS);
+            tvConfirmations = itemView.findViewById(R.id.tvConfirmations);
         }
 
         private String getDateTime(long time) {
@@ -182,7 +195,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                     ivTxType.setVisibility(View.GONE);
                 }
             } else {
-                ivTxType.setVisibility(View.GONE); // gives us more space for the amount
+                ivTxType.setVisibility(View.GONE);
             }
 
             String displayAmount = Helper.getDisplayAmount(infoItem.amount, Helper.DISPLAY_DIGITS_INFO);
@@ -205,12 +218,34 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 this.tvFee.setText(context.getString(R.string.tx_list_failed_text));
                 tvFee.setVisibility(View.VISIBLE);
                 setTxColour(failedColour);
+                pbConfirmations.setVisibility(View.GONE);
+                tvConfirmations.setVisibility(View.GONE);
             } else if (infoItem.isPending) {
                 setTxColour(pendingColour);
+                pbConfirmations.setVisibility(View.GONE);
+                pbConfirmations.setIndeterminate(true);
+                pbConfirmations.setVisibility(View.VISIBLE);
+                tvConfirmations.setVisibility(View.GONE);
             } else if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(inboundColour);
+                final int confirmations = (int) infoItem.confirmations;
+                if (confirmations <= MAX_CONFIRMATIONS) {
+                    pbConfirmations.setVisibility(View.VISIBLE);
+                    pbConfirmations.setProgressCompat(confirmations, true);
+                    final String confCount = Integer.toString(confirmations);
+                    tvConfirmations.setText(confCount);
+                    if (confCount.length() == 1) // we only have space for character in the progress circle
+                        tvConfirmations.setVisibility(View.VISIBLE);
+                    else
+                        tvConfirmations.setVisibility(View.GONE);
+                } else {
+                    pbConfirmations.setVisibility(View.GONE);
+                    tvConfirmations.setVisibility(View.GONE);
+                }
             } else {
                 setTxColour(outboundColour);
+                pbConfirmations.setVisibility(View.GONE);
+                tvConfirmations.setVisibility(View.GONE);
             }
 
             String tag = null;

@@ -108,16 +108,16 @@ public class WalletService extends Service {
             Timber.d("unconfirmedMoneyReceived() %d @ %s", amount, txId);
         }
 
-        long lastBlockTime = 0;
-        int lastTxCount = 0;
+        private long lastBlockTime = 0;
+        private int lastTxCount = 0;
 
         public void newBlock(long height) {
-            Wallet wallet = getWallet();
+            final Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
-                Timber.d("newBlock() @ %d with observer %s", height, observer);
                 lastBlockTime = System.currentTimeMillis();
+                Timber.d("newBlock() @ %d with observer %s", height, observer);
                 if (observer != null) {
                     boolean fullRefresh = false;
                     updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
@@ -145,17 +145,16 @@ public class WalletService extends Service {
             updated = true;
         }
 
-        public void refreshed() {
+        public void refreshed() { // this means it's synced
             Timber.d("refreshed()");
-            Wallet wallet = getWallet();
+            final Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
+            wallet.setSynchronized();
             if (updated) {
+                updateDaemonState(wallet, wallet.getBlockChainHeight());
+                wallet.getHistory().refreshWithNotes(wallet);
                 if (observer != null) {
-                    updateDaemonState(wallet, 0);
-                    wallet.getHistory().refreshWithNotes(wallet);
-                    if (observer != null) {
-                        updated = !observer.onRefreshed(wallet, true);
-                    }
+                    updated = !observer.onRefreshed(wallet, true);
                 }
             }
         }
