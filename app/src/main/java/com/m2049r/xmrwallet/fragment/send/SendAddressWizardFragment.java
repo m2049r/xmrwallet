@@ -51,6 +51,10 @@ import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.util.validator.BitcoinAddressType;
 import com.m2049r.xmrwallet.util.validator.BitcoinAddressValidator;
 import com.m2049r.xmrwallet.util.validator.EthAddressValidator;
+import com.unstoppabledomains.exceptions.ns.NamingServiceException;
+import com.unstoppabledomains.resolution.DomainResolution;
+import com.unstoppabledomains.resolution.Resolution;
+import com.unstoppabledomains.resolution.naming.service.NamingServiceType;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -156,11 +160,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etAddress.getEditText().setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 String enteredAddress = etAddress.getEditText().getText().toString().trim();
-                String dnsOA = dnsFromOpenAlias(enteredAddress);
-                Timber.d("OpenAlias is %s", dnsOA);
-                if (dnsOA != null) {
-                    processOpenAlias(dnsOA);
-                }
+                processUD(enteredAddress);
             }
         });
         etAddress.getEditText().addTextChangedListener(new TextWatcher() {
@@ -206,6 +206,8 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 }
                 if (possibleCryptos.isEmpty()) {
                     Timber.d("other");
+                    // Makes the height of tvXmrTo consistent when invisible
+                    tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_help_xmr)));
                     tvXmrTo.setVisibility(View.INVISIBLE);
                     sendListener.setMode(SendFragment.Mode.XMR);
                 }
@@ -241,7 +243,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etNotes = view.findViewById(R.id.etNotes);
         etNotes.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
         etNotes.getEditText().
-
                 setOnEditorActionListener((v, actionId, event) -> {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
                             || (actionId == EditorInfo.IME_ACTION_DONE)) {
@@ -305,10 +306,75 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_ambiguous)));
             tvXmrTo.setVisibility(View.VISIBLE);
         } else {
+            // Makes the height of tvXmrTo consistent when invisible
+            tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_help_xmr)));
             tvXmrTo.setVisibility(View.INVISIBLE);
         }
         if (noAddress) {
             selectedCrypto(Crypto.XMR);
+        }
+    }
+
+    private void processUD(String udString) {
+        if (udString == null || udString.length() == 0 || checkAddressNoError()) {
+            requireActivity().runOnUiThread(() -> etAddress.setErrorEnabled(false));
+            return;
+        }
+        sendListener.popBarcodeData();
+
+        DomainResolution resolution = Resolution.builder()
+                .providerUrl(NamingServiceType.ENS, "https://cloudflare-eth.com")
+                .build();
+        final boolean[] domainIsUD = {false};
+        final String[] address = {null};
+        final Crypto[] crypto = {null};
+        etAddress.setError(getString(R.string.send_address_resolve_ud));
+        new Thread(() -> {
+            for (Crypto currentCrypto: Crypto.values()) {
+                try {
+                    address[0] = resolution.getAddress(udString, currentCrypto.getSymbol().toLowerCase());
+                    crypto[0] = currentCrypto;
+                    domainIsUD[0] = true;
+                    break;
+                } catch (NamingServiceException e) {
+                    Timber.d(e.getLocalizedMessage());
+                    switch (e.getCode()) {
+                        case UnknownCurrency:
+                        case RecordNotFound:
+                            domainIsUD[0] = true;
+                            break;
+                        default:
+                            domainIsUD[0] = false;
+                            break;
+                    }
+                }
+            }
+
+            requireActivity().runOnUiThread(() -> {
+                if (domainIsUD[0]) {
+                    if (crypto[0] == null) {
+                        Timber.d("Unsupported UD address %s", udString);
+                        etAddress.setError(getString(R.string.send_address_no_ud_records));
+                    } else {
+                        BarcodeData barcodeData = new BarcodeData(crypto[0], address[0], udString,
+                                null, null, BarcodeData.Security.NORMAL);
+                        processScannedData(barcodeData);
+                    }
+                } else {
+                    Timber.d("Non ENS / UD address %s", udString);
+                    goToOpenAlias(udString);
+                }
+            });
+        }).start();
+    }
+
+    private void goToOpenAlias(String enteredAddress) {
+        String dnsOA = dnsFromOpenAlias(enteredAddress);
+        Timber.d("OpenAlias is %s", dnsOA);
+        if (dnsOA != null) {
+            processOpenAlias(dnsOA);
+        } else {
+            etAddress.setError(getString(R.string.send_address_not_openalias));
         }
     }
 
@@ -395,11 +461,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         if (!checkAddressNoError()) {
             shakeAddress();
             String enteredAddress = etAddress.getEditText().getText().toString().trim();
-            String dnsOA = dnsFromOpenAlias(enteredAddress);
-            Timber.d("OpenAlias is %s", dnsOA);
-            if (dnsOA != null) {
-                processOpenAlias(dnsOA);
-            }
+            processUD(enteredAddress);
             return false;
         }
 

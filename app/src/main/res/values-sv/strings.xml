@@ -420,4 +420,7 @@
 
     <string name="menu_deletecache">Återställ plånbok!</string>
     <string name="deletecache_alert_message">Denna plånbok kommer att återställas och förlorar all off-chain data (som anteckningar, konto- och subadresser, privata transaktionsnycklar, ...)! Använd ENDAST detta om den här plånboken är skadad och inte laddas!</string>
+
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
 </resources>

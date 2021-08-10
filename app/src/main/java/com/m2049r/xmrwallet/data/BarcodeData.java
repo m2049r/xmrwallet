@@ -17,8 +17,13 @@
 package com.m2049r.xmrwallet.data;
 
 import android.net.Uri;
+import android.util.Patterns;
 
 import com.m2049r.xmrwallet.util.OpenAliasHelper;
+import com.unstoppabledomains.exceptions.ns.NamingServiceException;
+import com.unstoppabledomains.resolution.DomainResolution;
+import com.unstoppabledomains.resolution.Resolution;
+import com.unstoppabledomains.resolution.naming.service.NamingServiceType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -176,10 +181,55 @@ public class BarcodeData {
             bcData = parseNaked(qrCode);
         }
         if (bcData == null) {
+            // Check for UD domain
+            bcData = parseUD(qrCode);
+        }
+        if (bcData == null) {
             // check for OpenAlias
             bcData = parseOpenAlias(qrCode, false);
         }
         return bcData;
+    }
+
+    static public BarcodeData parseUD(String udString) {
+        Timber.d("parseUD=%s", udString);
+        if (udString == null || !Patterns.DOMAIN_NAME.matcher(udString).matches()) return null;
+
+        DomainResolution resolution = Resolution.builder()
+                .providerUrl(NamingServiceType.ENS, "https://cloudflare-eth.com")
+                .build();
+
+        final String[] address = {null};
+        final Crypto[] crypto = {null};
+        Thread udThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Crypto currentCrypto: Crypto.values()) {
+                    try {
+                        address[0] = resolution.getAddress(udString, currentCrypto.getSymbol().toLowerCase());
+                        crypto[0] = currentCrypto;
+                        break;
+                    } catch (NamingServiceException e) {
+                        Timber.d(e.getLocalizedMessage());
+                    }
+                }
+            }
+        });
+        udThread.start();
+        try {
+            udThread.join();
+        } catch (InterruptedException e) {
+            return null;
+        }
+        if (crypto[0] == null) {
+            Timber.d("Unsupported UD address %s", udString);
+            return null;
+        }
+        if (!crypto[0].validate(address[0])) {
+            Timber.d("%s address invalid", crypto[0]);
+            return null;
+        }
+        return new BarcodeData(crypto[0], address[0], udString, null, null, Security.NORMAL);
     }
 
     static public BarcodeData parseOpenAlias(String oaString, boolean dnssec) {

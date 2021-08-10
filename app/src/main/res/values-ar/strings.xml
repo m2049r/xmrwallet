@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+<resources>
     <string name="wallet_activity_name">محفظة</string>
 
     <string name="menu_about">عن</string>
@@ -9,6 +9,7 @@
     <string name="menu_help">ساعدني</string>
     <string name="menu_receive">استلم</string>
     <string name="menu_rename">أعد التسمية &#8230;</string>
+    <string name="menu_delete">Delete</string>
     <string name="menu_backup">انشئ نسخة احتياطية</string>
     <string name="menu_changepw">غير كلمة المرور</string>
 
@@ -35,7 +36,7 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>أدخلت عنوان بيتكوين.</b><br/>
-	<i>سترسل XMR و سيستلم المستلم BTC باستخدام خدمة <b>Sideshift.ai</b></i>
+	<i>سترسل XMR و سيستلم المستلم %1$s باستخدام خدمة <b>Sideshift.ai</b></i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">Sideshift.ai طلب</string>
@@ -93,6 +94,7 @@
 
     <string name="backup_success">نجح النسخ الاحتياطي</string>
     <string name="backup_failed">فشل النسخ الاحتياطي!</string>
+    <string name="delete_failed">Delete failed!</string>
     <string name="rename_failed">فشلت إعادة التسمية!</string>
     <string name="changepw_failed">فشل تغيير كلمة السر!</string>
     <string name="changepw_success">تم تغيير كلمة السر</string>
@@ -415,4 +417,11 @@
 
     <string name="menu_deletecache">أعد ضبط المحفظة!</string>
     <string name="deletecache_alert_message">ستتم إعادة ضبط هذه المحفظة ، وفقدان جميع البيانات خارج السلسلة (مثل الملاحظات ، وأسماء الحسابات والعناوين الفرعية ، ومفاتيح المعاملات الخاصة ، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة و لا تحمل!</string>
- </resources>
+
+    <string name="delete_alert_message">This wallet will be deleted. Your funds will be gone forever unless you have your seed or a working backup to recover it.</string>
+    <string name="delete_alert_yes">Yes, do that!</string>
+    <string name="delete_alert_no">No thanks!</string>
+
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
+</resources>

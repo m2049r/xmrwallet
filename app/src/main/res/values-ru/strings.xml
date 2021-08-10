@@ -432,4 +432,7 @@
 
     <string name="menu_deletecache">Сбросить кошелек</string>
     <string name="deletecache_alert_message">Этот кошелек будет сброшен, вы потеряете все данные, которые не находятся в блокчейне (например примечания, имена подадресов, приватные ключи транзакций, ...)! Используйте это ТОЛЬКО если ваш кошелек поврежден и не загружается!</string>
+
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
 </resources>
