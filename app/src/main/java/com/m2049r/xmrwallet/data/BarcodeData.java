@@ -193,7 +193,7 @@ public class BarcodeData {
 
     static public BarcodeData parseUD(String udString) {
         Timber.d("parseUD=%s", udString);
-        if (udString == null || !Patterns.DOMAIN_NAME.matcher(udString).matches()) return null;
+        if (udString == null) return null;
 
         DomainResolution resolution = Resolution.builder()
                 .providerUrl(NamingServiceType.ENS, "https://cloudflare-eth.com")
@@ -201,17 +201,14 @@ public class BarcodeData {
 
         final String[] address = {null};
         final Crypto[] crypto = {null};
-        Thread udThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (Crypto currentCrypto: Crypto.values()) {
-                    try {
-                        address[0] = resolution.getAddress(udString, currentCrypto.getSymbol().toLowerCase());
-                        crypto[0] = currentCrypto;
-                        break;
-                    } catch (NamingServiceException e) {
-                        Timber.d(e.getLocalizedMessage());
-                    }
+        Thread udThread = new Thread(() -> {
+            for (Crypto currentCrypto: Crypto.values()) {
+                try {
+                    address[0] = resolution.getAddress(udString, currentCrypto.getSymbol().toLowerCase());
+                    crypto[0] = currentCrypto;
+                    break;
+                } catch (NamingServiceException e) {
+                    Timber.d(e.getLocalizedMessage());
                 }
             }
         });
