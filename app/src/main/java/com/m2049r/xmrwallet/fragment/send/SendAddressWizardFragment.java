@@ -160,7 +160,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         etAddress.getEditText().setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 String enteredAddress = etAddress.getEditText().getText().toString().trim();
-                processUD(enteredAddress);
+                goToOpenAlias(enteredAddress);
             }
         });
         etAddress.getEditText().addTextChangedListener(new TextWatcher() {
@@ -229,15 +229,16 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             if (clip == null) return;
             // clean it up
             final String address = clip.replaceAll("( +)|(\\r?\\n?)", "");
-            BarcodeData bc = BarcodeData.fromString(address);
-            if (bc != null) {
-                processScannedData(bc);
-                final EditText et = etAddress.getEditText();
-                et.setSelection(et.getText().length());
-                etAddress.requestFocus();
-            } else {
-                Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
-            }
+            BarcodeData.fromString(address, (bc) -> requireActivity().runOnUiThread(() -> {
+                if (bc != null) {
+                    processScannedData(bc);
+                    final EditText et = etAddress.getEditText();
+                    et.setSelection(et.getText().length());
+                    etAddress.requestFocus();
+                } else {
+                    Toast.makeText(getActivity(), getString(R.string.send_address_invalid), Toast.LENGTH_SHORT).show();
+                }
+            }));
         });
 
         etNotes = view.findViewById(R.id.etNotes);
@@ -315,11 +316,49 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         }
     }
 
-    private void processUD(String udString) {
-        if (udString == null || udString.length() == 0 || checkAddressNoError()) {
-            requireActivity().runOnUiThread(() -> etAddress.setErrorEnabled(false));
-            return;
+    private void goToOpenAlias(String enteredAddress) {
+        String dnsOA = dnsFromOpenAlias(enteredAddress);
+        Timber.d("OpenAlias is %s", dnsOA);
+        if (dnsOA != null) {
+            processOpenAlias(dnsOA);
+        } else if (enteredAddress.length() == 0 || checkAddressNoError()) {
+            etAddress.setErrorEnabled(false);
+        } else {
+            // Not all UD address match Patterns.DOMAIN_NAME (eg. .888, .x)
+            processUD(enteredAddress);
         }
+    }
+
+    private void processOpenAlias(String dnsOA) {
+        if (resolvingOA) return; // already resolving - just wait
+        sendListener.popBarcodeData();
+        resolvingOA = true;
+        etAddress.setError(getString(R.string.send_address_resolve_openalias));
+        OpenAliasHelper.resolve(dnsOA, new OpenAliasHelper.OnResolvedListener() {
+            @Override
+            public void onResolved(Map<Crypto, BarcodeData> dataMap) {
+                resolvingOA = false;
+                BarcodeData barcodeData = dataMap.get(Crypto.XMR);
+                if (barcodeData == null) barcodeData = dataMap.get(Crypto.BTC);
+                if (barcodeData != null) {
+                    Timber.d("Security=%s, %s", barcodeData.security.toString(), barcodeData.address);
+                    processScannedData(barcodeData);
+                } else {
+                    Timber.d("NO XMR OPENALIAS TXT FOUND");
+                    processUD(dnsOA);
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                resolvingOA = false;
+                Timber.e("OA FAILED");
+                processUD(dnsOA);
+            }
+        });
+    }
+
+    private void processUD(String udString) {
         sendListener.popBarcodeData();
 
         DomainResolution resolution = Resolution.builder()
@@ -362,51 +401,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     }
                 } else {
                     Timber.d("Non ENS / UD address %s", udString);
-                    goToOpenAlias(udString);
+                    etAddress.setError(getString(R.string.send_address_not_openalias));
                 }
             });
         }).start();
-    }
-
-    private void goToOpenAlias(String enteredAddress) {
-        String dnsOA = dnsFromOpenAlias(enteredAddress);
-        Timber.d("OpenAlias is %s", dnsOA);
-        if (dnsOA != null) {
-            processOpenAlias(dnsOA);
-        } else {
-            etAddress.setError(getString(R.string.send_address_not_openalias));
-        }
-    }
-
-    private void processOpenAlias(String dnsOA) {
-        if (resolvingOA) return; // already resolving - just wait
-        sendListener.popBarcodeData();
-        if (dnsOA != null) {
-            resolvingOA = true;
-            etAddress.setError(getString(R.string.send_address_resolve_openalias));
-            OpenAliasHelper.resolve(dnsOA, new OpenAliasHelper.OnResolvedListener() {
-                @Override
-                public void onResolved(Map<Crypto, BarcodeData> dataMap) {
-                    resolvingOA = false;
-                    BarcodeData barcodeData = dataMap.get(Crypto.XMR);
-                    if (barcodeData == null) barcodeData = dataMap.get(Crypto.BTC);
-                    if (barcodeData != null) {
-                        Timber.d("Security=%s, %s", barcodeData.security.toString(), barcodeData.address);
-                        processScannedData(barcodeData);
-                    } else {
-                        etAddress.setError(getString(R.string.send_address_not_openalias));
-                        Timber.d("NO XMR OPENALIAS TXT FOUND");
-                    }
-                }
-
-                @Override
-                public void onFailure() {
-                    resolvingOA = false;
-                    etAddress.setError(getString(R.string.send_address_not_openalias));
-                    Timber.e("OA FAILED");
-                }
-            });
-        } // else ignore
     }
 
     private boolean checkAddressNoError() {
@@ -461,7 +459,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         if (!checkAddressNoError()) {
             shakeAddress();
             String enteredAddress = etAddress.getEditText().getText().toString().trim();
-            processUD(enteredAddress);
+            goToOpenAlias(enteredAddress);
             return false;
         }
 

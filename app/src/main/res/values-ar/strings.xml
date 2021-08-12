@@ -111,7 +111,7 @@
 
     <string name="status_wallet_disconnected">منقطعة</string>
 
-    <string name="status_transaction_failed">فشلت المعاملة: %1$d</string>
+    <string name="status_transaction_failed">فشلت المعاملة: %1sd</string>
 
     <string name="send_xmrto_timeout">!انتظرت طويلاً يا صاحبي!</string>
 
@@ -305,7 +305,7 @@
     <string name="nfc_write_failed">فشلت كتابة العلامة</string>
     <string name="nfc_write_successful">نجحت كتابة العلامة</string>
     <string name="nfc_tag_unsupported">العلامة لا تدعم NDEF!</string>
-    <string name="nfc_tag_size">العلامة تزود %1$dلأ بايتاً، لكننا نحتاج %2$ل!</string>
+    <string name="nfc_tag_size">العلامة تزود %1$dلأ بايتاً، لكننا نحتاج %2$dل!</string>
     <string name="nfc_tag_read_undef">لا أفهم العلامة!</string>
     <string name="nfc_tag_read_what">لا أعرف ماذا تريد!</string>
     <string name="nfc_tag_tap">NFC متوفر!</string>
