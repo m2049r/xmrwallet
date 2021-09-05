@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1008
-        versionName "2.0.8 'Puginarug'"
+        versionCode 1100
+        versionName "2.1.0 'Vertant'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
