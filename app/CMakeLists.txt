@@ -171,6 +171,10 @@ add_library(wallet-crypto STATIC IMPORTED)
 set_target_properties(wallet-crypto PROPERTIES IMPORTED_LOCATION
         ${EXTERNAL_LIBS_DIR}/${ANDROID_ABI}/monero/libwallet-crypto.a)
 
+add_library(cryptonote_format_utils_basic STATIC IMPORTED)
+set_target_properties(cryptonote_format_utils_basic PROPERTIES IMPORTED_LOCATION
+        ${EXTERNAL_LIBS_DIR}/${ANDROID_ABI}/monero/libcryptonote_format_utils_basic.a)
+
 #############
 # System
 #############
@@ -193,6 +197,7 @@ target_link_libraries(  monerujo
                         wallet
                         cryptonote_core
                         cryptonote_basic
+                        cryptonote_format_utils_basic
                         mnemonics
                         ringct
                         ringct_basic
