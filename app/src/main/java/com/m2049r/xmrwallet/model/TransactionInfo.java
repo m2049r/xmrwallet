@@ -29,6 +29,8 @@ import lombok.RequiredArgsConstructor;
 // this is not the TransactionInfo from the API as that is owned by the TransactionHistory
 // this is a POJO for the TransactionInfoAdapter
 public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> {
+    public static final int CONFIRMATION = 10; // blocks
+
     @RequiredArgsConstructor
     public enum Direction {
         Direction_In(0),
@@ -96,6 +98,10 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.confirmations = confirmations;
         this.subaddressLabel = subaddressLabel;
         this.transfers = transfers;
+    }
+
+    public boolean isConfirmed() {
+        return confirmations >= CONFIRMATION;
     }
 
     public String getDisplayLabel() {

@@ -49,8 +49,6 @@ import java.util.TimeZone;
 import timber.log.Timber;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-    private final static int MAX_CONFIRMATIONS = 10;
-
     private final static SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private final int outboundColour;
@@ -81,7 +79,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     public boolean needsTransactionUpdateOnNewBlock() {
-        return (infoItems.size() > 0) && (infoItems.get(0).confirmations < MAX_CONFIRMATIONS);
+        return (infoItems.size() > 0) && !infoItems.get(0).isConfirmed();
     }
 
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
@@ -169,7 +167,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             tvPaymentId = itemView.findViewById(R.id.tx_paymentid);
             tvDateTime = itemView.findViewById(R.id.tx_datetime);
             pbConfirmations = itemView.findViewById(R.id.pbConfirmations);
-            pbConfirmations.setMax(MAX_CONFIRMATIONS);
+            pbConfirmations.setMax(TransactionInfo.CONFIRMATION);
             tvConfirmations = itemView.findViewById(R.id.tvConfirmations);
         }
 
@@ -228,9 +226,9 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 tvConfirmations.setVisibility(View.GONE);
             } else if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(inboundColour);
-                final int confirmations = (int) infoItem.confirmations;
-                if (confirmations <= MAX_CONFIRMATIONS) {
+                if (!infoItem.isConfirmed()) {
                     pbConfirmations.setVisibility(View.VISIBLE);
+                    final int confirmations = (int) infoItem.confirmations;
                     pbConfirmations.setProgressCompat(confirmations, true);
                     final String confCount = Integer.toString(confirmations);
                     tvConfirmations.setText(confCount);
