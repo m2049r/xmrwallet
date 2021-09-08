@@ -398,6 +398,10 @@ public class Wallet {
 
     private native long getHistoryJ();
 
+    public void refreshHistory() {
+        getHistory().refreshWithNotes(this);
+    }
+
 //virtual AddressBook * addressBook() const = 0;
 //virtual void setListener(WalletListener *) = 0;
 
@@ -462,7 +466,7 @@ public class Wallet {
 
     public void setSubaddressLabel(int addressIndex, String label) {
         setSubaddressLabel(accountIndex, addressIndex, label);
-        getHistory().refreshWithNotes(this);
+        refreshHistory();
     }
 
     public native void setSubaddressLabel(int accountIndex, int addressIndex, String label);
