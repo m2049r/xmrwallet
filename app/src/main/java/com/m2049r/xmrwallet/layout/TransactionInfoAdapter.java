@@ -100,7 +100,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             return (oldItem.direction == newItem.direction)
                     && (oldItem.isPending == newItem.isPending)
                     && (oldItem.isFailed == newItem.isFailed)
-                    && (oldItem.confirmations == newItem.confirmations)
+                    && ((oldItem.confirmations == newItem.confirmations) || (oldItem.isConfirmed()))
                     && (oldItem.subaddressLabel.equals(newItem.subaddressLabel))
                     && (Objects.equals(oldItem.notes, newItem.notes));
         }

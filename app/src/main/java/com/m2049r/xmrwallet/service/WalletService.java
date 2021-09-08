@@ -124,7 +124,7 @@ public class WalletService extends Service {
                     if (!wallet.isSynchronized()) {
                         updated = true;
                         // we want to see our transactions as they come in
-                        wallet.getHistory().refresh();
+                        wallet.refreshHistory();
                         int txCount = wallet.getHistory().getCount();
                         if (txCount > lastTxCount) {
                             // update the transaction list only if we have more than before
@@ -152,7 +152,7 @@ public class WalletService extends Service {
             wallet.setSynchronized();
             if (updated) {
                 updateDaemonState(wallet, wallet.getBlockChainHeight());
-                wallet.getHistory().refreshWithNotes(wallet);
+                wallet.refreshHistory();
                 if (observer != null) {
                     updated = !observer.onRefreshed(wallet, true);
                 }

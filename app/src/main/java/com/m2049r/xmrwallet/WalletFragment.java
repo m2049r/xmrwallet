@@ -349,14 +349,14 @@ public class WalletFragment extends Fragment
         Timber.d("onRefreshed(%b)", full);
 
         if (adapter.needsTransactionUpdateOnNewBlock()) {
-            wallet.getHistory().refresh();
+            wallet.refreshHistory();
             full = true;
         }
         if (full) {
             List<TransactionInfo> list = new ArrayList<>();
             final long streetHeight = activityCallback.getStreetModeHeight();
             Timber.d("StreetHeight=%d", streetHeight);
-            wallet.getHistory().refresh();
+            wallet.refreshHistory();
             for (TransactionInfo info : wallet.getHistory().getAll()) {
                 Timber.d("TxHeight=%d, Label=%s", info.blockheight, info.subaddressLabel);
                 if ((info.isPending || (info.blockheight >= streetHeight))
