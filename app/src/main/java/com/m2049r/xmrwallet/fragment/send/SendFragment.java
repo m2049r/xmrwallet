@@ -55,7 +55,6 @@ import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.lang.ref.WeakReference;
-import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -189,8 +188,10 @@ public class SendFragment extends Fragment
             String uri = args.getString(WalletActivity.REQUEST_URI);
             Timber.d("URI: %s", uri);
             if (uri != null) {
-                barcodeData = BarcodeData.fromString(uri);
-                Timber.d("barcodeData: %s", barcodeData != null ? barcodeData.toString() : "null");
+                BarcodeData.fromString(uri, (data) -> {
+                    barcodeData = data;
+                    Timber.d("barcodeData: %s", barcodeData != null ? barcodeData.toString() : "null");
+                });
             }
         }
 
