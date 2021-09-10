@@ -19,7 +19,8 @@
         android:preserveLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:hasFragileUserData="true">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|uiMode"
