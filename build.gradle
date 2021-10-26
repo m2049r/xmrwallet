@@ -6,19 +6,13 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.0.3'
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
-        maven {
-            url "https://maven.google.com"
-        }
-        maven {
-            url "https://repository.mulesoft.org/nexus/content/repositories/public/"
-        }
         google()
     }
 }
