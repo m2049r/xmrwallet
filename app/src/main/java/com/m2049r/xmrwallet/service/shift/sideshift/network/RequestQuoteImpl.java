@@ -20,21 +20,21 @@ import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.shift.NetworkCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
-import com.m2049r.xmrwallet.util.DateHelper;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
+import com.m2049r.xmrwallet.util.DateHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 
 import lombok.Getter;
-import timber.log.Timber;
 
 class RequestQuoteImpl implements RequestQuote {
     @Getter
@@ -101,7 +101,7 @@ class RequestQuoteImpl implements RequestQuote {
     /**
      * Create JSON request object
      *
-     * @param xmrAmount how much XMR to shift to BTC
+     * @param btcAmount how much XMR to shift to BTC
      */
 
     static JSONObject createRequest(final double btcAmount) throws JSONException {
@@ -114,5 +114,13 @@ class RequestQuoteImpl implements RequestQuote {
         return jsonObject;
     }
 
-    static DecimalFormat AmountFormatter = new DecimalFormat("#.############");
+    static final DecimalFormat AmountFormatter;
+
+    static {
+        AmountFormatter = new DecimalFormat();
+        AmountFormatter.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
+        AmountFormatter.setMinimumIntegerDigits(1);
+        AmountFormatter.setMaximumFractionDigits(12);
+        AmountFormatter.setGroupingUsed(false);
+    }
 }
