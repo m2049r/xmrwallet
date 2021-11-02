@@ -359,10 +359,10 @@
     <string name="onboarding_button_ready">Estou pronto!</string>
 
     <string name="onboarding_welcome_title">Bem-vindo à Monerujo!</string>
-    <string name="onboarding_welcome_information">Este aplicativo permite que você crie e use carteiras Monero. Você poderá guardar seus queridos moneros 
+    <string name="onboarding_welcome_information">Este aplicativo permite que você crie e use carteiras Monero. Você poderá guardar seus queridos moneroj
 aqui.</string>
     <string name="onboarding_seed_title">Mantenha sua semente em segurança</string>
-    <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneros.</string>
+    <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneroj.</string>
     <string name="onboarding_xmrto_title">Enviar Cripto</string>
     <string name="onboarding_xmrto_information">A Monerujo possui o SideShift.ai integrado. Basta colar ou escanear um endereço BTC, LTC, ETH, DASH ou DOGE e você estará enviando cripto, mas gastando em XMR.</string>
     <string name="onboarding_nodes_title">"Nós", do seu jeito</string>
