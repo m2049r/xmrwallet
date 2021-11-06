@@ -231,7 +231,7 @@
 
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
 
-    <string name="tx_list_fee">- Комиссия %1$s</string>
+    <string name="tx_list_fee">Комиссия %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -431,5 +431,10 @@
     <string name="restore_failed">Ошибка импорта!</string>
 
     <string name="menu_deletecache">Сбросить кошелек</string>
-    <string name="deletecache_alert_message">Этот кошелек будет сброшен, вы потеряете все данные, которые не находятся в блокчейне (например примечания, имена подадресов, приватные ключи транзакций, ...)! Используйте это ТОЛЬКО если ваш кошелек поврежден и не загружается!</string>
+    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 </resources>

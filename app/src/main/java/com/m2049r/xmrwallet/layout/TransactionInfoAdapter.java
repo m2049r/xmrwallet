@@ -152,7 +152,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ImageView ivTxType;
         final TextView tvAmount;
-        final TextView tvFee;
+        final TextView tvFailed;
         final TextView tvPaymentId;
         final TextView tvDateTime;
         final CircularProgressIndicator pbConfirmations;
@@ -163,7 +163,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             super(itemView);
             ivTxType = itemView.findViewById(R.id.ivTxType);
             tvAmount = itemView.findViewById(R.id.tx_amount);
-            tvFee = itemView.findViewById(R.id.tx_fee);
+            tvFailed = itemView.findViewById(R.id.tx_failed);
             tvPaymentId = itemView.findViewById(R.id.tx_paymentid);
             tvDateTime = itemView.findViewById(R.id.tx_datetime);
             pbConfirmations = itemView.findViewById(R.id.pbConfirmations);
@@ -203,18 +203,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 tvAmount.setText(context.getString(R.string.tx_list_amount_positive, displayAmount));
             }
 
-            if ((infoItem.fee > 0)) {
-                String fee = Helper.getDisplayAmount(infoItem.fee, Helper.DISPLAY_DIGITS_INFO);
-                tvFee.setText(context.getString(R.string.tx_list_fee, fee));
-                tvFee.setVisibility(View.VISIBLE);
-            } else {
-                tvFee.setText("");
-                tvFee.setVisibility(View.GONE);
-            }
+            tvFailed.setVisibility(View.GONE);
             if (infoItem.isFailed) {
                 this.tvAmount.setText(context.getString(R.string.tx_list_amount_failed, displayAmount));
-                this.tvFee.setText(context.getString(R.string.tx_list_failed_text));
-                tvFee.setVisibility(View.VISIBLE);
+                tvFailed.setVisibility(View.VISIBLE);
                 setTxColour(failedColour);
                 pbConfirmations.setVisibility(View.GONE);
                 tvConfirmations.setVisibility(View.GONE);

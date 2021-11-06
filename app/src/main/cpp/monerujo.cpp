@@ -531,6 +531,17 @@ Java_com_m2049r_xmrwallet_model_WalletManager_resolveOpenAlias(JNIEnv *env, jobj
     return env->NewStringUTF(resolvedAlias.c_str());
 }
 
+JNIEXPORT jboolean JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_setProxy(JNIEnv *env, jobject instance,
+                                                               jstring address) {
+    const char *_address = env->GetStringUTFChars(address, nullptr);
+    bool rc =
+            Bitmonero::WalletManagerFactory::getWalletManager()->setProxy(std::string(_address));
+    env->ReleaseStringUTFChars(address, _address);
+    return rc;
+}
+
+
 //TODO static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, const std::string &subdir);
 
 JNIEXPORT jboolean JNICALL
@@ -726,6 +737,16 @@ Java_com_m2049r_xmrwallet_model_Wallet_getConnectionStatusJ(JNIEnv *env, jobject
 }
 //TODO virtual void setTrustedDaemon(bool arg) = 0;
 //TODO virtual bool trustedDaemon() const = 0;
+
+JNIEXPORT jboolean JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_setProxy(JNIEnv *env, jobject instance,
+                                                       jstring address) {
+    const char *_address = env->GetStringUTFChars(address, nullptr);
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    bool rc = wallet->setProxy(std::string(_address));
+    env->ReleaseStringUTFChars(address, _address);
+    return rc;
+}
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getBalance(JNIEnv *env, jobject instance,

@@ -75,7 +75,7 @@ public class Wallet {
         @Override
         @NonNull
         public String toString() {
-            return "Wallet.Status: (" + status + "/" + errorString + ", " + connectionStatus;
+            return "Wallet.Status: " + status + "/" + errorString + "/" + connectionStatus;
         }
     }
 
@@ -246,6 +246,8 @@ public class Wallet {
 
 //TODO virtual void setTrustedDaemon(bool arg) = 0;
 //TODO virtual bool trustedDaemon() const = 0;
+
+    public native boolean setProxy(String address);
 
     public long getBalance() {
         return getBalance(accountIndex);

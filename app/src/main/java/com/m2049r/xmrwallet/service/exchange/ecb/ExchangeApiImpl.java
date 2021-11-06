@@ -25,6 +25,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,26 +49,21 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import okhttp3.Call;
 import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 import timber.log.Timber;
 
 public class ExchangeApiImpl implements ExchangeApi {
     @NonNull
-    private final OkHttpClient okHttpClient;
-    @NonNull
     private final HttpUrl baseUrl;
 
     //so we can inject the mockserver url
     @VisibleForTesting
-    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient, @NonNull final HttpUrl baseUrl) {
-        this.okHttpClient = okHttpClient;
+    public ExchangeApiImpl(@NonNull final HttpUrl baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"));
+    public ExchangeApiImpl() {
+        this(HttpUrl.parse("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"));
         // data is daily and is refreshed around 16:00 CET every working day
     }
 
@@ -122,9 +118,8 @@ public class ExchangeApiImpl implements ExchangeApi {
             }
         }
 
-        final Request httpRequest = createHttpRequest(baseUrl);
-
-        okHttpClient.newCall(httpRequest).enqueue(new okhttp3.Callback() {
+        final NetCipherHelper.Request httpRequest = new NetCipherHelper.Request(baseUrl);
+        httpRequest.enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(final Call call, final IOException ex) {
                 callback.onError(ex);
@@ -153,13 +148,6 @@ public class ExchangeApiImpl implements ExchangeApi {
                 }
             }
         });
-    }
-
-    private Request createHttpRequest(final HttpUrl url) {
-        return new Request.Builder()
-                .url(url)
-                .get()
-                .build();
     }
 
     final private Map<String, Double> fxEntries = new HashMap<>();

@@ -218,7 +218,7 @@
 
     <string name="send_create_tx_error_title">Ett fel uppstod när transaktion skapades</string>
 
-    <string name="tx_list_fee">- Avgift %1$s</string>
+    <string name="tx_list_fee">Avgift %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">misslyckades</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -419,5 +419,10 @@
     <string name="restore_failed">Importeringen misslyckad!</string>
 
     <string name="menu_deletecache">Återställ plånbok!</string>
-    <string name="deletecache_alert_message">Denna plånbok kommer att återställas och förlorar all off-chain data (som anteckningar, konto- och subadresser, privata transaktionsnycklar, ...)! Använd ENDAST detta om den här plånboken är skadad och inte laddas!</string>
+    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 </resources>

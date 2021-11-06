@@ -229,7 +229,7 @@
 
     <string name="send_create_tx_error_title">Erro ao criar a transação</string>
 
-    <string name="tx_list_fee">- taxa de %1$s</string>
+    <string name="tx_list_fee">taxa de %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">falhou</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -421,4 +421,9 @@ aqui.</string>
 
     <string name="menu_deletecache">Resetar carteira!</string>
     <string name="deletecache_alert_message">Esta carteira será resetada, perdendo todos os dados "off-chain" (como notas, contas &amp; nomes de subendereços, chaves de transações privadas, ...)! Use isso SOMENTE se esta carteira estiver corrompida e não carrega!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 </resources>

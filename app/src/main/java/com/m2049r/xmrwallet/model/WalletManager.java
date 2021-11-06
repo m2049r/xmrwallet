@@ -309,6 +309,8 @@ public class WalletManager {
 
     public native String resolveOpenAlias(String address, boolean dnssec_valid);
 
+    public native boolean setProxy(String address);
+
 //TODO static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, const std::string &subdir);
 
     static public native void initLogger(String argv0, String defaultLogBaseName);

@@ -73,12 +73,12 @@
                     tools:text="+ 999.999999" />
 
                 <TextView
-                    android:id="@+id/tx_fee"
+                    android:id="@+id/tx_failed"
                     style="@style/MoneroText.PosFee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    tools:text="Fee 0.06817" />
+                    android:text="@string/tx_list_failed_text" />
             </LinearLayout>
         </LinearLayout>
 

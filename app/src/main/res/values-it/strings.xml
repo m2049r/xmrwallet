@@ -232,7 +232,7 @@
 
     <string name="send_create_tx_error_title">Errore nella creazione della transazione</string>
 
-    <string name="tx_list_fee">- Commissione %1$s</string>
+    <string name="tx_list_fee">Commissione %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">fallita</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -431,4 +431,9 @@
 
     <string name="menu_deletecache">Resetta portafogli!</string>
     <string name="deletecache_alert_message">Il reset del portafogli cancellerà tutte le informazioni locali (note, nomi di account &amp; sottoindirizzi, chiavi di transazione private, ...)! Procedi solo se il portafogli è corrotto e non si carica!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 </resources>

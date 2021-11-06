@@ -36,8 +36,7 @@
     </style>
 
     <style name="AppCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">1dp</item>
+        <item name="cardElevation">2dp</item>
     </style>
 
     <style name="AppButton" parent="@style/Widget.MaterialComponents.Button">

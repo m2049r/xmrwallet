@@ -11,6 +11,24 @@
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <queries>
+        <intent>
+            <action android:name="org.torproject.android.intent.action.START" />
+        </intent>
+        <intent>
+            <action android:name="org.torproject.android.intent.action.STATUS" />
+        </intent>
+
+        <intent>
+            <action android:name="org.torproject.android.REQUEST_HS_PORT" />
+        </intent>
+        <intent>
+            <action android:name="org.torproject.android.REQUEST_V3_ONION_SERVICE" />
+        </intent>
+
+        <package android:name="org.torproject.android" />
+    </queries>
+
     <application
         android:name=".XmrWalletApplication"
         android:allowBackup="false"
