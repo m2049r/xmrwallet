@@ -148,13 +148,12 @@
 	<p>Questo è l&apos;indirizzo pubblico del portafoglio cui stai inviando Moneroj, puoi incollare qui un indirizzo
 		che hai precededentemente copiato sul blocco appunti, scansionare un codice QR o inserire un indirizzo
 		manualmente. Accertati più volte che sia l&apos;indirizzo corretto e che tu non stia inviando Moneroj ad un indirizzo sbagliato.</p>
-        <p>In addition to using an XMR address, you can also use
+        <p>In alternativa a un indirizzo XMR, puoi anche usare
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
+            <li>un OpenAlias per XMR o BTC</li>
+	    <li>un indirizzo BTC</li>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
-        for details). See the section on sending BTC below.</p>
+        L&apos;invio di BTC è processato tramite il servizio SideShift.ai. (per dettagli: https://sideshift.ai). Vedi la sezione sull&apos;invio di BTC in basso.</p>
         <h1>Inviare BTC</h1>
         <h2>SideShift.ai</h2>
         <p>SideShift.ai è un servizio di terze parti che funziona come cambiavaluta da Monero a Bitcoin.
@@ -285,14 +284,14 @@
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>Uso di un link di pagamento</h1>
+        <p>Hai avviato monerujo con un link di pagamento. Per inviare fondi, procedi in questo modo:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. Apri il portafogli da cui vuoi spendere<br>
+        2. Attendi la sincronizzazione del portafogli; apparirà il pulsante "Invia"<br>
+        3. Tocca il pulsante "Invia"
         </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
+        <p>I dettagli del pagamento saranno auto-inseriti. Controllali e procedi come per qualsiasi altra transazione.</p>
     ]]></string>
 
     <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
