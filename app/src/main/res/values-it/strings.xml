@@ -371,9 +371,9 @@
     <string name="onboarding_button_ready">Sono pronto!</string>
 
     <string name="onboarding_welcome_title">Benvenuto su Monerujo!</string>
-    <string name="onboarding_welcome_information">Questa app ti permette di creare ed usare portafogli di Monero. Puoi conservare i tuoi bei moneroj all'interno.</string>
+    <string name="onboarding_welcome_information">Questa app ti permette di creare ed usare portafogli di Monero. Puoi conservare i tuoi bei moneroj all\'interno.</string>
     <string name="onboarding_seed_title">Tieni al sicuro il tuo seed</string>
-    <string name="onboarding_seed_information">Il seed permette l'accesso al portafogli a chiunque lo abbia. Se lo perdi, non possiamo aiutarti a recuperarlo.</string>
+    <string name="onboarding_seed_information">Il seed permette l\'accesso al portafogli a chiunque lo abbia. Se lo perdi, non possiamo aiutarti a recuperarlo.</string>
     <string name="onboarding_xmrto_title">Invia altre crypto</string>
     <string name="onboarding_xmrto_information">Monerujo supporta SideShift.ai. Copia o scansiona un indirizzo BTC, LTC, ETH, DASH o DOGE per inviare una di queste crypto spendendo XMR.</string>
     <string name="onboarding_nodes_title">Nodi, a modo tuo</string>
