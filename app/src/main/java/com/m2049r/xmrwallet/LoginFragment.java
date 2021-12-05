@@ -19,6 +19,8 @@ package com.m2049r.xmrwallet;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,22 +30,27 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.m2049r.xmrwallet.data.NodeInfo;
-import com.m2049r.xmrwallet.layout.NodeInfoAdapter;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.NodePinger;
 import com.m2049r.xmrwallet.util.Notice;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -66,9 +73,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private View tvGuntherSays;
     private ImageView ivGunther;
     private TextView tvNodeName;
-    private TextView tvNodeAddress;
-    private View pbNode;
-    private View llNode;
+    private TextView tvNodeInfo;
+    private ImageButton ibNetwork;
+    private CircularProgressIndicator pbNetwork;
 
     private Listener activityCallback;
 
@@ -109,6 +116,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         Set<NodeInfo> getOrPopulateFavourites();
 
         boolean hasLedger();
+
+        void runOnNetCipher(Runnable runnable);
     }
 
     @Override
@@ -125,6 +134,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onPause() {
         Timber.d("onPause()");
+        torStatus = null;
         super.onPause();
     }
 
@@ -135,7 +145,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         activityCallback.setTitle(null);
         activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
         activityCallback.showNet();
-        pingSelectedNode();
+        showNetwork();
+        //activityCallback.runOnNetCipher(this::pingSelectedNode);
     }
 
     @Override
@@ -183,12 +194,14 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         ViewGroup llNotice = view.findViewById(R.id.llNotice);
         Notice.showAll(llNotice, ".*_login");
 
-        pbNode = view.findViewById(R.id.pbNode);
-        llNode = view.findViewById(R.id.llNode);
-        llNode.setOnClickListener(v -> startNodePrefs());
+        view.findViewById(R.id.llNode).setOnClickListener(v -> startNodePrefs());
         tvNodeName = view.findViewById(R.id.tvNodeName);
-        tvNodeAddress = view.findViewById(R.id.tvNodeAddress);
+        tvNodeInfo = view.findViewById(R.id.tvInfo);
         view.findViewById(R.id.ibRenew).setOnClickListener(v -> findBestNode());
+        ibNetwork = view.findViewById(R.id.ibNetwork);
+        ibNetwork.setOnClickListener(v -> changeNetwork());
+        ibNetwork.setEnabled(false);
+        pbNetwork = view.findViewById(R.id.pbNetwork);
 
         Helper.hideKeyboard(getActivity());
 
@@ -387,15 +400,29 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         return nodeList.get(0);
     }
 
+    private void setSubtext(String status) {
+        final Context ctx = getContext();
+        final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                status, ""));
+        tvNodeInfo.setText(text);
+    }
+
     private class AsyncFindBestNode extends AsyncTask<Integer, Void, NodeInfo> {
         final static int PING_SELECTED = 0;
         final static int FIND_BEST = 1;
 
+        private boolean netState;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pbNode.setVisibility(View.VISIBLE);
-            llNode.setVisibility(View.INVISIBLE);
+            tvNodeName.setVisibility(View.GONE);
+            pbNetwork.setVisibility(View.VISIBLE);
+            netState = ibNetwork.isClickable();
+            ibNetwork.setClickable(false);
+            setSubtext(getString(R.string.node_waiting));
         }
 
         @Override
@@ -417,8 +444,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                     }
                 if (selectedNode == null) { // autoselect
                     selectedNode = autoselect(favourites);
-                } else
+                } else {
                     selectedNode.testRpcService();
+                }
             } else throw new IllegalStateException();
             if ((selectedNode != null) && selectedNode.isValid()) {
                 activityCallback.setNode(selectedNode);
@@ -432,16 +460,17 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         @Override
         protected void onPostExecute(NodeInfo result) {
             if (!isAdded()) return;
-            pbNode.setVisibility(View.INVISIBLE);
-            llNode.setVisibility(View.VISIBLE);
+            tvNodeName.setVisibility(View.VISIBLE);
+            pbNetwork.setVisibility(View.INVISIBLE);
+            ibNetwork.setClickable(netState);
             if (result != null) {
                 Timber.d("found a good node %s", result.toString());
                 showNode(result);
             } else {
                 tvNodeName.setText(getResources().getText(R.string.node_create_hint));
                 tvNodeName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                tvNodeAddress.setText(null);
-                tvNodeAddress.setVisibility(View.GONE);
+                tvNodeInfo.setText(null);
+                tvNodeInfo.setVisibility(View.GONE);
             }
         }
 
@@ -453,12 +482,70 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
     private void showNode(NodeInfo nodeInfo) {
         tvNodeName.setText(nodeInfo.getName());
-        tvNodeName.setCompoundDrawablesWithIntrinsicBounds(NodeInfoAdapter.getPingIcon(nodeInfo), 0, 0, 0);
-        Helper.showTimeDifference(tvNodeAddress, nodeInfo.getTimestamp());
-        tvNodeAddress.setVisibility(View.VISIBLE);
+        nodeInfo.showInfo(tvNodeInfo);
+        tvNodeInfo.setVisibility(View.VISIBLE);
     }
 
     private void startNodePrefs() {
         activityCallback.onNodePrefs();
+    }
+
+    // Network (Tor) stuff
+
+    private void changeNetwork() {
+        Timber.d("S: %s", NetCipherHelper.getStatus());
+        final NetCipherHelper.Status status = NetCipherHelper.getStatus();
+        if (status == NetCipherHelper.Status.NOT_INSTALLED) {
+            HelpFragment.display(requireActivity().getSupportFragmentManager(), R.string.help_tor);
+        } else if (status == NetCipherHelper.Status.NOT_ENABLED) {
+            Toast.makeText(getActivity(), getString(R.string.tor_enable_background), Toast.LENGTH_LONG).show();
+        } else {
+            pbNetwork.setVisibility(View.VISIBLE);
+            ibNetwork.setEnabled(false);
+            NetCipherHelper.getInstance().toggle();
+        }
+    }
+
+    private NetCipherHelper.Status torStatus = null;
+
+    void showNetwork() {
+        final NetCipherHelper.Status status = NetCipherHelper.getStatus();
+        Timber.d("SHOW %s", status);
+        if (status == torStatus) return;
+        torStatus = status;
+        switch (status) {
+            case ENABLED:
+                ibNetwork.setImageResource(R.drawable.ic_network_tor_on);
+                ibNetwork.setEnabled(true);
+                ibNetwork.setClickable(true);
+                pbNetwork.setVisibility(View.INVISIBLE);
+                break;
+            case NOT_ENABLED:
+            case DISABLED:
+                ibNetwork.setImageResource(R.drawable.ic_network_clearnet);
+                ibNetwork.setEnabled(true);
+                ibNetwork.setClickable(true);
+                pbNetwork.setVisibility(View.INVISIBLE);
+                break;
+            case STARTING:
+                ibNetwork.setImageResource(R.drawable.ic_network_clearnet);
+                ibNetwork.setEnabled(false);
+                pbNetwork.setVisibility(View.VISIBLE);
+                break;
+            case STOPPING:
+                ibNetwork.setImageResource(R.drawable.ic_network_clearnet);
+                ibNetwork.setEnabled(false);
+                pbNetwork.setVisibility(View.VISIBLE);
+                break;
+            case NOT_INSTALLED:
+                ibNetwork.setEnabled(true);
+                ibNetwork.setClickable(true);
+                pbNetwork.setVisibility(View.INVISIBLE);
+                ibNetwork.setImageResource(R.drawable.ic_network_clearnet);
+                break;
+            default:
+                return;
+        }
+        activityCallback.runOnNetCipher(this::pingSelectedNode);
     }
 }

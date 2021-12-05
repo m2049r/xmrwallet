@@ -18,6 +18,7 @@ package com.m2049r.xmrwallet.data;
 
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.util.OnionHelper;
 
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
@@ -35,11 +36,63 @@ public class Node {
     static public final String STAGENET = "stagenet";
     static public final String TESTNET = "testnet";
 
+    static class Address {
+        final private InetAddress inet;
+        final private String onion;
+
+        public boolean isOnion() {
+            return onion != null;
+        }
+
+        public String getHostName() {
+            if (inet != null) {
+                return inet.getHostName();
+            } else {
+                return onion;
+            }
+        }
+
+        public String getHostAddress() {
+            if (inet != null) {
+                return inet.getHostAddress();
+            } else {
+                return onion;
+            }
+        }
+
+        private Address(InetAddress address, String onion) {
+            this.inet = address;
+            this.onion = onion;
+        }
+
+        static Address of(InetAddress address) {
+            return new Address(address, null);
+        }
+
+        static Address of(String host) throws UnknownHostException {
+            if (OnionHelper.isOnionHost(host)) {
+                return new Address(null, host);
+            } else {
+                return new Address(InetAddress.getByName(host), null);
+            }
+        }
+
+        @Override
+        public int hashCode() {
+            return getHostAddress().hashCode();
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            return (other instanceof Address) && (getHostAddress().equals(((Address) other).getHostAddress()));
+        }
+    }
+
     @Getter
     private String name = null;
     @Getter
     final private NetworkType networkType;
-    InetAddress hostAddress;
+    Address hostAddress;
     @Getter
     private String host;
     @Getter
@@ -72,6 +125,10 @@ public class Node {
         return (hostAddress.equals(anotherNode.hostAddress)
                 && (rpcPort == anotherNode.rpcPort)
                 && (networkType == anotherNode.networkType));
+    }
+
+    public boolean isOnion() {
+        return hostAddress.isOnion();
     }
 
     static public Node fromString(String nodeString) {
@@ -205,7 +262,7 @@ public class Node {
     // constructor used for created nodes from retrieved peer lists
     public Node(InetSocketAddress socketAddress) {
         this();
-        this.hostAddress = socketAddress.getAddress();
+        this.hostAddress = Address.of(socketAddress.getAddress());
         this.host = socketAddress.getHostString();
         this.rpcPort = 0; // unknown
         this.levinPort = socketAddress.getPort();
@@ -225,17 +282,25 @@ public class Node {
         if ((host == null) || (host.isEmpty()))
             throw new UnknownHostException("loopback not supported (yet?)");
         this.host = host;
-        this.hostAddress = InetAddress.getByName(host);
+        this.hostAddress = Address.of(host);
     }
 
-    public void setName() {
-        if (name == null)
-            this.name = hostAddress.getHostName();
+    public void setDefaultName() {
+        if (name != null) return;
+        String nodeName = hostAddress.getHostName();
+        if (hostAddress.isOnion()) {
+            nodeName = nodeName.substring(0, nodeName.length() - ".onion".length());
+            if (nodeName.length() > 16) {
+                nodeName = nodeName.substring(0, 8) + "…" + nodeName.substring(nodeName.length() - 6);
+            }
+            nodeName = nodeName + ".onion";
+        }
+        this.name = nodeName;
     }
 
     public void setName(String name) {
         if ((name == null) || (name.isEmpty()))
-            this.name = hostAddress.getHostName();
+            setDefaultName();
         else
             this.name = name;
     }

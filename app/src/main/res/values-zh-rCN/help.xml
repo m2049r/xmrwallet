@@ -26,7 +26,7 @@
         选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。</p>
     ]]></string>
 
-<string name="help_create_ledger"><![CDATA[
+    <string name="help_create_ledger"><![CDATA[
         <h1>用Ledger恢复钱包</h1>
         <p>如果你已经拥有一个钱包地址，并想用Ledger Nano S来恢复你的钱包。</p>
         <p>因为你的密钥时刻存储在Ledger设备中，所以你每次访问钱包的时候，都需要插入Ledger设备。</p>
@@ -35,8 +35,8 @@
         <p>请在\"恢复高度\"中输入你在这个地址上的第一笔交易所在的区块高度。你也可以使用YYYY-MM-DD的格式来输入日期。如果你不是十分确定，也可以
         选择输入一个估算的日期或区块高度，但这个日期或区块高度对应的时间必须在你第一次使用该地址<em>之前</em>。</p>
     ]]></string>
- 
-   <string name="help_create_keys"><![CDATA[
+
+    <string name="help_create_keys"><![CDATA[
         <h1>用密钥恢复钱包</h1>
         <p>如果你已经拥有一个钱包地址，并想用密钥恢复它。</p>
         <p>请输入钱包名称（不得重复）和密码。
@@ -230,4 +230,25 @@
     ]]></string>
 
     <string name="help_ok">我明白了!</string> <!-- Note: "Got it" as in "I understand this" -->
+
+    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_tor"><![CDATA[
+        <h1>Tor</h1>
+        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
+        communication.</p>
+        <p>Enabling Tor will route your connection through several relays and hide your IP address
+        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
+        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
+        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
+        screen.</p>
+        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
+        on the top right).</p>
+    ]]></string>
+
+    <string name="help_tor_enable"><![CDATA[
+        <h1>Tor Node</h1>
+        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
+        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
 </resources>

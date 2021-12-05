@@ -45,6 +45,7 @@ import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import timber.log.Timber;
 
@@ -531,6 +532,7 @@ public class WalletService extends Service {
             Timber.d("Using daemon %s", WalletManager.getInstance().getDaemonAddress());
             showProgress(55);
             wallet.init(0);
+            wallet.setProxy(NetCipherHelper.getProxy());
             showProgress(90);
         }
         return wallet;

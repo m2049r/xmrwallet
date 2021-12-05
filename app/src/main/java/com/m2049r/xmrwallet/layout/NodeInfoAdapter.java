@@ -23,28 +23,25 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.NodeInfo;
-import com.m2049r.xmrwallet.util.ThemeHelper;
-import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import java.net.HttpURLConnection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.TimeZone;
 
 public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHolder> {
-    private final SimpleDateFormat TS_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
     public interface OnInteractionListener {
         void onInteraction(View view, NodeInfo item);
 
@@ -54,14 +51,16 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
     private final List<NodeInfo> nodeItems = new ArrayList<>();
     private final OnInteractionListener listener;
 
-    private final Context context;
+    private final FragmentActivity activity;
 
-    public NodeInfoAdapter(Context context, OnInteractionListener listener) {
-        this.context = context;
+    public NodeInfoAdapter(FragmentActivity activity, OnInteractionListener listener) {
+        this.activity = activity;
         this.listener = listener;
-        Calendar cal = Calendar.getInstance();
-        TimeZone tz = cal.getTimeZone(); //get the local time zone.
-        TS_FORMATTER.setTimeZone(tz);
+    }
+
+    public void notifyItemChanged(NodeInfo nodeInfo) {
+        final int pos = nodeItems.indexOf(nodeInfo);
+        if (pos >= 0) notifyItemChanged(pos);
     }
 
     private static class NodeDiff extends DiffCallback<NodeInfo> {
@@ -142,7 +141,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         final ImageButton ibBookmark;
         final View pbBookmark;
         final TextView tvName;
-        final TextView tvIp;
+        final TextView tvInfo;
         final ImageView ivPing;
         NodeInfo nodeItem;
 
@@ -151,7 +150,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             ibBookmark = itemView.findViewById(R.id.ibBookmark);
             pbBookmark = itemView.findViewById(R.id.pbBookmark);
             tvName = itemView.findViewById(R.id.tvName);
-            tvIp = itemView.findViewById(R.id.tvAddress);
+            tvInfo = itemView.findViewById(R.id.tvInfo);
             ivPing = itemView.findViewById(R.id.ivPing);
             ibBookmark.setOnClickListener(v -> {
                 nodeItem.toggleFavourite();
@@ -179,13 +178,12 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             ivPing.setImageResource(getPingIcon(nodeItem));
             if (nodeItem.isTested()) {
                 if (nodeItem.isValid()) {
-                    Helper.showTimeDifference(tvIp, nodeItem.getTimestamp());
+                    nodeItem.showInfo(tvInfo);
                 } else {
-                    tvIp.setText(getResponseErrorText(context, nodeItem.getResponseCode()));
-                    tvIp.setTextColor(ThemeHelper.getThemedColor(context, R.attr.colorError));
+                    nodeItem.showInfo(tvInfo, getResponseErrorText(activity, nodeItem.getResponseCode()), true);
                 }
             } else {
-                tvIp.setText(context.getResources().getString(R.string.node_testing, nodeItem.getHostAddress()));
+                nodeItem.showInfo(tvInfo);
             }
             itemView.setSelected(nodeItem.isSelected());
             itemView.setClickable(itemsClickable);
@@ -201,6 +199,16 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
                 int position = getAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     final NodeInfo node = nodeItems.get(position);
+                    if (node.isOnion()) {
+                        switch (NetCipherHelper.getStatus()) {
+                            case NOT_INSTALLED:
+                                HelpFragment.display(activity.getSupportFragmentManager(), R.string.help_tor);
+                                return;
+                            case DISABLED:
+                                HelpFragment.display(activity.getSupportFragmentManager(), R.string.help_tor_enable);
+                                return;
+                        }
+                    }
                     node.setSelecting(true);
                     allowClick(false);
                     listener.onInteraction(view, node);
@@ -245,6 +253,8 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
             return ctx.getResources().getString(R.string.node_general_error);
         } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
             return ctx.getResources().getString(R.string.node_auth_error);
+        } else if (responseCode == 418) {
+            return ctx.getResources().getString(R.string.node_tor_error);
         } else {
             return ctx.getResources().getString(R.string.node_test_error, responseCode);
         }

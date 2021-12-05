@@ -223,11 +223,13 @@ public class WalletFragment extends Fragment
     }
 
     void showUnconfirmed(double unconfirmedAmount) {
-        if (!activityCallback.isStreetMode()) {
+        if (activityCallback.isStreetMode() || unconfirmedAmount == 0) {
+            tvUnconfirmedAmount.setText(null);
+            tvUnconfirmedAmount.setVisibility(View.GONE);
+        } else {
             String unconfirmed = Helper.getFormattedAmount(unconfirmedAmount, true);
             tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, unconfirmed));
-        } else {
-            tvUnconfirmedAmount.setText(null);
+            tvUnconfirmedAmount.setVisibility(View.VISIBLE);
         }
     }
 

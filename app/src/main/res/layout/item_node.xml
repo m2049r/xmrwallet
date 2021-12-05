@@ -53,7 +53,7 @@
             tools:text="monero-v9.monerujo.io" />
 
         <TextView
-            android:id="@+id/tvAddress"
+            android:id="@+id/tvInfo"
             style="@style/MoneroText.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

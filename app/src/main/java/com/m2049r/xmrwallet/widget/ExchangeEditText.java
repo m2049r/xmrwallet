@@ -344,8 +344,8 @@ public class ExchangeEditText extends LinearLayout {
         if (rate > 0) {
             tvAmountB.setText(Helper.getFormattedAmount(rate * amount, getCurrencyB() == 0));
         } else {
-            tvAmountB.setText(null);
-            Timber.w("No rate!");
+            tvAmountB.setText("--");
+            Timber.d("No rate!");
         }
     }
 

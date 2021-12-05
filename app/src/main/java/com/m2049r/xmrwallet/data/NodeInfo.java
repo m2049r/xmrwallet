@@ -16,14 +16,19 @@
 
 package com.m2049r.xmrwallet.data;
 
-import com.burgstaller.okhttp.AuthenticationCacheInterceptor;
-import com.burgstaller.okhttp.CachingAuthenticatorDecorator;
-import com.burgstaller.okhttp.digest.CachingAuthenticator;
-import com.burgstaller.okhttp.digest.Credentials;
-import com.burgstaller.okhttp.digest.DigestAuthenticator;
+import android.content.Context;
+import android.text.Html;
+import android.text.Spanned;
+import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
+
 import com.m2049r.levin.scanner.LevinPeer;
+import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper.Request;
 import com.m2049r.xmrwallet.util.NodePinger;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,17 +37,12 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.util.Calendar;
 import java.util.Comparator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.HttpUrl;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import timber.log.Timber;
@@ -94,7 +94,7 @@ public class NodeInfo extends Node {
     synchronized public SocketAddress getLevinSocketAddress() {
         if (levinSocketAddress == null) {
             // use default peer port if not set - very few peers use nonstandard port
-            levinSocketAddress = new InetSocketAddress(hostAddress, getDefaultLevinPort());
+            levinSocketAddress = new InetSocketAddress(hostAddress.getHostAddress(), getDefaultLevinPort());
         }
         return levinSocketAddress;
     }
@@ -180,7 +180,7 @@ public class NodeInfo extends Node {
         return sb.toString();
     }
 
-    private static final int HTTP_TIMEOUT = OkHttpHelper.HTTP_TIMEOUT;
+    private static final int HTTP_TIMEOUT = 1000; //ms
     public static final double PING_GOOD = HTTP_TIMEOUT / 3.0; //ms
     public static final double PING_MEDIUM = 2 * PING_GOOD; //ms
     public static final double PING_BAD = HTTP_TIMEOUT;
@@ -196,32 +196,29 @@ public class NodeInfo extends Node {
         return result;
     }
 
+    private Request rpcServiceRequest(int port) {
+        final HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(getHost())
+                .port(port)
+                .addPathSegment("json_rpc")
+                .build();
+        final String json = "{\"jsonrpc\":\"2.0\",\"id\":\"0\",\"method\":\"getlastblockheader\"}";
+        return new Request(url, json, getUsername(), getPassword());
+    }
+
     private boolean testRpcService(int port) {
         Timber.d("Testing %s", toNodeString());
         clear();
+        if (hostAddress.isOnion() && !NetCipherHelper.isTor()) {
+            tested = true; // sortof
+            responseCode = 418; // I'm a teapot - or I need an Onion - who knows
+            return false; // autofail
+        }
         try {
-            OkHttpClient client = OkHttpHelper.getEagerClient();
-            if (!getUsername().isEmpty()) {
-                final DigestAuthenticator authenticator =
-                        new DigestAuthenticator(new Credentials(getUsername(), getPassword()));
-                final Map<String, CachingAuthenticator> authCache = new ConcurrentHashMap<>();
-                client = client.newBuilder()
-                        .authenticator(new CachingAuthenticatorDecorator(authenticator, authCache))
-                        .addInterceptor(new AuthenticationCacheInterceptor(authCache))
-                        .build();
-            }
-            HttpUrl url = new HttpUrl.Builder()
-                    .scheme("http")
-                    .host(getHostAddress())
-                    .port(port)
-                    .addPathSegment("json_rpc")
-                    .build();
-            final RequestBody reqBody = RequestBody
-                    .create(MediaType.parse("application/json"),
-                            "{\"jsonrpc\":\"2.0\",\"id\":\"0\",\"method\":\"getlastblockheader\"}");
-            Request request = OkHttpHelper.getPostRequest(url, reqBody);
             long ta = System.nanoTime();
-            try (Response response = client.newCall(request).execute()) {
+            try (Response response = rpcServiceRequest(port).execute()) {
+                Timber.d("%s: %s", response.code(), response.request().url());
                 responseTime = (System.nanoTime() - ta) / 1000000.0;
                 responseCode = response.code();
                 if (response.isSuccessful()) {
@@ -243,7 +240,7 @@ public class NodeInfo extends Node {
                 }
             }
         } catch (IOException | JSONException ex) {
-            Timber.d(ex);
+            Timber.d("EX: %s", ex.getMessage()); //TODO: do something here (show error?)
         } finally {
             tested = true;
         }
@@ -263,5 +260,44 @@ public class NodeInfo extends Node {
             }
         }
         return false;
+    }
+
+    static public final int STALE_NODE_HOURS = 2;
+
+    public void showInfo(TextView view, String info, boolean isError) {
+        final Context ctx = view.getContext();
+        final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
+                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                (hostAddress.isOnion() ? "&nbsp;.onion&nbsp;&nbsp;" : ""), " " + info));
+        view.setText(text);
+        if (isError)
+            view.setTextColor(ThemeHelper.getThemedColor(ctx, R.attr.colorError));
+        else
+            view.setTextColor(ThemeHelper.getThemedColor(ctx, R.attr.colorPrimary));
+    }
+
+    public void showInfo(TextView view) {
+        if (!isTested()) {
+            showInfo(view, "", false);
+            return;
+        }
+        final Context ctx = view.getContext();
+        final long now = Calendar.getInstance().getTimeInMillis() / 1000;
+        final long secs = (now - timestamp);
+        final long mins = secs / 60;
+        final long hours = mins / 60;
+        final long days = hours / 24;
+        String info;
+        if (mins < 2) {
+            info = ctx.getString(R.string.node_updated_now, secs);
+        } else if (hours < 2) {
+            info = ctx.getString(R.string.node_updated_mins, mins);
+        } else if (days < 2) {
+            info = ctx.getString(R.string.node_updated_hours, hours);
+        } else {
+            info = ctx.getString(R.string.node_updated_days, days);
+        }
+        showInfo(view, info, hours >= STALE_NODE_HOURS);
     }
 }

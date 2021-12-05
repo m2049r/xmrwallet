@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -59,7 +58,6 @@ import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -219,8 +217,8 @@ public class NodeFragment extends Fragment
             activityCallback.setNode(nodeItem); // this marks it as selected & saves it as well
             nodeItem.setSelecting(false);
             try {
-                Objects.requireNonNull(getActivity()).runOnUiThread(() -> nodesAdapter.allowClick(true));
-            } catch (NullPointerException ex) {
+                requireActivity().runOnUiThread(() -> nodesAdapter.allowClick(true));
+            } catch (IllegalStateException ex) {
                 // it's ok
             }
         });
@@ -403,16 +401,12 @@ public class NodeFragment extends Fragment
                 etNodeHost.setError(getString(R.string.node_host_empty));
                 return false;
             }
-            final boolean setHostSuccess = Helper.runWithNetwork(new Helper.Action() {
-                @Override
-                public boolean run() {
-                    try {
-                        nodeInfo.setHost(host);
-                        return true;
-                    } catch (UnknownHostException ex) {
-                        etNodeHost.setError(getString(R.string.node_host_unresolved));
-                        return false;
-                    }
+            final boolean setHostSuccess = Helper.runWithNetwork(() -> {
+                try {
+                    nodeInfo.setHost(host);
+                    return true;
+                } catch (UnknownHostException ex) {
+                    return false;
                 }
             });
             if (!setHostSuccess) {
@@ -421,14 +415,7 @@ public class NodeFragment extends Fragment
             }
             etNodeHost.setError(null);
             nodeInfo.setRpcPort(port);
-            // setName() may trigger reverse DNS
-            Helper.runWithNetwork(new Helper.Action() {
-                @Override
-                public boolean run() {
-                    nodeInfo.setName(etNodeName.getEditText().getText().toString().trim());
-                    return true;
-                }
-            });
+            nodeInfo.setName(etNodeName.getEditText().getText().toString().trim());
             nodeInfo.setUsername(etNodeUser.getEditText().getText().toString().trim());
             nodeInfo.setPassword(etNodePass.getEditText().getText().toString()); // no trim for pw
             return true;
@@ -532,20 +519,10 @@ public class NodeFragment extends Fragment
                 @Override
                 public void onShow(final DialogInterface dialog) {
                     Button testButton = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_NEUTRAL);
-                    testButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            test();
-                        }
-                    });
+                    testButton.setOnClickListener(view -> test());
 
                     Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            apply();
-                        }
-                    });
+                    button.setOnClickListener(view -> apply());
                 }
             });
 
@@ -553,15 +530,13 @@ public class NodeFragment extends Fragment
                 editDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
             }
 
-            etNodePass.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        editDialog.getButton(DialogInterface.BUTTON_NEUTRAL).requestFocus();
-                        test();
-                        return true;
-                    }
-                    return false;
+            etNodePass.getEditText().setOnEditorActionListener((v, actionId, event) -> {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    editDialog.getButton(DialogInterface.BUTTON_NEUTRAL).requestFocus();
+                    test();
+                    return true;
                 }
+                return false;
             });
         }
 
@@ -589,6 +564,7 @@ public class NodeFragment extends Fragment
                     } else {
                         nodesAdapter.setNodes();
                     }
+                    nodesAdapter.notifyItemChanged(nodeInfo);
                 }
             }
         }

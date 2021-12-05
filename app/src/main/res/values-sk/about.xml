@@ -15,15 +15,15 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>Zásady ochrany osobných údajov</h1>
-        <p>Na tejto stránke nájdete informácie o zásadách ochrany v súvislosti so zbieraním a spracovávaním osobných údajov, 
-		ktoré získame od užívateľov našej apky (monerujo: Monero Wallet).
+        <p>Na tejto stránke nájdete informácie o zásadách ochrany v súvislosti so zbieraním a spracovávaním osobných údajov,
+        ktoré získame od užívateľov našej apky (monerujo: Monero Wallet).
         </p>
         <p>Používaním tejto aplikácie súhlasíš so zbieraním a spracovávaním informácií v súlade s týmito pravidlami.
-		</p>
+        </p>
         <h2>Zbierané Dáta</h2>
         <p>Osobné dáta sú také dáta, na základe ktorých by bolo možné identifikovať jedinca.</p>
-        <p>Monero kľúče a verejné adresy sú zbierané a spracovávané aplikáciou lokálne na účely 
-		spracovania a prenosu transakcie v Monero sieti.</p>
+        <p>Monero kľúče a verejné adresy sú zbierané a spracovávané aplikáciou lokálne na účely
+        spracovania a prenosu transakcie v Monero sieti.</p>
         <p>Iné osobné data nie sú zbierané a spracovávané.</p>
         <p>Pokiaľ používaš (voliteľnú) funkciu zmenárne, monerujo vyhľadá výmenný kurz cez verejné API portálu coinmarketcap.com.
         Pre viac detailov pozri zásady ochrany osobných údajov na https://coinmarketcap.com/privacy kde je uvedené aké dáta zbierajú</p>
@@ -40,13 +40,13 @@
         </ul>
         <h2>Zmeny v týchto zásadách</h2>
         <p>Je možné, že z času načas sa tieto zásady upravia, či doplnia, na čo budete včas upozornení aplikáciou
-		a na našich webových stránkach (www.monerujo.io).
+        a na našich webových stránkach (www.monerujo.io).
         Doporučujeme tieto zásady periodicky kontrolovať kôli prípadným zmenám.
         <p>tieto zásady ochrany údajov boli naposledy upravené: 10. November, 2017.
         </p>
         <h2>Kontaktuj Nás</h2>
         <p>Ak máš akékoľvek otázky ohľadom zásad ochrany osobných údajov, alebo ako sú data spracovávané,
-		pošli email na privacy@monerujo.io.
+        pošli email na privacy@monerujo.io.
         </p>
         ]]></string>
 </resources>
