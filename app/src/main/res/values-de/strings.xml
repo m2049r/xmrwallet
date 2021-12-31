@@ -24,7 +24,7 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">Abbrechen</string>
     <string name="label_close">Schließen</string>
-    <string name="label_wallet_advanced_details">Berühren für Detailinfos</string>
+    <string name="label_wallet_advanced_details">Detailinfos</string>
 
     <string name="label_send_success">Erfolgreich gesendet</string>
     <string name="label_send_done">Fertig</string>
@@ -432,4 +432,7 @@
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
 </resources>

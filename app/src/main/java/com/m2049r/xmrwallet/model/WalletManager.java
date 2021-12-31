@@ -124,19 +124,19 @@ public class WalletManager {
 
     private native long openWalletJ(String path, String password, int networkType);
 
-    public Wallet recoveryWallet(File aFile, String password, String mnemonic) {
-        return recoveryWallet(aFile, password, mnemonic, 0);
-    }
-
-    public Wallet recoveryWallet(File aFile, String password, String mnemonic, long restoreHeight) {
-        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), password, mnemonic,
+    public Wallet recoveryWallet(File aFile, String password,
+                                 String mnemonic, String offset,
+                                 long restoreHeight) {
+        long walletHandle = recoveryWalletJ(aFile.getAbsolutePath(), password,
+                mnemonic, offset,
                 getNetworkType().getValue(), restoreHeight);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
     }
 
-    private native long recoveryWalletJ(String path, String password, String mnemonic,
+    private native long recoveryWalletJ(String path, String password,
+                                        String mnemonic, String offset,
                                         int networkType, long restoreHeight);
 
     public Wallet createWalletWithKeys(File aFile, String password, String language, long restoreHeight,

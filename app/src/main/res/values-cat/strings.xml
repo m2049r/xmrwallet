@@ -23,7 +23,7 @@
     <string name="label_ok">D\'acord</string>
     <string name="label_cancel">Cancel·lar</string>
     <string name="label_close">Tancar</string>
-    <string name="label_wallet_advanced_details">Premi aquí per informació més detallada</string>
+    <string name="label_wallet_advanced_details">Informació més detallada</string>
 
     <string name="label_send_success">Enviat correctament!</string>
     <string name="label_send_done">Fet</string>
@@ -431,4 +431,7 @@
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
 </resources>

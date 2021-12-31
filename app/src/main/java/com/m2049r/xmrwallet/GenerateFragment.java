@@ -81,6 +81,9 @@ public class GenerateFragment extends Fragment {
     private TextInputLayout etWalletRestoreHeight;
     private Button bGenerate;
 
+    private Button bSeedOffset;
+    private TextInputLayout etSeedOffset;
+
     private String type = null;
 
     private void clearErrorOnTextEntry(final TextInputLayout textInputLayout) {
@@ -118,6 +121,8 @@ public class GenerateFragment extends Fragment {
         etWalletSpendKey = view.findViewById(R.id.etWalletSpendKey);
         etWalletRestoreHeight = view.findViewById(R.id.etWalletRestoreHeight);
         bGenerate = view.findViewById(R.id.bGenerate);
+        bSeedOffset = view.findViewById(R.id.bSeedOffset);
+        etSeedOffset = view.findViewById(R.id.etSeedOffset);
 
         etWalletAddress.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         etWalletViewKey.getEditText().setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -222,6 +227,8 @@ public class GenerateFragment extends Fragment {
                     }
                     return false;
                 });
+                bSeedOffset.setVisibility(View.VISIBLE);
+                bSeedOffset.setOnClickListener(v -> toggleSeedOffset());
                 break;
             case TYPE_KEY:
             case TYPE_VIEWONLY:
@@ -286,6 +293,18 @@ public class GenerateFragment extends Fragment {
         etWalletName.requestFocus();
 
         return view;
+    }
+
+    void toggleSeedOffset() {
+        if (etSeedOffset.getVisibility() == View.VISIBLE) {
+            etSeedOffset.getEditText().getText().clear();
+            etSeedOffset.setVisibility(View.GONE);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+        } else {
+            etSeedOffset.setVisibility(View.VISIBLE);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            etSeedOffset.requestFocusFromTouch();
+        }
     }
 
     private boolean checkName() {
@@ -422,12 +441,13 @@ public class GenerateFragment extends Fragment {
                 break;
             case TYPE_SEED:
                 if (!checkMnemonic()) return;
-                String seed = etWalletMnemonic.getEditText().getText().toString();
+                final String seed = etWalletMnemonic.getEditText().getText().toString();
                 bGenerate.setEnabled(false);
                 if (fingerprintAuthAllowed) {
                     KeyStoreHelper.saveWalletUserPass(requireActivity(), name, password);
                 }
-                activityCallback.onGenerate(name, crazyPass, seed, height);
+                final String offset = etSeedOffset.getEditText().getText().toString();
+                activityCallback.onGenerate(name, crazyPass, seed, offset, height);
                 break;
             case TYPE_LEDGER:
                 bGenerate.setEnabled(false);
@@ -491,7 +511,7 @@ public class GenerateFragment extends Fragment {
     public interface Listener {
         void onGenerate(String name, String password);
 
-        void onGenerate(String name, String password, String seed, long height);
+        void onGenerate(String name, String password, String seed, String offset, long height);
 
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
 

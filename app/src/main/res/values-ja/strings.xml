@@ -23,7 +23,6 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">キャンセル</string>
     <string name="label_close">閉じる</string>
-    <string name="label_wallet_advanced_details">タッチして詳細情報を見る</string>
 
     <string name="label_send_success">送金成功</string>
     <string name="label_send_done">完了</string>
@@ -436,4 +435,8 @@
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_wallet_advanced_details">タッチして詳細情報を見る</string> <!-- Please chnage to "Detailed information" -->
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
 </resources>

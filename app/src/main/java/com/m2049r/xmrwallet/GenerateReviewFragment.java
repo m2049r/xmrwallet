@@ -32,6 +32,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -45,6 +46,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.ledger.Ledger;
@@ -77,6 +79,7 @@ public class GenerateReviewFragment extends Fragment {
     private ProgressBar pbProgress;
     private TextView tvWalletPassword;
     private TextView tvWalletAddress;
+    private FrameLayout flWalletMnemonic;
     private TextView tvWalletMnemonic;
     private TextView tvWalletHeight;
     private TextView tvWalletViewKey;
@@ -89,6 +92,9 @@ public class GenerateReviewFragment extends Fragment {
     private LinearLayout llViewKey;
     private Button bAdvancedInfo;
     private Button bAccept;
+
+    private Button bSeedOffset;
+    private TextInputLayout etSeedOffset;
 
     private String walletPath;
     private String walletName;
@@ -106,6 +112,7 @@ public class GenerateReviewFragment extends Fragment {
         tvWalletViewKey = view.findViewById(R.id.tvWalletViewKey);
         tvWalletSpendKey = view.findViewById(R.id.tvWalletSpendKey);
         tvWalletMnemonic = view.findViewById(R.id.tvWalletMnemonic);
+        flWalletMnemonic = view.findViewById(R.id.flWalletMnemonic);
         tvWalletHeight = view.findViewById(R.id.tvWalletHeight);
         bCopyAddress = view.findViewById(R.id.bCopyAddress);
         bAdvancedInfo = view.findViewById(R.id.bAdvancedInfo);
@@ -114,6 +121,9 @@ public class GenerateReviewFragment extends Fragment {
         llMnemonic = view.findViewById(R.id.llMnemonic);
         llSpendKey = view.findViewById(R.id.llSpendKey);
         llViewKey = view.findViewById(R.id.llViewKey);
+
+        etSeedOffset = view.findViewById(R.id.etSeedOffset);
+        bSeedOffset = view.findViewById(R.id.bSeedOffset);
 
         bAccept = view.findViewById(R.id.bAccept);
 
@@ -126,7 +136,25 @@ public class GenerateReviewFragment extends Fragment {
         view.findViewById(R.id.bCopyViewKey).setOnClickListener(v -> copyViewKey());
         bCopyAddress.setEnabled(false);
         bCopyAddress.setOnClickListener(v -> copyAddress());
-        view.findViewById(R.id.bAdvancedInfo).setOnClickListener(v -> showAdvancedInfo());
+        bAdvancedInfo.setOnClickListener(v -> toggleAdvancedInfo());
+
+        bSeedOffset.setOnClickListener(v -> toggleSeedOffset());
+        etSeedOffset.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                showSeed();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+            }
+        });
 
         Bundle args = getArguments();
         type = args.getString(REQUEST_TYPE);
@@ -136,18 +164,32 @@ public class GenerateReviewFragment extends Fragment {
         return view;
     }
 
+    String getSeedOffset() {
+        return etSeedOffset.getEditText().getText().toString();
+    }
+
+    boolean seedOffsetInProgress = false;
+
+    void showSeed() {
+        synchronized (this) {
+            if (seedOffsetInProgress) return;
+            seedOffsetInProgress = true;
+        }
+        new AsyncShowSeed().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR, walletPath);
+    }
+
     void showDetails() {
         tvWalletPassword.setText(null);
         new AsyncShow().executeOnExecutor(MoneroThreadPoolExecutor.MONERO_THREAD_POOL_EXECUTOR, walletPath);
     }
 
     void copyViewKey() {
-        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_viewkey), tvWalletViewKey.getText().toString());
+        Helper.clipBoardCopy(requireActivity(), getString(R.string.label_copy_viewkey), tvWalletViewKey.getText().toString());
         Toast.makeText(getActivity(), getString(R.string.message_copy_viewkey), Toast.LENGTH_SHORT).show();
     }
 
     void copyAddress() {
-        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_address), tvWalletAddress.getText().toString());
+        Helper.clipBoardCopy(requireActivity(), getString(R.string.label_copy_address), tvWalletAddress.getText().toString());
         Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
     }
 
@@ -155,15 +197,27 @@ public class GenerateReviewFragment extends Fragment {
         Toast.makeText(getActivity(), getString(R.string.message_nocopy), Toast.LENGTH_SHORT).show();
     }
 
-    void showAdvancedInfo() {
-        llAdvancedInfo.setVisibility(View.VISIBLE);
-        bAdvancedInfo.setVisibility(View.GONE);
-        scrollview.post(new Runnable() {
-            @Override
-            public void run() {
-                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
-            }
-        });
+    void toggleAdvancedInfo() {
+        if (llAdvancedInfo.getVisibility() == View.VISIBLE) {
+            llAdvancedInfo.setVisibility(View.GONE);
+            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+        } else {
+            llAdvancedInfo.setVisibility(View.VISIBLE);
+            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            scrollview.post(() -> scrollview.fullScroll(ScrollView.FOCUS_DOWN));
+        }
+    }
+
+    void toggleSeedOffset() {
+        if (etSeedOffset.getVisibility() == View.VISIBLE) {
+            etSeedOffset.getEditText().getText().clear();
+            etSeedOffset.setVisibility(View.GONE);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+        } else {
+            etSeedOffset.setVisibility(View.VISIBLE);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            etSeedOffset.requestFocusFromTouch();
+        }
     }
 
     String type;
@@ -215,14 +269,13 @@ public class GenerateReviewFragment extends Fragment {
             name = wallet.getName();
             walletStatus = wallet.getStatus();
             if (!walletStatus.isOk()) {
-                Timber.e(walletStatus.getErrorString());
                 if (closeWallet) wallet.close();
                 return false;
             }
 
             address = wallet.getAddress();
             height = wallet.getRestoreHeight();
-            seed = wallet.getSeed();
+            seed = wallet.getSeed(getSeedOffset());
             switch (wallet.getDeviceType()) {
                 case Device_Ledger:
                     viewKey = Ledger.Key();
@@ -367,7 +420,7 @@ public class GenerateReviewFragment extends Fragment {
     }
 
     public void hideProgress() {
-        pbProgress.setVisibility(View.GONE);
+        pbProgress.setVisibility(View.INVISIBLE);
     }
 
     boolean backOk() {
@@ -408,8 +461,6 @@ public class GenerateReviewFragment extends Fragment {
         if (walletStatus.isOk()) {
             wallet.setPassword(newPassword);
             ok = true;
-        } else {
-            Timber.e(walletStatus.getErrorString());
         }
         if (closeWallet) wallet.close();
         return ok;
@@ -469,7 +520,7 @@ public class GenerateReviewFragment extends Fragment {
         LayoutInflater li = LayoutInflater.from(getActivity());
         View promptsView = li.inflate(R.layout.prompt_changepw, null);
 
-        AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(getActivity());
+        AlertDialog.Builder alertDialogBuilder = new MaterialAlertDialogBuilder(requireActivity());
         alertDialogBuilder.setView(promptsView);
 
         final PasswordEntryView etPasswordA = promptsView.findViewById(R.id.etWalletPasswordA);
@@ -483,23 +534,20 @@ public class GenerateReviewFragment extends Fragment {
         if (FingerprintHelper.isDeviceSupported(getActivity())) {
             llFingerprintAuth.setVisibility(View.VISIBLE);
 
-            swFingerprintAllowed.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!swFingerprintAllowed.isChecked()) return;
+            swFingerprintAllowed.setOnClickListener(view -> {
+                if (!swFingerprintAllowed.isChecked()) return;
 
-                    AlertDialog.Builder builder = new MaterialAlertDialogBuilder(getActivity());
-                    builder.setMessage(Html.fromHtml(getString(R.string.generate_fingerprint_warn)))
-                            .setCancelable(false)
-                            .setPositiveButton(getString(R.string.label_ok), null)
-                            .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    swFingerprintAllowed.setChecked(false);
-                                }
-                            })
-                            .show();
-                }
+                AlertDialog.Builder builder = new MaterialAlertDialogBuilder(requireActivity());
+                builder.setMessage(Html.fromHtml(getString(R.string.generate_fingerprint_warn)))
+                        .setCancelable(false)
+                        .setPositiveButton(getString(R.string.label_ok), null)
+                        .setNegativeButton(getString(R.string.label_cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                swFingerprintAllowed.setChecked(false);
+                            }
+                        })
+                        .show();
             });
 
             swFingerprintAllowed.setChecked(FingerprintHelper.isFingerPassValid(getActivity(), walletName));
@@ -550,7 +598,7 @@ public class GenerateReviewFragment extends Fragment {
                 .setNegativeButton(getString(R.string.label_cancel),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Helper.hideKeyboardAlways(getActivity());
+                                Helper.hideKeyboardAlways(requireActivity());
                                 dialog.cancel();
                                 openDialog = null;
                             }
@@ -566,7 +614,7 @@ public class GenerateReviewFragment extends Fragment {
                     etPasswordB.setError(getString(R.string.generate_bad_passwordB));
                 } else {
                     new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
-                    Helper.hideKeyboardAlways(getActivity());
+                    Helper.hideKeyboardAlways(requireActivity());
                     openDialog.dismiss();
                     openDialog = null;
                 }
@@ -574,25 +622,23 @@ public class GenerateReviewFragment extends Fragment {
         });
 
         // accept keyboard "ok"
-        etPasswordB.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                        || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    String newPasswordA = etPasswordA.getEditText().getText().toString();
-                    String newPasswordB = etPasswordB.getEditText().getText().toString();
-                    // disallow empty passwords
-                    if (!newPasswordA.equals(newPasswordB)) {
-                        etPasswordB.setError(getString(R.string.generate_bad_passwordB));
-                    } else {
-                        new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
-                        Helper.hideKeyboardAlways(getActivity());
-                        openDialog.dismiss();
-                        openDialog = null;
-                    }
-                    return true;
+        etPasswordB.getEditText().setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                    || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                String newPasswordA = etPasswordA.getEditText().getText().toString();
+                String newPasswordB = etPasswordB.getEditText().getText().toString();
+                // disallow empty passwords
+                if (!newPasswordA.equals(newPasswordB)) {
+                    etPasswordB.setError(getString(R.string.generate_bad_passwordB));
+                } else {
+                    new AsyncChangePassword().execute(newPasswordA, Boolean.toString(swFingerprintAllowed.isChecked()));
+                    Helper.hideKeyboardAlways(requireActivity());
+                    openDialog.dismiss();
+                    openDialog = null;
                 }
-                return false;
+                return true;
             }
+            return false;
         });
 
         if (Helper.preventScreenshot()) {
@@ -607,5 +653,62 @@ public class GenerateReviewFragment extends Fragment {
                 && !key.equals("0000000000000000000000000000000000000000000000000000000000000000")
                 && !key.toLowerCase().equals("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         // ledger implmenetation returns the spend key as f's
+    }
+
+    private class AsyncShowSeed extends AsyncTask<String, Void, Boolean> {
+        String seed;
+        String offset;
+        Wallet.Status walletStatus;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            offset = getSeedOffset();
+            flWalletMnemonic.setAlpha(0.1f);
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params.length != 1) return false;
+            String walletPath = params[0];
+
+            Wallet wallet;
+            boolean closeWallet;
+            if (type.equals(GenerateReviewFragment.VIEW_TYPE_WALLET)) {
+                wallet = GenerateReviewFragment.this.walletCallback.getWallet();
+                closeWallet = false;
+            } else {
+                wallet = WalletManager.getInstance().openWallet(walletPath, getPassword());
+                closeWallet = true;
+            }
+            walletStatus = wallet.getStatus();
+            if (!walletStatus.isOk()) {
+                if (closeWallet) wallet.close();
+                return false;
+            }
+
+            seed = wallet.getSeed(offset);
+            if (closeWallet) wallet.close();
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if (!isAdded()) return; // never mind
+            if (result) {
+                if (!seed.isEmpty()) {
+                    llMnemonic.setVisibility(View.VISIBLE);
+                    tvWalletMnemonic.setText(seed);
+                }
+            } else {
+                tvWalletMnemonic.setText(walletStatus.toString());
+            }
+            seedOffsetInProgress = false;
+            if (!getSeedOffset().equals(offset)) { // make sure we have encrypted with the correct offset
+                showSeed(); // seed has changed in the meantime - recalc
+            } else
+                flWalletMnemonic.setAlpha(1);
+        }
     }
 }

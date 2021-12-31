@@ -129,7 +129,7 @@ public class Wallet {
         ConnectionStatus_WrongVersion
     }
 
-    public native String getSeed();
+    public native String getSeed(String offset);
 
     public native String getSeedLanguage();
 
