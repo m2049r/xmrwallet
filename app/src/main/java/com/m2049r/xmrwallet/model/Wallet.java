@@ -147,7 +147,7 @@ public class Wallet {
 
     private native Status statusWithErrorString();
 
-    public native boolean setPassword(String password);
+    public native synchronized boolean setPassword(String password);
 
     public String getAddress() {
         return getAddress(accountIndex);
@@ -203,12 +203,10 @@ public class Wallet {
     public native String getSecretSpendKey();
 
     public boolean store() {
-        final boolean ok = store("");
-        Timber.d("stored");
-        return ok;
+        return store("");
     }
 
-    public native boolean store(String path);
+    public native synchronized boolean store(String path);
 
     public boolean close() {
         disposePendingTransaction();

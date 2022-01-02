@@ -407,7 +407,6 @@ public class GenerateReviewFragment extends Fragment {
         Wallet.Status walletStatus = wallet.getStatus();
         if (walletStatus.isOk()) {
             wallet.setPassword(newPassword);
-            wallet.store();
             ok = true;
         } else {
             Timber.e(walletStatus.getErrorString());
