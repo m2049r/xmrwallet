@@ -23,7 +23,7 @@
     <string name="label_ok">Ок</string>
     <string name="label_cancel">Отмена</string>
     <string name="label_close">Закрыть</string>
-    <string name="label_wallet_advanced_details">Нажмите для доп. информации</string>
+    <string name="label_wallet_advanced_details">Дополнительная информация</string>
 
     <string name="label_send_success">Успешно отправлено</string>
     <string name="label_send_done">Готово</string>
@@ -437,4 +437,7 @@
     <string name="node_waiting">\u00A0ОЖИДАНИЕ УЗЛА\u00A0</string>
     <string name="tor_enable_background">Необходимо выбрать "Allow Background Starts" в настройках Orbot для использования Tor!</string>
     <string name="tor_noshift">SideShift.ai не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
 </resources>

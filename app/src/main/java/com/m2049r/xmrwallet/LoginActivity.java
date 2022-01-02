@@ -929,7 +929,8 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void onGenerate(final String name, final String password, final String seed,
+    public void onGenerate(final String name, final String password,
+                           final String seed, final String offset,
                            final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
@@ -941,7 +942,7 @@ public class LoginActivity extends BaseActivity
                     @Override
                     public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .recoveryWallet(aFile, password, seed, restoreHeight);
+                                .recoveryWallet(aFile, password, seed, offset, restoreHeight);
                         return checkAndCloseWallet(newWallet);
                     }
                 });

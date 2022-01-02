@@ -18,12 +18,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:visibility="gone" />
+            android:visibility="invisible" />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_top">
+            android:layout_height="wrap_content">
 
             <TextView
                 style="@style/MoneroLabel.Heading"
@@ -57,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/header_top"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 style="@style/MoneroLabel.Heading"
@@ -66,15 +65,49 @@
                 android:layout_gravity="center"
                 android:text="@string/generate_mnemonic_label" />
 
-            <TextView
-                android:id="@+id/tvWalletMnemonic"
-                style="@style/MoneroText.Monospace.Mnemonic"
+            <FrameLayout
+                android:id="@+id/flWalletMnemonic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/data_top"
-                android:background="@drawable/backgound_seed"
-                android:textAlignment="center"
-                tools:text="tucks slackens vehicle doctor oaks aloof balding knife rays wise haggled cuisine navy ladder suitcase dusted last thorn pixels karate ticket nibs violin zapped slackens" />
+                android:layout_marginTop="@dimen/data_top">
+
+                <TextView
+                    android:id="@+id/tvWalletMnemonic"
+                    style="@style/MoneroText.Monospace.Mnemonic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/backgound_seed"
+                    android:textAlignment="center"
+                    tools:text="tucks slackens vehicle doctor oaks aloof balding knife rays wise haggled cuisine navy ladder suitcase dusted last thorn pixels karate ticket nibs violin zapped slackens" />
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bSeedOffset"
+                style="@style/MoneroIconButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground"
+                android:text="@string/label_seed_offset_encrypt"
+                app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etSeedOffset"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/header_top_first"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MoneroEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/seed_offset_hint"
+                    android:inputType="textVisiblePassword"
+                    android:maxLines="1"
+                    android:textAlignment="textStart" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -148,7 +181,7 @@
             android:drawablePadding="4dp"
             android:text="@string/label_wallet_advanced_details"
             android:visibility="gone"
-            app:icon="@drawable/ic_add_circle_outline" />
+            app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
         <LinearLayout
             android:id="@+id/llAdvancedInfo"
@@ -163,7 +196,6 @@
                 android:id="@+id/llViewKey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/header_top"
                 android:orientation="vertical"
                 android:visibility="gone">
 
