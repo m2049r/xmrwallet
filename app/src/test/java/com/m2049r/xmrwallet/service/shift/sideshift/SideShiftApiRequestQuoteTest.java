@@ -22,6 +22,7 @@ import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import net.jodah.concurrentunit.Waiter;
@@ -47,7 +48,6 @@ public class SideShiftApiRequestQuoteTest {
 
     private SideShiftApi xmrToApi;
 
-    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
@@ -61,8 +61,8 @@ public class SideShiftApiRequestQuoteTest {
         waiter = new Waiter();
 
         MockitoAnnotations.initMocks(this);
-
-        xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
+        NetCipherHelper.Request.mockClient = new OkHttpClient();
+        xmrToApi = new SideShiftApiImpl(mockWebServer.url("/"));
         ServiceHelper.ASSET="btc"; // all tests run with BTC
     }
 

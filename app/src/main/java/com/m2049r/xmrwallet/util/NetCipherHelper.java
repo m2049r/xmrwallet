@@ -323,6 +323,7 @@ public class NetCipherHelper implements StatusCallback {
         }
 
         private OkHttpClient getClient() {
+            if (mockClient != null) return mockClient; // Unit-test mode
             final OkHttpClient client = getInstance().client;
             if ((username != null) && (!username.isEmpty())) {
                 final DigestAuthenticator authenticator = new DigestAuthenticator(new Credentials(username, password));
@@ -349,6 +350,9 @@ public class NetCipherHelper implements StatusCallback {
             }
             return builder.build();
         }
+
+        // for unit tests only
+        static public OkHttpClient mockClient = null;
     }
 
     private static final String PREFS_NAME = "tor";

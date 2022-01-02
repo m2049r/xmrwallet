@@ -16,11 +16,14 @@
 
 package com.m2049r.xmrwallet.service.shift.sideshift;
 
+import static org.junit.Assert.assertEquals;
+
+import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import net.jodah.concurrentunit.Waiter;
 
@@ -37,14 +40,11 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 
-import static org.junit.Assert.assertEquals;
-
 public class SideShiftApiQueryOrderStatusTest {
     private MockWebServer mockWebServer;
 
     private SideShiftApi xmrToApi;
 
-    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
@@ -58,8 +58,8 @@ public class SideShiftApiQueryOrderStatusTest {
         waiter = new Waiter();
 
         MockitoAnnotations.initMocks(this);
-
-        xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
+        NetCipherHelper.Request.mockClient = new OkHttpClient();
+        xmrToApi = new SideShiftApiImpl(mockWebServer.url("/"));
     }
 
     @After
