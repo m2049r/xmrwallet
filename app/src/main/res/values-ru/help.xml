@@ -298,24 +298,22 @@
 
     <string name="help_ok">Я понял!</string> <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_nok">Не…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Скачать Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor, сокр. от The Onion Router, бесплатное и программное обеспечение с открытым исходным кодом для обеспечения анонимного общения.</p>
+        <p>Включение Tor перенаправит подключение к нескольким узлам и скроет IP-адрес от узла. 
+        Имейте в виду, что это более приватно, но и <b>медленнее</b>.</p>
+        <p>Для того, чтобы использовать Tor с Monerujo, вам понадобится Orbot на вашем телефоне. После установки Orbot убедитесь, 
+        что вы включили его, нажав значок сети на экране списка кошельков.</p>
+        <p>Если у вас есть проблемы с подключением к Tor, попробуйте получить новую идентичность в приложении Orbot (значок 
+        в правом верхнем углу).</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Tor узел</h1>
+        <p>Это .onion узел. Для того, чтобы использовать его, вы должны включить Tor, нажав
+        <img src="ic_network_clearnet"/> значок в верхней части страницы списка кошельков.</p>
     ]]></string>
 </resources>
