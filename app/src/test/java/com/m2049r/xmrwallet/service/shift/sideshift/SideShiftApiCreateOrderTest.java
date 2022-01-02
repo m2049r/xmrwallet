@@ -16,11 +16,14 @@
 
 package com.m2049r.xmrwallet.service.shift.sideshift;
 
+import static org.junit.Assert.assertEquals;
+
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import net.jodah.concurrentunit.Waiter;
@@ -38,15 +41,12 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 
-import static org.junit.Assert.assertEquals;
-
 public class SideShiftApiCreateOrderTest {
 
     private MockWebServer mockWebServer;
 
     private SideShiftApi xmrToApi;
 
-    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
@@ -60,9 +60,9 @@ public class SideShiftApiCreateOrderTest {
         waiter = new Waiter();
 
         MockitoAnnotations.initMocks(this);
-
-        xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
-        ServiceHelper.ASSET="btc"; // all tests run with BTC
+        NetCipherHelper.Request.mockClient = new OkHttpClient();
+        xmrToApi = new SideShiftApiImpl(mockWebServer.url("/"));
+        ServiceHelper.ASSET = "btc"; // all tests run with BTC
     }
 
     @After

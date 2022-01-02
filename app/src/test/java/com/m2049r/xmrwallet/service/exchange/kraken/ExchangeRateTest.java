@@ -20,6 +20,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import net.jodah.concurrentunit.Waiter;
 
@@ -46,7 +47,6 @@ public class ExchangeRateTest {
 
     private ExchangeApi exchangeApi;
 
-    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
@@ -60,8 +60,8 @@ public class ExchangeRateTest {
         waiter = new Waiter();
 
         MockitoAnnotations.initMocks(this);
-
-        exchangeApi = new ExchangeApiImpl(okHttpClient, mockWebServer.url("/"));
+        NetCipherHelper.Request.mockClient = new OkHttpClient();
+        exchangeApi = new ExchangeApiImpl(mockWebServer.url("/"));
     }
 
     @After
