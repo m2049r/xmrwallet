@@ -67,6 +67,8 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
         void setToolbarButton(int type);
 
         void showSubaddress(View view, final int subaddressIndex);
+
+        void saveWallet();
     }
 
     public interface ProgressListener {
@@ -217,7 +219,9 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
         protected Boolean doInBackground(Void... params) {
             if (params.length != 0) return false;
             wallet.getNewSubaddress();
-            wallet.store();
+            if (activityCallback != null) {
+                activityCallback.saveWallet();
+            }
             return true;
         }
 
