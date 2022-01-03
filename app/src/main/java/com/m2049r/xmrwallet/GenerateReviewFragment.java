@@ -234,7 +234,6 @@ public class GenerateReviewFragment extends Fragment {
         String seed;
         String viewKey;
         String spendKey;
-        boolean isWatchOnly;
         Wallet.Status walletStatus;
 
         boolean dialogOpened = false;
@@ -286,8 +285,7 @@ public class GenerateReviewFragment extends Fragment {
                 default:
                     throw new IllegalStateException("Hardware backing not supported. At all!");
             }
-            spendKey = isWatchOnly ? getActivity().getString(R.string.label_watchonly) : wallet.getSecretSpendKey();
-            isWatchOnly = wallet.isWatchOnly();
+            spendKey = wallet.isWatchOnly() ? getActivity().getString(R.string.label_watchonly) : wallet.getSecretSpendKey();
             if (closeWallet) wallet.close();
             return true;
         }
