@@ -438,6 +438,6 @@
     <string name="tor_enable_background">Необходимо выбрать "Allow Background Starts" в настройках Orbot для использования Tor!</string>
     <string name="tor_noshift">SideShift.ai не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
 
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+    <string name="label_seed_offset_encrypt">Шифрование мнемонической фразы (ЭКСПЕРИМЕНТАЛЬНО)</string>
+    <string name="seed_offset_hint">Сдвиг мнемонической фразы (не обязательно)</string>
 </resources>
