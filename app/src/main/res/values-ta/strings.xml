@@ -3,37 +3,37 @@
     <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Wallet</string>
 
-    <string name="menu_about">About</string>
-    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_about">எங்களைப் பற்றி</string>
+    <string name="menu_privacy">தனியுரிமைக் கொள்கை</string>
 
-    <string name="menu_share">Share</string>
-    <string name="menu_help">Help</string>
-    <string name="menu_receive">Receive</string>
-    <string name="menu_rename">Rename</string>
-    <string name="menu_delete">Delete</string>
-    <string name="menu_backup">Backup</string>
-    <string name="menu_changepw">Change Passphrase</string>
+    <string name="menu_share">பகிர்</string>
+    <string name="menu_help">உதவி</string>
+    <string name="menu_receive">பெறு</string>
+    <string name="menu_rename">மறுபெயரிடு</string>
+    <string name="menu_delete">அழி</string>
+    <string name="menu_backup">காப்புநகலெடு</string>
+    <string name="menu_changepw">கடவுச்சொற்றொடரை மாற்று</string>
 
-    <string name="password_weak">Continue typing &#8230;</string>
-    <string name="password_fair">Meh &#8230;</string>
-    <string name="password_good">C\'mon, you can do better!</string>
-    <string name="password_strong">Getting there &#8230;</string>
-    <string name="password_very_strong">Yeah baby, h4x0r style!</string>
+    <string name="password_weak">தொடர்ந்து &#8230; ஐ தட்டச்சு செய்யவும்</string>
+    <string name="password_fair">&#8230;, இதை அடிப்பதற்கா இவ்வளவு நேரம்</string>
+    <string name="password_good">இதைவிட சிறப்பாக உங்களால் செய்ய இயலும்!</string>
+    <string name="password_strong">&#8230; ஐ அடித்து நெருங்கி வந்துவிட்டீர்கள்</string>
+    <string name="password_very_strong">அருமை அருமை! இதல்லவா கடவுச்சொல்!</string>
 
-    <string name="label_login_wallets">Wallets</string>
+    <string name="label_login_wallets">பணப்பைகள்</string>
     <string name="label_credits">Credits</string>
-    <string name="label_ok">OK</string>
-    <string name="label_cancel">Cancel</string>
-    <string name="label_close">Close</string>
-    <string name="label_wallet_advanced_details">Detailed information</string>
+    <string name="label_ok">சரி</string>
+    <string name="label_cancel">நீங்கு</string>
+    <string name="label_close">மூடு</string>
+    <string name="label_wallet_advanced_details">விரிவான தகவல்</string>
 
-    <string name="label_send_success">Successfully sent</string>
-    <string name="label_send_done">Done</string>
+    <string name="label_send_success">வெற்றிகரமாக அனுப்பப்பட்டது</string>
+    <string name="label_send_done">முடிந்தது</string>
 
-    <string name="label_receive_info_gen_qr_code">Touch for QR Code</string>
+    <string name="label_receive_info_gen_qr_code">QR குறியீட்டிற்கு தொடவும்</string>
 
-    <string name="info_xmrto_enabled">Non-XMR payments enabled, tap for more info.</string>
-    <string name="info_ledger_enabled">Ledger enabled, tap for more info.</string>
+    <string name="info_xmrto_enabled">XMR-அல்லாத பணம் செலுத்தல் செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
+    <string name="info_ledger_enabled">பேரேடு செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
 
     <string name="info_xmrto"><![CDATA[
         <b>You entered a %1$s address.</b><br/>
