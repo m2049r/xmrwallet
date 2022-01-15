@@ -40,25 +40,25 @@
         <i>You&apos;ll send XMR and the receiver will get %1$s using the <b>SideShift.ai</b> service.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">SideShift.ai Order</string>
+    <string name="info_send_xmrto_success_order_label">SideShift.ai அமைவி</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
-    <string name="info_send_xmrto_paid">Confirmation Pending</string>
-    <string name="info_send_xmrto_unpaid">Payment Pending</string>
-    <string name="info_send_xmrto_error">SideShift.ai Error (%1$s)</string>
-    <string name="info_send_xmrto_sent">%1$s Sent!</string>
-    <string name="info_send_xmrto_query">Querying &#8230;</string>
+    <string name="info_send_xmrto_paid">உறுதிப்படுத்தல் நிலுவையில் உள்ளது</string>
+    <string name="info_send_xmrto_unpaid">பணம் செலுத்தல் நிலுவையில் உள்ளது</string>
+    <string name="info_send_xmrto_error">SideShift.ai பிழை (%1$s)</string>
+    <string name="info_send_xmrto_sent">%1$s அனுப்பப்பட்டது!</string>
+    <string name="info_send_xmrto_query">&#8230; ஐ வினவுகிறது</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>You can send %1$s &#8212; %2$s %4$s</b>.<br/>
         <i><b>SideShift.ai</b> is giving you an exchange rate of <b>%3$s %4$s/XMR</b> <u>right now</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Balance: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">இருப்பு: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrated</string>
-    <string name="info_prepare_tx">Preparing your transaction</string>
+    <string name="info_prepare_tx">உங்கள் பரிமாற்றத்தை தயார் செய்கிறது</string>
 
     <string name="label_send_progress_xmrto_create">Creating SideShift.ai Order</string>
     <string name="label_send_progress_xmrto_query">Querying SideShift.ai Order</string>
@@ -66,25 +66,25 @@
 
     <string name="label_send_progress_queryparms">Querying SideShift.ai parameters</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai ERROR</string>
-    <string name="text_generic_xmrto_error">Code: %1$d</string>
+    <string name="label_generic_xmrto_error">SideShift.ai பிழை</string>
+    <string name="text_generic_xmrto_error">குறியீடு: %1$d</string>
 
     <string name="text_retry">Touch to retry</string>
-    <string name="text_noretry_monero">Now we\'re stuck here!</string>
-    <string name="text_noretry">Uh-oh, SideShift.ai does not seem be available right now!</string>
+    <string name="text_noretry_monero">இப்போது நாம் இங்கு மாட்டிக்கொண்டோம்!</string>
+    <string name="text_noretry">அச்சச்சோ, SideShift.ai does not seem be available right now!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
-    <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
+    <string name="text_send_btc_rate">(விலை: %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">Visit SideShift.ai for support &amp; tracking</string>
-    <string name="label_send_btc_xmrto_key_lb">Secret Key\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai Secret Key</string>
-    <string name="label_send_btc_address">Destination %1$s Address</string>
-    <string name="label_send_btc_amount">Amount</string>
+    <string name="label_send_btc_xmrto_key_lb">இரகசிய திறவுகோல்\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai இரகசிய திறவுகோல்</string>
+    <string name="label_send_btc_address">சேருமிட %1$s முகவரி</string>
+    <string name="label_send_btc_amount">தொகை</string>
 
-    <string name="label_send_txid">Transaction ID</string>
-    <string name="label_send_address">Destination Address</string>
-    <string name="label_send_notes">Notes</string>
+    <string name="label_send_txid">பரிமாற்ற ID</string>
+    <string name="label_send_address">சேருமிட முகவரி</string>
+    <string name="label_send_notes">குறிப்புகள்</string>
 
     <string name="backup_progress">Backup in progress</string><!--TODO deleteme-->
     <string name="archive_progress">Archive in progress</string><!--TODO deleteme-->
@@ -93,79 +93,79 @@
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
 
-    <string name="backup_success">Backup successful</string>
-    <string name="backup_failed">Backup failed!</string>
-    <string name="delete_failed">Delete failed!</string>
-    <string name="rename_failed">Rename failed!</string>
-    <string name="changepw_failed">Change Password failed!</string>
-    <string name="changepw_success">Password changed</string>
+    <string name="backup_success">காப்புநகலெடுப்பு வெற்றியடைந்தது</string>
+    <string name="backup_failed">காப்புநகலெடுப்பு தோல்வியடைந்தது!</string>
+    <string name="delete_failed">அழித்தல் தோல்வியடைந்தது!</string>
+    <string name="rename_failed">மறுபெயரிடல் தோல்வியடைந்தது!</string>
+    <string name="changepw_failed">கடவுச்சொல் மாற்றம் தோல்வியடைந்தது!</string>
+    <string name="changepw_success">கடவுச்சொல் மாற்றப்பட்டது</string>
 
-    <string name="label_daemon">Network</string>
+    <string name="label_daemon">வலையமைப்பு</string>
     <string name="connect_stagenet" translatable="false">Stagenet</string>
     <string name="connect_testnet" translatable="false">Testnet</string>
-    <string name="status_wallet_loading">Loading Wallet &#8230;</string>
-    <string name="status_wallet_unloaded">Wallet saved</string>
-    <string name="status_wallet_unload_failed">Wallet save failed!</string>
-    <string name="status_wallet_connecting">Connecting &#8230;</string>
-    <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
-    <string name="status_wallet_connect_wrongversion">Node version incompatible - please upgrade!</string>
-    <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
-    <string name="status_wallet_connect_ioex">Cannot reach node!\nTry again or another.</string>
+    <string name="status_wallet_loading">&#8230; பணப்பை ஏறுகிறது</string>
+    <string name="status_wallet_unloaded">பணப்பை சேமிக்கப்பட்டது</string>
+    <string name="status_wallet_unload_failed">பணப்பை சேமித்தல் தோல்வியடைந்தது!</string>
+    <string name="status_wallet_connecting">&#8230; ஐ இணைக்கிறது</string>
+    <string name="status_wallet_connect_failed">கணு இணைப்பு தோல்வியடைந்தது!\nபயனர்பெயர்/கடவுச்சொல்லை சரிபார்க்கவும்</string>
+    <string name="status_wallet_connect_wrongversion">கணு பதிப்பு ஒத்துபோகவில்லை - தயவுசெய்து இற்றைப்படுத்தவும்!</string>
+    <string name="status_wallet_node_invalid">செல்லாத கணு!\nமற்றொன்றை முயற்சிக்கவும்.</string>
+    <string name="status_wallet_connect_ioex">கணுவை அணுக முடியவில்லை!\nமீண்டும் அல்லது மற்றொன்றை முயலவும்.</string>
 
-    <string name="status_wallet_disconnected">Disconnected</string>
+    <string name="status_wallet_disconnected">துண்டிக்கப்பட்டது</string>
 
-    <string name="status_transaction_failed">Transaction failed: %1$s</string>
+    <string name="status_transaction_failed">பரிமாற்றம் தோல்வியடைந்தது: %1$s</string>
 
-    <string name="send_xmrto_timeout">You waited too long my friend!</string>
+    <string name="send_xmrto_timeout">நீங்கள் நீண்ட நேரமாக காத்திருக்கிறீர்கள், தோழரே!</string>
 
-    <string name="service_busy">I am still busy with your last wallet &#8230;</string>
+    <string name="service_busy">நான் இன்னும் உங்கள் கடைசி &#8230; பணப்பையோடு அலுவலாக இருக்கிறேன்</string>
 
-    <string name="prompt_rename">Rename %1$s</string>
+    <string name="prompt_rename">%1$s ஐ மறுபெயரிடவும்</string>
 
-    <string name="prompt_changepw">New Passphrase for %1$s</string>
-    <string name="prompt_changepwB">Repeat Passphrase for %1$s</string>
-    <string name="prompt_password">Password for %1$s</string>
-    <string name="prompt_fingerprint_auth">You can also open wallet using fingerprint.\nPlease touch sensor.</string>
-    <string name="prompt_open_wallet">Opening the wallet&#8230;</string>
-    <string name="bad_fingerprint">Fingerprint not recognized. Try again.</string>
-    <string name="bad_password">Incorrect password!</string>
-    <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
-    <string name="bad_wallet">Wallet does not exist!</string>
-    <string name="prompt_daemon_missing">Node must be set!</string>
+    <string name="prompt_changepw">%1$s ற்கான புதிய கடவுத்தொடர்</string>
+    <string name="prompt_changepwB">%1$s ற்கான கடவுத்தொடரை மீண்டும் இடவும்</string>
+    <string name="prompt_password">%1$s ற்கான கடவுத்தொடர்</string>
+    <string name="prompt_fingerprint_auth">நீங்கள் விரல்பதிவை பயன்படுத்தியும் பணப்பையை திறக்கலாம்.\nஉணரியை தொடவும்.</string>
+    <string name="prompt_open_wallet">&#8230; பணப்பை திறக்கப்படுகிறது</string>
+    <string name="bad_fingerprint">விரல்பதிவு அடையாளம் கண்டுகொள்ளப்படவில்லை. மீண்டும் முயலவும்.</string>
+    <string name="bad_password">தவறான கடவுச்சொல்!</string>
+    <string name="bad_saved_password">சேமிக்கப்பட்ட கடவுச்சொல் தவறாய் இருக்கிறது.\nதயவுசெய்து கடவுச்சொல்லை கைமுறையாக இடவும்.</string>
+    <string name="bad_wallet">பணப்பை எதுவும் இல்லை!</string>
+    <string name="prompt_daemon_missing">கணு அமைக்கப்பட வேண்டும்!</string>
     <string name="prompt_wrong_net">Wallet does not match selected net</string><!--TODO deleteme-->
 
-    <string name="label_watchonly">(Watch Only)</string>
+    <string name="label_watchonly">(காண மட்டும்)</string>
 
-    <string name="label_wallet_receive">Receive</string>
-    <string name="label_wallet_send">Give</string>
+    <string name="label_wallet_receive">பெறு</string>
+    <string name="label_wallet_send">அனுப்பு</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR உறுதிப்படுத்தப்படவில்லை</string>
 
-    <string name="service_description">monerujo Service</string>
+    <string name="service_description">monerujo சேவை</string>
 
-    <string name="status_synced">Synced:</string>
-    <string name="status_remaining">Blocks remaining</string>
-    <string name="status_syncing">Scanning:</string>
+    <string name="status_synced">ஒத்திசைக்கப்பட்டது:</string>
+    <string name="status_remaining">மீதமுள்ள தொகுதிகள்</string>
+    <string name="status_syncing">வருடுகிறது:</string>
 
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
     <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
     <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
 
-    <string name="label_copy_viewkey">View Key</string>
-    <string name="label_copy_address">Public Address</string>
-    <string name="label_copy_xmrtokey">Key</string>
-    <string name="message_copy_viewkey">View Key copied to clipboard!</string>
-    <string name="message_copy_xmrtokey">Key copied to clipboard!</string>
-    <string name="message_copy_address">Wallet Address copied to clipboard!</string>
-    <string name="message_copy_txid">Transaction ID copied to clipboard!</string>
-    <string name="message_nocopy">Copy disabled for security reasons!</string>
+    <string name="label_copy_viewkey">பார்வை திறவுகோல்</string>
+    <string name="label_copy_address">பொது முகவரி</string>
+    <string name="label_copy_xmrtokey">திறவுகோல்</string>
+    <string name="message_copy_viewkey">பார்வை திறவுகோல் கிளிப்போர்டில் நகலெடுக்கப்பட்டது!</string>
+    <string name="message_copy_xmrtokey">திறவுகோல் கிளிப்போர்டில் நகலெடுக்கப்பட்டது!</string>
+    <string name="message_copy_address">பணப்பை முகவரி கிளிப்போர்டில் நகலெடுக்கப்பட்டது!</string>
+    <string name="message_copy_txid">பரிமாற்ற ID கிளிப்போர்டில் நகலெடுக்கப்பட்டது!</string>
+    <string name="message_nocopy">பாதுகாப்பு காரணங்களுக்காக நகலெடுத்தல் முடக்கப்பட்டுள்ளது!</string>
 
-    <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
+    <string name="message_exchange_failed">மாற்று மதிப்பை பெற முடியவில்லை!\nXMR/XMR ஐ பயன்படுத்தவும் அல்லது மீண்டும் முயலவும்</string>
 
-    <string name="generate_title">Create Wallet</string>
-    <string name="generate_name_hint">Wallet Name</string>
-    <string name="generate_password_hint">Wallet Passphrase</string>
-    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_title">பணப்பையை உருவாக்கு</string>
+    <string name="generate_name_hint">பணப்பை பெயர்</string>
+    <string name="generate_password_hint">பணப்பை கடவுத்தொடர்</string>
+    <string name="generate_fingerprint_hint">விரல்பதிவு மூலம் பணப்பையை திறப்பதை அனுமதிக்கவும்</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Fingerprint Authentication</strong>
         <p>With fingerprint authentication enabled, you can view wallet balance and receive funds
@@ -191,15 +191,15 @@
 
     <string name="generate_restoreheight_error">Enter Number or Date (YYYY-MM-DD)</string>
 
-    <string name="generate_wallet_type_key">Keys</string>
-    <string name="generate_wallet_type_new">New</string>
-    <string name="generate_wallet_type_seed">Seed</string>
-    <string name="generate_wallet_type_view">View</string>
+    <string name="generate_wallet_type_key">திறவுகோல்</string>
+    <string name="generate_wallet_type_new">புதிய</string>
+    <string name="generate_wallet_type_seed">விதை</string>
+    <string name="generate_wallet_type_view">பார்வை</string>
     <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
 
-    <string name="generate_address_hint">Public Address</string>
-    <string name="generate_viewkey_hint">View Key</string>
-    <string name="generate_spendkey_hint">Spend Key</string>
+    <string name="generate_address_hint">பொது முகவரி</string>
+    <string name="generate_viewkey_hint">பார்வை திறவுகோல்</string>
+    <string name="generate_spendkey_hint">செலவழி திறவுகோல்</string>
     <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
     <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
 
