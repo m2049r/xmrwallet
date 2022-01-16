@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="app_name" translatable="false">monerujo</string>
-    <string name="wallet_activity_name">Wallet</string>
+    <string name="wallet_activity_name">பணப்பை</string>
 
     <string name="menu_about">எங்களைப் பற்றி</string>
     <string name="menu_privacy">தனியுரிமைக் கொள்கை</string>
@@ -51,8 +51,8 @@
     <string name="info_send_xmrto_query">&#8230; ஐ வினவுகிறது</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
-        <b>You can send %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> is giving you an exchange rate of <b>%3$s %4$s/XMR</b> <u>right now</u></i>.
+        <b>நீங்கள் %1$s &#8212; %2$s %4$s ஐ அனுப்பலாம்</b>.<br/>
+        <i><b>SideShift.ai</b> ஆனது <b>%3$s %4$s/XMR</b> என்னும் <u>இப்போதைய</u> மாற்று மதிப்பை உங்களுக்கு அளிக்கிறது</i>.
     ]]></string>
 
     <string name="send_available_btc">இருப்பு: %2$s %3$s (%1$s XMR)</string>
@@ -69,7 +69,7 @@
     <string name="label_generic_xmrto_error">SideShift.ai பிழை</string>
     <string name="text_generic_xmrto_error">குறியீடு: %1$d</string>
 
-    <string name="text_retry">Touch to retry</string>
+    <string name="text_retry">மீண்டும் முயல தொடவும்</string>
     <string name="text_noretry_monero">இப்போது நாம் இங்கு மாட்டிக்கொண்டோம்!</string>
     <string name="text_noretry">அச்சச்சோ, SideShift.ai இப்போது கிடைப்பதற்கு வாய்ப்பு இருப்பதாக தெரியவில்லையே!</string>
 
@@ -201,56 +201,56 @@
     <string name="generate_address_hint">பொது முகவரி</string>
     <string name="generate_viewkey_hint">பார்வை திறவுகோல்</string>
     <string name="generate_spendkey_hint">செலவழி திறவுகோல்</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
-    <string name="generate_restoreheight_hint">Restore Height or Date (YYYY-MM-DD)</string>
+    <string name="generate_mnemonic_hint">25-வார்த்தையுள்ள நினைவி விதை</string>
+    <string name="generate_restoreheight_hint">மீட்டமை உயரம் அல்லது தேதி (வவவவ-மம-நாநா)</string>
 
-    <string name="generate_address_label">Public Address</string>
-    <string name="generate_viewkey_label">View Key</string>
-    <string name="generate_spendkey_label">Spend Key</string>
-    <string name="generate_mnemonic_label">Mnemonic Seed</string>
-    <string name="generate_crazypass_label">Wallet Files Restore Password</string>
+    <string name="generate_address_label">பொது முகவரி</string>
+    <string name="generate_viewkey_label">பார்வை திறவுகோல்</string>
+    <string name="generate_spendkey_label">செலவழி திறவுகோல்</string>
+    <string name="generate_mnemonic_label">நினைவி விதை</string>
+    <string name="generate_crazypass_label">பணப்பை கோப்புகள் மீட்டமை கடவுச்சொல்</string>
 
-    <string name="generate_check_key">Enter valid Key</string>
-    <string name="generate_check_address">Enter valid Address</string>
-    <string name="generate_check_mnemonic">Enter your 25 word seed</string>
+    <string name="generate_check_key">செல்லத்தக்க திறவுகோலை உள்ளிடவும்</string>
+    <string name="generate_check_address">செல்லத்தக்க முகவரியை உள்ளிடவும்</string>
+    <string name="generate_check_mnemonic">உங்கள் 25 வார்த்தை விதையை உள்ளிடவும்</string>
 
-    <string name="send_notes_hint">Private Notes (optional)</string>
-    <string name="send_generate_paymentid_hint">Generate</string>
+    <string name="send_notes_hint">தனிபட்ட குறிப்புகள் (விரும்பினால்)</string>
+    <string name="send_generate_paymentid_hint">உற்பத்தி செய்</string>
     <string name="send_qr_hint" translatable="false">Scan</string>
-    <string name="send_send_label">Spend my sweet Moneroj</string>
-    <string name="send_send_timed_label">Spend my sweet Moneroj (%1$s)</string>
-    <string name="send_qr_invalid">Not a QR Code</string>
-    <string name="send_qr_address_invalid">Not a valid payment QR code</string>
-    <string name="send_address_invalid">Not a valid address</string>
-    <string name="send_address_not_openalias">OpenAlias address not available</string>
-    <string name="send_address_openalias">OpenAlias secure &#x2714;</string>
-    <string name="send_address_resolve_openalias">Resolving OpenAlias&#8230;</string>
+    <string name="send_send_label">என் அருமை Moneroj வை செலவழிக்கவும்</string>
+    <string name="send_send_timed_label">என் அருமை Moneroj (%1$s) வை செலவழிக்கவும்</string>
+    <string name="send_qr_invalid">இது ஒரு QR குறியீடு இல்லை</string>
+    <string name="send_qr_address_invalid">இது ஒரு செல்லத்தக்க செலுத்தல் QR குறியீடு இல்லை</string>
+    <string name="send_address_invalid">இது ஒரு செல்லத்தக்க முகவரி இல்லை</string>
+    <string name="send_address_not_openalias">ஒப்பன் அளியாஸ் முகவரி கிடைக்கவில்லை</string>
+    <string name="send_address_openalias">ஒப்பன் அளியாஸ் பாதுகாப்பு &#x2714;</string>
+    <string name="send_address_resolve_openalias">ஒப்பன் அளியாஸை தீர்த்துக்கொண்டிருக்கிறத&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
-    <string name="send_title">Send</string>
-    <string name="send_available">Balance: %1$s XMR</string>
-    <string name="send_address_title">Address</string>
-    <string name="send_amount_title">Amount</string>
-    <string name="send_confirm_title">Confirm</string>
-    <string name="send_success_title">Done</string>
+    <string name="send_title">அனுப்பு</string>
+    <string name="send_available">இருப்பு: %1$s XMR</string>
+    <string name="send_address_title">முகவரி</string>
+    <string name="send_amount_title">தொகை</string>
+    <string name="send_confirm_title">உறுதிசெய்</string>
+    <string name="send_success_title">முடிந்தது</string>
 
-    <string name="send_amount_label">Amount</string>
-    <string name="send_fee_btc_label">Fee (XMR)</string>
-    <string name="send_fee_label">Fee</string>
-    <string name="send_total_btc_label">Total (XMR)</string>
-    <string name="send_total_label">Total</string>
+    <string name="send_amount_label">தொகை</string>
+    <string name="send_fee_btc_label">கட்டணம் (XMR)</string>
+    <string name="send_fee_label">கட்டணம்</string>
+    <string name="send_total_btc_label">மொத்தம் (XMR)</string>
+    <string name="send_total_label">மொத்தம்</string>
 
     <string name="send_amount">%1$s XMR</string>
-    <string name="send_fee">+%1$s Fee</string>
+    <string name="send_fee">+%1$s கட்டணம்</string>
 
-    <string name="send_create_tx_error_title">Create Transaction Error</string>
+    <string name="send_create_tx_error_title">பரிமாற்ற உருவாக்கல் பிழை</string>
 
-    <string name="tx_list_fee">Fee %1$s</string>
+    <string name="tx_list_fee">கட்டணம் %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
-    <string name="tx_list_failed_text">failed</string>
+    <string name="tx_list_failed_text">தோல்வியடைந்தது</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
 
-    <string name="tx_timestamp">Timestamp</string>
+    <string name="tx_timestamp">நேரமுத்திரை</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX திறவுகோல்</string>
     <string name="tx_destination">சேருமிடம்</string>
@@ -258,13 +258,13 @@
     <string name="tx_blockheight">தொகுப்பு</string>
     <string name="tx_amount">தொகை</string>
     <string name="tx_fee">கட்டணம்</string>
-    <string name="tx_transfers">Transfers</string>
+    <string name="tx_transfers">பண மாற்றங்கள்</string>
     <string name="tx_notes">குறிப்புகள்</string>
     <string name="tx_notes_hint">(விரும்பினால்)</string>
     <string name="tx_title">பரிமாற்ற விவரங்கள்</string>
 
-    <string name="tx_pending">PENDING</string>
-    <string name="tx_failed">FAILED</string>
+    <string name="tx_pending">நிலுவையில் உள்ளது</string>
+    <string name="tx_failed">தோல்வியடைந்துவிட்டது</string>
 
     <string name="receive_amount_hint">தொகை</string>
     <string name="receive_desc_hint">விளக்கம் (விரும்பினால்)</string>
@@ -274,12 +274,12 @@
     <string name="receive_amount_negative">சிறும. 0</string>
     <string name="receive_amount_nan">XMR ஒரு எண் இல்லை</string>
 
-    <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
-    <string name="details_alert_yes">I\'m safe</string>
-    <string name="details_alert_no">Take me back!</string>
-    <string name="details_title">Details</string>
+    <string name="details_alert_message">மறைமுகத் தரவு இப்போது காட்டப்படும்.\nஉங்க பின்னால் யாராவது இருக்குராங்களானு பாத்துக்கோங்க!</string>
+    <string name="details_alert_yes">நான் பாதுகாப்பாகத்தான் உள்ளேன்</string>
+    <string name="details_alert_no">பின்செல்லவும்!</string>
+    <string name="details_title">விவரங்கள்</string>
 
-    <string name="delete_alert_message">This wallet will be deleted. Your funds will be gone forever unless you have your seed or a working backup to recover it.</string>
+    <string name="delete_alert_message">இந்த பணப்பை அழிக்கப்பட உள்ளது. உங்கள் விதை அல்லது வேலை செய்யக்கூடிய காப்புநகல் உங்களிடம் இல்லையென்றால் உங்கள் வைப்பு மொத்தமா போயிவிடும்.</string>
     <string name="delete_alert_yes">ஆம், உறுதியாக அதை செய்!</string>
     <string name="delete_alert_no">இல்லை வேண்டாம்!</string>
 
@@ -332,33 +332,33 @@
     <string name="accounts_new">#%1$d என்னும் புதிய கணக்கு சேர்க்கப்பட்டது</string>
     <string name="tx_account">கணக்கு #</string>
 
-    <string name="send_sweepall">Send all confirmed funds in this account!</string>
-    <string name="tx_subaddress">Subaddress</string>
-    <string name="generate_address_label_sub">Public Subaddress #%1$d: %2$s</string>
+    <string name="send_sweepall">உறுதிப்படுத்தப்பட்ட எல்லா வைப்புகளையும் இந்த கணக்கில் இருந்து அனுப்பவும்!</string>
+    <string name="tx_subaddress">துணை முகவரி</string>
+    <string name="generate_address_label_sub">பொது துணை முகவரி #%1$d: %2$s</string>
 
     <string name="menu_language">மொழி</string>
     <string name="language_system_default">முறைமை மொழியை பயன்படுத்து</string>
 
     <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
 
-    <string name="progress_ledger_progress">Communicating with Ledger</string>
-    <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
-    <string name="progress_ledger_lookahead">Retrieving subaddresses</string>
-    <string name="progress_ledger_verify">Verifying keys</string>
-    <string name="progress_ledger_opentx">Doing crazy maths</string>
-    <string name="progress_ledger_mlsag">Hashing stuff</string>
-    <string name="open_wallet_ledger_missing">Please (re)connect Ledger device</string>
+    <string name="progress_ledger_progress">பேரேடு உடன் தொடர்பு கொள்கிறது</string>
+    <string name="progress_ledger_confirm">பேரேடில் உறுதிப்படுத்தல் தேவைப்படுகிறது!</string>
+    <string name="progress_ledger_lookahead">துணை முகவரிகளை மீட்டெடுக்கிறது</string>
+    <string name="progress_ledger_verify">திறவுகோல்களை சரிபார்க்கிறது</string>
+    <string name="progress_ledger_opentx">சிக்கலான கணக்குகளை போடுகிறது</string>
+    <string name="progress_ledger_mlsag">தற்சார்பு முகவரியாக்க செயல்கள்</string>
+    <string name="open_wallet_ledger_missing">பேரேடு சாதனத்தை (மறு)இணைக்கவும்</string>
 
-    <string name="accounts_progress_new">Creating account</string>
+    <string name="accounts_progress_new">கணக்கை உருவாக்குகிறது</string>
 
-    <string name="toast_ledger_attached">%1$s attached</string>
-    <string name="toast_ledger_detached">%1$s detached</string>
+    <string name="toast_ledger_attached">%1$s இணைக்கப்பட்டது</string>
+    <string name="toast_ledger_detached">%1$s பிரிக்கப்பட்டது</string>
 
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
+    <string name="progress_nfc_write">குறிச்சொல்லை எழுதுகிறது</string>
+    <string name="nfc_write_failed">குறிச்சொல் எழுதல் தோல்வியடைந்தது!</string>
+    <string name="nfc_write_successful">குறிச்சொல் எழுதல் வெற்றியடைந்தது</string>
+    <string name="nfc_tag_unsupported">குறிச்சொலானது NDEF ஐ ஆதரிக்கவில்லை!</string>
+    <string name="nfc_tag_size">குறிச்சொல்லானது %1$d எண்ணுன்மிகளை அளிக்கிறது, ஆனால் நமக்கு %2$d தேவை!</string>
     <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
     <string name="nfc_tag_read_what">I don\'t know what you want!</string>
     <string name="nfc_tag_tap">NFC Available!</string>
