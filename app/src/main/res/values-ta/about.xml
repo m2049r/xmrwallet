@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-    <string name="about_close">Close</string>
-    <string name="about_whoami">I am monerujo</string>
-    <string name="about_version">Version %1$s (%2$d)</string>
+    <string name="about_close">மூடு</string>
+    <string name="about_whoami">நான் monerujo</string>
+    <string name="about_version">பதிப்பு %1$s (%2$d)</string>
 
     <string name="credits_text"><![CDATA[
-        <b>Credits</b>
+        <b>நன்றி</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
         rehrar, EarlOfEgo, ErCiccione et al.
@@ -14,22 +14,21 @@
         ]]></string>
 
     <string name="privacy_policy"><![CDATA[
-        <h1>Privacy Policy</h1>
+        <h1>தனியுரிமை கொள்கை</h1>
         <p>This page informs you of our policies regarding the collection,
         use and disclosure of personal information we receive from users of our
-        app (monerujo: Monero Wallet).
+        app (monerujo: மொனேரொ பணப்பை).
         </p>
-        <p>By using the app, you agree to the collection and use of information in
-        accordance with this policy.
+        <p>இந்த செயலியை பயன்படுத்துவதன் மூலம், நீங்கள் இந்தக் கொள்கையின்படி தகவலைச் சேகரிப்பதற்கும் பயன்படுத்துவதற்கும் ஒப்புக்கொள்கிறீர்கள்
         </p>
-        <h2>Data Collected</h2>
-        <p>Personal data is any kind of data that could identify an individual.
+        <h2>சேகரிக்கப்படும் தரவுகள்</h2>
+        <p>தனிநபரை அடையாளம் காட்டவல்ல எந்தவொரு தரவும் தனிப்பட்ட தரவாகும்.
         </p>
         <p>Monero keys and public addresses are collected and processed by the app locally
         for the purpose of processing transactions and transmitted into the Monero Network
         in encrypted form.
         </p>
-        <p>Other personal data is not collected by the app.</p>
+        <p>மற்ற எந்தவொரு தனிப்பட்ட தரவுகளும் இந்த செயலியால் சேகரிக்கப்படுவதில்லை.</p>
         <p>If you use the exchange (optional) functionality, monerujo fetches the exchange
         rate through the public API of coinmarketcap.com.
         See their privacy policy at https://coinmarketcap.com/privacy for
@@ -37,15 +36,15 @@
         <p>If you use the app to pay to BTC addresses, you will be using the SideShift.ai service.
         See their privacy policy at https://sideshift.ai/ for details. Monerujo send them the BTC
         destination address and amount. Your IP will also be collectable.</p>
-        <h2>App Permissions</h2>
+        <h2>செயலி அனுமதிகள்</h2>
         <ul>
-        <li>INTERNET : Connect to the Monero Network via a Monero Daemon Node</li>
-        <li>READ_EXTERNAL_STORAGE : Read wallet files stored on the device</li>
-        <li>WRITE_EXTERNAL_STORAGE : Write wallet files stored on the device</li>
-        <li>WAKE_LOCK : Keep device awake while syncing</li>
-        <li>CAMERA : Scan QR Codes for receiving Monero</li>
+        <li>INTERNET (இணையம்) : ஒரு மொனேரொ மறைநிரல் கணுவை கொண்டு மொனேரொ வலையமைப்போடு இணைப்பதற்கு</li>
+        <li>READ_EXTERNAL_STORAGE (புற சேமிப்பகத்தை படித்தல்) : சாதனத்தில் சேமித்து வைக்கப்பட்டிருக்கும் பணப்பை கோப்புகளை படிப்பதற்கு</li>
+        <li>WRITE_EXTERNAL_STORAGE (புற சேமிப்பகத்தில் எழுதுதல்) : சாதனத்தில் சேமித்து வைக்கப்பட்டிருக்கும் பணப்பை கோப்புகளை எழுதுவதற்கு</li>
+        <li>WAKE_LOCK (திரை விழிப்பு பூட்டு) : ஒத்திசைக்கும்போது சாதனத்தை விழிப்போடு வைத்திருப்பதற்கு</li>
+        <li>CAMERA (படமி) : மொனேரொவை பெறுதல் பொருட்டு QR குறியீடுகளை வருடுவதற்கு</li>
         </ul>
-        <h2>Changes to this Privacy Policy</h2>
+        <h2>இந்த தனியுரிமை கொள்கைகளில் ஏற்படும் மாற்றங்கள்</h2>
         <p>We may update this privacy policy from time to time. We will notify
         you of any changes by posting the new privacy policy in the app and on the
         website (www.monerujo.io)
