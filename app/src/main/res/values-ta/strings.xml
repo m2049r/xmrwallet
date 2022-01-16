@@ -202,7 +202,7 @@
     <string name="generate_viewkey_hint">பார்வை திறவுகோல்</string>
     <string name="generate_spendkey_hint">செலவழி திறவுகோல்</string>
     <string name="generate_mnemonic_hint">25-வார்த்தையுள்ள நினைவி விதை</string>
-    <string name="generate_restoreheight_hint">மீட்டமை உயரம் அல்லது தேதி (வவவவ-மம-நாநா)</string>
+    <string name="generate_restoreheight_hint">மீட்டமை அல்லது தேதி (வவவவ-மம-நாநா)</string>
 
     <string name="generate_address_label">பொது முகவரி</string>
     <string name="generate_viewkey_label">பார்வை திறவுகோல்</string>
@@ -225,7 +225,7 @@
     <string name="send_address_not_openalias">ஒப்பன் அளியாஸ் முகவரி கிடைக்கவில்லை</string>
     <string name="send_address_openalias">ஒப்பன் அளியாஸ் பாதுகாப்பு &#x2714;</string>
     <string name="send_address_resolve_openalias">ஒப்பன் அளியாஸை தீர்த்துக்கொண்டிருக்கிறத&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias without DNSSEC - address may be spoofed</string>
+    <string name="send_address_no_dnssec">DNSSEC இல்லாத ஒப்பன் அளியாஸ் - முகவரி ஏமாற்றப்பட்டிருக்கலாம்</string>
     <string name="send_title">அனுப்பு</string>
     <string name="send_available">இருப்பு: %1$s XMR</string>
     <string name="send_address_title">முகவரி</string>
@@ -339,7 +339,7 @@
     <string name="menu_language">மொழி</string>
     <string name="language_system_default">முறைமை மொழியை பயன்படுத்து</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">பேரேடு நாநோ S இல் இருந்து மீட்டெடுக்கவும்</string>
 
     <string name="progress_ledger_progress">பேரேடு உடன் தொடர்பு கொள்கிறது</string>
     <string name="progress_ledger_confirm">பேரேடில் உறுதிப்படுத்தல் தேவைப்படுகிறது!</string>
@@ -359,9 +359,9 @@
     <string name="nfc_write_successful">குறிச்சொல் எழுதல் வெற்றியடைந்தது</string>
     <string name="nfc_tag_unsupported">குறிச்சொலானது NDEF ஐ ஆதரிக்கவில்லை!</string>
     <string name="nfc_tag_size">குறிச்சொல்லானது %1$d எண்ணுன்மிகளை அளிக்கிறது, ஆனால் நமக்கு %2$d தேவை!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
+    <string name="nfc_tag_read_undef">இந்த குறிச்சொல் எனக்கு புரியவில்லை!</string>
+    <string name="nfc_tag_read_what">உனக்கு என்ன வேண்டும் என்று எனக்கு தெரியவில்லை!</string>
+    <string name="nfc_tag_tap">NFC கிடைக்கிறது!</string>
 
     <string name="unknown_amount" translatable="false">\?\?\?</string>
 
@@ -409,7 +409,7 @@
 
     <string name="label_account" translatable="false">%1$s (%2$s)</string>
 
-    <string name="label_restoreheight">உயரத்தை மீட்டெடுக்கவும்</string>
+    <string name="label_restoreheight">மீட்டமை உயரம்</string>
 
     <string name="toast_ledger_start_app">%1$s இல் மொனோரொ செயலியை துவக்கவும்</string>
 
@@ -420,15 +420,15 @@
     <string name="onboarding_button_ready">நான் தயாராக உள்ளேன்!</string>
 
     <string name="onboarding_welcome_title">Monerujo விற்கு உங்களை அன்புடன் வரவேற்கிறோம்!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
+    <string name="onboarding_welcome_information">மொனேரொ பணப்பைகளை உருவாக்கவும், பயன்படுத்தவும் இந்த செயலி உங்களை அனுமதிக்கும். உங்கள் அருமை மொனேரொக்களை இதில் நீங்கள் சேமித்து வைக்கலாம்.</string>
     <string name="onboarding_seed_title">விதையை பாதுகாப்பாக வைக்கவும்</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
+    <string name="onboarding_seed_information">இந்த விதை அதை வைத்திருப்பவருக்கு முழு அணுகலை வழங்குகிறது. இதை நீங்கள் துலைத்து விட்டால், இதை மீட்க எங்களால் உங்களுக்கு உதவ இயலாது. உங்கள் மனம் கவர்ந்த மொனேரொக்களை இழக்க நேரிடும்.</string>
     <string name="onboarding_xmrto_title">கிரிப்டோவை அனுப்பவும்</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_xmrto_information">Monerujo இனுள் SideShift.ai க்கான ஆதரவு உட்பொதிந்துள்ளது. வெறும் BTC, LTC, ETH, DASH அல்லது DOGE க்கான முகவரியை ஒட்டுவதன் மூலம் அல்லது வருடுவதன் மூலம் உங்களால் XMR ஐ செலவழித்து இந்தவகை கிரிப்டோக்களாக அனுப்ப இயலும்.</string>
+    <string name="onboarding_nodes_title">கணுக்கள், இது உங்கள் வழி</string>
+    <string name="onboarding_nodes_information">கணுக்கள் உங்களை மொனேரொ வலையமைப்போடு இணைக்கிறது. பொது கணுக்களை பயன்படுத்துகிறீர்களா அல்லது முழுவதுமாக உங்கள் சொந்த கணுவை பயன்படுத்த போகிறீர்களா என்பதை முடிவு செய்யவும்.</string>
+    <string name="onboarding_fpsend_title">விரல்பதிவை கொண்டு அனுப்பவும்</string>
+    <string name="onboarding_fpsend_information">இது செயல்படுத்தப்பட்டிருந்தால் வெறும் விரல்பதிவை கொண்டு உங்களால் XMR ஐ அனுப்ப இயலும். கடவுச்சொல்லை கோர, விரல்பதிவு அணுகலை முடக்கவும்.</string>
 
     <string name="menu_daynight">இருண்ட பாங்கு</string>
     <string-array name="daynight_themes">
@@ -446,21 +446,21 @@
     <string name="node_updated_hours">கடைசி தொகுதி: %1$d மணி நேரத்திற்கு முன்பு</string>
     <string name="node_updated_days">கடைசி தொகுதி: %1$d நாட்களுக்கு முன்பு</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
+    <string name="shift_noquote">விலைப்புள்ளியை பெற இயலவில்லை</string>
     <string name="shift_checkamount">தொகையை சரிபார்த்து பின் மீண்டும் முயலவும்</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>தெளிவிலா முகவரி.</b><br/>
+        <i>மேல் உள்ள வகையை தேர்ந்தெடுக்கவும்.</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <b>%1$s முகவரியை உள்ளிடவும் அல்லது வருடவும்.</b><br/>
+        <i>நீங்கள் XMR ஐ அனுப்புவீர்கள், இது <b>SideShift.ai</b> சேவை மூலம் %2$s வாக பெறுநர் பெற்றுக்கொள்வார்.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>மொனேரொ முகவரியை உள்ளிடவும் அல்லது வருடவும்.</b>
     ]]></string>
 
     <!-- order must be the same as in com.m2049r.xmrwallet.data.Crypto-->
@@ -487,28 +487,28 @@
     <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
     <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
 
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
+    <string name="subbaddress_title">துணை முகவரிகள்</string>
+    <string name="subbaddress_name_hint">துணை முகவரியின் பெயர்</string>
+    <string name="max_subaddress_warning">நிறைய பயன்படுத்தாத முகவரிகள் - இன்னும் உருவாக்குவதை செயல்படுத்த சிலவற்றை பயன்படுத்தவும்!</string>
+    <string name="max_account_warning">நிறைய பயன்படுத்தாத கணக்குகள் - இன்னும் உருவாக்குவதை செயல்படுத்த சிலவற்றை பயன்படுத்தவும்!</string>
+    <string name="subaddress_tx_label">இந்த துணை முகவரிக்கான பரிமாற்றங்கள்:</string>
+    <string name="subaddress_notx_label">இந்த துணை முகவரிக்கான பரிமாற்றங்கள் எதுவும் இன்னும் இல்லை</string>
+    <string name="subaddress_select_label">துணை முகவரியை தேர்ந்தெடுக்கவும்</string>
+    <string name="subaddress_details_hint">விவரங்களுக்கு நீண்ட நேரம் அழுத்தி பிடித்திருக்கவும்</string>
 
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
+    <string name="menu_restore">பணப்பையை ஏற்றுமதி செய்யவும்</string>
+    <string name="restore_failed">பணப்பை ஏற்றுமதி தோல்வியடைந்தது!</string>
 
-    <string name="menu_deletecache">Reset wallet!</string>
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+    <string name="menu_deletecache">பணப்பையை மீள் அமைக்கவும்!</string>
+    <string name="deletecache_alert_message">இந்த பணப்பை எல்லா அணைவரி-சங்கிலி தரவுகளும் (குறிப்புகள், கணக்கு &amp; துணை முகவரி பெயர்கள், தனியார் பரிமாற்ற திறவுகோல்கள் போன்றவை &#8230;) அழிக்கப்பட்டு மீள் அமைக்கப்படும்! பணப்பை பழுதடைந்தாலோ, அல்லது ஏறவில்லை என்றால் மட்டுமே இதை பயன்படுத்தவும்!</string>
 
     <string name="status" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;%3$s&lt;/span&gt;%4$s</string>
 
-    <string name="node_tor_error">Tor required</string>
-    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
-    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+    <string name="node_tor_error">Tor தேவைப்படுகிறது</string>
+    <string name="node_waiting">\u00A0கணுவிற்காக காத்திருக்கிறது\u00A0</string>
+    <string name="tor_enable_background">Tor ஐ பயன்படுத்தவும் Orbot அமைப்பில் உள்ள "பின்னனி துவக்கத்தை அனுமதிக்கவும்"!</string>
+    <string name="tor_noshift">SideShift.ai ஆனது Tor ஐ ஆதரிப்பதில்லை.\nXMR ஐ இடமாற்ற Tor ஐ முடக்கவும்.</string>
 
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+    <string name="label_seed_offset_encrypt">விதை மறையீடு (சோதனைவழி)</string>
+    <string name="seed_offset_hint">விதை ஈடுசெய் சொற்றொடர் (விரும்பினால்)</string>
 </resources>
