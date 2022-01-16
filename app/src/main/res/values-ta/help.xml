@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
     <string name="help_create_new"><![CDATA[
-        <h1>Create Wallet - New</h1>
-        <p>If you need a new Monero Address!</p>
-        <p>Enter a unique wallet name and password.
-        The password is used for securing your wallet data on the device. Use a strong password -
-        even better use a passphrase.</p>
-        <h2>Note your Mnemonic Seed!</h2>
-        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
-        This is the only data needed to recover your wallet at a later point
-        and gain full access to your funds.
-        Keeping this secure and private is very important, as it gives <em>anyone</em>
-        full access to your funds!</p>
-        <p>If you lose your wallet password, you can still recover your wallet with the Mnemonic Seed.</p>
-        <p>There is no way to recover your Mnemonic Seed, if you lose it all your funds will be lost!
+        <h1>பணப்பையை உருவாக்கல் - புதிய</h1>
+        <p>உங்களுக்கு ஒரு புதிய மொனேரொ முகவரி தேவைப்பட்டால்</p>
+        <p>தனித்துவமான பணப்பை பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.
+        சாதனத்தில் இருக்கும் உங்கள் பணப்பை தரவுகளை பாதுகாக்க இந்த கடவுச்சொல் பயன்படுத்தப்படும். ஆகையால் வலிமையான 
+        கடவுச்சொல்லை பயன்படுத்தவும் - கடவுத்தொடரை பயன்படுத்தினால் இன்னும் சிறப்பாக இருக்கும்.</p>
+        <h2>உங்கள் நினைவி விதையை குறித்து வைத்து கொள்ளவும்!</h2>
+        <p>பின்வரும் திரையில், உங்களுடைய 25-வார்த்தை கொண்ட \"நினைவி விதையை\" உங்களால் காண இயலும்.
+        பின்னர் ஒரு கட்டத்தில் உங்கள் பணப்பையை மீட்டெடுக்க வேண்டும் என்றால் இந்த தரவு மட்டுமே போதுமானதாக இருக்கும். 
+        இதன்மூலம் உங்கள் வைப்புகளின் முழு அணுகலை நீங்கள் பெற இயலும்.
+        இது <em>யாரேனும் ஒருவருக்கு</em> உங்கள் வைப்பின் முழு அணுகலை தரவல்லது என்பதால், இதை பாதுகாப்பாக மற்றும் 
+        கமுக்கமாக வைத்திருப்பது மிகவும் முக்கியமானதாகும்!</p>
+        <p>நீங்கள் உங்கள் பணப்பை கடவுச்சொல்லை மறந்துவிட்டீர்கள் எனறால், இந்த நினைவி விதையை கொண்டு உங்களால் 
+        உங்கள் பணப்பையை மீட்டெடுக்க இயலும்.</p>
+        <p>உங்கள் நினைவி விதையை மீட்டெடுக்க எந்த வழியும் இல்லை. இதை தொலைத்து விட்டீர்கள் என்றால் உங்கள் மொத்த வைப்பும் தொலைந்து விட்டதாக பொருள்!
         The Mnemonic Seed can also never be changed, and if it is stolen or otherwise compromised,
         you will have to move your funds to new wallet (with a new Mnemonic Seed). Therefore, it is best
         that you backup your Mnemonic Seed by writing it down and storing it in <em>multiple</em> safe
