@@ -22,48 +22,52 @@
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
-        <h1>Create Wallet - Seed</h1>
-        <p>If you already have a Monero Address and want to recover the transactions from the blockchain!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.</p>
-        <p>Enter your Seed in the field \"Mnemonic Seed\".<p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>பணப்பை உருவாக்கல் - விதை</h1>
+        <p>உங்களிடம் ஏற்கனவே ஒரு மொனேரொ முகவரி இருந்து, தொகுப்பு சங்கிலியில் இருந்து பரிமாற்றங்களை மீட்டெடுக்க வேண்டுமென்றால்!</p>
+        <p>தனித்துவமான பணப்பை பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.
+        சாதனத்தில் இருக்கும் உங்கள் பணப்பை தரவுகளை பாதுகாக்க இந்த கடவுச்சொல் பயன்படுத்தப்படும். ஆகையால் வலிமையான 
+        கடவுச்சொல்லை பயன்படுத்தவும் - கடவுத்தொடரை பயன்படுத்தினால் இன்னும் சிறப்பாக இருக்கும்.</p>
+        <p>\"நினைவி விதை\" என்னும் புலத்தில் உங்கள் விதையை உள்ளிடவும்.<p>
+        <p>\"மீட்டமை உயரம்\" புலத்தில் இந்த முகவரிக்காக பயன்படுத்தப்பட்ட முதல் பரிமாற்றத்தின் தொகுதி எண்ணை உள்ளிடவும்.
+        மேலும் நீங்கள் வவவவ-மம-நாநா என்னும் வடிவத்தில் ஒரு தேதியையும் பயன்படுத்தலாம். உங்களுக்கு குழப்பமாக இருந்தால, 
+        இந்த பணப்பை முகவரிக்கு <em>முன்பு</em> நீங்கள் முதலில் பயன்படுத்திய தோராயமான தேதி அல்லது தொகுதி உயரத்தை உள்ளிடவும்.</p>
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
-        <h1>Create Wallet - Ledger</h1>
-        <p>You want to recover your wallet from your Ledger Nano S device.</p>
-        <p>Your secret keys never leave the Ledger device, so you need it plugged in every
-        time you want to access your wallet.</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the Android
-        device. Use a strong password - even better use a passphrase.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>பணப்பையை உருவாக்கல் - பேரேடு</h1>
+        <p>உங்கள் பேரேடு நாநோ S சாதனத்திலிருந்து உங்கள் பணப்பையை மீட்டெடுக்க வேண்டுமென்றால்.</p>
+        <p>உங்கள் இரகசிய திறவுகோல் ஒருபோதும் பேரேடு சாதனத்தை விட்டு வெளியேறாது, ஆகையால் ஒவ்வொரு
+        முறை நீங்கள் உங்கள் பணப்பையை அணுக வேண்டும்போதும் இது சொருகப்பட்டிருக்க வேண்டும்.</p>
+        <p>தனித்துவமான பணப்பை பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும். ஆன்ட்ராய்டு சாதனத்தில் இருக்கும்
+        உங்கள் பணப்பை தரவுகளை பாதுகாக்க இந்த கடவுச்சொல் பயன்படுத்தப்படும். ஆகையால் வலிமையான 
+        கடவுச்சொல்லை பயன்படுத்தவும் - கடவுத்தொடரை பயன்படுத்தினால் இன்னும் சிறப்பாக இருக்கும்.</p>
+        <p>\"மீட்டமை உயரம்\" புலத்தில் இந்த முகவரிக்காக பயன்படுத்தப்பட்ட முதல் பரிமாற்றத்தின் தொகுதி எண்ணை உள்ளிடவும்.
+        மேலும் நீங்கள் வவவவ-மம-நாநா என்னும் வடிவத்தில் ஒரு தேதியையும் பயன்படுத்தலாம். உங்களுக்கு குழப்பமாக இருந்தால, 
+        இந்த பணப்பை முகவரிக்கு <em>முன்பு</em> நீங்கள் முதலில் பயன்படுத்திய தோராயமான தேதி அல்லது தொகுதி உயரத்தை உள்ளிடவும்.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Create Wallet - Keys</h1>
-        <p>If you are recovering your wallet using your keys!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out \"View Key\" and  \"Spend Key\".</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>பணப்பையை உருவாக்கல் - திறவுகோல்கள்</h1>
+        <p>உங்கள் திறவுகோல்களை பயன்படுத்தி உங்கள் பணப்பையை மீட்டெடுக்க உள்ளீர்கள் என்றால்!</p>
+        <p>தனித்துவமான பணப்பை பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.
+        சாதனத்தில் இருக்கும் உங்கள் பணப்பை தரவுகளை பாதுகாக்க இந்த கடவுச்சொல் பயன்படுத்தப்படும். ஆகையால் வலிமையான 
+        கடவுச்சொல்லை பயன்படுத்தவும் - கடவுத்தொடரை பயன்படுத்தினால் இன்னும் சிறப்பாக இருக்கும்.</p>
+        <p>\"பொது முகவரி\" என்னும் புலத்தில் உங்கள் மொனேரொ முகவரியை உள்ளிட்டு, பின் \"பார்வை திறவுகோல்\" மற்றும் \"செலவழி திறவுகோல்\" ஆகியவற்றை நிரப்பவும்.</p>
+        <p>\"மீட்டமை உயரம்\" புலத்தில் இந்த முகவரிக்காக பயன்படுத்தப்பட்ட முதல் பரிமாற்றத்தின் தொகுதி எண்ணை உள்ளிடவும்.
+        மேலும் நீங்கள் வவவவ-மம-நாநா என்னும் வடிவத்தில் ஒரு தேதியையும் பயன்படுத்தலாம். உங்களுக்கு குழப்பமாக இருந்தால, 
+        இந்த பணப்பை முகவரிக்கு <em>முன்பு</em> நீங்கள் முதலில் பயன்படுத்திய தோராயமான தேதி அல்லது தொகுதி உயரத்தை உள்ளிடவும்.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
-        <h1>Create Wallet - View</h1>
-        <p>If you just want to monitor incoming transactions to a wallet!</p>
-        <p>Enter a unique wallet name and password. The password is used for securing your wallet data on the device.
-        Use a strong password - even better use a passphrase.<p>
-        <p>Enter your Monero Address in the field \"Public Address\" and fill out the \"View Key\".</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+        <h1>பணப்பையை உருவாக்கல் - பார்க்க</h1>
+        <p>பணப்பைக்கான உள்வரு பரிமாற்றங்களை மட்டும் நீங்கள் கண்காணிக்க வேண்டுமென்றால்!</p>
+        <p>தனித்துவமான பணப்பை பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.
+        சாதனத்தில் இருக்கும் உங்கள் பணப்பை தரவுகளை பாதுகாக்க இந்த கடவுச்சொல் பயன்படுத்தப்படும். ஆகையால் வலிமையான 
+        கடவுச்சொல்லை பயன்படுத்தவும் - கடவுத்தொடரை பயன்படுத்தினால் இன்னும் சிறப்பாக இருக்கும்.</p>
+        <p>\"பொது முகவரி\" என்னும் புலத்தில் உங்கள் மொனேரொ முகவரியை உள்ளிட்டு, பின் \"பார்வை திறவுகோல்\" ஐ நிரப்பவும்.</p>
+        <p>\"மீட்டமை உயரம்\" புலத்தில் இந்த முகவரிக்காக பயன்படுத்தப்பட்ட முதல் பரிமாற்றத்தின் தொகுதி எண்ணை உள்ளிடவும்.
+        மேலும் நீங்கள் வவவவ-மம-நாநா என்னும் வடிவத்தில் ஒரு தேதியையும் பயன்படுத்தலாம். உங்களுக்கு குழப்பமாக இருந்தால, 
+        இந்த பணப்பை முகவரிக்கு <em>முன்பு</em> நீங்கள் முதலில் பயன்படுத்திய தோராயமான தேதி அல்லது தொகுதி உயரத்தை உள்ளிடவும்.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
@@ -117,33 +121,33 @@
         case your device explodes or gets stolen.</p>
         <p>Select a wallet to open it or press the \"+\" to create a new one.
         Or select one of the wallet operations:</p>
-        <h3>Details</h3>
-        <p>Show the wallet details, seed &amp; keys.</p>
-        <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
-        <h3>Rename</h3>
-        <p>Rename the wallet. Backups are not renamed.</p>
-        <h3>Backup</h3>
+        <h3>விவரங்கள்</h3>
+        <p>பணப்பையின் விவரங்கள், விதை &amp; திறவுகோல்களை காட்டும்.</p>
+        <h3>பெறு</h3>
+        <p>மொனேரொவை பெறுவதற்காக ஒரு QR குறியீட்டை உருவாக்கு.</p>
+        <h3>மறுபெயரிடு</h3>
+        <p>பணப்பையின் பெயரை மாற்றும். காப்புநகல்களின் பெயர்கள் மாற்றப்படாது.</p>
+        <h3>காப்புநகலெடு</h3>
         <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
         overwriting previous copies there.</p>
-        <h3>Archive</h3>
+        <h3>ஆவணகப்படுத்து</h3>
         <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
         folder. If you no longer need your backups you should delete them with a file explorer or
         secure delete app.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
-        <h1>Transaction Details</h1>
-        <h2>Destination</h2>
-        This is the public address of the wallet you sent Monero to
-        <h2>PaymentID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
-        fully optional and private. For example it can allow a Business to reconcile your transaction
-        with an item you bought.
+        <h1>பரிமாற்ற விவரங்கள்</h1>
+        <h2>சேருமிடம்</h2>
+        இது நீங்கள் மொனேரொவை எந்த பணப்பைக்கு அனுப்புகிறீர்களோ அதனுடைய பொது முகவரி
+        <h2>பணம்செலுத்தல் ID</h2>
+        இரு தரப்பினருக்கு இடையில் நீங்கள மொனேரொவை அனுப்பியதற்கான காரணத்தை கண்டறிய ஒரு செலுத்தல் ID ஐ பயன்படுத்தலாம்.
+        இது முழுக்க முழுக்க விருப்பம் சார்ந்தது மற்றும் கமுக்கமானது. எடுத்துக்காட்டாக, உங்கள் பரிமாற்றத்தை நீங்கள் வாங்கிய 
+        பொருட்களோடு சமரசப்படுத்த ஒரு வணிக நிறுவனத்திற்கு இது உதவலாம்.
         <h2>TX ID</h2>
         This is your Transaction ID you can use it to identify your obfuscated transaction on a Monero
         Blockchain explorer like <a href="https://xmrchain.net/">https://xmrchain.net/</a>
-        <h2>TX KEY (Transaction Key)</h2>
+        <h2>TX KEY (பரிமாற்ற திறவுகோல்)</h2>
         This is your transaction private key, keep this safe as revealing this to a third party
         reveals which signature in a ring is yours, thereby making your transaction transparent.
         <h2>Block</h2>
@@ -151,19 +155,19 @@
     ]]></string>
 
     <string name="help_send"><![CDATA[
-        <h1>Send</h1>
-        <h2>Receiver’s address</h2>
+        <h1>அனுப்பு</h1>
+        <h2>பெறுநரின் முகவரி</h2>
         <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
         your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
         ensure you aren’t sending coins to the wrong address.</p>
         <p>In addition to using an XMR address, you can also use
         <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
+            <li>XMR அல்லது BTC க்கான ஓப்பன் அளியாஸ்</li>
+            <li>ஒரு BTC முகவரி</li>
         </u>
         Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
         for details). See the section on sending BTC below.</p>
-        <h1>Sending BTC</h1>
+        <h1>BTC ஐ அனுப்புதல்</h1>
         <h2>SideShift.ai</h2>
         <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
         We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
@@ -186,7 +190,7 @@
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Sending BTC</h1>
+        <h1>BTC ஐ அனுப்புதல்</h1>
         <h2>SideShift.ai</h2>
         <p>SideShift.ai is a third party service which acts as an exchange from Monero to Bitcoin.
         We use the SideShift.ai API to integrate Bitcoin payments into Monerujo. Please check out
@@ -209,8 +213,8 @@
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>The Wallet</h1>
-        <h2>Street Mode</h2>
+        <h1>பணப்பை</h1>
+        <h2>வீதி பாங்கு</h2>
         <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
         balance is not shown on any screen so you can safely use your wallet on the street, a pub or
         other public place. Previous transactions are also hidden. New transactions will be shown, so
@@ -231,15 +235,15 @@
     ]]></string>
 
     <string name="help_node"><![CDATA[
-        <h1>Nodes</h1>
+        <h1>கணு</h1>
         <h2>TL;DR</h2>
         <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
         to choose the best one for you!</p>
-        <h2>What&apos;s a Node?</h2>
-        <p>Monerujo uses a Remote Node (sometimes also called Daemon) to communicate with
-        the Monero Network without having to download and store a copy of the
-        whole blockchain itself.<p>
-        <h2>Node List</h2>
+        <h2>கணு என்றால் என்ன?</h2>
+        <p>Monerujo வானது, மொத்த தொகுப்பு சங்கிலியையும் பதிவிறக்கி ஒரு நகலை தனக்குள் சேமித்து வைப்பதற்கு பதிலாக,
+        மொனேரொ வலையமைப்போடு தொடர்பு கொள்வதற்கு ஒரு தொலைநிலை கணுவை பயன்படுத்துகிறது
+        (இதை சில நேரம் மறைநிரல் என்றும் அழைப்பார்கள்).<p>
+        <h2>கணு பட்டியல்</h2>
         <p>If the list is empty, you can either add new nodes manually or let Monerujo
         scan the network for you. Or both. Read on&#8230;</p>
         <p>The node list shows all currently known nodes. Additionally, the timestamp
@@ -280,20 +284,20 @@
     ]]></string>
 
     <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
+        <h1>பணம் செலுத்தல் தொடுப்பியை பயன்படுத்துதல்</h1>
+        <p>ஒரு செலுத்தல் தொடுப்பியை கொண்டு நீங்கள் monerujo வை துவக்கி விட்டீர்கள். வைப்புகளை அனுப்ப, பின்வரும் செயல்களை செய்யவும்:</p>
         <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
+        1. நீங்கள் செலவழிப்பதற்கு ஒரு பணப்பையை திறக்கவும்<br>
+        2. பணப்பை ஒத்திசைவு முடிந்து "பெறு" பொத்தான் தோன்றும்வரை காத்திருக்கவும்<br>
+        3. "பெறு" பொத்தானை தொடவும்
         </p>
         <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">புரிந்தது!</string> <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_nok">தேவையில்லை…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">ஆர்பாட் ஐ பெறு!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
         <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
