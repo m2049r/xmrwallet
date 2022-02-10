@@ -424,7 +424,7 @@ aqui.</string>
 
     <string name="node_tor_error">Necessário Tor</string>
     <string name="node_waiting">\u00A0ESPERANDO PELO NÓ\u00A0</string>
-    <string name="tor_enable_background">"Permitir Início em Segundo-plano" nas Opções do Orbot para usar o Tor!</string>
+    <string name="tor_enable_background">"Permitir inicializações em segundo plano" nas opções do Orbot para usar o Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 
     <string name="label_seed_offset_encrypt">Encriptação da Semente (EXPERIMENTAL)</string>
