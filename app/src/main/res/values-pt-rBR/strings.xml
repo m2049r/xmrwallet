@@ -423,7 +423,7 @@ aqui.</string>
     <string name="deletecache_alert_message"><![CDATA[Esta carteira será resetada, perdendo todos os dados "off-chain" (como notas, contas & nomes de subendereços, chaves de transações privadas, …)! Use isso SOMENTE se esta carteira estiver corrompida e não carrega!]]></string>
 
     <string name="node_tor_error">Necessário Tor</string>
-    <string name="node_waiting">\u00A0ESPERANDO POR NODE\u00A0</string>
+    <string name="node_waiting">\u00A0ESPERANDO PELO NÓ\u00A0</string>
     <string name="tor_enable_background">"Permitir Início em Segundo-plano" nas Opções do Orbot para usar o Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 
