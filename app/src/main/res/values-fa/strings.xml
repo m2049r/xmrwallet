@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-    <string name="app_name" translatable="false">monerujo</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <string name="wallet_activity_name">کیف پول</string>
 
     <string name="menu_about">درباره</string>
@@ -163,8 +162,6 @@
     <string name="changepw_success">رمز عبور تغییر کرد</string>
 
     <string name="label_daemon">شبکه</string>
-    <string name="connect_stagenet" translatable="false">Stagenet</string>
-    <string name="connect_testnet" translatable="false">Testnet</string>
     <string name="status_wallet_loading">بارگذاری کیف پول...</string>
     <string name="status_wallet_unloaded">کیف پول ذخیره شد</string>
     <string name="status_wallet_unload_failed">ذخیرهٔ کیف پول شکست خورد!</string>
@@ -306,7 +303,6 @@
     <string name="generate_wallet_type_new">جدید</string>
     <string name="generate_wallet_type_seed">بذر</string>
     <string name="generate_wallet_type_view">مشاهده‌ای</string>
-    <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
 
     <string name="generate_address_hint">آدرس عمومی</string>
     <string name="generate_viewkey_hint">کلید مشاهده</string>
@@ -328,7 +324,6 @@
 
     <string name="send_notes_hint">یادداشت‌های خصوصی (اختیاری)</string>
     <string name="send_generate_paymentid_hint">ساخت</string>
-    <string name="send_qr_hint" translatable="false">Scan</string>
     <string name="send_send_label">مونروها رو خرج کن</string>
     <string name="send_send_timed_label">
     مونروها رو خرج کن
@@ -426,49 +421,10 @@
     <string name="delete_alert_yes">آره انجامش بده!</string>
     <string name="delete_alert_no">نه مرسی!</string>
 
-    <string-array name="currency" translatable="false">
-        <item>EUR</item>
-        <item>USD</item>
-        <item>JPY</item>
-        <item>GBP</item>
-        <item>CHF</item>
-        <item>CAD</item>
-        <item>AUD</item>
-        <item>BGN</item>
-        <item>BRL</item>
-        <item>CNY</item>
-        <item>CZK</item>
-        <item>DKK</item>
-        <item>HKD</item>
-        <item>HRK</item>
-        <item>HUF</item>
-        <item>IDR</item>
-        <item>ILS</item>
-        <item>INR</item>
-        <item>ISK</item>
-        <item>KRW</item>
-        <item>MXN</item>
-        <item>MYR</item>
-        <item>NOK</item>
-        <item>NZD</item>
-        <item>PHP</item>
-        <item>PLN</item>
-        <item>RON</item>
-        <item>RUB</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>THB</item>
-        <item>TRY</item>
-        <item>ZAR</item>
-    </string-array>
-
     <string name="fab_create_new">ساخت کیف پول جدید</string>
     <string name="fab_restore_viewonly">بازگردانی کیف پول فقط مشاهده‌ای</string>
     <string name="fab_restore_key">بازگردانی کیف پول با کلیدهای شخصی</string>
     <string name="fab_restore_seed">بازگردانی کیف پول با بذر 25 کلمه‌ای</string>
-
-    <string name="accounts_balance" translatable="false">%1$s XMR</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d) &nbsp;&lt;span style=\"background-color: #%3$s; color: #%4$s;\"&gt;&nbsp;%5$s&nbsp;&lt;/span&gt;</string>
 
     <string name="accounts_drawer_new">ساخت حساب</string>
     <string name="accounts_new">
@@ -533,12 +489,9 @@
    دردسترس است!
     </string>
 
-    <string name="unknown_amount" translatable="false">\?\?\?</string>
-
     <string name="menu_info">نمایش اسرار!</string>
     <string name="menu_streetmode">حالت خیابان</string>
 
-    <string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
     <string name="info_nodes_enabled">
     حالت
     Node-o-matiC
@@ -599,8 +552,6 @@
     <string name="prompt_ledger_seed_warn">
     نوشتن بذر لجر خود در اینجا یک خطر امنیتی بزرگ است!
     </string>
-
-    <string name="label_account" translatable="false">%1$s (%2$s)</string>
 
     <string name="label_restoreheight">ارتفاع بازیابی</string>
 
@@ -698,30 +649,6 @@
         <b>لطفا یک آدرس مونرو را اسکن یا وارد کنید.</b>
     ]]></string>
 
-    <!-- order must be the same as in com.m2049r.xmrwallet.data.Crypto-->
-    <string-array name="cryptos" translatable="false">
-        <item>Monero</item>
-        <item>Bitcoin</item>
-        <item>Dash</item>
-        <item>Dogecoin</item>
-        <item>Ethereum</item>
-        <item>Litecoin</item>
-    </string-array>
-
-    <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
-    <string name="tx_details_transition_name" translatable="false">tx_transition</string>
-    <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
-    <string name="receive_transition_name" translatable="false">receive_transition</string>
-    <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
-    <string name="send_transition_name" translatable="false">send_transition</string>
-    <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
-    <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
-    <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
-
-    <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
-    <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
-    <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
-
     <string name="subbaddress_title">آدرس‌های فرعی</string>
     <string name="subbaddress_name_hint">نام آدرس فرعی</string>
     <string name="max_subaddress_warning">
@@ -744,8 +671,6 @@
     <b>فقط</b>
     در زمانی که کیف پول خراب شده و بارگذاری نمی‌شود این کار را کنید.
     </string>
-
-    <string name="status" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;%3$s&lt;/span&gt;%4$s</string>
 
     <string name="node_tor_error">اتصال به تور لازم است</string>
     <string name="node_waiting">
