@@ -428,5 +428,5 @@ aqui.</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 
     <string name="label_seed_offset_encrypt">Encriptação da Semente (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Frase de "Seed Offset" (opcional)</string>
+    <string name="seed_offset_hint">Senha de dedução da semente (opcional)</string>
 </resources>
