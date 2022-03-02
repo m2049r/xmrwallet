@@ -35,7 +35,6 @@ import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
 import com.m2049r.xmrwallet.widget.SendProgressView;
@@ -255,8 +254,7 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         if (xmrToApi == null) {
             synchronized (this) {
                 if (xmrToApi == null) {
-                    xmrToApi = new SideShiftApiImpl(OkHttpHelper.getOkHttpClient(),
-                            ServiceHelper.getXmrToBaseUrl());
+                    xmrToApi = new SideShiftApiImpl(ServiceHelper.getXmrToBaseUrl());
                 }
             }
         }

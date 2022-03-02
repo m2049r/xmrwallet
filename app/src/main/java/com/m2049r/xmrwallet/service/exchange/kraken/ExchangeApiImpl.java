@@ -24,6 +24,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,27 +34,21 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 import timber.log.Timber;
 
 public class ExchangeApiImpl implements ExchangeApi {
 
-    @NonNull
-    private final OkHttpClient okHttpClient;
-
     private final HttpUrl baseUrl;
 
     //so we can inject the mockserver url
     @VisibleForTesting
-    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
-        this.okHttpClient = okHttpClient;
+    public ExchangeApiImpl(final HttpUrl baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://api.kraken.com/0/public/Ticker"));
+    public ExchangeApiImpl() {
+        this(HttpUrl.parse("https://api.kraken.com/0/public/Ticker"));
     }
 
     @Override
@@ -86,9 +81,8 @@ public class ExchangeApiImpl implements ExchangeApi {
                 .addQueryParameter("pair", base + (quote.equals("BTC") ? "XBT" : quote))
                 .build();
 
-        final Request httpRequest = createHttpRequest(url);
-
-        okHttpClient.newCall(httpRequest).enqueue(new okhttp3.Callback() {
+        final NetCipherHelper.Request httpRequest = new NetCipherHelper.Request(url);
+        httpRequest.enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(final Call call, final IOException ex) {
                 callback.onError(ex);
@@ -126,12 +120,5 @@ public class ExchangeApiImpl implements ExchangeApi {
         } catch (ExchangeException ex) {
             callback.onError(ex);
         }
-    }
-
-    private Request createHttpRequest(final HttpUrl url) {
-        return new Request.Builder()
-                .url(url)
-                .get()
-                .build();
     }
 }

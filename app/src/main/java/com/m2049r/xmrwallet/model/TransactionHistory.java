@@ -43,7 +43,7 @@ public class TransactionHistory {
         this.accountIndex = accountIndex;
     }
 
-    public void loadNotes(Wallet wallet) {
+    private void loadNotes(Wallet wallet) {
         for (TransactionInfo info : transactions) {
             info.notes = wallet.getUserNote(info.hash);
         }
@@ -61,30 +61,22 @@ public class TransactionHistory {
 
     private List<TransactionInfo> transactions = new ArrayList<>();
 
-    public void refreshWithNotes(Wallet wallet) {
+    void refreshWithNotes(Wallet wallet) {
         refresh();
         loadNotes(wallet);
     }
 
-//    public void refresh() {
-//        transactions = refreshJ();
-//    }
-
-    public void refresh() {
+    private void refresh() {
         List<TransactionInfo> transactionInfos = refreshJ();
-        Timber.d("refreshed %d", transactionInfos.size());
+        Timber.d("refresh size=%d", transactionInfos.size());
         for (Iterator<TransactionInfo> iterator = transactionInfos.iterator(); iterator.hasNext(); ) {
             TransactionInfo info = iterator.next();
             if (info.accountIndex != accountIndex) {
                 iterator.remove();
-                Timber.d("removed %s", info.hash);
-            } else {
-                Timber.d("kept %s", info.hash);
             }
         }
         transactions = transactionInfos;
     }
 
     private native List<TransactionInfo> refreshJ();
-
 }

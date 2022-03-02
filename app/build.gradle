@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1008
-        versionName "2.0.8 'Puginarug'"
+        versionCode 1301
+        versionName "2.3.1 'Doménikos'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -113,27 +113,30 @@ android {
     }
 }
 
-def getId(name) {
-    def Properties props = new Properties()
+static def getId(name) {
+    Properties props = new Properties()
     props.load(new FileInputStream(new File('monerujo.id')))
     return props[name]
 }
 
 dependencies {
-    implementation 'androidx.core:core:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.core:core:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
     implementation "io.github.rburgst:okhttp-digest:2.5"
     implementation "com.jakewharton.timber:timber:4.7.1"
 
+    implementation 'info.guardianproject.netcipher:netcipher:2.1.0'
+    //implementation 'info.guardianproject.netcipher:netcipher-okhttp3:2.1.0'
+    implementation fileTree(dir: 'libs/classes', include: ['*.jar'])
     implementation 'com.nulab-inc:zxcvbn:1.3.0'
 
     implementation 'dnsjava:dnsjava:2.1.9'
@@ -142,8 +145,7 @@ dependencies {
     implementation 'com.unstoppabledomains:resolution:3.0.0'
     implementation 'com.github.brnunes:swipeablerecyclerview:1.0.2'
 
-    implementation 'com.github.aelstad:keccakj:1.1.0'
-
+    //noinspection GradleDependency
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:4.9.0"
@@ -153,3 +155,4 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
+

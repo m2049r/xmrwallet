@@ -65,6 +65,7 @@ import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.LegacyStorageHelper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.NightmodeHelper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.ZipBackup;
@@ -701,6 +702,7 @@ public class LoginActivity extends BaseActivity
             new AsyncWaitForService().execute();
         }
         if (!Ledger.isConnected()) attachLedger();
+        registerTor();
     }
 
     private class AsyncWaitForService extends AsyncTask<Void, Void, Void> {
@@ -927,7 +929,8 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void onGenerate(final String name, final String password, final String seed,
+    public void onGenerate(final String name, final String password,
+                           final String seed, final String offset,
                            final long restoreHeight) {
         createWallet(name, password,
                 new WalletCreator() {
@@ -939,7 +942,7 @@ public class LoginActivity extends BaseActivity
                     @Override
                     public boolean createWallet(File aFile, String password) {
                         Wallet newWallet = WalletManager.getInstance()
-                                .recoveryWallet(aFile, password, seed, restoreHeight);
+                                .recoveryWallet(aFile, password, seed, offset, restoreHeight);
                         return checkAndCloseWallet(newWallet);
                     }
                 });
@@ -1468,5 +1471,70 @@ public class LoginActivity extends BaseActivity
             throw new IllegalStateException("no USB_SERVICE");
         }
         return usbManager;
+    }
+
+    //
+    // Tor (Orbot) stuff
+    //
+
+    void torNotify() {
+        final Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment == null) return;
+
+        if (fragment instanceof LoginFragment) {
+            runOnUiThread(((LoginFragment) fragment)::showNetwork);
+        }
+    }
+
+    private void deregisterTor() {
+        NetCipherHelper.deregister();
+    }
+
+    private void registerTor() {
+        NetCipherHelper.register(new NetCipherHelper.OnStatusChangedListener() {
+            @Override
+            public void connected() {
+                Timber.d("CONNECTED");
+                WalletManager.getInstance().setProxy(NetCipherHelper.getProxy());
+                torNotify();
+                if (waitingUiTask != null) {
+                    Timber.d("RUN");
+                    runOnUiThread(waitingUiTask);
+                    waitingUiTask = null;
+                }
+            }
+
+            @Override
+            public void disconnected() {
+                Timber.d("DISCONNECTED");
+                WalletManager.getInstance().setProxy("");
+                torNotify();
+            }
+
+            @Override
+            public void notInstalled() {
+                Timber.d("NOT INSTALLED");
+                WalletManager.getInstance().setProxy("");
+                torNotify();
+            }
+
+            @Override
+            public void notEnabled() {
+                Timber.d("NOT ENABLED");
+                notInstalled();
+            }
+        });
+    }
+
+    private Runnable waitingUiTask;
+
+    @Override
+    public void runOnNetCipher(Runnable uiTask) {
+        if (waitingUiTask != null) throw new IllegalStateException("only one tor task at a time");
+        if (NetCipherHelper.hasClient()) {
+            runOnUiThread(uiTask);
+        } else {
+            waitingUiTask = uiTask;
+        }
     }
 }

@@ -77,7 +77,7 @@ public class Dispatcher implements PeerRetriever.OnGetPeers {
                     final NodeInfo nodeInfo = retrievedPeer.getNodeInfo();
                     Timber.d("Retrieved %s", nodeInfo);
                     if ((nodeInfo.isValid() || nodeInfo.isFavourite())) {
-                        nodeInfo.setName();
+                        nodeInfo.setDefaultName();
                         rpcNodes.add(nodeInfo);
                         Timber.d("RPC: %s", nodeInfo);
                         // the following is not totally correct but it works (otherwise we need to

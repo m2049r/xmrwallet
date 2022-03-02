@@ -229,7 +229,7 @@ std::vector<std::string> java2cpp(JNIEnv *env, jobject arrayList) {
     return result;
 }
 
-jobject cpp2java(JNIEnv *env, const std::vector<std::string>& vector) {
+jobject cpp2java(JNIEnv *env, const std::vector<std::string> &vector) {
 
     jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
     jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",
@@ -301,12 +301,13 @@ Java_com_m2049r_xmrwallet_model_WalletManager_openWalletJ(JNIEnv *env, jobject i
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_WalletManager_recoveryWalletJ(JNIEnv *env, jobject instance,
                                                               jstring path, jstring password,
-                                                              jstring mnemonic,
+                                                              jstring mnemonic, jstring offset,
                                                               jint networkType,
                                                               jlong restoreHeight) {
     const char *_path = env->GetStringUTFChars(path, nullptr);
     const char *_password = env->GetStringUTFChars(password, nullptr);
     const char *_mnemonic = env->GetStringUTFChars(mnemonic, nullptr);
+    const char *_offset = env->GetStringUTFChars(offset, nullptr);
     Monero::NetworkType _networkType = static_cast<Monero::NetworkType>(networkType);
 
     Bitmonero::Wallet *wallet =
@@ -315,11 +316,14 @@ Java_com_m2049r_xmrwallet_model_WalletManager_recoveryWalletJ(JNIEnv *env, jobje
                     std::string(_password),
                     std::string(_mnemonic),
                     _networkType,
-                    (uint64_t) restoreHeight);
+                    (uint64_t) restoreHeight,
+                    1, // kdf_rounds
+                    std::string(_offset));
 
     env->ReleaseStringUTFChars(path, _path);
     env->ReleaseStringUTFChars(password, _password);
     env->ReleaseStringUTFChars(mnemonic, _mnemonic);
+    env->ReleaseStringUTFChars(offset, _offset);
     return reinterpret_cast<jlong>(wallet);
 }
 
@@ -531,6 +535,17 @@ Java_com_m2049r_xmrwallet_model_WalletManager_resolveOpenAlias(JNIEnv *env, jobj
     return env->NewStringUTF(resolvedAlias.c_str());
 }
 
+JNIEXPORT jboolean JNICALL
+Java_com_m2049r_xmrwallet_model_WalletManager_setProxy(JNIEnv *env, jobject instance,
+                                                       jstring address) {
+    const char *_address = env->GetStringUTFChars(address, nullptr);
+    bool rc =
+            Bitmonero::WalletManagerFactory::getWalletManager()->setProxy(std::string(_address));
+    env->ReleaseStringUTFChars(address, _address);
+    return rc;
+}
+
+
 //TODO static std::tuple<bool, std::string, std::string, std::string, std::string> checkUpdates(const std::string &software, const std::string &subdir);
 
 JNIEXPORT jboolean JNICALL
@@ -559,9 +574,12 @@ Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instan
 /**********************************/
 
 JNIEXPORT jstring JNICALL
-Java_com_m2049r_xmrwallet_model_Wallet_getSeed(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_Wallet_getSeed(JNIEnv *env, jobject instance, jstring seedOffset) {
+    const char *_seedOffset = env->GetStringUTFChars(seedOffset, nullptr);
     Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    return env->NewStringUTF(wallet->seed().c_str());
+    jstring seed = env->NewStringUTF(wallet->seed(std::string(_seedOffset)).c_str());
+    env->ReleaseStringUTFChars(seedOffset, _seedOffset);
+    return seed;
 }
 
 JNIEXPORT jstring JNICALL
@@ -726,6 +744,16 @@ Java_com_m2049r_xmrwallet_model_Wallet_getConnectionStatusJ(JNIEnv *env, jobject
 }
 //TODO virtual void setTrustedDaemon(bool arg) = 0;
 //TODO virtual bool trustedDaemon() const = 0;
+
+JNIEXPORT jboolean JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_setProxy(JNIEnv *env, jobject instance,
+                                                jstring address) {
+    const char *_address = env->GetStringUTFChars(address, nullptr);
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+    bool rc = wallet->setProxy(std::string(_address));
+    env->ReleaseStringUTFChars(address, _address);
+    return rc;
+}
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_getBalance(JNIEnv *env, jobject instance,
@@ -1241,7 +1269,7 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
 #include <stdio.h>
 #include <stdlib.h>
 
-jobject cpp2java(JNIEnv *env, const std::vector<Bitmonero::TransactionInfo *>& vector) {
+jobject cpp2java(JNIEnv *env, const std::vector<Bitmonero::TransactionInfo *> &vector) {
 
     jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
     jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",

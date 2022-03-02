@@ -126,23 +126,38 @@
                         android:src="@drawable/ic_xmrto_doge_off" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvXmrTo"
-                    style="@style/MoneroText.Info"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:drawablePadding="8dp"
-                    android:gravity="start"
-                    android:singleLine="false"
-                    android:text="@string/label_send_btc_xmrto_key"
-                    android:textSize="18sp"
-                    android:visibility="invisible"
-                    app:drawableStartCompat="@drawable/gunther_24dp"
-                    tools:text="@string/info_xmrto" />
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tvXmrTo"
+                        style="@style/MoneroText.Info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="8dp"
+                        android:gravity="start|center_vertical"
+                        android:singleLine="false"
+                        android:textSize="18sp"
+                        android:visibility="invisible"
+                        app:drawableStartCompat="@drawable/gunther_24dp"
+                        tools:text="@string/info_xmrto" />
+
+                    <TextView
+                        android:id="@+id/tvTor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="8dp"
+                        android:gravity="start|center_vertical"
+                        android:singleLine="false"
+                        android:text="@string/tor_noshift"
+                        android:visibility="invisible"
+                        app:drawableStartCompat="@drawable/gunther_24dp" />
+                </FrameLayout>
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout

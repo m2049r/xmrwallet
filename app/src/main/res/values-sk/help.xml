@@ -4,110 +4,110 @@
         <h1>Vytvoriť Peňaženku - Novú</h1>
         <p>Ak Ti treba novú Monero adresu!</p>
         <p>Vlož unikátny názov a heslo peňaženky.
-        Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
-		Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
+        Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení.
+        Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
         <h2>Zapíš si mnemotechnický Seed!</h2>
         <p>Na nasledujúcej obrazovke uvidíš svoj 25-slovný \"Mnemotechnický Seed\".
         Sú to dáta potrebné na obnovenie peňaženky a získanie prístupu k Tvojim prostriedkom.
-		Bezpečné uloženie a utajenie týchto dát je veľmi dôležité, keďže pomocou nich <em>hocikto</em> môže získať kontrolu nad vašimi XMR!</p>
+        Bezpečné uloženie a utajenie týchto dát je veľmi dôležité, keďže pomocou nich <em>hocikto</em> môže získať kontrolu nad vašimi XMR!</p>
         <p>Ak stratíš heslo do peňaženky, ešte stále si môžeš obnoviť peňaženku so svojím mnemotechnickým Seedom.</p>
         <p>Ak stratíš mnemotechnický Seed, neexistuje spôsob ako ho odvodiť a všetky Tvoje mince sú navždy stratené!
         Tento Seed sa nikdy nemôže zmeniť a v prípade, že je ukradnutý, alebo inak skompromitovaný, budeš musieť presunúť svoje mince do novej peňaženky (s novým mnemotechnickým Seedom).
-		Preto je najlepšie ak si svoj Seed zálohuješ zapísaním na papier a uložíš na <em>niekoľko</em> bezpečných a utajených miest.</p>
+        Preto je najlepšie ak si svoj Seed zálohuješ zapísaním na papier a uložíš na <em>niekoľko</em> bezpečných a utajených miest.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
         <h1>Vytvoriť Peňaženku - Seed</h1>
         <p>Ak už máš Monero adresu a chceš obnoviť transakcie z blockchain!</p>
-        <p>Vlož unikátny názov a heslo peňaženky. 
-		Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
-		Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
+        <p>Vlož unikátny názov a heslo peňaženky.
+        Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení.
+        Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
         <p>Vlož svoj Seed do políčka \"Mnemotechnický Seed\".<p>
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
-		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
+        aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
         <h1>Vytvoriť Peňaženku - Kľúče</h1>
         <p>Ak obnovuješ svoju peňaženku pomocou kľúčov!</p>
-        <p>Vlož unikátny názov a heslo peňaženky. 
-		Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
-		Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
-		<p>Vlož svoju Monero adresu do poľa \"Verejná Adresa\" a vyplň \"Prezerací Kľúč\" and  \"Platobný Kľúč\".</p>
+        <p>Vlož unikátny názov a heslo peňaženky.
+        Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení.
+        Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
+        <p>Vlož svoju Monero adresu do poľa \"Verejná Adresa\" a vyplň \"Prezerací Kľúč\" and  \"Platobný Kľúč\".</p>
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
-		aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
-		<p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
-		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>	
+        aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
+        <p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD.
+        Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>
     ]]></string>
 
-	    <string name="help_create_ledger"><![CDATA[
+        <string name="help_create_ledger"><![CDATA[
         <h1>Vytvoriť Peňaženku - Ledger</h1>
         <p>Obnovenie peňaženky zo zariadenia Ledger Nano S.</p>
         <p>Tvoj tajný kľúč nikdy neunikne zo zariadenia Ledger, takže budeš musieť mať Ledger pripojený vždy, keď budeš chcieť pristupovať k svojej peňaženke.</p>
-        <p>Vlož unikátny názov a heslo peňaženky.  Heslo je určené na zabezpečenie dát peňaženky na Android zariadení.  
+        <p>Vlož unikátny názov a heslo peňaženky.  Heslo je určené na zabezpečenie dát peňaženky na Android zariadení.
         Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
-        <p>Do políčka \"Obnov Výšku\" vlož číslo bloku prvej transakcie pre túto adresu . Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
-		Ak to nevieš presne, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu. Urýchli to prehľadávanie blockchain.</p>	
+        <p>Do políčka \"Obnov Výšku\" vlož číslo bloku prvej transakcie pre túto adresu . Môžeš tiež použiť dátum vo formáte YYYY-MM-DD.
+        Ak to nevieš presne, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu. Urýchli to prehľadávanie blockchain.</p>
     ]]></string>
-	
+
     <string name="help_create_view"><![CDATA[
         <h1>Vytvoriť Peňaženku - Prezeracia Peňaženka</h1>
         <p>Ak chceš iba sledovať prichádzajúce transakcie!</p>
-        <p>Vlož unikátny názov a heslo peňaženky. Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
+        <p>Vlož unikátny názov a heslo peňaženky. Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení.
         Používaj silné heslo - alebo ešte lepšie je použiť frázu.<p>
         <p>Vlož svoju Monero adresu do poľa \"Verejná Adresa\" a vyplň \"Prezerací Kľúč\".</p>
-        <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD. 
-		Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.
-		Zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain, aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
+        <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD.
+        Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.
+        Zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain, aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
         <h1>Detaily Peňaženky</h1>
         <h2>Verejná Adresa</h2>
         Vaša verejná adresa je niečo ako číslo bakového účtu, ktoré môžte zdieľať bez toho aby ste sa báli,
-		že prídete o svoje Monero. Ľudia vám budú posielať Monero práve na túto adresu.
+        že prídete o svoje Monero. Ľudia vám budú posielať Monero práve na túto adresu.
         <h2>Mnemotechnický Seed</h2>
         Tieto dáta sú potrebné len na obnovu peňaženky a získanie plného prístupu k vašim prostriedkom.
-		Bezpečné uloženie a utajenie týchto dát je veľmi dôležité, keďže pomocou nich <em>hocikto</em> môže získať kontrolu nad vašimi XMR!
-		Ak to ešte nemáš zapísané a uložené niekde na bezpečnom mieste, urob tak čo najskôr!
+        Bezpečné uloženie a utajenie týchto dát je veľmi dôležité, keďže pomocou nich <em>hocikto</em> môže získať kontrolu nad vašimi XMR!
+        Ak to ešte nemáš zapísané a uložené niekde na bezpečnom mieste, urob tak čo najskôr!
         <h2>Heslo pre súbory peňaženky</h2>
         Uisti sa, že si si heslo zapísal. Ak resetuješ zariadenie, alebo odinštaluješ appku, budeš ho potrebovať na prístup do peňaženky.
-		<br/>
+        <br/>
         <h3>CrAzYpass</h3>
         Pokiaľ tu zobrazené heslo tvorí 52 alfanumerických znakov v skupinách po 4 - gratulujem!
         Tvoje súbory peňaženky sú zabezpečené 256-bit kľúčom vygenerovaným bezpečnostnými funkciami Tvojho zariadenia.
-		Extrémne to zťažuje hacknutie týchto súborov!<br/>
-        Táto funkcia je povinná pre všetky novo-vytvorené peňaženky.		
+        Extrémne to zťažuje hacknutie týchto súborov!<br/>
+        Táto funkcia je povinná pre všetky novo-vytvorené peňaženky.
         <h3>Legacy Password</h3>
         Ak vidíš svoju prístupovú frázu na tomto mieste, Tvoja peňaženka nie je zabezpečená tak,
-		ako by bola pri použití CrAzYpass. Napraviť to môžeš označením \"Zmeň Frázu\" v menu. 
-		Po vložení novej prístupovej frázy (aj pri tej istej ako predtým), aplikácia ti vygeneruje
-		CrAzYpass a zabezpečí s ním súbory peňaženky. Zapísať!
+        ako by bola pri použití CrAzYpass. Napraviť to môžeš označením \"Zmeň Frázu\" v menu.
+        Po vložení novej prístupovej frázy (aj pri tej istej ako predtým), aplikácia ti vygeneruje
+        CrAzYpass a zabezpečí s ním súbory peňaženky. Zapísať!
         <h3>CrAzYpass peňaženky</h3>
         Ak budeš potrebovať niekedy preinštalovať Monerujo (napríklad po resetovaní telefónu alebo pri výmene za iný),
-		alebo ak chceš použiť súbory peňaženky na inom zariadení či PC, budeš musieť
-		použiť toto heslo pre obnovu na opätovný prístup do svojej peňaženky.<br/>
+        alebo ak chceš použiť súbory peňaženky na inom zariadení či PC, budeš musieť
+        použiť toto heslo pre obnovu na opätovný prístup do svojej peňaženky.<br/>
         Označením \"Zmeň Frázu\ z menu, môžeš vybrať inú prístupovú frázu. Tu pozor, pretože to vygenereuje nové heslo pre obnovu.
-		Zapísať!
-		<h2>Prezerací Kľúč</h2>
+        Zapísať!
+        <h2>Prezerací Kľúč</h2>
         Tvoj prezerací kľúč (view key) môžeš používať na sledovanie prichádzajúcich transakcií do peňaženky,
-		zatiaľ čo míňať prostriedky tento prezerací kľúč neumožňuje.
-		<h2>Platobný Kľúč</h2>
+        zatiaľ čo míňať prostriedky tento prezerací kľúč neumožňuje.
+        <h2>Platobný Kľúč</h2>
         Platobný Kľúč (spend key) umožňuje míňať Monero prislúchajúce danej peňaženke,
-		takže ho nikomu nepredrádzaj a uchovaj rovnako bezpečne ako svoj mnemotechnický seed.
-	]]></string>
+        takže ho nikomu nepredrádzaj a uchovaj rovnako bezpečne ako svoj mnemotechnický seed.
+    ]]></string>
 
     <string name="help_list"><![CDATA[
         <h1>Zoznam Peňaženiek</h1>
         <h2>Uzol</h2>
         <p>Monerujo používa vzdialené uzly na komunikáciu so sieťou Monero. Nie je tak potrebné sťahovať
-		a ukladať celú blockchain ako takú. Zoznam populárnych uzlov spolu s návodmi ako ich rozbehať môžeš nájsť na 
-		https://moneroworld.com/<p>
+        a ukladať celú blockchain ako takú. Zoznam populárnych uzlov spolu s návodmi ako ich rozbehať môžeš nájsť na
+        https://moneroworld.com/<p>
         <p>Monerujo prichádza s niekoľkými prednastavenými uzlami. Pamätá si posledných 5 použitých uzlov.</p>
         <h2>Peňaženky</h2>
         <p>Tu vidíš svoje peňaženky. Sú umiestnené v adresári <tt>monerujo</tt> na internom úložisku Tvojho zariadenia.
         Môžeš použiť súborový manažér telefónu na ich vyhľadanuie a zobrazenie.
-		Mal by si robiť pravidelné zálohy týchto adresárov a umiestniť ich mimo zariadenie pre prípad straty, či poškodenia.</p>
+        Mal by si robiť pravidelné zálohy týchto adresárov a umiestniť ich mimo zariadenie pre prípad straty, či poškodenia.</p>
         <p>Označ Peňaženku alebo stlač \"+\" pre vytvorenie novej.
         Alebo označ jednu z možností:</p>
         <h3>Detaily</h3>
@@ -122,32 +122,32 @@
         <h3>Archivovať</h3>
         <p>Vytvorí zálohu s následným zmazaním peňaženky. Kópia zostáva v adresári <tt>backups</tt>
         Pokiaľ už nepotrebuješ zálohy, mal by si ich vymazať zo svojho telefónu pomocou súborového manažéra,
-		alebo inej aplikácie na bezpečné mazanie.
-		</p>
+        alebo inej aplikácie na bezpečné mazanie.
+        </p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
         <h1>Detaily Transakcie</h1>
         <h2>Destinácia</h2>
         Toto je verejná adresa peňaženky kde chceš poslať Monero.
-		<h2>ID Platby</h2>
+        <h2>ID Platby</h2>
         Môžeš použiť ID Platby na identifikáciu platby medzi dvoma stranami. Nie je to síce povinný, ale je to súkromný údaj.
-		Tak napríklad s týmto môžeš zosúladiť svoj biznis s kúpenou položkou. Táto funkcia bude v Monero nahradená podadresami.
+        Tak napríklad s týmto môžeš zosúladiť svoj biznis s kúpenou položkou. Táto funkcia bude v Monero nahradená podadresami.
         <h2>TX ID</h2>
         Toto je ID transakcie, ktoré slúži na identifikáciu transakcie v Monero blockchain exploreri, ako napr. <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>TX KĽÚČ (Transaction Key)</h2>
         Toto je Tvoj súkromný kľúč transakcie, uchovaj ho bezpečne a neposkytuj ho tretím stranám,
-		aby nemohli identifikovať tvoj podpis v kruhovom podpise a spraviť tak transakciu verejnú a transparentnú.		
+        aby nemohli identifikovať tvoj podpis v kruhovom podpise a spraviť tak transakciu verejnú a transparentnú.
         <h2>Blok</h2>
         Blok do ktorého je zaradená vaša transakcia.
-		
+
     ]]></string>
 
     <string name="help_send"><![CDATA[
         <h1>Poslať</h1>
         <h2>Adresa Príjemcu</h2>
         <p>Toto je verejná adresa peňaženky kam posielaš Monero. Môžeš ju kopírovať zo schránky, skenovať QR kód alebo vložiť manuálne.
-		Trikrát sa uisti, že neposielaš mince na zlú adresu.</p>
+        Trikrát sa uisti, že neposielaš mince na zlú adresu.</p>
         <p>Okrem XMR adries, môžte použiť tiež
         <ul>
             <li>OpenAlias pre XMR či BTC</li>
@@ -157,19 +157,19 @@
         <h1>Posielanie BTC</h1>
         <h2>SideShift.ai</h2>
         <p>SideShift.ai je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
-        Používame SideShift.ai API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na 
-		https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-		Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
+        Používame SideShift.ai API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
+        https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
+        Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
         <h2>SideShift.ai Výmenný Kurz<h2>
         <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby SideShift.ai, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
-		Podotýkame, že tento kurz nie je garantovaný.</p>
+        Podotýkame, že tento kurz nie je garantovaný.</p>
         <h2>SideShift.ai Objednávka<h2>
-        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v SideShift.ai. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\". 
-		Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
+        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v SideShift.ai. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
+        Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
         <h2>SideShift.ai Tajný Kľúč<h2>
-        <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero, 
-		tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-		na domovskej stránke SideShift.ai</p>
+        <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
+        tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
+        na domovskej stránke SideShift.ai</p>
         <h2>SideShift.ai Odpočítavanie!</h2>
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z SideShift.ai návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
@@ -179,18 +179,18 @@
         <h2>SideShift.ai</h2>
         <p>SideShift.ai je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
         Používame SideShift.ai API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
-		https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-		Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
+        https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
+        Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
         <h2>SideShift.ai Výmenný Kurz<h2>
         <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby SideShift.ai, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
-		Podotýkame, že tento kurz nie je garantovaný.</p>
+        Podotýkame, že tento kurz nie je garantovaný.</p>
         <h2>SideShift.ai Objednávka<h2>
         <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v SideShift.ai. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
-		Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
+        Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
         <h2>SideShift.ai Tajný Kľúč<h2>
         <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
-		tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-		na domovskej stránke SideShift.ai</p>
+        tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
+        na domovskej stránke SideShift.ai</p>
         <h2>SideShift.ai Odpočítavanie!</h2>
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z SideShift.ai návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
@@ -200,19 +200,19 @@
 
         <h2>Mód Ulica</h2>
         <p>Mód Ulica sa povoľuje a vypína v menu, alebo klepnutím na ikonu Guntherovej hlavy. V tomto móde sa váš zostatok nezobrazuje na žiadnej obrazovke,
-		takže svoju peňaženku môžte smelo používať na ulici, v krčme, či na inom  verejnom mieste. Po nastavení sú skryté aj predchádzajúce transakcie, zatiaľ čo nové budú zobrazené,
-		aby ste mohli vidieť či vám odoslalo a dorazilo všetko správne.</p>
+        takže svoju peňaženku môžte smelo používať na ulici, v krčme, či na inom  verejnom mieste. Po nastavení sú skryté aj predchádzajúce transakcie, zatiaľ čo nové budú zobrazené,
+        aby ste mohli vidieť či vám odoslalo a dorazilo všetko správne.</p>
 
         <h2>Skenovanie</h2>
         Keďže Monero obľubuje súkromie, zakaždým pri otváraní Monerujo musíme skenovať blockchain aby sme videli, či nedorazili nové Monerá.
-		Monerujo uchováva len tie informácie, ktoré prislúchajú vašej peňaženke. Pokiaľ nemáte sychronizovanú peňaženku dlhší čas, synchronizácia môže trvať dlho.
+        Monerujo uchováva len tie informácie, ktoré prislúchajú vašej peňaženke. Pokiaľ nemáte sychronizovanú peňaženku dlhší čas, synchronizácia môže trvať dlho.
         <h2>Zostatok</h2>
         <p><b>Pomóc! Zostatok v mojej peňaženke zmizol, alebo je nepotvrdený!</b><br/>
         Nestresuj! Keď odosielaš prostriedky zo svojej peňaženky, časť zostatku sa dočasne ukáže ako nepotvrdená.
 
         Súvisí to s tým, ako je Monero navrhnuté a ako funguje zmena v blockchain.
 
-		Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
+        Viac o zmenách sa dočítaš (anglicky) na https://getmonero.org/resources/moneropedia/change.html
         <h2>Zoznam Transakcií</h2>
         <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
     ]]></string>
@@ -226,7 +226,7 @@
         <h2>Zoznam Uzlov</h2>
         <p>Ak je zoznam prázdny, môžeš zadať adresu uzla manuálne, alebo môžeš nechať Monerujo preskúmať celú sieť. Prípadne oboje. Čítaj ďalej&#8230;</p>
         <p>Zoznam uzlov zobrazuje všetky momentálne známe uzly. Pod každým uzlom je zobrazená časová pečiatka jeho posledného bloku.
-		Vedľa je ikonka nodu, ktorá indikuje úroveň pripojenia.</p>
+        Vedľa je ikonka nodu, ktorá indikuje úroveň pripojenia.</p>
         <p>Ktorýkoľvek uzol v zozname si môžte pridať do záložiek pre budúce použitie. Uzly, ktoré nebudú uložené, sa z pamäte vymažú.<p>
         <p>Monerujo vyberie jeden z uložených uzlov pri každom použití. Skontroluje výšku bloku (blockheight) týchto uzlov a zistí, ktorý uzol je ako aktualizovaný, ako dlho trvá odpoveď a podľa toho vyberie pre vás optimálny uzol.</p>
         <p>Podľa týchto charakteristík je dané aj zoradenie v zozname. Prvý uzol bude ten, ktorý Monerujo vybral práve teraz. Naspodku bude veľmi pomalý uzol s pomalou odozvou, alebo nedostupné uzly.</p>
@@ -235,16 +235,16 @@
         &quot;Adresa&quot; je hostname alebo IP-adresa uzla. Je to jediné povinné pole.
         &quot;Port&quot; ak uzol používa iný ako predvolený port (napr. 18089).
         Môžte si aj pomenovať svoje uzly pre budúce použitie. Je to voliteľné.
-		Niektoré uzly vyžadujú na používanie aj prihlasovacie údaje. V tom prípade napíšte užívateľské meno a heslo do príslušných polí.
+        Niektoré uzly vyžadujú na používanie aj prihlasovacie údaje. V tom prípade napíšte užívateľské meno a heslo do príslušných polí.
         To by malo stačiť na testovanie týchto nastavení. &quot;Test&quot;
         &quot;Výsledky Testu&quot; zobrazia výšku, čas odozvy a aktuálnu IP adresu uzla.
         Vo výsledku môže byť tiež chyba - zvyčajne preto, že uzol nie je dostupný, neodpovedá v požadovanom čase, alebo prihlasovacie údaje nie sú správne.
-		Prípadne kombinácia zadanej adresy a portu neprislúcha žiadnemu uzlu Monero siete!
+        Prípadne kombinácia zadanej adresy a portu neprislúcha žiadnemu uzlu Monero siete!
         Akonáhle test skončí úspešne (žiadna chyba sa neobjaví) - klepni na &quot;OK&quot; a ulož si daný uzol.</p>
         <h2>Vyhľadať Uzol</h2>
         <p>Táto funkcia umožní vyhľadať uzol skenovaním Monero siete. Monerujo začne skenovať sieť a vyhľadávať vzdialené uzly na porte 18089.
-		Začína tým, že sa opýta uzlov vo vašich záložkách na ďalšie uzly v P2P sieti Monero, ktoré sú s nimi spojené, tých sa opýta zas na ďalšie uzly atď. 
-		V prípade, že nemáte žiadne uzly vo svojich záložkách, Monerujo bude skúšať uzly (seed nodes) natvrdo zapísané v kóde Monero. Vyhľadávanie končí ak Monerujo nájde aspoň 10 vzdialených uzlov.</p>
+        Začína tým, že sa opýta uzlov vo vašich záložkách na ďalšie uzly v P2P sieti Monero, ktoré sú s nimi spojené, tých sa opýta zas na ďalšie uzly atď.
+        V prípade, že nemáte žiadne uzly vo svojich záložkách, Monerujo bude skúšať uzly (seed nodes) natvrdo zapísané v kóde Monero. Vyhľadávanie končí ak Monerujo nájde aspoň 10 vzdialených uzlov.</p>
     ]]></string>
 
     <string name="help_uri"><![CDATA[
@@ -259,4 +259,25 @@
     ]]></string>
 
     <string name="help_ok">Rozumiem!</string> <!-- Note: "Got it" as in "I understand this" -->
+
+    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_tor"><![CDATA[
+        <h1>Tor</h1>
+        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
+        communication.</p>
+        <p>Enabling Tor will route your connection through several relays and hide your IP address
+        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
+        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
+        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
+        screen.</p>
+        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
+        on the top right).</p>
+    ]]></string>
+
+    <string name="help_tor_enable"><![CDATA[
+        <h1>Tor Node</h1>
+        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
+        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
 </resources>

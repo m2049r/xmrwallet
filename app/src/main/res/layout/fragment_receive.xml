@@ -111,8 +111,9 @@
                     android:text="@string/label_receive_info_gen_qr_code"
                     android:textAlignment="center"
                     android:textSize="16sp"
-                    android:visibility="gone"
-                    card_view:drawableStartCompat="@drawable/ic_info_outline_gray_24dp" />
+                    android:textColor="#2D1A2E"
+                    android:visibility="visible"
+                    card_view:drawableStartCompat="@drawable/ic_info_outline_black_24dp" />
 
                 <ImageView
                     android:id="@+id/qrCode"

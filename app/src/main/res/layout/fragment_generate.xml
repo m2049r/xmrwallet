@@ -15,7 +15,6 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -34,7 +33,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             app:boxStrokeErrorColor="@color/monerujoPrimary"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/ic_smiley_gunther_filled"
@@ -78,7 +77,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             android:visibility="gone"
             app:errorEnabled="true">
 
@@ -92,12 +91,41 @@
                 android:textAlignment="textStart" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bSeedOffset"
+            style="@style/MoneroIconButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:background="?android:selectableItemBackground"
+            android:text="@string/label_seed_offset_encrypt"
+            app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etSeedOffset"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/header_top_first"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/MoneroEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/seed_offset_hint"
+                android:inputType="textVisiblePassword"
+                android:maxLines="1"
+                android:textAlignment="textStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etWalletAddress"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             android:visibility="gone"
             app:counterEnabled="true"
             app:counterMaxLength="95"
@@ -118,7 +146,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             android:visibility="gone"
             app:counterEnabled="true"
             app:counterMaxLength="64"
@@ -139,7 +167,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             android:visibility="gone"
             app:counterEnabled="true"
             app:counterMaxLength="64"
@@ -160,7 +188,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/header_top_first"
+            android:layout_marginTop="@dimen/header_top_first"
             android:visibility="gone"
             app:errorEnabled="true">
 
@@ -179,7 +207,7 @@
             style="@style/MoneroButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/header_top_first"
             android:text="@string/generate_buttonGenerate" />
 
     </LinearLayout>

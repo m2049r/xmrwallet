@@ -13,7 +13,7 @@
     <string name="menu_changepw">Canvi de contrasenya</string>
 
     <string name="password_weak">Segueix escrivint &#8230;</string>
-    <string name="password_fair">Més o menys... &#8230;</string>
+    <string name="password_fair">Més o menys…</string>
     <string name="password_good">Vinga, ho pots fer millor!</string>
     <string name="password_strong">Força bé, pero millorbale &#8230;</string>
     <string name="password_very_strong">Genial, ets tot un hacker!</string>
@@ -23,7 +23,7 @@
     <string name="label_ok">D\'acord</string>
     <string name="label_cancel">Cancel·lar</string>
     <string name="label_close">Tancar</string>
-    <string name="label_wallet_advanced_details">Premi aquí per informació més detallada</string>
+    <string name="label_wallet_advanced_details">Informació més detallada</string>
 
     <string name="label_send_success">Enviat correctament!</string>
     <string name="label_send_done">Fet</string>
@@ -236,7 +236,7 @@
 
     <string name="send_create_tx_error_title">Error creant la transacció</string>
 
-    <string name="tx_list_fee">- Comissió %1$s</string>
+    <string name="tx_list_fee">Comissió %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">fallit</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -425,8 +425,20 @@
     <string name="restore_failed">Import failed!</string>
 
     <string name="menu_deletecache">Reset wallet!</string>
+<<<<<<< HEAD
     <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
 
     <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
     <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
+=======
+    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+>>>>>>> 7b96baeca7f216c943ad5d376e6838f9679e74b0
 </resources>

@@ -505,6 +505,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         Timber.d("onResume()");
     }
 
+    @Override
     public void saveWallet() {
         if (mIsBound) { // no point in talking to unbound service
             Intent intent = new Intent(getApplicationContext(), WalletService.class);
@@ -609,9 +610,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public void onWalletStored(final boolean success) {
         runOnUiThread(() -> {
-            if (success) {
-                Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unloaded), Toast.LENGTH_SHORT).show();
-            } else {
+            if (!success) {
                 Toast.makeText(WalletActivity.this, getString(R.string.status_wallet_unload_failed), Toast.LENGTH_LONG).show();
             }
         });

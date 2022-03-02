@@ -49,8 +49,6 @@ import java.util.TimeZone;
 import timber.log.Timber;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
-    private final static int MAX_CONFIRMATIONS = 10;
-
     private final static SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private final int outboundColour;
@@ -81,7 +79,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     public boolean needsTransactionUpdateOnNewBlock() {
-        return (infoItems.size() > 0) && (infoItems.get(0).confirmations < MAX_CONFIRMATIONS);
+        return (infoItems.size() > 0) && !infoItems.get(0).isConfirmed();
     }
 
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
@@ -102,7 +100,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             return (oldItem.direction == newItem.direction)
                     && (oldItem.isPending == newItem.isPending)
                     && (oldItem.isFailed == newItem.isFailed)
-                    && (oldItem.confirmations == newItem.confirmations)
+                    && ((oldItem.confirmations == newItem.confirmations) || (oldItem.isConfirmed()))
                     && (oldItem.subaddressLabel.equals(newItem.subaddressLabel))
                     && (Objects.equals(oldItem.notes, newItem.notes));
         }
@@ -154,7 +152,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ImageView ivTxType;
         final TextView tvAmount;
-        final TextView tvFee;
+        final TextView tvFailed;
         final TextView tvPaymentId;
         final TextView tvDateTime;
         final CircularProgressIndicator pbConfirmations;
@@ -165,11 +163,11 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             super(itemView);
             ivTxType = itemView.findViewById(R.id.ivTxType);
             tvAmount = itemView.findViewById(R.id.tx_amount);
-            tvFee = itemView.findViewById(R.id.tx_fee);
+            tvFailed = itemView.findViewById(R.id.tx_failed);
             tvPaymentId = itemView.findViewById(R.id.tx_paymentid);
             tvDateTime = itemView.findViewById(R.id.tx_datetime);
             pbConfirmations = itemView.findViewById(R.id.pbConfirmations);
-            pbConfirmations.setMax(MAX_CONFIRMATIONS);
+            pbConfirmations.setMax(TransactionInfo.CONFIRMATION);
             tvConfirmations = itemView.findViewById(R.id.tvConfirmations);
         }
 
@@ -205,18 +203,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 tvAmount.setText(context.getString(R.string.tx_list_amount_positive, displayAmount));
             }
 
-            if ((infoItem.fee > 0)) {
-                String fee = Helper.getDisplayAmount(infoItem.fee, Helper.DISPLAY_DIGITS_INFO);
-                tvFee.setText(context.getString(R.string.tx_list_fee, fee));
-                tvFee.setVisibility(View.VISIBLE);
-            } else {
-                tvFee.setText("");
-                tvFee.setVisibility(View.GONE);
-            }
+            tvFailed.setVisibility(View.GONE);
             if (infoItem.isFailed) {
                 this.tvAmount.setText(context.getString(R.string.tx_list_amount_failed, displayAmount));
-                this.tvFee.setText(context.getString(R.string.tx_list_failed_text));
-                tvFee.setVisibility(View.VISIBLE);
+                tvFailed.setVisibility(View.VISIBLE);
                 setTxColour(failedColour);
                 pbConfirmations.setVisibility(View.GONE);
                 tvConfirmations.setVisibility(View.GONE);
@@ -228,9 +218,9 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 tvConfirmations.setVisibility(View.GONE);
             } else if (infoItem.direction == TransactionInfo.Direction.Direction_In) {
                 setTxColour(inboundColour);
-                final int confirmations = (int) infoItem.confirmations;
-                if (confirmations <= MAX_CONFIRMATIONS) {
+                if (!infoItem.isConfirmed()) {
                     pbConfirmations.setVisibility(View.VISIBLE);
+                    final int confirmations = (int) infoItem.confirmations;
                     pbConfirmations.setProgressCompat(confirmations, true);
                     final String confCount = Integer.toString(confirmations);
                     tvConfirmations.setText(confCount);

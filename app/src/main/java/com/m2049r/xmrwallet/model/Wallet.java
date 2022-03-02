@@ -75,7 +75,7 @@ public class Wallet {
         @Override
         @NonNull
         public String toString() {
-            return "Wallet.Status: (" + status + "/" + errorString + ", " + connectionStatus;
+            return "Wallet.Status: " + status + "/" + errorString + "/" + connectionStatus;
         }
     }
 
@@ -129,7 +129,7 @@ public class Wallet {
         ConnectionStatus_WrongVersion
     }
 
-    public native String getSeed();
+    public native String getSeed(String offset);
 
     public native String getSeedLanguage();
 
@@ -147,7 +147,7 @@ public class Wallet {
 
     private native Status statusWithErrorString();
 
-    public native boolean setPassword(String password);
+    public native synchronized boolean setPassword(String password);
 
     public String getAddress() {
         return getAddress(accountIndex);
@@ -203,12 +203,10 @@ public class Wallet {
     public native String getSecretSpendKey();
 
     public boolean store() {
-        final boolean ok = store("");
-        Timber.d("stored");
-        return ok;
+        return store("");
     }
 
-    public native boolean store(String path);
+    public native synchronized boolean store(String path);
 
     public boolean close() {
         disposePendingTransaction();
@@ -246,6 +244,8 @@ public class Wallet {
 
 //TODO virtual void setTrustedDaemon(bool arg) = 0;
 //TODO virtual bool trustedDaemon() const = 0;
+
+    public native boolean setProxy(String address);
 
     public long getBalance() {
         return getBalance(accountIndex);
@@ -398,6 +398,10 @@ public class Wallet {
 
     private native long getHistoryJ();
 
+    public void refreshHistory() {
+        getHistory().refreshWithNotes(this);
+    }
+
 //virtual AddressBook * addressBook() const = 0;
 //virtual void setListener(WalletListener *) = 0;
 
@@ -462,7 +466,7 @@ public class Wallet {
 
     public void setSubaddressLabel(int addressIndex, String label) {
         setSubaddressLabel(accountIndex, addressIndex, label);
-        getHistory().refreshWithNotes(this);
+        refreshHistory();
     }
 
     public native void setSubaddressLabel(int accountIndex, int addressIndex, String label);

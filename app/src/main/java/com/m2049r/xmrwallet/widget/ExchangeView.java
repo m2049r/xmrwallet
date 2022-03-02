@@ -321,23 +321,13 @@ public class ExchangeView extends LinearLayout {
                     @Override
                     public void onSuccess(final ExchangeRate exchangeRate) {
                         if (isAttachedToWindow())
-                            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    exchange(exchangeRate);
-                                }
-                            });
+                            new Handler(Looper.getMainLooper()).post(() -> exchange(exchangeRate));
                     }
 
                     @Override
                     public void onError(final Exception e) {
                         Timber.e(e.getLocalizedMessage());
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                exchangeFailed();
-                            }
-                        });
+                        new Handler(Looper.getMainLooper()).post(() -> exchangeFailed());
                     }
                 });
     }
@@ -362,11 +352,10 @@ public class ExchangeView extends LinearLayout {
             }
             tvAmountB.setText(xmrAmount);
         } else { // no XMR currency - cannot happen!
-            Timber.e("No XMR currency!");
-            setXmr(null);
-            notXmrAmount = null;
-            return;
+            throw new IllegalStateException("No XMR currency!");
         }
+        if (rate == 0)
+            tvAmountB.setText("--");
     }
 
     boolean prepareExchange() {

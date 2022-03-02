@@ -223,11 +223,13 @@ public class WalletFragment extends Fragment
     }
 
     void showUnconfirmed(double unconfirmedAmount) {
-        if (!activityCallback.isStreetMode()) {
+        if (activityCallback.isStreetMode() || unconfirmedAmount == 0) {
+            tvUnconfirmedAmount.setText(null);
+            tvUnconfirmedAmount.setVisibility(View.GONE);
+        } else {
             String unconfirmed = Helper.getFormattedAmount(unconfirmedAmount, true);
             tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, unconfirmed));
-        } else {
-            tvUnconfirmedAmount.setText(null);
+            tvUnconfirmedAmount.setVisibility(View.VISIBLE);
         }
     }
 
@@ -349,14 +351,14 @@ public class WalletFragment extends Fragment
         Timber.d("onRefreshed(%b)", full);
 
         if (adapter.needsTransactionUpdateOnNewBlock()) {
-            wallet.getHistory().refresh();
+            wallet.refreshHistory();
             full = true;
         }
         if (full) {
             List<TransactionInfo> list = new ArrayList<>();
             final long streetHeight = activityCallback.getStreetModeHeight();
             Timber.d("StreetHeight=%d", streetHeight);
-            wallet.getHistory().refresh();
+            wallet.refreshHistory();
             for (TransactionInfo info : wallet.getHistory().getAll()) {
                 Timber.d("TxHeight=%d, Label=%s", info.blockheight, info.subaddressLabel);
                 if ((info.isPending || (info.blockheight >= streetHeight))

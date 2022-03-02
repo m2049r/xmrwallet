@@ -23,7 +23,7 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">Cancella</string>
     <string name="label_close">Chiudi</string>
-    <string name="label_wallet_advanced_details">Tocca per informazioni dettagliate</string>
+    <string name="label_wallet_advanced_details">Informazioni dettagliate</string>
 
     <string name="label_send_success">Invio riuscito</string>
     <string name="label_send_done">Fatto</string>
@@ -232,7 +232,7 @@
 
     <string name="send_create_tx_error_title">Errore nella creazione della transazione</string>
 
-    <string name="tx_list_fee">- Commissione %1$s</string>
+    <string name="tx_list_fee">Commissione %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">fallita</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -362,76 +362,89 @@
 
     <string name="label_restoreheight">Altezza di ripristino</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Avvia app Monero su %1$s</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">Riscansiona!</string>
 
     <string name="onboarding_agree">Ho capito!</string>
     <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_button_ready">Sono pronto!</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">Benvenuto su Monerujo!</string>
+    <string name="onboarding_welcome_information">Questa app ti permette di creare ed usare portafogli di Monero. Puoi conservare i tuoi bei moneroj all\'interno.</string>
+    <string name="onboarding_seed_title">Tieni al sicuro il tuo seed</string>
+    <string name="onboarding_seed_information">Il seed permette l\'accesso al portafogli a chiunque lo abbia. Se lo perdi, non possiamo aiutarti a recuperarlo.</string>
+    <string name="onboarding_xmrto_title">Invia altre crypto</string>
+    <string name="onboarding_xmrto_information">Monerujo supporta SideShift.ai. Copia o scansiona un indirizzo BTC, LTC, ETH, DASH o DOGE per inviare una di queste crypto spendendo XMR.</string>
+    <string name="onboarding_nodes_title">Nodi, a modo tuo</string>
+    <string name="onboarding_nodes_information">I nodi ti connettono alla rete di Monero. Scegli tra i vari nodi pubblici oppure usa il tuo.</string>
+    <string name="onboarding_fpsend_title">Invia con impronta</string>
+    <string name="onboarding_fpsend_information">Ora puoi inviare XMR con la tua impronta digitale. Per richiedere la password, disabilita l\'accesso all\'impronta.</string>
 
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">Modalità scura</string>
     <string-array name="daynight_themes">
         <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>Giorno</item>
+        <item>Notte</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">Non c\'è niente qui\n Crea o ripristina un portafogli</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">Ripristina i nodi predefiniti</string>
+    <string name="toast_default_nodes">Ripristino già in corso…</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">Ultimo blocco: %1$d secondi fa</string>
+    <string name="node_updated_mins">Ultimo blocco: %1$d minuti fa</string>
+    <string name="node_updated_hours">Ultimo blocco: %1$d ore fa</string>
+    <string name="node_updated_days">Ultimo blocco: %1$d giorni fa</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">Impossibile ottenere la quota</string>
+    <string name="shift_checkamount">Controlla l\'ammontare e riprova</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>Indirizzo ambiguo.</b><br/>
+        <i>Si prega di inserire il tipo selezionato.</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+    <b>Inserisci o scansiona un indirizzo %1$s.</b><br/>
+        <i>Invierai XMR e il destinatario otterrà %2$s tramite il servizio <b>SideShift.ai</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Inserisci o scansiona un indirizzo di Monero.</b>
     ]]></string>
 
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
+    <string name="subbaddress_title">Sottoindirizzi</string>
+    <string name="subbaddress_name_hint">Nome sottoindirizzo</string>
+    <string name="max_subaddress_warning">Troppi indirizzi non usati - usane qualcuno per poterne creare altri!</string>
+    <string name="max_account_warning">Troppi account non usati - usane qualcuno per poterne creare altri!</string>
+    <string name="subaddress_tx_label">Transazioni per questo sottoindirizzo:</string>
+    <string name="subaddress_notx_label">Nessuna transazione per questo sottoindirizzo</string>
+    <string name="subaddress_select_label">Seleziona un sottoindirizzo</string>
+    <string name="subaddress_details_hint">Tieni premuto per i dettagli</string>
 
-    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Delete failed!</string>
+    <string name="menu_delete">Elimina</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Eliminazione fallita!</string>
 
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
+    <string name="menu_restore">Importa portafogli</string>
+    <string name="restore_failed">Importazione fallita!</string>
 
+<<<<<<< HEAD
     <string name="menu_deletecache">Reset wallet!</string>
     <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
 
     <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
     <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
+=======
+    <string name="menu_deletecache">Resetta portafogli!</string>
+    <string name="deletecache_alert_message"><![CDATA[Il reset del portafogli cancellerà tutte le informazioni locali (note, nomi di account & sottoindirizzi, chiavi di transazione private, …)! Procedi solo se il portafogli è corrotto e non si carica!]]></string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+>>>>>>> 7b96baeca7f216c943ad5d376e6838f9679e74b0
 </resources>

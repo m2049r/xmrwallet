@@ -23,7 +23,7 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">Katkesta</string>
     <string name="label_close">Sulge</string>
-    <string name="label_wallet_advanced_details">Puuduta lisainfo saamiseks</string>
+    <string name="label_wallet_advanced_details">Lisainfo</string>
 
     <string name="label_send_success">Edukalt saadetud</string>
     <string name="label_send_done">Tehtud</string>
@@ -231,7 +231,7 @@
 
     <string name="send_create_tx_error_title">Viga ülekande genereerimisel</string>
 
-    <string name="tx_list_fee">- teenustasu %1$s</string>
+    <string name="tx_list_fee">teenustasu %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">ebaõnnestus</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -425,8 +425,20 @@
     <string name="restore_failed">Import failed!</string>
 
     <string name="menu_deletecache">Reset wallet!</string>
+<<<<<<< HEAD
     <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
 
     <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
     <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
+=======
+    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+
+    <string name="node_tor_error">Tor required</string>
+    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
+    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
+    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+
+    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
+    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+>>>>>>> 7b96baeca7f216c943ad5d376e6838f9679e74b0
 </resources>

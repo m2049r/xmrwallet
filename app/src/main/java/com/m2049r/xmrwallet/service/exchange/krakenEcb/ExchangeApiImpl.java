@@ -35,13 +35,6 @@ import timber.log.Timber;
 public class ExchangeApiImpl implements ExchangeApi {
     static public final String BASE_FIAT = "EUR";
 
-    @NonNull
-    private final OkHttpClient okHttpClient;
-
-    public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this.okHttpClient = okHttpClient;
-    }
-
     @Override
     public void queryExchangeRate(@NonNull final String baseCurrency, @NonNull final String quoteCurrency,
                                   @NonNull final ExchangeCallback callback) {
@@ -61,13 +54,13 @@ public class ExchangeApiImpl implements ExchangeApi {
         final String quote = Helper.BASE_CRYPTO.equals(baseCurrency) ? quoteCurrency : baseCurrency;
 
         final ExchangeApi krakenApi =
-                new com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl(okHttpClient);
+                new com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl();
         krakenApi.queryExchangeRate(Helper.BASE_CRYPTO, BASE_FIAT, new ExchangeCallback() {
             @Override
             public void onSuccess(final ExchangeRate krakenRate) {
                 Timber.d("kraken = %f", krakenRate.getRate());
                 final ExchangeApi ecbApi =
-                        new com.m2049r.xmrwallet.service.exchange.ecb.ExchangeApiImpl(okHttpClient);
+                        new com.m2049r.xmrwallet.service.exchange.ecb.ExchangeApiImpl();
                 ecbApi.queryExchangeRate(BASE_FIAT, quote, new ExchangeCallback() {
                     @Override
                     public void onSuccess(final ExchangeRate ecbRate) {

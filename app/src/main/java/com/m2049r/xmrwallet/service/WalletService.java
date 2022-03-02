@@ -45,6 +45,7 @@ import com.m2049r.xmrwallet.model.WalletListener;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import timber.log.Timber;
 
@@ -124,7 +125,7 @@ public class WalletService extends Service {
                     if (!wallet.isSynchronized()) {
                         updated = true;
                         // we want to see our transactions as they come in
-                        wallet.getHistory().refresh();
+                        wallet.refreshHistory();
                         int txCount = wallet.getHistory().getCount();
                         if (txCount > lastTxCount) {
                             // update the transaction list only if we have more than before
@@ -152,7 +153,7 @@ public class WalletService extends Service {
             wallet.setSynchronized();
             if (updated) {
                 updateDaemonState(wallet, wallet.getBlockChainHeight());
-                wallet.getHistory().refreshWithNotes(wallet);
+                wallet.refreshHistory();
                 if (observer != null) {
                     updated = !observer.onRefreshed(wallet, true);
                 }
@@ -531,6 +532,7 @@ public class WalletService extends Service {
             Timber.d("Using daemon %s", WalletManager.getInstance().getDaemonAddress());
             showProgress(55);
             wallet.init(0);
+            wallet.setProxy(NetCipherHelper.getProxy());
             showProgress(90);
         }
         return wallet;

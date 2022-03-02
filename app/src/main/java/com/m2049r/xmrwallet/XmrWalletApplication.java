@@ -21,14 +21,17 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 
-import com.m2049r.xmrwallet.BuildConfig;
+import androidx.annotation.NonNull;
+
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.util.LocaleHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.NightmodeHelper;
 
 import timber.log.Timber;
 
 public class XmrWalletApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -36,7 +39,10 @@ public class XmrWalletApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
         NightmodeHelper.setPreferredNightmode(this);
+
+        NetCipherHelper.createInstance(this);
     }
 
     @Override
@@ -45,7 +51,7 @@ public class XmrWalletApplication extends Application {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration configuration) {
+    public void onConfigurationChanged(@NonNull Configuration configuration) {
         super.onConfigurationChanged(configuration);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             LocaleHelper.updateSystemDefaultLocale(configuration.getLocales().get(0));

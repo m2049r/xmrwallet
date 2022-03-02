@@ -21,6 +21,7 @@ import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import net.jodah.concurrentunit.Waiter;
 
@@ -45,7 +46,6 @@ public class SideShiftApiOrderParameterTest {
 
     private SideShiftApi xmrToApi;
 
-    private final OkHttpClient okHttpClient = new OkHttpClient();
     private Waiter waiter;
 
     @Mock
@@ -59,8 +59,8 @@ public class SideShiftApiOrderParameterTest {
         waiter = new Waiter();
 
         MockitoAnnotations.initMocks(this);
-
-        xmrToApi = new SideShiftApiImpl(okHttpClient, mockWebServer.url("/"));
+        NetCipherHelper.Request.mockClient = new OkHttpClient();
+        xmrToApi = new SideShiftApiImpl(mockWebServer.url("/"));
     }
 
     @After

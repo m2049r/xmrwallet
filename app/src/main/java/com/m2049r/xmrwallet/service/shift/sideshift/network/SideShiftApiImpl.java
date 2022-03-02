@@ -30,7 +30,7 @@ import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.m2049r.xmrwallet.util.NetCipherHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,22 +39,14 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.HttpUrl;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import timber.log.Timber;
 
 public class SideShiftApiImpl implements SideShiftApi, ShiftApiCall {
 
-    @NonNull
-    private final OkHttpClient okHttpClient;
-
     private final HttpUrl baseUrl;
 
-    public SideShiftApiImpl(@NonNull final OkHttpClient okHttpClient, final HttpUrl baseUrl) {
-        this.okHttpClient = okHttpClient;
+    public SideShiftApiImpl(final HttpUrl baseUrl) {
         this.baseUrl = baseUrl;
     }
 
@@ -95,9 +87,9 @@ public class SideShiftApiImpl implements SideShiftApi, ShiftApiCall {
         final HttpUrl url = baseUrl.newBuilder()
                 .addPathSegments(path)
                 .build();
-        final Request httpRequest = createHttpRequest(request, url);
 
-        okHttpClient.newCall(httpRequest).enqueue(new okhttp3.Callback() {
+        NetCipherHelper.Request httpRequest = new NetCipherHelper.Request(url, request);
+        httpRequest.enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(final Call call, final IOException ex) {
                 callback.onError(ex);
@@ -126,14 +118,5 @@ public class SideShiftApiImpl implements SideShiftApi, ShiftApiCall {
                 }
             }
         });
-    }
-
-    private Request createHttpRequest(final JSONObject request, final HttpUrl url) {
-        if (request != null) {
-            final RequestBody body = RequestBody.create(request.toString(), MediaType.parse("application/json"));
-            return OkHttpHelper.getPostRequest(url, body);
-        } else {
-            return OkHttpHelper.getGetRequest(url);
-        }
     }
 }
