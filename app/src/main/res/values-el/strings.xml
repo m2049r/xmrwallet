@@ -427,12 +427,6 @@
     <string name="restore_failed">Import failed!</string>
 
     <string name="menu_deletecache">Reset wallet!</string>
-<<<<<<< HEAD
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, ...)! Use this ONLY if this wallet is corrupt and does not load!</string>
-
-    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
-    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
-=======
     <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
 
     <string name="node_tor_error">Tor required</string>
@@ -442,5 +436,7 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
->>>>>>> 7b96baeca7f216c943ad5d376e6838f9679e74b0
+  
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
 </resources>

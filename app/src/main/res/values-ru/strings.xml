@@ -431,12 +431,6 @@
     <string name="restore_failed">Ошибка импорта!</string>
 
     <string name="menu_deletecache">Сбросить кошелек</string>
-<<<<<<< HEAD
-    <string name="deletecache_alert_message">Этот кошелек будет сброшен, вы потеряете все данные, которые не находятся в блокчейне (например примечания, имена подадресов, приватные ключи транзакций, ...)! Используйте это ТОЛЬКО если ваш кошелек поврежден и не загружается!</string>
-
-    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
-    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
-=======
     <string name="deletecache_alert_message">Этот кошелек будет сброшен, потеряв всю локальную информацию (например: заметки, имена адресов, приватные ключи транзакций, &#8230;)! Используйте это ТОЛЬКО если кошелек поврежден и не загружается!</string>
 
     <string name="node_tor_error">Необходим Tor</string>
@@ -446,5 +440,7 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
->>>>>>> 7b96baeca7f216c943ad5d376e6838f9679e74b0
+
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
 </resources>
