@@ -436,4 +436,7 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="send_address_resolve_ud">Resolving ENS / UD&#8230;</string>
+    <string name="send_address_no_ud_records">No address found for ENS / UD domain</string>
 </resources>

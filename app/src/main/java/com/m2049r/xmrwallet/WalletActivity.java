@@ -905,17 +905,18 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public boolean onScanned(String qrCode) {
+    public void onScanned(String qrCode, ScannerFragment.ScannedCallbackListener listener) {
         // #gurke
-        BarcodeData bcData = BarcodeData.fromString(qrCode);
-        if (bcData != null) {
-            popFragmentStack(null);
-            Timber.d("AAA");
-            onUriScanned(bcData);
-            return true;
-        } else {
-            return false;
-        }
+        BarcodeData.fromString(qrCode, (bcData) -> {
+            if (bcData != null) {
+                popFragmentStack(null);
+                Timber.d("AAA");
+                onUriScanned(bcData);
+                listener.onScanned(true);
+            } else {
+                listener.onScanned(false);
+            }
+        });
     }
 
     OnUriScannedListener onUriScannedListener = null;
@@ -937,6 +938,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Timber.d("onRequestPermissionsResult()");

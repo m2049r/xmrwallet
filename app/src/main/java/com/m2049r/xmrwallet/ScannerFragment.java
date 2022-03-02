@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.m2049r.xmrwallet.data.BarcodeData;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import timber.log.Timber;
@@ -36,7 +37,11 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     private OnScannedListener onScannedListener;
 
     public interface OnScannedListener {
-        boolean onScanned(String qrCode);
+        void onScanned(String qrCode, ScannedCallbackListener listener);
+    }
+
+    public interface ScannedCallbackListener {
+        void onScanned(boolean success);
     }
 
     private ZXingScannerView mScannerView;
@@ -59,11 +64,11 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void handleResult(Result rawResult) {
         if ((rawResult.getBarcodeFormat() == BarcodeFormat.QR_CODE)) {
-            if (onScannedListener.onScanned(rawResult.getText())) {
-                return;
-            } else {
-                Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
-            }
+            onScannedListener.onScanned(rawResult.getText(), (success) -> requireActivity().runOnUiThread(() -> {
+                if (!success) {
+                    Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
+                }
+            }));
         } else {
             Toast.makeText(getActivity(), getString(R.string.send_qr_invalid), Toast.LENGTH_SHORT).show();
         }

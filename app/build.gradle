@@ -142,6 +142,7 @@ dependencies {
     implementation 'dnsjava:dnsjava:2.1.9'
     implementation 'org.jitsi:dnssecjava:1.2.0'
     implementation 'org.slf4j:slf4j-nop:1.7.30'
+    implementation 'com.unstoppabledomains:resolution:3.0.0'
     implementation 'com.github.brnunes:swipeablerecyclerview:1.0.2'
 
     //noinspection GradleDependency

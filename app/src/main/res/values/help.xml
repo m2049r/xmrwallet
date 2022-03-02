@@ -158,6 +158,8 @@
         <p>In addition to using an XMR address, you can also use
         <ul>
             <li>an OpenAlias for XMR or BTC</li>
+            <li>an ENS domain</li>
+            <li>an Unstoppable Domains domain</li>
             <li>a BTC address</li>
         </u>
         Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
