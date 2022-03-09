@@ -4,8 +4,9 @@
 
     <item
         android:id="@+id/menu_item_share"
+        android:icon="@drawable/ic_share"
+        android:orderInCategory="100"
         android:title="Share"
-        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 </menu>

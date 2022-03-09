@@ -33,12 +33,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_top_first"
-            app:boxStrokeErrorColor="@color/monerujoPrimary"
+            android:layout_marginBottom="@dimen/header_top_first"
+            app:boxStrokeErrorColor="?colorPrimary"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/ic_smiley_gunther_filled"
-            app:errorIconTint="@color/monerujoPrimary"
-            app:errorTextColor="@color/monerujoPrimary">
+            app:errorIconTint="?colorPrimary"
+            app:errorTextColor="?colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/MoneroEdit"
@@ -100,7 +100,7 @@
             android:visibility="gone"
             android:background="?android:selectableItemBackground"
             android:text="@string/label_seed_offset_encrypt"
-            app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
+            app:icon="@drawable/ic_keyboard_arrow_down" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etSeedOffset"

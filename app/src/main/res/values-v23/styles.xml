@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="materialCardViewStyle">@style/AppCard</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+    </style>
+</resources>

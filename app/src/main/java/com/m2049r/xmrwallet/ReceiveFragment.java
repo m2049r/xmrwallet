@@ -46,10 +46,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.ShareActionProvider;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -89,6 +86,7 @@ public class ReceiveFragment extends Fragment {
     private ImageView ivQrCodeFull;
     private EditText etDummy;
     private ImageButton bCopyAddress;
+    private MenuItem shareItem;
 
     private Wallet wallet = null;
     private boolean isMyWallet = false;
@@ -128,6 +126,7 @@ public class ReceiveFragment extends Fragment {
         evAmount.setOnNewAmountListener(xmr -> {
             Timber.d("new amount = %s", xmr);
             generateQr();
+            if (shareRequested && (xmr != null)) share();
         });
 
         evAmount.setOnFailedExchangeListener(() -> {
@@ -211,39 +210,38 @@ public class ReceiveFragment extends Fragment {
         setSharedElementEnterTransition(transform);
     }
 
-    private ShareActionProvider shareActionProvider;
+    private boolean shareRequested = false;
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.receive_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
 
-        // Locate MenuItem with ShareActionProvider
-        MenuItem item = menu.findItem(R.id.menu_item_share);
-
-        // Fetch and store ShareActionProvider
-        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-
-        shareActionProvider.setOnShareTargetSelectedListener(new ShareActionProvider.OnShareTargetSelectedListener() {
-            @Override
-            public boolean onShareTargetSelected(ShareActionProvider shareActionProvider, Intent intent) {
-                saveQrCode(); // save it only if we need it
-                return false;
+        shareItem = menu.findItem(R.id.menu_item_share);
+        shareItem.setOnMenuItemClickListener(item -> {
+            if (shareRequested) return true;
+            shareRequested = true;
+            if (!qrValid) {
+                evAmount.doExchange();
+            } else {
+                share();
             }
+            return true;
         });
     }
 
-    private void setShareIntent() {
-        if (shareActionProvider != null) {
-            if (qrValid) {
-                shareActionProvider.setShareIntent(getShareIntent());
-            } else {
-                shareActionProvider.setShareIntent(null);
-            }
+    private void share() {
+        shareRequested = false;
+        if (saveQrCode()) {
+            final Intent sendIntent = getSendIntent();
+            if (sendIntent != null)
+                startActivity(Intent.createChooser(sendIntent, null));
+        } else {
+            Toast.makeText(getActivity(), getString(R.string.message_qr_failed), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveQrCode() {
+    private boolean saveQrCode() {
         if (!qrValid) throw new IllegalStateException("trying to save null qr code!");
 
         File cachePath = new File(getActivity().getCacheDir(), "images");
@@ -255,33 +253,35 @@ public class ReceiveFragment extends Fragment {
             Bitmap qrBitmap = ((BitmapDrawable) ivQrCode.getDrawable()).getBitmap();
             qrBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             stream.close();
+            return true;
         } catch (IOException ex) {
             Timber.e(ex);
             // make sure we don't share an old qr code
             if (!png.delete()) throw new IllegalStateException("cannot delete old qr code");
             // if we manage to delete it, the URI points to nothing and the user gets a toast with the error
         }
+        return false;
     }
 
-    private Intent getShareIntent() {
-        File imagePath = new File(getActivity().getCacheDir(), "images");
+    private Intent getSendIntent() {
+        File imagePath = new File(requireActivity().getCacheDir(), "images");
         File png = new File(imagePath, "QR.png");
-        Uri contentUri = FileProvider.getUriForFile(getActivity(),
-                BuildConfig.APPLICATION_ID + ".fileprovider", png);
+        Uri contentUri = FileProvider.getUriForFile(requireActivity(), BuildConfig.APPLICATION_ID + ".fileprovider", png);
         if (contentUri != null) {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(contentUri, getActivity().getContentResolver().getType(contentUri));
+            shareIntent.setTypeAndNormalize("image/png");
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, bcData.getUriString());
+            if (bcData != null)
+                shareIntent.putExtra(Intent.EXTRA_TEXT, bcData.getUriString());
             return shareIntent;
         }
         return null;
     }
 
     void copyAddress() {
-        Helper.clipBoardCopy(Objects.requireNonNull(getActivity()), getString(R.string.label_copy_address), subaddress.getAddress());
+        Helper.clipBoardCopy(requireActivity(), getString(R.string.label_copy_address), subaddress.getAddress());
         Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
     }
 
@@ -291,7 +291,6 @@ public class ReceiveFragment extends Fragment {
         if (qrValid) {
             ivQrCode.setImageBitmap(null);
             qrValid = false;
-            setShareIntent();
             if (isLoaded)
                 tvQrCode.setVisibility(View.VISIBLE);
         }
@@ -300,7 +299,6 @@ public class ReceiveFragment extends Fragment {
     void setQR(Bitmap qr) {
         ivQrCode.setImageBitmap(qr);
         qrValid = true;
-        setShareIntent();
         tvQrCode.setVisibility(View.GONE);
     }
 
@@ -462,8 +460,8 @@ public class ReceiveFragment extends Fragment {
         subaddress = newSubaddress;
         final Context context = getContext();
         Spanned label = Html.fromHtml(context.getString(R.string.receive_subaddress,
-                Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoGreen) & 0xFFFFFF),
-                Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoBackground) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(context, R.attr.positiveColor) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(context, android.R.attr.colorBackground) & 0xFFFFFF),
                 subaddress.getDisplayLabel(), subaddress.getAddress()));
         tvAddress.setText(label);
         generateQr();

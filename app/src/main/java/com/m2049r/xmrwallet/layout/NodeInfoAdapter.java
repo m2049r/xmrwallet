@@ -23,7 +23,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -230,21 +229,21 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     static public int getPingIcon(NodeInfo nodeInfo) {
         if (nodeInfo.isUnauthorized()) {
-            return R.drawable.ic_wifi_lock_black_24dp;
+            return R.drawable.ic_wifi_lock;
         }
         if (nodeInfo.isValid()) {
             final double ping = nodeInfo.getResponseTime();
             if (ping < NodeInfo.PING_GOOD) {
-                return R.drawable.ic_signal_wifi_4_bar_24dp;
+                return R.drawable.ic_wifi_4_bar;
             } else if (ping < NodeInfo.PING_MEDIUM) {
-                return R.drawable.ic_signal_wifi_3_bar_24dp;
+                return R.drawable.ic_wifi_3_bar;
             } else if (ping < NodeInfo.PING_BAD) {
-                return R.drawable.ic_signal_wifi_2_bar_24dp;
+                return R.drawable.ic_wifi_2_bar;
             } else {
-                return R.drawable.ic_signal_wifi_1_bar_24dp;
+                return R.drawable.ic_wifi_1_bar;
             }
         } else {
-            return R.drawable.ic_signal_wifi_off_24dp;
+            return R.drawable.ic_wifi_off;
         }
     }
 

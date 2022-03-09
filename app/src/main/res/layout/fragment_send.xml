@@ -40,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableStart="@drawable/ic_navigate_prev_white_24dp"
+            android:drawableStart="@drawable/ic_navigate_prev"
             tools:text="Back" />
 
         <com.m2049r.xmrwallet.widget.DotBar
@@ -62,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableEnd="@drawable/ic_navigate_next_white_24dp"
+            android:drawableEnd="@drawable/ic_navigate_next"
             tools:text="Next" />
     </LinearLayout>
 

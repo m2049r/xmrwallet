@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    android:background="@color/monerujoBlue"
+    android:background="?attr/noticeColor"
     android:orientation="horizontal">
 
     <TextView
@@ -19,8 +19,9 @@
         android:drawablePadding="8dp"
         android:gravity="start|center_vertical"
         android:padding="8dp"
-        android:textColor="@color/monerujoToolbarText"
+        android:textColor="?colorOnSecondary"
         app:drawableStartCompat="@drawable/ic_info_white_24dp"
+        app:drawableTint="?colorOnSecondary"
         tools:text="This is an important notice!" />
 
     <ImageButton
@@ -30,5 +31,6 @@
         android:layout_gravity="center"
         android:backgroundTint="#00000000"
         android:padding="8dp"
-        android:src="@drawable/ic_close_white_24dp" />
+        android:src="@drawable/ic_close_white_24dp"
+        app:tint="?colorOnSecondary" />
 </LinearLayout>

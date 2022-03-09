@@ -67,5 +67,5 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_signal_wifi_4_bar_24dp" />
+        android:src="@drawable/ic_wifi_4_bar" />
 </RelativeLayout>

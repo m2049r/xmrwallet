@@ -3,8 +3,8 @@
     android:shape="rectangle">
     <gradient
         android:angle="45"
-        android:endColor="@color/moneroStreetA"
-        android:startColor="@color/moneroStreetB"
+        android:endColor="?attr/streetColorA"
+        android:startColor="?attr/streetColorB"
         android:type="linear" />
     <corners android:radius="56dp" />
 </shape>

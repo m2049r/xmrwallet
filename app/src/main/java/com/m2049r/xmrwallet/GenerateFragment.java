@@ -36,7 +36,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -58,7 +57,6 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -299,10 +297,10 @@ public class GenerateFragment extends Fragment {
         if (etSeedOffset.getVisibility() == View.VISIBLE) {
             etSeedOffset.getEditText().getText().clear();
             etSeedOffset.setVisibility(View.GONE);
-            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_down, 0, 0, 0);
         } else {
             etSeedOffset.setVisibility(View.VISIBLE);
-            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_up, 0, 0, 0);
             etSeedOffset.requestFocusFromTouch();
         }
     }

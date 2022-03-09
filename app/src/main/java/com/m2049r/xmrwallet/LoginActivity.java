@@ -26,6 +26,7 @@ import android.content.SharedPreferences;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -39,7 +40,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -49,24 +49,19 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.m2049r.xmrwallet.data.DefaultNodes;
 import com.m2049r.xmrwallet.data.Node;
 import com.m2049r.xmrwallet.data.NodeInfo;
-import com.m2049r.xmrwallet.dialog.AboutFragment;
 import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
-import com.m2049r.xmrwallet.dialog.PrivacyFragment;
 import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.WalletService;
-import com.m2049r.xmrwallet.util.DayNightMode;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.LegacyStorageHelper;
-import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.MoneroThreadPoolExecutor;
 import com.m2049r.xmrwallet.util.NetCipherHelper;
-import com.m2049r.xmrwallet.util.NightmodeHelper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.util.ZipBackup;
 import com.m2049r.xmrwallet.util.ZipRestore;
@@ -77,12 +72,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -90,7 +81,8 @@ import timber.log.Timber;
 
 public class LoginActivity extends BaseActivity
         implements LoginFragment.Listener, GenerateFragment.Listener,
-        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener, NodeFragment.Listener {
+        GenerateReviewFragment.Listener, GenerateReviewFragment.AcceptListener,
+        NodeFragment.Listener, SettingsFragment.Listener {
     private static final String GENERATE_STACK = "gen";
 
     private static final String NODES_PREFS_NAME = "nodes";
@@ -293,6 +285,7 @@ public class LoginActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Timber.d("onCreate()");
+        ThemeHelper.setPreferred(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
@@ -308,8 +301,8 @@ public class LoginActivity extends BaseActivity
                 case Toolbar.BUTTON_CLOSE:
                     finish();
                     break;
-                case Toolbar.BUTTON_CREDITS:
-                    CreditsFragment.display(getSupportFragmentManager());
+                case Toolbar.BUTTON_SETTINGS:
+                    startSettingsFragment();
                     break;
                 case Toolbar.BUTTON_NONE:
                     break;
@@ -785,6 +778,11 @@ public class LoginActivity extends BaseActivity
         Timber.d("NodeFragment placed");
     }
 
+    void startSettingsFragment() {
+        replaceFragment(new SettingsFragment(), null, null);
+        Timber.d("SettingsFragment placed");
+    }
+
     void replaceFragment(Fragment newFragment, String stackName, Bundle extras) {
         if (extras != null) {
             newFragment.setArguments(extras);
@@ -1089,61 +1087,6 @@ public class LoginActivity extends BaseActivity
         }
     }
 
-    public void onChangeLocale() {
-        final ArrayList<Locale> availableLocales = LocaleHelper.getAvailableLocales(LoginActivity.this);
-        Collections.sort(availableLocales, (locale1, locale2) -> {
-            String localeString1 = LocaleHelper.getDisplayName(locale1, true);
-            String localeString2 = LocaleHelper.getDisplayName(locale2, true);
-            return localeString1.compareTo(localeString2);
-        });
-
-        String[] localeDisplayNames = new String[1 + availableLocales.size()];
-        localeDisplayNames[0] = getString(R.string.language_system_default);
-        for (int i = 1; i < localeDisplayNames.length; i++) {
-            localeDisplayNames[i] = LocaleHelper.getDisplayName(availableLocales.get(i - 1), true);
-        }
-
-        int currentLocaleIndex = 0;
-        String currentLocaleTag = LocaleHelper.getPreferredLanguageTag(LoginActivity.this);
-        if (!currentLocaleTag.isEmpty()) {
-            Locale currentLocale = Locale.forLanguageTag(currentLocaleTag);
-            String currentLocaleName = LocaleHelper.getDisplayName(currentLocale, true);
-            currentLocaleIndex = Arrays.asList(localeDisplayNames).indexOf(currentLocaleName);
-            if (currentLocaleIndex < 0) currentLocaleIndex = 0;
-        }
-
-        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(LoginActivity.this);
-        builder.setTitle(getString(R.string.menu_language));
-        builder.setSingleChoiceItems(localeDisplayNames, currentLocaleIndex, (dialog, i) -> {
-            dialog.dismiss();
-
-            LocaleHelper.setAndSaveLocale(this,
-                    (i == 0) ? "" : availableLocales.get(i - 1).toLanguageTag());
-            startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-        });
-        builder.show();
-    }
-
-    public void onChangeTheme() {
-        final DayNightMode currentDayNightSetting = DayNightMode.getValue(AppCompatDelegate.getDefaultNightMode());
-        // selection will be empty if UNKNOWN
-
-        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(LoginActivity.this);
-        builder.setTitle(getString(R.string.menu_daynight));
-
-        String[] modeNames = getResources().getStringArray(R.array.daynight_themes);
-
-        builder.setSingleChoiceItems(modeNames, currentDayNightSetting.ordinal(), (dialog, i) -> {
-            dialog.dismiss();
-            final DayNightMode mode = DayNightMode.values()[i];
-            if (currentDayNightSetting != mode) {
-                NightmodeHelper.setAndSavePreferredNightmode(LoginActivity.this, mode);
-                LoginActivity.this.recreate();
-            }
-        });
-        builder.show();
-    }
-
     @Override
     public void onBackPressed() {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -1192,9 +1135,6 @@ public class LoginActivity extends BaseActivity
         } else if (id == R.id.action_details_changepw) {
             onWalletChangePassword();
             return true;
-        } else if (id == R.id.action_license_info) {
-            AboutFragment.display(getSupportFragmentManager());
-            return true;
         } else if (id == R.id.action_help_list) {
             HelpFragment.display(getSupportFragmentManager(), R.string.help_list);
             return true;
@@ -1207,18 +1147,6 @@ public class LoginActivity extends BaseActivity
                     (f instanceof NodeFragment)) {
                 ((NodeFragment) f).restoreDefaultNodes();
             }
-            return true;
-        } else if (id == R.id.action_privacy_policy) {
-            PrivacyFragment.display(getSupportFragmentManager());
-            return true;
-        } else if (id == R.id.action_language) {
-            onChangeLocale();
-            return true;
-        } else if (id == R.id.action_theme) {
-            onChangeTheme();
-            return true;
-        } else if (id == R.id.action_restore) {
-            onWalletRestore();
             return true;
         } else if (id == R.id.action_ledger_seed) {
             Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -1333,7 +1261,8 @@ public class LoginActivity extends BaseActivity
                 registerReceiver(usbPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION));
                 usbManager.requestPermission(device,
                         PendingIntent.getBroadcast(this, 0,
-                                new Intent(ACTION_USB_PERMISSION), 0));
+                                new Intent(ACTION_USB_PERMISSION),
+                                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : 0));
             }
         } else {
             Timber.d("no ledger device found");

@@ -16,11 +16,16 @@
 
 package com.m2049r.xmrwallet.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+
+import com.m2049r.xmrwallet.R;
 
 public class ThemeHelper {
     static public int getThemedResourceId(Context ctx, int attrId) {
@@ -39,4 +44,22 @@ public class ThemeHelper {
         else
             return Color.BLACK;
     }
+
+    public static void setTheme(@NonNull Activity activity, @NonNull String theme) {
+        switch (theme) {
+            case "Classic":
+                activity.setTheme(R.style.MyMaterialThemeClassic);
+                break;
+            case "Oled":
+                activity.setTheme(R.style.MyMaterialThemeOled);
+                break;
+        }
+    }
+
+    public static void setPreferred(Activity activity) {
+        final String theme = PreferenceManager.getDefaultSharedPreferences(activity)
+                .getString(activity.getString(R.string.preferred_theme), "Classic");
+        setTheme(activity, theme);
+    }
+
 }

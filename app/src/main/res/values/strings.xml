@@ -510,4 +510,24 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="preferred_theme" translatable="false">preferred_theme</string>
+    <string name="preferred_nightmode" translatable="false">preferred_nightmode</string>
+    <string name="preferred_locale" translatable="false">preferred_locale</string>
+    <string name="about_info" translatable="false">about_info</string>
+    <string name="privacy_info" translatable="false">privacy_info</string>
+    <string name="credits_info" translatable="false">credits_info</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
+    <string name="title_info">Information</string>
+    <string name="setting_daynight">Day / Night</string>
+
+    <string name="setting_theme">Style</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Failed to create QR for sharing!</string>
 </resources>

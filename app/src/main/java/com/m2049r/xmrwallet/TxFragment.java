@@ -35,7 +35,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.transition.MaterialContainerTransform;
@@ -220,8 +219,8 @@ public class TxFragment extends Fragment {
         final Context ctx = getContext();
         Spanned label = Html.fromHtml(ctx.getString(R.string.tx_account_formatted,
                 info.accountIndex, info.addressIndex,
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),
                 subaddress.getDisplayLabel()));
         tvAccount.setText(label);
         tvAccount.setOnClickListener(v -> activityCallback.showSubaddress(v, info.addressIndex));
@@ -266,13 +265,13 @@ public class TxFragment extends Fragment {
         if (info.isFailed) {
             tvTxAmount.setText(getString(R.string.tx_list_amount_failed, Wallet.getDisplayAmount(info.amount)));
             tvTxFee.setText(getString(R.string.tx_list_failed_text));
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_failed));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
         } else if (info.isPending) {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_pending));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
         } else if (info.direction == TransactionInfo.Direction.Direction_In) {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_plus));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.positiveColor));
         } else {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_minus));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.negativeColor));
         }
         Set<String> destinations = new HashSet<>();
         StringBuilder sb = new StringBuilder();
