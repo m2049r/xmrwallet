@@ -149,7 +149,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="bottom|right"
-                            android:src="@drawable/ic_pending_orange_24dp"
+                            android:src="@drawable/ic_pending"
                             android:visibility="visible" />
 
                         <ImageView
@@ -221,7 +221,7 @@
                         android:drawablePadding="8dp"
                         android:gravity="center"
                         android:text="@string/label_send_btc_xmrto_info"
-                        card_view:drawableEndCompat="@drawable/ic_baseline_launch_24" />
+                        card_view:drawableEndCompat="@drawable/ic_launch_external" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

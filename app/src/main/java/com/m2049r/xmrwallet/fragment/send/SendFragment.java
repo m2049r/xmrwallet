@@ -55,7 +55,6 @@ import com.m2049r.xmrwallet.widget.DotBar;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.lang.ref.WeakReference;
-import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -202,14 +201,14 @@ public class SendFragment extends Fragment
         CharSequence nextLabel = pagerAdapter.getPageTitle(position + 1);
         bNext.setText(nextLabel);
         if (nextLabel != null) {
-            bNext.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_navigate_next_white_24dp, 0);
+            bNext.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_navigate_next, 0);
         } else {
             bNext.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
         CharSequence prevLabel = pagerAdapter.getPageTitle(position - 1);
         bPrev.setText(prevLabel);
         if (prevLabel != null) {
-            bPrev.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_navigate_prev_white_24dp, 0, 0, 0);
+            bPrev.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_navigate_prev, 0, 0, 0);
         } else {
             bPrev.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }

@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gradientBottom">#FF006B</color>
-    <color name="gradientTop">#FF6105</color>
+    <!-- OLED -->
+    <color name="oled_textColorPrimary">#000000</color>
+    <color name="oled_textColorSecondary">@color/oled_textColorPrimary</color>
+    <color name="oled_statusBarColor">@color/oled_gradientTopColor</color>
+    <color name="oled_gradientTopColor">@color/oled_colorBackground</color>
+    <color name="oled_gradientBottomColor">#eeeeee</color>
+    <color name="oled_streetColorA">@color/oled_gradientTopColor</color>
+    <color name="oled_streetColorB">@color/oled_colorBackground</color>
+    <color name="oled_toolbarTextColor">@color/oled_colorOnBackground</color>
+    <color name="oled_favouriteColor">#FFDB72</color>
+    <color name="oled_softFavouriteColor">@color/oled_favouriteColor</color>
+    <color name="oled_positiveColor">#27C79C</color>
+    <color name="oled_negativeColor">#FF3C79</color>
+    <color name="oled_neutralColor">#171717</color>
+    <color name="oled_noticeColor">#3DC2FF</color>
+    <color name="oled_navigationBarColor">#000000</color>
+    <color name="oled_colorBackground">#ffffff</color>
+    <color name="oled_colorOnBackground">#232323</color>
+    <color name="oled_colorSurface">@color/oled_colorBackground</color>
+    <color name="oled_colorOnSurface">@color/oled_colorOnBackground</color>
+    <color name="oled_colorPrimary">#2E2E2E</color>
+    <color name="oled_colorPrimaryVariant">#6A6A6A</color>
+    <color name="oled_colorOnPrimary">#ffffff</color>
+    <color name="oled_colorSecondary">@color/oled_negativeColor</color>
+    <color name="oled_colorSecondaryVariant">@color/oled_colorBackground</color>
+    <color name="oled_colorOnSecondary">@color/oled_colorOnBackground</color>
+    <color name="oled_colorError">@color/oled_negativeColor</color>
+    <color name="oled_colorOnError">@color/oled_colorBackground</color>
 
-    <color name="gradientLeft">@color/monerujoOrange</color>
-    <color name="gradientRight">@color/monerujoPink</color>
+    <!-- CLASSIC -->
+    <color name="classic_textColorPrimary">#0C080C</color>
+    <color name="classic_textColorSecondary">#392F39</color>
+    <color name="classic_statusBarColor">@color/classic_gradientTopColor</color>
+    <color name="classic_gradientTopColor">#FF6105</color>
+    <color name="classic_gradientBottomColor">#FF006B</color>
+    <color name="classic_streetColorA">#D81F0759</color>
+    <color name="classic_streetColorB">#D819001E</color>
+    <color name="classic_toolbarTextColor">#FFF6EF</color>
+    <color name="classic_favouriteColor">@color/classic_gradientBottomColor</color>
+    <color name="classic_softFavouriteColor">@color/classic_gradientBottomColor</color>
+    <color name="classic_positiveColor">#00C691</color>
+    <color name="classic_negativeColor">@color/classic_gradientBottomColor</color>
+    <color name="classic_neutralColor">@color/classic_positiveColor</color>
+    <color name="classic_noticeColor">#1f4e97</color>
+    <color name="classic_navigationBarColor">@color/classic_colorOnBackground</color>
+    <color name="classic_colorBackground">#FFF6EF</color>
+    <color name="classic_colorOnBackground">#0C080C</color>
+    <color name="classic_colorSurface">#FFF6EF</color>
+    <color name="classic_colorOnSurface">#2D1A2E</color>
+    <color name="classic_colorPrimary">#2D1A2E</color>
+    <color name="classic_colorPrimaryVariant">#825985</color>
+    <color name="classic_colorOnPrimary">#FFF6EF</color>
+    <color name="classic_colorSecondary">@color/classic_gradientBottomColor</color>
+    <color name="classic_colorSecondaryVariant">#BC0050</color>
+    <color name="classic_colorOnSecondary">#FFF6EF</color>
+    <color name="classic_colorError">@color/classic_gradientBottomColor</color>
+    <color name="classic_colorOnError">#FFF6EF</color>
 
-    <color name="monerujoToolbarText">@color/monerujoBackground</color>
-
-    <color name="monerujoBackground">#FFF6EF</color>
-    <color name="monerujoPrimary">#2D1A2E</color>
-    <color name="monerujoPrimaryVariant">#CCC3BD</color>
-    <color name="monerujoOrange">#FA5544</color>
-    <color name="monerujoGreen">#00C691</color>
-    <color name="monerujoPink">#F0006B</color>
-    <color name="monerujoPinkAlpha">#20F0006B</color>
-    <color name="monerujoE">#FFFDFB</color>
-
-    <color name="monerujoReceive">@color/monerujoGreen</color>
-    <color name="monerujoGive">@color/monerujoOrange</color>
-    <color name="moneroStreetA">#D81F0759</color>
-    <color name="moneroStreetB">#D819001E</color>
-
-    <color name="wifi">@color/monerujoPrimary</color>
-    <color name="progress_circle">@color/monerujoPrimaryVariant</color>
-
-    <color name="tx_failed">@color/monerujoPrimaryVariant</color>
-    <color name="tx_pending">@color/monerujoPrimaryVariant</color>
-    <color name="tx_plus">@color/monerujoGreen</color>
-    <color name="tx_minus">@color/monerujoOrange</color>
-
-    <color name="monerujoBlue">#1f4e97</color>
-
+    <color name="offForeground">#573059</color>
+    <color name="offBackground">#FFF6EF</color>
 </resources>

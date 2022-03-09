@@ -38,7 +38,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +52,7 @@ import com.m2049r.xmrwallet.util.KeyStoreHelper;
 import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.NodePinger;
 import com.m2049r.xmrwallet.util.Notice;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.io.File;
@@ -143,7 +143,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onResume();
         Timber.d("onResume() %s", activityCallback.getFavouriteNodes().size());
         activityCallback.setTitle(null);
-        activityCallback.setToolbarButton(Toolbar.BUTTON_CREDITS);
+        activityCallback.setToolbarButton(Toolbar.BUTTON_SETTINGS);
         activityCallback.showNet();
         showNetwork();
         //activityCallback.runOnNetCipher(this::pingSelectedNode);
@@ -163,12 +163,14 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabView = view.findViewById(R.id.fabView);
         fabKey = view.findViewById(R.id.fabKey);
         fabSeed = view.findViewById(R.id.fabSeed);
+        fabImport = view.findViewById(R.id.fabImport);
         fabLedger = view.findViewById(R.id.fabLedger);
 
         fabNewL = view.findViewById(R.id.fabNewL);
         fabViewL = view.findViewById(R.id.fabViewL);
         fabKeyL = view.findViewById(R.id.fabKeyL);
         fabSeedL = view.findViewById(R.id.fabSeedL);
+        fabImportL = view.findViewById(R.id.fabImportL);
         fabLedgerL = view.findViewById(R.id.fabLedgerL);
 
         fab_pulse = AnimationUtils.loadAnimation(getContext(), R.anim.fab_pulse);
@@ -183,6 +185,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabView.setOnClickListener(this);
         fabKey.setOnClickListener(this);
         fabSeed.setOnClickListener(this);
+        fabImport.setOnClickListener(this);
         fabLedger.setOnClickListener(this);
         fabScreen.setOnClickListener(this);
 
@@ -294,9 +297,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     private boolean isFabOpen = false;
-    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed, fabLedger;
-    private FrameLayout fabScreen;
-    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL, fabLedgerL;
+    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed, fabImport, fabLedger;
+    private RelativeLayout fabScreen;
+    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL, fabImportL, fabLedgerL;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward, fab_open_screen, fab_close_screen;
     private Animation fab_pulse;
 
@@ -321,6 +324,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabKey.setClickable(false);
                 fabSeedL.startAnimation(fab_close);
                 fabSeed.setClickable(false);
+                fabImportL.startAnimation(fab_close);
+                fabImport.setClickable(false);
             }
             isFabOpen = false;
         } else { // open the fab
@@ -333,6 +338,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabViewL.setVisibility(View.GONE);
                 fabKeyL.setVisibility(View.GONE);
                 fabSeedL.setVisibility(View.GONE);
+                fabImportL.setVisibility(View.GONE);
 
                 fabLedgerL.startAnimation(fab_open);
                 fabLedger.setClickable(true);
@@ -342,6 +348,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabViewL.setVisibility(View.VISIBLE);
                 fabKeyL.setVisibility(View.VISIBLE);
                 fabSeedL.setVisibility(View.VISIBLE);
+                fabImportL.setVisibility(View.VISIBLE);
 
                 fabNewL.startAnimation(fab_open);
                 fabNew.setClickable(true);
@@ -351,6 +358,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabKey.setClickable(true);
                 fabSeedL.startAnimation(fab_open);
                 fabSeed.setClickable(true);
+                fabImportL.startAnimation(fab_open);
+                fabImport.setClickable(true);
             }
             isFabOpen = true;
         }
@@ -375,6 +384,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         } else if (id == R.id.fabSeed) {
             animateFAB();
             activityCallback.onAddWallet(GenerateFragment.TYPE_SEED);
+        } else if (id == R.id.fabImport) {
+            animateFAB();
+            activityCallback.onWalletRestore();
         } else if (id == R.id.fabLedger) {
             Timber.d("FAB_LEDGER");
             animateFAB();
@@ -403,8 +415,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private void setSubtext(String status) {
         final Context ctx = getContext();
         final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),
                 status, ""));
         tvNodeInfo.setText(text);
     }

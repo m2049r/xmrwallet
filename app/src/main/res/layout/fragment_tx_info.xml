@@ -100,7 +100,6 @@
                             android:gravity="start"
                             android:padding="8dp"
                             android:selectAllOnFocus="true"
-                            android:textColor="@color/gradientLeft"
                             android:textIsSelectable="true"
                             tools:text="1.008 BTC" />
                     </TableRow>
@@ -171,7 +170,7 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/label_send_btc_xmrto_info"
-                    card_view:drawableEndCompat="@drawable/ic_baseline_launch_24" />
+                    card_view:drawableEndCompat="@drawable/ic_launch_external" />
 
             </LinearLayout>
 

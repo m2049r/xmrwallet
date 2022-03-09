@@ -52,6 +52,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
@@ -111,7 +112,8 @@ public class WalletFragment extends Fragment
         llBalance = view.findViewById(R.id.llBalance);
         flExchange = view.findViewById(R.id.flExchange);
         ((ProgressBar) view.findViewById(R.id.pbExchange)).getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(R.color.progress_circle),
+                setColorFilter(
+                        ThemeHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         tvProgress = view.findViewById(R.id.tvProgress);

@@ -41,6 +41,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -224,7 +225,7 @@ public class ExchangeEditText extends LinearLayout {
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(R.color.progress_circle),
+                setColorFilter(ThemeHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

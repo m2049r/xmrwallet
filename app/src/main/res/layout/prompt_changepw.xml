@@ -15,11 +15,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeErrorColor="@color/monerujoPrimary"
+            app:boxStrokeErrorColor="?colorPrimary"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/ic_smiley_gunther_filled"
-            app:errorIconTint="@color/monerujoPrimary"
-            app:errorTextColor="@color/monerujoPrimary">
+            app:errorIconTint="?colorPrimary"
+            app:errorTextColor="?colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/MoneroEdit"

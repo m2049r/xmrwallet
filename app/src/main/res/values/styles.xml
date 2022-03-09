@@ -4,27 +4,68 @@
     <style name="MyMaterialTheme" parent="Theme.MaterialComponents.DayNight">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-
-        <item name="colorPrimary">@color/monerujoPrimary</item>
-        <item name="colorPrimaryVariant">@color/monerujoPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/monerujoBackground</item>
-        <item name="colorSecondary">@color/monerujoPink</item>
-        <item name="colorSecondaryVariant">@color/monerujoPrimary</item>
-        <item name="colorOnSecondary">@color/monerujoBackground</item>
-        <item name="colorError">@color/monerujoOrange</item>
-        <item name="colorOnError">@color/monerujoPrimary</item>
-        <item name="colorSurface">@color/monerujoBackground</item>
-        <item name="colorOnSurface">@color/monerujoPrimary</item>
-        <item name="android:colorBackground">@color/monerujoBackground</item>
-        <item name="colorOnBackground">@color/monerujoE</item>
-        <item name="android:textColorPrimary">@color/monerujoPrimary</item>
-        <item name="android:textColorSecondary">@color/monerujoPrimary</item>
-
-        <item name="android:statusBarColor">@color/gradientTop</item>
-
         <item name="materialCardViewStyle">@style/AppCard</item>
         <item name="materialButtonStyle">@style/AppButton</item>
+    </style>
 
+    <style name="MyMaterialThemeOled" parent="MyMaterialTheme">
+        <item name="toolbarTextColor">@color/oled_toolbarTextColor</item>
+        <item name="gradientTopColor">@color/oled_gradientTopColor</item>
+        <item name="gradientBottomColor">@color/oled_gradientBottomColor</item>
+        <item name="favouriteColor">@color/oled_favouriteColor</item>
+        <item name="softFavouriteColor">@color/oled_softFavouriteColor</item>
+        <item name="positiveColor">@color/oled_positiveColor</item>
+        <item name="negativeColor">@color/oled_negativeColor</item>
+        <item name="neutralColor">@color/oled_neutralColor</item>
+        <item name="streetColorA">@color/oled_streetColorA</item>
+        <item name="streetColorB">@color/oled_streetColorB</item>
+        <item name="noticeColor">@color/oled_noticeColor</item>
+        <item name="colorPrimary">@color/oled_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/oled_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/oled_colorOnPrimary</item>
+        <item name="colorSecondary">@color/oled_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/oled_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/oled_colorOnSecondary</item>
+        <item name="colorError">@color/oled_colorError</item>
+        <item name="colorOnError">@color/oled_colorOnError</item>
+        <item name="colorSurface">@color/oled_colorSurface</item>
+        <item name="colorOnSurface">@color/oled_colorOnSurface</item>
+        <item name="android:colorBackground">@color/oled_colorBackground</item>
+        <item name="colorOnBackground">@color/oled_colorOnBackground</item>
+        <item name="android:statusBarColor">@color/oled_statusBarColor</item>
+        <item name="android:navigationBarColor">@color/oled_navigationBarColor</item>
+        <item name="android:textColorPrimary">@color/oled_textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/oled_textColorSecondary</item>
+    </style>
+
+    <style name="MyMaterialThemeClassic" parent="MyMaterialTheme">
+        <item name="toolbarTextColor">@color/classic_toolbarTextColor</item>
+        <item name="gradientTopColor">@color/classic_gradientTopColor</item>
+        <item name="gradientBottomColor">@color/classic_gradientBottomColor</item>
+        <item name="favouriteColor">@color/classic_favouriteColor</item>
+        <item name="softFavouriteColor">@color/classic_softFavouriteColor</item>
+        <item name="positiveColor">@color/classic_positiveColor</item>
+        <item name="negativeColor">@color/classic_negativeColor</item>
+        <item name="neutralColor">@color/classic_neutralColor</item>
+        <item name="streetColorA">@color/classic_streetColorA</item>
+        <item name="streetColorB">@color/classic_streetColorB</item>
+        <item name="noticeColor">@color/classic_noticeColor</item>
+        <item name="colorPrimary">@color/classic_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/classic_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/classic_colorOnPrimary</item>
+        <item name="colorSecondary">@color/classic_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/classic_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/classic_colorOnSecondary</item>
+        <item name="colorError">@color/classic_colorError</item>
+        <item name="colorOnError">@color/classic_colorOnError</item>
+        <item name="colorSurface">@color/classic_colorSurface</item>
+        <item name="colorOnSurface">@color/classic_colorOnSurface</item>
+        <item name="android:colorBackground">@color/classic_colorBackground</item>
+        <item name="colorOnBackground">@color/classic_colorOnBackground</item>
+        <item name="android:statusBarColor">@color/classic_statusBarColor</item>
+        <item name="android:navigationBarColor">@color/classic_navigationBarColor</item>
+        <item name="android:textColorSecondary">@color/classic_textColorSecondary</item>
+        <item name="android:textColorPrimary">@color/classic_textColorPrimary</item>
     </style>
 
     <style name="MonerujoToolbar" parent="Widget.MaterialComponents.Toolbar">
@@ -32,11 +73,11 @@
     </style>
 
     <style name="MonerujoToolbarOverlay">
-        <item name="colorControlNormal">@color/monerujoToolbarText</item>
+        <item name="colorControlNormal">?attr/toolbarTextColor</item>
     </style>
 
     <style name="AppCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">2dp</item>
+        <item name="cardElevation">1dp</item>
     </style>
 
     <style name="AppButton" parent="@style/Widget.MaterialComponents.Button">
@@ -139,12 +180,12 @@
 
     <style name="MoneroLabel.Title">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/monerujoToolbarText</item>
+        <item name="android:textColor">?attr/toolbarTextColor</item>
     </style>
 
     <style name="MoneroLabel.Subtitle">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/monerujoToolbarText</item>
+        <item name="android:textColor">?attr/toolbarTextColor</item>
     </style>
 
     <style name="MoneroLabel.Heading">
@@ -193,8 +234,8 @@
     </style>
 
     <style name="MoneroText.Label.Subaddress">
-        <item name="android:background">@color/monerujoGreen</item>
-        <item name="android:textColor">@color/monerujoBackground</item>
+        <item name="android:background">?attr/positiveColor</item>
+        <item name="android:textColor">?android:colorBackground</item>
     </style>
 
     <style name="MoneroText.Confirm">
@@ -250,6 +291,7 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
+        <item name="cornerRadius">4dp</item>
     </style>
 
     <style name="MoneroButton.Green">

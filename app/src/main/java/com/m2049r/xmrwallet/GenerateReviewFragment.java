@@ -46,7 +46,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.m2049r.xmrwallet.ledger.Ledger;
@@ -200,10 +199,10 @@ public class GenerateReviewFragment extends Fragment {
     void toggleAdvancedInfo() {
         if (llAdvancedInfo.getVisibility() == View.VISIBLE) {
             llAdvancedInfo.setVisibility(View.GONE);
-            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_down, 0, 0, 0);
         } else {
             llAdvancedInfo.setVisibility(View.VISIBLE);
-            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            bAdvancedInfo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_up, 0, 0, 0);
             scrollview.post(() -> scrollview.fullScroll(ScrollView.FOCUS_DOWN));
         }
     }
@@ -212,10 +211,10 @@ public class GenerateReviewFragment extends Fragment {
         if (etSeedOffset.getVisibility() == View.VISIBLE) {
             etSeedOffset.getEditText().getText().clear();
             etSeedOffset.setVisibility(View.GONE);
-            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_down_24, 0, 0, 0);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_down, 0, 0, 0);
         } else {
             etSeedOffset.setVisibility(View.VISIBLE);
-            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_keyboard_arrow_up_24, 0, 0, 0);
+            bSeedOffset.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_keyboard_arrow_up, 0, 0, 0);
             etSeedOffset.requestFocusFromTouch();
         }
     }

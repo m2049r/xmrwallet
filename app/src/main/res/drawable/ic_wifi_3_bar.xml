@@ -5,9 +5,9 @@
     android:viewportHeight="24.0">
     <path
         android:fillAlpha=".3"
-        android:fillColor="@color/wifi"
+        android:fillColor="?colorPrimary"
         android:pathData="M12.01,21.49L23.64,7c-0.45,-0.34 -4.93,-4 -11.64,-4C5.28,3 0.81,6.66 0.36,7l11.63,14.49 0.01,0.01 0.01,-0.01z" />
     <path
-        android:fillColor="@color/wifi"
-        android:pathData="M4.79,12.52l7.2,8.98H12l0.01,-0.01 7.2,-8.98C18.85,12.24 16.1,10 12,10s-6.85,2.24 -7.21,2.52z" />
+        android:fillColor="?colorPrimary"
+        android:pathData="M3.53,10.95l8.46,10.54 0.01,0.01 0.01,-0.01 8.46,-10.54C20.04,10.62 16.81,8 12,8c-4.81,0 -8.04,2.62 -8.47,2.95z" />
 </vector>

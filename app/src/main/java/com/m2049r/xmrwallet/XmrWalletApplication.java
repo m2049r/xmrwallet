@@ -22,6 +22,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.util.LocaleHelper;
@@ -35,7 +36,7 @@ public class XmrWalletApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        FragmentManager.enableNewStateManager(false);
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }

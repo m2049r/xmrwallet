@@ -46,7 +46,7 @@ public class Toolbar extends MaterialToolbar {
     ImageView toolbarImage;
     TextView toolbarTitle;
     TextView toolbarSubtitle;
-    ImageButton bCredits;
+    ImageButton bSettings;
 
     public Toolbar(Context context) {
         super(context);
@@ -88,12 +88,10 @@ public class Toolbar extends MaterialToolbar {
 
         toolbarTitle = findViewById(R.id.toolbarTitle);
         toolbarSubtitle = findViewById(R.id.toolbarSubtitle);
-        bCredits = findViewById(R.id.bCredits);
-        bCredits.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (onButtonListener != null) {
-                    onButtonListener.onButton(buttonType);
-                }
+        bSettings = findViewById(R.id.bSettings);
+        bSettings.setOnClickListener(v -> {
+            if (onButtonListener != null) {
+                onButtonListener.onButton(buttonType);
             }
         });
     }
@@ -117,37 +115,37 @@ public class Toolbar extends MaterialToolbar {
     public final static int BUTTON_NONE = 0;
     public final static int BUTTON_BACK = 1;
     public final static int BUTTON_CLOSE = 2;
-    public final static int BUTTON_CREDITS = 3;
+    public final static int BUTTON_SETTINGS = 3;
     public final static int BUTTON_CANCEL = 4;
 
-    int buttonType = BUTTON_CREDITS;
+    int buttonType = BUTTON_SETTINGS;
 
     public void setButton(int type) {
         switch (type) {
             case BUTTON_BACK:
                 Timber.d("BUTTON_BACK");
-                bCredits.setImageResource(R.drawable.ic_arrow_back_white_24dp);
-                bCredits.setVisibility(View.VISIBLE);
+                bSettings.setImageResource(R.drawable.ic_arrow_back);
+                bSettings.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CLOSE:
                 Timber.d("BUTTON_CLOSE");
-                bCredits.setImageResource(R.drawable.ic_close_white_24dp);
-                bCredits.setVisibility(View.VISIBLE);
+                bSettings.setImageResource(R.drawable.ic_close_white_24dp);
+                bSettings.setVisibility(View.VISIBLE);
                 break;
-            case BUTTON_CREDITS:
-                Timber.d("BUTTON_CREDITS");
-                bCredits.setImageResource(R.drawable.ic_favorite_white_24dp);
-                bCredits.setVisibility(View.VISIBLE);
+            case BUTTON_SETTINGS:
+                Timber.d("BUTTON_SETTINGS");
+                bSettings.setImageResource(R.drawable.ic_settings);
+                bSettings.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CANCEL:
                 Timber.d("BUTTON_CANCEL");
-                bCredits.setImageResource(R.drawable.ic_close_white_24dp);
-                bCredits.setVisibility(View.VISIBLE);
+                bSettings.setImageResource(R.drawable.ic_close_white_24dp);
+                bSettings.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_NONE:
             default:
                 Timber.d("BUTTON_NONE");
-                bCredits.setVisibility(View.INVISIBLE);
+                bSettings.setVisibility(View.INVISIBLE);
         }
         buttonType = type;
     }
