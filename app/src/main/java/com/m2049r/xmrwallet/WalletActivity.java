@@ -539,7 +539,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onSendRequest(View view) {
-        replaceFragmentWithTransition(view, SendFragment.newInstance(uri), null, null);
+        replaceFragment(SendFragment.newInstance(uri), null, null);
         uri = null; // only use uri once
     }
 
@@ -800,10 +800,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         int transition;
         if (newFragment instanceof TxFragment)
             transition = R.string.tx_details_transition_name;
-        else if (newFragment instanceof ReceiveFragment)
-            transition = R.string.receive_transition_name;
-        else if (newFragment instanceof SendFragment)
-            transition = R.string.send_transition_name;
         else if (newFragment instanceof SubaddressInfoFragment)
             transition = R.string.subaddress_info_transition_name;
         else
@@ -960,7 +956,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         Bundle b = new Bundle();
         b.putString("address", address);
         b.putString("name", getWalletName());
-        replaceFragmentWithTransition(view, new ReceiveFragment(), null, b);
+        replaceFragment(new ReceiveFragment(), null, b);
         Timber.d("ReceiveFragment placed");
     }
 
