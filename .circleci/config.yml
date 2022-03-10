@@ -3,13 +3,11 @@ jobs:
   build:
     working_directory: ~/code
     docker:
-      - image: circleci/android:api-28-ndk
+      - image: cimg/android:2022.3.1-ndk
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - run: yes | sdkmanager --licenses || exit 0
-      - run: yes | sdkmanager --update || exit 0
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
