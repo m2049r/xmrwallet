@@ -69,6 +69,7 @@
             app:borderWidth="0dp"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:pressedTranslationZ="0dp" />
+            app:pressedTranslationZ="0dp"
+            app:tint="?attr/toolbarTextColor" />
     </FrameLayout>
 </FrameLayout>
