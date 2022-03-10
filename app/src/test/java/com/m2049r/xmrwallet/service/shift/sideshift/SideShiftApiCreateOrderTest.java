@@ -106,7 +106,7 @@ public class SideShiftApiCreateOrderTest {
 
     @Test
     public void createOrder_wasSuccessfulShouldRespondWithOrder()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         final double btcAmount = 1.23456789;
         final String btcAddress = "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW";
         final double xmrAmount = 0.6;
@@ -136,7 +136,7 @@ public class SideShiftApiCreateOrderTest {
 
     @Test
     public void createOrder_wasNotSuccessfulShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.createOrder("01234567-89ab-cdef-0123-456789abcdef", "19y91nJyzXsLEuR7Nj9pc3o5SeHNc8A9RW", new ShiftCallback<CreateOrder>() {
             @Override
@@ -158,7 +158,7 @@ public class SideShiftApiCreateOrderTest {
 
     @Test
     public void createOrder_malformedAddressShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(500).
                 setBody("{\"error\":{\"message\":\"Invalid settleDestination\"}}"));
