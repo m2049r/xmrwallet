@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:transitionName="@string/receive_transition_name">
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/etDummy"
@@ -32,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/tx_subaddress"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:transitionName="@string/receive_transition_name" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,8 +110,8 @@
                     android:drawablePadding="4dp"
                     android:text="@string/label_receive_info_gen_qr_code"
                     android:textAlignment="center"
-                    android:textSize="16sp"
                     android:textColor="#2D1A2E"
+                    android:textSize="16sp"
                     android:visibility="visible"
                     card_view:drawableStartCompat="@drawable/ic_info_outline_black_24dp" />
 

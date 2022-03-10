@@ -45,7 +45,8 @@
                         android:hint="@string/send_address_hint"
                         android:imeOptions="actionNext"
                         android:inputType="textMultiLine"
-                        android:textAlignment="textStart" />
+                        android:textAlignment="textStart"
+                        android:transitionName="@string/send_transition_name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageButton
