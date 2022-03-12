@@ -36,9 +36,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
 
-import com.google.android.material.transition.MaterialContainerTransform;
-import com.google.android.material.transition.MaterialElevationScale;
 import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -95,13 +95,6 @@ public class TxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tx_info, container, false);
-
-        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
-        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setExitTransition(exitTransition);
-        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setReenterTransition(reenterTransition);
 
         cvXmrTo = view.findViewById(R.id.cvXmrTo);
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
@@ -347,10 +340,8 @@ public class TxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        final MaterialContainerTransform transform = new MaterialContainerTransform();
-        transform.setDrawingViewId(R.id.fragment_container);
-        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
+        Transition transform = TransitionInflater.from(requireContext())
+                .inflateTransition(R.transition.details);
         setSharedElementEnterTransition(transform);
     }
 

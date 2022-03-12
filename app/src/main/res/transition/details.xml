@@ -1,0 +1,3 @@
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <changeTransform android:duration="@integer/tx_item_transition_duration" />
+</transitionSet>

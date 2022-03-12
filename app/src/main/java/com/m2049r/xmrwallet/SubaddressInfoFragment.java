@@ -29,15 +29,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.transition.MaterialContainerTransform;
 import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -102,10 +102,8 @@ public class SubaddressInfoFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final MaterialContainerTransform transform = new MaterialContainerTransform();
-        transform.setDrawingViewId(R.id.fragment_container);
-        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
+        Transition transform = TransitionInflater.from(requireContext())
+                .inflateTransition(R.transition.details);
         setSharedElementEnterTransition(transform);
     }
 
