@@ -415,7 +415,14 @@ public class NodeFragment extends Fragment
             }
             etNodeHost.setError(null);
             nodeInfo.setRpcPort(port);
-            nodeInfo.setName(etNodeName.getEditText().getText().toString().trim());
+            // setName() may trigger reverse DNS
+            Helper.runWithNetwork(new Helper.Action() {
+                @Override
+                public boolean run() {
+                    nodeInfo.setName(etNodeName.getEditText().getText().toString().trim());
+                    return true;
+                }
+            });
             nodeInfo.setUsername(etNodeUser.getEditText().getText().toString().trim());
             nodeInfo.setPassword(etNodePass.getEditText().getText().toString()); // no trim for pw
             return true;
