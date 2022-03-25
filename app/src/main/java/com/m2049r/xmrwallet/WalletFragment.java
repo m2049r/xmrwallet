@@ -374,6 +374,10 @@ public class WalletFragment extends Fragment
             bSend.setEnabled(false);
         }
         if (isVisible()) enableAccountsList(false); //otherwise it is enabled in onResume()
+    }
+
+    public void onStartRescan() {
+        unsync();
         firstBlock = 0;
     }
 
@@ -460,10 +464,17 @@ public class WalletFragment extends Fragment
             } else {
                 sync = getString(R.string.status_synced) + " " + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
+                setProgress(-1);
             }
         } else {
             sync = getString(R.string.status_wallet_connecting);
             setProgress(101);
+            ivSynced.setVisibility(View.GONE);
+        }
+        if (wallet.isSynchronized()) {
+            onSynced();
+        } else {
+            unsync();
         }
         setProgress(sync);
         // TODO show connected status somewhere
