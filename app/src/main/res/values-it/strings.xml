@@ -286,7 +286,7 @@
     <string name="menu_language">Lingua</string>
     <string name="language_system_default">Usa lingua di sistema</string>
 
-    <string name="fab_restore_ledger">Ripristina da Ledger Nano S</string>
+    <string name="fab_restore_ledger">Ripristina da Ledger Nano</string>
 
     <string name="progress_ledger_progress">In comunicazione con Ledger</string>
     <string name="progress_ledger_confirm">Conferma su Ledger richiesta!</string>

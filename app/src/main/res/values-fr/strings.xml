@@ -284,7 +284,7 @@
     <string name="tx_subaddress">Sous-adresse</string>
     <string name="generate_address_label_sub">Sous-adresse publique #%1$d: %2$s</string>
 
-    <string name="fab_restore_ledger">Restaurer depuis Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restaurer depuis Ledger Nano</string>
 
     <string name="progress_ledger_progress">Communication avec Ledger</string>
     <string name="progress_ledger_confirm">Confirmation requise sur Ledger !</string>

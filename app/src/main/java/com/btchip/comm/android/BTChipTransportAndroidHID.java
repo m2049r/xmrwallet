@@ -78,7 +78,7 @@ public class BTChipTransportAndroidHID implements BTChipTransport {
     }
 
     private static final int VID = 0x2C97;
-    private static final int[] PID_HIDS = {0x0001, 0x0004};
+    private static final int[] PID_HIDS = {0x0001, 0x0004, 0x0005};
 
     private UsbDeviceConnection connection;
     private UsbInterface dongleInterface;

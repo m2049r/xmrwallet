@@ -281,7 +281,7 @@
     <string name="menu_language">語言</string>
     <string name="language_system_default">使用系統語言</string>
 
-    <string name="fab_restore_ledger">從 Ledger Nano S 回復錢包</string>
+    <string name="fab_restore_ledger">從 Ledger Nano 回復錢包</string>
 
     <string name="progress_ledger_progress">與 Ledger 錢包傳輸資料中</string>
     <string name="progress_ledger_confirm">請在 Ledger 裝置上確認此操作！</string>

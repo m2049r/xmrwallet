@@ -224,7 +224,7 @@
     <string name="generate_address_label_sub">公开子地址#%1$d: %2$s</string>
     <string name="menu_language">语言</string>
     <string name="language_system_default">使用系统默认语言</string>
-    <string name="fab_restore_ledger">通过Ledger Nano S恢复</string>
+    <string name="fab_restore_ledger">通过Ledger Nano 恢复</string>
     <string name="progress_ledger_progress">与Ledger通信中</string>
     <string name="progress_ledger_confirm">请在Ledger设备上确认！</string>
     <string name="progress_ledger_lookahead">子地址检索中</string>

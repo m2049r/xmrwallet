@@ -282,7 +282,7 @@
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
 
-    <string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
+    <string name="fab_restore_ledger">Obnoviť z Ledger Nano</string>
 
     <string name="progress_ledger_progress">Komunikácia s Ledger</string>
     <string name="progress_ledger_confirm">Vyžaduje potvrdenie na Ledgeri!</string>

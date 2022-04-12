@@ -285,7 +285,7 @@
     <string name="menu_language">Язык</string>
     <string name="language_system_default">Использовать язык системы</string>
 
-    <string name="fab_restore_ledger">Восстановление из Ledger Nano S</string>
+    <string name="fab_restore_ledger">Восстановление из Ledger Nano</string>
 
     <string name="progress_ledger_progress">Подключение к Ledger</string>
     <string name="progress_ledger_confirm">Требуется подтверждение в Ledger!</string>

@@ -283,7 +283,7 @@
     <string name="menu_language">Nyelv</string>
     <string name="language_system_default">Rendszernyelv használata</string>
 
-    <string name="fab_restore_ledger">Visszaállítás Ledger Nano S-ről</string>
+    <string name="fab_restore_ledger">Visszaállítás Ledger Nano-ről</string>
 
     <string name="progress_ledger_progress">Kommunikáció a Ledgerrel</string>
     <string name="progress_ledger_confirm">Ledgeren való megerősítés szükséges!</string>

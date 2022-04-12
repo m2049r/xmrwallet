@@ -285,7 +285,7 @@
     <string name="menu_language">Keel</string>
     <string name="language_system_default">Kasuta süsteemi keelt</string>
 
-    <string name="fab_restore_ledger">Taasta seadmelt Ledger Nano S</string>
+    <string name="fab_restore_ledger">Taasta seadmelt Ledger Nano</string>
 
     <string name="progress_ledger_progress">Suhtlen seadmega Ledger</string>
     <string name="progress_ledger_confirm">Seadmelt Ledger on vajalik kinnitus!</string>

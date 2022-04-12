@@ -290,7 +290,7 @@
     <string name="menu_language">Idioma</string>
     <string name="language_system_default">Utilitzar Idioma del Sistema</string>
 
-    <string name="fab_restore_ledger">Restablir desde Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restablir desde Ledger Nano</string>
 
     <string name="progress_ledger_progress">Comunicant amb Ledger</string>
     <string name="progress_ledger_confirm">Es requereix confirmació en Ledger!</string>
