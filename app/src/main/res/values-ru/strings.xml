@@ -438,19 +438,19 @@
     <string name="tor_enable_background">Необходимо выбрать "Allow Background Starts" в настройках Orbot для использования Tor!</string>
     <string name="tor_noshift">SideShift.ai не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
 
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+    <string name="label_seed_offset_encrypt">Шифрование фразы (ЭКСПЕРЕМЕНТАЛЬНО)</string>
+    <string name="seed_offset_hint">Смещение фразы (необязательно)</string>
 
-    <string name="menu_settings">Settings</string>
-    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
-    <string name="title_info">Information</string>
-    <string name="setting_daynight">Day / Night</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="title_iface">Интерфейс</string> <!-- like: User Intreface -->
+    <string name="title_info">Информация</string>
+    <string name="setting_daynight">Дневная / Ночная</string>
 
-    <string name="setting_theme">Style</string>
+    <string name="setting_theme">Стиль</string>
     <string-array name="themes">
-        <item>Classic</item>
+        <item>Классический</item>
         <item>Baldaŭ</item> <!-- do not translate this one -->
     </string-array>
 
-    <string name="message_qr_failed">Failed to create QR for sharing!</string>
+    <string name="message_qr_failed">Не удалось создать QR!</string>
 </resources>
