@@ -274,7 +274,7 @@
     <string name="menu_language">Språk</string>
     <string name="language_system_default">Använd systemets språk</string>
 
-    <string name="fab_restore_ledger">Återställ från Ledger Nano S</string>
+    <string name="fab_restore_ledger">Återställ från Ledger Nano</string>
 
     <string name="progress_ledger_progress">Kommunicerar med Ledger</string>
     <string name="progress_ledger_confirm">Bekräfta på Ledger!</string>

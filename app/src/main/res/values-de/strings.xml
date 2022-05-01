@@ -286,7 +286,7 @@
     <string name="menu_language">Sprache</string>
     <string name="language_system_default">Benutze Systemsprache</string>
 
-    <string name="fab_restore_ledger">Wallet mit Ledger Nano S wiederherstellen</string>
+    <string name="fab_restore_ledger">Wallet mit Ledger Nano wiederherstellen</string>
 
     <string name="progress_ledger_progress">Kommunikation mit Ledger</string>
     <string name="progress_ledger_confirm">Bestätigung auf Ledger benötigt!</string>

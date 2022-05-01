@@ -289,7 +289,7 @@
     <string name="menu_language">言語</string>
     <string name="language_system_default">システムの言語を使う</string>
 
-    <string name="fab_restore_ledger">レッジャーナノSから復元</string>
+    <string name="fab_restore_ledger">レッジャーナノから復元</string>
 
     <string name="progress_ledger_progress">レッジャーと通信中</string>
     <string name="progress_ledger_confirm">レッジャーでの承認が必要です!</string>

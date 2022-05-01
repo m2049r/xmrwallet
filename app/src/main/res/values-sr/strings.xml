@@ -292,7 +292,7 @@
     <string name="menu_language">Jezik</string>
     <string name="language_system_default">Koristi sistemski jezik</string>
 
-    <string name="fab_restore_ledger">Povrati iz knjige računa nano S</string>
+    <string name="fab_restore_ledger">Povrati iz knjige računa nano</string>
 
     <string name="progress_ledger_progress">Komunikacija sa knjigom računa</string>
     <string name="progress_ledger_confirm">Potrebna potvrda iz knjige računa!</string>

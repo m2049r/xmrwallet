@@ -281,7 +281,7 @@
     <string name="menu_language">Taal</string>
     <string name="language_system_default">Systeemtaal gebruiken</string>
 
-    <string name="fab_restore_ledger">Herstellen met Ledger Nano S</string>
+    <string name="fab_restore_ledger">Herstellen met Ledger Nano</string>
 
     <string name="progress_ledger_progress">Communiceren met Ledger…</string>
     <string name="progress_ledger_confirm">Bevestiging op Ledger vereist!</string>

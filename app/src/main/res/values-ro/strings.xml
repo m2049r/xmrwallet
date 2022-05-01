@@ -283,7 +283,7 @@
     <string name="menu_language">Limbă</string>
     <string name="language_system_default">De sistem</string>
 
-    <string name="fab_restore_ledger">Recuperează cu Ledger Nano S</string>
+    <string name="fab_restore_ledger">Recuperează cu Ledger Nano</string>
 
     <string name="progress_ledger_progress">Comunicare cu Ledger</string>
     <string name="progress_ledger_confirm">Confirmare necesară în Ledger!</string>
