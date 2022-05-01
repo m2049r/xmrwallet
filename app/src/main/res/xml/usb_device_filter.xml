@@ -11,4 +11,9 @@
         product-id="4"
         vendor-id="11415" />
 
+    <!-- Ledger Nano S Plus HID: VID=0x2C97 PID=0x0005 -->
+    <usb-device
+        product-id="5"
+        vendor-id="11415" />
+
 </resources>

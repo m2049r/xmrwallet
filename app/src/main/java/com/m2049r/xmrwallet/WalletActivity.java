@@ -356,6 +356,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Timber.d("onCreate()");
+        ThemeHelper.setPreferred(this);
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             // activity restarted
@@ -385,7 +386,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_CREDITS:
+                    case Toolbar.BUTTON_SETTINGS:
                         Toast.makeText(WalletActivity.this, getString(R.string.label_credits), Toast.LENGTH_SHORT).show();
                     case Toolbar.BUTTON_NONE:
                     default:
@@ -538,7 +539,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onSendRequest(View view) {
-        replaceFragmentWithTransition(view, SendFragment.newInstance(uri), null, null);
+        replaceFragment(SendFragment.newInstance(uri), null, null);
         uri = null; // only use uri once
     }
 
@@ -799,10 +800,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         int transition;
         if (newFragment instanceof TxFragment)
             transition = R.string.tx_details_transition_name;
-        else if (newFragment instanceof ReceiveFragment)
-            transition = R.string.receive_transition_name;
-        else if (newFragment instanceof SendFragment)
-            transition = R.string.send_transition_name;
         else if (newFragment instanceof SubaddressInfoFragment)
             transition = R.string.subaddress_info_transition_name;
         else
@@ -940,6 +937,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Timber.d("onRequestPermissionsResult()");
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == Helper.PERMISSIONS_REQUEST_CAMERA) { // If request is cancelled, the result arrays are empty.
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -958,7 +956,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         Bundle b = new Bundle();
         b.putString("address", address);
         b.putString("name", getWalletName());
-        replaceFragmentWithTransition(view, new ReceiveFragment(), null, b);
+        replaceFragment(new ReceiveFragment(), null, b);
         Timber.d("ReceiveFragment placed");
     }
 

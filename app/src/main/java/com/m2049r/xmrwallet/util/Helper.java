@@ -395,7 +395,7 @@ public class Helper {
         final TextView tvOpenPrompt = promptsView.findViewById(R.id.tvOpenPrompt);
         final Drawable icFingerprint = context.getDrawable(R.drawable.ic_fingerprint);
         final Drawable icError = context.getDrawable(R.drawable.ic_error_red_36dp);
-        final Drawable icInfo = context.getDrawable(R.drawable.ic_info_green_36dp);
+        final Drawable icInfo = context.getDrawable(R.drawable.ic_info_white_24dp);
 
         final boolean fingerprintAuthCheck = FingerprintHelper.isFingerPassValid(context, wallet);
 

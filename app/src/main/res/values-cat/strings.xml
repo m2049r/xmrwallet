@@ -290,7 +290,7 @@
     <string name="menu_language">Idioma</string>
     <string name="language_system_default">Utilitzar Idioma del Sistema</string>
 
-    <string name="fab_restore_ledger">Restablir desde Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restablir desde Ledger Nano</string>
 
     <string name="progress_ledger_progress">Comunicant amb Ledger</string>
     <string name="progress_ledger_confirm">Es requereix confirmació en Ledger!</string>
@@ -434,4 +434,17 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
+    <string name="title_info">Information</string>
+    <string name="setting_daynight">Day / Night</string>
+
+    <string name="setting_theme">Style</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Failed to create QR for sharing!</string>
 </resources>

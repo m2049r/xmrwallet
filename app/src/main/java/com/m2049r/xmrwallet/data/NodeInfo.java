@@ -267,14 +267,14 @@ public class NodeInfo extends Node {
     public void showInfo(TextView view, String info, boolean isError) {
         final Context ctx = view.getContext();
         final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),
                 (hostAddress.isOnion() ? "&nbsp;.onion&nbsp;&nbsp;" : ""), " " + info));
         view.setText(text);
         if (isError)
             view.setTextColor(ThemeHelper.getThemedColor(ctx, R.attr.colorError));
         else
-            view.setTextColor(ThemeHelper.getThemedColor(ctx, R.attr.colorPrimary));
+            view.setTextColor(ThemeHelper.getThemedColor(ctx, android.R.attr.textColorSecondary));
     }
 
     public void showInfo(TextView view) {

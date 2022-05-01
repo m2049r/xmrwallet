@@ -98,12 +98,7 @@ public class Notice {
 
         final FragmentManager fragmentManager =
                 ((FragmentActivity) context).getSupportFragmentManager();
-        ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HelpFragment.display(fragmentManager, helpResId);
-            }
-        });
+        ll.setOnClickListener(v -> HelpFragment.display(fragmentManager, helpResId));
 
         ImageButton ib = ll.findViewById(R.id.ibClose);
         ib.setOnClickListener(new View.OnClickListener() {

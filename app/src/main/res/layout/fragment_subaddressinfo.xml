@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:transitionName="@string/subaddress_info_transition_name">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tvAddress"
@@ -14,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_top_first"
+        android:transitionName="@string/subaddress_info_transition_name"
         tools:text="#1: 8AioXCmK...aGivEa7C" />
 
     <com.google.android.material.textfield.TextInputLayout

@@ -79,7 +79,7 @@ public class SideShiftApiQueryOrderStatusTest {
 
     @Test
     public void orderStatus_wasSuccessfulShouldRespondWithOrder()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
 
         final String state = "settled";
         final String orderId = "09090909090909090911";
@@ -109,7 +109,7 @@ public class SideShiftApiQueryOrderStatusTest {
 
     @Test
     public void orderStatus_wasNotSuccessfulShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.queryOrderStatus("09090909090909090911", new ShiftCallback<QueryOrderStatus>() {
             @Override
@@ -131,7 +131,7 @@ public class SideShiftApiQueryOrderStatusTest {
 
     @Test
     public void orderStatus_orderNotFoundShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(500).
                 setBody("{\"error\":{\"message\":\"Order not found\"}}"));

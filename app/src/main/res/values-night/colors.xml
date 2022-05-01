@@ -1,17 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gradientBottom">#430078</color>
-    <color name="gradientTop">@color/monerujoBackground</color>
+    <!-- OLED -->
+    <color name="oled_textColorPrimary">#ffffff</color>
+    <color name="oled_textColorSecondary">@color/oled_textColorPrimary</color>
+    <color name="oled_statusBarColor">@color/oled_gradientTopColor</color>
+    <color name="oled_gradientTopColor">@color/oled_colorBackground</color>
+    <color name="oled_gradientBottomColor">@color/oled_colorOnBackground</color>
+    <color name="oled_streetColorA">@color/oled_gradientTopColor</color>
+    <color name="oled_streetColorB">@color/oled_gradientBottomColor</color>
+    <color name="oled_toolbarTextColor">#F4F4F4</color>
+    <color name="oled_favouriteColor">@color/oled_negativeColor</color>
+    <color name="oled_softFavouriteColor">#FF104E</color>
+    <color name="oled_positiveColor">#3FF3A5</color>
+    <color name="oled_negativeColor">#FF104E</color>
+    <color name="oled_neutralColor">#838383</color>
+    <color name="oled_noticeColor">#7E37F1</color>
+    <color name="oled_navigationBarColor">@color/oled_colorBackground</color>
+    <color name="oled_colorBackground">#000000</color>
+    <color name="oled_colorOnBackground">#1B1B1B</color>
+    <color name="oled_colorSurface">#070707</color>
+    <color name="oled_colorOnSurface">#7E7E7E</color>
+    <color name="oled_colorPrimary">#E0E0E0</color>
+    <color name="oled_colorPrimaryVariant">#B6B6B6</color>
+    <color name="oled_colorOnPrimary">#090909</color>
+    <color name="oled_colorSecondary">@color/oled_favouriteColor</color>
+    <color name="oled_colorSecondaryVariant">@color/oled_colorPrimaryVariant</color>
+    <color name="oled_colorOnSecondary">@color/oled_colorOnPrimary</color>
+    <color name="oled_colorError">@color/oled_favouriteColor</color>
+    <color name="oled_colorOnError">#ffffff</color>
 
-    <color name="monerujoToolbarText">@color/monerujoPrimary</color>
+    <!-- CLASSIC -->
+    <color name="classic_textColorPrimary">#ffffff</color>
+    <color name="classic_textColorSecondary">#FFF6EF</color>
+    <color name="classic_statusBarColor">@color/classic_gradientTopColor</color>
+    <color name="classic_gradientTopColor">@color/classic_colorBackground</color>
+    <color name="classic_gradientBottomColor">#430078</color>
+    <color name="classic_streetColorA">#4E018A</color>
+    <color name="classic_streetColorB">#87009F</color>
+    <color name="classic_toolbarTextColor">#ffffff</color>
+    <color name="classic_favouriteColor">@color/classic_negativeColor</color>
+    <color name="classic_softFavouriteColor">@color/classic_negativeColor</color>
+    <color name="classic_positiveColor">#27C79C</color>
+    <color name="classic_negativeColor">#FF1A80</color>
+    <color name="classic_neutralColor">#ffffff</color>
+    <color name="classic_noticeColor">#FFAB1A</color>
+    <color name="classic_navigationBarColor">@color/classic_colorBackground</color>
+    <color name="classic_colorBackground">#200C22</color>
+    <color name="classic_colorOnBackground">#ffffff</color>
+    <color name="classic_colorSurface">@color/classic_colorBackground</color>
+    <color name="classic_colorOnSurface">@color/classic_textColorPrimary</color>
+    <color name="classic_colorPrimary">#FFF6EF</color>
+    <color name="classic_colorPrimaryVariant">#CCC3BD</color>
+    <color name="classic_colorOnPrimary">@color/classic_colorBackground</color>
+    <color name="classic_colorSecondary">@color/classic_negativeColor</color>
+    <color name="classic_colorSecondaryVariant">#F6FFEF</color>
+    <color name="classic_colorOnSecondary">@color/classic_colorBackground</color>
+    <color name="classic_colorError">@color/classic_negativeColor</color>
+    <color name="classic_colorOnError">#FFF6EF</color>
 
-    <color name="monerujoBackground">#200C22</color>
-    <color name="monerujoPrimary">#FFF6EF</color>
-    <color name="monerujoPrimaryVariant">#CCC3BD</color>
-    <color name="monerujoOrange">#FF6252</color>
-    <color name="monerujoGreen">#27C79C</color>
-    <color name="monerujoPink">#FF1A80</color>
-    <color name="monerujoPinkAlpha">#20FF1A80</color>
-    <color name="monerujoE">#2D1A2E</color>
-
+    <color name="offForeground">#FFF6EF</color>
+    <color name="offBackground">#2A142C</color>
 </resources>

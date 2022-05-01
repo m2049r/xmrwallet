@@ -36,6 +36,7 @@ import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,10 +68,10 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
     public TransactionInfoAdapter(Context context, OnInteractionListener listener) {
         this.context = context;
-        inboundColour = ContextCompat.getColor(context, R.color.tx_plus);
-        outboundColour = ContextCompat.getColor(context, R.color.tx_minus);
-        pendingColour = ContextCompat.getColor(context, R.color.tx_pending);
-        failedColour = ContextCompat.getColor(context, R.color.tx_failed);
+        inboundColour = ThemeHelper.getThemedColor(context, R.attr.positiveColor);
+        outboundColour = ThemeHelper.getThemedColor(context, R.attr.negativeColor);
+        pendingColour = ThemeHelper.getThemedColor(context, R.attr.neutralColor);
+        failedColour = ThemeHelper.getThemedColor(context, R.attr.neutralColor);
         infoItems = new ArrayList<>();
         this.listener = listener;
         Calendar cal = Calendar.getInstance();
@@ -253,8 +254,8 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 tvPaymentId.setText(info);
             } else {
                 Spanned label = Html.fromHtml(context.getString(R.string.tx_details_notes,
-                        Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoGreen) & 0xFFFFFF),
-                        Integer.toHexString(ContextCompat.getColor(context, R.color.monerujoBackground) & 0xFFFFFF),
+                        Integer.toHexString(ThemeHelper.getThemedColor(context, R.attr.positiveColor) & 0xFFFFFF),
+                        Integer.toHexString(ThemeHelper.getThemedColor(context, android.R.attr.colorBackground) & 0xFFFFFF),
                         tag, info.isEmpty() ? "" : ("&nbsp; " + info)));
                 tvPaymentId.setText(label);
             }

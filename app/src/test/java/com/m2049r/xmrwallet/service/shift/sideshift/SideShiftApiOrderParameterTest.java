@@ -80,7 +80,7 @@ public class SideShiftApiOrderParameterTest {
 
     @Test
     public void orderParameter_wasSuccessfulShouldRespondWithParameters()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         final double rate = 0.015537;
         final double upperLimit = 20.0;
         final double lowerLimit = 0.001;
@@ -109,7 +109,7 @@ public class SideShiftApiOrderParameterTest {
 
     @Test
     public void orderParameter_wasNotSuccessfulShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
             @Override
@@ -131,7 +131,7 @@ public class SideShiftApiOrderParameterTest {
 
     @Test
     public void orderParameter_SettleMethodInvalidShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(500).
                 setBody("{\"error\":{\"message\":\"Settle method not found\"}}"));

@@ -35,11 +35,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
 
-import com.google.android.material.transition.MaterialContainerTransform;
-import com.google.android.material.transition.MaterialElevationScale;
 import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
@@ -96,13 +95,6 @@ public class TxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tx_info, container, false);
-
-        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
-        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setExitTransition(exitTransition);
-        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setReenterTransition(reenterTransition);
 
         cvXmrTo = view.findViewById(R.id.cvXmrTo);
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
@@ -220,8 +212,8 @@ public class TxFragment extends Fragment {
         final Context ctx = getContext();
         Spanned label = Html.fromHtml(ctx.getString(R.string.tx_account_formatted,
                 info.accountIndex, info.addressIndex,
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoGreen) & 0xFFFFFF),
-                Integer.toHexString(ContextCompat.getColor(ctx, R.color.monerujoBackground) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
+                Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),
                 subaddress.getDisplayLabel()));
         tvAccount.setText(label);
         tvAccount.setOnClickListener(v -> activityCallback.showSubaddress(v, info.addressIndex));
@@ -266,13 +258,13 @@ public class TxFragment extends Fragment {
         if (info.isFailed) {
             tvTxAmount.setText(getString(R.string.tx_list_amount_failed, Wallet.getDisplayAmount(info.amount)));
             tvTxFee.setText(getString(R.string.tx_list_failed_text));
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_failed));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
         } else if (info.isPending) {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_pending));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
         } else if (info.direction == TransactionInfo.Direction.Direction_In) {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_plus));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.positiveColor));
         } else {
-            setTxColour(ContextCompat.getColor(getContext(), R.color.tx_minus));
+            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.negativeColor));
         }
         Set<String> destinations = new HashSet<>();
         StringBuilder sb = new StringBuilder();
@@ -348,10 +340,8 @@ public class TxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        final MaterialContainerTransform transform = new MaterialContainerTransform();
-        transform.setDrawingViewId(R.id.fragment_container);
-        transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
+        Transition transform = TransitionInflater.from(requireContext())
+                .inflateTransition(R.transition.details);
         setSharedElementEnterTransition(transform);
     }
 

@@ -105,7 +105,7 @@ public class SideShiftApiRequestQuoteTest {
 
     @Test
     public void requestQuote_wasSuccessfulShouldRespondWithQuote()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         final double btcAmount = 1.01;
         final double rate = 0.00397838;
         final String uuid = "66fc0749-f320-4361-b0fb-7873576cba67";
@@ -133,7 +133,7 @@ public class SideShiftApiRequestQuoteTest {
 
     @Test
     public void requestQuote_wasNotSuccessfulShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500));
         xmrToApi.requestQuote(1.01, new ShiftCallback<RequestQuote>() {
             @Override
@@ -155,7 +155,7 @@ public class SideShiftApiRequestQuoteTest {
 
     @Test
     public void requestQuote_AmountTooHighShouldCallOnError()
-            throws TimeoutException {
+            throws TimeoutException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().
                 setResponseCode(500).
                 setBody("{\"error\":{\"message\":\"Amount too high\"}}"));

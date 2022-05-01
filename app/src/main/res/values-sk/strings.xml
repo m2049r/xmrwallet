@@ -282,7 +282,7 @@
     <string name="menu_language">Jazyk</string>
     <string name="language_system_default">Použi jazyk systému</string>
 
-    <string name="fab_restore_ledger">Obnoviť z Ledger Nano S</string>
+    <string name="fab_restore_ledger">Obnoviť z Ledger Nano</string>
 
     <string name="progress_ledger_progress">Komunikácia s Ledger</string>
     <string name="progress_ledger_confirm">Vyžaduje potvrdenie na Ledgeri!</string>
@@ -437,4 +437,17 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
+    <string name="title_info">Information</string>
+    <string name="setting_daynight">Day / Night</string>
+
+    <string name="setting_theme">Style</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Failed to create QR for sharing!</string>
 </resources>

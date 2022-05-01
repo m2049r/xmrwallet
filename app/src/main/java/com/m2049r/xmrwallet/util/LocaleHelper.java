@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class LocaleHelper {
-    private static final String PREFERRED_LOCALE_KEY = "preferred_locale";
     private static Locale SYSTEM_DEFAULT_LOCALE = Locale.getDefault();
 
     public static ArrayList<Locale> getAvailableLocales(Context context) {
@@ -93,12 +92,13 @@ public class LocaleHelper {
 
     public static String getPreferredLanguageTag(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(PREFERRED_LOCALE_KEY, "");
+                .getString("preferred_locale", "");
+        // cannot access getString here as it's done BEFORE string locale is set
     }
 
     @SuppressLint("ApplySharedPref")
     private static void savePreferredLangaugeTag(Context context, String locale) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putString(PREFERRED_LOCALE_KEY, locale).commit();
+                .putString(context.getString(R.string.preferred_locale), locale).commit();
     }
 }

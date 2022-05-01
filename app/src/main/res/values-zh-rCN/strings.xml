@@ -224,7 +224,7 @@
     <string name="generate_address_label_sub">公开子地址#%1$d: %2$s</string>
     <string name="menu_language">语言</string>
     <string name="language_system_default">使用系统默认语言</string>
-    <string name="fab_restore_ledger">通过Ledger Nano S恢复</string>
+    <string name="fab_restore_ledger">通过Ledger Nano 恢复</string>
     <string name="progress_ledger_progress">与Ledger通信中</string>
     <string name="progress_ledger_confirm">请在Ledger设备上确认！</string>
     <string name="progress_ledger_lookahead">子地址检索中</string>
@@ -360,4 +360,17 @@
     <string name="label_wallet_advanced_details">点击以查看详情</string> <!-- Please chnage to "Detailed information" -->
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
+    <string name="title_info">Information</string>
+    <string name="setting_daynight">Day / Night</string>
+
+    <string name="setting_theme">Style</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Failed to create QR for sharing!</string>
 </resources>

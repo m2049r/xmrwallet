@@ -8,17 +8,17 @@
 
     <LinearLayout
         android:id="@+id/llNotice"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:orientation="vertical" />
 
     <TextView
         android:id="@+id/tvPull"
-        android:layout_below="@+id/llNotice"
         style="@style/MoneroLabel.Heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/llNotice"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
@@ -52,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gradient_oval"
         android:elevation="6dp">
 
@@ -63,11 +64,11 @@
             android:layout_gravity="bottom|end"
             android:backgroundTint="@android:color/transparent"
             android:backgroundTintMode="src_in"
-            android:src="@drawable/ic_add_white_24dp"
+            android:src="@drawable/ic_add"
             app:borderWidth="0dp"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:pressedTranslationZ="0dp" />
-
+            app:pressedTranslationZ="0dp"
+            app:tint="?attr/toolbarTextColor" />
     </FrameLayout>
 </RelativeLayout>

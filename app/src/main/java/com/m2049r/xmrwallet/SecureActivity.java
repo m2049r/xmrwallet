@@ -66,11 +66,7 @@ public abstract class SecureActivity extends AppCompatActivity {
 
         Locale locale = LocaleHelper.getPreferredLocale(this);
         if (locale != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                config.setLocale(locale);
-            } else {
-                config.locale = locale;
-            }
+            config.setLocale(locale);
         }
         return config;
     }

@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/fabScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:attr/colorBackground"
+        android:layout_above="@id/fabL"
+        android:layout_alignEnd="@id/fabL"
         android:alpha="0.93"
+        android:background="?android:attr/colorBackground"
         android:visibility="invisible">
 
         <RelativeLayout
             android:id="@+id/fabNewL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="256dp"
-            android:layout_marginEnd="16dp">
+            android:layout_above="@id/fabViewL"
+            android:layout_alignEnd="@id/fabImportL">
 
             <TextView
                 android:id="@+id/fabNewT"
@@ -33,9 +34,11 @@
                 android:id="@+id/fabNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@+id/fabNewT"
-                android:backgroundTint="@color/gradientRight"
                 android:elevation="6dp"
                 android:src="@drawable/ic_new"
                 app:borderWidth="0dp"
@@ -48,9 +51,8 @@
             android:id="@+id/fabViewL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="200dp"
-            android:layout_marginEnd="16dp">
+            android:layout_above="@id/fabKeyL"
+            android:layout_alignEnd="@id/fabImportL">
 
             <TextView
                 android:id="@+id/fabViewT"
@@ -67,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@+id/fabViewT"
-                android:backgroundTint="@color/gradientRight"
                 android:elevation="6dp"
                 android:src="@drawable/ic_eye"
                 app:borderWidth="0dp"
@@ -80,9 +81,8 @@
             android:id="@+id/fabKeyL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="144dp"
-            android:layout_marginEnd="16dp">
+            android:layout_above="@id/fabSeedL"
+            android:layout_alignEnd="@id/fabImportL">
 
             <TextView
                 android:id="@+id/fabKeyT"
@@ -99,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@+id/fabKeyT"
-                android:backgroundTint="@color/gradientRight"
                 android:elevation="6dp"
                 android:src="@drawable/ic_key"
                 app:borderWidth="0dp"
@@ -112,9 +111,8 @@
             android:id="@+id/fabSeedL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="88dp"
-            android:layout_marginEnd="16dp">
+            android:layout_above="@id/fabImportL"
+            android:layout_alignEnd="@id/fabImportL">
 
             <TextView
                 android:id="@+id/fabSeedT"
@@ -131,9 +129,41 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@+id/fabSeedT"
-                android:backgroundTint="@color/gradientRight"
                 android:elevation="6dp"
                 android:src="@drawable/ic_seed"
+                app:borderWidth="0dp"
+                app:fabSize="mini"
+                app:pressedTranslationZ="12dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fabImportL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/fabImportT"
+                style="@style/MoneroFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:text="@string/menu_restore" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabImport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@+id/fabImportT"
+                android:elevation="6dp"
+                android:src="@drawable/ic_import"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
                 app:pressedTranslationZ="12dp" />
@@ -144,9 +174,8 @@
             android:id="@+id/fabLedgerL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="88dp"
-            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:visibility="gone">
 
             <TextView
@@ -164,7 +193,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@+id/fabLedgerT"
-                android:backgroundTint="@color/gradientRight"
                 android:elevation="6dp"
                 android:src="@drawable/ic_ledger_restore"
                 app:borderWidth="0dp"
@@ -173,13 +201,16 @@
 
         </RelativeLayout>
 
-    </FrameLayout>
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/fabL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gradient_oval"
         android:elevation="6dp">
 
@@ -190,11 +221,12 @@
             android:layout_gravity="bottom|end"
             android:backgroundTint="@android:color/transparent"
             android:backgroundTintMode="src_in"
-            android:src="@drawable/ic_add_white_24dp"
+            android:src="@drawable/ic_add"
             app:borderWidth="0dp"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:pressedTranslationZ="0dp" />
+            app:pressedTranslationZ="0dp"
+            app:tint="?attr/toolbarTextColor" />
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

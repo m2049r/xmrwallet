@@ -29,7 +29,7 @@
             android:layout_alignParentEnd="true"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:src="@drawable/ic_all_inclusive_24dp"
+            android:src="@drawable/ic_all_inclusive"
             android:visibility="visible" />
     </RelativeLayout>
 
@@ -45,7 +45,7 @@
         android:id="@+id/rlSweep"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/ivSweep"
@@ -54,7 +54,7 @@
             android:layout_above="@id/tvSweep"
             android:layout_alignParentTop="true"
             android:padding="16dp"
-            android:src="@drawable/ic_all_inclusive_24dp" />
+            android:src="@drawable/ic_all_inclusive" />
 
         <TextView
             android:id="@+id/tvSweep"

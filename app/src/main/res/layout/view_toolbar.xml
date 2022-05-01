@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageButton
-        android:id="@+id/bCredits"
+        android:id="@+id/bSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="4dp"
-        android:src="@drawable/ic_favorite_white_24dp" />
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:padding="2dp"
+        android:src="@drawable/ic_settings"
+        app:tint="?attr/toolbarTextColor" />
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -25,7 +27,8 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:src="@drawable/ic_logo_horizontol_xmrujo"
-            android:visibility="visible" />
+            android:visibility="visible"
+            app:tint="?attr/toolbarTextColor" />
 
         <LinearLayout
             android:layout_width="wrap_content"

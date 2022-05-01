@@ -43,7 +43,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
-import com.google.android.material.transition.MaterialElevationScale;
 import com.m2049r.xmrwallet.layout.TransactionInfoAdapter;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Wallet;
@@ -52,6 +51,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.text.NumberFormat;
@@ -111,7 +111,8 @@ public class WalletFragment extends Fragment
         llBalance = view.findViewById(R.id.llBalance);
         flExchange = view.findViewById(R.id.flExchange);
         ((ProgressBar) view.findViewById(R.id.pbExchange)).getIndeterminateDrawable().
-                setColorFilter(getResources().getColor(R.color.progress_circle),
+                setColorFilter(
+                        ThemeHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         tvProgress = view.findViewById(R.id.tvProgress);
@@ -202,11 +203,6 @@ public class WalletFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        postponeEnterTransition();
-        view.getViewTreeObserver().addOnPreDrawListener(() -> {
-            startPostponedEnterTransition();
-            return true;
-        });
     }
 
     void showBalance(String balance) {
@@ -331,18 +327,8 @@ public class WalletFragment extends Fragment
     // Callbacks from TransactionInfoAdapter
     @Override
     public void onInteraction(final View view, final TransactionInfo infoItem) {
-        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
-        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setExitTransition(exitTransition);
-        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setReenterTransition(reenterTransition);
-
         activityCallback.onTxDetailsRequest(view, infoItem);
     }
-
-    // called from activity
-
 
     // if account index has changed scroll to top?
     private int accountIndex = 0;
@@ -536,8 +522,6 @@ public class WalletFragment extends Fragment
     @Override
     public void onResume() {
         super.onResume();
-        setExitTransition(null);
-        setReenterTransition(null);
         Timber.d("onResume()");
         activityCallback.setTitle(walletTitle, walletSubtitle);
         activityCallback.setToolbarButton(Toolbar.BUTTON_NONE);

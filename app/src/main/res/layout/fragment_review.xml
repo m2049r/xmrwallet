@@ -89,7 +89,7 @@
                 android:layout_gravity="center"
                 android:background="?android:selectableItemBackground"
                 android:text="@string/label_seed_offset_encrypt"
-                app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                app:icon="@drawable/ic_keyboard_arrow_down" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etSeedOffset"
@@ -181,7 +181,7 @@
             android:drawablePadding="4dp"
             android:text="@string/label_wallet_advanced_details"
             android:visibility="gone"
-            app:icon="@drawable/ic_baseline_keyboard_arrow_down_24" />
+            app:icon="@drawable/ic_keyboard_arrow_down" />
 
         <LinearLayout
             android:id="@+id/llAdvancedInfo"

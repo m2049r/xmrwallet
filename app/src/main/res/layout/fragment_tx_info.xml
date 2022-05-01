@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:fillViewport="true"
-    android:transitionName="@string/tx_details_transition_name">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,6 +32,7 @@
                     android:layout_height="wrap_content"
                     android:selectAllOnFocus="true"
                     android:textIsSelectable="true"
+                    android:transitionName="@string/tx_details_transition_name"
                     tools:text="+ 1,092.00229" />
 
                 <TextView
@@ -100,7 +100,6 @@
                             android:gravity="start"
                             android:padding="8dp"
                             android:selectAllOnFocus="true"
-                            android:textColor="@color/gradientLeft"
                             android:textIsSelectable="true"
                             tools:text="1.008 BTC" />
                     </TableRow>
@@ -171,7 +170,7 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/label_send_btc_xmrto_info"
-                    card_view:drawableEndCompat="@drawable/ic_baseline_launch_24" />
+                    card_view:drawableEndCompat="@drawable/ic_launch_external" />
 
             </LinearLayout>
 

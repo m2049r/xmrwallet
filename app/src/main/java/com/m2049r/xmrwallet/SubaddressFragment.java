@@ -30,7 +30,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.transition.MaterialElevationScale;
 import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.layout.SubaddressInfoAdapter;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
@@ -117,14 +116,6 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
         managerMode = ((b != null) && (MODE_MANAGER.equals(b.getString(KEY_MODE))));
 
         View view = inflater.inflate(R.layout.fragment_subaddress, container, false);
-
-        final MaterialElevationScale exitTransition = new MaterialElevationScale(false);
-        exitTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setExitTransition(exitTransition);
-        final MaterialElevationScale reenterTransition = new MaterialElevationScale(true);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        setReenterTransition(reenterTransition);
-
         view.findViewById(R.id.fab).setOnClickListener(this);
 
         if (managerMode) {
@@ -154,11 +145,6 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        postponeEnterTransition();
-        view.getViewTreeObserver().addOnPreDrawListener(() -> {
-            startPostponedEnterTransition();
-            return true;
-        });
     }
 
     public void loadList() {

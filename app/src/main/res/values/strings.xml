@@ -338,7 +338,7 @@
     <string name="menu_language">Language</string>
     <string name="language_system_default">Use System Language</string>
 
-    <string name="fab_restore_ledger">Restore from Ledger Nano S</string>
+    <string name="fab_restore_ledger">Restore from Ledger Nano</string>
 
     <string name="progress_ledger_progress">Communicating with Ledger</string>
     <string name="progress_ledger_confirm">Confirmation on Ledger required!</string>
@@ -474,10 +474,6 @@
 
     <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
     <string name="tx_details_transition_name" translatable="false">tx_transition</string>
-    <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
-    <string name="receive_transition_name" translatable="false">receive_transition</string>
-    <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
-    <string name="send_transition_name" translatable="false">send_transition</string>
     <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
     <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
     <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
@@ -510,4 +506,24 @@
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+
+    <string name="preferred_theme" translatable="false">preferred_theme</string>
+    <string name="preferred_nightmode" translatable="false">preferred_nightmode</string>
+    <string name="preferred_locale" translatable="false">preferred_locale</string>
+    <string name="about_info" translatable="false">about_info</string>
+    <string name="privacy_info" translatable="false">privacy_info</string>
+    <string name="credits_info" translatable="false">credits_info</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
+    <string name="title_info">Information</string>
+    <string name="setting_daynight">Day / Night</string>
+
+    <string name="setting_theme">Style</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Failed to create QR for sharing!</string>
 </resources>

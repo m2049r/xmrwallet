@@ -568,7 +568,8 @@ public class WalletService extends Service {
 
     private void startNotfication() {
         Intent notificationIntent = new Intent(this, WalletActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : 0);
 
         String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel() : "";
         Notification notification = new NotificationCompat.Builder(this, channelId)

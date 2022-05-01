@@ -40,6 +40,7 @@ import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -212,19 +213,27 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         if (status.isError()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_error, status.toString()));
             statusResource = R.drawable.ic_error_red_24dp;
-            pbXmrto.getIndeterminateDrawable().setColorFilter(0xff8b0000, android.graphics.PorterDuff.Mode.MULTIPLY);
+            pbXmrto.getIndeterminateDrawable().setColorFilter(
+                    ThemeHelper.getThemedColor(getContext(), android.R.attr.colorError),
+                    android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isSent() || status.isPaid()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_sent, btcData.getBtcSymbol()));
-            statusResource = R.drawable.ic_success_green_24dp;
-            pbXmrto.getIndeterminateDrawable().setColorFilter(0xFF417505, android.graphics.PorterDuff.Mode.MULTIPLY);
+            statusResource = R.drawable.ic_success;
+            pbXmrto.getIndeterminateDrawable().setColorFilter(
+                    ThemeHelper.getThemedColor(getContext(), R.attr.positiveColor),
+                    android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isWaiting()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_unpaid));
-            statusResource = R.drawable.ic_pending_orange_24dp;
-            pbXmrto.getIndeterminateDrawable().setColorFilter(0xFFFF6105, android.graphics.PorterDuff.Mode.MULTIPLY);
+            statusResource = R.drawable.ic_pending;
+            pbXmrto.getIndeterminateDrawable().setColorFilter(
+                    ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor),
+                    android.graphics.PorterDuff.Mode.MULTIPLY);
         } else if (status.isPending()) {
             tvXmrToStatus.setText(getString(R.string.info_send_xmrto_paid));
-            statusResource = R.drawable.ic_pending_orange_24dp;
-            pbXmrto.getIndeterminateDrawable().setColorFilter(0xFFFF6105, android.graphics.PorterDuff.Mode.MULTIPLY);
+            statusResource = R.drawable.ic_pending;
+            pbXmrto.getIndeterminateDrawable().setColorFilter(
+                    ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor),
+                    android.graphics.PorterDuff.Mode.MULTIPLY);
         } else {
             throw new IllegalStateException("status is broken: " + status.toString());
         }

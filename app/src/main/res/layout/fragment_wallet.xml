@@ -11,14 +11,16 @@
         android:layout_gravity="bottom"
         android:scaleType="centerCrop" />
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/llHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_margin="8dp"
             android:orientation="vertical">
 
@@ -126,33 +128,42 @@
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
                 android:visibility="invisible" />
-
         </LinearLayout>
 
-        <FrameLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llAction"
+            android:layout_below="@id/llHeader"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginRight="8dp"
+            android:clipToPadding="false"
+            android:transitionGroup="true"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_transaction" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
+        <LinearLayout
+            android:id="@+id/llAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/divider"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingBottom="80dp"
-                android:transitionGroup="true"
-                app:layoutManager="LinearLayoutManager"
-                tools:listitem="@layout/item_transaction" />
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="4dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="4dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
@@ -161,11 +172,11 @@
                     style="@style/MoneroButton.Wallet"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:enabled="false"
                     android:text="@string/label_wallet_receive"
-                    android:transitionName="@string/receive_btn_transition_name"
                     app:icon="@drawable/ic_hand" />
 
                 <Button
@@ -173,14 +184,15 @@
                     style="@style/MoneroButton.Wallet"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:enabled="false"
                     android:text="@string/label_wallet_send"
-                    android:transitionName="@string/send_btn_transition_name"
                     app:icon="@drawable/ic_send" />
-
             </LinearLayout>
-        </FrameLayout>
-    </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </FrameLayout>
