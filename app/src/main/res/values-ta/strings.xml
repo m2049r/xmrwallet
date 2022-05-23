@@ -294,7 +294,7 @@
     <string name="menu_language">மொழி</string>
     <string name="language_system_default">முறைமை மொழியை பயன்படுத்து</string>
 
-    <string name="fab_restore_ledger">பேரேடு நாநோ S இல் இருந்து மீட்டெடுக்கவும்</string>
+    <string name="fab_restore_ledger">பேரேடு நாநோ இல் இருந்து மீட்டெடுக்கவும்</string>
 
     <string name="progress_ledger_progress">பேரேடு உடன் தொடர்பு கொள்கிறது</string>
     <string name="progress_ledger_confirm">பேரேடில் உறுதிப்படுத்தல் தேவைப்படுகிறது!</string>
