@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
-    <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">பணப்பை</string>
 
     <string name="menu_about">எங்களைப் பற்றி</string>
@@ -101,8 +100,6 @@
     <string name="changepw_success">கடவுச்சொல் மாற்றப்பட்டது</string>
 
     <string name="label_daemon">வலையமைப்பு</string>
-    <string name="connect_stagenet" translatable="false">Stagenet</string>
-    <string name="connect_testnet" translatable="false">Testnet</string>
     <string name="status_wallet_loading">&#8230; பணப்பை ஏறுகிறது</string>
     <string name="status_wallet_unloaded">பணப்பை சேமிக்கப்பட்டது</string>
     <string name="status_wallet_unload_failed">பணப்பை சேமித்தல் தோல்வியடைந்தது!</string>
@@ -196,7 +193,6 @@
     <string name="generate_wallet_type_new">புதிய</string>
     <string name="generate_wallet_type_seed">விதை</string>
     <string name="generate_wallet_type_view">பார்வை</string>
-    <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
 
     <string name="generate_address_hint">பொது முகவரி</string>
     <string name="generate_viewkey_hint">பார்வை திறவுகோல்</string>
@@ -216,7 +212,6 @@
 
     <string name="send_notes_hint">தனிபட்ட குறிப்புகள் (விரும்பினால்)</string>
     <string name="send_generate_paymentid_hint">உற்பத்தி செய்</string>
-    <string name="send_qr_hint" translatable="false">Scan</string>
     <string name="send_send_label">என் அருமை Moneroj வை செலவழிக்கவும்</string>
     <string name="send_send_timed_label">என் அருமை Moneroj (%1$s) வை செலவழிக்கவும்</string>
     <string name="send_qr_invalid">இது ஒரு QR குறியீடு இல்லை</string>
@@ -283,50 +278,10 @@
     <string name="delete_alert_yes">ஆம், உறுதியாக அதை செய்!</string>
     <string name="delete_alert_no">இல்லை வேண்டாம்!</string>
 
-    <string-array name="currency" translatable="false">
-        <item>EUR</item>
-        <item>USD</item>
-        <item>JPY</item>
-        <item>GBP</item>
-        <item>CHF</item>
-        <item>CAD</item>
-
-        <item>AUD</item>
-        <item>BGN</item>
-        <item>BRL</item>
-        <item>CNY</item>
-        <item>CZK</item>
-        <item>DKK</item>
-        <item>HKD</item>
-        <item>HRK</item>
-        <item>HUF</item>
-        <item>IDR</item>
-        <item>ILS</item>
-        <item>INR</item>
-        <item>ISK</item>
-        <item>KRW</item>
-        <item>MXN</item>
-        <item>MYR</item>
-        <item>NOK</item>
-        <item>NZD</item>
-        <item>PHP</item>
-        <item>PLN</item>
-        <item>RON</item>
-        <item>RUB</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>THB</item>
-        <item>TRY</item>
-        <item>ZAR</item>
-    </string-array>
-
     <string name="fab_create_new">புதிய பணப்பையை உருவாக்கவும்</string>
     <string name="fab_restore_viewonly">பார்க்க-மட்டும் பணப்பையை மீட்டெடுக்கவும்</string>
     <string name="fab_restore_key">தனியார் திறவுகோல்களை மூலம் பணப்பையை மீட்டெடுக்கவும்</string>
     <string name="fab_restore_seed">25 வார்த்தை கொண்ட நினைவி விதையை கொண்டு பணப்பையை மீட்டெடுக்கவும்</string>
-
-    <string name="accounts_balance" translatable="false">%1$s XMR</string>
-    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d) &nbsp;&lt;span style=\"background-color: #%3$s; color: #%4$s;\"&gt;&nbsp;%5$s&nbsp;&lt;/span&gt;</string>
 
     <string name="accounts_drawer_new">கணக்கை உருவாக்கு</string>
     <string name="accounts_new">#%1$d என்னும் புதிய கணக்கு சேர்க்கப்பட்டது</string>
@@ -363,12 +318,8 @@
     <string name="nfc_tag_read_what">உனக்கு என்ன வேண்டும் என்று எனக்கு தெரியவில்லை!</string>
     <string name="nfc_tag_tap">NFC கிடைக்கிறது!</string>
 
-    <string name="unknown_amount" translatable="false">\?\?\?</string>
-
     <string name="menu_info">இரகசியங்களை காண்பி!</string>
     <string name="menu_streetmode">வீதி பாங்கு</string>
-
-    <string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
 
     <string name="info_nodes_enabled">Node-o-matiC செயல்படுத்தப்பட்டுள்ளது, மேலும் தகவல்களுக்கு தட்டவும்.</string>
     <string name="node_height">கடைசி தொகுதி இற்றைப்படுத்தப்பட்டது: %1$s</string>
@@ -406,8 +357,6 @@
     <string name="prompt_ledger_phrase">பேரேடு கடவுத்தொடர் (மேம்பட்டது)</string>
     <string name="bad_ledger_seed">செல்லாத பேரேடு விதை!</string>
     <string name="prompt_ledger_seed_warn">உங்கள் பேரேடு விதையை இங்கே உள்ளிடுவது மிகவும் ஆபத்தானதாகும்!</string>
-
-    <string name="label_account" translatable="false">%1$s (%2$s)</string>
 
     <string name="label_restoreheight">மீட்டமை உயரம்</string>
 
@@ -463,30 +412,6 @@
         <b>மொனேரொ முகவரியை உள்ளிடவும் அல்லது வருடவும்.</b>
     ]]></string>
 
-    <!-- order must be the same as in com.m2049r.xmrwallet.data.Crypto-->
-    <string-array name="cryptos" translatable="false">
-        <item>Monero</item>
-        <item>Bitcoin</item>
-        <item>Dash</item>
-        <item>Dogecoin</item>
-        <item>Ethereum</item>
-        <item>Litecoin</item>
-    </string-array>
-
-    <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
-    <string name="tx_details_transition_name" translatable="false">tx_transition</string>
-    <string name="receive_btn_transition_name" translatable="false">receive_btn_transition</string>
-    <string name="receive_transition_name" translatable="false">receive_transition</string>
-    <string name="send_btn_transition_name" translatable="false">send_btn_transition</string>
-    <string name="send_transition_name" translatable="false">send_transition</string>
-    <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
-    <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
-    <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
-
-    <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
-    <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
-    <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
-
     <string name="subbaddress_title">துணை முகவரிகள்</string>
     <string name="subbaddress_name_hint">துணை முகவரியின் பெயர்</string>
     <string name="max_subaddress_warning">நிறைய பயன்படுத்தாத முகவரிகள் - இன்னும் உருவாக்குவதை செயல்படுத்த சிலவற்றை பயன்படுத்தவும்!</string>
@@ -501,8 +426,6 @@
 
     <string name="menu_deletecache">பணப்பையை மீள் அமைக்கவும்!</string>
     <string name="deletecache_alert_message">இந்த பணப்பை எல்லா அணைவரி-சங்கிலி தரவுகளும் (குறிப்புகள், கணக்கு &amp; துணை முகவரி பெயர்கள், தனியார் பரிமாற்ற திறவுகோல்கள் போன்றவை &#8230;) அழிக்கப்பட்டு மீள் அமைக்கப்படும்! பணப்பை பழுதடைந்தாலோ, அல்லது ஏறவில்லை என்றால் மட்டுமே இதை பயன்படுத்தவும்!</string>
-
-    <string name="status" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;%3$s&lt;/span&gt;%4$s</string>
 
     <string name="node_tor_error">Tor தேவைப்படுகிறது</string>
     <string name="node_waiting">\u00A0கணுவிற்காக காத்திருக்கிறது\u00A0</string>
