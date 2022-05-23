@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wallet_activity_name">کیف پول</string>
+
+    <string name="menu_about">درباره</string>
+    <string name="menu_privacy">خط‌مشی رازداری</string>
+
+    <string name="menu_share">اشتراک گذاری</string>
+    <string name="menu_help">راهنمایی</string>
+    <string name="menu_receive">دریافت</string>
+    <string name="menu_rename">تغییر نام</string>
+    <string name="menu_delete">حذف</string>
+    <string name="menu_backup">پشتیبان‌گیری</string>
+    <string name="menu_changepw">تغییر عبارت عبور</string>
+
+    <string name="password_weak">ادامه بده...</string>
+    <string name="password_fair">اوهوم...</string>
+    <string name="password_good">بیخیال، بهتر هم می‌تونی...</string>
+    <string name="password_strong">یه خرده دیگه...</string>
+    <string name="password_very_strong">آره جیگر، مثل یه هکر!</string>
+
+    <string name="label_login_wallets">کیف پول‌ها</string>
+    <string name="label_credits">دست اندرکاران</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">لغو</string>
+    <string name="label_close">بستن</string>
+    <string name="label_wallet_advanced_details">اطلاعات بیشتر</string>
+
+    <string name="label_send_success">با موفقیت ارسال شد</string>
+    <string name="label_send_done">انجام شد</string>
+
+    <string name="label_receive_info_gen_qr_code">برای نمایش کد کیوآر لمس کنید</string>
+
+    <string name="info_xmrto_enabled">پرداخت‌های غیر مونرویی فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
+    <string name="info_ledger_enabled">پشتیبانی از لجر فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>
+        شما یک آدرس
+        %1$s
+        وارد کردید.
+        </b><br/>
+        <i>
+        شما با ارسال XMR با استفاده از سرویس
+        <b>SideShift.ai</b>
+        برای دریافت کننده
+        %1$s
+        خواهید فرستاد.
+        </i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">
+    سفارش SideShift.ai
+    </string>
+
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
+
+    <string name="info_send_xmrto_paid">در حال تایید</string>
+    <string name="info_send_xmrto_unpaid">در حال پرداخت</string>
+    <string name="info_send_xmrto_error">
+    خطای SideShift.ai
+    (%1$s)
+    </string>
+    <string name="info_send_xmrto_sent">%1$s
+    ارسال شد!
+    </string>
+    <string name="info_send_xmrto_query">در حال پرس‌وجو...</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>
+        شما می‌توانید
+        %1$s
+        را بفرستید
+        &mdash;
+        %2$s %4$s
+        </b>.<br/>
+        <i>
+        <u>در حال حاضر</u>
+        سرویس
+        <b>SideShift.ai</b>
+        به شما نرخ تبدیل
+        <b>%3$s %4$s/XMR</b>
+        را می‌دهد.
+        </i>.
+    ]]></string>
+
+    <string name="send_available_btc">
+    موجودی
+    %2$s %3$s (%1$s XMR)</string>
+
+    <string name="info_paymentid_integrated">
+    شناسهٔ پرداخت ادغام شد
+    &check;
+    </string>
+    <string name="info_prepare_tx">در حال آماده‌سازی تراکنش</string>
+
+    <string name="label_send_progress_xmrto_create">
+    در حال ساخت تراکنش SideShift.ai
+    </string>
+    <string name="label_send_progress_xmrto_query">
+    در حال پرس‌وجوی سفارش SideShift.ai
+    </string>
+    <string name="label_send_progress_create_tx">در حال آماده‌سازی تراکنش مونرو</string>
+
+    <string name="label_send_progress_queryparms">
+    در حال پرس‌وجوی پارامترهای SideShift.ai
+    </string>
+
+    <string name="label_generic_xmrto_error">
+    خطای SideShift.ai
+    </string>
+    <string name="text_generic_xmrto_error">
+    کد:
+    %1$d</string>
+
+    <string name="text_retry">برای تلاش دوباره لمس کنید</string>
+    <string name="text_noretry_monero">ما اینجا گیر کردیم!</string>
+    <string name="text_noretry">
+    سرویس SideShift.ai در حال حاضر در دسترس نیست!
+    </string>
+
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">
+    (نرخ:
+    %1$s %2$s/XMR)</string>
+
+    <string name="label_send_btc_xmrto_info">
+    برای پشتیبانی و رهگیری سفارش به SideShift.ai مراجعه کنید
+    </string>
+    <string name="label_send_btc_xmrto_key_lb">
+    کلید خصوصی
+    \nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">
+    کلید خصوصی SideShift.ai
+    </string>
+    <string name="label_send_btc_address">
+    آدرس مقصد
+    %1$s
+    </string>
+    <string name="label_send_btc_amount">مقدار</string>
+
+    <string name="label_send_txid">شناسهٔ تراکنش</string>
+    <string name="label_send_address">آدرس مقصد</string>
+    <string name="label_send_notes">یادداشت‌ها</string>
+
+    <string name="backup_progress">در حال پشتیبان‌گیری</string><!--TODO deleteme-->
+    <string name="archive_progress">در حال آرشیو کردن</string><!--TODO deleteme-->
+    <string name="rename_progress">در حال تغییر نام</string><!--TODO deleteme-->
+    <string name="changepw_progress">در حال تغییر رمز</string>
+
+    <string name="service_progress">
+    در حال انجام...
+    \n
+    این کار ممکن است زمان زیادی طول بکشد!
+    </string>
+
+    <string name="backup_success">پشتیبان‌گیری موفق بود</string>
+    <string name="backup_failed">پشتیبان‌گیری شکست خورد!</string>
+    <string name="delete_failed">حذف شکست خورد!</string>
+    <string name="rename_failed">تغییر نام شکست خورد!</string>
+    <string name="changepw_failed">تغییر رمز شکست خورد!</string>
+    <string name="changepw_success">رمز عبور تغییر کرد</string>
+
+    <string name="label_daemon">شبکه</string>
+    <string name="status_wallet_loading">بارگذاری کیف پول...</string>
+    <string name="status_wallet_unloaded">کیف پول ذخیره شد</string>
+    <string name="status_wallet_unload_failed">ذخیرهٔ کیف پول شکست خورد!</string>
+    <string name="status_wallet_connecting">در حال اتصال...</string>
+    <string name="status_wallet_connect_failed">
+    اتصال گره شکست خورد!
+    \n
+    نام کاربری و رمز عبور را بررسی کنید
+    </string>
+    <string name="status_wallet_connect_wrongversion">نسخه با گره همخوان نیست، لطفا برنامه را به‌روزرسانی کنید!</string>
+    <string name="status_wallet_node_invalid">
+    گره معتبر نیست!
+    \n
+    یک گرهٔ دیگر را امتحان کنید.
+    </string>
+    <string name="status_wallet_connect_ioex">
+    به گره نرسیدیم!
+    \n
+    دوباره تلاش کنید یا گره‌ای دیگر انتخاب کنید.
+    </string>
+
+    <string name="status_wallet_disconnected">قطع شد</string>
+
+    <string name="status_transaction_failed">
+    تراکنش شکست خورد:
+    %1$s</string>
+
+    <string name="send_xmrto_timeout">زمان شما تمام شد!</string>
+
+    <string name="service_busy">هنوز با کیف پول قبلی شما مشغول هستم...</string>
+
+    <string name="prompt_rename">
+    تغییر نام
+    %1$s</string>
+
+    <string name="prompt_changepw">
+    عبارت عبور جدید برای
+    %1$s</string>
+    <string name="prompt_changepwB">
+    عبارت عبور را برای
+    %1$s
+    تکرار کنید
+    </string>
+    <string name="prompt_password">
+    رمز عبور برای
+    %1$s</string>
+    <string name="prompt_fingerprint_auth">
+    همینطور می‌توانید با اثر انگشت کیف پول را باز کنید.
+    \n
+    لطفا حسگر را لمس کنید.
+    </string>
+    <string name="prompt_open_wallet">در حال بازگشایی کیف پول...</string>
+    <string name="bad_fingerprint">اثر انگشت شناسایی نشد. دوباره امتحان کنید.</string>
+    <string name="bad_password">رمز عبور اشتباه است!</string>
+    <string name="bad_saved_password">
+    رمز عبور ذخیره شده اشتباه است.
+    \n
+    لطفا رمز عبور را دستی وارد کنید.
+    </string>
+    <string name="bad_wallet">کیف پول پیدا نشد!</string>
+    <string name="prompt_daemon_missing">گره باید تنظیم شود!</string>
+    <string name="prompt_wrong_net">کیف پول با شبکهٔ بلاکچین انتخاب شده مطابقت ندارد</string><!--TODO deleteme-->
+
+    <string name="label_watchonly">(فقط مشاهده‌ای)</string>
+
+    <string name="label_wallet_receive">دریافت</string>
+    <string name="label_wallet_send">ارسال</string>
+
+    <string name="xmr_unconfirmed_amount">
+    مقدار
+    +%1$s XMR
+    تایید نشده است
+    </string>
+
+    <string name="service_description">سرویس مونروجو</string>
+
+    <string name="status_synced">همگام شد:</string>
+    <string name="status_remaining">بلوک باقی مانده</string>
+    <string name="status_syncing">در حال اسکن:</string>
+
+    <string name="message_strorage_not_writable">حافظهٔ خارجی قابل نوشتن نیست!</string>
+    <string name="message_strorage_not_permitted">به اجازهٔ دسترسی برای نوشتن در حافظهٔ خارجی نیازمندیم!</string>
+    <string name="message_camera_not_permitted">بدون دوربین نمی‌توان کدها را اسکن کرد!</string>
+
+    <string name="label_copy_viewkey">کلید مشاهده</string>
+    <string name="label_copy_address">آدرس عمومی</string>
+    <string name="label_copy_xmrtokey">کلید</string>
+    <string name="message_copy_viewkey">کلید مشاهده کپی شد!</string>
+    <string name="message_copy_xmrtokey">کلید در حافظه کپی شد!</string>
+    <string name="message_copy_address">آدرس کیف پول کپی شد!</string>
+    <string name="message_copy_txid">شناسهٔ تراکنش در حافظه کپی شد!</string>
+    <string name="message_nocopy">کپی به دلایل امنیتی غیرفعال شد!</string>
+
+    <string name="message_exchange_failed">
+    نرخ تبدیل دریافت نشد!
+    \n
+    دوباره امتحان کنید
+    </string>
+
+    <string name="generate_title">ساخت کیف پول</string>
+    <string name="generate_name_hint">نام کیف پول</string>
+    <string name="generate_password_hint">عبارت عبور کیف پول</string>
+    <string name="generate_fingerprint_hint">اجازه برای بازگشایی کیف پول با اثر انگشت</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>احراز با اثر انگشت</strong>
+        <p>
+        با فعال بودن احراز با اثر انگشت می‌توانید بدون نیاز به وارد کردن رمز عبور، موجودی کیف پول را دیده و وجوه دریافت کنید.
+        </p>
+        <p>
+        اما برای امنیت بیشتر، مونروجو برای مشاهدهٔ جزئیات کیف پول و ارسال وجوه از شما برای وارد کردن رمز عبور می‌پرسد.
+        </p>
+        <strong>هشدار امنیتی</strong>
+        <p>
+        در نهایت، مونروجو به شما یادآور می‌شود که هرکس دسترسی به اثر انگشت شما داشته باشد قابلیت فضولی و مشاهدهٔ موجودی شما را خواهد داشت.
+        </p>
+        <p>
+        برای مثال، شخصی می‌تواند کیف پول شما را وقتی که خواب هستید باز کند.
+        </p>
+        <strong>برای فعالسازی این قابلیت اطمینان دارید؟</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">عبارت عبور تطابق ندارد</string>
+    <string name="generate_empty_passwordB">عبارت عبور نمی‌تواند خالی باشد</string>
+    <string name="generate_buttonGenerate">کیف پول را بساز!</string>
+    <string name="generate_button_accept">بذر یادآوری را یادداشت کرده‌ام</string>
+
+    <string name="generate_wallet_name">یک نام برایم بگذار!</string>
+    <string name="generate_wallet_exists">کیف پول از پیش وجود دارد!</string>
+    <string name="generate_wallet_dot">با نقطه نمی‌تواند شروع شود</string>
+    <string name="generate_wallet_creating">در حال ساخت کیف پول</string>
+    <string name="generate_wallet_created">کیف پول ساخته شد</string>
+
+    <string name="generate_restoreheight_error">
+    ارتفاع یا تاریخ میلادی بازیابی
+    (YYYY-MM-DD)
+    را وارد کنید
+    </string>
+
+    <string name="generate_wallet_type_key">کلیدها</string>
+    <string name="generate_wallet_type_new">جدید</string>
+    <string name="generate_wallet_type_seed">بذر</string>
+    <string name="generate_wallet_type_view">مشاهده‌ای</string>
+
+    <string name="generate_address_hint">آدرس عمومی</string>
+    <string name="generate_viewkey_hint">کلید مشاهده</string>
+    <string name="generate_spendkey_hint">کلید مصرف</string>
+    <string name="generate_mnemonic_hint">بذر یادآوری 25 کلمه‌ای</string>
+    <string name="generate_restoreheight_hint">
+    ارتفاع یا تاریخ میلادی بازیابی
+    (YYYY-MM-DD)</string>
+
+    <string name="generate_address_label">آدرس عمومی</string>
+    <string name="generate_viewkey_label">کلید مشاهده</string>
+    <string name="generate_spendkey_label">کلید مصرف</string>
+    <string name="generate_mnemonic_label">بذر یادآوری</string>
+    <string name="generate_crazypass_label">رمز عبور بازیابی فایل‌های کیف پول</string>
+
+    <string name="generate_check_key">یک کلید معتبر وارد کنید</string>
+    <string name="generate_check_address">یک آدرس معتبر وارد کنید</string>
+    <string name="generate_check_mnemonic">بذر 25 کلمه‌ای خود را وارد کنید</string>
+
+    <string name="send_notes_hint">یادداشت‌های خصوصی (اختیاری)</string>
+    <string name="send_generate_paymentid_hint">ساخت</string>
+    <string name="send_send_label">مونروها رو خرج کن</string>
+    <string name="send_send_timed_label">
+    مونروها رو خرج کن
+    (%1$s)</string>
+    <string name="send_qr_invalid">کد کیوآر نامعتبر</string>
+    <string name="send_qr_address_invalid">این کد کیوآر معتبر نیست</string>
+    <string name="send_address_invalid">این آدرس معتبر نیست</string>
+    <string name="send_address_not_openalias">
+    این آدرس
+    OpenAlias
+    در دسترس نیست
+    </string>
+    <string name="send_address_openalias">
+    این آدرس
+    OpenAlias
+    امن است
+    &check;
+    </string>
+    <string name="send_address_resolve_openalias">
+    بررسی
+    OpenAlias...
+    </string>
+    <string name="send_address_no_dnssec">
+    دست‌یابی به آدرس OpenAlias بدون DNSSEC. آدرس ممکن است جعلی باشد!
+    </string>
+    <string name="send_title">ارسال</string>
+    <string name="send_available">
+    موجودی:
+    %1$s XMR</string>
+    <string name="send_address_title">آدرس</string>
+    <string name="send_amount_title">مقدار</string>
+    <string name="send_confirm_title">تایید</string>
+    <string name="send_success_title">انجام شد</string>
+    <string name="send_amount_label">مقدار</string>
+    <string name="send_fee_btc_label">
+    هزینهٔ تراکنش (XMR)
+    </string>
+    <string name="send_fee_label">هزینهٔ تراکنش</string>
+    <string name="send_total_btc_label">سرجمع (XMR)</string>
+    <string name="send_total_label">سرجمع</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s
+    هزینهٔ تراکنش
+    </string>
+
+    <string name="send_create_tx_error_title">ساخت خطای تراکنش</string>
+
+    <string name="tx_list_fee">
+    هزینهٔ تراکنش
+    %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">شکست خورد</string>
+    <string name="tx_list_amount_negative">-%1$s</string>
+    <string name="tx_list_amount_positive">+%1$s</string>
+
+    <string name="tx_timestamp">زمان</string>
+    <string name="tx_id">شناسهٔ تراکنش</string>
+    <string name="tx_key">کلید تراکنش</string>
+    <string name="tx_destination">مقصد</string>
+    <string name="tx_paymentId">شناسهٔ پرداخت</string>
+    <string name="tx_blockheight">ارتفاع بلوک</string>
+    <string name="tx_amount">مقدار</string>
+    <string name="tx_fee">هزینهٔ تراکنش</string>
+    <string name="tx_transfers">انتقال</string>
+    <string name="tx_notes">یادداشت‌ها</string>
+    <string name="tx_notes_hint">(اختیاری)</string>
+    <string name="tx_title">جزئیات تراکنش</string>
+
+    <string name="tx_pending">در حال تراکنش</string>
+    <string name="tx_failed">تراکنش شکست خورد!</string>
+
+    <string name="receive_amount_hint">مقدار</string>
+    <string name="receive_desc_hint">توضیحات (اختیاری)</string>
+    <string name="receive_cannot_open">نمی‌توان کیف پول را باز کرد!</string>
+
+    <string name="receive_amount_too_big">
+    حداکثر:
+    %1$s</string>
+    <string name="receive_amount_negative">حداقل: صفر</string>
+    <string name="receive_amount_nan">برای مقدار XMR یک عدد وارد کنید</string>
+
+    <string name="details_alert_message">
+    داده‌های حساس نمایش داده خواهند شد.
+    \n
+    مراقب پشت سر خود باشید!
+    </string>
+    <string name="details_alert_yes">حله!</string>
+    <string name="details_alert_no">بازگشت!</string>
+    <string name="details_title">جزئیات</string>
+
+    <string name="delete_alert_message">
+    این کیف پول حذف خواهد شد. وجوه شما برای همیشه از بین خواهند رفت مگر اینکه بذر یا فایل پشتیبان برای بازیابی داشته باشید.
+    </string>
+    <string name="delete_alert_yes">آره انجامش بده!</string>
+    <string name="delete_alert_no">نه مرسی!</string>
+
+    <string name="fab_create_new">ساخت کیف پول جدید</string>
+    <string name="fab_restore_viewonly">بازگردانی کیف پول فقط مشاهده‌ای</string>
+    <string name="fab_restore_key">بازگردانی کیف پول با کلیدهای شخصی</string>
+    <string name="fab_restore_seed">بازگردانی کیف پول با بذر 25 کلمه‌ای</string>
+
+    <string name="accounts_drawer_new">ساخت حساب</string>
+    <string name="accounts_new">
+    حساب شمارهٔ
+    %1$d
+    ساخته شد
+    </string>
+    <string name="tx_account">شمارهٔ حساب</string>
+
+    <string name="send_sweepall">همهٔ وجوه تایید شدهٔ این حساب را بفرست!</string>
+    <string name="tx_subaddress">آدرس فرعی</string>
+    <string name="generate_address_label_sub">
+    آدرس عمومی شمارهٔ 
+    %1$d: %2$s
+    </string>
+
+    <string name="menu_language">زبان</string>
+    <string name="language_system_default">زبان سیستم</string>
+
+    <string name="fab_restore_ledger">
+    بازیابی از Ledger Nano S
+    </string>
+
+    <string name="progress_ledger_progress">در حال ارتباط با لجر</string>
+    <string name="progress_ledger_confirm">تایید در لجر مورد نیاز است!</string>
+    <string name="progress_ledger_lookahead">در حال بازیابی آدرس‌های فرعی</string>
+    <string name="progress_ledger_verify">در حال تایید کلیدها</string>
+    <string name="progress_ledger_opentx">انجام عملیات‌های پیچیده</string>
+    <string name="progress_ledger_mlsag">هش کردن</string>
+    <string name="open_wallet_ledger_missing">لطفا دستگاه لجر را (باز)وصل کنید</string>
+
+    <string name="accounts_progress_new">در حال ساخت حساب</string>
+
+    <string name="toast_ledger_attached">
+    %1$s
+    متصل شد
+    </string>
+    <string name="toast_ledger_detached">
+    %1$s
+    جدا شد
+    </string>
+
+    <string name="progress_nfc_write">نوشتن برچسب</string>
+    <string name="nfc_write_failed">نوشتن برچسب شکست خورد!</string>
+    <string name="nfc_write_successful">نوشتن برچسب موفق بود</string>
+    <string name="nfc_tag_unsupported">برچسب از
+    NDEF
+    پشتیبانی نمیکند
+    </string>
+    <string name="nfc_tag_size">
+    برچسب
+    %1$d
+    بایت فراهم کرد، ولی ما
+    %2$d
+    بایت نیاز داریم!
+    </string>
+    <string name="nfc_tag_read_undef">من برچسب را متوجه نمی‌شوم!</string>
+    <string name="nfc_tag_read_what">نمیدونم از جونم چی میخوای!</string>
+    <string name="nfc_tag_tap">
+    قابلیت
+    NFC
+   دردسترس است!
+    </string>
+
+    <string name="menu_info">نمایش اسرار!</string>
+    <string name="menu_streetmode">حالت خیابان</string>
+
+    <string name="info_nodes_enabled">
+    حالت
+    Node-o-matiC
+    فعال شد، برای اطلاعات بیشتر لمس کنید.
+    </string>
+    <string name="node_height">
+    آخرین به‌روزرسانی بلوک:
+    %1$s</string>
+    <string name="label_nodes">گره‌ها</string>
+    <string name="node_name_hint">نام گره (اختیاری)</string>
+    <string name="node_address_hint">دامنه</string>
+    <string name="node_port_hint">پورت</string>
+    <string name="node_user_hint">نام کاربری (اختیاری)</string>
+    <string name="node_pass_hint">رمز (اختیاری)</string>
+    <string name="node_host_unresolved">آدرس پیدا نشد</string>
+    <string name="node_host_empty">الزامی است!</string>
+    <string name="node_port_numeric">عددی نیست</string>
+    <string name="node_port_range">باید بین 1 تا 65535 باشد</string>
+    <string name="node_fab_add">اضافه کردن گره</string>
+    <string name="node_refresh_hint">برای تازه‌سازی لمس کنید!</string>
+    <string name="node_test_error">
+    خطای اتصال
+    %1$d</string>
+    <string name="node_general_error">خطای اتصال</string>
+    <string name="node_auth_error">احراز شکست خورد</string>
+    <string name="node_result_label">نتایح بررسی</string>
+    <string name="node_result">
+    ارتفاع:
+    %1$s (v%2$d),
+    پینگ:
+    %3$.0fms,
+    آدرس IP:
+    %4$s</string>
+    <string name="node_testing">
+    در حال بررسی IP:
+    %1$s ...</string>
+    <string name="node_refresh_wait">لطفا تا اتمام اسکن صبر کنید</string>
+    <string name="node_create_hint">برای انتخاب یا اضافه کردن گره لمس کنید</string>
+    <string name="node_pull_hint">گره‌ها را به طور دستی وارد کنید یا برای اسکن به پایین بکشید</string>
+    <string name="node_scanning">در حال اسکن شبکه...</string>
+    <string name="node_nobookmark">
+    تعداد
+    %1$d
+    گره به طور خودکار نشانه‌گذاری شدند
+    </string>
+    <string name="label_test">بررسی</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_hint">گیرنده</string>
+
+    <string name="street_sweep_amount">همه شو بده!</string>
+
+    <string name="menu_ledger_seed">
+    تبدیل بذر لجر
+    </string>
+    <string name="prompt_ledger_seed">کلمات بذر لجر</string>
+    <string name="prompt_ledger_phrase">عبارت عبور لجر (پیشرفته)</string>
+    <string name="bad_ledger_seed">بذر لجر نامعتبر!</string>
+    <string name="prompt_ledger_seed_warn">
+    نوشتن بذر لجر خود در اینجا یک خطر امنیتی بزرگ است!
+    </string>
+
+    <string name="label_restoreheight">ارتفاع بازیابی</string>
+
+    <string name="toast_ledger_start_app">
+    برنامهٔ مونرو را روی
+    %1$s
+    اجرا کنید
+    </string>
+
+    <string name="menu_rescan">اسکن دوباره!</string>
+
+    <string name="onboarding_agree">متوجه شدم!</string>
+    <string name="onboarding_button_next">بعدی</string>
+    <string name="onboarding_button_ready">من آماده هستم!</string>
+
+    <string name="onboarding_welcome_title">به مونروجو خوش آمدید!</string>
+    <string name="onboarding_welcome_information">
+    این برنامه به شما امکان می‌دهد کیف پول‌های مونرو را ایجاد و استفاده کنید. می‌توانید مونروهای شیرین خود را در آن کیف‌ها ذخیره کنید.
+    </string>
+    <string name="onboarding_seed_title">بذر خود را ایمن نگه دارید</string>
+    <string name="onboarding_seed_information">
+    این بذر به هرکسی که آن را در اختیار دارد دسترسی کامل می‌دهد. اگر آن را از دست بدهید، ما نمی‌توانیم به شما کمک کنیم آن را بازیابی کنید و مونروهای محبوب خود را از دست می دهید.
+    </string>
+    <string name="onboarding_xmrto_title">هرنوع رمزارز ارسال کنید</string>
+    <string name="onboarding_xmrto_information">
+    مونروجو دارای پشتیبانی داخلی SideShift.ai است. فقط یک آدرس BTC، LTC، ETH، DASH یا DOGE را بچسبانید یا اسکن کنید و با خرج کردن XMR، این رمزارزها را ارسال خواهید کرد (آدرس IP ایران در تحریم است).
+    </string>
+    <string name="onboarding_nodes_title">گره‌ها، به میل شما</string>
+    <string name="onboarding_nodes_information">
+    گره‌ها شما را به شبکه مونرو متصل می‌کنند. از بین گره‌های عمومی یکی را انتخاب کنید یا با استفاده از گرهٔ خود متصل شوید.
+    </string>
+    <string name="onboarding_fpsend_title">ارسال با اثر انگشت</string>
+    <string name="onboarding_fpsend_information">
+    اکنون می توانید قابلیت ارسال مونرو با اثرانگشت را فعال کنید. برای بازگشت به استفاده از رمز عبور، دسترسی اثر انگشت را غیرفعال کنید.
+    </string>
+
+    <string name="menu_daynight">حالت تاریک</string>
+    <string-array name="daynight_themes">
+        <item>خودکار</item>
+        <item>روز</item>
+        <item>شب</item>
+    </string-array>
+    <string name="gunther_says">
+    هیچ خبری نیست
+    \n
+    لطفا یک کیف پول بسازید یا بازیابی کنید
+    </string>
+
+    <string name="menu_default_nodes">بازگردانی گره‌های پیش‌فرض</string>
+    <string name="toast_default_nodes">بازگردانی در حال انجام است...</string>
+
+    <string name="node_updated_now">
+    آخرین بلاک:
+    %1$d
+    ثانیه پیش
+    </string>
+    <string name="node_updated_mins">
+    آخرین بلاک:
+    %1$d
+    دقیقه پیش
+    </string>
+    <string name="node_updated_hours">
+    آخرین بلاک:
+    %1$d
+    ساعت پیش
+    </string>
+    <string name="node_updated_days">
+    آخرین بلاک:
+    %1$d
+    روز پیش
+    </string>
+
+    <string name="shift_noquote">نمی‌توان مظنه دریافت کرد</string>
+    <string name="shift_checkamount">مقدار را بررسی کرده و دوباره امتحان کنید</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>آدرس مبهم.</b><br/>
+        <i>لطفا یک نوع را از بالا انتخاب کنید</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>لطفا یک آدرس
+        %1$s
+        را اسکن یا وارد کنید.</b><br/>
+        <i>
+        شما به وسیلهٔ سرویس
+        <b>SideShift.ai</b> 
+        با ارسال XMR برای گیرنده
+        %2$s
+        ارسال خواهید کرد.
+        </i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>لطفا یک آدرس مونرو را اسکن یا وارد کنید.</b>
+    ]]></string>
+
+    <string name="subbaddress_title">آدرس‌های فرعی</string>
+    <string name="subbaddress_name_hint">نام آدرس فرعی</string>
+    <string name="max_subaddress_warning">
+    آدرس‌های استفاده نشده زیاد هستند، از بعضی از آنها استفاده کنید تا بتوانید آدرس‌های بیشتر بسازید!
+    </string>
+    <string name="max_account_warning">
+    حساب‌های استفاده نشده زیاد هستند، از بعضی از آنها استفاده کنید تا بتوانید حساب‌های بیشتر بسازید!
+    </string>
+    <string name="subaddress_tx_label">تراکنش‌های این آدرس فرعی:</string>
+    <string name="subaddress_notx_label">هنوز تراکنشی برای این آدرس فرعی وجود ندارد</string>
+    <string name="subaddress_select_label">یک آدرس فرعی را انتخاب کنید</string>
+    <string name="subaddress_details_hint">برای اطلاعات بیشتر یک مورد را نگه دارید</string>
+
+    <string name="menu_restore">وارد کردن کیف پول</string>
+    <string name="restore_failed">وارد کردن شکست خورد!</string>
+
+    <string name="menu_deletecache">بازنشانی کیف‌پول!</string>
+    <string name="deletecache_alert_message">
+    این کیف پول بازنشانی و باعث از بین رفتن اطلاعات محلی (مانند یادداشت‌ها، حساب‌ها، نام آدرس‌های فرعی، کلیدهای تراکنش و...) خواهد شد!
+    <b>فقط</b>
+    در زمانی که کیف پول خراب شده و بارگذاری نمی‌شود این کار را کنید.
+    </string>
+
+    <string name="node_tor_error">اتصال به تور لازم است</string>
+    <string name="node_waiting">
+    &nbsp;
+    در انتظار گره
+    &nbsp;
+    </string>
+    <string name="tor_enable_background">
+    برای استفاده از تور، تنظیمات «اجازه دادن به اجرا در پس‌زمینه» را در Orbot فعال کنید!
+    </string>
+    <string name="tor_noshift">
+    قابلیت SideShift.ai از تور پشتیبانی نمی‌کند. برای تبدیل XMR تور را غیرفعال کنید.
+    </string>
+
+    <string name="label_seed_offset_encrypt">رمزگذاری بذر (قابلیت آزمایشی)</string>
+    <string name="seed_offset_hint">عبارت رمزگذاری بذر (اختیاری)</string>
+</resources>
