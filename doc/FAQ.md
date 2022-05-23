@@ -96,5 +96,8 @@ This is a new feature of monero core to share certain key images with other mone
 Creating a file named `.nocrazypass` in the wallets folder will disable generation of crazypass for NEW passwords (new wallet or change password).
 The content of the file is not read and is irrelevant.
 Wallets with CrAzYpass will continue working normally. The currently set real wallet password can be checked in the "Show Secrets".
+The wallets folder is:
+- In 1.x: `monerujo` on your external storage (legacy)
+- In 2.x: `/data/data/com.m2049r.xmrwallet/files/wallets` (requires root access)
 
 **NB: This feature is for test purposed only - all your XMR will be stolen if you use it!**
