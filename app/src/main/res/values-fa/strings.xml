@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
 <resources>
     <string name="wallet_activity_name">کیف پول</string>
 
@@ -90,7 +90,7 @@
 
     <string name="info_paymentid_integrated">
     شناسهٔ پرداخت ادغام شد
-    &check;
+    &#x2714;
     </string>
     <string name="info_prepare_tx">در حال آماده‌سازی تراکنش</string>
 
@@ -340,7 +340,7 @@
     این آدرس
     OpenAlias
     امن است
-    &check;
+    &#x2714;
     </string>
     <string name="send_address_resolve_openalias">
     بررسی
