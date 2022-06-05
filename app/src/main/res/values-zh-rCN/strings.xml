@@ -99,7 +99,7 @@
     <string name="label_watchonly">(只读)</string>
     <string name="label_wallet_receive">收款</string>
     <string name="label_wallet_send">发送</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR未确认</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s未确认</string>
     <string name="service_description">monerujo服务</string>
     <string name="status_synced">已同步：</string>
     <string name="status_remaining">区块剩余</string>

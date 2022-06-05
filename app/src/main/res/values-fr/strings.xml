@@ -134,7 +134,7 @@
     <string name="label_wallet_receive">Recevoir</string>
     <string name="label_wallet_send">Envoyer</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR non confirmés</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confirmés</string>
 
     <string name="service_description">Service monerujo</string>
 

@@ -232,7 +232,7 @@
 
     <string name="xmr_unconfirmed_amount">
     مقدار
-    +%1$s XMR
+    +%1$s %2$s
     تایید نشده است
     </string>
 
