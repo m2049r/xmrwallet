@@ -82,8 +82,8 @@ RUN set -x \
 #Note : we build openssl because the default lacks DSA1
 
 # download, configure and make Zlib
-ENV ZLIB_VERSION 1.2.11
-ENV ZLIB_HASH c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1
+ENV ZLIB_VERSION 1.2.12
+ENV ZLIB_HASH 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 RUN set -x \
     && curl -s -O https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz \
     && echo "${ZLIB_HASH}  zlib-${ZLIB_VERSION}.tar.gz" | sha256sum -c \
