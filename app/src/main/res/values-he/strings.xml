@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+    <string name="wallet_activity_name">ארנק</string>
+
+    <string name="menu_about">מידע</string>
+    <string name="menu_privacy">מדיניות פרטיות</string>
+
+    <string name="menu_share">שתף</string>
+    <string name="menu_help">עזרה</string>
+    <string name="menu_receive">קבלה</string>
+    <string name="menu_rename">שינוי-שם</string>
+    <string name="menu_delete">מחיקה</string>
+    <string name="menu_backup">גיבוי</string>
+    <string name="menu_changepw">שינוי סיסמה</string>
+
+    <string name="password_weak">המשך להקליד &#8230;</string>
+    <string name="password_fair">לא משהו &#8230;</string>
+    <string name="password_good">אתה יכול יותר טוב!</string>
+    <string name="password_strong">אתה כבר שם &#8230;</string>
+    <string name="password_very_strong">כן בייבי, אקר סטייל!</string>
+
+    <string name="label_login_wallets">ארנקים</string>
+    <string name="label_credits">זכויות</string>
+    <string name="label_ok">אוקיי</string>
+    <string name="label_cancel">ביטול</string>
+    <string name="label_close">סגור</string>
+    <string name="label_wallet_advanced_details">מידע מפורט</string>
+
+    <string name="label_send_success">נשלח בהצלחה</string>
+    <string name="label_send_done">סיום</string>
+
+    <string name="label_receive_info_gen_qr_code">לחץ עבור קוד QR</string>
+
+    <string name="info_xmrto_enabled">תשלומים שאינם XMR מופעלים, הקש לקבלת מידע נוסף.</string>
+    <string name="info_ledger_enabled">Ledger מופעל, הקש לקבלת מידע נוסף.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>הזנת %1$s כתובת.</b><br/>
+        <i>אתה תשלח XMR והמקבל יקבל %1$s באמצעות השירות <b>SideShift.ai</b>.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">הזמנת SideShift.ai</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
+
+    <string name="info_send_xmrto_paid">אישור ממתין</string>
+    <string name="info_send_xmrto_unpaid">תשלום ממתין</string>
+    <string name="info_send_xmrto_error">שגיאה SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_sent">%1$s נשלח!</string>
+    <string name="info_send_xmrto_query">חוקר &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>אתה יכול לשלוח %1$s &#8212; %2$s %4$s</b>.<br/>
+        <i><b>SideShift.ai</b> נותן לך שער חליפין של <b>%3$s %4$s/XMR</b> <u>כרגע</u></i>.
+    ]]></string>
+
+    <string name="send_available_btc">היתרה: %2$s %3$s (%1$s XMR)</string>
+
+    <string name="info_paymentid_integrated">&#x2714; מזהה תשלום משולב</string>
+    <string name="info_prepare_tx">מכין את העסקתך</string>
+
+    <string name="label_send_progress_xmrto_create">יוצר הזנמת SideShift.ai</string>
+    <string name="label_send_progress_xmrto_query">חוקר הזמנת SideShift.ai</string>
+    <string name="label_send_progress_create_tx">ממתין לעסקת מונרו</string>
+
+    <string name="label_send_progress_queryparms">חוקר את הפרמטרים של SideShift.ai</string>
+
+    <string name="label_generic_xmrto_error">SideShift.ai שגיאה</string>
+    <string name="text_generic_xmrto_error">קוד: %1$d</string>
+
+    <string name="text_retry">לחץ כדי לנסות שוב</string>
+    <string name="text_noretry_monero">עכשיו אנחנו תקועים כאן!</string>
+    <string name="text_noretry">או-אוו, SideShift.ai לא נראה זמין כרגע!</string>
+
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(שיעור: %1$s %2$s/XMR)</string>
+
+    <string name="label_send_btc_xmrto_info">בקר ב-SideShift.ai לקבלת תמיכה  &amp; מעקב</string>
+    <string name="label_send_btc_xmrto_key_lb">מפתח סודי\nSideShift.ai</string>
+    <string name="label_send_btc_xmrto_key">SideShift.ai מפתח סודי</string>
+    <string name="label_send_btc_address">כתובת %1$s היעד</string>
+    <string name="label_send_btc_amount">כמות</string>
+
+    <string name="label_send_txid">מזהה עסקה</string>
+    <string name="label_send_address">כתובת היעד</string>
+    <string name="label_send_notes">הערות</string>
+
+    <string name="backup_progress">גיבוי בעיצומו</string><!--TODO deleteme-->
+    <string name="archive_progress">ארכיון בתהליך</string><!--TODO deleteme-->
+    <string name="rename_progress">שינוי שם בתהליך</string><!--TODO deleteme-->
+    <string name="changepw_progress">שינוי סיסמה בתהליך</string>
+
+    <string name="service_progress">מסכמים את הדברים &#8230;\nזה יכול לקחת זמן מה!</string>
+
+    <string name="backup_success">גיבוי מוצלח</string>
+    <string name="backup_failed">הגיבוי נכשל!</string>
+    <string name="delete_failed">המחיקה נכשלה!</string>
+    <string name="rename_failed">שינוי השם נכשל!</string>
+    <string name="changepw_failed">שינוי סיסמה נכשל!</string>
+    <string name="changepw_success">הסיסמה השתנתה</string>
+
+    <string name="label_daemon">רשת</string>
+    <string name="status_wallet_loading">טוען ארנק &#8230;</string>
+    <string name="status_wallet_unloaded">הארנק נשמר</string>
+    <string name="status_wallet_unload_failed">שמירת הארנק נכשלה!</string>
+    <string name="status_wallet_connecting">מתחבר &#8230;</string>
+    <string name="status_wallet_connect_failed">חיבור החולייה נכשל!\nבדוק את השם\הסיסמה</string>
+    <string name="status_wallet_connect_wrongversion">גרסת החולייה לא נתמכת - אנא תעדכן!</string>
+    <string name="status_wallet_node_invalid">חולייה לא חוקית!\nנסה אחרת.</string>
+    <string name="status_wallet_connect_ioex">לא ניתן להגיע לחולייה!\nנסה שוב או אחרת.</string>
+
+    <string name="status_wallet_disconnected">מנותק</string>
+
+    <string name="status_transaction_failed">העסקה נכשלה: %1$s</string>
+
+    <string name="send_xmrto_timeout">חיכית יותר מדי זמן ידידי!</string>
+
+    <string name="service_busy">אני עדיין עסוק בארנק האחרון שלך &#8230;</string>
+
+    <string name="prompt_rename">שינוי-שם %1$s</string>
+
+    <string name="prompt_changepw">סיסמה חדשה עבור %1$s</string>
+    <string name="prompt_changepwB">חזור על הסיסמה עבור %1$s</string>
+    <string name="prompt_password">סיסמה עבור %1$s</string>
+    <string name="prompt_fingerprint_auth">ניתן גם לפתוח את הארנק באמצעות טביעת אצבע.\nאנא גע בחיישן.</string>
+    <string name="prompt_open_wallet">פותח את הארנק&#8230;</string>
+    <string name="bad_fingerprint">טביעת האצבע לא זוהתה. נסה שוב.</string>
+    <string name="bad_password">סיסמה שגויה!</string>
+    <string name="bad_saved_password">הסיסמה שנשמרה שגויה.\nאנא הזן סיסמה באופן ידני.</string>
+    <string name="bad_wallet">הארנק אינו קיים!</string>
+    <string name="prompt_daemon_missing">יש להגדיר חולייה!</string>
+    <string name="prompt_wrong_net">הארנק אינו תואם לרשת שנבחרה</string><!--TODO deleteme-->
+
+    <string name="label_watchonly">(צפייה בלבד)</string>
+
+    <string name="label_wallet_receive">קבלה</string>
+    <string name="label_wallet_send">שלח</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s XMR לא מאושר</string>
+
+    <string name="service_description">שירות מונרוג'ו</string>
+
+    <string name="status_synced">מסונכרן:</string>
+    <string name="status_remaining">בלוקים שנותרו</string>
+    <string name="status_syncing">מחפש:</string>
+
+    <string name="message_strorage_not_writable">אחסון חיצוני אינו ניתן לכתיבה! תבהל!</string>
+    <string name="message_strorage_not_permitted">אנחנו ממש צריכים את הרשאות האחסון החיצוניות האלה!</string>
+    <string name="message_camera_not_permitted">אין מצלמה = אין סריקת QR!</string>
+
+    <string name="label_copy_viewkey">הצג מפתח</string>
+    <string name="label_copy_address">כתובת פומבית</string>
+    <string name="label_copy_xmrtokey">מפתח</string>
+    <string name="message_copy_viewkey">הצגת מפתח שהועתק ללוח-העתקה!</string>
+    <string name="message_copy_xmrtokey">מפתח שהועתק ללוח-העתקה!</string>
+    <string name="message_copy_address">כתובת ארנק הועתקה ללוח-העתקה!</string>
+    <string name="message_copy_txid">מזהה עסקה הועתק ללוח-העתקה!</string>
+    <string name="message_nocopy">העתקה לא זמינה מטעמי אבטחה!</string>
+
+    <string name="message_exchange_failed">לא ניתן לקבל שער חליפין!\nהשתמש ב-XMR/XMR או שנסה שנית</string>
+
+    <string name="generate_title">צור ארנק</string>
+    <string name="generate_name_hint">שם הארנק</string>
+    <string name="generate_password_hint">ביטוי-סיסמה של הארנק</string>
+    <string name="generate_fingerprint_hint">אפשר לפתוח את הארנק באמצעות טביעת אצבע</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>אימות טביעת אצבע</strong>
+        <p>עם אימות טביעת אצבע מופעל, באפשרותך להציג את יתרת הארנק ולקבל כספים
+        מבלי להזין סיסמה.</p>
+        <p>אבל עבור אבטחה נוספת, מונרוג'ו עדיין ידרוש ממך להזין סיסמה
+        בעת הצגת פרטי הארנק או שליחת כספים.</p>
+        <strong>אזהרת אבטחה</strong>
+        <p>לבסוף, מונרוג'ו רוצה להזכיר לך שכל מי שיכול לקבל את טביעת האצבע שלך
+        יוכל להציץ לתוך יתרת הארנק שלך.</p>
+        <p>לדוגמה, משתמש זדוני סביבך יכול לפתוח את הארנק שלך כשאתה ישן.</p>
+        <strong>האם אתה בטוח רוצה להפעיל פונקציה זו?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">הסיסמה אינה תואמת</string>
+    <string name="generate_empty_passwordB">הסיסמה לא יכולה להיות ריקה</string>
+    <string name="generate_buttonGenerate">תכינו לי כבר ת'ארנק!</string>
+    <string name="generate_button_accept">שמרתי את המנמוניק סיד</string>
+
+    <string name="generate_wallet_name">תן לי שם!</string>
+    <string name="generate_wallet_exists">הארנק קיים!</string>
+    <string name="generate_wallet_dot">לא ניתן להתחיל עם.</string>
+    <string name="generate_wallet_creating">יוצר ארנק</string>
+    <string name="generate_wallet_created">הארנק נוצר</string>
+
+    <string name="generate_restoreheight_error">אכנס מספר או תאריך (יום-חודש-שנה)</string>
+
+    <string name="generate_wallet_type_key">מפתחות</string>
+    <string name="generate_wallet_type_new">חדש</string>
+    <string name="generate_wallet_type_seed">סיד</string>
+    <string name="generate_wallet_type_view">הצג</string>
+
+    <string name="generate_address_hint">כתובת פומבית</string>
+    <string name="generate_viewkey_hint">הצג מפתח</string>
+    <string name="generate_spendkey_hint">מפתח הוצאה</string>
+    <string name="generate_mnemonic_hint">25-אותיות מנמוניק סיד</string>
+    <string name="generate_restoreheight_hint">שחזר גובה או תאריך (יום-חודש-שנה)</string>
+
+    <string name="generate_address_label">כתובת פומבית</string>
+    <string name="generate_viewkey_label">הצג מפתח</string>
+    <string name="generate_spendkey_label">מפתח הוצאה</string>
+    <string name="generate_mnemonic_label">25-אותיות מנמוניק סי</string>
+    <string name="generate_crazypass_label">שחזור קבצי סיסמאות ארנק</string>
+
+    <string name="generate_check_key">הזן מפתח חוקי</string>
+    <string name="generate_check_address">הזן כתובת חוקית</string>
+    <string name="generate_check_mnemonic">הזן סיד מ25 אותיות</string>
+
+    <string name="send_notes_hint">הערות פרטיות (אופציונלי)</string>
+    <string name="send_generate_paymentid_hint">צור</string>
+    <string name="send_send_label">בזבז תמונרוג' המתוק שלי</string>
+    <string name="send_send_timed_label">בזבז תמונרוג' המתוק שלי (%1$s)</string>
+    <string name="send_qr_invalid">לא קוד QR</string>
+    <string name="send_qr_address_invalid">קוד QR לא תקף לתשלום</string>
+    <string name="send_address_invalid">לא כתובת חוקית</string>
+    <string name="send_address_not_openalias">כתובת OpenAlias לא זמינה</string>
+    <string name="send_address_openalias">OpenAlias מאובטח &#x2714;</string>
+    <string name="send_address_resolve_openalias">פותר OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias בלי DNSSEC - כתובת עלולה להיות מזויפת</string>
+    <string name="send_title">שלח</string>
+    <string name="send_available">היתרה: %1$s XMR</string>
+    <string name="send_address_title">כתובת</string>
+    <string name="send_amount_title">כמות</string>
+    <string name="send_confirm_title">אישור</string>
+    <string name="send_success_title">סיום</string>
+
+    <string name="send_amount_label">כמות</string>
+    <string name="send_fee_btc_label">דמי (XMR)</string>
+    <string name="send_fee_label">דמי תשלום</string>
+    <string name="send_total_btc_label">בסך הכל (XMR)</string>
+    <string name="send_total_label">בסך הכל</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s דמי</string>
+
+    <string name="send_create_tx_error_title">צור שגיאת עסקה</string>
+
+    <string name="tx_list_fee">דמי %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">נכשל</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">חותמת זמן</string>
+    <string name="tx_id">מזהה עסק</string>
+    <string name="tx_key">מפתח עסק</string>
+    <string name="tx_destination">יעד</string>
+    <string name="tx_paymentId">מזהה תשלום</string>
+    <string name="tx_blockheight">בלוק</string>
+    <string name="tx_amount">סכום</string>
+    <string name="tx_fee">דמי</string>
+    <string name="tx_transfers">העברות</string>
+    <string name="tx_notes">הערות</string>
+    <string name="tx_notes_hint">(אופציונלי)</string>
+    <string name="tx_title">פרטי העסקה</string>
+
+    <string name="tx_pending">ממתין</string>
+    <string name="tx_failed">נכשל</string>
+
+    <string name="receive_amount_hint">כמות</string>
+    <string name="receive_desc_hint">תיאור (אופציונלי)</string>
+    <string name="receive_cannot_open">לא היה ניתן לפתוח את הארנק!</string>
+
+    <string name="receive_amount_too_big">מקסימום. %1$s</string>
+    <string name="receive_amount_negative">מינימום. 0</string>
+    <string name="receive_amount_nan">XMR לא מספר</string>
+
+    <string name="details_alert_message">כעת יוצגו נתונים רגישים.\nתסתכל מעבר לכתף שלך!</string>
+    <string name="details_alert_yes">אני בטוח</string>
+    <string name="details_alert_no">קח אותי בחזרה!</string>
+    <string name="details_title">פרטים</string>
+
+    <string name="delete_alert_message">ארנק זה יימחק. הכספים שלך ייעלמו לנצח, אלא אם כן יש לך את הסיד שלך או גיבוי עובד כדי לשחזר אותו.</string>
+    <string name="delete_alert_yes">כן, עשה את זה!</string>
+    <string name="delete_alert_no">לא תודה!</string>
+
+    <string name="fab_create_new">צור ארנק חדש</string>
+    <string name="fab_restore_viewonly">שחזור ארנק תצוגה בלבד</string>
+    <string name="fab_restore_key">שחזור ארנק ממפתחות פרטיים</string>
+    <string name="fab_restore_seed">שחזור ארנק עם 25 אותיות סיד</string>
+
+    <string name="accounts_drawer_new">צור חשבון</string>
+    <string name="accounts_new">חשבון חדש נוסף #%1$d</string>
+    <string name="tx_account">חשבון #</string>
+
+    <string name="send_sweepall">שלח את כל הכספים המאושרים בחשבון זה!</string>
+    <string name="tx_subaddress">כתובת משנה</string>
+    <string name="generate_address_label_sub">כתובת משנה פומבית #%1$d: %2$s</string>
+
+    <string name="menu_language">שפה</string>
+    <string name="language_system_default">שימוש בשפת המערכת</string>
+
+    <string name="fab_restore_ledger">שחזר מתוך Ledger Nano</string>
+
+    <string name="progress_ledger_progress">תקשורת עם Ledger</string>
+    <string name="progress_ledger_confirm">אישור ב Ledger required!</string>
+    <string name="progress_ledger_lookahead">מחזיר כתובת משנה</string>
+    <string name="progress_ledger_verify">אימות מפתחות</string>
+    <string name="progress_ledger_opentx">עושים מתמטיקה מטורפת</string>
+    <string name="progress_ledger_mlsag">מאבטח דברים</string>
+    <string name="open_wallet_ledger_missing">אנא (מחדש) התחבר למכשיר Ledger</string>
+
+    <string name="accounts_progress_new">יצירת חשבון</string>
+
+    <string name="toast_ledger_attached">%1$s מצורף</string>
+    <string name="toast_ledger_detached">%1$s מנותק</string>
+
+    <string name="progress_nfc_write">תג כתיבה</string>
+    <string name="nfc_write_failed">תג הכתיבה נכשל!</string>
+    <string name="nfc_write_successful">כתיבת תג מוצלח</string>
+    <string name="nfc_tag_unsupported">התג אינו תומך NDEF!</string>
+    <string name="nfc_tag_size">תג מספק %1$d בתים, אבל אנחנו צריכים %2$d!</string>
+    <string name="nfc_tag_read_undef">אני לא מבין את התגית!</string>
+    <string name="nfc_tag_read_what">אני לא יודע מה אתה רוצה!</string>
+    <string name="nfc_tag_tap">NFC זמין!</string>
+
+    <string name="menu_info">הצג סודות!</string>
+    <string name="menu_streetmode">מצב רחוב</string>
+
+
+    <string name="info_nodes_enabled">Node-o-matiC מופעל, הקש לקבלת מידע נוסף.</string>
+    <string name="node_height">הבלוק האחרון שעודכן: %1$s</string>
+    <string name="label_nodes">חוליות</string>
+    <string name="node_name_hint">שם חולייה (אופציונלי)</string>
+    <string name="node_address_hint">שם השרת</string>
+    <string name="node_port_hint">פורט</string>
+    <string name="node_user_hint">שם משתמש (אופציונלי)</string>
+    <string name="node_pass_hint">סיסמה (אופציונלי)</string>
+    <string name="node_host_unresolved">לא מצליח להגיע לשרת</string>
+    <string name="node_host_empty">אנחנו צריכים את זה!</string>
+    <string name="node_port_numeric">חייב להיות מספרי</string>
+    <string name="node_port_range">חייב להיות 1&#8211;65535</string>
+    <string name="node_fab_add">הוספת חולייה</string>
+    <string name="node_refresh_hint">לחץ כדי לרענן!</string>
+    <string name="node_test_error">שגיאת חיבור %1$d</string>
+    <string name="node_general_error">שגיאת חיבור</string>
+    <string name="node_auth_error">האימות נכשל</string>
+    <string name="node_result_label">תוצאת הבדיקה:</string>
+    <string name="node_result">גובה: %1$s (v%2$d), פינג: %3$.0fms, אייפי: %4$s</string>
+    <string name="node_testing">בדיקת אייפי: %1$s &#8230;</string>
+    <string name="node_refresh_wait">אנא המתן עד לסיום הסריקה</string>
+    <string name="node_create_hint">לחץ כדי לבחור או להוסיף חוליות</string>
+    <string name="node_pull_hint">הוספת חוליות באופן ידני או משוך מטה כדי לסרוק</string>
+    <string name="node_scanning">סריקת רשת&#8230;</string>
+    <string name="node_nobookmark">מסמן את החולייה הטובה ביותר בסימניה %1$d באופון אוטומטי</string>
+    <string name="label_test">בדיקה</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_hint">מקבל</string>
+
+    <string name="street_sweep_amount">הכל!</string>
+
+    <string name="menu_ledger_seed">מהמר Ledger סיד</string>
+    <string name="prompt_ledger_seed">מילי Ledger סיד</string>
+    <string name="prompt_ledger_phrase">סיסמת Ledger (מתקדם)</string>
+    <string name="bad_ledger_seed">Ledger סיד לא חוקי!</string>
+    <string name="prompt_ledger_seed_warn">הזנת סיד Ledger שלך כאן היא סיכון אבטחה גדול!</string>
+
+
+    <string name="label_restoreheight">שחזור גובה</string>
+
+    <string name="toast_ledger_start_app">הפעל את אפליקציית מונרו ב- %1$s</string>
+
+    <string name="menu_rescan">סריקה חוזרת!</string>
+
+    <string name="onboarding_agree">אני מבין!</string>
+    <string name="onboarding_button_next">הבא</string>
+    <string name="onboarding_button_ready">אני מוכן!</string>
+
+    <string name="onboarding_welcome_title">ברוכים הבאים למונרוג'ו!</string>
+    <string name="onboarding_welcome_information">אפליקציה זו מאפשרת לך ליצור ולהשתמש בארנקי מונרו. אתה יכול לאחסן בהם את המונרוג' המתוק שלך.</string>
+    <string name="onboarding_seed_title">שמור על הסיד שלך בטוח</string>
+    <string name="onboarding_seed_information">הסיד מעניק גישה מלאה למי שיש אותו. אם אתה מאבד את זה, אנחנו לא יכולים לעזור לך לשחזר את זה ואתה מאבד את המונרוג' האהוב שלך.</string>
+    <string name="onboarding_xmrto_title">שלח קריפטו</string>
+    <string name="onboarding_xmrto_information">למונרוג'ו יש את התמיכה של SideShift.ai מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, DASH או DOGE כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
+    <string name="onboarding_nodes_title">החוליות, בדרך שלך</string>
+    <string name="onboarding_nodes_information">החוליות מחברות אותך לרשת מונרו. בחר בין החוליות הציבוריות או שתתחבר לאחת משלך.</string>
+    <string name="onboarding_fpsend_title">שלח עם טביעת אצבע</string>
+    <string name="onboarding_fpsend_information">כעת תוכל לשלוח XMR רק עם טביעת האצבע שלך אם הפעלת אותה. כדי לבקש את הסיסמה, פשוט השבת את הגישה לטביעת האצבע.</string>
+
+    <string name="menu_daynight">מצב לילה</string>
+    <string-array name="daynight_themes">
+        <item>אוטומטי</item>
+        <item>יום</item>
+        <item>לילה</item>
+    </string-array>
+    <string name="gunther_says">אין כאן שום דבר\nבבקשה תיצור או שתחזר ארנק</string>
+
+    <string name="menu_default_nodes">שחזור חוליות המוגדרות כברירת מחדל</string>
+    <string name="toast_default_nodes">שחזור נמצא כבר בתהליך…</string>
+
+    <string name="node_updated_now">בלוק אחרון: לפני %1$d שניות</string>
+    <string name="node_updated_mins">בלוק אחרון: לפני %1$d דקות</string>
+    <string name="node_updated_hours">בלוק אחרון: לפני %1$d שעות</string>
+    <string name="node_updated_days">בלוק אחרון: לפני %1$d ימים</string>
+
+    <string name="shift_noquote">לא ניתן לקבל הצעת מחיר</string>
+    <string name="shift_checkamount">בדוק את הסכום ונסה שוב</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>כתובת מעורפלת.</b><br/>
+        <i>אנא בחר את הסוג מעל.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>אנא הזן או סרוק %1$s כתובת.</b><br/>
+        <i>אתה תשלח XMR והמקבל יקבל %2$s באמצעות השירות של <b>SideShift.ai</b></i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>אנא הזן או סרוק כתובת של מונרו.</b>
+    ]]></string>
+
+    <string name="subbaddress_title">כתובות משנה</string>
+    <string name="subbaddress_name_hint">שם כתובות משנה</string>
+    <string name="max_subaddress_warning">יותר מדי כתובות שאינן בשימוש - השתמש בחלקן כדי לאפשר יצירה נוספת!</string>
+    <string name="max_account_warning">יותר מדי חשבונות שאינם בשימוש - השתמשו בחלקם כדי לאפשר יצירה נוספת!</string>
+    <string name="subaddress_tx_label">עסקאות עבור תת-כתובת זו:</string>
+    <string name="subaddress_notx_label">עדיין אין עסקאות עבור תת-כתובת זו</string>
+    <string name="subaddress_select_label">בחר תת-כתובת</string>
+    <string name="subaddress_details_hint">לחיצה ארוכה בשביל פרטים</string>
+
+    <string name="menu_restore">טעינת ארנק</string>
+    <string name="restore_failed">טעינה נכשלה!</string>
+
+    <string name="menu_deletecache">איפוס ארנק!</string>
+    <string name="deletecache_alert_message">ארנק זה יאופס, ויאבד את כל הנתונים מחוץ לשרשרת (כמו הערות, חשבונות &amp; שמות תת כתובת, מפתחות עסקה פרטיים, &#8230;)! השתמש בזה רק אם ארנק זה פגום ואינו נטען!</string>
+
+    <string name="node_tor_error">טור נדרש</string>
+    <string name="node_waiting">\u00A0מחכה לחולייה\u00A0</string>
+    <string name="tor_enable_background">"אפשר התחלות רקע" בהגדרות Orbot לשימוש בטור!</string>
+    <string name="tor_noshift">SideShift.ai לא תומך בטור.\nהשבת את טור כדי להחליף את XMR.</string>
+
+    <string name="label_seed_offset_encrypt">הצפנת סיד (ניסיוני)</string>
+    <string name="seed_offset_hint">ביטוי היסט סיט (אופציונלי)</string>
+
+    <string name="menu_settings">הגדרות</string>
+    <string name="title_iface">ממשק</string> <!-- like: User Intreface -->
+    <string name="title_info">מידע</string>
+    <string name="setting_daynight">יום / לילה</string>
+
+    <string name="setting_theme">סגנון</string>
+    <string-array name="themes">
+        <item>קלאסי</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">לא הצליח ליצור QR לשיתוף!</string>
+</resources>
