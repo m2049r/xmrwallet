@@ -138,7 +138,7 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s XMR לא מאושר</string>
 
-    <string name="service_description">שירות מונרוג'ו</string>
+    <string name="service_description">שירות מונרוג\'ו</string>
 
     <string name="status_synced">מסונכרן:</string>
     <string name="status_remaining">בלוקים שנותרו</string>
@@ -167,17 +167,17 @@
         <strong>אימות טביעת אצבע</strong>
         <p>עם אימות טביעת אצבע מופעל, באפשרותך להציג את יתרת הארנק ולקבל כספים
         מבלי להזין סיסמה.</p>
-        <p>אבל עבור אבטחה נוספת, מונרוג'ו עדיין ידרוש ממך להזין סיסמה
+        <p>אבל עבור אבטחה נוספת, מונרוג\'ו עדיין ידרוש ממך להזין סיסמה
         בעת הצגת פרטי הארנק או שליחת כספים.</p>
         <strong>אזהרת אבטחה</strong>
-        <p>לבסוף, מונרוג'ו רוצה להזכיר לך שכל מי שיכול לקבל את טביעת האצבע שלך
+        <p>לבסוף, מונרוג\'ו רוצה להזכיר לך שכל מי שיכול לקבל את טביעת האצבע שלך
         יוכל להציץ לתוך יתרת הארנק שלך.</p>
         <p>לדוגמה, משתמש זדוני סביבך יכול לפתוח את הארנק שלך כשאתה ישן.</p>
         <strong>האם אתה בטוח רוצה להפעיל פונקציה זו?</strong>
     ]]></string>
     <string name="generate_bad_passwordB">הסיסמה אינה תואמת</string>
     <string name="generate_empty_passwordB">הסיסמה לא יכולה להיות ריקה</string>
-    <string name="generate_buttonGenerate">תכינו לי כבר ת'ארנק!</string>
+    <string name="generate_buttonGenerate">תכינו לי כבר ת\'ארנק!</string>
     <string name="generate_button_accept">שמרתי את המנמוניק סיד</string>
 
     <string name="generate_wallet_name">תן לי שם!</string>
@@ -211,8 +211,8 @@
 
     <string name="send_notes_hint">הערות פרטיות (אופציונלי)</string>
     <string name="send_generate_paymentid_hint">צור</string>
-    <string name="send_send_label">בזבז תמונרוג' המתוק שלי</string>
-    <string name="send_send_timed_label">בזבז תמונרוג' המתוק שלי (%1$s)</string>
+    <string name="send_send_label">בזבז תמונרוג\' המתוק שלי</string>
+    <string name="send_send_timed_label">בזבז תמונרוג\' המתוק שלי (%1$s)</string>
     <string name="send_qr_invalid">לא קוד QR</string>
     <string name="send_qr_address_invalid">קוד QR לא תקף לתשלום</string>
     <string name="send_address_invalid">לא כתובת חוקית</string>
@@ -369,12 +369,12 @@
     <string name="onboarding_button_next">הבא</string>
     <string name="onboarding_button_ready">אני מוכן!</string>
 
-    <string name="onboarding_welcome_title">ברוכים הבאים למונרוג'ו!</string>
-    <string name="onboarding_welcome_information">אפליקציה זו מאפשרת לך ליצור ולהשתמש בארנקי מונרו. אתה יכול לאחסן בהם את המונרוג' המתוק שלך.</string>
+    <string name="onboarding_welcome_title">ברוכים הבאים למונרוג\'ו!</string>
+    <string name="onboarding_welcome_information">אפליקציה זו מאפשרת לך ליצור ולהשתמש בארנקי מונרו. אתה יכול לאחסן בהם את המונרוג\' המתוק שלך.</string>
     <string name="onboarding_seed_title">שמור על הסיד שלך בטוח</string>
-    <string name="onboarding_seed_information">הסיד מעניק גישה מלאה למי שיש אותו. אם אתה מאבד את זה, אנחנו לא יכולים לעזור לך לשחזר את זה ואתה מאבד את המונרוג' האהוב שלך.</string>
+    <string name="onboarding_seed_information">הסיד מעניק גישה מלאה למי שיש אותו. אם אתה מאבד את זה, אנחנו לא יכולים לעזור לך לשחזר את זה ואתה מאבד את המונרוג\' האהוב שלך.</string>
     <string name="onboarding_xmrto_title">שלח קריפטו</string>
-    <string name="onboarding_xmrto_information">למונרוג'ו יש את התמיכה של SideShift.ai מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, DASH או DOGE כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
+    <string name="onboarding_xmrto_information">למונרוג\'ו יש את התמיכה של SideShift.ai מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, DASH או DOGE כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
     <string name="onboarding_nodes_title">החוליות, בדרך שלך</string>
     <string name="onboarding_nodes_information">החוליות מחברות אותך לרשת מונרו. בחר בין החוליות הציבוריות או שתתחבר לאחת משלך.</string>
     <string name="onboarding_fpsend_title">שלח עם טביעת אצבע</string>
