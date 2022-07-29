@@ -24,6 +24,7 @@ import com.m2049r.xmrwallet.util.RestoreHeight;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -96,8 +97,11 @@ public class WalletManager {
         if (wallet.getStatus().isOk()) {
             // (Re-)Estimate restore height based on what we know
             final long oldHeight = wallet.getRestoreHeight();
+            // Go back 4 days if we don't have a precise restore height
+            Calendar restoreDate = Calendar.getInstance();
+            restoreDate.add(Calendar.DAY_OF_MONTH, -4);
             final long restoreHeight =
-                    (height > -1) ? height : RestoreHeight.getInstance().getHeight(new Date());
+                    (height > -1) ? height : RestoreHeight.getInstance().getHeight(restoreDate.getTime());
             wallet.setRestoreHeight(restoreHeight);
             Timber.d("Changed Restore Height from %d to %d", oldHeight, wallet.getRestoreHeight());
             wallet.setPassword(password); // this rewrites the keys file (which contains the restore height)
