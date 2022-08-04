@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2020, The Monero Project
+// Copyright (c) 2014-2022, The Monero Project
 // 
 // All rights reserved.
 // 
@@ -423,7 +423,6 @@ struct WalletListener
 
 /**
  * @brief Interface for wallet operations.
- *        TODO: check if /include/IWallet.h is still actual
  */
 struct Wallet
 {
@@ -928,6 +927,13 @@ struct Wallet
      */
     virtual bool importOutputs(const std::string &filename) = 0;
 
+    /*!
+     * \brief scanTransactions - scan a list of transaction ids, this operation may reveal the txids to the remote node and affect your privacy
+     * \param txids            - list of transaction ids
+     * \return                 - true on success
+     */
+    virtual bool scanTransactions(const std::vector<std::string> &txids) = 0;
+
     virtual TransactionHistory * history() = 0;
     virtual AddressBook * addressBook() = 0;
     virtual Subaddress * subaddress() = 0;
@@ -988,7 +994,7 @@ struct Wallet
      * \param message - the message to sign (arbitrary byte data)
      * \return the signature
      */
-    virtual std::string signMessage(const std::string &message) = 0;
+    virtual std::string signMessage(const std::string &message, const std::string &address = "") = 0;
     /*!
      * \brief verifySignedMessage - verify a signature matches a given message
      * \param message - the message (arbitrary byte data)
@@ -1029,6 +1035,7 @@ struct Wallet
     * \param offline - true/false
     */
     virtual void setOffline(bool offline) = 0;
+    virtual bool isOffline() const = 0;
     
     //! blackballs a set of outputs
     virtual bool blackballOutputs(const std::vector<std::string> &outputs, bool add) = 0;
@@ -1080,6 +1087,15 @@ struct Wallet
 
     //! shows address on device display
     virtual void deviceShowAddress(uint32_t accountIndex, uint32_t addressIndex, const std::string &paymentId) = 0;
+
+    //! attempt to reconnect to hardware device
+    virtual bool reconnectDevice() = 0;
+
+    //! get bytes received
+    virtual uint64_t getBytesReceived() = 0;
+
+    //! get bytes sent
+    virtual uint64_t getBytesSent() = 0;
 };
 
 /**
@@ -1358,6 +1374,3 @@ struct WalletManagerFactory
 
 
 }
-
-namespace Bitmonero = Monero;
-
