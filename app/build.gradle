@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 3000
-        versionName "3.0.0 'Fluorine Fermi'"
+        versionCode 3001
+        versionName "3.0.1 'Fluorine Fermi'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -72,7 +72,7 @@ android {
         abi {
             enable true
             reset()
-            include 'armeabi-v7a', 'arm64-v8a'
+            include 'armeabi-v7a', 'arm64-v8a', 'x86_64'
             universalApk true
         }
     }
