@@ -135,7 +135,7 @@
     <string name="label_wallet_receive">Primljeno</string>
     <string name="label_wallet_send">Daj</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR nepotvrđeno</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s nepotvrđeno</string>
 
     <string name="service_description">monerujo Servis</string>
 

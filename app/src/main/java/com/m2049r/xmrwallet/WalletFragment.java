@@ -118,9 +118,9 @@ public class WalletFragment extends Fragment
         tvProgress = view.findViewById(R.id.tvProgress);
         pbProgress = view.findViewById(R.id.pbProgress);
         tvBalance = view.findViewById(R.id.tvBalance);
-        showBalance(Helper.getDisplayAmount(0));
+        showBalance();
         tvUnconfirmedAmount = view.findViewById(R.id.tvUnconfirmedAmount);
-        showUnconfirmed(0);
+        showUnconfirmed();
         ivSynced = view.findViewById(R.id.ivSynced);
 
         sCurrency = view.findViewById(R.id.sCurrency);
@@ -205,7 +205,18 @@ public class WalletFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
     }
 
-    void showBalance(String balance) {
+    String amountToString(double amount) {
+        if (!Helper.BASE_CRYPTO.equals(balanceCurrency)) { // not XMR
+            double amountB = amount * balanceRate;
+            return Helper.getFormattedAmount(amountB, false);
+        } else { // XMR
+            return Helper.getFormattedAmount(amount, true);
+        }
+    }
+
+    void showBalance() {
+        double amountA = Helper.getDecimalAmount(unlockedBalance).doubleValue();
+        String balance = amountToString(amountA);
         tvBalance.setText(balance);
         final boolean streetMode = activityCallback.isStreetMode();
         if (!streetMode) {
@@ -218,13 +229,14 @@ public class WalletFragment extends Fragment
         setStreetModeBackground(streetMode);
     }
 
-    void showUnconfirmed(double unconfirmedAmount) {
+    void showUnconfirmed() {
+        double unconfirmedAmount = Helper.getDecimalAmount(balance - unlockedBalance).doubleValue();
         if (activityCallback.isStreetMode() || unconfirmedAmount == 0) {
             tvUnconfirmedAmount.setText(null);
             tvUnconfirmedAmount.setVisibility(View.GONE);
         } else {
-            String unconfirmed = Helper.getFormattedAmount(unconfirmedAmount, true);
-            tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, unconfirmed));
+            String unconfirmed = amountToString(unconfirmedAmount);
+            tvUnconfirmedAmount.setText(getResources().getString(R.string.xmr_unconfirmed_amount, unconfirmed, balanceCurrency));
             tvUnconfirmedAmount.setVisibility(View.VISIBLE);
         }
     }
@@ -232,15 +244,8 @@ public class WalletFragment extends Fragment
     void updateBalance() {
         if (isExchanging) return; // wait for exchange to finish - it will fire this itself then.
         // at this point selection is XMR in case of error
-        String displayB;
-        double amountA = Helper.getDecimalAmount(unlockedBalance).doubleValue();
-        if (!Helper.BASE_CRYPTO.equals(balanceCurrency)) { // not XMR
-            double amountB = amountA * balanceRate;
-            displayB = Helper.getFormattedAmount(amountB, false);
-        } else { // XMR
-            displayB = Helper.getFormattedAmount(amountA, true);
-        }
-        showBalance(displayB);
+        showBalance();
+        showUnconfirmed();
     }
 
     String balanceCurrency = Helper.BASE_CRYPTO;
@@ -249,11 +254,11 @@ public class WalletFragment extends Fragment
     private final ExchangeApi exchangeApi = ServiceHelper.getExchangeApi();
 
     void refreshBalance() {
-        double unconfirmedXmr = Helper.getDecimalAmount(balance - unlockedBalance).doubleValue();
-        showUnconfirmed(unconfirmedXmr);
         if (sCurrency.getSelectedItemPosition() == 0) { // XMR
-            double amountXmr = Helper.getDecimalAmount(unlockedBalance).doubleValue();
-            showBalance(Helper.getFormattedAmount(amountXmr, true));
+            balanceCurrency = Helper.BASE_CRYPTO;
+            balanceRate = 1.0;
+            showBalance();
+            showUnconfirmed();
         } else { // not XMR
             String currency = (String) sCurrency.getSelectedItem();
             Timber.d(currency);
@@ -298,8 +303,7 @@ public class WalletFragment extends Fragment
 
     public void exchangeFailed() {
         sCurrency.setSelection(0, true); // default to XMR
-        double amountXmr = Helper.getDecimalAmount(unlockedBalance).doubleValue();
-        showBalance(Helper.getFormattedAmount(amountXmr, true));
+        showBalance();
         hideExchanging();
     }
 

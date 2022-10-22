@@ -131,7 +131,7 @@
     <string name="label_wallet_receive">Ta emot</string>
     <string name="label_wallet_send">Ge</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR obekräftade</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s obekräftade</string>
 
     <string name="service_description">monerujo-tjänsten</string>
 
