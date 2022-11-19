@@ -35,7 +35,8 @@ public class LocaleHelper {
         String[] availableLocales = context.getString(R.string.available_locales).split(",");
 
         for (String localeName : availableLocales) {
-            locales.add(Locale.forLanguageTag(localeName));
+            if (!localeName.startsWith("night") && !localeName.matches("v[0-9]+"))
+                locales.add(Locale.forLanguageTag(localeName));
         }
 
         return locales;

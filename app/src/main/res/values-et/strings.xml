@@ -132,7 +132,7 @@
     <string name="label_wallet_receive">Küsi raha</string>
     <string name="label_wallet_send">Saada</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR kinnitamata</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s kinnitamata</string>
 
     <string name="service_description">monerujo teenus</string>
 

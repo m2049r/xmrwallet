@@ -133,7 +133,7 @@
     <string name="label_wallet_receive">Получить</string>
     <string name="label_wallet_send">Передать</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR неподтвержденно</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s неподтвержденно</string>
 
     <string name="service_description">Служба Monerujo</string>
 
