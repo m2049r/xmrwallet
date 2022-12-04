@@ -62,7 +62,7 @@ import java.util.List;
 import timber.log.Timber;
 
 public class WalletFragment extends Fragment
-        implements TransactionInfoAdapter.OnInteractionListener {
+        implements TransactionInfoAdapter.Listener {
     private TransactionInfoAdapter adapter;
     private final NumberFormat formatter = NumberFormat.getInstance();
 
@@ -450,9 +450,9 @@ public class WalletFragment extends Fragment
         Wallet.ConnectionStatus daemonConnected = activityCallback.getConnectionStatus();
         if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             if (!wallet.isSynchronized()) {
-                long daemonHeight = activityCallback.getDaemonHeight();
-                long walletHeight = wallet.getBlockChainHeight();
-                long n = daemonHeight - walletHeight;
+                final long daemonHeight = getDaemonHeight();
+                final long walletHeight = wallet.getBlockChainHeight();
+                final long n = daemonHeight - walletHeight;
                 sync = getString(R.string.status_syncing) + " " + formatter.format(n) + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
                     firstBlock = walletHeight;
@@ -559,5 +559,10 @@ public class WalletFragment extends Fragment
             ivStreetGunther.setImageDrawable(streetGunther);
         } else
             ivStreetGunther.setImageDrawable(null);
+    }
+
+    @Override
+    public long getDaemonHeight() {
+        return activityCallback.getDaemonHeight();
     }
 }
