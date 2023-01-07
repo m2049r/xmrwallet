@@ -44,6 +44,8 @@ import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -83,6 +85,9 @@ public class TxFragment extends Fragment {
     private TextView tvTxTransfers;
     private TextView etTxNotes;
 
+    private View llWarning;
+    private TextView tvWarning;
+
     // XMRTO stuff
     private View cvXmrTo;
     private TextView tvTxXmrToKey;
@@ -116,8 +121,10 @@ public class TxFragment extends Fragment {
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTransfers = view.findViewById(R.id.tvTxTransfers);
         etTxNotes = view.findViewById(R.id.etTxNotes);
-
         etTxNotes.setRawInputType(InputType.TYPE_CLASS_TEXT);
+
+        llWarning = view.findViewById(R.id.llWarning);
+        tvWarning = view.findViewById(R.id.tvWarning);
 
         tvTxXmrToKey.setOnClickListener(v -> {
             Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
@@ -299,6 +306,20 @@ public class TxFragment extends Fragment {
         tvTxTransfers.setText(sb.toString());
         tvDestination.setText(dstSb.toString());
         showBtcInfo();
+
+        showLock();
+    }
+
+    private void showLock() {
+        llWarning.setVisibility(View.GONE);
+        if (info.unlockTime == 0) return;
+        final long blockheight = activityCallback.getDaemonHeight();
+        final long blocks = info.unlockTime - blockheight;
+        final double unlockDays = blocks / (30. * 24);
+        if (unlockDays > 0) {
+            llWarning.setVisibility(View.VISIBLE);
+            tvWarning.setText(getString(R.string.tx_locked, info.unlockTime, blocks, unlockDays));
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -370,6 +391,7 @@ public class TxFragment extends Fragment {
 
         void showSubaddress(View view, final int subaddressIndex);
 
+        long getDaemonHeight();
     }
 
     @Override

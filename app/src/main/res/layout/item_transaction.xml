@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:paddingTop="12dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -58,6 +58,14 @@
                     android:gravity="center"
                     android:paddingBottom="1dp"
                     android:text="8"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivLock"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_lock_24dp"
                     android:visibility="visible" />
             </FrameLayout>
 
