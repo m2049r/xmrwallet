@@ -238,4 +238,5 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
         activityCallback.showSubaddress(view, subaddress.getAddressIndex());
         return false;
     }
+
 }

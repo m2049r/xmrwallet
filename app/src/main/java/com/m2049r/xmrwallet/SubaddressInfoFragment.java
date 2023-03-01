@@ -46,7 +46,7 @@ import java.util.List;
 import timber.log.Timber;
 
 public class SubaddressInfoFragment extends Fragment
-        implements TransactionInfoAdapter.OnInteractionListener, OnBlockUpdateListener {
+        implements TransactionInfoAdapter.Listener, OnBlockUpdateListener {
     private TransactionInfoAdapter adapter;
 
     private Subaddress subaddress;
@@ -145,6 +145,8 @@ public class SubaddressInfoFragment extends Fragment
         void setTitle(String title, String subtitle);
 
         void setSubtitle(String subtitle);
+
+        long getDaemonHeight();
     }
 
     @Override
@@ -169,5 +171,10 @@ public class SubaddressInfoFragment extends Fragment
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public long getDaemonHeight() {
+        return activityCallback.getDaemonHeight();
     }
 }

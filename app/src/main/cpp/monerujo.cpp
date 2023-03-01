@@ -1237,7 +1237,7 @@ jobject newTransferList(JNIEnv *env, Monero::TransactionInfo *info) {
 
 jobject newTransactionInfo(JNIEnv *env, Monero::TransactionInfo *info) {
     jmethodID c = env->GetMethodID(class_TransactionInfo, "<init>",
-                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;IIJLjava/lang/String;Ljava/util/List;)V");
+                                   "(IZZJJJLjava/lang/String;JLjava/lang/String;IIJJLjava/lang/String;Ljava/util/List;)V");
     jobject transfers = newTransferList(env, info);
     jstring _hash = env->NewStringUTF(info->hash().c_str());
     jstring _paymentId = env->NewStringUTF(info->paymentId().c_str());
@@ -1258,6 +1258,7 @@ jobject newTransactionInfo(JNIEnv *env, Monero::TransactionInfo *info) {
                                     static_cast<jint> (info->subaddrAccount()),
                                     static_cast<jint> (subaddrIndex),
                                     static_cast<jlong> (info->confirmations()),
+                                    static_cast<jlong> (info->unlockTime()),
                                     _label,
                                     transfers);
     env->DeleteLocalRef(transfers);

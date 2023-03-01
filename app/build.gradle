@@ -8,8 +8,8 @@ android {
         applicationId "com.m2049r.xmrwallet"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 3003
-        versionName "3.0.3 'Fluorine Fermi'"
+        versionCode 3100
+        versionName "3.1.0 'Fluorine Fermi'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
