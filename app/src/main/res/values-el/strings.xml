@@ -290,7 +290,7 @@
     <string name="progress_ledger_lookahead">Ανάκτηση υποδιευθύνσεων</string>
     <string name="progress_ledger_verify">Επαλήθευση</string>
     <string name="progress_ledger_opentx">Κάνοντας τρελά μαθηματικά</string>
-    <string name="progress_ledger_mlsag">'Hash'αροντας διάφορα</string>
+    <string name="progress_ledger_mlsag">HASHαροντας διάφορα</string>
     <string name="open_wallet_ledger_missing">Παρακαλώ (επανα)σύνδεσε τη συσκευή Ledger</string>
 
     <string name="accounts_progress_new">Δημιουργία λογαριασμού</string>
