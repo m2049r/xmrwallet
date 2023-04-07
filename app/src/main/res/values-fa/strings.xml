@@ -232,7 +232,7 @@
 
     <string name="xmr_unconfirmed_amount">
     مقدار
-    +%1$s XMR
+    +%1$s %2$s
     تایید نشده است
     </string>
 
@@ -700,4 +700,6 @@
     </string-array>
 
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
+
+    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
 </resources>

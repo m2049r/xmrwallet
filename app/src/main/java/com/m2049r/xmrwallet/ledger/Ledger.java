@@ -46,7 +46,7 @@ public class Ledger {
     public static final int SW_OK = 0x9000;
     public static final int SW_INS_NOT_SUPPORTED = 0x6D00;
     public static final int OK[] = {SW_OK};
-    public static final int MINIMUM_LEDGER_VERSION = (1 << 16) + (6 << 8) + (0); // 1.6.0
+    public static final int MINIMUM_LEDGER_VERSION = (1 << 16) + (8 << 8) + (0); // 1.6.0
 
     public static UsbDevice findDevice(UsbManager usbManager) {
         if (!ENABLED) return null;

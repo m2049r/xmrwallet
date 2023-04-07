@@ -56,7 +56,9 @@ import timber.log.Timber;
 @RequiredArgsConstructor
 public class NetCipherHelper implements StatusCallback {
     public static final String USER_AGENT = "Monerujo/1.0";
-    public static final int HTTP_TIMEOUT = 1000; //ms
+    public static final int HTTP_TIMEOUT_CONNECT = 1000; //ms
+    public static final int HTTP_TIMEOUT_READ = 2000; //ms
+    public static final int HTTP_TIMEOUT_WRITE = 1000; //ms
     public static final int TOR_TIMEOUT_CONNECT = 5000; //ms
     public static final int TOR_TIMEOUT = 2000; //ms
 
@@ -117,9 +119,9 @@ public class NetCipherHelper implements StatusCallback {
     private void createClearnetClient() {
         try {
             client = new OkHttpClient.Builder()
-                    .connectTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS)
-                    .writeTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS)
-                    .readTimeout(HTTP_TIMEOUT, TimeUnit.MILLISECONDS)
+                    .connectTimeout(HTTP_TIMEOUT_CONNECT, TimeUnit.MILLISECONDS)
+                    .writeTimeout(HTTP_TIMEOUT_WRITE, TimeUnit.MILLISECONDS)
+                    .readTimeout(HTTP_TIMEOUT_READ, TimeUnit.MILLISECONDS)
                     .build();
             Helper.ALLOW_SHIFT = true;
         } catch (Exception ex) {

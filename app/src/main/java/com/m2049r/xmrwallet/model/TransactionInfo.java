@@ -62,6 +62,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
     public int accountIndex;
     public int addressIndex;
     public long confirmations;
+    public long unlockTime;
     public String subaddressLabel;
     public List<Transfer> transfers;
 
@@ -82,6 +83,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
             int accountIndex,
             int addressIndex,
             long confirmations,
+            long unlockTime,
             String subaddressLabel,
             List<Transfer> transfers) {
         this.direction = Direction.values()[direction];
@@ -96,6 +98,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.accountIndex = accountIndex;
         this.addressIndex = addressIndex;
         this.confirmations = confirmations;
+        this.unlockTime = unlockTime;
         this.subaddressLabel = subaddressLabel;
         this.transfers = transfers;
     }
@@ -129,6 +132,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeInt(accountIndex);
         out.writeInt(addressIndex);
         out.writeLong(confirmations);
+        out.writeLong(unlockTime);
         out.writeString(subaddressLabel);
         out.writeList(transfers);
         out.writeString(txKey);
@@ -159,6 +163,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         accountIndex = in.readInt();
         addressIndex = in.readInt();
         confirmations = in.readLong();
+        unlockTime = in.readLong();
         subaddressLabel = in.readString();
         transfers = in.readArrayList(Transfer.class.getClassLoader());
         txKey = in.readString();

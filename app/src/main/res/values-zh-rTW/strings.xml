@@ -133,7 +133,7 @@
     <string name="label_wallet_receive">接收</string>
     <string name="label_wallet_send">發送</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 XMR </string>
+    <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 %2$s </string>
 
     <string name="service_description">monerujo 服務</string>
 
@@ -448,4 +448,6 @@
     </string-array>
 
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
+
+    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
 </resources>

@@ -121,7 +121,7 @@ set_target_properties(easylogging PROPERTIES IMPORTED_LOCATION
 
 add_library(unbound STATIC IMPORTED)
 set_target_properties(unbound PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/${ANDROID_ABI}/monero/libunbound.a)
+    ${EXTERNAL_LIBS_DIR}/${ANDROID_ABI}/libunbound.a)
 
 add_library(epee STATIC IMPORTED)
 set_target_properties(epee PROPERTIES IMPORTED_LOCATION

@@ -131,7 +131,7 @@
     <string name="label_wallet_receive">Ta emot</string>
     <string name="label_wallet_send">Ge</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR obekräftade</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s obekräftade</string>
 
     <string name="service_description">monerujo-tjänsten</string>
 
@@ -441,4 +441,6 @@
     </string-array>
 
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
+
+    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
 </resources>

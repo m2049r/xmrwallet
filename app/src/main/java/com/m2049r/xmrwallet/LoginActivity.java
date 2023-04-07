@@ -916,9 +916,9 @@ public class LoginActivity extends BaseActivity
                     @Override
                     public boolean createWallet(File aFile, String password) {
                         NodeInfo currentNode = getNode();
-                        // get it from the connected node if we have one, and go back ca. 4 days
+                        // get it from the connected node if we have one
                         final long restoreHeight =
-                                (currentNode != null) ? currentNode.getHeight() - 2000 : -1;
+                                (currentNode != null) ? currentNode.getHeight() : -1;
                         Wallet newWallet = WalletManager.getInstance()
                                 .createWallet(aFile, password, MNEMONIC_LANGUAGE, restoreHeight);
                         return checkAndCloseWallet(newWallet);

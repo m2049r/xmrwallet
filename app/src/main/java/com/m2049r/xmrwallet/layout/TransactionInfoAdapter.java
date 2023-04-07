@@ -35,6 +35,8 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
+import com.m2049r.xmrwallet.model.WalletManager;
+import com.m2049r.xmrwallet.service.WalletService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 
@@ -61,12 +63,19 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         void onInteraction(View view, TransactionInfo item);
     }
 
+    public interface DaemonHeightProvider {
+        long getDaemonHeight();
+    }
+
+    public interface Listener extends OnInteractionListener, DaemonHeightProvider {
+    }
+
     private final List<TransactionInfo> infoItems;
-    private final OnInteractionListener listener;
+    private final Listener listener;
 
     private final Context context;
 
-    public TransactionInfoAdapter(Context context, OnInteractionListener listener) {
+    public TransactionInfoAdapter(Context context, Listener listener) {
         this.context = context;
         inboundColour = ThemeHelper.getThemedColor(context, R.attr.positiveColor);
         outboundColour = ThemeHelper.getThemedColor(context, R.attr.negativeColor);
@@ -158,6 +167,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         final TextView tvDateTime;
         final CircularProgressIndicator pbConfirmations;
         final TextView tvConfirmations;
+        final ImageView ivLock;
         TransactionInfo infoItem;
 
         ViewHolder(View itemView) {
@@ -170,6 +180,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
             pbConfirmations = itemView.findViewById(R.id.pbConfirmations);
             pbConfirmations.setMax(TransactionInfo.CONFIRMATION);
             tvConfirmations = itemView.findViewById(R.id.tvConfirmations);
+            ivLock = itemView.findViewById(R.id.ivLock);
         }
 
         private String getDateTime(long time) {
@@ -178,6 +189,21 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
 
         private void setTxColour(int clr) {
             tvAmount.setTextColor(clr);
+        }
+
+        private void showLock() {
+            Timber.d("UNLOCK %d:%d", infoItem.unlockTime, infoItem.blockheight);
+            if (infoItem.unlockTime == 0) {
+                ivLock.setVisibility(View.GONE);
+                return;
+            }
+
+            if (getDaemonHeight() < infoItem.unlockTime) {
+                tvConfirmations.setVisibility(View.GONE);
+                ivLock.setVisibility(View.VISIBLE);
+            } else {
+                ivLock.setVisibility(View.GONE);
+            }
         }
 
         void bind(int position) {
@@ -238,6 +264,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 pbConfirmations.setVisibility(View.GONE);
                 tvConfirmations.setVisibility(View.GONE);
             }
+            showLock();
 
             String tag = null;
             String info = "";
@@ -274,5 +301,9 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 }
             }
         }
+    }
+
+    private long getDaemonHeight() {
+        return listener.getDaemonHeight();
     }
 }
