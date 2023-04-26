@@ -451,7 +451,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             if (extras != null) {
                 String walletId = extras.getString(REQUEST_ID);
                 if (walletId != null) {
-                    setTitle(walletId, getString(R.string.status_wallet_connecting));
+                    setTitle(walletId);
                 }
             }
             updateProgress();

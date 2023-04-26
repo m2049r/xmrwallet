@@ -460,7 +460,7 @@ public class WalletFragment extends Fragment
                 int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
                 if (x == 0) x = 101; // indeterminate
                 setProgress(x);
-                ivSynced.setVisibility(View.GONE);
+                ivSynced.setVisibility(View.INVISIBLE);
             } else {
                 sync = getString(R.string.status_synced) + " " + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
