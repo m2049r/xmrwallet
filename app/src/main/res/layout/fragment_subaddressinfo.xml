@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_top_first"
         android:transitionName="@string/subaddress_info_transition_name"
-        tools:text="#1: 8AioXCmK...aGivEa7C" />
+        tools:text="#1: 83ALRYDTkLULDpDpDYEtWfc8EQxp7z77FNENX43aiJpzGd5pRY1HPLMBpQdXTvvJozePR7UEhYWT3d2H5w9kBgCZ6AtWFd4" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etName"
