@@ -111,14 +111,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="6"
+            android:layout_weight="5"
             android:gravity="center"
             tools:text="2017-05-22 21:32" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_navigate_next" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
