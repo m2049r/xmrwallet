@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.service.shift.sideshift;
 
+import static org.junit.Assert.assertEquals;
+
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftError;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
@@ -39,8 +41,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-
-import static org.junit.Assert.assertEquals;
 
 public class SideShiftApiRequestQuoteTest {
 

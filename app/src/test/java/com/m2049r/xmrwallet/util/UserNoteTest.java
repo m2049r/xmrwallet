@@ -16,13 +16,13 @@
 
 package com.m2049r.xmrwallet.util;
 
-import com.m2049r.xmrwallet.data.UserNotes;
-
-import org.junit.Test;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import com.m2049r.xmrwallet.data.UserNotes;
+
+import org.junit.Test;
 
 public class UserNoteTest {
 

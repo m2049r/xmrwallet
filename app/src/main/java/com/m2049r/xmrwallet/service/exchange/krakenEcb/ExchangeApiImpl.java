@@ -25,7 +25,6 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 
-import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
 /*

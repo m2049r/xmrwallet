@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.service.exchange.kraken;
 
+import static org.junit.Assert.assertEquals;
+
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeException;
@@ -37,8 +39,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-
-import static org.junit.Assert.assertEquals;
 
 
 public class ExchangeRateTest {

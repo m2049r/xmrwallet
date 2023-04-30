@@ -19,9 +19,10 @@
 package com.m2049r.xmrwallet.widget;
 
 import android.content.Context;
-import com.google.android.material.textfield.TextInputLayout;
 import android.util.AttributeSet;
 import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class CTextInputLayout extends TextInputLayout {
     public CTextInputLayout(Context context) {

@@ -16,10 +16,10 @@
 
 package com.m2049r.xmrwallet.util.validator;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 
 public class EthAddressValidatorTest {

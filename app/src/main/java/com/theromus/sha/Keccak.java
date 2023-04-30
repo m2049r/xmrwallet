@@ -1,9 +1,9 @@
 package com.theromus.sha;
 
-import static com.theromus.utils.HexUtils.leftRotate64;
-import static com.theromus.utils.HexUtils.convertToUint;
-import static com.theromus.utils.HexUtils.convertFromLittleEndianTo64;
 import static com.theromus.utils.HexUtils.convertFrom64ToLittleEndian;
+import static com.theromus.utils.HexUtils.convertFromLittleEndianTo64;
+import static com.theromus.utils.HexUtils.convertToUint;
+import static com.theromus.utils.HexUtils.leftRotate64;
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.fill;

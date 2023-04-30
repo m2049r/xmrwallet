@@ -23,7 +23,6 @@ import com.m2049r.xmrwallet.service.shift.NetworkCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.util.DateHelper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 

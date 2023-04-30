@@ -19,8 +19,6 @@ package com.m2049r.xmrwallet.onboarding;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.m2049r.xmrwallet.util.KeyStoreHelper;
-
 import java.util.Date;
 
 import timber.log.Timber;
