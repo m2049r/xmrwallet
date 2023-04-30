@@ -298,15 +298,6 @@
     <string name="toast_ledger_attached">%1$s atașat</string>
     <string name="toast_ledger_detached">%1$s detașat</string>
 
-    <string name="progress_nfc_write">Se scrie Tag-ul</string>
-    <string name="nfc_write_failed">Scriere Tag eșuată!</string>
-    <string name="nfc_write_successful">Scriere Tag cu succes</string>
-    <string name="nfc_tag_unsupported">Tag-ul nu are suport NDEF!</string>
-    <string name="nfc_tag_size">Tag-ul vine cu %1$d biți, dar avem nevoie de %2$d!</string>
-    <string name="nfc_tag_read_undef">Nu înțeleg Tag-ul!</string>
-    <string name="nfc_tag_read_what">Nu știu ce vrei!</string>
-    <string name="nfc_tag_tap">NFC disponibil!</string>
-
     <string name="receive_desc_hint">Descriere (opțional)</string>
 
     <string name="send_address_not_openalias">Adresă OpenAlias indisponibilă</string>

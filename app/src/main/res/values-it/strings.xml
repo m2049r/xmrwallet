@@ -301,15 +301,6 @@
     <string name="toast_ledger_attached">%1$s allegati</string>
     <string name="toast_ledger_detached">%1$s allegati</string>
 
-    <string name="progress_nfc_write">Scrivendo tag</string>
-    <string name="nfc_write_failed">Scrittura tag fallita!</string>
-    <string name="nfc_write_successful">Scrittura tag riuscita</string>
-    <string name="nfc_tag_unsupported">La tag non supporta NDEF!</string>
-    <string name="nfc_tag_size">La Tag fornisce %1$d bytes, ma ne servono %2$d!</string>
-    <string name="nfc_tag_read_undef">Non capisco la tag!</string>
-    <string name="nfc_tag_read_what">Non capisco cosa mi hai chiesto!</string>
-    <string name="nfc_tag_tap">NFC disponibile!</string>
-
     <string name="receive_desc_hint">Descrizione (opzionale)</string>
 
     <string name="send_address_not_openalias">Indirizzo OpenAlias non disponibile</string>

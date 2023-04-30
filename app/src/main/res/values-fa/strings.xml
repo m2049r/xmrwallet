@@ -467,28 +467,6 @@
     جدا شد
     </string>
 
-    <string name="progress_nfc_write">نوشتن برچسب</string>
-    <string name="nfc_write_failed">نوشتن برچسب شکست خورد!</string>
-    <string name="nfc_write_successful">نوشتن برچسب موفق بود</string>
-    <string name="nfc_tag_unsupported">برچسب از
-    NDEF
-    پشتیبانی نمیکند
-    </string>
-    <string name="nfc_tag_size">
-    برچسب
-    %1$d
-    بایت فراهم کرد، ولی ما
-    %2$d
-    بایت نیاز داریم!
-    </string>
-    <string name="nfc_tag_read_undef">من برچسب را متوجه نمی‌شوم!</string>
-    <string name="nfc_tag_read_what">نمیدونم از جونم چی میخوای!</string>
-    <string name="nfc_tag_tap">
-    قابلیت
-    NFC
-   دردسترس است!
-    </string>
-
     <string name="menu_info">نمایش اسرار!</string>
     <string name="menu_streetmode">حالت خیابان</string>
 

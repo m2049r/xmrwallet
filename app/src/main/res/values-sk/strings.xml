@@ -297,15 +297,6 @@
     <string name="toast_ledger_attached">%1$s pripojený</string>
     <string name="toast_ledger_detached">%1$s odpojený</string>
 
-    <string name="progress_nfc_write">Zapisujem Tag</string>
-    <string name="nfc_write_failed">Zapísanie Tagu zlyhalo!</string>
-    <string name="nfc_write_successful">Zapísanie Tagu úspešné</string>
-    <string name="nfc_tag_unsupported">Tag nepodporuje NDEF!</string>
-    <string name="nfc_tag_size">Tag poskytol %1$d bytes, ale treba %2$d!</string>
-    <string name="nfc_tag_read_undef">Neruzumiem Tagu!</string>
-    <string name="nfc_tag_read_what">Neviem čo tým básnik myslel!</string>
-    <string name="nfc_tag_tap">NFC je dostupné!</string>
-
     <string name="receive_desc_hint">Popis (voliteľné)</string>
 
     <string name="send_address_not_openalias">OpenAlias adresa nie je dostupná</string>

@@ -305,19 +305,8 @@
     <string name="toast_ledger_attached">%1$s kunligita</string>
     <string name="toast_ledger_detached">%1$s malligita</string>
 
-    <string name="progress_nfc_write">Skribante etikedon</string>
-    <string name="nfc_write_failed">Etikedsribo malsukcesis!</string>
-    <string name="nfc_write_successful">Etikedskribo sukcesis</string>
-    <string name="nfc_tag_unsupported">Etikedo ne subtenas  NDEF!</string>
-    <string name="nfc_tag_size">La etikedo provizas %1$d bajtojn, sed ni bezonas %2$d!</string>
-    <string name="nfc_tag_read_undef">Mi ne komprenas la etikedon!</string>
-    <string name="nfc_tag_read_what">Damne, kion vi volas?!</string>
-    <string name="nfc_tag_tap">NFC disponeblas!</string>
-
-
     <string name="menu_info">Montru sekretojn!</string>
     <string name="menu_streetmode">Strata moduso</string>
-
 
     <string name="info_nodes_enabled">Node-o-matiC permesiĝas, frapetu por detaloj.</string>
     <string name="node_height">Lasta ĝisdatigita bloko: %1$s</string>

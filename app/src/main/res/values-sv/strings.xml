@@ -289,15 +289,6 @@
     <string name="toast_ledger_attached">%1$s ansluten</string>
     <string name="toast_ledger_detached">%1$s frånkopplad</string>
 
-    <string name="progress_nfc_write">Skriver tagg</string>
-    <string name="nfc_write_failed">Misslyckades att skriva till tagg!</string>
-    <string name="nfc_write_successful">Skrivning till tagg lyckades</string>
-    <string name="nfc_tag_unsupported">Taggen stöder inte NDEF!</string>
-    <string name="nfc_tag_size">Taggen har %1$d bytes, men vi behöver %2$d!</string>
-    <string name="nfc_tag_read_undef">Jag förstår inte taggen!</string>
-    <string name="nfc_tag_read_what">Jag vet inte vad du vill!</string>
-    <string name="nfc_tag_tap">NFC tillgängligt!</string>
-
     <string name="receive_desc_hint">Beskrivning (valfri)</string>
 
     <string name="send_address_not_openalias">OpenAlias-adress ej tillgänglig</string>

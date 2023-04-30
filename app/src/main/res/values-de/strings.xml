@@ -308,15 +308,6 @@
     <string name="send_address_resolve_openalias">Löse OpenAlias auf&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias ohne DNSSEC – Adresse kann gefälscht sein!</string>
 
-    <string name="progress_nfc_write">Schreibe Tag</string>
-    <string name="nfc_write_failed">Schreiben des Tags fehlgeschlagen!</string>
-    <string name="nfc_write_successful">Tag erfolgreich geschrieben</string>
-    <string name="nfc_tag_unsupported">Tag unterstützt NDEF nicht!</string>
-    <string name="nfc_tag_size">Tag bietet %1$d Bytes, aber wir brauchen %2$d!</string>
-    <string name="nfc_tag_read_undef">Ich verstehe den Tag nicht!</string>
-    <string name="nfc_tag_read_what">Ich weiß nicht, was du willst!</string>
-    <string name="nfc_tag_tap">NFC verfügbar!</string>
-
     <string name="status_wallet_connect_wrongversion">Node Version inkompatibel – bitte updaten!</string>
 
     <string name="menu_info">Zeige Geheimnisse!</string><!--Changed to: Show Secrets!-->

@@ -90,8 +90,8 @@
                 android:id="@+id/cvQrCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_above="@id/tvNfc"
                 android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="16dp"
                 android:backgroundTint="#ffffffff"
@@ -120,18 +120,6 @@
                     android:adjustViewBounds="true"
                     android:src="#fff" />
             </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/tvNfc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:text="@string/nfc_tag_tap"
-                android:visibility="visible"
-                app:drawableStartCompat="@drawable/ic_nfc" />
         </RelativeLayout>
     </LinearLayout>
 

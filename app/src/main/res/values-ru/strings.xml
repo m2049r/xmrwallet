@@ -300,15 +300,6 @@
     <string name="toast_ledger_attached">%1$s прикреплен</string>
     <string name="toast_ledger_detached">%1$s откреплён</string>
 
-    <string name="progress_nfc_write">Запись метки</string>
-    <string name="nfc_write_failed">Ошибка записи метки!</string>
-    <string name="nfc_write_successful">Успешная запись метки</string>
-    <string name="nfc_tag_unsupported">Метка не поддерживает NDEF!</string>
-    <string name="nfc_tag_size">Метка предоставляет %1$d байт, но нам нужно %2$d!</string>
-    <string name="nfc_tag_read_undef">Я не понимаю эту метку!</string>
-    <string name="nfc_tag_read_what">Я не знаю, чего ты хочешь!</string>
-    <string name="nfc_tag_tap">NFC доступен!</string>
-
     <string name="receive_desc_hint">Описание (необязательно)</string>
 
     <string name="send_address_not_openalias">Адрес OpenAlias недоступен</string>

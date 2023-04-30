@@ -298,15 +298,6 @@
     <string name="toast_ledger_attached">%1$s csatlakoztatva</string>
     <string name="toast_ledger_detached">%1$s leválasztva</string>
 
-    <string name="progress_nfc_write">Címke írása</string>
-    <string name="nfc_write_failed">Sikertelen címkeírás!</string>
-    <string name="nfc_write_successful">Sikeres címkeírás</string>
-    <string name="nfc_tag_unsupported">A címke nem támogatja az NDEF-et!</string>
-    <string name="nfc_tag_size">A címke %1$d byte-os, de %2$d kellene!</string>
-    <string name="nfc_tag_read_undef">Nem értem a címkét!</string>
-    <string name="nfc_tag_read_what">Nem tudom, mit akarsz!</string>
-    <string name="nfc_tag_tap">NFC elérhető!</string>
-
     <string name="receive_desc_hint">Description (optional)</string>
 
     <string name="send_address_not_openalias">OpenAlias address not available</string>
