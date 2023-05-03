@@ -447,6 +447,7 @@ public class WalletFragment extends Fragment
         String sync;
         if (!activityCallback.hasBoundService())
             throw new IllegalStateException("WalletService not bound.");
+        ivSynced.setVisibility(View.GONE);
         Wallet.ConnectionStatus daemonConnected = activityCallback.getConnectionStatus();
         if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             if (!wallet.isSynchronized()) {
@@ -460,7 +461,6 @@ public class WalletFragment extends Fragment
                 int x = 100 - Math.round(100f * n / (1f * daemonHeight - firstBlock));
                 if (x == 0) x = 101; // indeterminate
                 setProgress(x);
-                ivSynced.setVisibility(View.INVISIBLE);
             } else {
                 sync = getString(R.string.status_synced) + " " + formatter.format(wallet.getBlockChainHeight());
                 ivSynced.setVisibility(View.VISIBLE);
