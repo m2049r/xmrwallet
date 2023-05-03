@@ -17,9 +17,10 @@
 package com.m2049r.xmrwallet.layout;
 
 import android.content.Context;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
 

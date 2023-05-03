@@ -300,15 +300,6 @@
     <string name="toast_ledger_attached">%1$s lisatud</string>
     <string name="toast_ledger_detached">%1$s eemaldatud</string>
 
-    <string name="progress_nfc_write">Kirjutan silti</string>
-    <string name="nfc_write_failed">Sildi kirjutamine ebaõnnestus!</string>
-    <string name="nfc_write_successful">Sildi kirjutamine õnnestus</string>
-    <string name="nfc_tag_unsupported">Silt ei toeta NDEF\'i!</string>
-    <string name="nfc_tag_size">Sildil on %1$d baiti, kuid meil on vaja %2$d!</string>
-    <string name="nfc_tag_read_undef">Ma ei oska seda silti lugeda!</string>
-    <string name="nfc_tag_read_what">Ma ei tea, mida sa tahad!</string>
-    <string name="nfc_tag_tap">NFC on saadaval!</string>
-
     <string name="status_wallet_connect_wrongversion">Serveri versioon ei sobi - palun uuenda!</string>
 
     <string name="menu_info">Näita salajast infot</string>
@@ -449,4 +440,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

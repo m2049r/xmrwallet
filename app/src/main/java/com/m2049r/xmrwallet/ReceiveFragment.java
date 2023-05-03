@@ -22,7 +22,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -190,11 +189,6 @@ public class ReceiveFragment extends Fragment {
         } else {
             throw new IllegalStateException("no wallet info");
         }
-
-        View tvNfc = view.findViewById(R.id.tvNfc);
-        NfcManager manager = (NfcManager) getContext().getSystemService(Context.NFC_SERVICE);
-        if ((manager != null) && (manager.getDefaultAdapter() != null))
-            tvNfc.setVisibility(View.VISIBLE);
 
         return view;
     }
@@ -403,7 +397,7 @@ public class ReceiveFragment extends Fragment {
 
     private Bitmap getMoneroLogo() {
         if (logo == null) {
-            logo = Helper.getBitmap(getContext(), R.drawable.ic_monero_logo_b);
+            logo = Helper.getBitmap(getContext(), R.drawable.ic_monerujo_qr);
         }
         return logo;
     }

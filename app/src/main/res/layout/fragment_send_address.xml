@@ -175,7 +175,6 @@
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart" />
             </com.google.android.material.textfield.TextInputLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -203,18 +202,6 @@
                     android:text="@string/send_qr_hint"
                     android:textSize="20dp" />
             </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/tvNfc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:text="@string/nfc_tag_tap"
-                android:visibility="visible"
-                app:drawableStartCompat="@drawable/ic_nfc" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

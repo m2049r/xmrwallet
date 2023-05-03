@@ -300,15 +300,6 @@
     <string name="toast_ledger_attached">%1$s підєднаний</string>
     <string name="toast_ledger_detached">%1$s відєднаний</string>
 
-    <string name="progress_nfc_write">Запис мітки</string>
-    <string name="nfc_write_failed">Помилка запису мітки!</string>
-    <string name="nfc_write_successful">Успішний запис мітки</string>
-    <string name="nfc_tag_unsupported">Мітка не підтримує NDEF!</string>
-    <string name="nfc_tag_size">Мітка надає %1$d байт, але нам потрібно %2$d!</string>
-    <string name="nfc_tag_read_undef">Я не розумію цю мітку!</string>
-    <string name="nfc_tag_read_what">Я не знаю, що ти хочеш!</string>
-    <string name="nfc_tag_tap">NFC доступний!</string>
-
     <string name="receive_desc_hint">Опис (необов\'язково)</string>
 
     <string name="send_address_not_openalias">Адреса OpenAlias недоступна</string>
@@ -455,4 +446,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet;
 
+import static android.view.WindowManager.LayoutParams;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -28,8 +30,6 @@ import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 
 import java.util.Locale;
-
-import static android.view.WindowManager.LayoutParams;
 
 public abstract class SecureActivity extends AppCompatActivity {
     @Override

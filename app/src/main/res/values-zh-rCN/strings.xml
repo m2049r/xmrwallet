@@ -235,14 +235,6 @@
     <string name="accounts_progress_new">账户创建中</string>
     <string name="toast_ledger_attached">%1$s 已连接</string>
     <string name="toast_ledger_detached">%1$s 已断开连接</string>
-    <string name="progress_nfc_write">NFC标签写入中</string>
-    <string name="nfc_write_failed">NFC标签写入失败！</string>
-    <string name="nfc_write_successful">NFC标签写入成功</string>
-    <string name="nfc_tag_unsupported">NFC标签不支持NDEF!</string>
-    <string name="nfc_tag_size">NFC标签提供%1$d字节，但我们需要%2$d!</string>
-    <string name="nfc_tag_read_undef">我不了解NFC标签！</string>
-    <string name="nfc_tag_read_what">我不知道你想要什么！</string>
-    <string name="nfc_tag_tap">NFC可用！</string>
     <string name="menu_info">显示私密信息</string>
     <string name="menu_streetmode">公共场合模式</string>
     <string name="info_nodes_enabled">Node-o-matiC已可用，点此了解更多.</string>
@@ -375,4 +367,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

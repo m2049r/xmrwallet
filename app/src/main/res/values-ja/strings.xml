@@ -304,15 +304,6 @@
     <string name="toast_ledger_attached">%1$s が取り付けられました</string>
     <string name="toast_ledger_detached">%1$s が取り外されました</string>
 
-    <string name="progress_nfc_write">タグ書き込み中</string>
-    <string name="nfc_write_failed">タグ書き込みに失敗!</string>
-    <string name="nfc_write_successful">タグ書き込みに成功</string>
-    <string name="nfc_tag_unsupported">タグはNDEFをサポートしていません!</string>
-    <string name="nfc_tag_size">タグは %1$d バイトを提供していますが, 私達は %2$d が必要です!</string>
-    <string name="nfc_tag_read_undef">タグを理解できません!</string>
-    <string name="nfc_tag_read_what">あなたが何をしたいのかわかりません!</string>
-    <string name="nfc_tag_tap">NFCが利用可能です!</string>
-
     <string name="menu_info">シークレットを見せてください!</string>
     <string name="menu_streetmode">ストリートモード</string>
 
@@ -454,4 +445,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

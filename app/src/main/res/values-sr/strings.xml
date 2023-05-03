@@ -307,15 +307,6 @@
     <string name="toast_ledger_attached">%1$s zakačeno</string>
     <string name="toast_ledger_detached">%1$s otkačeno</string>
 
-    <string name="progress_nfc_write">Pisanje taga</string>
-    <string name="nfc_write_failed">Pisanje taga neuspelo!</string>
-    <string name="nfc_write_successful">Pisanje taga uspešno</string>
-    <string name="nfc_tag_unsupported">Tag ne podržava NDEF!</string>
-    <string name="nfc_tag_size">Tag omogućava %1$d bajta, međutim nama treba %2$d!</string>
-    <string name="nfc_tag_read_undef">Ne razumem tag!</string>
-    <string name="nfc_tag_read_what">Ne znam šta si mislio!</string>
-    <string name="nfc_tag_tap">NFC dostupno!</string>
-
     <string name="menu_info">Pokaži tajne!</string>
     <string name="menu_streetmode">Ulični mod</string>
 
@@ -450,4 +441,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

@@ -20,8 +20,6 @@
 
 package com.btchip.comm;
 
-import com.btchip.BTChipException;
-
 public interface BTChipTransport {
     byte[] exchange(byte[] command);
 

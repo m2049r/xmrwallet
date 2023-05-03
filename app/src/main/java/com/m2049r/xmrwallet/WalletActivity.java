@@ -451,7 +451,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             if (extras != null) {
                 String walletId = extras.getString(REQUEST_ID);
                 if (walletId != null) {
-                    setTitle(walletId, getString(R.string.status_wallet_connecting));
+                    setTitle(walletId);
                 }
             }
             updateProgress();
@@ -925,12 +925,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     void onUriScanned(BarcodeData barcodeData) {
         super.onUriScanned(barcodeData);
-        boolean processed = false;
         if (onUriScannedListener != null) {
-            processed = onUriScannedListener.onUriScanned(barcodeData);
-        }
-        if (!processed || (onUriScannedListener == null)) {
-            Toast.makeText(this, getString(R.string.nfc_tag_read_what), Toast.LENGTH_LONG).show();
+            onUriScannedListener.onUriScanned(barcodeData);
         }
     }
 
@@ -1028,13 +1024,14 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         final Wallet wallet = getWallet();
         if (wallet != null) {
             final int n = wallet.getNumAccounts();
+            final int currentAccount = getWallet().getAccountIndex();
             final boolean showBalances = (n > 1) && !isStreetMode();
             for (int i = 0; i < n; i++) {
                 final String label = (showBalances ?
                         getString(R.string.label_account, wallet.getAccountLabel(i), Helper.getDisplayAmount(wallet.getBalance(i), 2))
                         : wallet.getAccountLabel(i));
                 final MenuItem item = menu.add(R.id.accounts_list, getAccountId(i), 2 * i, label);
-                item.setIcon(R.drawable.ic_account_balance_wallet_black_24dp);
+                item.setIcon(i == currentAccount ? R.drawable.ic_outline_folder_open_24 : R.drawable.ic_outline_folder_24);
                 if (i == wallet.getAccountIndex())
                     item.setChecked(true);
             }

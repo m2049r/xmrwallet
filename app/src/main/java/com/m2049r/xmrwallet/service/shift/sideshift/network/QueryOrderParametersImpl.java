@@ -20,9 +20,8 @@ import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.shift.NetworkCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
 import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import org.json.JSONException;

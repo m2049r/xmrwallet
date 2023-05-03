@@ -16,12 +16,12 @@
 
 package com.m2049r.xmrwallet.util.ledger;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 public class MoneroTest {
 

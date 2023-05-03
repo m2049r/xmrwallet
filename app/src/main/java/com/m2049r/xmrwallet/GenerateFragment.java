@@ -16,8 +16,6 @@
 
 package com.m2049r.xmrwallet;
 
-import androidx.annotation.NonNull;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,6 +35,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;

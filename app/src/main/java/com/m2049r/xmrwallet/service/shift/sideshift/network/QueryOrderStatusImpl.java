@@ -20,9 +20,9 @@ import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.shift.NetworkCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
-import com.m2049r.xmrwallet.util.DateHelper;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
+import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderStatus;
+import com.m2049r.xmrwallet.util.DateHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +32,6 @@ import java.text.ParseException;
 import java.util.Date;
 
 import lombok.Getter;
-import timber.log.Timber;
 
 class QueryOrderStatusImpl implements QueryOrderStatus {
 

@@ -18,7 +18,6 @@ package com.m2049r.xmrwallet.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatDelegate;

@@ -16,17 +16,15 @@
 
 package com.m2049r.xmrwallet.util;
 
-import com.m2049r.xmrwallet.data.BarcodeData;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.Map;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 public class OpenAliasHelperTest {
 

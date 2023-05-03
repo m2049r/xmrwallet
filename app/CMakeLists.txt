@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.4.1)
+project(monerujo)
 message(STATUS ABI_INFO  = ${ANDROID_ABI})
 
 add_library( monerujo

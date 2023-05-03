@@ -76,7 +76,7 @@ public class SubaddressInfoFragment extends Fragment
 
         etName.getEditText().setText(subaddress.getDisplayLabel());
         tvAddress.setText(getContext().getString(R.string.subbaddress_info_subtitle,
-                subaddress.getAddressIndex(), subaddress.getSquashedAddress()));
+                subaddress.getAddressIndex(), subaddress.getAddress()));
 
         etName.getEditText().setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {

@@ -311,7 +311,6 @@
         <item>PHP</item>
         <item>PLN</item>
         <item>RON</item>
-        <item>RUB</item>
         <item>SEK</item>
         <item>SGD</item>
         <item>THB</item>
@@ -352,15 +351,6 @@
 
     <string name="toast_ledger_attached">%1$s attached</string>
     <string name="toast_ledger_detached">%1$s detached</string>
-
-    <string name="progress_nfc_write">Writing Tag</string>
-    <string name="nfc_write_failed">Writing Tag failed!</string>
-    <string name="nfc_write_successful">Writing Tag successful</string>
-    <string name="nfc_tag_unsupported">Tag does not support NDEF!</string>
-    <string name="nfc_tag_size">Tag provides %1$d bytes, but we need %2$d!</string>
-    <string name="nfc_tag_read_undef">I don\'t understand the Tag!</string>
-    <string name="nfc_tag_read_what">I don\'t know what you want!</string>
-    <string name="nfc_tag_tap">NFC Available!</string>
 
     <string name="unknown_amount" translatable="false">\?\?\?</string>
 
@@ -528,4 +518,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

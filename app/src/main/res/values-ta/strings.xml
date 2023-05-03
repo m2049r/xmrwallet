@@ -309,15 +309,6 @@
     <string name="toast_ledger_attached">%1$s இணைக்கப்பட்டது</string>
     <string name="toast_ledger_detached">%1$s பிரிக்கப்பட்டது</string>
 
-    <string name="progress_nfc_write">குறிச்சொல்லை எழுதுகிறது</string>
-    <string name="nfc_write_failed">குறிச்சொல் எழுதல் தோல்வியடைந்தது!</string>
-    <string name="nfc_write_successful">குறிச்சொல் எழுதல் வெற்றியடைந்தது</string>
-    <string name="nfc_tag_unsupported">குறிச்சொலானது NDEF ஐ ஆதரிக்கவில்லை!</string>
-    <string name="nfc_tag_size">குறிச்சொல்லானது %1$d எண்ணுன்மிகளை அளிக்கிறது, ஆனால் நமக்கு %2$d தேவை!</string>
-    <string name="nfc_tag_read_undef">இந்த குறிச்சொல் எனக்கு புரியவில்லை!</string>
-    <string name="nfc_tag_read_what">உனக்கு என்ன வேண்டும் என்று எனக்கு தெரியவில்லை!</string>
-    <string name="nfc_tag_tap">NFC கிடைக்கிறது!</string>
-
     <string name="menu_info">இரகசியங்களை காண்பி!</string>
     <string name="menu_streetmode">வீதி பாங்கு</string>
 
@@ -449,4 +440,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>

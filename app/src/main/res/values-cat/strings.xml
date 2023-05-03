@@ -305,15 +305,6 @@
     <string name="toast_ledger_attached">%1$s adjunt</string>
     <string name="toast_ledger_detached">%1$s separat</string>
 
-    <string name="progress_nfc_write">Escrivint etiquetatge</string>
-    <string name="nfc_write_failed">Escriptura d\'Etiquetatge fallit!</string>
-    <string name="nfc_write_successful">Escriptura d\'Etiquetatge exitosa</string>
-    <string name="nfc_tag_unsupported">L\'etiquetatge no suporta NDEF!</string>
-    <string name="nfc_tag_size">L\'etiquetatge proporciona %1$d bits, però es necessiten %2$d!</string>
-    <string name="nfc_tag_read_undef">No entenc l\'etiquetatge!</string>
-    <string name="nfc_tag_read_what">No sé què vols!</string>
-    <string name="nfc_tag_tap">NFC Disponible!</string>
-
     <string name="menu_info">Mostra Secrets!</string>
     <string name="menu_streetmode">Mode de Carrer</string>
 
@@ -449,4 +440,6 @@
     <string name="message_qr_failed">Failed to create QR for sharing!</string>
 
     <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+
+    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 </resources>
