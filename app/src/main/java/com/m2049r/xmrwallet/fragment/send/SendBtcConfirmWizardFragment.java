@@ -348,7 +348,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         }
         showProgress(3, getString(R.string.label_send_progress_create_tx));
         final TxData txData = sendListener.getTxData();
-        txData.setDestinationAddress(xmrtoOrder.getXmrAddress());
+        txData.setDestination(xmrtoOrder.getXmrAddress());
         txData.setAmount(xmrtoOrder.getXmrAmount());
         getActivityCallback().onPrepareSend(xmrtoOrder.getOrderId(), txData);
     }

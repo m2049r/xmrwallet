@@ -16,6 +16,9 @@
 
 package com.m2049r.xmrwallet.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class PendingTransaction {
     static {
         System.loadLibrary("monerujo");
@@ -63,8 +66,6 @@ public class PendingTransaction {
         Priority(int value) {
             this.value = value;
         }
-
-
     }
 
     public Status getStatus() {
@@ -95,4 +96,11 @@ public class PendingTransaction {
 
     public native long getTxCount();
 
+    @Getter
+    @Setter
+    private long pocketChange;
+
+    public long getNetAmount() {
+        return getAmount() - pocketChange;
+    }
 }

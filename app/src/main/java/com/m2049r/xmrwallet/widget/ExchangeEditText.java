@@ -225,7 +225,7 @@ public class ExchangeEditText extends LinearLayout {
 
         // make progress circle gray
         pbExchange.getIndeterminateDrawable().
-                setColorFilter(ThemeHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
+                setColorFilter(ThemeHelper.getThemedColor(getContext(), com.google.android.material.R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         sCurrencyA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

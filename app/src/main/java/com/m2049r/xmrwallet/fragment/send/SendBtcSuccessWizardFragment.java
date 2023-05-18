@@ -140,7 +140,7 @@ public class SendBtcSuccessWizardFragment extends SendWizardFragment {
         isResumed = true;
 
         btcData = (TxDataBtc) sendListener.getTxData();
-        tvTxAddress.setText(btcData.getDestinationAddress());
+        tvTxAddress.setText(btcData.getDestination());
 
         final PendingTx committedTx = sendListener.getCommittedTx();
         if (committedTx != null) {

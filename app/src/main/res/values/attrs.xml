@@ -22,4 +22,5 @@
     <attr name="streetColorB" format="reference" />
     <attr name="noticeColor" format="reference" />
     <attr name="toolbarTextColor" format="reference" />
+
 </resources>

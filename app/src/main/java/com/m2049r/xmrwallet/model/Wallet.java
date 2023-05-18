@@ -25,10 +25,13 @@ import com.m2049r.xmrwallet.data.TxData;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.Value;
 import timber.log.Timber;
 
 public class Wallet {
@@ -67,9 +70,7 @@ public class Wallet {
         }
 
         public boolean isOk() {
-            return (getStatus() == StatusEnum.Status_Ok)
-                    && ((getConnectionStatus() == null) ||
-                    (getConnectionStatus() == ConnectionStatus.ConnectionStatus_Connected));
+            return (getStatus() == StatusEnum.Status_Ok) && ((getConnectionStatus() == null) || (getConnectionStatus() == ConnectionStatus.ConnectionStatus_Connected));
         }
 
         @Override
@@ -110,23 +111,17 @@ public class Wallet {
     @RequiredArgsConstructor
     @Getter
     public enum Device {
-        Device_Undefined(0, 0),
-        Device_Software(50, 200),
-        Device_Ledger(5, 20);
+        Device_Undefined(0, 0), Device_Software(50, 200), Device_Ledger(5, 20);
         private final int accountLookahead;
         private final int subaddressLookahead;
     }
 
     public enum StatusEnum {
-        Status_Ok,
-        Status_Error,
-        Status_Critical
+        Status_Ok, Status_Error, Status_Critical
     }
 
     public enum ConnectionStatus {
-        ConnectionStatus_Disconnected,
-        ConnectionStatus_Connected,
-        ConnectionStatus_WrongVersion
+        ConnectionStatus_Disconnected, ConnectionStatus_Connected, ConnectionStatus_WrongVersion
     }
 
     public native String getSeed(String offset);
@@ -168,16 +163,14 @@ public class Wallet {
     private native String getAddressJ(int accountIndex, int addressIndex);
 
     public Subaddress getSubaddressObject(int accountIndex, int subAddressIndex) {
-        return new Subaddress(accountIndex, subAddressIndex,
-                getSubaddress(subAddressIndex), getSubaddressLabel(subAddressIndex));
+        return new Subaddress(accountIndex, subAddressIndex, getSubaddress(subAddressIndex), getSubaddressLabel(subAddressIndex));
     }
 
     public Subaddress getSubaddressObject(int subAddressIndex) {
         Subaddress subaddress = getSubaddressObject(accountIndex, subAddressIndex);
         long amount = 0;
         for (TransactionInfo info : getHistory().getAll()) {
-            if ((info.addressIndex == subAddressIndex)
-                    && (info.direction == TransactionInfo.Direction.Direction_In)) {
+            if ((info.addressIndex == subAddressIndex) && (info.direction == TransactionInfo.Direction.Direction_In)) {
                 amount += info.amount;
             }
         }
@@ -217,13 +210,10 @@ public class Wallet {
 
     //    virtual std::string keysFilename() const = 0;
     public boolean init(long upper_transaction_size_limit) {
-        return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit,
-                WalletManager.getInstance().getDaemonUsername(),
-                WalletManager.getInstance().getDaemonPassword());
+        return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit, WalletManager.getInstance().getDaemonUsername(), WalletManager.getInstance().getDaemonPassword());
     }
 
-    private native boolean initJ(String daemon_address, long upper_transaction_size_limit,
-                                 String daemon_username, String daemon_password);
+    private native boolean initJ(String daemon_address, long upper_transaction_size_limit, String daemon_username, String daemon_password);
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;
@@ -335,36 +325,23 @@ public class Wallet {
         }
     }
 
-    public PendingTransaction createTransaction(TxData txData) {
-        return createTransaction(
-                txData.getDestinationAddress(),
-                txData.getAmount(),
-                txData.getMixin(),
-                txData.getPriority());
-    }
+    private native long createTransactionMultDest(String[] destinations, String payment_id, long[] amounts, int mixin_count, int priority, int accountIndex, int[] subaddresses);
 
-    public PendingTransaction createTransaction(String dst_addr,
-                                                long amount, int mixin_count,
-                                                PendingTransaction.Priority priority) {
+    public PendingTransaction createTransaction(TxData txData) {
         disposePendingTransaction();
-        int _priority = priority.getValue();
-        long txHandle =
-                (amount == SWEEP_ALL ?
-                        createSweepTransaction(dst_addr, "", mixin_count, _priority,
-                                accountIndex) :
-                        createTransactionJ(dst_addr, "", amount, mixin_count, _priority,
-                                accountIndex));
+        int _priority = txData.getPriority().getValue();
+        final boolean sweepAll = txData.getAmount() == SWEEP_ALL;
+        Timber.d("TxData: %s", txData);
+        long txHandle = (sweepAll ? createSweepTransaction(txData.getDestination(), "", txData.getMixin(), _priority, accountIndex) :
+                createTransactionMultDest(txData.getDestinations(), "", txData.getAmounts(), txData.getMixin(), _priority, accountIndex, txData.getSubaddresses()));
         pendingTransaction = new PendingTransaction(txHandle);
+        pendingTransaction.setPocketChange(txData.getPocketChangeAmount());
         return pendingTransaction;
     }
 
-    private native long createTransactionJ(String dst_addr, String payment_id,
-                                           long amount, int mixin_count,
-                                           int priority, int accountIndex);
+    private native long createTransactionJ(String dst_addr, String payment_id, long amount, int mixin_count, int priority, int accountIndex);
 
-    private native long createSweepTransaction(String dst_addr, String payment_id,
-                                               int mixin_count,
-                                               int priority, int accountIndex);
+    private native long createSweepTransaction(String dst_addr, String payment_id, int mixin_count, int priority, int accountIndex);
 
 
     public PendingTransaction createSweepUnmixableTransaction() {
@@ -381,7 +358,13 @@ public class Wallet {
 
     public native void disposeTransaction(PendingTransaction pendingTransaction);
 
-//virtual bool exportKeyImages(const std::string &filename) = 0;
+    public long estimateTransactionFee(TxData txData) {
+        return estimateTransactionFee(txData.getDestinations(), txData.getAmounts(), txData.getPriority().getValue());
+    }
+
+    private native long estimateTransactionFee(String[] destinations, long[] amounts, int priority);
+
+    //virtual bool exportKeyImages(const std::string &filename) = 0;
 //virtual bool importKeyImages(const std::string &filename) = 0;
 
 
@@ -403,6 +386,22 @@ public class Wallet {
     }
 
 //virtual AddressBook * addressBook() const = 0;
+
+    public List<CoinsInfo> getCoinsInfos(boolean unspentOnly) {
+        return getCoins().getAll(accountIndex, unspentOnly);
+    }
+
+    private Coins coins = null;
+
+    private Coins getCoins() {
+        if (coins == null) {
+            coins = new Coins(getCoinsJ());
+        }
+        return coins;
+    }
+
+    private native long getCoinsJ();
+
 //virtual void setListener(WalletListener *) = 0;
 
     private native long setListenerJ(WalletListener listener);
@@ -444,8 +443,7 @@ public class Wallet {
         if (label.equals(NEW_ACCOUNT_NAME)) {
             String address = getAddress(accountIndex);
             int len = address.length();
-            label = address.substring(0, 6) +
-                    "\u2026" + address.substring(len - 6, len);
+            label = address.substring(0, 6) + "\u2026" + address.substring(len - 6, len);
         }
         return label;
     }
@@ -504,4 +502,22 @@ public class Wallet {
 
     private native int getDeviceTypeJ();
 
+    @Getter
+    @Setter
+    PocketChangeSetting pocketChangeSetting = PocketChangeSetting.of(false, 0);
+
+    @Value(staticConstructor = "of")
+    static public class PocketChangeSetting {
+        boolean enabled;
+        long amount;
+
+        public String toPrefString() {
+            return Long.toString((enabled ? 1 : -1) * amount);
+        }
+
+        static public PocketChangeSetting from(String prefString) {
+            long value = Long.parseLong(prefString);
+            return of(value > 0, Math.abs(value));
+        }
+    }
 }

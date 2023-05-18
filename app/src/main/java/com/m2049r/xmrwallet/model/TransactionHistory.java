@@ -17,8 +17,10 @@
 package com.m2049r.xmrwallet.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -61,22 +63,14 @@ public class TransactionHistory {
 
     private List<TransactionInfo> transactions = new ArrayList<>();
 
-    void refreshWithNotes(Wallet wallet) {
+    public void refreshWithNotes(Wallet wallet) {
         refresh();
         loadNotes(wallet);
     }
 
     private void refresh() {
-        List<TransactionInfo> transactionInfos = refreshJ();
-        Timber.d("refresh size=%d", transactionInfos.size());
-        for (Iterator<TransactionInfo> iterator = transactionInfos.iterator(); iterator.hasNext(); ) {
-            TransactionInfo info = iterator.next();
-            if (info.accountIndex != accountIndex) {
-                iterator.remove();
-            }
-        }
-        transactions = transactionInfos;
+        transactions = refreshJ(accountIndex);
     }
 
-    private native List<TransactionInfo> refreshJ();
+    private native List<TransactionInfo> refreshJ(int accountIndex);
 }

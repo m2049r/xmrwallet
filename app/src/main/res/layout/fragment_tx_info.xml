@@ -60,6 +60,15 @@
                     tools:text="+ 1,092.00229" />
 
                 <TextView
+                    android:id="@+id/tvTxPocketChangeAmount"
+                    style="@style/MoneroText.PosPocketChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:selectAllOnFocus="true"
+                    android:textIsSelectable="true"
+                    tools:text="PocketChange 1,092.00229" />
+
+                <TextView
                     android:id="@+id/tvTxFee"
                     style="@style/MoneroText.PosFee"
                     android:layout_width="wrap_content"

@@ -318,9 +318,10 @@ public class WalletService extends Service {
 
                             TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
                             String txTag = extras.getString(REQUEST_CMD_TX_TAG);
+                            assert txData != null;
+                            txData.createPocketChange(myWallet);
                             PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
                             PendingTransaction.Status status = pendingTransaction.getStatus();
-                            Timber.d("transaction status %s", status);
                             if (status != PendingTransaction.Status.Status_Ok) {
                                 Timber.w("Create Transaction failed: %s", pendingTransaction.getErrorString());
                             }

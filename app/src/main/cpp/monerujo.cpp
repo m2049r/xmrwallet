@@ -34,14 +34,24 @@ extern "C"
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR  , LOG_TAG,__VA_ARGS__)
 
 static JavaVM *cachedJVM;
+static jclass class_String;
 static jclass class_ArrayList;
 static jclass class_WalletListener;
+static jclass class_CoinsInfo;
 static jclass class_TransactionInfo;
 static jclass class_Transfer;
 static jclass class_Ledger;
 static jclass class_WalletStatus;
 
 std::mutex _listenerMutex;
+
+//void jstringToString(JNIEnv *env, std::string &str, jstring jstr) {
+//    if (!jstr) return;
+//    const int len = env->GetStringUTFLength(jstr);
+//    const char *chars = env->GetStringUTFChars(jstr, nullptr);
+//    str.assign(chars, len);
+//    env->ReleaseStringUTFChars(jstr, chars);
+//}
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     cachedJVM = jvm;
@@ -52,8 +62,12 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     }
     //LOGI("JNI_OnLoad ok");
 
+    class_String = static_cast<jclass>(jenv->NewGlobalRef(
+            jenv->FindClass("java/lang/String")));
     class_ArrayList = static_cast<jclass>(jenv->NewGlobalRef(
             jenv->FindClass("java/util/ArrayList")));
+    class_CoinsInfo = static_cast<jclass>(jenv->NewGlobalRef(
+            jenv->FindClass("com/m2049r/xmrwallet/model/CoinsInfo")));
     class_TransactionInfo = static_cast<jclass>(jenv->NewGlobalRef(
             jenv->FindClass("com/m2049r/xmrwallet/model/TransactionInfo")));
     class_Transfer = static_cast<jclass>(jenv->NewGlobalRef(
@@ -510,8 +524,8 @@ Java_com_m2049r_xmrwallet_model_WalletManager_startMining(JNIEnv *env, jobject i
     const char *_address = env->GetStringUTFChars(address, nullptr);
     bool success =
             Monero::WalletManagerFactory::getWalletManager()->startMining(std::string(_address),
-                                                                             background_mining,
-                                                                             ignore_battery);
+                                                                          background_mining,
+                                                                          ignore_battery);
     env->ReleaseStringUTFChars(address, _address);
     return static_cast<jboolean>(success);
 }
@@ -553,7 +567,7 @@ Java_com_m2049r_xmrwallet_model_WalletManager_closeJ(JNIEnv *env, jobject instan
                                                      jobject walletInstance) {
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, walletInstance);
     bool closeSuccess = Monero::WalletManagerFactory::getWalletManager()->closeWallet(wallet,
-                                                                                         false);
+                                                                                      false);
     if (closeSuccess) {
         MyWalletListener *walletListener = getHandle<MyWalletListener>(env, walletInstance,
                                                                        "listenerHandle");
@@ -952,6 +966,58 @@ Java_com_m2049r_xmrwallet_model_Wallet_rescanBlockchainAsyncJ(JNIEnv *env, jobje
 //TODO virtual int autoRefreshInterval() const = 0;
 
 JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_createTransactionMultDest(JNIEnv *env, jobject instance,
+                                                                 jobjectArray destinations,
+                                                                 jstring payment_id,
+                                                                 jlongArray amounts,
+                                                                 jint mixin_count,
+                                                                 jint priority,
+                                                                 jint accountIndex,
+                                                                 jintArray subaddresses) {
+    std::vector<std::string> dst_addr;
+    std::vector<uint64_t> amount;
+
+    int destSize = env->GetArrayLength(destinations);
+    assert(destSize == env->GetArrayLength(amounts));
+    jlong *_amounts = env->GetLongArrayElements(amounts, nullptr);
+    for (int i = 0; i < destSize; i++) {
+        jstring dest = (jstring) env->GetObjectArrayElement(destinations, i);
+        const char *_dest = env->GetStringUTFChars(dest, nullptr);
+        dst_addr.emplace_back(_dest);
+        env->ReleaseStringUTFChars(dest, _dest);
+        amount.emplace_back((uint64_t) _amounts[i]);
+    }
+    env->ReleaseLongArrayElements(amounts, _amounts, 0);
+
+    std::set<uint32_t> subaddr_indices;
+    if (subaddresses != nullptr) {
+        int subaddrSize = env->GetArrayLength(subaddresses);
+        jint *_subaddresses = env->GetIntArrayElements(subaddresses, nullptr);
+        for (int i = 0; i < subaddrSize; i++) {
+            subaddr_indices.insert((uint32_t) _subaddresses[i]);
+        }
+        env->ReleaseIntArrayElements(subaddresses, _subaddresses, 0);
+    }
+
+    const char *_payment_id = env->GetStringUTFChars(payment_id, nullptr);
+
+    Monero::PendingTransaction::Priority _priority =
+            static_cast<Monero::PendingTransaction::Priority>(priority);
+
+    Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
+
+    Monero::PendingTransaction *tx =
+            wallet->createTransactionMultDest(dst_addr, _payment_id,
+                                              amount, (uint32_t) mixin_count,
+                                              _priority,
+                                              (uint32_t) accountIndex,
+                                              subaddr_indices);
+
+    env->ReleaseStringUTFChars(payment_id, _payment_id);
+    return reinterpret_cast<jlong>(tx);
+}
+
+JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject instance,
                                                           jstring dst_addr, jstring payment_id,
                                                           jlong amount, jint mixin_count,
@@ -965,9 +1031,9 @@ Java_com_m2049r_xmrwallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject i
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
 
     Monero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
-                                                                  amount, (uint32_t) mixin_count,
-                                                                  _priority,
-                                                                  (uint32_t) accountIndex);
+                                                               amount, (uint32_t) mixin_count,
+                                                               _priority,
+                                                               (uint32_t) accountIndex);
 
     env->ReleaseStringUTFChars(dst_addr, _dst_addr);
     env->ReleaseStringUTFChars(payment_id, _payment_id);
@@ -990,9 +1056,9 @@ Java_com_m2049r_xmrwallet_model_Wallet_createSweepTransaction(JNIEnv *env, jobje
     Monero::optional<uint64_t> empty;
 
     Monero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
-                                                                  empty, (uint32_t) mixin_count,
-                                                                  _priority,
-                                                                  (uint32_t) accountIndex);
+                                                               empty, (uint32_t) mixin_count,
+                                                               _priority,
+                                                               (uint32_t) accountIndex);
 
     env->ReleaseStringUTFChars(dst_addr, _dst_addr);
     env->ReleaseStringUTFChars(payment_id, _payment_id);
@@ -1019,6 +1085,36 @@ Java_com_m2049r_xmrwallet_model_Wallet_disposeTransaction(JNIEnv *env, jobject i
     wallet->disposeTransaction(_pendingTransaction);
 }
 
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_estimateTransactionFee(JNIEnv *env, jobject instance,
+                                                              jobjectArray addresses,
+                                                              jlongArray amounts,
+                                                              jint priority) {
+
+    std::vector<std::pair<std::string, uint64_t>> destinations;
+
+    int destSize = env->GetArrayLength(addresses);
+    assert(destSize == env->GetArrayLength(amounts));
+    jlong *_amounts = env->GetLongArrayElements(amounts, nullptr);
+    for (int i = 0; i < destSize; i++) {
+        std::pair<std::string, uint64_t> pair;
+        jstring dest = (jstring) env->GetObjectArrayElement(addresses, i);
+        const char *_dest = env->GetStringUTFChars(dest, nullptr);
+        pair.first = _dest;
+        env->ReleaseStringUTFChars(dest, _dest);
+        pair.second = ((uint64_t) _amounts[i]);
+        destinations.emplace_back(pair);
+    }
+    env->ReleaseLongArrayElements(amounts, _amounts, 0);
+
+    Monero::PendingTransaction::Priority _priority =
+            static_cast<Monero::PendingTransaction::Priority>(priority);
+
+    Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
+
+    return static_cast<jlong>(wallet->estimateTransactionFee(destinations, _priority));
+}
+
 //virtual bool exportKeyImages(const std::string &filename) = 0;
 //virtual bool importKeyImages(const std::string &filename) = 0;
 
@@ -1031,6 +1127,12 @@ Java_com_m2049r_xmrwallet_model_Wallet_getHistoryJ(JNIEnv *env, jobject instance
 }
 
 //virtual AddressBook * addressBook() const = 0;
+
+JNIEXPORT jlong JNICALL
+Java_com_m2049r_xmrwallet_model_Wallet_getCoinsJ(JNIEnv *env, jobject instance) {
+    Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
+    return reinterpret_cast<jlong>(wallet->coins());
+}
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_Wallet_setListenerJ(JNIEnv *env, jobject instance,
@@ -1202,7 +1304,7 @@ Java_com_m2049r_xmrwallet_model_Wallet_getLastSubaddress(JNIEnv *env, jobject in
 JNIEXPORT jint JNICALL
 Java_com_m2049r_xmrwallet_model_TransactionHistory_getCount(JNIEnv *env, jobject instance) {
     Monero::TransactionHistory *history = getHandle<Monero::TransactionHistory>(env,
-                                                                                      instance);
+                                                                                instance);
     return history->count();
 }
 
@@ -1270,7 +1372,62 @@ jobject newTransactionInfo(JNIEnv *env, Monero::TransactionInfo *info) {
 #include <stdio.h>
 #include <stdlib.h>
 
-jobject cpp2java(JNIEnv *env, const std::vector<Monero::TransactionInfo *> &vector) {
+// Coins
+
+jobject newCoinsInfo(JNIEnv *env, Monero::CoinsInfo *info) {
+    jstring _hash = env->NewStringUTF(info->hash().c_str());
+
+    jmethodID c = env->GetMethodID(class_CoinsInfo, "<init>", "(IIJJLjava/lang/String;ZZJZ)V");
+    jobject result = env->NewObject(class_CoinsInfo, c,
+                                    static_cast<jint> (info->subaddrAccount()),
+                                    static_cast<jint> (info->subaddrIndex()),
+                                    static_cast<jlong> (info->amount()),
+                                    static_cast<jlong> (info->blockHeight()),
+                                    _hash,
+                                    info->spent(),
+                                    info->frozen(),
+                                    static_cast<jlong> (info->unlockTime()),
+                                    info->unlocked());
+    env->DeleteLocalRef(_hash);
+    return result;
+}
+
+jobject coinsInfoArrayList(JNIEnv *env, const std::vector<Monero::CoinsInfo *> &vector,
+                           uint32_t accountIndex, bool unspentOnly) {
+
+    jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
+    jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",
+                                                         "(Ljava/lang/Object;)Z");
+
+    jobject arrayList = env->NewObject(class_ArrayList, java_util_ArrayList_,
+                                       static_cast<jint> (vector.size()));
+    for (Monero::CoinsInfo *s: vector) {
+        if (s->subaddrAccount() != accountIndex) continue;
+        if (s->spent() && unspentOnly) continue;
+        jobject info = newCoinsInfo(env, s);
+        env->CallBooleanMethod(arrayList, java_util_ArrayList_add, info);
+        env->DeleteLocalRef(info);
+    }
+    return arrayList;
+}
+
+JNIEXPORT jint JNICALL
+Java_com_m2049r_xmrwallet_model_Coins_getCount(JNIEnv *env, jobject instance) {
+    Monero::Coins *coins = getHandle<Monero::Coins>(env, instance);
+    return coins->count();
+}
+
+JNIEXPORT jobject JNICALL
+Java_com_m2049r_xmrwallet_model_Coins_refresh(JNIEnv *env, jobject instance, jint accountIndex,
+                                              jboolean unspentOnly) {
+    Monero::Coins *coins = getHandle<Monero::Coins>(env, instance);
+    coins->refresh();
+    return coinsInfoArrayList(env, coins->getAll(), (uint32_t) accountIndex, unspentOnly);
+}
+
+jobject
+transactionInfoArrayList(JNIEnv *env, const std::vector<Monero::TransactionInfo *> &vector,
+                         uint32_t accountIndex) {
 
     jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
     jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",
@@ -1279,6 +1436,7 @@ jobject cpp2java(JNIEnv *env, const std::vector<Monero::TransactionInfo *> &vect
     jobject arrayList = env->NewObject(class_ArrayList, java_util_ArrayList_,
                                        static_cast<jint> (vector.size()));
     for (Monero::TransactionInfo *s: vector) {
+        if (s->subaddrAccount() != accountIndex) continue;
         jobject info = newTransactionInfo(env, s);
         env->CallBooleanMethod(arrayList, java_util_ArrayList_add, info);
         env->DeleteLocalRef(info);
@@ -1287,11 +1445,12 @@ jobject cpp2java(JNIEnv *env, const std::vector<Monero::TransactionInfo *> &vect
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_m2049r_xmrwallet_model_TransactionHistory_refreshJ(JNIEnv *env, jobject instance) {
+Java_com_m2049r_xmrwallet_model_TransactionHistory_refreshJ(JNIEnv *env, jobject instance,
+                                                            jint accountIndex) {
     Monero::TransactionHistory *history = getHandle<Monero::TransactionHistory>(env,
-                                                                                      instance);
+                                                                                instance);
     history->refresh();
-    return cpp2java(env, history->getAll());
+    return transactionInfoArrayList(env, history->getAll(), (uint32_t) accountIndex);
 }
 
 // TransactionInfo is implemented in Java - no need here
@@ -1326,19 +1485,19 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_commit(JNIEnv *env, jobject i
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getAmount(JNIEnv *env, jobject instance) {
     Monero::PendingTransaction *tx = getHandle<Monero::PendingTransaction>(env, instance);
-    return tx->amount();
+    return static_cast<jlong>(tx->amount());
 }
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getDust(JNIEnv *env, jobject instance) {
     Monero::PendingTransaction *tx = getHandle<Monero::PendingTransaction>(env, instance);
-    return tx->dust();
+    return static_cast<jlong>(tx->dust());
 }
 
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getFee(JNIEnv *env, jobject instance) {
     Monero::PendingTransaction *tx = getHandle<Monero::PendingTransaction>(env, instance);
-    return tx->fee();
+    return static_cast<jlong>(tx->fee());
 }
 
 // TODO this returns a vector of strings - deal with this later - for now return first one
@@ -1355,7 +1514,7 @@ Java_com_m2049r_xmrwallet_model_PendingTransaction_getFirstTxIdJ(JNIEnv *env, jo
 JNIEXPORT jlong JNICALL
 Java_com_m2049r_xmrwallet_model_PendingTransaction_getTxCount(JNIEnv *env, jobject instance) {
     Monero::PendingTransaction *tx = getHandle<Monero::PendingTransaction>(env, instance);
-    return tx->txCount();
+    return static_cast<jlong>(tx->txCount());
 }
 
 

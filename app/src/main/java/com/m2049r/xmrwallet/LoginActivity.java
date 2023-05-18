@@ -658,11 +658,11 @@ public class LoginActivity extends BaseActivity
                 break;
             case NetworkType_Testnet:
                 toolbar.setSubtitle(getString(R.string.connect_testnet));
-                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, androidx.appcompat.R.attr.colorPrimaryDark));
                 break;
             case NetworkType_Stagenet:
                 toolbar.setSubtitle(getString(R.string.connect_stagenet));
-                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, androidx.appcompat.R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("NetworkType unknown: " + net);

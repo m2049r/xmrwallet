@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_toll" />
+
+        <TextView
+            style="@style/MoneroText.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pocketchange_title"
+            android:textAlignment="textStart" />
+
+        <TextView
+            style="@style/MoneroText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_top"
+            android:text="@string/pocketchange_info"
+            android:textAlignment="textStart" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/header_top"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                style="@style/MoneroLabel.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/pocketchange_create_title" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchPocketChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/header_top"
+                android:layout_marginEnd="16dp">
+
+                <TextView
+                    style="@style/MoneroLabel.Heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/tx_amount" />
+
+                <TextView
+                    android:id="@+id/seekbar_value"
+                    style="@style/MoneroLabel.Heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pocketchange_amount" />
+            </RelativeLayout>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:stepSize="1"
+                android:value="1"
+                android:valueFrom="0"
+                android:valueTo="5"
+                app:labelBehavior="gone"
+                app:tickVisible="true" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

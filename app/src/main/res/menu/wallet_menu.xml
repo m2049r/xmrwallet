@@ -11,27 +11,15 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_rename"
-        android:orderInCategory="200"
-        android:title="@string/menu_rename"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_subaddresses"
-        android:orderInCategory="250"
-        android:title="@string/subbaddress_title"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_help_wallet"
-        android:orderInCategory="300"
+        android:orderInCategory="150"
         android:title="@string/menu_help"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_credits"
-        android:orderInCategory="400"
-        android:title="@string/label_credits"
+        android:id="@+id/action_rename"
+        android:orderInCategory="200"
+        android:title="@string/menu_rename"
         app:showAsAction="never" />
 
     <item
@@ -45,4 +33,17 @@
         android:orderInCategory="600"
         android:title="@string/menu_rescan"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_subaddresses"
+        android:orderInCategory="700"
+        android:title="@string/subbaddress_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_pocketchange"
+        android:orderInCategory="800"
+        android:title="@string/pocketchange_title"
+        app:showAsAction="never" />
+
 </menu>
