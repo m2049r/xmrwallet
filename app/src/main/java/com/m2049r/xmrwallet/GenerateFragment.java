@@ -43,6 +43,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
+import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.FingerprintHelper;
@@ -344,21 +345,23 @@ public class GenerateFragment extends Fragment {
 
         String restoreHeight = etWalletRestoreHeight.getEditText().getText().toString().trim();
         if (restoreHeight.isEmpty()) return -1;
-        try {
-            // is it a date?
-            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-            parser.setLenient(false);
-            height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
-        } catch (ParseException ignored) {
-        }
-        if ((height < 0) && (restoreHeight.length() == 8))
+        if (WalletManager.getInstance().getNetworkType() == NetworkType.NetworkType_Mainnet) {
             try {
-                // is it a date without dashes?
-                SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
+                // is it a date?
+                SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
                 parser.setLenient(false);
                 height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
             } catch (ParseException ignored) {
             }
+            if ((height < 0) && (restoreHeight.length() == 8))
+                try {
+                    // is it a date without dashes?
+                    SimpleDateFormat parser = new SimpleDateFormat("yyyyMMdd");
+                    parser.setLenient(false);
+                    height = RestoreHeight.getInstance().getHeight(parser.parse(restoreHeight));
+                } catch (ParseException ignored) {
+                }
+        }
         if (height < 0)
             try {
                 // or is it a height?
