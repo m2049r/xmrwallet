@@ -93,7 +93,7 @@ public class WalletManager {
         long walletHandle = createWalletJ(aFile.getAbsolutePath(), password, language, getNetworkType().getValue());
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
-        if (wallet.getStatus().isOk()) {
+        if (wallet.getStatus().isOk() && (wallet.getNetworkType() == NetworkType.NetworkType_Mainnet)) {
             // (Re-)Estimate restore height based on what we know
             final long oldHeight = wallet.getRestoreHeight();
             // Go back 4 days if we don't have a precise restore height
