@@ -16,4 +16,8 @@
         product-id="5"
         vendor-id="11415" />
 
+    <!-- Ledger Stax HID: VID=0x2C97 PID=0x0006 -->
+    <usb-device
+        product-id="6"
+        vendor-id="11415" />
 </resources>
