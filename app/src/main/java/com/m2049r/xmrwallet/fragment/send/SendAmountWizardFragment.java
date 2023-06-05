@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;

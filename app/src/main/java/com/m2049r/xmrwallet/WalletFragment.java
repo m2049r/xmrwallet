@@ -112,7 +112,7 @@ public class WalletFragment extends Fragment
         flExchange = view.findViewById(R.id.flExchange);
         ((ProgressBar) view.findViewById(R.id.pbExchange)).getIndeterminateDrawable().
                 setColorFilter(
-                        ThemeHelper.getThemedColor(getContext(), R.attr.colorPrimaryVariant),
+                        ThemeHelper.getThemedColor(getContext(), com.google.android.material.R.attr.colorPrimaryVariant),
                         android.graphics.PorterDuff.Mode.MULTIPLY);
 
         tvProgress = view.findViewById(R.id.tvProgress);

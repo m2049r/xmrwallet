@@ -23,7 +23,7 @@ public class PasswordEntryView extends TextInputLayout implements TextWatcher {
     }
 
     public PasswordEntryView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, R.attr.textInputStyle);
+        super(context, attrs, com.google.android.material.R.attr.textInputStyle);
     }
 
     public PasswordEntryView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

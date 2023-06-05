@@ -101,6 +101,23 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         this.unlockTime = unlockTime;
         this.subaddressLabel = subaddressLabel;
         this.transfers = transfers;
+        calcNetAmount();
+    }
+
+    @Getter
+    private long netAmount;
+
+    public long getPocketChangeAmount() {
+        return amount - netAmount;
+    }
+
+    private void calcNetAmount() {
+        netAmount = amount;
+        if ((direction == TransactionInfo.Direction.Direction_Out) && (transfers != null)) {
+            for (int i = 1; i < transfers.size(); i++) {
+                netAmount -= transfers.get(i).amount;
+            }
+        }
     }
 
     public boolean isConfirmed() {
@@ -138,6 +155,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         out.writeString(txKey);
         out.writeString(notes);
         out.writeString(address);
+        out.writeLong(netAmount);
     }
 
     public static final Parcelable.Creator<TransactionInfo> CREATOR = new Parcelable.Creator<TransactionInfo>() {
@@ -169,6 +187,7 @@ public class TransactionInfo implements Parcelable, Comparable<TransactionInfo> 
         txKey = in.readString();
         notes = in.readString();
         address = in.readString();
+        netAmount = in.readLong();
     }
 
     @Override

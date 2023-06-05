@@ -41,10 +41,6 @@ public class TxDataBtc extends TxData {
         super();
     }
 
-    public TxDataBtc(TxDataBtc txDataBtc) {
-        super(txDataBtc);
-    }
-
     @Override
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);

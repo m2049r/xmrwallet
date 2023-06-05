@@ -21,8 +21,8 @@
             style="@style/MoneroText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:textAlignment="textStart"
             tools:text="4AdkPJoxn7JCvAby9szgnt93MSEwdnxdhaASxbTBm6x5dCwmsDep2UYN4FhStDn5i11nsJbpU7oj59ahg8gXb1Mg3viqCuk" />
 
@@ -95,6 +95,31 @@
 
                 <TextView
                     android:id="@+id/tvTxAmount"
+                    style="@style/MoneroText.Gray"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAlignment="textEnd"
+                    tools:text="143.008000000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPocketChange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/MoneroLabel.Gray"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pocketchange_title"
+                    android:textAlignment="textStart" />
+
+                <TextView
+                    android:id="@+id/tvTxChange"
                     style="@style/MoneroText.Gray"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

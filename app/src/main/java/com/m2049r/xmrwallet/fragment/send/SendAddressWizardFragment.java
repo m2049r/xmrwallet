@@ -411,10 +411,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             if (txData instanceof TxDataBtc) {
                 ((TxDataBtc) txData).setBtcAddress(etAddress.getEditText().getText().toString());
                 ((TxDataBtc) txData).setBtcSymbol(selectedCrypto.getSymbol());
-                txData.setDestinationAddress(null);
+                txData.setDestination(null);
                 ServiceHelper.ASSET = selectedCrypto.getSymbol().toLowerCase();
             } else {
-                txData.setDestinationAddress(etAddress.getEditText().getText().toString());
+                txData.setDestination(etAddress.getEditText().getText().toString());
                 ServiceHelper.ASSET = null;
             }
             txData.setUserNotes(new UserNotes(etNotes.getEditText().getText().toString()));

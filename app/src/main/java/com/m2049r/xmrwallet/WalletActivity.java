@@ -52,8 +52,8 @@ import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.Subaddress;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.UserNotes;
-import com.m2049r.xmrwallet.dialog.CreditsFragment;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
+import com.m2049r.xmrwallet.dialog.PocketChangeFragment;
 import com.m2049r.xmrwallet.fragment.send.SendAddressWizardFragment;
 import com.m2049r.xmrwallet.fragment.send.SendFragment;
 import com.m2049r.xmrwallet.ledger.LedgerProgressDialog;
@@ -82,7 +82,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         WalletFragment.DrawerLocker,
         NavigationView.OnNavigationItemSelectedListener,
         SubaddressFragment.Listener,
-        SubaddressInfoFragment.Listener {
+        SubaddressInfoFragment.Listener,
+        PocketChangeFragment.Listener {
 
     public static final String REQUEST_ID = "id";
     public static final String REQUEST_PW = "pw";
@@ -285,8 +286,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             onWalletRescan();
         } else if (itemId == R.id.action_info) {
             onWalletDetails();
-        } else if (itemId == R.id.action_credits) {
-            CreditsFragment.display(getSupportFragmentManager());
         } else if (itemId == R.id.action_share) {
             onShareTxInfo();
         } else if (itemId == R.id.action_help_tx_info) {
@@ -301,6 +300,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             HelpFragment.display(getSupportFragmentManager(), R.string.help_send);
         } else if (itemId == R.id.action_rename) {
             onAccountRename();
+        } else if (itemId == R.id.action_pocketchange) {
+            PocketChangeFragment.display(getSupportFragmentManager(), getWallet().getPocketChangeSetting());
         } else if (itemId == R.id.action_subaddresses) {
             showSubaddresses(true);
         } else if (itemId == R.id.action_streetmode) {
@@ -422,7 +423,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 break;
             case NetworkType_Stagenet:
             case NetworkType_Testnet:
-                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, R.attr.colorPrimaryDark));
+                toolbar.setBackgroundResource(ThemeHelper.getThemedResourceId(this, androidx.appcompat.R.attr.colorPrimaryDark));
                 break;
             default:
                 throw new IllegalStateException("Unsupported Network: " + WalletManager.getInstance().getNetworkType());
@@ -628,6 +629,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onWalletStarted(final Wallet.Status walletStatus) {
+        loadPocketChangeSettings();
         runOnUiThread(() -> {
             dismissProgressDialog();
             if (walletStatus == null) {
@@ -1104,6 +1106,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     public void setAccountIndex(int accountIndex) {
         getWallet().setAccountIndex(accountIndex);
+        loadPocketChangeSettings();
         selectedSubaddressIndex = 0;
     }
 
@@ -1214,4 +1217,19 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         b.putInt("subaddressIndex", subaddressIndex);
         replaceFragmentWithTransition(view, new SubaddressInfoFragment(), null, b);
     }
+
+    @Override
+    public void setPocketChange(Wallet.PocketChangeSetting setting) {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putString(getWallet().getAddress() + "_PC", setting.toPrefString());
+        editor.apply();
+        getWallet().setPocketChangeSetting(setting);
+    }
+
+
+    public void loadPocketChangeSettings() {
+        final String settings = getPrefs().getString(getWallet().getAddress() + "_PC", "0");
+        getWallet().setPocketChangeSetting(Wallet.PocketChangeSetting.from(settings));
+    }
+
 }

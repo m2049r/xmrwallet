@@ -64,12 +64,14 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     private TextView tvTxAddress;
     private TextView tvTxNotes;
     private TextView tvTxAmount;
+    private TextView tvTxChange;
     private TextView tvTxFee;
     private TextView tvTxTotal;
     private View llProgress;
     private View bSend;
     private View llConfirmSend;
     private View pbProgressSend;
+    private View llPocketChange;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,12 +85,14 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         tvTxAddress = view.findViewById(R.id.tvTxAddress);
         tvTxNotes = view.findViewById(R.id.tvTxNotes);
         tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxChange = view.findViewById(R.id.tvTxChange);
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTotal = view.findViewById(R.id.tvTxTotal);
 
         llProgress = view.findViewById(R.id.llProgress);
         pbProgressSend = view.findViewById(R.id.pbProgressSend);
         llConfirmSend = view.findViewById(R.id.llConfirmSend);
+        llPocketChange = view.findViewById(R.id.llPocketChange);
 
         bSend = view.findViewById(R.id.bSend);
         bSend.setEnabled(false);
@@ -181,7 +185,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
         isResumed = true;
 
         final TxData txData = sendListener.getTxData();
-        tvTxAddress.setText(txData.getDestinationAddress());
+        tvTxAddress.setText(txData.getDestination());
         UserNotes notes = sendListener.getTxData().getUserNotes();
         if ((notes != null) && (!notes.note.isEmpty())) {
             tvTxNotes.setText(notes.note);
@@ -206,7 +210,14 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
                 tvTxAmount.setText(getString(R.string.street_sweep_amount));
                 tvTxTotal.setText(getString(R.string.street_sweep_amount));
             } else {
-                tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getAmount()));
+                tvTxAmount.setText(Wallet.getDisplayAmount(pendingTransaction.getNetAmount()));
+                final long change = pendingTransaction.getPocketChange();
+                if (change > 0) {
+                    llPocketChange.setVisibility(View.VISIBLE);
+                    tvTxChange.setText(Wallet.getDisplayAmount(change));
+                } else {
+                    llPocketChange.setVisibility(View.GONE);
+                }
                 tvTxTotal.setText(Wallet.getDisplayAmount(
                         pendingTransaction.getFee() + pendingTransaction.getAmount()));
             }

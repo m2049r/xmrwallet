@@ -189,7 +189,6 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         }
 
         private void showLock() {
-            Timber.d("UNLOCK %d:%d", infoItem.unlockTime, infoItem.blockheight);
             if (infoItem.unlockTime == 0) {
                 ivLock.setVisibility(View.GONE);
                 return;
@@ -220,7 +219,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
                 ivTxType.setVisibility(View.GONE);
             }
 
-            String displayAmount = Helper.getDisplayAmount(infoItem.amount, Helper.DISPLAY_DIGITS_INFO);
+            String displayAmount = Helper.getDisplayAmount(infoItem.getNetAmount(), Helper.DISPLAY_DIGITS_INFO);
             if (infoItem.direction == TransactionInfo.Direction.Direction_Out) {
                 tvAmount.setText(context.getString(R.string.tx_list_amount_negative, displayAmount));
             } else {

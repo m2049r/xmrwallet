@@ -270,7 +270,7 @@ public class NodeInfo extends Node {
                 (hostAddress.isOnion() ? "&nbsp;.onion&nbsp;&nbsp;" : ""), " " + info));
         view.setText(text);
         if (isError)
-            view.setTextColor(ThemeHelper.getThemedColor(ctx, R.attr.colorError));
+            view.setTextColor(ThemeHelper.getThemedColor(ctx, androidx.appcompat.R.attr.colorError));
         else
             view.setTextColor(ThemeHelper.getThemedColor(ctx, android.R.attr.textColorSecondary));
     }

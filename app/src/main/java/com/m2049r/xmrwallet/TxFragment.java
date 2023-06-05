@@ -79,6 +79,7 @@ public class TxFragment extends Fragment {
     private TextView tvTxPaymentId;
     private TextView tvTxBlockheight;
     private TextView tvTxAmount;
+    private TextView tvTxPocketChangeAmount;
     private TextView tvTxFee;
     private TextView tvTxTransfers;
     private TextView etTxNotes;
@@ -116,6 +117,7 @@ public class TxFragment extends Fragment {
         tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
         tvTxBlockheight = view.findViewById(R.id.tvTxBlockheight);
         tvTxAmount = view.findViewById(R.id.tvTxAmount);
+        tvTxPocketChangeAmount = view.findViewById(R.id.tvTxPocketChangeAmount);
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTransfers = view.findViewById(R.id.tvTxTransfers);
         etTxNotes = view.findViewById(R.id.etTxNotes);
@@ -249,8 +251,10 @@ public class TxFragment extends Fragment {
         }
         String sign = (info.direction == TransactionInfo.Direction.Direction_In ? "+" : "-");
 
-        long realAmount = info.amount;
-        tvTxAmount.setText(sign + Wallet.getDisplayAmount(realAmount));
+        tvTxAmount.setText(sign + Wallet.getDisplayAmount(info.amount));
+        final long pcAmount = info.getPocketChangeAmount();
+        tvTxPocketChangeAmount.setVisibility(pcAmount > 0 ? View.VISIBLE : View.GONE);
+        tvTxPocketChangeAmount.setText(getString(R.string.pocketchange_tx_detail, Wallet.getDisplayAmount(pcAmount)));
 
         if ((info.fee > 0)) {
             String fee = Wallet.getDisplayAmount(info.fee);

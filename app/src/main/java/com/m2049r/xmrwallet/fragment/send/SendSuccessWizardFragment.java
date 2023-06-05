@@ -108,7 +108,7 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         Helper.hideKeyboard(getActivity());
 
         final TxData txData = sendListener.getTxData();
-        tvTxAddress.setText(txData.getDestinationAddress());
+        tvTxAddress.setText(txData.getDestination());
 
         final PendingTx committedTx = sendListener.getCommittedTx();
         if (committedTx != null) {
