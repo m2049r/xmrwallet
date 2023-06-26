@@ -29,10 +29,12 @@ public enum DefaultNodes {
     HASHVAULT("nodes.hashvault.pro:18081"),
     MONEROWORLD("node.moneroworld.com:18089"),
     XMRTW("opennode.xmr-tw.org:18089"),
+    ds_jetzt("monero.ds-jetzt.de:18089"),
     MONERUJO_ONION("monerujods7mbghwe6cobdr6ujih6c22zu5rl7zshmizz2udf7v7fsad.onion:18081/mainnet/monerujo.onion"),
     Criminales78("56wl7y2ebhamkkiza4b7il4mrzwtyvpdym7bm2bkg3jrei2je646k3qd.onion:18089/mainnet/Criminales78.onion"),
     xmrfail("mxcd4577fldb3ppzy7obmmhnu3tf57gbcbd4qhwr2kxyjj2qi3dnbfqd.onion:18081/mainnet/xmrfail.onion"),
-    boldsuck("6dsdenp6vjkvqzy4wzsnzn6wixkdzihx3khiumyzieauxuxslmcaeiad.onion:18081/mainnet/boldsuck.onion");
+    boldsuck("6dsdenp6vjkvqzy4wzsnzn6wixkdzihx3khiumyzieauxuxslmcaeiad.onion:18081/mainnet/boldsuck.onion"),
+    ds_jetzt_onion("qvlr4w7yhnjrdg3txa72jwtpnjn4ezsrivzvocbnvpfbdo342fahhoad.onion:18089/mainnet/ds-jetzt.onion");
 
     @Getter
     private final String uri;
