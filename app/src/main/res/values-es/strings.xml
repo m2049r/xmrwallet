@@ -8,7 +8,7 @@
     <string name="menu_share">Compartir</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_receive">Recibir</string>
-    <string name="menu_rename">Cambiar nombre</string>
+    <string name="menu_rename">Renombrar</string>
     <string name="menu_backup">Copia de seguridad</string>
     <string name="menu_changepw">Cambiar contraseña</string>
 
@@ -23,7 +23,7 @@
     <string name="label_ok">Aceptar</string>
     <string name="label_cancel">Cancelar</string>
     <string name="label_close">Cerrar</string>
-    <string name="label_wallet_advanced_details">Detalle de claves</string>
+    <string name="label_wallet_advanced_details">Claves</string>
 
     <string name="label_send_success">¡Éxito!</string>
     <string name="label_send_done">Hecho</string>
@@ -92,7 +92,7 @@
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">bloques restantes</string>
-    <string name="status_syncing">Escaneando:</string>
+    <string name="status_syncing">Sincronizando:</string>
 
     <string name="message_strorage_not_writable">¡Oh no! ¡No se puede escribir en el almacenamiento externo!</string>
     <string name="message_strorage_not_permitted">¡De verdad necesitamos ese permiso para el almacenamiento externo!</string>
@@ -149,7 +149,7 @@
     <string name="generate_viewkey_label">Clave de vista</string>
     <string name="generate_spendkey_label">Clave de gasto</string>
     <string name="generate_mnemonic_label">Semilla mnemotécnica</string>
-    <string name="generate_crazypass_label">Clave loca para restaurar el monedero</string>
+    <string name="generate_crazypass_label">Contraseña del backup</string>
 
     <string name="generate_check_key">Introduce una clave válida</string>
     <string name="generate_check_address">Introduce una dirección válida</string>
@@ -206,7 +206,7 @@
     <string name="details_alert_no">No muestres nada</string>
     <string name="details_title">Secretos del monedero</string>
 
-    <string name="delete_alert_message">Este monedero será borrado.\nTus fondos se perderán para siempre sino tienes tu semilla mnemotéctica o una copia de seguridad y su correspondiente clave loca para recuperarla.\nPuedes encontrar ambas entre los secretos de tu monedero.</string>
+    <string name="delete_alert_message">Este monedero será borrado.\nTus fondos se perderán para siempre sino tienes tu semilla mnemotéctica o una copia de seguridad y su correspondiente contraseña del backup para recuperarla.\nPuedes encontrar ambas entre los secretos de tu monedero.</string>
     <string name="delete_alert_yes">Sí, hazlo</string>
     <string name="delete_alert_no">No lo hagas</string>
 
@@ -296,7 +296,7 @@
 
     <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
 
-    <string name="menu_info">Ver secretos</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Secretos</string><!--Changed to: Show Secrets!-->
 
     <string name="menu_streetmode">Modo calle</string>
 
@@ -342,7 +342,7 @@
 
     <string name="toast_ledger_start_app">Arrancar aplicación de Monero en %1$s</string>
 
-    <string name="menu_rescan">Re-escanear</string>
+    <string name="menu_rescan">Resincronizar</string>
 
     <string name="onboarding_agree">¡Entendido!</string>
     <string name="onboarding_button_next">Siguiente</string>
@@ -407,8 +407,8 @@
     <string name="menu_restore">Importar monedero</string>
     <string name="restore_failed">¡Falló la importación!</string>
 
-    <string name="menu_deletecache">Restaurar</string>
-    <string name="deletecache_alert_message">Este monedero será restaurado, y perderá toda la información personalizada (notas, nombres de cuentas y subdirecciones, claves particulares de transacciones&#8230;) Tus fondos no se verán comprometidos, pero usa esto SÓLO si el monedero está corrupto y no se puede abrir.</string>
+    <string name="menu_deletecache">Resetear</string>
+    <string name="deletecache_alert_message">Este monedero será reseteado, y perderá toda la información personalizada (notas, nombres de cuentas y subdirecciones, claves particulares de transacciones&#8230;) Tus fondos no se verán comprometidos, pero usa esto SÓLO si el monedero está corrupto y no se puede abrir.</string>
 
     <string name="node_tor_error">Requiere Tor</string>
     <string name="node_waiting">\u00A0ESPERANDO AL NODO\u00A0</string>
@@ -434,9 +434,9 @@
     <string name="tx_locked">Monto trabado hasta el bloque %1$d (faltan %2$d bloques ≈ %3$,.2f días)</string>
 
     <string name="label_streetmode">Modo calle activado\nSólo se ºmostrarán transacciones nuevas</string>
+	<string name="pocketchange_info">Para reducir el tiempo entre pagos, Monerujo puede crear cambio de más al enviar a costo de comisiones más altas. Va a crear e intentar mantener 10 monedas del monto seleccionado.</string>
+<string name="pocketchange_create_title">Crear cambio</string>
 
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain 10 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
+<string name="label_apply">APLICAR</string>
+	
 </resources>
