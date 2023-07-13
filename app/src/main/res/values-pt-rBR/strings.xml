@@ -438,7 +438,7 @@ aqui.</string>
 
     <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
 
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain 10 coins of the selected amount.</string>
+    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
