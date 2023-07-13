@@ -74,6 +74,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     private View llConfirmSend;
     private Button bSend;
     private View pbProgressSend;
+    private TextView tvTxChange;
+    private View llPocketChange;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,6 +95,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
 
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTotal = view.findViewById(R.id.tvTxTotal);
+        tvTxChange = view.findViewById(R.id.tvTxChange);
+        llPocketChange = view.findViewById(R.id.llPocketChange);
 
         llStageA = view.findViewById(R.id.llStageA);
         evStageA = view.findViewById(R.id.evStageA);
@@ -217,6 +222,13 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                 tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
                 tvTxTotal.setText(Wallet.getDisplayAmount(
                         pendingTransaction.getFee() + pendingTransaction.getAmount()));
+                final long change = pendingTransaction.getPocketChange();
+                if (change > 0) {
+                    llPocketChange.setVisibility(View.VISIBLE);
+                    tvTxChange.setText(Wallet.getDisplayAmount(change));
+                } else {
+                    llPocketChange.setVisibility(View.GONE);
+                }
                 updateSendButton();
             });
         } else {
