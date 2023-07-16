@@ -109,50 +109,43 @@
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Dirección del receptor</h2>
-        <p>Esta es la dirección pública del monedero al que vas a enviar moneroj. Puedes copiarla desde tu portapapeles, escanear un código QR o introducirla manualmente. Asegúrate de comprobarla varias veces para evitar enviar moneros a la dirección equivocada, ya que una vez realizada una transacción no puede revertirse.</p>
-        <p>Además de una dirección de XMR, también pueder ingresar una URL de <a href="https://openalias.org">OpenAlias</a>.
-        <h2>Conversión de monedas</h2>
-		<p>Monerujo tiene integrada la opción de enviar XMR y cambiarla por otra criptomoneda de manera sencilla. Por el momento soporta las siguientes monedas:
+        <p>Esta es la dirección pública a la que vas a enviar fondos. Puedes copiarla desde tu portapapeles, escanear un código QR o introducirla manualmente. Asegúrate de comprobarla varias veces para evitar enviar moneros a la dirección equivocada, ya que una vez realizada una transacción no puede revertirse.</p>
+        <p>Además de una dirección de XMR, también pueder ingresar:
+		<ul>
+		<li>Un URL con <a href="https://openalias.org">OpenAlias</a>.</li>
+		<li>Una dirección de otra criptomoneda.</li>
+		</ul>
+        <h2>Conversión</h2>
+		<p>La conversión de XMR en otra criptomoneda is realizada por un servicio externo de exchange. Monerujo no realiza dicha conversión ni está asociado con esos terceros. Por lo tanto no puede dar soporte por los intercambios, pero va a proveerte de toda la información necesaria para que puedas rastrear tu orden o recibir ayuda del exchange.</p>
+		<h2>Pares disponibles</h2>
+		<p>Monerujo soporta convertir de XMR hacia las siguientes monedas:
 		<ul>
             <li>Bitcoin (BTC)</li>
 			<li>Ethereum (ETH)</li>
 			<li>Litecoin (LTC)</li>
-			<li>Dogecoin (DOGE)</li>
+			<li>Dash (DASH)</li>
+			<li>Dai (DAI) on Ethereum</li>
+			<li>Tether (USDT) on Ethereum</li>
+		</ul>
+		Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
         </u>
-        <p>Este servicio es realizado por un tercero, en este caso <a href="https://sideshift.ai">Sideshift.ai</a>
-        Monerujo su API para consultar los precios y ordenar tus pedidos, pero no está asociado con ningún prestador de cambio y no puede ayudarte en caso de experimentar problemas con un pago. Por favor revisa su sitio y decide por tí mismo si es un servicio que quieres usar.</p>
-        <h2>Tipo de cambio<h2>
-        <p>En la pantalla de \"Monto\" se te mostrará las condiciones actuales del servicio. Estas incluyen el tipo de cambio del momento así como también los montos mínimos y máximos. Ten presente que el tipo de cambio aún no está garantizado en este paso.</p>
-        <h2>Orden<h2>
-        <p>En la pantalla \"Confirmar\" verás la orden final. Esta orden es válida por un tiempo limitado, notarás un temporizador en el botón de \"Gastar\". El tipo de cambio a esta altura puede haber cambiado con respecto a las pantallas anteriores, pero ahora es el definitivo.</p>
-        <h2>Clave secreta SideShift.ai<h2>
-        <p>Dado que Monerujo sólo tiene acceso a la parte en Monero de tu transacción, deberás usar esta clave para rastrear el estado de tu orden en la página de SideShift.ai.</p>
-        <h2>Temporizador</h2>
-        <p>Si tardas demasiado tiempo en confirmar tu envío y la cuenta atrás llega el cero, necesitarás pedir una nueva cotización de parte de SideShift.ai. Esto se logra dando un paso atrás y luego volviendo a la pantalla de \"Confirmar\".</p>
     ]]></string>
-
+	
     <string name="help_xmrto"><![CDATA[
-        <h1>Enviar BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai es un servicio de terceros que actúa como casa de cambio de Monero a Bitcoin.
-        Usamos la API de SideShift.ai para integrar pagos de Bitcoin dentro de Monerujo. Por favor revisa
-        https://sideshift.ai y decide por ti mismo si es un servicio que quieres usar. El equipo de Monerujo
-        no está asociado con SideShift.ai y no puede ayudarte con su servicio.</p>
-        <h2>Tipo de cambio SideShift.ai<h2>
-        <p>En la pantalla de \"Monto\" se te mostrará las condiciones actuales del servicio SideShift.ai.
-        Estas incluyen el tipo de cambio del momento así como también los límites mínimo y máximo de BTC.
-        Toma nota de que el tipo de cambio aún no está garantizado en esa instancia.</p>
-        <h2>Orden SideShift.ai<h2>
-        <p> En la pantalla \"Confirmar\" verás la orden SideShift.ai final. Esta orden es válida por un
-        tiempo limitado - notarás una cuenta atrás en el botón de \"Gastar\". El tipo de cambio a
-        esta altura puede ser distinto al aproximado que era mostrado en pantallas anteriores.</p>
-        <h2>Clave secreta SideShift.ai<h2>
-        <p>Dado que Monerujo sólo administra la parte en Monero de tu transacción, puedes usar tu
-        clave secreta SideShift.ai para rastrear la parte en Bitcoin de tu orden en la página de SideShift.ai.</p>
-        <h2>Cuenta atrás SideShift.ai!</h2>
-        <p>Una vez que la cuenta atrás alcanza el cero, necesitarás pedir una nueva cotización de
-        parte de SideShift.ai, esto se logra dando un paso atrás y luego volviendo a la pantalla de
-        \"Confirmar\".</p>
+        <h1>Convirtiendo XMR</h1>
+        <h2>Montos</h2>
+        <p>Ingresa en el campo \"Monto\" la cantidad que quieres enviar en esa criptomoneda. Por defecto va a mostrar el monto equivalente de XMR que va a ser enviada desde tu monedero. Puedes elegir una moneda diferente de la lista desplegable si quieres fijar el monto en ella. Monerujo usa una tasa fija, así que al final del proceso deberías obtener el monto exacto que especifiques aquí.</p>
+		<h2>Tasa de cambio</h2>
+		<p>Debajo verás la cotización actual ofrecida por el exchange, junto con los montos mínimos y máximos. Por favor ten presente que en este paso esta cotización no está garantizada aún, va a confirarse en la siguiente pantalla, cuando tu transacción esté lista para aprobarse.</p>
+	]]></string>
+		
+	<string name="help_confirm"><![CDATA[		
+		<h1>Orden de cambio</h1>
+		<p>En esta pantalla estás viendo la orden coordinada con el exchange. Esta es válida por un tiempo limitado, quizás notes una cuenta regresiva en el botón de \"Enviar\". Esta cotización puede ser diferente a la indicada en los pasos anteriores, pero mientras autorices el envío antes de que se acabe el tiempo, quedará fija.</p>
+		<h2>Número de orden</h2>
+		<p>Como Monerujo solamente maneja el lado de XMR de la transacción, vas a necesitar este <em>número de orden</em> para rastrear el proceso de tu intercambio o recibir soporte en el sitio del exchange.</p>
+		<h2>El tiempo se acabó</h2>
+		<p>En caso de que la cuenta atrás llegue a cero, necesitarás conseguir una nueva cotización del exchange. Para eso debes volver a la pantalla anterior, y luego avanzar nuevamente a esta.</p>
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
