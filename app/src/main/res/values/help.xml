@@ -154,11 +154,11 @@
         <h2>Receiver’s address</h2>
         <p>This is the public address of the wallet you are sending to, you can paste it from
         your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
-        ensure you aren’t sending coins to the wrong address.</p>
+        ensure you aren’t sending coins to the wrong address, once sent is not possible to reverse it.</p>
         <p>In addition to using an XMR address, you can also use
         <ul>
-            <li>an <a href="https://openalias.org/">OpenAlias</a> for XMR or BTC</li>
-            <li>another crypto address</li>
+            <li>An <a href="https://openalias.org/">OpenAlias</a> for XMR or BTC</li>
+            <li>Another crypto address</li>
         </u>
 		</p>
         <h2>Converting XMR</h2>
@@ -166,12 +166,12 @@
         <h2>Available XMR pairs</h2>
 		<p>Monerujo supports conversion form XMR to the following coins:
 		<ul>
-			<li>BTC (Bitcoin)</li>
-			<li>ETH (Ethereum)</li>
-			<li>LTC (Litecoin)</li>
-			<li>BCH (Bitcoin Cash)</li>
-			<li>DOGE (Dogecoin)</li>
-			<li>USDT (Ethereum)</li>
+			<li>Bitcoin (BTC)</li>
+			<li>Ethereum (ETH)</li>
+			<li>Litecoin (LTC)</li>
+			<li>Dash (DASH)</li>
+			<li>Dai (DAI) on Ethereum</li>
+			<li>Tether (USDT) on Ethereum</li>
 		</ul>
 		Just add a matching address or select the desired coin by picking on its icon.</p>
     ]]></string>
@@ -181,14 +181,14 @@
         <h2>Amounts<h2>
         <p>Enter on the \"Amount\" field the amount of cryptocurrency you want to send. By default, it will show you the equivalent amount of XMR to be sent from your wallet. You can pick a different currency from the dropdown if you want to fix your amount on it. Monerujo uses a fixed rate, so at the end of the process you should get the exact amount you specify here.</p> 
 		<h2>Exchange rate</h2>
-        Below you will see the current rate provided by the exchange, along with their lower and upper limits. Please note that this rate is not guaranteed at this point, it will be set the moment your transaction is ready to be approved on the next screen.</p>
+        <p>Below you will see the current rate provided by the exchange, along with their lower and upper limits. Please note that this rate is not guaranteed at this point, it will be set the moment your transaction is ready to be approved on the next screen.</p>
 	]]></string>
 	
 	<string name="help_confirm"><![CDATA[
-        <h2>Exchange Order<h2>
+        <h1>Exchange Order<h1>
         <p>On this screen you will see the actual exchange order. This order is valid for
         a limited time - you may notice a countdown on the \"Spend\" button. This exchange rate may
-        be different to the indicative one shown on previous screens, but as long as you accept before the time runs out, it'll be fixed.</p>
+        be different to the one shown on previous screens, but as long as you accept before the time runs out, it'll be fixed.</p>
         <h2>Order Number<h2>
         <p>Since Monerujo only handles the XMR side of your transaction, your <em>order number</em> can be used to track or get support for your order on the exchange's website.</p>
         <h2>Countdown is over</h2>
