@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion '33.0.2'
     ndkVersion '17.2.4988734'
     defaultConfig {
         applicationId "com.m2049r.xmrwallet"
+        buildToolsVersion = '34.0.0'
+        compileSdk 33
         minSdkVersion 21
-        targetSdkVersion 31
-        versionCode 3307
-        versionName "3.3.7 'Pocket Change'"
+        targetSdkVersion 33
+        versionCode 3308
+        versionName "3.3.8 'Pocket Change'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -126,11 +126,11 @@ dependencies {
     implementation 'androidx.core:core:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.preference:preference:1.2.0'
+    implementation 'androidx.preference:preference:1.2.1'
 
     implementation 'com.google.android.material:material:1.9.0'
 

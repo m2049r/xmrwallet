@@ -26,6 +26,7 @@ import com.m2049r.xmrwallet.model.Wallet;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import lombok.Data;
@@ -136,8 +137,9 @@ public class TxData implements Parcelable {
     //////////////////////////
 
     final static public int POCKETCHANGE_IDX = 1; // subaddress index of first pocketchange slot
-    final static public int POCKETCHANGE_SLOTS = 10; // number of pocketchange slots
-    final static public int POCKETCHANGE_IDX_MAX = POCKETCHANGE_IDX + POCKETCHANGE_SLOTS - 1;
+    final static public int POCKETCHANGE_SLOTS_MIN = 6;  // min number of pocketchange slots
+    final static public int POCKETCHANGE_SLOTS_MAX = 14; // max number of pocketchange slots
+    final static public int POCKETCHANGE_IDX_MAX = POCKETCHANGE_IDX + POCKETCHANGE_SLOTS_MAX - 1;
 
     @Data
     static private class PocketChangeSlot {
@@ -171,8 +173,8 @@ public class TxData implements Parcelable {
         List<CoinsInfo> coins = wallet.getCoinsInfos(true);
         Set<Integer> spendableSubaddressIdx = new HashSet<>();
         PocketChangeSlot reserves = new PocketChangeSlot(); // everything not in a slot spendable
-        PocketChangeSlot[] slots = new PocketChangeSlot[POCKETCHANGE_SLOTS];
-        for (int i = 0; i < POCKETCHANGE_SLOTS; i++) {
+        PocketChangeSlot[] slots = new PocketChangeSlot[POCKETCHANGE_SLOTS_MAX];
+        for (int i = 0; i < POCKETCHANGE_SLOTS_MAX; i++) {
             slots[i] = new PocketChangeSlot();
         }
         for (CoinsInfo coin : coins) {
@@ -205,7 +207,8 @@ public class TxData implements Parcelable {
         // find any slots to fill if possible:
         List<Integer> slotsToFill = new ArrayList<>();
         List<Long> slotToFillAmounts = new ArrayList<>();
-        for (int i = 0; i < POCKETCHANGE_SLOTS; i++) {
+        final int randomSlotCount = new Random().nextInt(POCKETCHANGE_SLOTS_MAX - POCKETCHANGE_SLOTS_MIN + 1) + POCKETCHANGE_SLOTS_MIN;
+        for (int i = 0; i < randomSlotCount; i++) {
             if (slots[i].getAmount() < pocketChangeAmount) {
                 final long topupAmount = pocketChangeAmount - slots[i].getAmount();
                 if (topupAmount <= spendableAmount) {
