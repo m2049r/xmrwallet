@@ -69,6 +69,7 @@
             app:elevation="0dp"
             app:fabSize="normal"
             app:pressedTranslationZ="0dp"
-            app:tint="?attr/toolbarTextColor" />
+            app:tint="?attr/toolbarTextColor"
+            android:contentDescription="@string/node_fab_add" />
     </FrameLayout>
 </RelativeLayout>

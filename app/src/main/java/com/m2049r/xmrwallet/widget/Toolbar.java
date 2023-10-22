@@ -126,21 +126,25 @@ public class Toolbar extends MaterialToolbar {
                 Timber.d("BUTTON_BACK");
                 bSettings.setImageResource(R.drawable.ic_arrow_back);
                 bSettings.setVisibility(View.VISIBLE);
+                bSettings.setContentDescription(getString(R.string.menu_back));
                 break;
             case BUTTON_CLOSE:
                 Timber.d("BUTTON_CLOSE");
                 bSettings.setImageResource(R.drawable.ic_close_white_24dp);
                 bSettings.setVisibility(View.VISIBLE);
+                bSettings.setContentDescription(getString(R.string.menu_close));
                 break;
             case BUTTON_SETTINGS:
                 Timber.d("BUTTON_SETTINGS");
                 bSettings.setImageResource(R.drawable.ic_settings);
                 bSettings.setVisibility(View.VISIBLE);
+                bSettings.setContentDescription(getString(R.string.menu_settings));
                 break;
             case BUTTON_CANCEL:
                 Timber.d("BUTTON_CANCEL");
                 bSettings.setImageResource(R.drawable.ic_close_white_24dp);
                 bSettings.setVisibility(View.VISIBLE);
+                bSettings.setContentDescription(getString(R.string.menu_cancel));
                 break;
             case BUTTON_NONE:
             default:
