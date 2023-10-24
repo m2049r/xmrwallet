@@ -264,8 +264,8 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR pas un nombre</string>
-    <string name="copy_receive_address">Copier l’adresse de réception</string>
-    <string name="paste_give_address">Coller donner l'adresse</string>
+    <string name="copy_receive_address">Copier l\'adresse de réception</string>
+    <string name="paste_give_address">Coller donner l\'adresse</string>
 
     <string name="details_alert_message">Des données sensible vont être affichées.\nRegardez autour de vous !</string>
     <string name="details_alert_yes">C\'est bon</string>
