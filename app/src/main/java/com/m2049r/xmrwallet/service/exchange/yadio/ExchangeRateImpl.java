@@ -14,41 +14,34 @@
  * limitations under the License.
  */
 
-package com.m2049r.xmrwallet.service.exchange.krakenEcb;
+package com.m2049r.xmrwallet.service.exchange.yadio;
 
 import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 
+import java.util.Date;
+
+import lombok.Getter;
+
 class ExchangeRateImpl implements ExchangeRate {
-    private final String baseCurrency;
+    @Getter
+    private final String baseCurrency = "EUR";
+    @Getter
     private final String quoteCurrency;
+    @Getter
     private final double rate;
+    private final Date date;
 
     @Override
     public String getServiceName() {
-        return "kraken+ecb";
+        return "yadio.io";
     }
 
-    @Override
-    public String getBaseCurrency() {
-        return baseCurrency;
-    }
-
-    @Override
-    public String getQuoteCurrency() {
-        return quoteCurrency;
-    }
-
-    @Override
-    public double getRate() {
-        return rate;
-    }
-
-    ExchangeRateImpl(@NonNull final String baseCurrency, @NonNull final String quoteCurrency, double rate) {
+    ExchangeRateImpl(@NonNull final String quoteCurrency, double rate, final long timestamp) {
         super();
-        this.baseCurrency = baseCurrency;
         this.quoteCurrency = quoteCurrency;
         this.rate = rate;
+        this.date = timestamp > 0 ? new Date(timestamp) : new Date();
     }
 }
