@@ -22,18 +22,24 @@ import android.content.res.Configuration;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.OptIn;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStateManagerControl;
 
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.NetCipherHelper;
 import com.m2049r.xmrwallet.util.NightmodeHelper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
+
+import java.util.Arrays;
 
 import timber.log.Timber;
 
 public class XmrWalletApplication extends Application {
 
     @Override
+    @OptIn(markerClass = FragmentStateManagerControl.class)
     public void onCreate() {
         super.onCreate();
         FragmentManager.enableNewStateManager(false);
