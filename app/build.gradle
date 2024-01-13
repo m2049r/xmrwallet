@@ -115,6 +115,14 @@ android {
     buildFeatures {
         buildConfig true
     }
+
+    testOptions {
+        unitTests {
+            all {
+                jvmArgs '--add-opens=java.base/java.lang=ALL-UNNAMED'
+            }
+        }
+    }
 }
 
 static def getId(name) {
