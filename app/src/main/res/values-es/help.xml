@@ -2,154 +2,106 @@
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Crear nuevo monedero</h1>
-        <p>¡En caso de que necesites una nueva dirección de Monero!</p>
-        <p>Introduce un nombre único para tu monedero y una contraseña.
-        La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
-        Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
-        <h2>¡Anota tu semilla!</h2>
-        <p>En la siguiente pantalla encontrarás tu \"Semilla\" de 25 palabras.
-        Este es el único dato necesario para recuperar tu cartera en un futuro y obtener acceso
-        completo a tus fondos.
-        ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>
-        acceso completo a tus fondos!</p>
-        <p>Si pierdes la contraseña de tu monedero, todavía puedes recuperar acceso con la
-        semilla.</p>
-        <p>No hay forma de recuperar tu semilla, ¡si la pierdes todos tus fondos se
-        perderán! La semilla no se puede cambiar nunca, y si es robada o comprometida
-        de alguna manera, tendrás que mover todos tus fondos a una nuevo monedero (con una
-        nueva semilla). Por tanto, es mejor si haces una copia de tu semilla
-        mnemotécnica anotándola y guardándola en <em>múltiples</em> lugares seguros y
-        privados.</p>
+        <p>En esta pantalla vas a crear un nuevo y único monedero en vez de restaurar uno viejo.</p>
+        <p>Necesitas introducir un nombre único para tu monedero y una contraseña.
+        Esta contraseña se te pedirá para abrir tu monedero y para poder enviar fondos.
+        Usa una contraseña lo más compleja que puedas, pero que puedas recordar fácilmente. Puede ser una palabra o una frase. Piensa algo creativo.</p>
+		<p>Si pierdes u olvidas esta contraseña, puedes recuperar el acceso con la semilla. Pero si pierdes u olvidas la semilla&#8230 ¡no hay forma de recuperarla! Así que pase lo que pase:</p>
+		<h2>¡Anota muy bien tu semilla!</h2>
+        <p>En la siguiente pantalla verás la \"Semilla\" de este monedero. Es una lista de 25 palabras generada aleatoriamente y no puede cambiarse nunca.
+        Esa semilla es la única información necesaria para recuperar tu monedero en el futuro y obtener acceso a tu monedero otra vez.
+        ¡Mantenerla segura y secreta es muy importante. Si alguien te la roba o la copia, tendrás que mover todos tus fondos a una nuevo monedero (que tenga una
+        nueva semilla). Por tanto, es mejor si haces una copia de tu semilla anotándola con cuidado y guardándola en <em>múltiples</em> lugares seguros y
+        secretos.</p>
     ]]></string>
 
     <string name="help_create_seed"><![CDATA[
         <h1>Restaurar monedero con semilla</h1>
-        <p>¡Si ya tienes una dirección de Monero y quieres recuperar sus transacciones desde la
-        cadena de bloques!</p>
-        <p>La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
-        Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
+        <p>En esta pantalla puedes recrear un monedero ya existente, usando su correspondiente semilla mnemotécnica. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
+		<p>Primero elige un nombre único para tu monedero.</p>
+        <p>Luego una contraseña que será utilizada para encriptar los archivos de tu monedero en el dispositivo, así que usa una palabra o frase que no sea fácil de adivinar.</p>
         <p>Introduce tu semilla en el campo \"Semilla\".</p>
-        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
-        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
-        cadana de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
-        Esto puede llevar <em>bastante</em> tiempo.</p>
+        <p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
 
     <string name="help_create_keys"><![CDATA[
-        <h1>Crear monedero con claves</h1>
-        <p>¡Si vas a recuperar tu monedero usando tus claves!</p>
-        <p>Introduce un nombre único para tu monedero y una contraseña.
-        La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
-        Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
-        <p>Ingresa tu dirección de Monero en el campo \"Dirección Pública\" y completa
-        \"Clave de Vista\" y \"Clave de Gasto\".</p>
-        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
-        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
-        cadena de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
-        Esto puede llevar <em>bastante</em> tiempo.</p>
+        <h1>Restaurar un monedero con claves</h1>
+        <p>En esta pantalla puedes recrear un monedero ya existente, usando sus correspondientes claves. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
+        <p>Primero elige un nombre único para tu monedero.</p>
+        <p>Luego una contraseña que será utilizada para encriptar los archivos de tu monedero en el dispositivo, así que usa una palabra o frase que no sea fácil de adivinar.</p>
+        <p>Ingresa la dirección de Monero en el campo \"Dirección Pública\" y las claves correspondientes en \"Clave de Vista\" y \"Clave de Gasto\".</p>
+		<p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
         <h1>Crear monedero de sólo vista</h1>
-        <p>¡En caso de que solamente quieras monitorizar las transacciones entrantes de una dirección!</p>
-        <p>Introduce un nombre único para tu monedero y una contraseña.
-        La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
-        Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
-        <p>Ingresa tu dirección de Monero en el campo \"Dirección Pública\" y completa
-        \"Clave de Vista\".</p>
-        <p>Si conoces el número de bloque de la primera transacción usada en esta dirección,
-        introdúcelo en el campo \"Altura de Restauración\" - dejándolo en blanco se escaneará la
-        cadena de bloques <em>entera</em> en busca de transacciones que pertenezcan a tu dirección.
-        Esto puede llevar <em>bastante</em> tiempo.</p>
+        <p>En esta pantalla puedes recrear un monedero ya existente usando sólo su clave de vista. Con ella, Monerujo podrá mostrarte todas las transacciones que entren en tu monedero, pero no verá las que salen, ni podrás enviar fondos. es útil para monitorear un monedero de manera segura. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
+		<p>Primero elige un nombre único para tu monedero.</p>
+        <p>Luego una contraseña que será utilizada para encriptar los archivos de tu monedero en el dispositivo, así que usa una palabra o frase que no sea fácil de adivinar.</p>
+        <p>Ingresa la dirección de Monero en el campo \"Dirección Pública\" y las clave correspondiente en \"Clave de Vista\".</p>
+		<p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
 
     <string name="help_details"><![CDATA[
-        <h1>Detalles del monedero</h1>
+        <h1>Secretos del monedero</h1>
         <h2>Dirección pública</h2>
-        Tu dirección pública es como el número de tu cuenta bancaria que puedes compartir con
-        cualquiera sin miedo a perder tus fondos. La gente enviará moneroj a tu monedero usando esta
-        dirección.
+        <p>Tu dirección pública funciona como el número de tu cuenta bancaria, puedes compartirla con cualquiera sin miedo a perder tus fondos. Los montos que alguien envíe a esta dirección aparecerán en tu monedero.</p>
         <h2>Semilla</h2>
-        Este es el único dato necesario para recuperar tu cartera en un futuro y obtener acceso
-        completo a tus fondos.
-        ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>
-        acceso completo a tus fondos! Si no la anotaste en un lugar seguro aún, ¡por favor hazlo!
-        <h2>Wallet Files Recovery Password</h2>
-        Asegúrate de escribir esta contraseña. Si restablececes tu dispositivo o desinstalas esta
-        aplicación, vas a necesitarla para acceder a tu monedero otra vez.<br/>
+        <p>Este es el más importante de todos los secretos. De ser necesario, puedes usar esta semilla para restaurar tu monedero y obtener acceso completo a tus fondos. Esto quiere decir que si cualquier otra persona la roba o la copia, también tiene ese acceso, así que mantenla <em>segura</em> y <em>secreta</em>. Si aún no la anotaste, ¡por favor hazlo ahora! No hay forma de recuperar una semilla perdida.</p>
+        <h2>Altura de restauración</h2>
+		<p>Este es el número de un bloque en la cadena de Monero. Monerujo muestra transacciones (y calcula el balance) a partir de este bloque para <em>este</em> monedero. Anótalo, es útil para que en caso de que restaures este monedero en el futuro, no tengas que revisar todos los bloques, sólo los posteriores a éste.</p> 
+		<h2>Contraseña del backup</h2>
+        <p>Asegúrate de escribir esta clave. Si pierdes el dispositivo o desinstalas Monerujo, vas a necesitarla para desencriptar los backups que hayas hecho de este monedero. Lo mismo si quieres abrir ese backup en otra aplicaión de Monero. Pueder estar viendo una de dos opciones:<br/>
         <h3>CrAzYpass</h3>
-        Si la contraseña que se muestra consiste de 52 caracteres alfanuméricos en grupos de 4&#8230;
-        ¡felicitaciones!
-		Los archivos de tu monedero están asegurado con una clave de 256 bits, generada por tu
-        propio dispositivo basándose en la contraseña que elegiste (al crear el monedero o luego
-        cambiándola manualmente). ¡Esto hace a tus archivos extremadamente difíciles de hackear!<br/>
-        Esta opción es obligatoria en todos los monederos nuevos.
-        <h3>Contraseña Antigua</h3>
-        Si ves tu contraseña aquí, los archivos de tu billetera no están tan seguros que cuando
-        se usa una CrAzYpass. Para solucionar esto, simplemente elige \"Cambiar Contraseña\" en el
-        menú. Después de ingresar una nueva contraseña (aún si eliges la misma que antes) la
-        aplicación generará una CrAzYpass y asegurará los archivos de tu monedero con ella.
-        ¡Por favor anótala bien!
-        <h3>Monederos CrAzYpass</h3>
-        Si alguna vez necesitas reinstalar Monerujo (por ejemplo luego de restaurar tu teléfono
-        o cambiar a uno nuevo) o si necesitas abrir los archivos de tu monedero en otro dispositivo
-        o en una PC, vas a tener que usar esta Contraseña de Recuperación (CrAzYpass) para poder
-        acceder a tu monedero otra vez.<br/>
-        Seleccionando \"Cambiar Contraseña\" en el menú, pueder elegir otra contraseña.
-        Ten presente que esto generará una nueva Contraseña de Recuperación (CrAzYpass). ¡Anótala bien!
+        Si la clave que se muestra consiste de 52 caracteres alfanuméricos en grupos de 4&#8230; ¡felicitaciones! Quiere decir que los archivos de tu monedero están encriptados con una clave de 256 bits, generada por tu propio dispositivo basándose en la última contraseña que hayas elegido. Esto hace que tus archivos sean  extremadamente difíciles de hackear por fuerza bruta. Esta opción es obligatoria para todos los monederos nuevos creados en Monerujo.<br/>
+        <h3>Contraseña normal</h3>
+        Si ves tu contraseña aquí, los archivos de tu billetera no están tan seguros como cuando se usa una CrAzYpass. Para solucionar esto, simplemente elige \"Cambiar Contraseña\" en el menú. Después de ingresar una nueva contraseña (aún si eliges la misma que antes), Monerujo generará una CrAzYpass y asegurará los archivos de tu monedero con ella.
+        ¡Por favor anótala bien!</p>
+		<h2>Claves</h2>
+		<p>Tu monedero tiene 2 claves diferentes que sirven para distintas cosas:
         <h2>Clave de vista</h2>
-        Tu clave de vista puede usarse para monitorizar las transacciones entrantes de tu
-        monedero sin otorgar permiso para gastar los fondos guardados en ella.
+        Se usa para monitorizar las transacciones entrantes de tu monedero, pero no otorga permiso para gastar los fondos guardados en él.
         <h2>Clave de gasto</h2>
-        Tu clave de gasto permite a quien sea gastar los moneroj asociados a tu cartera, de modo
-        que no digas a nadie esta clave, guárdala tan segura como tu semilla mnemotécnica.
+        Permite a quien sea gastar los moneros recibidos en tu moendero, así que no la compartas con nadie, guárdala tan <em>segura</em> y <em>secreta</em> como tu semilla mnemotécnica.</p>
     ]]></string>
 
     <string name="help_list"><![CDATA[
-        <h1>Lista de monederos</h1>
+        <h1>Pantalla principal</h1>
         <h2>Nodo</h2>
-        <p>Monerujo utiliza un nodo remoto para comunicarse con la red de Monero sin tener que
-        descargar y almacenar una copia completa de la cadena de bloques. Puedes encontrar una lista
-        de nodos remotos populares o aprender como montar tu propio nodo remoto aquí https://moneroworld.com</p>
-        <p>Monerujo viene con un nodo remoto ya preconfigurado. También recuerda los últimos cinco
-        nodos utilizados.</p>
+        <p>Monerujo debe estar conectado a un nodo remoto para comunicarse con la red de Monero. De otra manera tendrías que descargar y almacenar una copia completa de la cadena de bloques en tu dispositivo. ¡Tal copia ocuparía muchos gigabytes!</br>
+		Puedes consultar una lista de nodos remotos populares o aprender como montar tu propio nodo aquí en <a href="https://moneroworld.com">moneroworld.com</a></p>
+        <p>Para ayudarte, Monerujo viene con una lista preconfigurada de nodos remotos, mantenidos por distintos miembros reconocidos de la comunidad. Siempre podrás borrarlos y/o agregar tus propios.</p>
         <h2>Monederos</h2>
-        <p>Aquí puedes ver tus monederos. Están ubicados en el directorio <tt>monerujo</tt> del
-        almacenamiento interno de tu dispositivo. Puedes utilizar un explorador de archivos
-        para verlos. Deberías hacer copias de seguridad de este directorio de forma regular en
-        almacenamientos fuera del dispositivo por si tu dispositivo explota o es robado.
-        De esta manera mantienes todas tus notas asociadas a transacciones.</p>
-        <p>Selecciona un monedero para abrirlo o pulsa en \"+\" para crear uno nuevo.
-        También puedes seleccionar otras acciones:</p>
-        <h3>Detalles</h3>
-        <p>Muestra los detalles del monedero, su semilla y sus claves.</p>
-        <h3>Recibir</h3>
-        <p>Crea un código QR para recibir moneroj.</p>
-        <h3>Renombrar</h3>
-        <p>Permite cambiar el nombre de tu monedero. La copia de seguridad no será renombrada.</p>
-        <h3>Copia de seguridad</h3>
-        <p>Crea una copia de tu monedero en el directorio <tt>backups</tt> que se encuentra dentro
-        de <tt>monerujo</tt> sobreescribiendo cualquier copia previa existente.</p>
-        <h3>Archivar</h3>
-        <p>Crea una copia de seguridad y borra la cartera inmediatamente después. La copia
-        permanecerá en el directorio <tt>backups</tt>. Si no necesitas más tus copias de seguridad
-        deberás borrarlas con un explorador de archivos o una aplicacin de borrado seguro.</p>
+        <p>Aquí puedes ver todos tus monederos. Presiona en alguno para abrirlo, se te pedirá tu huella o la contraseña.</br>
+		Cada monedero también tiene un menú con acciones:
+        <h3>Modo calle</h3>
+		<p>Abre tu monedero en un modo especial que no muestra ni el balance ni las transacciones anteriores. Es útil para usar tu monedero en público sin arriesgar tu privacidad.</p>
+		<h3>Renombrar</h3>
+        <p>Permite cambiar el nombre con el que se muestra tu monedero. El backup no será renombrado.</p>
+		<h3>Backup</h3>
+        <p>Te permite exportar una copia de seguridad con el estado actual de tu monedero.</br>
+		Te aconsejamos que hagas backups de forma regular, y los guardes <em>fuera</em> de este dispositivo. En caso de que deje de funcionar, sea robado, o simplemente lo pierdas, no perderías todos tus nombres de cuentas y notas asociadas a transacciones. Vas a necesitar la clave con la que está encriptada cada backup, puedes consultarla en la pantalla de <em>Secretos</em>.</p>
+        <h3>Eliminar</h3>
+        <p>Borra tu monedero del dispositivo. Ten cuidado, <em>necesitarás tu semilla o un backup junto con su clave</em> para no perder tus fondos.
+		<h3>Secretos</3>
+		Muestra información sensible de tu monedero, como su semilla y sus claves.</p>
+        <h3>Resetear</h3>
+        <p>Borra y recrea un archivo caché de tu monedero, en caso de que esté corrupto.</p>
+		<p>Presionando en \"+\" verás alternativas para agregar nuevos monederos a esta pantalla.</p>
     ]]></string>
 
     <string name="help_tx_details"><![CDATA[
         <h1>Detalles de la transacción</h1>
         <h2>Destinatario</h2>
-        Esta es la dirección pública del monedero al que has enviado moneroj
-        <h2>ID de Pago</h2>
-        Al ser Monero ofuscado por naturaleza, puedes usar un ID de Pago para identificar un envío de Monero entre
-        dos partes. Esto es completamente opcional y privado. Por ejemplo, esto permitiría que un
-        negocio pueda asociar inequívocamente tu transacción con un producto que has comprado.
-        <h2>ID de Transacción</h2>
+        Esta es la dirección pública del monedero al que has enviado moneros.
+        <h2>ID de pago</h2>
+        Como Monero es privado por defecto, puedes usar un ID de pago para identificar una transacción entre
+        dos personas.Por ejemplo, puede ser usado por un negocio pueda asociar inequívocamente tu transacción con un producto que has comprado. Esto es completamente opcional y no disminuye la privacidad del resto de tus fondos.
+		<h2>ID de transacción</h2>
         Este es un identificador de tu transacción que puede ser utilizado para ubicar tu transacción
-        ofuscada en la cadena de bloques de Monero usando un explorador como <a href="https://xmrchain.net/">https://xmrchain.net/</a>
+        ofuscada en la cadena de bloques de Monero usando un explorador como <a href="https://xmrchain.net">xmrchain.net</a>
         <h2>Clave de transacción</h2>
-        Esta es la clave privada de tu transacción, mantenla segura ya que revelarla a un tercero
-        desvela que firma en un anillo de transacciones es la tuya, por tanto haciendo tus transacciones transparentes.
+        Esta es la clave privada de tu transacción, mantenla secreta ya que revelarla a un tercero le permitiría identificarte dentro del anillo de firmas.
         <h2>Bloque</h2>
         Este es el bloque de la cadena de Monero en el que tu transacción fue incluída.
     ]]></string>
@@ -157,180 +109,115 @@
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Dirección del receptor</h2>
-        <p>Esta es la dirección pública del monedero al que vas a enviar moneroj. Puedes copiarla
-        desde tu portapapeles, escanear un código QR o introducirla manualmente. Asegúrate de
-        comprobarla varias veces para confirmar que no estás enviando moneroj a la dirección equivocada.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
+        <p>Esta es la dirección pública a la que vas a enviar fondos. Puedes copiarla desde tu portapapeles, escanear un código QR o introducirla manualmente. Asegúrate de comprobarla varias veces para evitar enviar moneros a la dirección equivocada, ya que una vez realizada una transacción no puede revertirse.</p>
+        <p>Además de una dirección de XMR, también pueder ingresar:
+		<ul>
+		<li>Un URL con <a href="https://openalias.org">OpenAlias</a>.</li>
+		<li>Una dirección de otra criptomoneda.</li>
+		</ul>
+        <h2>Conversión</h2>
+		<p>La conversión de XMR en otra criptomoneda is realizada por un servicio externo de exchange. Monerujo no realiza dicha conversión ni está asociado con esos terceros. Por lo tanto no puede dar soporte por los intercambios, pero va a proveerte de toda la información necesaria para que puedas rastrear tu orden o recibir ayuda del exchange.</p>
+		<h2>Pares disponibles</h2>
+		<p>Monerujo soporta convertir de XMR hacia las siguientes monedas:
+		<ul>
+            <li>Bitcoin (BTC)</li>
+			<li>Ethereum (ETH)</li>
+			<li>Litecoin (LTC)</li>
+			<li>Dash (DASH)</li>
+			<li>Dai (DAI) on Ethereum</li>
+			<li>Tether (USDT) on Ethereum</li>
+		</ul>
+		Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
-        for details). See the section on sending BTC below.</p>
-        <h1>Enviar BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai es un servicio de terceros que actúa como casa de cambio de Monero a Bitcoin.
-        Usamos la API de SideShift.ai para integrar pagos de Bitcoin dentro de Monerujo. Por favor revisa
-        https://sideshift.ai y decide por ti mismo si es un servicio que quieres usar. El equipo de Monerujo
-        no está asociado con SideShift.ai y no puede ayudarte con su servicio.</p>
-        <h2>Tipo de cambio SideShift.ai<h2>
-        <p>En la pantalla de \"Monto\" se te mostrará las condiciones actuales del servicio SideShift.ai.
-        Estas incluyen el tipo de cambio del momento así como también los límites mínimo y máximo de BTC.
-        Toma nota de que el tipo de cambio aún no está garantizado en esa instancia.</p>
-        <h2>Orden SideShift.ai<h2>
-        <p> En la pantalla \"Confirmar\" verás la orden SideShift.ai final. Esta orden es válida por un
-        tiempo limitado - notarás una cuenta atrás en el botón de \"Gastar\". El tipo de cambio a
-        esta altura puede ser distinto al aproximado que era mostrado en pantallas anteriores.</p>
-        <h2>Clave secreta SideShift.ai<h2>
-        <p>Dado que Monerujo sólo administra la parte en Monero de tu transacción, puedes usar tu
-        clave secreta SideShift.ai para rastrear la parte en Bitcoin de tu orden en la página de SideShift.ai.</p>
-        <h2>Cuenta atrás SideShift.ai!</h2>
-        <p>Una vez que la cuenta atrás alcanza el cero, necesitarás pedir una nueva cotización de
-        parte de SideShift.ai, esto se logra dando un paso atrás y luego volviendo a la pantalla de
-        \"Confirmar\".</p>
     ]]></string>
-
+	
     <string name="help_xmrto"><![CDATA[
-        <h1>Enviar BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai es un servicio de terceros que actúa como casa de cambio de Monero a Bitcoin.
-        Usamos la API de SideShift.ai para integrar pagos de Bitcoin dentro de Monerujo. Por favor revisa
-        https://sideshift.ai y decide por ti mismo si es un servicio que quieres usar. El equipo de Monerujo
-        no está asociado con SideShift.ai y no puede ayudarte con su servicio.</p>
-        <h2>Tipo de cambio SideShift.ai<h2>
-        <p>En la pantalla de \"Monto\" se te mostrará las condiciones actuales del servicio SideShift.ai.
-        Estas incluyen el tipo de cambio del momento así como también los límites mínimo y máximo de BTC.
-        Toma nota de que el tipo de cambio aún no está garantizado en esa instancia.</p>
-        <h2>Orden SideShift.ai<h2>
-        <p> En la pantalla \"Confirmar\" verás la orden SideShift.ai final. Esta orden es válida por un
-        tiempo limitado - notarás una cuenta atrás en el botón de \"Gastar\". El tipo de cambio a
-        esta altura puede ser distinto al aproximado que era mostrado en pantallas anteriores.</p>
-        <h2>Clave secreta SideShift.ai<h2>
-        <p>Dado que Monerujo sólo administra la parte en Monero de tu transacción, puedes usar tu
-        clave secreta SideShift.ai para rastrear la parte en Bitcoin de tu orden en la página de SideShift.ai.</p>
-        <h2>Cuenta atrás SideShift.ai!</h2>
-        <p>Una vez que la cuenta atrás alcanza el cero, necesitarás pedir una nueva cotización de
-        parte de SideShift.ai, esto se logra dando un paso atrás y luego volviendo a la pantalla de
-        \"Confirmar\".</p>
+        <h1>Convirtiendo XMR</h1>
+        <h2>Montos</h2>
+        <p>Ingresa en el campo \"Monto\" la cantidad que quieres enviar en esa criptomoneda. Por defecto va a mostrar el monto equivalente de XMR que va a ser enviada desde tu monedero. Puedes elegir una moneda diferente de la lista desplegable si quieres fijar el monto en ella. Monerujo usa una tasa fija, así que al final del proceso deberías obtener el monto exacto que especifiques aquí.</p>
+		<h2>Tasa de cambio</h2>
+		<p>Debajo verás la cotización actual ofrecida por el exchange, junto con los montos mínimos y máximos. Por favor ten presente que en este paso esta cotización no está garantizada aún, va a confirarse en la siguiente pantalla, cuando tu transacción esté lista para aprobarse.</p>
+	]]></string>
+		
+	<string name="help_confirm"><![CDATA[		
+		<h1>Orden de cambio</h1>
+		<p>En esta pantalla estás viendo la orden coordinada con el exchange. Esta es válida por un tiempo limitado, quizás notes una cuenta regresiva en el botón de \"Enviar\". Esta cotización puede ser diferente a la indicada en los pasos anteriores, pero mientras autorices el envío antes de que se acabe el tiempo, quedará fija.</p>
+		<h2>Número de orden</h2>
+		<p>Como Monerujo solamente maneja el lado de XMR de la transacción, vas a necesitar este <em>número de orden</em> para rastrear el proceso de tu intercambio o recibir soporte en el sitio del exchange.</p>
+		<h2>El tiempo se acabó</h2>
+		<p>En caso de que la cuenta atrás llegue a cero, necesitarás conseguir una nueva cotización del exchange. Para eso debes volver a la pantalla anterior, y luego avanzar nuevamente a esta.</p>
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
-        <h1>Crear Monedero - Ledger</h1>
-        <p>Deseas recuperar tu monedero desde tu dispositivo Ledger Nano S.</p>
-        <p>Tus claves secretas nunca dejan el dispositivo Ledger, así que lo necesitas conectado cada
-        vez que deseas acceder a tu monedero.</p>
-        <p>Ingresa un nombre de monedero y contraseña únicos. La contraseña es usada para asegurar tu información del monedero en el dispositivo
-        Android. Usa una contraseña fuerte - o mejor aún, usa una frase de contraseña.</p>
-        <p>Ingresa el número del bloque de la primera transacción usada para esta dirección en el
-        campo \"Altura de restaurado\". También puedes usar una fecha en formato AAAA-MM-DD. Si no estás seguro,
-        ingresa una fecha o altura del bloque aproximada <em>anterior</em> a la primera vez que usaste esta dirección del monedero.</p>
+        <h1>Crear Monedero con Ledger</h1>
+        <p>En esta pantalla puedes restaurar un monedero desde tu dispositivo Ledger Nano S.</p>
+        <p>Tus claves secretas nunca dejan el dispositivo Ledger, así que necesitas mantenerlo conectarlo cada vez que uses este monedero.</p>
+        <p>Primero elige un nombre único para tu monedero.</p>
+        <p>Luego una contraseña que será utilizada para encriptar los archivos de tu monedero en el dispositivo, así que usa una palabra o frase que no sea fácil de adivinar.</p>
+        <p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
-        <h1>El monedero</h1>
-        <h2>Modo Público</h2>
-        <p>El Modo Público puede ser habilitado/deshabilitado en el menú o en el icono de Gunther\'s. En este modo, tu
-        balance no se muestra en ninguna pantalla para que puedas usar de manera segura tu monedero en la calle, un pub u
-        otro lugar público. Transacciones anteriores también se ocultan. Nuevas transacciones serán mostradas, para
-        que puedas ver que has enviado/recibido Moneroj.</p>
-        <h2>Escaneado</h2>
-        Como a Monero le gusta mantener las cosas privadas, cada vez que abres una cartera de
-        Monerujo es necesario escanear la cadena de bloques para ver si nuevos moneroj han sido
-        enviados a tu dirección. Esto solo almacena en tu teléfono las transacciones que pertenecen a tu
-        monedero. Esto puede llevar un rato si hace tiempo que no sincronizas.
-        <h2>Saldo</h2>
-        <p><b>¡Ayuda! ¡El saldo de mi monedero ha desaparecido o aparece sin confirmar!</b><br/>
-        ¡No entres en pánico! Cuando envias fondos a tu monedero, parte de tu saldo se mostrará
-        temporalmente como sin confirmar.
-        Esto es debido a como funcionan las transacciones y su cambio en Monero. Todo está bien.
-        Puedes leer más al respecto en https://getmonero.org/resources/moneropedia/change.html
+        <h1>Pantalla del monedero</h1>
+        <h2>Modo calle</h2>
+        <p>El modo calle puede ser habilitado/deshabilitado en el menú o con el emoji de Gunther. Este modo es útil para proteger tu privacidad al usar Monerujo en un lugar público o interactuar con otros. Al activarlo, no se muestran ni tu balance ni tus transacciones pasadas, sólo se verán las nuevas transacciones para que puedas verificar lo que envíes o recibas a continuación.</p>
+        <h2>Sincronización</h2>
+        Monerujo no tiene una copia de todas las trasacciones de Monero, cada vez que abres un monedero es necesario escanear la cadena de bloques provista por el nodo seleccionado. A medida que Monerujo encuentra nuevas transacciones pertenecientes a tu monedero, las agrega a la lista y actualiza el balance. Esto se llama <em>sincronización</em>, porque mantiene tu monedero en sincronicidad con el estado de todos los otros usuarios de Monero. Puede llevar un rato si hace tiempo que no lo haces, al terminar, verás un tilde de confirmación.
+        <h2>Balance sin confirmar</h2>
+        <p><b>¡Oh no, el saldo de mi monedero ha desaparecido o aparece una suma menor!</b><br/>
+        ¡No entres en pánico! Cuando envias fondos hacia o desde tu monedero, parte de tu saldo se mostrará
+        temporalmente como <em>sin confirmar</em>. Esto es totalmente normal y es debido a como funciona Monero. Montos sin confirmar deberían cambiar de estado en 20 minutos o menos. Puedes leer más al respecto en <a href="https://getmonero.org/resources/moneropedia/change.html">getmonero.org</a>.
         <h2>Lista de transacciones</h2>
-        <p>Es una lista con las transacciones del monedero. Ten en cuenta que en monederos de solo vista, únicamente se
-        mostrarán las transacciones entrantes y no las salientes, por lo tanto la suma no es indicativa de los fondos disponibles.</p>
+        <p>Muestra todas las transacciones en orden cronológico. Ten en cuenta que en monederos de solo vista, únicamente se
+        mostrarán las transacciones entrantes y no las salientes (por lo tanto el balance que veas no es indicativo de los fondos disponibles).</p>
     ]]></string>
 
     <string name="help_node"><![CDATA[
         <h1>Nodos</h1>
-        <h2>TL;DR</h2>
-        <p>Refresca la lista de nodos al mostrar los marcadores de nodos para permitir a Monerujo
-        elegir el mejor para ti.</p>
-        <h2>¿Qué es un Nodo?h2>
-        <p>Monerujo usa un Nodo Remoto (algunas veces también llamado Daemon) para comunicarse con
-        la red de Monero sin tener que descargar y almacenar una copia de la
-        cadena de bloques completa.<p>
+        <h2>¿Qué es un Nodo?</h2>
+        <p>Un nodo de Monero es una máquina conectada a la red que tiene una copia entera de la cadena de bloques. Monerujo no tiene una copia (ocuparía más de 50gb de memoria) así que necesita conectarse a un nodo para recibir o enviar transacciones.<p>
         <h2>Lista de Nodos</h2>
-        <p>Si la lista está vacía, puedes agregar nuevos nodos manualmente o dejar que Monerujo
-        escanee la red por ti. O ambos.</p>
-        <p>La lista de nodos muestra todos los nodos actualmente conocidos. Adicionalmente, la marca de tiempo
-        del último bloque conocido para cada nodo se muestra bajo el nombre del nodo. Un icono
-        representando el comportamiento de respuesta del nodo
-        (el cual indica el nivel de conectividad esperado)
-        es mostrado seguido de cada nodo.</p>
-        <p>Cualquier nodo en la lista puede ser marcado para un posterior uso.
-        Nodos que no sean marcados serán olvidados.<p>
-        <p>Monerujo elegirá el nodo marcado óptimo cada vez que lo uses.
-        Esto lo hace revisando la altura del bloque (¿qué tan al día
-        está el nodo?) así como el comportamiento de respuesta (¿qué tan rápido responde el nodo a solicitudes?).</p>
-        <p>La lista se ordena por estas características, por lo tanto el primer nodo en la lista sería el que Monerujo
-        elegiría en ese momento. El final de la lista mostraría nodos muy lentos o no disponibles.</p>
+        <p>Muestra los nodos conocidos y algunos datos sobre ellos:	Debajo del nombre se indica el tiempo transcurrido desde el último bloque y a la derecha un ícono muestra la velocidad de respuesta, o aparece tachado si no se pudo consultar.
+		<p>Para eliminar un nodo de la lista, simplemente quítale el corazón. Desaparecerá la próxima vez que refresques la lista.<p>
+        <p>Monerujo elegirá inteligentemente entre los nodos guardados cada vez que lo uses. Esto lo hace revisando ambas la altura del bloque (¿qué tan al día está el nodo?) y el comportamiento de respuesta (¿qué tan rápido responde el nodo a una solicitud?).</p>
+        <p>Si tiras hacia abajo, la lista se ordenará por estas características, por lo tanto el primer nodo en la lista sería el que Monerujo elegiría en ese momento. El final de la lista mostraría nodos muy lentos o no disponibles. Si seleccionas un nodo en particular, se marcará con un color y será al que Monerujo intentará conectarse si vuelves a la pantalla principal.</p>
         <h2>Agregar un Nodo</h2>
-        <p>Presionando en el botón &quot;Agregar Nodo&quot; en la parte inferior, se te pedirá que
-        ingreses los detalles del nodo en el siguiente cuadro de diálogo.
-        La &quot;Dirección&quot; es el nombre del host o dirección IP del nodo - esta es la única
-        entrada obligatoria.
-        Ingresa el &quot;Puerto&quot; si el nodo se ejecuta en un puerto que no es por defecto (e.g. 18089).
-        Puedes también nombrar el nodo opcionalmente, para que puedas identificarlo después fácilmente.
-        Algunos nodos requieren credenciales para usarlos. Ingresa el nombre de usuario provisto &amp;
-        contraseña en los campos apropiados. Ahora puedes &quot;Verificar&quot; estos ajustes.
-        Los &quot;Resultados de la Prueba&quot; mostrarán la altura del bloque, tiempo de respuesta y dirección IP real usados.
-        El resultado puede ser también un error - usualmente porque el nombre de host provisto no
-        es alcanzable en una sensible cantidad de tiempo o las credenciales son incorrectas.
-        O la combinación nombre de host/puerto no indican a un nodo de Monero real.
-        Una vez que la prueba sea exitosa (sin error) - estás listo para presionar &quot;OK&quot; para guardar &amp;
-        como marcador este nodo.</p>
-        <h2>Escanear por Nodos</h2>
-        <p>Adicionalmente, puedes escanear la red por nodos. Monerujo empezará
-        escaneando la red por Nodos Remotos con puerto 18089. Comienza preguntando tus
-        nodos marcados por otros compañeros en la red P2P de Monero y después continúa
-        preguntando por nodos a ellos por sus compañeros, y así. Si no tienes nodos marcados
-        (o no nos comunican sobre sus compañeros),
-        Monerujo irá directo a los nodos semilla de Monero codificados en Monero. El
-        escaneo parará cuando encuentre 10 nodos remotos en total.</p>
+        <p>Puedes hacerlo de forma manual, presionando en el botón + en la parte inferior. Necesitarás ingresar los detalles del nodo en el siguiente cuadro de diálogo. En &quot;Dirección&quot; va la dirección IP del nodo - esta es la única entrada obligatoria.
+        Si el nodo se ejecuta en un puerto que no es el por defecto (e.g. 18089) deberás agregarlo donde dice &quot;Puerto&quot;.
+        Puedes también ponerle un nombre personalizado, para que puedas identificarlo fácilmente.
+        Algunos nodos requieren credenciales para usarlos. Ingresa el nombre de usuario provisto y la contraseña en los campos correspondientes.
+		Para terminar, puedes verificar que todo ande bien tocando en &quot;Prueba&quot;. Los resultados mostrarán la altura del bloque, tiempo de respuesta y dirección IP real.
+        Si el resultado da un error es usualmente porque el nombre de host provisto no
+        es alcanzable en una sensible cantidad de tiempo, las credenciales son incorrectas, o simplemente no haya un nodo corriendo en esa dirección o ese puerto.</p>
     ]]></string>
 
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
-        <h1>Usando un vínculo de pago</h1>
-        <p>Acabas de iniciar Monerujo con un vínculo de pago. Para poder enviar fondos, por favor haz lo siguiente:</p>
+        <h1>Enlace de pago</h1>
+        <p>Acabas de iniciar Monerujo con un hipervínculo para un pago en XMR. Para poder enviar fondos, por favor haz lo siguiente:</p>
         <p>
-        1. Abre el monedero desde el cual quieras gastar<br>
-        2. Espera hasta que esté sincronizado y el botón de "Enviar" aparezca<br>
-        3. Presiona el botón de "Enviar"
-        </p>
-        <p>Los detalles del pago ya estarán completos. Revísalos y prosigue como con cualquier otra transacción.</p>
+		<ol>
+		<li>Abre el monedero desde el cual quieras enviar</li>
+		<li>Espera hasta que esté sincronizado y aparezca el botón de "Enviar"</li>
+		<li>Presiona el botón de "Enviar"</li>
+		</ol>
+        <p>Los detalles del pago que contenga el enlace ya estarán completados. Revísalos y prosigue como con cualquier otra transacción.</p>
     ]]></string>
 
     <string name="help_ok">¡Entendido!</string> <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_nok">No, gracias…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">¡Descarga Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor es un software gratis y de código abierto que permite comunicarse de manera anónima a través de Internet.</p>
+        <p>Activar Tor va a derivar tu conexión a través de diferentes puntos para esconder tu dirección IP del nodo que uses. Ten en cuenta que si bien esto es mucho más privado que una conexión normal, también es <em>mucho más lento.</em></p>
+		<p>Para usar Monerujo via Tor, necesitarás tener Orbot instalado en tu dispositivo. Una vez que lo tengas, deberás activarlo presionando en el ícono <img src="ic_network_clearnet"/> junto al nodo en la pantalla principal. Orbot se iniciará, y en unos momentos estará listo para enrutar tu conexión.</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Nodo de Tor</h1>
+        <p>Este nodo tiene una dirección <em>.onion</em>. Para usarlo, debes activar el modo Tor presionando el ícono <img src="ic_network_clearnet"/> junto al nodo en la pantalla principal.</p>
     ]]></string>
 </resources>

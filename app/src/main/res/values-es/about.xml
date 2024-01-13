@@ -14,45 +14,45 @@
 
     <string name="privacy_policy"><![CDATA[
         <h1>Política de Privacidad</h1>
-        <p>Esta página le informa de nuestras políticas con respecto a la recopilación, uso
-        y divulgación de la información personal que recibimos de los usuarios de nuestra app
+        <p>Este texto te informa de nuestras políticas con respecto a la recopilación, uso
+        y divulgación de datos personales que recibimos de los usuarios de esta app
         (monerujo: Monero Wallet).
         </p>
-        <p>Al usar esta app, acepta la recopilación y uso de información en acuerdo con
+        <p>Al usar esta app, aceptas la recopilación y uso de información en acuerdo con
         esta política.
         </p>
         <h2>Datos Recopilados</h2>
-        <p>Los datos personales son cualquier tipo de dato que podrían identificar a un individuo.
+        <p>Llamamos datos personales a cualquier tipo de datos que podrían identificar a un individuo.
         </p>
         <p>Las claves y direcciones públicas de Monero son recopiladas y procesadas por la app
-        localmente con el propósito de procesar la transacciones y transmitirlas en la red de
-        Monero de forma cifrada.
+        localmente (sólo en tu dispositivo) con el propósito de procesar la transacciones y transmitirlas en la red de
+        Monero de forma encriptada.
         </p>
-        <p>Otros datos personales no son recopilados por la app.</p>
-        <p>Si utiliza la funcionalidad de cambio (opcional), monerujo obtiene la tasa
+        <p>La aplicación no recopila ningún otro dato personal.</p>
+        <p>Si utilizas la funcionalidad de intercambio de monedas (opcional), monerujo obtiene la tasa
         de cambio a través de la API pública de coinmarketcap.com.
-        Vea su política de privadad en https://coinmarketcap.com/privacy para conocer más
+        Lee su política de privadad en <a href="https://coinmarketcap.com/privacy">coinmarketcap.com/privacy</a> para conocer más
         detalles acerca de como se recopilan los datos de sus peticiones.</p>
         <h2>Permisos de la App</h2>
         <ul>
-        <li>INTERNET : Conectar a la red de Monero a través de un Daemon Nodo de Monero</li>
-        <li>READ_EXTERNAL_STORAGE : Leer los ficheros de la cartera almacenados en el dispositivo</li>
-        <li>WRITE_EXTERNAL_STORAGE : Escribir los ficheros de la cartera almacenados en el dispositivo</li>
-        <li>WAKE_LOCK : Mantener el dispositivo despierto durante la sincronización</li>
-        <li>CAMERA : Escanear códigos QR para recibir Monero</li>
+        <li>INTERNET : Necesario para conectarse a la red de Monero a través de un nodo de Monero</li>
+        <li>READ_EXTERNAL_STORAGE : Necesario para leer los archivos de los monederos almacenados en tu dispositivo</li>
+        <li>WRITE_EXTERNAL_STORAGE : Necesario para guardar cambios en esos archivos de los monederos</li>
+        <li>WAKE_LOCK : Necesario para mantener tu dispositivo despierto durante la sincronización</li>
+        <li>CAMERA : Necesario para usar la cámara y escanear los códigos QR con direcciones de Monero</li>
         </ul>
         <h2>Cambios a esta Política de Privacidad</h2>
         <p>Es posible que actualicemos esta política de privacidad de vez en cuando. Le
         notificaremos de cualquier cambio publicando la nueva política de privacidad en la app
-        y en el sitio web (www.monerujo.io)
-        Le aconsejamos que revise esta política de privacidad periódicamente para cualquier
+        y en nuestro sitio web (<a href="https://monerujo.io/">monerujo.io</a>)
+        Te aconsejamos que revises esta política de privacidad periódicamente por cualquier
         cambio.
-        <p>Esta Política de Privacidad fue actualizada por última vez: 10 de Noviembre de 2017.
+        <p>Esta Política de Privacidad fue actualizada por última vez el 10 de Noviembre de 2017.
         </p>
         <h2>Contáctanos</h2>
-        <p>Si tiene cualquier cuestión sobre nuestra política de privacidad,
-        o sobre como sus datos están siendo recolectados y procesados,
-        por favor escríbanos a privacy@monerujo.io
+        <p>Si tienes cualquier cuestión sobre nuestra política de privacidad,
+        o sobre cómo o cuáles datos están siendo recolectados y procesados,
+        por favor escríbenos a <a href="mailto:privacy@monerujo.io">privacy@monerujo.io</a>
         </p>
         ]]></string>
 </resources>

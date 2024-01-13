@@ -8,7 +8,7 @@
     <string name="menu_share">Compartir</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_receive">Recibir</string>
-    <string name="menu_rename">Cambiar nombre</string>
+    <string name="menu_rename">Renombrar</string>
     <string name="menu_backup">Copia de seguridad</string>
     <string name="menu_changepw">Cambiar contraseña</string>
     <string name="menu_back">Atrás</string>
@@ -26,7 +26,7 @@
     <string name="label_ok">Aceptar</string>
     <string name="label_cancel">Cancelar</string>
     <string name="label_close">Cerrar</string>
-    <string name="label_wallet_advanced_details">Detalle de claves</string>
+    <string name="label_wallet_advanced_details">Claves</string>
 
     <string name="label_send_success">¡Éxito!</string>
     <string name="label_send_done">Hecho</string>
@@ -95,7 +95,7 @@
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">bloques restantes</string>
-    <string name="status_syncing">Escaneando:</string>
+    <string name="status_syncing">Sincronizando:</string>
 
     <string name="message_strorage_not_writable">¡Oh no! ¡No se puede escribir en el almacenamiento externo!</string>
     <string name="message_strorage_not_permitted">¡De verdad necesitamos ese permiso para el almacenamiento externo!</string>
@@ -152,7 +152,7 @@
     <string name="generate_viewkey_label">Clave de vista</string>
     <string name="generate_spendkey_label">Clave de gasto</string>
     <string name="generate_mnemonic_label">Semilla mnemotécnica</string>
-    <string name="generate_crazypass_label">Clave loca para restaurar el monedero</string>
+    <string name="generate_crazypass_label">Contraseña del backup</string>
 
     <string name="generate_check_key">Introduce una clave válida</string>
     <string name="generate_check_address">Introduce una dirección válida</string>
@@ -211,7 +211,7 @@
     <string name="details_alert_no">No muestres nada</string>
     <string name="details_title">Secretos del monedero</string>
 
-    <string name="delete_alert_message">Este monedero será borrado.\nTus fondos se perderán para siempre sino tienes tu semilla mnemotéctica o una copia de seguridad y su correspondiente clave loca para recuperarla.\nPuedes encontrar ambas entre los secretos de tu monedero.</string>
+    <string name="delete_alert_message">Este monedero será borrado.\nTus fondos se perderán para siempre sino tienes tu semilla mnemotéctica o una copia de seguridad y su correspondiente contraseña del backup para recuperarla.\nPuedes encontrar ambas entre los secretos de tu monedero.</string>
     <string name="delete_alert_yes">Sí, hazlo</string>
     <string name="delete_alert_no">No lo hagas</string>
 
@@ -220,34 +220,34 @@
     <string name="fab_restore_key">Restaurar monedero con claves</string>
     <string name="fab_restore_seed">Restaurar monedero con semilla</string>
     <string name="info_xmrto"><![CDATA[
-        <b>Ingresaste una dirección %1$s</b><br/>
-        <i>Vas a enviar XMR y el destinatario recibirá %1$s usando el servicio <b>SideShift.ai</b>.</i>
+        <b>Ingresaste una dirección de %1$s</b><br/>
+        <i>Vas a enviar XMR y esta dirección recibirá %1$s usando un exchange.</i>
     ]]></string>
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
     <string name="info_send_xmrto_paid">Confirmación pendiente</string>
     <string name="info_send_xmrto_unpaid">Pago pendiente</string>
-    <string name="info_send_xmrto_error">Error de SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_error">Error del exchange (%1$s)</string>
     <string name="info_send_xmrto_sent">%1$s enviados!</string>
     <string name="info_send_xmrto_query">Consultando &#8230;</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Puedes enviar %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> está ofreciendo una tasa de cambio de <b>%3$s %4$s/XMR</b> <u>en este momento</u></i>.
+        <i><b>El exchange</b> está ofreciendo una tasa de cambio de <b>%3$s %4$s/XMR</b> <u>en este momento</u></i>.
     ]]></string>
     <string name="send_available_btc">Saldo: %2$s %3$s (%1$s XMR)</string>
-    <string name="label_send_progress_xmrto_create">Creando orden en SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">Consultando orden en SideShift.ai</string>
+    <string name="label_send_progress_xmrto_create">Creando orden en el exchange</string>
+    <string name="label_send_progress_xmrto_query">Consultando orden en el exchange</string>
     <string name="label_send_progress_create_tx">Preparando transacción de Monero</string>
-    <string name="label_send_progress_queryparms">Consultando parámetros en SideShift.ai</string>
-    <string name="label_generic_xmrto_error">Error de SideShift.ai</string>
+    <string name="label_send_progress_queryparms">Consultando parámetros del exchange</string>
+    <string name="label_generic_xmrto_error">Error del exchange</string>
     <string name="text_generic_xmrto_error">Código: %1$d</string>
     <string name="text_retry">Toca para reintentar</string>
     <string name="text_noretry_monero">¡Parece que está atascada!</string>
-    <string name="text_noretry">Oh no, parece que SideShift.ai no está disponible ahora.</string>
+    <string name="text_noretry">Oh no, parece que el exchange no está disponible ahora.</string>
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Cambio: %1$s %2$s/XMR)</string>
-    <string name="label_send_btc_xmrto_info">Visita https://sideshift.ai para soporte y rastreo</string>
-    <string name="label_send_btc_xmrto_key_lb">Clave secreta\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">Clave secreta SideShift.ai</string>
+    <string name="label_send_btc_xmrto_info">Visita la página del exchange para soporte y rastreo</string>
+    <string name="label_send_btc_xmrto_key_lb">Número de operación\nExchange</string>
+    <string name="label_send_btc_xmrto_key">Número de operación del Exchange</string>
     <string name="label_send_btc_address">Dirección %1$s destino</string>
     <string name="label_send_btc_amount">Monto</string>
     <string name="send_xmrto_timeout">¡Oye, tardaste demasiado!</string>
@@ -261,9 +261,9 @@
     <string name="send_amount">%1$s XMR</string>
     <string name="send_fee">+%1$s Comisión</string>
     <string name="about_whoami">Monerujo</string>
-    <string name="info_send_xmrto_success_order_label">Orden de SideShift.ai</string>
+    <string name="info_send_xmrto_success_order_label">Orden del exchange</string>
 
-    <string name="info_xmrto_enabled">Pago en BTC activado, toca para más info.</string>
+    <string name="info_xmrto_enabled">Puedes convertir de XMR a otras monedas, toca para leer más.</string>
     <string name="info_ledger_enabled">Ledger activado, toca para más info.</string>
 
     <string name="accounts_drawer_new">Crear cuenta</string>
@@ -301,7 +301,7 @@
 
     <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
 
-    <string name="menu_info">Ver secretos</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Secretos</string><!--Changed to: Show Secrets!-->
 
     <string name="menu_streetmode">Modo calle</string>
 
@@ -347,7 +347,7 @@
 
     <string name="toast_ledger_start_app">Arrancar aplicación de Monero en %1$s</string>
 
-    <string name="menu_rescan">Re-escanear</string>
+    <string name="menu_rescan">Resincronizar</string>
 
     <string name="onboarding_agree">¡Entendido!</string>
     <string name="onboarding_button_next">Siguiente</string>
@@ -358,7 +358,7 @@
     <string name="onboarding_seed_title">Escribe tu semilla mnemotécnica</string>
     <string name="onboarding_seed_information">Esas palabras otorgan acceso total a tus fondos a quien las tengan. Si la pierdes, nadie puede ayudarte y perderás tus preciados moneros.</string>
     <string name="onboarding_xmrto_title">Cambia Monero</string>
-    <string name="onboarding_xmrto_information">Monerujo tiene SideShift.ai incorporado. Simplemente ingresa una dirección de BTC, LTC, ETH, DASH o DOGE y podrás enviar esas monedas usando XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo tiene exchanges incorporados. Puedes usar XMR para pagar en otras monedas.</string>
     <string name="onboarding_nodes_title">Nodos, a tu manera</string>
     <string name="onboarding_nodes_information">Los nodos son tu conexión con la red de Monero. Elige entre nodos públicos, o totalmente ciberpunk conectándote al tuyo propio.</string>
     <string name="onboarding_fpsend_title">Envia con un dedo</string>
@@ -413,14 +413,13 @@
     <string name="menu_restore">Importar monedero</string>
     <string name="restore_failed">¡Falló la importación!</string>
 
-    <string name="menu_deletecache">Restaurar</string>
-    <string name="deletecache_alert_message">Este monedero será restaurado, y perderá toda la información personalizada (notas, nombres de cuentas y subdirecciones, claves particulares de transacciones&#8230;) Tus fondos no se verán comprometidos, pero usa esto SÓLO si el monedero está corrupto y no se puede abrir.</string>
+    <string name="menu_deletecache">Resetear</string>
+    <string name="deletecache_alert_message">Este monedero será reseteado, y perderá toda la información personalizada (notas, nombres de cuentas y subdirecciones, claves particulares de transacciones&#8230;) Tus fondos no se verán comprometidos, pero usa esto SÓLO si el monedero está corrupto y no se puede abrir.</string>
 
     <string name="node_tor_error">Requiere Tor</string>
     <string name="node_waiting">\u00A0ESPERANDO AL NODO\u00A0</string>
     <string name="tor_enable_background">Selecciona "Permitir inicios en segundo plano" en los ajustes de Orbot para usar Tor</string>
-    <string name="tor_noshift">SideShift.ai no soporta Tor.\nDesactiva Tor para cambiar XMR.</string>
-    <string name="tor_enable">Habilitar TOR</string>
+    <string name="tor_noshift">El exchange no soporta Tor.\nDesactiva Tor para cambiar XMR.</string>
 
     <string name="label_seed_offset_encrypt">Semilla encriptada (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Palabra clave adicional</string>
@@ -440,10 +439,10 @@
 
     <string name="tx_locked">Monto trabado hasta el bloque %1$d (faltan %2$d bloques ≈ %3$,.2f días)</string>
 
-    <string name="label_streetmode">Modo calle activado\nSólo se mostrarán transacciones nuevas</string>
+    <string name="label_streetmode">Modo calle activado\nSólo se ºmostrarán transacciones nuevas</string>
+	<string name="pocketchange_info">Para reducir el tiempo entre pagos, Monerujo puede crear cambio de más al enviar a costo de comisiones más altas. Va a crear e intentar mantener 10 monedas del monto seleccionado.</string>
+<string name="pocketchange_create_title">Crear cambio</string>
 
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
+<string name="label_apply">APLICAR</string>
+	
 </resources>
