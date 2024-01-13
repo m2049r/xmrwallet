@@ -151,10 +151,10 @@
 
     <string name="help_send"><![CDATA[
         <h1>Send</h1>
-        <h2>Receiver’s address</h2>
+        <h2>Receiver\'s address</h2>
         <p>This is the public address of the wallet you are sending to, you can paste it from
         your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
-        ensure you aren’t sending coins to the wrong address, once sent is not possible to reverse it.</p>
+        ensure you aren\'t sending coins to the wrong address, once sent is not possible to reverse it.</p>
         <p>In addition to using an XMR address, you can also use
         <ul>
             <li>An <a href="https://openalias.org/">OpenAlias</a> for XMR or BTC</li>
@@ -162,7 +162,7 @@
         </u>
 		</p>
         <h2>Converting XMR</h2>
-        <p>Conversion into another crypto is processed through an external exchange service. Monerujo doesn't run or is associated with these third parties, therefore cannot help you with their service, but will provide you with the information required to get support from them.</p>
+        <p>Conversion into another crypto is processed through an external exchange service. Monerujo doesn\'t run or is associated with these third parties, therefore cannot help you with their service, but will provide you with the information required to get support from them.</p>
         <h2>Available XMR pairs</h2>
 		<p>Monerujo supports conversion form XMR to the following coins:
 		<ul>
@@ -188,9 +188,9 @@
         <h1>Exchange Order<h1>
         <p>On this screen you will see the actual exchange order. This order is valid for
         a limited time - you may notice a countdown on the \"Spend\" button. This exchange rate may
-        be different to the one shown on previous screens, but as long as you accept before the time runs out, it'll be fixed.</p>
+        be different to the one shown on previous screens, but as long as you accept before the time runs out, it\'ll be fixed.</p>
         <h2>Order Number<h2>
-        <p>Since Monerujo only handles the XMR side of your transaction, your <em>order number</em> can be used to track or get support for your order on the exchange's website.</p>
+        <p>Since Monerujo only handles the XMR side of your transaction, your <em>order number</em> can be used to track or get support for your order on the exchange\'s website.</p>
         <h2>Countdown is over</h2>
         <p>Once the countdown reaches zero, you need to get a new quote from the exchange by going back to the
         previous screen, and then coming back to this screen.</p>
