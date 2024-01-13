@@ -54,7 +54,8 @@
                 android:layout_marginStart="8dp"
                 android:background="?android:selectableItemBackground"
                 android:padding="8dp"
-                android:src="@drawable/ic_content_copy_24dp" />
+                android:src="@drawable/ic_content_copy_24dp"
+                android:contentDescription="@string/copy_receive_address" />
 
         </LinearLayout>
 
@@ -97,7 +98,8 @@
                 android:backgroundTint="#ffffffff"
                 android:clickable="true"
                 android:focusable="true"
-                card_view:contentPadding="4dp">
+                card_view:contentPadding="4dp"
+                android:contentDescription="@string/label_receive_info_gen_qr_code" >
 
                 <TextView
                     android:id="@+id/tvQrCode"
