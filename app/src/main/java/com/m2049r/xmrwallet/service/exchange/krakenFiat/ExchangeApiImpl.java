@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 m2049r@monerujo.io
+ * Copyright (c) 2019-2023 m2049r@monerujo.io
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 // https://developer.android.com/training/basics/network-ops/xml
 
-package com.m2049r.xmrwallet.service.exchange.krakenEcb;
+package com.m2049r.xmrwallet.service.exchange.krakenFiat;
 
 import androidx.annotation.NonNull;
 
@@ -24,15 +24,31 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
+import com.m2049r.xmrwallet.util.ServiceHelper;
 
 import timber.log.Timber;
 
 /*
-    Gets the XMR/EUR rate from kraken and then gets the EUR/fiat rate from the ECB
+    Gets the XMR/EUR rate from kraken and then gets the EUR/fiat rate from the yadio
  */
 
 public class ExchangeApiImpl implements ExchangeApi {
     static public final String BASE_FIAT = "EUR";
+
+    final ExchangeApi krakenApi = new com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl();
+
+    private ExchangeApi getFiatApi(String symbol) {
+        return ServiceHelper.getFiatApi(symbol);
+    }
+
+    @Override
+    public String getName() {
+        return krakenApi.getName() + "+";
+    }
+
+    public String getRealName(String fiatService) {
+        return getName() + fiatService;
+    }
 
     @Override
     public void queryExchangeRate(@NonNull final String baseCurrency, @NonNull final String quoteCurrency,
@@ -40,7 +56,7 @@ public class ExchangeApiImpl implements ExchangeApi {
         Timber.d("B=%s Q=%s", baseCurrency, quoteCurrency);
         if (baseCurrency.equals(quoteCurrency)) {
             Timber.d("BASE=QUOTE=1");
-            callback.onSuccess(new ExchangeRateImpl(baseCurrency, quoteCurrency, 1.0));
+            callback.onSuccess(new ExchangeRateImpl(getName(), baseCurrency, quoteCurrency, 1.0));
             return;
         }
 
@@ -52,24 +68,21 @@ public class ExchangeApiImpl implements ExchangeApi {
 
         final String quote = Helper.BASE_CRYPTO.equals(baseCurrency) ? quoteCurrency : baseCurrency;
 
-        final ExchangeApi krakenApi =
-                new com.m2049r.xmrwallet.service.exchange.kraken.ExchangeApiImpl();
         krakenApi.queryExchangeRate(Helper.BASE_CRYPTO, BASE_FIAT, new ExchangeCallback() {
             @Override
             public void onSuccess(final ExchangeRate krakenRate) {
                 Timber.d("kraken = %f", krakenRate.getRate());
-                final ExchangeApi ecbApi =
-                        new com.m2049r.xmrwallet.service.exchange.ecb.ExchangeApiImpl();
-                ecbApi.queryExchangeRate(BASE_FIAT, quote, new ExchangeCallback() {
+                final ExchangeApi fiatApi = getFiatApi(quote);
+                fiatApi.queryExchangeRate(BASE_FIAT, quote, new ExchangeCallback() {
                     @Override
-                    public void onSuccess(final ExchangeRate ecbRate) {
-                        Timber.d("ECB = %f", ecbRate.getRate());
-                        double rate = ecbRate.getRate() * krakenRate.getRate();
+                    public void onSuccess(final ExchangeRate fiatRate) {
+                        Timber.d("FIAT = %f", fiatRate.getRate());
+                        double rate = fiatRate.getRate() * krakenRate.getRate();
                         Timber.d("Q=%s QC=%s", quote, quoteCurrency);
                         if (!quote.equals(quoteCurrency)) rate = 1.0d / rate;
                         Timber.d("rate = %f", rate);
                         final ExchangeRate exchangeRate =
-                                new ExchangeRateImpl(baseCurrency, quoteCurrency, rate);
+                                new ExchangeRateImpl(getRealName(fiatApi.getName()), baseCurrency, quoteCurrency, rate);
                         callback.onSuccess(exchangeRate);
                     }
 

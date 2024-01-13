@@ -32,5 +32,6 @@
         android:backgroundTint="#00000000"
         android:padding="8dp"
         android:src="@drawable/ic_close_white_24dp"
-        app:tint="?colorOnSecondary" />
+        app:tint="?colorOnSecondary"
+        android:contentDescription="@string/label_close" />
 </LinearLayout>

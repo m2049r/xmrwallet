@@ -629,7 +629,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onWalletStarted(final Wallet.Status walletStatus) {
-        loadPocketChangeSettings();
         runOnUiThread(() -> {
             dismissProgressDialog();
             if (walletStatus == null) {
@@ -647,6 +646,8 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         } else {
             haveWallet = true;
             invalidateOptionsMenu();
+
+            loadPocketChangeSettings();
 
             if (requestStreetMode) onEnableStreetMode();
 

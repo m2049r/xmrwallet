@@ -60,7 +60,8 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
                 android:padding="12dp"
-                android:src="@drawable/ic_network_clearnet" />
+                android:src="@drawable/ic_network_clearnet"
+                android:contentDescription="@string/tor_enable" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -103,7 +104,8 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
                 android:padding="12dp"
-                android:src="@drawable/ic_renew" />
+                android:src="@drawable/ic_renew"
+                android:contentDescription="@string/node_refresh_hint" />
         </RelativeLayout>
 
         <EditText

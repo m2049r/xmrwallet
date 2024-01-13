@@ -10,4 +10,46 @@
         <item>Oled</item>
     </string-array>
 
+    <string-array name="currency" translatable="false">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CAD</item>
+
+        <item>AUD</item>
+        <item>BGN</item>
+        <item>BRL</item>
+        <item>CNY</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>HKD</item>
+        <item>HUF</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>ISK</item>
+        <item>KRW</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>PHP</item>
+        <item>PLN</item>
+        <item>RON</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>TRY</item>
+        <item>ZAR</item>
+        <!-- shitcoins are marked with a zero width space at the end (U+200B) -->
+        <!-- this is a hack to avoid having different arrays, i.e. shitcoins have 4 charatcers -->
+        <item>ARS​</item>
+        <item>IRR​</item>
+        <item>LBP​</item>
+        <item>RUB​</item>
+        <item>VES​</item>
+    </string-array>
+
 </resources>

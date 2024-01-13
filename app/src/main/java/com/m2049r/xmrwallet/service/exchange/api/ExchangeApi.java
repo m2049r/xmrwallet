@@ -33,5 +33,6 @@ public interface ExchangeApi {
     void queryExchangeRate(@NonNull final String baseCurrency, @NonNull final String quoteCurrency,
                            @NonNull final ExchangeCallback callback);
 
+    String getName();
 }
 

@@ -70,6 +70,7 @@
             app:elevation="0dp"
             app:fabSize="normal"
             app:pressedTranslationZ="0dp"
-            app:tint="?attr/toolbarTextColor" />
+            app:tint="?attr/toolbarTextColor"
+            android:contentDescription="@string/subaddress_add" />
     </FrameLayout>
 </FrameLayout>

@@ -10,7 +10,8 @@
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="2dp"
         android:src="@drawable/ic_settings"
-        app:tint="?attr/toolbarTextColor" />
+        app:tint="?attr/toolbarTextColor"
+        android:contentDescription="@string/menu_settings" />
 
     <FrameLayout
         android:layout_width="wrap_content"

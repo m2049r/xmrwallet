@@ -11,6 +11,9 @@
     <string name="menu_rename">Renombrar</string>
     <string name="menu_backup">Copia de seguridad</string>
     <string name="menu_changepw">Cambiar contraseña</string>
+    <string name="menu_back">Atrás</string>
+    <string name="menu_close">Cerca</string>
+    <string name="menu_cancel">Cancelar</string>
 
     <string name="password_weak">Sigue escribiendo &#8230;</string>
     <string name="password_fair">Mas o menos.</string>
@@ -200,6 +203,8 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR no es un número</string>
+    <string name="copy_receive_address">Copiar dirección de recepción</string>
+    <string name="paste_give_address">Pegar dirección de recepción</string>
 
     <string name="details_alert_message">Se va a mostrar información delicada. Cualquiera con acceso a ella tendría control sobre tus fondos.\n¡Mira detrás tuyo!</string>
     <string name="details_alert_yes">Estoy seguro</string>
@@ -400,6 +405,7 @@
     <string name="subaddress_notx_label">Aún no hay transacciones recibidas en esta subdirección.</string>
     <string name="subaddress_select_label">Elige una subdirección</string>
     <string name="subaddress_details_hint">Mantén presionado para ver los detalles</string>
+    <string name="subaddress_add">Agregar subdirección</string>
 
     <string name="menu_delete">Eliminar</string><!-- like: "Delete wallet!" -->
     <string name="delete_failed">¡Falló la eliminación!</string>

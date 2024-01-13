@@ -12,6 +12,7 @@
         android:layout_alignEnd="@id/fabL"
         android:alpha="0.93"
         android:background="?android:attr/colorBackground"
+        android:focusable="true"
         android:visibility="invisible">
 
         <RelativeLayout
@@ -28,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_create_new" />
+                android:text="@string/fab_create_new"
+                android:contentDescription="@string/fab_create_new" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabNew"
@@ -61,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_viewonly" />
+                android:text="@string/fab_restore_viewonly"
+                android:contentDescription="@string/fab_restore_viewonly" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabView"
@@ -91,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_key" />
+                android:text="@string/fab_restore_key"
+                android:contentDescription="@string/fab_restore_key" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabKey"
@@ -121,7 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_seed" />
+                android:text="@string/fab_restore_seed"
+                android:contentDescription="@string/fab_restore_seed" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabSeed"
@@ -151,7 +156,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/menu_restore" />
+                android:text="@string/menu_restore"
+                android:contentDescription="@string/menu_restore" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabImport"
@@ -226,7 +232,8 @@
             app:elevation="0dp"
             app:fabSize="normal"
             app:pressedTranslationZ="0dp"
-            app:tint="?attr/toolbarTextColor" />
+            app:tint="?attr/toolbarTextColor"
+            android:contentDescription="@string/fab_create_new" />
     </LinearLayout>
 
 </RelativeLayout>
