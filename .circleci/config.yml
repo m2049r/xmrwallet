@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/code
     docker:
-      - image: cimg/android:2022.03-ndk
+      - image: cimg/android:2023.12-ndk
     environment:
       JVM_OPTS: -Xmx3200m
     steps:

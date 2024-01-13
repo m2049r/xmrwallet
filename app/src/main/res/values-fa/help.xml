@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fa">
     <string name="help_create_new"><![CDATA[
         <h1>ساخت کیف پول حدید</h1>
         <p>اگر یک کیف پول جدید مونرو نیاز دارید!</p>

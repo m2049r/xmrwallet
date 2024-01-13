@@ -56,7 +56,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     android:background="?android:selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_content_paste_24dp" />
+                    android:src="@drawable/ic_content_paste_24dp" 
+                    android:contentDescription="@string/paste_give_address" />
             </RelativeLayout>
 
             <LinearLayout
@@ -78,7 +79,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_monero" />
+                        android:src="@drawable/ic_monero"
+                        android:contentDescription="XMR" />
 
                     <ImageButton
                         android:id="@+id/ibBTC"
@@ -87,7 +89,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_btc_off" />
+                        android:src="@drawable/ic_xmrto_btc_off"
+                        android:contentDescription="BTC" />
 
                     <ImageButton
                         android:id="@+id/ibLTC"
@@ -96,7 +99,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_ltc_off" />
+                        android:src="@drawable/ic_xmrto_ltc_off"
+                        android:contentDescription="LTC"/>
 
                     <ImageButton
                         android:id="@+id/ibETH"
@@ -105,7 +109,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_eth_off" />
+                        android:src="@drawable/ic_xmrto_eth_off"
+                        android:contentDescription="ETH"/>
 
                     <ImageButton
                         android:id="@+id/ibDASH"
@@ -114,7 +119,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_dash_off" />
+                        android:src="@drawable/ic_xmrto_dash_off"
+                        android:contentDescription="DASH"/>
 
                     <ImageButton
                         android:id="@+id/ibDOGE"
@@ -123,7 +129,8 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_doge_off" />
+                        android:src="@drawable/ic_xmrto_doge_off"
+                        android:contentDescription="DOGE"/>
                 </LinearLayout>
 
                 <FrameLayout

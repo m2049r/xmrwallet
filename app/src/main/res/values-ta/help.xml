@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="en">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ta">
     <string name="help_create_new"><![CDATA[
         <h1>பணப்பையை உருவாக்கல் - புதிய</h1>
         <p>உங்களுக்கு ஒரு புதிய மொனேரொ முகவரி தேவைப்பட்டால்</p>

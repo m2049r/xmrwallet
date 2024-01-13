@@ -52,6 +52,11 @@ public class ExchangeApiImpl implements ExchangeApi {
     }
 
     @Override
+    public String getName() {
+        return "kraken";
+    }
+
+    @Override
     public void queryExchangeRate(@NonNull final String baseCurrency, @NonNull final String quoteCurrency,
                                   @NonNull final ExchangeCallback callback) {
 

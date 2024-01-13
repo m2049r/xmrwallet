@@ -67,9 +67,9 @@ public class ExchangeApiImpl implements ExchangeApi {
         // data is daily and is refreshed around 16:00 CET every working day
     }
 
-    public static boolean isSameDay(Calendar calendar, Calendar anotherCalendar) {
-        return (calendar.get(Calendar.YEAR) == anotherCalendar.get(Calendar.YEAR)) &&
-                (calendar.get(Calendar.DAY_OF_YEAR) == anotherCalendar.get(Calendar.DAY_OF_YEAR));
+    @Override
+    public String getName() {
+        return "ecb";
     }
 
     @Override
@@ -121,12 +121,12 @@ public class ExchangeApiImpl implements ExchangeApi {
         final NetCipherHelper.Request httpRequest = new NetCipherHelper.Request(baseUrl);
         httpRequest.enqueue(new okhttp3.Callback() {
             @Override
-            public void onFailure(final Call call, final IOException ex) {
+            public void onFailure(@NonNull final Call call, @NonNull final IOException ex) {
                 callback.onError(ex);
             }
 
             @Override
-            public void onResponse(final Call call, final Response response) throws IOException {
+            public void onResponse(@NonNull final Call call, @NonNull final Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
                         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -178,11 +178,12 @@ public class ExchangeApiImpl implements ExchangeApi {
                     Element cube = (Element) node;
                     if (cube.hasAttribute("time")) { // a time Cube
                         final Date time = DATE_FORMAT.parse(cube.getAttribute("time"));
+                        assert time != null;
                         date.setTime(time);
                     } else if (cube.hasAttribute("currency")
                             && cube.hasAttribute("rate")) { // a rate Cube
                         String currency = cube.getAttribute("currency");
-                        double rate = Double.valueOf(cube.getAttribute("rate"));
+                        double rate = Double.parseDouble(cube.getAttribute("rate"));
                         entries.put(currency, rate);
                     } // else an empty Cube - ignore
                 }
@@ -191,13 +192,10 @@ public class ExchangeApiImpl implements ExchangeApi {
             Timber.d(ex);
         }
         synchronized (this) {
-            if (date != null) {
-                fetchDate = Calendar.getInstance(TimeZone.getTimeZone("CET"));
-                fxDate = date;
-                fxEntries.clear();
-                fxEntries.putAll(entries);
-            }
-            // else don't change what we have
+            fetchDate = Calendar.getInstance(TimeZone.getTimeZone("CET"));
+            fxDate = date;
+            fxEntries.clear();
+            fxEntries.putAll(entries);
         }
     }
 }
