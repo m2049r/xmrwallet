@@ -23,7 +23,6 @@ import android.os.AsyncTask;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.Crypto;
 
-import org.jitsi.dnssec.validator.ValidatingResolver;
 import org.xbill.DNS.DClass;
 import org.xbill.DNS.Flags;
 import org.xbill.DNS.Message;
@@ -35,9 +34,11 @@ import org.xbill.DNS.Section;
 import org.xbill.DNS.SimpleResolver;
 import org.xbill.DNS.TXTRecord;
 import org.xbill.DNS.Type;
+import org.xbill.DNS.dnssec.ValidatingResolver;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -107,7 +108,7 @@ public class OpenAliasHelper {
                 SimpleResolver sr = new SimpleResolver(DNSSEC_SERVERS[new Random().nextInt(DNSSEC_SERVERS.length)]);
                 ValidatingResolver vr = new ValidatingResolver(sr);
                 vr.setTimeout(0, DNS_LOOKUP_TIMEOUT);
-                vr.loadTrustAnchors(new ByteArrayInputStream(ROOT.getBytes("ASCII")));
+                vr.loadTrustAnchors(new ByteArrayInputStream(ROOT.getBytes(StandardCharsets.US_ASCII)));
                 Record qr = Record.newRecord(Name.fromConstantString(name + "."), Type.TXT, DClass.IN);
                 Message response = vr.send(Message.newQuery(qr));
                 final int rcode = response.getRcode();
