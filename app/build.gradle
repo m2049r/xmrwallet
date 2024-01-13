@@ -112,6 +112,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.m2049r.xmrwallet'
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 static def getId(name) {
