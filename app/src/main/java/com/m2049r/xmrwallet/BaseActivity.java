@@ -17,11 +17,14 @@
 package com.m2049r.xmrwallet;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.CallSuper;
+import androidx.fragment.app.FragmentActivity;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.dialog.ProgressDialog;
@@ -35,17 +38,12 @@ public class BaseActivity extends SecureActivity
 
     ProgressDialog progressDialog = null;
 
-    private class SimpleProgressDialog extends ProgressDialog {
+    private static class SimpleProgressDialog extends ProgressDialog {
 
         SimpleProgressDialog(Context context, int msgId) {
             super(context);
             setCancelable(false);
             setMessage(context.getString(msgId));
-        }
-
-        @Override
-        public void onBackPressed() {
-            // prevent back button
         }
     }
 
@@ -59,13 +57,15 @@ public class BaseActivity extends SecureActivity
         progressDialog = new SimpleProgressDialog(BaseActivity.this, msgId);
         if (delayMillis > 0) {
             Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    if (progressDialog != null) progressDialog.show();
+            handler.postDelayed(() -> {
+                if (progressDialog != null) {
+                    progressDialog.show();
+                    disableBackPressed();
                 }
             }, delayMillis);
         } else {
             progressDialog.show();
+            disableBackPressed();
         }
     }
 
@@ -75,6 +75,7 @@ public class BaseActivity extends SecureActivity
         progressDialog = new LedgerProgressDialog(BaseActivity.this, mode);
         Ledger.setListener((Ledger.Listener) progressDialog);
         progressDialog.show();
+        disableBackPressed();
     }
 
     @Override
@@ -87,6 +88,28 @@ public class BaseActivity extends SecureActivity
             progressDialog.dismiss();
         }
         progressDialog = null;
+        enableBackPressed();
+    }
+
+    OnBackPressedCallback backPressedCallback = new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            // no going back
+        }
+    };
+
+    public void disableBackPressed() {
+        backPressedCallback.setEnabled(true);
+    }
+
+    public void enableBackPressed() {
+        backPressedCallback.setEnabled(false);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
     }
 
     static final int RELEASE_WAKE_LOCK_DELAY = 5000; // millisconds

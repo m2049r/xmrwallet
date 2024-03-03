@@ -40,6 +40,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -97,6 +98,13 @@ public class GenerateReviewFragment extends Fragment {
 
     private String walletPath;
     private String walletName;
+
+    private OnBackPressedCallback backPressedCallback = new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            // nothing
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -160,6 +168,9 @@ public class GenerateReviewFragment extends Fragment {
         walletPath = args.getString(REQUEST_PATH);
         localPassword = args.getString(REQUEST_PASSWORD);
         showDetails();
+        if (type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT)) {
+            backPressedCallback.setEnabled(true);
+        }
         return view;
     }
 
@@ -420,14 +431,11 @@ public class GenerateReviewFragment extends Fragment {
         pbProgress.setVisibility(View.INVISIBLE);
     }
 
-    boolean backOk() {
-        return !type.equals(GenerateReviewFragment.VIEW_TYPE_ACCEPT);
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
     }
 
     @Override
