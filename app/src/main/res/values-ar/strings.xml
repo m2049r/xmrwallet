@@ -3,7 +3,7 @@
   <string name="wallet_activity_name">محفظة</string>
   <string name="menu_about">حول</string>
   <string name="menu_privacy">سياسة الخصوصية</string>
-  <string name="menu_share">شارك</string>
+  <string name="menu_share">مشاركة</string>
   <string name="menu_help">مساعدة</string>
   <string name="menu_receive">تلقي</string>
   <string name="menu_rename">إعادة تسمية</string>
@@ -14,13 +14,13 @@
   <string name="menu_close" tools:ignore="MissingTranslation">إغلاق</string>
   <string name="menu_cancel" tools:ignore="MissingTranslation">إلغاء</string>
   <string name="password_weak">استمر في الكتابة ...</string>
-  <string name="password_fair">ممم يعني....</string>
-  <string name="password_good">تقدر تعمل احسن! يلاا حاول تاني</string>
-  <string name="password_strong">قربت.....</string>
-  <string name="password_very_strong">ايواااا يسطي!! ، هكررر!</string>
-  <string name="label_login_wallets">محافظ</string>
+  <string name="password_fair">متوسط...</string>
+  <string name="password_good">يمكنك القيام به على نحو أفضل حاول مرة أخرى</string>
+  <string name="password_strong">اوشكت استمر....</string>
+  <string name="password_very_strong">أحسنت !!!</string>
+  <string name="label_login_wallets">المحافظ</string>
   <string name="label_credits">الاعتمادات</string>
-  <string name="label_ok">اشطا</string>
+  <string name="label_ok">حسنا</string>
   <string name="label_cancel">إلغاء</string>
   <string name="label_close">إغلاق الملاحظة</string>
   <string name="label_wallet_advanced_details">معلومات مفصلة</string>
@@ -64,7 +64,7 @@
   <string name="label_send_btc_xmrto_key">رقم أمر التبادل</string>
   <string name="label_send_btc_address">عنوان الوجهة %1$s</string>
   <string name="label_send_btc_amount">مبلغ</string>
-  <string name="label_send_txid">معرف المعاملة</string>
+  <string name="label_send_txid">معرف المعاملة (id)</string>
   <string name="label_send_address">عنوان الوجهة</string>
   <string name="label_send_notes">ملاحظات</string>
   <string name="backup_progress">جاري النسخ الاحتياطي</string>
@@ -93,7 +93,7 @@
 حاول مرة أخرى أو غيرها.</string>
   <string name="status_wallet_disconnected">انقطع الاتصال</string>
   <string name="status_transaction_failed">فشلت المعاملة: %1$s</string>
-  <string name="send_xmrto_timeout">لقد انتظرت طويلاً يا صاحبي!</string>
+  <string name="send_xmrto_timeout">لقد انتظرت طويلاً يا صديقي!</string>
   <string name="service_busy">ما زلت مشغولًا بمحفظتك الأخيرة ...</string>
   <string name="prompt_rename">أعد تسمية %1$s</string>
   <string name="prompt_changepw">عبارة مرور جديدة لـ %1$s</string>
@@ -117,16 +117,16 @@
   <string name="status_synced">تمت المزامنة:</string>
   <string name="status_remaining">كتله متبقية</string>
   <string name="status_syncing">المزامنة:</string>
-  <string name="message_strorage_not_writable">وحدة التخزين الخارجية غير قابلة للكتابة! الحق!</string>
+  <string name="message_strorage_not_writable">وحدة التخزين الخارجية غير قابلة للكتابة! احذر!</string>
   <string name="message_strorage_not_permitted">نحن حقا بحاجة إلى تلك الأذونات للتخزين الخارجي!</string>
-  <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح QR!</string>
+  <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح رمز الاستجابة السريعة QR!</string>
   <string name="label_copy_viewkey">مفتاح العرض</string>
   <string name="label_copy_address">العنوان العام</string>
   <string name="label_copy_xmrtokey">مفتاح</string>
   <string name="message_copy_viewkey">تم نسخ مفتاح العرض إلى الحافظة!</string>
   <string name="message_copy_xmrtokey">تم نسخ المفتاح إلى الحافظة!</string>
   <string name="message_copy_address">تم نسخ عنوان المحفظة إلى الحافظة!</string>
-  <string name="message_copy_txid">تم نسخ معرف المعاملة إلى الحافظة!</string>
+  <string name="message_copy_txid">تم نسخ معرف المعاملة (id) إلى الحافظة!</string>
   <string name="message_nocopy">تم تعطيل النسخ لأسباب أمنية!</string>
   <string name="message_exchange_failed">لا يمكن الحصول على سعر التبادل!
 استخدم XMR/XMR أو حاول مرة أخرى</string>
@@ -175,8 +175,8 @@
   <string name="generate_check_mnemonic">أدخل بذور الـ 25 كلمة الخاصة بك</string>
   <string name="send_notes_hint">ملاحظات خاصة (اختياري)</string>
   <string name="send_generate_paymentid_hint">توليد</string>
-  <string name="send_send_label">أنفق مونيرو الحلوة الخاصة بي</string>
-  <string name="send_send_timed_label">أنفق مونيرو الحلوة الخاصة بي (%1$s)</string>
+  <string name="send_send_label">أنفاق مونيرو الحلو الخاصة بي</string>
+  <string name="send_send_timed_label">أنفاق مونيرو الحلو الخاصة بي (%1$s)</string>
   <string name="send_qr_invalid">ليس رمز QR</string>
   <string name="send_qr_address_invalid">رمز QR غير صالح للدفع</string>
   <string name="send_address_invalid">ليس عنوانًا صالحًا</string>
@@ -226,8 +226,8 @@
   <string name="copy_receive_address" tools:ignore="MissingTranslation">انسخ عنوان الاستلام</string>
   <string name="paste_give_address" tools:ignore="MissingTranslation">لصق عنوان المتلقي</string>
   <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن.
- بص وراك!</string>
-  <string name="details_alert_yes">انا امن اشطاا</string>
+ أنظر خلفك!</string>
+  <string name="details_alert_yes">انا بآمن متابعة</string>
   <string name="details_alert_no">تراجع</string>
   <string name="details_title">التفاصيل</string>
   <string name="delete_alert_message">سيتم حذف هذه المحفظة. ستختفي أموالك إلى الأبد ما لم يكن لديك بذرتك أو نسخة احتياطية لاستعادتها.</string>
@@ -294,17 +294,17 @@
   <string name="label_restoreheight">ارتفاع الأستعادة</string>
   <string name="toast_ledger_start_app">ابدأ تطبيق Monero على %1$s</string>
   <string name="menu_rescan">أعد المزامنة!</string>
-  <string name="onboarding_agree">اشطا !</string>
+  <string name="onboarding_agree">فهمت! استمر</string>
   <string name="onboarding_button_next">التالي</string>
-  <string name="onboarding_button_ready">أنا جاهز يلاا!</string>
+  <string name="onboarding_button_ready">أنا جاهز استمر!</string>
   <string name="onboarding_welcome_title">مرحبًا بك في Monerujo!</string>
-  <string name="onboarding_welcome_information">يتيح لك هذا التطبيق إنشاء واستخدام محافظ Monero. يمكنك تخزين مونيرو الحبيب فيها.</string>
+  <string name="onboarding_welcome_information">يتيح لك هذا التطبيق إنشاء واستخدام محافظ Monero. يمكنك تخزين مونيرو المفضل فيها.</string>
   <string name="onboarding_seed_title">حافظ على بذورك آمنة</string>
-  <string name="onboarding_seed_information">البذرة تمنح الوصول الكامل لمن يمتلكها. إذا فقدتها، لا يمكننا مساعدتك في استعادتها وتفقد مونيرو حبيبتك.</string>
+  <string name="onboarding_seed_information">البذرة تمنح الوصول الكامل لمن يمتلكها. إذا فقدتها، لا يمكننا مساعدتك في استعادتها وتفقد مونيرو المفضل لك.</string>
   <string name="onboarding_xmrto_title">أرسل عملة مشفرة</string>
   <string name="onboarding_xmrto_information">يحتوي Monerujo على دعم مدمج للتبادلات. يمكنك استخدام XMR للدفع بعدة عملات مشفرة أخرى.</string>
   <string name="onboarding_nodes_title">العقد، في الطريق</string>
-  <string name="onboarding_nodes_information">العقد تربطك بشبكة Monero. اختر بين العقد العامة أو فعل وضع المحقق كونن باستخدام العقد الخاصة بك.</string>
+  <string name="onboarding_nodes_information">العقد تربطك بشبكة Monero. اختر بين العقد العامة أو فعل وضع الغموض التام باستخدام العقد الخاصة بك.</string>
   <string name="onboarding_fpsend_title">أرسل بواسطة البصمة</string>
   <string name="onboarding_fpsend_information">أنت الآن قادر على إرسال XMR بواسطة بصمة إصبعك فقط إذا قمت بتمكينها. لأستخدام كلمة المرور، فقط عطل الوصول عبر بصمة الإصبع.</string>
   <string name="menu_daynight">الوضع الداكن</string>
@@ -346,7 +346,7 @@
   <string name="menu_restore">استيراد المحفظة</string>
   <string name="restore_failed">فشل الاستيراد!</string>
   <string name="menu_deletecache">إعادة ضبط المحفظة!</string>
-  <string name="deletecache_alert_message">سيتم إعادة تعيين هذه المحفظة، مما يؤدي إلى فقدان جميع البيانات خارج السلسلة (مثل الملاحظات، أسماء الحسابات والعناوين الفرعية، مفاتيح المعاملات الخاصة، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة ولا تحمل!</string>
+  <string name="deletecache_alert_message">سيتم إعادة تعيين هذه المحفظة، مما يؤدي إلى فقدان جميع البيانات خارج السلسلة (مثل الملاحظات، أسماء الحسابات والعناوين الفرعية، مفاتيح المعاملات الخاصة، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة ولا تعمل!</string>
   <string name="node_tor_error">مطلوب تور</string>
   <string name="node_waiting">\u00A0في انتظار العقدة\u00A0</string>
   <string name="tor_enable_background">فعل \"السماح بالبدء في الخلفية\" في إعدادات Orbot لاستخدام Tor!</string>
