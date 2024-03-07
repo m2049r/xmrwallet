@@ -64,7 +64,7 @@
   <string name="label_send_btc_xmrto_key">رقم أمر التبادل</string>
   <string name="label_send_btc_address">عنوان الوجهة %1$s</string>
   <string name="label_send_btc_amount">مبلغ</string>
-  <string name="label_send_txid">معرف المعاملة (id)</string>
+  <string name="label_send_txid">معرّف المعاملة (id)</string>
   <string name="label_send_address">عنوان الوجهة</string>
   <string name="label_send_notes">ملاحظات</string>
   <string name="backup_progress">جاري النسخ الاحتياطي</string>
@@ -126,7 +126,7 @@
   <string name="message_copy_viewkey">تم نسخ مفتاح العرض إلى الحافظة!</string>
   <string name="message_copy_xmrtokey">تم نسخ المفتاح إلى الحافظة!</string>
   <string name="message_copy_address">تم نسخ عنوان المحفظة إلى الحافظة!</string>
-  <string name="message_copy_txid">تم نسخ معرف المعاملة (id) إلى الحافظة!</string>
+  <string name="message_copy_txid">تم نسخ معرّف المعاملة (id) إلى الحافظة!</string>
   <string name="message_nocopy">تم تعطيل النسخ لأسباب أمنية!</string>
   <string name="message_exchange_failed">لا يمكن الحصول على سعر التبادل!
 استخدم XMR/XMR أو حاول مرة أخرى</string>
@@ -138,10 +138,10 @@
 <strong>المصادقة ببصمة الإصبع</strong>
         <p>عند</p> تمكين المصادقة ببصمة الإصبع ، يمكنك عرض رصيد المحفظة وتلقي الأموال
         دون إدخال كلمة المرور.
-        <p>ولكن لمزيد من الأمان ، سيظل monerujo يطلب منك إدخال كلمة المرور عندما
+        <p>ولكن لمزيد من الأمان ، سيظل مونيروجو يطلب منك إدخال كلمة المرور عندما
         عرض تفاصيل المحفظة أو إرسال الأموال.</p>
         <strong>تحذير أمني</strong>
-        <p>أخيرا ، يريد monerujo تذكيرك بأن أي شخص يمكنه الحصول على بصمة إصبعك سيكون
+        <p>أخيرا ، يريد مونيروجو تذكيرك بأن أي شخص يمكنه الحصول على بصمة إصبعك سيكون
         قادرا على زقزقة في رصيد محفظتك.</p>
         <p>على سبيل المثال ، يمكن لمستخدم ضار من حولك فتح محفظتك عندما تكون نائما.</p>
         <strong>هل أنت متأكد من تمكين هذه الوظيفة؟</strong>
@@ -175,8 +175,8 @@
   <string name="generate_check_mnemonic">أدخل بذور الـ 25 كلمة الخاصة بك</string>
   <string name="send_notes_hint">ملاحظات خاصة (اختياري)</string>
   <string name="send_generate_paymentid_hint">توليد</string>
-  <string name="send_send_label">أنفاق مونيرو الحلو الخاصة بي</string>
-  <string name="send_send_timed_label">أنفاق مونيرو الحلو الخاصة بي (%1$s)</string>
+  <string name="send_send_label">أنفاق مونيروجو الحلو الخاصة بي</string>
+  <string name="send_send_timed_label">أنفاق مونيروجو الحلو الخاصة بي (%1$s)</string>
   <string name="send_qr_invalid">ليس رمز QR</string>
   <string name="send_qr_address_invalid">رمز QR غير صالح للدفع</string>
   <string name="send_address_invalid">ليس عنوانًا صالحًا</string>
@@ -204,10 +204,10 @@
   <string name="tx_list_amount_negative">- %1$s</string>
   <string name="tx_list_amount_positive">+ %1$s</string>
   <string name="tx_timestamp">الطابع الزمني</string>
-  <string name="tx_id">معرف TX</string>
+  <string name="tx_id">معرّف TX</string>
   <string name="tx_key">مفتاح TX</string>
   <string name="tx_destination">الوجهة</string>
-  <string name="tx_paymentId">معرف الدفع ID</string>
+  <string name="tx_paymentId">معرّف الدفع ID</string>
   <string name="tx_blockheight">كتله</string>
   <string name="tx_amount">مبلغ</string>
   <string name="tx_fee">رسوم</string>
@@ -224,7 +224,7 @@
   <string name="receive_amount_negative">الحد الأدنى 0</string>
   <string name="receive_amount_nan">XMR ليس رقما</string>
   <string name="copy_receive_address" tools:ignore="MissingTranslation">انسخ عنوان الاستلام</string>
-  <string name="paste_give_address" tools:ignore="MissingTranslation">لصق عنوان المتلقي</string>
+  <string name="paste_give_address" tools:ignore="MissingTranslation">ألصق عنوان المتلقي</string>
   <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن.
  أنظر خلفك!</string>
   <string name="details_alert_yes">انا بآمن متابعة</string>
@@ -297,12 +297,12 @@
   <string name="onboarding_agree">فهمت! استمر</string>
   <string name="onboarding_button_next">التالي</string>
   <string name="onboarding_button_ready">أنا جاهز استمر!</string>
-  <string name="onboarding_welcome_title">مرحبًا بك في Monerujo!</string>
-  <string name="onboarding_welcome_information">يتيح لك هذا التطبيق إنشاء واستخدام محافظ Monero. يمكنك تخزين مونيرو المفضل فيها.</string>
+  <string name="onboarding_welcome_title">مرحبًا بك في مونيروجو!</string>
+  <string name="onboarding_welcome_information">يتيح لك هذا التطبيق إنشاء واستخدام محافظ Monero. يمكنك تخزين مونيروجو المفضل فيها.</string>
   <string name="onboarding_seed_title">حافظ على بذورك آمنة</string>
   <string name="onboarding_seed_information">البذرة تمنح الوصول الكامل لمن يمتلكها. إذا فقدتها، لا يمكننا مساعدتك في استعادتها وتفقد مونيرو المفضل لك.</string>
   <string name="onboarding_xmrto_title">أرسل عملة مشفرة</string>
-  <string name="onboarding_xmrto_information">يحتوي Monerujo على دعم مدمج للتبادلات. يمكنك استخدام XMR للدفع بعدة عملات مشفرة أخرى.</string>
+  <string name="onboarding_xmrto_information">يحتوي مونيروجو على دعم مدمج للتبادلات. يمكنك استخدام XMR للدفع بعدة عملات مشفرة أخرى.</string>
   <string name="onboarding_nodes_title">العقد، في الطريق</string>
   <string name="onboarding_nodes_information">العقد تربطك بشبكة Monero. اختر بين العقد العامة أو فعل وضع الغموض التام باستخدام العقد الخاصة بك.</string>
   <string name="onboarding_fpsend_title">أرسل بواسطة البصمة</string>
@@ -349,10 +349,10 @@
   <string name="deletecache_alert_message">سيتم إعادة تعيين هذه المحفظة، مما يؤدي إلى فقدان جميع البيانات خارج السلسلة (مثل الملاحظات، أسماء الحسابات والعناوين الفرعية، مفاتيح المعاملات الخاصة، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة ولا تعمل!</string>
   <string name="node_tor_error">مطلوب تور</string>
   <string name="node_waiting">\u00A0في انتظار العقدة\u00A0</string>
-  <string name="tor_enable_background">فعل \"السماح بالبدء في الخلفية\" في إعدادات Orbot لاستخدام Tor!</string>
-  <string name="tor_noshift">لا يدعم SideShift.ai ل Tor.
-عطل Tor لتبديل XMR.</string>
-  <string name="tor_enable" tools:ignore="MissingTranslation">تشغيل TOR</string>
+  <string name="tor_enable_background">فعل \"السماح بالبدء في الخلفية\" في إعدادات Orbot لاستخدام تور!</string>
+  <string name="tor_noshift">لا يدعم SideShift.ai ل تور.
+عطل تور لتبديل XMR.</string>
+  <string name="tor_enable" tools:ignore="MissingTranslation">تشغيل تور</string>
   <string name="label_seed_offset_encrypt">تشفير البذور (تجريبي)</string>
   <string name="seed_offset_hint">عبارة إزاحة البذور (اختياري)</string>
   <string name="menu_settings">الإعدادات</string>
@@ -368,7 +368,7 @@
   <string name="tx_locked">مبلغ المعاملة مقفل حتى الكتلة %1$d (في %2$d كتل ≈ %3$,.2f أيام)</string>
   <string name="label_streetmode">تم تفعيل وضع الشارع
 سيتم عرض المعاملات الجديدة فقط</string>
-  <string name="pocketchange_info">لتقليل وقت الانتظار عند الإنفاق المتكرر، يمكن لـ Monerujo إنشاء عملات فكه احتياطية على حساب رسوم اعلى. سيحاول إنشاء والحفاظ على ما لا يقل عن 6 عملات من القيمة المحددة.</string>
+  <string name="pocketchange_info">لتقليل وقت الانتظار عند الإنفاق المتكرر، يمكن لـ مونيروجو إنشاء عملات فكه احتياطية على حساب رسوم اعلى. سيحاول إنشاء والحفاظ على ما لا يقل عن 6 عملات من القيمة المحددة.</string>
   <string name="pocketchange_create_title">أنشئ تغييرا</string>
   <string name="label_apply">تطبيق</string>
 </resources>
