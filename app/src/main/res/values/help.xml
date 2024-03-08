@@ -119,7 +119,7 @@
         <h3>Details</h3>
         <p>Show the wallet details, seed &amp; keys.</p>
         <h3>Receive</h3>
-        <p>Make a QR code for receiving Moneroj.</p>
+        <p>Make a QR code for receiving Monerujo.</p>
         <h3>Rename</h3>
         <p>Rename the wallet. Backups are not renamed.</p>
         <h3>Backup</h3>
@@ -202,10 +202,10 @@
         <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
         balance is not shown on any screen so you can safely use your wallet on the street, a pub or
         other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
+        you can see that you have sent/received sweet Monerujo!</p>
         <h2>Scanning</h2>
         Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
+        scan the blockchain to see if any new Monerujo have been sent to your wallet, this only
         stores information to your phone which belongs to your wallet. Sometimes it can take a while
         because you haven’t synced in a long time.
         <h2>The Balance</h2>
