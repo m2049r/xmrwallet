@@ -303,7 +303,7 @@
   <string name="onboarding_seed_information">البذرة تمنح الوصول الكامل لمن يمتلكها. إذا فقدتها، لا يمكننا مساعدتك في استعادتها وتفقد مونيرو المفضل لك.</string>
   <string name="onboarding_xmrto_title">أرسل عملة مشفرة</string>
   <string name="onboarding_xmrto_information">يحتوي مونيروجو على دعم مدمج للتبادلات. يمكنك استخدام XMR للدفع بعدة عملات مشفرة أخرى.</string>
-  <string name="onboarding_nodes_title">العقد، في الطريق</string>
+  <string name="onboarding_nodes_title">العقد، على طريقتك</string>
   <string name="onboarding_nodes_information">العقد تربطك بشبكة Monero. اختر بين العقد العامة أو فعل وضع الغموض التام باستخدام العقد الخاصة بك.</string>
   <string name="onboarding_fpsend_title">أرسل بواسطة البصمة</string>
   <string name="onboarding_fpsend_information">أنت الآن قادر على إرسال XMR بواسطة بصمة إصبعك فقط إذا قمت بتمكينها. لأستخدام كلمة المرور، فقط عطل الوصول عبر بصمة الإصبع.</string>
