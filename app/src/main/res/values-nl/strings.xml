@@ -140,8 +140,6 @@
     <string name="status_remaining">Blokken te gaan</string>
     <string name="status_syncing">Scannen:</string>
 
-    <string name="message_strorage_not_writable">Kan niet schrijven naar externe opslag! Help!</string>
-    <string name="message_strorage_not_permitted">We hebben die machtiging voor Externe Opslag nodig!</string>
     <string name="message_camera_not_permitted">Geen camera = geen QR-codes scannen!</string>
 
     <string name="label_copy_viewkey">Alleen-lezen sleutel</string>

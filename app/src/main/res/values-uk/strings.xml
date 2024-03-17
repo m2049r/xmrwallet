@@ -141,8 +141,6 @@
     <string name="status_remaining">Блоків залишилось</string>
     <string name="status_syncing">Проскановано:</string>
 
-    <string name="message_strorage_not_writable">Зовнішнє сховище недоступне для запису! Ахтунг!</string>
-    <string name="message_strorage_not_permitted">Нам дійсно потрібні ці дозволи!</string>
     <string name="message_camera_not_permitted">Немає доступу до камери = Немає QR-сканування!</string>
 
     <string name="label_copy_viewkey">Ключ перегляду</string>

@@ -97,8 +97,6 @@
     <string name="status_remaining">bloques restantes</string>
     <string name="status_syncing">Sincronizando:</string>
 
-    <string name="message_strorage_not_writable">¡Oh no! ¡No se puede escribir en el almacenamiento externo!</string>
-    <string name="message_strorage_not_permitted">¡De verdad necesitamos ese permiso para el almacenamiento externo!</string>
     <string name="message_camera_not_permitted">¡No se puede escanear un QR sin acceso a la cámara!</string>
 
     <string name="label_copy_viewkey">Clave de Vista</string>

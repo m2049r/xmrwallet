@@ -140,8 +140,6 @@
     <string name="status_remaining">blokk van hátra</string>
     <string name="status_syncing">Beolvasás:</string>
 
-    <string name="message_strorage_not_writable">A külső tárhely nem írható! Pánik!</string>
-    <string name="message_strorage_not_permitted">Nagyon szükségünk van a külső tárhely engedélyeire!</string>
     <string name="message_camera_not_permitted">Ha nincs kamera, nincs QR-kód beolvasás sem!</string>
 
     <string name="label_copy_viewkey">Figyelőkulcs</string>

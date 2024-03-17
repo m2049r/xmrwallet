@@ -142,8 +142,6 @@
     <string name="status_remaining">残りのブロック</string>
     <string name="status_syncing">スキャン中:</string>
 
-    <string name="message_strorage_not_writable">外部ストレージへの書き込みができません!パニックです!</string>
-    <string name="message_strorage_not_permitted">外部ストレージへの書き込み権限が必要です!</string>
     <string name="message_camera_not_permitted">カメラがありません = QRコードのスキャニングもできません!</string>
 
     <string name="label_copy_viewkey">表示用キー</string>

@@ -141,8 +141,6 @@
     <string name="status_remaining">Блоков осталось</string>
     <string name="status_syncing">Просканировано:</string>
 
-    <string name="message_strorage_not_writable">Внешнее хранилище недоступно для записи! Ахтунг!</string>
-    <string name="message_strorage_not_permitted">Нам действительно нужны эти разрешения!</string>
     <string name="message_camera_not_permitted">Нет доступа к камере = Нет QR-сканирования!</string>
 
     <string name="label_copy_viewkey">Ключ просмотра</string>

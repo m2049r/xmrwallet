@@ -140,8 +140,6 @@
     <string name="status_remaining">Gjenværende blokker</string>
     <string name="status_syncing">Skanner:</string>
 
-    <string name="message_strorage_not_writable">Ekstern lagring er ikke skrivbar! Panikk!</string>
-    <string name="message_strorage_not_permitted">Vi trenger virkelig de eksternlagrings-rettighetene!</string>
     <string name="message_camera_not_permitted">Ikke noe kamera = ikke noe QR-skanning!</string>
 
     <string name="label_copy_viewkey">View-nøkkel</string>

@@ -144,8 +144,6 @@
     <string name="status_remaining">மீதமுள்ள தொகுதிகள்</string>
     <string name="status_syncing">வருடுகிறது:</string>
 
-    <string name="message_strorage_not_writable">புற சேமிப்பகம் எழுதக்கூடியதல்ல! பீதி அடையுங்கள்!</string>
-    <string name="message_strorage_not_permitted">நமக்கு கண்டிப்பாக அந்த புற சேமிப்பகத்தின் அனுமதிகள் தேவை!</string>
     <string name="message_camera_not_permitted">படமி இல்லையென்றால் QR வருடலும் இல்லை</string>
 
     <string name="label_copy_viewkey">பார்வை திறவுகோல்</string>

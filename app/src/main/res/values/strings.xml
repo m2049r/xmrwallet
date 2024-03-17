@@ -150,8 +150,6 @@
     <string name="status_remaining">Blocks remaining</string>
     <string name="status_syncing">Syncing:</string>
 
-    <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
-    <string name="message_strorage_not_permitted">We really need those External Storage permissions!</string>
     <string name="message_camera_not_permitted">No camera = No QR scanning!</string>
 
     <string name="label_copy_viewkey">View Key</string>

@@ -131,8 +131,6 @@
     <string name="status_remaining">Μπλοκς που απομένουν</string>
     <string name="status_syncing">Έρευνα:</string>
 
-    <string name="message_strorage_not_writable">Η εξωτερική αποθήκευση δεν είναι εγγράψιμη! Πανικός!</string>
-    <string name="message_strorage_not_permitted">Χρειαζόμαστε πραγματικά αυτά τα δικαιώματα εξωτερικής αποθήκευσης!</string>
     <string name="message_camera_not_permitted">Όχι κάμερα = Όχι QR σκανάρισμα!</string>
 
     <string name="label_copy_viewkey">Κλειδί Προβολής(View Key)</string>

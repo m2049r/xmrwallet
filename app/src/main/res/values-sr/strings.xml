@@ -143,8 +143,6 @@
     <string name="status_remaining">Preostali blokovi</string>
     <string name="status_syncing">Skeniranje:</string>
 
-    <string name="message_strorage_not_writable">Eksterno skladište nije zapisivo! Panika!</string>
-    <string name="message_strorage_not_permitted">Stvarno su nam potrebna odobrenja za ta eksterna skladišta!</string>
     <string name="message_camera_not_permitted">Nema kamere = Nema QR skeniranja!</string>
 
     <string name="label_copy_viewkey">Vidna šifra</string>

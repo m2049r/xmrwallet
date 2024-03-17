@@ -104,8 +104,6 @@
     <string name="status_synced">已同步：</string>
     <string name="status_remaining">区块剩余</string>
     <string name="status_syncing">扫描中：</string>
-    <string name="message_strorage_not_writable">外部存储无法写入！</string>
-    <string name="message_strorage_not_permitted">我们真的需要获得外部存储的权限！</string>
     <string name="message_camera_not_permitted">不开通的相机权限的话便无法扫描QR码！</string>
     <string name="label_copy_viewkey">查阅密钥</string>
     <string name="label_copy_address">公开地址</string>

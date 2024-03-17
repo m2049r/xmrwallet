@@ -242,8 +242,6 @@
     <string name="status_remaining">بلوک باقی مانده</string>
     <string name="status_syncing">در حال اسکن:</string>
 
-    <string name="message_strorage_not_writable">حافظهٔ خارجی قابل نوشتن نیست!</string>
-    <string name="message_strorage_not_permitted">به اجازهٔ دسترسی برای نوشتن در حافظهٔ خارجی نیازمندیم!</string>
     <string name="message_camera_not_permitted">بدون دوربین نمی‌توان کدها را اسکن کرد!</string>
 
     <string name="label_copy_viewkey">کلید مشاهده</string>

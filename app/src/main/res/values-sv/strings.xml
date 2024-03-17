@@ -139,8 +139,6 @@
     <string name="status_remaining">Återstående block</string>
     <string name="status_syncing">Skannar:</string>
 
-    <string name="message_strorage_not_writable">Externt lagringsutrymme är skrivskyddat! Panik!</string>
-    <string name="message_strorage_not_permitted">Vi behöver verkligen behörighet för Externt lagringsutrymme!</string>
     <string name="message_camera_not_permitted">Ingen kamera = Ingen QR-skanning!</string>
 
     <string name="label_copy_viewkey">Granskningsnyckel</string>

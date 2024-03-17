@@ -144,8 +144,6 @@
     <string name="status_remaining">בלוקים שנותרו</string>
     <string name="status_syncing">מחפש:</string>
 
-    <string name="message_strorage_not_writable">אחסון חיצוני אינו ניתן לכתיבה! תבהל!</string>
-    <string name="message_strorage_not_permitted">אנחנו ממש צריכים את הרשאות האחסון החיצוניות האלה!</string>
     <string name="message_camera_not_permitted">אין מצלמה = אין סריקת QR!</string>
 
     <string name="label_copy_viewkey">הצג מפתח</string>

@@ -142,8 +142,6 @@
     <string name="status_remaining">Restaj blokoj</string>
     <string name="status_syncing">Skanante:</string>
 
-    <string name="message_strorage_not_writable">La ekstera memorilo ne skribeblas! Paniko!</string>
-    <string name="message_strorage_not_permitted">Ni vere bezonas tiujn permesojn je la ekstera memorilo!</string>
     <string name="message_camera_not_permitted">Neniu filmilo = Neniu QR-kodo skaniĝas!</string>
 
     <string name="label_copy_viewkey">Vida ŝlosilo</string>

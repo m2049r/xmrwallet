@@ -142,8 +142,6 @@
     <string name="status_remaining">Blocchi rimanenti</string>
     <string name="status_syncing">Scansionando:</string>
 
-    <string name="message_strorage_not_writable">L\'unità di memoria esterna non è scrivibile! Aiuto!</string>
-    <string name="message_strorage_not_permitted">Abbiamo veramente bisogno di questi permessi sull\'unità di memoria esterna!</string>
     <string name="message_camera_not_permitted">Nessuna telecamera = Nessuna scansione QR!</string>
 
     <string name="label_copy_viewkey">Chiave di visualizzazione</string>
