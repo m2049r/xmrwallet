@@ -8,8 +8,8 @@ android {
         compileSdk 34
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 3310
-        versionName "3.3.10 'Argentina'"
+        versionCode 3311
+        versionName "3.3.11 'Argentina'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
