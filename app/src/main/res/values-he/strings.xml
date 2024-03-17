@@ -136,7 +136,7 @@
     <string name="label_wallet_receive">קבלה</string>
     <string name="label_wallet_send">שלח</string>
 
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR לא מאושר</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s לא מאושר</string>
 
     <string name="service_description">שירות מונרוג\'ו</string>
 
@@ -308,18 +308,8 @@
     <string name="toast_ledger_attached">%1$s מצורף</string>
     <string name="toast_ledger_detached">%1$s מנותק</string>
 
-    <string name="progress_nfc_write">תג כתיבה</string>
-    <string name="nfc_write_failed">תג הכתיבה נכשל!</string>
-    <string name="nfc_write_successful">כתיבת תג מוצלח</string>
-    <string name="nfc_tag_unsupported">התג אינו תומך NDEF!</string>
-    <string name="nfc_tag_size">תג מספק %1$d בתים, אבל אנחנו צריכים %2$d!</string>
-    <string name="nfc_tag_read_undef">אני לא מבין את התגית!</string>
-    <string name="nfc_tag_read_what">אני לא יודע מה אתה רוצה!</string>
-    <string name="nfc_tag_tap">NFC זמין!</string>
-
     <string name="menu_info">הצג סודות!</string>
     <string name="menu_streetmode">מצב רחוב</string>
-
 
     <string name="info_nodes_enabled">Node-o-matiC מופעל, הקש לקבלת מידע נוסף.</string>
     <string name="node_height">הבלוק האחרון שעודכן: %1$s</string>
