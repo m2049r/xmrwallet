@@ -273,6 +273,10 @@ public class Wallet {
         this.synced = true;
     }
 
+    public void setUnsynchronized() {
+        this.synced = false;
+    }
+
     public static native String getDisplayAmount(long amount);
 
     public static native long getAmountFromString(String amount);
