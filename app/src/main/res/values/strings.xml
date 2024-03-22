@@ -498,4 +498,5 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+    <string name="menu_lockmode">Lock Mode</string>
 </resources>

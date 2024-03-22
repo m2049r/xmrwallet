@@ -103,6 +103,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     private String uri = null;
 
     private long streetMode = 0;
+    private boolean isLockMode = false;
 
     @Override
     public void onPasswordChanged(String newPassword) {
@@ -310,9 +311,25 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             } else {
                 onEnableStreetMode();
             }
+        } else if (itemId == R.id.action_lockmode) {
+            if (isStreetMode()) { // disable streetmode
+                isLockMode = false;
+                onDisableStreetMode();
+            } else {
+                onEnableLockMode();
+            }
         } else
             return super.onOptionsItemSelected(item);
         return true;
+    }
+
+    @Override
+    public boolean isLockMode() { return isLockMode; }
+
+    private void onEnableLockMode() {
+        isLockMode = true;
+        enableStreetMode(true);
+        updateStreetMode();
     }
 
     private void updateStreetMode() {

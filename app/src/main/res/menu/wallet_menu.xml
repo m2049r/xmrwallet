@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_lockmode"
+        android:checkable="true"
+        android:icon="@drawable/ic_lock_24dp"
+        android:orderInCategory="90"
+        android:title="@string/menu_lockmode"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_streetmode"
         android:checkable="true"
         android:icon="@drawable/gunther_24dp"

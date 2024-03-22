@@ -219,12 +219,21 @@ public class WalletFragment extends Fragment
         String balance = amountToString(amountA);
         tvBalance.setText(balance);
         final boolean streetMode = activityCallback.isStreetMode();
-        if (!streetMode) {
-            llBalance.setVisibility(View.VISIBLE);
+        final boolean lockMode = activityCallback.isLockMode();
+        if (lockMode) {
+            llBalance.setVisibility(View.INVISIBLE);
             tvStreetView.setVisibility(View.INVISIBLE);
-        } else {
+            txlist.setVisibility(View.INVISIBLE);
+        } else if (streetMode) {
             llBalance.setVisibility(View.INVISIBLE);
             tvStreetView.setVisibility(View.VISIBLE);
+            if(txlist != null)
+                txlist.setVisibility(View.VISIBLE);
+        } else {
+            llBalance.setVisibility(View.VISIBLE);
+            tvStreetView.setVisibility(View.INVISIBLE);
+            if(txlist != null)
+                txlist.setVisibility(View.VISIBLE);
         }
         setStreetModeBackground(streetMode);
     }
@@ -492,6 +501,8 @@ public class WalletFragment extends Fragment
         boolean isSynced();
 
         boolean isStreetMode();
+
+        boolean isLockMode();
 
         long getStreetModeHeight();
 
