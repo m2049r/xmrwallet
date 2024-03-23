@@ -26,7 +26,7 @@
   <string name="label_wallet_advanced_details">معلومات مفصلة</string>
   <string name="label_send_success">تم الإرسال بنجاح</string>
   <string name="label_send_done">تم</string>
-  <string name="label_receive_info_gen_qr_code">المس لرمز الاستجابة السريعة QR</string>
+  <string name="label_receive_info_gen_qr_code">المس لرمز QR</string>
   <string name="info_xmrto_enabled">يمكنك تحويل XMR إلى عملات مشفره أخرى، انقر لقراءة المزيد.</string>
   <string name="info_ledger_enabled">تم تفعيل Ledger، اضغط لمزيد من المعلومات.</string>
   <string name="info_xmrto"><![CDATA[
@@ -119,7 +119,7 @@
   <string name="status_syncing">المزامنة:</string>
   <string name="message_strorage_not_writable">وحدة التخزين الخارجية غير قابلة للكتابة! احذر!</string>
   <string name="message_strorage_not_permitted">نحن حقا بحاجة إلى تلك الأذونات للتخزين الخارجي!</string>
-  <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح رمز الاستجابة السريعة QR!</string>
+  <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح رمز QR!</string>
   <string name="label_copy_viewkey">مفتاح العرض</string>
   <string name="label_copy_address">العنوان العام</string>
   <string name="label_copy_xmrtokey">مفتاح</string>
