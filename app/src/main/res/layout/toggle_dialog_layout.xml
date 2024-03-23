@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp">
+
+    <!-- Text at the top -->
+    <TextView
+        android:id="@+id/topTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Background Sync enables users to keep their wallets syncing in the background using only their view-keys, and having their spend key wiped from memory."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <!-- Layout for the text and switch -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingStart="20dp">
+
+        <!-- Text on the left -->
+        <TextView
+            android:id="@+id/leftTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Enable Background Sync"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!-- Switch on the right -->
+        <Switch
+            android:id="@+id/toggleSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end" />
+
+    </LinearLayout>
+</LinearLayout>

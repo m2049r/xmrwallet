@@ -35,6 +35,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -103,6 +104,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     private String uri = null;
 
     private long streetMode = 0;
+    private boolean isLockMode = false;
+    private SharedPreferences sharedPreferences ;
+    private boolean enableBkgSync;
 
     @Override
     public void onPasswordChanged(String newPassword) {
@@ -310,9 +314,57 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             } else {
                 onEnableStreetMode();
             }
+        } else if (itemId == R.id.action_lockmode) {
+            if (isStreetMode()) { // disable streetmode
+                isLockMode = false;
+                onDisableStreetMode();
+            } else {
+                onEnableLockMode();
+            }
+        } else if (itemId == R.id.action_background_sync) {
+            showToggleDialog();
         } else
             return super.onOptionsItemSelected(item);
         return true;
+    }
+
+    private void showToggleDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Background Sync");
+
+        // set the custom layout
+        final View customLayout = getLayoutInflater().inflate(R.layout.toggle_dialog_layout, null);
+        builder.setView(customLayout);
+
+        // Access the Switch widget and TextView from the inflated layout
+        final Switch toggleSwitch = customLayout.findViewById(R.id.toggleSwitch);
+
+        // Initialize the toggle button state
+        toggleSwitch.setChecked(enableBkgSync);
+
+        builder.setPositiveButton("OK", (dialogInterface, which) -> {
+            // Save the toggle state to SharedPreferences
+            enableBkgSync = toggleSwitch.isChecked();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("toggleState", enableBkgSync);
+            editor.apply();
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public boolean isLockMode() { return isLockMode; }
+
+    private void onEnableLockMode() {
+        isLockMode = true;
+        enableStreetMode(true);
+        updateStreetMode();
+
+        if(getWallet() != null && enableBkgSync) {
+            getWallet().startBackgroundSync();
+        }
     }
 
     private void updateStreetMode() {
@@ -331,6 +383,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 runOnUiThread(() -> {
                     enableStreetMode(false);
                     updateStreetMode();
+
+                    if(getWallet() != null) {
+                        getWallet().stopBackgroundSync(password);
+                    }
                 });
             }
 
@@ -414,6 +470,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
         startWalletService();
         Timber.d("onCreate() done.");
+
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        enableBkgSync = sharedPreferences.getBoolean("toggleState", false);
     }
 
     public void showNet() {
