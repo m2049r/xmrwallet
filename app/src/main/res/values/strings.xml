@@ -469,6 +469,7 @@
     <string name="preferred_theme" translatable="false">preferred_theme</string>
     <string name="preferred_nightmode" translatable="false">preferred_nightmode</string>
     <string name="preferred_locale" translatable="false">preferred_locale</string>
+    <string name="preferred_lock" translatable="false">preferred_lock</string>
     <string name="about_info" translatable="false">about_info</string>
     <string name="privacy_info" translatable="false">privacy_info</string>
     <string name="credits_info" translatable="false">credits_info</string>
@@ -498,4 +499,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>
