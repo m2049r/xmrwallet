@@ -295,7 +295,7 @@ public class LoginActivity extends BaseActivity
         toolbar.setOnButtonListener(type -> {
             switch (type) {
                 case Toolbar.BUTTON_BACK:
-                    onBackPressed();
+                    getOnBackPressedDispatcher().onBackPressed();
                     break;
                 case Toolbar.BUTTON_CLOSE:
                     finish();
@@ -1087,30 +1087,6 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void onBackPressed() {
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (f instanceof GenerateReviewFragment) {
-            if (((GenerateReviewFragment) f).backOk()) {
-                super.onBackPressed();
-            }
-        } else if (f instanceof NodeFragment) {
-            if (!((NodeFragment) f).isRefreshing()) {
-                super.onBackPressed();
-            } else {
-                Toast.makeText(LoginActivity.this, getString(R.string.node_refresh_wait), Toast.LENGTH_LONG).show();
-            }
-        } else if (f instanceof LoginFragment) {
-            if (((LoginFragment) f).isFabOpen()) {
-                ((LoginFragment) f).animateFAB();
-            } else {
-                super.onBackPressed();
-            }
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int id = item.getItemId();
         if (id == R.id.action_create_help_new) {
@@ -1294,21 +1270,21 @@ public class LoginActivity extends BaseActivity
                 if (!Ledger.check()) {
                     Ledger.disconnect();
                     runOnUiThread(() -> Toast.makeText(LoginActivity.this,
-                            getString(R.string.toast_ledger_start_app, usbDevice.getProductName()),
-                            Toast.LENGTH_SHORT)
+                                    getString(R.string.toast_ledger_start_app, usbDevice.getProductName()),
+                                    Toast.LENGTH_SHORT)
                             .show());
                 } else {
                     registerDetachReceiver();
                     onLedgerAction();
                     runOnUiThread(() -> Toast.makeText(LoginActivity.this,
-                            getString(R.string.toast_ledger_attached, usbDevice.getProductName()),
-                            Toast.LENGTH_SHORT)
+                                    getString(R.string.toast_ledger_attached, usbDevice.getProductName()),
+                                    Toast.LENGTH_SHORT)
                             .show());
                 }
             } catch (IOException ex) {
                 runOnUiThread(() -> Toast.makeText(LoginActivity.this,
-                        getString(R.string.open_wallet_ledger_missing),
-                        Toast.LENGTH_SHORT)
+                                getString(R.string.open_wallet_ledger_missing),
+                                Toast.LENGTH_SHORT)
                         .show());
             }
     }
@@ -1368,8 +1344,8 @@ public class LoginActivity extends BaseActivity
                     Timber.i("Ledger detached!");
                     if (device != null)
                         runOnUiThread(() -> Toast.makeText(LoginActivity.this,
-                                getString(R.string.toast_ledger_detached, device.getProductName()),
-                                Toast.LENGTH_SHORT)
+                                        getString(R.string.toast_ledger_detached, device.getProductName()),
+                                        Toast.LENGTH_SHORT)
                                 .show());
                     Ledger.disconnect();
                     onLedgerAction();
@@ -1383,7 +1359,7 @@ public class LoginActivity extends BaseActivity
     public void onLedgerAction() {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (f instanceof GenerateFragment) {
-            onBackPressed();
+            getOnBackPressedDispatcher().onBackPressed();
         } else if (f instanceof LoginFragment) {
             if (((LoginFragment) f).isFabOpen()) {
                 ((LoginFragment) f).animateFAB();

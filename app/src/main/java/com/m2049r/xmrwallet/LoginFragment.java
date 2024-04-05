@@ -35,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -147,6 +148,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         showNetwork();
         //activityCallback.runOnNetCipher(this::pingSelectedNode);
     }
+
+    private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            animateFAB();
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -287,6 +295,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 
     @Override
@@ -295,7 +304,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private boolean isFabOpen = false;
+    private boolean fabOpen = false;
     private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed, fabImport, fabLedger;
     private RelativeLayout fabScreen;
     private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL, fabImportL, fabLedgerL;
@@ -303,11 +312,16 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private Animation fab_pulse;
 
     public boolean isFabOpen() {
-        return isFabOpen;
+        return fabOpen;
+    }
+
+    private void setFabOpen(boolean value) {
+        fabOpen = value;
+        onBackPressedCallback.setEnabled(value);
     }
 
     public void animateFAB() {
-        if (isFabOpen) { // close the fab
+        if (isFabOpen()) { // close the fab
             fabScreen.setClickable(false);
             fabScreen.startAnimation(fab_close_screen);
             fab.startAnimation(rotate_backward);
@@ -326,7 +340,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabImportL.startAnimation(fab_close);
                 fabImport.setClickable(false);
             }
-            isFabOpen = false;
+            setFabOpen(false);
         } else { // open the fab
             fabScreen.setClickable(true);
             fabScreen.startAnimation(fab_open_screen);
@@ -360,7 +374,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabImportL.startAnimation(fab_open);
                 fabImport.setClickable(true);
             }
-            isFabOpen = true;
+            setFabOpen(true);
         }
     }
 
@@ -372,7 +386,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             animateFAB();
         } else if (id == R.id.fabNew) {
             fabScreen.setVisibility(View.INVISIBLE);
-            isFabOpen = false;
+            setFabOpen(false);
             activityCallback.onAddWallet(GenerateFragment.TYPE_NEW);
         } else if (id == R.id.fabView) {
             animateFAB();

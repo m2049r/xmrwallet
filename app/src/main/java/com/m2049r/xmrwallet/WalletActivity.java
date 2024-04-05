@@ -377,12 +377,12 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 switch (type) {
                     case Toolbar.BUTTON_BACK:
                         onDisposeRequest();
-                        onBackPressed();
+                        getOnBackPressedDispatcher().onBackPressed();
                         break;
                     case Toolbar.BUTTON_CANCEL:
                         onDisposeRequest();
                         Helper.hideKeyboard(WalletActivity.this);
-                        WalletActivity.super.onBackPressed();
+                        getOnBackPressedDispatcher().onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
                         finish();
@@ -965,23 +965,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-            return;
-        }
-        final Fragment fragment = getCurrentFragment();
-        if (fragment instanceof OnBackPressedListener) {
-            if (!((OnBackPressedListener) fragment).onBackPressed()) {
-                super.onBackPressed();
-            }
-        } else {
-            super.onBackPressed();
-        }
-        Helper.hideKeyboard(this);
-    }
-
-    @Override
     public void onFragmentDone() {
         popFragmentStack(null);
     }
@@ -1201,7 +1184,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public void onSubaddressSelected(@Nullable final Subaddress subaddress) {
         selectedSubaddressIndex = subaddress.getAddressIndex();
-        onBackPressed();
+        getOnBackPressedDispatcher().onBackPressed();
     }
 
     @Override

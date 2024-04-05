@@ -46,11 +46,6 @@ public class LedgerProgressDialog extends ProgressDialog implements Ledger.Liste
             setMessage(context.getString(R.string.progress_ledger_progress));
     }
 
-    @Override
-    public void onBackPressed() {
-        // prevent back button
-    }
-
     private int firstSubaddress = Integer.MAX_VALUE;
 
     private boolean validate = false;
