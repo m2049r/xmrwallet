@@ -4,7 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.model.WalletManager;

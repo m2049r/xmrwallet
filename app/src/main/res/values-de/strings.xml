@@ -446,4 +446,6 @@
     <string name="pocketchange_create_title">Erstelle schnellen Wechsel</string>
 
     <string name="label_apply">ANWENDEN</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

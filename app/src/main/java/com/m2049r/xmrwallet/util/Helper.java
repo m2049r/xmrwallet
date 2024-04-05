@@ -478,7 +478,6 @@ public class Helper {
                 .setPositiveButton(context.getString(R.string.label_ok), null)
                 .setNegativeButton(context.getString(R.string.label_cancel),
                         (dialog, id) -> {
-                            action.fail(wallet);
                             Helper.hideKeyboardAlways((Activity) context);
                             cancelSignal.cancel();
                             if (passwordTask != null) {
@@ -487,6 +486,7 @@ public class Helper {
                             }
                             dialog.cancel();
                             openDialog = null;
+                            action.fail(wallet);
                         });
         openDialog = alertDialogBuilder.create();
 
