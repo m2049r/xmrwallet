@@ -227,7 +227,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             final WalletFragment walletFragment = getWalletFragment();
             getWallet().rescanBlockchainAsync();
             synced = false;
-            walletFragment.unsync();
+            walletFragment.onStartRescan();
             invalidateOptionsMenu();
         } catch (ClassCastException ex) {
             Timber.d(ex.getLocalizedMessage());
