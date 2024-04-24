@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.data;
 
+import com.google.common.net.HostAndPort;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.OnionHelper;
@@ -169,10 +170,10 @@ public class Node {
             throw new IllegalArgumentException("Too many '/' or too few");
 
         daemonAddress = daParts[0];
-        String da[] = daemonAddress.split(":");
-        if ((da.length > 2) || (da.length < 1))
-            throw new IllegalArgumentException("Too many ':' or too few");
-        String host = da[0];
+        HostAndPort hostAndPort = HostAndPort.fromString(daemonAddress)
+                .withDefaultPort(getDefaultRpcPort())
+                .requireBracketsForIPv6();
+        String host = hostAndPort.getHost();
 
         if (daParts.length == 1) {
             networkType = NetworkType.NetworkType_Mainnet;
@@ -204,22 +205,12 @@ public class Node {
         }
         this.name = name;
 
-        int port;
-        if (da.length == 2) {
-            try {
-                port = Integer.parseInt(da[1]);
-            } catch (NumberFormatException ex) {
-                throw new IllegalArgumentException("Port not numeric");
-            }
-        } else {
-            port = getDefaultRpcPort();
-        }
         try {
             setHost(host);
         } catch (UnknownHostException ex) {
             throw new IllegalArgumentException("cannot resolve host " + host);
         }
-        this.rpcPort = port;
+        this.rpcPort = hostAndPort.getPort();
         this.levinPort = getDefaultLevinPort();
     }
 
@@ -233,7 +224,8 @@ public class Node {
         if (!username.isEmpty() && !password.isEmpty()) {
             sb.append(username).append(":").append(password).append("@");
         }
-        sb.append(host).append(":").append(rpcPort);
+        HostAndPort address = HostAndPort.fromParts(host, rpcPort);
+        sb.append(address.toString());
         sb.append("/");
         switch (networkType) {
             case NetworkType_Mainnet:
@@ -271,7 +263,7 @@ public class Node {
     }
 
     public String getAddress() {
-        return getHostAddress() + ":" + rpcPort;
+        return HostAndPort.fromParts(getHostAddress(), rpcPort).toString();
     }
 
     public String getHostAddress() {
