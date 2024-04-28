@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -145,6 +146,13 @@ public class NodeFragment extends Fragment
         }
     }
 
+    private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
+        @Override
+        public void handleOnBackPressed() {
+            Toast.makeText(requireActivity(), getString(R.string.node_refresh_wait), Toast.LENGTH_LONG).show();
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -187,6 +195,7 @@ public class NodeFragment extends Fragment
 
     private boolean refresh(int type) {
         if (asyncFindNodes != null) return false; // ignore refresh request as one is ongoing
+        onBackPressedCallback.setEnabled(true);
         asyncFindNodes = new AsyncFindNodes();
         updateRefreshElements();
         asyncFindNodes.execute(type);
@@ -197,6 +206,7 @@ public class NodeFragment extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 
     @Override
@@ -342,6 +352,7 @@ public class NodeFragment extends Fragment
 
         private void complete() {
             asyncFindNodes = null;
+            onBackPressedCallback.setEnabled(false);
             if (!isAdded()) return;
             //if (isCancelled()) return;
             tvPull.setText(getString(R.string.node_pull_hint));
@@ -575,6 +586,7 @@ public class NodeFragment extends Fragment
                 }
             }
         }
+
     }
 
     void restoreDefaultNodes() {

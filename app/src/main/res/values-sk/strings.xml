@@ -141,8 +141,6 @@
     <string name="status_remaining">zostávajúcich blokov</string>
     <string name="status_syncing">Skenovanie:</string>
 
-    <string name="message_strorage_not_writable">Úložisko nie je zapisovateľné! Panika!</string>
-    <string name="message_strorage_not_permitted">Fakt potrebujem oprávnenia na externé úložisko!</string>
     <string name="message_camera_not_permitted">Bez kamery = žiaden QR kód!</string>
 
     <string name="label_copy_viewkey">Prezerací Kľúč</string>
@@ -450,4 +448,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

@@ -145,8 +145,6 @@
     <string name="status_remaining">Blocs restant</string>
     <string name="status_syncing">Analyse :</string>
 
-    <string name="message_strorage_not_writable">Stockage Externe non inscriptible ! Panique !</string>
-    <string name="message_strorage_not_permitted">On a vraiment besoin de ces permissions de Stockage Externe !</string>
     <string name="message_camera_not_permitted">Pas de camera = Pas de Scan QR !</string>
 
     <string name="label_copy_viewkey">Clef d\'Audit</string>
@@ -460,4 +458,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

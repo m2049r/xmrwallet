@@ -141,8 +141,6 @@
     <string name="status_remaining">Blocos restantes</string>
     <string name="status_syncing">Escaneando:</string>
 
-    <string name="message_strorage_not_writable">Não é possível escrever no disco interno! Pânico!</string>
-    <string name="message_strorage_not_permitted">Realmente precisamos de acesso para escrever no disco interno!</string>
     <string name="message_camera_not_permitted">Sem câmera = Impossível escanear códigos QR!</string>
 
     <string name="label_copy_viewkey">Chave de visualização</string>
@@ -442,4 +440,6 @@ aqui.</string>
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

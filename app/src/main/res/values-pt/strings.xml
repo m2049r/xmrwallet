@@ -138,8 +138,6 @@
     <string name="status_remaining">Blocos remanescentes</string>
     <string name="status_syncing">A examinar:</string>
 
-    <string name="message_strorage_not_writable">Não é possível escrever no espaço externo! Pânico!</string>
-    <string name="message_strorage_not_permitted">Nós preciamos mesmo da permissão de escrever no espaço externo!</string>
     <string name="message_camera_not_permitted">Sem câmara = Sem códigos QR!</string>
 
     <string name="label_copy_viewkey">Ver chave</string>
@@ -453,4 +451,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

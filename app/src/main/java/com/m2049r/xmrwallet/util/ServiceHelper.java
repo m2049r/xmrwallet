@@ -1,16 +1,9 @@
 package com.m2049r.xmrwallet.util;
 
-import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeApi;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import lombok.Getter;
-import lombok.NonNull;
 import okhttp3.HttpUrl;
 
 public class ServiceHelper {

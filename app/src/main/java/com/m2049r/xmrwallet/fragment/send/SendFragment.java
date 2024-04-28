@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,7 +38,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.transition.MaterialContainerTransform;
-import com.m2049r.xmrwallet.OnBackPressedListener;
 import com.m2049r.xmrwallet.OnUriScannedListener;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.WalletActivity;
@@ -63,7 +63,7 @@ public class SendFragment extends Fragment
         SendAmountWizardFragment.Listener,
         SendConfirmWizardFragment.Listener,
         SendSuccessWizardFragment.Listener,
-        OnBackPressedListener, OnUriScannedListener {
+        OnUriScannedListener {
 
     final static public int MIXIN = 0;
 
@@ -248,16 +248,18 @@ public class SendFragment extends Fragment
     private SpendViewPager spendViewPager;
     private SpendPagerAdapter pagerAdapter;
 
-    @Override
-    public boolean onBackPressed() {
-        if (isComitted()) return true; // no going back
-        if (spendViewPager.getCurrentItem() == 0) {
-            return false;
-        } else {
-            spendViewPager.previous();
-            return true;
+    OnBackPressedCallback backPressedCallback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (isComitted()) return; // no going back
+            if (spendViewPager.getCurrentItem() == 0) {
+                setEnabled(false);
+                requireActivity().getOnBackPressedDispatcher().onBackPressed();
+            } else {
+                spendViewPager.previous();
+            }
         }
-    }
+    };
 
     @Override
     public boolean onUriScanned(BarcodeData barcodeData) {
@@ -546,8 +548,9 @@ public class SendFragment extends Fragment
         final MaterialContainerTransform transform = new MaterialContainerTransform();
         transform.setDrawingViewId(R.id.fragment_container);
         transform.setDuration(getResources().getInteger(R.integer.tx_item_transition_duration));
-        transform.setAllContainerColors(ThemeHelper.getThemedColor(getContext(), android.R.attr.colorBackground));
+        transform.setAllContainerColors(ThemeHelper.getThemedColor(requireContext(), android.R.attr.colorBackground));
         setSharedElementEnterTransition(transform);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
     }
 
     @Override

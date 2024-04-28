@@ -19,7 +19,9 @@ package com.m2049r.xmrwallet.util;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.util.TypedValue;
 
 import androidx.annotation.ColorInt;

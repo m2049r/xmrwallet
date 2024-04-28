@@ -16,3 +16,5 @@
 /app/prodStagenet
 /app/.cxx
 /monerujo.id
+/external-libs/VERSION
+/external-libs/include/wallet2_api.h

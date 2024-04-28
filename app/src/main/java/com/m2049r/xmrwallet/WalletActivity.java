@@ -45,6 +45,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
@@ -70,6 +71,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
 import timber.log.Timber;
 
 public class WalletActivity extends BaseActivity implements WalletFragment.Listener,
@@ -200,12 +202,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return getWallet().getSubaddress(major, minor);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Timber.d("onStart()");
-    }
-
     private void startWalletService() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -237,12 +233,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             Timber.d(ex.getLocalizedMessage());
             // keep calm and carry on
         }
-    }
-
-    @Override
-    protected void onStop() {
-        Timber.d("onStop()");
-        super.onStop();
     }
 
     @Override
@@ -377,12 +367,12 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
                 switch (type) {
                     case Toolbar.BUTTON_BACK:
                         onDisposeRequest();
-                        onBackPressed();
+                        getOnBackPressedDispatcher().onBackPressed();
                         break;
                     case Toolbar.BUTTON_CANCEL:
                         onDisposeRequest();
                         Helper.hideKeyboard(WalletActivity.this);
-                        WalletActivity.super.onBackPressed();
+                        getOnBackPressedDispatcher().onBackPressed();
                         break;
                     case Toolbar.BUTTON_CLOSE:
                         finish();
@@ -498,12 +488,16 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     protected void onPause() {
         Timber.d("onPause()");
+        lock();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if (locked) {
+            unlock();
+        }
         Timber.d("onResume()");
     }
 
@@ -965,23 +959,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-            return;
-        }
-        final Fragment fragment = getCurrentFragment();
-        if (fragment instanceof OnBackPressedListener) {
-            if (!((OnBackPressedListener) fragment).onBackPressed()) {
-                super.onBackPressed();
-            }
-        } else {
-            super.onBackPressed();
-        }
-        Helper.hideKeyboard(this);
-    }
-
-    @Override
     public void onFragmentDone() {
         popFragmentStack(null);
     }
@@ -1201,7 +1178,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     @Override
     public void onSubaddressSelected(@Nullable final Subaddress subaddress) {
         selectedSubaddressIndex = subaddress.getAddressIndex();
-        onBackPressed();
+        getOnBackPressedDispatcher().onBackPressed();
     }
 
     @Override
@@ -1233,4 +1210,31 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         getWallet().setPocketChangeSetting(Wallet.PocketChangeSetting.from(settings));
     }
 
+    @Getter
+    private boolean locked = false;
+
+    private void unlock() {
+        Helper.promptPassword(WalletActivity.this, getWalletName(), false, new Helper.PasswordAction() {
+            @Override
+            public void act(String walletName, String password, boolean fingerprintUsed) {
+                popFragmentStack(null);
+                locked = false;
+                Timber.d("locked: %b", isLocked());
+            }
+
+            @Override
+            public void fail(String walletName) {
+                finish();
+            }
+        });
+    }
+
+    private void lock() {
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.preferred_lock), false)) {
+            replaceFragment(new LockFragment(), null, null);
+            locked = true;
+        }
+        Timber.d("locked %b", isLocked());
+    }
 }

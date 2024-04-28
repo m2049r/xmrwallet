@@ -140,8 +140,6 @@
     <string name="status_remaining">Plokki veel</string>
     <string name="status_syncing">Uuendamine:</string>
 
-    <string name="message_strorage_not_writable">Mälusse kirjutamine ei õnnestunud! Paanika-Jaanika!</string>
-    <string name="message_strorage_not_permitted">Mälusse kirjutamine on tegelikult meile väga oluline!</string>
     <string name="message_camera_not_permitted">Pole kaamerat = pole QR koodide lugemist!</string>
 
     <string name="label_copy_viewkey">Vaatamise võti</string>
@@ -447,4 +445,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

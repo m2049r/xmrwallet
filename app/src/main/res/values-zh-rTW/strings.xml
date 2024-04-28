@@ -141,8 +141,6 @@
     <string name="status_remaining">剩餘區塊</string>
     <string name="status_syncing">掃描中：</string>
 
-    <string name="message_strorage_not_writable">外部儲存空間無法寫入！</string>
-    <string name="message_strorage_not_permitted">我們真的很需要你的外部儲存空間權限！</string>
     <string name="message_camera_not_permitted">沒有相機 = 不能掃描QR碼！</string>
 
     <string name="label_copy_viewkey">查看金鑰</string>
@@ -448,4 +446,6 @@
     <string name="pocketchange_create_title">Create Change</string>
 
     <string name="label_apply">APPLY</string>
+
+    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>
