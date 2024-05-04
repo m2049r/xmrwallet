@@ -323,8 +323,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     public void animateFAB() {
         if (isFabOpen()) { // close the fab
             fabScreen.setClickable(false);
+            fabScreen.setVisibility(View.INVISIBLE);
             fabScreen.startAnimation(fab_close_screen);
             fab.startAnimation(rotate_backward);
+            fab.setContentDescription(getString(R.string.fab_create_or_restore));
             if (fabLedgerL.getVisibility() == View.VISIBLE) {
                 fabLedgerL.startAnimation(fab_close);
                 fabLedger.setClickable(false);
@@ -343,8 +345,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             setFabOpen(false);
         } else { // open the fab
             fabScreen.setClickable(true);
+            fabScreen.setVisibility(View.VISIBLE);;
             fabScreen.startAnimation(fab_open_screen);
             fab.startAnimation(rotate_forward);
+            fab.setContentDescription(getString(R.string.fab_close));
             if (activityCallback.hasLedger()) {
                 fabLedgerL.setVisibility(View.VISIBLE);
                 fabNewL.setVisibility(View.GONE);

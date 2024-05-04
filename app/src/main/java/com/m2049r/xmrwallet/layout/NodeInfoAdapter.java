@@ -52,6 +52,8 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     private final FragmentActivity activity;
 
+    private Context context;
+
     public NodeInfoAdapter(FragmentActivity activity, OnInteractionListener listener) {
         this.activity = activity;
         this.listener = listener;
@@ -107,10 +109,11 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         List<NodeInfo> newItems = new ArrayList<>(nodeItems);
         if (!nodeItems.contains(node))
             newItems.add(node);
-        setNodes(newItems); // in case the nodeinfo has changed
+        setNodes(newItems, context); // in case the nodeinfo has changed
     }
 
-    public void setNodes(Collection<NodeInfo> newItemsCollection) {
+    public void setNodes(Collection<NodeInfo> newItemsCollection, Context iContext) {
+        context = iContext;
         List<NodeInfo> newItems;
         if (newItemsCollection != null) {
             newItems = new ArrayList<>(newItemsCollection);
@@ -126,7 +129,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
     }
 
     public void setNodes() {
-        setNodes(nodeItems);
+        setNodes(nodeItems, context);
     }
 
     private boolean itemsClickable = true;
@@ -156,7 +159,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
                 showStar();
                 if (!nodeItem.isFavourite()) {
                     nodeItem.setSelected(false);
-                    setNodes(nodeItems);
+                    setNodes(nodeItems, context);
                 }
             });
             itemView.setOnClickListener(this);
@@ -166,8 +169,10 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         private void showStar() {
             if (nodeItem.isFavourite()) {
                 ibBookmark.setImageResource(R.drawable.ic_favorite_24dp);
+                ibBookmark.setContentDescription(context.getString(R.string.node_remove_favourite).replace("%1$", nodeItem.toNameString()));
             } else {
                 ibBookmark.setImageResource(R.drawable.ic_favorite_border_24dp);
+                ibBookmark.setContentDescription(context.getString(R.string.node_add_favourite).replace("%1$", nodeItem.toNameString()));
             }
         }
 
