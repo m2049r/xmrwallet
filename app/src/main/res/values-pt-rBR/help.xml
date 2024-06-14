@@ -291,25 +291,25 @@
     ]]></string>
 
     <string name="help_ok">Entendi!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_nok">Não, obrigado...</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Instale o Orbot!</string>
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor, abreviação de "The Onion Router", é software livre e de código aberto que permite
+        comunicação anônima.</p>
+        <p>Ativar o Tor irá rotear sua conexão por vários relés e esconder seu endereço IP do nó.
+        Mantenha que isso é mais privado porém mais <b>lento</b>.</p>
+        <p>Para usar o Tor com o Monerujo, você precisará do Orbot instalado em seu dispositivo.
+        Após instalar o Orbot, tenha certeza que está ativado clicando no ícone de rede na tela da lista
+        de carteiras.</p>
+        <p>Se você tiver problemas se conectando com o Tor, tente conseguir uma nova identidade
+        no app do Orbot (ícone no lado superior direito).</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Node Tor</h1>
+        <p>Este é um nó .onion. Para usá-lo, você deve ativar o modo Tor tocando o ícone
+        <img src="ic_network_clearnet"/> perto do topo da página de lista de carteiras.</p>
     ]]></string>
 </resources>
