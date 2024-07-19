@@ -71,7 +71,7 @@
         pessoa sem ter medo de perder seu Monero. As pessoas te enviarão Monero usando este endereço.
         <h2>Semente Mnemônica</h2>
         Essa é a única informação necessária para recuperar sua carteira no futuro e obter controle absoluto de seus fundos.
-        Manter essa informação privada e segura é muito importante, já que ela dá acesso total dos seus Moneros
+        Manter essa informação privada e segura é muito importante, já que ela dá acesso total ao seu Monero
         para <em>qualquer pessoa</em>! Se você não anotou as palavras em um local seguro, faça-o o mais rápido possível!
         <h2>Senha dos arquivos da carteira</h2>
         Certifique-se de anotar e se lembrar desta senha. Caso você reinicie o dispositivo ou desinstale a aplicação, será preciso
@@ -142,7 +142,7 @@
         O ID da transação pode ser usado em exploradores de Blockchain do Monero como o
         <a href="https://xmrchain.net/">https://xmrchain.net/</a> para identificar a transação (ofuscada).
         <h2>Chave TX (chave da transação)</h2>
-        Essa é a chava privada da sua transação. Matenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
+        Essa é a chave privada da sua transação. Mantenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
         qual das assinaturas é a sua, transformando sua transação em transparente para essa pessoa ou entidade.
         <h2>Bloco</h2>
         Bloco no qual sua transação foi incluída pelos mineradores.
@@ -291,25 +291,25 @@
     ]]></string>
 
     <string name="help_ok">Entendi!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_nok">Não, obrigado...</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Instale o Orbot!</string>
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor, abreviação de "The Onion Router", é software livre e de código aberto que permite
+        comunicação anônima.</p>
+        <p>Ativar o Tor irá rotear sua conexão por vários relés e esconder seu endereço IP do nó.
+        Mantenha que isso é mais privado porém mais <b>lento</b>.</p>
+        <p>Para usar o Tor com o Monerujo, você precisará do Orbot instalado em seu dispositivo.
+        Após instalar o Orbot, tenha certeza que está ativado clicando no ícone de rede na tela da lista
+        de carteiras.</p>
+        <p>Se você tiver problemas se conectando com o Tor, tente conseguir uma nova identidade
+        no app do Orbot (ícone no lado superior direito).</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Node Tor</h1>
+        <p>Este é um nó .onion. Para usá-lo, você deve ativar o modo Tor tocando o ícone
+        <img src="ic_network_clearnet"/> perto do topo da página de lista de carteiras.</p>
     ]]></string>
 </resources>
