@@ -16,7 +16,17 @@
 
 package com.m2049r.xmrwallet;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,7 +34,8 @@ import android.os.PowerManager;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.CallSuper;
-import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.dialog.ProgressDialog;
@@ -158,5 +169,88 @@ public class BaseActivity extends SecureActivity
         BarcodeData popped = barcodeData;
         barcodeData = null;
         return popped;
+    }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Network network = connectivityManager.getActiveNetwork();
+            if (network == null) return false;
+            NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(network);
+            return networkCapabilities != null && (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH));
+        } else {
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnected();
+        }
+    }
+
+    static private final int REQUEST_CODE_BLUETOOTH_PERMISSIONS = 32423;
+
+    void btPermissionGranted() {
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE_BLUETOOTH_PERMISSIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                btPermissionGranted();
+            } // else onResume() takes care of trying again
+        }
+    }
+
+    private void showBtPermissionsDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(R.string.bluetooth_permissions);
+        alertDialogBuilder.setPositiveButton(R.string.bluetooth_permissions_ok,
+                (dialog, which) -> requestBtPermissions());
+        alertDialogBuilder.setCancelable(false);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void showAppInfoDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(R.string.bluetooth_permissions);
+        alertDialogBuilder.setPositiveButton(R.string.bluetooth_permissions_settings, (dialog, which) -> {
+            Intent i = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            i.addCategory(Intent.CATEGORY_DEFAULT);
+            i.setData(Uri.parse("package:" + getPackageName()));
+            startActivity(i);
+        });
+        alertDialogBuilder.setNegativeButton(R.string.bluetooth_permissions_cancel, (dialog, which) -> {
+            finish();
+        });
+        alertDialogBuilder.setCancelable(false);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void requestBtPermissions() {
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH_SCAN}, REQUEST_CODE_BLUETOOTH_PERMISSIONS);
+    }
+
+    private boolean firstCheck = true;
+
+    void checkBtPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if ((ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) ||
+                    (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)) {
+                if (shouldShowRequestPermissionRationale(android.Manifest.permission.BLUETOOTH_SCAN) || shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_CONNECT)) {
+                    showBtPermissionsDialog();
+                } else {
+                    if (firstCheck) {
+                        requestBtPermissions();
+                    } else {
+                        showAppInfoDialog();
+                    }
+                }
+            } else {
+                btPermissionGranted();
+            }
+            firstCheck = false;
+        } else {
+            btPermissionGranted();
+        }
     }
 }

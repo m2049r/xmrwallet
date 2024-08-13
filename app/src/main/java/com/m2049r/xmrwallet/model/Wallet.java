@@ -111,7 +111,11 @@ public class Wallet {
     @RequiredArgsConstructor
     @Getter
     public enum Device {
-        Device_Undefined(0, 0), Device_Software(50, 200), Device_Ledger(5, 20);
+        Undefined(0, 0),
+        Software(50, 200),
+        Ledger(5, 20),
+        Trezor(5, 20),
+        Sidekick(5, 20);
         private final int accountLookahead;
         private final int subaddressLookahead;
     }

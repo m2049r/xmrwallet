@@ -254,7 +254,7 @@ public class GenerateReviewFragment extends Fragment {
             showProgress();
             if ((walletPath != null)
                     && (WalletManager.getInstance().queryWalletDevice(walletPath + ".keys", getPassword())
-                    == Wallet.Device.Device_Ledger)
+                    == Wallet.Device.Ledger)
                     && (progressCallback != null)) {
                 progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE);
                 dialogOpened = true;
@@ -286,10 +286,11 @@ public class GenerateReviewFragment extends Fragment {
             height = wallet.getRestoreHeight();
             seed = wallet.getSeed(getSeedOffset());
             switch (wallet.getDeviceType()) {
-                case Device_Ledger:
+                case Ledger:
                     viewKey = Ledger.Key();
                     break;
-                case Device_Software:
+                case Software:
+                case Sidekick:
                     viewKey = wallet.getSecretViewKey();
                     break;
                 default:

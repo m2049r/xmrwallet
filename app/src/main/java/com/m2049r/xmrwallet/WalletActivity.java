@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 m2049r
+ * Copyright (c) 2017-2024 m2049r
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -92,6 +93,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     public static final String REQUEST_FINGERPRINT_USED = "fingerprint";
     public static final String REQUEST_STREETMODE = "streetmode";
     public static final String REQUEST_URI = "uri";
+    public static final String REQUEST_SIDEKICK = "sidekick";
 
     private NavigationView accountsView;
     private DrawerLayout drawer;
@@ -202,19 +204,9 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         return getWallet().getSubaddress(major, minor);
     }
 
-    private void startWalletService() {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            acquireWakeLock();
-            String walletId = extras.getString(REQUEST_ID);
-            // we can set the streetmode height AFTER opening the wallet
-            requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
-            password = extras.getString(REQUEST_PW);
-            uri = extras.getString(REQUEST_URI);
-            connectWalletService(walletId, password);
-        } else {
-            finish();
-        }
+    private void startWalletService(String walletId) {
+        acquireWakeLock();
+        connectWalletService(walletId, password);
     }
 
     private void stopWalletService() {
@@ -330,7 +322,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         });
     }
 
-
     public void onWalletChangePassword() {
         try {
             GenerateReviewFragment detailsFragment = (GenerateReviewFragment) getCurrentFragment();
@@ -356,33 +347,39 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             return;
         }
 
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) finish(); // we need extras!
+
+        String walletId = extras.getString(REQUEST_ID);
+        requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
+        password = extras.getString(REQUEST_PW);
+        uri = extras.getString(REQUEST_URI);
+        boolean sidekick = extras.getBoolean(REQUEST_SIDEKICK);
+
         setContentView(R.layout.activity_wallet);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setOnButtonListener(new Toolbar.OnButtonListener() {
-            @Override
-            public void onButton(int type) {
-                switch (type) {
-                    case Toolbar.BUTTON_BACK:
-                        onDisposeRequest();
-                        getOnBackPressedDispatcher().onBackPressed();
-                        break;
-                    case Toolbar.BUTTON_CANCEL:
-                        onDisposeRequest();
-                        Helper.hideKeyboard(WalletActivity.this);
-                        getOnBackPressedDispatcher().onBackPressed();
-                        break;
-                    case Toolbar.BUTTON_CLOSE:
-                        finish();
-                        break;
-                    case Toolbar.BUTTON_SETTINGS:
-                        Toast.makeText(WalletActivity.this, getString(R.string.label_credits), Toast.LENGTH_SHORT).show();
-                    case Toolbar.BUTTON_NONE:
-                    default:
-                        Timber.e("Button " + type + "pressed - how can this be?");
-                }
+        toolbar.setOnButtonListener(type -> {
+            switch (type) {
+                case Toolbar.BUTTON_BACK:
+                    onDisposeRequest();
+                    getOnBackPressedDispatcher().onBackPressed();
+                    break;
+                case Toolbar.BUTTON_CANCEL:
+                    onDisposeRequest();
+                    Helper.hideKeyboard(WalletActivity.this);
+                    getOnBackPressedDispatcher().onBackPressed();
+                    break;
+                case Toolbar.BUTTON_CLOSE:
+                    finish();
+                    break;
+                case Toolbar.BUTTON_SETTINGS:
+                    Toast.makeText(WalletActivity.this, getString(R.string.label_credits), Toast.LENGTH_SHORT).show();
+                case Toolbar.BUTTON_NONE:
+                default:
+                    Timber.e("Button " + type + "pressed - how can this be?");
             }
         });
 
@@ -398,11 +395,16 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         showNet();
 
         Fragment walletFragment = new WalletFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName()).commit();
-        Timber.d("fragment added");
+        final FragmentTransaction tx =
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, walletFragment, WalletFragment.class.getName());
+        if (sidekick) {
+            tx.add(R.id.fragment_bluetooth, new BluetoothFragment(BluetoothFragment.Mode.CLIENT), BluetoothFragment.class.getName());
+        }
+        tx.commit();
+        Timber.d("fragments added");
 
-        startWalletService();
+        if (!sidekick) startWalletService(walletId);
         Timber.d("onCreate() done.");
     }
 
@@ -616,7 +618,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
 
     @Override
     public void onWalletOpen(final Wallet.Device device) {
-        if (device == Wallet.Device.Device_Ledger) {
+        if (device == Wallet.Device.Ledger) {
             runOnUiThread(() -> showLedgerProgressDialog(LedgerProgressDialog.TYPE_RESTORE));
         }
     }
@@ -766,7 +768,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
             intent.putExtra(WalletService.REQUEST_CMD_TX_TAG, tag);
             startService(intent);
             Timber.d("CREATE TX request sent");
-            if (getWallet().getDeviceType() == Wallet.Device.Device_Ledger)
+            if (getWallet().getDeviceType() == Wallet.Device.Ledger)
                 showLedgerProgressDialog(LedgerProgressDialog.TYPE_SEND);
         } else {
             Timber.e("Service not bound");
@@ -1132,11 +1134,12 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         protected void onPreExecute() {
             super.onPreExecute();
             switch (getWallet().getDeviceType()) {
-                case Device_Ledger:
+                case Ledger:
                     showLedgerProgressDialog(LedgerProgressDialog.TYPE_ACCOUNT);
                     dialogOpened = true;
                     break;
-                case Device_Software:
+                case Software:
+                case Sidekick:
                     showProgressDialog(R.string.accounts_progress_new);
                     dialogOpened = true;
                     break;

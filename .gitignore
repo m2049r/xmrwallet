@@ -8,12 +8,8 @@
 .DS_Store
 /app/build
 /app/release
-/app/alpha
-/app/prod
-/app/alphaMainnet
-/app/prodMainnet
-/app/alphaStagenet
-/app/prodStagenet
+/app/alpha*
+/app/prod*
 /app/.cxx
 /monerujo.id
 /external-libs/VERSION
