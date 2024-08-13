@@ -4,7 +4,9 @@
 
     <item
         android:id="@+id/action_help_sidekick"
+        android:icon="@drawable/ic_help_white_24dp"
         android:orderInCategory="300"
         android:title="@string/menu_help"
         app:showAsAction="ifRoom" />
+
 </menu>

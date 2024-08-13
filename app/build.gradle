@@ -7,7 +7,7 @@ android {
         buildToolsVersion = '34.0.0'
         compileSdk 34
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 35
         versionCode 4005
         versionName "4.0.5 'Sidekick'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
