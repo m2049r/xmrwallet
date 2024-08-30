@@ -26,7 +26,7 @@
         <p>Personlig data är all slags data som kan identifiera en individ.
         </p>
         <p>Moneronycklar och publika adresser samlas in och behandlas av appen lokalt
-        för att behandla transaktioner och skickas till Monero-nätverket i krypterad form.
+        för att behandla transaktioner och skicka dem till Monero-nätverket i krypterad form.
         </p>
         <p>Någon annan personlig data insamlas inte av appen.</p>
         <p>Om du använder växlingsfunktionen (valfri) hämtar monerujo valutakurser

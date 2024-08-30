@@ -107,7 +107,7 @@
     <string name="status_wallet_connect_failed">Kunde inte ansluta till nod!\nKontrollera användarnamn/lösenord</string>
     <string name="status_wallet_connect_wrongversion">Inkompatibel nodversion - du måste uppdatera!</string>
     <string name="status_wallet_node_invalid">Ogiltig nod!\nPröva någon annan.</string>
-    <string name="status_wallet_connect_ioex">Noden kan inte nås!\nFörsök igen eller med en annan.</string>
+    <string name="status_wallet_connect_ioex">Noden kan inte nås!\nFörsök igen eller med en annan nod.</string>
 
     <string name="status_wallet_disconnected">Frånkopplad</string>
 
@@ -283,7 +283,7 @@
     <string name="fab_restore_seed">Återställ plånbok från startvärde på 25 ord</string>
 
     <string name="accounts_drawer_new">Skapa konto</string>
-    <string name="accounts_new">Lade till nytt konto #%1$d</string>
+    <string name="accounts_new">Skapade nytt konto #%1$d</string>
     <string name="tx_account">Konto #</string>
 
     <string name="send_sweepall">Skicka alla bekräftade pengar i detta konto!</string>
