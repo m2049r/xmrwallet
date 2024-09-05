@@ -27,7 +27,7 @@
     <string name="label_credits">Credits</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Cancel</string>
-    <string name="label_close">Close Note</string>
+    <string name="label_close">Close</string>
     <string name="label_wallet_advanced_details">Detailed information</string>
 
     <string name="label_send_success">Successfully sent</string>
@@ -197,6 +197,7 @@
     <string name="generate_wallet_type_seed">Seed</string>
     <string name="generate_wallet_type_view">View</string>
     <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
+    <string name="generate_wallet_type_sidekick" translatable="false">Sidekick</string>
 
     <string name="generate_address_hint">Public Address</string>
     <string name="generate_viewkey_hint">View Key</string>
@@ -501,4 +502,32 @@
     <string name="label_apply">APPLY</string>
 
     <string name="setting_lock">Lock Wallet in Background</string>
+
+    <string name="sidekick_activity_name" translatable="false">Sidekick Wallet</string>
+    <string name="sidekick" translatable="false">monerujo Sidekick Service</string>
+
+    <string name="bt_not_connected" translatable="false">Bluetooth not connected</string>
+    <string name="title_paired_devices" translatable="false">Paired Devices</string>
+    <string name="title_other_devices" translatable="false">Other Devices</string>
+    <string name="button_scan" translatable="false">Scan</string>
+    <string name="none_paired" translatable="false">None paired</string>
+    <string name="none_found" translatable="false">None found</string>
+    <string name="select_device" translatable="false">Select Device</string>
+    <string name="label_bluetooth" translatable="false">Bluetooth</string>
+    <string name="menu_bluetooth" translatable="false">Connect Sidekick</string>
+    <string name="bluetooth_select_label" translatable="false">Select Sidekick device</string>
+    <string name="bluetooth_scanning" translatable="false">Scanning for devices</string>
+
+    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
+    <string name="bluetooth_permissions_ok">OK</string>
+    <string name="bluetooth_permissions_settings">App Settings</string>
+    <string name="bluetooth_permissions_cancel">Cancel</string>
+
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="sidekick_not_connected">[not connected]</string>
+    <string name="sidekick_confirm_tx">Confirm Transaction</string>
+    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
+        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
+    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
+    <string name="fab_restore_sidekick">Restore from Sidekick</string>
 </resources>

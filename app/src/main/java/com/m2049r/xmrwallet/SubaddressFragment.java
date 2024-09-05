@@ -195,7 +195,7 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if ((wallet.getDeviceType() == Wallet.Device.Device_Ledger) && (progressCallback != null)) {
+            if ((wallet.getDeviceType() == Wallet.Device.Ledger) && (progressCallback != null)) {
                 progressCallback.showLedgerProgressDialog(LedgerProgressDialog.TYPE_SUBADDRESS);
                 dialogOpened = true;
             }

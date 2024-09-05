@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_create_new"
-                android:contentDescription="@string/fab_create_new" />
+                android:contentDescription="@string/fab_create_new"
+                android:text="@string/fab_create_new" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabNew"
@@ -63,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_viewonly"
-                android:contentDescription="@string/fab_restore_viewonly" />
+                android:contentDescription="@string/fab_restore_viewonly"
+                android:text="@string/fab_restore_viewonly" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabView"
@@ -94,8 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_key"
-                android:contentDescription="@string/fab_restore_key" />
+                android:contentDescription="@string/fab_restore_key"
+                android:text="@string/fab_restore_key" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabKey"
@@ -125,8 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/fab_restore_seed"
-                android:contentDescription="@string/fab_restore_seed" />
+                android:contentDescription="@string/fab_restore_seed"
+                android:text="@string/fab_restore_seed" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabSeed"
@@ -156,8 +156,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:text="@string/menu_restore"
-                android:contentDescription="@string/menu_restore" />
+                android:contentDescription="@string/menu_restore"
+                android:text="@string/menu_restore" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabImport"
@@ -207,6 +207,37 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/fabSidekickL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/fabSidekickT"
+                style="@style/MoneroFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:text="@string/fab_restore_sidekick" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSidekick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@+id/fabSidekickT"
+                android:elevation="6dp"
+                android:src="@drawable/ic_sidekick_restore"
+                app:borderWidth="0dp"
+                app:fabSize="mini"
+                app:pressedTranslationZ="12dp" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -227,13 +258,13 @@
             android:layout_gravity="bottom|end"
             android:backgroundTint="@android:color/transparent"
             android:backgroundTintMode="src_in"
+            android:contentDescription="@string/fab_create_new"
             android:src="@drawable/ic_add"
             app:borderWidth="0dp"
             app:elevation="0dp"
             app:fabSize="normal"
             app:pressedTranslationZ="0dp"
-            app:tint="?attr/toolbarTextColor"
-            android:contentDescription="@string/fab_create_new" />
+            app:tint="?attr/toolbarTextColor" />
     </LinearLayout>
 
 </RelativeLayout>

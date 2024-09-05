@@ -8,4 +8,10 @@
         android:orderInCategory="100"
         android:title="@string/menu_help"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sidekick"
+        android:icon="@drawable/ic_sidekick_restore"
+        android:orderInCategory="200"
+        android:title="@string/menu_bluetooth"
+        app:showAsAction="ifRoom" />
 </menu>

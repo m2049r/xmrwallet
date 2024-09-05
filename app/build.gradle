@@ -7,9 +7,9 @@ android {
         buildToolsVersion = '34.0.0'
         compileSdk 34
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 3311
-        versionName "3.3.11 'Argentina'"
+        targetSdkVersion 35
+        versionCode 4005
+        versionName "4.0.5 'Sidekick'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -24,7 +24,7 @@ android {
         }
     }
 
-    flavorDimensions 'type', 'net'
+    flavorDimensions = ['type', 'net']
     productFlavors {
         mainnet {
             dimension 'net'
@@ -132,10 +132,10 @@ static def getId(name) {
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
 
-    implementation 'androidx.core:core:1.12.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -143,7 +143,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.preference:preference:1.2.1'
 
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.12.0'
 
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     implementation "com.squareup.okhttp3:okhttp:4.12.0"

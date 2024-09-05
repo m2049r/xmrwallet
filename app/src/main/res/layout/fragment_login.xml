@@ -19,94 +19,101 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <TextView
-            style="@style/MoneroLabel.Heading"
+        <LinearLayout
+            android:id="@+id/llNetInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:gravity="start|center"
-            android:padding="8dp"
-            android:text="@string/label_daemon" />
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp">
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/pbNetwork"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_alignStart="@id/ibNetwork"
-                android:layout_alignTop="@+id/ibNetwork"
-                android:layout_alignEnd="@id/ibNetwork"
-                android:layout_alignBottom="@id/ibNetwork"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:progress="100"
-                android:visibility="visible"
-                app:indicatorInset="9dp"
-                app:indicatorSize="30dp"
-                app:trackThickness="2dp" />
-
-            <ImageButton
-                android:id="@+id/ibNetwork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:padding="12dp"
-                android:src="@drawable/ic_network_clearnet"
-                android:contentDescription="@string/tor_enable" />
-
-            <FrameLayout
+            <TextView
+                style="@style/MoneroLabel.Heading"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_alignTop="@+id/ibNetwork"
-                android:layout_alignBottom="@id/ibNetwork"
-                android:layout_toStartOf="@+id/ibRenew"
-                android:layout_toEndOf="@+id/ibNetwork">
-
-                <LinearLayout
-                    android:id="@+id/llNode"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvNodeName"
-                        style="@style/MoneroText.PosAmount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="monero-v9.monerujo.io" />
-
-                    <TextView
-                        android:id="@+id/tvInfo"
-                        style="@style/MoneroText.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Last Block: 2 minutes ago" />
-                </LinearLayout>
-            </FrameLayout>
-
-            <ImageButton
-                android:id="@+id/ibRenew"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:padding="12dp"
-                android:src="@drawable/ic_renew"
-                android:contentDescription="@string/node_refresh_hint" />
-        </RelativeLayout>
+                android:layout_marginStart="8dp"
+                android:gravity="start|center"
+                android:padding="8dp"
+                android:text="@string/label_daemon" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/pbNetwork"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignStart="@id/ibNetwork"
+                    android:layout_alignTop="@+id/ibNetwork"
+                    android:layout_alignEnd="@id/ibNetwork"
+                    android:layout_alignBottom="@id/ibNetwork"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:progress="100"
+                    android:visibility="visible"
+                    app:indicatorInset="9dp"
+                    app:indicatorSize="30dp"
+                    app:trackThickness="2dp" />
+
+                <ImageButton
+                    android:id="@+id/ibNetwork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/tor_enable"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_network_clearnet" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_alignTop="@+id/ibNetwork"
+                    android:layout_alignBottom="@id/ibNetwork"
+                    android:layout_toStartOf="@+id/ibRenew"
+                    android:layout_toEndOf="@+id/ibNetwork">
+
+                    <LinearLayout
+                        android:id="@+id/llNode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvNodeName"
+                            style="@style/MoneroText.PosAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="monero-v9.monerujo.io" />
+
+                        <TextView
+                            android:id="@+id/tvInfo"
+                            style="@style/MoneroText.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Last Block: 2 minutes ago" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <ImageButton
+                    android:id="@+id/ibRenew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/node_refresh_hint"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_renew" />
+            </RelativeLayout>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etDummy"
