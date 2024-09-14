@@ -355,6 +355,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             fabScreen.setVisibility(View.VISIBLE);;
             fabScreen.startAnimation(fab_open_screen);
             fab.startAnimation(rotate_forward);
+            fab.setContentDescription(getString(R.string.fab_close));
             if ((activityCallback.hasDevice(Wallet.Device.Ledger)
                     || activityCallback.hasDevice(Wallet.Device.Sidekick))) {
                 fabNewL.setVisibility(View.GONE);
