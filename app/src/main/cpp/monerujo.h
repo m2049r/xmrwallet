@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 m2049r
+ * Copyright (c) 2017-2024 m2049r
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@
 
 #include <jni.h>
 
+#include <string>
+
 /*
 #include <android/log.h>
 
@@ -28,6 +30,10 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 */
 
+void ThrowException(JNIEnv *jenv, const char* type, const char* msg) {
+    jenv->ThrowNew(jenv->FindClass(type), msg);
+}
+
 jfieldID getHandleField(JNIEnv *env, jobject obj, const char *fieldName = "handle") {
     jclass c = env->GetObjectClass(obj);
     return env->GetFieldID(c, fieldName, "J"); // of type long
@@ -35,8 +41,16 @@ jfieldID getHandleField(JNIEnv *env, jobject obj, const char *fieldName = "handl
 
 template<typename T>
 T *getHandle(JNIEnv *env, jobject obj, const char *fieldName = "handle") {
+    return reinterpret_cast<T *>(env->GetLongField(obj, getHandleField(env, obj, fieldName)));
+}
+
+template<typename T>
+void destroyNativeObject(JNIEnv *env, T nativeObjectHandle, jobject obj, const char *fieldName = "handle") {
     jlong handle = env->GetLongField(obj, getHandleField(env, obj, fieldName));
-    return reinterpret_cast<T *>(handle);
+    if (handle != 0) {
+        ThrowException(env, "java/lang/IllegalStateException", "invalid handle (destroy)");
+    }
+    delete reinterpret_cast<T *>(nativeObjectHandle);
 }
 
 void setHandleFromLong(JNIEnv *env, jobject obj, jlong handle) {
@@ -54,7 +68,7 @@ extern "C"
 {
 #endif
 
-extern const char* const MONERO_VERSION; // the actual monero core version
+extern const char *const MONERO_VERSION; // the actual monero core version
 
 // from monero-core crypto/hash-ops.h - avoid #including monero code here
 enum {
@@ -62,18 +76,40 @@ enum {
     HASH_DATA_AREA = 136
 };
 
-void cn_slow_hash(const void *data, size_t length, char *hash, int variant, int prehashed, uint64_t height);
+void cn_slow_hash(const void *data, size_t length, char *hash, int variant, int prehashed,
+                  uint64_t height);
 
 inline void slow_hash(const void *data, const size_t length, char *hash) {
     cn_slow_hash(data, length, hash, 0 /*variant*/, 0 /*prehashed*/, 0 /*height*/);
 }
 
 inline void slow_hash_broken(const void *data, char *hash, int variant) {
-    cn_slow_hash(data, 200 /*sizeof(union hash_state)*/, hash, variant, 1 /*prehashed*/, 0 /*height*/);
+    cn_slow_hash(data, 200 /*sizeof(union hash_state)*/, hash, variant, 1 /*prehashed*/,
+                 0 /*height*/);
 }
-
 #ifdef __cplusplus
 }
 #endif
 
+namespace Monerujo {
+    class SidekickWallet {
+    public:
+        enum Status {
+            Status_Ok,
+            Status_Error,
+            Status_Critical
+        };
+
+        SidekickWallet(uint8_t networkType, std::string a, std::string b);
+
+        ~SidekickWallet();
+
+        std::string call(int commandId, const std::string &request);
+
+        void reset();
+
+        Status status() const;
+
+    };
+}
 #endif //XMRWALLET_WALLET_LIB_H

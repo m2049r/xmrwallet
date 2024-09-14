@@ -18,7 +18,6 @@ package com.m2049r.xmrwallet;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -67,7 +66,19 @@ public class GenerateFragment extends Fragment {
     static final String TYPE_KEY = "key";
     static final String TYPE_SEED = "seed";
     static final String TYPE_LEDGER = "ledger";
+    static final String TYPE_SIDEKICK = "sidekick";
     static final String TYPE_VIEWONLY = "view";
+
+    static Wallet.Device getDeviceType(String type) {
+        switch (type) {
+            case TYPE_SIDEKICK:
+                return Wallet.Device.Sidekick;
+            case TYPE_LEDGER:
+                return Wallet.Device.Ledger;
+            default:
+                return Wallet.Device.Software;
+        }
+    }
 
     private TextInputLayout etWalletName;
     private PasswordEntryView etWalletPassword;
@@ -195,6 +206,7 @@ public class GenerateFragment extends Fragment {
                 etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_UNSPECIFIED);
                 break;
             case TYPE_LEDGER:
+            case TYPE_SIDEKICK:
                 etWalletPassword.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
                 etWalletPassword.getEditText().setOnEditorActionListener((v, actionId, event) -> {
                     if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
@@ -308,7 +320,7 @@ public class GenerateFragment extends Fragment {
     private boolean checkName() {
         String name = etWalletName.getEditText().getText().toString();
         boolean ok = true;
-        if (name.length() == 0) {
+        if (name.isEmpty()) {
             etWalletName.setError(getString(R.string.generate_wallet_name));
             ok = false;
         } else if (name.charAt(0) == '.') {
@@ -450,11 +462,12 @@ public class GenerateFragment extends Fragment {
                 activityCallback.onGenerate(name, crazyPass, seed, offset, height);
                 break;
             case TYPE_LEDGER:
+            case TYPE_SIDEKICK:
                 bGenerate.setEnabled(false);
                 if (fingerprintAuthAllowed) {
                     KeyStoreHelper.saveWalletUserPass(requireActivity(), name, password);
                 }
-                activityCallback.onGenerateLedger(name, crazyPass, height);
+                activityCallback.onGenerateDevice(getDeviceType(type), name, crazyPass, height);
                 break;
             case TYPE_KEY:
             case TYPE_VIEWONLY:
@@ -498,6 +511,8 @@ public class GenerateFragment extends Fragment {
                 return getString(R.string.generate_wallet_type_seed);
             case TYPE_LEDGER:
                 return getString(R.string.generate_wallet_type_ledger);
+            case TYPE_SIDEKICK:
+                return getString(R.string.generate_wallet_type_sidekick);
             case TYPE_VIEWONLY:
                 return getString(R.string.generate_wallet_type_view);
             default:
@@ -515,7 +530,7 @@ public class GenerateFragment extends Fragment {
 
         void onGenerate(String name, String password, String address, String viewKey, String spendKey, long height);
 
-        void onGenerateLedger(String name, String password, long height);
+        void onGenerateDevice(Wallet.Device device, String name, String password, long height);
 
         void setTitle(String title);
 
@@ -555,6 +570,9 @@ public class GenerateFragment extends Fragment {
             case TYPE_LEDGER:
                 inflater.inflate(R.menu.create_wallet_ledger, menu);
                 break;
+            case TYPE_SIDEKICK:
+                inflater.inflate(R.menu.create_wallet_sidekick, menu);
+                break;
             case TYPE_VIEWONLY:
                 inflater.inflate(R.menu.create_wallet_view, menu);
                 break;
@@ -581,13 +599,11 @@ public class GenerateFragment extends Fragment {
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.label_ok), null)
                 .setNegativeButton(getString(R.string.label_cancel),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Helper.hideKeyboardAlways(activity);
-                                etWalletMnemonic.getEditText().getText().clear();
-                                dialog.cancel();
-                                ledgerDialog = null;
-                            }
+                        (dialog, id) -> {
+                            Helper.hideKeyboardAlways(activity);
+                            etWalletMnemonic.getEditText().getText().clear();
+                            dialog.cancel();
+                            ledgerDialog = null;
                         });
 
         ledgerDialog = alertDialogBuilder.create();

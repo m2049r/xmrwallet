@@ -86,7 +86,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     public boolean needsTransactionUpdateOnNewBlock() {
-        return (infoItems.size() > 0) && !infoItems.get(0).isConfirmed();
+        return (!infoItems.isEmpty()) && !infoItems.get(0).isConfirmed();
     }
 
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {

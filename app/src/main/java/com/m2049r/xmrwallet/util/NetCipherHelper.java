@@ -23,6 +23,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+import androidx.core.content.ContextCompat;
+
 import com.burgstaller.okhttp.AuthenticationCacheInterceptor;
 import com.burgstaller.okhttp.CachingAuthenticatorDecorator;
 import com.burgstaller.okhttp.digest.CachingAuthenticator;
@@ -144,7 +146,7 @@ public class NetCipherHelper implements StatusCallback {
                 .addStatusCallback(me);
 
         // deal with  org.torproject.android.intent.action.STATUS = STARTS_DISABLED
-        me.context.registerReceiver(orbotStatusReceiver, new IntentFilter(OrbotHelper.ACTION_STATUS));
+        ContextCompat.registerReceiver(me.context, orbotStatusReceiver, new IntentFilter(OrbotHelper.ACTION_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
 
         me.startTor();
     }

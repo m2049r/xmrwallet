@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 m2049r
+ * Copyright (c) 2017-2024 m2049r
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@
 #include "monerujo.h"
 #include "wallet2_api.h"
 
-//TODO explicit casting jlong, jint, jboolean to avoid warnings
-
 #ifdef __cplusplus
 extern "C"
 {
@@ -34,7 +32,6 @@ extern "C"
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR  , LOG_TAG,__VA_ARGS__)
 
 static JavaVM *cachedJVM;
-static jclass class_String;
 static jclass class_ArrayList;
 static jclass class_WalletListener;
 static jclass class_CoinsInfo;
@@ -42,16 +39,10 @@ static jclass class_TransactionInfo;
 static jclass class_Transfer;
 static jclass class_Ledger;
 static jclass class_WalletStatus;
+static jclass class_BluetoothService;
+static jclass class_SidekickService;
 
 std::mutex _listenerMutex;
-
-//void jstringToString(JNIEnv *env, std::string &str, jstring jstr) {
-//    if (!jstr) return;
-//    const int len = env->GetStringUTFLength(jstr);
-//    const char *chars = env->GetStringUTFChars(jstr, nullptr);
-//    str.assign(chars, len);
-//    env->ReleaseStringUTFChars(jstr, chars);
-//}
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     cachedJVM = jvm;
@@ -62,8 +53,6 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     }
     //LOGI("JNI_OnLoad ok");
 
-    class_String = static_cast<jclass>(jenv->NewGlobalRef(
-            jenv->FindClass("java/lang/String")));
     class_ArrayList = static_cast<jclass>(jenv->NewGlobalRef(
             jenv->FindClass("java/util/ArrayList")));
     class_CoinsInfo = static_cast<jclass>(jenv->NewGlobalRef(
@@ -78,6 +67,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
             jenv->FindClass("com/m2049r/xmrwallet/ledger/Ledger")));
     class_WalletStatus = static_cast<jclass>(jenv->NewGlobalRef(
             jenv->FindClass("com/m2049r/xmrwallet/model/Wallet$Status")));
+    class_BluetoothService = static_cast<jclass>(jenv->NewGlobalRef(
+            jenv->FindClass("com/m2049r/xmrwallet/service/BluetoothService")));
     return JNI_VERSION_1_6;
 }
 #ifdef __cplusplus
@@ -1684,6 +1675,79 @@ int LedgerFind(char *buffer, size_t len) {
 
     detachJVM(jenv, envStat);
     return ret;
+}
+
+//
+// SidekickWallet Stuff
+//
+
+/**
+ * @brief BtExchange     - exchange data with Monerujo Device
+ * @param request        - buffer for data to send
+ * @param request_len    - length of data to send
+ * @param response       - buffer for received data
+ * @param max_resp_len   - size of receive buffer
+ *
+ * @return length of received data in response or -1 if error, -2 if response buffer too small
+ */
+int BtExchange(
+        unsigned char *request,
+        unsigned int request_len,
+        unsigned char *response,
+        unsigned int max_resp_len) {
+    JNIEnv *jenv;
+    int envStat = attachJVM(&jenv);
+    if (envStat == JNI_ERR) return -16;
+
+    jmethodID exchangeMethod = jenv->GetStaticMethodID(class_BluetoothService, "Exchange",
+                                                       "([B)[B");
+
+    auto reqLen = static_cast<jsize>(request_len);
+    jbyteArray reqData = jenv->NewByteArray(reqLen);
+    jenv->SetByteArrayRegion(reqData, 0, reqLen, (jbyte *) request);
+    LOGD("BtExchange cmd: 0x%02x with %u bytes", request[0], reqLen);
+    auto dataRecv = (jbyteArray)
+            jenv->CallStaticObjectMethod(class_BluetoothService, exchangeMethod, reqData);
+    jenv->DeleteLocalRef(reqData);
+    if (dataRecv == nullptr) {
+        detachJVM(jenv, envStat);
+        LOGD("BtExchange: error reading");
+        return -1;
+    }
+    jsize respLen = jenv->GetArrayLength(dataRecv);
+    LOGD("BtExchange response is %u bytes", respLen);
+    if (respLen <= max_resp_len) {
+        jenv->GetByteArrayRegion(dataRecv, 0, respLen, (jbyte *) response);
+        jenv->DeleteLocalRef(dataRecv);
+        detachJVM(jenv, envStat);
+        return static_cast<int>(respLen);;
+    } else {
+        jenv->DeleteLocalRef(dataRecv);
+        detachJVM(jenv, envStat);
+        LOGE("BtExchange response buffer too small: %u < %u", respLen, max_resp_len);
+        return -2;
+    }
+}
+
+/**
+ * @brief ConfirmTransfers
+ * @param transfers - string of "fee (':' address ':' amount)+"
+ *
+ * @return true on accept, false on reject
+ */
+bool ConfirmTransfers(const char *transfers) {
+    JNIEnv *jenv;
+    int envStat = attachJVM(&jenv);
+    if (envStat == JNI_ERR) return -16;
+
+    jmethodID confirmMethod = jenv->GetStaticMethodID(class_SidekickService, "ConfirmTransfers",
+                                                      "(Ljava/lang/String;)Z");
+
+    jstring _transfers = jenv->NewStringUTF(transfers);
+    auto confirmed =
+            jenv->CallStaticBooleanMethod(class_SidekickService, confirmMethod, _transfers);
+    jenv->DeleteLocalRef(_transfers);
+    return confirmed;
 }
 
 #ifdef __cplusplus
