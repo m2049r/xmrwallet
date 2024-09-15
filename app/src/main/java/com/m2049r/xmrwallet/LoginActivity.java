@@ -1413,6 +1413,11 @@ public class LoginActivity extends BaseActivity
         } catch (ClassCastException ex) {
             // ignore it
         }
+        if (connectedDeviceName != null) {
+            setSubtitle(getString(R.string.sidekick_connected));
+        } else {
+            setSubtitle(null);
+        }
     }
 
     @Override
