@@ -4,12 +4,12 @@ android {
     ndkVersion '17.2.4988734'
     defaultConfig {
         applicationId "com.m2049r.xmrwallet"
-        buildToolsVersion = '34.0.0'
-        compileSdk 34
+        buildToolsVersion = '35.0.0'
+        compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 4005
-        versionName "4.0.5 'Sidekick'"
+        versionCode 4006
+        versionName "4.0.6 'Sidekick'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

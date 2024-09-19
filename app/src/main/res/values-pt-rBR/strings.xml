@@ -443,6 +443,9 @@ aqui.</string>
 
     <string name="setting_lock">Lock Wallet in Background</string>
 
+    <string name="menu_bluetooth">Connect Sidekick</string>
+    <string name="bluetooth_select_label">Select Sidekick device</string>
+
     <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
     <string name="bluetooth_permissions_ok">OK</string>
     <string name="bluetooth_permissions_settings">App Settings</string>
@@ -455,4 +458,5 @@ aqui.</string>
         to turn on flight mode and restart the app with only Bluetooth enabled!</string>
     <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
     <string name="fab_restore_sidekick">Restore from Sidekick</string>
+    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>
