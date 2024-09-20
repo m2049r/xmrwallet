@@ -311,8 +311,6 @@
     <string name="menu_language">Langue</string>
     <string name="language_system_default">Utiliser la Langue du Système</string>
 
-    <string name="receive_desc_hint">Description (optionnelle)</string>
-
     <string name="send_address_not_openalias">Adresse OpenAlias indisponible</string>
     <string name="send_address_openalias">Sécurisé OpenAlias &#x2714;</string>
     <string name="send_address_resolve_openalias">Résolution OpenAlias&#8230;</string>
