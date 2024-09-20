@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="wallet_activity_name">Portefeuille</string>
+    <string name="wallet_activity_name">Porte-monnaie</string>
 
     <string name="menu_about">À Propos</string>
     <string name="menu_privacy">Politique de Confidentialité</string>
@@ -12,14 +12,14 @@
     <string name="menu_backup">Sauvegarder</string>
     <string name="menu_changepw">Modifier Phrase secrète</string>
     <string name="menu_back">Précédent</string>
-    <string name="menu_close">fermer</string>
+    <string name="menu_close">Fermer</string>
     <string name="menu_cancel">Annuler</string>
 
     <string name="password_weak">Continuez de taper &#8230;</string>
     <string name="password_fair">Bof &#8230;</string>
-    <string name="password_good">Allez, vous pouvez mieux faire!</string>
+    <string name="password_good">Allez, vous pouvez mieux faire !</string>
     <string name="password_strong">On y arrive &#8230;</string>
-    <string name="password_very_strong">Yeah baby, h4ck3r style !</string>
+    <string name="password_very_strong">Oh oui, style h4ck3r !</string>
 
     <string name="label_login_wallets">Portefeuilles</string>
     <string name="label_credits">Crédits</string>
@@ -29,7 +29,7 @@
     <string name="label_wallet_advanced_details">Plus d\'infos</string>
 
     <string name="label_send_success">Envoi réussi</string>
-    <string name="label_send_done">Fait</string>
+    <string name="label_send_done">Effectué</string>
 
     <string name="label_receive_info_gen_qr_code">Toucher pour le QR Code</string>
 
@@ -44,7 +44,6 @@
     <string name="info_send_xmrto_success_order_label">Ordres SideShift.ai</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
 
     <string name="info_send_xmrto_paid">En Attente de Confirmation</string>
     <string name="info_send_xmrto_unpaid">En Attente de Paiement</string>
@@ -97,16 +96,18 @@
 
     <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
+    <string name="delete_failed">Échec de l'effacement !</string>
     <string name="rename_failed">Renommage Échoué !</string>
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
-    <string name="label_daemon">Nœud</string>
+    <string name="label_daemon">Réseau</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
     <string name="status_wallet_connecting">Connexion &#8230;</string>
     <string name="status_wallet_connect_failed">Connexion au nœud échouée !\nVérifiez utilisateur/mot de passe</string>
+    <string name="status_wallet_connect_wrongversion">Version du nœud incompatible - veuillez mettre à jour !</string>
     <string name="status_wallet_node_invalid">Nœud invalide !\nEssayez un autre.</string>
     <string name="status_wallet_connect_ioex">Nœud injoignable !\nEssayez à nouveau ou un autre.</string>
 
@@ -125,7 +126,7 @@
     <string name="prompt_password">Mot de passe pour %1$s</string>
     <string name="prompt_fingerprint_auth">Vous pouvez également ouvrir le portefeuille avec votre empreinte digitale.\nMerci de toucher le capteur.</string>
     <string name="prompt_open_wallet">Ouverture du portefeuille &#8230;</string>
-    <string name="bad_fingerprint">Empreinte digitale non reconnue. Résessayez.</string>
+    <string name="bad_fingerprint">Empreinte digitale non reconnue. Réessayez.</string>
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_saved_password">Mot de passe sauvegardé incorrect.\nVeuillez entrer le mot de passe manuellement.</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
@@ -145,7 +146,7 @@
     <string name="status_remaining">Blocs restant</string>
     <string name="status_syncing">Analyse :</string>
 
-    <string name="message_camera_not_permitted">Pas de camera = Pas de Scan QR !</string>
+    <string name="message_camera_not_permitted">Pas de caméra = Pas de Scan QR !</string>
 
     <string name="label_copy_viewkey">Clef d\'Audit</string>
     <string name="label_copy_address">Adresse Publique</string>
@@ -153,7 +154,7 @@
     <string name="message_copy_viewkey">Clef d\'audit copiée !</string>
     <string name="message_copy_xmrtokey">Clef copiée !</string>
     <string name="message_copy_address">Adresse du Portefeuille copiée !</string>
-    <string name="message_copy_txid">ID de Transaction copié !</string>
+    <string name="message_copy_txid">ID de Transaction copiée !</string>
     <string name="message_nocopy">Copie désactivée par sécurité !</string>
 
     <string name="message_exchange_failed">Taux de change introuvable !\nUtilisez XMR/XMR ou essayez à nouveau</string>
@@ -161,7 +162,7 @@
     <string name="generate_title">Créer un Portefeuille</string>
     <string name="generate_name_hint">Nom du Portefeuille</string>
     <string name="generate_password_hint">Mot de Passe du Portefeuille</string>
-    <string name="generate_fingerprint_hint">Allow to open wallet using fingerprint</string>
+    <string name="generate_fingerprint_hint">Permettre d\'ouvrir le porte-monnaie avec l\'empreinte digitale</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Authentification par empreinte dgitale</strong>
         <p>En activant l\'authentification par empreinte digitale, vous pouvez voir le solde de
@@ -177,7 +178,7 @@
     ]]></string>
     <string name="generate_bad_passwordB">Phrases secrètes non correspondantes</string>
     <string name="generate_empty_passwordB">La Phrase secrète ne doit pas être vide</string>
-    <string name="generate_buttonGenerate">Faites moi un Portefeuille déjà !</string>
+    <string name="generate_buttonGenerate">Faites-moi un Portefeuille de suite !</string>
     <string name="generate_button_accept">J\'ai noté ces 25 mots !</string>
 
     <string name="generate_wallet_name">Donnez-moi un nom !</string>
@@ -216,6 +217,10 @@
     <string name="send_qr_invalid">QR Code invalide</string>
     <string name="send_qr_address_invalid">QR code de paiement invalide</string>
     <string name="send_address_invalid">Adresse invalide</string>
+    <string name="send_address_not_openalias">Adresse OpenAlias indisponible</string>
+    <string name="send_address_openalias">OpenAlias sécurisé &#x2714;</string>
+    <string name="send_address_resolve_openalias">Résolution de l\'adresse OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse  peut être usurpée</string>
     <string name="send_title">Envoi</string>
     <string name="send_available">Solde : %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
@@ -257,6 +262,7 @@
     <string name="tx_failed">ÉCHOUÉ</string>
 
     <string name="receive_amount_hint">Montant</string>
+    <string name="receive_desc_hint">Description (optionnelle)</string>
     <string name="receive_cannot_open">Ouverture du portefeuille impossible !</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
@@ -330,14 +336,14 @@
     <string name="node_port_numeric">Doit être un nombre</string>
     <string name="node_port_range">Doit être de 1 à 65535</string>
     <string name="node_fab_add">Ajouter un Nœud</string>
-    <string name="node_refresh_hint">Toucher pour raffraichir !</string>
+    <string name="node_refresh_hint">Toucher pour rafraîchir !</string>
     <string name="node_test_error">ERREUR DE CONNEXION %1$d</string>
     <string name="node_general_error">ERREUR DE CONNEXION</string>
     <string name="node_auth_error">ÉCHEC D\'AUTHENTIFICATION</string>
     <string name="node_result_label">Résultat du test :</string>
     <string name="node_result">Hauteur : %1$s (v%2$d), Ping : %3$.0fms, IP : %4$s</string>
     <string name="node_testing">Test de l\'IP : %1$s &#8230;</string>
-    <string name="node_refresh_wait">Patientez jusq\'à la fin de la recherche</string>
+    <string name="node_refresh_wait">Patientez jusqu\'à la fin de la recherche</string>
     <string name="node_create_hint">Toucher pour sélectionner ou ajouter des nœuds</string>
     <string name="node_pull_hint">Ajouter des nœuds manuellement ou faire glisser vers le bas pour rechercher</string>
     <string name="node_scanning">Recherche de nœuds&#8230;</string>
@@ -347,7 +353,7 @@
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Destinataire</string>
 
-    <string name="street_sweep_amount">TOTALITÉ!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">TOTALITÉ !</string> <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Convertir mnémonique Ledger</string>
     <string name="prompt_ledger_seed">Phrase mnémonique Ledger</string>
@@ -357,124 +363,126 @@
 
     <string name="label_restoreheight">Hauteur de restauration</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Start Monero App on %1$s</string>
+    <string name="toast_ledger_start_app">Démarrer l\'application Monero sur %1$s</string>
 
-    <string name="menu_rescan">Rescan!</string>
+    <string name="menu_rescan">Réanalyser !</string>
 
-    <string name="onboarding_agree">I get it!</string>
-    <string name="onboarding_button_next">Next</string>
-    <string name="onboarding_button_ready">I\'m ready!</string>
+    <string name="onboarding_agree">J\'ai compris !</string>
+    <string name="onboarding_button_next">Suivant</string>
+    <string name="onboarding_button_ready">Je suis prêt !</string>
 
-    <string name="onboarding_welcome_title">Welcome to Monerujo!</string>
-    <string name="onboarding_welcome_information">This app allows you to create and use Monero wallets. You can store your sweet moneroj in them.</string>
-    <string name="onboarding_seed_title">Keep your seed safe</string>
-    <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
-    <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
-    <string name="onboarding_nodes_title">Nodes, your way</string>
-    <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
-    <string name="onboarding_fpsend_title">Send with fingerprint</string>
-    <string name="onboarding_fpsend_information">You\'re now able to send XMR with just your fingerprint if you enabled it. To request the password, just disable fingerprint access.</string>
+    <string name="onboarding_welcome_title">Bienvenue sur Monerujo !</string>
+    <string name="onboarding_welcome_information">Cette application vous permet de créer et d\'utiliser des porte-monnaie Monero. Vous pouvez stocker vos beaux moneroj avec.</string>
+    <string name="onboarding_seed_title">Gardez vos graines en sécurité</string>
+    <string name="onboarding_seed_information">La graine donne un accès complet à celui qui la détient. Si vous la perdez, nous ne pouvons pas vous aider à la restaurer et vous perdrez tous vos beaux moneroj.</string>
+    <string name="onboarding_xmrto_title">Envoyer des Cryptomonnaies</string>
+    <string name="onboarding_xmrto_information">Monerujo contient la prise en charge de SideShift.ai. Collez simplement ou analysez une adresse  BTC, LTC, ETH, DASH ou DOGE et vous enverrez ces cryptos en dépensant des XMR.</string>
+    <string name="onboarding_nodes_title">Les nœuds, à votre manière</string>
+    <string name="onboarding_nodes_information">Les nœuds vous connectent au réseau Monero. Choisissez entre les nœuds publics ou devenez complètement cypherpunk en utilisant le vôtre.</string>
+    <string name="onboarding_fpsend_title">Envoyer avec l\'empreinte digitale</string>
+    <string name="onboarding_fpsend_information">Vous êtes désormais capable d\'envoyer des XMR avec simplement votre empreinte digitale si vous l\'avez activé. Pour demander le mot de passe, désactivez simplement l\'accès par empreinte digitale.</string>
 
-    <string name="menu_daynight">Dark Mode</string>
+    <string name="menu_daynight">Mode sombre</string>
     <string-array name="daynight_themes">
         <item>Auto</item>
-        <item>Day</item>
-        <item>Night</item>
+        <item>Jour</item>
+        <item>Nuit</item>
     </string-array>
-    <string name="gunther_says">There is nothing here\nPlease create or restore a wallet</string>
+    <string name="gunther_says">Il n\'y a rien ici\nVeuillez créer ou restaurer un porte-monnaie</string>
 
-    <string name="menu_default_nodes">Restore default nodes</string>
-    <string name="toast_default_nodes">Restoring already in progress…</string>
+    <string name="menu_default_nodes">Restaurer les nœuds par défaut</string>
+    <string name="toast_default_nodes">Restauration déjà en cours…</string>
 
-    <string name="node_updated_now">Last Block: %1$d seconds ago</string>
-    <string name="node_updated_mins">Last Block: %1$d minutes ago</string>
-    <string name="node_updated_hours">Last Block: %1$d hours ago</string>
-    <string name="node_updated_days">Last Block: %1$d days ago</string>
+    <string name="node_updated_now">Dernier bloc : il y a %1$d secondes</string>
+    <string name="node_updated_mins">Dernier bloc : il y a %1$d minutes</string>
+    <string name="node_updated_hours">Dernier bloc : il y a %1$d heures</string>
+    <string name="node_updated_days">Dernier bloc : il y a %1$d jours</string>
 
-    <string name="shift_noquote">Cannot get quote</string>
-    <string name="shift_checkamount">Check amount and try again</string>
+    <string name="shift_noquote">Impossible d\'obtenir un devis</string>
+    <string name="shift_checkamount">Vérifiez le montant et réessayez</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
-        <b>Ambiguous address.</b><br/>
-        <i>Please select the type above.</i>
+        <b>Adresse ambiguë.</b><br/>
+        <i>Veuillez choisir le type ci-dessus.</i>
     ]]></string>
 
     <string name="info_xmrto_help"><![CDATA[
-        <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <b>Veuillez entrer ou analyser une adresse  %1$s.</b><br/>
+        <i>Vous enverrez des XMR et le destinataire recevra des %2$s au moyen du service <b>SideShift.ai</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
-        <b>Please enter or scan a Monero address.</b>
+        <b>Veuillez entrer ou analyser une adresse Monero.</b>
     ]]></string>
 
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
+    <string name="subbaddress_title">Sous-adresses</string>
+    <string name="subbaddress_name_hint">Nom de la sous-adresse</string>
+    <string name="max_subaddress_warning">Trop d\'adresses inutilisées - utilisez-en pour activer la création d\'autres !</string>
+    <string name="max_account_warning">Trop de comptes inutilisés - utilisez-en pour activer la création d\'autres !</string>
+    <string name="subaddress_tx_label">Les transactions pour cette sous-adresse :</string>
+    <string name="subaddress_notx_label">Pas encore de transaction pour cette sous-adresse</string>
+    <string name="subaddress_select_label">Choisir une sous-adresse</string>
+    <string name="subaddress_details_hint">Appuyez longtemps pour les détails</string>
     <string name="subaddress_add">Ajouter une sous-adresse</string>
 
-    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Delete failed!</string>
+    <string name="menu_delete">Effacer</string><!-- like: "Delete wallet!" -->
+    <string name="delete_failed">Échec de l\'effacement !</string>
 
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
+    <string name="menu_restore">Importer un porte-monnaie</string>
+    <string name="restore_failed">Échec de l\'importation !</string>
 
-    <string name="menu_deletecache">Reset wallet!</string>
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
+    <string name="menu_deletecache">Réinitialiser le porte-monnaie !</string>
+    <string name="deletecache_alert_message">Ce porte-monnaie sera réinitialisé et perdra toutes les données hors chaîne (telles que les notes, les noms des sous-adresses du compte, les clefs privées des transactions, &#8230;) ! N\'utilisez cela QUE si ce porte-monnaie est corrompu et ne se charge pas !</string>
 
-    <string name="node_tor_error">Tor required</string>
-    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
-    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
-    <string name="tor_enable">Activer TOR</string>
+    <string name="node_tor_error">Tor requis</string>
+    <string name="node_waiting">\u00A0EN ATTENTE D\'UN NŒUD\u00A0</string>
+    <string name="tor_enable_background">« Autoriser les démarrages en arrière-plan » dans les réglages d\'Orbot pour utiliser Tor !</string>
+    <string name="tor_noshift">SideShift.ai ne prend pas en charge Tor.\nDésactivez Tor pour échanger les XMR.</string>
+    <string name="tor_enable">Activer Tor</string>
 
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
+    <string name="label_seed_offset_encrypt">Chiffrement de la graine (EXPÉRIMENTAL)</string>
+    <string name="seed_offset_hint">Phrase de décalage (offset) de la graine (optionnel)</string>
 
-    <string name="menu_settings">Settings</string>
+    <string name="menu_settings">Réglages</string>
     <string name="title_iface">Interface</string> <!-- like: User Intreface -->
-    <string name="title_info">Information</string>
-    <string name="setting_daynight">Day / Night</string>
+    <string name="title_info">Informations</string>
+    <string name="setting_daynight">Jour / Nuit</string>
 
     <string name="setting_theme">Style</string>
     <string-array name="themes">
-        <item>Classic</item>
+        <item>Classique</item>
         <item>Baldaŭ</item> <!-- do not translate this one -->
     </string-array>
 
-    <string name="message_qr_failed">Failed to create QR for sharing!</string>
+    <string name="message_qr_failed">Échec de la création de code QR afin de partager !</string>
 
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
+    <string name="tx_locked">Montant de la transaction verrouillé jusqu\'au bloc  %1$d (dans %2$d blocs ≈ %3$,.2f jours)</string>
 
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
+    <string name="label_streetmode">Mode de rue activé\nSeules les nouvelles transactions seront montrées</string>
 
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
+    <string name="pocketchange_info">Pour réduire le temps d\'attente lors des dépenses répétées, Monerujo peut créer de la monnaie de réserve au prix de frais plus élevés. Il essayera de créer et de maintenir au moins 6 pièces du montant choisi.</string>
+    <string name="pocketchange_create_title">Créer la monnaie</string>
 
-    <string name="label_apply">APPLY</string>
+    <string name="label_apply">APPLIQUER</string>
 
-    <string name="setting_lock">Lock Wallet in Background</string>
+    <string name="setting_lock">Verrouiller le porte-monnaie en arrière-plan</string>
 
-    <string name="menu_bluetooth">Connect Sidekick</string>
-    <string name="bluetooth_select_label">Select Sidekick device</string>
+    <string name="label_bluetooth" translatable="false">Bluetooth</string>
+    <string name="menu_bluetooth">Connecter Sidekick</string>
+    <string name="bluetooth_select_label">Sélectionner l\'appareil Sidekick</string>
 
-    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
+    <string name="bluetooth_permissions">Les autorisation Bluetooth sont requises pour connecter votre porte-monnaie Sidekick !</string>
     <string name="bluetooth_permissions_ok">OK</string>
-    <string name="bluetooth_permissions_settings">App Settings</string>
-    <string name="bluetooth_permissions_cancel">Cancel</string>
+    <string name="bluetooth_permissions_settings">Réglages de l\'application</string>
+    <string name="bluetooth_permissions_cancel">Annuler</string>
 
     <string name="sidekick_pin">PIN: %1$s</string>
-    <string name="sidekick_not_connected">[not connected]</string>
-    <string name="sidekick_confirm_tx">Confirm Transaction</string>
-    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
-        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
-    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
-    <string name="fab_restore_sidekick">Restore from Sidekick</string>
-    <string name="sidekick_connected">Sidekick Connected</string>
+    <string name="sidekick_not_connected">[déconnecté]</string>
+    <string name="sidekick_confirm_tx">Confirmer la transaction</string>
+    <string name="sidekick_network_warning">Le réseau est activé - c\'est un risque de sécurité. Il est recommandé
+        d\'activer le mode avion et de redémarrer l\'application en activant seulement Bluetooth !</string>
+    <string name="open_wallet_sidekick_missing">Veuillez connecter l\'appareil Sidekick</string>
+    <string name="fab_restore_sidekick">Restaurer depuis Sidekick</string>
+    <string name="sidekick_connected">Sidekick connecté</string>
+</resources>
 </resources>

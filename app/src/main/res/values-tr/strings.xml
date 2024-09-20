@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY nbsp "&#160;">]>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="tr">
+
+    <string name="wallet_activity_name">Cüzdan</string>
+
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_privacy">Gizlilik Politikası</string>
+
+    <string name="menu_share">Paylaş</string>
+    <string name="menu_help">Yardım</string>
+    <string name="menu_receive">Al</string>
+    <string name="menu_rename">Yeniden Adlandır</string>
+    <string name="menu_delete">Sil</string>
+    <string name="menu_backup">Yedekle</string>
+    <string name="menu_changepw">Parolayı Değiştir</string>
+    <string name="menu_back" tools:ignore="MissingTranslation">Geri</string>
+    <string name="menu_close" tools:ignore="MissingTranslation">Kapat</string>
+    <string name="menu_cancel" tools:ignore="MissingTranslation">İptal</string>
+
+    <string name="password_weak">Yazmaya devam et &#8230;</string>
+    <string name="password_fair">Meh &#8230;</string>
+    <string name="password_good">Haydi, daha iyisini yapabilirsin!</string>
+    <string name="password_strong">Neredeyse oldu &#8230;</string>
+    <string name="password_very_strong">Tamamdır, h4x0r tarzı!</string>
+
+    <string name="label_login_wallets">Cüzdanlar</string>
+    <string name="label_credits">Yazanlar</string>
+    <string name="label_ok">Tamam</string>
+    <string name="label_cancel">İptal</string>
+    <string name="label_close">Notu Kapat</string>
+    <string name="label_wallet_advanced_details">Ayrıntılı bilgi</string>
+
+    <string name="label_send_success">Başarıyla gönderildi</string>
+    <string name="label_send_done">Tamam</string>
+
+    <string name="label_receive_info_gen_qr_code">QR Kodu için dokunun</string>
+
+    <string name="info_xmrto_enabled">XMR\'i başka kripto paraya çevirebilirsiniz, daha fazlasını okumak için dokunun.</string>
+    <string name="info_ledger_enabled">Ledger etkinleştirildi, daha fazla bilgi için dokunun.</string>
+
+    <string name="info_xmrto"><![CDATA[
+        <b>Bir %1$s adresi girdiniz.</b><br/>
+        <i>XMR göndereceksiniz ve bu adres bir değişim hizmeti kullanarak %1$s alacak.</i>
+    ]]></string>
+
+    <string name="info_send_xmrto_success_order_label">Değişim Emri</string>
+
+    <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
+
+    <string name="info_send_xmrto_paid">Onay Bekleniyor</string>
+    <string name="info_send_xmrto_unpaid">Ödeme Bekleniyor</string>
+    <string name="info_send_xmrto_error">Değişim Hatası (%1$s)</string>
+    <string name="info_send_xmrto_sent">%1$s Gönderildi!</string>
+    <string name="info_send_xmrto_query">Şunu sorguluyor &#8230;</string>
+
+    <string name="info_send_xmrto_parms"><![CDATA[
+        <b>%1$s &#8212 gönderebilirsiniz; %2$s %4$s</b>.<br/>
+        <i><b>Değişim hizmeti</b> size şu değişim oranını sunuyor: <b>%3$s %4$s/XMR</b> <u>şu anda</u></i>.
+    ]]></string>
+
+    <string name="send_available_btc">Bakiye: %2$s %3$s (%1$s XMR)</string>
+
+    <string name="info_paymentid_integrated">&#x2714; Ödeme Kimliği entegre edildi</string>
+    <string name="info_prepare_tx">Muamele hazırlanıyor</string>
+
+    <string name="label_send_progress_xmrto_create">Değişim Emri Oluşturuluyor</string>
+    <string name="label_send_progress_xmrto_query">Değişim Emri Sorgulanıyor</string>
+    <string name="label_send_progress_create_tx">Monero İşlemi Hazırlanıyor</string>
+
+    <string name="label_send_progress_queryparms">Değişim parametreleri sorgulanıyor</string>
+
+    <string name="label_generic_xmrto_error">Değişim yani borsa hizmeti HATASI</string>
+    <string name="text_generic_xmrto_error">Kod: %1$d</string>
+
+    <string name="text_retry">Tekrar denemek için dokunun</string>
+    <string name="text_noretry_monero">Şimdi burada takıldık!</string>
+    <string name="text_noretry">Uh-oh, borsa hizmeti şu anda mevcut değil gibi görünüyor!</string>
+
+    <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+    <string name="text_send_btc_rate">(Oran: %1$s %2$s/XMR)</string>
+
+    <string name="label_send_btc_xmrto_info">Destek ve takip için borsa sitesini ziyaret edin</string>
+    <string name="label_send_btc_xmrto_key_lb">Sipariş numarası\nBorsa</string>
+    <string name="label_send_btc_xmrto_key">Borsa sipariş numarası</string>
+    <string name="label_send_btc_address">Hedef %1$s Adresi</string>
+    <string name="label_send_btc_amount">Meblağ</string>
+
+    <string name="label_send_txid">İşlem Kimliği</string>
+    <string name="label_send_address">Hedef adresi</string>
+    <string name="label_send_notes">Notlar</string>
+
+    <string name="backup_progress">Yedekleme sürüyor</string><!--TODO deleteme-->
+    <string name="archive_progress">Arşivleme sürüyor</string><!--TODO deleteme-->
+    <string name="rename_progress">Yeniden adlandırma sürüyor</string><!--TODO deleteme-->
+    <string name="changepw_progress">Parola değişimi sürüyor</string>
+
+    <string name="service_progress">Her şey toparlanıyor &#8230;\nBu uzun sürebilir!</string>
+
+    <string name="backup_success">Yedekleme başarılı</string>
+    <string name="backup_failed">Yedekleme başarısız oldu!</string>
+    <string name="delete_failed">Silme başarısız oldu!</string>
+    <string name="rename_failed">Yeniden adlandırma başarısız oldu!</string>
+    <string name="changepw_failed">Parola değişimi başarısız oldu!</string>
+    <string name="changepw_success">Parola değiştirildi</string>
+
+    <string name="label_daemon">Şebeke</string>
+
+    <string name="status_wallet_loading">Cüzdan yükleniyor &#8230;</string>
+    <string name="status_wallet_unloaded">Cüzdan kaydedildi</string>
+    <string name="status_wallet_unload_failed">Cüzdan kaydı başarısız oldu!</string>
+    <string name="status_wallet_connecting">Şuna bağlanılıyor &#8230;</string>
+    <string name="status_wallet_connect_failed">Düğüm bağlantısı başarısız oldu!\nKullanıcı adı/parolayı kontrol edin</string>
+    <string name="status_wallet_connect_wrongversion">Düğüm sürümü uyumsuz - lütfen güncelleyin!</string>
+    <string name="status_wallet_node_invalid">Düğüm geçersiz!\nBaşkasını deneyin.</string>
+    <string name="status_wallet_connect_ioex">Düğüme ulaşılamadı!\nTekrar veya başkasını deneyin.</string>
+
+    <string name="status_wallet_disconnected">Çevrim dışı</string>
+
+    <string name="status_transaction_failed">İşlem başarısız oldu: %1$s</string>
+
+    <string name="send_xmrto_timeout">Çok uzun süre bekledin arkadaş!</string>
+
+    <string name="service_busy">Hâlâ son cüzdanınızla meşgulüm &#8230;</string>
+
+    <string name="prompt_rename">%1$s tekrar adlandır</string>
+
+    <string name="prompt_changepw">%1$s için yeni parola</string>
+    <string name="prompt_changepwB">%1$s için parolayı tekrarlayın</string>
+    <string name="prompt_password">%1$s için parola</string>
+    <string name="prompt_fingerprint_auth">Cüzdanı ayrıca parmak iziyle açabilirsiniz.\nLütfen algılayıcıya dokunun.</string>
+    <string name="prompt_open_wallet">Cüzdanı aç &#8230;</string>
+    <string name="bad_fingerprint">Parmak izi tanınamadı. Tekrar deneyin.</string>
+    <string name="bad_password">Yanlış parola!</string>
+    <string name="bad_saved_password">Kaydedilmiş parola yanlış.\nLütfen parolayı elle girin.</string>
+    <string name="bad_wallet">Cüzdan mevcut değil!</string>
+    <string name="prompt_daemon_missing">Düğüm ayarlanmalı!</string>
+    <string name="prompt_wrong_net">Cüzdan seçili ağ ile eşleşmiyor</string><!--TODO deleteme-->
+
+    <string name="label_watchonly">(Sadece İzle)</string>
+
+    <string name="label_wallet_receive">Al</string>
+    <string name="label_wallet_send">Ver</string>
+
+    <string name="xmr_unconfirmed_amount">+ %1$s %2$s onaylanmamış</string>
+
+    <string name="service_description">Cüzdan açık</string>
+
+    <string name="status_synced">Eşleşmiş:</string>
+    <string name="status_remaining">Blok kaldı</string>
+    <string name="status_syncing">Eşleşiyor:</string>
+
+    <string name="message_camera_not_permitted">Kamera yok = QR taraması yok!</string>
+
+    <string name="label_copy_viewkey">Görüntüleme Anahtarı</string>
+    <string name="label_copy_address">Herkese Açık Adres</string>
+    <string name="label_copy_xmrtokey">Anahtar</string>
+    <string name="message_copy_viewkey">Panoya kopyalanan Anahtarı görüntüle!</string>
+    <string name="message_copy_xmrtokey">Anahtar panoya kopyalandı!</string>
+    <string name="message_copy_address">Cüzdan Adresi panoya kopyalandı!</string>
+    <string name="message_copy_txid">İşlem Kimliği panoya kopyalandı!</string>
+    <string name="message_nocopy">Güvenlik sebebiyle kopyalama devre dışı bırakılmıştır!</string>
+
+    <string name="message_exchange_failed">Değişim oranı alınamadı!\nXMR/XMR kullanın veya tekrar deneyin</string>
+
+    <string name="generate_title">Cüzdan Oluştur</string>
+    <string name="generate_name_hint">Cüzdan Adı</string>
+    <string name="generate_password_hint">Cüzdan Parolası</string>
+    <string name="generate_fingerprint_hint">Cüzdanı parmak izi kullanarak açmaya izin ver</string>
+    <string name="generate_fingerprint_warn"><![CDATA[
+        <strong>Parmak İziyle Kimlik Doğrulama</strong>
+        <p>Parmak iziyle kimlik doğrulama etkinse, cüzdan bakiyesini görüp fon alabilirsiniz
+        herhangi bir parola girmeden.</p>
+        <p>Ama ek güvenlik için monerujo yine de cüzdan ayrıntıları görüntülemek veya fon
+        göndermek için parola isteyecektir.</p>
+        <strong>Güvenlik İkazı</strong>
+        <p>Son olarak monerujo, size parmak izinizi alabilen herkesin cüzdan bakiyenize
+        bakabileceğini hatırlatır.</p>
+        <p>Mesela, size yakın kötü niyetli bir kullanıcı siz uyurken cüzdanınızı açabilir.</p>
+        <strong>Bu işlevi etkinleştirmek istediğinize emin misiniz?</strong>
+    ]]></string>
+    <string name="generate_bad_passwordB">Parolalar eşleşmiyor</string>
+    <string name="generate_empty_passwordB">Parola boş olamaz</string>
+    <string name="generate_buttonGenerate">Haydi bana bir cüzdan yap!</string>
+    <string name="generate_button_accept">Anımsatıcı tohumu not ettim</string>
+
+    <string name="generate_wallet_name">Bana bir isim ver!</string>
+    <string name="generate_wallet_exists">Cüzdan mevcut!</string>
+    <string name="generate_wallet_dot">. ile başlayamaz</string>
+    <string name="generate_wallet_creating">Cüzdan oluşturuluyor</string>
+    <string name="generate_wallet_created">Cüzdan oluşturuldu</string>
+
+    <string name="generate_restoreheight_error">Sayı veya Tarih girin (YYYY-AA-GG)</string>
+
+    <string name="generate_wallet_type_key">Anahtarlar</string>
+    <string name="generate_wallet_type_new">Yeni</string>
+    <string name="generate_wallet_type_seed">Tohum</string>
+    <string name="generate_wallet_type_view">Görüntüle</string>
+
+
+    <string name="generate_address_hint">Herkese Açık Adres</string>
+    <string name="generate_viewkey_hint">Görüntüleme Anahtarı</string>
+    <string name="generate_spendkey_hint">Harcama Anahtarı</string>
+    <string name="generate_mnemonic_hint">25-Kelimelik Anımsatıcı Tohum</string>
+    <string name="generate_restoreheight_hint">Yüksekliği veya Tarihi Geri Getir (YYYY-AA-GG)</string>
+
+    <string name="generate_address_label">Herkese Açık Adres</string>
+    <string name="generate_viewkey_label">Görüntüleme Anahtarı</string>
+    <string name="generate_spendkey_label">Harcama Anahtarı</string>
+    <string name="generate_mnemonic_label">Anımsatıcı Tohum</string>
+    <string name="generate_crazypass_label">Cüzdan Dosyaları Parola Kurtarma</string>
+
+    <string name="generate_check_key">Geçerli Anahtar girin</string>
+    <string name="generate_check_address">Geçerli Adres girin</string>
+    <string name="generate_check_mnemonic">25 kelimelik tohumunuzu girin</string>
+
+    <string name="send_notes_hint">Özel Notlar (seçime dayalı)</string>
+    <string name="send_generate_paymentid_hint">Oluştur</string>
+
+    <string name="send_send_label">Değerli Monero\'larımı harca</string>
+    <string name="send_send_timed_label">Değerli Moneroj\'larımı harca (%1$s)</string>
+    <string name="send_qr_invalid">Bir QR Kod Değil</string>
+    <string name="send_qr_address_invalid">Geçerli bir ödeme QR kodu değil</string>
+    <string name="send_address_invalid">Geçerli bir adres değil</string>
+    <string name="send_address_not_openalias">OpenAlias adresi mevcut değil</string>
+    <string name="send_address_openalias">OpenAlias güvenli &#x2714;</string>
+    <string name="send_address_resolve_openalias">OpenAlias&#8230; Çözümleniyor</string>
+    <string name="send_address_no_dnssec">DNSSEC olmadan OpenAlias - adres sahte olabilir</string>
+    <string name="send_title">Gönder</string>
+    <string name="send_available">Bakiye: %1$s XMR</string>
+    <string name="send_address_title">Adres</string>
+    <string name="send_amount_title">Meblağ</string>
+    <string name="send_confirm_title">Doğrula</string>
+    <string name="send_success_title">Tamamlandı</string>
+
+    <string name="send_amount_label">Meblağ</string>
+    <string name="send_fee_btc_label">Ücret (XMR)</string>
+    <string name="send_fee_label">Ücret</string>
+    <string name="send_total_btc_label">Toplam (XMR)</string>
+    <string name="send_total_label">Toplam</string>
+
+    <string name="send_amount">%1$s XMR</string>
+    <string name="send_fee">+%1$s Ücret</string>
+
+    <string name="send_create_tx_error_title">İşlem Oluşturma Hatası</string>
+
+    <string name="tx_list_fee">Ücret %1$s</string>
+    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_failed_text">başarısız</string>
+    <string name="tx_list_amount_negative">- %1$s</string>
+    <string name="tx_list_amount_positive">+ %1$s</string>
+
+    <string name="tx_timestamp">Tarih damgası</string>
+    <string name="tx_id">İşlem Kimliği</string>
+    <string name="tx_key">İşlem Anahtarı</string>
+    <string name="tx_destination">Hedef</string>
+    <string name="tx_paymentId">Ödeme Kimliği</string>
+    <string name="tx_blockheight">Blok</string>
+    <string name="tx_amount">Meblağ</string>
+    <string name="tx_fee">Ücret</string>
+    <string name="tx_transfers">Transferler</string>
+    <string name="tx_notes">Notlar</string>
+    <string name="tx_notes_hint">(seçime dayalı)</string>
+    <string name="tx_title">İşlem Ayrıntıları</string>
+
+    <string name="tx_pending">BEKLENİYOR</string>
+    <string name="tx_failed">BAŞARISIZ</string>
+
+    <string name="receive_amount_hint">Meblağ</string>
+    <string name="receive_desc_hint">Tanımlama (seçime dayalı)</string>
+    <string name="receive_cannot_open">Cüzdan açılamadı!</string>
+
+    <string name="receive_amount_too_big">Azami %1$s</string>
+    <string name="receive_amount_negative">Asgari 0</string>
+    <string name="receive_amount_nan">XMR bir sayı değil</string>
+    <string name="copy_receive_address" tools:ignore="MissingTranslation">Alma adresini kopyala</string>
+    <string name="paste_give_address" tools:ignore="MissingTranslation">Verme adresini yapıştır</string>
+
+    <string name="details_alert_message">Hassas veriler şimdi görüntülenecek.\nArkanızı kollayın!</string>
+    <string name="details_alert_yes">Güvendeyim</string>
+    <string name="details_alert_no">Beni geri götür!</string>
+    <string name="details_title">Ayrıntılar</string>
+
+    <string name="delete_alert_message">Bu cüzdan silinecek. Fonlarınız daimi olarak kaybolacak, şayet tohumunuz yoksa veya kurtarmak için işlevsel bir yedeklemeniz yoksa.</string>
+    <string name="delete_alert_yes">Evet, bunu yap!</string>
+    <string name="delete_alert_no">Hayır, teşekkürler!</string>
+
+    <string name="fab_create_new">Yeni cüzdan oluştur</string>
+    <string name="fab_restore_viewonly">Sadece izlenir cüzdanı geri getir</string>
+    <string name="fab_restore_key">Cüzdanı özel anahtarlardan geri getir</string>
+    <string name="fab_restore_seed">Cüzdanı geri getir 25 kelime tohumu</string>
+
+
+
+    <string name="accounts_drawer_new">Hesap Oluştur</string>
+    <string name="accounts_new">Yeni #%1$d hesabı eklendi</string>
+    <string name="tx_account">Hesap #</string>
+
+    <string name="send_sweepall">Bu hesaptaki tüm teyitli fonları gönder!</string>
+    <string name="tx_subaddress">Alt adres</string>
+    <string name="generate_address_label_sub">Herkese açık alt adres #%1$d: %2$s</string>
+
+    <string name="menu_language">Dil</string>
+    <string name="language_system_default">Sistem dilini kullan</string>
+
+    <string name="fab_restore_ledger">Ledger Nano\'dan geri getir</string>
+
+    <string name="progress_ledger_progress">Ledger ile iletişim sürüyor</string>
+    <string name="progress_ledger_confirm">Ledger üzerinde doğrulama gerekiyor!</string>
+    <string name="progress_ledger_lookahead">Alt adresler alınıyor</string>
+    <string name="progress_ledger_verify">Anahtarlar kontrol ediliyor</string>
+    <string name="progress_ledger_opentx">Çılgın matematik işlemleri yapılıyor</string>
+    <string name="progress_ledger_mlsag">Karma değerler hesaplanıyor</string>
+    <string name="open_wallet_ledger_missing">Lütfen Ledger cihazını (tekrar) bağlayın</string>
+
+    <string name="accounts_progress_new">Hesap oluşturuluyor</string>
+
+    <string name="toast_ledger_attached">%1$s bağlandı</string>
+    <string name="toast_ledger_detached">%1$s bağlantısı kaldırıldı</string>
+
+
+
+    <string name="menu_info">Sırları Göster!</string>
+    <string name="menu_streetmode">Sokak Kipi</string>
+
+
+
+    <string name="info_nodes_enabled">Düğümmatik etkinleştirildi, daha fazla bilgi için dokunun.</string>
+    <string name="node_height">Son güncellenen blok: %1$s</string>
+    <string name="label_nodes">Düğümler</string>
+    <string name="node_name_hint">Düğüm Adı (Seçime Dayalı)</string>
+    <string name="node_address_hint">Makine Adı</string>
+    <string name="node_port_hint">Bağlantı Noktası</string>
+    <string name="node_user_hint">Kullanıcı Adı (Seçime Dayalı)</string>
+    <string name="node_pass_hint">Parola (Seçime Dayalı)</string>
+    <string name="node_host_unresolved">Makine çözümlenemedi</string>
+    <string name="node_host_empty">Buna ihtiyacımız var!</string>
+    <string name="node_port_numeric">Sayısal olmalı</string>
+    <string name="node_port_range">1&#8211;65535 olmalı</string>
+    <string name="node_fab_add">Düğüm Ekle</string>
+    <string name="node_refresh_hint">Tazelemek için dokunun!</string>
+    <string name="node_test_error">BAĞLANTI HATASI %1$d</string>
+    <string name="node_general_error">BAĞLANTI HATASI</string>
+    <string name="node_auth_error">KİMLİK DOĞRULAMA BAŞARISIZ OLDU</string>
+    <string name="node_result_label">Test Sonucu:</string>
+    <string name="node_result">Yükseklik: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
+    <string name="node_testing">IP deneniyor: %1$s &#8230;</string>
+    <string name="node_refresh_wait">Lütfen taramanın bitmesini bekleyin</string>
+    <string name="node_create_hint">Düğüm seçmek veya eklemek için dokunun</string>
+    <string name="node_pull_hint">Düğümleri elle ekle veya tarama için aşağı çek</string>
+    <string name="node_scanning">Ağ taranıyor &#8230;</string>
+    <string name="node_nobookmark">En iyi %1$d düğüm otomatik olarak imlere eklendi</string>
+    <string name="label_test">Dene</string><!--note: as in "Test a network connection"-->
+
+    <string name="send_address_hint">Alıcı</string>
+
+    <string name="street_sweep_amount">HER ŞEY!</string>
+
+    <string name="menu_ledger_seed">Ledger Tohumunu Dönüştür</string>
+    <string name="prompt_ledger_seed">Ledger Tohum Kelimeleri</string>
+    <string name="prompt_ledger_phrase">Ledger Parolası (gelişmiş)</string>
+    <string name="bad_ledger_seed">Geçersiz Ledger Tohumu!</string>
+    <string name="prompt_ledger_seed_warn">Ledger Tohumunuzu buraya girmek büyük bir güvenlik tehlikesidir!</string>
+
+
+
+    <string name="label_restoreheight">Yüksekliği Geri Getir</string>
+
+    <string name="toast_ledger_start_app">Monero Uygulamasını %1$s Üzerinde Başlat</string>
+
+    <string name="menu_rescan">Tekrar Tara!</string>
+
+    <string name="onboarding_agree">Anladım!</string>
+    <string name="onboarding_button_next">Sonraki</string>
+    <string name="onboarding_button_ready">Hazırım!</string>
+
+    <string name="onboarding_welcome_title">Monerujo\'ya Hoş Geldiniz!</string>
+    <string name="onboarding_welcome_information">Bu uygulama Monero cüzdanları oluşturmanıza ve kullanmanıza imkân sağlar. Kıymetli moneroj\'unuzu onlarda muhafaza edebilirsiniz.</string>
+    <string name="onboarding_seed_title">Tohumunuzu güvende muhafaza edin</string>
+    <string name="onboarding_seed_information">Tohum, ona sahip olana tam erişim sağlar. Eğer onu kaybederseniz, geri getirmenize yardım edemeyiz ve bütün değerli moneroj\'unuzu kaybedersiniz.</string>
+    <string name="onboarding_xmrto_title">Kripto Gönder</string>
+    <string name="onboarding_xmrto_information">Monerujo bütünleşik borsa desteği bulundurur. Birçok başka kriptolar ile ödemek için XMR kullanabilirsiniz.</string>
+    <string name="onboarding_nodes_title">Düğümler, sizin tarzınızla</string>
+    <string name="onboarding_nodes_information">Düğümler sizi Monero ağına bağlar. Herkese açık düğümler seçin veya kendinizinkini kullanın.</string>
+    <string name="onboarding_fpsend_title">Parmak iziyle gönder</string>
+    <string name="onboarding_fpsend_information">Artık etkinleştirdi iseniz sadece parmak izinizle XMR gönderebilirsiniz. Parolayı talep etmek için parmak izi erişimini devre dışı bırakın.</string>
+
+    <string name="menu_daynight">Koyu Kip</string>
+    <string-array name="daynight_themes">
+        <item>Otomatik</item>
+        <item>Gündüz</item>
+        <item>Gece</item>
+    </string-array>
+    <string name="gunther_says">Burada hiçbir şey yok\nLütfen bir cüzdan oluşturun veya geri getirin</string>
+
+    <string name="menu_default_nodes">Varsayılan düğümleri geri getir</string>
+    <string name="toast_default_nodes">Geri getirme zaten sürüyor…</string>
+
+    <string name="node_updated_now">Son Blok: %1$d saniye önce</string>
+    <string name="node_updated_mins">Son Blok: %1$d dakika önce</string>
+    <string name="node_updated_hours">Son Blok: %1$d saat önce</string>
+    <string name="node_updated_days">Son Blok: %1$d gün önce</string>
+
+    <string name="shift_noquote">Fiyat teklifi alınamıyor</string>
+    <string name="shift_checkamount">Meblağı kontrol edip tekrar deneyin</string>
+
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Belirsiz adres.</b><br/>
+        <i>Lütfen türü yukarıda seçin.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Lütfen bir %1$s adresi girin veya tarayın.</b><br/>
+        <i>Siz XMR göndereceksiniz ve alıcı <b>SideShift.ai</b> hizmetini kullanarak %2$s alacak.</i>
+    ]]></string>
+
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Lütfen bir Monero adresi girin veya tarayın.</b>
+    ]]></string>
+
+
+
+
+
+
+    <string name="subbaddress_title">Alt adresler</string>
+    <string name="subbaddress_name_hint">Alt Adres Adı</string>
+    <string name="max_subaddress_warning">Çok fazla kullanılmayan adres - daha fazlasını oluşturmadan önce bazılarını kullanın!</string>
+    <string name="max_account_warning">Çok fazla kullanılmayan hesap - daha fazlasını oluşturmayı etkinleştirmek için bazılarını kullanın!</string>
+    <string name="subaddress_tx_label">Bu alt adres için işlemler:</string>
+    <string name="subaddress_notx_label">Bu alt adres için henüz hiçbir işlem yok</string>
+    <string name="subaddress_select_label">Bir alt adres seçin</string>
+    <string name="subaddress_details_hint">Ayrıntılar için uzun süre dokunun</string>
+    <string name="subaddress_add" tools:ignore="MissingTranslation">Alt adres ekle</string>
+
+    <string name="menu_restore">Cüzdan içe aktar</string>
+    <string name="restore_failed">İçe aktarma başarısız oldu!</string>
+
+    <string name="menu_deletecache">Cüzdanı sıfırla!</string>
+    <string name="deletecache_alert_message">Bu cüzdan sıfırlanacaktır, yani tüm zincir dışı verileri (notlar, hesap ve alt adres adları, özel işlem anahtarları gibi, &#8230;) kaybolacaktır! Bunu SADECE bu cüzdan bozuksa ve yüklenmiyorsa kullanın!</string>
+
+
+
+    <string name="node_tor_error">Tor gerekli</string>
+    <string name="node_waiting">\u00A0DÜĞÜM İÇÜN BEKLENİYOR\u00A0</string>
+    <string name="tor_enable_background">Tor kullanmak için Orbot ayarlarında "Arka Plan Başlatmalarına İzin Verin"!</string>
+    <string name="tor_noshift">SideShift.ai Tor\'u desteklemez.\nXMR değiştirmek için Tor\'u devre dışı bırakın.</string>
+    <string name="tor_enable" tools:ignore="MissingTranslation">TOR\'u etkinleştir</string>
+
+    <string name="label_seed_offset_encrypt">Tohum şifreleme (DENEYSEL)</string>
+    <string name="seed_offset_hint">Tohum Ofset Cümlesi (seçime dayalı)</string>
+
+
+
+    <string name="menu_settings">Ayarlar</string>
+    <string name="title_iface">Arayüz</string> <!-- like: User Intreface -->
+    <string name="title_info">Bilgi</string>
+    <string name="setting_daynight">Gündüz / Gece</string>
+
+    <string name="setting_theme">Tarz</string>
+    <string-array name="themes">
+        <item>Klasik</item>
+        <item>Baldaŭ</item> <!-- do not translate this one -->
+    </string-array>
+
+    <string name="message_qr_failed">Paylaşmak için QR kod oluşturulması başarısız oldu!</string>
+
+    <string name="tx_locked">İşlem meblağı %1$d blokuna dek (%2$d blok sonra ≈ %3$,.2f gün) kilitlendi</string>
+
+    <string name="label_streetmode">Sokak Kipi etkinleştirildi\nSadece yeni işlemler gösterilecek</string>
+
+
+
+    <string name="pocketchange_info">Tekrarlanan harcamalarda bekleme süresini azaltmak için Monerujo, daha yüksek ücretler pahasına yedek para yaratabilir. Seçili meblağdan en az 6 jeton oluşturup korumaya çalışacak.</string>
+    <string name="pocketchange_create_title">Jeton Oluştur</string>
+
+    <string name="label_apply">UYGULA</string>
+
+    <string name="setting_lock">Cüzdanı Arka Planda kilitle</string>
+
+    <string name="label_bluetooth" translatable="false">Bluetooth</string>
+    <string name="menu_bluetooth">Sidekick\'i Bağla</string>
+    <string name="bluetooth_select_label">Sidekick cihazı seç</string>
+
+    <string name="bluetooth_permissions">Bluetooth izinleri Sidekick Cüzdanınızı bağlamak için gereklidir!</string>
+    <string name="bluetooth_permissions_ok">Tamam</string>
+    <string name="bluetooth_permissions_settings">Uygulama Ayarları</string>
+    <string name="bluetooth_permissions_cancel">İptal et</string>
+
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="sidekick_not_connected">[bağlı değil]</string>
+    <string name="sidekick_confirm_tx">Muameleyi Teyit Et</string>
+    <string name="sidekick_network_warning">Ağ etkin - bu bir güvenlik riskidir. Uçak kipini etkinleştirmeniz ve
+        uygulamayı sadece Bluetooth etkin olacak şekilde tekrar başlatmanız tavsiye edilir!</string>
+    <string name="open_wallet_sidekick_missing">Lütfen Sidekick cihazını bağlayın</string>
+    <string name="fab_restore_sidekick">Sidekick\'ten geri getir</string>
+    <string name="sidekick_connected">Sidekick Bağlı</string>
+</resources>
