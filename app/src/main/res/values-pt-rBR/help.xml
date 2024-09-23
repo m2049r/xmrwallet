@@ -71,7 +71,7 @@
         pessoa sem ter medo de perder seu Monero. As pessoas te enviarão Monero usando este endereço.
         <h2>Semente Mnemônica</h2>
         Essa é a única informação necessária para recuperar sua carteira no futuro e obter controle absoluto de seus fundos.
-        Manter essa informação privada e segura é muito importante, já que ela dá acesso total dos seus Moneros
+        Manter essa informação privada e segura é muito importante, já que ela dá acesso total ao seu Monero
         para <em>qualquer pessoa</em>! Se você não anotou as palavras em um local seguro, faça-o o mais rápido possível!
         <h2>Senha dos arquivos da carteira</h2>
         Certifique-se de anotar e se lembrar desta senha. Caso você reinicie o dispositivo ou desinstale a aplicação, será preciso
@@ -142,7 +142,7 @@
         O ID da transação pode ser usado em exploradores de Blockchain do Monero como o
         <a href="https://xmrchain.net/">https://xmrchain.net/</a> para identificar a transação (ofuscada).
         <h2>Chave TX (chave da transação)</h2>
-        Essa é a chava privada da sua transação. Matenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
+        Essa é a chave privada da sua transação. Mantenha-a segura, pois ao divulgá-la para um terceiro permitirá que ele identifique
         qual das assinaturas é a sua, transformando sua transação em transparente para essa pessoa ou entidade.
         <h2>Bloco</h2>
         Bloco no qual sua transação foi incluída pelos mineradores.
@@ -292,57 +292,56 @@
 
     <string name="help_ok">Entendi!</string> <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_nok">Não, obrigado...</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Instale o Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor, abreviação de "The Onion Router", é software livre e de código aberto que permite
+        comunicação anônima.</p>
+        <p>Ativar o Tor irá rotear sua conexão por vários relés e esconder seu endereço IP do nó.
+        Mantenha que isso é mais privado porém mais <b>lento</b>.</p>
+        <p>Para usar o Tor com o Monerujo, você precisará do Orbot instalado em seu dispositivo.
+        Após instalar o Orbot, tenha certeza que está ativado clicando no ícone de rede na tela da lista
+        de carteiras.</p>
+        <p>Se você tiver problemas se conectando com o Tor, tente conseguir uma nova identidade
+        no app do Orbot (ícone no lado superior direito).</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Nó Tor</h1>
+        <p>Este é um nó .onion. Para usá-lo, você deve ativar o modo Tor tocando o ícone
+        <img src="ic_network_clearnet"/> perto do topo da página de lista de carteiras.</p>
     ]]></string>
 
     <string name="help_sidekick"><![CDATA[
-        <h2>Using your sidekick wallet</h2>
-        Check that both phones are connected via Bluetooth and both apps are opened.
+        <h2>Usando sua carteira sidekick</h2>
+        Verifique que ambos dispositivos estão conectados via Bluetooth e ambos apps estão abertos.
 
-        <h3>On sidekick:</h3>
-        Open your wallet of choice.
+        <h3>No sidekick:</h3>
+        Abra sua carteira de escolha.
 
-        <h3>On monerujo:</h3>
-        Connect to sidekick.
+        <h3>No monerujo:</h3>
+        Conecte ao sidekick.
 
-        Open the wallet matching the one you have opened on the sidekick phone.
+        Abra a carteira correspondente com qual você abriu no dispositivo com o sidekick.
 
-        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+        Use-a como você usaria qualquer carteira. Permita que escaneie para visualizar transações recebidas, compartilhar endereços, ou enviar Monero. Se o app precisa fazer algo que envolve suas chaves, irá pedir permissão do sidekick.
 
-        <h3>On sidekick:</h3>
-        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+        <h3>No sidekick:</h3>
+        Se o monerujo requisitou a permissão, você deve ver um diálogo que mostra os detalhes da transação como quantidade e taxas. Você também poderá ver duas opções, ACEITAR ou REJEITAR. Escolha com cuidado.
 
-        <h3>On monerujo:</h3>
-        The transaction should be signed and ready to be sent. Press to make it so.
+        <h3>No monerujo:</h3>
+        A transação deve estar assinada e pronta para ser enviada. Pressione para fazer isso.
          <br/>
     ]]></string>
 
     <string name="help_create_sidekick" translatable="false"><![CDATA[
-        <h1>Create Wallet - Sidekick</h1>
-        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <h1>Criar Carteira - Sidekick</h1>
+        <p>Você quer recuperar sua carteira de seu incrível dispositivo Sidekick.</p>
         <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
         tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
         placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
-    ]]></string>
+        <p>Digite o número do bloco da primeira transação usada para este endereço no campo \"Altura de Restauração\". Você também poderá usar a data no formato AAAA-MM-DD. Se não tiver certeza,
+        digite uma data aproximada/altura de bloco <em>antes</em> de quando você usou este endereço de carteira pela primeira vez.</p>
+    ]]></string> <!-- Some of this string is translated, but there's a lorem ipsum here. Make sure to at least replace that. -->
 </resources>
