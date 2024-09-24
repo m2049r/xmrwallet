@@ -331,7 +331,7 @@
     <string name="node_height">Last block updated: %1$s</string>
     <string name="label_nodes">Nodes</string>
     <string name="node_name_hint">Node Name (Optional)</string>
-    <string name="node_address_hint">Hostname</string>
+    <string name="node_address_hint">Hostname or IP</string>
     <string name="node_port_hint">Port</string>
     <string name="node_user_hint">Username (Optional)</string>
     <string name="node_pass_hint">Password (Optional)</string>
@@ -352,6 +352,7 @@
     <string name="node_pull_hint">Add nodes manually or pull down to scan</string>
     <string name="node_scanning">Scanning network&#8230;</string>
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
+    <string name="node_use_ssl">Use SSL</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
 
     <string name="send_address_hint">Receiver</string>
