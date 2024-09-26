@@ -438,7 +438,6 @@
     <string name="tx_locked">Monto trabado hasta el bloque %1$d (faltan %2$d bloques ≈ %3$,.2f días)</string>
 
     <string name="label_streetmode">Modo calle activado\nSólo se ºmostrarán transacciones nuevas</string>
-    <string name="pocketchange_info">Para reducir el tiempo entre pagos, Monerujo puede crear cambio de más al enviar a costo de comisiones más altas. Va a crear e intentar mantener 10 monedas del monto seleccionado.</string>
     <string name="pocketchange_create_title">Crear cambio</string>
 
     <string name="label_apply">APLICAR</string>

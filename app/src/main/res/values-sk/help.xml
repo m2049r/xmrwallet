@@ -143,57 +143,6 @@
 
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Poslať</h1>
-        <h2>Adresa Príjemcu</h2>
-        <p>Toto je verejná adresa peňaženky kam posielaš Monero. Môžeš ju kopírovať zo schránky, skenovať QR kód alebo vložiť manuálne.
-        Trikrát sa uisti, že neposielaš mince na zlú adresu.</p>
-        <p>Okrem XMR adries, môžte použiť tiež
-        <ul>
-            <li>OpenAlias pre XMR či BTC</li>
-            <li>BTC adresu</li>
-        </u>
-        Nezabúdajte, že posielanie BTC prebieha cez službu Exolix (detaily na https://exolix.com). Pozri sekciu nižšie o posielaní BTC</p>
-        <h1>Posielanie BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
-        Používame Exolix API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
-        https://exolix.com a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-        Tím Monerujo nie je nijako spojený so službou Exolix a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
-        <h2>Exolix Výmenný Kurz<h2>
-        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby Exolix, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
-        Podotýkame, že tento kurz nie je garantovaný.</p>
-        <h2>Exolix Objednávka<h2>
-        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v Exolix. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
-        Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
-        <h2>Exolix Tajný Kľúč<h2>
-        <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
-        tento Exolix Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-        na domovskej stránke Exolix</p>
-        <h2>Exolix Odpočítavanie!</h2>
-        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Posielanie BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
-        Používame Exolix API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
-        https://exolix.com a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-        Tím Monerujo nie je nijako spojený so službou Exolix a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
-        <h2>Exolix Výmenný Kurz<h2>
-        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby Exolix, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
-        Podotýkame, že tento kurz nie je garantovaný.</p>
-        <h2>Exolix Objednávka<h2>
-        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v Exolix. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
-        Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
-        <h2>Exolix Tajný Kľúč<h2>
-        <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
-        tento Exolix Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-        na domovskej stránke Exolix</p>
-        <h2>Exolix Odpočítavanie!</h2>
-        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
-    ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>Peňaženka</h1>

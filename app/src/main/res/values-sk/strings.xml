@@ -33,51 +33,31 @@
     <string name="info_xmrto_enabled">BTC platby aktivované, klepni pre viac info.</string>
     <string name="info_ledger_enabled">Ledger aktivovaný, klepni pre viac info.</string>
 
-    <string name="info_xmrto"><![CDATA[
-        <b>Vložil si %1$s adresu.</b><br/>
-        <i>Pošleš XMR a adresát dostane %2$s cez službu <b>%3$s</b>.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">%1$s Objednávka</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">Čaká na Potvrdenie</string>
     <string name="info_send_xmrto_unpaid">Čakajúca Platba</string>
-    <string name="info_send_xmrto_error">%1$s Chyba (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Odoslané!</string>
     <string name="info_send_xmrto_query">Zisťujem &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Môžeš poslať %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> ti dáva výmenný kurz of <b>%3$s %4$s/XMR</b> <u>práve teraz</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Zostatok: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrované</string>
     <string name="info_prepare_tx">Pripravujem transakciu</string>
 
-    <string name="label_send_progress_xmrto_create">Vytváram objednávku</string>
-    <string name="label_send_progress_xmrto_query">Pýtam sa na objednávku</string>
     <string name="label_send_progress_create_tx">Pripravujem Monero transakciu</string>
 
-    <string name="label_send_progress_queryparms">Posielam parametre</string>
 
-    <string name="label_generic_xmrto_error">CHYBA</string>
     <string name="text_generic_xmrto_error">Kód chyby: %1$d</string>
 
     <string name="text_retry">Klepni pre opakovanie</string>
     <string name="text_noretry_monero">Uviazli sme tu!</string>
-    <string name="text_noretry">Myslím, že služba %1$s nie je momentálne dostupná!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurz: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Navštív %1$s pre podporu &amp; tracking</string>
-    <string name="label_send_btc_xmrto_key_lb">Tajný kľúč\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Tajný kľúč</string>
     <string name="label_send_btc_address">Cieľová %1$s Adresa</string>
     <string name="label_send_btc_amount">Čiastka</string>
 
@@ -362,7 +342,6 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has exchange support built-in. Just paste or scan a BTC, LTC, ETH, TRXUSDT or SOL address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>

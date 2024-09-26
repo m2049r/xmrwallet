@@ -109,50 +109,6 @@
         Aquest és el bloc de la cadena de Monero on la vostra transacció ha estat inclosa.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Enviar</h1>
-        <h2>Adreça del Receptor</h2>
-        <p>Aquesta és l’adreça pública del portamonedes a la qual esteu enviant Moneroj. Podeu copiar-la al porta-retalls, escanejar un codi QR o introduir-la manualment. Assegureu-	vos de confirmar-ho a consciencia i que no estigueu enviant monedes a la direcció incorrecta.</p>
-        <p>A més d’utilitzar una adreça XMR, també podeu utilitzar
-        <ul>
-            <li>un OpenAlias per XMR o BTC</li>
-            <li>una adreça BTC</li>
-        </u>
-        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei Exolix (consulteu https://exolix.com per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
-        <h1>Enviant BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-        Nosaltres fem servir l’API Exolix per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://exolix.com i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb Exolix i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi Exolix<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei Exolix. Aquests
-        inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
-        <h2>Ordre  de compra Exolix<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra Exolix real. Aquesta comanda és vàlida per a
-        un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
-        ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta Exolix<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per Exolix es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de Exolix.</p>
-        <h2>Compte enrere Exolix!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Enviant BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-        Nosaltres fem servir l’API Exolix per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://exolix.com i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb Exolix i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi Exolix<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei Exolix. Aquests
-        inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
-        <h2>Ordre  de compra Exolix<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra Exolix real. Aquesta comanda és vàlida per a
-        un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
-        ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta Exolix<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per Exolix es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de Exolix.</p>
-        <h2>Compte enrere Exolix!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
-    ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>El Portamonedes</h1>

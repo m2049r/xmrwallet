@@ -149,63 +149,6 @@
         This was the block your transaction was included in.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Saatmine</h1>
-        <h2>Saaja aadress</h2>
-        <p>This is the public address of the wallet you are sending Moneroj to, you can copy this from
-        your clipboard, scan a QR code or enter it manually. Make sure you triple check this to
-        ensure you aren’t sending coins to the wrong address.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-        </u>
-        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
-        for details). See the section on sending BTC below.</p>
-        <h1>Bitcoini (BTC) saatmine</h1>
-        <h2>Exolix</h2>
-        <p>Exolix is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the Exolix API to integrate Bitcoin payments into Monerujo. Please check out
-        https://exolix.com and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with Exolix and cannot help you with their service.</p>
-        <h2>Exolix vahetuskurss<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the Exolix service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point.</p>
-        <h2>Exolix tellimus<h2>
-        <p>On the \"Confirm\" screen, you will see the actual Exolix order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>Exolix privaatvõti<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your Exolix secret key
-        can be used to track the Bitcoin part of your order on the Exolix homepage.</p>
-        <h2>Exolix loendur</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from Exolix by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Bitcoini (BTC) saatmine</h1>
-        <h2>Exolix</h2>
-        <p>Exolix is a third party service which acts as an exchange from Monero to Bitcoin.
-        We use the Exolix API to integrate Bitcoin payments into Monerujo. Please check out
-        https://exolix.com and decide for yourself if this is something you want to use. The Monerujo
-        Team is not associated with Exolix and cannot help you with their service.</p>
-        <h2>Exolix vahetuskurss<h2>
-        <p>On the \"Amount\" screen you will be shown the current parameters of the Exolix service. These
-        include the current exchange rate as well as upper and lower BTC limits. Note that this
-        rate is not guaranteed at this point.</p>
-        <h2>Exolix tellimus<h2>
-        <p>On the \"Confirm\" screen, you will see the actual Exolix order. This order is valid for
-        a limited time - you may notice a countdown on the \"Spend\" button. The exchange rate may
-        be different to the indicative one shown on previous screens.</p>
-        <h2>Exolix privaatvõti<h2>
-        <p>Since Monerujo only handles the Monero part of your transaction your Exolix secret key
-        can be used to track the Bitcoin part of your order on the Exolix homepage.</p>
-        <h2>Exolix loendur</h2>
-        <p>Once the countdown reaches zero, you need to get a new quote from Exolix by going back to the
-        previous step and then coming back to the \"Confirm\" screen.</p>
-    ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>Rahakott</h1>

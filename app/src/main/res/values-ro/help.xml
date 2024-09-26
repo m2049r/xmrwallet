@@ -155,63 +155,6 @@
         Acesta este monoblocul în care a fost inclusă tranzacția ta.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Trimitere</h1>
-        <h2>Adresa destinatarului</h2>
-        <p>Aceasta este adresa publică a destinatarului la care vrei să trimiți Monero, poți copia
-	această adresă folosind clipboard-ul, scanând codul QR sau introducând-o manual. Verifică
-	repetat această adresă pentru a fi sigur că trimiți monedele la o adresă corectă.</p>
-        <p>Pe lângă adresa XMR, poți folosi
-        <ul>
-            <li>un OpenAlias pentru XMR sau BTC</li>
-            <li>o adresă BTC</li>
-        </u>
-        Atenție, transferul BTC este procesat de serviciul Exolix (vezi https://exolix.com
-        pentru detalii). Vezi mai jos secțiunea Transfer BTC.</p>
-        <h1>Transfer BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul Exolix pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://exolix.com și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
-        nu este asociată în niciun fel cu Exolix și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb a Exolix<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului Exolix. Aceștia includ cursul de
-	schimb actual, precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
-	nu sunt garantate în acest moment.</p>
-        <h2>Ordin Exolix<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al Exolix. Acest ordin este valabil pentru
-	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
-	fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă Exolix<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a Exolix
-        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul Exolix.</p>
-        <h2>Numerotarea inversă Exolix</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
-	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Transfer BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul Exolix pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://exolix.com și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
-        nu este asociată în niciun fel cu Exolix și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb a Exolix<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului Exolix. Aceștia includ cursul de
-	schimb actual, precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
-	nu sunt garantate în acest moment.</p>
-        <h2>Ordin Exolix<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al Exolix. Acest ordin este valabil pentru
-	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
-	fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă Exolix<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a Exolix
-        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul Exolix.</p>
-        <h2>Numerotarea inversă Exolix</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
-	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
-    ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>Portofelul</h1>

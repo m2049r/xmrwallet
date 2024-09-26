@@ -33,50 +33,30 @@
     <string name="info_xmrto_enabled">Pagamento em BTC activado, toca para mais informação.</string>
     <string name="info_ledger_enabled">Ledger activa, toca para mais informação.</string>
 
-    <string name="info_xmrto"><![CDATA[
-        <b>Introduziu um endereço %1$s.</b><br/>
-        <i>Vai enviar em XMR e o destinatário vai receber %2$s através do serviço <b>%3$s</b></i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">%1$s Order</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmação Pendente</string>
     <string name="info_send_xmrto_unpaid">Pagamento Pendente</string>
-    <string name="info_send_xmrto_error">Erro %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Enviadas!</string>
     <string name="info_send_xmrto_query">A comunicar &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Pode enviar %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> está com uma taxa de conversão de <b>%3$s %4$s/XMR</b> <u>neste momento</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID do pagamento integrado</string>
     <string name="info_prepare_tx">A preparar a transacção</string>
 
-    <string name="label_send_progress_xmrto_create">A criar um pedido</string>
-    <string name="label_send_progress_xmrto_query">A actualizar o pedido</string>
     <string name="label_send_progress_create_tx">A preparar a transacção Monero</string>
 
-    <string name="label_send_progress_queryparms">A obter os parâmetros</string>
 
-    <string name="label_generic_xmrto_error">ERRO</string>
     <string name="text_generic_xmrto_error">Código: %1$d</string>
 
     <string name="text_retry">Toca para voltar a tentar</string>
     <string name="text_noretry_monero">Agora estamos emperrados aqui!</string>
-    <string name="text_noretry">Ups, %1$s não parece estar disponível neste momento!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rácio: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Vai a %1$s para suporte &amp; seguimento</string>
-    <string name="label_send_btc_xmrto_key_lb">Chave secreta\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Chave secreta</string>
     <string name="label_send_btc_address">Endereço %1$s de destino</string>
     <string name="label_send_btc_amount">Quantidade</string>
 
@@ -364,7 +344,6 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has exchange support built-in. Just paste or scan a BTC, LTC, ETH, TRXUSDT or SOL address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>

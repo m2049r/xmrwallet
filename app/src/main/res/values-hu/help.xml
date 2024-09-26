@@ -137,64 +137,6 @@
         A blokk, melybe a tranzakciód került.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Küldés</h1>
-        <h2>Kedvezményezett címe</h2>
-        <p>Azon tárca nyilvános címe, melyre Monerót küldesz. Begépelhető kézileg, de akár vágólapról vagy
-        QR-kódból is beilleszthető. Többször is ellenőrizd, hogy biztosan jó címre utalsz-e.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-        </u>
-        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
-        for details). See the section on sending BTC below.</p>
-        <h1>BTC-küldés</h1>
-        <h2>Exolix</h2>
-        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
-        szolgáltatásaikkal kapcsolatban.</p>
-        <h2>Exolix árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
-        foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
-        hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>Exolix megrendelés<h2>
-        <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
-        érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
-        látottaktól.</p>
-        <h2>Exolix titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
-        <h2>Exolix visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
-        visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>BTC-küldés</h1>
-        <h2>Exolix</h2>
-        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
-        szolgáltatásaikkal kapcsolatban.</p>
-        <h2>Exolix árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
-        foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
-        hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>Exolix megrendelés<h2>
-        <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
-        érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
-        látottaktól.</p>
-        <h2>Exolix titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
-        <h2>Exolix visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
-        visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
-    ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
         <h1>Tárcalétrehozás - Ledger</h1>

@@ -108,45 +108,6 @@
         Dit is het blok waarin je transactie is opgenomen.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Verzenden</h1>
-        <h2>Adres ontvanger</h2>
-        <p>Dit is het openbare adres van de portemonnee waar je moneroj naartoe stuurt. Je kunt dit kopiëren via het klembord, een QR-code scannen of het adres handmatig invoeren. Controleer dit nauwkeurig om er zeker van te zijn dat je geen geld naar het verkeerde adres stuurt.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-        </u>
-        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
-        for details). See the section on sending BTC below.</p>
-        <h1>BTC verzenden</h1>
-        <h2>Exolix</h2>
-        <p>Exolix is een externe service waarmee je Monero kunt inwisselen voor Bitcoin.
-        We gebruiken de API van Exolix om Bitcoin-betalingen te integreren in Monerujo. Neem eens een kijkje op https://exolix.com en besluit zelf of je dit wilt gebruiken. Het Monerujo-team is niet verbonden aan Exolix en kan je niet helpen met deze service.</p>
-        <h2>Wisselkoers Exolix<h2>
-        <p>Op het scherm \"Bedrag\" worden de huidige waarden voor het gebruik van Exolix weergegeven. Hierbij staat de huidige wisselkoers, maar ook het maximale en minimale BTC-bedrag. Houd er rekening mee dat deze koers op dit moment nog niet wordt gegarandeerd.</p>
-        <h2>Exolix-opdracht<h2>
-        <p>Op het scherm \"Bevestigen\" wordt de eigenlijke Exolix-opdracht weergegeven. Deze opdracht is geldig voor een beperkte tijd. Er wordt afgeteld op de knop \"Uitgeven\". De wisselkoers kan hier anders zijn dan de schatting die op eerdere schermen is weergegeven.</p>
-        <h2>Geheime sleutel Exolix<h2>
-        <p>Omdat Monerujo alleen het Monero-gedeelte van je transactie verwerkt, kun je je geheime sleutel voor Exolix gebruiken om het Bitcoin-gedeelte van de opdracht te volgen op de Exolix-website.</p>
-        <h2>Exolix telt af!</h2>
-        <p>Als de knop heeft afgeteld naar nul, moet je een nieuw aanbod van Exolix aanvragen. Ga daarvoor terug naar de vorige stap en open het scherm \"Bevestigen\" opnieuw.</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>BTC verzenden</h1>
-        <h2>Exolix</h2>
-        <p>Exolix is een externe service waarmee je Monero kunt inwisselen voor Bitcoin.
-        We gebruiken de API van Exolix om Bitcoin-betalingen te integreren in Monerujo. Neem eens een kijkje op https://exolix.com en besluit zelf of je dit wilt gebruiken. Het Monerujo-team is niet verbonden aan Exolix en kan je niet helpen met deze service.</p>
-        <h2>Wisselkoers Exolix<h2>
-        <p>Op het scherm \"Bedrag\" worden de huidige waarden voor het gebruik van Exolix weergegeven. Hierbij staat de huidige wisselkoers, maar ook het maximale en minimale BTC-bedrag. Houd er rekening mee dat deze koers op dit moment nog niet wordt gegarandeerd.</p>
-        <h2>Exolix-opdracht<h2>
-        <p>Op het scherm \"Bevestigen\" wordt de eigenlijke Exolix-opdracht weergegeven. Deze opdracht is geldig voor een beperkte tijd. Er wordt afgeteld op de knop \"Uitgeven\". De wisselkoers kan hier anders zijn dan de schatting die op eerdere schermen is weergegeven.</p>
-        <h2>Geheime sleutel Exolix<h2>
-        <p>Omdat Monerujo alleen het Monero-gedeelte van je transactie verwerkt, kun je je geheime sleutel voor Exolix gebruiken om het Bitcoin-gedeelte van de opdracht te volgen op de Exolix-website.</p>
-        <h2>Exolix telt af!</h2>
-        <p>Als de knop heeft afgeteld naar nul, moet je een nieuw aanbod van Exolix aanvragen. Ga daarvoor terug naar de vorige stap en open het scherm \"Bevestigen\" opnieuw.</p>
-    ]]></string>
 
     <string name="help_wallet"><![CDATA[
         <h1>De portemonnee</h1>

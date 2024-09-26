@@ -34,56 +34,16 @@
     <string name="info_xmrto_enabled">پرداخت‌های غیر مونرویی فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
     <string name="info_ledger_enabled">پشتیبانی از لجر فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
 
-    <string name="info_xmrto"><![CDATA[
-        <b>
-        شما یک آدرس
-        %1$s
-        وارد کردید.
-        </b><br/>
-        <i>
-        شما با ارسال XMR با استفاده از سرویس
-        <b>%3$s</b>
-        برای دریافت کننده
-        %2$s
-        خواهید فرستاد.
-        </i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">
-    سفارش
-    %1$s
-    </string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">در حال تایید</string>
     <string name="info_send_xmrto_unpaid">در حال پرداخت</string>
-    <string name="info_send_xmrto_error">
-    خطای Exolix
-    (%2$s)
-    </string>
     <string name="info_send_xmrto_sent">%1$s
     ارسال شد!
     </string>
     <string name="info_send_xmrto_query">در حال پرس‌وجو...</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>
-        شما می‌توانید
-        %1$s
-        را بفرستید
-        &mdash;
-        %2$s %4$s
-        </b>.<br/>
-        <i>
-        <u>در حال حاضر</u>
-        سرویس
-        <b>%5$s</b>
-        به شما نرخ تبدیل
-        <b>%3$s %4$s/XMR</b>
-        را می‌دهد.
-        </i>.
-    ]]></string>
 
     <string name="send_available_btc">
     موجودی
@@ -95,49 +55,21 @@
     </string>
     <string name="info_prepare_tx">در حال آماده‌سازی تراکنش</string>
 
-    <string name="label_send_progress_xmrto_create">
-    در حال ساخت تراکنش
-    </string>
-    <string name="label_send_progress_xmrto_query">
-    در حال پرس‌وجوی سفارش
-    </string>
     <string name="label_send_progress_create_tx">در حال آماده‌سازی تراکنش مونرو</string>
 
-    <string name="label_send_progress_queryparms">
-    در حال پرس‌وجوی پارامترهای
-    </string>
 
-    <string name="label_generic_xmrto_error">
-    خطای
-    </string>
     <string name="text_generic_xmrto_error">
     کد:
     %1$d</string>
 
     <string name="text_retry">برای تلاش دوباره لمس کنید</string>
     <string name="text_noretry_monero">ما اینجا گیر کردیم!</string>
-    <string name="text_noretry">
-    سرویس
-    %1$s
-    در حال حاضر در دسترس نیست!
-    </string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">
     (نرخ:
     %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">
-    برای پشتیبانی و رهگیری سفارش به
-    %1$s
-    مراجعه کنید
-    </string>
-    <string name="label_send_btc_xmrto_key_lb">
-    کلید خصوصی
-    \n%1$s</string>
-    <string name="label_send_btc_xmrto_key">
-    کلید خصوصی %s
-    </string>
     <string name="label_send_btc_address">
     آدرس مقصد
     %1$s
@@ -557,9 +489,6 @@
     این بذر به هرکسی که آن را در اختیار دارد دسترسی کامل می‌دهد. اگر آن را از دست بدهید، ما نمی‌توانیم به شما کمک کنیم آن را بازیابی کنید و مونروهای محبوب خود را از دست می دهید.
     </string>
     <string name="onboarding_xmrto_title">هرنوع رمزارز ارسال کنید</string>
-    <string name="onboarding_xmrto_information">
-    Monerujo دارای پشتیبانی صرافی داخلی است. فقط یک آدرس BTC، LTC، ETH، TRXUSDT یا SOL را بچسبانید یا اسکن کنید و با خرج کردن XMR، این رمزارزها را ارسال خواهید کرد (آدرس IP ایران در تحریم است).
-    </string>
     <string name="onboarding_nodes_title">گره‌ها، به میل شما</string>
     <string name="onboarding_nodes_information">
     گره‌ها شما را به شبکه مونرو متصل می‌کنند. از بین گره‌های عمومی یکی را انتخاب کنید یا با استفاده از گرهٔ خود متصل شوید.

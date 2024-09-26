@@ -137,63 +137,6 @@
         Dette er blokka som transaksjonen din ligger i.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Send</h1>
-        <h2>Mottakers adresse</h2>
-        <p>Dette er den offentlige adressen til lommeboka du skal sende moneroj til, som du kan
-		kopiere fra utklippstavla, skanne fra en QR-kode eller skrive inn manuellt. Vær sikker på at du trippelsjekker dette
-        for å forsikre deg om at du ikke sender moneroj til feil adresse.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-        </u>
-        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
-        for details). See the section on sending BTC below.</p>
-        <h1>Å sende BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker Exolix-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://exolix.com og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
-        er ikke assosierte med Exolix og kan ikke hjelpe deg med deres tjeneste.</p>
-        <h2>Exolix vekslingskurs<h2>
-        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til Exolix-tjenesten. Disse
-        inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
-        kursen ikke er garantert på dette punktet.</p>
-        <h2>Exolix ordre<h2>
-        <p>På \"Bekreft\" skjermen, vil du se den faktiske Exolix ordren. Denne ordren er gyldig for
-        en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
-        enn den veiledende kursen vist på de tidligere skjermene.</p>
-        <h2>Exolix hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din Exolix hemmelige nøkkel
-        bli brukt til å spore BTC-transaksjonen på Exolix sine hjemmesider.</p>
-        <h2>Exolix nedtelling!</h2>
-        <p>Når nedtellinga når null, må du få en ny kvote fra Exolix ved å gå tilbake til
-        det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Å sende BTC</h1>
-        <h2>Exolix</h2>
-        <p>Exolix er en tredjepartstjeneste som lar deg veksle Monero til Bitcoin.
-        Vi bruker Exolix-APIen til å integrere BTC-betalinger i Monerujo. Sjekk ut
-        https://exolix.com og bestem for deg selv om dette er noe du vil bruke. Monerujo-utviklerne
-        er ikke assosierte med Exolix og kan ikke hjelpe deg med deres tjeneste.</p>
-        <h2>Exolix vekslingskurs<h2>
-        <p>På \"Mengde\" skjermen vil du bli vist de nåværende parametrene til Exolix-tjenesten. Disse
-        inkluderer den nåværende vekslingskursen så vel som nedre og øvre BTC-grenser. Vær oppmerksom på at
-        kursen ikke er garantert på dette punktet.</p>
-        <h2>Exolix ordre<h2>
-        <p>På \"Bekreft\" skjermen, vil du se den faktiske Exolix ordren. Denne ordren er gyldig for
-        en begrensa tid - du legger kanskje til en nedtelling på \"Bruk\" knappen. Veklingskursen kan være
-        enn den veiledende kursen vist på de tidligere skjermene.</p>
-        <h2>Exolix hemmelig nøkkel<h2>
-        <p>Fordi Monerujo bare håndterer XMR delen av transaksjonen din, kan din Exolix hemmelige nøkkel
-        bli brukt til å spore BTC-transaksjonen på Exolix sine hjemmesider.</p>
-        <h2>Exolix nedtelling!</h2>
-        <p>Når nedtellinga når null, må du få en ny kvote fra Exolix ved å gå tilbake til
-        det tidligere steget og komme tilbake til \"Bekreft\" skjermen.</p>
-    ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
         <h1>Create Wallet - Ledger</h1>
