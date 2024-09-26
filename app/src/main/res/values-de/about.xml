@@ -4,15 +4,6 @@
     <string name="about_whoami">Ich bin Monerujo</string>
     <string name="about_version">Version %1$s (%2$d)</string>
     
-    <string name="credits_text"><![CDATA[
-        <b>Credits</b>
-        <br/>
-        m2049r, baltsar777, anhdres, keejef,
-        rehrar, EarlOfEgo et al.
-        <br/><br/>
-        <a href="https://monerujo.io/">monerujo.io</a>
-        ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>Datenschutzerklärung</h1>
         <p>Diese Seite informiert dich über unsere Richtlinien bezüglich der Sammlung,

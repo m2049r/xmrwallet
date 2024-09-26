@@ -424,23 +424,4 @@
     <string name="pocketchange_create_title">Erstelle schnellen Wechsel</string>
 
     <string name="label_apply">ANWENDEN</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
-
-    <string name="menu_bluetooth">Connect Sidekick</string>
-    <string name="bluetooth_select_label">Select Sidekick device</string>
-
-    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
-    <string name="bluetooth_permissions_ok">OK</string>
-    <string name="bluetooth_permissions_settings">App Settings</string>
-    <string name="bluetooth_permissions_cancel">Cancel</string>
-
-    <string name="sidekick_pin">PIN: %1$s</string>
-    <string name="sidekick_not_connected">[not connected]</string>
-    <string name="sidekick_confirm_tx">Confirm Transaction</string>
-    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
-        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
-    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
-    <string name="fab_restore_sidekick">Restore from Sidekick</string>
-    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>

@@ -70,76 +70,6 @@
         இந்த பணப்பை முகவரிக்கு <em>முன்பு</em> நீங்கள் முதலில் பயன்படுத்திய தோராயமான தேதி அல்லது தொகுதி உயரத்தை உள்ளிடவும்.</p>
     ]]></string>
 
-    <string name="help_details"><![CDATA[
-        <h1>பணப்பை விவரங்கள்</h1>
-        <h2>பொது முகவரி</h2>
-        பொது முகவரி உங்கள் வங்கி கணக்கு எண்ணை போன்றது. நீங்கள் மொனேரொவை இழந்து விடுவோமோ என்ற எந்தவித
-        கவலையும் இல்லாமல் இதை எவரோடும் பகிரலாம். இந்த முகவரியை பயன்படுத்தி மக்கள் உங்கள் பணப்பைக்கு மொனெரோவை
-        அனுப்புவார்கள்.
-        <h2>நினைவி விதை</h2>
-        பின்னர் ஒரு கட்டத்தில் உங்கள் பணப்பையை மீட்டெடுக்க வேண்டும் என்றால் இந்த தரவு மட்டுமே போதுமானதாக இருக்கும். 
-        இதன்மூலம் உங்கள் வைப்புகளின் முழு அணுகலை நீங்கள் பெற இயலும்.
-        இது <em>யாரேனும் ஒருவருக்கு</em> உங்கள் வைப்பின் முழு அணுகலை தரவல்லது என்பதால், இதை பாதுகாப்பாக மற்றும் 
-        கமுக்கமாக வைத்திருப்பது மிகவும் முக்கியமானதாகும்! இதை இன்னும் ஒரு பாதுகாப்பான இடத்தில் எழுதி வைக்கவில்லையென்றால்
-        இப்போதே அதை செய்யவும்!
-        <h2>பணப்பை கோப்புகள் மீட்டமை கடவுச்சொல்</h2>
-        இந்த கடவுச்சொல்லை எழுதி வைப்பதிருப்பதை உறுதிசெய்து கொள்ளவும். நீங்கள் உங்கள் சாதனத்தை மீள் அமைத்தாலோ அல்லது
-        செயலியின் நிறுவலை நீக்கனாலோ, உங்கள் பணப்பையை மீண்டும் அணுக இது உங்களுக்கு தேவைப்படும்.<br/>
-        <h3>CrAzYpass</h3>
-        இங்கு காட்டப்பட்டுள்ள கடவுச்சொல் ஒரு குழுவில் 4 என்ற அடிப்படையில் உள்ள 52 எண்ணெழுத்து வரையுருக்களாகும் - வாழ்த்துக்கள்!
-        உங்கள் பணப்பை கோப்புகள் நீங்கள் தேர்ந்தெடுத்த கடவுத்தொடரை (உருவாக்கலின்போது அல்லது அதை மாற்றும் போது) அடிப்படையாக 
-        கொண்டு உங்கள் சாதனத்தின் பாதுகாப்பு சிறப்பியல்புகளால் உற்பத்தி செய்யப்பட்ட 256-இரும திறவுகோலை கொண்டு பாதுகாக்கப்பட்டுள்ளது. 
-        இது ஊடுருவலை மிக கடினமானதாக்குகிறது!<br/>
-        இந்த சிறப்பியல்பு எல்லா புதிதாக உருவாக்கப்பட்ட பணப்பைகளுக்கும் கட்டாயமானதாகும்.
-        <h3>மரபுவழி கடவுச்சொல்</h3>
-        உங்கள் கடவுத்தொடரை இங்குக் காண நேர்ந்தால், உங்கள் பணப்பை கோப்பானது CrAzYpass ஐ பயன்படுத்தும்போது 
-        உள்ள பாதுகாப்பைக் காட்டிலும் சற்று குறைவாக உள்ளது எனப் பொருள் கொள்ளலாம். இதைச் சரி செய்ய, சிறுபட்டியிலிருந்து 
-        \"கடவுச்சொற்றொடரை மாற்று\" என்பதைத் தேர்ந்தெடுக்கவும். இதில் புதிய கடவுத்தொடரை (அல்லது அதே கடவுத்தொடரை) இட்டவுடன் 
-        செயலியானது ஒரு CrAzYpass ஐ உங்களுக்காக உற்பத்தி செய்து, உங்கள் பணப்பை கோப்புகளை அதைக்கொண்டு பாதுகாக்கும். இதை
-        எழுதி வைத்துக் கொள்ளவும்!
-        <h3>CrAzYpass பணப்பைகள்</h3>
-        If you ever need to reinstall Monerujo (for example after resetting your phone or switching
-        to a new one) or you want to use your wallet files on a different device or PC, you have to
-        use this Recovery Password in order to access your wallet again.<br/>
-        By selecting \"Change Passphrase\" from the menu, you can choose another passphrase. Beware
-        that this will generate a new Recovery Password. Write it down!
-        <h2>பார்வை திறவுகோல்</h2>
-        பார்வை திறவுகோலானது உங்கள் பணப்பைக்கு உள்வரும் பரிமாற்றங்களை, அவற்றிற்கு உங்கள் பணப்பையில் 
-        உள்ள பணத்தைச் செலவழிப்பதற்கு அனுமதி அளிக்காமல் அவற்றைக் கண்காணிக்கப் பயன்படும்.
-        <h2>செலவழி திறவுகோல்</h2>
-        உங்கள் செலவழி திறவுகோலானது உங்கள் பணப்பையோடு தொடர்புடைய மொனேரொவை யாரேனும் ஒருவர் செலவழிக்க அனுமதிக்கிறது.
-        ஆகையால், நினைவி விதையைப் போல் இதைப் பற்றியும் யாரிடமும் சொல்லாதீர்கள்.
-    ]]></string>
-
-    <string name="help_list"><![CDATA[
-        <h1>பணப்பை பட்டியல்</h1>
-        <h2>கணு</h2>
-        <p>Monerujo uses a Remote Node to communicate with the Monero Network without having
-        to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://moneroworld.com/<p>
-        <p>Monerujo comes with some Remote Nodes preset. It remembers the last five nodes used.</p>
-        <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
-        in the internal storage of your device. You can use a file explorer app to see them.
-        You should make backups of this folder on a regular basis to off-device storage in
-        case your device explodes or gets stolen.</p>
-        <p>Select a wallet to open it or press the \"+\" to create a new one.
-        Or select one of the wallet operations:</p>
-        <h3>விவரங்கள்</h3>
-        <p>பணப்பையின் விவரங்கள், விதை &amp; திறவுகோல்களை காட்டும்.</p>
-        <h3>பெறு</h3>
-        <p>மொனேரொவை பெறுவதற்காக ஒரு QR குறியீட்டை உருவாக்கு.</p>
-        <h3>மறுபெயரிடு</h3>
-        <p>பணப்பையின் பெயரை மாற்றும். காப்புநகல்களின் பெயர்கள் மாற்றப்படாது.</p>
-        <h3>காப்புநகலெடு</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
-        overwriting previous copies there.</p>
-        <h3>ஆவணகப்படுத்து</h3>
-        <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>
-        folder. If you no longer need your backups you should delete them with a file explorer or
-        secure delete app.</p>
-    ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>பரிமாற்ற விவரங்கள்</h1>
         <h2>சேருமிடம்</h2>
@@ -158,76 +88,6 @@
         இது உங்கள் பரிமாற்றம் சேர்க்கப்பட்டுள்ள தொகுப்பாகும்.
     ]]></string>
 
-
-    <string name="help_wallet"><![CDATA[
-        <h1>பணப்பை</h1>
-        <h2>வீதி பயன்முறை</h2>
-        <p>Street mode can be enabled/disabled in the menu or Gunther\'s head icon. In this mode, your
-        balance is not shown on any screen so you can safely use your wallet on the street, a pub or
-        other public place. Previous transactions are also hidden. New transactions will be shown, so
-        you can see that you have sent/received sweet Moneroj!</p>
-        <h2>வருடல்</h2>
-        Because Monero likes to keep things private, every time you open a Monerujo wallet we have to
-        scan the blockchain to see if any new Moneroj have been sent to your wallet, this only
-        stores information to your phone which belongs to your wallet. Sometimes it can take a while
-        because you haven’t synced in a long time.
-        <h2>இருப்பு</h2>
-        <p><b>காப்பாற்றுங்கள்! எனது பணப்பை இருப்பு மறைந்துவிட்டது / உறுதிப்படுத்தப்படவில்லை எனக் காட்டுகிறது!</b><br/>
-        Don’t panic! When you send funds from your wallet, some of your balance will temporarily show
-        as unconfirmed.
-        This happens as a result of how Monero is exchanged on the blockchain and how change works.
-        Read more about change at https://getmonero.org/resources/moneropedia/change.html
-        <h2>பரிமாற்ற பட்டியல்</h2>
-        <p>A list of the wallet transactions. In view wallets, only incoming transactions are shown.</p>
-    ]]></string>
-
-    <string name="help_node"><![CDATA[
-        <h1>கணு</h1>
-        <h2>TL;DR</h2>
-        <p>Refresh the nodes list by pulling down &amp; bookmark 3&#8211;5 nodes to allow Monerujo
-        to choose the best one for you!</p>
-        <h2>கணு என்றால் என்ன?</h2>
-        <p>Monerujo வானது, மொத்த தொகுப்பு சங்கிலியையும் பதிவிறக்கி ஒரு நகலை தனக்குள் சேமித்து வைப்பதற்கு பதிலாக,
-        மொனேரொ வலையமைப்போடு தொடர்பு கொள்வதற்கு ஒரு தொலைநிலை கணுவை பயன்படுத்துகிறது
-        (இதை சில நேரம் மறைநிரல் என்றும் அழைப்பார்கள்).<p>
-        <h2>கணு பட்டியல்</h2>
-        <p>If the list is empty, you can either add new nodes manually or let Monerujo
-        scan the network for you. Or both. Read on&#8230;</p>
-        <p>The node list shows all currently known nodes. Additionally, the timestamp
-        of the latest block known to each node is shown under the node name. An icon
-        representing the node&apos;s response behaviour
-        (which indicates the level of connectivity to be expected)
-        is shown next to each node.</p>
-        <p>Any node in the list can be bookmarked for later use.
-        Nodes which are not bookmarked will be forgotten.<p>
-        <p>Monerujo will choose the optimal bookmarked node each time you use it.
-        It does this by checking the blockheight (how up-to-date
-        is the node?) as well as the response behaviour (how fast does the node respond to requests?).</p>
-        <p>The list is sorted by these characteristics, so the top node would be the one Monerujo
-        would choose right now. The bottom of the list would show very slow or unavailable nodes.</p>
-        <h2>கணுவை சேர்க்க</h2>
-        <p>கீழுள்ள &quot;கணுவை சேர்&quot; பொத்தானைத் தட்டிய பிறகு, கணு விவரங்களை உள்ளிடும்படி 
-        பின்வரும் உரையாடலில் கேட்டுக்கொள்ளப்படுவீர்.
-        &quot;முகவரி&quot; என்பது கணுவின் புரவலன் பெயர் அல்லது IP முகவரியாகும் - இது மட்டும்தான் கட்டாயமாக
-        நிரப்ப வேண்டிய ஒன்று.
-        முன்னிருப்பு-அல்லாத துரையில் (எ.கா. 18089) கணு இயங்கினால் &quot;துரை&quot; ஐ உள்ளிடவும்.
-        கணுவை பின்பு எளிதில் கண்டறிவதற்கு, நீங்கள் விரும்பினால் அதற்கு ஒரு பெயரைச் சூட்டலாம்.
-        Some nodes require credentials to use them. Enter the provided username &amp;
-        password in the appropriate fields. Now you can &quot;Test&quot; these setting.
-        The &quot;Test Results&quot; will display the blockheight, response time and actual IP used.
-        The result may also be an error - usually because the hostname provided is
-        not reachable in a sensible amount of time or the credentials are incorrect.
-        Or the hostname/port combination does not point to an actual Monero Node!
-        Once the test passes (no error) - you&apos;re set to press &quot;OK&quot; to save &amp;
-        bookmark this node.</p>
-        <h2>கணுக்களுக்காக வருடவும்</h2>
-        <p>கூடுதலாக, கணுக்களுக்காக நீங்கள் வலையமைப்பை வருடலாம். Monerujo வானது தொலைநிலை கணுக்களுக்காக 
-        வலையமைப்பில் துறை 18089 இல் வருடலைத் தொடங்கும். தொடக்கத்தில் இது மொனேரொ P2P வலையமைப்பில் உள்ள மற்ற 
-        தோழர்களுக்கான உங்கள் புத்தகக்குறியிட்ட கணுக்களைக் கேட்கும், பின் அந்த தோழர்களிடம் உள்ள மற்ற தோழர்களுக்கான 
-        புத்தகக்குறியிட்ட கணுக்கள் எனக் கேட்டுக்கொண்டே போகும். உங்களிடம் எந்த புத்தகக்குறியிட்ட கணுக்களும் இல்லையென்றால் 
-        (அல்லது அவை அவற்றின் தோழர்களைப் பற்றி நம்மிடம் எதையும் சொல்லவில்லையென்றால்), Monerujo வானது மொனேரொவில் வன்பொதியப்பட்டுள்ள
-        மொனேரொ விதை கணுக்களிடம் நேராகச் சென்றுவிடும். மொத்தமாக 10 தொலைநிலை கணுக்களைக் கண்டறிந்த பின் வருடல் நின்றுவிடும்.</p>
-    ]]></string>
 
     <string name="help_uri"><![CDATA[
         <h1>பணம் செலுத்தல் தொடுப்பியை பயன்படுத்துதல்</h1>
@@ -261,38 +121,5 @@
         <h1>TOR கணு</h1>
         <p>இது ஒரு .onion கணுவாகும். இதை பயன்படுத்த நீங்கள் பணப்பை பட்டியல் பக்கத்தின் மேல் உள்ள <img src="ic_network_clearnet"/>
         சின்னத்தை தட்டி TOR பயன்முறையை செயல்படுத்தவும்.</p>
-    ]]></string>
-
-    <string name="help_sidekick"><![CDATA[
-        <h2>Using your sidekick wallet</h2>
-        Check that both phones are connected via Bluetooth and both apps are opened.
-
-        <h3>On sidekick:</h3>
-        Open your wallet of choice.
-
-        <h3>On monerujo:</h3>
-        Connect to sidekick.
-
-        Open the wallet matching the one you have opened on the sidekick phone.
-
-        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
-
-        <h3>On sidekick:</h3>
-        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
-
-        <h3>On monerujo:</h3>
-        The transaction should be signed and ready to be sent. Press to make it so.
-         <br/>
-    ]]></string>
-
-    <string name="help_create_sidekick" translatable="false"><![CDATA[
-        <h1>Create Wallet - Sidekick</h1>
-        <p>You want to recover your wallet from your awesome Sidekick device.</p>
-        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
-        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
-        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>
