@@ -325,6 +325,8 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     public void animateFAB() {
+        // NOTE: Without `fabX.setVisibility(View.VISIBLE)`, the code `fabX.setClickable(true)` does not work.
+        // Please update the future buttons with the above code for better accessibility.
         if (isFabOpen()) { // close the fab
             fabScreen.setClickable(false);
             fabScreen.setVisibility(View.INVISIBLE);
@@ -334,20 +336,27 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             if (fabLedgerL.getVisibility() == View.VISIBLE) {
                 fabLedgerL.startAnimation(fab_close);
                 fabLedger.setClickable(false);
+                fabLedger.setVisibility(View.INVISIBLE);
             } else if (fabSidekickL.getVisibility() == View.VISIBLE) {
                 fabSidekickL.startAnimation(fab_close);
                 fabSidekick.setClickable(false);
+                fabSidekick.setVisibility(View.INVISIBLE);
             } else {
                 fabNewL.startAnimation(fab_close);
                 fabNew.setClickable(false);
+                fabNew.setVisibility(View.INVISIBLE);
                 fabViewL.startAnimation(fab_close);
                 fabView.setClickable(false);
+                fabView.setVisibility(View.INVISIBLE);
                 fabKeyL.startAnimation(fab_close);
                 fabKey.setClickable(false);
+                fabKey.setVisibility(View.INVISIBLE);
                 fabSeedL.startAnimation(fab_close);
                 fabSeed.setClickable(false);
+                fabSeed.setVisibility(View.INVISIBLE);
                 fabImportL.startAnimation(fab_close);
                 fabImport.setClickable(false);
+                fabImport.setVisibility(View.INVISIBLE);
             }
             setFabOpen(false);
         } else { // open the fab
@@ -368,10 +377,12 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                     fabLedgerL.setVisibility(View.VISIBLE);
                     fabLedgerL.startAnimation(fab_open);
                     fabLedger.setClickable(true);
+                    fabLedger.setVisibility(View.VISIBLE);
                 } else { // Sidekick
                     fabSidekickL.setVisibility(View.VISIBLE);
                     fabSidekickL.startAnimation(fab_open);
                     fabSidekick.setClickable(true);
+                    fabSidekick.setVisibility(View.VISIBLE);
                 }
             } else {
                 fabSidekickL.setVisibility(View.GONE);
@@ -384,14 +395,19 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
                 fabNewL.startAnimation(fab_open);
                 fabNew.setClickable(true);
+                fabNew.setVisibility(View.VISIBLE);
                 fabViewL.startAnimation(fab_open);
                 fabView.setClickable(true);
+                fabView.setVisibility(View.VISIBLE);
                 fabKeyL.startAnimation(fab_open);
                 fabKey.setClickable(true);
+                fabKey.setVisibility(View.VISIBLE);
                 fabSeedL.startAnimation(fab_open);
                 fabSeed.setClickable(true);
+                fabSeed.setVisibility(View.VISIBLE);
                 fabImportL.startAnimation(fab_open);
                 fabImport.setClickable(true);
+                fabImport.setVisibility(View.VISIBLE);
             }
             setFabOpen(true);
         }
