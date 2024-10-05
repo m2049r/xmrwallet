@@ -363,7 +363,7 @@
 
 
 
-    <string name="label_restoreheight">Yüksekliği Geri Getir</string>
+    <string name="label_restoreheight">Geri Getirme Yüksekliği</string>
 
     <string name="toast_ledger_start_app">Monero Uygulamasını %1$s Üzerinde Başlat</string>
 
