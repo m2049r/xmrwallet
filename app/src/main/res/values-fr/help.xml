@@ -320,7 +320,7 @@
         <p>Activer Tor routera votre connexion à travers plusieurs relais et cachera votre adresse IP
         au nœud. Gardez à l\'esprit que cela est davantage privé mais aussi <b>plus lent</b>.</p>
         <p>Pour utiliser Tor avec Monerujo, vous aurez besoin d'\avoir installé Orbot sur votre téléphone. Après
-        avoir installé Orbot, assurez-vous de l\activer en cliquant sur l\'icône réseau sur l\'écran de la liste des
+        avoir installé Orbot, assurez-vous de l\'activer en cliquant sur l\'icône réseau sur l\'écran de la liste des
         porte-monnaie.</p>
         <p>Si vous avez des problèmes de connexion avec Tor, essayez d\'obtenir une nouvelle identité dans l\'application
         Orbot (l\'icône en haut à droite).</p>
