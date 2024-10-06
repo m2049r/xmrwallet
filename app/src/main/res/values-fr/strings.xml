@@ -161,7 +161,7 @@
     <string name="generate_title">Créer un Portefeuille</string>
     <string name="generate_name_hint">Nom du Portefeuille</string>
     <string name="generate_password_hint">Mot de Passe du Portefeuille</string>
-    <string name="generate_fingerprint_hint">Autoriser l'ouverture du porte-monnaie avec l\'empreinte digitale</string>
+    <string name="generate_fingerprint_hint">Autoriser l\'ouverture du porte-monnaie avec l\'empreinte digitale</string>
     <string name="generate_fingerprint_warn"><![CDATA[
         <strong>Authentification par empreinte digitale</strong>
         <p>En activant l\'authentification par empreinte digitale, vous pouvez voir le solde de
@@ -357,7 +357,7 @@
 
     <string name="label_restoreheight">Hauteur de restauration</string> <!-- Restore Height -->
 
-    <string name="toast_ledger_start_app">Démarrer l'application Monero sur %1$s</string>
+    <string name="toast_ledger_start_app">Démarrer l\'application Monero sur %1$s</string>
 
     <string name="menu_rescan">Réanalyser !</string>
 
@@ -414,7 +414,7 @@
     <string name="max_subaddress_warning">Trop d\'adresse non utilisées - utilisez-en certaines pour permettre d\'en créer davantage !</string>
     <string name="max_account_warning">Trop de comptes inutilisés - utilisez-en certains pour permettre d\'en créer davantage !</string>
     <string name="subaddress_tx_label">Transactions pour cette sous-adresse  :</string>
-    <string name="subaddress_notx_label">Aucune transaction pour cette sous-adresse pour l'instant</string>
+    <string name="subaddress_notx_label">Aucune transaction pour cette sous-adresse pour l\'instant</string>
     <string name="subaddress_select_label">Choisissez une sous-adresse</string>
     <string name="subaddress_details_hint">Appuyez longtemps pour les détails</string>
     <string name="subaddress_add">Ajouter une sous-adresse</string>
@@ -432,7 +432,7 @@
     <string name="node_waiting">\u00A0EN ATTENTE POUR LE NŒUD\u00A0</string>
     <string name="tor_enable_background">"Autoriser les démarrages en arrière-plan" dans les réglages d\'Orbot pour utiliser Tor !</string>
     <string name="tor_noshift">SideShift.ai ne prend pas en charge Tor.\nDésactivez Tor pour échanger des XMR.</string>
-    <string name="tor_enable">Activer TOR</string>
+    <string name="tor_enable">Activer Tor</string>
 
     <string name="label_seed_offset_encrypt">Chiffrement de la phrase mnémonique (EXPÉRIMENTAL)</string>
     <string name="seed_offset_hint">Phrase d\'offset de la phrase mnémonique (optionnelle)</string>
@@ -450,7 +450,7 @@
 
     <string name="message_qr_failed">Échec de la création de code QR pour partager !</string>
 
-    <string name="tx_locked">Montant de la transaction bloqué jusqu'au bloc %1$d (in %2$d blocs ≈ %3$,.2f jours)</string>
+    <string name="tx_locked">Montant de la transaction bloqué jusqu\'au bloc %1$d (dans %2$d blocs ≈ %3$,.2f jours)</string>
 
 
     <string name="pocketchange_info">Pour réduire le temps d\'attente lors des dépenses répétées, Monerujo peut créer de la monnaie au prix de frais supplémentaires. Je vais essayer de créer et de maintenir au moins 6 pièces du montant sélectionné.</string>

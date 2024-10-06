@@ -59,7 +59,7 @@
         <p>Eğer sadece bir cüzdana gelen işlemleri gözlemlemek istiyorsanız!</p>
         <p>Benzersiz bir cüzdan ismi ve bir parola girin. Parola, cihaz üzerinde cüzdan verilerinin güvenliği
         için kullanılır. Güçlü bir parola kullanın - veya daha iyisi, parola olarak bir cümle kullanın.<p>
-        <p>\"Herkese Açık Adres\ alanına Monero adresinizi girin ve \"Görüntüleme Anahtarı\" alanını doldurun.</p>
+        <p>\"Herkese Açık Adres\" alanına Monero adresinizi girin ve \"Görüntüleme Anahtarı\" alanını doldurun.</p>
         <p>Bu adres için ilk kullanılan işlemin blok numarasını \"Geri Getirme Yüksekliği\" alanına
         girin. Ayrıca YYYY-AA-GG biçiminde bir tarih girmeniz de mümkündür. Emin değilseniz,
         bu cüzdan adresini ilk kullanımınızdan <em>önce</em> yaklaşık bir tarih/blok yüksekliği girin.</p>
@@ -68,12 +68,12 @@
     <string name="help_details"><![CDATA[
         <h1>Cüzdan Ayrıntıları</h1>
         <h2>Herkese açıkadres</h2>
-        Herkese açık adresiniz, Moneronuzu kaybetmekten korkmadan herhangi birisiyle paylaşabileceğiniz
+        Herkese açık adresiniz, Monero\'nuzu kaybetmekten korkmadan herhangi birisiyle paylaşabileceğiniz
         banka hesap numaranız gibidir. Kişiler cüzdanınıza Monero yollamak için bu adresi kullanacaktır.
         <h2>Hatırlatıcı Tohum</h2>
         Bu, daha sonradan cüzdanınızı geri getirip fonlarınıza tam erişim sağlamak için ihtiyaç duyulan
         yegane veridir. Bunu güvende ve gizli muhafaza etmeniz çok önemlidir, çünkü <em>herhangi birine</em>
-        Monero'larınıza tam erişim verir! Eğer onu güvenli bir yere yazmadıysanız, lütfen bunu yapın!
+        Monero\'larınıza tam erişim verir! Eğer onu güvenli bir yere yazmadıysanız, lütfen bunu yapın!
         <h2>Cüzdan Dosyaları Geri Getirme Parolası</h2>
         Bu parolayı bir kağıda yazdığınızdan emin olun. Cihazınızı sıfırlarsanız veya uygulamayı kaldırırsanız
         cüzdanınıza yeniden erişmek için buna ihtiyacınız olacaktır.<br/>

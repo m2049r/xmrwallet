@@ -75,7 +75,7 @@
         <h3>CrAzYpass</h3>
         Si le mot de passe affiché ici comporte 52 caractères alphanumériques par groupes de 4 - félicitations !
         Vos fichiers de portefeuille sont sécurisés avec une clef 256 bits généré par les fonctionnalités de
-        sécurité de votre appareil sur la base de la phrase secrète que vous avez choisis (lors de la création
+        sécurité de votre appareil sur la base de la phrase secrète que vous avez choisi (lors de la création
         ou en l’ayant changée). Cela le rend extrêmement difficile à pirater !<br/>
         Cette fonctionnalité est obligatoire pour tous les nouveaux portefeuilles.
         <h3>Mot de passe traditionnel</h3>
@@ -318,7 +318,7 @@
         <p>Tor, acronyme de The Onion Router, est un logiciel libre et open source pour permettre les communications
         anonymes.</p>
         <p>Activer Tor routera votre connexion à travers plusieurs relais et cachera votre adresse IP
-        du nœud. Gardez à l\'esprit que cela est davantage privé mais aussi <b>plus lent</b>.</p>
+        au nœud. Gardez à l\'esprit que cela est davantage privé mais aussi <b>plus lent</b>.</p>
         <p>Pour utiliser Tor avec Monerujo, vous aurez besoin d'\avoir installé Orbot sur votre téléphone. Après
         avoir installé Orbot, assurez-vous de l\activer en cliquant sur l\'icône réseau sur l\'écran de la liste des
         porte-monnaie.</p>
@@ -344,7 +344,7 @@
 
         Ouvrez le porte-monnaie correspondant à celui que vous avez ouvert sur le téléphone sidekick.
 
-        Utilisez-le comme vous utiliseriez normalement un porte-monnaie. Laissez-le analyser pour voir les transactions entrantes, partagez des adresses ou bien envoyez des moneros. Si l'application a besoin de faire quelque chose qui a besoin de vos clefs, elle demandera l'autorisation depuis sidekick.
+        Utilisez-le comme vous utiliseriez normalement un porte-monnaie. Laissez-le analyser pour voir les transactions entrantes, partagez des adresses ou bien envoyez des moneros. Si l\'application a besoin de faire quelque chose qui a besoin de vos clefs, elle demandera l\'autorisation depuis sidekick.
 
         <h3>Sur sidekick :</h3>
         Si monerujo a demandé l\'autorisation, vous devriez voir un dialogue qui affiche les détails de la transaction tels que le montant et les frais. Vous verrez également deux options, pour l\'ACCEPTER ou la REFUSER. Choisissez judicieusement.
