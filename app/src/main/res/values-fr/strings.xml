@@ -392,7 +392,7 @@
     <string name="node_updated_hours">Dernier bloc  : il y a %1$d heures</string>
     <string name="node_updated_days">Dernier bloc : il y a  %1$d jours</string>
 
-    <string name="shift_noquote">Impossible d'obtenir un devis</string>
+    <string name="shift_noquote">Impossible d\'obtenir un devis</string>
     <string name="shift_checkamount">Veuillez vérifier le montant et réessayez</string>
 
     <string name="info_xmrto_ambiguous"><![CDATA[
