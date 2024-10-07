@@ -22,6 +22,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DefaultNodes {
+    AGORIST("xmr.agor.ist:18089/mainnet/agor.ist"),
     BOLDSUCK("xmr-de.boldsuck.org:18080/mainnet/boldsuck.org"),
     boldsuck("6dsdenp6vjkvqzy4wzsnzn6wixkdzihx3khiumyzieauxuxslmcaeiad.onion:18081/mainnet/boldsuck.onion"),
     CAKE("xmr-node.cakewallet.com:18081/mainnet/cakewallet.com"),
@@ -33,6 +34,8 @@ public enum DefaultNodes {
     SETH("node.sethforprivacy.com:18089/mainnet/sethforprivacy.com"),
     seth("sfpp2p7wnfjv3lrvfan4jmmkvhnbsbimpa3cqyuf7nt6zd24xhcqcsyd.onion/mainnet/sethforprivacy.onion"),
     STACK("monero.stackwallet.com:18081/mainnet/stackwallet.com"),
+    STORMYCLOUD("xmr.stormycloud.org:18089/mainnet/stormycloud.org"),
+    TENZ("monero.10z.com.ar:18089/mainnet/10z.com.ar"),
     XMRROCKS("node.xmr.rocks:18089/mainnet/xmr.rocks"),
     xmrrocks("xqnnz2xmlmtpy2p4cm4cphg2elkwu5oob7b7so5v4wwgt44p6vbx5ryd.onion/mainnet/xmr.rocks.onion"),
     XMRTW("opennode.xmr-tw.org:18089/mainnet/xmr-tw.org");
