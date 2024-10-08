@@ -255,6 +255,10 @@ public class Node {
         return sb.toString();
     }
 
+    public String toNameString() {
+        return name;
+    }
+
     public Node() {
         this.networkType = WalletManager.getInstance().getNetworkType();
     }
