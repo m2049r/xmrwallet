@@ -33,51 +33,31 @@
     <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
     <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
 
-    <string name="info_xmrto"><![CDATA[
-        <b>Вы ввели %1$s адрес.</b><br/>
-        <i>Отправляйте XMR, получатель получит %1$s, используя сервис SideShift.ai</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Заказ SideShift.ai</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">Ожидание подтверждения</string>
     <string name="info_send_xmrto_unpaid">Ожидание платежа</string>
-    <string name="info_send_xmrto_error">Ошибка SideShift.ai (%1$s)</string>
     <string name="info_send_xmrto_sent">%1$s успешно отправлены!</string>
     <string name="info_send_xmrto_query">Запрос &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Вы можете отправить %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> устанавливает курс обмена <b>%3$s %4$s/XMR</b> <u>в данный момент</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Баланс: %2$s %3$s (%1$s XMR)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Интегрированный ID платежа</string>
     <string name="info_prepare_tx">Подготовка транзакции</string>
 
-    <string name="label_send_progress_xmrto_create">Создание заказа SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">Запрос заказа SideShift.ai</string>
     <string name="label_send_progress_create_tx">Подготовка транзакции Monero</string>
 
-    <string name="label_send_progress_queryparms">Запрос параметров SideShift.ai</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai ОШИБКА</string>
     <string name="text_generic_xmrto_error">Код: %1$d</string>
 
     <string name="text_retry">Нажмите, чтобы повторить попытку</string>
     <string name="text_noretry_monero">Теперь мы застряли здесь!</string>
-    <string name="text_noretry">Ой-ой! Кажется SideShift.ai недоступен в данный момент!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Посетите SideShift.ai для получения помощи &amp;</string>
-    <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя %1$s</string>
     <string name="label_send_btc_amount">Сумма</string>
 
@@ -365,7 +345,6 @@
     <string name="onboarding_seed_title">Храните свои ключи в безопасности</string>
     <string name="onboarding_seed_information">Секретная фраза дает полный доступ к кошельку. Если вы её потеряете, мы не сможем её восстановить и вы потеряете ваши moneroj.</string>
     <string name="onboarding_xmrto_title">Отправка других криптовалют</string>
-    <string name="onboarding_xmrto_information">Monerujo имеет поддержку SideShift.ai. Просто вставьте (или просканируйте) адрес BTC, LTC, ETH, DASH или DOGE и вы будете отправлять эти криптовалюты, тратя XMR.</string>
     <string name="onboarding_nodes_title">Узлы, узлы, узлы…</string>
     <string name="onboarding_nodes_information">Узлы позволяют подключаться к сети Monero. Выбирайте между общедоступными узлами или используйте свой собственный для безопасности IP адреса.</string>
     <string name="onboarding_fpsend_title">Отправка с помощью отпечатка пальца</string>
@@ -442,32 +421,4 @@
     </string-array>
 
     <string name="message_qr_failed">Не удалось создать QR!</string>
-
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
-
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
-
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
-
-    <string name="menu_bluetooth">Connect Sidekick</string>
-    <string name="bluetooth_select_label">Select Sidekick device</string>
-
-    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
-    <string name="bluetooth_permissions_ok">OK</string>
-    <string name="bluetooth_permissions_settings">App Settings</string>
-    <string name="bluetooth_permissions_cancel">Cancel</string>
-
-    <string name="sidekick_pin">PIN: %1$s</string>
-    <string name="sidekick_not_connected">[not connected]</string>
-    <string name="sidekick_confirm_tx">Confirm Transaction</string>
-    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
-        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
-    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
-    <string name="fab_restore_sidekick">Restore from Sidekick</string>
-    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>

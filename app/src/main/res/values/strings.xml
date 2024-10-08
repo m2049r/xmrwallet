@@ -13,9 +13,9 @@
     <string name="menu_delete">Delete</string>
     <string name="menu_backup">Backup</string>
     <string name="menu_changepw">Change Passphrase</string>
-    <string name="menu_back" tools:ignore="MissingTranslation">Back</string>
-    <string name="menu_close" tools:ignore="MissingTranslation">Close</string>
-    <string name="menu_cancel" tools:ignore="MissingTranslation">Cancel</string>
+    <string name="menu_back">Back</string>
+    <string name="menu_close">Close</string>
+    <string name="menu_cancel">Cancel</string>
 
     <string name="password_weak">Continue typing &#8230;</string>
     <string name="password_fair">Meh &#8230;</string>
@@ -274,8 +274,8 @@
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR not a number</string>
-    <string name="copy_receive_address" tools:ignore="MissingTranslation">Copy receive address</string>
-    <string name="paste_give_address" tools:ignore="MissingTranslation">Paste give address</string>
+    <string name="copy_receive_address">Copy receive address</string>
+    <string name="paste_give_address">Paste give address</string>
 
     <string name="details_alert_message">Sensitive data will now be shown.\nLook over your shoulder!</string>
     <string name="details_alert_yes">I\'m safe</string>
@@ -448,7 +448,7 @@
     <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
     <string name="subaddress_select_label">Select a subaddress</string>
     <string name="subaddress_details_hint">Long-press for details</string>
-    <string name="subaddress_add" tools:ignore="MissingTranslation">Add Subaddress</string>
+    <string name="subaddress_add">Add Subaddress</string>
 
     <string name="menu_restore">Import wallet</string>
     <string name="restore_failed">Import failed!</string>
@@ -462,7 +462,7 @@
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
     <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
-    <string name="tor_enable" tools:ignore="MissingTranslation">Enable TOR</string>
+    <string name="tor_enable">Enable TOR</string>
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>

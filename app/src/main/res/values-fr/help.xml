@@ -147,66 +147,6 @@
         C’est le bloc dans lequel votre transaction a été insérée.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Envoyer</h1>
-        <h2>Adresse de Destinataire</h2>
-        <p>C’est l’adresse publique du portefeuille auquel vous allez envoyer des Moneroj, vous pouvez
-        la copier/coller, scanner un QR code ou la saisir manuellement. Vérifiez là bien trois fois
-        afin de vous assurer que vous n’envoyez pas de pièces à la mauvaise adresse.</p>
-        <p>En complément de l’utilisation d’une adresse XMR, vous pouvez aussi utiliser
-        <ul>
-            <li>une adresse OpenAlias pour XMR ou BTC</li>
-            <li>une adresse BTC</li>
-        </u>
-        Notez que l’envoi de BTC est traité à travers le service SideShift.ai (voir https://sideshift.ai pour
-        plus de détails). Voir la rubrique sur l’envoi de BTC plus bas.</p>
-        <h1>Envoyer des BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai est un service tierce-partie qui agit commme un change depuis Monero vers Bitcoin.
-        Nous utilisons l’API SideShift.ai pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
-        consulter https://sideshift.ai et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
-        n’est pas affiliée à SideShift.ai et ne peut pas vous aider concernant leurs services.</p>
-        <h2>Taux de change SideShift.ai<h2>
-        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive SideShift.ai. Cela
-        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
-        n’est pas garantit à ce stade.</p>
-        <h2>Ordre SideShift.ai<h2>
-        <p>Sur l’écran \"Confirmation\", vous verez l’ordre SideShift.ai actuel. Cette ordre est valide pour
-        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
-        de change peut être différent du taux indicatif de l’écran précédent.</p>
-        <h2>Clef Secrète SideShift.ai<h2>
-        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
-        SideShift.ai peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
-        de SideShift.ai.</p>
-        <h2>Compte à Rebours SideShift.ai !</h2>
-        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
-        SideShift.ai en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
-    ]]></string>
-
-    <string name="help_xmrto"><![CDATA[
-        <h1>Envoyer des BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai est un service tierce-partie qui agit commme un change depuis Monero vers Bitcoin.
-        Nous utilisons l’API SideShift.ai pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
-        consulter https://sideshift.ai et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
-        n’est pas affiliée à SideShift.ai et ne peut pas vous aider concernant leurs services.</p>
-        <h2>Taux de change SideShift.ai<h2>
-        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive SideShift.ai. Cela
-        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
-        n’est pas garantit à ce stade.</p>
-        <h2>Ordre SideShift.ai<h2>
-        <p>Sur l’écran \"Confirmation\", vous verez l’ordre SideShift.ai actuel. Cette ordre est valide pour
-        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
-        de change peut être différent du taux indicatif de l’écran précédent.</p>
-        <h2>Clef Secrète SideShift.ai<h2>
-        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
-        SideShift.ai peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
-        de SideShift.ai.</p>
-        <h2>Compte à Rebours SideShift.ai !</h2>
-        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
-        SideShift.ai en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
-    ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Créer un Portefeuille - Ledger</h1>
         <p>Vous voulez restaurer votre portefeuille depuis votre Ledger Nano S.</p>

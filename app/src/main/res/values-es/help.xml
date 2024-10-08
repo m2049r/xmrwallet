@@ -211,37 +211,4 @@
         <h1>Nodo de Tor</h1>
         <p>Este nodo tiene una dirección <em>.onion</em>. Para usarlo, debes activar el modo Tor presionando el ícono <img src="ic_network_clearnet"/> junto al nodo en la pantalla principal.</p>
     ]]></string>
-
-    <string name="help_sidekick"><![CDATA[
-        <h2>Using your sidekick wallet</h2>
-        Check that both phones are connected via Bluetooth and both apps are opened.
-
-        <h3>On sidekick:</h3>
-        Open your wallet of choice.
-
-        <h3>On monerujo:</h3>
-        Connect to sidekick.
-
-        Open the wallet matching the one you have opened on the sidekick phone.
-
-        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
-
-        <h3>On sidekick:</h3>
-        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
-
-        <h3>On monerujo:</h3>
-        The transaction should be signed and ready to be sent. Press to make it so.
-         <br/>
-    ]]></string>
-
-    <string name="help_create_sidekick" translatable="false"><![CDATA[
-        <h1>Create Wallet - Sidekick</h1>
-        <p>You want to recover your wallet from your awesome Sidekick device.</p>
-        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
-        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
-        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
-    ]]></string>
 </resources>

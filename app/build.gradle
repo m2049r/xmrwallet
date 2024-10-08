@@ -123,6 +123,10 @@ android {
             }
         }
     }
+
+    lint {
+        disable "MissingTranslation" // Translation is crowd-sourced.
+    }
 }
 
 static def getId(name) {
