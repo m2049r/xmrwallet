@@ -16,6 +16,8 @@
 
 package com.m2049r.xmrwallet.service.shift;
 
+import androidx.annotation.Nullable;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -24,10 +26,14 @@ public class ShiftException extends Exception {
     @Getter
     private final int code;
     @Getter
+    @Nullable
     private final ShiftError error;
 
     public ShiftException(int code) {
-        this.code = code;
-        this.error = null;
+        this(code, null);
+    }
+
+    public String getErrorMessage() {
+        return (error != null) ? error.getErrorMsg() : ("HTTP:" + code);
     }
 }

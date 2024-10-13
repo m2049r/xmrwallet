@@ -166,50 +166,50 @@
             <li>un OpenAlias pentru XMR sau BTC</li>
             <li>o adresă BTC</li>
         </u>
-        Atenție, transferul BTC este procesat de serviciul SideShift.ai (vezi https://sideshift.ai
+        Atenție, transferul BTC este procesat de serviciul Exolix (vezi https://exolix.com
         pentru detalii). Vezi mai jos secțiunea Transfer BTC.</p>
         <h1>Transfer BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
-        nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb a SideShift.ai<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului SideShift.ai. Aceștia includ cursul de
+        <h2>Exolix</h2>
+        <p>Exolix este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
+        Noi folosim API-ul Exolix pentru a integra plățile Bitcoin în Monerujo. Vezi
+        https://exolix.com și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        nu este asociată în niciun fel cu Exolix și nu te poate ajuta cu serviciile oferite de ei.</p>
+        <h2>Rata de schimb a Exolix<h2>
+        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului Exolix. Aceștia includ cursul de
 	schimb actual, precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
 	nu sunt garantate în acest moment.</p>
-        <h2>Ordin SideShift.ai<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al SideShift.ai. Acest ordin este valabil pentru
+        <h2>Ordin Exolix<h2>
+        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al Exolix. Acest ordin este valabil pentru
 	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 	fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă SideShift.ai<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
-        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
-        <h2>Numerotarea inversă SideShift.ai</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la SideShift.ai mergând
+        <h2>Cheia secretă Exolix<h2>
+        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a Exolix
+        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul Exolix.</p>
+        <h2>Numerotarea inversă Exolix</h2>
+        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
 	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Transfer BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
-        Noi folosim API-ul SideShift.ai pentru a integra plățile Bitcoin în Monerujo. Vezi
-        https://sideshift.ai și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
-        nu este asociată în niciun fel cu SideShift.ai și nu te poate ajuta cu serviciile oferite de ei.</p>
-        <h2>Rata de schimb a SideShift.ai<h2>
-        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului SideShift.ai. Aceștia includ cursul de
+        <h2>Exolix</h2>
+        <p>Exolix este un serviciu terță parte care acționează ca un schimb valutar între Monero și Bitcoin.
+        Noi folosim API-ul Exolix pentru a integra plățile Bitcoin în Monerujo. Vezi
+        https://exolix.com și decide singur dacă acesta este un serviciu pe care dorești să îl folosești. Echipa Monerujo
+        nu este asociată în niciun fel cu Exolix și nu te poate ajuta cu serviciile oferite de ei.</p>
+        <h2>Rata de schimb a Exolix<h2>
+        <p>Pe ecranul cu \"Suma\" vor fi afișați parametrii serviciului Exolix. Aceștia includ cursul de
 	schimb actual, precum și limitele superioare și inferioare ale BTC. Reține că aceste rate de schimb
 	nu sunt garantate în acest moment.</p>
-        <h2>Ordin SideShift.ai<h2>
-        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al SideShift.ai. Acest ordin este valabil pentru
+        <h2>Ordin Exolix<h2>
+        <p>Pe ecranul cu \"Confirm\", vei vedea ordinul actual al Exolix. Acest ordin este valabil pentru
 	un timp limitat - este posibil să observi o numărătoare inversă pe butonul \"Consum\". Rata de schimb poate
 	fi diferită de cea indicată pe ecranele anterioare.</p>
-        <h2>Cheia secretă SideShift.ai<h2>
-        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a SideShift.ai
-        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul SideShift.ai.</p>
-        <h2>Numerotarea inversă SideShift.ai</h2>
-        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la SideShift.ai mergând
+        <h2>Cheia secretă Exolix<h2>
+        <p>Din moment ce Monerujo gestionează numai partea Monero din tranzacția ta, cheia secretă a Exolix
+        poate fi folosită pentru a urmări partea Bitcoin a comenzii tale de pe site-ul Exolix.</p>
+        <h2>Numerotarea inversă Exolix</h2>
+        <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
 	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
 

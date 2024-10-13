@@ -89,6 +89,7 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
         return items.size();
     }
 
+    @NonNull
     public Subaddress getItem(int position) {
         return items.get(position);
     }
@@ -108,7 +109,7 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
         diffResult.dispatchUpdatesTo(this);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         final TextView tvName;
         final TextView tvAddress;
         final TextView tvAmount;
@@ -143,7 +144,7 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
         @Override
         public void onClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     listener.onInteraction(view, getItem(position));
                 }
@@ -153,7 +154,7 @@ public class SubaddressInfoAdapter extends RecyclerView.Adapter<SubaddressInfoAd
         @Override
         public boolean onLongClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     return listener.onLongInteraction(view, getItem(position));
                 }

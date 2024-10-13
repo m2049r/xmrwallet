@@ -36,48 +36,48 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>הזנת %1$s כתובת.</b><br/>
-        <i>אתה תשלח XMR והמקבל יקבל %1$s באמצעות השירות <b>SideShift.ai</b>.</i>
+        <i>אתה תשלח XMR והמקבל יקבל %2$s באמצעות השירות <b>%3$s</b>.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">הזמנת SideShift.ai</string>
+    <string name="info_send_xmrto_success_order_label">הזמנת %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">אישור ממתין</string>
     <string name="info_send_xmrto_unpaid">תשלום ממתין</string>
-    <string name="info_send_xmrto_error">שגיאה SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_error">שגיאה %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s נשלח!</string>
     <string name="info_send_xmrto_query">חוקר &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>אתה יכול לשלוח %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> נותן לך שער חליפין של <b>%3$s %4$s/XMR</b> <u>כרגע</u></i>.
+        <i><b>%5$s</b> נותן לך שער חליפין של <b>%3$s %4$s/XMR</b> <u>כרגע</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">היתרה: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">היתרה: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; מזהה תשלום משולב</string>
     <string name="info_prepare_tx">מכין את העסקתך</string>
 
-    <string name="label_send_progress_xmrto_create">יוצר הזנמת SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">חוקר הזמנת SideShift.ai</string>
+    <string name="label_send_progress_xmrto_create">יוצר הזמנות</string>
+    <string name="label_send_progress_xmrto_query">חוקרת את הצו</string>
     <string name="label_send_progress_create_tx">ממתין לעסקת מונרו</string>
 
-    <string name="label_send_progress_queryparms">חוקר את הפרמטרים של SideShift.ai</string>
+    <string name="label_send_progress_queryparms">חוקר את הפרמטרים</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai שגיאה</string>
+    <string name="label_generic_xmrto_error">שגיאה</string>
     <string name="text_generic_xmrto_error">קוד: %1$d</string>
 
     <string name="text_retry">לחץ כדי לנסות שוב</string>
     <string name="text_noretry_monero">עכשיו אנחנו תקועים כאן!</string>
-    <string name="text_noretry">או-אוו, SideShift.ai לא נראה זמין כרגע!</string>
+    <string name="text_noretry">או-אוו, %1$s לא נראה זמין כרגע!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(שיעור: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">בקר ב-SideShift.ai לקבלת תמיכה  &amp; מעקב</string>
-    <string name="label_send_btc_xmrto_key_lb">מפתח סודי\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai מפתח סודי</string>
+    <string name="label_send_btc_xmrto_info">בקר ב-%1$s לקבלת תמיכה  &amp; מעקב</string>
+    <string name="label_send_btc_xmrto_key_lb">מפתח סודי\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s מפתח סודי</string>
     <string name="label_send_btc_address">כתובת %1$s היעד</string>
     <string name="label_send_btc_amount">כמות</string>
 
@@ -362,7 +362,7 @@
     <string name="onboarding_seed_title">שמור על הסיד שלך בטוח</string>
     <string name="onboarding_seed_information">הסיד מעניק גישה מלאה למי שיש אותו. אם אתה מאבד את זה, אנחנו לא יכולים לעזור לך לשחזר את זה ואתה מאבד את המונרוג\' האהוב שלך.</string>
     <string name="onboarding_xmrto_title">שלח קריפטו</string>
-    <string name="onboarding_xmrto_information">למונרוג\'ו יש את התמיכה של SideShift.ai מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, DASH או DOGE כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
+    <string name="onboarding_xmrto_information">למונרוג\'ו יש את התמיכה של exchange מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, TRXUSDT או SOL כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
     <string name="onboarding_nodes_title">החוליות, בדרך שלך</string>
     <string name="onboarding_nodes_information">החוליות מחברות אותך לרשת מונרו. בחר בין החוליות הציבוריות או שתתחבר לאחת משלך.</string>
     <string name="onboarding_fpsend_title">שלח עם טביעת אצבע</string>
@@ -394,7 +394,7 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>אנא הזן או סרוק %1$s כתובת.</b><br/>
-        <i>אתה תשלח XMR והמקבל יקבל %2$s באמצעות השירות של <b>SideShift.ai</b></i>
+        <i>אתה תשלח XMR והמקבל יקבל %2$s באמצעות השירות של <b>%3$s</b></i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -419,7 +419,7 @@
     <string name="node_tor_error">טור נדרש</string>
     <string name="node_waiting">\u00A0מחכה לחולייה\u00A0</string>
     <string name="tor_enable_background">"אפשר התחלות רקע" בהגדרות Orbot לשימוש בטור!</string>
-    <string name="tor_noshift">SideShift.ai לא תומך בטור.\nהשבת את טור כדי להחליף את XMR.</string>
+    <string name="tor_noshift">%1$s לא תומך בטור.\nהשבת את טור כדי להחליף את XMR.</string>
 
     <string name="label_seed_offset_encrypt">הצפנת סיד (ניסיוני)</string>
     <string name="seed_offset_hint">ביטוי היסט סיט (אופציונלי)</string>

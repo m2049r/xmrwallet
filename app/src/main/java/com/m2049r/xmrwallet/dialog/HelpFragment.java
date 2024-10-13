@@ -16,13 +16,13 @@
 
 package com.m2049r.xmrwallet.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -65,9 +65,10 @@ public class HelpFragment extends DialogFragment {
 
     private Spanned getHtml(String html, double textSize) {
         final Html.ImageGetter imageGetter = source -> {
-            final int imageId = getResources().getIdentifier(source.replace("/", ""), "drawable", requireActivity().getPackageName());
+            @SuppressLint("DiscouragedApi") final int imageId = getResources().getIdentifier(source.replace("/", ""), "drawable", requireActivity().getPackageName());
             // Don't die if we don't find the image - use a heart instead
             final Drawable drawable = ContextCompat.getDrawable(requireActivity(), imageId > 0 ? imageId : R.drawable.ic_favorite_24dp);
+            assert drawable != null;
             final double f = textSize / drawable.getIntrinsicHeight();
             drawable.setBounds(0, 0, (int) (f * drawable.getIntrinsicWidth()), (int) textSize);
             return drawable;
@@ -82,7 +83,7 @@ public class HelpFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_help, null);
+        final View view = getLayoutInflater().inflate(R.layout.fragment_help, null);
 
         int helpId = 0;
         boolean torButton = false;
@@ -100,7 +101,7 @@ public class HelpFragment extends DialogFragment {
                         .setView(view);
         if (torButton) {
             builder.setNegativeButton(R.string.help_nok,
-                    (dialog, id) -> dialog.dismiss())
+                            (dialog, id) -> dialog.dismiss())
                     .setPositiveButton(R.string.help_getorbot,
                             (dialog, id) -> {
                                 dialog.dismiss();

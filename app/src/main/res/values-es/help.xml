@@ -117,17 +117,7 @@
 		</ul>
         <h2>Conversión</h2>
 		<p>La conversión de XMR en otra criptomoneda is realizada por un servicio externo de exchange. Monerujo no realiza dicha conversión ni está asociado con esos terceros. Por lo tanto no puede dar soporte por los intercambios, pero va a proveerte de toda la información necesaria para que puedas rastrear tu orden o recibir ayuda del exchange.</p>
-		<h2>Pares disponibles</h2>
-		<p>Monerujo soporta convertir de XMR hacia las siguientes monedas:
-		<ul>
-            <li>Bitcoin (BTC)</li>
-			<li>Ethereum (ETH)</li>
-			<li>Litecoin (LTC)</li>
-			<li>Dash (DASH)</li>
-			<li>Dai (DAI) on Ethereum</li>
-			<li>Tether (USDT) on Ethereum</li>
-		</ul>
-		Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
+		<p>Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
         </u>
     ]]></string>
 	

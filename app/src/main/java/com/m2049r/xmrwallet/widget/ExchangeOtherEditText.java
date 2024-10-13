@@ -28,6 +28,8 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.R;
+import com.m2049r.xmrwallet.data.Crypto;
+import com.m2049r.xmrwallet.data.CryptoAmount;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
@@ -35,9 +37,18 @@ import com.m2049r.xmrwallet.util.Helper;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Setter;
 import timber.log.Timber;
 
 public class ExchangeOtherEditText extends ExchangeEditText {
+
+    public interface Listener {
+        void onExchangeRequested();
+    }
+
+    @Setter
+    private Listener listener = null;
+
     /*
         all exchanges are done through XMR
         baseCurrency is the native currency
@@ -60,13 +71,10 @@ public class ExchangeOtherEditText extends ExchangeEditText {
     }
 
     private void setBaseCurrency(Context context, AttributeSet attrs) {
-        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ExchangeEditText, 0, 0);
-        try {
+        try (TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ExchangeEditText, 0, 0)) {
             baseCurrency = ta.getString(R.styleable.ExchangeEditText_baseSymbol);
             if (baseCurrency == null)
                 throw new IllegalArgumentException("base currency must be set");
-        } finally {
-            ta.recycle();
         }
     }
 
@@ -133,7 +141,7 @@ public class ExchangeOtherEditText extends ExchangeEditText {
         // first deal with XMR/baseCurrency & baseCurrency/XMR
 
         if (currencyA.equals(Helper.BASE_CRYPTO) && (currencyB.equals(baseCurrency))) {
-            localExchange(currencyA, currencyB, 1.0d / exchangeRate);
+            localExchange(currencyA, currencyB, (exchangeRate > 0) ? (1.0d / exchangeRate) : 0);
             return;
         }
         if (currencyA.equals(baseCurrency) && (currencyB.equals(Helper.BASE_CRYPTO))) {
@@ -157,32 +165,29 @@ public class ExchangeOtherEditText extends ExchangeEditText {
                     @Override
                     public void onSuccess(final ExchangeRate exchangeRate) {
                         if (isAttachedToWindow())
-                            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ExchangeRate xchange = new ExchangeRate() {
-                                        @Override
-                                        public String getServiceName() {
-                                            return exchangeRate.getServiceName() + "+" + baseCurrency;
-                                        }
+                            new Handler(Looper.getMainLooper()).post(() -> {
+                                ExchangeRate xchange = new ExchangeRate() {
+                                    @Override
+                                    public String getServiceName() {
+                                        return exchangeRate.getServiceName() + "+" + baseCurrency;
+                                    }
 
-                                        @Override
-                                        public String getBaseCurrency() {
-                                            return baseIsBaseCrypto ? baseCurrency : base;
-                                        }
+                                    @Override
+                                    public String getBaseCurrency() {
+                                        return baseIsBaseCrypto ? baseCurrency : base;
+                                    }
 
-                                        @Override
-                                        public String getQuoteCurrency() {
-                                            return baseIsBaseCrypto ? quote : baseCurrency;
-                                        }
+                                    @Override
+                                    public String getQuoteCurrency() {
+                                        return baseIsBaseCrypto ? quote : baseCurrency;
+                                    }
 
-                                        @Override
-                                        public double getRate() {
-                                            return exchangeRate.getRate() * factor;
-                                        }
-                                    };
-                                    exchange(xchange);
-                                }
+                                    @Override
+                                    public double getRate() {
+                                        return exchangeRate.getRate() * factor;
+                                    }
+                                };
+                                exchange(xchange);
                             });
                     }
 
@@ -192,5 +197,36 @@ public class ExchangeOtherEditText extends ExchangeEditText {
                         new Handler(Looper.getMainLooper()).post(() -> exchangeFailed());
                     }
                 });
+    }
+
+    @Override
+    public void doExchange() {
+        super.doExchange();
+        if (listener != null)
+            listener.onExchangeRequested();
+    }
+
+    private double getCleanAmount(String enteredAmount) {
+        try {
+            return Double.parseDouble(enteredAmount);
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
+
+    public CryptoAmount getPrimaryAmount() {
+        // we can send xmr (=float) or baseCurrency (=fixed)
+        if (getCurrencyA() == 0) { // baseCurrency
+            // send it
+            return new CryptoAmount(Crypto.withSymbol(baseCurrency), getCleanAmount(etAmountA.getEditText().getText().toString()));
+        } else if (getCurrencyA() == 1) { // XMR
+            // send XMR
+            return new CryptoAmount(Helper.BASE_CRYPTO_CRYPTO, getCleanAmount(etAmountA.getEditText().getText().toString()));
+        } else if (getCurrencyB() == 0) { // fiat is on A (currencyB must be baseCurrency)
+            // send baseCurrency shown on B
+            return new CryptoAmount(Crypto.withSymbol(baseCurrency), getCleanAmount(tvAmountB.getText().toString()));
+        } else {
+            throw new IllegalStateException("B is not base");
+        }
     }
 }

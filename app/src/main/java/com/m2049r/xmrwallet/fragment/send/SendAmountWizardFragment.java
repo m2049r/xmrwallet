@@ -23,8 +23,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.android.material.progressindicator.LinearProgressIndicator;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
 import com.m2049r.xmrwallet.data.TxData;
@@ -38,17 +36,13 @@ public class SendAmountWizardFragment extends SendWizardFragment {
 
     public static SendAmountWizardFragment newInstance(Listener listener) {
         SendAmountWizardFragment instance = new SendAmountWizardFragment();
-        instance.setSendListener(listener);
+        instance.sendListener = listener;
         return instance;
     }
 
-    Listener sendListener;
+    private Listener sendListener;
 
-    public void setSendListener(Listener listener) {
-        this.sendListener = listener;
-    }
-
-    interface Listener {
+    public interface Listener {
         SendFragment.Listener getActivityCallback();
 
         TxData getTxData();
@@ -139,7 +133,7 @@ public class SendAmountWizardFragment extends SendWizardFragment {
     public void onResumeFragment() {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
-        Helper.showKeyboard(getActivity());
+        Helper.showKeyboard(requireActivity());
         final long funds = getTotalFunds();
         maxFunds = 1.0 * funds / Helper.ONE_XMR;
         if (!sendListener.getActivityCallback().isStreetMode()) {
@@ -150,8 +144,8 @@ public class SendAmountWizardFragment extends SendWizardFragment {
                     getString(R.string.unknown_amount)));
         }
         final BarcodeData data = sendListener.popBarcodeData();
-        if ((data != null) && (data.amount != null)) {
-            etAmount.setAmount(data.amount);
+        if ((data != null) && (data.getAmount() != null)) {
+            etAmount.setAmount(data.getAmount());
         }
     }
 

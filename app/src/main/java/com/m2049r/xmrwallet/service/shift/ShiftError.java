@@ -18,32 +18,23 @@ package com.m2049r.xmrwallet.service.shift;
 
 import androidx.annotation.NonNull;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ShiftError {
     @Getter
-    private final Error errorType;
+    private final Type type;
     @Getter
     private final String errorMsg;
 
-    public enum Error {
+    public enum Type {
         SERVICE,
         INFRASTRUCTURE
     }
 
     public boolean isRetryable() {
-        return errorType == Error.INFRASTRUCTURE;
-    }
-
-    public ShiftError(final JSONObject jsonObject) throws JSONException {
-        final JSONObject errorObject = jsonObject.getJSONObject("error");
-        errorType = Error.SERVICE;
-        errorMsg = errorObject.getString("message");
+        return type == Type.INFRASTRUCTURE;
     }
 
     @Override

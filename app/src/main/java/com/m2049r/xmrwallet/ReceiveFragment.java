@@ -32,12 +32,10 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -84,8 +82,6 @@ public class ReceiveFragment extends Fragment {
     private ImageView ivQrCode;
     private ImageView ivQrCodeFull;
     private EditText etDummy;
-    private ImageButton bCopyAddress;
-    private MenuItem shareItem;
 
     private Wallet wallet = null;
     private boolean isMyWallet = false;
@@ -116,11 +112,10 @@ public class ReceiveFragment extends Fragment {
         tvQrCode = view.findViewById(R.id.tvQrCode);
         ivQrCodeFull = view.findViewById(R.id.qrCodeFull);
         etDummy = view.findViewById(R.id.etDummy);
-        bCopyAddress = view.findViewById(R.id.bCopyAddress);
 
         etDummy.setRawInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        bCopyAddress.setOnClickListener(v -> copyAddress());
+        view.findViewById(R.id.bCopyAddress).setOnClickListener(v -> copyAddress());
 
         evAmount.setOnNewAmountListener(xmr -> {
             Timber.d("new amount = %s", xmr);
@@ -211,8 +206,7 @@ public class ReceiveFragment extends Fragment {
         inflater.inflate(R.menu.receive_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
 
-        shareItem = menu.findItem(R.id.menu_item_share);
-        shareItem.setOnMenuItemClickListener(item -> {
+        menu.findItem(R.id.menu_item_share).setOnMenuItemClickListener(item -> {
             if (shareRequested) return true;
             shareRequested = true;
             if (!qrValid) {
@@ -238,7 +232,7 @@ public class ReceiveFragment extends Fragment {
     private boolean saveQrCode() {
         if (!qrValid) throw new IllegalStateException("trying to save null qr code!");
 
-        File cachePath = new File(getActivity().getCacheDir(), "images");
+        File cachePath = new File(requireActivity().getCacheDir(), "images");
         if (!cachePath.exists())
             if (!cachePath.mkdirs()) throw new IllegalStateException("cannot create images folder");
         File png = new File(cachePath, "QR.png");
@@ -452,7 +446,7 @@ public class ReceiveFragment extends Fragment {
                     .withEndAction(resetSize).start();
         }
         subaddress = newSubaddress;
-        final Context context = getContext();
+        final Context context = requireContext();
         Spanned label = Html.fromHtml(context.getString(R.string.receive_subaddress,
                 Integer.toHexString(ThemeHelper.getThemedColor(context, R.attr.positiveColor) & 0xFFFFFF),
                 Integer.toHexString(ThemeHelper.getThemedColor(context, android.R.attr.colorBackground) & 0xFFFFFF),

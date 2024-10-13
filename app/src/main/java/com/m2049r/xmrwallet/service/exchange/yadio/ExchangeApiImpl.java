@@ -95,9 +95,13 @@ public class ExchangeApiImpl implements ExchangeApi {
                         callback.onSuccess(new ExchangeRateImpl(quoteCurrency, rate, timestamp));
                     } catch (JSONException ex) {
                         callback.onError(ex);
+                    } finally {
+                        response.close();
                     }
                 } else {
-                    callback.onError(new ExchangeException(response.code(), response.message()));
+                    final ExchangeException ex = new ExchangeException(response.code(), response.message());
+                    response.close();
+                    callback.onError(ex);
                 }
             }
         });

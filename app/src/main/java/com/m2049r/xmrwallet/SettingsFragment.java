@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -60,7 +61,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
     private SettingsFragment.Listener activity;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof SettingsFragment.Listener) {
             activity = (SettingsFragment.Listener) context;

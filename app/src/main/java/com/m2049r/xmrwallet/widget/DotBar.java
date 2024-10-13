@@ -25,8 +25,11 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.m2049r.xmrwallet.R;
 
+import lombok.Getter;
 import timber.log.Timber;
 
 public class DotBar extends View {
@@ -37,7 +40,9 @@ public class DotBar extends View {
     final private float dotSize;
     private float dotSpacing;
 
+    @Getter
     final private int numDots;
+    @Getter
     private int activeDot;
 
     final private Paint paint;
@@ -45,17 +50,13 @@ public class DotBar extends View {
     public DotBar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DotBar, 0, 0);
-        try {
+        try (TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DotBar, 0, 0)) {
             inactiveColor = ta.getInt(R.styleable.DotBar_inactiveColor, 0);
             activeColor = ta.getInt(R.styleable.DotBar_activeColor, 0);
             dotSize = ta.getDimensionPixelSize(R.styleable.DotBar_dotSize, 8);
             numDots = ta.getInt(R.styleable.DotBar_numberDots, 5);
             activeDot = ta.getInt(R.styleable.DotBar_activeDot, 0);
-        } finally {
-            ta.recycle();
         }
-
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.FILL);
     }
@@ -105,14 +106,14 @@ public class DotBar extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
 
         // Centering the dots in the middle of the canvas
         float singleDotSize = dotSpacing + dotSize;
         float combinedDotSize = singleDotSize * numDots - dotSpacing;
-        int startingX = (int) ((canvas.getWidth() - combinedDotSize) / 2);
-        int startingY = (int) ((canvas.getHeight() - dotSize) / 2);
+        int startingX = (int) ((getWidth() - combinedDotSize) / 2);
+        int startingY = (int) ((getHeight() - dotSize) / 2);
 
         for (int i = 0; i < numDots; i++) {
             int x = (int) (startingX + i * singleDotSize);
@@ -144,13 +145,5 @@ public class DotBar extends View {
             activeDot = i;
             invalidate();
         }
-    }
-
-    public int getActiveDot() {
-        return activeDot;
-    }
-
-    public int getNumDots() {
-        return numDots;
     }
 }

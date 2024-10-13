@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.layout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,12 +132,13 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
 
     private boolean itemsClickable = true;
 
+    @SuppressLint("NotifyDataSetChanged")
     public void allowClick(boolean clickable) {
         itemsClickable = clickable;
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         final ImageButton ibBookmark;
         final View pbBookmark;
         final TextView tvName;
@@ -195,7 +197,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         @Override
         public void onClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     final NodeInfo node = nodeItems.get(position);
                     if (node.isOnion()) {
@@ -218,7 +220,7 @@ public class NodeInfoAdapter extends RecyclerView.Adapter<NodeInfoAdapter.ViewHo
         @Override
         public boolean onLongClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     return listener.onLongInteraction(view, nodeItems.get(position));
                 }

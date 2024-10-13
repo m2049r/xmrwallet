@@ -18,7 +18,6 @@ package com.m2049r.xmrwallet.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -66,7 +65,7 @@ public class PocketChangeFragment extends DialogFragment implements Slider.OnCha
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_pocketchange_setting, null);
+        final View view = getLayoutInflater().inflate(R.layout.fragment_pocketchange_setting, null);
         boolean enabled = false;
         int progress = 0;
         Bundle arguments = getArguments();

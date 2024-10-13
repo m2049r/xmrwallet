@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.m2049r.xmrwallet.R;
 
+import lombok.Setter;
 import timber.log.Timber;
 
 public class Toolbar extends MaterialToolbar {
@@ -37,11 +38,8 @@ public class Toolbar extends MaterialToolbar {
         void onButton(int type);
     }
 
+    @Setter
     OnButtonListener onButtonListener;
-
-    public void setOnButtonListener(OnButtonListener listener) {
-        onButtonListener = listener;
-    }
 
     ImageView toolbarImage;
     TextView toolbarTitle;

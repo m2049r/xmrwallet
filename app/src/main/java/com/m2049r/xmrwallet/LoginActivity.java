@@ -619,6 +619,7 @@ public class LoginActivity extends BaseActivity
         try {
             GenerateReviewFragment detailsFragment = (GenerateReviewFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            assert detailsFragment != null;
             AlertDialog dialog = detailsFragment.createChangePasswordDialog();
             if (dialog != null) {
                 Helper.showKeyboard(dialog);
@@ -896,6 +897,7 @@ public class LoginActivity extends BaseActivity
         try {
             GenerateFragment genFragment = (GenerateFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            assert genFragment != null;
             genFragment.walletGenerateError();
         } catch (ClassCastException ex) {
             Timber.e("walletGenerateError() but not in GenerateFragment");
@@ -1366,7 +1368,7 @@ public class LoginActivity extends BaseActivity
     private void registerDetachReceiver() {
         detachReceiver = new BroadcastReceiver() {
             public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_DETACHED)) {
+                if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(intent.getAction())) {
                     unregisterDetachReceiver();
                     final UsbDevice device = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
                     Timber.i("Ledger detached!");
@@ -1409,6 +1411,7 @@ public class LoginActivity extends BaseActivity
         Timber.d("onDeviceConnected: %s", connectedDeviceName);
         try {
             SidekickConnectFragment f = (SidekickConnectFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            assert f != null;
             f.allowClick();
         } catch (ClassCastException ex) {
             // ignore it

@@ -22,6 +22,5 @@ public interface NetworkCallback {
 
     void onSuccess(JSONObject jsonObject);
 
-    void onError(Exception ex);
-
+    void onError(Exception ex, JSONObject json);
 }
