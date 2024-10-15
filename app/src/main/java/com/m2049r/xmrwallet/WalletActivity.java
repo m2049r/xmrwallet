@@ -389,8 +389,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         drawerToggle.syncState();
         setDrawerEnabled(false); // disable until synced
 
-
-
         accountsView = findViewById(R.id.accounts_nav);
         accountsView.setNavigationItemSelectedListener(this);
 
