@@ -144,7 +144,7 @@ public class Node {
         if ((nodeString == null) || nodeString.isEmpty())
             throw new IllegalArgumentException("daemon is empty");
         String daemonAddress;
-        String a[] = nodeString.split("@");
+        String[] a = nodeString.split("@");
         if (a.length == 1) { // no credentials
             daemonAddress = a[0];
             username = "";
@@ -169,7 +169,7 @@ public class Node {
             throw new IllegalArgumentException("Too many '/' or too few");
 
         daemonAddress = daParts[0];
-        String da[] = daemonAddress.split(":");
+        String[] da = daemonAddress.split(":");
         if ((da.length > 2) || (da.length < 1))
             throw new IllegalArgumentException("Too many ':' or too few");
         String host = da[0];

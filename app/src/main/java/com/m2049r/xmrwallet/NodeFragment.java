@@ -289,8 +289,7 @@ public class NodeFragment extends Fragment
             } else if (params[0] == SCAN) {
                 // otherwise scan the network
                 Timber.d("scanning");
-                Set<NodeInfo> seedList = new HashSet<>();
-                seedList.addAll(nodeList);
+                Set<NodeInfo> seedList = new HashSet<>(nodeList);
                 nodeList.clear();
                 Timber.d("seed %d", seedList.size());
                 Dispatcher d = new Dispatcher(info -> publishProgress(info));
