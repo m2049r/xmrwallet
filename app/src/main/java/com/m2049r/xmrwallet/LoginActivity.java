@@ -40,6 +40,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -1260,7 +1261,7 @@ public class LoginActivity extends BaseActivity
             if (usbManager.hasPermission(device)) {
                 connectLedger(usbManager, device);
             } else {
-                registerReceiver(usbPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION));
+                ContextCompat.registerReceiver(this, usbPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION), ContextCompat.RECEIVER_NOT_EXPORTED);
                 usbManager.requestPermission(device,
                         PendingIntent.getBroadcast(this, 0,
                                 new Intent(ACTION_USB_PERMISSION),
@@ -1379,8 +1380,7 @@ public class LoginActivity extends BaseActivity
                 }
             }
         };
-
-        registerReceiver(detachReceiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED));
+        ContextCompat.registerReceiver(this, detachReceiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED), ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     public void onLedgerAction() {
