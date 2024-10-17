@@ -41,7 +41,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import info.guardianproject.netcipher.client.StrongOkHttpClientBuilder;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
+import info.guardianproject.netcipher.proxy.MyOrbotHelper;
 import info.guardianproject.netcipher.proxy.SignatureUtils;
 import info.guardianproject.netcipher.proxy.StatusCallback;
 import lombok.RequiredArgsConstructor;
@@ -75,7 +75,7 @@ public class NetCipherHelper implements StatusCallback {
     }
 
     final private Context context;
-    final private OrbotHelper orbot;
+    final private MyOrbotHelper orbot;
 
     @SuppressLint("StaticFieldLeak")
     private static NetCipherHelper Instance;
@@ -85,7 +85,7 @@ public class NetCipherHelper implements StatusCallback {
             synchronized (NetCipherHelper.class) {
                 if (Instance == null) {
                     final Context applicationContext = context.getApplicationContext();
-                    Instance = new NetCipherHelper(applicationContext, OrbotHelper.get(context).statusTimeout(5000));
+                    Instance = new NetCipherHelper(applicationContext, MyOrbotHelper.get(context).statusTimeout(5000));
                 }
             }
         }
@@ -99,9 +99,9 @@ public class NetCipherHelper implements StatusCallback {
     private OkHttpClient client;
 
     private void createTorClient(Intent statusIntent) {
-        String orbotStatus = statusIntent.getStringExtra(OrbotHelper.EXTRA_STATUS);
+        String orbotStatus = statusIntent.getStringExtra(MyOrbotHelper.EXTRA_STATUS);
         if (orbotStatus == null) throw new IllegalStateException("status is null");
-        if (!orbotStatus.equals(OrbotHelper.STATUS_ON))
+        if (!orbotStatus.equals(MyOrbotHelper.STATUS_ON))
             throw new IllegalStateException("Orbot is not ON");
         try {
             final OkHttpClient.Builder okBuilder = new OkHttpClient.Builder()
@@ -146,7 +146,7 @@ public class NetCipherHelper implements StatusCallback {
                 .addStatusCallback(me);
 
         // deal with  org.torproject.android.intent.action.STATUS = STARTS_DISABLED
-        ContextCompat.registerReceiver(me.context, orbotStatusReceiver, new IntentFilter(OrbotHelper.ACTION_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(me.context, orbotStatusReceiver, new IntentFilter(MyOrbotHelper.ACTION_STATUS), ContextCompat.RECEIVER_EXPORTED);
 
         me.startTor();
     }
@@ -272,7 +272,7 @@ public class NetCipherHelper implements StatusCallback {
         hashes.add("A7:02:07:92:4F:61:FF:09:37:1D:54:84:14:5C:4B:EE:77:2C:55:C1:9E:EE:23:2F:57:70:E1:82:71:F7:CB:AE");
 
         return null != SignatureUtils.validateBroadcastIntent(context,
-                OrbotHelper.getOrbotStartIntent(context),
+                MyOrbotHelper.getOrbotStartIntent(context),
                 hashes, false);
     }
 
@@ -382,9 +382,9 @@ public class NetCipherHelper implements StatusCallback {
     private static final BroadcastReceiver orbotStatusReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Timber.d("%s/%s", intent.getAction(), intent.getStringExtra(OrbotHelper.EXTRA_STATUS));
-            if (OrbotHelper.ACTION_STATUS.equals(intent.getAction())) {
-                if (OrbotHelper.STATUS_STARTS_DISABLED.equals(intent.getStringExtra(OrbotHelper.EXTRA_STATUS))) {
+            Timber.d("%s/%s", intent.getAction(), intent.getStringExtra(MyOrbotHelper.EXTRA_STATUS));
+            if (MyOrbotHelper.ACTION_STATUS.equals(intent.getAction())) {
+                if (MyOrbotHelper.STATUS_STARTS_DISABLED.equals(intent.getStringExtra(MyOrbotHelper.EXTRA_STATUS))) {
                     getInstance().onNotEnabled();
                 }
             }
@@ -392,6 +392,6 @@ public class NetCipherHelper implements StatusCallback {
     };
 
     public void installOrbot(Activity host) {
-        host.startActivity(OrbotHelper.getOrbotInstallIntent(context));
+        host.startActivity(MyOrbotHelper.getOrbotInstallIntent(context));
     }
 }
