@@ -1261,7 +1261,7 @@ public class LoginActivity extends BaseActivity
             if (usbManager.hasPermission(device)) {
                 connectLedger(usbManager, device);
             } else {
-                ContextCompat.registerReceiver(this, usbPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION), ContextCompat.RECEIVER_NOT_EXPORTED);
+                ContextCompat.registerReceiver(this, usbPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION), ContextCompat.RECEIVER_EXPORTED);
                 usbManager.requestPermission(device,
                         PendingIntent.getBroadcast(this, 0,
                                 new Intent(ACTION_USB_PERMISSION),
@@ -1380,7 +1380,7 @@ public class LoginActivity extends BaseActivity
                 }
             }
         };
-        ContextCompat.registerReceiver(this, detachReceiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED), ContextCompat.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(this, detachReceiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED), ContextCompat.RECEIVER_EXPORTED);
     }
 
     public void onLedgerAction() {
