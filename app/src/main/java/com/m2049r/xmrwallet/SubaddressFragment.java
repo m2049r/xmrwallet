@@ -226,7 +226,7 @@ public class SubaddressFragment extends Fragment implements SubaddressInfoAdapte
 
     // Callbacks from SubaddressInfoAdapter
     @Override
-    public void onInteraction(final View view, final Subaddress subaddress) {
+    public void onInteraction(final View view, @NonNull final Subaddress subaddress) {
         if (managerMode)
             activityCallback.showSubaddress(view, subaddress.getAddressIndex());
         else

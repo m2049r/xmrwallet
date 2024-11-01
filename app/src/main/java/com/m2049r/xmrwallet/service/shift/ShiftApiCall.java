@@ -21,8 +21,7 @@ import androidx.annotation.NonNull;
 import org.json.JSONObject;
 
 public interface ShiftApiCall {
+    void get(@NonNull final String path, final String parameters, @NonNull final NetworkCallback callback);
 
-    void call(@NonNull final String path, @NonNull final NetworkCallback callback);
-
-    void call(@NonNull final String path, final JSONObject request, @NonNull final NetworkCallback callback);
+    void post(@NonNull final String path, final JSONObject data, @NonNull final NetworkCallback callback);
 }

@@ -152,7 +152,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         showNetwork();
     }
 
-    private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
+    private final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
         @Override
         public void handleOnBackPressed() {
             animateFAB();
@@ -283,7 +283,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         }
 
         // remove information of non-existent wallet
-        Set<String> removedWallets = getActivity()
+        Set<String> removedWallets = requireActivity()
                 .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getAll().keySet();
         for (WalletManager.WalletInfo s : walletList) {
@@ -445,7 +445,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     private void setSubtext(String status) {
-        final Context ctx = getContext();
+        final Context ctx = requireContext();
         final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
                 Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
                 Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),

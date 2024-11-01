@@ -16,7 +16,7 @@
 
 package com.m2049r.xmrwallet.data;
 
-import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
+import com.m2049r.xmrwallet.service.shift.api.CreateOrder;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.regex.Matcher;
@@ -61,7 +61,7 @@ public class UserNotes {
 
     public void setXmrtoOrder(CreateOrder order) {
         if (order != null) {
-            xmrtoTag = order.TAG;
+            xmrtoTag = order.getTag();
             xmrtoKey = order.getOrderId();
             xmrtoAmount = Helper.getDisplayAmount(order.getBtcAmount());
             xmrtoCurrency = order.getBtcCurrency();

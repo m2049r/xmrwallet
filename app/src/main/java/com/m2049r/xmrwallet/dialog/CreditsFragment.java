@@ -20,10 +20,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -49,13 +49,14 @@ public class CreditsFragment extends DialogFragment {
         CreditsFragment.newInstance().show(ft, TAG);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_credits, null);
+        final View view = getLayoutInflater().inflate(R.layout.fragment_credits, null);
 
         ((TextView) view.findViewById(R.id.tvCredits)).setText(Html.fromHtml(getString(R.string.credits_text)));
 
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity())
                 .setView(view)
                 .setNegativeButton(R.string.about_close,
                         new DialogInterface.OnClickListener() {

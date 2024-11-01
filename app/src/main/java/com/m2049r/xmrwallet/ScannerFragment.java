@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.zxing.BarcodeFormat;
@@ -43,7 +44,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     private ZXingScannerView mScannerView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("onCreateView");
         mScannerView = new ZXingScannerView(getActivity());
         return mScannerView;
@@ -85,7 +86,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnScannedListener) {
             this.onScannedListener = (OnScannedListener) context;

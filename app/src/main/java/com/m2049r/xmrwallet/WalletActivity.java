@@ -38,7 +38,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -348,7 +347,10 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         }
 
         Bundle extras = getIntent().getExtras();
-        if (extras == null) finish(); // we need extras!
+        if (extras == null) {
+            finish(); // we need extras!
+            return;
+        }
 
         String walletId = extras.getString(REQUEST_ID);
         requestStreetMode = extras.getBoolean(REQUEST_STREETMODE);
@@ -1179,7 +1181,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
     }
 
     @Override
-    public void onSubaddressSelected(@Nullable final Subaddress subaddress) {
+    public void onSubaddressSelected(@NonNull final Subaddress subaddress) {
         selectedSubaddressIndex = subaddress.getAddressIndex();
         getOnBackPressedDispatcher().onBackPressed();
     }

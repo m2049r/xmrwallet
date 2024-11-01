@@ -181,57 +181,57 @@
             <li>iun OpenAlias por XMR aŭ BTC</li>
             <li>bitmonan-adreson (BTC)<li>
         </ul>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
 
         <h1>Sendi BTC</h1>
 
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        <h2>Exolix</h2>
+        <p>Exolix estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
         interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        https://exolix.com kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun Exolix kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
-        <h2>Kurzo de SideShift.ai<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
+        <h2>Kurzo de Exolix<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la Exolix-servo. Ili inkludas la
         nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
-        <h2>Mendo al SideShift.ai<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
+        <h2>Mendo al Exolix<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan Exolix-mendon. Tiu mendo validas nur dum
         limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
         eble malsama ol tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
+        <h2>Sekreta ŝlosilo de Exolix<h2>
         <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
-        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
-        <h2>La retrokalkulo de SideShift.ai!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
+        Exolix-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de Exolix.</p>
+        <h2>La retrokalkulo de Exolix!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Elspezi Bitmonon</h1>
 
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        <h2>Exolix</h2>
+        <p>Exolix estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
         interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        https://exolix.com kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun Exolix kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
-        <h2>Kurzo de SideShift.ai<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
+        <h2>Kurzo de Exolix<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la Exolix-servo. Ili inkludas la
         nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
-        <h2>Mendo al SideShift.ai<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
+        <h2>Mendo al Exolix<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan Exolix-mendon. Tiu mendo validas nur dum
         limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
         eble malsama ol tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
+        <h2>Sekreta ŝlosilo de Exolix<h2>
         <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
-        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
-        <h2>La retrokalkulo de SideShift.ai!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
+        Exolix-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de Exolix.</p>
+        <h2>La retrokalkulo de Exolix!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 

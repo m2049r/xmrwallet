@@ -23,7 +23,6 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.m2049r.xmrwallet.BuildConfig;
 import com.m2049r.xmrwallet.model.NetworkType;
 import com.m2049r.xmrwallet.util.LocaleHelper;
 import com.m2049r.xmrwallet.util.NetCipherHelper;

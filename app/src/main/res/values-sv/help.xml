@@ -136,50 +136,50 @@
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
         <h1>Skicka BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai är en tredjeparts tjänst som byter ut Monero mot Bitcoin. Vi använder SideShift.ai API:n
-        för att integrera Bitcoin betalningar i Monerujo. Vänligen besök https://sideshift.ai och bestäm
+        <h2>Exolix</h2>
+        <p>Exolix är en tredjeparts tjänst som byter ut Monero mot Bitcoin. Vi använder Exolix API:n
+        för att integrera Bitcoin betalningar i Monerujo. Vänligen besök https://exolix.com och bestäm
         för dig själv om det är någonting du vill använda. Monerujo laget är inte associerad med
-        SideShift.ai och kan inte hjälpa dig med deras tjänst.</p>
-        <h2>SideShift.ai Växelkurs<h2>
-        <p>På \"Mängd\"skärmen ser du de nuvarande parametrarna av SideShift.ai tjänsten. Dessa innehåller den
+        Exolix och kan inte hjälpa dig med deras tjänst.</p>
+        <h2>Exolix Växelkurs<h2>
+        <p>På \"Mängd\"skärmen ser du de nuvarande parametrarna av Exolix tjänsten. Dessa innehåller den
         nuvarande växelkursen samt de övre och lägre BTC gränserna. Vänligen notera att denna kursen
         inte är garanterad just nu.</p>
-        <h2>SideShift.ai Beställning<h2>
-        <p>På \"Bekräfta\" skärmen, kommer du att se den faktiska SideShift.ai beställningen. Den här beställningen
+        <h2>Exolix Beställning<h2>
+        <p>På \"Bekräfta\" skärmen, kommer du att se den faktiska Exolix beställningen. Den här beställningen
         är giltig under en begränsad tid - du kan se en nedräkning på \"Spendera\" knappen. Växelkursen
         kan vara annorlunda från den indikativa, visad på tidigare skärmar..</p>
-        <h2>SideShift.ai Privatnyckel<h2>
-        <p>Eftersom att Monerujo bara tar hand om Monero delen av din transaktion, kan din SideShift.ai
-        privatnyckel användas för att spåra Bitcoin delen av din beställning på SideShift.ai sidan.</p>
-        <h2>SideShift.ai Nedräkning!</h2>
-        <p>När nedräkningen når noll, behöver du skaffa ett nytt kostnadsförslag från SideShift.ai genom att gå
+        <h2>Exolix Privatnyckel<h2>
+        <p>Eftersom att Monerujo bara tar hand om Monero delen av din transaktion, kan din Exolix
+        privatnyckel användas för att spåra Bitcoin delen av din beställning på Exolix sidan.</p>
+        <h2>Exolix Nedräkning!</h2>
+        <p>När nedräkningen når noll, behöver du skaffa ett nytt kostnadsförslag från Exolix genom att gå
         tillbaka till den tidigare skärmen och sedan gå till \"Bekräfta\"skärmen.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Skicka BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai är en tredjeparts tjänst som byter ut Monero mot Bitcoin. Vi använder SideShift.ai API:n
-        för att integrera Bitcoin betalningar i Monerujo. Vänligen besök https://sideshift.ai och bestäm
+        <h2>Exolix</h2>
+        <p>Exolix är en tredjeparts tjänst som byter ut Monero mot Bitcoin. Vi använder Exolix API:n
+        för att integrera Bitcoin betalningar i Monerujo. Vänligen besök https://exolix.com och bestäm
         för dig själv om det är någonting du vill använda. Monerujo laget är inte associerad med
-        SideShift.ai och kan inte hjälpa dig med deras tjänst.</p>
-        <h2>SideShift.ai Växelkurs<h2>
-        <p>På \"Mängd\"skärmen ser du de nuvarande parametrarna av SideShift.ai tjänsten. Dessa innehåller den
+        Exolix och kan inte hjälpa dig med deras tjänst.</p>
+        <h2>Exolix Växelkurs<h2>
+        <p>På \"Mängd\"skärmen ser du de nuvarande parametrarna av Exolix tjänsten. Dessa innehåller den
         nuvarande växelkursen samt de övre och lägre BTC gränserna. Vänligen notera att denna kursen
         inte är garanterad just nu.</p>
-        <h2>SideShift.ai Beställning<h2>
-        <p>På \"Bekräfta\" skärmen, kommer du att se den faktiska SideShift.ai beställningen. Den här beställningen
+        <h2>Exolix Beställning<h2>
+        <p>På \"Bekräfta\" skärmen, kommer du att se den faktiska Exolix beställningen. Den här beställningen
         är giltig under en begränsad tid - du kan se en nedräkning på \"Spendera\" knappen. Växelkursen
         kan vara annorlunda från den indikativa, visad på tidigare skärmar..</p>
-        <h2>SideShift.ai Privatnyckel<h2>
-        <p>Eftersom att Monerujo bara tar hand om Monero delen av din transaktion, kan din SideShift.ai
-        privatnyckel användas för att spåra Bitcoin delen av din beställning på SideShift.ai sidan.</p>
-        <h2>SideShift.ai Nedräkning!</h2>
-        <p>När nedräkningen når noll, behöver du skaffa ett nytt kostnadsförslag från SideShift.ai genom att gå
+        <h2>Exolix Privatnyckel<h2>
+        <p>Eftersom att Monerujo bara tar hand om Monero delen av din transaktion, kan din Exolix
+        privatnyckel användas för att spåra Bitcoin delen av din beställning på Exolix sidan.</p>
+        <h2>Exolix Nedräkning!</h2>
+        <p>När nedräkningen når noll, behöver du skaffa ett nytt kostnadsförslag från Exolix genom att gå
         tillbaka till den tidigare skärmen och sedan gå till \"Bekräfta\"skärmen.</p>
     ]]></string>
 

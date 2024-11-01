@@ -42,15 +42,16 @@
         </b><br/>
         <i>
         شما با ارسال XMR با استفاده از سرویس
-        <b>SideShift.ai</b>
+        <b>%3$s</b>
         برای دریافت کننده
-        %1$s
+        %2$s
         خواهید فرستاد.
         </i>
     ]]></string>
 
     <string name="info_send_xmrto_success_order_label">
-    سفارش SideShift.ai
+    سفارش
+    %1$s
     </string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -58,8 +59,8 @@
     <string name="info_send_xmrto_paid">در حال تایید</string>
     <string name="info_send_xmrto_unpaid">در حال پرداخت</string>
     <string name="info_send_xmrto_error">
-    خطای SideShift.ai
-    (%1$s)
+    خطای Exolix
+    (%2$s)
     </string>
     <string name="info_send_xmrto_sent">%1$s
     ارسال شد!
@@ -77,7 +78,7 @@
         <i>
         <u>در حال حاضر</u>
         سرویس
-        <b>SideShift.ai</b>
+        <b>%5$s</b>
         به شما نرخ تبدیل
         <b>%3$s %4$s/XMR</b>
         را می‌دهد.
@@ -86,7 +87,7 @@
 
     <string name="send_available_btc">
     موجودی
-    %2$s %3$s (%1$s XMR)</string>
+    %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">
     شناسهٔ پرداخت ادغام شد
@@ -95,19 +96,19 @@
     <string name="info_prepare_tx">در حال آماده‌سازی تراکنش</string>
 
     <string name="label_send_progress_xmrto_create">
-    در حال ساخت تراکنش SideShift.ai
+    در حال ساخت تراکنش
     </string>
     <string name="label_send_progress_xmrto_query">
-    در حال پرس‌وجوی سفارش SideShift.ai
+    در حال پرس‌وجوی سفارش
     </string>
     <string name="label_send_progress_create_tx">در حال آماده‌سازی تراکنش مونرو</string>
 
     <string name="label_send_progress_queryparms">
-    در حال پرس‌وجوی پارامترهای SideShift.ai
+    در حال پرس‌وجوی پارامترهای
     </string>
 
     <string name="label_generic_xmrto_error">
-    خطای SideShift.ai
+    خطای
     </string>
     <string name="text_generic_xmrto_error">
     کد:
@@ -116,7 +117,9 @@
     <string name="text_retry">برای تلاش دوباره لمس کنید</string>
     <string name="text_noretry_monero">ما اینجا گیر کردیم!</string>
     <string name="text_noretry">
-    سرویس SideShift.ai در حال حاضر در دسترس نیست!
+    سرویس
+    %1$s
+    در حال حاضر در دسترس نیست!
     </string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
@@ -125,13 +128,15 @@
     %1$s %2$s/XMR)</string>
 
     <string name="label_send_btc_xmrto_info">
-    برای پشتیبانی و رهگیری سفارش به SideShift.ai مراجعه کنید
+    برای پشتیبانی و رهگیری سفارش به
+    %1$s
+    مراجعه کنید
     </string>
     <string name="label_send_btc_xmrto_key_lb">
     کلید خصوصی
-    \nSideShift.ai</string>
+    \n%1$s</string>
     <string name="label_send_btc_xmrto_key">
-    کلید خصوصی SideShift.ai
+    کلید خصوصی %s
     </string>
     <string name="label_send_btc_address">
     آدرس مقصد
@@ -149,7 +154,7 @@
     <string name="changepw_progress">در حال تغییر رمز</string>
 
     <string name="service_progress">
-    در حال انجام...
+    در حال انجام…
     \n
     این کار ممکن است زمان زیادی طول بکشد!
     </string>
@@ -553,7 +558,7 @@
     </string>
     <string name="onboarding_xmrto_title">هرنوع رمزارز ارسال کنید</string>
     <string name="onboarding_xmrto_information">
-    مونروجو دارای پشتیبانی داخلی SideShift.ai است. فقط یک آدرس BTC، LTC، ETH، DASH یا DOGE را بچسبانید یا اسکن کنید و با خرج کردن XMR، این رمزارزها را ارسال خواهید کرد (آدرس IP ایران در تحریم است).
+    Monerujo دارای پشتیبانی صرافی داخلی است. فقط یک آدرس BTC، LTC، ETH، TRXUSDT یا SOL را بچسبانید یا اسکن کنید و با خرج کردن XMR، این رمزارزها را ارسال خواهید کرد (آدرس IP ایران در تحریم است).
     </string>
     <string name="onboarding_nodes_title">گره‌ها، به میل شما</string>
     <string name="onboarding_nodes_information">
@@ -614,7 +619,7 @@
         را اسکن یا وارد کنید.</b><br/>
         <i>
         شما به وسیلهٔ سرویس
-        <b>SideShift.ai</b> 
+        <b>%3$s</b>
         با ارسال XMR برای گیرنده
         %2$s
         ارسال خواهید کرد.
@@ -658,7 +663,7 @@
     برای استفاده از تور، تنظیمات «اجازه دادن به اجرا در پس‌زمینه» را در Orbot فعال کنید!
     </string>
     <string name="tor_noshift">
-    قابلیت SideShift.ai از تور پشتیبانی نمی‌کند. برای تبدیل XMR تور را غیرفعال کنید.
+    قابلیت %s از تور پشتیبانی نمی‌کند. برای تبدیل XMR تور را غیرفعال کنید.
     </string>
 
     <string name="label_seed_offset_encrypt">رمزگذاری بذر (قابلیت آزمایشی)</string>

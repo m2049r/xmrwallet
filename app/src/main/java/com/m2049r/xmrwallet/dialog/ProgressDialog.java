@@ -17,6 +17,7 @@ package com.m2049r.xmrwallet.dialog;
  * limitations under the License.
  */
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.util.Helper;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -56,7 +58,7 @@ public class ProgressDialog extends AlertDialog {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_ledger_progress, null);
+        @SuppressLint("InflateParams") final View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_ledger_progress, null);
         pbCircle = view.findViewById(R.id.pbCircle);
         tvMessage = view.findViewById(R.id.tvMessage);
         rlProgressBar = view.findViewById(R.id.rlProgressBar);
@@ -78,7 +80,7 @@ public class ProgressDialog extends AlertDialog {
         super.onCreate(savedInstanceState);
 
         if (Helper.preventScreenshot()) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+            Objects.requireNonNull(getWindow()).setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         }
     }
 

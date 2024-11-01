@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.m2049r.xmrwallet.R;
 
 public class SendProgressView extends LinearLayout {
@@ -75,7 +77,7 @@ public class SendProgressView extends LinearLayout {
         llMessage.setVisibility(INVISIBLE);
     }
 
-    public void showMessage(String code, String message, String solution) {
+    public void showMessage(String code, String message, @Nullable String solution) {
         tvCode.setText(code);
         tvMessage.setText(message);
         tvSolution.setText(solution);

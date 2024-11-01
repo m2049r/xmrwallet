@@ -244,69 +244,69 @@
             <li>XMRやBTCのOpenAlias</li>
             <li>BTCアドレス</li>
         </u>
-        BTCの送信はSideShift.aiサービス（https://sideshift.ai）を介して処理されることに注意してください。 
+        BTCの送信はExolixサービス（https://exolix.com）を介して処理されることに注意してください。 
         下記のBTCの送信に関するセクションを参照してください。</p>
         <h1>BTCの送金</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai はモネロからビットコインに換金する交換所として
+        <h2>Exolix</h2>
+        <p>Exolix はモネロからビットコインに換金する交換所として
         機能するサードパーティ製のサービスです。私達は
-        SideShift.ai のAPIを使うことでビットコインの支払い機能を
+        Exolix のAPIを使うことでビットコインの支払い機能を
         Monerujoに組み込んでいます。
-        https://sideshift.ai を確認して、これがあなたが使いたい
+        https://exolix.com を確認して、これがあなたが使いたい
         機能であるかどうかをご自身で判断してください。
-        Monerujoの開発チームは SideShift.ai とは無関係であり、
-        SideShift.aiのサービスに関してあなたをサポートすることはできません。</p>
-        <h2>SideShift.ai の交換レート<h2>
-        <p>「数量」(Amount)の画面では SideShift.ai の現在の
+        Monerujoの開発チームは Exolix とは無関係であり、
+        Exolixのサービスに関してあなたをサポートすることはできません。</p>
+        <h2>Exolix の交換レート<h2>
+        <p>「数量」(Amount)の画面では Exolix の現在の
         パラメータが表示されます。これらは現在の交換レートに加えて
         送金可能なBTCの上限・下限を含みます。この交換レートは
         現時点では保証されたものではないことに注意してください。</p>
-        <h2>SideShift.ai の注文<h2>
-        <p>「確認」(Confirm)の画面で、あなたは実際の SideShift.ai 
+        <h2>Exolix の注文<h2>
+        <p>「確認」(Confirm)の画面で、あなたは実際の Exolix 
         の注文を見ることになります。この注文は制限時間内でのみ有効です。
         あなたは送金(Spend)ボタンにカウントダウンが
         表示されていることに気づくかもしれません。
         交換レートは前の画面で表示されたものとは異なる可能性が有ります。</p>
-        <h2>SideShift.ai のシークレットキー<h2>
+        <h2>Exolix のシークレットキー<h2>
         <p>Monerujo はBTCとXMRのうち、XMRの方だけを取り扱います。
-        SideShift.ai のシークレットキーは、 SideShift.ai のホームページにて
+        Exolix のシークレットキーは、 Exolix のホームページにて
         BTCの方の注文を追跡するのに使用できます。</p>
-        <h2>SideShift.ai カウントダウン!</h2>
+        <h2>Exolix カウントダウン!</h2>
         <p>一旦カウントダウンがゼロに到達すると、
         あなたは一度前のステップに戻って「確認」(Confirm)の画面に戻って、
-        もう一度 SideShift.ai から新しい見積もりを取得する必要があります。</p>
+        もう一度 Exolix から新しい見積もりを取得する必要があります。</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTCの送金</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai はモネロからビットコインに換金する交換所として
+        <h2>Exolix</h2>
+        <p>Exolix はモネロからビットコインに換金する交換所として
         機能するサードパーティ製のサービスです。私達は
-        SideShift.ai のAPIを使うことでビットコインの支払い機能を
+        Exolix のAPIを使うことでビットコインの支払い機能を
         Monerujoに組み込んでいます。
-        https://sideshift.ai を確認して、これがあなたが使いたい
+        https://exolix.com を確認して、これがあなたが使いたい
         機能であるかどうかをご自身で判断してください。
-        Monerujoの開発チームは SideShift.ai とは無関係であり、
-        SideShift.aiのサービスに関してあなたをサポートすることはできません。</p>
-        <h2>SideShift.ai の交換レート<h2>
-        <p>「数量」(Amount)の画面では SideShift.ai の現在の
+        Monerujoの開発チームは Exolix とは無関係であり、
+        Exolixのサービスに関してあなたをサポートすることはできません。</p>
+        <h2>Exolix の交換レート<h2>
+        <p>「数量」(Amount)の画面では Exolix の現在の
         パラメータが表示されます。これらは現在の交換レートに加えて
         送金可能なBTCの上限・下限を含みます。この交換レートは
         現時点では保証されたものではないことに注意してください。</p>
-        <h2>SideShift.ai の注文<h2>
-        <p>「確認」(Confirm)の画面で、あなたは実際の SideShift.ai
+        <h2>Exolix の注文<h2>
+        <p>「確認」(Confirm)の画面で、あなたは実際の Exolix
         の注文を見ることになります。この注文は制限時間内でのみ有効です。
         あなたは送金(Spend)ボタンにカウントダウンが
         表示されていることに気づくかもしれません。
         交換レートは前の画面で表示されたものとは異なる可能性が有ります。</p>
-        <h2>SideShift.ai のシークレットキー<h2>
+        <h2>Exolix のシークレットキー<h2>
         <p>Monerujo はBTCとXMRのうち、XMRの方だけを取り扱います。
-        SideShift.ai のシークレットキーは、 SideShift.ai のホームページにて
+        Exolix のシークレットキーは、 Exolix のホームページにて
         BTCの方の注文を追跡するのに使用できます。</p>
-        <h2>SideShift.ai カウントダウン!</h2>
+        <h2>Exolix カウントダウン!</h2>
         <p>一旦カウントダウンがゼロに到達すると、
         あなたは一度前のステップに戻って「確認」(Confirm)の画面に戻って、
-        もう一度 SideShift.ai から新しい見積もりを取得する必要があります。</p>
+        もう一度 Exolix から新しい見積もりを取得する必要があります。</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[

@@ -8,8 +8,8 @@ android {
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 4008
-        versionName "4.0.8 'Sidekick'"
+        versionCode 4102
+        versionName "4.1.2 'Exolix'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -58,7 +58,7 @@ android {
             applicationIdSuffix ".debug"
         }
         applicationVariants.all { variant ->
-            variant.buildConfigField "String", "ID_A", "\"" + getId("ID_A") + "\""
+            variant.buildConfigField "String", "ID_F", "\"" + getId("ID_F") + "\""
         }
     }
 

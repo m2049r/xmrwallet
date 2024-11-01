@@ -56,6 +56,7 @@ import com.m2049r.xmrwallet.widget.Toolbar;
 
 import java.lang.ref.WeakReference;
 
+import lombok.Getter;
 import timber.log.Timber;
 
 public class SendFragment extends Fragment
@@ -67,6 +68,7 @@ public class SendFragment extends Fragment
 
     final static public int MIXIN = 0;
 
+    @Getter
     private Listener activityCallback;
 
     public interface Listener {
@@ -273,7 +275,7 @@ public class SendFragment extends Fragment
         return false;
     }
 
-    enum Mode {
+    public enum Mode {
         XMR, BTC
     }
 
@@ -293,7 +295,7 @@ public class SendFragment extends Fragment
                 default:
                     throw new IllegalArgumentException("Mode " + String.valueOf(aMode) + " unknown!");
             }
-            getView().post(() -> pagerAdapter.notifyDataSetChanged());
+            requireView().post(() -> pagerAdapter.notifyDataSetChanged());
             Timber.d("New Mode = %s", mode.toString());
         }
     }
@@ -478,11 +480,6 @@ public class SendFragment extends Fragment
         bDone.setVisibility(View.VISIBLE);
     }
 
-    public Listener getActivityCallback() {
-        return activityCallback;
-    }
-
-
     // callbacks from send service
 
     public void onTransactionCreated(final String txTag, final PendingTransaction pendingTransaction) {
@@ -502,11 +499,8 @@ public class SendFragment extends Fragment
         activityCallback.onDisposeRequest();
     }
 
+    @Getter
     PendingTx pendingTx;
-
-    public PendingTx getPendingTx() {
-        return pendingTx;
-    }
 
     public void onCreateTransactionFailed(String errorText) {
         final SendConfirm confirm = getSendConfirm();

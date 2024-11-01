@@ -163,17 +163,7 @@
 		</p>
         <h2>Converting XMR</h2>
         <p>Conversion into another crypto is processed through an external exchange service. Monerujo doesn\'t run or is associated with these third parties, therefore cannot help you with their service, but will provide you with the information required to get support from them.</p>
-        <h2>Available XMR pairs</h2>
-		<p>Monerujo supports conversion form XMR to the following coins:
-		<ul>
-			<li>Bitcoin (BTC)</li>
-			<li>Ethereum (ETH)</li>
-			<li>Litecoin (LTC)</li>
-			<li>Dash (DASH)</li>
-			<li>Dai (DAI) on Ethereum</li>
-			<li>Tether (USDT) on Ethereum</li>
-		</ul>
-		Just add a matching address or select the desired coin by picking on its icon.</p>
+		<p>Just add a matching address or select the desired coin by picking on its icon.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[

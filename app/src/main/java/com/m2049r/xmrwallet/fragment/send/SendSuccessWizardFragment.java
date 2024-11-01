@@ -36,18 +36,13 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
 
     public static SendSuccessWizardFragment newInstance(Listener listener) {
         SendSuccessWizardFragment instance = new SendSuccessWizardFragment();
-        instance.setSendListener(listener);
+        instance.sendListener = listener;
         return instance;
     }
 
-    Listener sendListener;
+    private Listener sendListener;
 
-    public SendSuccessWizardFragment setSendListener(Listener listener) {
-        this.sendListener = listener;
-        return this;
-    }
-
-    interface Listener {
+    public interface Listener {
         TxData getTxData();
 
         PendingTx getCommittedTx();
@@ -62,7 +57,6 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
     ImageButton bCopyTxId;
     private TextView tvTxId;
     private TextView tvTxAddress;
-    private TextView tvTxPaymentId;
     private TextView tvTxAmount;
     private TextView tvTxFee;
 
@@ -78,13 +72,12 @@ public class SendSuccessWizardFragment extends SendWizardFragment {
         bCopyTxId = view.findViewById(R.id.bCopyTxId);
         bCopyTxId.setEnabled(false);
         bCopyTxId.setOnClickListener(v -> {
-            Helper.clipBoardCopy(getActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
+            Helper.clipBoardCopy(requireActivity(), getString(R.string.label_send_txid), tvTxId.getText().toString());
             Toast.makeText(getActivity(), getString(R.string.message_copy_txid), Toast.LENGTH_SHORT).show();
         });
 
         tvTxId = view.findViewById(R.id.tvTxId);
         tvTxAddress = view.findViewById(R.id.tvTxAddress);
-        tvTxPaymentId = view.findViewById(R.id.tvTxPaymentId);
         tvTxAmount = view.findViewById(R.id.tvTxAmount);
         tvTxFee = view.findViewById(R.id.tvTxFee);
 

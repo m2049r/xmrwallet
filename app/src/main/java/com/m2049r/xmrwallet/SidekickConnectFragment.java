@@ -20,6 +20,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,6 +30,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -73,6 +75,8 @@ public class SidekickConnectFragment extends Fragment
     @Override
     public void onPause() {
         Timber.d("onPause()");
+        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
+            throw new IllegalStateException("Bluetooth permission not granted");
         if (bluetoothAdapter.isDiscovering()) {
             bluetoothAdapter.cancelDiscovery();
         }
@@ -112,6 +116,8 @@ public class SidekickConnectFragment extends Fragment
 
     private void populateList() {
         List<BluetoothInfo> items = new ArrayList<>();
+        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
+            throw new IllegalStateException("Bluetooth permission not granted");
         for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
             final int deviceCLass = device.getBluetoothClass().getDeviceClass();
             switch (deviceCLass) {
@@ -152,6 +158,8 @@ public class SidekickConnectFragment extends Fragment
 
         // Make sure we're not doing discovery anymore
         if (bluetoothAdapter != null) {
+            if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
+                throw new IllegalStateException("Bluetooth permission not granted");
             bluetoothAdapter.cancelDiscovery();
         }
     }
@@ -159,6 +167,8 @@ public class SidekickConnectFragment extends Fragment
     @Override
     public void onInteraction(final View view, final BluetoothInfo item) {
         Timber.d("onInteraction %s", item);
+        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
+            throw new IllegalStateException("Bluetooth permission not granted");
         bluetoothAdapter.cancelDiscovery();
 
         final BluetoothFragment btFragment = (BluetoothFragment) getChildFragmentManager().findFragmentById(R.id.bt_fragment);

@@ -20,22 +20,21 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
+import com.m2049r.xmrwallet.service.shift.ShiftService;
+import com.m2049r.xmrwallet.service.shift.api.RequestQuote;
+
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
+@Getter
 public class TxDataBtc extends TxData {
-    @Getter
-    @Setter
+    private ShiftService shiftService;
     private String btcSymbol; // the actual non-XMR thing we're sending
-    @Getter
-    @Setter
     private String xmrtoOrderId; // shown in success screen
-    @Getter
-    @Setter
     private String btcAddress;
-    @Getter
-    @Setter
-    private double btcAmount;
+    private CryptoAmount shiftAmount; // what we want to send
+    private String xmrtoQueryOrderToken; // used for queryOrder API
 
     public TxDataBtc() {
         super();
@@ -47,7 +46,9 @@ public class TxDataBtc extends TxData {
         out.writeString(btcSymbol);
         out.writeString(xmrtoOrderId);
         out.writeString(btcAddress);
-        out.writeDouble(btcAmount);
+        out.writeString(shiftAmount.getCrypto().name());
+        out.writeDouble(shiftAmount.getAmount());
+        out.writeString(xmrtoQueryOrderToken);
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -66,7 +67,8 @@ public class TxDataBtc extends TxData {
         btcSymbol = in.readString();
         xmrtoOrderId = in.readString();
         btcAddress = in.readString();
-        btcAmount = in.readDouble();
+        shiftAmount = new CryptoAmount(Crypto.valueOf(in.readString()), in.readDouble());
+        xmrtoQueryOrderToken = in.readString();
     }
 
     @NonNull
@@ -79,19 +81,33 @@ public class TxDataBtc extends TxData {
         sb.append(btcSymbol);
         sb.append(",btcAddress:");
         sb.append(btcAddress);
-        sb.append(",btcAmount:");
-        sb.append(btcAmount);
+        sb.append(",amount:");
+        sb.append(shiftAmount);
+        sb.append(",xmrtoQueryOrderToken:");
+        sb.append(xmrtoQueryOrderToken);
         return sb.toString();
     }
 
     public boolean validateAddress(@NonNull String address) {
-        if ((btcSymbol == null) || (btcAddress == null)) return false;
         final Crypto crypto = Crypto.withSymbol(btcSymbol);
         if (crypto == null) return false;
-        if (crypto.isCasefull()) { // compare as-is
-            return address.equals(btcAddress);
-        } else { // normalize & compare (e.g. ETH with and without checksum capitals
-            return address.toLowerCase().equals(btcAddress.toLowerCase());
+        return address.equalsIgnoreCase(btcAddress);
+    }
+
+    public double getBtcAmount() {
+        return (shiftAmount.getCrypto() == Crypto.XMR) ? 0 : shiftAmount.getAmount();
+    }
+
+    public double getXmrAmount() {
+        return (shiftAmount.getCrypto() == Crypto.XMR) ? shiftAmount.getAmount() : 0;
+    }
+
+    public boolean validate(RequestQuote quote) {
+        if (shiftAmount.getCrypto() == Crypto.XMR) {
+            return (quote.getXmrAmount() == getXmrAmount());
+        } else {
+            return (quote.getBtcAmount() == getBtcAmount());
         }
     }
+
 }

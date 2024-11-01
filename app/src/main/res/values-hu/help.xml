@@ -147,52 +147,52 @@
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
         <h1>BTC-küldés</h1>
-        <h2>SideShift.ai</h2>
-        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
+        <h2>Exolix</h2>
+        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>SideShift.ai árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
+        <h2>Exolix árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
         hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>SideShift.ai megrendelés<h2>
+        <h2>Exolix megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>SideShift.ai titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
-        <h2>SideShift.ai visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
+        <h2>Exolix titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
+        <h2>Exolix visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTC-küldés</h1>
-        <h2>SideShift.ai</h2>
-        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
+        <h2>Exolix</h2>
+        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>SideShift.ai árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
+        <h2>Exolix árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
         hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>SideShift.ai megrendelés<h2>
+        <h2>Exolix megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>SideShift.ai titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
-        <h2>SideShift.ai visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
+        <h2>Exolix titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
+        <h2>Exolix visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 

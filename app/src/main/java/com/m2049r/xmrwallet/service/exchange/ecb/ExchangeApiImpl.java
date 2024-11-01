@@ -142,9 +142,13 @@ public class ExchangeApiImpl implements ExchangeApi {
                     } catch (ParserConfigurationException | SAXException ex) {
                         Timber.w(ex);
                         callback.onError(new ExchangeException(ex.getLocalizedMessage()));
+                    } finally {
+                        response.close();
                     }
                 } else {
-                    callback.onError(new ExchangeException(response.code(), response.message()));
+                    final ExchangeException ex = new ExchangeException(response.code(), response.message());
+                    response.close();
+                    callback.onError(ex);
                 }
             }
         });

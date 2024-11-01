@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.layout;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +108,7 @@ public class BluetoothInfoAdapter extends RecyclerView.Adapter<BluetoothInfoAdap
 
     private boolean itemsClickable = true;
 
+    @SuppressLint("NotifyDataSetChanged")
     public void allowClick(boolean clickable) {
         itemsClickable = clickable;
         notifyDataSetChanged();
