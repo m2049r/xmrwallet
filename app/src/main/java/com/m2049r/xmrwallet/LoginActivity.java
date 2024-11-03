@@ -1411,7 +1411,7 @@ public class LoginActivity extends BaseActivity
         Timber.d("onDeviceConnected: %s", connectedDeviceName);
         try {
             SidekickConnectFragment f = (SidekickConnectFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-            assert f != null;
+            if (f == null) return;
             f.allowClick();
         } catch (ClassCastException ex) {
             // ignore it
