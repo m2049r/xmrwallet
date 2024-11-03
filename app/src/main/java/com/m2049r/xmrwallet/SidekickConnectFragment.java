@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -116,8 +117,10 @@ public class SidekickConnectFragment extends Fragment
 
     private void populateList() {
         List<BluetoothInfo> items = new ArrayList<>();
-        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
-            throw new IllegalStateException("Bluetooth permission not granted");
+        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(requireContext(), "Bluetooth permission not granted", Toast.LENGTH_LONG).show();
+            return;
+        }
         for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
             final int deviceCLass = device.getBluetoothClass().getDeviceClass();
             switch (deviceCLass) {
