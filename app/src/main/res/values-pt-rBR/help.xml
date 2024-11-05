@@ -18,7 +18,6 @@
         Portanto é melhor fazer um backup da sua semente
         mnemônica escrevendo-a a mão e guardando cópias em <em>vários</em> lugares seguros.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Criar Carteira - Semente</h1>
         <p>Se você já tem um endereço Monero e quer restaurar suas transações e fundos!</p>
@@ -29,7 +28,6 @@
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Criar Carteira - Ledger</h1>
         <p>Se você quer usar sua carteira do dispositivo Ledger Nano S.</p>
@@ -41,7 +39,6 @@
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Criar Carteira - Chaves</h1>
         <p>Se você quer restaurar a carteira a partir das chaves privadas</p>
@@ -52,7 +49,6 @@
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Criar Carteira - Somente Leitura</h1>
         <p>Se você quer monitorar as transações que chegam na sua carteira.</p>
@@ -63,7 +59,6 @@
         no campo \"restaurar da altura\". Você também pode indicar uma data no formato AAAA-MM-DD. Se você não tiver certeza,
         coloque uma data aproximada <em>anterior</em> a data da sua primeira transação.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Detalhes da carteira</h1>
         <h2>Endereço público</h2>
@@ -100,7 +95,6 @@
         Sua chave de gasto permite gastar o Monero que estiver na sua carteira, então não compartilhe esta chave com ninguém!
         Mantenha-a segura, assim como a semente mnemônica.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Lista de Carteiras</h1>
         <h2>Nó</h2>
@@ -129,7 +123,6 @@
         Se você não precisa mais do seu backup recomendamos que você delete o arquivo usando um aplicativo
         gerenciador de arquivos.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da transação</h1>
         <h2>Destino</h2>
@@ -147,8 +140,6 @@
         <h2>Bloco</h2>
         Bloco no qual sua transação foi incluída pelos mineradores.
     ]]></string>
-
-
     <string name="help_wallet"><![CDATA[
         <h1>Carteira</h1>
         <h2>Modo Rua</h2>
@@ -170,7 +161,6 @@
         <h2>Lista de transações</h2>
         <p>Lista de transações da carteira. Nas carteiras \"somente leitura\", somente as transações de entrada aparecem.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nós</h1>
         <h2>TL;DR</h2>
@@ -219,7 +209,6 @@
         o Monerujo irá direto para os nós codificados direto no Monero em si. O
         escaneamento termina quando 10 nós remotos são encontrados no total.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -232,6 +221,69 @@
         </p>
         <p>Os detalhes do pagamento serão preenchidos. Confirme-os e siga adiante como qualquer outra transação normal.</p>
     ]]></string>
+    <string name="help_ok">Entendi!</string>
+    <!-- Note: "Got it" as in "I understand this" -->
+<string name="help_nok">Não…</string>
+    <string name="help_getorbot">Obtenha o Orbot!</string>
+    <string name="help_tor"><![CDATA[
+        <h1>Tor</h1>
+        <p>Tor, abreviação para "The Onion Router", é software livre e de código aberto que permite
+        comunicação anômima.</p>
+        <p>Ativar o Tor roteará sua conexão atráves de vários relês e esconderá seu endereço IP
+        do nó. Isso é mais privado, mas também mais <b>lento</b>.</p>
+        <p>Para usar o Tor com o Monerujo, você precisará do Orbot instalado em seu celular. Após
+        instalar o Orbot, você deve ativá-lo clicando no botão de rede na tela de
+        lista de carteiras.</p>
+        <p>Se estiver tendo problemas se conectando ao Tor, tente receber uma nova identidade no app do Orbot (ícone
+        na direita superior)</p>
+    ]]></string>
+    <string name="help_sidekick"><![CDATA[
+        <h2>Usando sua carteira sidekick</h2>
+        Verifique que ambos celulares estão conectados via Bluetooth e ambos apps estão abertos.
 
-    <string name="help_ok">Entendi!</string> <!-- Note: "Got it" as in "I understand this" -->
+        <h3>No sidekick:</h3>
+        Abra sua carteira de escolha.
+
+        <h3>No monerujo:</h3>
+        Conecte-se ao sidekick.
+
+        Abra a carteira que corresponde a qual você abriu no dispositivo com o sidekick.
+
+        Use-a como usaria qualquer carteira. Permite que escaneie para ver transações recebidas, compartilhar endereços, ou enviar moneros.S e o app precisa fazer algo que involva suas chaves, ele irá pedir permissão do sidekick.
+
+        <h3>No sidekick:</h3>
+        Se o monerujo pediu permissão, você verá um dialógo que mostra detalhes de transação como quantidade e taxas. Você terá duas opções, ACEITAR ou REJEITAR ela. Escolha com cuidado.
+
+        <h3>No monerujo:</h3>
+        A transação deve estar assinada e pronta para ser enviada. Pressione para fazer isso.
+         <br/>
+    ]]></string>
+    <string name="help_send"><![CDATA[
+        <h1>Enviar</h1>
+        <h2>Endereço do remetente</h2>
+        <p>Este é o endereço público da carteira de qual você está enviando, você pode colar da
+        sua área de transferência, escanear um código QR, ou digitá-la manualmente. Tenha certeza de verificar várias vezes,
+        para que não envie moedas para o endereço errado, quando enviado, não é possível revertê-lo.</p>
+        <p>Em vez de usar somente um endereço XMR, você pode também usar
+        <ul>
+            <li>Um <a href="https://openalias.org/">OpenAlias</a> para XMR ou BTC</li>
+            <li>Outro endereço de cripto</li>
+        </u>
+		</p>
+        <h2>Convertendo XMR</h2>
+        <p>Conversão para outra cripto é processada através de um serviço externo de troca. O Monerujo não hospeda e nem é associado com nenhuma desses terceiros, e então não pode ajudá-lo com o serviço deles, mas irá te dar informações em como receber suporte deles.</p>
+		<p>Simplesmente adicione um endereço correspondente e selecione a moeda desejada clicando em seu ícone.</p>
+    ]]></string>
+    <string name="help_xmrto"><![CDATA[
+        <h1>Convertendo XMR</h1>
+        <h2>Quantidades<h2>
+        <p>Digite no campo de \"Quantidade\" a quantidade de criptomoeda que deseja enviar. Por padrão, será exibido a quantidade equivalente de XMR à ser enviada de sua carteira. Você pode escolher uma moeda diferente do menu se você deseja fixar sua quantidade nela. O Monerujo usa uma taxa fixa, então no final do processo, você deve receber a quantidade exata que especificar aqui.</p>
+		<h2>Taxa de câmbio</h2>
+        <p>A baixo você verá a taxa atual proporcionada pelo serviço de troca, junto com seus limites mínimos e máximos. É importante notar que esta taxa não é garantida nesse ponto, e será definida no momento que sua transação estiver pronta para ser aprovada na próxima tela.</p>
+	]]></string>
+    <string name="help_tor_enable"><![CDATA[
+        <h1>Nó Tor</h1>
+        <p>Este é um nó .onion. Para usá-lo, precisará ativar o modo Tor, tocando no ícone
+        <img src="ic_network_clearnet"/> perto da parte superior da tela da lista de carteiras.</p>
+    ]]></string>
 </resources>
