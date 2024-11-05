@@ -400,7 +400,6 @@ public class ExchangeEditText extends LinearLayout {
                     exchangeRate.getQuoteCurrency(), sCurrencyB.getSelectedItem());
             return;
         }
-
         exchangeRateCache = exchangeRate;
         if (prepareExchange()) {
             exchange(exchangeRate.getRate());

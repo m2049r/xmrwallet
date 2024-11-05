@@ -151,53 +151,53 @@
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
 
         <h1>Відправлення BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
-        Ми використовуємо API служби SideShift.ai для включення платежів із впровадженням Bitcoin в Monerujo.
-        Будь ласка, Відвідайте https://sideshift.ai, і виріште, чи хочете ви використовувати цю можливість.
-        Команда Monerujo НЕ пов\'язана з SideShift.ai і не може допомогти вам в роботі з цією службою.</p>
-        <h2>Курс обміну SideShift.ai<h2>
-        <p>На екрані \"Сума\" відображаються поточні параметри служби SideShift.ai.
+        <h2>Exolix</h2>
+        <p>Exolix є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
+        Ми використовуємо API служби Exolix для включення платежів із впровадженням Bitcoin в Monerujo.
+        Будь ласка, Відвідайте https://exolix.com, і виріште, чи хочете ви використовувати цю можливість.
+        Команда Monerujo НЕ пов\'язана з Exolix і не може допомогти вам в роботі з цією службою.</p>
+        <h2>Курс обміну Exolix<h2>
+        <p>На екрані \"Сума\" відображаються поточні параметри служби Exolix.
         Тут також відображається обмінний курс, верхня і нижня межа BTC. Необхідно відзначити,
         що на даному етапі курс не гарантується.</p>
-        <h2>Заявка SideShift.ai<h2>
-        <p>На екрані \"Підтвердження\" можна побачити заявку SideShift.ai. Це заявка
+        <h2>Заявка Exolix<h2>
+        <p>На екрані \"Підтвердження\" можна побачити заявку Exolix. Це заявка
         дійсна протягом обмеженого часу. Зворотний відлік можна побачити на кнопці
         витрати \"Витрата\". Курс обміну може відрізнятися від того, що був показаний на попередніх екранах.</p>
-        <h2>Секретний ключ SideShift.ai<h2>
+        <h2>Секретний ключ Exolix<h2>
         <p>Так як Monerujo відповідає за ту частину транзакції, яка пов$apos;язана з Monero, для відстеження
         вашого замовлення, яка пов$apos;язана з Bitcoin, можна використовувати секретний ключ на домашній сторінці
-        SideShift.ai.</p>
-        <h2>Зворотній відлік SideShift.ai</h2>
-        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від SideShift.ai нову
+        Exolix.</p>
+        <h2>Зворотній відлік Exolix</h2>
+        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від Exolix нову
         заявку по обміну, повернувшись до попереднього кроку, а потім до екрану \"Підтвердження\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Відправлення BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
-        Ми використовуємо API служби SideShift.ai для включення платежів із впровадженням Bitcoin в Monerujo.
-        Будь ласка, Відвідайте https://sideshift.ai, і виріште, чи хочете ви використовувати цю можливість.
-        Команда Monerujo НЕ пов\'язана з SideShift.ai і не може допомогти вам в роботі з цією службою.</p>
-        <h2>Курс обміну SideShift.ai<h2>
-        <p>На екрані \"Сума\" відображаються поточні параметри служби SideShift.ai.
+        <h2>Exolix</h2>
+        <p>Exolix є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
+        Ми використовуємо API служби Exolix для включення платежів із впровадженням Bitcoin в Monerujo.
+        Будь ласка, Відвідайте https://exolix.com, і виріште, чи хочете ви використовувати цю можливість.
+        Команда Monerujo НЕ пов\'язана з Exolix і не може допомогти вам в роботі з цією службою.</p>
+        <h2>Курс обміну Exolix<h2>
+        <p>На екрані \"Сума\" відображаються поточні параметри служби Exolix.
         Тут також відображається обмінний курс, верхня і нижня межа BTC. Необхідно відзначити,
         що на даному етапі курс не гарантується.</p>
-        <h2>Заявка SideShift.ai<h2>
-        <p>На екрані \"Підтвердження\" можна побачити заявку SideShift.ai. Це заявка
+        <h2>Заявка Exolix<h2>
+        <p>На екрані \"Підтвердження\" можна побачити заявку Exolix. Це заявка
         дійсна протягом обмеженого часу. Зворотний відлік можна побачити на кнопці
         витрати \"Витрата\". Курс обміну може відрізнятися від того, що був показаний на попередніх екранах.</p>
-        <h2>Секретний ключ SideShift.ai<h2>
+        <h2>Секретний ключ Exolix<h2>
         <p>Так як Monerujo відповідає за ту частину транзакції, яка пов$apos;язана з Monero, для відстеження
         вашого замовлення, яка пов$apos;язана з Bitcoin, можна використовувати секретний ключ на домашній сторінці
-        SideShift.ai.</p>
-        <h2>Зворотній відлік SideShift.ai</h2>
-        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від SideShift.ai нову
+        Exolix.</p>
+        <h2>Зворотній відлік Exolix</h2>
+        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від Exolix нову
         заявку по обміну, повернувшись до попереднього кроку, а потім до екрану \"Підтвердження\".</p>
     ]]></string>
 
@@ -310,5 +310,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

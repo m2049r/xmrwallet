@@ -118,40 +118,40 @@
             <li>un OpenAlias per XMR o BTC</li>
             <li>una adreça BTC</li>
         </u>
-        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei SideShift.ai (consulteu https://sideshift.ai per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
+        Tingueu en compte que l’enviament de BTC es duu a terme a través del servei Exolix (consulteu https://exolix.com per a més detalls). Consulteu la secció sobre l’enviament de BTC 	més avall.</p>
         <h1>Enviant BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-        Nosaltres fem servir l’API SideShift.ai per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://sideshift.ai i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb SideShift.ai i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi SideShift.ai<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei SideShift.ai. Aquests
+        <h2>Exolix</h2>
+        <p>Exolix és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+        Nosaltres fem servir l’API Exolix per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://exolix.com i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb Exolix i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi Exolix<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei Exolix. Aquests
         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
-        <h2>Ordre  de compra SideShift.ai<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra SideShift.ai real. Aquesta comanda és vàlida per a
+        <h2>Ordre  de compra Exolix<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra Exolix real. Aquesta comanda és vàlida per a
         un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
         ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta SideShift.ai<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per SideShift.ai es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de SideShift.ai.</p>
-        <h2>Compte enrere SideShift.ai!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de SideShift.ai tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+        <h2>Clau Secreta Exolix<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per Exolix es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de Exolix.</p>
+        <h2>Compte enrere Exolix!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Enviant BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
-        Nosaltres fem servir l’API SideShift.ai per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://sideshift.ai i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb SideShift.ai i no pot oferir assistència amb el seu servei.</p>
-        <h2>Tipus de Canvi SideShift.ai<h2>
-        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei SideShift.ai. Aquests
+        <h2>Exolix</h2>
+        <p>Exolix és un servei de tercers que fa proporciona el canvi de Monero a Bitcoin.
+        Nosaltres fem servir l’API Exolix per integrar els pagaments de Bitcoin a Monerujo. Si us plau, doneu un cop d’ull a https://exolix.com i decidiu vosaltres mateixos si és una 	cosa que volgueu utilitzar. L’equip de 	Monerujo no està associat amb Exolix i no pot oferir assistència amb el seu servei.</p>
+        <h2>Tipus de Canvi Exolix<h2>
+        <p>A la pantalla \"Quantitat\" es mostraran els paràmetres actuals del servei Exolix. Aquests
         inclouen el tipus de canvi actual, així com els límits de BTC superiors i inferiors. Tingueu en compte que la tarifa no està garantida en aquell mateix moment.</p>
-        <h2>Ordre  de compra SideShift.ai<h2>
-        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra SideShift.ai real. Aquesta comanda és vàlida per a
+        <h2>Ordre  de compra Exolix<h2>
+        <p>A la pantalla \"Confirmar\", veureu l’ordre de compra Exolix real. Aquesta comanda és vàlida per a
         un temps limitat: és possible que veieu un compte enrere en el botó \"Gastar\". El tipus de canvi pot
         ser diferent del mostrat en pantalles anteriors.</p>
-        <h2>Clau Secreta SideShift.ai<h2>
-        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per SideShift.ai es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de SideShift.ai.</p>
-        <h2>Compte enrere SideShift.ai!</h2>
-        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de SideShift.ai tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
+        <h2>Clau Secreta Exolix<h2>
+        <p>Com que Monerujo només gestiona la part Monero de la vostra transacció, la vostra clau secreta per Exolix es pot utilitzar per fer el seguiment de la part de Bitcoin de 	la vostra comanda a la pàgina principal de Exolix.</p>
+        <h2>Compte enrere Exolix!</h2>
+        <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -250,5 +250,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

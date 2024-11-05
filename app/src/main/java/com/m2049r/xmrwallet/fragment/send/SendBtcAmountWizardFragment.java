@@ -17,47 +17,48 @@
 package com.m2049r.xmrwallet.fragment.send;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.BarcodeData;
+import com.m2049r.xmrwallet.data.CryptoAmount;
+import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftError;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.QueryOrderParameters;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.service.shift.ShiftService;
+import com.m2049r.xmrwallet.service.shift.api.QueryOrderParameters;
+import com.m2049r.xmrwallet.service.shift.process.PreShiftProcess;
+import com.m2049r.xmrwallet.util.AmountHelper;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.widget.ExchangeOtherEditText;
 import com.m2049r.xmrwallet.widget.SendProgressView;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import timber.log.Timber;
 
-public class SendBtcAmountWizardFragment extends SendWizardFragment {
+public class SendBtcAmountWizardFragment extends SendWizardFragment implements PreShifter, ExchangeOtherEditText.Listener {
 
     public static SendBtcAmountWizardFragment newInstance(SendAmountWizardFragment.Listener listener) {
-        SendBtcAmountWizardFragment instance = new SendBtcAmountWizardFragment();
-        instance.setSendListener(listener);
-        return instance;
+        return new SendBtcAmountWizardFragment(listener);
     }
 
-    SendAmountWizardFragment.Listener sendListener;
-
-    public SendBtcAmountWizardFragment setSendListener(SendAmountWizardFragment.Listener listener) {
-        this.sendListener = listener;
-        return this;
+    private SendBtcAmountWizardFragment(@NonNull SendAmountWizardFragment.Listener listener) {
+        super();
+        sendListener = listener;
     }
+
+    private final SendAmountWizardFragment.Listener sendListener;
 
     private TextView tvFunds;
     private ExchangeOtherEditText etAmount;
@@ -72,8 +73,6 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
 
         Timber.d("onCreateView() %s", (String.valueOf(savedInstanceState)));
 
-        sendListener = (SendAmountWizardFragment.Listener) getParentFragment();
-
         View view = inflater.inflate(R.layout.fragment_send_btc_amount, container, false);
 
         tvFunds = view.findViewById(R.id.tvFunds);
@@ -82,6 +81,8 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         llXmrToParms = view.findViewById(R.id.llXmrToParms);
 
         tvXmrToParms = view.findViewById(R.id.tvXmrToParms);
+
+        ((ImageView) view.findViewById(R.id.shiftIcon)).setImageResource(service.getIconId());
 
         etAmount = view.findViewById(R.id.etAmount);
         etAmount.requestFocus();
@@ -98,32 +99,19 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         if (orderParameters == null) {
             return false; // this should never happen
         }
-        if (sendListener != null) {
-            TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-            String btcString = etAmount.getNativeAmount();
-            if (btcString != null) {
-                try {
-                    double btc = Double.parseDouble(btcString);
-                    Timber.d("setBtcAmount %f", btc);
-                    txDataBtc.setBtcAmount(btc);
-                    txDataBtc.setAmount(btc / orderParameters.getPrice());
-                } catch (NumberFormatException ex) {
-                    Timber.d(ex.getLocalizedMessage());
-                    txDataBtc.setBtcAmount(0);
-                }
-            } else {
-                txDataBtc.setBtcAmount(0);
-            }
-        }
+        final TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
+        txDataBtc.setShiftAmount(etAmount.getPrimaryAmount());
         return true;
     }
 
-    double maxBtc = 0;
-    double minBtc = 0;
+    private double maxBtc = 0;
+    private double minBtc = 0;
 
     @Override
     public void onPauseFragment() {
+        super.onPauseFragment();
         llXmrToParms.setVisibility(View.INVISIBLE);
+        etAmount.setListener(null);
     }
 
     @Override
@@ -131,8 +119,8 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         super.onResumeFragment();
         Timber.d("onResumeFragment()");
         final String btcSymbol = ((TxDataBtc) sendListener.getTxData()).getBtcSymbol();
-        if (!btcSymbol.toLowerCase().equals(ServiceHelper.ASSET))
-            throw new IllegalStateException("Asset Symbol is wrong!");
+        if (!btcSymbol.equalsIgnoreCase(ShiftService.ASSET.getSymbol()))
+            throw new IllegalStateException("Asset Symbol is wrong (" + btcSymbol + "!=" + ShiftService.ASSET.getSymbol() + ")");
         final long funds = getTotalFunds();
         if (!sendListener.getActivityCallback().isStreetMode()) {
             tvFunds.setText(getString(R.string.send_available,
@@ -143,48 +131,131 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
                     getString(R.string.unknown_amount)));
         }
         etAmount.setAmount("");
+        etAmount.setListener(this);
         final BarcodeData data = sendListener.popBarcodeData();
         if (data != null) {
-            if (data.amount != null) {
-                etAmount.setAmount(data.amount);
+            if (data.getAmount() != null) {
+                etAmount.setAmount(data.getAmount());
             }
         }
         etAmount.setBaseCurrency(btcSymbol);
-        callXmrTo();
+        updateShift();
     }
 
     long getTotalFunds() {
         return sendListener.getActivityCallback().getTotalFunds();
     }
 
+    private final ShiftService service = ShiftService.DEFAULT;
+    private final PreShiftProcess preShiftProcess = service.createPreProcess(this);
+
     private QueryOrderParameters orderParameters = null;
 
-    private void processOrderParms(final QueryOrderParameters orderParameters) {
+    private void reset() {
+        orderParameters = null;
+        maxBtc = 0;
+        minBtc = 0;
+        etAmount.setExchangeRate(0);
+    }
+
+    private void updateShift() {
+        reset();
+        getTxData().setShiftService(service);
+        llXmrToParms.setVisibility(View.INVISIBLE);
+        preShiftProcess.run();
+    }
+
+    private TxDataBtc getTxData() {
+        final TxData txData = sendListener.getTxData();
+        if (txData instanceof TxDataBtc) {
+            return (TxDataBtc) txData;
+        } else {
+            throw new IllegalStateException("TxData not BTC");
+        }
+    }
+
+    private boolean isValid() {
+        return orderParameters != null;
+    }
+
+    @Override
+    public CryptoAmount getAmount() { // of BTC
+        return etAmount.getPrimaryAmount();
+    }
+
+    public double getLowerLimit() {
+        if (!isValid()) throw new IllegalStateException();
+        return orderParameters.getLowerLimit();
+    }
+
+    public double getPrice() {
+        if (!isValid()) throw new IllegalStateException();
+        return orderParameters.getPrice();
+    }
+
+    public double getUpperLimit() {
+        if (!isValid()) throw new IllegalStateException();
+        return orderParameters.getUpperLimit();
+    }
+
+    @Override
+    public void onOrderParametersError(final Exception ex) {
+        reset();
+        Timber.e(ex);
+        requireView().post(() -> {
+            if (ex instanceof ShiftException) {
+                ShiftException xmrEx = (ShiftException) ex;
+                ShiftError xmrErr = xmrEx.getError();
+                if (xmrErr != null) {
+                    if (xmrErr.isRetryable()) {
+                        evParams.showMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(),
+                                getString(R.string.text_retry));
+                        evParams.setOnClickListener(v -> {
+                            evParams.setOnClickListener(null);
+                            updateShift();
+                        });
+                    } else {
+                        evParams.showMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(),
+                                getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
+                    }
+                } else {
+                    evParams.showMessage(getString(R.string.label_generic_xmrto_error),
+                            getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
+                            getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
+                }
+            } else {
+                evParams.showMessage(getString(R.string.label_generic_xmrto_error),
+                        ex.getLocalizedMessage(),
+                        getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
+            }
+        });
+    }
+
+    @Override
+    public void onOrderParametersReceived(QueryOrderParameters orderParameters) {
+        final double price = orderParameters.getPrice();
+        maxBtc = price * orderParameters.getUpperLimit();
+        minBtc = price * orderParameters.getLowerLimit();
         this.orderParameters = orderParameters;
-        getView().post(() -> {
-            final double price = orderParameters.getPrice();
+        requireView().post(() -> {
             etAmount.setExchangeRate(1 / price);
-            maxBtc = price * orderParameters.getUpperLimit();
-            minBtc = price * orderParameters.getLowerLimit();
             Timber.d("minBtc=%f / maxBtc=%f", minBtc, maxBtc);
-            NumberFormat df = NumberFormat.getInstance(Locale.US);
-            df.setMaximumFractionDigits(6);
-            String min = df.format(minBtc);
-            String max = df.format(maxBtc);
-            String rate = df.format(price);
+            final String min = AmountHelper.format_6(minBtc);
+            final String max = AmountHelper.format_6(maxBtc);
+            final String rate = AmountHelper.format_6(price);
             final TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-            Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms,
-                    min, max, rate, txDataBtc.getBtcSymbol()));
+            final Spanned xmrParmText = Html.fromHtml(getString(R.string.info_send_xmrto_parms,
+                    min, max, rate, txDataBtc.getBtcSymbol(), service.getLabel()));
             tvXmrToParms.setText(xmrParmText);
 
             final long funds = getTotalFunds();
-            double availableXmr = 1.0 * funds / Helper.ONE_XMR;
+            final double availableXmr = 1.0 * funds / Helper.ONE_XMR;
 
             String availBtcString;
             String availXmrString;
             if (!sendListener.getActivityCallback().isStreetMode()) {
-                availBtcString = df.format(availableXmr * price);
-                availXmrString = df.format(availableXmr);
+                availBtcString = AmountHelper.format_6(availableXmr * price);
+                availXmrString = AmountHelper.format_6(availableXmr);
             } else {
                 availBtcString = getString(R.string.unknown_amount);
                 availXmrString = availBtcString;
@@ -198,66 +269,28 @@ public class SendBtcAmountWizardFragment extends SendWizardFragment {
         });
     }
 
-    private void processOrderParmsError(final Exception ex) {
-        etAmount.setExchangeRate(0);
-        orderParameters = null;
-        maxBtc = 0;
-        minBtc = 0;
-        Timber.e(ex);
-        getView().post(() -> {
-            if (ex instanceof ShiftException) {
-                ShiftException xmrEx = (ShiftException) ex;
-                ShiftError xmrErr = xmrEx.getError();
-                if (xmrErr != null) {
-                    if (xmrErr.isRetryable()) {
-                        evParams.showMessage(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
-                                getString(R.string.text_retry));
-                        evParams.setOnClickListener(v -> {
-                            evParams.setOnClickListener(null);
-                            callXmrTo();
-                        });
-                    } else {
-                        evParams.showMessage(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
-                                getString(R.string.text_noretry));
-                    }
-                } else {
-                    evParams.showMessage(getString(R.string.label_generic_xmrto_error),
-                            getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
-                            getString(R.string.text_noretry));
-                }
-            } else {
-                evParams.showMessage(getString(R.string.label_generic_xmrto_error),
-                        ex.getLocalizedMessage(),
-                        getString(R.string.text_noretry));
-            }
-        });
-    }
+    @Override
+    public boolean isActive() {
+        return true;
+    } // TODO Test what happens if we swtich away while querying
 
-    private void callXmrTo() {
+    @Override
+    public void showProgress() {
         evParams.showProgress(getString(R.string.label_send_progress_queryparms));
-        getXmrToApi().queryOrderParameters(new ShiftCallback<QueryOrderParameters>() {
-            @Override
-            public void onSuccess(final QueryOrderParameters orderParameters) {
-                processOrderParms(orderParameters);
-            }
-
-            @Override
-            public void onError(final Exception e) {
-                processOrderParmsError(e);
-            }
-        });
     }
 
-    private SideShiftApi xmrToApi = null;
+    long lastRequest = 0;
+    final static long EXCHANGE_TIME = 750; //ms
+    final Handler handler = new Handler(Looper.getMainLooper());
 
-    private SideShiftApi getXmrToApi() {
-        if (xmrToApi == null) {
-            synchronized (this) {
-                if (xmrToApi == null) {
-                    xmrToApi = new SideShiftApiImpl(ServiceHelper.getXmrToBaseUrl());
-                }
+    @Override
+    public void onExchangeRequested() {
+        final long now = System.currentTimeMillis();
+        lastRequest = now;
+        handler.postDelayed(() -> {
+            if (now == lastRequest) { // otherwise we are superseded
+                updateShift();
             }
-        }
-        return xmrToApi;
+        }, EXCHANGE_TIME);
     }
 }

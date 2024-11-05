@@ -35,12 +35,11 @@ import java.nio.charset.StandardCharsets;
 
 import timber.log.Timber;
 
-public class Ledger {
+public class Ledger implements Hardware {
     static final public boolean ENABLED = true;
     // 5:20 is same as wallet2.cpp::restore()
     static public final int LOOKAHEAD_ACCOUNTS = 5;
     static public final int LOOKAHEAD_SUBADDRESSES = 20;
-    static public final String SUBADDRESS_LOOKAHEAD = LOOKAHEAD_ACCOUNTS + ":" + LOOKAHEAD_SUBADDRESSES;
 
     private static final byte PROTOCOL_VERSION = 0x03;
     public static final int SW_OK = 0x9000;

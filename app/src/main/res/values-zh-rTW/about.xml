@@ -25,8 +25,8 @@
         <p>倘若您有使用匯兌的功能(可選用)，monerujo 將透過 coinmarketcap.com 的公開
         API 抓取目前的匯率。若欲了解您要求的資料會如何被收集及使用，請至 https://coinmarketcap.com/privacy
         觀看他們的隱私權政策。</p>
-        <p>若您想使用本 App 支付款項至 BTC 位址，您將使用 SideShift.ai 所提供的服務。Monerujo
-        將發送 BTC 目標位址以及金額至 SideShift.ai，您的 IP 在此時也可能會被收集。詳情請至 https://sideshift.ai/
+        <p>若您想使用本 App 支付款項至 BTC 位址，您將使用 Exolix 所提供的服務。Monerujo
+        將發送 BTC 目標位址以及金額至 Exolix，您的 IP 在此時也可能會被收集。詳情請至 https://exolix.com/privacy
         觀看他們的隱私權政策。</p>
         <h2>應用程式權限</h2>
         <ul>

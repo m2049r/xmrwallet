@@ -20,10 +20,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -57,13 +57,14 @@ public class AboutFragment extends DialogFragment {
         AboutFragment.newInstance().show(ft, TAG);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_about, null);
+        final View view = getLayoutInflater().inflate(R.layout.fragment_about, null);
         ((TextView) view.findViewById(R.id.tvHelp)).setText(Html.fromHtml(getLicencesHtml()));
         ((TextView) view.findViewById(R.id.tvVersion)).setText(getString(R.string.about_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
 
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity())
                 .setView(view)
                 .setNegativeButton(R.string.about_close,
                         new DialogInterface.OnClickListener() {
@@ -77,7 +78,7 @@ public class AboutFragment extends DialogFragment {
 
     private String getLicencesHtml() {
         try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(getContext().getAssets().open("licenses.html"), StandardCharsets.UTF_8))) {
+                new InputStreamReader(requireContext().getAssets().open("licenses.html"), StandardCharsets.UTF_8))) {
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null)

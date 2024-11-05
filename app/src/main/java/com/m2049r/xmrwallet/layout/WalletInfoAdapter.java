@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.layout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -44,6 +45,7 @@ import timber.log.Timber;
 
 public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.ViewHolder> {
 
+    @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public interface OnInteractionListener {
@@ -120,7 +122,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         diffResult.dispatchUpdatesTo(this);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView tvName;
         final ImageButton ibOptions;
         WalletManager.WalletInfo infoItem;
@@ -164,7 +166,7 @@ public class WalletInfoAdapter extends RecyclerView.Adapter<WalletInfoAdapter.Vi
         @Override
         public void onClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     listener.onInteraction(view, infoItems.get(position));
                 }

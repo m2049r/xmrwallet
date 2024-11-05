@@ -149,48 +149,48 @@
             <li>einen OpenAlias für XMR oder BTC</li>
             <li>eine BTC-Adresse</li>
         </u>
-        nutzen. Beachte bitte, dass das Senden von BTC über den Service von SideShift.ai erfolgt. (Siehe https://sideshift.ai
+        nutzen. Beachte bitte, dass das Senden von BTC über den Service von Exolix erfolgt. (Siehe https://exolix.com
         für Details). Weitere Details sind weiter unten unter "BTC senden".</p>
         <h1>BTC senden</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
-        gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
-        <h2>SideShift.ai-Wechselkurs<h2>
-        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
+        <h2>Exolix</h2>
+        <p>Exolix ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
+        Wir nutzen die Exolix-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
+        https://exolix.com an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        gehört nicht zu Exolix und kann keinen Support für dessen Service bieten.</p>
+        <h2>Exolix-Wechselkurs<h2>
+        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des Exolix-Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.</p>
-        <h2>SideShift.ai-Auftrag<h2>
-        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue SideShift.ai-Angebot. Dieses Angebot gilt
+        <h2>Exolix-Auftrag<h2>
+        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue Exolix-Angebot. Dieses Angebot gilt
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
-        <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
-        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
-        <h2>SideShift.ai-Countdown!</h2>
-        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
+        <h2>Geheimer Exolix-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer Exolix-Schlüssel
+        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der Exolix-Homepage zu verfolgen.</p>
+        <h2>Exolix-Countdown!</h2>
+        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTC senden</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
-        gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
-        <h2>SideShift.ai-Wechselkurs<h2>
-        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
+        <h2>Exolix</h2>
+        <p>Exolix ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
+        Wir nutzen die Exolix-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
+        https://exolix.com an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        gehört nicht zu Exolix und kann keinen Support für dessen Service bieten.</p>
+        <h2>Exolix-Wechselkurs<h2>
+        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des Exolix-Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.</p>
-        <h2>SideShift.ai-Auftrag<h2>
-        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue SideShift.ai-Angebot. Dieses Angebot gilt
+        <h2>Exolix-Auftrag<h2>
+        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue Exolix-Angebot. Dieses Angebot gilt
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
-        <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
-        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
-        <h2>SideShift.ai-Countdown!</h2>
-        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
+        <h2>Geheimer Exolix-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer Exolix-Schlüssel
+        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der Exolix-Homepage zu verfolgen.</p>
+        <h2>Exolix-Countdown!</h2>
+        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
@@ -310,5 +310,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

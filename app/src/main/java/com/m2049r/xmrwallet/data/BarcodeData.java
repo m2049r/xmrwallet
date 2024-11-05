@@ -24,43 +24,38 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import lombok.Getter;
 import lombok.ToString;
 import timber.log.Timber;
 
+@Getter
 @ToString
 public class BarcodeData {
+
     public enum Security {
         NORMAL,
         OA_NO_DNSSEC,
         OA_DNSSEC
     }
 
-    final public Crypto asset;
-    final public List<Crypto> ambiguousAssets;
-    final public String address;
-    final public String addressName;
-    final public String amount;
-    final public String description;
-    final public Security security;
+    final private Set<Crypto> possibleAssets = new HashSet<>();
+    private String address = null;
+    private String addressName = null;
+    private String amount = null;
+    private String description = null;
+    private Security security = null;
 
     public BarcodeData(List<Crypto> assets, String address) {
         if (assets.isEmpty())
             throw new IllegalArgumentException("no assets specified");
-        this.addressName = null;
-        this.description = null;
-        this.amount = null;
-        this.security = Security.NORMAL;
+        security = Security.NORMAL;
         this.address = address;
-        if (assets.size() == 1) {
-            this.asset = assets.get(0);
-            this.ambiguousAssets = null;
-        } else {
-            this.asset = null;
-            this.ambiguousAssets = assets;
-        }
+        possibleAssets.addAll(assets);
     }
 
     public BarcodeData(Crypto asset, String address, String description, String amount) {
@@ -68,8 +63,7 @@ public class BarcodeData {
     }
 
     public BarcodeData(Crypto asset, String address, String addressName, String description, String amount, Security security) {
-        this.ambiguousAssets = null;
-        this.asset = asset;
+        possibleAssets.add(asset);
         this.address = address;
         this.addressName = addressName;
         this.description = description;
@@ -82,7 +76,7 @@ public class BarcodeData {
     }
 
     public String getUriString() {
-        if (asset != Crypto.XMR) throw new IllegalStateException("We can only do XMR stuff!");
+        if (getAsset() != Crypto.XMR) throw new IllegalStateException("We can only do XMR stuff!");
         StringBuilder sb = new StringBuilder();
         sb.append(Crypto.XMR.getUriScheme())
                 .append(':')
@@ -227,6 +221,20 @@ public class BarcodeData {
     }
 
     public boolean isAmbiguous() {
-        return ambiguousAssets != null;
+        return possibleAssets.size() > 1;
+    }
+
+    public Crypto getAsset() {
+        if (possibleAssets.size() == 1) {
+            return possibleAssets.iterator().next();
+        } else {
+            return null;
+        }
+    }
+
+    // return true if we still have possible assets
+    public boolean filter(Set<Crypto> assets) {
+        possibleAssets.retainAll(assets);
+        return !possibleAssets.isEmpty();
     }
 }

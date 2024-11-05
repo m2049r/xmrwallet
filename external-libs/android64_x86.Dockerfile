@@ -1,11 +1,11 @@
 FROM debian:stable
 
-RUN set -x && apt-get update && apt-get install -y unzip automake build-essential curl file pkg-config git python3 python-is-python3 libtool libtinfo5
+RUN set -x && apt-get update && apt-get install -y unzip automake build-essential curl file pkg-config git python3 python-is-python3 libtool libtinfo5 yacc
 
 WORKDIR /opt/android
 ## INSTALL ANDROID SDK
-ENV ANDROID_SDK_REVISION 4333796
-ENV ANDROID_SDK_HASH 92ffee5a1d98d856634e8b71132e8a95d96c83a63fde1099be3d86df3106def9
+ENV ANDROID_SDK_REVISION=4333796
+ENV ANDROID_SDK_HASH=92ffee5a1d98d856634e8b71132e8a95d96c83a63fde1099be3d86df3106def9
 RUN set -x \
     && curl -O https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_REVISION}.zip \
     && echo "${ANDROID_SDK_HASH}  sdk-tools-linux-${ANDROID_SDK_REVISION}.zip" | sha256sum -c \
@@ -13,20 +13,20 @@ RUN set -x \
     && rm -f sdk-tools-linux-${ANDROID_SDK_REVISION}.zip
 
 ## INSTALL ANDROID NDK
-ENV ANDROID_NDK_REVISION 17c
-ENV ANDROID_NDK_HASH 3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589
+ENV ANDROID_NDK_REVISION=17c
+ENV ANDROID_NDK_HASH=3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589
 RUN set -x \
     && curl -O https://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
     && echo "${ANDROID_NDK_HASH}  android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip" | sha256sum -c \
     && unzip android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
     && rm -f android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip
 
-ENV WORKDIR /opt/android
-ENV ANDROID_SDK_ROOT ${WORKDIR}/tools
-ENV ANDROID_NDK_ROOT ${WORKDIR}/android-ndk-r${ANDROID_NDK_REVISION}
-ENV PREFIX /opt/android/prefix
+ENV WORKDIR=/opt/android
+ENV ANDROID_SDK_ROOT=${WORKDIR}/tools
+ENV ANDROID_NDK_ROOT=${WORKDIR}/android-ndk-r${ANDROID_NDK_REVISION}
+ENV PREFIX=/opt/android/prefix
 
-ENV TOOLCHAIN_DIR ${WORKDIR}/toolchain
+ENV TOOLCHAIN_DIR=${WORKDIR}/toolchain
 RUN set -x \
     && ${ANDROID_NDK_ROOT}/build/tools/make_standalone_toolchain.py \
          --arch x86_64 \
@@ -43,7 +43,7 @@ RUN set -x \
     && echo "${CMAKE_HASH}  cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz" | sha256sum -c \
     && tar -xzf /usr/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
     && rm -f /usr/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
-ENV PATH /usr/cmake-${CMAKE_VERSION}-Linux-x86_64/bin:$PATH
+ENV PATH=/usr/cmake-${CMAKE_VERSION}-Linux-x86_64/bin:$PATH
 
 ## Boost
 ARG BOOST_VERSION=1_70_0
@@ -57,14 +57,14 @@ RUN set -x \
     && cd boost_${BOOST_VERSION} \
     && ./bootstrap.sh --prefix=${PREFIX}
 
-ENV HOST_PATH $PATH
-ENV PATH $TOOLCHAIN_DIR/x86_64-linux-android/bin:$TOOLCHAIN_DIR/bin:$PATH
+ENV HOST_PATH=$PATH
+ENV PATH=$TOOLCHAIN_DIR/x86_64-linux-android/bin:$TOOLCHAIN_DIR/bin:$PATH
 
 ARG NPROC=4
 
 # Build iconv for lib boost locale
-ENV ICONV_VERSION 1.16
-ENV ICONV_HASH e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04
+ENV ICONV_VERSION=1.16
+ENV ICONV_HASH=e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04
 RUN set -x \
     && curl -O http://ftp.gnu.org/pub/gnu/libiconv/libiconv-${ICONV_VERSION}.tar.gz \
     && echo "${ICONV_HASH}  libiconv-${ICONV_VERSION}.tar.gz" | sha256sum -c \
@@ -80,8 +80,8 @@ RUN set -x \
     && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale --build-dir=android --stagedir=android toolset=clang threading=multi threadapi=pthread target-os=android -sICONV_PATH=${PREFIX} install -j${NPROC}
 
 # download, configure and make Zlib
-ENV ZLIB_VERSION 1.3.1
-ENV ZLIB_HASH 9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
+ENV ZLIB_VERSION=1.3.1
+ENV ZLIB_HASH=9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
 RUN set -x \
     && curl -O https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz \
     && echo "${ZLIB_HASH}  zlib-${ZLIB_VERSION}.tar.gz" | sha256sum -c \
@@ -96,7 +96,7 @@ ARG OPENSSL_VERSION=3.0.5
 ARG OPENSSL_HASH=aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a
 # openssl explicitly demands to be built by a clang that has a "/prebuilt/" somewhere along its path, so use the prebuilt version, but make sure to specify the target android api
 RUN set -x \
-    && curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
+    && curl -LO https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
     && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
     && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
     && rm openssl-${OPENSSL_VERSION}.tar.gz \

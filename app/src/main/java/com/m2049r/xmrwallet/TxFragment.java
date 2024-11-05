@@ -20,7 +20,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
@@ -34,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.transition.Transition;
@@ -44,6 +44,8 @@ import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.TransactionInfo;
 import com.m2049r.xmrwallet.model.Transfer;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.service.shift.ShiftService;
+import com.m2049r.xmrwallet.service.shift.api.ShiftApi;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
@@ -61,6 +63,7 @@ public class TxFragment extends Fragment {
 
     static public final String ARG_INFO = "info";
 
+    @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat TS_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
 
     public TxFragment() {
@@ -106,6 +109,7 @@ public class TxFragment extends Fragment {
         tvTxAmountBtc = view.findViewById(R.id.tvTxAmountBtc);
         tvXmrToSupport = view.findViewById(R.id.tvXmrToSupport);
         tvXmrToKeyLabel = view.findViewById(R.id.tvXmrToKeyLabel);
+
         tvXmrToLogo = view.findViewById(R.id.tvXmrToLogo);
 
         tvAccount = view.findViewById(R.id.tvAccount);
@@ -127,18 +131,20 @@ public class TxFragment extends Fragment {
         tvWarning = view.findViewById(R.id.tvWarning);
 
         tvTxXmrToKey.setOnClickListener(v -> {
-            Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
+            Helper.clipBoardCopy(requireActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
             Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
         });
 
-        info = getArguments().getParcelable(ARG_INFO);
+        final Bundle args = getArguments();
+        assert args != null;
+        info = args.getParcelable(ARG_INFO);
         show();
         return view;
     }
 
     void shareTxInfo() {
         if (this.info == null) return;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append(getString(R.string.tx_timestamp)).append(":\n");
         sb.append(TS_FORMATTER.format(new Date(info.timestamp * 1000))).append("\n\n");
@@ -216,7 +222,7 @@ public class TxFragment extends Fragment {
 
     private void showSubaddressLabel() {
         final Subaddress subaddress = activityCallback.getWalletSubaddress(info.accountIndex, info.addressIndex);
-        final Context ctx = getContext();
+        final Context ctx = requireContext();
         Spanned label = Html.fromHtml(ctx.getString(R.string.tx_account_formatted,
                 info.accountIndex, info.addressIndex,
                 Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
@@ -264,16 +270,17 @@ public class TxFragment extends Fragment {
             tvTxFee.setVisibility(View.GONE);
         }
 
+        final Context ctx = requireContext();
         if (info.isFailed) {
             tvTxAmount.setText(getString(R.string.tx_list_amount_failed, Wallet.getDisplayAmount(info.amount)));
             tvTxFee.setText(getString(R.string.tx_list_failed_text));
-            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
+            setTxColour(ThemeHelper.getThemedColor(ctx, R.attr.neutralColor));
         } else if (info.isPending) {
-            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.neutralColor));
+            setTxColour(ThemeHelper.getThemedColor(ctx, R.attr.neutralColor));
         } else if (info.direction == TransactionInfo.Direction.Direction_In) {
-            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.positiveColor));
+            setTxColour(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor));
         } else {
-            setTxColour(ThemeHelper.getThemedColor(getContext(), R.attr.negativeColor));
+            setTxColour(ThemeHelper.getThemedColor(ctx, R.attr.negativeColor));
         }
         Set<String> destinations = new HashSet<>();
         StringBuilder sb = new StringBuilder();
@@ -328,31 +335,29 @@ public class TxFragment extends Fragment {
     void showBtcInfo() {
         if (userNotes.xmrtoKey != null) {
             cvXmrTo.setVisibility(View.VISIBLE);
-            String key = userNotes.xmrtoKey;
-            if ("xmrto".equals(userNotes.xmrtoTag)) { // legacy xmr.to service :(
-                key = "xmrto-" + key;
-            }
-            tvTxXmrToKey.setText(key);
+
+            ShiftService service = ShiftService.findWithTag(userNotes.xmrtoTag);
+            tvXmrToKeyLabel.setText(getString(R.string.label_send_btc_xmrto_key_lb, service.getLabel()));
+            if (service.getIconId() == 0)
+                tvXmrToLogo.setVisibility(View.GONE);
+            else
+                tvXmrToLogo.setImageResource(service.getLogoId());
+
+            tvTxXmrToKey.setText(userNotes.xmrtoKey);
+
             tvDestinationBtc.setText(userNotes.xmrtoDestination);
             tvTxAmountBtc.setText(userNotes.xmrtoAmount + " " + userNotes.xmrtoCurrency);
-            switch (userNotes.xmrtoTag) {
-                case "xmrto":
-                    tvXmrToSupport.setVisibility(View.GONE);
-                    tvXmrToKeyLabel.setVisibility(View.INVISIBLE);
-                    tvXmrToLogo.setImageResource(R.drawable.ic_xmrto_logo);
-                    break;
-                case "side": // defaults in layout - just add underline
-                    tvXmrToSupport.setPaintFlags(tvXmrToSupport.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                    tvXmrToSupport.setOnClickListener(v -> {
-                        Uri uri = Uri.parse("https://sideshift.ai/orders/" + userNotes.xmrtoKey);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    });
-                    break;
-                default:
-                    tvXmrToSupport.setVisibility(View.GONE);
-                    tvXmrToKeyLabel.setVisibility(View.INVISIBLE);
-                    tvXmrToLogo.setVisibility(View.GONE);
+
+            ShiftApi shiftApi = service.getShiftApi();
+            if (shiftApi != null) {
+                tvXmrToSupport.setText(getString(R.string.label_send_btc_xmrto_info, service.getLabel()));
+                tvXmrToSupport.setPaintFlags(tvXmrToSupport.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                tvXmrToSupport.setOnClickListener(v -> {
+                    startActivity(new Intent(Intent.ACTION_VIEW, shiftApi.getQueryOrderUri(userNotes.xmrtoKey)));
+                });
+            } else {
+                tvXmrToSupport.setVisibility(View.GONE);
+                tvXmrToKeyLabel.setVisibility(View.INVISIBLE);
             }
         } else {
             cvXmrTo.setVisibility(View.GONE);
@@ -369,7 +374,7 @@ public class TxFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.tx_info_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -397,7 +402,7 @@ public class TxFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof TxFragment.Listener) {
             this.activityCallback = (TxFragment.Listener) context;

@@ -147,52 +147,52 @@
             <li>an OpenAlias for XMR or BTC</li>
             <li>a BTC address</li>
         </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
         <h1>BTC-küldés</h1>
-        <h2>SideShift.ai</h2>
-        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
+        <h2>Exolix</h2>
+        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>SideShift.ai árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
+        <h2>Exolix árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
         hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>SideShift.ai megrendelés<h2>
+        <h2>Exolix megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>SideShift.ai titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
-        <h2>SideShift.ai visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
+        <h2>Exolix titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
+        <h2>Exolix visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTC-küldés</h1>
-        <h2>SideShift.ai</h2>
-        <p>Az SideShift.ai egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
-        viselkedik. Az SideShift.ai API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
-        Kérlek, látogass el a https://sideshift.ai weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
-        A monerujo csapata nincsen kapcsolatban az SideShift.ai-val és nem tudnak segítséget nyújtani a
+        <h2>Exolix</h2>
+        <p>Az Exolix egy harmadik féltől származó szolgáltatás, mely Moneróról Bitcoinra való átváltóként
+        viselkedik. Az Exolix API-ját használjuk a Bitcoinban való fizetés monerujóba való integrálásához.
+        Kérlek, látogass el a https://exolix.com weboldalra, és döntsd el magad, hogy szeretnéd-e használni.
+        A monerujo csapata nincsen kapcsolatban az Exolix-val és nem tudnak segítséget nyújtani a
         szolgáltatásaikkal kapcsolatban.</p>
-        <h2>SideShift.ai árfolyam<h2>
-        <p>A Mennyiség oldalon kerülnek megjelenítésre az SideShift.ai szolgáltatás paraméterei. Ez magában
+        <h2>Exolix árfolyam<h2>
+        <p>A Mennyiség oldalon kerülnek megjelenítésre az Exolix szolgáltatás paraméterei. Ez magában
         foglalja az aktuális árfolyamot, valamint a BTC alsó és felső határértékeit. Vedd figyelembe,
         hogy ez az árfolyam ekkor még nem garantált.</p>
-        <h2>SideShift.ai megrendelés<h2>
+        <h2>Exolix megrendelés<h2>
         <p>A Megerősítés oldalon láthatod a tényleges megrendelést. A megrendelés korlátozott ideig
         érvényes - láthatod a visszaszámlálást a Küldés gombon. Az árfolyam különbözhet a korábbi képernyőkön
         látottaktól.</p>
-        <h2>SideShift.ai titkos kulcs<h2>
-        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az SideShift.ai titkos kulcsod
-        használható a megrendelésed Bitcoin részének nyomonkövetésére az SideShift.ai kezdőlapján.</p>
-        <h2>SideShift.ai visszaszámlálás!</h2>
-        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az SideShift.ai-tól azáltal, hogy
+        <h2>Exolix titkos kulcs<h2>
+        <p>Mivel a monerujo csak a tranzakciód Monero részét kezeli, így az Exolix titkos kulcsod
+        használható a megrendelésed Bitcoin részének nyomonkövetésére az Exolix kezdőlapján.</p>
+        <h2>Exolix visszaszámlálás!</h2>
+        <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
 
@@ -314,5 +314,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

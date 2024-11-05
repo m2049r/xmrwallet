@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -68,7 +69,7 @@ public class NodeFragment extends Fragment
 
     static private int NODES_TO_FIND = 10;
 
-    static private NumberFormat FORMATTER = NumberFormat.getInstance();
+    static private final NumberFormat FORMATTER = NumberFormat.getInstance();
 
     private SwipeRefreshLayout pullToRefresh;
     private TextView tvPull;
@@ -104,7 +105,7 @@ public class NodeFragment extends Fragment
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Listener) {
             this.activityCallback = (Listener) context;
@@ -146,7 +147,7 @@ public class NodeFragment extends Fragment
         }
     }
 
-    private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
+    private final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
         @Override
         public void handleOnBackPressed() {
             Toast.makeText(requireActivity(), getString(R.string.node_refresh_wait), Toast.LENGTH_LONG).show();
@@ -210,7 +211,7 @@ public class NodeFragment extends Fragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.node_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -289,8 +290,7 @@ public class NodeFragment extends Fragment
             } else if (params[0] == SCAN) {
                 // otherwise scan the network
                 Timber.d("scanning");
-                Set<NodeInfo> seedList = new HashSet<>();
-                seedList.addAll(nodeList);
+                Set<NodeInfo> seedList = new HashSet<>(nodeList);
                 nodeList.clear();
                 Timber.d("seed %d", seedList.size());
                 Dispatcher d = new Dispatcher(info -> publishProgress(info));
@@ -455,7 +455,7 @@ public class NodeFragment extends Fragment
 
         private void closeDialog() {
             if (editDialog == null) throw new IllegalStateException();
-            Helper.hideKeyboardAlways(getActivity());
+            Helper.hideKeyboardAlways(requireActivity());
             editDialog.dismiss();
             editDialog = null;
             NodeFragment.this.editDialog = null;

@@ -265,6 +265,9 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="MoneroText.Large.Accent">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
 
     <style name="MoneroText.Success">
         <item name="android:textSize">18sp</item>

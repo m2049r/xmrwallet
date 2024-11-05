@@ -19,23 +19,26 @@ package com.m2049r.xmrwallet.data;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-// Nodes stolen from https://moneroworld.com/#nodes
-
+@Getter
 @AllArgsConstructor
 public enum DefaultNodes {
-    MONERUJO("nodex.monerujo.io:18081"),
-    XMRTO("node.xmr.to:18081"),
-    SUPPORTXMR("node.supportxmr.com:18081"),
-    HASHVAULT("nodes.hashvault.pro:18081"),
-    MONEROWORLD("node.moneroworld.com:18089"),
-    XMRTW("opennode.xmr-tw.org:18089"),
-    ds_jetzt("monero.ds-jetzt.de:18089"),
-    MONERUJO_ONION("monerujods7mbghwe6cobdr6ujih6c22zu5rl7zshmizz2udf7v7fsad.onion:18081/mainnet/monerujo.onion"),
-    Criminales78("56wl7y2ebhamkkiza4b7il4mrzwtyvpdym7bm2bkg3jrei2je646k3qd.onion:18089/mainnet/Criminales78.onion"),
-    xmrfail("mxcd4577fldb3ppzy7obmmhnu3tf57gbcbd4qhwr2kxyjj2qi3dnbfqd.onion:18081/mainnet/xmrfail.onion"),
+    AGORIST("xmr.agor.ist:18089/mainnet/agor.ist"),
+    BOLDSUCK("xmr-de.boldsuck.org:18080/mainnet/boldsuck.org"),
     boldsuck("6dsdenp6vjkvqzy4wzsnzn6wixkdzihx3khiumyzieauxuxslmcaeiad.onion:18081/mainnet/boldsuck.onion"),
-    ds_jetzt_onion("qvlr4w7yhnjrdg3txa72jwtpnjn4ezsrivzvocbnvpfbdo342fahhoad.onion:18089/mainnet/ds-jetzt.onion");
+    CAKE("xmr-node.cakewallet.com:18081/mainnet/cakewallet.com"),
+    DS_JETZT("monero.ds-jetzt.de:18089/mainnet/ds-jetzt.de"),
+    ds_jetzt("qvlr4w7yhnjrdg3txa72jwtpnjn4ezsrivzvocbnvpfbdo342fahhoad.onion:18089/mainnet/ds-jetzt.onion"),
+    MONERODEVS("node.monerodevs.org:18089/mainnet/monerodevs.org"),
+    MONERUJO("nodex.monerujo.io:18081/mainnet/monerujo.io"),
+    monerujo("monerujods7mbghwe6cobdr6ujih6c22zu5rl7zshmizz2udf7v7fsad.onion:18081/mainnet/monerujo.onion"),
+    SETH("node.sethforprivacy.com:18089/mainnet/sethforprivacy.com"),
+    seth("sfpp2p7wnfjv3lrvfan4jmmkvhnbsbimpa3cqyuf7nt6zd24xhcqcsyd.onion/mainnet/sethforprivacy.onion"),
+    STACK("monero.stackwallet.com:18081/mainnet/stackwallet.com"),
+    STORMYCLOUD("xmr.stormycloud.org:18089/mainnet/stormycloud.org"),
+    TENZ("monero.10z.com.ar:18089/mainnet/10z.com.ar"),
+    XMRROCKS("node.xmr.rocks:18089/mainnet/xmr.rocks"),
+    xmrrocks("xqnnz2xmlmtpy2p4cm4cphg2elkwu5oob7b7so5v4wwgt44p6vbx5ryd.onion/mainnet/xmr.rocks.onion"),
+    XMRTW("opennode.xmr-tw.org:18089/mainnet/xmr-tw.org");
 
-    @Getter
     private final String uri;
 }

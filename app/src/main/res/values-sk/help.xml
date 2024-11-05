@@ -153,46 +153,46 @@
             <li>OpenAlias pre XMR či BTC</li>
             <li>BTC adresu</li>
         </u>
-        Nezabúdajte, že posielanie BTC prebieha cez službu SideShift.ai (detaily na https://sideshift.ai). Pozri sekciu nižšie o posielaní BTC</p>
+        Nezabúdajte, že posielanie BTC prebieha cez službu Exolix (detaily na https://exolix.com). Pozri sekciu nižšie o posielaní BTC</p>
         <h1>Posielanie BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
-        Používame SideShift.ai API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
-        https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-        Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
-        <h2>SideShift.ai Výmenný Kurz<h2>
-        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby SideShift.ai, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
+        <h2>Exolix</h2>
+        <p>Exolix je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
+        Používame Exolix API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
+        https://exolix.com a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
+        Tím Monerujo nie je nijako spojený so službou Exolix a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
+        <h2>Exolix Výmenný Kurz<h2>
+        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby Exolix, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
         Podotýkame, že tento kurz nie je garantovaný.</p>
-        <h2>SideShift.ai Objednávka<h2>
-        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v SideShift.ai. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
+        <h2>Exolix Objednávka<h2>
+        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v Exolix. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
         Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
-        <h2>SideShift.ai Tajný Kľúč<h2>
+        <h2>Exolix Tajný Kľúč<h2>
         <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
-        tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-        na domovskej stránke SideShift.ai</p>
-        <h2>SideShift.ai Odpočítavanie!</h2>
-        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z SideShift.ai návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
+        tento Exolix Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
+        na domovskej stránke Exolix</p>
+        <h2>Exolix Odpočítavanie!</h2>
+        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Posielanie BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
-        Používame SideShift.ai API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
-        https://sideshift.ai a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
-        Tím Monerujo nie je nijako spojený so službou SideShift.ai a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
-        <h2>SideShift.ai Výmenný Kurz<h2>
-        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby SideShift.ai, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
+        <h2>Exolix</h2>
+        <p>Exolix je služba tretej strany, ktorá umožňuje zámenu z Monero na Bitcoin.
+        Používame Exolix API na integráciu Bitcoin platieb do Monerujo. Prosím mrkni na
+        https://exolix.com a rozhodni sa sám, či je to naozaj služba, ktorú chceš používať.
+        Tím Monerujo nie je nijako spojený so službou Exolix a teda nemôže pomôcť s prípadnými problémami s touto službou.</p>
+        <h2>Exolix Výmenný Kurz<h2>
+        <p>Na obrazovke \"Množstvo\" uvidíš aktuálne parametre služby Exolix, vrátane aktuálneho kurzu BTC, hornej a dolnej hranice.
         Podotýkame, že tento kurz nie je garantovaný.</p>
-        <h2>SideShift.ai Objednávka<h2>
-        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v SideShift.ai. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
+        <h2>Exolix Objednávka<h2>
+        <p>Na obrazovke \"Potvrdiť\", uvidíš aktuálnu objednávku v Exolix. Táto objednávka je platná iba obmedzený čas - ako si môžeš všimnúť odpočítavanie na tlačítku \"Minúť\".
         Výmenný kurz sa môže líšiť od toho, ktorý bol na predošlých obrazovkách.</p>
-        <h2>SideShift.ai Tajný Kľúč<h2>
+        <h2>Exolix Tajný Kľúč<h2>
         <p>Keďže Monerujo dbá len na tú časť transakcie, ktorá pracuje s Monero,
-        tento SideShift.ai Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
-        na domovskej stránke SideShift.ai</p>
-        <h2>SideShift.ai Odpočítavanie!</h2>
-        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z SideShift.ai návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
+        tento Exolix Tajný Kľúč sa môže využívať na sledovanie Bitcoinovej časti transakcie a objednávky
+        na domovskej stránke Exolix</p>
+        <h2>Exolix Odpočítavanie!</h2>
+        <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -279,5 +279,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

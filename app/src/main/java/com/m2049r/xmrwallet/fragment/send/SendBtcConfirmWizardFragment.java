@@ -24,39 +24,36 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.m2049r.xmrwallet.R;
 import com.m2049r.xmrwallet.data.TxData;
 import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
-import com.m2049r.xmrwallet.service.shift.ShiftCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftError;
 import com.m2049r.xmrwallet.service.shift.ShiftException;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.CreateOrder;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.RequestQuote;
-import com.m2049r.xmrwallet.service.shift.sideshift.api.SideShiftApi;
-import com.m2049r.xmrwallet.service.shift.sideshift.network.SideShiftApiImpl;
+import com.m2049r.xmrwallet.service.shift.ShiftService;
+import com.m2049r.xmrwallet.service.shift.api.CreateOrder;
+import com.m2049r.xmrwallet.service.shift.api.RequestQuote;
+import com.m2049r.xmrwallet.service.shift.process.ShiftProcess;
+import com.m2049r.xmrwallet.util.AmountHelper;
 import com.m2049r.xmrwallet.util.Helper;
-import com.m2049r.xmrwallet.util.ServiceHelper;
 import com.m2049r.xmrwallet.widget.SendProgressView;
 
-import java.text.NumberFormat;
 import java.util.Locale;
 
 import timber.log.Timber;
 
-public class SendBtcConfirmWizardFragment extends SendWizardFragment implements SendConfirm {
+public class SendBtcConfirmWizardFragment extends SendWizardFragment implements SendConfirm, Shifter {
+
     public static SendBtcConfirmWizardFragment newInstance(SendConfirmWizardFragment.Listener listener) {
         SendBtcConfirmWizardFragment instance = new SendBtcConfirmWizardFragment();
-        instance.setSendListener(listener);
+        instance.sendListener = listener;
         return instance;
     }
 
-    SendConfirmWizardFragment.Listener sendListener;
-
-    public void setSendListener(SendConfirmWizardFragment.Listener listener) {
-        this.sendListener = listener;
-    }
+    private SendConfirmWizardFragment.Listener sendListener;
 
     private View llStageA;
     private SendProgressView evStageA;
@@ -77,11 +74,12 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     private TextView tvTxChange;
     private View llPocketChange;
 
+    private TextView tvTxXmrToKeyLabel;
+    private TextView tvTxXmrToInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         Timber.d("onCreateView(%s)", (String.valueOf(savedInstanceState)));
 
         View view = inflater.inflate(
@@ -92,6 +90,10 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         tvTxBtcAmount = view.findViewById(R.id.tvTxBtcAmount);
         tvTxBtcRate = view.findViewById(R.id.tvTxBtcRate);
         tvTxXmrToKey = view.findViewById(R.id.tvTxXmrToKey);
+
+        tvTxXmrToKeyLabel = view.findViewById(R.id.tvTxXmrToKeyLabel);
+        tvTxXmrToInfo = view.findViewById(R.id.tvTxXmrToInfo);
+
 
         tvTxFee = view.findViewById(R.id.tvTxFee);
         tvTxTotal = view.findViewById(R.id.tvTxTotal);
@@ -106,7 +108,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         evStageC = view.findViewById(R.id.evStageC);
 
         tvTxXmrToKey.setOnClickListener(v -> {
-            Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
+            Helper.clipBoardCopy(requireActivity(), getString(R.string.label_copy_xmrtokey), tvTxXmrToKey.getText().toString());
             Toast.makeText(getActivity(), getString(R.string.message_copy_xmrtokey), Toast.LENGTH_SHORT).show();
         });
 
@@ -125,67 +127,73 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         return view;
     }
 
-    int inProgress = 0;
-    final static int STAGE_X = 0;
-    final static int STAGE_A = 1;
-    final static int STAGE_B = 2;
-    final static int STAGE_C = 3;
+    @NonNull
+    Shifter.Stage inProgress = Stage.X;
 
-    private void showProgress(int stage, String progressText) {
-        Timber.d("showProgress(%d)", stage);
-        inProgress = stage;
-        switch (stage) {
-            case STAGE_A:
-                evStageA.showProgress(progressText);
-                break;
-            case STAGE_B:
-                evStageB.showProgress(progressText);
-                break;
-            case STAGE_C:
-                evStageC.showProgress(progressText);
-                break;
-            default:
-                throw new IllegalStateException("unknown stage " + stage);
-        }
+    @Override
+    public void showProgress(@NonNull Shifter.Stage stage) {
+        Timber.d("showProgress(%s)", stage);
+        requireView().post(() -> {
+            switch (stage) {
+                case A:
+                    evStageA.showProgress(getString(R.string.label_send_progress_xmrto_create));
+                    break;
+                case B:
+                    evStageB.showProgress(getString(R.string.label_send_progress_xmrto_query));
+                    break;
+                case C:
+                    evStageC.showProgress(getString(R.string.label_send_progress_create_tx));
+                    break;
+                default:
+                    throw new IllegalArgumentException("invalid stage " + stage);
+            }
+            inProgress = stage;
+        });
     }
 
     public void hideProgress() {
-        Timber.d("hideProgress(%d)", inProgress);
+        Timber.d("hideProgress(%s)", inProgress);
         switch (inProgress) {
-            case STAGE_A:
+            case A:
                 evStageA.hideProgress();
                 llStageA.setVisibility(View.VISIBLE);
                 break;
-            case STAGE_B:
+            case B:
                 evStageB.hideProgress();
+                llStageA.setVisibility(View.VISIBLE); // show Stage A info when B is ready
                 llStageB.setVisibility(View.VISIBLE);
                 break;
-            case STAGE_C:
+            case C:
                 evStageC.hideProgress();
                 llStageC.setVisibility(View.VISIBLE);
                 break;
-            default:
-                throw new IllegalStateException("unknown stage " + inProgress);
         }
-        inProgress = STAGE_X;
+        inProgress = Stage.X;
     }
 
-    public void showStageError(String code, String message, String solution) {
+    private void showErrorMessage(String code, String message, String solution) {
         switch (inProgress) {
-            case STAGE_A:
+            case A:
                 evStageA.showMessage(code, message, solution);
                 break;
-            case STAGE_B:
+            case B:
                 evStageB.showMessage(code, message, solution);
                 break;
-            case STAGE_C:
+            case C:
                 evStageC.showMessage(code, message, solution);
                 break;
             default:
-                throw new IllegalStateException("unknown stage");
+                throw new IllegalStateException("invalid stage");
         }
-        inProgress = STAGE_X;
+        inProgress = Stage.X;
     }
+
+    public void showQuoteError() {
+        showErrorMessage(ShiftError.Type.SERVICE.toString(),
+                getString(R.string.shift_noquote),
+                getString(R.string.shift_checkamount));
+    }
+
 
     PendingTransaction pendingTransaction = null;
 
@@ -196,11 +204,8 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             Toast.makeText(getContext(), getString(R.string.send_xmrto_timeout), Toast.LENGTH_SHORT).show();
             return;
         }
-        sendListener.getTxData().getUserNotes().setXmrtoOrder(xmrtoOrder); // note the transaction in the TX notes
-        ((TxDataBtc) sendListener.getTxData()).setXmrtoOrderId(xmrtoOrder.getOrderId()); // remember the order id for later
-        // TODO make method in TxDataBtc to set both of the above in one go
         sendListener.commitTransaction();
-        getActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
+        requireActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
     }
 
     @Override
@@ -209,15 +214,18 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         Toast.makeText(getContext(), getString(R.string.status_transaction_failed, error), Toast.LENGTH_LONG).show();
     }
 
+    private String orderId = null;
+
     @Override
     // callback from wallet when PendingTransaction created (started by prepareSend() here
     public void transactionCreated(final String txTag, final PendingTransaction pendingTransaction) {
         if (isResumed
-                && (inProgress == STAGE_C)
-                && (xmrtoOrder != null)
-                && (xmrtoOrder.getOrderId().equals(txTag))) {
+                && (inProgress == Stage.C)
+                && (orderId != null)
+                && (orderId.equals(txTag))) {
             this.pendingTransaction = pendingTransaction;
-            getView().post(() -> {
+            requireView().post(() -> {
+                Timber.d("transactionCreated");
                 hideProgress();
                 tvTxFee.setText(Wallet.getDisplayAmount(pendingTransaction.getFee()));
                 tvTxTotal.setText(Wallet.getDisplayAmount(
@@ -243,14 +251,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         if (pendingTransaction != null) {
             throw new IllegalStateException("pendingTransaction is not null");
         }
-        showStageError(getString(R.string.send_create_tx_error_title),
+        showErrorMessage(getString(R.string.send_create_tx_error_title),
                 errorText,
                 getString(R.string.text_noretry_monero));
-    }
-
-    @Override
-    public boolean onValidateFields() {
-        return true;
     }
 
     private boolean isResumed = false;
@@ -258,12 +261,23 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
     @Override
     public void onPauseFragment() {
         isResumed = false;
+        shiftProcess = null;
         stopSendTimer();
         sendListener.disposeTransaction();
         pendingTransaction = null;
-        inProgress = STAGE_X;
+        inProgress = Stage.X;
+        //TODO: maybe reset the progress messages
         updateSendButton();
         super.onPauseFragment();
+    }
+
+    private TxDataBtc getTxData() {
+        final TxData txData = sendListener.getTxData();
+        if (txData instanceof TxDataBtc) {
+            return (TxDataBtc) txData;
+        } else {
+            throw new IllegalStateException("TxData not BTC");
+        }
     }
 
     @Override
@@ -273,8 +287,9 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         if (sendListener.getMode() != SendFragment.Mode.BTC) {
             throw new IllegalStateException("Mode is not BTC!");
         }
-        if (!((TxDataBtc) sendListener.getTxData()).getBtcSymbol().toLowerCase().equals(ServiceHelper.ASSET))
-            throw new IllegalStateException("Asset Symbol is wrong!");
+        final String btcSymbol = getTxData().getBtcSymbol();
+        if (!btcSymbol.equalsIgnoreCase(ShiftService.ASSET.getSymbol()))
+            throw new IllegalStateException("Asset Symbol is wrong (" + btcSymbol + "!=" + ShiftService.ASSET.getSymbol() + ")");
         Helper.hideKeyboard(getActivity());
         llStageA.setVisibility(View.INVISIBLE);
         evStageA.hideProgress();
@@ -282,9 +297,17 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
         evStageB.hideProgress();
         llStageC.setVisibility(View.INVISIBLE);
         evStageC.hideProgress();
+
+        if (shiftProcess != null) throw new IllegalStateException("shiftProcess not null");
+        shiftProcess = getTxData().getShiftService().createProcess(this);
+        tvTxXmrToKeyLabel.setText(getString(R.string.label_send_btc_xmrto_key, shiftProcess.getService().getLabel()));
+        tvTxXmrToKeyLabel.setCompoundDrawablesRelativeWithIntrinsicBounds(shiftProcess.getService().getIconId(), 0, 0, 0);
+        tvTxXmrToInfo.setText(getString(R.string.label_send_btc_xmrto_info, shiftProcess.getService().getLabel()));
+
         isResumed = true;
-        if ((pendingTransaction == null) && (inProgress == STAGE_X)) {
-            stageA();
+        if ((pendingTransaction == null) && (inProgress == Stage.X)) {
+            Timber.d("Starting ShiftProcess");
+            shiftProcess.run(getTxData());
         } // otherwise just sit there blank
         // TODO: don't sit there blank - can this happen? should we just die?
     }
@@ -310,19 +333,19 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
                 }
                 int minutes = sendCountdown / 60;
                 int seconds = sendCountdown % 60;
-                String t = String.format("%d:%02d", minutes, seconds);
+                String t = String.format(Locale.US, "%d:%02d", minutes, seconds);
                 bSend.setText(getString(R.string.send_send_timed_label, t));
                 if (sendCountdown > 0) {
                     sendCountdown -= XMRTO_COUNTDOWN_STEP;
-                    getView().postDelayed(this, XMRTO_COUNTDOWN_STEP * 1000);
+                    requireView().postDelayed(this, XMRTO_COUNTDOWN_STEP * 1000);
                 }
             }
         };
-        getView().post(updateRunnable);
+        requireView().post(updateRunnable);
     }
 
     void stopSendTimer() {
-        getView().removeCallbacks(updateRunnable);
+        requireView().removeCallbacks(updateRunnable);
     }
 
     void updateSendButton() {
@@ -344,7 +367,7 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
             }
 
             public void fail(String walletName) {
-                getActivity().runOnUiThread(() -> {
+                requireActivity().runOnUiThread(() -> {
                     bSend.setEnabled(sendCountdown > 0); // allow to try again
                 });
             }
@@ -353,211 +376,127 @@ public class SendBtcConfirmWizardFragment extends SendWizardFragment implements 
 
     // creates a pending transaction and calls us back with transactionCreated()
     // or createTransactionFailed()
-    void prepareSend() {
+    public void prepareSend(CreateOrder order) {
         if (!isResumed) return;
-        if ((xmrtoOrder == null)) {
-            throw new IllegalStateException("xmrtoOrder is null");
+        if ((order == null)) {
+            throw new IllegalStateException("order is null");
         }
-        showProgress(3, getString(R.string.label_send_progress_create_tx));
-        final TxData txData = sendListener.getTxData();
-        txData.setDestination(xmrtoOrder.getXmrAddress());
-        txData.setAmount(xmrtoOrder.getXmrAmount());
-        getActivityCallback().onPrepareSend(xmrtoOrder.getOrderId(), txData);
+        showProgress(Stage.C);
+        orderId = order.getOrderId();
+        final TxDataBtc txData = getTxData();
+        txData.setDestination(order.getXmrAddress());
+        txData.setAmount(order.getXmrAmount());
+        txData.getUserNotes().setXmrtoOrder(order); // note the transaction in the TX notes
+        txData.setXmrtoOrderId(order.getOrderId()); // remember the order id for later
+        txData.setXmrtoQueryOrderToken(order.getQueryOrderId()); // remember the order id for later
+        getActivityCallback().onPrepareSend(order.getOrderId(), txData);
     }
 
     SendFragment.Listener getActivityCallback() {
         return sendListener.getActivityCallback();
     }
 
-    private RequestQuote xmrtoQuote = null;
+    private ShiftProcess shiftProcess;
 
-    private void processStageA(final RequestQuote requestQuote) {
-        Timber.d("processCreateOrder %s", requestQuote.getId());
-        TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        // verify the BTC amount is correct
-        if (requestQuote.getBtcAmount() != txDataBtc.getBtcAmount()) {
-            Timber.d("Failed to get quote");
-            getView().post(() -> showStageError(ShiftError.Error.SERVICE.toString(),
-                    getString(R.string.shift_noquote),
-                    getString(R.string.shift_checkamount)));
-            return; // just stop for now
-        }
-        xmrtoQuote = requestQuote;
-        txDataBtc.setAmount(xmrtoQuote.getXmrAmount());
-        getView().post(() -> {
-            // show data from the actual quote as that is what is used to
-            NumberFormat df = NumberFormat.getInstance(Locale.US);
-            df.setMaximumFractionDigits(12);
-            final String btcAmount = df.format(xmrtoQuote.getBtcAmount());
-            final String xmrAmountTotal = df.format(xmrtoQuote.getXmrAmount());
-            tvTxBtcAmount.setText(getString(R.string.text_send_btc_amount,
-                    btcAmount, xmrAmountTotal, txDataBtc.getBtcSymbol()));
-            final String xmrPriceBtc = df.format(xmrtoQuote.getPrice());
-            tvTxBtcRate.setText(getString(R.string.text_send_btc_rate, xmrPriceBtc, txDataBtc.getBtcSymbol()));
-            hideProgress();
-        });
-        stageB(requestQuote.getId());
+    public void showQuote(double btcAmount, double xmrAmount, double price) {
+        final String symbol = getTxData().getBtcSymbol();
+        tvTxBtcAmount.setText(getString(R.string.text_send_btc_amount,
+                AmountHelper.format(btcAmount), AmountHelper.format(xmrAmount), symbol));
+        tvTxBtcRate.setText(getString(R.string.text_send_btc_rate, AmountHelper.format(price), symbol));
     }
 
-    private void processStageAError(final Exception ex) {
+    // Shifter
+    public void onQuoteReceived(RequestQuote quote) {
+        requireView().post(() -> {
+            Timber.d("onQuoteReceived");
+            showQuote(quote.getBtcAmount(), quote.getXmrAmount(), quote.getPrice());
+            hideProgress();
+        });
+    }
+
+    public void onQuoteError(final Exception ex) {
         Timber.e("processStageAError %s", ex.getLocalizedMessage());
-        getView().post(() -> {
+        requireView().post(() -> {
             if (ex instanceof ShiftException) {
                 ShiftException xmrEx = (ShiftException) ex;
                 ShiftError xmrErr = xmrEx.getError();
                 if (xmrErr != null) {
                     if (xmrErr.isRetryable()) {
-                        showStageError(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
+                        showErrorMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(),
                                 getString(R.string.text_retry));
                         evStageA.setOnClickListener(v -> {
                             evStageA.setOnClickListener(null);
-                            stageA();
+                            shiftProcess.restart();
                         });
                     } else {
-                        showStageError(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
-                                getString(R.string.text_noretry));
+                        showErrorMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(),
+                                getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
                     }
                 } else {
-                    showStageError(getString(R.string.label_generic_xmrto_error),
+                    showErrorMessage(getString(R.string.label_generic_xmrto_error),
                             getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
-                            getString(R.string.text_noretry));
+                            getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
                 }
             } else {
                 evStageA.showMessage(getString(R.string.label_generic_xmrto_error),
                         ex.getLocalizedMessage(),
-                        getString(R.string.text_noretry));
+                        getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
             }
         });
     }
 
-    private void stageA() {
-        if (!isResumed) return;
-        Timber.d("Request Quote");
-        xmrtoQuote = null;
-        xmrtoOrder = null;
-        showProgress(1, getString(R.string.label_send_progress_xmrto_create));
-        TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-
-        ShiftCallback<RequestQuote> callback = new ShiftCallback<RequestQuote>() {
-            @Override
-            public void onSuccess(RequestQuote requestQuote) {
-                if (!isResumed) return;
-                if (xmrtoQuote != null) {
-                    Timber.w("another ongoing request quote request");
-                    return;
-                }
-                processStageA(requestQuote);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-                if (!isResumed) return;
-                if (xmrtoQuote != null) {
-                    Timber.w("another ongoing request quote request");
-                    return;
-                }
-                processStageAError(ex);
-            }
-        };
-
-        getXmrToApi().requestQuote(txDataBtc.getBtcAmount(), callback);
+    @Override
+    public boolean isActive() {
+        return isResumed;
     }
 
-    private CreateOrder xmrtoOrder = null;
-
-    private void processStageB(final CreateOrder order) {
-        Timber.d("processCreateOrder %s for %s", order.getOrderId(), order.getQuoteId());
-        TxDataBtc txDataBtc = (TxDataBtc) sendListener.getTxData();
-        // verify amount & destination
-        if ((order.getBtcAmount() != txDataBtc.getBtcAmount())
-                || (!txDataBtc.validateAddress(order.getBtcAddress()))) {
-            throw new IllegalStateException("Order does not fulfill quote!"); // something is terribly wrong - die
-        }
-        xmrtoOrder = order;
-        getView().post(() -> {
+    public void onOrderCreated(CreateOrder order) {
+        requireView().post(() -> {
+            showQuote(order.getBtcAmount(), order.getXmrAmount(), order.getBtcAmount() / order.getXmrAmount());
             tvTxXmrToKey.setText(order.getOrderId());
             tvTxBtcAddress.setText(order.getBtcAddress());
-            tvTxBtcAddressLabel.setText(getString(R.string.label_send_btc_address, txDataBtc.getBtcSymbol()));
+            tvTxBtcAddressLabel.setText(getString(R.string.label_send_btc_address, order.getBtcCurrency()));
+            Timber.d("onOrderCreated");
             hideProgress();
             Timber.d("Expires @ %s", order.getExpiresAt().toString());
             final int timeout = (int) (order.getExpiresAt().getTime() - order.getCreatedAt().getTime()) / 1000 - 60; // -1 minute buffer
             startSendTimer(timeout);
-            prepareSend();
+            prepareSend(order);
         });
     }
 
-    private void processStageBError(final Exception ex) {
-        Timber.e("processCreateOrderError %s", ex.getLocalizedMessage());
-        getView().post(() -> {
+    public void onOrderError(final Exception ex) {
+        Timber.e("onOrderError %s", ex.getLocalizedMessage());
+        requireView().post(() -> {
             if (ex instanceof ShiftException) {
                 ShiftException xmrEx = (ShiftException) ex;
                 ShiftError xmrErr = xmrEx.getError();
                 if (xmrErr != null) {
                     if (xmrErr.isRetryable()) {
-                        showStageError(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
+                        showErrorMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(),
                                 getString(R.string.text_retry));
                         evStageB.setOnClickListener(v -> {
                             evStageB.setOnClickListener(null);
-                            stageB(xmrtoOrder.getOrderId());
+                            shiftProcess.retryCreateOrder();
                         });
                     } else {
-                        showStageError(xmrErr.getErrorType().toString(), xmrErr.getErrorMsg(),
-                                getString(R.string.text_noretry));
+                        showErrorMessage(xmrErr.getType().toString(), xmrErr.getErrorMsg(), null);
                     }
                 } else {
-                    showStageError(getString(R.string.label_generic_xmrto_error),
+                    showErrorMessage(getString(R.string.label_generic_xmrto_error),
                             getString(R.string.text_generic_xmrto_error, xmrEx.getCode()),
-                            getString(R.string.text_noretry));
+                            getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
                 }
             } else {
                 evStageB.showMessage(getString(R.string.label_generic_xmrto_error),
                         ex.getLocalizedMessage(),
-                        getString(R.string.text_noretry));
+                        getString(R.string.text_noretry, getTxData().getShiftService().getLabel()));
             }
         });
     }
 
-    private void stageB(final String quoteId) {
-        Timber.d("createOrder(%s)", quoteId);
-        if (!isResumed) return;
-        final String btcAddress = ((TxDataBtc) sendListener.getTxData()).getBtcAddress();
-        getView().post(() -> {
-            xmrtoOrder = null;
-            showProgress(2, getString(R.string.label_send_progress_xmrto_query));
-            getXmrToApi().createOrder(quoteId, btcAddress, new ShiftCallback<CreateOrder>() {
-                @Override
-                public void onSuccess(CreateOrder order) {
-                    if (!isResumed) return;
-                    if (xmrtoQuote == null) return;
-                    if (!order.getQuoteId().equals(xmrtoQuote.getId())) {
-                        Timber.d("Quote ID does not match");
-                        // ignore (we got a response to a stale request)
-                        return;
-                    }
-                    if (xmrtoOrder != null)
-                        throw new IllegalStateException("xmrtoOrder must be null here!");
-                    processStageB(order);
-                }
-
-                @Override
-                public void onError(Exception ex) {
-                    if (!isResumed) return;
-                    processStageBError(ex);
-                }
-            });
-        });
-    }
-
-    private SideShiftApi xmrToApi = null;
-
-    private SideShiftApi getXmrToApi() {
-        if (xmrToApi == null) {
-            synchronized (this) {
-                if (xmrToApi == null) {
-                    xmrToApi = new SideShiftApiImpl(ServiceHelper.getXmrToBaseUrl());
-                }
-            }
-        }
-        return xmrToApi;
+    @Override
+    public void invalidateShift() {
+        orderId = null;
     }
 }

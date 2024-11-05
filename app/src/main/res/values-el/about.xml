@@ -34,8 +34,8 @@
         rate through the public API of coinmarketcap.com.
         See their privacy policy at https://coinmarketcap.com/privacy for
         details on how data in your requests is collected.</p>
-        <p>If you use the app to pay to BTC addresses, you will be using the SideShift.ai service.
-        See their privacy policy at https://sideshift.ai/ for details. Monerujo send them the BTC
+        <p>If you use the app to pay to BTC addresses, you will be using the Exolix service.
+        See their privacy policy at https://exolix.com/privacy for details. Monerujo send them the BTC
         destination address and amount. Your IP will also be collectable.</p>
         <h2>App Permissions</h2>
         <ul>

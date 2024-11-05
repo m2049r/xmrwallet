@@ -44,12 +44,9 @@ import com.m2049r.xmrwallet.data.TxDataBtc;
 import com.m2049r.xmrwallet.data.UserNotes;
 import com.m2049r.xmrwallet.model.PendingTransaction;
 import com.m2049r.xmrwallet.model.Wallet;
+import com.m2049r.xmrwallet.service.shift.ShiftService;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.OpenAliasHelper;
-import com.m2049r.xmrwallet.util.ServiceHelper;
-import com.m2049r.xmrwallet.util.validator.BitcoinAddressType;
-import com.m2049r.xmrwallet.util.validator.BitcoinAddressValidator;
-import com.m2049r.xmrwallet.util.validator.EthAddressValidator;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,15 +61,11 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     public static SendAddressWizardFragment newInstance(Listener listener) {
         SendAddressWizardFragment instance = new SendAddressWizardFragment();
-        instance.setSendListener(listener);
+        instance.sendListener = listener;
         return instance;
     }
 
-    Listener sendListener;
-
-    public void setSendListener(Listener listener) {
-        this.sendListener = listener;
-    }
+    private Listener sendListener;
 
     public interface Listener {
         void setBarcodeData(BarcodeData data);
@@ -103,13 +96,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         void onScan();
     }
 
-    private Crypto getCryptoForButton(ImageButton button) {
-        for (Map.Entry<Crypto, ImageButton> entry : ibCrypto.entrySet()) {
-            if (entry.getValue() == button) return entry.getKey();
-        }
-        return null;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -122,7 +108,9 @@ public class SendAddressWizardFragment extends SendWizardFragment {
         ibCrypto = new HashMap<>();
         for (Crypto crypto : Crypto.values()) {
             final ImageButton button = view.findViewById(crypto.getButtonId());
-            if (Helper.ALLOW_SHIFT || (crypto == Crypto.XMR)) {
+            if ((crypto == Crypto.XMR)
+                    || (Helper.ALLOW_SHIFT && ShiftService.isAssetSupported(crypto))) {
+                button.setVisibility(View.VISIBLE);
                 ibCrypto.put(crypto, button);
                 button.setOnClickListener(v -> {
                     if (possibleCryptos.contains(crypto)) {
@@ -131,9 +119,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     } else {
                         // show help what to do:
                         if (button.getId() != R.id.ibXMR) {
-                            final String name = getResources().getStringArray(R.array.cryptos)[crypto.ordinal()];
-                            final String symbol = getCryptoForButton(button).getSymbol();
-                            tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_help, name, symbol)));
+                            tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_help, crypto.getNetwork(), crypto.getLabel(), ShiftService.DEFAULT.getLabel())));
                             tvXmrTo.setVisibility(View.VISIBLE);
                         } else {
                             tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_help_xmr)));
@@ -143,9 +129,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     }
                 });
             } else {
-                button.setImageResource(crypto.getIconDisabledId());
-                button.setImageAlpha(128);
-                button.setEnabled(false);
+                button.setVisibility(View.INVISIBLE);
             }
         }
         if (!Helper.ALLOW_SHIFT) {
@@ -175,49 +159,26 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 Timber.d("AFTER: %s", editable.toString());
-                etAddress.setError(null);
+                BarcodeData bc = sendListener.getBarcodeData();
+                if (bc == null) {
+                    final String address = etAddress.getEditText().getText().toString();
+                    bc = BarcodeData.fromString(address);
+                }
+                sendListener.setBarcodeData(null); // it's used up now
                 possibleCryptos.clear();
                 selectedCrypto = null;
-                final String address = etAddress.getEditText().getText().toString();
-                if (isIntegratedAddress(address)) {
-                    Timber.d("isIntegratedAddress");
-                    possibleCryptos.add(Crypto.XMR);
-                    selectedCrypto = Crypto.XMR;
-                    etAddress.setError(getString(R.string.info_paymentid_integrated));
-                    sendListener.setMode(SendFragment.Mode.XMR);
-                } else if (isStandardAddress(address)) {
-                    Timber.d("isStandardAddress");
-                    possibleCryptos.add(Crypto.XMR);
-                    selectedCrypto = Crypto.XMR;
-                    sendListener.setMode(SendFragment.Mode.XMR);
-                }
-                if (!Helper.ALLOW_SHIFT) return;
-                if ((selectedCrypto == null) && isEthAddress(address)) {
-                    Timber.d("isEthAddress");
-                    possibleCryptos.add(Crypto.ETH);
-                    selectedCrypto = Crypto.ETH;
-                    tvXmrTo.setVisibility(View.VISIBLE);
-                    sendListener.setMode(SendFragment.Mode.BTC);
-                }
-                if (possibleCryptos.isEmpty()) {
-                    Timber.d("isBitcoinAddress");
-                    for (BitcoinAddressType type : BitcoinAddressType.values()) {
-                        if (BitcoinAddressValidator.validate(address, type)) {
-                            possibleCryptos.add(Crypto.valueOf(type.name()));
-                        }
-                    }
-                    if (!possibleCryptos.isEmpty()) // found something in need of shifting!
-                        sendListener.setMode(SendFragment.Mode.BTC);
-                    if (possibleCryptos.size() == 1) {
-                        selectedCrypto = (Crypto) possibleCryptos.toArray()[0];
+                if ((bc != null) && (bc.filter(ShiftService.getPossibleAssets()))) {
+                    possibleCryptos.clear();
+                    possibleCryptos.addAll(bc.getPossibleAssets());
+                    selectedCrypto = bc.getAsset();
+                    if (checkAddress()) {
+                        if (bc.getSecurity() == BarcodeData.Security.OA_NO_DNSSEC)
+                            etAddress.setError(getString(R.string.send_address_no_dnssec));
+                        else if (bc.getSecurity() == BarcodeData.Security.OA_DNSSEC)
+                            etAddress.setError(getString(R.string.send_address_openalias));
                     }
                 }
-                if (possibleCryptos.isEmpty()) {
-                    Timber.d("other");
-                    tvXmrTo.setVisibility(View.INVISIBLE);
-                    sendListener.setMode(SendFragment.Mode.XMR);
-                }
-                updateCryptoButtons(address.isEmpty());
+                updateCryptoButtons(false);
             }
 
             @Override
@@ -231,7 +192,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
         final ImageButton bPasteAddress = view.findViewById(R.id.bPasteAddress);
         bPasteAddress.setOnClickListener(v -> {
-            final String clip = Helper.getClipBoardText(getActivity());
+            final String clip = Helper.getClipBoardText(requireActivity());
             if (clip == null) return;
             // clean it up
             final String address = clip.replaceAll("( +)|(\\r?\\n?)", "");
@@ -248,16 +209,14 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
         etNotes = view.findViewById(R.id.etNotes);
         etNotes.getEditText().setRawInputType(InputType.TYPE_CLASS_TEXT);
-        etNotes.getEditText().
-
-                setOnEditorActionListener((v, actionId, event) -> {
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                            || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                        etDummy.requestFocus();
-                        return true;
-                    }
-                    return false;
-                });
+        etNotes.getEditText().setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))
+                    || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                etDummy.requestFocus();
+                return true;
+            }
+            return false;
+        });
 
         final View cvScan = view.findViewById(R.id.bScan);
         cvScan.setOnClickListener(v -> onScanListener.onScan());
@@ -271,13 +230,19 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private void selectedCrypto(Crypto crypto) {
         final ImageButton button = ibCrypto.get(crypto);
+        assert button != null;
         button.setImageResource(crypto.getIconEnabledId());
         button.setImageAlpha(255);
         button.setEnabled(true);
+        if (selectedCrypto == Crypto.XMR)
+            sendListener.setMode(SendFragment.Mode.XMR);
+        else
+            sendListener.setMode(SendFragment.Mode.BTC);
     }
 
     private void possibleCrypto(Crypto crypto) {
         final ImageButton button = ibCrypto.get(crypto);
+        assert button != null;
         button.setImageResource(crypto.getIconDisabledId());
         button.setImageAlpha(255);
         button.setEnabled(true);
@@ -285,6 +250,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
 
     private void impossibleCrypto(Crypto crypto) {
         final ImageButton button = ibCrypto.get(crypto);
+        if (button == null) return; // not all buttons exist for all providers
         button.setImageResource(crypto.getIconDisabledId());
         button.setImageAlpha(128);
         button.setEnabled(true);
@@ -302,7 +268,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             }
         }
         if ((selectedCrypto != null) && (selectedCrypto != Crypto.XMR)) {
-            tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto, selectedCrypto.getSymbol())));
+            tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto, selectedCrypto.getNetwork(), selectedCrypto.getLabel(), ShiftService.DEFAULT.getLabel())));
             tvXmrTo.setVisibility(View.VISIBLE);
         } else if ((selectedCrypto == null) && (possibleCryptos.size() > 1)) {
             tvXmrTo.setText(Html.fromHtml(getString(R.string.info_xmrto_ambiguous)));
@@ -328,7 +294,7 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                     BarcodeData barcodeData = dataMap.get(Crypto.XMR);
                     if (barcodeData == null) barcodeData = dataMap.get(Crypto.BTC);
                     if (barcodeData != null) {
-                        Timber.d("Security=%s, %s", barcodeData.security.toString(), barcodeData.address);
+                        Timber.d("Security=%s, %s", barcodeData.getSecurity().toString(), barcodeData.getAddress());
                         processScannedData(barcodeData);
                     } else {
                         etAddress.setError(getString(R.string.send_address_not_openalias));
@@ -369,18 +335,6 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 && Wallet.isAddressValid(address);
     }
 
-    private boolean isBitcoinishAddress(String address) {
-        return BitcoinAddressValidator.validate(address, BitcoinAddressType.BTC)
-                ||
-                BitcoinAddressValidator.validate(address, BitcoinAddressType.LTC)
-                ||
-                BitcoinAddressValidator.validate(address, BitcoinAddressType.DASH);
-    }
-
-    private boolean isEthAddress(String address) {
-        return EthAddressValidator.validate(address);
-    }
-
     private void shakeAddress() {
         if (possibleCryptos.size() > 1) { // address ambiguous
             for (Crypto crypto : Crypto.values()) {
@@ -412,10 +366,10 @@ public class SendAddressWizardFragment extends SendWizardFragment {
                 ((TxDataBtc) txData).setBtcAddress(etAddress.getEditText().getText().toString());
                 ((TxDataBtc) txData).setBtcSymbol(selectedCrypto.getSymbol());
                 txData.setDestination(null);
-                ServiceHelper.ASSET = selectedCrypto.getSymbol().toLowerCase();
+                ShiftService.ASSET = selectedCrypto;
             } else {
                 txData.setDestination(etAddress.getEditText().getText().toString());
-                ServiceHelper.ASSET = null;
+                ShiftService.ASSET = null;
             }
             txData.setUserNotes(new UserNotes(etNotes.getEditText().getText().toString()));
             txData.setPriority(PendingTransaction.Priority.Priority_Default);
@@ -445,49 +399,33 @@ public class SendAddressWizardFragment extends SendWizardFragment {
     }
 
     public void processScannedData(BarcodeData barcodeData) {
+        barcodeData.filter(ShiftService.getPossibleAssets());
         sendListener.setBarcodeData(barcodeData);
         if (isResumed())
             processScannedData();
     }
 
     public void processScannedData() {
-        BarcodeData barcodeData = sendListener.getBarcodeData();
+        final BarcodeData barcodeData = sendListener.getBarcodeData();
         if (barcodeData != null) {
             Timber.d("GOT DATA");
-            if (!Helper.ALLOW_SHIFT && (barcodeData.asset != Crypto.XMR)) {
+            if (!Helper.ALLOW_SHIFT && (barcodeData.getAsset() != Crypto.XMR)) {
                 Timber.d("BUT ONLY XMR SUPPORTED");
-                barcodeData = null;
-                sendListener.setBarcodeData(barcodeData);
+                sendListener.setBarcodeData(null);
                 return;
             }
-            if (barcodeData.address != null) {
-                etAddress.getEditText().setText(barcodeData.address);
-                possibleCryptos.clear();
-                selectedCrypto = null;
-                if (barcodeData.isAmbiguous()) {
-                    possibleCryptos.addAll(barcodeData.ambiguousAssets);
-                } else {
-                    possibleCryptos.add(barcodeData.asset);
-                    selectedCrypto = barcodeData.asset;
-                }
-                if (Helper.ALLOW_SHIFT)
-                    updateCryptoButtons(false);
-                if (checkAddress()) {
-                    if (barcodeData.security == BarcodeData.Security.OA_NO_DNSSEC)
-                        etAddress.setError(getString(R.string.send_address_no_dnssec));
-                    else if (barcodeData.security == BarcodeData.Security.OA_DNSSEC)
-                        etAddress.setError(getString(R.string.send_address_openalias));
-                }
+            if (barcodeData.getAddress() != null) {
+                etAddress.getEditText().setText(barcodeData.getAddress());
             } else {
                 etAddress.getEditText().getText().clear();
                 etAddress.setError(null);
             }
 
-            String scannedNotes = barcodeData.addressName;
+            String scannedNotes = barcodeData.getAddressName();
             if (scannedNotes == null) {
-                scannedNotes = barcodeData.description;
-            } else if (barcodeData.description != null) {
-                scannedNotes = scannedNotes + ": " + barcodeData.description;
+                scannedNotes = barcodeData.getDescription();
+            } else if (barcodeData.getDescription() != null) {
+                scannedNotes = scannedNotes + ": " + barcodeData.getDescription();
             }
             if (scannedNotes != null) {
                 etNotes.getEditText().setText(scannedNotes);

@@ -16,6 +16,7 @@
 
 package com.m2049r.xmrwallet.layout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Html;
 import android.text.Spanned;
@@ -49,6 +50,7 @@ import java.util.TimeZone;
 import timber.log.Timber;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoAdapter.ViewHolder> {
+    @SuppressLint("SimpleDateFormat")
     private final static SimpleDateFormat DATETIME_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private final int outboundColour;
@@ -86,7 +88,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
     }
 
     public boolean needsTransactionUpdateOnNewBlock() {
-        return (infoItems.size() > 0) && !infoItems.get(0).isConfirmed();
+        return (!infoItems.isEmpty()) && !infoItems.get(0).isConfirmed();
     }
 
     private static class TransactionInfoDiff extends DiffCallback<TransactionInfo> {
@@ -156,7 +158,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         return infoItems.get(position);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ImageView ivTxType;
         final TextView tvAmount;
         final TextView tvFailed;
@@ -291,7 +293,7 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         @Override
         public void onClick(View view) {
             if (listener != null) {
-                int position = getAdapterPosition(); // gets item position
+                int position = getBindingAdapterPosition(); // gets item position
                 if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                     listener.onInteraction(view, infoItems.get(position));
                 }

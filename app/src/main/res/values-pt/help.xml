@@ -146,54 +146,54 @@
             <li>Um OpenAlias para XMR ou BTC</li>
             <li>um endereço de BTC</li>
         </u>
-	Não deixar de notar que, enviar BTC é processado através do serviço SideShift.ai (ver https://sideshift.ai
+	Não deixar de notar que, enviar BTC é processado através do serviço Exolix (ver https://exolix.com
 	para detalhes). Ver a secção enviar BTC.</p>
         <h1>Enviar BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
-        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no Monerujo. Por favor
-        vai a https://sideshift.ai e decide por ti próprio se queres utilizar este serviço. A equipa
-        do Monerujo não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
-        <h2>Taxa de câmbio SideShift.ai<h2>
-        <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço SideShift.ai. Estes
+        <h2>Exolix</h2>
+        <p>Exolix é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
+        Nós utilizamos a API do Exolix para integrar pagamentos de Bitcoin no Monerujo. Por favor
+        vai a https://exolix.com e decide por ti próprio se queres utilizar este serviço. A equipa
+        do Monerujo não está associada com o Exolix e não te pode ajudar com este serviço.</p>
+        <h2>Taxa de câmbio Exolix<h2>
+        <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço Exolix. Estes
         incluem a taxa de câmbio assim como os limites superiores e inferiores em BTC. Nota que
         esta taxa ainda não é garantido.</p>
-        <h2>Pedido SideShift.ai<h2>
-        <p>No ecrão de \"Confirmação\", vais ver o pedido actual SideShift.ai. Este pedido é válido
+        <h2>Pedido Exolix<h2>
+        <p>No ecrão de \"Confirmação\", vais ver o pedido actual Exolix. Este pedido é válido
         por um período limitado de tempo - podes reparar que exite uma contagem decrescente no
         botão de \"Enviar\". A taxa de câmbio pode ser diferente da taxa indicativa mostrada
         nos ecrãs anteriores.</p>
-        <h2>Chave Secreta SideShift.ai<h2>
-        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta SideShift.ai
+        <h2>Chave Secreta Exolix<h2>
+        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta Exolix
         pode ser utilizada para monitorar a parte Bitcoin da transacção na página pricipal do
-        SideShift.ai.</p>
-        <h2>Contagem decrescente SideShift.ai!</h2>
-        <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do SideShift.ai
+        Exolix.</p>
+        <h2>Contagem decrescente Exolix!</h2>
+        <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do Exolix
         indo ao passo anterior e depois voltando ao ecrã de \"Confirmar\".</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Enviar BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
-        Nós utilizamos a API do SideShift.ai para integrar pagamentos de Bitcoin no Monerujo. Por favor
-        vai a https://sideshift.ai e decide por ti próprio se queres utilizar este serviço. A equipa
-        do Monerujo não está associada com o SideShift.ai e não te pode ajudar com este serviço.</p>
-        <h2>Taxa de câmbio SideShift.ai<h2>
-        <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço SideShift.ai. Estes
+        <h2>Exolix</h2>
+        <p>Exolix é um serviço de terceiros que funciona como intercâmbio de Monero para Bitcoin.
+        Nós utilizamos a API do Exolix para integrar pagamentos de Bitcoin no Monerujo. Por favor
+        vai a https://exolix.com e decide por ti próprio se queres utilizar este serviço. A equipa
+        do Monerujo não está associada com o Exolix e não te pode ajudar com este serviço.</p>
+        <h2>Taxa de câmbio Exolix<h2>
+        <p>No ecrã de \"Quantidade\" vais ver os parâmetros actuais do serviço Exolix. Estes
         incluem a taxa de câmbio assim como os limites superiores e inferiores em BTC. Nota que
         esta taxa ainda não é garantido.</p>
-        <h2>Pedido SideShift.ai<h2>
-        <p>No ecrão de \"Confirmação\", vais ver o pedido actual SideShift.ai. Este pedido é válido
+        <h2>Pedido Exolix<h2>
+        <p>No ecrão de \"Confirmação\", vais ver o pedido actual Exolix. Este pedido é válido
         por um período limitado de tempo - podes reparar que exite uma contagem decrescente no
         botão de \"Enviar\". A taxa de câmbio pode ser diferente da taxa indicativa mostrada
         nos ecrãs anteriores.</p>
-        <h2>Chave Secreta SideShift.ai<h2>
-        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta SideShift.ai
+        <h2>Chave Secreta Exolix<h2>
+        <p>Como o Monerujo só controla a parte Monero da transacção, a chave secreta Exolix
         pode ser utilizada para monitorar a parte Bitcoin da transacção na página pricipal do
-        SideShift.ai.</p>
-        <h2>Contagem decrescente SideShift.ai!</h2>
-        <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do SideShift.ai
+        Exolix.</p>
+        <h2>Contagem decrescente Exolix!</h2>
+        <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do Exolix
         indo ao passo anterior e depois voltando ao ecrã de \"Confirmar\".</p>
     ]]></string>
 
@@ -311,5 +311,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

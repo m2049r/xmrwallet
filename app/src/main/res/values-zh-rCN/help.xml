@@ -133,41 +133,41 @@
             <li>门罗或比特币的OpenAlias</li>
             <li>一个比特币地址</li>
         </u>
-        请注意，如果你发往的是比特币地址，那么钱包将自动使用SideShift.ai的服务(详情可查看 https://sideshift.ai
+        请注意，如果你发往的是比特币地址，那么钱包将自动使用Exolix的服务(详情可查看 https://exolix.com
         ). 查看下面关于发送比特币的信息。</p>
         <h1>发送BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai 是一个可以将门罗币转换为比特币的第三方服务。
-        我们利用SideShift.ai的API将其服务整合至Monerujo中。请参阅 https://sideshift.ai 后自行决定是否使用。
-        Monerujo开发团队与SideShift.ai无任何关联，无法为你解决其服务的问题。</p>
-        <h2>SideShift.ai 汇率<h2>
-        <p>在 \"金额\" 的页面中你将看到 SideShift.ai 服务的参数。包含了汇率以及BTC金额的上下限。
+        <h2>Exolix</h2>
+        <p>Exolix 是一个可以将门罗币转换为比特币的第三方服务。
+        我们利用Exolix的API将其服务整合至Monerujo中。请参阅 https://exolix.com 后自行决定是否使用。
+        Monerujo开发团队与Exolix无任何关联，无法为你解决其服务的问题。</p>
+        <h2>Exolix 汇率<h2>
+        <p>在 \"金额\" 的页面中你将看到 Exolix 服务的参数。包含了汇率以及BTC金额的上下限。
         请注意这个时刻显示的汇率并不一定是最终的汇率。</p>
-        <h2>SideShift.ai 订单<h2>
-        <p>在 \"确认\" 的页面中，你将可以看到正式的SideShift.ai订单。这订单仅在一段时间內有效。
+        <h2>Exolix 订单<h2>
+        <p>在 \"确认\" 的页面中，你将可以看到正式的Exolix订单。这订单仅在一段时间內有效。
         你可以在 \"发送\" 的按钮上看到倒数计时。这时的汇率可能与前一个页面显示的不同。</p>
-        <h2>SideShift.ai 私钥<h2>
-        <p>Monerujo仅处理交易中门罗币的部分，你可以在SideShift.ai的首页上，通过SideShift.ai密钥查询比特币部分的信息。</p>
-        <h2>SideShift.ai 倒数计时!</h2>
-        <p>当倒数计时结束的时候，你将需要回到上一步，重新向SideShift.ai寻求汇率报价后，再回到\"确认\"页面。</p>
+        <h2>Exolix 私钥<h2>
+        <p>Monerujo仅处理交易中门罗币的部分，你可以在Exolix的首页上，通过Exolix密钥查询比特币部分的信息。</p>
+        <h2>Exolix 倒数计时!</h2>
+        <p>当倒数计时结束的时候，你将需要回到上一步，重新向Exolix寻求汇率报价后，再回到\"确认\"页面。</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>发送BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai 是一个可以将门罗币转换为比特币的第三方服务。
-        我们利用SideShift.ai的API将其服务整合至Monerujo中。请参阅 https://sideshift.ai 后自行决定是否使用。
-        Monerujo开发团队与SideShift.ai无任何关联，无法为你解决其服务的问题。</p>
-        <h2>SideShift.ai 汇率<h2>
-        <p>在 \"金额\" 的页面中你将看到 SideShift.ai 服务的参数。包含了汇率以及BTC金额的上下限。
+        <h2>Exolix</h2>
+        <p>Exolix 是一个可以将门罗币转换为比特币的第三方服务。
+        我们利用Exolix的API将其服务整合至Monerujo中。请参阅 https://exolix.com 后自行决定是否使用。
+        Monerujo开发团队与Exolix无任何关联，无法为你解决其服务的问题。</p>
+        <h2>Exolix 汇率<h2>
+        <p>在 \"金额\" 的页面中你将看到 Exolix 服务的参数。包含了汇率以及BTC金额的上下限。
         请注意这个时刻显示的汇率并不一定是最终的汇率。</p>
-        <h2>SideShift.ai 订单<h2>
-        <p>在 \"确认\" 的页面中，你将可以看到正式的SideShift.ai订单。这订单仅在一段时间內有效。
+        <h2>Exolix 订单<h2>
+        <p>在 \"确认\" 的页面中，你将可以看到正式的Exolix订单。这订单仅在一段时间內有效。
         你可以在 \"发送\" 的按钮上看到倒数计时。这时的汇率可能与前一个页面显示的不同。</p>
-        <h2>SideShift.ai 私钥<h2>
-        <p>Monerujo仅处理交易中门罗币的部分，你可以在SideShift.ai的首页上，通过SideShift.ai密钥查询比特币部分的信息。</p>
-        <h2>SideShift.ai 倒数计时!</h2>
-        <p>当倒数计时结束的时候，你将需要回到上一步，重新向SideShift.ai寻求汇率报价后，再回到\"确认\"页面。</p>
+        <h2>Exolix 私钥<h2>
+        <p>Monerujo仅处理交易中门罗币的部分，你可以在Exolix的首页上，通过Exolix密钥查询比特币部分的信息。</p>
+        <h2>Exolix 倒数计时!</h2>
+        <p>当倒数计时结束的时候，你将需要回到上一步，重新向Exolix寻求汇率报价后，再回到\"确认\"页面。</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -250,5 +250,38 @@
         <h1>Tor Node</h1>
         <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
         <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+    ]]></string>
+
+    <string name="help_sidekick"><![CDATA[
+        <h2>Using your sidekick wallet</h2>
+        Check that both phones are connected via Bluetooth and both apps are opened.
+
+        <h3>On sidekick:</h3>
+        Open your wallet of choice.
+
+        <h3>On monerujo:</h3>
+        Connect to sidekick.
+
+        Open the wallet matching the one you have opened on the sidekick phone.
+
+        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+
+        <h3>On sidekick:</h3>
+        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+
+        <h3>On monerujo:</h3>
+        The transaction should be signed and ready to be sent. Press to make it so.
+         <br/>
+    ]]></string>
+
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>

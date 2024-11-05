@@ -35,48 +35,48 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Sa sisestasid %1$s aadressi.</b><br/>
-        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad %1$s kasutades SideShift.ai teenust.</i>
+        <i>See tähendab, et sa saadad Monerosid ning kohale jõuavad %2$s kasutades <b>%3$s</b> teenust.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">SideShift.ai tellimus</string>
+    <string name="info_send_xmrto_success_order_label">%1$s tellimus</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Ootan kinnitust</string>
     <string name="info_send_xmrto_unpaid">Ootan makset</string>
-    <string name="info_send_xmrto_error">SideShift.ai viga (%1$s)</string>
+    <string name="info_send_xmrto_error">%1$s viga (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s saadetud!</string>
     <string name="info_send_xmrto_query">Küsin &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Sa saad saata %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s %4$s/XMR</b></i>.
+        <i><b>%5$s</b> annab <u>hetkel</u> vahetuskursiks <b>%3$s %4$s/XMR</b></i>.
     ]]></string>
 
-    <string name="send_available_btc">Kontojääk: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Kontojääk: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Makse ID integreeritud</string>
     <string name="info_prepare_tx">Valmistan ülekannet ette</string>
 
-    <string name="label_send_progress_xmrto_create">Loon SideShift.ai tellimust</string>
-    <string name="label_send_progress_xmrto_query">Küsin SideShift.ai tellimust</string>
+    <string name="label_send_progress_xmrto_create">Loon tellimust</string>
+    <string name="label_send_progress_xmrto_query">Küsin tellimust</string>
     <string name="label_send_progress_create_tx">Valmistan ette Monero ülekannet</string>
 
-    <string name="label_send_progress_queryparms">Küsin SideShift.ai parameetreid</string>
+    <string name="label_send_progress_queryparms">Küsin parameetreid</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai viga</string>
+    <string name="label_generic_xmrto_error">Viga</string>
     <string name="text_generic_xmrto_error">Kood: %1$d</string>
 
     <string name="text_retry">Puuduta uuesti proovimiseks</string>
     <string name="text_noretry_monero">Nüüd jõudsime küll tupikusse!</string>
-    <string name="text_noretry">Oh ei, SideShift.ai ei ole hetkel saadaval!</string>
+    <string name="text_noretry">Oh ei, %1$s ei ole hetkel saadaval!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurss: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Külasta SideShift.ai lisainfo saamiseks &amp; jälgin</string>
-    <string name="label_send_btc_xmrto_key_lb">Privaatvõti\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai privaatvõti</string>
+    <string name="label_send_btc_xmrto_info">Külasta %1$s lisainfo saamiseks &amp; jälgin</string>
+    <string name="label_send_btc_xmrto_key_lb">Privaatvõti\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s privaatvõti</string>
     <string name="label_send_btc_address">Sihtkoha %1$s aadress</string>
     <string name="label_send_btc_amount">Kogus</string>
 
@@ -358,7 +358,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has exchange support built-in. Just paste or scan a BTC, LTC, ETH, TRXUSDT or SOL address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -390,7 +390,7 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>%3$s</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -419,7 +419,7 @@
     <string name="node_tor_error">Tor required</string>
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+    <string name="tor_noshift">%1$s doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
@@ -447,4 +447,21 @@
     <string name="label_apply">APPLY</string>
 
     <string name="setting_lock">Lock Wallet in Background</string>
+
+    <string name="menu_bluetooth">Connect Sidekick</string>
+    <string name="bluetooth_select_label">Select Sidekick device</string>
+
+    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
+    <string name="bluetooth_permissions_ok">OK</string>
+    <string name="bluetooth_permissions_settings">App Settings</string>
+    <string name="bluetooth_permissions_cancel">Cancel</string>
+
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="sidekick_not_connected">[not connected]</string>
+    <string name="sidekick_confirm_tx">Confirm Transaction</string>
+    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
+        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
+    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
+    <string name="fab_restore_sidekick">Restore from Sidekick</string>
+    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>

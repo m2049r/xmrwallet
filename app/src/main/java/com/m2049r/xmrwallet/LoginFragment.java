@@ -46,6 +46,7 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.m2049r.xmrwallet.data.NodeInfo;
 import com.m2049r.xmrwallet.dialog.HelpFragment;
 import com.m2049r.xmrwallet.layout.WalletInfoAdapter;
+import com.m2049r.xmrwallet.model.Wallet;
 import com.m2049r.xmrwallet.model.WalletManager;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.KeyStoreHelper;
@@ -61,6 +62,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import lombok.Getter;
 import timber.log.Timber;
 
 public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInteractionListener,
@@ -115,7 +117,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
 
         Set<NodeInfo> getOrPopulateFavourites();
 
-        boolean hasLedger();
+        boolean hasDevice(Wallet.Device type);
+
+        boolean isNetworkAvailable();
 
         void runOnNetCipher(Runnable runnable);
     }
@@ -146,10 +150,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         activityCallback.setToolbarButton(Toolbar.BUTTON_SETTINGS);
         activityCallback.showNet();
         showNetwork();
-        //activityCallback.runOnNetCipher(this::pingSelectedNode);
     }
 
-    private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
+    private final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(false) {
         @Override
         public void handleOnBackPressed() {
             animateFAB();
@@ -172,6 +175,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabSeed = view.findViewById(R.id.fabSeed);
         fabImport = view.findViewById(R.id.fabImport);
         fabLedger = view.findViewById(R.id.fabLedger);
+        fabSidekick = view.findViewById(R.id.fabSidekick);
 
         fabNewL = view.findViewById(R.id.fabNewL);
         fabViewL = view.findViewById(R.id.fabViewL);
@@ -179,6 +183,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabSeedL = view.findViewById(R.id.fabSeedL);
         fabImportL = view.findViewById(R.id.fabImportL);
         fabLedgerL = view.findViewById(R.id.fabLedgerL);
+        fabSidekickL = view.findViewById(R.id.fabSidekickL);
 
         fab_pulse = AnimationUtils.loadAnimation(getContext(), R.anim.fab_pulse);
         fab_open_screen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open_screen);
@@ -194,6 +199,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabSeed.setOnClickListener(this);
         fabImport.setOnClickListener(this);
         fabLedger.setOnClickListener(this);
+        fabSidekick.setOnClickListener(this);
         fabScreen.setOnClickListener(this);
 
         RecyclerView recyclerView = view.findViewById(R.id.list);
@@ -202,6 +208,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         recyclerView.setAdapter(adapter);
 
         ViewGroup llNotice = view.findViewById(R.id.llNotice);
+
         Notice.showAll(llNotice, ".*_login");
 
         view.findViewById(R.id.llNode).setOnClickListener(v -> startNodePrefs());
@@ -276,7 +283,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         }
 
         // remove information of non-existent wallet
-        Set<String> removedWallets = getActivity()
+        Set<String> removedWallets = requireActivity()
                 .getSharedPreferences(KeyStoreHelper.SecurityConstants.WALLET_PASS_PREFS_NAME, Context.MODE_PRIVATE)
                 .getAll().keySet();
         for (WalletManager.WalletInfo s : walletList) {
@@ -304,16 +311,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Getter
     private boolean fabOpen = false;
-    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed, fabImport, fabLedger;
+    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed, fabImport, fabLedger, fabSidekick;
     private RelativeLayout fabScreen;
-    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL, fabImportL, fabLedgerL;
+    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL, fabImportL, fabLedgerL, fabSidekickL;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward, fab_open_screen, fab_close_screen;
     private Animation fab_pulse;
-
-    public boolean isFabOpen() {
-        return fabOpen;
-    }
 
     private void setFabOpen(boolean value) {
         fabOpen = value;
@@ -328,6 +332,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             if (fabLedgerL.getVisibility() == View.VISIBLE) {
                 fabLedgerL.startAnimation(fab_close);
                 fabLedger.setClickable(false);
+            } else if (fabSidekickL.getVisibility() == View.VISIBLE) {
+                fabSidekickL.startAnimation(fab_close);
+                fabSidekick.setClickable(false);
             } else {
                 fabNewL.startAnimation(fab_close);
                 fabNew.setClickable(false);
@@ -345,17 +352,25 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             fabScreen.setClickable(true);
             fabScreen.startAnimation(fab_open_screen);
             fab.startAnimation(rotate_forward);
-            if (activityCallback.hasLedger()) {
-                fabLedgerL.setVisibility(View.VISIBLE);
+            if ((activityCallback.hasDevice(Wallet.Device.Ledger)
+                    || activityCallback.hasDevice(Wallet.Device.Sidekick))) {
                 fabNewL.setVisibility(View.GONE);
                 fabViewL.setVisibility(View.GONE);
                 fabKeyL.setVisibility(View.GONE);
                 fabSeedL.setVisibility(View.GONE);
                 fabImportL.setVisibility(View.GONE);
 
-                fabLedgerL.startAnimation(fab_open);
-                fabLedger.setClickable(true);
+                if (activityCallback.hasDevice(Wallet.Device.Ledger)) {
+                    fabLedgerL.setVisibility(View.VISIBLE);
+                    fabLedgerL.startAnimation(fab_open);
+                    fabLedger.setClickable(true);
+                } else { // Sidekick
+                    fabSidekickL.setVisibility(View.VISIBLE);
+                    fabSidekickL.startAnimation(fab_open);
+                    fabSidekick.setClickable(true);
+                }
             } else {
+                fabSidekickL.setVisibility(View.GONE);
                 fabLedgerL.setVisibility(View.GONE);
                 fabNewL.setVisibility(View.VISIBLE);
                 fabViewL.setVisibility(View.VISIBLE);
@@ -404,6 +419,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             Timber.d("FAB_LEDGER");
             animateFAB();
             activityCallback.onAddWallet(GenerateFragment.TYPE_LEDGER);
+        } else if (id == R.id.fabSidekick) {
+            Timber.d("FAB_SIDEKICK");
+            animateFAB();
+            activityCallback.onAddWallet(GenerateFragment.TYPE_SIDEKICK);
         } else if (id == R.id.fabScreen) {
             animateFAB();
         }
@@ -426,7 +445,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     private void setSubtext(String status) {
-        final Context ctx = getContext();
+        final Context ctx = requireContext();
         final Spanned text = Html.fromHtml(ctx.getString(R.string.status,
                 Integer.toHexString(ThemeHelper.getThemedColor(ctx, R.attr.positiveColor) & 0xFFFFFF),
                 Integer.toHexString(ThemeHelper.getThemedColor(ctx, android.R.attr.colorBackground) & 0xFFFFFF),

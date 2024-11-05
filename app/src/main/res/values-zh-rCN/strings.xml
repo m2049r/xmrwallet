@@ -26,36 +26,36 @@
     <string name="info_ledger_enabled">已支持Ledger硬件钱包，点此了解更多</string>
     <string name="info_xmrto"><![CDATA[
       <b>您输入了一个%1$s地址</b><br/>
-      <i>您发送的门罗币将通过<b>SideShift.ai</b>服务，转换为%1$s发送给对方。</i>
+      <i>您发送的门罗币将通过<b>%3$s</b>服务，转换为%2$s发送给对方。</i>
     ]]></string>
-    <string name="info_send_xmrto_success_order_label">SideShift.ai订单</string>
+    <string name="info_send_xmrto_success_order_label">%1$s订单</string>
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
     <string name="info_send_xmrto_paid">等待确认中</string>
     <string name="info_send_xmrto_unpaid">等待支付中</string>
-    <string name="info_send_xmrto_error">SideShift.ai错误(%1$s)</string>
+    <string name="info_send_xmrto_error">%1$s错误(%2$s)</string>
     <string name="info_send_xmrto_sent">成功发送%1$s！</string>
     <string name="info_send_xmrto_query">查询中&#8230;</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>您可以发送%1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><u>此刻</u><b>SideShift.ai</b>的汇率是<b>%3$s %4$s/XMR</b> </i>.
+        <i><u>此刻</u><b>%5$s</b>的汇率是<b>%3$s %4$s/XMR</b> </i>.
     ]]></string>
-    <string name="send_available_btc">余额: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">余额: %1$s XMR (~%2$s %3$s)</string>
     <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
-    <string name="label_send_progress_xmrto_create">创建SideShift.ai订单</string>
-    <string name="label_send_progress_xmrto_query">SideShift.ai订单查询中</string>
+    <string name="label_send_progress_xmrto_create">创建订单</string>
+    <string name="label_send_progress_xmrto_query">订单查询中</string>
     <string name="label_send_progress_create_tx">Monero交易准备中</string>
-    <string name="label_send_progress_queryparms">SideShift.ai参数查询中</string>
-    <string name="label_generic_xmrto_error">SideShift.ai错误</string>
+    <string name="label_send_progress_queryparms">参数查询中</string>
+    <string name="label_generic_xmrto_error">错误</string>
     <string name="text_generic_xmrto_error">代码: %1$d</string>
     <string name="text_retry">再次尝试</string>
     <string name="text_noretry_monero">我们遇到了困难！</string>
-    <string name="text_noretry">抱歉, SideShift.ai服务现在似乎不可用</string>
+    <string name="text_noretry">抱歉, %1$s服务现在似乎不可用</string>
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
-    <string name="label_send_btc_xmrto_info">访问SideShift.ai以获得更多支持</string>
-    <string name="label_send_btc_xmrto_key_lb">密钥\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai密钥</string>
+    <string name="label_send_btc_xmrto_info">访问%1$s以获得更多支持</string>
+    <string name="label_send_btc_xmrto_key_lb">密钥\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s密钥</string>
     <string name="label_send_btc_address">%1$s收款地址</string>
     <string name="label_send_btc_amount">金额</string>
     <string name="label_send_txid">交易ID</string>
@@ -284,7 +284,7 @@
     <string name="onboarding_seed_title">Keep your seed safe</string>
     <string name="onboarding_seed_information">The seed grants full access to whoever has it. If you lose it, we cannot help you recover it and you lose your beloved moneroj.</string>
     <string name="onboarding_xmrto_title">Send Crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo has SideShift.ai support built-in. Just paste or scan a BTC, LTC, ETH, DASH or DOGE address and you\'ll be sending these cryptos by spending XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo has exchange support built-in. Just paste or scan a BTC, LTC, ETH, TRXUSDT or SOL address and you\'ll be sending these cryptos by spending XMR.</string>
     <string name="onboarding_nodes_title">Nodes, your way</string>
     <string name="onboarding_nodes_information">Nodes connect you to the Monero network. Choose between public nodes or go full cypherpunk using your own.</string>
     <string name="onboarding_fpsend_title">Send with fingerprint</string>
@@ -316,7 +316,7 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>%3$s</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -345,7 +345,7 @@
     <string name="node_tor_error">Tor required</string>
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+    <string name="tor_noshift">%1$s doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
 
     <string name="label_wallet_advanced_details">点击以查看详情</string> <!-- Please chnage to "Detailed information" -->
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
@@ -374,4 +374,21 @@
     <string name="label_apply">APPLY</string>
 
     <string name="setting_lock">Lock Wallet in Background</string>
+
+    <string name="menu_bluetooth">Connect Sidekick</string>
+    <string name="bluetooth_select_label">Select Sidekick device</string>
+
+    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
+    <string name="bluetooth_permissions_ok">OK</string>
+    <string name="bluetooth_permissions_settings">App Settings</string>
+    <string name="bluetooth_permissions_cancel">Cancel</string>
+
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="sidekick_not_connected">[not connected]</string>
+    <string name="sidekick_confirm_tx">Confirm Transaction</string>
+    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
+        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
+    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
+    <string name="fab_restore_sidekick">Restore from Sidekick</string>
+    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>

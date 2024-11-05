@@ -52,7 +52,6 @@ public class SubaddressInfoFragment extends Fragment
     private Subaddress subaddress;
 
     private TextInputLayout etName;
-    private TextView tvAddress;
     private TextView tvTxLabel;
 
     @Override
@@ -61,7 +60,6 @@ public class SubaddressInfoFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_subaddressinfo, container, false);
 
         etName = view.findViewById(R.id.etName);
-        tvAddress = view.findViewById(R.id.tvAddress);
         tvTxLabel = view.findViewById(R.id.tvTxLabel);
 
         final RecyclerView list = view.findViewById(R.id.list);
@@ -71,11 +69,13 @@ public class SubaddressInfoFragment extends Fragment
         final Wallet wallet = activityCallback.getWallet();
 
         Bundle b = getArguments();
+        assert b != null;
         final int subaddressIndex = b.getInt("subaddressIndex");
         subaddress = wallet.getSubaddressObject(subaddressIndex);
 
         etName.getEditText().setText(subaddress.getDisplayLabel());
-        tvAddress.setText(getContext().getString(R.string.subbaddress_info_subtitle,
+        final TextView tvAddress = view.findViewById(R.id.tvAddress);
+        tvAddress.setText(requireContext().getString(R.string.subbaddress_info_subtitle,
                 subaddress.getAddressIndex(), subaddress.getAddress()));
 
         etName.getEditText().setOnFocusChangeListener((v, hasFocus) -> {

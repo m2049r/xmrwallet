@@ -27,7 +27,7 @@
     <string name="label_credits">Credits</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Cancel</string>
-    <string name="label_close">Close Note</string>
+    <string name="label_close">Close</string>
     <string name="label_wallet_advanced_details">Detailed information</string>
 
     <string name="label_send_success">Successfully sent</string>
@@ -40,48 +40,48 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>You entered a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and this address will receive %1$s using an exchange service.</i>
+        <i>You&apos;ll send XMR and this address will receive %2$s using the <b>%3$s</b> service.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">Exchange Order</string>
+    <string name="info_send_xmrto_success_order_label">%1$s Order</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmation Pending</string>
     <string name="info_send_xmrto_unpaid">Payment Pending</string>
-    <string name="info_send_xmrto_error">Exchange Error (%1$s)</string>
+    <string name="info_send_xmrto_error">%1$s Error (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Sent!</string>
     <string name="info_send_xmrto_query">Querying &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>You can send %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>The exchange</b> is giving you an exchange rate of <b>%3$s %4$s/XMR</b> <u>right now</u></i>.
+        <i><b>%5$s</b> is giving you an exchange rate of <b>%3$s %4$s/XMR</b> <u>right now</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Balance: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Balance: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrated</string>
     <string name="info_prepare_tx">Preparing your transaction</string>
 
-    <string name="label_send_progress_xmrto_create">Creating exchange Order</string>
-    <string name="label_send_progress_xmrto_query">Querying exchange Order</string>
+    <string name="label_send_progress_xmrto_create">Creating Order</string>
+    <string name="label_send_progress_xmrto_query">Querying Order</string>
     <string name="label_send_progress_create_tx">Preparing Monero Transaction</string>
 
-    <string name="label_send_progress_queryparms">Querying exchange parameters</string>
+    <string name="label_send_progress_queryparms">Querying parameters</string>
 
-    <string name="label_generic_xmrto_error">Exchange service ERROR</string>
+    <string name="label_generic_xmrto_error">ERROR</string>
     <string name="text_generic_xmrto_error">Code: %1$d</string>
 
     <string name="text_retry">Touch to retry</string>
     <string name="text_noretry_monero">Now we\'re stuck here!</string>
-    <string name="text_noretry">Uh-oh, the exchange service does not seem be available right now!</string>
+    <string name="text_noretry">Uh-oh, %1$s does not seem be available right now!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visit the exchange website for support &amp; tracking</string>
-    <string name="label_send_btc_xmrto_key_lb">Order number\nExchange</string>
-    <string name="label_send_btc_xmrto_key">Exchange order number</string>
+    <string name="label_send_btc_xmrto_info">Visit the %1$s website for support &amp; tracking</string>
+    <string name="label_send_btc_xmrto_key_lb">Order number\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s order number</string>
     <string name="label_send_btc_address">Destination %1$s Address</string>
     <string name="label_send_btc_amount">Amount</string>
 
@@ -197,6 +197,7 @@
     <string name="generate_wallet_type_seed">Seed</string>
     <string name="generate_wallet_type_view">View</string>
     <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
+    <string name="generate_wallet_type_sidekick" translatable="false">Sidekick</string>
 
     <string name="generate_address_hint">Public Address</string>
     <string name="generate_viewkey_hint">View Key</string>
@@ -412,22 +413,12 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Please enter or scan a %1$s address.</b><br/>
-        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>SideShift.ai</b> service.</i>
+        <i>You&apos;ll send XMR and the receiver will get %2$s using the <b>%3$s</b> service.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>Please enter or scan a Monero address.</b>
     ]]></string>
-
-    <!-- order must be the same as in com.m2049r.xmrwallet.data.Crypto-->
-    <string-array name="cryptos" translatable="false">
-        <item>Monero</item>
-        <item>Bitcoin</item>
-        <item>Dash</item>
-        <item>Dogecoin</item>
-        <item>Ethereum</item>
-        <item>Litecoin</item>
-    </string-array>
 
     <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
     <string name="tx_details_transition_name" translatable="false">tx_transition</string>
@@ -460,7 +451,7 @@
     <string name="node_tor_error">Tor required</string>
     <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
     <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
+    <string name="tor_noshift">%1$s doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
     <string name="tor_enable" tools:ignore="MissingTranslation">Enable TOR</string>
 
     <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
@@ -501,4 +492,22 @@
     <string name="label_apply">APPLY</string>
 
     <string name="setting_lock">Lock Wallet in Background</string>
+
+    <string name="label_bluetooth" translatable="false">Bluetooth</string>
+    <string name="menu_bluetooth">Connect Sidekick</string>
+    <string name="bluetooth_select_label">Select Sidekick device</string>
+
+    <string name="bluetooth_permissions">Bluetooth permissions are required to connect your Sidekick Wallet!</string>
+    <string name="bluetooth_permissions_ok">OK</string>
+    <string name="bluetooth_permissions_settings">App Settings</string>
+    <string name="bluetooth_permissions_cancel">Cancel</string>
+
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="sidekick_not_connected">[not connected]</string>
+    <string name="sidekick_confirm_tx">Confirm Transaction</string>
+    <string name="sidekick_network_warning">Network is on - this is a security risk. It is recommended
+        to turn on flight mode and restart the app with only Bluetooth enabled!</string>
+    <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
+    <string name="fab_restore_sidekick">Restore from Sidekick</string>
+    <string name="sidekick_connected">Sidekick Connected</string>
 </resources>
