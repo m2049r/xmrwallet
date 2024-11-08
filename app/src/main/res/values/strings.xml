@@ -461,6 +461,7 @@
     <string name="preferred_nightmode" translatable="false">preferred_nightmode</string>
     <string name="preferred_locale" translatable="false">preferred_locale</string>
     <string name="preferred_lock" translatable="false">preferred_lock</string>
+    <string name="preferred_stickyfiat" translatable="false">preferred_stickyfiat</string>
     <string name="about_info" translatable="false">about_info</string>
     <string name="privacy_info" translatable="false">privacy_info</string>
     <string name="credits_info" translatable="false">credits_info</string>
@@ -510,4 +511,8 @@
     <string name="open_wallet_sidekick_missing">Please connect Sidekick device</string>
     <string name="fab_restore_sidekick">Restore from Sidekick</string>
     <string name="sidekick_connected">Sidekick Connected</string>
+
+    <string name="setting_stickyfiat">Sticky Fiat</string>
+    <string name="setting_stickyfiat_summary">Remember last used fiat currency</string>
+    <string name="preferred_stickyfiat_pref" translatable="false">preferred_stickyfiat_pref</string>
 </resources>

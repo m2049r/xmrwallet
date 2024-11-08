@@ -76,12 +76,13 @@ public class SidekickConnectFragment extends Fragment
     @Override
     public void onPause() {
         Timber.d("onPause()");
-        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
-            throw new IllegalStateException("Bluetooth permission not granted");
-        if (bluetoothAdapter.isDiscovering()) {
-            bluetoothAdapter.cancelDiscovery();
+        if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(requireContext(), "Bluetooth permission not granted", Toast.LENGTH_LONG).show();
+        } else {
+            if (bluetoothAdapter.isDiscovering()) {
+                bluetoothAdapter.cancelDiscovery();
+            }
         }
-        // the the activity we are connected? why? it can ask the bluetoothservice...
         super.onPause();
     }
 
@@ -161,8 +162,10 @@ public class SidekickConnectFragment extends Fragment
 
         // Make sure we're not doing discovery anymore
         if (bluetoothAdapter != null) {
-            if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
-                throw new IllegalStateException("Bluetooth permission not granted");
+            if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(requireContext(), "Bluetooth permission not granted", Toast.LENGTH_LONG).show();
+                return;
+            }
             bluetoothAdapter.cancelDiscovery();
         }
     }

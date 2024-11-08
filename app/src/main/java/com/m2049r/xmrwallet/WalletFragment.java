@@ -51,6 +51,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.StickyFiatHelper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 import com.m2049r.xmrwallet.widget.Toolbar;
 
@@ -131,6 +132,7 @@ public class WalletFragment extends Fragment
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(requireContext(), R.layout.item_spinner_balance, currencies);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sCurrency.setAdapter(spinnerAdapter);
+        StickyFiatHelper.setPreferredCurrencyPosition(sCurrency);
 
         bSend = view.findViewById(R.id.bSend);
         bReceive = view.findViewById(R.id.bReceive);
@@ -182,6 +184,7 @@ public class WalletFragment extends Fragment
         sCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                StickyFiatHelper.setPreferredFiatSymbol(requireContext(), (String) sCurrency.getSelectedItem());
                 refreshBalance();
             }
 
@@ -315,13 +318,7 @@ public class WalletFragment extends Fragment
             balanceCurrency = Helper.BASE_CRYPTO;
             balanceRate = 1.0;
         } else {
-            int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());
-            if (spinnerPosition < 0) { // requested currency not in list
-                Timber.e("Requested currency not in list %s", exchangeRate.getQuoteCurrency());
-                sCurrency.setSelection(0, true);
-            } else {
-                sCurrency.setSelection(spinnerPosition, true);
-            }
+            StickyFiatHelper.setCurrencyPosition(sCurrency, exchangeRate.getQuoteCurrency());
             balanceCurrency = exchangeRate.getQuoteCurrency();
             balanceRate = exchangeRate.getRate();
         }

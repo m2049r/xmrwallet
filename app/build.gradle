@@ -8,8 +8,8 @@ android {
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 4103
-        versionName "4.1.3 'Exolix'"
+        versionCode 4105
+        versionName "4.1.5 'Exolix'"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
