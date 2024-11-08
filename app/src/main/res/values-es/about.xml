@@ -2,7 +2,6 @@
 <resources>
     <string name="about_close">Cerrar</string>
     <string name="about_version">Versión %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>Créditos</b>
         <br/>
@@ -11,7 +10,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>Política de Privacidad</h1>
         <p>Este texto te informa de nuestras políticas con respecto a la recopilación, uso
@@ -55,4 +53,5 @@
         por favor escríbenos a <a href="mailto:privacy@monerujo.io">privacy@monerujo.io</a>
         </p>
         ]]></string>
+    <string name="about_whoami">¡Hola! Soy monerujo</string>
 </resources>
