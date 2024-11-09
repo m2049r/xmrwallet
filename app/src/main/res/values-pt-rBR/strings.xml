@@ -375,5 +375,6 @@
     <string name="open_wallet_sidekick_missing">Por favor conecte o dispositivo Sidekick</string>
     <string name="label_apply">APLICAR</string>
     <string name="setting_stickyfiat_summary">Lembrar da última moeda fiat usada</string>
-    <string name="setting_stickyfiat">Fiat Adesivo</string>
+    <string name="setting_stickyfiat">Fiat Persistente</string>
+    <string name="send_qr_hint">Escanear</string>
 </resources>
