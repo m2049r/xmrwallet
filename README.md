@@ -16,7 +16,12 @@ Another Android Monero Wallet for Monero
 - See the [FAQ](doc/FAQ.md)
 
 ## Translation
-If you'd like to help translate Monerujo, take a look at your [Weblate project!](https://hosted.weblate.org/projects/monerujo/)
+If you'd like to help translate Monerujo, take a look at our [Weblate project!](https://hosted.weblate.org/engage/monerujo/)
+Thank you so much for your help!
+
+<a href="https://hosted.weblate.org/engage/monerujo/">
+<img src="https://hosted.weblate.org/widget/monerujo/multi-auto.svg" alt="Translation status" />
+</a>
 
 ### Disclaimer
 You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
