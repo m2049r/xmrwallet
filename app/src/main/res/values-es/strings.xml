@@ -384,4 +384,5 @@
     <string name="sidekick_network_warning">La red está encendida - esto es un riesgo de seguridad. ¡Se recomienda activar el modo avión y reiniciar la aplicación solo con Bluetooth activado!</string>
     <string name="fab_restore_sidekick">Restaurar desde Sidekick</string>
     <string name="setting_stickyfiat_summary">Recordar la última moneda fiduciaria utilizada</string>
+    <string name="setting_stickyfiat">Decreto fijado</string>
 </resources>
