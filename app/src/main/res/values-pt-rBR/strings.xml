@@ -328,7 +328,7 @@
     <string name="sidekick_network_warning">A rede está ativa - isso é um risco à segurança. É recomendado ativar o modo avião e reiniciar o app com somente o Bluetooth ativado!</string>
     <string name="sidekick_connected">Sidekick Conectado</string>
     <string name="menu_cancel">Cancelar</string>
-    <string name="label_send_progress_queryparms">Parâmetros de consulta</string>
+    <string name="label_send_progress_queryparms">Consultando parâmetros</string>
     <string name="label_generic_xmrto_error">ERRO</string>
     <string name="label_send_btc_xmrto_key">Número do pedido em %1$s</string>
     <string name="send_address_resolve_openalias">Buscando OpenAlias…</string>
