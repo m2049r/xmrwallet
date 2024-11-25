@@ -8,7 +8,7 @@
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
         <h2>Notez votre phrase Mnémonique !</h2>
         <p>Sur l’écran suivant vous trouverez les 25 mots de votre \"Phrase Mnémonique\".
-        C’est la seule donnée necessaire pour récupérer votre portefeuille ultérieurement
+        C’est la seule donnée nécessaire pour récupérer votre portefeuille ultérieurement
         et obtenir l’accès à vos fonds.
         Il est très imprtant de la garder sécurisée et confidentielle, car elle donne
         <em>à quiconque</em> le contrôle total de vos fonds !</p>
@@ -23,14 +23,14 @@
 
     <string name="help_create_seed"><![CDATA[
         <h1>Créer un Portefeuille - Phrase Mnémonique</h1>
-        <p>Si vous avez déjà une adresse Monero et que vus voulez reécupérer vos transactions depuis la chaïne de blocs !</p>
+        <p>Si vous avez déjà une adresse Monero et que vus voulez récupérer vos transactions depuis la chaïne de blocs !</p>
         <p>Entrez un nom et un mot de passe unique pour le portefeuille.
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
         <p>Entrez votre phrase Mnémonique dans le champ \"Phrase Mnémonique\".<p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -43,20 +43,20 @@
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez \"Clef d’Audit\" et \"Clef de dépense\".</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
     <string name="help_create_view"><![CDATA[
         <h1>Créer un Portefeuille d’Audit</h1>
-        <p>Si vous voulez suveiller les transaction entrantes sur un portefeuille !</p>
+        <p>Si vous voulez surveiller les transactions entrantes sur un portefeuille !</p>
         <p>Entrez un nom et un mot de passe unique pour le portefeuille.
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.<p>
         <p>Entrez votre adresse Monero dans le champ \"Adresse Publique\" et remplissez la \"Clef d’Audit\".</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -64,19 +64,19 @@
         <h1>Détails du Portefeuille</h1>
         <h2>Adresse Publique</h2>
         Votre adresse publique est comme votre numéro de compte en banque, vous pouvez la partager avec n’importe qui sans
-        craindre de perdre vos Moneroj. On porra envoyer des Moneroj dans votre portefeuille en utilisant cette adresse.
+        craindre de perdre vos Moneroj. On pourra envoyer des Moneroj dans votre portefeuille en utilisant cette adresse.
         <h2>Phrase Mnémonique</h2>
-        C’est la seule donée nécessaire pour récupérer votre portefeuille ultérieurement et obtenir l’accès à
-        vos fonds. Il est très imprtant de la garder sécurisée et confidentielle, car elle donne <em>à quiconque</em>
+        C’est la seule donnée nécessaire pour récupérer votre portefeuille ultérieurement et obtenir l’accès à
+        vos fonds. Il est très important de la garder sécurisée et confidentielle, car elle donne <em>à quiconque</em>
         le contrôle total de vos Moneroj ! Si vous ne l’avez pas écrite à un emplacement sécurisé, faites-le !
         <h2>Mdp de restauration des fichiers du Portefeuille</h2>
         Assurez vous de noter ce mot de passe. Si vous réinitialisez votre appareil ou désinstallez l’application,
         vous en aurez besoin pour accéder de nouveau à votre portefeuille.<br/>
         <h3>CrAzYpass</h3>
         Si le mot de passe affiché ici comporte 52 caractères alphanumériques par groupes de 4 - félicitations !
-        Vos fichiers de portefeuille sont sécurisé avec une clef 256 bits généré par les fonctionnalité de
-        sécurité de votre appareil sur la base de la phrase secrète que vous avez choisis (lors de la création
-        ou en l’ayant changée). Cela le rend êtrèmement difficile à pirater !<br/>
+        Vos fichiers de portefeuille sont sécurisés avec une clef 256 bits généré par les fonctionnalités de
+        sécurité de votre appareil sur la base de la phrase secrète que vous avez choisi (lors de la création
+        ou en l’ayant changée). Cela le rend extrêmement difficile à pirater !<br/>
         Cette fonctionnalité est obligatoire pour tous les nouveaux portefeuilles.
         <h3>Mot de passe traditionnel</h3>
         Si ici vous voyez votre phrase secrète, les fichiers de votre portefeuille ne sont pas aussi sécurisés qu’en
@@ -86,9 +86,9 @@
         <h3>Portefeuilles CrAzYpass</h3>
         Si vous avez un jour besoin de réinstaller Monerujo (par exemple après réinitialisation de votre téléphone, ou
         remplacement de celui-ci) ou si vous voulez utiliser vos fichiers de portefeuille sur un appareil différent ou
-        un PC, vous devrez utiliser ce Mot de Passe de Restauration adin d’accéder de nouveau à votre portefeuille.<br/>
+        un PC, vous devrez utiliser ce Mot de Passe de Restauration afin d’accéder de nouveau à votre portefeuille.<br/>
         En choisissant \"Modifier Phrase Secrète\" à partir du menu, vous pouvez choisir une nouvelle phrase secrète.
-        Prenez garde, cela génèrera un nouveau Mot de Passe de Restauration. Notez-le !
+        Prenez garde, cela générera un nouveau Mot de Passe de Restauration. Notez-le !
         <h2>Clef d’Audit</h2>
         Votre clef d’Audit peut vous servir à surveiller les transactions entrantes sur votre portefeuille sans autoriser
         la dépense de vos fonds dans votre portefeuille.
@@ -101,10 +101,10 @@
         <h1>Liste des Portefeuilles</h1>
         <h2>Nœud</h2>
         <p>Monerujo utilise un nœud distant pour communiquer avec le réseau Monero sans avoir à
-        télécharger et stocker une copie complète de la chaîne de bloc. vous pourrez trouver une
-        liste de nœud distant populaire ou apprendre comment faire fonctionner votre propre nœud
+        télécharger et stocker une copie complète de la chaîne de bloc. Vous pourrez trouver une
+        liste de nœuds distants populaires ou apprendre comment faire fonctionner votre propre nœud
         distant ici https://moneroworld.com/<p>
-        <p>Monerujo est fourni avec quelques Nœuds distants préenregistrés. Les cinq derniers nœuds utilisé sont sauvegardés.</p>
+        <p>Monerujo est fourni avec quelques Nœuds distants préenregistrés. Les cinq derniers nœuds utilisés sont sauvegardés.</p>
         <h2>Portefeuilles</h2>
         <p>Ici vous pouvez voir vos Portefeuilles. Ils se trouvent dans le dossier <tt>monerujo</tt>
         du stockage interne de votre appareil. Vous pouvez utiliser une application d’explorateur
@@ -133,11 +133,11 @@
         C’est l’adresse publique du portefeuille auquel vous avez envoyé des Moneroj
         <h2>ID de Paiement</h2>
         Vous pouvez utiliser un ID de paiement pour identifier la raison pour laquelle vous avez
-        envoyé des Moneroj entre deux parties. C’est totallement privé et optionnel. Il permet par
+        envoyé des Moneroj entre deux parties. C’est totalement privé et optionnel. Il permet par
         exemple à une société de faire concorder votre transaction avec un article que vous avez
         acheté.
         <h2>ID TX</h2>
-        C’est votre ID de transaction, vous pouvez l’utiliser pour identifier vos transaction masquées
+        C’est votre ID de transaction, vous pouvez l’utiliser pour identifier vos transactions masquées
         sur un explorateur de la chaîne de blocs Monero comme <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>Clef TX (Clef de Transaction)</h2>
         C’est la clef privée de votre transaction, conservez là en sécurité car la révéler à un
@@ -217,7 +217,7 @@
         fort, ou mieux, utilisez une phrase de sécurité.</p>
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n\'êtes pas sûr, entrer une date / hauteur de block approximative <em>avant</em> que vous
+        Si vous n\'êtes pas sûr, entrez une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -243,7 +243,7 @@
         fonctionnement de la monnaie dans Monero. Apprenez-en plus à propos de la monnaie dans Monero
         sur https://getmonero.org/fr/resources/moneropedia/change.html
         <h2>Liste des Transactions</h2>
-        <p>Une listes des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
+        <p>Une liste des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
         transactions entrantes sont affichées.</p>
     ]]></string>
 
@@ -278,7 +278,7 @@
         champ obligatoire.
         Entrer le &quot;Port&quot; si le nœud ne fonctionne pas sur un port par défaut (p.e. 18089).
         Vous pouvez optionnellement donner un nom au nœud, afin que vous puissiez plus facilement l’identifier plus tard.
-        Certains nœud nécessitent des identifiants pour les utiliser. Entrer les nom d’utilisateur &amp;
+        Certains nœuds nécessitent des identifiants pour les utiliser. Entrer les nom d’utilisateur &amp;
         mot de passe dans les champs appropriés. Maintenant vous pouvez &quot;Tester&quot; ces paramêtres.
         Le &quot;Résultat du test&quot; indiquera la hauteur de bloc, le temps de réponse et l’adresse IP actuellement utilisée.
         Le résultat pourrait également être une erreur - habituellement car le nom d’hôte fourni n’est
@@ -293,7 +293,7 @@
         en demandant leurs homologues à ceux-ci, et ainsi de suite. Si vous n’avez pas de nœuds en favoris
         (ou s’ils ne communiquent pas leurs homologues),
         Monerujo va communiquer directement avec les nœuds d’ensemencement codés en dur dans Monero. La
-        recherche s’arrête lorsqu’un total de 10 nœuds distant est récupéré.</p>
+        recherche s’arrête lorsqu’un total de 10 nœuds distants est récupéré.</p>
     ]]></string>
 
     <!-- Note for translators: new/changed text also in help_send -->
@@ -309,59 +309,50 @@
         <p>Les détails du paiement seront remplis. Vérifiez-les et procédez de la même manière que pour toute autre transaction.</p>
     ]]></string>
 
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">J\'ai compris !</string> <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
+    <string name="help_nok">Non…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_getorbot">Obtenir Orbot !</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
+        <p>Tor, acronyme de The Onion Router, est un logiciel libre et open source pour permettre les communications
+        anonymes.</p>
+        <p>Activer Tor routera votre connexion à travers plusieurs relais et cachera votre adresse IP
+        au nœud. Gardez à l\'esprit que cela est davantage privé mais aussi <b>plus lent</b>.</p>
+        <p>Pour utiliser Tor avec Monerujo, vous aurez besoin d\'avoir installé Orbot sur votre téléphone. Après
+        avoir installé Orbot, assurez-vous de l\'activer en cliquant sur l\'icône réseau sur l\'écran de la liste des
+        porte-monnaie.</p>
+        <p>Si vous avez des problèmes de connexion avec Tor, essayez d\'obtenir une nouvelle identité dans l\'application
+        Orbot (l\'icône en haut à droite).</p>
     ]]></string>
 
     <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
+        <h1>Nœud Tor</h1>
+        <p>Ceci est un nœud .onion. Pour l\'utiliser, vous devez activer Tor en touchant l\'icône
+        <img src="ic_network_clearnet"/> près du haut de la page de la liste des porte-monnaie.</p>
     ]]></string>
 
     <string name="help_sidekick"><![CDATA[
-        <h2>Using your sidekick wallet</h2>
-        Check that both phones are connected via Bluetooth and both apps are opened.
+        <h2>Utilisation de votre porte-monnaie sidekick</h2>
+        Vérifiez que les deux téléphones sont connectés via Bluetooth et que les deux applications sont lancées.
 
-        <h3>On sidekick:</h3>
-        Open your wallet of choice.
+        <h3>Sur sidekick :</h3>
+        Ouvrez le porte-monnaie de votre choix.
 
-        <h3>On monerujo:</h3>
-        Connect to sidekick.
+        <h3>Sur monerujo :</h3>
+        Connectez-vous à sidekick.
 
-        Open the wallet matching the one you have opened on the sidekick phone.
+        Ouvrez le porte-monnaie correspondant à celui que vous avez ouvert sur le téléphone sidekick.
 
-        Use it as you\'d normally use any wallet. Let it scan to see incoming transactions, share addresses, or send moneros. If the app needs to do something that involves your keys, it\'ll ask for permission from sidekick.
+        Utilisez-le comme vous utiliseriez normalement un porte-monnaie. Laissez-le analyser pour voir les transactions entrantes, partagez des adresses ou bien envoyez des moneros. Si l\'application a besoin de faire quelque chose qui a besoin de vos clefs, elle demandera l\'autorisation depuis sidekick.
 
-        <h3>On sidekick:</h3>
-        If monerujo requested permission, you should see a dialog that shows the transaction details like amount and fees. You\'ll also see two options, to ACCEPT or DENY it. Choose wisely.
+        <h3>Sur sidekick :</h3>
+        Si monerujo a demandé l\'autorisation, vous devriez voir un dialogue qui affiche les détails de la transaction tels que le montant et les frais. Vous verrez également deux options, pour l\'ACCEPTER ou la REFUSER. Choisissez judicieusement.
 
-        <h3>On monerujo:</h3>
-        The transaction should be signed and ready to be sent. Press to make it so.
+
+        <h3>Sur monerujo :</h3>
+        La transaction devrait être signée et prête à être envoyée. Appuyez pour la réaliser.
          <br/>
     ]]></string>
 
-    <string name="help_create_sidekick" translatable="false"><![CDATA[
-        <h1>Create Wallet - Sidekick</h1>
-        <p>You want to recover your wallet from your awesome Sidekick device.</p>
-        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
-        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
-        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
-    ]]></string>
 </resources>
