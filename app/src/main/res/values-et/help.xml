@@ -131,16 +131,6 @@
         secure delete app.</p>
     ]]></string>
 
-    <string name="help_tx_details"><![CDATA[
-        <h1>Ülekannete info</h1>
-        <h2>Sihtkoht</h2>
-        This is the public address of the wallet you sent Monero to
-        <h2>Makse ID</h2>
-        You can use a Payment ID to identify the reason you sent Monero between two parties this is
-        fully optional and private. For example it can allow a Business to reconcile your transaction
-
-    <!-- Note for translators: new/changed text also in help_send -->
-
     <string name="help_uri"><![CDATA[
         <h1>Using a payment link</h1>
         <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
