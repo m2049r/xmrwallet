@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="wallet_activity_name">Wallet</string>
-
     <string name="menu_about">Über Monerujo</string>
     <string name="menu_privacy">Datenschutzerklärung</string>
 
@@ -17,10 +15,7 @@
     <string name="password_fair">Naja &#8230;</string>
     <string name="password_good">Das kannst du besser!</string>
     <string name="password_strong">Fast da &#8230;</string>
-    <string name="password_very_strong">Yeah baby, h4x0r style!</string>
 
-    <string name="label_login_wallets">Wallets</string>
-    <string name="label_credits">Credits</string>
     <string name="label_ok">Okay</string>
     <string name="label_cancel">Abbrechen</string>
     <string name="label_close">Schließen</string>
@@ -244,9 +239,7 @@
     <string name="tx_blockheight">Block</string>
     <string name="tx_amount">Betrag</string>
     <string name="tx_fee">Gebühr</string>
-    <string name="tx_transfers">Transfers</string>
     <string name="tx_notes">Notizen</string>
-    <string name="tx_notes_hint">(optional)</string>
     <string name="tx_title">Transaktionsdetails</string>
 
     <string name="tx_pending">AUSSTEHEND</string>
@@ -313,7 +306,6 @@
 
     <string name="info_nodes_enabled">Node-o-matiC aktiviert – drücke für mehr Info.</string>
     <string name="node_height">Letzter aktualisierter Block: %1$s</string>
-    <string name="label_nodes">Nodes</string>
     <string name="node_name_hint">Node-Name (Optional)</string>
     <string name="node_address_hint">Webadresse</string>
     <string name="node_port_hint">Port</string>
@@ -423,7 +415,6 @@
     <string name="tor_noshift">%1$s unterstützt nicht TOR.\nDeaktiviere TOR um XMR zu wechseln.</string>
 
     <string name="label_seed_offset_encrypt">Seed-Verschlüsselung (EXPERIMENTELL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
 
     <string name="menu_settings">Einstellungen</string>
     <string name="title_iface">Oberfläche</string> <!-- like: User Intreface -->

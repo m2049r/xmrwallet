@@ -206,7 +206,6 @@
 
     <string name="send_notes_hint">Notes privades (opcional)</string>
     <string name="send_generate_paymentid_hint">Generar</string>
-    <string name="send_send_label">Spend my sweet Moneroj</string>
     <string name="send_send_timed_label">Gastar els meus estimats Moneroj (%1$s)</string>
     <string name="send_qr_invalid">No es un codi QR</string>
     <string name="send_qr_address_invalid">No es un codi de pagament QR vàlid</string>
