@@ -87,10 +87,10 @@
     <string name="status_remaining">Blocos restantes</string>
     <string name="status_syncing">Sincronizando:</string>
     <string name="message_camera_not_permitted">Sem câmera = Impossível escanear códigos QR!</string>
-    <string name="label_copy_viewkey">Ver Chave</string>
+    <string name="label_copy_viewkey">Chave de Visualização</string>
     <string name="label_copy_address">Endereço Público</string>
     <string name="label_copy_xmrtokey">Chave</string>
-    <string name="message_copy_viewkey">Chave copiada para a área de transferência!</string>
+    <string name="message_copy_viewkey">Chave de visualização copiada para a área de transferência!</string>
     <string name="message_copy_xmrtokey">Chave copiada para a área de transferência!</string>
     <string name="message_copy_address">Endereço da Carteira copiado para a área de transferência!</string>
     <string name="message_copy_txid">ID de Transação copiado para a área de transferência!</string>
