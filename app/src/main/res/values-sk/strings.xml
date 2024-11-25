@@ -284,7 +284,7 @@
 
     <string name="status_wallet_connect_wrongversion">Nekompatibilný s verziou uzla - nutná aktualizácia!</string>
 
-    <string name="menu_info">Ukázať Tajné Kľúče</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Ukázať Tajné Kľúče</string>
 
     <string name="menu_streetmode">Mód Ulica</string>
     <string name="info_nodes_enabled">Node-o-matiC povolený, klepni pre viac info.</string>

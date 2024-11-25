@@ -220,6 +220,4 @@
     <string name="fab_restore_viewonly">Επαναφορά πορτοφολιού προβολής-μόνο</string>
     <string name="fab_restore_key">Επαναφορά πορτοφολιού από ιδιωτικά κλειδιά</string>
     <string name="fab_restore_seed">Επαναφορά πορτοφολιού από σπόρο 25-λέξεων</string>
-
-    <string name="menu_info">Λεπτομέριες</string><!--Changed to: Show Secrets!-->
 </resources>

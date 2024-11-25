@@ -287,7 +287,7 @@
 
     <string name="status_wallet_connect_wrongversion">Versão do Nó incompativel - atualizar por favor!</string>
 
-    <string name="menu_info">Mostrar Segredos</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Mostrar Segredos</string>
     <string name="menu_streetmode">Street Mode</string>
 
     <string name="info_nodes_enabled">Node-o-matiC ativado, tocar para mais info.</string>

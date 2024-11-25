@@ -274,7 +274,6 @@
     <string name="send_address_resolve_openalias">Slår upp OpenAlias&#8230;</string>
     <string name="send_address_no_dnssec">OpenAlias utan DNSSEC - adressen kan vara förfalskad</string>
 
-    <string name="menu_info">Detaljer</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Gatu Mode</string>
 
     <string name="info_nodes_enabled">Node-o-matiC aktiverad, tryck för mer info.</string>

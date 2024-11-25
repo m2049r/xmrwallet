@@ -287,7 +287,7 @@
 
     <string name="status_wallet_connect_wrongversion">Версия узла несовместима - пожалуйста, обновите!</string>
 
-    <string name="menu_info">Показать ключи</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Показать ключи</string>
     <string name="menu_streetmode">Уличный режим</string>
 
     <string name="info_nodes_enabled">Node-o-matiC включен, нажмите для получения дополнительной информации.</string>

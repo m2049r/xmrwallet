@@ -286,7 +286,6 @@
 
     <string name="status_wallet_connect_wrongversion">Версія вузла несумісна - будь ласка обновіть!</string>
 
-    <string name="menu_info">Інформация</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Вуличний Режим</string>
 
     <string name="info_nodes_enabled">Node-o-matiC включений, натисніть щоб отримати більше інформації.</string>

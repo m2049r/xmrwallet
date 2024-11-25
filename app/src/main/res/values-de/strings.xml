@@ -280,7 +280,7 @@
 
     <string name="status_wallet_connect_wrongversion">Node Version inkompatibel – bitte updaten!</string>
 
-    <string name="menu_info">Zeige Geheimnisse!</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Zeige Geheimnisse!</string>
     <string name="menu_streetmode">Straßenmodus</string>
 
     <string name="info_nodes_enabled">Node-o-matiC aktiviert – drücke für mehr Info.</string>

@@ -293,7 +293,7 @@
 
     <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
 
-    <string name="menu_info">Montrer les secrets !</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Montrer les secrets !</string>
     <string name="menu_streetmode">Mode Urbain</string>
 
     <string name="info_nodes_enabled">Nœud-tomatiC activé, tapez pour plus d\'infos.</string>

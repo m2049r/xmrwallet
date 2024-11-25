@@ -284,7 +284,6 @@
 
     <string name="status_wallet_connect_wrongversion">Versiune nod incompatibilă - te rugăm să actualizezi!</string>
 
-    <string name="menu_info">Detalii</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Mod stradă</string>
 
     <string name="info_nodes_enabled">Node-o-matiC activată, atinge pentru mai multe detalii.</string>
