@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Натисніть для використання QR-коду</string>
 
-    <string name="info_xmrto_enabled">Доступні перекази в BTC, натисніть для доп. інформації</string>
     <string name="info_ledger_enabled">Доступний Ledger, натисніть для доп. інформації</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -76,7 +75,6 @@
     <string name="changepw_failed">Зміна паролю відбулася з помилкою!</string>
     <string name="changepw_success">Зміну паролю виконано успішно</string>
 
-    <string name="label_daemon">Віддалений вузол</string>
     <string name="status_wallet_loading">Завантаження гаманця &#8230;</string>
     <string name="status_wallet_unloaded">Гаманець збережено</string>
     <string name="status_wallet_unload_failed">Помилка збереження гаманця!</string>
@@ -114,7 +112,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s непідтверджено</string>
 
-    <string name="service_description">Служба monerujo</string>
 
     <string name="status_synced">Синхронізовано:</string>
     <string name="status_remaining">Блоків залишилось</string>

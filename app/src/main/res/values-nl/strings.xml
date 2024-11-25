@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Tik voor QR-code</string>
 
-    <string name="info_xmrto_enabled">BTC-betaling ingeschakeld. Tik voor meer info.</string>
     <string name="info_ledger_enabled">Ledger ingeschakeld. Tik voor meer info.</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -76,7 +75,6 @@
     <string name="changepw_failed">Wachtwoord wijzigen mislukt!</string>
     <string name="changepw_success">Wachtwoord is gewijzigd</string>
 
-    <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Portemonnee laden…</string>
     <string name="status_wallet_unloaded">Portemonnee opgeslagen</string>
     <string name="status_wallet_unload_failed">Portemonnee opslaan mislukt!</string>
@@ -104,7 +102,6 @@
     <string name="bad_password">Onjuist wachtwoord!</string>
     <string name="bad_saved_password">Opgeslagen wachtwoord is onjuist\nVoer wachtwoord handmatig in.</string>
     <string name="bad_wallet">Portemonnee bestaat niet!</string>
-    <string name="prompt_daemon_missing">Node-adres moet ingesteld zijn!</string>
     <string name="prompt_wrong_net">Portemonnee komt niet overeen met netwerk</string>
 
     <string name="label_watchonly">(Alleen-lezen)</string>
@@ -114,7 +111,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s onbevestigd</string>
 
-    <string name="service_description">monerujo-service</string>
 
     <string name="status_synced">Gesynchroniseerd:</string>
     <string name="status_remaining">Blokken te gaan</string>

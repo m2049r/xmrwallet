@@ -113,7 +113,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s sense confirmar</string>
 
-    <string name="service_description">Servei de monerujo</string>
 
     <string name="status_synced">Sincronitzat:</string>
     <string name="status_remaining">Blocs restants</string>

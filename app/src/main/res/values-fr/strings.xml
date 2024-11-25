@@ -80,7 +80,6 @@
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
-    <string name="label_daemon">Nœud</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
@@ -108,7 +107,6 @@
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_saved_password">Mot de passe sauvegardé incorrect.\nVeuillez entrer le mot de passe manuellement.</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
-    <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
 
     <string name="label_watchonly">(Audit)</string>
@@ -118,7 +116,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confirmés</string>
 
-    <string name="service_description">Service monerujo</string>
 
     <string name="status_synced">Synchronisé :</string>
     <string name="status_remaining">Blocs restant</string>

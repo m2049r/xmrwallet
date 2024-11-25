@@ -116,7 +116,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s לא מאושר</string>
 
-    <string name="service_description">שירות מונרוג\'ו</string>
 
     <string name="status_synced">מסונכרן:</string>
     <string name="status_remaining">בלוקים שנותרו</string>

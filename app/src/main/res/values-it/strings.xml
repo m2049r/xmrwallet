@@ -77,7 +77,6 @@
     <string name="changepw_failed">Modifica password fallita!</string>
     <string name="changepw_success">Password cambiata</string>
 
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Caricando portafoglio &#8230;</string>
     <string name="status_wallet_unloaded">Portafoglio salvato</string>
     <string name="status_wallet_unload_failed">Salvataggio portafoglio fallito!</string>
@@ -105,7 +104,6 @@
     <string name="bad_password">Password errata!</string>
     <string name="bad_saved_password">La password salvata è scorretta.\nInserisci la password manualmente.</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
-    <string name="prompt_daemon_missing">Deve essere impostato l\'indirizzo del Daemon!</string>
     <string name="prompt_wrong_net">Il portafoglio non si abbina con la rete selezionata</string>
 
     <string name="label_watchonly">(solo-visualizzazione)</string>
@@ -115,7 +113,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confermati</string>
 
-    <string name="service_description">Servizio monerujo</string>
 
     <string name="status_synced">Sincronizzati:</string>
     <string name="status_remaining">Blocchi rimanenti</string>

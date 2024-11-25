@@ -75,7 +75,6 @@
     <string name="changepw_failed">Sikertelen jelszómódosítás!</string>
     <string name="changepw_success">Jelszó megváltoztatva</string>
 
-    <string name="label_daemon">Csomópont</string>
     <string name="status_wallet_loading">Tárca betöltése&#8230;</string>
     <string name="status_wallet_unloaded">Tárca mentve</string>
     <string name="status_wallet_unload_failed">Sikertelen mentés!</string>
@@ -103,7 +102,6 @@
     <string name="bad_password">Helytelen jelszó!</string>
     <string name="bad_saved_password">Az elmentett jelszó helytelen.\nKérlek, add meg a jelszót manuálisan.</string>
     <string name="bad_wallet">A tárca nem létezik!</string>
-    <string name="prompt_daemon_missing">A daemon címét meg kell adni!</string>
     <string name="prompt_wrong_net">A tárcához nem a megfelelő hálózat van kiválasztva</string>
 
     <string name="label_watchonly">(csak megtekintés)</string>
@@ -113,7 +111,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s függőben</string>
 
-    <string name="service_description">monerujo szolgáltatás</string>
 
     <string name="status_synced">Szinkronizálva:</string>
     <string name="status_remaining">blokk van hátra</string>

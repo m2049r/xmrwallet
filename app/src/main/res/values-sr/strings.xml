@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Takni za QR kod</string>
 
-    <string name="info_xmrto_enabled">Omogućeno BTC plaćanje, tapni za više info.</string>
     <string name="info_ledger_enabled">Knjiga računa omogućena, tapni za više info.</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -77,7 +76,6 @@
     <string name="changepw_failed">Promena lozinke neuspela!</string>
     <string name="changepw_success">Lozinka promenjena</string>
 
-    <string name="label_daemon">Čvor</string>
 
     <string name="status_wallet_loading">Otvaranje novčanika &#8230;</string>
     <string name="status_wallet_unloaded">Novčanik sačuvan</string>
@@ -116,8 +114,6 @@
     <string name="label_wallet_send">Daj</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nepotvrđeno</string>
-
-    <string name="service_description">monerujo Servis</string>
 
     <string name="status_synced">Sinhronizovano:</string>
     <string name="status_remaining">Preostali blokovi</string>

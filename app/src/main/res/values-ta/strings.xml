@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">QR குறியீட்டிற்கு தொடவும்</string>
 
-    <string name="info_xmrto_enabled">XMR-அல்லாத பணம் செலுத்தல் செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
     <string name="info_ledger_enabled">பேரேடு செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -118,7 +117,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s உறுதிப்படுத்தப்படவில்லை</string>
 
-    <string name="service_description">monerujo சேவை</string>
 
     <string name="status_synced">ஒத்திசைக்கப்பட்டது:</string>
     <string name="status_remaining">மீதமுள்ள தொகுதிகள்</string>

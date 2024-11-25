@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Toca para código QR</string>
 
-    <string name="info_xmrto_enabled">Pagamento em BTC activado, toca para mais informação.</string>
     <string name="info_ledger_enabled">Ledger activa, toca para mais informação.</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -76,7 +75,6 @@
     <string name="changepw_failed">Erro ao alterar a palavra passe!</string>
     <string name="changepw_success">Palavra passe alterada</string>
 
-    <string name="label_daemon">Nó</string>
     <string name="status_wallet_loading">A carregar a carteira &#8230;</string>
     <string name="status_wallet_unloaded">Carteira guardada</string>
     <string name="status_wallet_unload_failed">Erro ao gravar a carteira!</string>
@@ -102,7 +100,6 @@
     <string name="bad_fingerprint">Impressão diginal não reconhecida. Tenta novamente.</string>
     <string name="bad_password">Palavra passe incorrecta!</string>
     <string name="bad_wallet">A carteira não existe!</string>
-    <string name="prompt_daemon_missing">O endereço do serviço tem que estar definido!</string>
     <string name="prompt_wrong_net">A carteira não combina com a rede seleccionada</string>
 
     <string name="label_watchonly">(Ver apenas)</string>
@@ -112,7 +109,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s não confirmado</string>
 
-    <string name="service_description">Serviço monerujo</string>
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">Blocos remanescentes</string>

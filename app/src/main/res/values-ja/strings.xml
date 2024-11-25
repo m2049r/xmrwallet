@@ -74,7 +74,6 @@
     <string name="changepw_failed">パスワード変更に失敗しました!</string>
     <string name="changepw_success">パスワードが変更されました</string>
 
-    <string name="label_daemon">ノード</string>
     <string name="connect_stagenet" translatable="false">ステージネット</string>
     <string name="connect_testnet" translatable="false">テストネット</string>
     <string name="status_wallet_loading">ウォレットをロード中 &#8230;</string>
@@ -115,7 +114,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s が未承認</string>
 
-    <string name="service_description">monerujo のサービス</string>
 
     <string name="status_synced">同期済み:</string>
     <string name="status_remaining">残りのブロック</string>

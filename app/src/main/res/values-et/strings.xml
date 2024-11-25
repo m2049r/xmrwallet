@@ -75,7 +75,6 @@
     <string name="changepw_failed">Parooli vahetamine ebaõnnestus!</string>
     <string name="changepw_success">Parool vahetatud</string>
 
-    <string name="label_daemon">Server</string>
     <string name="status_wallet_loading">Laen rahakotti &#8230;</string>
     <string name="status_wallet_unloaded">Rahakott salvestatud</string>
     <string name="status_wallet_unload_failed">Rahakoti salvestamine ebaõnnestus!</string>
@@ -113,7 +112,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s kinnitamata</string>
 
-    <string name="service_description">monerujo teenus</string>
 
     <string name="status_synced">Uuendatud:</string>
     <string name="status_remaining">Plokki veel</string>

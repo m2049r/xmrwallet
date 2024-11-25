@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">برای نمایش کد کیوآر لمس کنید</string>
 
-    <string name="info_xmrto_enabled">پرداخت‌های غیر مونرویی فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
     <string name="info_ledger_enabled">پشتیبانی از لجر فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
 
 
@@ -173,7 +172,6 @@
     تایید نشده است
     </string>
 
-    <string name="service_description">سرویس مونروجو</string>
 
     <string name="status_synced">همگام شد:</string>
     <string name="status_remaining">بلوک باقی مانده</string>

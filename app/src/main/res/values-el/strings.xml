@@ -69,7 +69,6 @@
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>
 
-    <string name="label_daemon">Κόμβος(Δαίμονας)</string>
     <string name="status_wallet_loading">Φόρτωση Πορτοφολιού &#8230;</string>
     <string name="status_wallet_unloaded">Πορτοφόλι αποθηκεύτηκε</string>
     <string name="status_wallet_unload_failed">Η αποθήκευση του πορτοφολιού απέτυχε!</string>
@@ -91,7 +90,6 @@
     <string name="prompt_password">Κωδικός για %1$s</string>
     <string name="bad_password">Λάθος κωδικός!</string>
     <string name="bad_wallet">Το πορτοφόλι δεν υπάρχει!</string>
-    <string name="prompt_daemon_missing">Η διεύθυνση δαίμονα πρέπει να οριστεί!</string>
     <string name="prompt_wrong_net">Το πορτοφόλι δεν ταιριάζει με το επιλεγμένο δίκτυο</string>
 
     <string name="label_watchonly">(Μόνο Παρακολούθηση)</string>
@@ -101,7 +99,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s μη επιβεβαιωμένα</string>
 
-    <string name="service_description">Υπηρεσία monerujo</string>
 
     <string name="status_synced">Συγχρονισμένα:</string>
     <string name="status_remaining">Μπλοκς που απομένουν</string>

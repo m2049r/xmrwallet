@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
 
-    <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
     <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -77,7 +76,6 @@
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
-    <string name="label_daemon">Удаленный узел</string>
     <string name="status_wallet_loading">Загрузка кошелька &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
@@ -105,7 +103,6 @@
     <string name="bad_password">Неверный пароль!</string>
     <string name="bad_saved_password">Сохраненный пароль неверен.\nВведите пароль вручную.</string>
     <string name="bad_wallet">Кошелька не существует!</string>
-    <string name="prompt_daemon_missing">Должен быть установлен адрес удаленного узла!</string>
     <string name="prompt_wrong_net">Кошелек не соответствует выбранной сети</string>
 
     <string name="label_watchonly">(Режим просмотра)</string>
@@ -114,8 +111,6 @@
     <string name="label_wallet_send">Передать</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s не подтверждено</string>
-
-    <string name="service_description">Служба Monerujo</string>
 
     <string name="status_synced">Синхронизировано:</string>
     <string name="status_remaining">Блоков осталось</string>

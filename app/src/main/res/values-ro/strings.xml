@@ -29,7 +29,6 @@
 
     <string name="label_receive_info_gen_qr_code">Atinge pentru codul QR</string>
 
-    <string name="info_xmrto_enabled">Plată BTC activată, apasă pentru mai multe informații.</string>
     <string name="info_ledger_enabled">Ledger activată, apasă pentru mai multe informații.</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
@@ -72,7 +71,6 @@
     <string name="backup_failed">Copia de rezervă a eșuat!</string>
     <string name="rename_failed">Redenumirea a eșuat!</string>
 
-    <string name="label_daemon">Nodul</string>
     <string name="status_wallet_loading">Se încarcă portofelul &#8230;</string>
     <string name="status_wallet_unloaded">Portofelul a fost salvat</string>
     <string name="status_wallet_unload_failed">Salvarea portofelului a eșuat!</string>
@@ -94,7 +92,6 @@
     <string name="prompt_password">Parola pentru %1$s</string>
     <string name="bad_password">Parolă incorectă!</string>
     <string name="bad_wallet">Portofelul nu există!</string>
-    <string name="prompt_daemon_missing">Adresa nodului trebuie setată!</string>
     <string name="prompt_wrong_net">Portofelul selectat nu se potrivește cu rețeaua</string>
 
     <string name="label_watchonly">(Doar vizualizare)</string>
@@ -104,7 +101,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s neconfirmat</string>
 
-    <string name="service_description">Serviciul monerujo</string>
 
     <string name="status_synced">Sincronizat:</string>
     <string name="status_remaining">Monoblocuri rămase</string>

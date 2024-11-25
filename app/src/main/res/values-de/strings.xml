@@ -73,7 +73,6 @@
     <string name="changepw_failed">Passwort ändern fehlgeschlagen!</string>
     <string name="changepw_success">Passwort geändert</string>
 
-    <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Lade Wallet &#8230;</string>
     <string name="status_wallet_unloaded">Wallet gespeichert</string>
     <string name="status_wallet_unload_failed">Speichern des Wallets fehlgeschlagen!</string>
@@ -111,7 +110,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s unbestätigt</string>
 
-    <string name="service_description">monerujo Service</string>
 
     <string name="status_synced">Synchronisiert:</string>
     <string name="status_remaining">Blöcke verbleibend</string>
