@@ -239,7 +239,6 @@
     <string name="send_address_resolve_openalias">Resolviendo OpenAlias…</string>
     <string name="send_address_no_dnssec">OpenAlias sin DNSSEC - la dirección podría ser falsificada</string>
     <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
-
     <string name="menu_streetmode">Modo calle</string>
     <string name="info_nodes_enabled">Nodo-matiC habilitado, toque para más información.</string>
     <string name="node_height">Último bloque actualizado: %1$s</string>
@@ -380,4 +379,8 @@
     <string name="fab_restore_sidekick">Restaurar desde Sidekick</string>
     <string name="setting_stickyfiat_summary">Recordar la última moneda fiduciaria utilizada</string>
     <string name="setting_stickyfiat">Decreto fijado</string>
+    <string name="prompt_daemon_missing">¡El nodo debe estar configurado!</string>
+    <string name="menu_info">¡Mostrar secretos!</string>
+    <string name="service_description">La cartera está abierta</string>
+    <string name="label_daemon">Red</string>
 </resources>
