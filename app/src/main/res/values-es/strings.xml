@@ -81,7 +81,6 @@
     <string name="bad_password">¡Contraseña incorrecta!</string>
     <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngrésala manualmente.</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
-    <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
 
     <string name="label_watchonly">(Sólo Vista)</string>
@@ -434,7 +433,6 @@
     <string name="tx_locked">Monto trabado hasta el bloque %1$d (faltan %2$d bloques ≈ %3$,.2f días)</string>
 
     <string name="label_streetmode">Modo calle activado\nSólo se ºmostrarán transacciones nuevas</string>
-    <string name="pocketchange_info">Para reducir el tiempo entre pagos, Monerujo puede crear cambio de más al enviar a costo de comisiones más altas. Va a crear e intentar mantener 10 monedas del monto seleccionado.</string>
     <string name="pocketchange_create_title">Crear cambio</string>
 
     <string name="label_apply">APLICAR</string>

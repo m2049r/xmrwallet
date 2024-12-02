@@ -41,13 +41,6 @@
 
     <string name="info_send_xmrto_success_order_label">Order hos växlingstjänst</string>
 
-    <string name="info_xmrto"><![CDATA[
-      <b>Du har angivit en %1$s-adress.</b><br/>
-      <i>Du kommer att skicka XMR och mottagaren får %2$s via tjänsten <b>%3$s</b>.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">%1$s-beställning</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Väntar på bekräftelse</string>
