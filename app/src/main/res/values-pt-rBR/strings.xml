@@ -80,7 +80,7 @@
     <string name="prompt_wrong_net">A carteira não é compatível com a rede selecionada</string>
     <string name="label_watchonly">(Somente Leitura)</string>
     <string name="label_wallet_receive">Receber</string>
-    <string name="label_wallet_send">Enviar</string>
+    <string name="label_wallet_send">Dar</string>
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s não confirmados</string>
     <string name="service_description">Carteira está aberta</string>
     <string name="status_synced">Sincronizados:</string>
