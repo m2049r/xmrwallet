@@ -24,24 +24,24 @@ Thank you so much for your help!
 </a>
 
 ### Disclaimer
-You may lose all your Moneroj if you use this App. Be cautious when spending on the mainnet.
+You may lose all your Monero if you use this App. Be cautious when spending on the mainnet.
 
 ### Random Notes
-- works on the mainnet & stagenet
-- use your own daemon - it's easy
+- Works on the mainnet & stagenet
+- Use your own daemon - it's easy
 - Monerujo means "Monero Wallet" according to https://www.reddit.com/r/Monero/comments/3exy7t/esperanto_corner/
 
 ### TODO
-- see taiga.getmonero.org & issues on github
+- See taiga.getmonero.org & issues on github
 
 ### Issues / Pitfalls
 - Users of Zenfone MAX & Zenfone 2 Laser (possibly others) **MUST** use the armeabi-v7a APK as the arm64-v8a build uses hardware AES
-functionality these models don't have.
+  functionality these models don't have.
 - You should backup your wallet files in the "monerujo" folder periodically.
 - Also note, that on some devices the backups will only be visible on a PC over USB after a reboot of the device (it's an Android bug/feature)
 - Created wallets on a private testnet are unusable because the restore height is set to that
-of the "real" testnet.  After creating a new wallet, make a **new** one by recovering from the seed.
-The official monero client shows the same behaviour.
+  of the "real" testnet.  After creating a new wallet, make a **new** one by recovering from the seed.
+  The official monero client shows the same behaviour.
 
 ### HOW TO BUILD
 
