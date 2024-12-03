@@ -30,53 +30,32 @@
 
     <string name="label_receive_info_gen_qr_code">Takni za QR kod</string>
 
-    <string name="info_xmrto_enabled">Omogućeno BTC plaćanje, tapni za više info.</string>
     <string name="info_ledger_enabled">Knjiga računa omogućena, tapni za više info.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Ubacio/la si %1$s adresu.</b><br/>
-        <i>You&apos;će poslati XMR a primalac će dobiti %2$s koristeći <b>%3$s</b> servis.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">%1$s Nalog</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Potvrda u toku</string>
     <string name="info_send_xmrto_unpaid">Plaćanje u toku</string>
-    <string name="info_send_xmrto_error">%1$s Greška (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Poslato!</string>
     <string name="info_send_xmrto_query">Ispitivanje &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Možeš poslati %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> daje ti devizni kurs od <b>%3$s %4$s/XMR</b> <u>trenutno</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Stanje: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID plaćanja integrisan</string>
     <string name="info_prepare_tx">Priprema tvoje transakcije</string>
 
-    <string name="label_send_progress_xmrto_create">Kreiranje Nalog</string>
-    <string name="label_send_progress_xmrto_query">Ispitivanje Nalog</string>
     <string name="label_send_progress_create_tx">Pripremanje Monero transakcije</string>
 
-    <string name="label_send_progress_queryparms">Ispitivanje parametara</string>
 
-    <string name="label_generic_xmrto_error">GREŠKA</string>
     <string name="text_generic_xmrto_error">Kod: %1$d</string>
 
     <string name="text_retry">Takni za novi pokušaj </string>
     <string name="text_noretry_monero">Sada se zaglavismo!</string>
-    <string name="text_noretry">Uh, %1$s izgleda da sad nije dostupan!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Poseti %1$s za bekap &amp; praćenje</string>
-    <string name="label_send_btc_xmrto_key_lb">Tajna šifra\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Tajna šifra</string>
     <string name="label_send_btc_address">Odredište %1$s adrese</string>
     <string name="label_send_btc_amount">Suma</string>
 
@@ -97,7 +76,6 @@
     <string name="changepw_failed">Promena lozinke neuspela!</string>
     <string name="changepw_success">Lozinka promenjena</string>
 
-    <string name="label_daemon">Čvor</string>
 
     <string name="status_wallet_loading">Otvaranje novčanika &#8230;</string>
     <string name="status_wallet_unloaded">Novčanik sačuvan</string>
@@ -136,8 +114,6 @@
     <string name="label_wallet_send">Daj</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nepotvrđeno</string>
-
-    <string name="service_description">monerujo Servis</string>
 
     <string name="status_synced">Sinhronizovano:</string>
     <string name="status_remaining">Preostali blokovi</string>

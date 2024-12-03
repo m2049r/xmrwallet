@@ -30,54 +30,33 @@
 
     <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
 
-    <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
     <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Вы ввели %1$s адрес.</b><br/>
-        <i>Отправляйте XMR, получатель получит %2$s, используя сервис <b>%3$s</b></i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Заказ %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">Ожидание подтверждения</string>
     <string name="info_send_xmrto_unpaid">Ожидание платежа</string>
-    <string name="info_send_xmrto_error">Ошибка %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s успешно отправлены!</string>
     <string name="info_send_xmrto_query">Запрос &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Вы можете отправить %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> устанавливает курс обмена <b>%3$s %4$s/XMR</b> <u>в данный момент</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Баланс: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Интегрированный ID платежа</string>
     <string name="info_prepare_tx">Подготовка транзакции</string>
 
-    <string name="label_send_progress_xmrto_create">Создание заказа</string>
-    <string name="label_send_progress_xmrto_query">Запрос заказа</string>
     <string name="label_send_progress_create_tx">Подготовка транзакции Monero</string>
 
-    <string name="label_send_progress_queryparms">Запрос параметров</string>
 
-    <string name="label_generic_xmrto_error">ОШИБКА</string>
     <string name="text_generic_xmrto_error">Код: %1$d</string>
 
     <string name="text_retry">Нажмите, чтобы повторить попытку</string>
     <string name="text_noretry_monero">Теперь мы застряли здесь!</string>
-    <string name="text_noretry">Ой-ой! Кажется %1$s недоступен в данный момент!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Посетите %1$s для получения помощи &amp;</string>
-    <string name="label_send_btc_xmrto_key_lb">Секретный ключ\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя %1$s</string>
     <string name="label_send_btc_amount">Сумма</string>
 
@@ -97,7 +76,6 @@
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
-    <string name="label_daemon">Удаленный узел</string>
     <string name="status_wallet_loading">Загрузка кошелька &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
@@ -125,7 +103,6 @@
     <string name="bad_password">Неверный пароль!</string>
     <string name="bad_saved_password">Сохраненный пароль неверен.\nВведите пароль вручную.</string>
     <string name="bad_wallet">Кошелька не существует!</string>
-    <string name="prompt_daemon_missing">Должен быть установлен адрес удаленного узла!</string>
     <string name="prompt_wrong_net">Кошелек не соответствует выбранной сети</string>
 
     <string name="label_watchonly">(Режим просмотра)</string>
@@ -134,8 +111,6 @@
     <string name="label_wallet_send">Передать</string>
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s не подтверждено</string>
-
-    <string name="service_description">Служба Monerujo</string>
 
     <string name="status_synced">Синхронизировано:</string>
     <string name="status_remaining">Блоков осталось</string>
@@ -307,7 +282,7 @@
 
     <string name="status_wallet_connect_wrongversion">Версия узла несовместима - пожалуйста, обновите!</string>
 
-    <string name="menu_info">Показать ключи</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Показать ключи</string>
     <string name="menu_streetmode">Уличный режим</string>
 
     <string name="info_nodes_enabled">Node-o-matiC включен, нажмите для получения дополнительной информации.</string>
@@ -365,7 +340,6 @@
     <string name="onboarding_seed_title">Храните свои ключи в безопасности</string>
     <string name="onboarding_seed_information">Секретная фраза дает полный доступ к кошельку. Если вы её потеряете, мы не сможем её восстановить и вы потеряете ваши moneroj.</string>
     <string name="onboarding_xmrto_title">Отправка других криптовалют</string>
-    <string name="onboarding_xmrto_information">Monerujo имеет поддержку exchange. Просто вставьте (или просканируйте) адрес BTC, LTC, ETH, TRXUSDT или SOL и вы будете отправлять эти криптовалюты, тратя XMR.</string>
     <string name="onboarding_nodes_title">Узлы, узлы, узлы…</string>
     <string name="onboarding_nodes_information">Узлы позволяют подключаться к сети Monero. Выбирайте между общедоступными узлами или используйте свой собственный для безопасности IP адреса.</string>
     <string name="onboarding_fpsend_title">Отправка с помощью отпечатка пальца</string>

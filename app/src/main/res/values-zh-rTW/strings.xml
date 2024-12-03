@@ -29,54 +29,33 @@
 
     <string name="label_receive_info_gen_qr_code">點選顯示 QR 碼</string>
 
-    <string name="info_xmrto_enabled">BTC 付款已啟用，點選了解更多</string>
     <string name="info_ledger_enabled">Ledger 已啟用，點選了解更多</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>你輸入了 %1$s 地址</b><br/>
-        <i>你將會發送 XMR 而收款方將會收到 %2$s (由 <b>%3$s</b> 提供轉換)</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">%1$s 訂單</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">等待確認中</string>
     <string name="info_send_xmrto_unpaid">等待付款中</string>
-    <string name="info_send_xmrto_error">%1$s 發生錯誤 (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s 已發送！</string>
     <string name="info_send_xmrto_query">查詢中 &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>你可發送 %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> 提供的<u>即時</u>匯率為 <b>%3$s %4$s/XMR</b></i>.
-    ]]></string>
 
     <string name="send_available_btc">餘額：%1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; 已加入付款 ID</string>
     <string name="info_prepare_tx">正在準備你的交易</string>
 
-    <string name="label_send_progress_xmrto_create">建立訂單</string>
-    <string name="label_send_progress_xmrto_query">查詢訂單</string>
     <string name="label_send_progress_create_tx">正在準備 Monero 交易</string>
 
-    <string name="label_send_progress_queryparms">正在查詢參數</string>
 
-    <string name="label_generic_xmrto_error">發生錯誤</string>
     <string name="text_generic_xmrto_error">錯誤代碼：%1$d</string>
 
     <string name="text_retry">點選以重試</string>
     <string name="text_noretry_monero">我們卡住了！</string>
-    <string name="text_noretry">不好，%1$s 現在似乎無法提供服務！</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(匯率：%1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">參訪 %1$s 以獲得支援及追蹤交易</string>
-    <string name="label_send_btc_xmrto_key_lb">私鑰\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s 私鑰</string>
     <string name="label_send_btc_address">目的地 %1$s 地址</string>
     <string name="label_send_btc_amount">金額</string>
 
@@ -97,7 +76,6 @@
     <string name="changepw_failed">密碼更改失敗！</string>
     <string name="changepw_success">密碼更改成功</string>
 
-    <string name="label_daemon">節點</string>
     <string name="status_wallet_loading">載入錢包中 &#8230;</string>
     <string name="status_wallet_unloaded">錢包已儲存</string>
     <string name="status_wallet_unload_failed">儲存錢包失敗！</string>
@@ -125,7 +103,6 @@
     <string name="bad_password">密碼錯誤！</string>
     <string name="bad_saved_password">儲存的密碼不正確。\n請手動輸入密碼。</string>
     <string name="bad_wallet">錢包不存在！</string>
-    <string name="prompt_daemon_missing">必須設定節點位置！</string>
     <string name="prompt_wrong_net">錢包不符合選擇的網路</string>
 
     <string name="label_watchonly">(唯讀)</string>
@@ -135,7 +112,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s 未確認的 %2$s </string>
 
-    <string name="service_description">monerujo 服務</string>
 
     <string name="status_synced">已同步區塊：</string>
     <string name="status_remaining">剩餘區塊</string>
@@ -147,7 +123,6 @@
     <string name="label_copy_address">公開地址</string>
     <string name="label_copy_xmrtokey">金鑰</string>
     <string name="message_copy_viewkey">查看金鑰已複製至剪貼簿！</string>
-    <string name="message_copy_xmrtokey">金鑰已複製至剪貼簿！</string>
     <string name="message_copy_address">錢包地址已複製至剪貼簿！</string>
     <string name="message_copy_txid">交易 ID 已複製至剪貼簿！</string>
     <string name="message_nocopy">因安全因素已停用複製功能！</string>
@@ -358,7 +333,6 @@
     <string name="onboarding_seed_title">保管好你的種子碼</string>
     <string name="onboarding_seed_information">種子碼提供任何人完整的權限。如果你遺失了種子碼，我們無法幫你找回它，且你將失去你心愛的 moneroj。</string>
     <string name="onboarding_xmrto_title">發送加密貨幣</string>
-    <string name="onboarding_xmrto_information">Monerujo 內建 exchange 服務。只要貼上或掃描 BTC、LTC、ETH、TRXUSDT 或 SOL 地址，你就可以直接使用 XMR 來發送這些加密貨幣。</string>
     <string name="onboarding_nodes_title">節點選擇，由你作主</string>
     <string name="onboarding_nodes_information">你必須透過節點連線至 Monero 交易網路。選擇使用公共節點或是很密碼龐克式地使用你自己的節點。</string>
     <string name="onboarding_fpsend_title">使用指紋辨識發送交易</string>

@@ -29,53 +29,32 @@
 
     <string name="label_receive_info_gen_qr_code">Πατήστε για QR κωδικό</string>
 
-    <string name="info_xmrto_enabled">Συναλλαγή BTC ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
     <string name="info_ledger_enabled">Ledger ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Έβαλες μια διεύθυνση %1$s.</b><br/>
-        <i>Θα στείλεις XMR και ο παραλήπτης θα πάρει %2$s μέσο της υπηρεσίας <b>%3$s</b>.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Εντολή %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Επιβεβαίωση Εκκρεμεί</string>
     <string name="info_send_xmrto_unpaid">Πληρωμή σε εκκρεμότητα</string>
-    <string name="info_send_xmrto_error">%1$s Σφάλμα (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Αποστάλθηκαν!</string>
     <string name="info_send_xmrto_query">Αίτηση &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Μπορείς να στείλεις %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i>Το <b>%5$s</b> σου δίνει ισοτιμία ανταλλαγής <b>%3$s %4$s/XMR</b> <u>αυτή τη στιγμή</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Σύνολο: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID πληρωμής ενσωματωμένο</string>
     <string name="info_prepare_tx">Προετοιμασία της συναλλαγής σου</string>
 
-    <string name="label_send_progress_xmrto_create">Δημιουργία εντολής</string>
-    <string name="label_send_progress_xmrto_query">Αίτηση εντολής</string>
     <string name="label_send_progress_create_tx">Προετοιμασά συναλλαγής Monero</string>
 
-    <string name="label_send_progress_queryparms">Αίτηση για παραμέτρους</string>
 
-    <string name="label_generic_xmrto_error">ΣΦΑΛΜΑ</string>
     <string name="text_generic_xmrto_error">Κωδικός σφάλματος: %1$d</string>
 
     <string name="text_retry">Πάτησε για να προσπαθήσεις ξανά</string>
     <string name="text_noretry_monero">Τώρα έχουμε κολλήσει εδώ!</string>
-    <string name="text_noretry">Ωχ,το %1$s φαίνεται να μην ειναι προσωρινά διαθέσιμο!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Επίσκεψη στο %1$s για υποστήριξη &amp; με εντοπισμό συναλλαγής</string>
-    <string name="label_send_btc_xmrto_key_lb">Μυστικό Κλειδί\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Μυστικό Κλειδί</string>
     <string name="label_send_btc_address">%1$s Διεύθυνση Παραλήπτη</string>
     <string name="label_send_btc_amount">Ποσό</string>
 
@@ -93,7 +72,6 @@
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>
 
-    <string name="label_daemon">Κόμβος(Δαίμονας)</string>
     <string name="status_wallet_loading">Φόρτωση Πορτοφολιού &#8230;</string>
     <string name="status_wallet_unloaded">Πορτοφόλι αποθηκεύτηκε</string>
     <string name="status_wallet_unload_failed">Η αποθήκευση του πορτοφολιού απέτυχε!</string>
@@ -115,7 +93,6 @@
     <string name="prompt_password">Κωδικός για %1$s</string>
     <string name="bad_password">Λάθος κωδικός!</string>
     <string name="bad_wallet">Το πορτοφόλι δεν υπάρχει!</string>
-    <string name="prompt_daemon_missing">Η διεύθυνση δαίμονα πρέπει να οριστεί!</string>
     <string name="prompt_wrong_net">Το πορτοφόλι δεν ταιριάζει με το επιλεγμένο δίκτυο</string>
 
     <string name="label_watchonly">(Μόνο Παρακολούθηση)</string>
@@ -125,7 +102,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s μη επιβεβαιωμένα</string>
 
-    <string name="service_description">Υπηρεσία monerujo</string>
 
     <string name="status_synced">Συγχρονισμένα:</string>
     <string name="status_remaining">Μπλοκς που απομένουν</string>

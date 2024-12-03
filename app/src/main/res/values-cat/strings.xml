@@ -30,53 +30,31 @@
 
     <string name="label_receive_info_gen_qr_code">Premi aquí per mostrar codi QR</string>
 
-    <string name="info_xmrto_enabled">Pagament amb BTC habilitat, premi aquí per més informació.</string>
     <string name="info_ledger_enabled">Ledger habilitat, premi aquí per més informació.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Heu introduït una adreça %1$s.</b><br/>
-        <i>Està a punt d\'enviar XMR i el destinatari rebrà %2$s a través del servei <b>%3$s</b> service.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Ordre %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmació Pendent</string>
     <string name="info_send_xmrto_unpaid">Pagament Pendent</string>
-    <string name="info_send_xmrto_error">Error de %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Enviats!</string>
     <string name="info_send_xmrto_query">Consultant &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>You can send %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> està oferint una tasa de canvi de <b>%3$s %4$s/XMR</b> <u>en aquest moment</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Balanç: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID de pagment integrat</string>
     <string name="info_prepare_tx">Preparant la seva transacció</string>
 
-    <string name="label_send_progress_xmrto_create">Creant ordre</string>
-    <string name="label_send_progress_xmrto_query">Consultant ordre</string>
     <string name="label_send_progress_create_tx">Preparant transacció Monero</string>
 
-    <string name="label_send_progress_queryparms">Consultant paràmetres</string>
-
-    <string name="label_generic_xmrto_error">ERROR</string>
     <string name="text_generic_xmrto_error">Codi: %1$d</string>
 
     <string name="text_retry">Premi aquí per tornar-ho a intentar</string>
     <string name="text_noretry_monero">Vatua l\'olla! Sembla ser que estem encallats!</string>
-    <string name="text_noretry">Ups, sembla que %1$s no està disponible ara mateix!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Canvi: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visita %1$s per suport i seguiment</string>
-    <string name="label_send_btc_xmrto_key_lb">Clau secreta\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">Clau secreta %1$s</string>
     <string name="label_send_btc_address">Adreça %1$s de destí</string>
     <string name="label_send_btc_amount">Quantitat</string>
 
@@ -136,7 +114,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s sense confirmar</string>
 
-    <string name="service_description">Servei de monerujo</string>
 
     <string name="status_synced">Sincronitzat:</string>
     <string name="status_remaining">Blocs restants</string>
@@ -148,7 +125,6 @@
     <string name="label_copy_address">Adreça Pública</string>
     <string name="label_copy_xmrtokey">Clau</string>
     <string name="message_copy_viewkey">Clau de visualització copiada al porta-retalls!</string>
-    <string name="message_copy_xmrtokey">Clau copiada al porta-retalls!</string>
     <string name="message_copy_address">Adreça del portamonedes copiada al porta-retalls!</string>
     <string name="message_copy_txid">ID de transacció copiada al porta-retalls!</string>
     <string name="message_nocopy">S\'ha inhabilitat la funció de copiar per raons de seguretat!</string>

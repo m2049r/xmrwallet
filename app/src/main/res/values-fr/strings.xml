@@ -33,54 +33,33 @@
 
     <string name="label_receive_info_gen_qr_code">Toucher pour le QR Code</string>
 
-    <string name="info_xmrto_enabled">Paiement BTC activé, tapez pour plus d\'infos.</string>
     <string name="info_ledger_enabled">Ledger activé, tapez pour plus d\'infos.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Vous avez entré une adresse %1$s.</b><br/>
-        <i>Vous envoyez des XMR et le destinataire recevra des %2$s via le service <b>%3$s</b>.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Ordres %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">En Attente de Confirmation</string>
     <string name="info_send_xmrto_unpaid">En Attente de Paiement</string>
-    <string name="info_send_xmrto_error">Erreur %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Envoyé !</string>
     <string name="info_send_xmrto_query">Interrogation &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Vous pouvez envoyer %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> vous donne un taux de change de <b>%3$s %4$s/XMR</b> <u>actuellement</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Solde : %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID de Paiement intégré</string>
     <string name="info_prepare_tx">Préparation de votre transaction</string>
 
-    <string name="label_send_progress_xmrto_create">Création de l\'ordre</string>
-    <string name="label_send_progress_xmrto_query">Interrogation de l\'ordre</string>
     <string name="label_send_progress_create_tx">Préparation de la Transaction Monero</string>
 
-    <string name="label_send_progress_queryparms">Interrogation des paramètres</string>
 
-    <string name="label_generic_xmrto_error">ERREUR</string>
     <string name="text_generic_xmrto_error">Code : %1$d</string>
 
     <string name="text_retry">Touchez pour réessayer</string>
     <string name="text_noretry_monero">Maintenant on est coincé ici !</string>
-    <string name="text_noretry">Oh-oh, %1$s n\'a pas l\'air disponible pour le moment !</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Taux : %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visitez %1$s pour l\'assistance &amp; le suivi</string>
-    <string name="label_send_btc_xmrto_key_lb">Clef Secrète\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">Clef Secrète %1$s</string>
     <string name="label_send_btc_address">Adresse %1$s Destination</string>
     <string name="label_send_btc_amount">Montant</string>
 
@@ -101,7 +80,6 @@
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
-    <string name="label_daemon">Nœud</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
@@ -129,7 +107,6 @@
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_saved_password">Mot de passe sauvegardé incorrect.\nVeuillez entrer le mot de passe manuellement.</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
-    <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
 
     <string name="label_watchonly">(Audit)</string>
@@ -139,7 +116,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confirmés</string>
 
-    <string name="service_description">Service monerujo</string>
 
     <string name="status_synced">Synchronisé :</string>
     <string name="status_remaining">Blocs restant</string>
@@ -314,7 +290,7 @@
 
     <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
 
-    <string name="menu_info">Montrer les secrets !</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Montrer les secrets !</string>
     <string name="menu_streetmode">Mode Urbain</string>
 
     <string name="info_nodes_enabled">Nœud-tomatiC activé, tapez pour plus d\'infos.</string>

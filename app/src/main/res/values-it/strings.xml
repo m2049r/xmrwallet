@@ -30,54 +30,33 @@
 
     <string name="label_receive_info_gen_qr_code">Tocca per il codice QR</string>
 
-    <string name="info_xmrto_enabled">Pagamento BTC abilitato, tocca per maggiori informazioni.</string>
     <string name="info_ledger_enabled">Ledger abilitato, tocca per maggiori informazioni.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Hai inserito un indirizzo %1$s.</b><br/>
-        <i>Invierai XMR e il destinatario riceverà %2$s tramite il servizio <b>%3$s</b>.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">Ordine %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">In attesa di conferma</string>
     <string name="info_send_xmrto_unpaid">In attesa del pagamento</string>
-    <string name="info_send_xmrto_error">Errore %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Inviati!</string>
     <string name="info_send_xmrto_query">Richiedendo &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Puoi inviare %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> ti sta <u>attualmente</u> concedendo un tasso di cambio di <b>%3$s %4$s/XMR</b></i>.
-    ]]></string>
 
     <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID pagamento integrato</string>
     <string name="info_prepare_tx">Preparando la tua transazione</string>
 
-    <string name="label_send_progress_xmrto_create">Creando l\'ordine</string>
-    <string name="label_send_progress_xmrto_query">Richiedendo l\'ordine</string>
     <string name="label_send_progress_create_tx">Preparando la transazione Monero</string>
 
-    <string name="label_send_progress_queryparms">Richiedendo i parametri</string>
 
-    <string name="label_generic_xmrto_error">ERRORE</string>
     <string name="text_generic_xmrto_error">Codice: %1$d</string>
 
     <string name="text_retry">Tocca per riprovare</string>
     <string name="text_noretry_monero">Ora siamo bloccati qui!!</string>
-    <string name="text_noretry">Oh Oh, %1$s sembra non essere disponibile in questo momento!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Tasso: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visita %1$s per supporto e tracciamento</string>
-    <string name="label_send_btc_xmrto_key_lb">Chiave segreta\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">Chiave segreta %1$s</string>
     <string name="label_send_btc_address">Indirizzo %1$s di destinazione</string>
     <string name="label_send_btc_amount">Ammontare</string>
 
@@ -98,7 +77,6 @@
     <string name="changepw_failed">Modifica password fallita!</string>
     <string name="changepw_success">Password cambiata</string>
 
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Caricando portafoglio &#8230;</string>
     <string name="status_wallet_unloaded">Portafoglio salvato</string>
     <string name="status_wallet_unload_failed">Salvataggio portafoglio fallito!</string>
@@ -126,7 +104,6 @@
     <string name="bad_password">Password errata!</string>
     <string name="bad_saved_password">La password salvata è scorretta.\nInserisci la password manualmente.</string>
     <string name="bad_wallet">Il portafoglio non esiste!</string>
-    <string name="prompt_daemon_missing">Deve essere impostato l\'indirizzo del Daemon!</string>
     <string name="prompt_wrong_net">Il portafoglio non si abbina con la rete selezionata</string>
 
     <string name="label_watchonly">(solo-visualizzazione)</string>
@@ -136,7 +113,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confermati</string>
 
-    <string name="service_description">Servizio monerujo</string>
 
     <string name="status_synced">Sincronizzati:</string>
     <string name="status_remaining">Blocchi rimanenti</string>
@@ -364,7 +340,6 @@
     <string name="onboarding_seed_title">Tieni al sicuro il tuo seed</string>
     <string name="onboarding_seed_information">Il seed permette l\'accesso al portafogli a chiunque lo abbia. Se lo perdi, non possiamo aiutarti a recuperarlo.</string>
     <string name="onboarding_xmrto_title">Invia altre crypto</string>
-    <string name="onboarding_xmrto_information">Monerujo supporta exchange. Copia o scansiona un indirizzo BTC, LTC, ETH, TRXUSDT o SOL per inviare una di queste crypto spendendo XMR.</string>
     <string name="onboarding_nodes_title">Nodi, a modo tuo</string>
     <string name="onboarding_nodes_information">I nodi ti connettono alla rete di Monero. Scegli tra i vari nodi pubblici oppure usa il tuo.</string>
     <string name="onboarding_fpsend_title">Invia con impronta</string>

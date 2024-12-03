@@ -30,53 +30,32 @@
 
     <string name="label_receive_info_gen_qr_code">Tuŝu por QR-kodo</string>
 
-    <string name="info_xmrto_enabled">BTC-pago permesita, frapetu por detaloj.</string>
     <string name="info_ledger_enabled">Ledger permesita, frapetu por detaloj.</string>
-
-    <string name="info_xmrto"><![CDATA[
-        <b>Vi entajpis %1$s-adreson.</b><br/>
-        <i>Vi sendos XMR-on, kaj per la<b>%3$s</b>-servo, la ricevanto havos %2$s-on.</i>
-    ]]></string>
-
-    <string name="info_send_xmrto_success_order_label">mendo al %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Konfirmo okazonta</string>
     <string name="info_send_xmrto_unpaid">Pago okazonta</string>
-    <string name="info_send_xmrto_error">%1$s eraro (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s sendiĝis!</string>
     <string name="info_send_xmrto_query">Informpetante &#8230;</string>
 
-    <string name="info_send_xmrto_parms"><![CDATA[
-        <b>Vi povas sendi %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>%5$s</b> proponas al vi tiun kurzon: <b>%3$s %4$s/XMR</b> <u>nun</u></i>.
-    ]]></string>
 
     <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Paga-ID integriĝis</string>
     <string name="info_prepare_tx">Preparante vian transakcion</string>
 
-    <string name="label_send_progress_xmrto_create">Kreante mendon</string>
-    <string name="label_send_progress_xmrto_query">Petante mendon </string>
     <string name="label_send_progress_create_tx">Preparante la Monero-transakcion</string>
 
-    <string name="label_send_progress_queryparms">Petante la parametrojn</string>
 
-    <string name="label_generic_xmrto_error">ERARO</string>
     <string name="text_generic_xmrto_error">kodo: %1$d</string>
 
     <string name="text_retry">Tuŝu por reprovi</string>
     <string name="text_noretry_monero">Ni blokiĝis ĉi tie!</string>
-    <string name="text_noretry">Uh-oh, ŝajne %1$s ne disponas momente!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(kurzo: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Vizitu %1$s por helpo kaj sekvado</string>
-    <string name="label_send_btc_xmrto_key_lb">Sekreta ŝlosilo\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s sekreta ŝlosilo</string>
     <string name="label_send_btc_address">Ricevanta %1$s-adreso</string>
     <string name="label_send_btc_amount">Kvanto</string>
 
@@ -97,7 +76,6 @@
     <string name="changepw_failed">Pasvortŝanĝo malsukcesis!</string>
     <string name="changepw_success">Pasvortŝanĝo sukcesis!</string>
 
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Ŝarĝante la monujon &#8230;</string>
     <string name="status_wallet_unloaded">La monujo konserviĝis</string>
     <string name="status_wallet_unload_failed">La monujkonservoo malsukcesis!</string>
@@ -136,7 +114,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nekonfirmite</string>
 
-    <string name="service_description">monerujo Servo</string>
 
     <string name="status_synced">Sinkronizas:</string>
     <string name="status_remaining">Restaj blokoj</string>
