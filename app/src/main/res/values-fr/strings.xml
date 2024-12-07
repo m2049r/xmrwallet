@@ -216,7 +216,6 @@
     <string name="send_send_label">Dépenser mes beaux Moneroj</string>
     <string name="send_send_timed_label">Dépenser mes beaux Moneroj (%1$s)</string>
     <string name="send_qr_invalid">Pas un Code QR</string>
-    <string name="send_qr_invalid">QR Code invalide</string>
     <string name="send_qr_address_invalid">QR code de paiement invalide</string>
     <string name="send_address_invalid">Adresse invalide</string>
     <string name="send_address_not_openalias">L\'adresse OpenAlias n\'est pas disponible</string>
