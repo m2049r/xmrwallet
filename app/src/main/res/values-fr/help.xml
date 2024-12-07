@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fr">
     <string name="help_create_new"><![CDATA[
         <h1>Créer un Portefeuille - Nouveau</h1>
         <p>Si vous avez besoin d’une nouvelle adresse Monero !</p>
@@ -31,6 +31,20 @@
         <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
         champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
         Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
+        n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
+    ]]></string>
+
+    <string name="help_create_ledger"><![CDATA[
+        <h1>Créer un Portefeuille - Ledger</h1>
+        <p>Vous voulez restaurer votre portefeuille depuis votre Ledger Nano S.</p>
+        <p>Vos clefs privées ne quittent jamais votre Ledger, donc vous devrez le connecter
+        à chaque fois que vous voudrez accéder à votre portefeuille.</p>
+        <p>Entrez un nom de portefeuille unique et un mot de passe. Le mot de passe est utilisé pour
+        sécuriser les données de votre portefeuille sur votre appareil Android. Utilisez un mot de passe
+        fort, ou mieux, utilisez une phrase de sécurité.</p>
+        <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
+        champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
+        Si vous n\'êtes pas sûr, entrez une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
 
@@ -158,67 +172,18 @@
             <li>une adresse OpenAlias pour XMR ou BTC</li>
             <li>une adresse BTC</li>
         </u>
-        Notez que l’envoi de BTC est traité à travers le service SideShift.ai (voir https://sideshift.ai pour
-        plus de détails). Voir la rubrique sur l’envoi de BTC plus bas.</p>
-        <h1>Envoyer des BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai est un service tierce-partie qui agit comme un change depuis Monero vers Bitcoin.
-        Nous utilisons l’API SideShift.ai pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
-        consulter https://sideshift.ai et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
-        n’est pas affiliée à SideShift.ai et ne peut pas vous aider concernant leurs services.</p>
-        <h2>Taux de change SideShift.ai<h2>
-        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive SideShift.ai. Cela
-        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
-        n’est pas garanti à ce stade.</p>
-        <h2>Ordre SideShift.ai<h2>
-        <p>Sur l’écran \"Confirmation\", vous verrez l’ordre SideShift.ai actuel. Cet ordre est valide pour
-        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
-        de change peut être différent du taux indicatif de l’écran précédent.</p>
-        <h2>Clef Secrète SideShift.ai<h2>
-        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
-        SideShift.ai peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
-        de SideShift.ai.</p>
-        <h2>Compte à Rebours SideShift.ai !</h2>
-        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
-        SideShift.ai en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
+        	</p>
+        <h2>Conversion des XMR</h2>
+        <p>La conversion vers une autre cryptomonnaie est traitée par un service d\'échange externe. Monerujo ne fait pas fonctionner ni n'est associé avec ces tierces parties et ne peut donc pas vous aider au sujet de ces services, mais vous fournira les informations nécessaires pour obtenir une prise en charge de leur part.</p>
+		<p>Ajoutez simplement une adresse correspondante ou choisissez la monnaie désirée en touchant son icône.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
-        <h1>Envoyer des BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai est un service tierce-partie qui agit comme un change depuis Monero vers Bitcoin.
-        Nous utilisons l’API SideShift.ai pour intégrer les paiements Bitcoin dans Monerujo. Veuillez
-        consulter https://sideshift.ai et décidez vous-même si vous souhaitez l’utiliser. L’équipe Monerujo
-        n’est pas affiliée à SideShift.ai et ne peut pas vous aider concernant leurs services.</p>
-        <h2>Taux de change SideShift.ai<h2>
-        <p>Sur l’écran \"Montant\" vous seront indiqué les paramètres actuels du serive SideShift.ai. Cela
-        inclus le taux de change actuel, ainsi que les limites BTC hautes et basses. Notez que ce taux
-        n’est pas garantit à ce stade.</p>
-        <h2>Ordre SideShift.ai<h2>
-        <p>Sur l’écran \"Confirmation\", vous verrez l’ordre SideShift.ai actuel. Cet ordre est valide pour
-        un temps limité - vous pouvez remarquer le compte à rebours sur le bouton \"Dépenser\". Ce taux
-        de change peut être différent du taux indicatif de l’écran précédent.</p>
-        <h2>Clef Secrète SideShift.ai<h2>
-        <p>Comme Monerujo ne traite que le volet Monero de votre transaction, votre clef secrète
-        SideShift.ai peut être utilisée pour suivre le volet Bitcoin de votre ordre sur la page d’accueil
-        de SideShift.ai.</p>
-        <h2>Compte à Rebours SideShift.ai !</h2>
-        <p>Une fois que le compte à rebours atteint zéro, vous devrez obtenir un nouveau devis depuis
-        SideShift.ai en retournant à l’étape précédente puis en revenant à l’écran \"Confirmation\".</p>
-    ]]></string>
-
-    <string name="help_create_ledger"><![CDATA[
-        <h1>Créer un Portefeuille - Ledger</h1>
-        <p>Vous voulez restaurer votre portefeuille depuis votre Ledger Nano S.</p>
-        <p>Vos clefs privées ne quittent jamais votre Ledger, donc vous devrez le connecter
-        à chaque fois que vous voudrez accéder à votre portefeuille.</p>
-        <p>Entrez un nom de portefeuille unique et un mot de passe. Le mot de passe est utilisé pour
-        sécuriser les données de votre portefeuille sur votre appareil Android. Utilisez un mot de passe
-        fort, ou mieux, utilisez une phrase de sécurité.</p>
-        <p>Entrez le numéro du bloc de la première transaction utilisée pour cette adresse dans le
-        champ \"Hauteur de restauration\". Vous pouvez également utiliser une date au format AAA-MM-JJ.
-        Si vous n\'êtes pas sûr, entrez une date / hauteur de bloc approximative <em>avant</em> que vous
-        n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
+        <h1>Conversion des XMR</h1>
+        <h2>Montants<h2>
+        <p>Entrez le montant de cryptomonnaies que vous souhaitez envoyer dans le champ \"Montant\". Par défaut, il vous montrera le montant en XMR à envoyer depuis votre porte-monnaie. Vous pouvez choisir une cryptomonnaie différente depuis le menu déroulant si vous souhaitez fixer le montant avec cette monnaie. Monerujo utilise un taux fixe, donc à la fin du processus vous devriez obtenir le montant exact que vous spécifiez ici.</p>
+		<h2>Taux d\'échange</h2>
+        <p>Ci-dessous vous verrez le taux actuel fourni par le service d\'échange, avec leurs limites basse et haute. Veuillez noter que ce taux n\'est aps garanti à ce stade, il sera réglé au moment où votre transaction est prête à être approuvée sur l\'écran suivant.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -349,10 +314,19 @@
         <h3>Sur sidekick :</h3>
         Si monerujo a demandé l\'autorisation, vous devriez voir un dialogue qui affiche les détails de la transaction tels que le montant et les frais. Vous verrez également deux options, pour l\'ACCEPTER ou la REFUSER. Choisissez judicieusement.
 
-
         <h3>Sur monerujo :</h3>
         La transaction devrait être signée et prête à être envoyée. Appuyez pour la réaliser.
          <br/>
     ]]></string>
 
+    <string name="help_create_sidekick" translatable="false"><![CDATA[
+        <h1>Create Wallet - Sidekick</h1>
+        <p>You want to recover your wallet from your awesome Sidekick device.</p>
+        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
+        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
+        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
+        <p>Enter the block number of the first transaction used for this address in the
+        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
+        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
+    ]]></string>
 </resources>

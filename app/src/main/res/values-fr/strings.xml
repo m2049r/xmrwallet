@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fr">
+    <string name="app_name" translatable="false">monerujo</string>
     <string name="wallet_activity_name">Portefeuille</string>
 
     <string name="menu_about">À Propos</string>
@@ -9,6 +10,7 @@
     <string name="menu_help">Aide</string>
     <string name="menu_receive">Recevoir</string>
     <string name="menu_rename">Renommer</string>
+    <string name="menu_delete">Effacer</string>
     <string name="menu_backup">Sauvegarder</string>
     <string name="menu_changepw">Modifier Phrase secrète</string>
     <string name="menu_back">Précédent</string>
@@ -44,7 +46,6 @@
     <string name="info_send_xmrto_success_order_label">Ordres SideShift.ai</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
 
     <string name="info_send_xmrto_paid">En Attente de Confirmation</string>
     <string name="info_send_xmrto_unpaid">En Attente de Paiement</string>
@@ -97,16 +98,20 @@
 
     <string name="backup_success">Sauvegarde réussie</string>
     <string name="backup_failed">Sauvegarde Échouée !</string>
+    <string name="delete_failed">Échec de l\'effacement !</string>
     <string name="rename_failed">Renommage Échoué !</string>
     <string name="changepw_failed">Modification du mot de passe Échouée !</string>
     <string name="changepw_success">Modification du mot de passe réussie</string>
 
-    <string name="label_daemon">Nœud</string>
+    <string name="label_daemon">Réseau</string>
+    <string name="connect_stagenet" translatable="false">Stagenet</string>
+    <string name="connect_testnet" translatable="false">Testnet</string>
     <string name="status_wallet_loading">Chargement du Portefeuille &#8230;</string>
     <string name="status_wallet_unloaded">Portefeuille Sauvegardé</string>
     <string name="status_wallet_unload_failed">Sauvegarde du Portefeuille Échouée !</string>
     <string name="status_wallet_connecting">Connexion &#8230;</string>
     <string name="status_wallet_connect_failed">Connexion au nœud échouée !\nVérifiez utilisateur/mot de passe</string>
+    <string name="status_wallet_connect_wrongversion">Version du nœud incompatible - veuillez mettre à jour !</string>
     <string name="status_wallet_node_invalid">Nœud invalide !\nEssayez un autre.</string>
     <string name="status_wallet_connect_ioex">Nœud injoignable !\nEssayez à nouveau ou un autre.</string>
 
@@ -192,6 +197,8 @@
     <string name="generate_wallet_type_new">Nouveau</string>
     <string name="generate_wallet_type_seed">Phrase Mnémonique</string>
     <string name="generate_wallet_type_view">Audit</string>
+    <string name="generate_wallet_type_ledger" translatable="false">Ledger</string>
+    <string name="generate_wallet_type_sidekick" translatable="false">Sidekick</string>
 
     <string name="generate_address_hint">Adresse Publique</string>
     <string name="generate_viewkey_hint">Clef d\'audit</string>
@@ -213,9 +220,14 @@
     <string name="send_generate_paymentid_hint">Générer</string>
     <string name="send_send_label">Dépenser mes beaux Moneroj</string>
     <string name="send_send_timed_label">Dépenser mes beaux Moneroj (%1$s)</string>
+    <string name="send_qr_invalid">Pas un Code QR</string>
     <string name="send_qr_invalid">QR Code invalide</string>
     <string name="send_qr_address_invalid">QR code de paiement invalide</string>
     <string name="send_address_invalid">Adresse invalide</string>
+    <string name="send_address_not_openalias">L\'adresse OpenAlias n\'est pas disponible</string>
+    <string name="send_address_openalias">OpenAlias securisé &#x2714;</string>
+    <string name="send_address_resolve_openalias">Résolution de l\'OpenAlias&#8230;</string>
+    <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse peut être usurpée</string>
     <string name="send_title">Envoi</string>
     <string name="send_available">Solde : %1$s XMR</string>
     <string name="send_address_title">Adresse</string>
@@ -257,6 +269,7 @@
     <string name="tx_failed">ÉCHOUÉ</string>
 
     <string name="receive_amount_hint">Montant</string>
+    <string name="receive_desc_hint">Description (optionnelle)</string>
     <string name="receive_cannot_open">Ouverture du portefeuille impossible !</string>
 
     <string name="receive_amount_too_big">Max. %1$s</string>
@@ -279,6 +292,9 @@
     <string name="fab_restore_key">Restaurer depuis la clef privée</string>
     <string name="fab_restore_seed">Restaurer depuis la phrase mnémonique</string>
 
+    <string name="accounts_balance" translatable="false">%1$s XMR</string>
+    <string name="tx_account_formatted" translatable="false">(%1$d, %2$d) &nbsp;&lt;span style=\"background-color: #%3$s; color: #%4$s;\"&gt;&nbsp;%5$s&nbsp;&lt;/span&gt;</string>
+
     <string name="accounts_drawer_new">Créer un Compte</string>
     <string name="accounts_new">Nouveau Compte #%1$d ajouté</string>
     <string name="tx_account">Compte #</string>
@@ -286,6 +302,9 @@
     <string name="send_sweepall">Envoyer tous les fonds confirmés sur ce compte !</string>
     <string name="tx_subaddress">Sous-adresse</string>
     <string name="generate_address_label_sub">Sous-adresse publique #%1$d : %2$s</string>
+
+    <string name="menu_language">Langue</string>
+    <string name="language_system_default">Utiliser la langue du système</string>
 
     <string name="fab_restore_ledger">Restaurer depuis Ledger Nano</string>
 
@@ -302,20 +321,12 @@
     <string name="toast_ledger_attached">%1$s connecté</string>
     <string name="toast_ledger_detached">%1$s déconnecté</string>
 
-    <string name="menu_language">Langue</string>
-    <string name="language_system_default">Utiliser la Langue du Système</string>
-
-    <string name="receive_desc_hint">Description (optionnelle)</string>
-
-    <string name="send_address_not_openalias">Adresse OpenAlias indisponible</string>
-    <string name="send_address_openalias">Sécurisé OpenAlias &#x2714;</string>
-    <string name="send_address_resolve_openalias">Résolution OpenAlias&#8230;</string>
-    <string name="send_address_no_dnssec">OpenAlias sans DNSSEC - l\'adresse pourrait être usurpée !</string>
-
-    <string name="status_wallet_connect_wrongversion">Version du Nœud incompatible - merci de mettre à jour !</string>
+    <string name="unknown_amount" translatable="false">\?\?\?</string>
 
     <string name="menu_info">Montrer les secrets !</string><!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Mode Urbain</string>
+
+    <string name="node_wrong_net" translatable="false">Node scanning only for mainnet!</string>
 
     <string name="info_nodes_enabled">Nœud-tomatiC activé, tapez pour plus d\'infos.</string>
     <string name="node_height">Dernier bloc mis à jour : %1$s</string>
@@ -335,7 +346,7 @@
     <string name="node_general_error">ERREUR DE CONNEXION</string>
     <string name="node_auth_error">ÉCHEC D\'AUTHENTIFICATION</string>
     <string name="node_result_label">Résultat du test :</string>
-    <string name="node_result">Hauteur : %1$s (v%2$d), Ping : %3$.0fms, IP : %4$s</string>
+    <string name="node_result">Hauteur : %1$s (v%2$d), Ping : %3$.0f ms, IP : %4$s</string>
     <string name="node_testing">Test de l\'IP : %1$s &#8230;</string>
     <string name="node_refresh_wait">Patientez jusqu\'à la fin de la recherche</string>
     <string name="node_create_hint">Toucher pour sélectionner ou ajouter des nœuds</string>
@@ -354,6 +365,8 @@
     <string name="prompt_ledger_phrase">Mot de passe Ledger (optionnel)</string>
     <string name="bad_ledger_seed">Phrase mnémonique Ledger invalide !</string>
     <string name="prompt_ledger_seed_warn">Saisir votre phrase mnémonique Ledger ici est un risque majeur de sécurité !</string>
+
+    <string name="label_account" translatable="false">%1$s (%2$s)</string>
 
     <string name="label_restoreheight">Hauteur de restauration</string> <!-- Restore Height -->
 
@@ -409,6 +422,16 @@
         <b>Veuillez entrer ou analyser une adresse Monero.</b>
     ]]></string>
 
+    <string name="tx_item_transition_name" translatable="false">tx_transition_%1$s</string>
+    <string name="tx_details_transition_name" translatable="false">tx_transition</string>
+    <string name="subaddress_item_transition_name" translatable="false">subaddress_transition_%1$d</string>
+    <string name="subaddress_info_transition_name" translatable="false">subaddress_transition</string>
+    <string name="subaddress_txinfo_transition_name" translatable="false">subaddress_txinfo_transition</string>
+
+    <string name="tx_details_notes" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;%4$s</string>
+    <string name="receive_subaddress" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;&nbsp;%3$s&nbsp;&lt;/span&gt;&nbsp;&nbsp;%4$s</string>
+    <string name="subbaddress_info_subtitle" translatable="false">#%1$d: %2$s</string>
+
     <string name="subbaddress_title">Sous-adresses</string>
     <string name="subbaddress_name_hint">Nom de la sous-adresse</string>
     <string name="max_subaddress_warning">Trop d\'adresse non utilisées - utilisez-en certaines pour permettre d\'en créer davantage !</string>
@@ -419,14 +442,13 @@
     <string name="subaddress_details_hint">Appuyez longtemps pour les détails</string>
     <string name="subaddress_add">Ajouter une sous-adresse</string>
 
-    <string name="menu_delete">Effacer</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Échec de l\'effacement!</string>
-
     <string name="menu_restore">Importer le porte-monnaie</string>
     <string name="restore_failed">Échec de l\'importation !</string>
 
     <string name="menu_deletecache">Réinitialiser le porte-monnaie !</string>
     <string name="deletecache_alert_message">Ce porte-monnaie sera réinitialisé, perdant toutes les données qui ne sont pas sur la chaîne (telles que les notes, les noms des comptes et des sous-adresses, les clefs des transactions privées &#8230;) ! Utilisez ceci SEULEMENT si le porte-monnaie est corrompu et ne se charge pas !</string>
+
+    <string name="status" translatable="false">&lt;span style=\"background-color: #%1$s; color: #%2$s;\"&gt;%3$s&lt;/span&gt;%4$s</string>
 
     <string name="node_tor_error">Tor requis</string>
     <string name="node_waiting">\u00A0EN ATTENTE POUR LE NŒUD\u00A0</string>
@@ -436,6 +458,15 @@
 
     <string name="label_seed_offset_encrypt">Chiffrement de la phrase mnémonique (EXPÉRIMENTAL)</string>
     <string name="seed_offset_hint">Phrase d\'offset de la phrase mnémonique (optionnelle)</string>
+
+    <string name="preferred_theme" translatable="false">preferred_theme</string>
+    <string name="preferred_nightmode" translatable="false">preferred_nightmode</string>
+    <string name="preferred_locale" translatable="false">preferred_locale</string>
+    <string name="preferred_lock" translatable="false">preferred_lock</string>
+    <string name="preferred_stickyfiat" translatable="false">preferred_stickyfiat</string>
+    <string name="about_info" translatable="false">about_info</string>
+    <string name="privacy_info" translatable="false">privacy_info</string>
+    <string name="credits_info" translatable="false">credits_info</string>
 
     <string name="menu_settings">Réglages</string>
     <string name="title_iface">Interface</string> <!-- like: User Intreface -->
@@ -452,6 +483,11 @@
 
     <string name="tx_locked">Montant de la transaction bloqué jusqu\'au bloc %1$d (dans %2$d blocs ≈ %3$,.2f jours)</string>
 
+    <string name="label_streetmode">Mode urbain activé\nSeules les nouvelles transactions seront affichées</string>
+
+    <string name="pocketchange_title" translatable="false">PocketChange</string>
+    <string name="pocketchange_amount" translatable="false">%1$3.1f XMR</string>
+    <string name="pocketchange_tx_detail" translatable="false">PocketChange +%1$s</string>
 
     <string name="pocketchange_info">Pour réduire le temps d\'attente lors des dépenses répétées, Monerujo peut créer de la monnaie au prix de frais supplémentaires. Je vais essayer de créer et de maintenir au moins 6 pièces du montant sélectionné.</string>
     <string name="pocketchange_create_title">Create Change</string>
@@ -460,6 +496,7 @@
 
     <string name="setting_lock">Verrouiller le porte-monnaie en arrière-plan</string>
 
+    <string name="label_bluetooth" translatable="false">Bluetooth</string>
     <string name="menu_bluetooth">Connecter Sidekick</string>
     <string name="bluetooth_select_label">Sélectionner l\'appareil Sidekick</string>
 
@@ -476,4 +513,8 @@
     <string name="open_wallet_sidekick_missing">Veuillez connecter l\'appareil Sidekick</string>
     <string name="fab_restore_sidekick">Restaurer depuis Sidekick</string>
     <string name="sidekick_connected">Sidekick connecté</string>
+
+    <string name="setting_stickyfiat">Fiat collant</string>
+    <string name="setting_stickyfiat_summary">Se souvenir de la dernière devise fiat utilisée</string>
+    <string name="preferred_stickyfiat_pref" translatable="false">preferred_stickyfiat_pref</string>
 </resources>
