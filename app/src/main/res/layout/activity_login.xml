@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <com.m2049r.xmrwallet.widget.Toolbar
-        style="@style/MonerujoToolbar"
         android:id="@+id/toolbar"
+        style="@style/MonerujoToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/backgound_toolbar_mainnet"
