@@ -5,7 +5,7 @@
         <p>Si vous avez besoin d’une nouvelle adresse Monero !</p>
         <p>Entrez un nom et un mot de passe unique pour le portefeuille.
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
-        Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
+        Utilisez un mot de passe fort – mieux, utilisez une phrase secrète.</p>
         <h2>Notez votre phrase Mnémonique !</h2>
         <p>Sur l’écran suivant vous trouverez les 25 mots de votre \"Phrase Mnémonique\".
         C’est la seule donnée nécessaire pour récupérer votre portefeuille ultérieurement
@@ -155,7 +155,7 @@
         sur un explorateur de la chaîne de blocs Monero comme <a href="https://xmrchain.net/">https://xmrchain.net/</a>
         <h2>Clef TX (Clef de Transaction)</h2>
         C’est la clef privée de votre transaction, conservez là en sécurité car la révéler à un
-        tiers révèlerait quelle signature est la votre dans un cercle, et donc rendrait votre
+        tiers révélerait quelle signature est la vôtre dans un cercle, et donc rendrait votre
         transaction transparente.
         <h2>Bloc</h2>
         C’est le bloc dans lequel votre transaction a été insérée.
@@ -183,7 +183,7 @@
         <h2>Montants<h2>
         <p>Entrez le montant de cryptomonnaies que vous souhaitez envoyer dans le champ \"Montant\". Par défaut, il vous montrera le montant en XMR à envoyer depuis votre porte-monnaie. Vous pouvez choisir une cryptomonnaie différente depuis le menu déroulant si vous souhaitez fixer le montant avec cette monnaie. Monerujo utilise un taux fixe, donc à la fin du processus vous devriez obtenir le montant exact que vous spécifiez ici.</p>
 		<h2>Taux d\'échange</h2>
-        <p>Ci-dessous vous verrez le taux actuel fourni par le service d\'échange, avec leurs limites basse et haute. Veuillez noter que ce taux n\'est aps garanti à ce stade, il sera réglé au moment où votre transaction est prête à être approuvée sur l\'écran suivant.</p>
+        <p>Ci-dessous vous verrez le taux actuel fourni par le service d\'échange, avec leurs limites basse et haute. Veuillez noter que ce taux n\'est pas garanti à ce stade, il sera réglé au moment où votre transaction est prête à être approuvée sur l\'écran suivant.</p>
     ]]></string>
 
     <string name="help_wallet"><![CDATA[
@@ -228,7 +228,7 @@
         du dernier bloc connu par chaque nœud est indiqué en dessous du nom du nœud. Une icône
         représenant le comportement de réponse du nœud
         (qui indique le niveau de connectivité à escompter)
-        est affiché à coté de chaque nœud.</p>
+        est affiché à côté de chaque nœud.</p>
         <p>N’importe quel nœud de la liste peut être ajouté aux favoris pour un usage ultérieur.
         Les nœuds qui ne sont pas en favoris seront oubliés.<p>
         <p>Monerujo choisira le nœud optimal parmi les favoris à chaque fois que vous l’utiliserez.
@@ -241,10 +241,10 @@
         d’entrer les détails du nœud dans la boite de dialogue suivante.
         L’&quot;Adresse&quot; est le nom d’hôte ou l’adresse IP du nœud - c’est le seul
         champ obligatoire.
-        Entrer le &quot;Port&quot; si le nœud ne fonctionne pas sur un port par défaut (p.e. 18089).
+        Entrer le &quot;Port&quot; si le nœud ne fonctionne pas sur un port par défaut (p. e. 18089).
         Vous pouvez optionnellement donner un nom au nœud, afin que vous puissiez plus facilement l’identifier plus tard.
-        Certains nœuds nécessitent des identifiants pour les utiliser. Entrer les nom d’utilisateur &amp;
-        mot de passe dans les champs appropriés. Maintenant vous pouvez &quot;Tester&quot; ces paramêtres.
+        Certains nœuds nécessitent des identifiants pour les utiliser. Entrer les noms d’utilisateur &amp;
+        mots de passe dans les champs appropriés. Maintenant vous pouvez &quot;Tester&quot; ces paramètres.
         Le &quot;Résultat du test&quot; indiquera la hauteur de bloc, le temps de réponse et l’adresse IP actuellement utilisée.
         Le résultat pourrait également être une erreur - habituellement car le nom d’hôte fourni n’est
         pas joignable pendant un temps non négligeable, ou que les identifiants sont incorrects.
@@ -317,16 +317,5 @@
         <h3>Sur monerujo :</h3>
         La transaction devrait être signée et prête à être envoyée. Appuyez pour la réaliser.
          <br/>
-    ]]></string>
-
-    <string name="help_create_sidekick" translatable="false"><![CDATA[
-        <h1>Create Wallet - Sidekick</h1>
-        <p>You want to recover your wallet from your awesome Sidekick device.</p>
-        <p>Et netus et malesuada fames. Mattis enim ut tellus elementum sagittis vitae. Eget duis at
-        tellus at. Id aliquet risus feugiat in. Donec et odio pellentesque diam. Dictum fusce ut
-        placerat orci nulla. Amet nisl suscipit adipiscing bibendum est ultricies integer quis.</p>
-        <p>Enter the block number of the first transaction used for this address in the
-        field \"Restore Height\". You can also use a date in the format YYYY-MM-DD. If you are not sure,
-        enter an approximate date/blockheight <em>before</em> you first used this wallet address.</p>
     ]]></string>
 </resources>
