@@ -10,9 +10,9 @@
   <string name="menu_delete">حذف</string>
   <string name="menu_backup">نسخ احتياطي</string>
   <string name="menu_changepw">تغيير كلمة المرور</string>
-  <string name="menu_back" tools:ignore="MissingTranslation">العودة</string>
-  <string name="menu_close" tools:ignore="MissingTranslation">إغلاق</string>
-  <string name="menu_cancel" tools:ignore="MissingTranslation">إلغاء</string>
+  <string name="menu_back">العودة</string>
+  <string name="menu_close">إغلاق</string>
+  <string name="menu_cancel">إلغاء</string>
   <string name="password_weak">استمر في الكتابة ...</string>
   <string name="password_fair">متوسط...</string>
   <string name="password_good">يمكنك القيام به على نحو أفضل حاول مرة أخرى</string>
@@ -223,8 +223,8 @@
   <string name="receive_amount_too_big">الحد الأقصى. %1$s</string>
   <string name="receive_amount_negative">الحد الأدنى 0</string>
   <string name="receive_amount_nan">XMR ليس رقما</string>
-  <string name="copy_receive_address" tools:ignore="MissingTranslation">انسخ عنوان الاستلام</string>
-  <string name="paste_give_address" tools:ignore="MissingTranslation">ألصق عنوان المتلقي</string>
+  <string name="copy_receive_address">انسخ عنوان الاستلام</string>
+  <string name="paste_give_address">ألصق عنوان المتلقي</string>
   <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن.
  أنظر خلفك!</string>
   <string name="details_alert_yes">انا بآمن متابعة</string>
