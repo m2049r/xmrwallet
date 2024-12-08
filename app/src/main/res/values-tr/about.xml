@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="tr">
+    <string name="about_close">Kapat</string>
+    <string name="about_whoami">Ben Monerujo</string>
+    <string name="about_version">Sürüm %1$s (%2$d)</string>
+
+    <string name="credits_text"><![CDATA[
+        <b>Geliştiriciler</b>
+        <br/>
+        m2049r, baltsar777, anhdres, keejef,
+        rehrar, EarlOfEgo, ErCiccione et al.
+        <br/><br/>
+        <a href="https://monerujo.io/">monerujo.io</a>
+        ]]></string>
+
+    <string name="privacy_policy"><![CDATA[
+        <h1>Gizlilik Politikası</h1>
+        <p>Bu sayfa uygulamamızın (Monerujo: Monero Cüzdanı) kullanıcılarından
+        gelen kişisel bilgilerin toplanması, kullanılması ve ifşa edilmesi politikamız
+        hakkında sizi bilgilendirir.
+        </p>
+        <p>Bu uygulamayı kullanarak, bu politikaya uygun bir şekilde bilgi toplanmasını
+        ve kullanılmasını kabul edersiniz.
+        </p>
+        <h2>Toplanan Veriler</h2>
+        <p>Kişisel veri, bir kişiyi tanımlayabilecek her türlü veridir.
+        </p>
+        <p>Monero anahtarları ve herkese açık adresler uygulama tarafında muameleleri
+        işlemek için yerel olarak toplanır ve işlenir, Monero Ağına şifrelenmiş olarak
+        aktarılır.
+        </p>
+        <p>Diğer kişisel veriler uygulama tarafından toplanmaz.</p>
+        <p>Şayet dönüşüm işlevini (seçime dayalı) kullanırsanız, Monerujo dönüşüm oranını
+        coinmarketcap.com herkese açık API\'sı vasıtasıyla elde eder.
+        Taleplerinizdeki verilerin nasıl toplandığına dair ayrıntılar için gizlilik
+        politikalarını https://coinmarketcap.com/privacy sayfasında bulabilirsiniz.</p>
+        <p>Eğer uygulamayı BTC adreslerine ödeme yapmak için kullanırsanız, SideShift.ai
+        hizmetini kullanıyor olacaksınız.
+        Ayrıntılar için  https://sideshift.ai/ adresindeki gizlilik politikalarına bakın.
+        Monerujo onlara BTC hedefini ve meblağını gönderir. IP adresiniz de toplanabilecektir.</p>
+        <h2>Uygulama İzinleri</h2>
+        <ul>
+        <li>INTERNET : Monero Ağına Uzak bir Monero Düğümü vasıtasıyla bağlan</li>
+        <li>READ_EXTERNAL_STORAGE : cihazda depolanan cüzdan dosyalarını oku</li>
+        <li>WRITE_EXTERNAL_STORAGE : cihazda depolanan cüzdan dosyalarını yaz</li>
+        <li>WAKE_LOCK : cihazı eşleşme esnasında ektin tut</li>
+        <li>CAMERA : Monero almak için QR kodları tara</li>
+        </ul>
+        <h2>Bu Gizlilik Politikasına Yapılacak Değişiklikler</h2>
+        <p>Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Yeni gizlilik politikasını
+        uygulamada ve İnternet sitesinde (www.monerujo.io) yayınlayarak değişiklikler
+        mevzusunda sizi bilgilendireceğiz.
+        Değişiklikler için bu gizlilik politikasını periyodik olarak incelemeniz tavsiye edilir.
+        <p>Bu gizlilik politikası en son şu tarihte güncellenmiştir: 10 kasım 2017.
+        </p>
+        <h2>Bize Ulaşın</h2>
+        <p>Gizlilik politikamız veya verilerinizin nasıl toplandığı ve işlendiğine dair sorularınız
+        varsa lütfen privacy@monerujo.io adresine bir e-posta gönderin.
+        </p>
+        ]]></string>
+</resources>
