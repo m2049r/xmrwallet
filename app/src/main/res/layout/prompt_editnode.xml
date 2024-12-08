@@ -13,53 +13,44 @@
         android:layout_marginEnd="16dp"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etNodeHost"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/header_top"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            app:errorEnabled="true">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etNodeHost"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/MoneroEdit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
-                app:errorEnabled="true">
+                android:hint="@string/node_address_hint"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="textStart"
+                tools:text="node.supportxmr.com" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/MoneroEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/node_address_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textAlignment="textStart"
-                    tools:text="node.supportxmr.com" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etNodePort"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etNodePort"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/MoneroEdit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/MoneroEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/node_port_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textAlignment="textStart"
-                    tools:text="18089" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                android:hint="@string/node_port_hint"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="textStart"
+                tools:text="18089" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etNodeName"
@@ -125,6 +116,16 @@
                     tools:text="secret" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
+
+        <CheckBox
+            android:id="@+id/etNodeSSL"
+            android:layout_marginTop="@dimen/data_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/node_use_ssl"
+            android:checked="true"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:layout_width="match_parent"
