@@ -149,6 +149,8 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.12.0'
 
+    implementation "com.google.guava:guava:33.1.0-android"
+
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "io.github.rburgst:okhttp-digest:3.1.0"
