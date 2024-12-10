@@ -24,6 +24,11 @@
             android:defaultValue="false"
             android:key="@string/preferred_lock"
             android:title="@string/setting_lock" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/preferred_stickyfiat"
+            android:summary="@string/setting_stickyfiat_summary"
+            android:title="@string/setting_stickyfiat" />
     </PreferenceCategory>
     <PreferenceCategory app:title="@string/title_info">
         <Preference

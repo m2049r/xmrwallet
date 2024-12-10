@@ -44,6 +44,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.StickyFiatHelper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import lombok.Setter;
 import timber.log.Timber;
 
 public class ExchangeView extends LinearLayout {
@@ -173,6 +175,7 @@ public class ExchangeView extends LinearLayout {
         pbExchange = findViewById(R.id.pbExchange);
 
         setCurrencyAdapter(sCurrencyA);
+        StickyFiatHelper.setPreferredCurrencyPosition(sCurrencyA);
         setCurrencyAdapter(sCurrencyB);
 
         // make progress circle gray
@@ -441,29 +444,20 @@ public class ExchangeView extends LinearLayout {
         void onNewAmount(String xmr);
     }
 
+    @Setter
     OnNewAmountListener onNewAmountListener;
-
-    public void setOnNewAmountListener(OnNewAmountListener listener) {
-        onNewAmountListener = listener;
-    }
 
     public interface OnAmountInvalidatedListener {
         void onAmountInvalidated();
     }
 
+    @Setter
     OnAmountInvalidatedListener onAmountInvalidatedListener;
-
-    public void setOnAmountInvalidatedListener(OnAmountInvalidatedListener listener) {
-        onAmountInvalidatedListener = listener;
-    }
 
     public interface OnFailedExchangeListener {
         void onFailedExchange();
     }
 
+    @Setter
     OnFailedExchangeListener onFailedExchangeListener;
-
-    public void setOnFailedExchangeListener(OnFailedExchangeListener listener) {
-        onFailedExchangeListener = listener;
-    }
 }

@@ -39,7 +39,8 @@ public class CTextInputLayout extends TextInputLayout {
 
     @Override
     public int getBaseline() {
-        EditText editText = getEditText();
+        final EditText editText = getEditText();
+        assert editText != null;
         return editText.getBaseline() - (getMeasuredHeight() - editText.getMeasuredHeight());
     }
 }

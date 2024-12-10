@@ -34,48 +34,48 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Ai introdus o adresă de %1$s.</b><br/>
-        <i>Vei trimite XMR și destinatarul va primi %1$s folosind serviciul <b>SideShift.ai</b>.</i>
+        <i>Vei trimite XMR și destinatarul va primi %2$s folosind serviciul <b>%3$s</b>.</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">Ordin SideShift.ai</string>
+    <string name="info_send_xmrto_success_order_label">Ordin %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmare în așteptare</string>
     <string name="info_send_xmrto_unpaid">Plată în așteptare</string>
-    <string name="info_send_xmrto_error">Eroare SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_error">Eroare %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s trimis!</string>
     <string name="info_send_xmrto_query">Interogare &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Poți trimite %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> îți oferă un curs de <b>%3$s %4$s/XMR</b> <u>în acest moment</u></i>.
+        <i><b>%5$s</b> îți oferă un curs de <b>%3$s %4$s/XMR</b> <u>în acest moment</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Balanță: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Balanță: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Payment ID integrat</string>
     <string name="info_prepare_tx">Se pregătește tranzacția</string>
 
-    <string name="label_send_progress_xmrto_create">Creearea ordinului SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">Interogare ordin SideShift.ai</string>
+    <string name="label_send_progress_xmrto_create">Creearea ordinului</string>
+    <string name="label_send_progress_xmrto_query">Interogare ordin</string>
     <string name="label_send_progress_create_tx">Pregătirea tranzacției Monero</string>
 
-    <string name="label_send_progress_queryparms">Interogare parametrii SideShift.ai</string>
+    <string name="label_send_progress_queryparms">Interogare parametrii</string>
 
-    <string name="label_generic_xmrto_error">EROARE SideShift.ai</string>
+    <string name="label_generic_xmrto_error">EROARE</string>
     <string name="text_generic_xmrto_error">Cod: %1$d</string>
 
     <string name="text_retry">Atinge pentru reîncercare</string>
     <string name="text_noretry_monero">Pff.. ne-am blocat acum!</string>
-    <string name="text_noretry">Oh, serviciul SideShift.ai este momentan indisponibil!</string>
+    <string name="text_noretry">Oh, serviciul %1$s este momentan indisponibil!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rată: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Vizitează SideShift.ai pentru suport &amp; interogare</string>
-    <string name="label_send_btc_xmrto_key_lb">Cheia secretă \nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">Cheia secretă SideShift.ai </string>
+    <string name="label_send_btc_xmrto_info">Vizitează %1$s pentru suport &amp; interogare</string>
+    <string name="label_send_btc_xmrto_key_lb">Cheia secretă \n%1$s</string>
+    <string name="label_send_btc_xmrto_key">Cheia secretă %1$s</string>
     <string name="label_send_btc_address">Destinație adresă %1$s</string>
     <string name="label_send_btc_amount">Sumă</string>
 
@@ -360,7 +360,7 @@
     <string name="onboarding_seed_title">Păstrează semnătura ta în singuranță</string>
     <string name="onboarding_seed_information">Semnătura oferă accces deplin celui ce o are. Dacă o pierzi, nu te putem ajuta să o recuperezi și pierzi dulcii tăi moneroj.</string>
     <string name="onboarding_xmrto_title">Trimite Cripto</string>
-    <string name="onboarding_xmrto_information">Monerujo are integrat serviciul SideShift.ai. Doar inserează sau scanează o adresă BTC, LTC, ETH, DASH sau DOGE și vei trimite aceste monede cu XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo are integrat serviciul exchange. Doar inserează sau scanează o adresă BTC, LTC, ETH, TRXUSDT sau SOL și vei trimite aceste monede cu XMR.</string>
     <string name="onboarding_nodes_title">Noduri, cum îți dorești</string>
     <string name="onboarding_nodes_information">Nodurile te conectează la rețeaua Monero. Alege între noduri publice sau fii un cypherpunk și pornește unul propriu.</string>
     <string name="onboarding_fpsend_title">Trimite cu amprentă</string>
@@ -392,7 +392,7 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Te rugăm să introduci sau scanezi o adresă %1$s.</b><br/>
-        <i>Vei trimite XMR și destinatarul va primi %2$s folosind serviciul <b>SideShift.ai</b>.</i>
+        <i>Vei trimite XMR și destinatarul va primi %2$s folosind serviciul <b>%3$s</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -407,46 +407,4 @@
     <string name="subaddress_notx_label">Nicio tranzacție pentru această subadresă</string>
     <string name="subaddress_select_label">Selectează o subadresă</string>
     <string name="subaddress_details_hint">Atinge lung pentru detalii</string>
-
-    <string name="delete_alert_message">This wallet will be deleted. Your funds will be gone forever unless you have your seed or a working backup to recover it.</string>
-    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Delete failed!</string>
-
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
-
-    <string name="menu_deletecache">Reset wallet!</string>
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
-
-    <string name="node_tor_error">Tor required</string>
-    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
-    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
-
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
-
-    <string name="menu_settings">Settings</string>
-    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
-    <string name="title_info">Information</string>
-    <string name="setting_daynight">Day / Night</string>
-
-    <string name="setting_theme">Style</string>
-    <string-array name="themes">
-        <item>Classic</item>
-        <item>Baldaŭ</item> <!-- do not translate this one -->
-    </string-array>
-
-    <string name="message_qr_failed">Failed to create QR for sharing!</string>
-
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
-
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
-
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

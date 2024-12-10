@@ -8,7 +8,7 @@
         <b>Crediti</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
-        rehrar, EarlOfEgo et al.
+        rehrar, EarlOfEgo, ErCiccione et al.
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
@@ -27,8 +27,8 @@
         <p>Altri dati personali non sono raccolti dall\'app.</p>
         <p>Se usi la funzionalità (opzionale) del cambio, monerujo recupera il tasso di cambio attraverso le API pubbliche di coinmarketcap.com.
         Controlla la loro politica per la privacy (in lingua inglese) su https://coinmarketcap.com/privacy per conoscere i dettagli su come vengono raccolti i dati nelle tue richieste.</p>
-        <p>Se utilizzi l\'app per effettuare pagamenti ad indirizzi BTC, stai usando il servizio SideShift.ai.
-        Controlla la loro politica per la privacy (in lingua inglese) su https://sideshift.ai/ per conoscere i dettagli. Monerujo invia a loro l\'indirizzo di destinazione BTC e l\'ammontare della transazione. Anche il tuo IP potrebbe essere raccolto.</p>
+        <p>Se utilizzi l\'app per effettuare pagamenti ad indirizzi BTC, stai usando il servizio Exolix.
+        Controlla la loro politica per la privacy (in lingua inglese) su https://exolix.com/privacy per conoscere i dettagli. Monerujo invia a loro l\'indirizzo di destinazione BTC e l\'ammontare della transazione. Anche il tuo IP potrebbe essere raccolto.</p>
         <h2>Permessi app</h2>
         <ul>
         <li>INTERNET : Connessione alla rete Monero attraverso un nodo </li>

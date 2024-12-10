@@ -89,12 +89,12 @@ public class ExchangeApiImpl implements ExchangeApi {
         final NetCipherHelper.Request httpRequest = new NetCipherHelper.Request(url);
         httpRequest.enqueue(new okhttp3.Callback() {
             @Override
-            public void onFailure(final Call call, final IOException ex) {
+            public void onFailure(@NonNull final Call call, @NonNull final IOException ex) {
                 callback.onError(ex);
             }
 
             @Override
-            public void onResponse(final Call call, final Response response) throws IOException {
+            public void onResponse(@NonNull final Call call, @NonNull final Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
@@ -108,9 +108,13 @@ public class ExchangeApiImpl implements ExchangeApi {
                         }
                     } catch (JSONException ex) {
                         callback.onError(new ExchangeException(ex.getLocalizedMessage()));
+                    } finally {
+                        response.close();
                     }
                 } else {
-                    callback.onError(new ExchangeException(response.code(), response.message()));
+                    final ExchangeException ex = new ExchangeException(response.code(), response.message());
+                    response.close();
+                    callback.onError(ex);
                 }
             }
         });

@@ -35,48 +35,48 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Você colocou um endereço %1$s.</b><br/>
-        <i>Você enviará XMR e o destinatário receberá %1$s via o serviço <b>SideShift.ai</b></i>
+        <i>Você enviará XMR e o destinatário receberá %2$s via o serviço <b>%3$s</b></i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">Ordem no SideShift.ai</string>
+    <string name="info_send_xmrto_success_order_label">Ordem no %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
     <string name="info_send_xmrto_paid">Confirmação Pendente</string>
     <string name="info_send_xmrto_unpaid">Pagamento Pendente</string>
-    <string name="info_send_xmrto_error">Erro SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_error">Erro %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Enviado!</string>
     <string name="info_send_xmrto_query">Consultando &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Você pode enviar %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> enviou a cotação de <b>%3$s %4$s/XMR</b> <u>neste momento</u></i>.
+        <i><b>%5$s</b> enviou a cotação de <b>%3$s %4$s/XMR</b> <u>neste momento</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Saldo: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; ID do pagamento integrado</string>
     <string name="info_prepare_tx">Preparando sua transação</string>
 
-    <string name="label_send_progress_xmrto_create">Criando a ordem no SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">Atualizando a ordem no SideShift.ai</string>
+    <string name="label_send_progress_xmrto_create">Criando a ordem</string>
+    <string name="label_send_progress_xmrto_query">Atualizando a ordem</string>
     <string name="label_send_progress_create_tx">Preparando a transação em Monero</string>
 
-    <string name="label_send_progress_queryparms">Consultando os parâmetros no SideShift.ai</string>
+    <string name="label_send_progress_queryparms">Consultando os parâmetros</string>
 
-    <string name="label_generic_xmrto_error">ERRO SideShift.ai</string>
+    <string name="label_generic_xmrto_error">ERRO</string>
     <string name="text_generic_xmrto_error">Código: %1$d</string>
 
     <string name="text_retry">Toque aqui para tentar novamente</string>
     <string name="text_noretry_monero">Opa, estamos travados aqui!</string>
-    <string name="text_noretry">Hm, parece que o SideShift.ai não está disponível no momento</string>
+    <string name="text_noretry">Hm, parece que o %1$s não está disponível no momento</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Cotação: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visite SideShift.ai para suporte &amp; rastreio da ordem</string>
-    <string name="label_send_btc_xmrto_key_lb">Chave secreta\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">Chave secreta SideShift.ai</string>
+    <string name="label_send_btc_xmrto_info">Visite %1$s para suporte &amp; rastreio da ordem</string>
+    <string name="label_send_btc_xmrto_key_lb">Chave secreta\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">Chave secreta %1$s</string>
     <string name="label_send_btc_address">Endereço %1$s de destino</string>
     <string name="label_send_btc_amount">Valor</string>
 
@@ -353,7 +353,7 @@ aqui.</string>
     <string name="onboarding_seed_title">Mantenha sua semente em segurança</string>
     <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneroj.</string>
     <string name="onboarding_xmrto_title">Enviar Cripto</string>
-    <string name="onboarding_xmrto_information">A Monerujo possui o SideShift.ai integrado. Basta colar ou escanear um endereço BTC, LTC, ETH, DASH ou DOGE e você estará enviando cripto, mas gastando em XMR.</string>
+    <string name="onboarding_xmrto_information">A Monerujo possui o exchange integrado. Basta colar ou escanear um endereço BTC, LTC, ETH, TRXUSDT ou SOL e você estará enviando cripto, mas gastando em XMR.</string>
     <string name="onboarding_nodes_title">"Nós", do seu jeito</string>
     <string name="onboarding_nodes_information">Os nós conectam você à rede Monero. Escolha entre nós públicos ou seja completamente "cypherpunk" e utilize seu próprio nó.</string>
     <string name="onboarding_fpsend_title">Enviar usando a digital</string>
@@ -385,7 +385,7 @@ aqui.</string>
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Favor inserir ou escanear um endereço %1$s.</b><br/>
-        <i>Você enviará XMR e o destinatário irá receber %2$s através do serviço <b>SideShift.ai</b>.</i>
+        <i>Você enviará XMR e o destinatário irá receber %2$s através do serviço <b>%3$s</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -414,32 +414,4 @@ aqui.</string>
     <string name="node_tor_error">Necessário Tor</string>
     <string name="node_waiting">\u00A0ESPERANDO PELO NÓ\u00A0</string>
     <string name="tor_enable_background">"Permitir inicializações em segundo plano" nas opções do Orbot para usar o Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
-
-    <string name="label_seed_offset_encrypt">Encriptação da Semente (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Senha de dedução da semente (opcional)</string>
-
-    <string name="menu_settings">Settings</string>
-    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
-    <string name="title_info">Information</string>
-    <string name="setting_daynight">Day / Night</string>
-
-    <string name="setting_theme">Style</string>
-    <string-array name="themes">
-        <item>Classic</item>
-        <item>Baldaŭ</item> <!-- do not translate this one -->
-    </string-array>
-
-    <string name="message_qr_failed">Failed to create QR for sharing!</string>
-
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
-
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
-
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

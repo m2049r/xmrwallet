@@ -38,18 +38,13 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
 
     public static SendConfirmWizardFragment newInstance(Listener listener) {
         SendConfirmWizardFragment instance = new SendConfirmWizardFragment();
-        instance.setSendListener(listener);
+        instance.sendListener = listener;
         return instance;
     }
 
-    Listener sendListener;
+    private Listener sendListener;
 
-    public SendConfirmWizardFragment setSendListener(Listener listener) {
-        this.sendListener = listener;
-        return this;
-    }
-
-    interface Listener {
+    public interface Listener {
         SendFragment.Listener getActivityCallback();
 
         TxData getTxData();
@@ -137,7 +132,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
 
     void send() {
         sendListener.commitTransaction();
-        getActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
+        requireActivity().runOnUiThread(() -> pbProgressSend.setVisibility(View.VISIBLE));
     }
 
     @Override
@@ -153,7 +148,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
     }
 
     private void showAlert(String title, String message) {
-        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(getActivity());
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(requireActivity());
         builder.setCancelable(true).
                 setTitle(title).
                 setMessage(message).
@@ -235,7 +230,7 @@ public class SendConfirmWizardFragment extends SendWizardFragment implements Sen
             }
 
             public void fail(String walletName) {
-                getActivity().runOnUiThread(() -> {
+                requireActivity().runOnUiThread(() -> {
                     bSend.setEnabled(true); // allow to try again
                 });
             }

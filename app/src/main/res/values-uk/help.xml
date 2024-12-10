@@ -140,64 +140,27 @@
         Номер блоку, в який була включена ваша транзакція.
     ]]></string>
 
-    <string name="help_send"><![CDATA[
-        <h1>Відправлення</h1>
-        <h2>Адреса одержувача</h2>
-        <p>Це публічна адреса гаманця, на яку ви відправляєте Monero. Ви можете скопіювати її
-        з буфера, відсканувати QR-код або ввести вручну. Слід тричі перевірити правильність
-        цієї адреси, щоб не відправити монети на хибну адресу.</p>
-        <p>In addition to using an XMR address, you can also use
-        <ul>
-            <li>an OpenAlias for XMR or BTC</li>
-            <li>a BTC address</li>
-        </u>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
-        for details). See the section on sending BTC below.</p>
-
-        <h1>Відправлення BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
-        Ми використовуємо API служби SideShift.ai для включення платежів із впровадженням Bitcoin в Monerujo.
-        Будь ласка, Відвідайте https://sideshift.ai, і виріште, чи хочете ви використовувати цю можливість.
-        Команда Monerujo НЕ пов\'язана з SideShift.ai і не може допомогти вам в роботі з цією службою.</p>
-        <h2>Курс обміну SideShift.ai<h2>
-        <p>На екрані \"Сума\" відображаються поточні параметри служби SideShift.ai.
-        Тут також відображається обмінний курс, верхня і нижня межа BTC. Необхідно відзначити,
-        що на даному етапі курс не гарантується.</p>
-        <h2>Заявка SideShift.ai<h2>
-        <p>На екрані \"Підтвердження\" можна побачити заявку SideShift.ai. Це заявка
-        дійсна протягом обмеженого часу. Зворотний відлік можна побачити на кнопці
-        витрати \"Витрата\". Курс обміну може відрізнятися від того, що був показаний на попередніх екранах.</p>
-        <h2>Секретний ключ SideShift.ai<h2>
-        <p>Так як Monerujo відповідає за ту частину транзакції, яка пов$apos;язана з Monero, для відстеження
-        вашого замовлення, яка пов$apos;язана з Bitcoin, можна використовувати секретний ключ на домашній сторінці
-        SideShift.ai.</p>
-        <h2>Зворотній відлік SideShift.ai</h2>
-        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від SideShift.ai нову
-        заявку по обміну, повернувшись до попереднього кроку, а потім до екрану \"Підтвердження\".</p>
-    ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Відправлення BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
-        Ми використовуємо API служби SideShift.ai для включення платежів із впровадженням Bitcoin в Monerujo.
-        Будь ласка, Відвідайте https://sideshift.ai, і виріште, чи хочете ви використовувати цю можливість.
-        Команда Monerujo НЕ пов\'язана з SideShift.ai і не може допомогти вам в роботі з цією службою.</p>
-        <h2>Курс обміну SideShift.ai<h2>
-        <p>На екрані \"Сума\" відображаються поточні параметри служби SideShift.ai.
+        <h2>Exolix</h2>
+        <p>Exolix є стороннім сервісом, який допомагає здійснювати обмін Monero на Bitcoin.
+        Ми використовуємо API служби Exolix для включення платежів із впровадженням Bitcoin в Monerujo.
+        Будь ласка, Відвідайте https://exolix.com, і виріште, чи хочете ви використовувати цю можливість.
+        Команда Monerujo НЕ пов\'язана з Exolix і не може допомогти вам в роботі з цією службою.</p>
+        <h2>Курс обміну Exolix<h2>
+        <p>На екрані \"Сума\" відображаються поточні параметри служби Exolix.
         Тут також відображається обмінний курс, верхня і нижня межа BTC. Необхідно відзначити,
         що на даному етапі курс не гарантується.</p>
-        <h2>Заявка SideShift.ai<h2>
-        <p>На екрані \"Підтвердження\" можна побачити заявку SideShift.ai. Це заявка
+        <h2>Заявка Exolix<h2>
+        <p>На екрані \"Підтвердження\" можна побачити заявку Exolix. Це заявка
         дійсна протягом обмеженого часу. Зворотний відлік можна побачити на кнопці
         витрати \"Витрата\". Курс обміну може відрізнятися від того, що був показаний на попередніх екранах.</p>
-        <h2>Секретний ключ SideShift.ai<h2>
+        <h2>Секретний ключ Exolix<h2>
         <p>Так як Monerujo відповідає за ту частину транзакції, яка пов$apos;язана з Monero, для відстеження
         вашого замовлення, яка пов$apos;язана з Bitcoin, можна використовувати секретний ключ на домашній сторінці
-        SideShift.ai.</p>
-        <h2>Зворотній відлік SideShift.ai</h2>
-        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від SideShift.ai нову
+        Exolix.</p>
+        <h2>Зворотній відлік Exolix</h2>
+        <p>Як тільки зворотний відлік досягне нульової точки, вам знадобиться отримати від Exolix нову
         заявку по обміну, повернувшись до попереднього кроку, а потім до екрану \"Підтвердження\".</p>
     ]]></string>
 
@@ -290,25 +253,4 @@
     ]]></string>
 
     <string name="help_ok">Я зрозумів!</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
-    <string name="help_tor"><![CDATA[
-        <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
-    ]]></string>
-
-    <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
-    ]]></string>
 </resources>

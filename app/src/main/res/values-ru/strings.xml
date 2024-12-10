@@ -35,49 +35,49 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>Вы ввели %1$s адрес.</b><br/>
-        <i>Отправляйте XMR, получатель получит %1$s, используя сервис SideShift.ai</i>
+        <i>Отправляйте XMR, получатель получит %2$s, используя сервис <b>%3$s</b></i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">Заказ SideShift.ai</string>
+    <string name="info_send_xmrto_success_order_label">Заказ %1$s</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">Ожидание подтверждения</string>
     <string name="info_send_xmrto_unpaid">Ожидание платежа</string>
-    <string name="info_send_xmrto_error">Ошибка SideShift.ai (%1$s)</string>
+    <string name="info_send_xmrto_error">Ошибка %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s успешно отправлены!</string>
     <string name="info_send_xmrto_query">Запрос &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Вы можете отправить %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> устанавливает курс обмена <b>%3$s %4$s/XMR</b> <u>в данный момент</u></i>.
+        <i><b>%5$s</b> устанавливает курс обмена <b>%3$s %4$s/XMR</b> <u>в данный момент</u></i>.
     ]]></string>
 
-    <string name="send_available_btc">Баланс: %2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">Баланс: %1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; Интегрированный ID платежа</string>
     <string name="info_prepare_tx">Подготовка транзакции</string>
 
-    <string name="label_send_progress_xmrto_create">Создание заказа SideShift.ai</string>
-    <string name="label_send_progress_xmrto_query">Запрос заказа SideShift.ai</string>
+    <string name="label_send_progress_xmrto_create">Создание заказа</string>
+    <string name="label_send_progress_xmrto_query">Запрос заказа</string>
     <string name="label_send_progress_create_tx">Подготовка транзакции Monero</string>
 
-    <string name="label_send_progress_queryparms">Запрос параметров SideShift.ai</string>
+    <string name="label_send_progress_queryparms">Запрос параметров</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai ОШИБКА</string>
+    <string name="label_generic_xmrto_error">ОШИБКА</string>
     <string name="text_generic_xmrto_error">Код: %1$d</string>
 
     <string name="text_retry">Нажмите, чтобы повторить попытку</string>
     <string name="text_noretry_monero">Теперь мы застряли здесь!</string>
-    <string name="text_noretry">Ой-ой! Кажется SideShift.ai недоступен в данный момент!</string>
+    <string name="text_noretry">Ой-ой! Кажется %1$s недоступен в данный момент!</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Посетите SideShift.ai для получения помощи &amp;</string>
-    <string name="label_send_btc_xmrto_key_lb">Секретный ключ\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai секретный ключ</string>
+    <string name="label_send_btc_xmrto_info">Посетите %1$s для получения помощи &amp;</string>
+    <string name="label_send_btc_xmrto_key_lb">Секретный ключ\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя %1$s</string>
     <string name="label_send_btc_amount">Сумма</string>
 
@@ -365,7 +365,7 @@
     <string name="onboarding_seed_title">Храните свои ключи в безопасности</string>
     <string name="onboarding_seed_information">Секретная фраза дает полный доступ к кошельку. Если вы её потеряете, мы не сможем её восстановить и вы потеряете ваши moneroj.</string>
     <string name="onboarding_xmrto_title">Отправка других криптовалют</string>
-    <string name="onboarding_xmrto_information">Monerujo имеет поддержку SideShift.ai. Просто вставьте (или просканируйте) адрес BTC, LTC, ETH, DASH или DOGE и вы будете отправлять эти криптовалюты, тратя XMR.</string>
+    <string name="onboarding_xmrto_information">Monerujo имеет поддержку exchange. Просто вставьте (или просканируйте) адрес BTC, LTC, ETH, TRXUSDT или SOL и вы будете отправлять эти криптовалюты, тратя XMR.</string>
     <string name="onboarding_nodes_title">Узлы, узлы, узлы…</string>
     <string name="onboarding_nodes_information">Узлы позволяют подключаться к сети Monero. Выбирайте между общедоступными узлами или используйте свой собственный для безопасности IP адреса.</string>
     <string name="onboarding_fpsend_title">Отправка с помощью отпечатка пальца</string>
@@ -397,7 +397,7 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>Введите или просканируйте адрес %1$s.</b><br/>
-        <i>Вы отправите XMR, а получатель получит %2$s с помощью серсива <b>SideShift.ai</b>.</i>
+        <i>Вы отправите XMR, а получатель получит %2$s с помощью серсива <b>%3$s</b>.</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
@@ -425,7 +425,7 @@
     <string name="node_tor_error">Необходим Tor</string>
     <string name="node_waiting">\u00A0ОЖИДАНИЕ УЗЛА\u00A0</string>
     <string name="tor_enable_background">Необходимо выбрать "Allow Background Starts" в настройках Orbot для использования Tor!</string>
-    <string name="tor_noshift">SideShift.ai не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
+    <string name="tor_noshift">%1$s не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
 
     <string name="label_seed_offset_encrypt">Шифрование фразы (ЭКСПЕРЕМЕНТАЛЬНО)</string>
     <string name="seed_offset_hint">Смещение фразы (необязательно)</string>
@@ -442,15 +442,4 @@
     </string-array>
 
     <string name="message_qr_failed">Не удалось создать QR!</string>
-
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
-
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
-
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

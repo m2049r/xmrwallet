@@ -26,7 +26,7 @@ import android.os.Process;
 /**
  * Handy class for starting a new thread that has a looper. The looper can then be
  * used to create handler classes. Note that start() must still be called.
- * The started Thread has a stck size of STACK_SIZE (=5MB)
+ * The started Thread has a stack size of STACK_SIZE (=5MB)
  */
 public class MoneroHandlerThread extends Thread {
     // from src/cryptonote_config.h

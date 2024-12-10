@@ -91,9 +91,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="invisible">
 
                         <TextView
+                            android:id="@+id/tvTxXmrToKeyLabel"
                             style="@style/MoneroText.Confirm.Label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
                             android:drawablePadding="8dp"
                             android:gravity="center_vertical"
                             android:text="@string/label_send_btc_xmrto_key"
-                            card_view:drawableStartCompat="@drawable/ic_sideshift_circle" />
+                            card_view:drawableStartCompat="@drawable/ic_exolix_icon" />
 
                         <TextView
                             android:id="@+id/tvTxXmrToKey"
@@ -119,6 +120,7 @@
                             tools:text="f173118220f1461841da" />
 
                         <TextView
+                            android:id="@+id/tvTxXmrToInfo"
                             style="@style/MoneroText.Medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

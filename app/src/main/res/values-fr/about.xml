@@ -8,7 +8,7 @@
         <b>Crédits</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
-        rehrar, EarlOfEgo et al.
+        rehrar, EarlOfEgo, ErCiccione et al.
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
@@ -23,7 +23,7 @@
         d’informations en accord avec cette politique.
         </p>
         <h2>Données Collectées</h2>
-        <p>Une donnée personnelle est tout type de donnée qui est succeptible
+        <p>Une donnée personnelle est tout type de donnée qui est susceptible
         d’identifier un individu.
         </p>
         <p>Les clefs et adresses publiques Monero collectées sont traitées localement par
@@ -36,12 +36,12 @@
         Consultez leur politique de confidentialité sur https://coinmarketcap.com/privacy
         pour des détails sur la façon dont les données de vos requêtes sont collectées.</p>
         <p>Si vous utilisez l’application pour payer à une adresse BTC, vous utiliserez
-        le service SideShift.ai. Consultez leur politique de confidentialité sur https://sideshift.ai/
+        le service Exolix. Consultez leur politique de confidentialité sur https://exolix.com/privacy
         pour plus de détails. Monerujo leur transmet l’adresse de destination BTC et le
         montant. Votre IP serait également collectable.</p>
         <h2>Permissions de l’application</h2>
         <ul>
-        <li>INTERNET : Connection au réseau Monero via le démon d’un nœud Monero</li>
+        <li>INTERNET : Connexion au réseau Monero via le démon d’un nœud Monero</li>
         <li>READ_EXTERNAL_STORAGE : Lire les fichiers de portefeuille stockés sur l’appareil</li>
         <li>WRITE_EXTERNAL_STORAGE : Écrire les fichiers de portefeuille stockés sur l’appareil</li>
         <li>WAKE_LOCK : Garder l’appareil actif pendant la synchronisation</li>
@@ -53,8 +53,8 @@
         politique de confidentialité dans l’application et sur le site web (www.monerujo.io)
         Il vous est conseillé de contrôler cette Politique de Confidentialité périodiquement
         pour tout changement.
-        <p>Cette Politique de Confidentialité é été mise à jour pour la dernière fois : le
-        10 Novembre 2017.
+        <p>Cette Politique de Confidentialité a été mise à jour pour la dernière fois : le
+        10 novembre 2017.
         </p>
         <h2>Nous contacter</h2>
         <p>Si vous avez des questions à propos de notre politique de confidentialité,

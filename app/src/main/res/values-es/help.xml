@@ -117,17 +117,7 @@
 		</ul>
         <h2>Conversión</h2>
 		<p>La conversión de XMR en otra criptomoneda is realizada por un servicio externo de exchange. Monerujo no realiza dicha conversión ni está asociado con esos terceros. Por lo tanto no puede dar soporte por los intercambios, pero va a proveerte de toda la información necesaria para que puedas rastrear tu orden o recibir ayuda del exchange.</p>
-		<h2>Pares disponibles</h2>
-		<p>Monerujo soporta convertir de XMR hacia las siguientes monedas:
-		<ul>
-            <li>Bitcoin (BTC)</li>
-			<li>Ethereum (ETH)</li>
-			<li>Litecoin (LTC)</li>
-			<li>Dash (DASH)</li>
-			<li>Dai (DAI) on Ethereum</li>
-			<li>Tether (USDT) on Ethereum</li>
-		</ul>
-		Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
+		<p>Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
         </u>
     ]]></string>
 	
@@ -138,15 +128,6 @@
 		<h2>Tasa de cambio</h2>
 		<p>Debajo verás la cotización actual ofrecida por el exchange, junto con los montos mínimos y máximos. Por favor ten presente que en este paso esta cotización no está garantizada aún, va a confirarse en la siguiente pantalla, cuando tu transacción esté lista para aprobarse.</p>
 	]]></string>
-		
-	<string name="help_confirm"><![CDATA[		
-		<h1>Orden de cambio</h1>
-		<p>En esta pantalla estás viendo la orden coordinada con el exchange. Esta es válida por un tiempo limitado, quizás notes una cuenta regresiva en el botón de \"Enviar\". Esta cotización puede ser diferente a la indicada en los pasos anteriores, pero mientras autorices el envío antes de que se acabe el tiempo, quedará fija.</p>
-		<h2>Número de orden</h2>
-		<p>Como Monerujo solamente maneja el lado de XMR de la transacción, vas a necesitar este <em>número de orden</em> para rastrear el proceso de tu intercambio o recibir soporte en el sitio del exchange.</p>
-		<h2>El tiempo se acabó</h2>
-		<p>En caso de que la cuenta atrás llegue a cero, necesitarás conseguir una nueva cotización del exchange. Para eso debes volver a la pantalla anterior, y luego avanzar nuevamente a esta.</p>
-    ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
         <h1>Crear Monedero con Ledger</h1>

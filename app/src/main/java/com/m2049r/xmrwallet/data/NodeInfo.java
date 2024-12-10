@@ -201,8 +201,13 @@ public class NodeInfo extends Node {
                 .port(port)
                 .addPathSegment("json_rpc")
                 .build();
-        final String json = "{\"jsonrpc\":\"2.0\",\"id\":\"0\",\"method\":\"getlastblockheader\"}";
-        return new Request(url, json, getUsername(), getPassword());
+
+        try {
+            final JSONObject json = new JSONObject("{\"jsonrpc\":\"2.0\",\"id\":\"0\",\"method\":\"getlastblockheader\"}");
+            return new Request(url, json, getUsername(), getPassword());
+        } catch (JSONException ex) {
+            throw new IllegalStateException(ex);
+        }
     }
 
     private boolean testRpcService(int port) {

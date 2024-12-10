@@ -34,49 +34,49 @@
 
     <string name="info_xmrto"><![CDATA[
         <b>你輸入了 %1$s 地址</b><br/>
-        <i>你將會發送 XMR 而收款方將會收到 %1$s (由 <b>SideShift.ai</b> 提供轉換)</i>
+        <i>你將會發送 XMR 而收款方將會收到 %2$s (由 <b>%3$s</b> 提供轉換)</i>
     ]]></string>
 
-    <string name="info_send_xmrto_success_order_label">SideShift.ai 訂單</string>
+    <string name="info_send_xmrto_success_order_label">%1$s 訂單</string>
 
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
 
 
     <string name="info_send_xmrto_paid">等待確認中</string>
     <string name="info_send_xmrto_unpaid">等待付款中</string>
-    <string name="info_send_xmrto_error">SideShift.ai 發生錯誤 (%1$s)</string>
+    <string name="info_send_xmrto_error">%1$s 發生錯誤 (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s 已發送！</string>
     <string name="info_send_xmrto_query">查詢中 &#8230;</string>
 
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>你可發送 %1$s &#8212; %2$s %4$s</b>.<br/>
-        <i><b>SideShift.ai</b> 提供的<u>即時</u>匯率為 <b>%3$s %4$s/XMR</b></i>.
+        <i><b>%5$s</b> 提供的<u>即時</u>匯率為 <b>%3$s %4$s/XMR</b></i>.
     ]]></string>
 
-    <string name="send_available_btc">餘額：%2$s %3$s (%1$s XMR)</string>
+    <string name="send_available_btc">餘額：%1$s XMR (~%2$s %3$s)</string>
 
     <string name="info_paymentid_integrated">&#x2714; 已加入付款 ID</string>
     <string name="info_prepare_tx">正在準備你的交易</string>
 
-    <string name="label_send_progress_xmrto_create">建立 SideShift.ai 訂單</string>
-    <string name="label_send_progress_xmrto_query">查詢 SideShift.ai 訂單</string>
+    <string name="label_send_progress_xmrto_create">建立訂單</string>
+    <string name="label_send_progress_xmrto_query">查詢訂單</string>
     <string name="label_send_progress_create_tx">正在準備 Monero 交易</string>
 
-    <string name="label_send_progress_queryparms">正在查詢 SideShift.ai 參數</string>
+    <string name="label_send_progress_queryparms">正在查詢參數</string>
 
-    <string name="label_generic_xmrto_error">SideShift.ai 發生錯誤</string>
+    <string name="label_generic_xmrto_error">發生錯誤</string>
     <string name="text_generic_xmrto_error">錯誤代碼：%1$d</string>
 
     <string name="text_retry">點選以重試</string>
     <string name="text_noretry_monero">我們卡住了！</string>
-    <string name="text_noretry">不好，SideShift.ai 現在似乎無法提供服務！</string>
+    <string name="text_noretry">不好，%1$s 現在似乎無法提供服務！</string>
 
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(匯率：%1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">參訪 SideShift.ai 以獲得支援及追蹤交易</string>
-    <string name="label_send_btc_xmrto_key_lb">私鑰\nSideShift.ai</string>
-    <string name="label_send_btc_xmrto_key">SideShift.ai 私鑰</string>
+    <string name="label_send_btc_xmrto_info">參訪 %1$s 以獲得支援及追蹤交易</string>
+    <string name="label_send_btc_xmrto_key_lb">私鑰\n%1$s</string>
+    <string name="label_send_btc_xmrto_key">%1$s 私鑰</string>
     <string name="label_send_btc_address">目的地 %1$s 地址</string>
     <string name="label_send_btc_amount">金額</string>
 
@@ -147,7 +147,7 @@
     <string name="label_copy_address">公開地址</string>
     <string name="label_copy_xmrtokey">金鑰</string>
     <string name="message_copy_viewkey">查看金鑰已複製至剪貼簿！</string>
-    <string name="message_copy_xmrtokey">SideShift.ai 金鑰已複製至剪貼簿！</string>
+    <string name="message_copy_xmrtokey">金鑰已複製至剪貼簿！</string>
     <string name="message_copy_address">錢包地址已複製至剪貼簿！</string>
     <string name="message_copy_txid">交易 ID 已複製至剪貼簿！</string>
     <string name="message_nocopy">因安全因素已停用複製功能！</string>
@@ -358,7 +358,7 @@
     <string name="onboarding_seed_title">保管好你的種子碼</string>
     <string name="onboarding_seed_information">種子碼提供任何人完整的權限。如果你遺失了種子碼，我們無法幫你找回它，且你將失去你心愛的 moneroj。</string>
     <string name="onboarding_xmrto_title">發送加密貨幣</string>
-    <string name="onboarding_xmrto_information">Monerujo 內建 SideShift.ai 服務。只要貼上或掃描 BTC、LTC、ETH、DASH 或 DOGE 地址，你就可以直接使用 XMR 來發送這些加密貨幣。</string>
+    <string name="onboarding_xmrto_information">Monerujo 內建 exchange 服務。只要貼上或掃描 BTC、LTC、ETH、TRXUSDT 或 SOL 地址，你就可以直接使用 XMR 來發送這些加密貨幣。</string>
     <string name="onboarding_nodes_title">節點選擇，由你作主</string>
     <string name="onboarding_nodes_information">你必須透過節點連線至 Monero 交易網路。選擇使用公共節點或是很密碼龐克式地使用你自己的節點。</string>
     <string name="onboarding_fpsend_title">使用指紋辨識發送交易</string>
@@ -390,62 +390,10 @@
 
     <string name="info_xmrto_help"><![CDATA[
         <b>請輸入或是掃描 %1$s 的地址。</b><br/>
-        <i>你&apos;將會發送 XMR 而接受者將會收到由 <b>SideShift.ai</b> 服務兌換的 %2$s 。</i>
+        <i>你&apos;將會發送 XMR 而接受者將會收到由 <b>%3$s</b> 服務兌換的 %2$s 。</i>
     ]]></string>
 
     <string name="info_xmrto_help_xmr"><![CDATA[
         <b>請輸入或掃描一個 Monero 地址。</b>
     ]]></string>
-
-    <string name="subbaddress_title">Subaddresses</string>
-    <string name="subbaddress_name_hint">Subaddress Name</string>
-    <string name="max_subaddress_warning">Too many unused addresses - use some to enable creating more!</string>
-    <string name="max_account_warning">Too many unused accounts - use some to enable creating more!</string>
-    <string name="subaddress_tx_label">Transactions for this subaddress:</string>
-    <string name="subaddress_notx_label">No transactions for this subaddress yet</string>
-    <string name="subaddress_select_label">Select a subaddress</string>
-    <string name="subaddress_details_hint">Long-press for details</string>
-
-    <string name="delete_alert_message">This wallet will be deleted. Your funds will be gone forever unless you have your seed or a working backup to recover it.</string>
-    <string name="menu_delete">Delete</string><!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Delete failed!</string>
-
-    <string name="menu_restore">Import wallet</string>
-    <string name="restore_failed">Import failed!</string>
-
-    <string name="menu_deletecache">Reset wallet!</string>
-    <string name="deletecache_alert_message">This wallet will be reset, losing all off-chain data (like notes, account &amp; subaddress names, private transaction keys, &#8230;)! Use this ONLY if this wallet is corrupt and does not load!</string>
-
-    <string name="node_tor_error">Tor required</string>
-    <string name="node_waiting">\u00A0WAITING FOR NODE\u00A0</string>
-    <string name="tor_enable_background">"Allow Background Starts" in Orbot Settings to use Tor!</string>
-    <string name="tor_noshift">SideShift.ai doesn\'t support Tor.\nDisable Tor to swap XMR.</string>
-
-    <string name="label_wallet_advanced_details">點選以獲得詳細資訊</string> <!-- Please chnage to "Detailed information" -->
-    <string name="label_seed_offset_encrypt">Seed encryption (EXPERIMENTAL)</string>
-    <string name="seed_offset_hint">Seed Offset Phrase (optional)</string>
-
-    <string name="menu_settings">Settings</string>
-    <string name="title_iface">Interface</string> <!-- like: User Intreface -->
-    <string name="title_info">Information</string>
-    <string name="setting_daynight">Day / Night</string>
-
-    <string name="setting_theme">Style</string>
-    <string-array name="themes">
-        <item>Classic</item>
-        <item>Baldaŭ</item> <!-- do not translate this one -->
-    </string-array>
-
-    <string name="message_qr_failed">Failed to create QR for sharing!</string>
-
-    <string name="tx_locked">Transaction amount locked until block %1$d (in %2$d blocks ≈ %3$,.2f days)</string>
-
-    <string name="label_streetmode">Street Mode enabled\nOnly new transactions will be shown</string>
-
-    <string name="pocketchange_info">To reduce waiting time on repeated spending, Monerujo can create spare change at the expense of higher fees. It\'ll try to create and maintain at least 6 coins of the selected amount.</string>
-    <string name="pocketchange_create_title">Create Change</string>
-
-    <string name="label_apply">APPLY</string>
-
-    <string name="setting_lock">Lock Wallet in Background</string>
 </resources>

@@ -121,43 +121,43 @@
             <li>指向 XMR 或 BTC 地址的 OpenAlias</li>
             <li>BTC 地址</li>
         </u>
-        但請注意一件事情，發送 BTC 的功能是透過 SideShift.ai 服務實現的，請參考下方的「發送 BTC」說明
-        (詳見 https://sideshift.ai 以了解更多)。</p>
+        但請注意一件事情，發送 BTC 的功能是透過 Exolix 服務實現的，請參考下方的「發送 BTC」說明
+        (詳見 https://exolix.com 以了解更多)。</p>
         <h1>發送 BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai 是一個可以將 XMR 轉換為 BTC 的第三方服務。
-        我們利用 SideShift.ai 的 API 將其服務整合至 Monerujo 中。請參閱 https://sideshift.ai 後自行決定是否使用。
-        Monerujo 開發團隊與 SideShift.ai 並無相關，無法為你解決其服務上的問題</p>
-        <h2>SideShift.ai 匯率<h2>
-        <p>在「金額」的頁面中你將看到 SideShift.ai 服務的參數。包含了匯率以及 BTC 金額的上下限。
+        <h2>Exolix</h2>
+        <p>Exolix 是一個可以將 XMR 轉換為 BTC 的第三方服務。
+        我們利用 Exolix 的 API 將其服務整合至 Monerujo 中。請參閱 https://exolix.com 後自行決定是否使用。
+        Monerujo 開發團隊與 Exolix 並無相關，無法為你解決其服務上的問題</p>
+        <h2>Exolix 匯率<h2>
+        <p>在「金額」的頁面中你將看到 Exolix 服務的參數。包含了匯率以及 BTC 金額的上下限。
         請注意這個階段顯示的匯率並不是確定的。</p>
-        <h2>SideShift.ai 訂單<h2>
-        <p>在「確認」的頁面中，你將可以看到正式的 SideShift.ai 訂單。這訂單僅在一段時間內有效。
+        <h2>Exolix 訂單<h2>
+        <p>在「確認」的頁面中，你將可以看到正式的 Exolix 訂單。這訂單僅在一段時間內有效。
         你可以在「發送」的按鈕上看到倒數計時。這時的匯率可能與前一個頁面顯示的不同</p>
-        <h2>SideShift.ai 私鑰<h2>
-        <p>由於 Monerujo 僅處理 Monero 的部分，你的 SideShift.ai 金鑰將可用在 SideShift.ai 的首頁上查詢追蹤 BTC 部分的交易狀況。</p>
-        <h2>SideShift.ai 倒數計時！</h2>
-        <p>當倒數計時歸零的時候，你將會需要回到上一步再回到「確認」頁面重新向 SideShift.ai 尋求匯率報價</p>
+        <h2>Exolix 私鑰<h2>
+        <p>由於 Monerujo 僅處理 Monero 的部分，你的 Exolix 金鑰將可用在 Exolix 的首頁上查詢追蹤 BTC 部分的交易狀況。</p>
+        <h2>Exolix 倒數計時！</h2>
+        <p>當倒數計時歸零的時候，你將會需要回到上一步再回到「確認」頁面重新向 Exolix 尋求匯率報價</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>發送 BTC</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai 是一個可以將 XMR 轉換為 BTC 的第三方服務。
-        我們利用 SideShift.ai 的 API 將其服務整合至 Monerujo 中。請參閱 https://sideshift.ai 後自行決定是否使用。
-        Monerujo 開發團隊與 SideShift.ai 並無相關，無法為你解決其服務上的問題</p>
-        <h2>SideShift.ai 匯率<h2>
-        <p>在「金額」的頁面中你將看到 SideShift.ai 服務的參數。包含了匯率以及 BTC 金額的上下限。
+        <h2>Exolix</h2>
+        <p>Exolix 是一個可以將 XMR 轉換為 BTC 的第三方服務。
+        我們利用 Exolix 的 API 將其服務整合至 Monerujo 中。請參閱 https://exolix.com 後自行決定是否使用。
+        Monerujo 開發團隊與 Exolix 並無相關，無法為你解決其服務上的問題</p>
+        <h2>Exolix 匯率<h2>
+        <p>在「金額」的頁面中你將看到 Exolix 服務的參數。包含了匯率以及 BTC 金額的上下限。
         請注意這個階段顯示的匯率並不是確定的。你也可以看到在多少金額之下可以直接發送 BTC，而不用等待 XMR 的確認。
-        (詳見 SideShift.ai 的 FAQ 以了解更多)。請注意 SideShift.ai 並不額外收取手續費用，是不是很棒呢？</p>
-        <h2>SideShift.ai 訂單<h2>
-        <p>在「確認」的頁面中，你將可以看到正式的 SideShift.ai 訂單。這訂單僅在一段時間內有效。
+        (詳見 Exolix 的 FAQ 以了解更多)。請注意 Exolix 並不額外收取手續費用，是不是很棒呢？</p>
+        <h2>Exolix 訂單<h2>
+        <p>在「確認」的頁面中，你將可以看到正式的 Exolix 訂單。這訂單僅在一段時間內有效。
         你可以在「發送」的按鈕上看到倒數計時。這時的匯率可能與前一個頁面顯示的不同</p>
-        <h2>SideShift.ai 私鑰<h2>
-        <p>由於 Monerujo 僅處理 Monero 的部分，你的 SideShift.ai 金鑰將可用在 SideShift.ai 的首頁上查詢追蹤 BTC 部分的交易狀況。</p>
+        <h2>Exolix 私鑰<h2>
+        <p>由於 Monerujo 僅處理 Monero 的部分，你的 Exolix 金鑰將可用在 Exolix 的首頁上查詢追蹤 BTC 部分的交易狀況。</p>
         <p>請注意，此金鑰僅在交易發起的 24 小時內有效。</p>
-        <h2>SideShift.ai 倒數計時！</h2>
-        <p>當倒數計時歸零的時候，你將會需要回到上一步再回到「確認」頁面重新向 SideShift.ai 尋求匯率報價</p>
+        <h2>Exolix 倒數計時！</h2>
+        <p>當倒數計時歸零的時候，你將會需要回到上一步再回到「確認」頁面重新向 Exolix 尋求匯率報價</p>
     ]]></string>
 
     <string name="help_create_ledger"><![CDATA[
@@ -231,25 +231,4 @@
     ]]></string>
 
     <string name="help_ok">我知道了！</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
-    <string name="help_tor"><![CDATA[
-        <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
-    ]]></string>
-
-    <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
-    ]]></string>
 </resources>

@@ -145,7 +145,7 @@ public class Node {
         if ((nodeString == null) || nodeString.isEmpty())
             throw new IllegalArgumentException("daemon is empty");
         String daemonAddress;
-        String a[] = nodeString.split("@");
+        String[] a = nodeString.split("@");
         if (a.length == 1) { // no credentials
             daemonAddress = a[0];
             username = "";

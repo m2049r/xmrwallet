@@ -181,57 +181,57 @@
             <li>iun OpenAlias por XMR aŭ BTC</li>
             <li>bitmonan-adreson (BTC)<li>
         </ul>
-        Please note, that sending BTC is processed through the SideShift.ai service (see https://sideshift.ai
+        Please note, that sending BTC is processed through the Exolix service (see https://exolix.com
         for details). See the section on sending BTC below.</p>
 
         <h1>Sendi BTC</h1>
 
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        <h2>Exolix</h2>
+        <p>Exolix estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
         interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        https://exolix.com kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun Exolix kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
-        <h2>Kurzo de SideShift.ai<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
+        <h2>Kurzo de Exolix<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la Exolix-servo. Ili inkludas la
         nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
-        <h2>Mendo al SideShift.ai<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
+        <h2>Mendo al Exolix<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan Exolix-mendon. Tiu mendo validas nur dum
         limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
         eble malsama ol tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
+        <h2>Sekreta ŝlosilo de Exolix<h2>
         <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
-        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
-        <h2>La retrokalkulo de SideShift.ai!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
+        Exolix-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de Exolix.</p>
+        <h2>La retrokalkulo de Exolix!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>Elspezi Bitmonon</h1>
 
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
+        <h2>Exolix</h2>
+        <p>Exolix estas ekstera liveranto kiu agas kiel ŝanĝisto de Monero al Bitmono. Ni uzas la
         interfacon de XMR.TR por integrigi pagojn de bitmono en Monerujo. Bonvolu mem legi ĉe
-        https://sideshift.ai kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun SideShift.ai kaj ne
+        https://exolix.com kaj decidu ĉu vi volas uzi tion. La Monerujo-teamo ne asocias kun Exolix kaj ne
         kapablas helpi vin kun ilia servo.</p>
 
-        <h2>Kurzo de SideShift.ai<h2>
-        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la SideShift.ai-servo. Ili inkludas la
+        <h2>Kurzo de Exolix<h2>
+        <p>Sur la \"Kvanto\"-ekrano montriĝos la nunaj parametroj de la Exolix-servo. Ili inkludas la
         nunan XMR/BTC-kurzon, la superan limon kaj suban limon de la eblaj BTC-transakcioj. Bonvolu
         noti ke tiu kurzo ĉiam ŝanĝiĝas.</p>
-        <h2>Mendo al SideShift.ai<h2>
-        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan SideShift.ai-mendon. Tiu mendo validas nur dum
+        <h2>Mendo al Exolix<h2>
+        <p>Sur la \"konfirmi\"-ekrano, vi vidos la efektivan Exolix-mendon. Tiu mendo validas nur dum
         limigita tempo - vi certe ekvidos retrokalkulon sur la \"Spendi\"-butonon. La kurzo estos
         eble malsama ol tiu antaŭe montrita.</p>
 
-        <h2>Sekreta ŝlosilo de SideShift.ai<h2>
+        <h2>Sekreta ŝlosilo de Exolix<h2>
         <p>Ĉar Monerujo nur traktas la Monero-flankon de via transakcio, vi uzu la sekretan
-        SideShift.ai-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de SideShift.ai.</p>
-        <h2>La retrokalkulo de SideShift.ai!</h2>
-        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de SideShift.ai, reirante al la
+        Exolix-ŝlosilon por sekvi la Bitmono-parton de via mendo sur la hejmpaĝo de Exolix.</p>
+        <h2>La retrokalkulo de Exolix!</h2>
+        <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
 
@@ -302,39 +302,5 @@
         kaj tiel plu.
         Se vi ne markis nodojn (aŭ se ili ne respondas pri iliaj konektoj), Monerujo direkte petos la
         pranodojn konservitajn en la kerno de Monero. La skanado haltos kiam 10 foraj nodoj estos trovitaj.</p>
-    ]]></string>
-
-    <string name="help_uri"><![CDATA[
-        <h1>Using a payment link</h1>
-        <p>You have started monerujo with a payment link. In order to send funds, please do the following:</p>
-        <p>
-        1. Open the wallet you want to spend from<br>
-        2. Wait until the wallet is synced &amp; the "Give" button appears<br>
-        3. Touch the "Give" button
-        </p>
-        <p>The payment details will be filled in. Check them and proceed like for any other transaction.</p>
-    ]]></string>
-
-    <string name="help_ok">Got it!</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
-    <string name="help_tor"><![CDATA[
-        <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
-    ]]></string>
-
-    <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
     ]]></string>
 </resources>

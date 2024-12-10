@@ -143,8 +143,8 @@ public class OpenAliasHelper {
                     for (String txt : txts) {
                         BarcodeData bc = BarcodeData.parseOpenAlias(txt, dnssec);
                         if (bc != null) {
-                            if (!dataMap.containsKey(bc.asset)) {
-                                dataMap.put(bc.asset, bc);
+                            if (!dataMap.containsKey(bc.getAsset())) {
+                                dataMap.put(bc.getAsset(), bc);
                             }
                         }
                     }

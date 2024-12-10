@@ -113,23 +113,23 @@
                         android:contentDescription="ETH"/>
 
                     <ImageButton
-                        android:id="@+id/ibDASH"
+                        android:id="@+id/ibUSDT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_dash_off"
-                        android:contentDescription="DASH"/>
+                        android:src="@drawable/ic_xmrto_usdt_trc20_off"
+                        android:contentDescription="USDT"/>
 
                     <ImageButton
-                        android:id="@+id/ibDOGE"
+                        android:id="@+id/ibSOL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
                         android:padding="8dp"
-                        android:src="@drawable/ic_xmrto_doge_off"
+                        android:src="@drawable/ic_xmrto_sol_off"
                         android:contentDescription="DOGE"/>
                 </LinearLayout>
 

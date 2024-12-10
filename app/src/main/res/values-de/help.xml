@@ -149,48 +149,48 @@
             <li>einen OpenAlias für XMR oder BTC</li>
             <li>eine BTC-Adresse</li>
         </u>
-        nutzen. Beachte bitte, dass das Senden von BTC über den Service von SideShift.ai erfolgt. (Siehe https://sideshift.ai
+        nutzen. Beachte bitte, dass das Senden von BTC über den Service von Exolix erfolgt. (Siehe https://exolix.com
         für Details). Weitere Details sind weiter unten unter "BTC senden".</p>
         <h1>BTC senden</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
-        gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
-        <h2>SideShift.ai-Wechselkurs<h2>
-        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
+        <h2>Exolix</h2>
+        <p>Exolix ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
+        Wir nutzen die Exolix-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
+        https://exolix.com an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        gehört nicht zu Exolix und kann keinen Support für dessen Service bieten.</p>
+        <h2>Exolix-Wechselkurs<h2>
+        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des Exolix-Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.</p>
-        <h2>SideShift.ai-Auftrag<h2>
-        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue SideShift.ai-Angebot. Dieses Angebot gilt
+        <h2>Exolix-Auftrag<h2>
+        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue Exolix-Angebot. Dieses Angebot gilt
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
-        <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
-        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
-        <h2>SideShift.ai-Countdown!</h2>
-        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
+        <h2>Geheimer Exolix-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer Exolix-Schlüssel
+        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der Exolix-Homepage zu verfolgen.</p>
+        <h2>Exolix-Countdown!</h2>
+        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
     <string name="help_xmrto"><![CDATA[
         <h1>BTC senden</h1>
-        <h2>SideShift.ai</h2>
-        <p>SideShift.ai ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
-        Wir nutzen die SideShift.ai-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
-        https://sideshift.ai an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
-        gehört nicht zu SideShift.ai und kann keinen Support für dessen Service bieten.</p>
-        <h2>SideShift.ai-Wechselkurs<h2>
-        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des SideShift.ai-Service. Diese beinhalten den aktuellen Tauschkurs
+        <h2>Exolix</h2>
+        <p>Exolix ist ein Drittanbieter-Service, welcher als Wechselservice von Monero zu Bitcoin fungiert.
+        Wir nutzen die Exolix-Schnittstelle, um Bitcoin-Zahlungen in Monerujo zu integrieren. Bitte schaue dir
+        https://exolix.com an und entscheide selbst, ob du diesen Service nutzen willst. Das Monerujo-Team
+        gehört nicht zu Exolix und kann keinen Support für dessen Service bieten.</p>
+        <h2>Exolix-Wechselkurs<h2>
+        <p>Auf dem \"Menge\" Bildschirm siehst du die aktuellen Werte des Exolix-Service. Diese beinhalten den aktuellen Tauschkurs
 	sowie die oberen und unteren BTC-Limits. Bitte bedenke, dass dieser Kurs zu diesem Zeitpunkt nicht garantiert ist.</p>
-        <h2>SideShift.ai-Auftrag<h2>
-        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue SideShift.ai-Angebot. Dieses Angebot gilt
+        <h2>Exolix-Auftrag<h2>
+        <p>Auf dem \"Bestätigen\" Bildschirm siehst du das genaue Exolix-Angebot. Dieses Angebot gilt
         für eine bestimmte Zeit – du siehst einen Countdown auf dem \"Ausgeben\" Button. Der Wechselkurs kann
         sich von den vorherigen Angaben unterscheiden.</p>
-        <h2>Geheimer SideShift.ai-Schlüssel<h2>
-        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer SideShift.ai-Schlüssel
-        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der SideShift.ai-Homepage zu verfolgen.</p>
-        <h2>SideShift.ai-Countdown!</h2>
-        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von SideShift.ai anfordern, indem du zum vorherigen Schritt
+        <h2>Geheimer Exolix-Schlüssel<h2>
+        <p>Da Monerujo nur den Monero-Teil deiner Transaktion verarbeitet, kann dein geheimer Exolix-Schlüssel
+        dazu benutzt werden, den Bitcoin-Teil deines Auftrags auf der Exolix-Homepage zu verfolgen.</p>
+        <h2>Exolix-Countdown!</h2>
+        <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
 
@@ -290,25 +290,4 @@
     ]]></string>
 
     <string name="help_ok">Hab\'s verstanden!</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">Nah…</string> <!-- Note: "Nah..." as in "I don't want this" -->
-    <string name="help_getorbot">Get Orbot!</string>
-    <string name="help_tor"><![CDATA[
-        <h1>Tor</h1>
-        <p>Tor, short for The Onion Router, is free and open-source software for enabling anonymous
-        communication.</p>
-        <p>Enabling Tor will route your connection through several relays and hide your IP address
-        from the node. Keep in mind this is more private but also <b>slower</b>.</p>
-        <p>In order to use Tor with Monerujo, you\'ll need Orbot installed on your phone. After
-        installing Orbot, make sure to enable it by clicking the network icon on the wallet list
-        screen.</p>
-        <p>If you have issues connecting with Tor, try to get a new Identity in the Orbot App (icon
-        on the top right).</p>
-    ]]></string>
-
-    <string name="help_tor_enable"><![CDATA[
-        <h1>Tor Node</h1>
-        <p>This is an .onion node. In order to use it, you must enable Tor mode by touching the
-        <img src="ic_network_clearnet"/> icon near the top of the Wallet List page.</p>
-    ]]></string>
 </resources>

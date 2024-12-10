@@ -41,6 +41,7 @@ import com.m2049r.xmrwallet.service.exchange.api.ExchangeCallback;
 import com.m2049r.xmrwallet.service.exchange.api.ExchangeRate;
 import com.m2049r.xmrwallet.util.Helper;
 import com.m2049r.xmrwallet.util.ServiceHelper;
+import com.m2049r.xmrwallet.util.StickyFiatHelper;
 import com.m2049r.xmrwallet.util.ThemeHelper;
 
 import java.util.ArrayList;
@@ -181,7 +182,8 @@ public class ExchangeEditText extends LinearLayout {
     }
 
     void setInitialSpinnerSelections(Spinner baseSpinner, Spinner quoteSpinner) {
-        baseSpinner.setSelection(0, true);
+        //baseSpinner.setSelection(0, true);
+        StickyFiatHelper.setPreferredCurrencyPosition(baseSpinner);
         quoteSpinner.setSelection(0, true);
     }
 
@@ -400,7 +402,6 @@ public class ExchangeEditText extends LinearLayout {
                     exchangeRate.getQuoteCurrency(), sCurrencyB.getSelectedItem());
             return;
         }
-
         exchangeRateCache = exchangeRate;
         if (prepareExchange()) {
             exchange(exchangeRate.getRate());

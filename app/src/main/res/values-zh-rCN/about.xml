@@ -8,7 +8,7 @@
         <b>感谢</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
-        rehrar, EarlOfEgo et al.
+        rehrar, EarlOfEgo, ErCiccione et al.
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
@@ -24,8 +24,8 @@
         <p>如果您使用交易的功能(可选)，monerujo將通过coinmarketcap.com的公开
         API 获取当前汇率。如果您想了解被收集的信息如何被使用，请访问 https://coinmarketcap.com/privacy
         查看他们的隐私政策。</p>
-        <p>如果您想使用该App支付款项至比特币地址，您将使用 SideShift.ai 所提供的服务。Monerujo
-        将发送比特币的目标地址以及金额信息至SideShift.ai，您的IP在此时也可能会被收集。请访问 https://sideshift.ai/
+        <p>如果您想使用该App支付款项至比特币地址，您将使用 Exolix 所提供的服务。Monerujo
+        将发送比特币的目标地址以及金额信息至Exolix，您的IP在此时也可能会被收集。请访问 https://exolix.com/privacy
         查看他们的隐私政策。</p>
         <h2>应用程序权限</h2>
         <ul>

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -19,6 +19,11 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="@drawable/backgound_toolbar_mainnet"
             android:minHeight="?android:attr/actionBarSize" />
+
+        <FrameLayout
+            android:id="@+id/fragment_bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <FrameLayout
             android:id="@+id/fragment_container"

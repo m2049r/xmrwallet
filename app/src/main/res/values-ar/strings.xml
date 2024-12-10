@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources tools:locale="ar" xmlns:tools="http://schemas.android.com/tools">
+  <string name="wallet_activity_name">محفظة</string>
+  <string name="menu_about">حول</string>
+  <string name="menu_privacy">سياسة الخصوصية</string>
+  <string name="menu_share">مشاركة</string>
+  <string name="menu_help">مساعدة</string>
+  <string name="menu_receive">تلقي</string>
+  <string name="menu_rename">إعادة تسمية</string>
+  <string name="menu_delete">حذف</string>
+  <string name="menu_backup">نسخ احتياطي</string>
+  <string name="menu_changepw">تغيير كلمة المرور</string>
+  <string name="menu_back">العودة</string>
+  <string name="menu_close">إغلاق</string>
+  <string name="menu_cancel">إلغاء</string>
+  <string name="password_weak">استمر في الكتابة ...</string>
+  <string name="password_fair">متوسط...</string>
+  <string name="password_good">يمكنك القيام به على نحو أفضل حاول مرة أخرى</string>
+  <string name="password_strong">اوشكت استمر....</string>
+  <string name="password_very_strong">أحسنت !!!</string>
+  <string name="label_login_wallets">المحافظ</string>
+  <string name="label_credits">الاعتمادات</string>
+  <string name="label_ok">حسنا</string>
+  <string name="label_cancel">إلغاء</string>
+  <string name="label_close">إغلاق الملاحظة</string>
+  <string name="label_wallet_advanced_details">معلومات مفصلة</string>
+  <string name="label_send_success">تم الإرسال بنجاح</string>
+  <string name="label_send_done">تم</string>
+  <string name="label_receive_info_gen_qr_code">المس لرمز QR</string>
+  <string name="info_xmrto_enabled">يمكنك تحويل XMR إلى عملات مشفره أخرى، انقر لقراءة المزيد.</string>
+  <string name="info_ledger_enabled">تم تفعيل Ledger، اضغط لمزيد من المعلومات.</string>
+  <string name="info_xmrto"><![CDATA[
+        <b>لقد أدخلت عنوان %1$s.</b><br/>
+        <i>سوف ترسل XMR وسيتلقى هذا العنوان %1$s باستخدام خدمة التبادل.</i>
+    ]]></string>
+  <string name="info_send_xmrto_success_order_label">أمر تبادل</string>
+  <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
+  <string name="info_send_xmrto_paid">التأكيد في انتظار</string>
+  <string name="info_send_xmrto_unpaid">انتظار الدفع</string>
+  <string name="info_send_xmrto_error">خطأ في التبادل ( %1$s )</string>
+  <string name="info_send_xmrto_sent">تم إرسال %1$s !</string>
+  <string name="info_send_xmrto_query">يتم الاستعلام...</string>
+  <string name="info_send_xmrto_parms"><![CDATA[
+<b> يمكنك إرسال %1$s — %2$s %4$s </b> . <br/>
+ <i> <b> البورصة </b> تمنحك سعر صرف <b> %3$s %4$s /XMR </b> <u> الآن </u> </i> .
+]]></string>
+  <string name="send_available_btc">الرصيد: %2$s %3$s ( %1$s XMR)</string>
+  <string name="info_paymentid_integrated">✔ معرف الدفع متكامل</string>
+  <string name="info_prepare_tx">جاري تجهيز معاملتك</string>
+  <string name="label_send_progress_xmrto_create">جارى إنشاء أمر تبادل</string>
+  <string name="label_send_progress_xmrto_query">جاري الاستعلام عن أمر تبادل</string>
+  <string name="label_send_progress_create_tx">جاري تجهيز معاملة Monero</string>
+  <string name="label_send_progress_queryparms">يتم الاستعلام عن معايير التبادل</string>
+  <string name="label_generic_xmrto_error">خطأ في خدمة التبادل</string>
+  <string name="text_generic_xmrto_error">الكود: %1$d</string>
+  <string name="text_retry">المس لإعادة المحاولة</string>
+  <string name="text_noretry_monero">الآن نحن عالقون هنا!</string>
+  <string name="text_noretry">أوه أوه ، لا يبدو أن خدمة التبادل متاحة الآن!</string>
+  <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
+  <string name="text_send_btc_rate">(السعر: %1$s %2$s /XMR)</string>
+  <string name="label_send_btc_xmrto_info">قم بزيارة موقع التبادل للحصول على الدعم والتتبع</string>
+  <string name="label_send_btc_xmrto_key_lb">رقم الطلب
+التبديل</string>
+  <string name="label_send_btc_xmrto_key">رقم أمر التبادل</string>
+  <string name="label_send_btc_address">عنوان الوجهة %1$s</string>
+  <string name="label_send_btc_amount">مبلغ</string>
+  <string name="label_send_txid">معرّف المعاملة (id)</string>
+  <string name="label_send_address">عنوان الوجهة</string>
+  <string name="label_send_notes">ملاحظات</string>
+  <string name="backup_progress">جاري النسخ الاحتياطي</string>
+  <string name="archive_progress">جاري الأرشفة</string>
+  <string name="rename_progress">جارٍ إعادة التسمية</string>
+  <string name="changepw_progress">جارٍ تغيير كلمة المرور</string>
+  <string name="service_progress">جاري إنهاء الأمور...
+قد يستغرق هذا بعض الوقت!</string>
+  <string name="backup_success">تم النسخ الاحتياطي بنجاح</string>
+  <string name="backup_failed">فشل النسخ الاحتياطي!</string>
+  <string name="delete_failed">فشل الحذف!</string>
+  <string name="rename_failed">فشلت إعادة التسمية!</string>
+  <string name="changepw_failed">فشل تغيير كلمة المرور!</string>
+  <string name="changepw_success">تم تغيير كلمة السر</string>
+  <string name="label_daemon">شبكة</string>
+  <string name="status_wallet_loading">جاري تحميل المحفظة ...</string>
+  <string name="status_wallet_unloaded">تم حفظ المحفظة</string>
+  <string name="status_wallet_unload_failed">فشل حفظ المحفظة!</string>
+  <string name="status_wallet_connecting">جار الاتصال ...</string>
+  <string name="status_wallet_connect_failed">فشل في الاتصال بالعقدة!
+تحقق من اسم المستخدم / كلمة المرور</string>
+  <string name="status_wallet_connect_wrongversion">إصدار العقدة غير متوافق - يرجى الترقية!</string>
+  <string name="status_wallet_node_invalid">العقدة غير صالحة!
+حاول مرة أخرى.</string>
+  <string name="status_wallet_connect_ioex">لا يمكن الوصول إلى العقدة!
+حاول مرة أخرى أو غيرها.</string>
+  <string name="status_wallet_disconnected">انقطع الاتصال</string>
+  <string name="status_transaction_failed">فشلت المعاملة: %1$s</string>
+  <string name="send_xmrto_timeout">لقد انتظرت طويلاً يا صديقي!</string>
+  <string name="service_busy">ما زلت مشغولًا بمحفظتك الأخيرة ...</string>
+  <string name="prompt_rename">أعد تسمية %1$s</string>
+  <string name="prompt_changepw">عبارة مرور جديدة لـ %1$s</string>
+  <string name="prompt_changepwB">كرر عبارة المرور لـ %1$s</string>
+  <string name="prompt_password">كلمة المرور لـ %1$s</string>
+  <string name="prompt_fingerprint_auth">يمكنك أيضًا فتح المحفظة باستخدام بصمة الإصبع.
+ يرجى لمس الاستشعار.</string>
+  <string name="prompt_open_wallet">جاري فتح المحفظة...</string>
+  <string name="bad_fingerprint">لم يتم التعرف على البصمة. حاول مرة أخرى.</string>
+  <string name="bad_password">كلمة المرور غير صحيحة!</string>
+  <string name="bad_saved_password">كلمة المرور المحفوظة غير صحيحة.
+ الرجاء إدخال كلمة المرور يدويا.</string>
+  <string name="bad_wallet">المحفظة غير موجودة!</string>
+  <string name="prompt_daemon_missing">يجب تعيين العقدة!</string>
+  <string name="prompt_wrong_net">المحفظة لا تتطابق مع الشبكة المحددة</string>
+  <string name="label_watchonly">(مشاهدة فقط)</string>
+  <string name="label_wallet_receive">تلقي</string>
+  <string name="label_wallet_send">أعطى</string>
+  <string name="xmr_unconfirmed_amount">+ %1$s %2$s غير مؤكدة</string>
+  <string name="service_description">المحفظة مفتوحة</string>
+  <string name="status_synced">تمت المزامنة:</string>
+  <string name="status_remaining">كتله متبقية</string>
+  <string name="status_syncing">المزامنة:</string>
+  <string name="message_strorage_not_writable">وحدة التخزين الخارجية غير قابلة للكتابة! احذر!</string>
+  <string name="message_strorage_not_permitted">نحن حقا بحاجة إلى تلك الأذونات للتخزين الخارجي!</string>
+  <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح رمز QR!</string>
+  <string name="label_copy_viewkey">مفتاح العرض</string>
+  <string name="label_copy_address">العنوان العام</string>
+  <string name="label_copy_xmrtokey">مفتاح</string>
+  <string name="message_copy_viewkey">تم نسخ مفتاح العرض إلى الحافظة!</string>
+  <string name="message_copy_xmrtokey">تم نسخ المفتاح إلى الحافظة!</string>
+  <string name="message_copy_address">تم نسخ عنوان المحفظة إلى الحافظة!</string>
+  <string name="message_copy_txid">تم نسخ معرّف المعاملة (id) إلى الحافظة!</string>
+  <string name="message_nocopy">تم تعطيل النسخ لأسباب أمنية!</string>
+  <string name="message_exchange_failed">لا يمكن الحصول على سعر التبادل!
+استخدم XMR/XMR أو حاول مرة أخرى</string>
+  <string name="generate_title">إنشاء محفظة</string>
+  <string name="generate_name_hint">اسم المحفظة</string>
+  <string name="generate_password_hint">عبارة مرور المحفظة</string>
+  <string name="generate_fingerprint_hint">السماح بفتح المحفظة باستخدام البصمة</string>
+  <string name="generate_fingerprint_warn"><![CDATA[
+<strong>المصادقة ببصمة الإصبع</strong>
+        <p>عند</p> تمكين المصادقة ببصمة الإصبع ، يمكنك عرض رصيد المحفظة وتلقي الأموال
+        دون إدخال كلمة المرور.
+        <p>ولكن لمزيد من الأمان ، سيظل مونيروجو يطلب منك إدخال كلمة المرور عندما
+        عرض تفاصيل المحفظة أو إرسال الأموال.</p>
+        <strong>تحذير أمني</strong>
+        <p>أخيرا ، يريد مونيروجو تذكيرك بأن أي شخص يمكنه الحصول على بصمة إصبعك سيكون
+        قادرا على زقزقة في رصيد محفظتك.</p>
+        <p>على سبيل المثال ، يمكن لمستخدم ضار من حولك فتح محفظتك عندما تكون نائما.</p>
+        <strong>هل أنت متأكد من تمكين هذه الوظيفة؟</strong>
+    ]]></string>
+  <string name="generate_bad_passwordB">عبارات المرور غير متطابقة</string>
+  <string name="generate_empty_passwordB">لا يجوز أن تكون عبارة المرور فارغة</string>
+  <string name="generate_buttonGenerate">اصنع لي محفظة الآن!</string>
+  <string name="generate_button_accept">لقد سجلت بذرة الذاكرة</string>
+  <string name="generate_wallet_name">أعطني اسمًا!</string>
+  <string name="generate_wallet_exists">المحفظة موجودة!</string>
+  <string name="generate_wallet_dot">لا يمكن أن يبدأ بـ .</string>
+  <string name="generate_wallet_creating">يتم إنشاء المحفظة</string>
+  <string name="generate_wallet_created">تم إنشاء المحفظة</string>
+  <string name="generate_restoreheight_error">أدخل الرقم أو التاريخ (YYYY-MM-DD)</string>
+  <string name="generate_wallet_type_key">مفاتيح</string>
+  <string name="generate_wallet_type_new">جديد</string>
+  <string name="generate_wallet_type_seed">بذرة</string>
+  <string name="generate_wallet_type_view">عرض</string>
+  <string name="generate_address_hint">العنوان العام</string>
+  <string name="generate_viewkey_hint">مفتاح العرض</string>
+  <string name="generate_spendkey_hint">مفتاح الإنفاق</string>
+  <string name="generate_mnemonic_hint">بذرة الذاكرة من 25 كلمة</string>
+  <string name="generate_restoreheight_hint">استعادة الارتفاع أو التاريخ (YYYY-MM-DD)</string>
+  <string name="generate_address_label">العنوان العام</string>
+  <string name="generate_viewkey_label">مفتاح العرض</string>
+  <string name="generate_spendkey_label">مفتاح الإنفاق</string>
+  <string name="generate_mnemonic_label">بذرة الذاكرة</string>
+  <string name="generate_crazypass_label">استعادة ملفات المحفظة كلمة المرور</string>
+  <string name="generate_check_key">أدخل مفتاح صالحًا</string>
+  <string name="generate_check_address">أدخل عنوانا صحيحا</string>
+  <string name="generate_check_mnemonic">أدخل بذور الـ 25 كلمة الخاصة بك</string>
+  <string name="send_notes_hint">ملاحظات خاصة (اختياري)</string>
+  <string name="send_generate_paymentid_hint">توليد</string>
+  <string name="send_send_label">أنفاق مونيروجو الحلو الخاصة بي</string>
+  <string name="send_send_timed_label">أنفاق مونيروجو الحلو الخاصة بي (%1$s)</string>
+  <string name="send_qr_invalid">ليس رمز QR</string>
+  <string name="send_qr_address_invalid">رمز QR غير صالح للدفع</string>
+  <string name="send_address_invalid">ليس عنوانًا صالحًا</string>
+  <string name="send_address_not_openalias">عنوان OpenAlias غير متوفر</string>
+  <string name="send_address_openalias">OpenAlias آمن ✔</string>
+  <string name="send_address_resolve_openalias">جار حل OpenAlias...</string>
+  <string name="send_address_no_dnssec">OpenAlias بدون DNSSEC - قد يتم التلاعب بالعنوان</string>
+  <string name="send_title">إرسال</string>
+  <string name="send_available">الرصيد: %1$s XMR</string>
+  <string name="send_address_title">عنوان</string>
+  <string name="send_amount_title">مبلغ</string>
+  <string name="send_confirm_title">تأكيد</string>
+  <string name="send_success_title">تم</string>
+  <string name="send_amount_label">مبلغ</string>
+  <string name="send_fee_btc_label">الرسوم (XMR)</string>
+  <string name="send_fee_label">رسوم</string>
+  <string name="send_total_btc_label">الإجمالي (XMR)</string>
+  <string name="send_total_label">المجموع</string>
+  <string name="send_amount">%1$s XMR</string>
+  <string name="send_fee">+ رسوم %1$s</string>
+  <string name="send_create_tx_error_title">خطأ في إنشاء المعاملة</string>
+  <string name="tx_list_fee">رسوم %1$s</string>
+  <string name="tx_list_amount_failed">(%1$s)</string>
+  <string name="tx_list_failed_text">فشل</string>
+  <string name="tx_list_amount_negative">- %1$s</string>
+  <string name="tx_list_amount_positive">+ %1$s</string>
+  <string name="tx_timestamp">الطابع الزمني</string>
+  <string name="tx_id">معرّف TX</string>
+  <string name="tx_key">مفتاح TX</string>
+  <string name="tx_destination">الوجهة</string>
+  <string name="tx_paymentId">معرّف الدفع ID</string>
+  <string name="tx_blockheight">كتله</string>
+  <string name="tx_amount">مبلغ</string>
+  <string name="tx_fee">رسوم</string>
+  <string name="tx_transfers">تحويلات</string>
+  <string name="tx_notes">ملاحظات</string>
+  <string name="tx_notes_hint">(اختياري)</string>
+  <string name="tx_title">تفاصيل المعاملة</string>
+  <string name="tx_pending">قيد الانتظار</string>
+  <string name="tx_failed">فشل</string>
+  <string name="receive_amount_hint">المبلغ</string>
+  <string name="receive_desc_hint">الوصف (اختياري)</string>
+  <string name="receive_cannot_open">لا يمكن فتح المحفظة!</string>
+  <string name="receive_amount_too_big">الحد الأقصى. %1$s</string>
+  <string name="receive_amount_negative">الحد الأدنى 0</string>
+  <string name="receive_amount_nan">XMR ليس رقما</string>
+  <string name="copy_receive_address">انسخ عنوان الاستلام</string>
+  <string name="paste_give_address">ألصق عنوان المتلقي</string>
+  <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن.
+ أنظر خلفك!</string>
+  <string name="details_alert_yes">انا بآمن متابعة</string>
+  <string name="details_alert_no">تراجع</string>
+  <string name="details_title">التفاصيل</string>
+  <string name="delete_alert_message">سيتم حذف هذه المحفظة. ستختفي أموالك إلى الأبد ما لم يكن لديك بذرتك أو نسخة احتياطية لاستعادتها.</string>
+  <string name="delete_alert_yes">نعم افعل ذلك!</string>
+  <string name="delete_alert_no">لا، شكراً!</string>
+  <string name="fab_create_new">إنشاء محفظة جديدة</string>
+  <string name="fab_restore_viewonly">استعادة محفظة العرض فقط</string>
+  <string name="fab_restore_key">استعادة محفظة من المفاتيح الخاصة</string>
+  <string name="fab_restore_seed">استعادة محفظة المكونة من 25 كلمة</string>
+  <string name="accounts_drawer_new">إنشاء حساب</string>
+  <string name="accounts_new">تمت إضافة حساب جديد # %1$d</string>
+  <string name="tx_account">حساب #</string>
+  <string name="send_sweepall">أرسل جميع الأموال المؤكدة من هذا الحساب!</string>
+  <string name="tx_subaddress">عنوان فرعي</string>
+  <string name="generate_address_label_sub">عنوان فرعي عام #%1$d: %2$s</string>
+  <string name="menu_language">اللغة</string>
+  <string name="language_system_default">استخدم لغة النظام</string>
+  <string name="fab_restore_ledger">الأستعادة من Ledger Nano</string>
+  <string name="progress_ledger_progress">يتم التواصل مع Ledger</string>
+  <string name="progress_ledger_confirm">التأكيد على Ledger مطلوب!</string>
+  <string name="progress_ledger_lookahead">جاري استرجاع العناوين الفرعية</string>
+  <string name="progress_ledger_verify">يتم التحقق من المفاتيح</string>
+  <string name="progress_ledger_opentx">يتم القيام برياضيات مجنونة</string>
+  <string name="progress_ledger_mlsag">يتم تجزئة اشياء</string>
+  <string name="open_wallet_ledger_missing">يرجى (إعادة) توصيل Ledger</string>
+  <string name="accounts_progress_new">جار إنشاء حساب</string>
+  <string name="toast_ledger_attached">%1$s مرفق</string>
+  <string name="toast_ledger_detached">%1$s تم فصله</string>
+  <string name="menu_info">أظهر كلمات السر!</string>
+  <string name="menu_streetmode">وضع الشارع</string>
+  <string name="info_nodes_enabled">تم تفعيل Node-o-matiC، اضغط للمزيد من المعلومات.</string>
+  <string name="node_height">آخر كتلة تم تحديثها: %1$s</string>
+  <string name="label_nodes">العقد</string>
+  <string name="node_name_hint">اسم العقدة (اختياري)</string>
+  <string name="node_address_hint">اسم المضيف</string>
+  <string name="node_port_hint">ميناء</string>
+  <string name="node_user_hint">اسم المستخدم (اختياري)</string>
+  <string name="node_pass_hint">كلمة المرور (اختياري)</string>
+  <string name="node_host_unresolved">لا يمكن التواصل مع المضيف</string>
+  <string name="node_host_empty">لازم ده!</string>
+  <string name="node_port_numeric">يجب أن يكون رقميًا</string>
+  <string name="node_port_range">يجب أن يكون بين 1–65535</string>
+  <string name="node_fab_add">إضافة عقدة</string>
+  <string name="node_refresh_hint">المس للتحديث!</string>
+  <string name="node_test_error">خطأ في الإتصال %1$d</string>
+  <string name="node_general_error">خطأ في الإتصال</string>
+  <string name="node_auth_error">فشلت المصادقة</string>
+  <string name="node_result_label">نتيجة الاختبار:</string>
+  <string name="node_result">الارتفاع: %1$s (v%2$d), البينغ: %3$.0fمللي ثانية, الاي بي: %4$s</string>
+  <string name="node_testing">جارٍ اختبار الـ IP: %1$s …</string>
+  <string name="node_refresh_wait">يرجى الانتظار حتى ينتهي الفحص أصبر شوية!</string>
+  <string name="node_create_hint">المس لتحديد أو إضافة العقد</string>
+  <string name="node_pull_hint">أضف العقد يدويًا أو اسحب للأسفل للمسح</string>
+  <string name="node_scanning">جارٍ فحص الشبكة...</string>
+  <string name="node_nobookmark">تم وضع إشارة مرجعية تلقائيًا على أفضل %1$d عقد</string>
+  <string name="label_test">اختبر</string>
+  <string name="send_address_hint">المتلقي</string>
+  <string name="street_sweep_amount">كل شيء!</string>
+  <string name="menu_ledger_seed">تحويل بذور Ledger</string>
+  <string name="prompt_ledger_seed">كلمات بذور Ledger</string>
+  <string name="prompt_ledger_phrase">عبارة مرور Ledger (متقدم)</string>
+  <string name="bad_ledger_seed">بذور Ledger غير صالحة!</string>
+  <string name="prompt_ledger_seed_warn">إدخال بذور Ledger الخاصة بك هنا يشكل خطرًا أمنيًا كبيرًا كدا غلط!</string>
+  <string name="label_restoreheight">ارتفاع الأستعادة</string>
+  <string name="toast_ledger_start_app">ابدأ تطبيق Monero على %1$s</string>
+  <string name="menu_rescan">أعد المزامنة!</string>
+  <string name="onboarding_agree">فهمت! استمر</string>
+  <string name="onboarding_button_next">التالي</string>
+  <string name="onboarding_button_ready">أنا جاهز استمر!</string>
+  <string name="onboarding_welcome_title">مرحبًا بك في مونيروجو!</string>
+  <string name="onboarding_welcome_information">يتيح لك هذا التطبيق إنشاء واستخدام محافظ Monero. يمكنك تخزين مونيروجو المفضل فيها.</string>
+  <string name="onboarding_seed_title">حافظ على بذورك آمنة</string>
+  <string name="onboarding_seed_information">البذرة تمنح الوصول الكامل لمن يمتلكها. إذا فقدتها، لا يمكننا مساعدتك في استعادتها وتفقد مونيرو المفضل لك.</string>
+  <string name="onboarding_xmrto_title">أرسل عملة مشفرة</string>
+  <string name="onboarding_xmrto_information">يحتوي مونيروجو على دعم مدمج للتبادلات. يمكنك استخدام XMR للدفع بعدة عملات مشفرة أخرى.</string>
+  <string name="onboarding_nodes_title">العقد، على طريقتك</string>
+  <string name="onboarding_nodes_information">العقد تربطك بشبكة Monero. اختر بين العقد العامة أو فعل وضع الغموض التام باستخدام العقد الخاصة بك.</string>
+  <string name="onboarding_fpsend_title">أرسل بواسطة البصمة</string>
+  <string name="onboarding_fpsend_information">أنت الآن قادر على إرسال XMR بواسطة بصمة إصبعك فقط إذا قمت بتمكينها. لأستخدام كلمة المرور، فقط عطل الوصول عبر بصمة الإصبع.</string>
+  <string name="menu_daynight">الوضع الداكن</string>
+  <string-array name="daynight_themes">
+    <item>تلقائي</item>
+    <item>نهار</item>
+    <item>ليلي</item>
+  </string-array>
+  <string name="gunther_says">لا يوجد شيء هنا
+يرجى إنشاء أو استعادة محفظة</string>
+  <string name="menu_default_nodes">استعادة العقد الافتراضية</string>
+  <string name="toast_default_nodes">الاستعادة جارية بالفعل...</string>
+  <string name="node_updated_now">الكتلة الأخيرة: %1$d ثوانٍ مضت</string>
+  <string name="node_updated_mins">الكتلة الأخيرة: %1$d دقائق مضت</string>
+  <string name="node_updated_hours">الكتلة الأخيرة: %1$d ساعات مضت</string>
+  <string name="node_updated_days">الكتلة الأخيرة: %1$d منذ أيام</string>
+  <string name="shift_noquote">لا يمكن الحصول على عرض أسعار</string>
+  <string name="shift_checkamount">تحقق من المبلغ وحاول مرة أخرى</string>
+  <string name="info_xmrto_ambiguous"><![CDATA[
+<b> عنوان غامض. </b> <br/>
+ <i> الرجاء تحديد النوع أعلاه. </i>
+]]></string>
+  <string name="info_xmrto_help"><![CDATA[
+        <b>الرجاء إدخال أو مسح عنوان %1$s.</b><br/>
+        <i>سوف ترسل XMR وسيحصل المستلم على %2$s باستخدام خدمة <b>SideShift.ai</b>.</i>
+    ]]></string>
+  <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>يرجى إدخال أو مسح عنوان Monero.</b>
+    ]]></string>
+  <string name="subbaddress_title">العناوين الفرعية</string>
+  <string name="subbaddress_name_hint">اسم العنوان الفرعي</string>
+  <string name="max_subaddress_warning">عدد كبير جدًا من العناوين غير مستخدمة - استخدم بعضها لتتمكن من إنشاء المزيد!</string>
+  <string name="max_account_warning">عدد كبير جدًا من الحسابات غير مستخدمة - استخدم بعضها لتتمكن من إنشاء المزيد!</string>
+  <string name="subaddress_tx_label">المعاملات لهذا العنوان الفرعي:</string>
+  <string name="subaddress_notx_label">لا توجد معاملات لهذا العنوان الفرعي حتى الآن</string>
+  <string name="subaddress_select_label">اختر عنوان فرعي</string>
+  <string name="subaddress_details_hint">اضغط مطولًا للحصول على التفاصيل</string>
+  <string name="subaddress_add" tools:ignore="MissingTranslation">إضافة عنوان فرعي</string>
+  <string name="menu_restore">استيراد المحفظة</string>
+  <string name="restore_failed">فشل الاستيراد!</string>
+  <string name="menu_deletecache">إعادة ضبط المحفظة!</string>
+  <string name="deletecache_alert_message">سيتم إعادة تعيين هذه المحفظة، مما يؤدي إلى فقدان جميع البيانات خارج السلسلة (مثل الملاحظات، أسماء الحسابات والعناوين الفرعية، مفاتيح المعاملات الخاصة، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة ولا تعمل!</string>
+  <string name="node_tor_error">مطلوب تور</string>
+  <string name="node_waiting">\u00A0في انتظار العقدة\u00A0</string>
+  <string name="tor_enable_background">فعل \"السماح بالبدء في الخلفية\" في إعدادات Orbot لاستخدام تور!</string>
+  <string name="tor_noshift">لا يدعم SideShift.ai ل تور.
+عطل تور لتبديل XMR.</string>
+  <string name="tor_enable" tools:ignore="MissingTranslation">تشغيل تور</string>
+  <string name="label_seed_offset_encrypt">تشفير البذور (تجريبي)</string>
+  <string name="seed_offset_hint">عبارة إزاحة البذور (اختياري)</string>
+  <string name="menu_settings">الإعدادات</string>
+  <string name="title_iface">واجهة</string>
+  <string name="title_info">معلومات</string>
+  <string name="setting_daynight">نهار / ليلي</string>
+  <string name="setting_theme">نمط السمة</string>
+  <string-array name="themes">
+    <item>كلاسيكي</item>
+    <item>بالداو (Baldaŭ)</item>
+  </string-array>
+  <string name="message_qr_failed">فشل في إنشاء QR للمشاركة!</string>
+  <string name="tx_locked">مبلغ المعاملة مقفل حتى الكتلة %1$d (في %2$d كتل ≈ %3$,.2f أيام)</string>
+  <string name="label_streetmode">تم تفعيل وضع الشارع
+سيتم عرض المعاملات الجديدة فقط</string>
+  <string name="pocketchange_info">لتقليل وقت الانتظار عند الإنفاق المتكرر، يمكن لـ مونيروجو إنشاء عملات فكه احتياطية على حساب رسوم اعلى. سيحاول إنشاء والحفاظ على ما لا يقل عن 6 عملات من القيمة المحددة.</string>
+  <string name="pocketchange_create_title">أنشئ تغييرا</string>
+  <string name="label_apply">تطبيق</string>
+</resources>

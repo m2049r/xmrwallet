@@ -18,7 +18,6 @@ package com.m2049r.xmrwallet.model;
 
 import com.m2049r.xmrwallet.XmrWalletApplication;
 import com.m2049r.xmrwallet.data.Node;
-import com.m2049r.xmrwallet.ledger.Ledger;
 import com.m2049r.xmrwallet.util.RestoreHeight;
 
 import java.io.File;
@@ -161,10 +160,12 @@ public class WalletManager {
                                               String spendKeyString);
 
     public Wallet createWalletFromDevice(File aFile, String password, long restoreHeight,
-                                         String deviceName) {
+                                         Wallet.Device device) {
+        final String lookahead = device.getAccountLookahead() + ":" + device.getSubaddressLookahead();
+        Timber.d("Creating from %s with %s lookahead", device, lookahead);
         long walletHandle = createWalletFromDeviceJ(aFile.getAbsolutePath(), password,
-                getNetworkType().getValue(), deviceName, restoreHeight,
-                Ledger.SUBADDRESS_LOOKAHEAD);
+                getNetworkType().getValue(), device.name(), restoreHeight,
+                lookahead);
         Wallet wallet = new Wallet(walletHandle);
         manageWallet(wallet);
         return wallet;
