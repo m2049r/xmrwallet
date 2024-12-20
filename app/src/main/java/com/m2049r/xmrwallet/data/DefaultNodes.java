@@ -23,7 +23,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum DefaultNodes {
     AGORIST("xmr.agor.ist:18089/mainnet/agor.ist"),
-    BOLDSUCK("xmr-de.boldsuck.org:18080/mainnet/boldsuck.org"),
+    BOLDSUCK("xmr-de.boldsuck.org:18081/mainnet/boldsuck.org"),
     boldsuck("6dsdenp6vjkvqzy4wzsnzn6wixkdzihx3khiumyzieauxuxslmcaeiad.onion:18081/mainnet/boldsuck.onion"),
     CAKE("xmr-node.cakewallet.com:18081/mainnet/cakewallet.com"),
     DS_JETZT("monero.ds-jetzt.de:18089/mainnet/ds-jetzt.de"),
