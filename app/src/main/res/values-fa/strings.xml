@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">برای نمایش کد کیوآر لمس کنید</string>
 
-    <string name="info_xmrto_enabled">پرداخت‌های غیر مونرویی فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
     <string name="info_ledger_enabled">پشتیبانی از لجر فعال شد، برای اطلاعات بیشتر لمس کنید.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -127,17 +126,6 @@
     (نرخ:
     %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">
-    برای پشتیبانی و رهگیری سفارش به
-    %1$s
-    مراجعه کنید
-    </string>
-    <string name="label_send_btc_xmrto_key_lb">
-    کلید خصوصی
-    \n%1$s</string>
-    <string name="label_send_btc_xmrto_key">
-    کلید خصوصی %s
-    </string>
     <string name="label_send_btc_address">
     آدرس مقصد
     %1$s
@@ -166,7 +154,6 @@
     <string name="changepw_failed">تغییر رمز شکست خورد!</string>
     <string name="changepw_success">رمز عبور تغییر کرد</string>
 
-    <string name="label_daemon">شبکه</string>
     <string name="status_wallet_loading">بارگذاری کیف پول...</string>
     <string name="status_wallet_unloaded">کیف پول ذخیره شد</string>
     <string name="status_wallet_unload_failed">ذخیرهٔ کیف پول شکست خورد!</string>
@@ -241,11 +228,9 @@
     تایید نشده است
     </string>
 
-    <string name="service_description">سرویس مونروجو</string>
 
     <string name="status_synced">همگام شد:</string>
     <string name="status_remaining">بلوک باقی مانده</string>
-    <string name="status_syncing">در حال اسکن:</string>
 
     <string name="message_camera_not_permitted">بدون دوربین نمی‌توان کدها را اسکن کرد!</string>
 
@@ -375,9 +360,6 @@
 
     <string name="send_create_tx_error_title">ساخت خطای تراکنش</string>
 
-    <string name="tx_list_fee">
-    هزینهٔ تراکنش
-    %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">شکست خورد</string>
     <string name="tx_list_amount_negative">-%1$s</string>
@@ -557,9 +539,7 @@
     این بذر به هرکسی که آن را در اختیار دارد دسترسی کامل می‌دهد. اگر آن را از دست بدهید، ما نمی‌توانیم به شما کمک کنیم آن را بازیابی کنید و مونروهای محبوب خود را از دست می دهید.
     </string>
     <string name="onboarding_xmrto_title">هرنوع رمزارز ارسال کنید</string>
-    <string name="onboarding_xmrto_information">
-    Monerujo دارای پشتیبانی صرافی داخلی است. فقط یک آدرس BTC، LTC، ETH، TRXUSDT یا SOL را بچسبانید یا اسکن کنید و با خرج کردن XMR، این رمزارزها را ارسال خواهید کرد (آدرس IP ایران در تحریم است).
-    </string>
+
     <string name="onboarding_nodes_title">گره‌ها، به میل شما</string>
     <string name="onboarding_nodes_information">
     گره‌ها شما را به شبکه مونرو متصل می‌کنند. از بین گره‌های عمومی یکی را انتخاب کنید یا با استفاده از گرهٔ خود متصل شوید.

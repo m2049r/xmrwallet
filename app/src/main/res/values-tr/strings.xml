@@ -79,9 +79,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Oran: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Destek ve takip için borsa sitesini ziyaret edin</string>
-    <string name="label_send_btc_xmrto_key_lb">Sipariş numarası\nBorsa</string>
-    <string name="label_send_btc_xmrto_key">Borsa sipariş numarası</string>
     <string name="label_send_btc_address">Hedef %1$s Adresi</string>
     <string name="label_send_btc_amount">Meblağ</string>
 
@@ -103,7 +100,6 @@
     <string name="changepw_failed">Parola değişimi başarısız oldu!</string>
     <string name="changepw_success">Parola değiştirildi</string>
 
-    <string name="label_daemon">Şebeke</string>
 
     <string name="status_wallet_loading">Cüzdan yükleniyor &#8230;</string>
     <string name="status_wallet_unloaded">Cüzdan kaydedildi</string>
@@ -147,7 +143,6 @@
 
     <string name="status_synced">Eşleşmiş:</string>
     <string name="status_remaining">Blok kaldı</string>
-    <string name="status_syncing">Eşleşiyor:</string>
 
     <string name="message_camera_not_permitted">Kamera yok = QR taraması yok!</string>
 

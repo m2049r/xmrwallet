@@ -22,7 +22,6 @@
     <string name="label_send_success">发送成功</string>
     <string name="label_send_done">完成</string>
     <string name="label_receive_info_gen_qr_code">点此获取QR码</string>
-    <string name="info_xmrto_enabled">已支持比特币支付，点此了解更多</string>
     <string name="info_ledger_enabled">已支持Ledger硬件钱包，点此了解更多</string>
     <string name="info_xmrto"><![CDATA[
       <b>您输入了一个%1$s地址</b><br/>
@@ -53,9 +52,6 @@
     <string name="text_noretry">抱歉, %1$s服务现在似乎不可用</string>
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
-    <string name="label_send_btc_xmrto_info">访问%1$s以获得更多支持</string>
-    <string name="label_send_btc_xmrto_key_lb">密钥\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s密钥</string>
     <string name="label_send_btc_address">%1$s收款地址</string>
     <string name="label_send_btc_amount">金额</string>
     <string name="label_send_txid">交易ID</string>
@@ -71,7 +67,6 @@
     <string name="rename_failed">重命名失败！</string>
     <string name="changepw_failed">密码修改失败！</string>
     <string name="changepw_success">密码已修改</string>
-    <string name="label_daemon">节点</string>
     <string name="status_wallet_loading">钱包加载中 &#8230;</string>
     <string name="status_wallet_unloaded">钱包已保存</string>
     <string name="status_wallet_unload_failed">钱包保存失败！</string>
@@ -100,10 +95,8 @@
     <string name="label_wallet_receive">收款</string>
     <string name="label_wallet_send">发送</string>
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s未确认</string>
-    <string name="service_description">monerujo服务</string>
     <string name="status_synced">已同步：</string>
     <string name="status_remaining">区块剩余</string>
-    <string name="status_syncing">扫描中：</string>
     <string name="message_camera_not_permitted">不开通的相机权限的话便无法扫描QR码！</string>
     <string name="label_copy_viewkey">查阅密钥</string>
     <string name="label_copy_address">公开地址</string>

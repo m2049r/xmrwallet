@@ -55,7 +55,6 @@
     <string name="changepw_failed">¡Cambio de contraseña fallido!</string>
     <string name="changepw_success">Contraseña cambiada</string>
 
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Cargando monedero&#8230;</string>
     <string name="status_wallet_unloaded">Monedero guardado</string>
     <string name="status_wallet_unload_failed">¡Fallo al guardar el monedero!</string>
@@ -81,7 +80,6 @@
     <string name="bad_password">¡Contraseña incorrecta!</string>
     <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngrésala manualmente.</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
-    <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
 
     <string name="label_watchonly">(Sólo Vista)</string>
@@ -91,7 +89,6 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s sin confirmar</string>
 
-    <string name="service_description">Monedero abierto</string>
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">bloques restantes</string>

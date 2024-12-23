@@ -24,14 +24,13 @@
     <string name="label_ok">OK</string>
     <string name="label_cancel">Cancelar</string>
     <string name="label_close">Fechar</string>
-    <string name="label_wallet_advanced_details">Mais detalhes</string> <!-- FUZZY -->
+    <string name="label_wallet_advanced_details">Mais detalhes</string>
 
     <string name="label_send_success">Enviado com sucesso</string>
     <string name="label_send_done">Concluído</string>
 
     <string name="label_receive_info_gen_qr_code">Toque para ver o código QR</string>
 
-    <string name="info_xmrto_enabled">Pagamento em BTC ativado, toque para mais informações.</string> <!-- FUZZY -->
     <string name="info_ledger_enabled">Ledger ativada, toque para mais informações.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -75,9 +74,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Cotação: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visite %1$s para suporte &amp; rastreio da ordem</string> <!-- FUZZY-INCORRECT -->
-    <string name="label_send_btc_xmrto_key_lb">Chave secreta\n%1$s</string> <!-- FUZZY-INCORRECT -->
-    <string name="label_send_btc_xmrto_key">Chave secreta %1$s</string> <!-- FUZZY-INCORRECT -->
     <string name="label_send_btc_address">Endereço %1$s de destino</string>
     <string name="label_send_btc_amount">Valor</string>
 
@@ -97,7 +93,6 @@
     <string name="changepw_failed">Erro ao alterar senha!</string>
     <string name="changepw_success">Senha alterada</string>
 
-    <string name="label_daemon">Nó</string> <!-- FUZZY-INCORRECT -->
     <string name="status_wallet_loading">Carregando &#8230;</string>
     <string name="status_wallet_unloaded">Carteira salva</string>
     <string name="status_wallet_unload_failed">Erro ao salvar carteira</string>
@@ -126,7 +121,6 @@
     <string name="bad_password">Senha incorreta!</string>
     <string name="bad_saved_password">A senha salva está incorreta.\nPor favor, escreva manualmente.</string>
     <string name="bad_wallet">Essa carteira não existe!</string>
-    <string name="prompt_daemon_missing">É preciso definir o endereço do daemon!</string> <!-- FUZZY -->
     <string name="prompt_wrong_net">A carteira não é compatível com a rede selecionada</string>
 
     <string name="label_watchonly">(Somente Leitura)</string>
@@ -136,11 +130,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s não confirmado</string>
 
-    <string name="service_description">Serviço monerujo</string> <!-- FUZZY -->
 
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">Blocos restantes</string>
-    <string name="status_syncing">Escaneando:</string> <!-- FUZZY -->
 
     <string name="message_camera_not_permitted">Sem câmera = Impossível escanear códigos QR!</string>
 
@@ -228,7 +220,6 @@
 
     <string name="send_create_tx_error_title">Erro ao criar a transação</string>
 
-    <string name="tx_list_fee">taxa de %1$s</string> <!-- FUZZY -->
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">falhou</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -354,7 +345,6 @@ aqui.</string>
     <string name="onboarding_seed_title">Mantenha sua semente em segurança</string>
     <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneroj.</string>
     <string name="onboarding_xmrto_title">Enviar Cripto</string>
-    <string name="onboarding_xmrto_information">A Monerujo possui o exchange integrado. Basta colar ou escanear um endereço BTC, LTC, ETH, TRXUSDT ou SOL e você estará enviando cripto, mas gastando em XMR.</string> <!-- FUZZY -->
     <string name="onboarding_nodes_title">"Nós", do seu jeito</string>
     <string name="onboarding_nodes_information">Os nós conectam você à rede Monero. Escolha entre nós públicos ou seja completamente "cypherpunk" e utilize seu próprio nó.</string>
     <string name="onboarding_fpsend_title">Enviar usando a digital</string>

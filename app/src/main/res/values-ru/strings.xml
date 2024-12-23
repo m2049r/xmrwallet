@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Нажмите для использования QR-кода</string>
 
-    <string name="info_xmrto_enabled">Доступны переводы в BTC, нажмите для доп. информации</string>
     <string name="info_ledger_enabled">Доступен Ledger, нажмите для доп. информации</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -75,9 +74,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Посетите %1$s для получения помощи &amp;</string>
-    <string name="label_send_btc_xmrto_key_lb">Секретный ключ\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s секретный ключ</string>
     <string name="label_send_btc_address">Адрес получателя %1$s</string>
     <string name="label_send_btc_amount">Сумма</string>
 
@@ -97,7 +93,6 @@
     <string name="changepw_failed">Изменение пароля произошло с ошибкой!</string>
     <string name="changepw_success">Изменение пароля выполено успешно</string>
 
-    <string name="label_daemon">Удаленный узел</string>
     <string name="status_wallet_loading">Загрузка кошелька &#8230;</string>
     <string name="status_wallet_unloaded">Кошелек записан</string>
     <string name="status_wallet_unload_failed">Ошибка записи кошелека!</string>
@@ -135,11 +130,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s не подтверждено</string>
 
-    <string name="service_description">Служба Monerujo</string>
 
     <string name="status_synced">Синхронизировано:</string>
     <string name="status_remaining">Блоков осталось</string>
-    <string name="status_syncing">Просканировано:</string>
 
     <string name="message_camera_not_permitted">Нет доступа к камере = Нет QR-сканирования!</string>
 
@@ -365,7 +358,6 @@
     <string name="onboarding_seed_title">Храните свои ключи в безопасности</string>
     <string name="onboarding_seed_information">Секретная фраза дает полный доступ к кошельку. Если вы её потеряете, мы не сможем её восстановить и вы потеряете ваши moneroj.</string>
     <string name="onboarding_xmrto_title">Отправка других криптовалют</string>
-    <string name="onboarding_xmrto_information">Monerujo имеет поддержку exchange. Просто вставьте (или просканируйте) адрес BTC, LTC, ETH, TRXUSDT или SOL и вы будете отправлять эти криптовалюты, тратя XMR.</string>
     <string name="onboarding_nodes_title">Узлы, узлы, узлы…</string>
     <string name="onboarding_nodes_information">Узлы позволяют подключаться к сети Monero. Выбирайте между общедоступными узлами или используйте свой собственный для безопасности IP адреса.</string>
     <string name="onboarding_fpsend_title">Отправка с помощью отпечатка пальца</string>

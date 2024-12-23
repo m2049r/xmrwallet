@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Takni za QR kod</string>
 
-    <string name="info_xmrto_enabled">Omogućeno BTC plaćanje, tapni za više info.</string>
     <string name="info_ledger_enabled">Knjiga računa omogućena, tapni za više info.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -74,9 +73,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Poseti %1$s za bekap &amp; praćenje</string>
-    <string name="label_send_btc_xmrto_key_lb">Tajna šifra\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Tajna šifra</string>
     <string name="label_send_btc_address">Odredište %1$s adrese</string>
     <string name="label_send_btc_amount">Suma</string>
 
@@ -97,7 +93,6 @@
     <string name="changepw_failed">Promena lozinke neuspela!</string>
     <string name="changepw_success">Lozinka promenjena</string>
 
-    <string name="label_daemon">Čvor</string>
 
     <string name="status_wallet_loading">Otvaranje novčanika &#8230;</string>
     <string name="status_wallet_unloaded">Novčanik sačuvan</string>
@@ -137,11 +132,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nepotvrđeno</string>
 
-    <string name="service_description">monerujo Servis</string>
 
     <string name="status_synced">Sinhronizovano:</string>
     <string name="status_remaining">Preostali blokovi</string>
-    <string name="status_syncing">Skeniranje:</string>
 
     <string name="message_camera_not_permitted">Nema kamere = Nema QR skeniranja!</string>
 
@@ -235,7 +228,6 @@
 
     <string name="send_create_tx_error_title">Kreiraj transakcijsku grešku</string>
 
-    <string name="tx_list_fee">naknada %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">neuspelo</string>
     <string name="tx_list_amount_negative">- %1$s</string>

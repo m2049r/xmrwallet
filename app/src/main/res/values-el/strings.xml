@@ -29,7 +29,6 @@
 
     <string name="label_receive_info_gen_qr_code">Πατήστε για QR κωδικό</string>
 
-    <string name="info_xmrto_enabled">Συναλλαγή BTC ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
     <string name="info_ledger_enabled">Ledger ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -73,9 +72,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Επίσκεψη στο %1$s για υποστήριξη &amp; με εντοπισμό συναλλαγής</string>
-    <string name="label_send_btc_xmrto_key_lb">Μυστικό Κλειδί\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Μυστικό Κλειδί</string>
     <string name="label_send_btc_address">%1$s Διεύθυνση Παραλήπτη</string>
     <string name="label_send_btc_amount">Ποσό</string>
 
@@ -93,7 +89,6 @@
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>
 
-    <string name="label_daemon">Κόμβος(Δαίμονας)</string>
     <string name="status_wallet_loading">Φόρτωση Πορτοφολιού &#8230;</string>
     <string name="status_wallet_unloaded">Πορτοφόλι αποθηκεύτηκε</string>
     <string name="status_wallet_unload_failed">Η αποθήκευση του πορτοφολιού απέτυχε!</string>
@@ -125,11 +120,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s μη επιβεβαιωμένα</string>
 
-    <string name="service_description">Υπηρεσία monerujo</string>
 
     <string name="status_synced">Συγχρονισμένα:</string>
     <string name="status_remaining">Μπλοκς που απομένουν</string>
-    <string name="status_syncing">Έρευνα:</string>
 
     <string name="message_camera_not_permitted">Όχι κάμερα = Όχι QR σκανάρισμα!</string>
 
