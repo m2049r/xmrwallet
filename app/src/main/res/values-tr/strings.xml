@@ -17,7 +17,7 @@
     <string name="menu_close" tools:ignore="MissingTranslation">Kapat</string>
     <string name="menu_cancel" tools:ignore="MissingTranslation">İptal</string>
     <string name="password_weak">Yazmaya devam et …</string>
-    <string name="password_fair">Meh …</string>
+    <string name="password_fair">Eh işte …</string>
     <string name="password_good">Haydi, daha iyisini yapabilirsin!</string>
     <string name="password_strong">Neredeyse oldu …</string>
     <string name="password_very_strong">Tamamdır, h4x0r tarzı!</string>
