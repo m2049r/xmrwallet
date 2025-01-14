@@ -42,7 +42,6 @@
     <string name="rename_failed">¡Cambio de nombre fallido!</string>
     <string name="changepw_failed">¡Cambio de contraseña fallido!</string>
     <string name="changepw_success">Contraseña cambiada</string>
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Cargando monedero…</string>
     <string name="status_wallet_unloaded">Monedero guardado</string>
     <string name="status_wallet_unload_failed">¡Fallo al guardar el monedero!</string>
@@ -63,13 +62,11 @@
     <string name="bad_password">¡Contraseña incorrecta!</string>
     <string name="bad_saved_password">La contraseña guardada es incorrecta.\nIngrésala manualmente.</string>
     <string name="bad_wallet">¡El monedero no existe!</string>
-    <string name="prompt_daemon_missing">¡La dirección del daemon debe estar configurada!</string>
     <string name="prompt_wrong_net">El monedero no coincide con la red seleccionada</string>
     <string name="label_watchonly">(Sólo Vista)</string>
     <string name="label_wallet_receive">Recibir</string>
     <string name="label_wallet_send">Enviar</string>
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s sin confirmar</string>
-    <string name="service_description">Monedero abierto</string>
     <string name="status_synced">Sincronizado:</string>
     <string name="status_remaining">bloques restantes</string>
     <string name="status_syncing">Sincronizando:</string>
@@ -157,7 +154,7 @@
     <string name="tx_failed">FALLIDA</string>
     <string name="receive_amount_hint">Monto</string>
     <string name="receive_cannot_open">¡No se ha podido abrir el monedero!</string>
-    <string name="receive_amount_too_big">Max. %1$s</string>
+    <string name="receive_amount_too_big">Máx. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR no es un número</string>
     <string name="copy_receive_address">Copiar dirección de recepción</string>
@@ -242,9 +239,6 @@
     <string name="send_address_resolve_openalias">Resolviendo OpenAlias…</string>
     <string name="send_address_no_dnssec">OpenAlias sin DNSSEC - la dirección podría ser falsificada</string>
     <string name="status_wallet_connect_wrongversion">Versión de nodo incompatible - ¡por favor actualiza!</string>
-    <string name="menu_info">Secretos</string>
-    <!--Changed to: Show Secrets!-->
-
     <string name="menu_streetmode">Modo calle</string>
     <string name="info_nodes_enabled">Nodo-matiC habilitado, toque para más información.</string>
     <string name="node_height">Último bloque actualizado: %1$s</string>
@@ -356,10 +350,37 @@
     <string name="title_info">Información</string>
     <string name="setting_daynight">Modo</string>
     <string name="setting_theme">Tema</string>
+    <string-array name="themes">
+        <item>Classic</item>
+        <item>Baldaŭ</item>
+        <!-- do not translate this one -->
+    </string-array>
     <string name="message_qr_failed">¡Error al crear QR!</string>
     <string name="tx_locked">Monto trabado hasta el bloque %1$d (faltan %2$d bloques ≈ %3$,.2f días)</string>
     <string name="label_streetmode">Modo calle activado\nSólo se ºmostrarán transacciones nuevas</string>
-    <string name="pocketchange_info">Para reducir el tiempo entre pagos, Monerujo puede crear cambio de más al enviar a costo de comisiones más altas. Va a crear e intentar mantener 10 monedas del monto seleccionado.</string>
     <string name="pocketchange_create_title">Crear cambio</string>
     <string name="label_apply">APLICAR</string>
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="send_qr_hint">Escanear</string>
+    <string name="sidekick_connected">Sidekick conectado</string>
+    <string name="tor_enable">Activar TOR</string>
+    <string name="menu_bluetooth">Conectar Sidekick</string>
+    <string name="setting_lock">Bloquear la cartera en segundo plano</string>
+    <string name="sidekick_confirm_tx">Confirmar la transacción</string>
+    <string name="bluetooth_permissions_ok">De acuerdo</string>
+    <string name="bluetooth_permissions_cancel">Cancelar</string>
+    <string name="sidekick_not_connected">[no conectado]</string>
+    <string name="open_wallet_sidekick_missing">Por favor, conecte el dispositivo Sidekick</string>
+    <string name="pocketchange_info">Para reducir el tiempo de espera en los gastos repetidos, Monerujo puede crear cambio adicional a expensas de tarifas más altas. Intentará crear y mantener al menos 6 monedas de la cantidad seleccionada.</string>
+    <string name="bluetooth_select_label">Seleccionar dispositivo Sidekick</string>
+    <string name="bluetooth_permissions">¡Permisos de Bluetooth son necesarios para conectar su cartera Sidekick!</string>
+    <string name="bluetooth_permissions_settings">Ajustes de la aplicación</string>
+    <string name="sidekick_network_warning">La red está encendida - esto es un riesgo de seguridad. ¡Se recomienda activar el modo avión y reiniciar la aplicación solo con Bluetooth activado!</string>
+    <string name="fab_restore_sidekick">Restaurar desde Sidekick</string>
+    <string name="setting_stickyfiat_summary">Recordar la última moneda fiduciaria utilizada</string>
+    <string name="setting_stickyfiat">Decreto fijado</string>
+    <string name="prompt_daemon_missing">¡El nodo debe estar configurado!</string>
+    <string name="menu_info">¡Mostrar secretos!</string>
+    <string name="service_description">La cartera está abierta</string>
+    <string name="label_daemon">Red</string>
 </resources>
