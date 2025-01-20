@@ -182,7 +182,7 @@ public class NodeFragment extends Fragment
         Helper.hideKeyboard(getActivity());
 
         nodeList = new HashSet<>(activityCallback.getFavouriteNodes());
-        nodesAdapter.setNodes(nodeList);
+        nodesAdapter.setNodes(nodeList, getContext());
 
         ViewGroup llNotice = view.findViewById(R.id.llNotice);
         Notice.showAll(llNotice, ".*_nodes");
@@ -267,7 +267,7 @@ public class NodeFragment extends Fragment
         protected void onPreExecute() {
             super.onPreExecute();
             filterFavourites();
-            nodesAdapter.setNodes(null);
+            nodesAdapter.setNodes(null, getContext());
             nodesAdapter.allowClick(false);
             tvPull.setText(getString(R.string.node_scanning));
         }
@@ -335,7 +335,7 @@ public class NodeFragment extends Fragment
                 if (values != null)
                     nodesAdapter.addNode(values[0]);
                 else
-                    nodesAdapter.setNodes(null);
+                    nodesAdapter.setNodes(null, getContext());
         }
 
         @Override
@@ -357,7 +357,7 @@ public class NodeFragment extends Fragment
             //if (isCancelled()) return;
             tvPull.setText(getString(R.string.node_pull_hint));
             pullToRefresh.setRefreshing(false);
-            nodesAdapter.setNodes(nodeList);
+            nodesAdapter.setNodes(nodeList, getContext());
             nodesAdapter.allowClick(true);
             updateRefreshElements();
         }

@@ -178,6 +178,10 @@ public class NodeInfo extends Node {
         return sb.toString();
     }
 
+    public String toNameString() {
+        return super.toNameString();
+    }
+
     private static final int HTTP_TIMEOUT = 1000; //ms
     public static final double PING_GOOD = HTTP_TIMEOUT / 3.0; //ms
     public static final double PING_MEDIUM = 2 * PING_GOOD; //ms

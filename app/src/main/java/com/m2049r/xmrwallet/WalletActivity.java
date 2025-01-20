@@ -386,7 +386,7 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         });
 
         drawer = findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer);
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         setDrawerEnabled(false); // disable until synced
