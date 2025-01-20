@@ -18,6 +18,7 @@ package com.m2049r.xmrwallet.service.shift.provider.exolix;
 
 import androidx.annotation.NonNull;
 
+import com.m2049r.xmrwallet.data.Crypto;
 import com.m2049r.xmrwallet.service.shift.NetworkCallback;
 import com.m2049r.xmrwallet.service.shift.ShiftApiCall;
 import com.m2049r.xmrwallet.service.shift.ShiftCallback;
@@ -123,7 +124,8 @@ class CreateOrderImpl implements CreateOrder {
             jsonObject.put("rateType", "fixed");
             jsonObject.put("withdrawalAmount", quote.getBtcAmount());
         }
-        jsonObject.put("coinFrom", "XMR");
+        jsonObject.put("coinFrom", Crypto.XMR.getSymbol());
+        jsonObject.put("networkFrom", Crypto.XMR.getNetwork());
         jsonObject.put("coinTo", ShiftService.ASSET.getSymbol());
         jsonObject.put("networkTo", ShiftService.ASSET.getNetwork());
         jsonObject.put("withdrawalAddress", btcAddress);

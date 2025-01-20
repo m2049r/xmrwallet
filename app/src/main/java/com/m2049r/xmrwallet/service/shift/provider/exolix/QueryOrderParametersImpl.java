@@ -56,11 +56,13 @@ class QueryOrderParametersImpl implements QueryOrderParameters {
         if (btcAmount.getCrypto() == Crypto.XMR) { // we are sending XMR, so float
             params.append("rateType=float");
             params.append("&amount=").append(AmountHelper.format(cryptoAmount.getAmount()));
-            params.append("&coinFrom=XMR");
+            params.append("&coinFrom=").append(Crypto.XMR.getSymbol());
+            params.append("&networkFrom=").append(Crypto.XMR.getNetwork());
         } else { // we are receiving non-XMR, i.e. paying something, so fixed
             params.append("rateType=fixed");
             params.append("&withdrawalAmount=").append(AmountHelper.format(cryptoAmount.getAmount()));
-            params.append("&coinFrom=XMR");
+            params.append("&coinFrom=").append(Crypto.XMR.getSymbol());
+            params.append("&networkFrom=").append(Crypto.XMR.getNetwork());
         }
         params.append("&coinTo=").append(ShiftService.ASSET.getSymbol());
         params.append("&networkTo=").append(ShiftService.ASSET.getNetwork());
