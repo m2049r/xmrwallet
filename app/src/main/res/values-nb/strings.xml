@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Trykk for QR kode</string>
 
-    <string name="info_xmrto_enabled">BTC betaling tilgjengelig, trykk for mer info.</string>
     <string name="info_ledger_enabled">Ledger tilgjengelig, trykk for mer info.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -73,9 +72,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Besøk %1$s for støtte og sporing</string>
-    <string name="label_send_btc_xmrto_key_lb">Hemmelig nøkkel\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Hemmelig nøkkel</string>
     <string name="label_send_btc_address">%1$s destinasjonsadresse</string>
     <string name="label_send_btc_amount">Mengde</string>
 
@@ -96,7 +92,6 @@
     <string name="changepw_failed">[Passordforandring feila!]</string>
     <string name="changepw_success">[Passord forandra]</string>
 
-    <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Laster lommebok &#8230;</string>
     <string name="status_wallet_unloaded">Lommebok lagra</string>
     <string name="status_wallet_unload_failed">Lommeboklagring feila!</string>
@@ -124,7 +119,6 @@
     <string name="bad_password">Feil passord!</string>
     <string name="bad_saved_password">[Saved password is incorrect.\nPlease enter password manually.]</string>
     <string name="bad_wallet">Lommebok eksisterer ikke!</string>
-    <string name="prompt_daemon_missing">Daemon-adresse må være gitt!</string>
     <string name="prompt_wrong_net">Lommebok matcher ikke valgt nett</string>
 
     <string name="label_watchonly">(Bare se)</string>
@@ -134,11 +128,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s ubekrefta</string>
 
-    <string name="service_description">monerujo tjeneste</string>
 
     <string name="status_synced">Synkronisert:</string>
     <string name="status_remaining">Gjenværende blokker</string>
-    <string name="status_syncing">Skanner:</string>
 
     <string name="message_camera_not_permitted">Ikke noe kamera = ikke noe QR-skanning!</string>
 

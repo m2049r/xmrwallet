@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">QR குறியீட்டிற்கு தொடவும்</string>
 
-    <string name="info_xmrto_enabled">XMR-அல்லாத பணம் செலுத்தல் செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
     <string name="info_ledger_enabled">பேரேடு செயல்படுத்தப்பட்டுள்ளது, மேலும் விவரங்களுக்கு தட்டவும்.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -75,9 +74,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(விலை: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">ஆதரவு &amp; சுவடுபற்றிச் செல்லலுக்கு %1$s பக்கத்தை பார்க்கவும்</string>
-    <string name="label_send_btc_xmrto_key_lb">இரகசிய திறவுகோல்\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s இரகசிய திறவுகோல்</string>
     <string name="label_send_btc_address">சேருமிட %1$s முகவரி</string>
     <string name="label_send_btc_amount">தொகை</string>
 
@@ -99,7 +95,6 @@
     <string name="changepw_failed">கடவுச்சொல் மாற்றம் தோல்வியடைந்தது!</string>
     <string name="changepw_success">கடவுச்சொல் மாற்றப்பட்டது</string>
 
-    <string name="label_daemon">வலையமைப்பு</string>
     <string name="status_wallet_loading">&#8230; பணப்பை ஏறுகிறது</string>
     <string name="status_wallet_unloaded">பணப்பை சேமிக்கப்பட்டது</string>
     <string name="status_wallet_unload_failed">பணப்பை சேமித்தல் தோல்வியடைந்தது!</string>
@@ -138,11 +133,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s உறுதிப்படுத்தப்படவில்லை</string>
 
-    <string name="service_description">monerujo சேவை</string>
 
     <string name="status_synced">ஒத்திசைக்கப்பட்டது:</string>
     <string name="status_remaining">மீதமுள்ள தொகுதிகள்</string>
-    <string name="status_syncing">வருடுகிறது:</string>
 
     <string name="message_camera_not_permitted">படமி இல்லையென்றால் QR வருடலும் இல்லை</string>
 
@@ -237,7 +230,6 @@
 
     <string name="send_create_tx_error_title">பரிமாற்ற உருவாக்கல் பிழை</string>
 
-    <string name="tx_list_fee">கட்டணம் %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">தோல்வியடைந்தது</string>
     <string name="tx_list_amount_negative">- %1$s</string>
@@ -362,7 +354,6 @@
     <string name="onboarding_seed_title">விதையை பாதுகாப்பாக வைக்கவும்</string>
     <string name="onboarding_seed_information">இந்த விதை அதை வைத்திருப்பவருக்கு முழு அணுகலை வழங்குகிறது. இதை நீங்கள் துலைத்து விட்டால், இதை மீட்க எங்களால் உங்களுக்கு உதவ இயலாது. உங்கள் மனம் கவர்ந்த மொனேரொக்களை இழக்க நேரிடும்.</string>
     <string name="onboarding_xmrto_title">கிரிப்டோவை அனுப்பவும்</string>
-    <string name="onboarding_xmrto_information">Monerujo இனுள் exchange க்கான ஆதரவு உட்பொதிந்துள்ளது. வெறும் BTC, LTC, ETH, TRXUSDT அல்லது SOL க்கான முகவரியை ஒட்டுவதன் மூலம் அல்லது வருடுவதன் மூலம் உங்களால் XMR ஐ செலவழித்து இந்தவகை கிரிப்டோக்களாக அனுப்ப இயலும்.</string>
     <string name="onboarding_nodes_title">கணுக்கள், இது உங்கள் வழி</string>
     <string name="onboarding_nodes_information">கணுக்கள் உங்களை மொனேரொ வலையமைப்போடு இணைக்கிறது. பொது கணுக்களை பயன்படுத்துகிறீர்களா அல்லது முழுவதுமாக உங்கள் சொந்த கணுவை பயன்படுத்த போகிறீர்களா என்பதை முடிவு செய்யவும்.</string>
     <string name="onboarding_fpsend_title">விரல்பதிவை கொண்டு அனுப்பவும்</string>

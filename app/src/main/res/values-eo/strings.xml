@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Tuŝu por QR-kodo</string>
 
-    <string name="info_xmrto_enabled">BTC-pago permesita, frapetu por detaloj.</string>
     <string name="info_ledger_enabled">Ledger permesita, frapetu por detaloj.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -74,9 +73,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(kurzo: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Vizitu %1$s por helpo kaj sekvado</string>
-    <string name="label_send_btc_xmrto_key_lb">Sekreta ŝlosilo\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s sekreta ŝlosilo</string>
     <string name="label_send_btc_address">Ricevanta %1$s-adreso</string>
     <string name="label_send_btc_amount">Kvanto</string>
 
@@ -97,7 +93,6 @@
     <string name="changepw_failed">Pasvortŝanĝo malsukcesis!</string>
     <string name="changepw_success">Pasvortŝanĝo sukcesis!</string>
 
-    <string name="label_daemon">Nodo</string>
     <string name="status_wallet_loading">Ŝarĝante la monujon &#8230;</string>
     <string name="status_wallet_unloaded">La monujo konserviĝis</string>
     <string name="status_wallet_unload_failed">La monujkonservoo malsukcesis!</string>
@@ -136,11 +131,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nekonfirmite</string>
 
-    <string name="service_description">monerujo Servo</string>
 
     <string name="status_synced">Sinkronizas:</string>
     <string name="status_remaining">Restaj blokoj</string>
-    <string name="status_syncing">Skanante:</string>
 
     <string name="message_camera_not_permitted">Neniu filmilo = Neniu QR-kodo skaniĝas!</string>
 

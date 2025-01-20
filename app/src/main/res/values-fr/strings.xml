@@ -34,7 +34,6 @@
 
     <string name="label_receive_info_gen_qr_code">Toucher pour le QR Code</string>
 
-    <string name="info_xmrto_enabled">Paiement BTC activé, tapez pour plus d\'infos.</string>
     <string name="info_ledger_enabled">Ledger activé, tapez pour plus d\'infos.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -78,9 +77,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Taux : %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Visitez %1$s pour l\'assistance &amp; le suivi</string>
-    <string name="label_send_btc_xmrto_key_lb">Clef Secrète\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">Clef Secrète %1$s</string>
     <string name="label_send_btc_address">Adresse %1$s Destination</string>
     <string name="label_send_btc_amount">Montant</string>
 
@@ -131,7 +127,6 @@
     <string name="bad_password">Mot de passe incorrect !</string>
     <string name="bad_saved_password">Mot de passe sauvegardé incorrect.\nVeuillez entrer le mot de passe manuellement.</string>
     <string name="bad_wallet">Portefeuille inexistant !</string>
-    <string name="prompt_daemon_missing">L\'adresse du démon ne peut pas être configurée !</string>
     <string name="prompt_wrong_net">Portefeuille incompatible avec le réseau sélectionné</string>
 
     <string name="label_watchonly">(Audit)</string>
@@ -141,11 +136,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s non confirmés</string>
 
-    <string name="service_description">Service monerujo</string>
 
     <string name="status_synced">Synchronisé :</string>
     <string name="status_remaining">Blocs restant</string>
-    <string name="status_syncing">Analyse :</string>
 
     <string name="message_camera_not_permitted">Pas de caméra = Pas de Scan QR !</string>
 
@@ -368,7 +361,6 @@
     <string name="onboarding_seed_title">Gardez votre phrase mnémonique en sécurité</string>
     <string name="onboarding_seed_information">La phrase mnémonique donne un accès complet à celui qui le détient. Si vous le perdez, nous ne pouvons pas vous aider à la restaurer et vous perdrez vos précieux moneroj.</string>
     <string name="onboarding_xmrto_title">Envoyer des cryptomonnaies</string>
-    <string name="onboarding_xmrto_information">Monerujo prend en charge SideShift.ai. Collez simplement ou analysez une adresse BTC, LTC, ETH, DASH ou DOGE et vous enverrez ces cryptomonnaies en envoyant dépensant des XMR.</string>
     <string name="onboarding_nodes_title">Les nœuds, à votre façon</string>
     <string name="onboarding_nodes_information">Les nœuds assurent votre connexion au réseau Monero. Choisissez parmi des nœuds publics ou devenez un cypherpunk complet en utilisant le vôtre.</string>
     <string name="onboarding_fpsend_title">Envoyer avec l\'empreinte digitale</string>

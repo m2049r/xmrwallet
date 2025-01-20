@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">Berühren für QR-Code</string>
 
-    <string name="info_xmrto_enabled">BTC-Zahlung aktiviert – Tippe für mehr Infos.</string>
     <string name="info_ledger_enabled">Ledger aktiviert – Tippe für mehr Infos.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -75,9 +74,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurs: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Besuche %1$s für Support &amp; Nachverfolgung</string>
-    <string name="label_send_btc_xmrto_key_lb">Geheimer Schlüssel\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s Geheimer Schlüssel</string>
     <string name="label_send_btc_address">%1$s-Zieladresse</string>
     <string name="label_send_btc_amount">Betrag</string>
 
@@ -99,7 +95,6 @@
     <string name="changepw_failed">Passwort ändern fehlgeschlagen!</string>
     <string name="changepw_success">Passwort geändert</string>
 
-    <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Lade Wallet &#8230;</string>
     <string name="status_wallet_unloaded">Wallet gespeichert</string>
     <string name="status_wallet_unload_failed">Speichern des Wallets fehlgeschlagen!</string>
@@ -137,11 +132,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s unbestätigt</string>
 
-    <string name="service_description">monerujo Service</string>
 
     <string name="status_synced">Synchronisiert:</string>
     <string name="status_remaining">Blöcke verbleibend</string>
-    <string name="status_syncing">Scanne:</string>
 
     <string name="message_camera_not_permitted">Benötigt Kamerazugriff zum scannen von QR-Codes!</string>
 
@@ -363,7 +356,6 @@
     <string name="onboarding_seed_title">Halte deinen Seed geheim</string>
     <string name="onboarding_seed_information">Der Seed ermöglicht vollen Zugriff auf deine Monero - jedem der ihn besitzt. Du bist in der Verantwortung: Wenn du ihn verlierst, kann ihn niemand wiederherstellen und deine gespeicherten Monero sind verloren.</string>
     <string name="onboarding_xmrto_title">Sende Krypto</string>
-    <string name="onboarding_xmrto_information">Monerujo hat exchange unterstützung eingebaut. Scanne oder kopiere einfach eine BTC, LTC, ETH, TRXUSDT oder SOL Adresse und schon kannst du mit deinen XMR bezahlen.</string>
     <string name="onboarding_nodes_title">Nodes und deine Knoten</string>
     <string name="onboarding_nodes_information">Nodes(Knoten) verbinden dich mit dem Moneronetzwerk. Du kannst öffentliche Nodes oder deinen eigenen verwenden.</string>
     <string name="onboarding_fpsend_title">Sende Geld mit deinem Fingerabdruck</string>

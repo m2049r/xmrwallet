@@ -29,7 +29,6 @@
 
     <string name="label_receive_info_gen_qr_code">タッチしてQRコードを表示</string>
 
-    <string name="info_xmrto_enabled">BTC支払いは有効化されています。詳細はタップしてください。</string>
     <string name="info_ledger_enabled">レッジャーは有効化されています。詳細はタップしてください。</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -73,9 +72,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(レート: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">サポートと追跡については %1$s をご覧ください</string>
-    <string name="label_send_btc_xmrto_key_lb">シークレットキー\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s のシークレットキー</string>
     <string name="label_send_btc_address">支払先の %1$s アドレス</string>
     <string name="label_send_btc_amount">数量</string>
 
@@ -95,7 +91,6 @@
     <string name="changepw_failed">パスワード変更に失敗しました!</string>
     <string name="changepw_success">パスワードが変更されました</string>
 
-    <string name="label_daemon">ノード</string>
     <string name="connect_stagenet" translatable="false">ステージネット</string>
     <string name="connect_testnet" translatable="false">テストネット</string>
     <string name="status_wallet_loading">ウォレットをロード中 &#8230;</string>
@@ -136,11 +131,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s が未承認</string>
 
-    <string name="service_description">monerujo のサービス</string>
 
     <string name="status_synced">同期済み:</string>
     <string name="status_remaining">残りのブロック</string>
-    <string name="status_syncing">スキャン中:</string>
 
     <string name="message_camera_not_permitted">カメラがありません = QRコードのスキャニングもできません!</string>
 

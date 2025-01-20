@@ -31,7 +31,6 @@
 
     <string name="label_receive_info_gen_qr_code">לחץ עבור קוד QR</string>
 
-    <string name="info_xmrto_enabled">תשלומים שאינם XMR מופעלים, הקש לקבלת מידע נוסף.</string>
     <string name="info_ledger_enabled">Ledger מופעל, הקש לקבלת מידע נוסף.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -75,9 +74,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(שיעור: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">בקר ב-%1$s לקבלת תמיכה  &amp; מעקב</string>
-    <string name="label_send_btc_xmrto_key_lb">מפתח סודי\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s מפתח סודי</string>
     <string name="label_send_btc_address">כתובת %1$s היעד</string>
     <string name="label_send_btc_amount">כמות</string>
 
@@ -142,7 +138,6 @@
 
     <string name="status_synced">מסונכרן:</string>
     <string name="status_remaining">בלוקים שנותרו</string>
-    <string name="status_syncing">מחפש:</string>
 
     <string name="message_camera_not_permitted">אין מצלמה = אין סריקת QR!</string>
 
@@ -362,7 +357,6 @@
     <string name="onboarding_seed_title">שמור על הסיד שלך בטוח</string>
     <string name="onboarding_seed_information">הסיד מעניק גישה מלאה למי שיש אותו. אם אתה מאבד את זה, אנחנו לא יכולים לעזור לך לשחזר את זה ואתה מאבד את המונרוג\' האהוב שלך.</string>
     <string name="onboarding_xmrto_title">שלח קריפטו</string>
-    <string name="onboarding_xmrto_information">למונרוג\'ו יש את התמיכה של exchange מובנת. פשוט הדבק או סרוק BTC, LTC, ETH, TRXUSDT או SOL כתובת ואתה תשלח את הקריפטו האלה על ידי הוצאת XMR.</string>
     <string name="onboarding_nodes_title">החוליות, בדרך שלך</string>
     <string name="onboarding_nodes_information">החוליות מחברות אותך לרשת מונרו. בחר בין החוליות הציבוריות או שתתחבר לאחת משלך.</string>
     <string name="onboarding_fpsend_title">שלח עם טביעת אצבע</string>

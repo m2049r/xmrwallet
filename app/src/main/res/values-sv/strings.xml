@@ -30,7 +30,6 @@
 
     <string name="label_receive_info_gen_qr_code">Tryck för QR-kod</string>
 
-    <string name="info_xmrto_enabled">BTC-betalning aktiverad, tryck för mer info.</string>
     <string name="info_ledger_enabled">Ledger aktiverat, tryck för mer info.</string>
 
     <string name="info_xmrto"><![CDATA[
@@ -74,9 +73,6 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Kurs: %1$s %2$s/XMR)</string>
 
-    <string name="label_send_btc_xmrto_info">Besök %1$s för support &amp; spårning</string>
-    <string name="label_send_btc_xmrto_key_lb">Hemlig nyckel\n%1$s</string>
-    <string name="label_send_btc_xmrto_key">%1$s hemlig nyckel</string>
     <string name="label_send_btc_address">Måladress för %1$s</string>
     <string name="label_send_btc_amount">Belopp</string>
 
@@ -97,7 +93,6 @@
     <string name="changepw_failed">Det gick inte att ändra lösenord!</string>
     <string name="changepw_success">Lösenordet har ändrats</string>
 
-    <string name="label_daemon">Nod</string>
     <string name="status_wallet_loading">Läser in plånbok …</string>
     <string name="status_wallet_unloaded">Plånbok sparad</string>
     <string name="status_wallet_unload_failed">Det gick inte att spara plånbok!</string>
@@ -133,11 +128,9 @@
 
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s obekräftade</string>
 
-    <string name="service_description">monerujo-tjänsten</string>
 
     <string name="status_synced">Synkade:</string>
     <string name="status_remaining">Återstående block</string>
-    <string name="status_syncing">Skannar:</string>
 
     <string name="message_camera_not_permitted">Ingen kamera = Ingen QR-skanning!</string>
 
@@ -352,7 +345,6 @@
     <string name="onboarding_seed_title">Håll dina seed i säkert förvar.</string>
     <string name="onboarding_seed_information">Seed ger full åtkomst till den som har den. Om du förlorar det, kan vi inte hjälpa dig och du förlorar dina kära moneroj.</string>
     <string name="onboarding_xmrto_title">Skicka krypto</string>
-    <string name="onboarding_xmrto_information">Monerujo har exchange support inbyggt. Bara klistra in eller scanna en BTC, LTC, ETH, TRXUSDT or SOL address och du skickar dessa krypto genom att spendera XMR.</string>
     <string name="onboarding_nodes_title">Noder, på ditt sätt.</string>
     <string name="onboarding_nodes_information">Noder ansluter dig till Monero-nätverket. Välj mellan offentliga noder eller gå all-in "cypherpunk" med din egen.</string>
     <string name="onboarding_fpsend_title">Skicka med fingeravtryck</string>
