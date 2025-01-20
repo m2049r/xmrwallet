@@ -2,25 +2,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fr">
     <string name="help_create_new"><![CDATA[
         <h1>Créer un Portefeuille - Nouveau</h1>
-        <p>Si vous avez besoin d’une nouvelle adresse Monero !</p>
+        <p>Si vous avez besoin d’une nouvelle adresse Monero !</p>
         <p>Entrez un nom et un mot de passe unique pour le portefeuille.
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort – mieux, utilisez une phrase secrète.</p>
-        <h2>Notez votre phrase Mnémonique !</h2>
+        <h2>Notez votre phrase Mnémonique !</h2>
         <p>Sur l’écran suivant vous trouverez les 25 mots de votre \"Phrase Mnémonique\".
         C’est la seule donnée nécessaire pour récupérer votre portefeuille ultérieurement
         et obtenir l’accès à vos fonds.
-        Il est très imprtant de la garder sécurisée et confidentielle, car elle donne
-        <em>à quiconque</em> le contrôle total de vos fonds !</p>
+        Il est très important de la garder sécurisée et confidentielle, car elle donne
+        <em>à quiconque</em> le contrôle total de vos fonds !</p>
         <p>Si vous perdez le mot de passe de votre portefeuille, vous pouvez toujours récupérer votre
         portefeuille avec la phrase Mnémonique.</p>
         <p>Il n’y a aucun moyen de récupérer votre phrase Mnémonique, si vous la perdez tous vos fonds
-        seront perdus ! La phrase Mnémonique ne peut pas non plus être changée, et si elle est dérobée
+        seront perdus ! La phrase Mnémonique ne peut pas non plus être changée, et si elle est dérobée
         ou compromise, vous devrez transférer vos fonds vers un nouveau portefeuille (avec une nouvelle
         phrase Mnémonique). Par conséquent, il vaut mieux que vous sauvegardiez votre phrase Mnémonique
         en l’écrivant et en la conservant à de <em>multiples</em> endroits sécurisés.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Créer un Portefeuille - Phrase Mnémonique</h1>
         <p>Si vous avez déjà une adresse Monero et que vus voulez récupérer vos transactions depuis la chaïne de blocs !</p>
@@ -33,7 +32,6 @@
         Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Créer un Portefeuille - Ledger</h1>
         <p>Vous voulez restaurer votre portefeuille depuis votre Ledger Nano S.</p>
@@ -47,7 +45,6 @@
         Si vous n\'êtes pas sûr, entrez une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Créer un Portefeuille - Clefs</h1>
         <p>Si vous récupérez votr portefeuille en utilisant vos clefs !</p>
@@ -60,7 +57,6 @@
         Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Créer un Portefeuille d’Audit</h1>
         <p>Si vous voulez surveiller les transactions entrantes sur un portefeuille !</p>
@@ -73,7 +69,6 @@
         Si vous n\'êtes pas sûr, entrer une date / hauteur de bloc approximative <em>avant</em> que vous
         n’ayez utilisé cette adresse de portefeuille pour la première fois.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Détails du Portefeuille</h1>
         <h2>Adresse Publique</h2>
@@ -110,7 +105,6 @@
         Votre clef de dépense permet à quiconque de dépenser les Moneroj associés à votre portefeuille, alors ne la
         communiquez à personne, gardez-la en sécurité comme votre phrase Mnémonique.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Liste des Portefeuilles</h1>
         <h2>Nœud</h2>
@@ -140,7 +134,6 @@
         <tt>backups</tt>. Si vous n’avez plus besoin de vos sauvegardes, vous devriez les supprimer avec
         une application d’explorateur de fichiers ou une application de suppression sécurisée.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Détails de la Transaction</h1>
         <h2>Destination</h2>
@@ -160,7 +153,6 @@
         <h2>Bloc</h2>
         C’est le bloc dans lequel votre transaction a été insérée.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Envoyer</h1>
         <h2>Adresse de Destinataire</h2>
@@ -177,7 +169,6 @@
         <p>La conversion vers une autre cryptomonnaie est traitée par un service d\'échange externe. Monerujo ne fait pas fonctionner ni n\'est associé avec ces tierces parties et ne peut donc pas vous aider au sujet de ces services, mais vous fournira les informations nécessaires pour obtenir une prise en charge de leur part.</p>
 		<p>Ajoutez simplement une adresse correspondante ou choisissez la monnaie désirée en touchant son icône.</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Conversion des XMR</h1>
         <h2>Montants<h2>
@@ -185,7 +176,6 @@
 		<h2>Taux d\'échange</h2>
         <p>Ci-dessous vous verrez le taux actuel fourni par le service d\'échange, avec leurs limites basse et haute. Veuillez noter que ce taux n\'est pas garanti à ce stade, il sera réglé au moment où votre transaction est prête à être approuvée sur l\'écran suivant.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Le Portefeuille</h1>
         <h2>Mode Urbain</h2>
@@ -211,7 +201,6 @@
         <p>Une liste des transactions du portefeuille. Dans un portefeuille d’Audit, seules les
         transactions entrantes sont affichées.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nœuds</h1>
         <h2>En résumé</h2>
@@ -260,7 +249,6 @@
         Monerujo va communiquer directement avec les nœuds d’ensemencement codés en dur dans Monero. La
         recherche s’arrête lorsqu’un total de 10 nœuds distants est récupéré.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -273,10 +261,11 @@
         </p>
         <p>Les détails du paiement seront remplis. Vérifiez-les et procédez de la même manière que pour toute autre transaction.</p>
     ]]></string>
+    <string name="help_ok">J\'ai compris !</string>
+    <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_ok">J\'ai compris !</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">Non…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_nok">Non…</string>
+    <!-- Note: "Nah..." as in "I don't want this" -->
     <string name="help_getorbot">Obtenir Orbot !</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
@@ -290,13 +279,11 @@
         <p>Si vous avez des problèmes de connexion avec Tor, essayez d\'obtenir une nouvelle identité dans l\'application
         Orbot (l\'icône en haut à droite).</p>
     ]]></string>
-
     <string name="help_tor_enable"><![CDATA[
         <h1>Nœud Tor</h1>
         <p>Ceci est un nœud .onion. Pour l\'utiliser, vous devez activer Tor en touchant l\'icône
         <img src="ic_network_clearnet"/> près du haut de la page de la liste des porte-monnaie.</p>
     ]]></string>
-
     <string name="help_sidekick"><![CDATA[
         <h2>Utilisation de votre porte-monnaie sidekick</h2>
         Vérifiez que les deux téléphones sont connectés via Bluetooth et que les deux applications sont lancées.
