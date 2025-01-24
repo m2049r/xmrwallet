@@ -14,7 +14,6 @@
         nueva semilla). Por tanto, es mejor si haces una copia de tu semilla anotándola con cuidado y guardándola en <em>múltiples</em> lugares seguros y
         secretos.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Restaurar monedero con semilla</h1>
         <p>En esta pantalla puedes recrear un monedero ya existente, usando su correspondiente semilla mnemotécnica. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
@@ -23,7 +22,6 @@
         <p>Introduce tu semilla en el campo \"Semilla\".</p>
         <p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Restaurar un monedero con claves</h1>
         <p>En esta pantalla puedes recrear un monedero ya existente, usando sus correspondientes claves. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
@@ -32,7 +30,6 @@
         <p>Ingresa la dirección de Monero en el campo \"Dirección Pública\" y las claves correspondientes en \"Clave de Vista\" y \"Clave de Gasto\".</p>
 		<p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Crear monedero de sólo vista</h1>
         <p>En esta pantalla puedes recrear un monedero ya existente usando sólo su clave de vista. Con ella, Monerujo podrá mostrarte todas las transacciones que entren en tu monedero, pero no verá las que salen, ni podrás enviar fondos. es útil para monitorear un monedero de manera segura. Una vez que la sincronización esté completa, todos tus fondos deberían estar ahí.</p>
@@ -41,7 +38,6 @@
         <p>Ingresa la dirección de Monero en el campo \"Dirección Pública\" y las clave correspondiente en \"Clave de Vista\".</p>
 		<p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Secretos del monedero</h1>
         <h2>Dirección pública</h2>
@@ -64,7 +60,6 @@
         <h2>Clave de gasto</h2>
         Permite a quien sea gastar los moneros recibidos en tu moendero, así que no la compartas con nadie, guárdala tan <em>segura</em> y <em>secreta</em> como tu semilla mnemotécnica.</p>
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Pantalla principal</h1>
         <h2>Nodo</h2>
@@ -89,7 +84,6 @@
         <p>Borra y recrea un archivo caché de tu monedero, en caso de que esté corrupto.</p>
 		<p>Presionando en \"+\" verás alternativas para agregar nuevos monederos a esta pantalla.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalles de la transacción</h1>
         <h2>Destinatario</h2>
@@ -105,7 +99,6 @@
         <h2>Bloque</h2>
         Este es el bloque de la cadena de Monero en el que tu transacción fue incluída.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Dirección del receptor</h2>
@@ -120,7 +113,6 @@
 		<p>Simplemente ingresa una dirección correspondiente o selecciona la moneda tocando en su ícono.</p>
         </u>
     ]]></string>
-	
     <string name="help_xmrto"><![CDATA[
         <h1>Convirtiendo XMR</h1>
         <h2>Montos</h2>
@@ -128,7 +120,6 @@
 		<h2>Tasa de cambio</h2>
 		<p>Debajo verás la cotización actual ofrecida por el exchange, junto con los montos mínimos y máximos. Por favor ten presente que en este paso esta cotización no está garantizada aún, va a confirarse en la siguiente pantalla, cuando tu transacción esté lista para aprobarse.</p>
 	]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Crear Monedero con Ledger</h1>
         <p>En esta pantalla puedes restaurar un monedero desde tu dispositivo Ledger Nano S.</p>
@@ -137,7 +128,6 @@
         <p>Luego una contraseña que será utilizada para encriptar los archivos de tu monedero en el dispositivo, así que usa una palabra o frase que no sea fácil de adivinar.</p>
         <p>Luego introduce en el campo \"Altura de Restauración\" un número de bloque (o una fecha en formato AAAA-MM-DD) que sea anterior a la primera transacción hecha en este monedero. Monerujo sólo va a revisar los bloques posteriores a este dato, así que si pones uno demasiado reciente no encontrará transacciones antiguas (y mostrará un balance erróneo). Si estás en la duda déjalo en blanco, pero escaneará la cadena de bloques <em>entera</em> y va a llevar <em>mucho</em> tiempo.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Pantalla del monedero</h1>
         <h2>Modo calle</h2>
@@ -152,7 +142,6 @@
         <p>Muestra todas las transacciones en orden cronológico. Ten en cuenta que en monederos de solo vista, únicamente se
         mostrarán las transacciones entrantes y no las salientes (por lo tanto el balance que veas no es indicativo de los fondos disponibles).</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nodos</h1>
         <h2>¿Qué es un Nodo?</h2>
@@ -171,7 +160,6 @@
         Si el resultado da un error es usualmente porque el nombre de host provisto no
         es alcanzable en una sensible cantidad de tiempo, las credenciales son incorrectas, o simplemente no haya un nodo corriendo en esa dirección o ese puerto.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -185,10 +173,11 @@
 		</ol>
         <p>Los detalles del pago que contenga el enlace ya estarán completados. Revísalos y prosigue como con cualquier otra transacción.</p>
     ]]></string>
+    <string name="help_ok">¡Entendido!</string>
+    <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_ok">¡Entendido!</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">No, gracias…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_nok">No, gracias…</string>
+    <!-- Note: "Nah..." as in "I don't want this" -->
     <string name="help_getorbot">¡Descarga Orbot!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
@@ -196,9 +185,29 @@
         <p>Activar Tor va a derivar tu conexión a través de diferentes puntos para esconder tu dirección IP del nodo que uses. Ten en cuenta que si bien esto es mucho más privado que una conexión normal, también es <em>mucho más lento.</em></p>
 		<p>Para usar Monerujo via Tor, necesitarás tener Orbot instalado en tu dispositivo. Una vez que lo tengas, deberás activarlo presionando en el ícono <img src="ic_network_clearnet"/> junto al nodo en la pantalla principal. Orbot se iniciará, y en unos momentos estará listo para enrutar tu conexión.</p>
     ]]></string>
-
     <string name="help_tor_enable"><![CDATA[
         <h1>Nodo de Tor</h1>
         <p>Este nodo tiene una dirección <em>.onion</em>. Para usarlo, debes activar el modo Tor presionando el ícono <img src="ic_network_clearnet"/> junto al nodo en la pantalla principal.</p>
     ]]></string>
+    <string name="help_sidekick"><![CDATA[
+ <h2>Usando tu monedero sidekick</h2>
+ Comprueba que ambos teléfonos están conectados por Bluetooth y que ambas apps están abiertas.
+
+        <h3>En sidekick:<
+ /h3> Abre el monedero que prefieras.
+
+        <h3>En monerujo:</h3>
+ Conéctate a sidekick.
+
+        Abre el monedero que coincida con el que has abierto en el teléfono sidekick.
+
+        Utilícelo como lo haría normalmente con cualquier monedero. Deja que escanee para ver las transacciones entrantes, compartir direcciones o enviar moneros. Si la aplicación necesita hacer algo que involucre tus claves, pedirá permiso a sidekick.
+
+        <h3>En sidekick:</h3>
+ Si monerujo solicitó permiso, deberías ver un diálogo que muestra los detalles de la transacción como la cantidad y las tasas. También verás dos opciones, ACEPTARLO o DENEGARLO. Elige sabiamente.
+
+        <h3>En monerujo:</h3>
+ La transacción debería estar firmada y lista para ser enviada. Pulse para que así sea.
+         <br/>
+ ]]></string>
 </resources>

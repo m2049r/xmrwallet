@@ -1,148 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">Гаманець</string>
-
     <string name="menu_about">Про програму</string>
     <string name="menu_privacy">Політика конфіденційності</string>
-
     <string name="menu_share">Поділитися</string>
     <string name="menu_help">Допомога</string>
     <string name="menu_receive">Отримати</string>
     <string name="menu_rename">Перейменувати</string>
     <string name="menu_backup">Резервна копія</string>
     <string name="menu_changepw">Змінити пароль</string>
-
-    <string name="password_weak">Продовжуйте писати &#8230;</string>
-    <string name="password_fair">Нічого видатного &#8230;</string>
+    <string name="password_weak">Продовжуйте писати …</string>
+    <string name="password_fair">Нічого видатного …</string>
     <string name="password_good">Давай, ти можеш краще!</string>
-    <string name="password_strong">Майже вийшло! &#8230;</string>
+    <string name="password_strong">Майже вийшло! …</string>
     <string name="password_very_strong">Відмінно! У кращих традиціях h4x0r!</string>
-
     <string name="label_login_wallets">Гаманець</string>
     <string name="label_credits">Подяка</string>
     <string name="label_ok">Ok</string>
     <string name="label_cancel">Відміна</string>
     <string name="label_close">Закрити</string>
     <string name="label_wallet_advanced_details">Додатковій інформації</string>
-
     <string name="label_send_success">Успішно відправлено</string>
     <string name="label_send_done">Готово</string>
-
     <string name="label_receive_info_gen_qr_code">Натисніть для використання QR-коду</string>
-
     <string name="info_xmrto_enabled">Доступні перекази в BTC, натисніть для доп. інформації</string>
     <string name="info_ledger_enabled">Доступний Ledger, натисніть для доп. інформації</string>
-
     <string name="info_xmrto"><![CDATA[
         <b>Ви ввели %1$s адресу.</b><br/>
         <i>Надсилайте XMR, одержувач отримає %2$s, використовуючи сервіс <b>%3$s</b></i>
     ]]></string>
-
     <string name="info_send_xmrto_success_order_label">Заявка %1$s</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
-
     <string name="info_send_xmrto_paid">Очікування підтвердження</string>
     <string name="info_send_xmrto_unpaid">Очікування платежу</string>
     <string name="info_send_xmrto_error">Помилка %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s успішно відправлені!</string>
-    <string name="info_send_xmrto_query">Запит &#8230;</string>
-
+    <string name="info_send_xmrto_query">Запит …</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Ви можете відправити %1$s &#8212; %2$s %4$s</b>.<br/>
         <i><b>%5$s</b> встановлює курс обміну <b>%3$s %4$s/XMR</b> <u>в даний момент</u></i>.
     ]]></string>
-
     <string name="send_available_btc">Баланс: %1$s XMR (~%2$s %3$s)</string>
-
-    <string name="info_paymentid_integrated">&#x2714; Інтегрований ID платежу</string>
+    <string name="info_paymentid_integrated">✔ Інтегрований ID платежу</string>
     <string name="info_prepare_tx">Підготовка транзакції</string>
-
     <string name="label_send_progress_xmrto_create">Створення заявки</string>
     <string name="label_send_progress_xmrto_query">Запит заявки</string>
     <string name="label_send_progress_create_tx">Підготовка транзакції Monero</string>
-
     <string name="label_send_progress_queryparms">Параметри запиту</string>
-
     <string name="label_generic_xmrto_error">ПОМИЛКА</string>
     <string name="text_generic_xmrto_error">Код: %1$d</string>
-
     <string name="text_retry">Натисніть, щоб повторити спробу</string>
     <string name="text_noretry_monero">Тепер ми застрягли тут!</string>
     <string name="text_noretry">Ой ой! Здається %1$s недоступний в даний момент!</string>
-
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Курс: %1$s %2$s/XMR)</string>
-
     <string name="label_send_btc_xmrto_info">Відвідайте %1$s для отримання допомоги &amp;</string>
     <string name="label_send_btc_xmrto_key_lb">Секретний ключ\n%1$s</string>
     <string name="label_send_btc_xmrto_key">%1$s секретний ключ</string>
     <string name="label_send_btc_address">Адреса отримувача %1$s</string>
     <string name="label_send_btc_amount">Сума</string>
-
     <string name="label_send_txid">ID транзакції</string>
     <string name="label_send_address">Адреса призначення</string>
     <string name="label_send_notes">Примітка</string>
-
     <string name="backup_progress">Виконується резервне копіювання</string>
     <string name="archive_progress">Виконується архівування</string>
     <string name="rename_progress">Виконується перейменування</string>
     <string name="changepw_progress">Виконується зміна паролю</string>
-
-    <string name="service_progress">Для даної дії &#8230;\nМоже знадобитися деякий час!</string>
-
+    <string name="service_progress">Для даної дії …\nМоже знадобитися деякий час!</string>
     <string name="backup_failed">Резервне копіювання відбулося з помилкою!</string>
     <string name="rename_failed">Перейменування відбулося з помилкою!</string>
     <string name="changepw_failed">Зміна паролю відбулася з помилкою!</string>
     <string name="changepw_success">Зміну паролю виконано успішно</string>
-
     <string name="label_daemon">Віддалений вузол</string>
-    <string name="status_wallet_loading">Завантаження гаманця &#8230;</string>
+    <string name="status_wallet_loading">Завантаження гаманця …</string>
     <string name="status_wallet_unloaded">Гаманець збережено</string>
     <string name="status_wallet_unload_failed">Помилка збереження гаманця!</string>
-    <string name="status_wallet_connecting">Підключення &#8230;</string>
+    <string name="status_wallet_connecting">Підключення …</string>
     <string name="status_wallet_connect_failed">Помилка підключення до віддаленого вузла!\nПеревірте username/password</string>
     <string name="status_wallet_node_invalid">Помилка віддаленого вузла!\nСпробуйте ще раз.</string>
     <string name="status_wallet_connect_ioex">Неможливо підключиться до віддаленого вузла!\nПопробуйте пізніше.</string>
-
     <string name="status_wallet_disconnected">Роз\'єднано</string>
-
     <string name="status_transaction_failed">Помилка транзакції: %1$s</string>
-
     <string name="send_xmrto_timeout">Ти надто довго чекав, друже!</string>
-
-    <string name="service_busy">Я все ще зайнятий твоїм гаманцем &#8230;</string>
-
+    <string name="service_busy">Я все ще зайнятий твоїм гаманцем …</string>
     <string name="prompt_rename">Перейменувати %1$s</string>
-
     <string name="prompt_changepw">Новий пароль для %1$s</string>
     <string name="prompt_changepwB">Повторіть пароль для %1$s</string>
     <string name="prompt_password">Пароль для %1$s</string>
     <string name="prompt_fingerprint_auth">Тепер ви можете відкрити гаманець за допомогою відбитка пальця.\nБудь ласка торкніться датчика.</string>
-    <string name="prompt_open_wallet">Відкриття гаманця&#8230;</string>
+    <string name="prompt_open_wallet">Відкриття гаманця…</string>
     <string name="bad_fingerprint">Відбиток пальця не розпізнається. Спробуйте ще раз.</string>
     <string name="bad_password">Невірний пароль!!</string>
     <string name="bad_saved_password">Збережений пароль невірний.\nВведіть пароль вручну.</string>
     <string name="bad_wallet">Гаманця не існує!</string>
     <string name="prompt_daemon_missing">Повинна бути встановлена адреса віддаленого вузла!</string>
     <string name="prompt_wrong_net">Гаманець не відповідає обраній мережі</string>
-
     <string name="label_watchonly">(Режим перегляду)</string>
-
     <string name="label_wallet_receive">Отримати</string>
     <string name="label_wallet_send">Відправити</string>
-
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s непідтверджено</string>
-
     <string name="service_description">Служба monerujo</string>
-
     <string name="status_synced">Синхронізовано:</string>
     <string name="status_remaining">Блоків залишилось</string>
     <string name="status_syncing">Проскановано:</string>
-
     <string name="message_camera_not_permitted">Немає доступу до камери = Немає QR-сканування!</string>
-
     <string name="label_copy_viewkey">Ключ перегляду</string>
     <string name="label_copy_address">Публічна адреса</string>
     <string name="label_copy_xmrtokey">Ключ</string>
@@ -151,9 +112,7 @@
     <string name="message_copy_address">Адресу гаманця скопійовано в буфер обміну!</string>
     <string name="message_copy_txid">ID транзакції скопійовано в буфер обміну!</string>
     <string name="message_nocopy">Копіювання недоступно з міркувань безпеки!</string>
-
     <string name="message_exchange_failed">Неможливо отримати курс обміну!\nВикористовуйте XMR/XMR або спробуйте ще раз</string>
-
     <string name="generate_title">Створити гаманець</string>
     <string name="generate_name_hint">Ім\'я гаманця</string>
     <string name="generate_password_hint">Пароль гаманця</string>
@@ -174,36 +133,29 @@
     <string name="generate_empty_passwordB">Пароль не може бути порожнім</string>
     <string name="generate_buttonGenerate">Зробіть мені вже гаманець!</string>
     <string name="generate_button_accept">Я ввів мнемонічну фразу</string>
-
     <string name="generate_wallet_name">Придумай мені ім\'я!</string>
     <string name="generate_wallet_exists">Такий гаманець існує!</string>
     <string name="generate_wallet_dot">Не може починатися з .</string>
     <string name="generate_wallet_creating">Створення гаманця</string>
     <string name="generate_wallet_created">Гаманець створено</string>
-
     <string name="generate_restoreheight_error">Введіть номер блоку або дату (YYYY-MM-DD)</string>
-
     <string name="generate_wallet_type_key">Ключ</string>
     <string name="generate_wallet_type_new">Новий</string>
     <string name="generate_wallet_type_seed">Фраза</string>
     <string name="generate_wallet_type_view">Перегляд</string>
-
     <string name="generate_address_hint">Публічна адреса</string>
     <string name="generate_viewkey_hint">Ключ перегляду</string>
     <string name="generate_spendkey_hint">Ключ витрати</string>
     <string name="generate_mnemonic_hint">Мнемонічна фраза (25 слів)</string>
     <string name="generate_restoreheight_hint">Відновити висоту або дату (YYYY-MM-DD)</string>
-
     <string name="generate_address_label">Публічна адреса</string>
     <string name="generate_viewkey_label">Ключ перегляду</string>
     <string name="generate_spendkey_label">Ключ витрати</string>
     <string name="generate_mnemonic_label">Мнемонічна фраза</string>
     <string name="generate_crazypass_label">Дата висоти відновлення (YYYY-MM-DD)</string>
-
     <string name="generate_check_key">Введіть діючий ключ</string>
     <string name="generate_check_address">Введіть діючу адресу</string>
     <string name="generate_check_mnemonic">Введіть вашу мнемонічну фразу</string>
-
     <string name="send_notes_hint">Персональна замітка (необов\'язково)</string>
     <string name="send_generate_paymentid_hint">Генерація</string>
     <string name="send_send_label">Витратити мої солодкі Moneroj</string>
@@ -217,24 +169,19 @@
     <string name="send_amount_title">Сума</string>
     <string name="send_confirm_title">Підтвердження</string>
     <string name="send_success_title">Готово</string>
-
     <string name="send_amount_label">Сума</string>
     <string name="send_fee_btc_label">Комісія (XMR)</string>
     <string name="send_fee_label">Комісія</string>
     <string name="send_total_btc_label">Всього (XMR)</string>
     <string name="send_total_label">Всього</string>
-
     <string name="send_amount">%1$s XMR</string>
     <string name="send_fee">+%1$s Комісія</string>
-
     <string name="send_create_tx_error_title">Помилка створення транзакції</string>
-
     <string name="tx_list_fee">Комісія %1$s</string>
     <string name="tx_list_amount_failed">(%1$s)</string>
     <string name="tx_list_failed_text">Не вдалося</string>
     <string name="tx_list_amount_negative">- %1$s</string>
     <string name="tx_list_amount_positive">+ %1$s</string>
-
     <string name="tx_timestamp">Відмітка часу</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
@@ -247,44 +194,33 @@
     <string name="tx_notes">Замітки</string>
     <string name="tx_notes_hint">(необов\'язково)</string>
     <string name="tx_title">Детально</string>
-
     <string name="tx_pending">ОЧІКУВАННЯ</string>
     <string name="tx_failed">ПОМИЛКА</string>
-
     <string name="receive_amount_hint">Сума</string>
     <string name="receive_cannot_open">Не вдалося відкрити гаманець!</string>
-
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">Не числове значення XMR</string>
-
     <string name="details_alert_message">Зараз будуть показані конфіденційні дані. Озирнись навколо!</string>
     <string name="details_alert_yes">Я в безпеці</string>
     <string name="details_alert_no">Поверніть мене назад!</string>
     <string name="details_title">Детальна інформація</string>
-
     <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення. </string>
     <string name="delete_alert_yes">Так, зроби це!</string>
     <string name="delete_alert_no">Ні, дякую!</string>
-
     <string name="fab_create_new">Створити новий гаманець</string>
     <string name="fab_restore_viewonly">Відновити гаманець тільки для перегляду</string>
     <string name="fab_restore_key">Відновити гаманець з ключів</string>
     <string name="fab_restore_seed">Відновити гаманець з мнемонічної фрази</string>
-
     <string name="accounts_drawer_new">Створити обліковий запис</string>
     <string name="accounts_new">Додати новий обліковий запис #%1$d</string>
     <string name="tx_account">Обліковий запис #</string>
-
     <string name="send_sweepall">Надіслати всі кошти на цей рахунок!</string>
     <string name="tx_subaddress">Субадрес</string>
     <string name="generate_address_label_sub">Публічна субадреса #%1$d: %2$s</string>
-
     <string name="menu_language">Мова</string>
     <string name="language_system_default">Використовувати мову системи</string>
-
     <string name="fab_restore_ledger">Відновлення з Ledger Nano</string>
-
     <string name="progress_ledger_progress">Підключення до Ledger</string>
     <string name="progress_ledger_confirm">Необхідне підтвердження в Ledger!</string>
     <string name="progress_ledger_lookahead">Отримання субадрес</string>
@@ -292,24 +228,18 @@
     <string name="progress_ledger_opentx">Займаюся божевільною математикою</string>
     <string name="progress_ledger_mlsag">Хешування матеріалів</string>
     <string name="open_wallet_ledger_missing">Підключіть (повторно підєднайте) пристрій Ledger</string>
-
     <string name="accounts_progress_new">Створення облікового запису</string>
-
     <string name="toast_ledger_attached">%1$s підєднаний</string>
     <string name="toast_ledger_detached">%1$s відєднаний</string>
-
     <string name="receive_desc_hint">Опис (необов\'язково)</string>
-
     <string name="send_address_not_openalias">Адреса OpenAlias недоступна</string>
-    <string name="send_address_openalias">OpenAlias безпечний &#x2714;</string>
-    <string name="send_address_resolve_openalias">Дозволи OpenAlias&#8230;</string>
+    <string name="send_address_openalias">OpenAlias безпечний ✔</string>
+    <string name="send_address_resolve_openalias">Дозволи OpenAlias…</string>
     <string name="send_address_no_dnssec">OpenAlias без DNSSEC - адреса може бути підмінена</string>
-
     <string name="status_wallet_connect_wrongversion">Версія вузла несумісна - будь ласка обновіть!</string>
-
-    <string name="menu_info">Інформация</string><!--Changed to: Show Secrets!-->
+    <string name="menu_info">Інформация</string>
+    <!--Changed to: Show Secrets!-->
     <string name="menu_streetmode">Вуличний Режим</string>
-
     <string name="info_nodes_enabled">Node-o-matiC включений, натисніть щоб отримати більше інформації.</string>
     <string name="node_height">Останній блок: %1$s</string>
     <string name="label_nodes">Вузли</string>
@@ -321,7 +251,7 @@
     <string name="node_host_unresolved">Не вдається підключитися до вузлу</string>
     <string name="node_host_empty">Нам це потрібно!</string>
     <string name="node_port_numeric">Повинно бути число</string>
-    <string name="node_port_range">Повинно бути 1&#8211;65535</string>
+    <string name="node_port_range">Повинно бути 1–65535</string>
     <string name="node_fab_add">Добавити вузол</string>
     <string name="node_refresh_hint">Натисніть, щоб обновити!</string>
     <string name="node_test_error">ПОМИЛКА З\'ЄДНАННЯ %1$d</string>
@@ -329,28 +259,118 @@
     <string name="node_auth_error">ПОМИЛКА АУТЕНТИФІКАЦІЇ</string>
     <string name="node_result_label">Результат Тестування:</string>
     <string name="node_result">Висота: %1$s (v%2$d), Пінг: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Тестування IP: %1$s &#8230;</string>
+    <string name="node_testing">Тестування IP: %1$s …</string>
     <string name="node_refresh_wait">Будь ласка, дочекайтеся закінчення сканування</string>
     <string name="node_create_hint">Натисніть, щоб вибрати або додати вузли</string>
     <string name="node_pull_hint">Добавте вузли вручну або потягніть вниз для сканування</string>
-    <string name="node_scanning">Сканування мережі&#8230;</string>
+    <string name="node_scanning">Сканування мережі…</string>
     <string name="node_nobookmark">Автоматично відмічені кращі %1$d вузли</string>
-    <string name="label_test">Провірка</string><!--note: as in "Test a network connection"-->
+    <string name="label_test">Провірка</string>
+    <!--note: as in "Test a network connection"-->
 
     <string name="backup_success">Резервне копіювання успішне</string>
-
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Отримувач</string>
-
-    <string name="street_sweep_amount">ВСЕ!</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">ВСЕ!</string>
+    <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Конвертувати фразу Ledger</string>
     <string name="prompt_ledger_seed">Словесна фраза Ledger</string>
     <string name="prompt_ledger_phrase">Пароль Ledger (необов\'язково)</string>
     <string name="bad_ledger_seed">Помилка Ledger фрази!</string>
     <string name="prompt_ledger_seed_warn">Вводячи сюди Ledger фразу являється серйозною загрозою для вашої безпеки!</string>
-
-    <string name="label_restoreheight">Відновити висоту</string> <!-- Restore Height -->
+    <string name="label_restoreheight">Відновити висоту</string>
+    <!-- Restore Height -->
 
     <string name="toast_ledger_start_app">Запуск Monero додатку через %1$s</string>
+    <string name="open_wallet_sidekick_missing">Підключіть пристрій Sidekick</string>
+    <string name="subaddress_add">Додайте підадресу</string>
+    <string name="sidekick_connected">Підключено Sidekick</string>
+    <string name="menu_restore">Імпортний гаманець</string>
+    <string name="title_iface">Інтерфейс</string>
+    <string name="menu_deletecache">Скинути гаманець!</string>
+    <string name="onboarding_nodes_information">Вузли підключають вас до мережі Monero. Вибирайте між загальнодоступними вузлами або перейдіть у повний шифрпанк, використовуючи власні.</string>
+    <string name="tor_enable">Увімкніть TOR</string>
+    <string name="node_updated_hours">Останнє блокування: %1$d годин тому</string>
+    <string name="subaddress_select_label">Виберіть допоміжну адресу</string>
+    <string name="label_seed_offset_encrypt">Початкове шифрування (ЕКСПЕРИМЕНТАЛЬНИЙ)</string>
+    <string name="onboarding_seed_title">Бережіть своє насіння</string>
+    <string name="onboarding_welcome_information">Ця програма дозволяє створювати та використовувати гаманці Monero. Ви можете зберігати в них свій солодкий монерой.</string>
+    <string name="sidekick_pin">PIN: %1$s</string>
+    <string name="bluetooth_select_label">Виберіть пристрій Sidekick</string>
+    <string name="gunther_says">Тут нічого немає\nСтворіть або відновіть гаманець</string>
+    <string name="node_updated_now">Останнє блокування: %1$d секунд тому</string>
+    <string name="menu_close">Закрити</string>
+    <string name="send_qr_hint">Сканувати</string>
+    <string name="onboarding_fpsend_title">Надіслати з відбитком пальця</string>
+    <string name="copy_receive_address">Скопіюйте адресу отримання</string>
+    <string name="menu_cancel">Скасувати</string>
+    <string name="menu_bluetooth">Підключіть Sidekick</string>
+    <string name="menu_daynight">Темний режим</string>
+    <string name="shift_noquote">Неможливо отримати пропозицію</string>
+    <string name="paste_give_address">Вставте адресу</string>
+    <string name="tor_noshift">%1$s не підтримує Tor.\nВимкніть Tor, щоб замінити XMR.</string>
+    <string name="tor_enable_background">Дозволити фоновий запуск у налаштуваннях Orbot для використання Tor!</string>
+    <string name="bluetooth_permissions">Щоб підключити Sidekick Wallet, потрібні дозволи Bluetooth!</string>
+    <string name="label_apply">ЗАСТОСУВАТИСЯ</string>
+    <string name="shift_checkamount">Перевірте суму та повторіть спробу</string>
+    <string name="node_waiting"> ОЧІКУВАННЯ ВУЗЛА </string>
+    <string name="menu_default_nodes">Відновити вузли за замовчуванням</string>
+    <string name="menu_back">Назад</string>
+    <string name="setting_stickyfiat">Липкий Фіат</string>
+    <string name="setting_stickyfiat_summary">Запам\'ятати останню використану фіатну валюту</string>
+    <string name="onboarding_fpsend_information">Тепер ви можете надсилати XMR лише за допомогою свого відбитка пальця, якщо ви його ввімкнули. Щоб запитати пароль, просто вимкніть доступ відбитком пальця.</string>
+    <string name="onboarding_xmrto_information">У Monerujo вбудована підтримка бірж. Ви можете використовувати XMR для оплати кількома іншими криптовалютами.</string>
+    <string name="max_account_warning">Забагато невикористаних облікових записів – використовуйте деякі, щоб створити більше!</string>
+    <string name="sidekick_network_warning">Мережа увімкнена – це загроза безпеці. Рекомендується увімкнути режим польоту та перезапустити програму, увімкнувши лише Bluetooth!</string>
+    <string name="tx_locked">Сума трансакції заблокована до блоку %1$d (через %2$d блоків ≈ %3$,.2f днів)</string>
+    <string name="onboarding_xmrto_title">Надіслати Crypto</string>
+    <string name="onboarding_seed_information">Насіння надає повний доступ тому, хто його має. Якщо ви втратите його, ми не зможемо допомогти вам відновити його, і ви втратите свій улюблений moneroj.</string>
+    <string name="info_xmrto_ambiguous"><![CDATA[
+        <b>Неоднозначна адреса.</b><br/>
+        <i>Будь ласка, виберіть тип вище.</i>
+    ]]></string>
+    <string name="subbaddress_title">Підадреси</string>
+    <string name="deletecache_alert_message">Цей гаманець буде скинуто, із втратою всіх даних поза ланцюгом (наприклад, нотатки, імена облікових записів і субадрес, приватні ключі транзакцій, …)! Використовуйте це ТІЛЬКИ, якщо цей гаманець пошкоджений і не завантажується!</string>
+    <string name="pocketchange_info">Щоб скоротити час очікування повторних витрат, Monerujo може створити зайву здачу за рахунок вищих комісій. Він намагатиметься створити та підтримувати принаймні 6 монет із вибраної суми.</string>
+    <string name="menu_delete">Видалити</string>
+    <string name="delete_failed">Не вдалося видалити!</string>
+    <string name="menu_rescan">Повторне сканування!</string>
+    <string name="onboarding_agree">Я розумію!</string>
+    <string name="onboarding_button_next">Далі</string>
+    <string name="onboarding_button_ready">я готовий!</string>
+    <string name="onboarding_welcome_title">Ласкаво просимо до Монерухо!</string>
+    <string name="onboarding_nodes_title">Вузли, по-вашому</string>
+    <string name="toast_default_nodes">Відновлення вже триває…</string>
+    <string name="node_updated_mins">Останній блок: %1$d хвилин</string>
+    <string name="node_updated_days">Останнє блокування: %1$d днів тому</string>
+    <string name="info_xmrto_help"><![CDATA[
+        <b>Введіть або відскануйте адресу %1$s.</b><br/>
+        <i>Ви надішлете XMR, а одержувач отримає %2$s за допомогою служби <b>%3$s</b>.</i>
+    ]]></string>
+    <string name="info_xmrto_help_xmr"><![CDATA[
+        <b>Введіть або відскануйте адресу Monero.</b>
+    ]]></string>
+    <string name="subbaddress_name_hint">Ім\'я підадреси</string>
+    <string name="max_subaddress_warning">Забагато невикористаних адрес - використовуйте деякі, щоб створити більше!</string>
+    <string name="subaddress_tx_label">Трансакції для цієї субадреси:</string>
+    <string name="subaddress_notx_label">Для цієї субадреси ще немає транзакцій</string>
+    <string name="subaddress_details_hint">Натисніть і утримуйте для перегляду деталей</string>
+    <string name="restore_failed">Помилка імпорту!</string>
+    <string name="node_tor_error">Потрібен Tor</string>
+    <string name="seed_offset_hint">Фраза зміщення насіння (необов’язково)</string>
+    <string name="menu_settings">Налаштування</string>
+    <string name="title_info">Інформація</string>
+    <string name="setting_daynight">День / Ніч</string>
+    <string name="setting_theme">Стиль</string>
+    <string name="message_qr_failed">Не вдалося створити QR для спільного використання!</string>
+    <string name="label_streetmode">Вуличний режим увімкнено\nБудуть показані лише нові транзакції</string>
+    <string name="pocketchange_create_title">Створення змін</string>
+    <string name="setting_lock">Блокування гаманця у фоновому режимі</string>
+    <string name="bluetooth_permissions_ok">Добре</string>
+    <string name="bluetooth_permissions_settings">Налаштування програми</string>
+    <string name="bluetooth_permissions_cancel">Скасувати</string>
+    <string name="sidekick_not_connected">[не підключено]</string>
+    <string name="sidekick_confirm_tx">Підтвердити транзакцію</string>
+    <string name="fab_restore_sidekick">Відновити з Sidekick</string>
 </resources>
