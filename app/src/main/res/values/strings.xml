@@ -89,9 +89,6 @@
     <string name="label_send_address">Destination Address</string>
     <string name="label_send_notes">Notes</string>
 
-    <string name="backup_progress">Backup in progress</string><!--TODO deleteme-->
-    <string name="archive_progress">Archive in progress</string><!--TODO deleteme-->
-    <string name="rename_progress">Rename in progress</string><!--TODO deleteme-->
     <string name="changepw_progress">Change Password in progress</string>
 
     <string name="service_progress">Wrapping things up &#8230;\nThis can take a while!</string>
@@ -135,7 +132,6 @@
     <string name="bad_saved_password">Saved password is incorrect.\nPlease enter password manually.</string>
     <string name="bad_wallet">Wallet does not exist!</string>
     <string name="prompt_daemon_missing">Node must be set!</string>
-    <string name="prompt_wrong_net">Wallet does not match selected net</string><!--TODO deleteme-->
 
     <string name="label_watchonly">(Watch Only)</string>
 
