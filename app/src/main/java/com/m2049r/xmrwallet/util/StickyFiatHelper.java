@@ -52,11 +52,8 @@ public class StickyFiatHelper {
     }
 
     public static void setCurrencyPosition(Spinner spinner, String symbol) {
-        int spinnerPosition = ((ArrayAdapter) spinner.getAdapter()).getPosition(symbol);
-        if (spinnerPosition < 0) { // requested currency not in list
-            spinner.setSelection(0, true);
-        } else {
-            spinner.setSelection(spinnerPosition, true);
-        }
+        @SuppressWarnings("unchecked")
+        int spinnerPosition = ((ArrayAdapter<String>) spinner.getAdapter()).getPosition(symbol);
+        spinner.setSelection(Math.max(spinnerPosition, 0), true);
     }
 }

@@ -117,8 +117,6 @@
   <string name="status_synced">تمت المزامنة:</string>
   <string name="status_remaining">كتله متبقية</string>
   <string name="status_syncing">المزامنة:</string>
-  <string name="message_strorage_not_writable">وحدة التخزين الخارجية غير قابلة للكتابة! احذر!</string>
-  <string name="message_strorage_not_permitted">نحن حقا بحاجة إلى تلك الأذونات للتخزين الخارجي!</string>
   <string name="message_camera_not_permitted">لا توجد كاميرا = لا يوجد مسح رمز QR!</string>
   <string name="label_copy_viewkey">مفتاح العرض</string>
   <string name="label_copy_address">العنوان العام</string>
