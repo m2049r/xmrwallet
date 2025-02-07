@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE resources [
-<!ENTITY nbsp "&#160;">
-]>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ta">
     <string name="wallet_activity_name">பணப்பை</string>
     <string name="menu_about">எங்களைப் பற்றி</string>
