@@ -2,57 +2,58 @@
 <resources>
     <string name="about_close">Cerrar</string>
     <string name="about_version">Versión %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>Créditos</b>
         <br/>
         m2049r, baltsar777, anhdres, keejef,
-        rehrar, EarlOfEgo, ErCiccione et al.
+        rehrar, EarlOfEgo et al.
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
-        <h1>Política de Privacidad</h1>
-        <p>Este texto te informa de nuestras políticas con respecto a la recopilación, uso
-        y divulgación de datos personales que recibimos de los usuarios de esta app
-        (monerujo: Monero Wallet).
+        <h1> Política de privacidad </h1>
+        <p> Esta página le informa sobre nuestras políticas con respecto a la recopilación,
+        Uso y divulgación de la información personal que recibimos de los usuarios de nuestros
+        aplicación (monerujo: Monero Wallet).
         </p>
-        <p>Al usar esta app, aceptas la recopilación y uso de información en acuerdo con
-        esta política.
+        <p> Al utilizar la aplicación, usted acepta la recopilación y el uso de información en
+        de acuerdo con esta política.
         </p>
-        <h2>Datos Recopilados</h2>
-        <p>Llamamos datos personales a cualquier tipo de datos que podrían identificar a un individuo.
+        <h2> Datos recopilados </h2>
+        Los datos personales son cualquier tipo de datos que puedan identificar a un individuo.
         </p>
-        <p>Las claves y direcciones públicas de Monero son recopiladas y procesadas por la app
-        localmente (sólo en tu dispositivo) con el propósito de procesar la transacciones y transmitirlas en la red de
-        Monero de forma encriptada.
+        <p> Las claves Monero y las direcciones públicas son recopiladas y procesadas por la aplicación localmente
+        con el propósito de procesar transacciones y transmitirlas a la red Monero
+        de forma cifrada.
         </p>
-        <p>La aplicación no recopila ningún otro dato personal.</p>
-        <p>Si utilizas la funcionalidad de intercambio de monedas (opcional), monerujo obtiene la tasa
-        de cambio a través de la API pública de coinmarketcap.com.
-        Lee su política de privadad en <a href="https://coinmarketcap.com/privacy">coinmarketcap.com/privacy</a> para conocer más
-        detalles acerca de como se recopilan los datos de sus peticiones.</p>
-        <h2>Permisos de la App</h2>
+        <p> La aplicación no recopila otros datos personales. </p>
+        <p> Si utiliza la funcionalidad de intercambio (opcional), monerujo obtiene el intercambio
+        a través de la API pública de coinmarketcap.com.
+        Consulte su política de privacidad en https://coinmarketcap.com/privacy para
+        detalles sobre cómo se recopilan los datos en sus solicitudes. </p>
+        <p> Si usa la aplicación para pagar a direcciones BTC, estará utilizando el servicio Exolix.
+        Consulte su política de privacidad en https://exolix.com/privacy para obtener más detalles. Monerujo les envía los BTC
+        Dirección de destino y cantidad. Tu IP también será cobrable. </p>
+        <h2> Permisos de la aplicación </h2>
         <ul>
-        <li>INTERNET : Necesario para conectarse a la red de Monero a través de un nodo de Monero</li>
-        <li>READ_EXTERNAL_STORAGE : Necesario para leer los archivos de los monederos almacenados en tu dispositivo</li>
-        <li>WRITE_EXTERNAL_STORAGE : Necesario para guardar cambios en esos archivos de los monederos</li>
-        <li>WAKE_LOCK : Necesario para mantener tu dispositivo despierto durante la sincronización</li>
-        <li>CAMERA : Necesario para usar la cámara y escanear los códigos QR con direcciones de Monero</li>
+        <li> INTERNET: Conéctese a la red Monero a través de un nodo Monero Daemon </li>
+        <li> READ_EXTERNAL_STORAGE : Leer archivos de billetera almacenados en el dispositivo </li>
+        <li> WRITE_EXTERNAL_STORAGE: Escribe los archivos de billetera almacenados en el dispositivo </li>
+        <li> WAKE_LOCK : Mantener el dispositivo activo mientras se sincroniza </li>
+        <li> CÁMARA: Escanee códigos QR para recibir Monero </li>
         </ul>
-        <h2>Cambios a esta Política de Privacidad</h2>
-        <p>Es posible que actualicemos esta política de privacidad de vez en cuando. Le
-        notificaremos de cualquier cambio publicando la nueva política de privacidad en la app
-        y en nuestro sitio web (<a href="https://monerujo.io/">monerujo.io</a>)
-        Te aconsejamos que revises esta política de privacidad periódicamente por cualquier
-        cambio.
-        <p>Esta Política de Privacidad fue actualizada por última vez el 10 de Noviembre de 2017.
+        <h2> Cambios a esta Política de Privacidad </h2>
+        <p> Es posible que actualicemos esta política de privacidad de vez en cuando. Le notificaremos
+        Le informaremos de cualquier cambio publicando la nueva política de privacidad en la aplicación y en el
+        página web (www.monerujo.io)
+        Se le recomienda revisar periódicamente esta política de privacidad para ver si hay cambios.
+        <p> Esta Política de privacidad se actualizó por última vez: 10 de noviembre de 2017.
         </p>
-        <h2>Contáctanos</h2>
-        <p>Si tienes cualquier cuestión sobre nuestra política de privacidad,
-        o sobre cómo o cuáles datos están siendo recolectados y procesados,
-        por favor escríbenos a <a href="mailto:privacy@monerujo.io">privacy@monerujo.io</a>
+        <h2> Contáctenos </h2>
+        <p> Si tiene alguna pregunta sobre nuestra política de privacidad,
+        o cómo se recopilan y procesan sus datos,
+        Por favor envíe un correo electrónico a privacy@monerujo.io.
         </p>
         ]]></string>
+    <string name="about_whoami">Soy monerujo</string>
 </resources>
