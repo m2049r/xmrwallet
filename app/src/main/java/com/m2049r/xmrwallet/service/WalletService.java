@@ -123,8 +123,9 @@ public class WalletService extends Service {
                 Timber.d("newBlock() @ %d with observer %s", height, observer);
                 if (observer != null) {
                     boolean fullRefresh = false;
-                    updateDaemonState(wallet, wallet.isSynchronized() ? height : 0);
-                    if (!wallet.isSynchronized()) {
+                    boolean receivedNewBlock = true;
+                    boolean updatedWalletConnectionStatus = updateDaemonState(wallet, height, receivedNewBlock);
+                    if (updatedWalletConnectionStatus || !wallet.isSynchronized()) {
                         updated = true;
                         // we want to see our transactions as they come in
                         wallet.refreshHistory();
@@ -148,13 +149,13 @@ public class WalletService extends Service {
             updated = true;
         }
 
-        public void refreshed() { // this means it's synced
+        public void refreshed() {
             Timber.d("refreshed()");
             final Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
-            wallet.setSynchronized();
-            if (updated) {
-                updateDaemonState(wallet, wallet.getBlockChainHeight());
+            boolean receivedNewBlock = false;
+            boolean updatedWalletConnectionStatus = updateDaemonState(wallet, wallet.getBlockChainHeight(), receivedNewBlock);
+            if (updated || updatedWalletConnectionStatus) {
                 wallet.refreshHistory();
                 if (observer != null) {
                     updated = !observer.onRefreshed(wallet, true);
@@ -166,16 +167,20 @@ public class WalletService extends Service {
     private long lastDaemonStatusUpdate = 0;
     private long daemonHeight = 0;
     private Wallet.ConnectionStatus connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
-    private static final long STATUS_UPDATE_INTERVAL = 120000; // 120s (blocktime)
+    private static final long STATUS_UPDATE_INTERVAL_SYNCED = 120000; // 120s (blocktime)
+    private static final long STATUS_UPDATE_INTERVAL_SYNCING = 10000; // 10s
 
-    private void updateDaemonState(Wallet wallet, long height) {
+    private boolean updateDaemonState(Wallet wallet, long height, boolean receivedNewBlock) {
+        Wallet.ConnectionStatus startConnectionStatus = connectionStatus;
         long t = System.currentTimeMillis();
-        if (height > 0) { // if we get a height, we are connected
-            daemonHeight = height;
+        if (daemonHeight > 0 && height > 0 && (height > daemonHeight || receivedNewBlock)) {
+            if (height > daemonHeight)
+                daemonHeight = height;
             connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Connected;
             lastDaemonStatusUpdate = t;
         } else {
-            if (t - lastDaemonStatusUpdate > STATUS_UPDATE_INTERVAL) {
+            long statusUpdateInterval = wallet.isSynchronized() ? STATUS_UPDATE_INTERVAL_SYNCED : STATUS_UPDATE_INTERVAL_SYNCING;
+            if (daemonHeight == 0 || t - lastDaemonStatusUpdate > statusUpdateInterval) {
                 lastDaemonStatusUpdate = t;
                 // these calls really connect to the daemon - wasting time
                 daemonHeight = wallet.getDaemonBlockChainHeight();
@@ -186,6 +191,16 @@ public class WalletService extends Service {
                     connectionStatus = Wallet.ConnectionStatus.ConnectionStatus_Disconnected;
                 }
             }
+        }
+        setWalletSyncState(wallet);
+        return startConnectionStatus != connectionStatus;
+    }
+
+    public void setWalletSyncState(Wallet wallet) {
+        if (daemonHeight > 0 && daemonHeight <= wallet.getBlockChainHeight()) {
+            wallet.setSynchronized();
+        } else {
+            wallet.setUnsynchronized();
         }
     }
 
