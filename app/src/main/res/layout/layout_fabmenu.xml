@@ -13,14 +13,18 @@
         android:alpha="0.93"
         android:background="?android:attr/colorBackground"
         android:focusable="true"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        android:contentDescription="@string/fab_addition_options_menu"
+        >
 
         <RelativeLayout
             android:id="@+id/fabNewL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/fabViewL"
-            android:layout_alignEnd="@id/fabImportL">
+            android:layout_alignEnd="@id/fabImportL"
+            android:contentDescription="@string/fab_create_new"
+            >
 
             <TextView
                 android:id="@+id/fabNewT"
@@ -43,9 +47,11 @@
                 android:layout_toEndOf="@+id/fabNewT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_new"
+                android:contentDescription="@string/fab_create_new"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
-                app:pressedTranslationZ="12dp" />
+                app:pressedTranslationZ="12dp"
+                />
 
         </RelativeLayout>
 
@@ -54,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/fabKeyL"
-            android:layout_alignEnd="@id/fabImportL">
+            android:layout_alignEnd="@id/fabImportL"
+            android:contentDescription="@string/fab_restore_viewonly"
+            >
 
             <TextView
                 android:id="@+id/fabViewT"
@@ -74,9 +82,11 @@
                 android:layout_toEndOf="@+id/fabViewT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_eye"
+                android:contentDescription="@string/fab_restore_viewonly"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
-                app:pressedTranslationZ="12dp" />
+                app:pressedTranslationZ="12dp"
+                />
 
         </RelativeLayout>
 
@@ -85,7 +95,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/fabSeedL"
-            android:layout_alignEnd="@id/fabImportL">
+            android:layout_alignEnd="@id/fabImportL"
+            android:contentDescription="@string/fab_restore_key"
+            >
 
             <TextView
                 android:id="@+id/fabKeyT"
@@ -105,6 +117,7 @@
                 android:layout_toEndOf="@+id/fabKeyT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_key"
+                android:contentDescription="@string/fab_restore_key"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
                 app:pressedTranslationZ="12dp" />
@@ -116,7 +129,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/fabImportL"
-            android:layout_alignEnd="@id/fabImportL">
+            android:layout_alignEnd="@id/fabImportL"
+            android:contentDescription="@string/fab_restore_seed"
+            >
 
             <TextView
                 android:id="@+id/fabSeedT"
@@ -136,6 +151,7 @@
                 android:layout_toEndOf="@+id/fabSeedT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_seed"
+                android:contentDescription="@string/fab_restore_seed"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
                 app:pressedTranslationZ="12dp" />
@@ -147,7 +163,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/menu_restore"
+            >
 
             <TextView
                 android:id="@+id/fabImportT"
@@ -170,6 +188,7 @@
                 android:layout_toEndOf="@+id/fabImportT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_import"
+                android:contentDescription="@string/menu_restore"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
                 app:pressedTranslationZ="12dp" />
@@ -201,6 +220,7 @@
                 android:layout_toEndOf="@+id/fabLedgerT"
                 android:elevation="6dp"
                 android:src="@drawable/ic_ledger_restore"
+                android:contentDescription="@string/fab_restore_ledger"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
                 app:pressedTranslationZ="12dp" />
@@ -258,7 +278,7 @@
             android:layout_gravity="bottom|end"
             android:backgroundTint="@android:color/transparent"
             android:backgroundTintMode="src_in"
-            android:contentDescription="@string/fab_create_new"
+            android:contentDescription="@string/fab_create_or_restore"
             android:src="@drawable/ic_add"
             app:borderWidth="0dp"
             app:elevation="0dp"
