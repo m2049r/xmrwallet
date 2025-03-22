@@ -235,7 +235,7 @@
     <string name="node_result_label">Resultado do Teste:</string>
     <string name="node_result">Altura: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
     <string name="node_testing">Testando IP: %1$s …</string>
-    <string name="node_refresh_wait">Por favor, aguarde o escaneamento terminar</string>
+    <string name="node_refresh_wait">Por favor, aguarde o escaneamento ser concluído</string>
     <string name="node_create_hint">Toque para selecionar ou adicionar nós</string>
     <string name="node_pull_hint">Adicione nós manualmente ou puxe para baixo para escanear</string>
     <string name="node_scanning">Escaneando rede…</string>
