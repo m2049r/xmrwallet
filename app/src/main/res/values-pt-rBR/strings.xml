@@ -304,10 +304,10 @@
     <string name="subaddress_notx_label">Nenhuma transação neste subendereço ainda</string>
     <string name="subaddress_select_label">Selecione um subendereço</string>
     <string name="subaddress_details_hint">Toque e segure para mais detalhes</string>
-    <string name="delete_alert_message">Esta carteira será excluída. Seus fundos desaparecerão para sempre, a não ser que você tenha sua semente guardada ou um backup funcional para recuperá-la.</string>
-    <string name="menu_delete">Excluir</string>
+    <string name="delete_alert_message">Esta carteira será apagada. Seus fundos desaparecerão para sempre, a não ser que você tenha sua semente guardada ou um backup funcional para recuperá-la.</string>
+    <string name="menu_delete">Apagar</string>
     <!-- like: "Delete wallet!" -->
-    <string name="delete_failed">Exclusão falhou!</string>
+    <string name="delete_failed">O apagamento falhou!</string>
     <string name="menu_restore">Importar carteira</string>
     <string name="restore_failed">Importação falhou!</string>
     <string name="menu_deletecache">Redefinir carteira!</string>
