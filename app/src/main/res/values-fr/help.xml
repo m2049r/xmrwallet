@@ -156,10 +156,10 @@
     <string name="help_send"><![CDATA[
         <h1>Envoyer</h1>
         <h2>Adresse de Destinataire</h2>
-        <p>C\’est l\’adresse publique du portefeuille auquel vous allez envoyer des Moneroj, vous pouvez
+        <p>C\'est l\'adresse publique du portefeuille auquel vous allez envoyer des Moneroj, vous pouvez
         la copier/coller, scanner un QR code ou la saisir manuellement. Vérifiez là bien trois fois
-        afin de vous assurer que vous n\’envoyez pas de pièces à la mauvaise adresse.</p>
-        <p>En complément de l\’utilisation d\’une adresse XMR, vous pouvez aussi utiliser
+        afin de vous assurer que vous n\'envoyez pas de pièces à la mauvaise adresse.</p>
+        <p>En complément de l\'utilisation d\'une adresse XMR, vous pouvez aussi utiliser
             <ul>
                 <li>une adresse OpenAlias pour XMR ou BTC</li>
                 <li>une adresse BTC</li>
