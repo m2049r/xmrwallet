@@ -20,7 +20,6 @@
         Deshalb ist es am besten, wenn du deinen Mnemonischen Seed aufschreibst 
 	und sicher und geheim an <em>mehreren</em> Orten aufbewahrst.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Wallet erstellen – Seed</h1>
         <p>Falls du schon eine Monero-Adresse besitzt und wieder Zugriff auf die Transaktionen auf der Blockchain haben willst!</p>
@@ -31,7 +30,6 @@
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Wallet erstellen – Schlüssel</h1>
         <p>Falls du dein Wallet mit Schlüsseln wiederherstellen willst!</p>
@@ -42,7 +40,6 @@
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Wallet erstellen – View</h1>
         <p>Falls du nur eingehende Transaktionen auf dieses Wallet überwachen willst!</p>
@@ -53,7 +50,6 @@
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Wallet-Details</h1>
         <h2>Öffentliche Adresse</h2>
@@ -91,7 +87,6 @@
         Der Spend-Key ermöglicht jedem, Monero aus diesem Wallet auszugeben. Bewahre diesen Spend-Key also genauso sicher
 	wie den Mnemomischen Seed auf.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Wallet-Liste</h1>
         <h2>Node</h2>
@@ -120,7 +115,6 @@
         Ordner. Falls du deine Backups nicht länger benötigst, solltest du sie mit einem Datei-Explorer löschen oder
 	die App sauber und ordentlich deinstallieren.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetails</h1>
         <h2>Ziel</h2>
@@ -137,7 +131,6 @@
         <h2>Block</h2>
         Dies ist der Block, der deine Transaktion beinhaltet.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Senden</h1>
         <h2>Empfängeradresse</h2>
@@ -171,7 +164,6 @@
         <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>BTC senden</h1>
         <h2>Exolix</h2>
@@ -193,7 +185,6 @@
         <p>Wenn der Countdown 0 erreicht, musst du ein neues Angebot von Exolix anfordern, indem du zum vorherigen Schritt
         zurückkehrst und wieder zum \"Bestätigen\"-Bildschirm zurückkommst.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Wallet erstellen – Ledger</h1>
         <p>Falls du dein Wallet mit einem "Ledger Nano S" wiederherstellen willst!</p>
@@ -205,7 +196,6 @@
         Du kannst auch ein Datum im Format JJJJ-MM-DD eingeben. Falls du nicht sicher bist, gib ein
         ungefähres Datum oder eine Blockhöhe, <em>bevor</em> du diese Adresse zum ersten Mal benutzt hast, ein.<p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Die Wallet</h1>
         <h2>Straßenmodus</h2>
@@ -226,7 +216,6 @@
         <h2>Transaktionsliste</h2>
         <p>Eine Liste deiner Transaktionen. In View-Wallets werden nur die eingehenden Transaktionen angezeigt.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>Kurzfassung</h2>
@@ -275,7 +264,6 @@
         wird sich Monerujo direkt mit den, in Monero fest eingebetteten, Ursprungsnodes verbinden. Die
         Suche stoppt, wenn insgesamt 10 Nodes gefunden wurden.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -288,6 +276,7 @@
         </p>
         <p>Die Zahlungsdetails werden ausgefüllt. Überprüfe sie und fahre fort wie bei jeder anderen Transaktion.</p>
     ]]></string>
-
-    <string name="help_ok">Hab\'s verstanden!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Hab\'s verstanden!</string>
+    <!-- Note: "Got it" as in "I understand this" -->
+<string name="help_getorbot">Hol dir Orbot!</string>
 </resources>
