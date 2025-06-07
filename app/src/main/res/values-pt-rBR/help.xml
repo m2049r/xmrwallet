@@ -16,7 +16,8 @@
         A semente nunca pode ser alterada. Se ela for roubada ou comprometida de alguma maneira, será
         preciso movimentar os fundos para uma nova carteira (com uma nova semente).
         Portanto é melhor fazer um backup da sua semente
-        mnemônica escrevendo-a a mão e guardando cópias em <em>vários</em> lugares seguros.</p>
+        mnemônica escrevendo-a a mão e guardando cópias em <em>vários</em>
+        lugares seguros.</p>
     ]]></string>
     <string name="help_create_seed"><![CDATA[
         <h1>Criar Carteira - Semente</h1>
