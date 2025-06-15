@@ -286,14 +286,19 @@
     <string name="delete_alert_yes">Yes, do that!</string>
     <string name="delete_alert_no">No thanks!</string>
 
+    <string name="fab_create_or_restore">Create or restore wallet</string>
+    <string name="fab_close">Close wallet addition options menu</string>
     <string name="fab_create_new">Create new wallet</string>
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
     <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+    <string name="fab_addition_options_menu">Wallet addition options menu</string>
 
     <string name="accounts_balance" translatable="false">%1$s XMR</string>
     <string name="tx_account_formatted" translatable="false">(%1$d, %2$d) &nbsp;&lt;span style=\"background-color: #%3$s; color: #%4$s;\"&gt;&nbsp;%5$s&nbsp;&lt;/span&gt;</string>
 
+    <string name="open_drawer">Open accounts drawer</string>
+    <string name="close_drawer">Close accounts drawer</string>
     <string name="accounts_drawer_new">Create Account</string>
     <string name="accounts_new">Added new account #%1$d</string>
     <string name="tx_account">Account #</string>
@@ -354,6 +359,8 @@
     <string name="node_nobookmark">Automatically bookmarked best %1$d nodes</string>
     <string name="node_use_ssl">Use SSL</string>
     <string name="label_test">Test</string><!--note: as in "Test a network connection"-->
+    <string name="node_add_favourite">Save %1$ node</string>
+    <string name="node_remove_favourite">Remove saved %1$ node</string>
 
     <string name="send_address_hint">Receiver</string>
 
