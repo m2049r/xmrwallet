@@ -908,7 +908,6 @@ public class WalletActivity extends BaseActivity implements WalletFragment.Liste
         BarcodeData bcData = BarcodeData.fromString(qrCode);
         if (bcData != null) {
             popFragmentStack(null);
-            Timber.d("AAA");
             onUriScanned(bcData);
             return true;
         } else {
