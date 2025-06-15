@@ -28,7 +28,6 @@
         書き留めて、<em>複数の</em>安全で確実な場所に
         保管しておくべきです。</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>ウォレットの作成 - シードから</h1>
         <p>もしもあなたがすでにモネロのアドレスを持っていて
@@ -48,7 +47,6 @@
         日付/ブロック長よりも<em>前の</em>日付/ブロック長を
         おおよそでいいので推定して入力してください。</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>ウォレットの作成 - レッジャーから</h1>
         <p>もしもあなたがレッジャーナノSのデバイスから
@@ -69,7 +67,6 @@
         日付/ブロック長よりも<em>前の</em>日付/ブロック長を
         おおよそでいいので推定して入力してください。</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>ウォレットの作成 - 鍵を利用</h1>
         <p>もしもあなたが鍵を使ってウォレットを復元しようとしている場合!</p>
@@ -89,7 +86,6 @@
         日付/ブロック長よりも<em>前の</em>日付/ブロック長を
         おおよそでいいので推定して入力してください。</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>ウォレットの作成 - 閲覧専用</h1>
         <p>もしもあなたがウォレットに入金されるトランザクションを閲覧したいだけの場合!</p>
@@ -108,7 +104,6 @@
         日付/ブロック長よりも<em>前の</em>日付/ブロック長を
         おおよそでいいので推定して入力してください。</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>ウォレットの詳細/h1>
         <h2>公開アドレス</h2>
@@ -167,7 +162,6 @@
         見せてはいけません。また、ニーモニック・シードと同様に
         厳重に取り扱ってください。
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>ウォレットリスト</h1>
         <h2>ノード</h2>
@@ -207,7 +201,6 @@
         それらをファイルエクスプローラや安全に削除できるアプリで
         削除してください。</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>トランザクション詳細</h1>
         <h2>送金先(Destination)</h2>
@@ -230,7 +223,6 @@
         <h2>ブロック</h2>
         これはあなたのトランザクションが含まれたブロックです。
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>送金</h1>
         <h2>受け取り手のアドレス</h2>
@@ -276,7 +268,6 @@
         あなたは一度前のステップに戻って「確認」(Confirm)の画面に戻って、
         もう一度 Exolix から新しい見積もりを取得する必要があります。</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>BTCの送金</h1>
         <h2>Exolix</h2>
@@ -308,7 +299,6 @@
         あなたは一度前のステップに戻って「確認」(Confirm)の画面に戻って、
         もう一度 Exolix から新しい見積もりを取得する必要があります。</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>ウォレット</h1>
         <h2>ストリートモード</h2>
@@ -340,7 +330,6 @@
         <p>ウォレットの取引のリストです。
         閲覧専用ウォレットでは入金取引のみが表示されます。</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>ノード</h1>
         <h2>簡単に言うと</h2>
@@ -408,7 +397,6 @@
         シードノードと直接通信します。
         スキャンは全部で10個のリモートノードを見つけたときに終了します。</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -421,6 +409,5 @@
         </p>
         <p>支払詳細を記入します。それからチェックして、他の取引と同じように進めてください。</p>
     ]]></string>
-
-    <string name="help_ok">分かりました！</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">分かりました！</string>
 </resources>

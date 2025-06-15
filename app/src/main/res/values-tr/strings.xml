@@ -193,14 +193,14 @@
     <string name="send_fee_label">Ücret</string>
     <string name="send_total_btc_label">Toplam (XMR)</string>
     <string name="send_total_label">Toplam</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Ücret</string>
     <string name="send_create_tx_error_title">İşlem Oluşturma Hatası</string>
     <string name="tx_list_fee">Ücret %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">başarısız</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Tarih damgası</string>
     <string name="tx_id">İşlem Kimliği</string>
     <string name="tx_key">İşlem Anahtarı</string>
@@ -346,8 +346,8 @@
     <string name="menu_deletecache">Cüzdanı sıfırla!</string>
     <string name="deletecache_alert_message">Bu cüzdan sıfırlanacaktır, yani tüm zincir dışı verileri (notlar, hesap ve alt adres adları, özel işlem anahtarları gibi, …) kaybolacaktır! Bunu SADECE bu cüzdan bozuksa ve yüklenmiyorsa kullanın!</string>
     <string name="node_tor_error">Tor gerekli</string>
-    <string name="node_waiting">\u00A0DÜĞÜM İÇÜN BEKLENİYOR\u00A0</string>
-    <string name="tor_enable_background">Tor kullanmak için Orbot ayarlarında "Arka Plan Başlatmalarına İzin Verin"!</string>
+    <string name="node_waiting"> DÜĞÜM İÇÜN BEKLENİYOR </string>
+    <string name="tor_enable_background">Tor kullanmak için Orbot ayarlarında Arka Plan Başlatmalarına İzin Verin!</string>
     <string name="tor_noshift">%1$s Tor\'u desteklemez.\nXMR değiştirmek için Tor\'u devre dışı bırakın.</string>
     <string name="tor_enable" tools:ignore="MissingTranslation">TOR\'u etkinleştir</string>
     <string name="label_seed_offset_encrypt">Tohum şifreleme (DENEYSEL)</string>
@@ -380,8 +380,7 @@
     <string name="sidekick_pin">PIN: %1$s</string>
     <string name="sidekick_not_connected">[bağlı değil]</string>
     <string name="sidekick_confirm_tx">Muameleyi Teyit Et</string>
-    <string name="sidekick_network_warning">Ağ etkin - bu bir güvenlik riskidir. Uçak kipini etkinleştirmeniz ve
-        uygulamayı sadece Bluetooth etkin olacak şekilde tekrar başlatmanız tavsiye edilir!</string>
+    <string name="sidekick_network_warning">Ağ etkin - bu bir güvenlik riskidir. Uçak kipini etkinleştirmeniz ve uygulamayı sadece Bluetooth etkin olacak şekilde tekrar başlatmanız tavsiye edilir!</string>
     <string name="open_wallet_sidekick_missing">Lütfen Sidekick cihazını bağlayın</string>
     <string name="fab_restore_sidekick">Sidekick\'ten geri getir</string>
     <string name="sidekick_connected">Sidekick Bağlı</string>

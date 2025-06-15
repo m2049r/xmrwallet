@@ -15,7 +15,6 @@
         Tento Seed sa nikdy nemôže zmeniť a v prípade, že je ukradnutý, alebo inak skompromitovaný, budeš musieť presunúť svoje mince do novej peňaženky (s novým mnemotechnickým Seedom).
         Preto je najlepšie ak si svoj Seed zálohuješ zapísaním na papier a uložíš na <em>niekoľko</em> bezpečných a utajených miest.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Vytvoriť Peňaženku - Seed</h1>
         <p>Ak už máš Monero adresu a chceš obnoviť transakcie z blockchain!</p>
@@ -26,7 +25,6 @@
         <p>Ak poznáš číslo bloku svojej prvej transakcie pre túto adresu, vlož ho do poľa \"Obnov Výšku\" - zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain,
         aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Vytvoriť Peňaženku - Kľúče</h1>
         <p>Ak obnovuješ svoju peňaženku pomocou kľúčov!</p>
@@ -39,8 +37,7 @@
         <p>Vlož sem číslo bloku prvej transakcie pre túto adresu do políčka \"Obnov Výšku\". Môžeš tiež použiť dátum vo formáte YYYY-MM-DD.
         Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.</p>
     ]]></string>
-
-        <string name="help_create_ledger"><![CDATA[
+    <string name="help_create_ledger"><![CDATA[
         <h1>Vytvoriť Peňaženku - Ledger</h1>
         <p>Obnovenie peňaženky zo zariadenia Ledger Nano S.</p>
         <p>Tvoj tajný kľúč nikdy neunikne zo zariadenia Ledger, takže budeš musieť mať Ledger pripojený vždy, keď budeš chcieť pristupovať k svojej peňaženke.</p>
@@ -49,7 +46,6 @@
         <p>Do políčka \"Obnov Výšku\" vlož číslo bloku prvej transakcie pre túto adresu . Môžeš tiež použiť dátum vo formáte YYYY-MM-DD.
         Ak to nevieš presne, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu. Urýchli to prehľadávanie blockchain.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Vytvoriť Peňaženku - Prezeracia Peňaženka</h1>
         <p>Ak chceš iba sledovať prichádzajúce transakcie!</p>
@@ -60,7 +56,6 @@
         Ak to nevieš naisto, vlož približný dátum/číslo bloku <em>pred</em> tým ako si prvýkrát použil danú adresu.
         Zanechaním prázdneho poľa budeš skenovať <em>celú</em> blockchain, aby si našiel transakcie prislúchajúce tejto adrese. To môže trvať <em>veľmi</em> dlho.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Detaily Peňaženky</h1>
         <h2>Verejná Adresa</h2>
@@ -96,7 +91,6 @@
         Platobný Kľúč (spend key) umožňuje míňať Monero prislúchajúce danej peňaženke,
         takže ho nikomu nepredrádzaj a uchovaj rovnako bezpečne ako svoj mnemotechnický seed.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Zoznam Peňaženiek</h1>
         <h2>Uzol</h2>
@@ -125,7 +119,6 @@
         alebo inej aplikácie na bezpečné mazanie.
         </p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detaily Transakcie</h1>
         <h2>Destinácia</h2>
@@ -142,7 +135,6 @@
         Blok do ktorého je zaradená vaša transakcia.
 
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Poslať</h1>
         <h2>Adresa Príjemcu</h2>
@@ -173,7 +165,6 @@
         <h2>Exolix Odpočítavanie!</h2>
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Posielanie BTC</h1>
         <h2>Exolix</h2>
@@ -194,7 +185,6 @@
         <h2>Exolix Odpočítavanie!</h2>
         <p>Akonáhle odpočítavanie dosiahne nulu, budeš potrebovať nový kľúč z Exolix návratom na predchádzajúci krok a obrazovku \"Potvrdiť\" .</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Peňaženka</h1>
 
@@ -216,7 +206,6 @@
         <h2>Zoznam Transakcií</h2>
         <p>Zoznam transakcií v peňaženke. V prípade prezeracej peňaženky budú zobrazené iba prichádzajúce transakcie.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Uzly</h1>
         <h2>TL;DR</h2>
@@ -246,7 +235,6 @@
         Začína tým, že sa opýta uzlov vo vašich záložkách na ďalšie uzly v P2P sieti Monero, ktoré sú s nimi spojené, tých sa opýta zas na ďalšie uzly atď.
         V prípade, že nemáte žiadne uzly vo svojich záložkách, Monerujo bude skúšať uzly (seed nodes) natvrdo zapísané v kóde Monero. Vyhľadávanie končí ak Monerujo nájde aspoň 10 vzdialených uzlov.</p>
     ]]></string>
-
     <string name="help_uri"><![CDATA[
         <h1>Používanie platobného linku</h1>
         <p>Monerujo je spustené z platobného linku. Ak chceš posielať prostriedky, postupuj nasledovne:</p>
@@ -257,6 +245,5 @@
         </p>
         <p>Detaily platby budú vložené automaticky. Skontroluj ich a pokračuj ako obvykle pri ostatných transakciách.</p>
     ]]></string>
-
-    <string name="help_ok">Rozumiem!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Rozumiem!</string>
 </resources>

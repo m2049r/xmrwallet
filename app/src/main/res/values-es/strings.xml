@@ -134,10 +134,10 @@
     <string name="send_total_label">Total</string>
     <string name="send_create_tx_error_title">Error creando la transacción</string>
     <string name="tx_list_fee">Comisión %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">fallido</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Marca de tiempo</string>
     <string name="tx_id">ID de Transacción</string>
     <string name="tx_key">Clave de transacción</string>
@@ -209,7 +209,7 @@
     <string name="send_address_invalid">No es una dirección válida</string>
     <string name="send_fee_btc_label">Comisión (XMR)</string>
     <string name="send_total_btc_label">Total (XMR)</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Comisión</string>
     <string name="info_send_xmrto_success_order_label">Orden del %1$s</string>
     <string name="info_xmrto_enabled">Puedes convertir de XMR a otras monedas, toca para leer más.</string>
@@ -339,8 +339,8 @@
     <string name="menu_deletecache">Resetear</string>
     <string name="deletecache_alert_message">Este monedero será reseteado, y perderá toda la información personalizada (notas, nombres de cuentas y subdirecciones, claves particulares de transacciones…) Tus fondos no se verán comprometidos, pero usa esto SÓLO si el monedero está corrupto y no se puede abrir.</string>
     <string name="node_tor_error">Requiere Tor</string>
-    <string name="node_waiting">\u00A0ESPERANDO AL NODO\u00A0</string>
-    <string name="tor_enable_background">Selecciona "Permitir inicios en segundo plano" en los ajustes de Orbot para usar Tor</string>
+    <string name="node_waiting"> ESPERANDO AL NODO </string>
+    <string name="tor_enable_background">Selecciona Permitir inicios en segundo plano en los ajustes de Orbot para usar Tor</string>
     <string name="tor_noshift">%1$s no soporta Tor.\nDesactiva Tor para cambiar XMR.</string>
     <string name="label_seed_offset_encrypt">Semilla encriptada (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Palabra clave adicional</string>

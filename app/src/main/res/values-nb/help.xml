@@ -19,7 +19,6 @@
         at du backer opp ditt mnemoniske seed, ved å skrive det ned og lagre det i <em>flere</em> trygge
         og sikre plasser.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Lage lommebook - Seed</h1>
         <p>Hvis du allerede har en Monero addresse og vil gjennoprette transaksjonene fra blokkjeden!</p>
@@ -30,7 +29,6 @@
 		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
         transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Lage lommebok - Nøkler</h1>
         <p>Hvis du gjenoppretter lommeboka di ved hjelp av nøkler!</p>
@@ -41,7 +39,6 @@
 		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
         transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.<</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Lage lommebok - View</h1>
         <p>Hvis du bare vil følge med på innkommende transaksjoner til en lommebok!</p>
@@ -52,7 +49,6 @@
 		skriv det inn i feltet \"Gjenopprettelseshøyde\" - hvis det er tomt vil <em>hele</em> blokkjeden skannes etter
         transaksjoner som hører til denne addressen. Dette tar <em>veldig</em> lang tid.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Lommebokdetaljer</h1>
         <h2>Offentlig nøkkel</h2>
@@ -89,7 +85,6 @@
         Spend-nøkkelen gir alle tillatelse til å bruke moneroene dine, så hold den like
 		trygt som det mnemoniske seedet ditt!
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Lommebokliste</h1>
         <h2>Node</h2>
@@ -118,7 +113,6 @@
         mappa. Hvis du ikke lenger trenger backupsene, burde du slette dem med en filutforsker
 		eller en sikker sletteapp.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaksjonsdetaljer</h1>
         <h2>Destinasjon</h2>
@@ -136,7 +130,6 @@
         <h2>Blokk</h2>
         Dette er blokka som transaksjonen din ligger i.
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Å sende BTC</h1>
         <h2>Exolix</h2>

@@ -17,7 +17,6 @@
 		dovrai spostare i tuoi fondi su un nuovo portafoglio (dotato di un altro Seed Mnemonico). Pertanto, ti consigliamo caldamente di
 		annotare il tuo Seed Mnemonico e conservarlo in <em>diversi</em> posti sicuri.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Crea un portafoglio - Seed</h1>
 		<p>Se sei già in possesso di un indirizzo Monero e vuoi recuperare le transazioni dalla blockchain!</p>
@@ -30,7 +29,6 @@
 		l&apos;<em>intera</em> blockchain alla ricerca di transazioni che appartengono al tuo indirizzo.
 		Questo processo può richiedere <em>parecchio</em> tempo.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Crea un portafoglio - Chiavi</h1>
         <p>Se stai recuperando il tuo portafoglio utilizzando le tue chiavi!</p>
@@ -44,7 +42,6 @@
 		l&apos;<em>intera</em> blockchain alla ricerca di transazioni che appartengono al tuo indirizzo.
 		Questo processo può richiedere <em>parecchio</em> tempo.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Crea un portafoglio - Visualizzazione</h1>
         <p>Se vuoi solamente monitorare le transazioni in ingresso ad un portafoglio!</p>
@@ -57,7 +54,6 @@
 		l&apos;<em>intera</em> blockchain alla ricerca di transazioni che appartengono al tuo indirizzo.
 		Questo processo può richiedere <em>parecchio</em> tempo.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Dettagli del Portafoglio</h1>
         <h2>Indirizzo pubblico</h2>
@@ -95,7 +91,6 @@
 	La tua chiave di spesa permette a chiunque di spendere i Moneroj contenuti nel tuo portafoglio,
 	pertanto non rivelarla a nessuno e conservala in un luogo sicuro, come fai con il tuo Seed Mnemonico.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Lista dei portafogli</h1>
         <h2>Nodo</h2>
@@ -124,7 +119,6 @@
 		Se non hai più bisogno dei backup, è meglio cancellare i file interessati utilizzando un&apos;applicazione di
 		tipo file explorer o un&apos;applicazione di rimozione dati sicura.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Dettagli della transazione</h1>
         <h2>Destinazione</h2>
@@ -141,7 +135,6 @@
 		<h2>Blocco</h2>
         Questo è il blocco nel quale la tua transazione è stata inclusa.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Invia</h1>
         <h2>Indirizzo del ricevente</h2>
@@ -175,7 +168,6 @@
 	<p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a Exolix tornando
 		indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Inviare BTC</h1>
         <h2>Exolix</h2>
@@ -198,7 +190,6 @@
 	<p>Non appena il conto alla rovescia arriva a zero, è necessario richiedere una nuova quotazione a Exolix tornando
 		indietro al passo precedente e tornando poi di nuovo alla schermata \"Conferma\".</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Crea portafoglio - Ledger</h1>
         <p>Vuoi ripristinare il tuo portafoglio dal tuo dispositivo Ledger Nano S.</p>
@@ -210,7 +201,6 @@
 		Puoi anche usare una data nel formato AAAA-MM-GG. Se non sei sicuro/a, inserisci una data/altezza di
 		blocco approssimativa <em>precedente</em> a quella di primo utilizzo dell&apos;indirizzo del portafoglio.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Il portafoglio</h1>
         <h2>Modalità strada</h2>
@@ -233,7 +223,6 @@
 	<p>Una lista delle transazioni relative al portafoglio. Nei portafogli solo-visualizzazione, vengono visualizzate solo
 		le transazioni in ingresso.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nodi</h1>
         <h2>In breve</h2>
@@ -280,7 +269,6 @@
         Monerujo proseguirà con i nodi seed codificati in Monero. La scansione
         termina quando vengono trovati 10 nodi in totale.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[

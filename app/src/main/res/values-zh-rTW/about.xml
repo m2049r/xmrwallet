@@ -2,7 +2,6 @@
 <resources>
     <string name="about_close">關閉</string>
     <string name="about_version">版本 %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>致謝</b>
         <br/>
@@ -11,7 +10,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>隱私權政策</h1>
         <p>本頁將協助您了解 monerujo: Monero Wallet 是如何收集、使用以及披露用戶的資料。</p>

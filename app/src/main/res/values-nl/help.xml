@@ -13,7 +13,6 @@
         <p>Maar het is niet mogelijk om je hersteltekst terug te vinden als je deze kwijtraakt. Dan ben je ook je geld kwijt!
         Je kunt de hersteltekst niet veranderen. Als de hersteltekst wordt gestolen of niet langer geheim is, moet je je geld overmaken naar een nieuwe portemonnee (met een nieuwe hersteltekst). Daarom is het het beste dat je back-ups van je hersteltekst maakt door de 25 woorden op te schrijven en op <em>meerdere</em> veilige plekken op te slaan.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Portemonnee maken - Hersteltekst</h1>
         <p>Als je al een Monero-adres hebt en de transacties wilt ophalen vanuit de blockchain.</p>
@@ -22,7 +21,6 @@
         <p>Voer je hersteltekst in het veld \"Hersteltekst\" in.<p>
         <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Portemonnee maken - Ledger</h1>
         <p>Je wilt de portemonnee gebruiken die op je Ledger Nano S staat.</p>
@@ -30,7 +28,6 @@
         <p>Voer een unieke naam en wachtwoord in. Met het wachtwoord worden de gegevens in je portemonnee op je Android-apparaat beveiligd. Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
         <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Portemonnee maken - Sleutels</h1>
         <p>Als je een Monero-adres herstelt met je sleutels.</p>
@@ -39,7 +36,6 @@
         <p>Voer je Monero-adres in het veld \"Openbaar adres\" in, en vul de velden \"Alleen-lezen sleutel\" en \"Bestedingssleutel\" in.<p>
         <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Portemonnee maken - Alleen-lezen</h1>
         <p>Als je alleen de binnenkomende transacties voor een portemonnee wilt bekijken.</p>
@@ -48,7 +44,6 @@
         <p>Voer je Monero-adres in het veld \"Openbaar adres\" in, en vul het veld \"Alleen-lezen sleutel\" in.<p>
         <p>Voer in het veld \"Herstelpunt\" het bloknummer in van de eerste transactie die voor dit adres is gebruikt. Je kunt ook een datum gebruiken, met de indeling JJJJ-MM-DD. Als je het niet zeker weet, kun je een schatting invoeren van de datum/blokhoogte <em>voordat</em> je het adres van deze portemonnee voor het eerst hebt gebruikt.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Portemonneegegevens</h1>
         <h2>Openbaar adres</h2>
@@ -71,7 +66,6 @@
         <h2>Bestedingssleutel</h2>
         Met je bestedingssleutel kan iedereen de moneroj in je portemonnee uitgeven. Laat deze sleutel dus aan niemand zien; bewaar hem veilig, net als je hersteltekst.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Portemonneelijst</h1>
         <h2>Node</h2>
@@ -93,7 +87,6 @@
         <h3>Archiveren</h3>
         <p>Een back-up maken en vervolgens de portemonnee verwijderen. De kopie blijft in de map <tt>backups</tt> staan. Heb je je back-ups niet meer nodig? Verwijder ze dan met een bestandenverkenner of verwijder de app veilig.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transactiedetails</h1>
         <h2>Bestemming</h2>
@@ -107,7 +100,6 @@
         <h2>Blok</h2>
         Dit is het blok waarin je transactie is opgenomen.
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>BTC verzenden</h1>
         <h2>Exolix</h2>

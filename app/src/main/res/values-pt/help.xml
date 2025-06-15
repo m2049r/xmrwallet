@@ -19,7 +19,6 @@
         é melhor fazer uma cópia de segurança da Semente escrevendo-a fisicamente e guardando-a em
         <em>vários</em> lugares seguros.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Crirar Carteira - Semente</h1>
         <p>Se já tens um Endereço Monero e queres recuperar as transacções da blockchain!</p>
@@ -29,7 +28,6 @@
         \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
         encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Criar Carteira - Chaves</h1>
         <p>Se estás a recuperar a tua carteira a partir das tuas chaves!</p>
@@ -39,7 +37,6 @@
         \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
         encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Criar Carteira - Visualização</h1>
         <p>Se apenas queres ver as transacções de depósito numa carteira!</p>
@@ -49,7 +46,6 @@
         \"Restaurar de Altura\" - deixar em branco vai verificar <em>toda</em> a blockchain para
         encontrar as transacções do teu endereço. Isto demora <em>imenso</em> tempo.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Detalhes da Carteira</h1>
         <h2>Endereço público</h2>
@@ -87,7 +83,6 @@
         A tua chave de utilização permite a qualquer pessoa de gaster os Monero associados à tua carteira,
         por isso não a reveles a ninguém, mantém-a segura assim como a tua Semente Mnemónica.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Lista de Carteiras</h1>
         <h2>Nó</h2>
@@ -116,7 +111,6 @@
         <tt>cópias de segurança</tt>. Se já não precisas das tuas cópias de segurança, deves apagá-las
         num sistema de gestão de ficheiros ou com uma app que apaga de forma segura.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalhes da Transacção</h1>
         <h2>Destino</h2>
@@ -134,7 +128,6 @@
         <h2>Bloco</h2>
         O bloco em que a tua transacção foi incluída.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Endereço do Destinatário</h2>
@@ -171,7 +164,6 @@
         <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do Exolix
         indo ao passo anterior e depois voltando ao ecrã de \"Confirmar\".</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Enviar BTC</h1>
         <h2>Exolix</h2>
@@ -196,7 +188,6 @@
         <p>Quando a contagem chega a zero, precisas de obter uma nova taxa de câmbio do Exolix
         indo ao passo anterior e depois voltando ao ecrã de \"Confirmar\".</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Criar carteira - Ledger</h1>
         <p>Se quiseres recuperar a tua carteira apartir do teu dispositivo Ledger Nano S.</p>
@@ -209,7 +200,6 @@
 	certeza, introduz uma data/numero do bloco aproximada <em>antes</em> da primeira utilização
 	da carteira.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>A Carteira</h1>
         <h2>Street Mode</h2>
@@ -232,7 +222,6 @@
         <p>Uma lista de transacções da carteira. Em carteiras de visualização, apenas são mostradas transacções
         de depósito.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nós</h1>
         <h2>TL;DR</h2>
@@ -276,7 +265,6 @@
 	Monerujo irá usar directamente os nós base que estão inscritos no codigo do Monero.
 	A procura irá parar assim que encontrar 10 nós remotos no total.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -289,6 +277,5 @@
         </p>
 	<p>Os detalhes do pagamento serão automaticamente preenchidos. Verifica e continua como em outra qualquer transação</p>
     ]]></string>
-
-    <string name="help_ok">Entendido!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Entendido!</string>
 </resources>

@@ -3,7 +3,6 @@
     <string name="about_close">סגור</string>
     <string name="about_whoami">אני monerujo</string>
     <string name="about_version">גרסה %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>זכויות</b>
         <br/>
@@ -12,7 +11,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>מדיניות פרטיות</h1>
         <p>דף זה מודיע לך על המדיניות שלנו בנוגע לאיסוף,

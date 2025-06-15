@@ -18,7 +18,6 @@
         fonlarınızı yeni bir cüzdana (yeni bir Hatırlatıcı Tohum ile) taşımanız gerekecektir. Dolayısıyla, en iyisi
         Hatırlatıcı Tohumunuzu bir kağıda yazarak ve <em>birçok</em> güvenli yere depolayarak yedeklemenizdir.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Cüzdan Oluştur - Tohum</h1>
         <p>Eğer zaten bir Monera adresiniz varsa ve işlemleri blok zincirinden geri getirmek istiyorsanız!</p>
@@ -29,7 +28,6 @@
         girin. Ayrıca YYYY-AA-GG biçiminde bir tarih girmeniz de mümkündür. Emin değilseniz,
         bu cüzdan adresini ilk kullanımınızdan <em>önce</em> yaklaşık bir tarih/blok yüksekliği girin.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Cüzdan Oluştur - Ledger</h1>
         <p>Ledger Nano S cihazından cüzdanınızı geri getirmek istiyorsunuz.</p>
@@ -41,7 +39,6 @@
         girin. Ayrıca YYYY-AA-GG biçiminde bir tarih girmeniz de mümkündür. Emin değilseniz,
         bu cüzdan adresini ilk kullanımınızdan <em>önce</em> yaklaşık bir tarih/blok yüksekliği girin.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Cüzdan Oluştur - Anahtarlar</h1>
         <p>Eğer cüzdanınızı anahtarlarınızı kullanarak geri getirmek istiyorsanız!</p>
@@ -53,7 +50,6 @@
         girin. Ayrıca YYYY-AA-GG biçiminde bir tarih girmeniz de mümkündür. Emin değilseniz,
         bu cüzdan adresini ilk kullanımınızdan <em>önce</em> yaklaşık bir tarih/blok yüksekliği girin.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Cüzdan Oluştur - Görüntüleme</h1>
         <p>Eğer sadece bir cüzdana gelen işlemleri gözlemlemek istiyorsanız!</p>
@@ -64,7 +60,6 @@
         girin. Ayrıca YYYY-AA-GG biçiminde bir tarih girmeniz de mümkündür. Emin değilseniz,
         bu cüzdan adresini ilk kullanımınızdan <em>önce</em> yaklaşık bir tarih/blok yüksekliği girin.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Cüzdan Ayrıntıları</h1>
         <h2>Herkese açıkadres</h2>
@@ -101,7 +96,6 @@
         Harcama anahtarınız, cüzdanınızla ilişkili Monero\'ları herhangi bir kişinin harcamasına imkân sağlar,
         dolayısıyla bu anahtarı kimseye söylemeyin ve onu Hatırlatma Anahtarınız gibi güvende muhafaza edin.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Cüzdan Listesi</h1>
         <h2>Düğüm</h2>
@@ -131,7 +125,6 @@
         Eğer yedeklemelerinize artık ihtiyacınız yoksa, bunları bir dosya tarayıcısı veya güvenli silme
         uygulaması ile silmeniz tavsiye edilir.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>İşlem Ayrıntıları</h1>
         <h2>Alıcı</h2>
@@ -150,7 +143,6 @@
         <h2>Blok</h2>
         Bu, işleminizi içeren bloktur.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Gönder</h1>
         <h2>Alıcının adresi</h2>
@@ -178,7 +170,6 @@
 		</ul>
 		Sadece eşleşen bir adres ekleyin veya istenen parayı onun ikonuna dokunarak seçin.</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>XMR Dönüştürmek</h1>
         <h2>Meblağlar<h2>
@@ -186,7 +177,6 @@
 		<h2>Dönüşüm oranı</h2>
         <p>Aşağıda, dönüşüm hizmeti tarafından sağlanan güncel oranı göreceksiniz, alt ve üst sınırlarları ile. Lütfen bu oranın henüz garanti edilmediğini unutmayın, oran bir sonraki ekranda işleminizin onaylanmaya hazır olduğu an ayarlanacaktır.</p>
 	]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Cüzdan</h1>
         <h2>Sokak Kipi</h2>
@@ -211,7 +201,6 @@
         <h2>İşlem Listesi</h2>
         <p>Cüzdan işlemlerinin bir listesi. Görüntüleme cüzdanlarında sadece gelen işlemler gösterilir.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Düğümler</h1>
         <h2>Özet</h2>
@@ -260,7 +249,6 @@
         bize söylemiyorsa), Monerujo doğrudan Monero\'ya sabitlenmiş tohum düğümlerine
         gidecektir. Tarama, toplamda 10 uzak düğüm bulunduğunda sona erer.</p>
     ]]></string>
-
     <string name="help_uri"><![CDATA[
         <h1>Bir ödeme bağlantısı kullanmak</h1>
         <p>Monerujo\'yu bir ödeme bağlantısı ile başlattınız. Fon göndermek için lütfen şunları yapın:</p>
@@ -272,10 +260,11 @@
         <p>Ödeme ayrıntıları doldurulacaktır. Onları kontrol edin ve diğer herhangi bir işlem için olduğu
         gibi devam edin.</p>
     ]]></string>
+    <string name="help_ok">Anladım!</string>
+    <!-- Note: "Got it" as in "I understand this" -->
 
-    <string name="help_ok">Anladım!</string> <!-- Note: "Got it" as in "I understand this" -->
-
-    <string name="help_nok">İstemezük…</string> <!-- Note: "Nah..." as in "I don't want this" -->
+    <string name="help_nok">İstemezük…</string>
+    <!-- Note: "Nah..." as in "I don't want this" -->
     <string name="help_getorbot">Orbot\'u indir!</string>
     <string name="help_tor"><![CDATA[
         <h1>Tor</h1>
@@ -288,14 +277,12 @@
         <p>Şayet Tor ile bağlanmakta sorun yaşıyorsanız, Orbot uygulamasında yeni bir Kimlik elde etmeyi
         deneyin (en üst sağ köşedeki ikon).</p>
     ]]></string>
-
     <string name="help_tor_enable"><![CDATA[
         <h1>Tor Düğümü</h1>
         <p>Bu, bir .onion düğümüdür. Onu kullanmak için Tor kipini Cüzdan Listesi sayfasının
         üst köşesinde <img src="ic_network_clearnet"/> ikonuna dokunarak etkinleştirmeniz
         gerekir.</p>
     ]]></string>
-
     <string name="help_sidekick"><![CDATA[
         <h2>Sidekick cüzdanının kullanımı</h2>
         Her iki telefonun Bluetooth ile bağlı olduğunu ve her iki uygulamanın açık olduğunu
@@ -318,6 +305,4 @@
         İşlem imzalanmış ve göndermeye hazır olmalıdır. Göndermek için dokunun.
          <br/>
     ]]></string>
-
-
 </resources>

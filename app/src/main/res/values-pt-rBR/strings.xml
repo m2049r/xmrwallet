@@ -157,14 +157,14 @@
     <string name="send_fee_label">Taxa</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+ Taxa de %1$s</string>
     <string name="send_create_tx_error_title">Erro ao Criar Transação</string>
     <string name="tx_list_fee">Taxa de %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">falhou</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Data/hora</string>
     <string name="tx_id">ID TX</string>
     <string name="tx_key">Chave TX</string>
@@ -266,8 +266,8 @@
     <string name="onboarding_seed_title">Mantenha sua semente segura</string>
     <string name="onboarding_seed_information">A semente dá acesso total a qualquer pessoa que a tenha. Se você perdê-la, nós não conseguiremos lhe ajudar a recuperá-la e você perderá seus amados moneroj.</string>
     <string name="onboarding_xmrto_title">Envie Cripto</string>
-    <string name="onboarding_nodes_title">"Nós", do seu jeito</string>
-    <string name="onboarding_nodes_information">Os nós conectam você à rede Monero. Escolha entre nós públicos ou seja completamente "cypherpunk" e utilize seu próprio nó.</string>
+    <string name="onboarding_nodes_title">Nós, do seu jeito</string>
+    <string name="onboarding_nodes_information">Os nós conectam você à rede Monero. Escolha entre nós públicos ou seja completamente cypherpunk e utilize seu próprio nó.</string>
     <string name="onboarding_fpsend_title">Envie usando a digital</string>
     <string name="onboarding_fpsend_information">Agora é possível enviar XMR apenas com sua digital, caso você tenha isto ativado. Para solicitar a senha, basta desativar o acesso à impressão digital.</string>
     <string name="menu_daynight">Modo Escuro</string>
@@ -313,7 +313,7 @@
     <string name="menu_deletecache">Redefinir carteira!</string>
     <string name="deletecache_alert_message">Esta carteira será redefinida, perdendo todos os dados fora-da-rede (como notas, nomes de contas e sub-endereços, chaves de transação privadas, ...)! Use somente se esta carteira estiver corrompida e não carrega!</string>
     <string name="node_tor_error">O Tor é necessário</string>
-    <string name="node_waiting">\u00A0ESPERANDO PELO NÓ\u00A0</string>
+    <string name="node_waiting"> ESPERANDO PELO NÓ </string>
     <string name="tor_enable_background">Permitir a Inicialização em Segundo Plano nas configurações do Orbot para usar o Tor!</string>
     <string name="label_seed_offset_encrypt">Criptografia da semente (EXPERIMENTAL)</string>
     <string name="seed_offset_hint">Senha de Dedução da Semente (opcional)</string>

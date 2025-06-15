@@ -174,14 +174,14 @@
     <string name="send_fee_label">Комиссия</string>
     <string name="send_total_btc_label">Всего (XMR)</string>
     <string name="send_total_label">Всего</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Комиссия</string>
     <string name="send_create_tx_error_title">Ошибка создания транзакции</string>
     <string name="tx_list_fee">Комиссия %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">Не удалось</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Отметка времени</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
@@ -339,8 +339,8 @@
     <string name="menu_deletecache">Сбросить кошелёк!</string>
     <string name="deletecache_alert_message">Этот кошелёк будет сброшен, потеряв всю локальную информацию (например: заметки, имена адресов, приватные ключи транзакций, …)! Используйте это ТОЛЬКО если кошелёк повреждён и не загружается!</string>
     <string name="node_tor_error">Необходим Tor</string>
-    <string name="node_waiting">\u00A0ОЖИДАНИЕ УЗЛА\u00A0</string>
-    <string name="tor_enable_background">Необходимо выбрать "Allow Background Starts" в настройках Orbot для использования Tor!</string>
+    <string name="node_waiting"> ОЖИДАНИЕ УЗЛА </string>
+    <string name="tor_enable_background">Необходимо выбрать Allow Background Starts в настройках Orbot для использования Tor!</string>
     <string name="tor_noshift">%1$s не поддерживает Tor.\nОтключите Tor для обмена XMR.</string>
     <string name="label_seed_offset_encrypt">Шифрование фразы (ЭКСПЕРЕМЕНТАЛЬНО)</string>
     <string name="seed_offset_hint">Смещение сид-фразы (необязательно)</string>

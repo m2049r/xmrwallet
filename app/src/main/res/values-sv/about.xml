@@ -3,7 +3,6 @@
     <string name="about_close">Stäng</string>
     <string name="about_whoami">Jag är Monerujo</string>
     <string name="about_version">Version %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>Medverkande</b>
         <br/>
@@ -12,7 +11,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>Sekretesspolicy</h1>
         <p>Den här sidan informerar dig om våra villkor angående insamling,

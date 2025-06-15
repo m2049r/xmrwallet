@@ -9,10 +9,10 @@
     <string name="menu_rename">重命名</string>
     <string name="menu_backup">备份</string>
     <string name="menu_changepw">修改密码</string>
-    <string name="password_weak">强度不够哦 &#8230;</string>
-    <string name="password_fair">嗯emm.. &#8230;</string>
+    <string name="password_weak">强度不够哦 …</string>
+    <string name="password_fair">嗯emm.. …</string>
     <string name="password_good">还可以做得更好哦!</string>
-    <string name="password_strong">不错哦~ &#8230;</string>
+    <string name="password_strong">不错哦~ …</string>
     <string name="password_very_strong">超赞！</string>
     <string name="label_login_wallets">钱包</string>
     <string name="label_credits">感谢</string>
@@ -34,13 +34,13 @@
     <string name="info_send_xmrto_unpaid">等待支付中</string>
     <string name="info_send_xmrto_error">%1$s错误(%2$s)</string>
     <string name="info_send_xmrto_sent">成功发送%1$s！</string>
-    <string name="info_send_xmrto_query">查询中&#8230;</string>
+    <string name="info_send_xmrto_query">查询中…</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>您可以发送%1$s &#8212; %2$s %4$s</b>.<br/>
         <i><u>此刻</u><b>%5$s</b>的汇率是<b>%3$s %4$s/XMR</b> </i>.
     ]]></string>
     <string name="send_available_btc">余额: %1$s XMR (~%2$s %3$s)</string>
-    <string name="info_paymentid_integrated">&#x2714; 支付ID已集成</string>
+    <string name="info_paymentid_integrated">✔ 支付ID已集成</string>
     <string name="info_prepare_tx">正在为您的交易做准备工作</string>
     <string name="label_send_progress_xmrto_create">创建订单</string>
     <string name="label_send_progress_xmrto_query">订单查询中</string>
@@ -65,17 +65,17 @@
     <string name="archive_progress">存档中</string>
     <string name="rename_progress">重命名中</string>
     <string name="changepw_progress">密码修改中</string>
-    <string name="service_progress">整合中&#8230;\n这将花上不少时间</string>
+    <string name="service_progress">整合中…\n这将花上不少时间</string>
     <string name="backup_success">备份成功</string>
     <string name="backup_failed">备份失败！</string>
     <string name="rename_failed">重命名失败！</string>
     <string name="changepw_failed">密码修改失败！</string>
     <string name="changepw_success">密码已修改</string>
     <string name="label_daemon">节点</string>
-    <string name="status_wallet_loading">钱包加载中 &#8230;</string>
+    <string name="status_wallet_loading">钱包加载中 …</string>
     <string name="status_wallet_unloaded">钱包已保存</string>
     <string name="status_wallet_unload_failed">钱包保存失败！</string>
-    <string name="status_wallet_connecting">连接中&#8230;</string>
+    <string name="status_wallet_connecting">连接中…</string>
     <string name="status_wallet_connect_failed">节点连接失败\n请检查您的账户/密码</string>
     <string name="status_wallet_connect_wrongversion">节点版本不兼容-请更新！</string>
     <string name="status_wallet_node_invalid">无效节点！\n请尝试其它的节点</string>
@@ -83,13 +83,13 @@
     <string name="status_wallet_disconnected">已断开连接</string>
     <string name="status_transaction_failed">交易失败: %1$s</string>
     <string name="send_xmrto_timeout">您等待太长时间了！</string>
-    <string name="service_busy">仍然处理您之前的钱包中 &#8230;</string>
+    <string name="service_busy">仍然处理您之前的钱包中 …</string>
     <string name="prompt_rename">重命名%1$s</string>
     <string name="prompt_changepw">新密码%1$s</string>
     <string name="prompt_changepwB">重复新密码%1$s</string>
     <string name="prompt_password">密码%1$s</string>
     <string name="prompt_fingerprint_auth">您也可以选择指纹登录。\n请触摸传感器。</string>
-    <string name="prompt_open_wallet">钱包打开中&#8230;</string>
+    <string name="prompt_open_wallet">钱包打开中…</string>
     <string name="bad_fingerprint">无法识别您的指纹，请重试。</string>
     <string name="bad_password">密码错误！</string>
     <string name="bad_saved_password">保存的密码无效。\n请手动输入密码。</string>
@@ -162,8 +162,8 @@
     <string name="send_qr_address_invalid">该支付QR码无效</string>
     <string name="send_address_invalid">该地址无效</string>
     <string name="send_address_not_openalias">OpenAlias地址无效</string>
-    <string name="send_address_openalias">OpenAlias安全&#x2714;</string>
-    <string name="send_address_resolve_openalias">解析OpenAlias&#8230;</string>
+    <string name="send_address_openalias">OpenAlias安全✔</string>
+    <string name="send_address_resolve_openalias">解析OpenAlias…</string>
     <string name="send_address_no_dnssec">OpenAlias无DNSSEC - 这可能是个假地址</string>
     <string name="send_title">发送</string>
     <string name="send_available">余额: %1$s XMR</string>
@@ -176,14 +176,14 @@
     <string name="send_fee_label">手续费</string>
     <string name="send_total_btc_label">合计 (XMR)</string>
     <string name="send_total_label">合计</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s 手续费</string>
     <string name="send_create_tx_error_title">创建交易发生错误</string>
     <string name="tx_list_fee">手续费 %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">失败</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">时间戳</string>
     <string name="tx_id">交易ID</string>
     <string name="tx_key">交易密钥</string>
@@ -246,7 +246,7 @@
     <string name="node_host_unresolved">无法解析主机</string>
     <string name="node_host_empty">我们需要该信息！</string>
     <string name="node_port_numeric">必须为数字</string>
-    <string name="node_port_range">必须为1&#8211;65535</string>
+    <string name="node_port_range">必须为1–65535</string>
     <string name="node_fab_add">添加节点</string>
     <string name="node_refresh_hint">点此刷新！</string>
     <string name="node_test_error">连接发生错误 %1$d</string>
@@ -254,13 +254,14 @@
     <string name="node_auth_error">授权失败</string>
     <string name="node_result_label">测试结果：</string>
     <string name="node_result">高度: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">测试IP: %1$s &#8230;</string>
+    <string name="node_testing">测试IP: %1$s …</string>
     <string name="node_refresh_wait">请等待扫描工作完成</string>
     <string name="node_create_hint">点此选择/添加节点</string>
     <string name="node_pull_hint">手动添加节点或下拉开始扫描</string>
-    <string name="node_scanning">网络扫描中&#8230;</string>
+    <string name="node_scanning">网络扫描中…</string>
     <string name="node_nobookmark">已自动将最佳%1$d节点加入书签</string>
-    <string name="label_test">测试</string><!--note: as in "Test a network connection"-->
+    <string name="label_test">测试</string>
+    <!--note: as in "Test a network connection"-->
     <string name="send_address_hint">收款人</string>
     <string name="street_sweep_amount">全部资产！</string>
     <string name="menu_ledger_seed">转换Ledger种子密语</string>

@@ -3,7 +3,6 @@
     <string name="about_close">Chiudi</string>
     <string name="about_whoami">Io sono monerujo</string>
     <string name="about_version">Versione %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>Crediti</b>
         <br/>
@@ -12,7 +11,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>Politica per la Privacy</h1>
         <p>Questa pagina ti informa sulla nostra politica riguardante la raccolta, l\'utilizzo e la rivelazione di informazioni personali che riceviamo dagli utenti della nostra app (monerujo: Portafoglio Monero).

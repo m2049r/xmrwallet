@@ -174,14 +174,14 @@
     <string name="send_fee_label">Комісія</string>
     <string name="send_total_btc_label">Всього (XMR)</string>
     <string name="send_total_label">Всього</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Комісія</string>
     <string name="send_create_tx_error_title">Помилка створення транзакції</string>
     <string name="tx_list_fee">Комісія %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">Не вдалося</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Відмітка часу</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
@@ -205,7 +205,7 @@
     <string name="details_alert_yes">Я в безпеці</string>
     <string name="details_alert_no">Поверніть мене назад!</string>
     <string name="details_title">Детальна інформація</string>
-    <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення. </string>
+    <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення.</string>
     <string name="delete_alert_yes">Так, зроби це!</string>
     <string name="delete_alert_no">Ні, дякую!</string>
     <string name="fab_create_new">Створити новий гаманець</string>
@@ -314,7 +314,7 @@
     <string name="bluetooth_permissions">Щоб підключити Sidekick Wallet, потрібні дозволи Bluetooth!</string>
     <string name="label_apply">ЗАСТОСУВАТИСЯ</string>
     <string name="shift_checkamount">Перевірте суму та повторіть спробу</string>
-    <string name="node_waiting"> ОЧІКУВАННЯ ВУЗЛА </string>
+    <string name="node_waiting">ОЧІКУВАННЯ ВУЗЛА</string>
     <string name="menu_default_nodes">Відновити вузли за замовчуванням</string>
     <string name="menu_back">Назад</string>
     <string name="setting_stickyfiat">Липкий Фіат</string>

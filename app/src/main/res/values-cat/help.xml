@@ -12,7 +12,6 @@
         <p>Si perdeu la contrasenya del portamonedes encara podrieu recuperar-lo amb la llavor Mnemotècnica.</p>
         <p>La llavor Mnemotècnica tampoc no es pot canviar mai, i si és robada o compromesa d’alguna manera haureu de traslladar els vostres fons a un nou portamonedes (amb una nova 	llavor mnemotècnica). Per tant, es recomana que feu còpies de seguretat de la vostra llavor mnemotècnica escrivint-la i emmagatzemant-la a <em> múltiple </em> llocs de forma 	segura.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Crear Portamonedes - Llavor</h1>
         <p>Si ja teniu una adreça Monero i voleu recuperar les transaccions de la blockchain!</p>
@@ -21,7 +20,6 @@
         <p>Introduïu la Llavor en el camp \"Llavor Mnemotècnica\".<p>
         <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d’haver fer servir aquesta adreça del portamonedes.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Crear Portamonedes - Ledger</h1>
         <p>Si voleu recuperar el vostre portamonedes desde un dispositiu Ledger Nano S!</p>
@@ -29,7 +27,6 @@
         <p>Introduïu un nom i contrasenya únics del portamonedes. La contrasenya s’utilitza per protegir les dades de la seva cartera al dispositiu Android. Utilitzeu una 		contrasenya sòlida - encara millor si utiliza una frase.</p>
         <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d’haver fer servir aquesta adreça del portamonedes.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Crear Portamonedes - Claus</h1>
         <p>Si voleu recuperar el vostre portamonedes fent servir les vostres claus!</p>
@@ -38,7 +35,6 @@
         <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el
         camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d’haver 	fer servir aquesta adreça del portamonedes.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Crear Portamonedes - Només de Lectura</h1>
         <p>Si només voleu monitoritzar les transaccions entrants del portamonedes!</p>
@@ -46,7 +42,6 @@
         <p>Introduïu la vostra Adreça Monero en el camp \"Adreça Pública\" i ompliu \"Clau de Visualització\".</p>
         <p>Introduïu el número de bloc de la primera transacció realitzada en aquesta adreça en el camp "Restaurar Alçada". També podeu utilitzar una data en el format AAAA-MM-DD. 	Si no esteu segurs, introduïu una data / alçada de bloc aproximada <em> abans </em> d’haver fer servir aquesta adreça del portamonedes.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Detalls del portamonedes</h1>
         <h2>Adreça pública</h2>
@@ -70,7 +65,6 @@
         <h2>Clau de Despesa</h2>
         La vostra clau de despesa permet a qualsevol persona gastar els Monero associats al seu portamonedes, així que no ho compartiu amb ningú, mantingueu-la segura com la vostra 	Llavor Mnemotècnica.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Llista de Portamonedes</h1>
         <h2>Node</h2>
@@ -94,7 +88,6 @@
         <h3>Arxiu</h3>
         <p>Feu una còpia de seguretat i a continuació elimineu el portamonedes. La còpia es mantindrà a la carpeta <tt> backups </tt>. Si ja no necessiteu les vostres còpies de 	seguretat les haureu d’eliminar amb un explorador d’arxius o una aplicació segura.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalls de Transacció</h1>
         <h2>Destí</h2>
@@ -108,7 +101,6 @@
         <h2>Bloc</h2>
         Aquest és el bloc de la cadena de Monero on la vostra transacció ha estat inclosa.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Enviar</h1>
         <h2>Adreça del Receptor</h2>
@@ -135,7 +127,6 @@
         <h2>Compte enrere Exolix!</h2>
         <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Enviant BTC</h1>
         <h2>Exolix</h2>
@@ -153,7 +144,6 @@
         <h2>Compte enrere Exolix!</h2>
         <p>Una vegada el compte enrere arribi a zero haureu d’obtenir una nova sol·licitud de Exolix tornant enrere al pas anterior i després tornar a la pantalla de 			\"Confirmar\".</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>El Portamonedes</h1>
         <h2>Mode de carrer</h2>
@@ -168,7 +158,6 @@
         <h2>Llista de Transacció</h2>
         <p>Llistat de les transaccions del portamonedes. Els portamonedes de visualització només mostraran les transaccions entrants.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nodes</h1>
         <h2>TL;DR</h2>
@@ -217,7 +206,6 @@
         Monerujo anirà directament als nodes de llavor de Monero codificats a dins de Monero.
         L’escaneig s’atura quan troba un total de 10 nodes remots.</p>
     ]]></string>
-
     <string name="help_uri"><![CDATA[
         <h1>Fer servir un enllaç de pagament</h1>
         <p>Heu iniciat monerujo amb un enllaç de pagament. Per enviar fons, feu el següent:</p>
@@ -228,6 +216,5 @@
         </p>
         <p>Els detalls de pagament es completaran. Comproveu-les i continueu com a qualsevol altra transacció.</p>
     ]]></string>
-
-    <string name="help_ok">Ja ho tinc!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Ja ho tinc!</string>
 </resources>

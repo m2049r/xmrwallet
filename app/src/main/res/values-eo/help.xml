@@ -18,7 +18,6 @@
         plej bone ke vi sekurkopiu vian mnemonikan semon skribante ĝin surpapere, kaj konservu
         ĝin en <em>pluraj</em> sekuraj lokoj.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Krei monujon - Semo</h1>
         <p>Se vi jam havas Monero-adreson kaj volas reĉerpi la transkaciojn el la blokĉeno!</p>
@@ -30,7 +29,6 @@
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Krei monujon - Ledger</h1>
         <p>Do vi volas retrovi vian monujon de via Ledger Nano S aparato.</p>
@@ -43,8 +41,6 @@
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
     ]]></string>
-
-
     <string name="help_create_keys"><![CDATA[
         <h1>Krei monujon - Ŝlosiloj</h1>
         <p>Se vi restaŭras vian monujon per viaj ŝlosiloj!</p>
@@ -56,7 +52,6 @@
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Krei monujon - nurvida</h1>
         <p>Se vi nur volas sekvi transakciojn kiuj alvenas en la monujon!</p>
@@ -68,7 +63,6 @@
         Vi ankaŭ povas uzi daton je la formato JJJJ-MM-TT. Se vi ne certas, entajpu proksimuman
         bloknumeron aŭ daton de iom <em>antaŭ</em> via unua uzo de tiu adreso.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Monujdetaloj</h1>
         <h2>Publika adreso</h2>
@@ -112,7 +106,6 @@
         Via elspezŝlosilo ebligas ĉiun ajn elspezi la Monerojn ligitajn kun via monujo, do ne montru
         ĝin al iu ajn, konservu ĝin sekure, kiel vian Mnemonikan Semon.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Listo de monujoj</h1>
 
@@ -148,7 +141,6 @@
         <tt>sekurkopioj</tt>-dosierujo. Se vi ne plu bezonas viajn sekurkopiojn, vi devus forviŝi ilin
         per dosiera foliumilo, aŭ sekure forviŝi la aplikaĵon.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transakciaj detaloj</h1>
         <h2>Destino</h2>
@@ -169,7 +161,6 @@
         <h2>Bloko</h2>
         Jen la bloko en kiu via transakcio enskribiĝis.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Sendi</h1>
         <h2>Adreso de la ricevonto</h2>
@@ -208,7 +199,6 @@
         <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Elspezi Bitmonon</h1>
 
@@ -234,7 +224,6 @@
         <p>Kiam la retrokalkulo atingas nulon, vi devos akiri novan QUOTE de Exolix, reirante al la
         antaŭa fazo kaj el tie repaŝi ĝis la \"Konfirmi\"-ekrano.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>La monujo</h1>
         <h2>Street Mode</h2>
@@ -256,7 +245,6 @@
         <h2>Transakcia listo</h2>
         <p>Listo de la transakcioj de la monujo. En vidaj monujoj, nur la envenaj transakcioj montriĝas.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Nodoj</h1>
         <h2>Resumo</h2>
