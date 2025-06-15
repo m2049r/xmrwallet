@@ -160,11 +160,12 @@ public class SendAddressWizardFragment extends SendWizardFragment {
             public void afterTextChanged(Editable editable) {
                 Timber.d("AFTER: %s", editable.toString());
                 BarcodeData bc = sendListener.getBarcodeData();
+                if ((bc != null) && !bc.getAddress().equals(etAddress.getEditText().getText().toString()))
+                    sendListener.setBarcodeData(null); // it's used up now
                 if (bc == null) {
                     final String address = etAddress.getEditText().getText().toString();
                     bc = BarcodeData.fromString(address);
                 }
-                sendListener.setBarcodeData(null); // it's used up now
                 possibleCryptos.clear();
                 selectedCrypto = null;
                 if ((bc != null) && (bc.filter(ShiftService.getPossibleAssets()))) {
