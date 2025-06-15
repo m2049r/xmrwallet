@@ -219,7 +219,7 @@
     <string name="node_height">Último bloco atualizado: %1$s</string>
     <string name="label_nodes">Nós</string>
     <string name="node_name_hint">Nome do Nó (Opcional)</string>
-    <string name="node_address_hint">Endereço do Host</string>
+    <string name="node_address_hint">Endereço ou IP do servidor</string>
     <string name="node_port_hint">Porta</string>
     <string name="node_user_hint">Nome de Usuário (Opcional)</string>
     <string name="node_pass_hint">Senha (Opcional)</string>
@@ -377,4 +377,5 @@
     <string name="setting_stickyfiat_summary">Lembrar da última moeda fiat usada</string>
     <string name="setting_stickyfiat">Fiat Persistente</string>
     <string name="send_qr_hint">Escanear</string>
+    <string name="node_use_ssl">Utilizar SSL</string>
 </resources>
