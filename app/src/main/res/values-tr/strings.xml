@@ -259,7 +259,7 @@
     <string name="node_height">Son güncellenen blok: %1$s</string>
     <string name="label_nodes">Düğümler</string>
     <string name="node_name_hint">Düğüm Adı (Seçime Dayalı)</string>
-    <string name="node_address_hint">Makine Adı</string>
+    <string name="node_address_hint">Makine Adı veya IP</string>
     <string name="node_port_hint">Bağlantı Noktası</string>
     <string name="node_user_hint">Kullanıcı Adı (Seçime Dayalı)</string>
     <string name="node_pass_hint">Parola (Seçime Dayalı)</string>
@@ -387,4 +387,5 @@
     <string name="send_qr_hint">Tara</string>
     <string name="setting_stickyfiat">Yapışkan Fiat</string>
     <string name="setting_stickyfiat_summary">Son kullanılan fiat para birimini hatırla</string>
+    <string name="node_use_ssl">SSL Kullan</string>
 </resources>
