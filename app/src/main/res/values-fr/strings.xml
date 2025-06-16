@@ -253,7 +253,7 @@
     <string name="node_height">Dernier bloc mis à jour : %1$s</string>
     <string name="label_nodes">Nœuds</string>
     <string name="node_name_hint">Nom du Nœud (Optionnel)</string>
-    <string name="node_address_hint">Nom d\'hôte</string>
+    <string name="node_address_hint">Nom d\'hôte ou IP</string>
     <string name="node_port_hint">Port</string>
     <string name="node_user_hint">Nom d\'utilisateur (Optionnel)</string>
     <string name="node_pass_hint">Mot de passe (Optionnel)</string>
@@ -385,4 +385,5 @@
     <string name="setting_stickyfiat">Fiat collant</string>
     <string name="setting_stickyfiat_summary">Se souvenir de la dernière devise fiat utilisée</string>
     <string name="send_qr_hint">Analyser</string>
+    <string name="node_use_ssl">Utiliser le SSL</string>
 </resources>
