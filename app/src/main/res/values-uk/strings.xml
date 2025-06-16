@@ -244,7 +244,7 @@
     <string name="node_height">Останній блок: %1$s</string>
     <string name="label_nodes">Вузли</string>
     <string name="node_name_hint">Ім\'я вузла (опційно)</string>
-    <string name="node_address_hint">Ім\'я хоста</string>
+    <string name="node_address_hint">Ім\'я хоста або IP-адреса</string>
     <string name="node_port_hint">Порт</string>
     <string name="node_user_hint">Ім\'я користувача (опційно)</string>
     <string name="node_pass_hint">Пароль (опційно)</string>
@@ -373,4 +373,5 @@
     <string name="sidekick_not_connected">[не підключено]</string>
     <string name="sidekick_confirm_tx">Підтвердити транзакцію</string>
     <string name="fab_restore_sidekick">Відновити з Sidekick</string>
+    <string name="node_use_ssl">Використовуйте SSL-код</string>
 </resources>
