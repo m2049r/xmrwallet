@@ -3,7 +3,6 @@
     <string name="about_close">Bezárás</string>
     <string name="about_whoami">Monerujo vagyok</string>
     <string name="about_version">Verzió: %1$s (%2$d)</string>
-
     <string name="credits_text"><![CDATA[
         <b>Készítők</b>
         <br/>
@@ -12,7 +11,6 @@
         <br/><br/>
         <a href="https://monerujo.io/">monerujo.io</a>
         ]]></string>
-
     <string name="privacy_policy"><![CDATA[
         <h1>Adatvédelmi irányelvek</h1>
         <p>Ez az oldal nyújt tájékoztatást az applikációnkat (monerujo: Monero pénztárca)

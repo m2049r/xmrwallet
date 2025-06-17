@@ -18,7 +18,6 @@
         Ebből adódóan tehát a lehető legjobb az, ha biztonsági mentést készítesz a mnemonikus magról, azaz leírod
         és <em>több</em> biztonságos helyre elteszed.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Tárcalétrehozás - mag</h1>
         <p>Ha már van Monero-címed és szeretnéd a tranzakciókat újból betölteni a blokkláncból!</p>
@@ -29,7 +28,6 @@
         formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
         használata <em>előttről</em>.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Tárcalétrehozás - kulcsok</h1>
         <p>Ha a kulcsaid használatával állítod vissza a tárcád!</p>
@@ -40,7 +38,6 @@
         formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
         használata <em>előttről</em>.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Tárcalétrehozás - figyelőtárca</h1>
         <p>Ha csak a tárcába beérkező tranzakciókat szeretnéd figyelemmel követni!</p>
@@ -51,7 +48,6 @@
         formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
         használata <em>előttről</em>.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Tárcarészletek</h1>
         <h2>Nyilvános cím</h2>
@@ -88,7 +84,6 @@
         A költőkulcsod (spend key) lehetővé teszi a tárcádban található Monero elköltését, így ezen kulcsot
         tartsd titokban csakúgy, mint a mnemonikus magot.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Tárcalista</h1>
         <h2>Csomópont</h2>
@@ -118,7 +113,6 @@
         <tt>backups</tt> mappában marad. Ha már nincsen szükséged a biztonsági mentéseidre, töröld
         azokat egy fájlkezelő vagy biztonságos tisztítóapplikáció használatával.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Tranzakciórészletek</h1>
         <h2>Kedvezményezett címe</h2>
@@ -136,7 +130,6 @@
         <h2>Blokk</h2>
         A blokk, melybe a tranzakciód került.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Küldés</h1>
         <h2>Kedvezményezett címe</h2>
@@ -171,7 +164,6 @@
         <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>BTC-küldés</h1>
         <h2>Exolix</h2>
@@ -195,7 +187,6 @@
         <p>Amint a visszaszámlálás eléri a nullát, új ajánlatot kell kérned az Exolix-tól azáltal, hogy
         visszamész az előző lépésre, majd visszajössz a Megerősítés oldalra.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Tárcalétrehozás - Ledger</h1>
         <p>Ha a Ledger Nano S eszközödről szeretenéd visszaállítani a tárcád.</p>
@@ -207,7 +198,6 @@
         formátumban (ÉÉÉÉ-HH-NN) is. Ha nem vagy biztos benne, adj meg egy megközelítő dátumot/blokkszámot a tárca első
         használata <em>előttről</em>.</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>A tárca</h1>
         <h2>Street Mode</h2>
@@ -230,6 +220,4 @@
         <p>A tárcához tartozó tranzakciók listája. A csak megtekintésre szolgáló tárcák esetében kizárólag
         a bejövő tranzakciók kerülnek megjelenítésre.</p>
     ]]></string>
-
-    <!-- Note for translators: new/changed text also in help_send -->
 </resources>

@@ -1,149 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">Wallet</string>
-
     <string name="menu_about">Pri</string>
     <string name="menu_privacy">Privateca polikito</string>
-
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_help">Helpo</string>
     <string name="menu_receive">Ricevi</string>
     <string name="menu_rename">Renomi</string>
     <string name="menu_backup">Sekurkopio</string>
     <string name="menu_changepw">Ŝanĝi pasfrazon</string>
-
-    <string name="password_weak">Tajpu plu &#8230;</string>
-    <string name="password_fair">Nja &#8230;</string>
+    <string name="password_weak">Tajpu plu …</string>
+    <string name="password_fair">Nja …</string>
     <string name="password_good">Provu almenaŭ!</string>
-    <string name="password_strong">Jam pli bone &#8230;</string>
+    <string name="password_strong">Jam pli bone …</string>
     <string name="password_very_strong">Mojose, vi estas nerdulo!</string>
-
     <string name="label_login_wallets">Monujoj</string>
     <string name="label_credits">Agnoskoj</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Nuligi</string>
     <string name="label_close">Fermi</string>
     <string name="label_wallet_advanced_details">Detalaj informoj</string>
-
     <string name="label_send_success">Sukcese sendis</string>
     <string name="label_send_done">Farite</string>
-
     <string name="label_receive_info_gen_qr_code">Tuŝu por QR-kodo</string>
-
     <string name="info_xmrto_enabled">BTC-pago permesita, frapetu por detaloj.</string>
     <string name="info_ledger_enabled">Ledger permesita, frapetu por detaloj.</string>
-
     <string name="info_xmrto"><![CDATA[
         <b>Vi entajpis %1$s-adreson.</b><br/>
         <i>Vi sendos XMR-on, kaj per la<b>%3$s</b>-servo, la ricevanto havos %2$s-on.</i>
     ]]></string>
-
     <string name="info_send_xmrto_success_order_label">mendo al %1$s</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
     <string name="info_send_xmrto_paid">Konfirmo okazonta</string>
     <string name="info_send_xmrto_unpaid">Pago okazonta</string>
     <string name="info_send_xmrto_error">%1$s eraro (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s sendiĝis!</string>
-    <string name="info_send_xmrto_query">Informpetante &#8230;</string>
-
+    <string name="info_send_xmrto_query">Informpetante …</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Vi povas sendi %1$s &#8212; %2$s %4$s</b>.<br/>
         <i><b>%5$s</b> proponas al vi tiun kurzon: <b>%3$s %4$s/XMR</b> <u>nun</u></i>.
     ]]></string>
-
     <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
-
-    <string name="info_paymentid_integrated">&#x2714; Paga-ID integriĝis</string>
+    <string name="info_paymentid_integrated">✔ Paga-ID integriĝis</string>
     <string name="info_prepare_tx">Preparante vian transakcion</string>
-
     <string name="label_send_progress_xmrto_create">Kreante mendon</string>
-    <string name="label_send_progress_xmrto_query">Petante mendon </string>
+    <string name="label_send_progress_xmrto_query">Petante mendon</string>
     <string name="label_send_progress_create_tx">Preparante la Monero-transakcion</string>
-
     <string name="label_send_progress_queryparms">Petante la parametrojn</string>
-
     <string name="label_generic_xmrto_error">ERARO</string>
     <string name="text_generic_xmrto_error">kodo: %1$d</string>
-
     <string name="text_retry">Tuŝu por reprovi</string>
     <string name="text_noretry_monero">Ni blokiĝis ĉi tie!</string>
     <string name="text_noretry">Uh-oh, ŝajne %1$s ne disponas momente!</string>
-
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(kurzo: %1$s %2$s/XMR)</string>
-
     <string name="label_send_btc_xmrto_info">Vizitu %1$s por helpo kaj sekvado</string>
     <string name="label_send_btc_xmrto_key_lb">Sekreta ŝlosilo\n%1$s</string>
     <string name="label_send_btc_xmrto_key">%1$s sekreta ŝlosilo</string>
     <string name="label_send_btc_address">Ricevanta %1$s-adreso</string>
     <string name="label_send_btc_amount">Kvanto</string>
-
     <string name="label_send_txid">Transakcia ID</string>
     <string name="label_send_address">Ricevanta adreso</string>
     <string name="label_send_notes">Notoj</string>
-
     <string name="backup_progress">Sekurkopio okazanta</string>
     <string name="archive_progress">Arkivado okazanta</string>
     <string name="rename_progress">Renomigo okazanta</string>
     <string name="changepw_progress">Pasvortŝanĝo okazanta</string>
-
-    <string name="service_progress">Reordigado &#8230;\nTio ja povas daŭri!</string>
-
+    <string name="service_progress">Reordigado …\nTio ja povas daŭri!</string>
     <string name="backup_success">Sekurkopio sukcesis!</string>
     <string name="backup_failed">Sekurkopio malsukcesis!</string>
     <string name="rename_failed">Renomado malsukcesis!</string>
     <string name="changepw_failed">Pasvortŝanĝo malsukcesis!</string>
     <string name="changepw_success">Pasvortŝanĝo sukcesis!</string>
-
     <string name="label_daemon">Nodo</string>
-    <string name="status_wallet_loading">Ŝarĝante la monujon &#8230;</string>
+    <string name="status_wallet_loading">Ŝarĝante la monujon …</string>
     <string name="status_wallet_unloaded">La monujo konserviĝis</string>
     <string name="status_wallet_unload_failed">La monujkonservoo malsukcesis!</string>
-    <string name="status_wallet_connecting">Konektiĝas&#8230;</string>
+    <string name="status_wallet_connecting">Konektiĝas…</string>
     <string name="status_wallet_connect_failed">Nodkonektiĝo malsukcesis!\nKontrolu uzantnomon/pasvorton</string>
     <string name="status_wallet_connect_wrongversion">Nekongrua nodversio - bonvolu plibonigi!</string>
     <string name="status_wallet_node_invalid">Nekongrua nodo!\nProvu alian.</string>
     <string name="status_wallet_connect_ioex">Ne kapablas atingi la nodon!\nProvu alian aŭ reprovu.</string>
-
     <string name="status_wallet_disconnected">Malkonektite</string>
-
     <string name="status_transaction_failed">Transakcio malsukcesis: %1$s</string>
-
     <string name="send_xmrto_timeout">Vi atendis tro longe, kara.</string>
-
-    <string name="service_busy">Mi daŭre okupiĝas pri via lasta monujo &#8230;</string>
-
+    <string name="service_busy">Mi daŭre okupiĝas pri via lasta monujo …</string>
     <string name="prompt_rename">Renomi %1$s</string>
-
     <string name="prompt_changepw">Nova pasfrazo por %1$s</string>
     <string name="prompt_changepwB">Retajpu pasfrazon por %1$s</string>
     <string name="prompt_password">Pasvorto por %1$s</string>
     <string name="prompt_fingerprint_auth">Vi ankaŭ povas malfermi la monujon per fingropremaĵo.\nBonvolu tûsi la sentilon.</string>
-    <string name="prompt_open_wallet">Malfermante la monujon&#8230;</string>
+    <string name="prompt_open_wallet">Malfermante la monujon…</string>
     <string name="bad_fingerprint">La fringropremaĵo ne rekoniĝis. Reprovu.</string>
     <string name="bad_password">Malkorekta pasvorto!</string>
     <string name="bad_saved_password">La konservita pasvorto ne korektas.\nBonvolu tajpi la pasvorton.</string>
     <string name="bad_wallet">La monujo ne ekzistas!</string>
     <string name="prompt_daemon_missing">La nodo devas esti agordita!</string>
     <string name="prompt_wrong_net">La monujo ne kongruas kun la elektita reto</string>
-
     <string name="label_watchonly">(nurvida)</string>
-
     <string name="label_wallet_receive">Ricevi</string>
     <string name="label_wallet_send">Doni</string>
-
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s nekonfirmite</string>
-
     <string name="service_description">monerujo Servo</string>
-
     <string name="status_synced">Sinkronizas:</string>
     <string name="status_remaining">Restaj blokoj</string>
     <string name="status_syncing">Skanante:</string>
-
     <string name="message_camera_not_permitted">Neniu filmilo = Neniu QR-kodo skaniĝas!</string>
-
     <string name="label_copy_viewkey">Vida ŝlosilo</string>
     <string name="label_copy_address">Publika adreso</string>
     <string name="label_copy_xmrtokey">Ŝlosilo</string>
@@ -152,9 +114,7 @@
     <string name="message_copy_address">La monujadreso kopiiĝis en la tondujon!</string>
     <string name="message_copy_txid">La transakcia ID kopiiĝis en la tondujon!</string>
     <string name="message_nocopy">Por pli da sekureco, vi ne rajtas kopii tion!</string>
-
     <string name="message_exchange_failed">La kurzo ne haveblas!\nUzu XMR/XMR aŭ reprovu</string>
-
     <string name="generate_title">Krei monujon</string>
     <string name="generate_name_hint">Nomo de la monujo</string>
     <string name="generate_password_hint">Pasfrazo de la monujo</string>
@@ -175,36 +135,29 @@
     <string name="generate_empty_passwordB">La pasfrazo ne estu malplena</string>
     <string name="generate_buttonGenerate">Nun kreu monujon, homo!</string>
     <string name="generate_button_accept">Jes mi skribis la mnemonikan semon sur papero.</string>
-
     <string name="generate_wallet_name">Donu nomon al mi!</string>
     <string name="generate_wallet_exists">La monujo ekzistas!</string>
     <string name="generate_wallet_dot">La nomo ne komenciĝu per .</string>
     <string name="generate_wallet_creating">Kreante monujon</string>
     <string name="generate_wallet_created">La monujo kreiĝis!</string>
-
     <string name="generate_restoreheight_error">Entajpu nombron aŭ daton (JJJJ-MM-TT)</string>
-
     <string name="generate_wallet_type_key">Ŝlosiloj</string>
     <string name="generate_wallet_type_new">Nova</string>
     <string name="generate_wallet_type_seed">Semo</string>
     <string name="generate_wallet_type_view">Nurvida</string>
-
     <string name="generate_address_hint">Publika adreso</string>
     <string name="generate_viewkey_hint">Vida ŝlosilo</string>
     <string name="generate_spendkey_hint">Elspezŝlosilo</string>
     <string name="generate_mnemonic_hint">25-vorta mnemonika semo</string>
     <string name="generate_restoreheight_hint">Restaŭralteco aŭ dato (JJJJ-MM-TT)</string>
-
     <string name="generate_address_label">Publika adreso</string>
     <string name="generate_viewkey_label">Vida ŝlosilo</string>
     <string name="generate_spendkey_label">Elspezŝlosilo</string>
     <string name="generate_mnemonic_label">Mnemonika semo</string>
     <string name="generate_crazypass_label">Pasvorto por restaŭri monujdosierojn</string>
-
     <string name="generate_check_key">Entajpu validan ŝlosilon</string>
     <string name="generate_check_address">Entajpu validan adreson</string>
     <string name="generate_check_mnemonic">Entajpu vian 25-vortan semon</string>
-
     <string name="send_notes_hint">Privataj notoj (opcia)</string>
     <string name="send_generate_paymentid_hint">Generate</string>
     <string name="send_send_label">Elspezi miajn dolĉajn monerojn</string>
@@ -213,8 +166,8 @@
     <string name="send_qr_address_invalid">Tio ne estas kongrua paga QR-kodo</string>
     <string name="send_address_invalid">Tio ne estas valida adreso</string>
     <string name="send_address_not_openalias">OpenAlias-adreso ne haveblas</string>
-    <string name="send_address_openalias">OpenAlias sekuras &#x2714;</string>
-    <string name="send_address_resolve_openalias">Solvante OpenAlias&#8230;</string>
+    <string name="send_address_openalias">OpenAlias sekuras ✔</string>
+    <string name="send_address_resolve_openalias">Solvante OpenAlias…</string>
     <string name="send_address_no_dnssec">OpenAlias ne havas DNSSEC - la adreso estas eble uzurpita</string>
     <string name="send_title">Sendi</string>
     <string name="send_available">Saldo: %1$s XMR</string>
@@ -222,24 +175,19 @@
     <string name="send_amount_title">Kvanto</string>
     <string name="send_confirm_title">Konfirmi</string>
     <string name="send_success_title">Farite</string>
-
     <string name="send_amount_label">Kvanto</string>
     <string name="send_fee_btc_label">Kosto (XMR)</string>
     <string name="send_fee_label">Kosto</string>
     <string name="send_total_btc_label">Sumo (XMR)</string>
     <string name="send_total_label">Sumo</string>
-
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Kosto</string>
-
     <string name="send_create_tx_error_title">Krei transakci-eraron</string>
-
     <string name="tx_list_fee">Kosto %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">masukcesis</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
-
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Tempindiko</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">TX Ŝlosilo</string>
@@ -252,44 +200,33 @@
     <string name="tx_notes">Notoj</string>
     <string name="tx_notes_hint">(opcia)</string>
     <string name="tx_title">Transakciaj detaloj</string>
-
     <string name="tx_pending">OKAZONTE</string>
     <string name="tx_failed">MALSUCKESIS</string>
-
     <string name="receive_amount_hint">Kvanto</string>
     <string name="receive_desc_hint">Priskribo (opcia)</string>
     <string name="receive_cannot_open">Ne sukcesis malfermi la monujon!</string>
-
     <string name="receive_amount_too_big">Maks. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">Bv. entajpu nombron</string>
-
     <string name="details_alert_message">Konfidencaj datumoj ne montriĝu.\nRigardu super via ŝultro!</string>
     <string name="details_alert_yes">Mi sekuras.</string>
     <string name="details_alert_no">Malantaŭen!</string>
     <string name="details_title">Detaloj</string>
-
     <string name="delete_alert_yes">Jes, faru tion!</string>
     <string name="delete_alert_no">Ne dankon!</string>
-
     <string name="fab_create_new">Krei novan monujon</string>
     <string name="fab_restore_viewonly">Restaŭri nurvidan monujon</string>
     <string name="fab_restore_key">Restaŭri monujon per privataj ŝlosiloj</string>
     <string name="fab_restore_seed">Restaŭri monujon per 25-vorta semo</string>
-
     <string name="accounts_drawer_new">Krei konton</string>
     <string name="accounts_new">Aldonis novan konton #%1$d</string>
     <string name="tx_account">Konto #</string>
-
     <string name="send_sweepall">Sendi ĉiujn konfirmitajn monsumojn al tiu konto!</string>
     <string name="tx_subaddress">Subadreso</string>
     <string name="generate_address_label_sub">Publika subadreso #%1$d: %2$s</string>
-
     <string name="menu_language">Lingvo</string>
     <string name="language_system_default">Uzi la sistemlingvon</string>
-
     <string name="fab_restore_ledger">Restaŭri de Ledger Nano</string>
-
     <string name="progress_ledger_progress">Komunikante kun Ledger</string>
     <string name="progress_ledger_confirm">Konfirmo je la Ledger estas postulita!</string>
     <string name="progress_ledger_lookahead">Retrovante subadresojn</string>
@@ -297,15 +234,11 @@
     <string name="progress_ledger_opentx">Matematikumante</string>
     <string name="progress_ledger_mlsag">Haketumante</string>
     <string name="open_wallet_ledger_missing">Bonvolu (re)konekti la Ledger-aparaton</string>
-
     <string name="accounts_progress_new">Kreante konton</string>
-
     <string name="toast_ledger_attached">%1$s kunligita</string>
     <string name="toast_ledger_detached">%1$s malligita</string>
-
     <string name="menu_info">Montru sekretojn!</string>
     <string name="menu_streetmode">Strata moduso</string>
-
     <string name="info_nodes_enabled">Node-o-matiC permesiĝas, frapetu por detaloj.</string>
     <string name="node_height">Lasta ĝisdatigita bloko: %1$s</string>
     <string name="label_nodes">Nodoj</string>
@@ -317,7 +250,7 @@
     <string name="node_host_unresolved">Ne povas solvi gastigon</string>
     <string name="node_host_empty">Ni bezonas tion!</string>
     <string name="node_port_numeric">Devas esti nombra</string>
-    <string name="node_port_range">Devas esti 1&#8211;65535</string>
+    <string name="node_port_range">Devas esti 1–65535</string>
     <string name="node_fab_add">Aldoni nodon</string>
     <string name="node_refresh_hint">Tuŝu por aktualigi!</string>
     <string name="node_test_error">KONEKTIĜERARO %1$d</string>
@@ -325,15 +258,15 @@
     <string name="node_auth_error">AUTENTIĜO MALSUKCESIS</string>
     <string name="node_result_label">Testrezulto:</string>
     <string name="node_result">Alteco: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">Testante IP: %1$s &#8230;</string>
+    <string name="node_testing">Testante IP: %1$s …</string>
     <string name="node_refresh_wait">Bonvolu atendi ĝis la fino de la skanado</string>
     <string name="node_create_hint">Tuŝi por elekti aŭ aldoni nodojn</string>
     <string name="node_pull_hint">Aldoni nodojn mane aŭ tiru menuon por skani</string>
-    <string name="node_scanning">Skanante la reton&#8230;</string>
+    <string name="node_scanning">Skanante la reton…</string>
     <string name="node_nobookmark">Aŭtomate memoris la %1$d plej bonajn nodojn</string>
-    <string name="label_test">Testo</string><!--note: as in "Test a network connection"-->
+    <string name="label_test">Testo</string>
+    <!--note: as in "Test a network connection"-->
 
     <string name="send_address_hint">Ricevanto</string>
-
     <string name="street_sweep_amount">ĈIO!</string>
 </resources>

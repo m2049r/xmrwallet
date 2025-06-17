@@ -1,138 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">Πορτοφόλι</string>
-
     <string name="menu_about">Σχετικά</string>
     <string name="menu_privacy">Πολιτική Απορρήτου</string>
-
     <string name="menu_share">Μοιράσου</string>
     <string name="menu_help">Βοήθεια</string>
     <string name="menu_receive">Λήψη</string>
     <string name="menu_rename">Μετονομασία</string>
     <string name="menu_backup">Δημιουργία αντίγραφου ασφαλείας</string>
-
-    <string name="password_weak">Συνέχισε να πληκτρολογείς &#8230;</string>
-    <string name="password_fair">Εεχ &#8230;</string>
+    <string name="password_weak">Συνέχισε να πληκτρολογείς …</string>
+    <string name="password_fair">Εεχ …</string>
     <string name="password_good">Έλα, μπορείς και καλύτερα!</string>
-    <string name="password_strong">Κοντεύεις &#8230;</string>
+    <string name="password_strong">Κοντεύεις …</string>
     <string name="password_very_strong">Έτσι! χακεράδικο στιλ!!</string>
-
     <string name="label_login_wallets">Πορτοφόλια</string>
     <string name="label_credits">Ευχαριστίες</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Άκυρο</string>
     <string name="label_close">Κλείσιμο</string>
     <string name="label_wallet_advanced_details">Λεπτομερείς πληροφορίες</string>
-
     <string name="label_send_success">Αποστολή με επιτυχία</string>
     <string name="label_send_done">Έγινε</string>
-
     <string name="label_receive_info_gen_qr_code">Πατήστε για QR κωδικό</string>
-
     <string name="info_xmrto_enabled">Συναλλαγή BTC ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
     <string name="info_ledger_enabled">Ledger ενεργοποιήθηκε, πάτα για περισσότερες πληροφορείες.</string>
-
     <string name="info_xmrto"><![CDATA[
         <b>Έβαλες μια διεύθυνση %1$s.</b><br/>
         <i>Θα στείλεις XMR και ο παραλήπτης θα πάρει %2$s μέσο της υπηρεσίας <b>%3$s</b>.</i>
     ]]></string>
-
     <string name="info_send_xmrto_success_order_label">Εντολή %1$s</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
     <string name="info_send_xmrto_paid">Επιβεβαίωση Εκκρεμεί</string>
     <string name="info_send_xmrto_unpaid">Πληρωμή σε εκκρεμότητα</string>
     <string name="info_send_xmrto_error">%1$s Σφάλμα (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s Αποστάλθηκαν!</string>
-    <string name="info_send_xmrto_query">Αίτηση &#8230;</string>
-
+    <string name="info_send_xmrto_query">Αίτηση …</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Μπορείς να στείλεις %1$s &#8212; %2$s %4$s</b>.<br/>
         <i>Το <b>%5$s</b> σου δίνει ισοτιμία ανταλλαγής <b>%3$s %4$s/XMR</b> <u>αυτή τη στιγμή</u></i>.
     ]]></string>
-
     <string name="send_available_btc">Σύνολο: %1$s XMR (~%2$s %3$s)</string>
-
-    <string name="info_paymentid_integrated">&#x2714; ID πληρωμής ενσωματωμένο</string>
+    <string name="info_paymentid_integrated">✔ ID πληρωμής ενσωματωμένο</string>
     <string name="info_prepare_tx">Προετοιμασία της συναλλαγής σου</string>
-
     <string name="label_send_progress_xmrto_create">Δημιουργία εντολής</string>
     <string name="label_send_progress_xmrto_query">Αίτηση εντολής</string>
     <string name="label_send_progress_create_tx">Προετοιμασά συναλλαγής Monero</string>
-
     <string name="label_send_progress_queryparms">Αίτηση για παραμέτρους</string>
-
     <string name="label_generic_xmrto_error">ΣΦΑΛΜΑ</string>
     <string name="text_generic_xmrto_error">Κωδικός σφάλματος: %1$d</string>
-
     <string name="text_retry">Πάτησε για να προσπαθήσεις ξανά</string>
     <string name="text_noretry_monero">Τώρα έχουμε κολλήσει εδώ!</string>
     <string name="text_noretry">Ωχ,το %1$s φαίνεται να μην ειναι προσωρινά διαθέσιμο!</string>
-
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Rate: %1$s %2$s/XMR)</string>
-
     <string name="label_send_btc_xmrto_info">Επίσκεψη στο %1$s για υποστήριξη &amp; με εντοπισμό συναλλαγής</string>
     <string name="label_send_btc_xmrto_key_lb">Μυστικό Κλειδί\n%1$s</string>
     <string name="label_send_btc_xmrto_key">%1$s Μυστικό Κλειδί</string>
     <string name="label_send_btc_address">%1$s Διεύθυνση Παραλήπτη</string>
     <string name="label_send_btc_amount">Ποσό</string>
-
     <string name="label_send_txid">ID Συναλλαγής</string>
     <string name="label_send_address">Διεύθυνση Παραλήπτη</string>
     <string name="label_send_notes">Σημειώσεις</string>
-
     <string name="backup_progress">Δημιουργία αντίγραφου ασφαλείας σε εξέλιξη</string>
     <string name="archive_progress">Αρχειοθέτηση σε εξέλιξη</string>
     <string name="rename_progress">Μετονομασία σε εξέλιξη</string>
-
-    <string name="service_progress">Μάζεμα των πραγμάτων &#8230;\nΑυτό μπορεί να διαρκέσει λίγο!</string>
-
+    <string name="service_progress">Μάζεμα των πραγμάτων …\nΑυτό μπορεί να διαρκέσει λίγο!</string>
     <string name="backup_success">Η δημιουργία αντίγραφου ασφαλείας ήταν επιτυχής</string>
     <string name="backup_failed">Η δημιουργία αντίγραφου ασφαλείας απέτυχε!</string>
     <string name="rename_failed">Η μετονομασία απέτυχε!</string>
-
     <string name="label_daemon">Κόμβος(Δαίμονας)</string>
-    <string name="status_wallet_loading">Φόρτωση Πορτοφολιού &#8230;</string>
+    <string name="status_wallet_loading">Φόρτωση Πορτοφολιού …</string>
     <string name="status_wallet_unloaded">Πορτοφόλι αποθηκεύτηκε</string>
     <string name="status_wallet_unload_failed">Η αποθήκευση του πορτοφολιού απέτυχε!</string>
-    <string name="status_wallet_connecting">Σύνδεση &#8230;</string>
+    <string name="status_wallet_connecting">Σύνδεση …</string>
     <string name="status_wallet_connect_failed">Η σύνδεση με τον κόμβο απέτυχε!\nΈλεγξε χρήστη/κωδικό</string>
     <string name="status_wallet_node_invalid">Ο κόμβος είναι μη έγκυρος!\nΠροσπάθησε με άλλον.</string>
     <string name="status_wallet_connect_ioex">Δεν είναι δυνατή η πρόσβαση στον κόμβο!\nΠροσπάθησε πάλι ή με άλλον.</string>
-
     <string name="status_wallet_disconnected">Αποσυνδέθηκε</string>
-
     <string name="status_transaction_failed">Η συναλλαγή απέτυχε: %1$s</string>
-
     <string name="send_xmrto_timeout">Περίμενες για πολύ καιρό φίλε μου!</string>
-
-    <string name="service_busy">Δουλεύω ακόμα στο προηγούμενο πορτοφόλι σου &#8230;</string>
-
+    <string name="service_busy">Δουλεύω ακόμα στο προηγούμενο πορτοφόλι σου …</string>
     <string name="prompt_rename">Μετονομασία %1$s</string>
-
     <string name="prompt_password">Κωδικός για %1$s</string>
     <string name="bad_password">Λάθος κωδικός!</string>
     <string name="bad_wallet">Το πορτοφόλι δεν υπάρχει!</string>
     <string name="prompt_daemon_missing">Η διεύθυνση δαίμονα πρέπει να οριστεί!</string>
     <string name="prompt_wrong_net">Το πορτοφόλι δεν ταιριάζει με το επιλεγμένο δίκτυο</string>
-
     <string name="label_watchonly">(Μόνο Παρακολούθηση)</string>
-
     <string name="label_wallet_receive">Λήψη</string>
     <string name="label_wallet_send">Αποστολή</string>
-
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s μη επιβεβαιωμένα</string>
-
     <string name="service_description">Υπηρεσία monerujo</string>
-
     <string name="status_synced">Συγχρονισμένα:</string>
     <string name="status_remaining">Μπλοκς που απομένουν</string>
     <string name="status_syncing">Έρευνα:</string>
-
     <string name="message_camera_not_permitted">Όχι κάμερα = Όχι QR σκανάρισμα!</string>
-
     <string name="label_copy_viewkey">Κλειδί Προβολής(View Key)</string>
     <string name="label_copy_address">Δημόσια Διεύθυνση(Public Address)</string>
     <string name="label_copy_xmrtokey">Κλειδή</string>
@@ -141,43 +103,34 @@
     <string name="message_copy_address">Η διύθυνση πορτοφολιού αντιγράφηκε στο πρόχειρο!</string>
     <string name="message_copy_txid">Το ID συναλλαγής αντιγράφηκε στο πρόχειρο!</string>
     <string name="message_nocopy">Η αντιγραφή είναι απενεργοποιημένη για λόγους ασφαλείας!</string>
-
     <string name="message_exchange_failed">Δεν είναι δυνατή η συναλλαγματική ισοτιμία! Χρησιμοποίησε XMR/XMR ή προσπάθησε ξανά</string>
-
     <string name="generate_title">Δημιουργία Πορτοφολιού</string>
     <string name="generate_name_hint">Όνομα Πορτοφολιού</string>
     <string name="generate_password_hint">Κωδικός Πορτοφολιού</string>
     <string name="generate_buttonGenerate">Φτιάξε μου ένα πορτοφόλι επιτέλους!</string>
     <string name="generate_button_accept">Έχω σημειώσει αυτές τις 25 λέξεις!</string>
-
     <string name="generate_wallet_name">Δώσε μου ένα όνομα!</string>
     <string name="generate_wallet_exists">Το Πορτοφόλι υπάρχει!</string>
     <string name="generate_wallet_dot">Δεν γίνεται να ξεκινάει με .</string>
     <string name="generate_wallet_creating">Το πορτοφόλι δημιουργείται</string>
     <string name="generate_wallet_created">Το Πορτοφόλι δημιουργήθηκε</string>
-
     <string name="generate_restoreheight_error">Βάλε αριθμό ή ημερομηνία (YYYY-MM-DD δλδ χρονιά-μήνας-μέρα)</string>
-
     <string name="generate_wallet_type_key">Κλειδιά</string>
     <string name="generate_wallet_type_new">Νέο</string>
     <string name="generate_wallet_type_seed">Σπόρος</string>
     <string name="generate_wallet_type_view">Προβολή</string>
-
     <string name="generate_address_hint">Δημόσια Διεύθυνση(Public Address)</string>
     <string name="generate_viewkey_hint">Κλειδί Προβολής(View Key)</string>
     <string name="generate_spendkey_hint">Κλειδί Ξοδεύματος(Spend Key)</string>
     <string name="generate_mnemonic_hint">Μνημονικός Σπόρος(Mnemonic Seed) 25-Λέξεων</string>
     <string name="generate_restoreheight_hint">Ύψος ανάκτησης ή Ημερομηνία (YYYY-MM-DD δλδ χρονιά-μήνας-μέρα)</string>
-
     <string name="generate_address_label">Δημόσια Διεύθυνση(Public Address)</string>
     <string name="generate_viewkey_label">Κλειδί προβολής(View Key)</string>
     <string name="generate_spendkey_label">Κλειδί ξοδεύματος(Spend Key)</string>
     <string name="generate_mnemonic_label">Μνημονικός Σπόρος(Mnemonic Seed)</string>
-
     <string name="generate_check_key">Δώστε έγκυρο κλειδί</string>
     <string name="generate_check_address">Δώστε έγκυρη διεύθυνση</string>
     <string name="generate_check_mnemonic">Βάλε τον σπόρο σου 25-λέξεων</string>
-
     <string name="send_notes_hint">Προσωπικές σημειώσεις (προαιρετικό)</string>
     <string name="send_generate_paymentid_hint">Δημιουργία</string>
     <string name="send_send_label">Ξόδεψε τα γλυκά μου Moneroj</string>
@@ -191,24 +144,19 @@
     <string name="send_amount_title">Ποσό</string>
     <string name="send_confirm_title">Επιβεβαίωση</string>
     <string name="send_success_title">Έγινε</string>
-
     <string name="send_amount_label">Ποσό</string>
     <string name="send_fee_btc_label">Κόμιστρο (XMR)</string>
     <string name="send_fee_label">Κόμιστρο</string>
     <string name="send_total_btc_label">Σύνολο (XMR)</string>
     <string name="send_total_label">Σύνολο</string>
-
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Κόμιστρο</string>
-
     <string name="send_create_tx_error_title">Σφάλμα Δημιουργίας Συναλλαγής</string>
-
     <string name="tx_list_fee">Κόμιστρο %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">απέτυχε</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
-
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Ημερομηνία</string>
     <string name="tx_id">ID Συναλλαγής(TX ID)</string>
     <string name="tx_key">Κλειδί συναλλαγής(TX Key)</string>
@@ -221,25 +169,19 @@
     <string name="tx_notes">Σημειώσεις</string>
     <string name="tx_notes_hint">(προαιρετικό)</string>
     <string name="tx_title">Λεπτομέρειες Συναλλαγής</string>
-
     <string name="tx_pending">ΕΚΚΡΕΜΗ</string>
     <string name="tx_failed">ΑΠΕΤΥΧΕ</string>
-
     <string name="receive_amount_hint">Ποσό</string>
     <string name="receive_cannot_open">Δεν ήταν δυνατό το άνοιγμα του πορτοφολιού!</string>
-
     <string name="receive_amount_too_big">Μέγιστο %1$s</string>
     <string name="receive_amount_negative">Ελάχιστο 0</string>
     <string name="receive_amount_nan">XMR δεν υπάρχει αριθμός</string>
-
     <string name="details_alert_message">Θα εμφανιστούν τώρα ευαίσθητα δεδομένα. \nΠρόσεχε ποιος είναι πίσω σου!</string>
     <string name="details_alert_yes">Είμαι ασφαλής</string>
     <string name="details_alert_no">Πήγαινε με πίσω!</string>
     <string name="details_title">Λεπτομέρειες</string>
-
     <string name="delete_alert_yes">Ναι, κάνε αυτό!</string>
     <string name="delete_alert_no">Όχι ευχαριστώ!</string>
-
     <string name="fab_create_new">Δημιουργία νέου πορτοφολιού</string>
     <string name="fab_restore_viewonly">Επαναφορά πορτοφολιού προβολής-μόνο</string>
     <string name="fab_restore_key">Επαναφορά πορτοφολιού από ιδιωτικά κλειδιά</string>

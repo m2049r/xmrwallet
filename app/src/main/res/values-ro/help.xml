@@ -16,7 +16,6 @@
 	fondurile către o nouă adresă de portofel (care va conține o altă Semnătură Mnemonică). Prin urmare, este mai bine
 	să copiezi în siguranță Semnătura Mnemonică în <em>mai multe</em> locații sigure și de încredere.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Creează Portofel - Semnătură</h1>
         <p>În cazul în care deții deja o adresă de portofel pentru Monero și dorești să îți recuperezi tranzacțiile din baza
@@ -28,7 +27,6 @@
 	te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ. 
 	Dacă nu ești sigur(ă), introdu o dată/număr aproximativ <em>anterior</em> primei utilizări a portofelului.</p>
     ]]></string>
-
     <string name="help_create_ledger"><![CDATA[
         <h1>Creează Portofel - Ledger</h1>
         <p>Dacă dorești să recuperezi portofelul tău cu dispozitivul Ledger Nano S.</p>
@@ -40,7 +38,6 @@
         te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ.
         Dacă nu ești sigur(ă), introdu o dată/număr aproximativ <em>anterior</em> primei utilizări a portofelului.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Creează Portofel - Chei de acces</h1>
         <p>Dacă încerci recuperarea portofelului folosind cheile de acces!</p>
@@ -52,7 +49,6 @@
         te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ.
         Dacă nu ești sigur(ă), introdu o dată/număr aproximativ <em>anterior</em> primei utilizări a portofelului.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Creează Portofel - Vizualizare</h1>
         <p>În cazul în care dorești să vizualizezi tranzacțiile primite!</p>
@@ -64,7 +60,6 @@
         te rugăm să-l introduci în câmpul \"Număr monobloc\". La fel poți să introduci o dată în format AAAA-LL-ZZ.
         Dacă nu ești sigur(ă), introdu o dată/număr aproximativ <em>anterior</em> primei utilizări a portofelului.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Detalii Portofel</h1>
         <h2>Adresă publică</h2>
@@ -103,7 +98,6 @@
         Cheia ta de consum permite oricui să cheltuie fondurile Monero asociate cu portofelul tău, așa că nu
 	divulga nimănui această cheie și păstreaz-o în siguranță precum Semnătura Mnemonică.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Listă Portofele</h1>
         <h2>Nod</h2>
@@ -134,7 +128,6 @@
 	în dosarul <tt>backups</tt>. În cazul în care copiile de siguranță nu îți mai sunt necesare,
 	va trebui să le ștergi folosind un manager de fișiere sau să ștergi aplicația într-un mod sigur.</p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Detalii tranzacție</h1>
         <h2>Destinație</h2>
@@ -154,7 +147,6 @@
         <h2>Monobloc</h2>
         Acesta este monoblocul în care a fost inclusă tranzacția ta.
     ]]></string>
-
     <string name="help_send"><![CDATA[
         <h1>Trimitere</h1>
         <h2>Adresa destinatarului</h2>
@@ -189,7 +181,6 @@
         <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
 	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Transfer BTC</h1>
         <h2>Exolix</h2>
@@ -212,7 +203,6 @@
         <p>În momentul în care numerotarea inversă ajunge la zero, va trebui să obții o nouă cotație de la Exolix mergând
 	înapoi la pasul anterior, apoi revenind la ecranul \"Confirm\".</p>
     ]]></string>
-
     <string name="help_wallet"><![CDATA[
         <h1>Portofelul</h1>
         <h2>Mod Stradă</h2>
@@ -235,7 +225,6 @@
         <p>O listă a tranzacțiilor portofelului. În portofele create folosind cheia de vizualizare,
 	doar tranzacțiile primite vor fi afișate.</p>
     ]]></string>
-
     <string name="help_node"><![CDATA[
         <h1>Noduri</h1>
         <h2>TL;DR</h2>
@@ -283,7 +272,6 @@
         Monerujo va accesa nodurile integrate în Monero. Scanarea
         se finalizează odată ce s-au găsit 10 noduri la distanță.</p>
     ]]></string>
-
     <!-- Note for translators: new/changed text also in help_send -->
 
     <string name="help_uri"><![CDATA[
@@ -296,6 +284,5 @@
         </p>
         <p>Informația plății va fi completată. Verifică și continuă ca orice altă tranzacție.</p>
     ]]></string>
-
-    <string name="help_ok">Am înțeles!</string> <!-- Note: "Got it" as in "I understand this" -->
+    <string name="help_ok">Am înțeles!</string>
 </resources>

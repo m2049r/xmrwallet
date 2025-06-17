@@ -1,101 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">Portemonnee</string>
-
     <string name="menu_about">Info</string>
     <string name="menu_privacy">Privacybeleid</string>
-
     <string name="menu_share">Delen</string>
     <string name="menu_help">Help</string>
     <string name="menu_receive">Ontvangen</string>
     <string name="menu_rename">Hernoemen</string>
     <string name="menu_backup">Back-up</string>
     <string name="menu_changepw">Wachtzin wijzigen</string>
-
     <string name="password_weak">Blijf typen…</string>
     <string name="password_fair">Mwah…</string>
     <string name="password_good">Kom op, dat kan beter!</string>
     <string name="password_strong">Je bent er bijna…</string>
     <string name="password_very_strong">Ja, nu ben je een hacker!</string>
-
     <string name="label_login_wallets">Portemonnees</string>
     <string name="label_credits">Makers</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">Annuleren</string>
     <string name="label_close">Sluiten</string>
     <string name="label_wallet_advanced_details">Meer informatie</string>
-
     <string name="label_send_success">Verzonden</string>
     <string name="label_send_done">Klaar</string>
-
     <string name="label_receive_info_gen_qr_code">Tik voor QR-code</string>
-
     <string name="info_xmrto_enabled">BTC-betaling ingeschakeld. Tik voor meer info.</string>
     <string name="info_ledger_enabled">Ledger ingeschakeld. Tik voor meer info.</string>
-
     <string name="info_xmrto"><![CDATA[
         <b>Je hebt een %1$s-adres ingevoerd.</b><br/>
         <i>Je verzendt XMR en de ontvanger krijgt %2$s via <b>%3$s</b>.</i>
     ]]></string>
-
     <string name="info_send_xmrto_success_order_label">%1$s-opdracht</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
     <string name="info_send_xmrto_paid">Wacht op bevestiging</string>
     <string name="info_send_xmrto_unpaid">Wacht op betaling</string>
     <string name="info_send_xmrto_error">Fout bij %1$s (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$s verzonden!</string>
     <string name="info_send_xmrto_query">Aanvragen…</string>
-
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>Je kunt  %1$s &#8212; %2$s %4$s verzenden</b>.<br/>
         <i><b>%5$s</b> biedt <u>nu</u> een wisselkoers van <b>%3$s %4$s/XMR</b> aan</i>.
     ]]></string>
-
     <string name="send_available_btc">Saldo: %1$s XMR (~%2$s %3$s)</string>
-
-    <string name="info_paymentid_integrated">&#x2714; Betalings-ID geïntegreerd</string>
+    <string name="info_paymentid_integrated">✔ Betalings-ID geïntegreerd</string>
     <string name="info_prepare_tx">Transactie wordt voorbereid</string>
-
     <string name="label_send_progress_xmrto_create">Opdracht maken</string>
     <string name="label_send_progress_xmrto_query">Opdracht aanvragen</string>
     <string name="label_send_progress_create_tx">Monero-transactie voorbereiden</string>
-
     <string name="label_send_progress_queryparms">Parameters aanvragen</string>
-
     <string name="label_generic_xmrto_error">FOUT</string>
     <string name="text_generic_xmrto_error">Code: %1$d</string>
-
     <string name="text_retry">Opnieuw proberen</string>
     <string name="text_noretry_monero">Nu zitten we vast…</string>
     <string name="text_noretry">Oeps, %1$s is op dit moment niet beschikbaar.</string>
-
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(Koers: %1$s %2$s/XMR)</string>
-
     <string name="label_send_btc_xmrto_info">Ga naar %1$s voor hulp en traceren</string>
     <string name="label_send_btc_xmrto_key_lb">Geheime sleutel\n%1$s</string>
     <string name="label_send_btc_xmrto_key">Geheime sleutel %1$s</string>
     <string name="label_send_btc_address">%1$s-doeladres</string>
     <string name="label_send_btc_amount">Bedrag</string>
-
     <string name="label_send_txid">Transactie-ID</string>
     <string name="label_send_address">Doeladres</string>
     <string name="label_send_notes">Opmerkingen</string>
-
     <string name="backup_progress">Back-up wordt gemaakt</string>
     <string name="archive_progress">Wordt gearchiveerd</string>
     <string name="rename_progress">Naam wordt gewijzigd</string>
     <string name="changepw_progress">Wachtwoord wordt gewijzigd</string>
-
     <string name="service_progress">Bezig met voltooien…\nDit kan even duren.</string>
-
     <string name="backup_failed">Back-up mislukt!</string>
     <string name="rename_failed">Hernoemen mislukt!</string>
     <string name="changepw_failed">Wachtwoord wijzigen mislukt!</string>
     <string name="changepw_success">Wachtwoord is gewijzigd</string>
-
     <string name="label_daemon">Node</string>
     <string name="status_wallet_loading">Portemonnee laden…</string>
     <string name="status_wallet_unloaded">Portemonnee opgeslagen</string>
@@ -104,17 +79,11 @@
     <string name="status_wallet_connect_failed">Geen verbinding met node.\nControleer naam/wachtwoord.</string>
     <string name="status_wallet_node_invalid">Node ongeldig.\nProbeer een andere.</string>
     <string name="status_wallet_connect_ioex">Kan node niet bereiken.\nProbeer opnieuw of andere.</string>
-
     <string name="status_wallet_disconnected">Geen verbinding</string>
-
     <string name="status_transaction_failed">Transactie mislukt: %1$s</string>
-
     <string name="send_xmrto_timeout">Je hebt te lang gewacht, vriend!</string>
-
     <string name="service_busy">Ik ben nog bezig met de vorige…</string>
-
     <string name="prompt_rename">%1$s hernoemen</string>
-
     <string name="prompt_changepw">Nieuwe wachtzin voor %1$s</string>
     <string name="prompt_changepwB">Herhaal wachtzin voor %1$s</string>
     <string name="prompt_password">Wachtwoord voor %1$s</string>
@@ -126,22 +95,15 @@
     <string name="bad_wallet">Portemonnee bestaat niet!</string>
     <string name="prompt_daemon_missing">Node-adres moet ingesteld zijn!</string>
     <string name="prompt_wrong_net">Portemonnee komt niet overeen met netwerk</string>
-
     <string name="label_watchonly">(Alleen-lezen)</string>
-
     <string name="label_wallet_receive">Ontvangen</string>
     <string name="label_wallet_send">Geven</string>
-
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s onbevestigd</string>
-
     <string name="service_description">monerujo-service</string>
-
     <string name="status_synced">Gesynchroniseerd:</string>
     <string name="status_remaining">Blokken te gaan</string>
     <string name="status_syncing">Scannen:</string>
-
     <string name="message_camera_not_permitted">Geen camera = geen QR-codes scannen!</string>
-
     <string name="label_copy_viewkey">Alleen-lezen sleutel</string>
     <string name="label_copy_address">Openbaar adres</string>
     <string name="label_copy_xmrtokey">Sleutel</string>
@@ -150,9 +112,7 @@
     <string name="message_copy_address">Portemonnee-adres gekopieerd naar klembord!</string>
     <string name="message_copy_txid">Transactie-ID gekopieerd naar klembord!</string>
     <string name="message_nocopy">Kopiëren uitgeschakeld voor de veiligheid!</string>
-
     <string name="message_exchange_failed">Kan wisselkoers niet ophalen!\nGebruik XMR/XMR of probeer opnieuw</string>
-
     <string name="generate_title">Portemonnee maken</string>
     <string name="generate_name_hint">Naam portemonnee</string>
     <string name="generate_password_hint">Wachtwoord portemonnee</string>
@@ -170,36 +130,29 @@
     <string name="generate_empty_passwordB">Wachtwoord mag niet leeg zijn</string>
     <string name="generate_buttonGenerate">Maak die portemonnee nou maar!</string>
     <string name="generate_button_accept">Ik heb de hersteltekst opgeschreven</string>
-
     <string name="generate_wallet_name">Geef me een naam!</string>
     <string name="generate_wallet_exists">Portemonnee bestaat al!</string>
     <string name="generate_wallet_dot">Mag niet beginnen met .</string>
     <string name="generate_wallet_creating">Portemonnee wordt gemaakt</string>
     <string name="generate_wallet_created">Portemonnee is gemaakt</string>
-
     <string name="generate_restoreheight_error">Voer getal of datum (JJJJ-MM-DD) in</string>
-
     <string name="generate_wallet_type_key">Sleutels</string>
     <string name="generate_wallet_type_new">Nieuw</string>
     <string name="generate_wallet_type_seed">Hersteltekst</string>
     <string name="generate_wallet_type_view">Alleen-lezen</string>
-
     <string name="generate_address_hint">Openbaar adres</string>
     <string name="generate_viewkey_hint">Alleen-lezen sleutel</string>
     <string name="generate_spendkey_hint">Bestedingssleutel</string>
     <string name="generate_mnemonic_hint">Hersteltekst van 25 woorden</string>
     <string name="generate_restoreheight_hint">Herstelpunt of datum (JJJJ-MM-DD)</string>
-
     <string name="generate_address_label">Openbaar adres</string>
     <string name="generate_viewkey_label">Alleen-lezen sleutel</string>
     <string name="generate_spendkey_label">Bestedingssleutel</string>
     <string name="generate_mnemonic_label">Hersteltekst</string>
     <string name="generate_crazypass_label">Wachtwoord voor portemonneebestanden</string>
-
     <string name="generate_check_key">Voer geldige sleutel in</string>
     <string name="generate_check_address">Voer geldig adres in</string>
     <string name="generate_check_mnemonic">Voer je 25 woorden in</string>
-
     <string name="send_notes_hint">Opmerkingen voor jezelf (optioneel)</string>
     <string name="send_generate_paymentid_hint">Genereren</string>
     <string name="send_send_label">Geef mijn mooie moneroj uit</string>
@@ -213,24 +166,19 @@
     <string name="send_amount_title">Bedrag</string>
     <string name="send_confirm_title">Bevestigen</string>
     <string name="send_success_title">Klaar</string>
-
     <string name="send_amount_label">Bedrag</string>
     <string name="send_fee_btc_label">Vergoeding (XMR)</string>
     <string name="send_fee_label">Vergoeding</string>
     <string name="send_total_btc_label">Totaal (XMR)</string>
     <string name="send_total_label">Totaal</string>
-
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s kosten</string>
-
     <string name="send_create_tx_error_title">Fout bij transactie maken</string>
-
     <string name="tx_list_fee">kosten %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">mislukt</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
-
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Tijdstempel</string>
     <string name="tx_id">Transactie-ID</string>
     <string name="tx_key">Transactiesleutel</string>
@@ -243,44 +191,33 @@
     <string name="tx_notes">Opmerkingen</string>
     <string name="tx_notes_hint">(optioneel)</string>
     <string name="tx_title">Transactiedetails</string>
-
     <string name="tx_pending">WACHTEN</string>
     <string name="tx_failed">MISLUKT</string>
-
     <string name="receive_amount_hint">Bedrag</string>
     <string name="receive_cannot_open">Kan portemonnee niet openen!</string>
-
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
     <string name="receive_amount_nan">XMR geen getal</string>
-
     <string name="details_alert_message">Nu worden vertrouwelijke gegevens getoond.\nKijk achter je!</string>
     <string name="details_alert_yes">Het is veilig.</string>
     <string name="details_alert_no">Ga terug!</string>
     <string name="details_title">Details</string>
-
     <string name="delete_alert_message">Deze portemonnee zal worden verwijderd. Uw geld zal voor altijd weg zijn, tenzij u uw zaad of een werkende back-up hebt om het te herstellen.</string>
     <string name="delete_alert_yes">Ja, doe dat!</string>
     <string name="delete_alert_no">Nee, niet doen!</string>
-
     <string name="fab_create_new">Nieuwe portemonnee</string>
     <string name="fab_restore_viewonly">Alleen-lezen portemonnee herstellen</string>
     <string name="fab_restore_key">Portemonnee herstellen met privésleutels</string>
     <string name="fab_restore_seed">Voer je 25 woorden in</string>
-
     <string name="accounts_drawer_new">Account maken</string>
     <string name="accounts_new">Nieuw account #%1$d toegevoegd</string>
     <string name="tx_account">Accountnr.</string>
-
     <string name="send_sweepall">Al het bevestigde geld in dit account verzenden!</string>
     <string name="tx_subaddress">Subadres</string>
     <string name="generate_address_label_sub">Openbaar subadres #%1$d: %2$s</string>
-
     <string name="menu_language">Taal</string>
     <string name="language_system_default">Systeemtaal gebruiken</string>
-
     <string name="fab_restore_ledger">Herstellen met Ledger Nano</string>
-
     <string name="progress_ledger_progress">Communiceren met Ledger…</string>
     <string name="progress_ledger_confirm">Bevestiging op Ledger vereist!</string>
     <string name="progress_ledger_lookahead">Subadressen ophalen…</string>
@@ -288,23 +225,16 @@
     <string name="progress_ledger_opentx">Magisch rekenwerk…</string>
     <string name="progress_ledger_mlsag">Hashes berekenen…</string>
     <string name="open_wallet_ledger_missing">Maak (opnieuw) verbinding met Ledger</string>
-
     <string name="accounts_progress_new">Account maken…</string>
-
     <string name="toast_ledger_attached">%1$s gekoppeld</string>
     <string name="toast_ledger_detached">%1$s losgemaakt</string>
-
     <string name="receive_desc_hint">Omschrijving (optioneel)</string>
-
     <string name="send_address_not_openalias">OpenAlias-adres niet beschikbaar</string>
-    <string name="send_address_openalias">OpenAlias veilig &#x2714;</string>
-    <string name="send_address_resolve_openalias">OpenAlias omzetten&#8230;</string>
+    <string name="send_address_openalias">OpenAlias veilig ✔</string>
+    <string name="send_address_resolve_openalias">OpenAlias omzetten…</string>
     <string name="send_address_no_dnssec">OpenAlias zonder DNSSEC - adres kan nep zijn</string>
-
     <string name="status_wallet_connect_wrongversion">Incompatibele versie van node. Je moet upgraden!</string>
-
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">Ontvanger</string>
-
-    <string name="label_restoreheight">Herstelpunt</string> <!-- Restore Height -->
+    <string name="label_restoreheight">Herstelpunt</string>
 </resources>

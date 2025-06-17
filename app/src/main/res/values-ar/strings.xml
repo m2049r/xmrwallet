@@ -59,8 +59,7 @@
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(السعر: %1$s %2$s /XMR)</string>
     <string name="label_send_btc_xmrto_info">قم بزيارة موقع التبادل للحصول على الدعم والتتبع</string>
-    <string name="label_send_btc_xmrto_key_lb">رقم الطلب
-التبديل</string>
+    <string name="label_send_btc_xmrto_key_lb">رقم الطلب التبديل</string>
     <string name="label_send_btc_xmrto_key">رقم أمر التبادل</string>
     <string name="label_send_btc_address">عنوان الوجهة %1$s</string>
     <string name="label_send_btc_amount">مبلغ</string>
@@ -71,8 +70,7 @@
     <string name="archive_progress">جاري الأرشفة</string>
     <string name="rename_progress">جارٍ إعادة التسمية</string>
     <string name="changepw_progress">جارٍ تغيير كلمة المرور</string>
-    <string name="service_progress">جاري إنهاء الأمور...
-قد يستغرق هذا بعض الوقت!</string>
+    <string name="service_progress">جاري إنهاء الأمور... قد يستغرق هذا بعض الوقت!</string>
     <string name="backup_success">تم النسخ الاحتياطي بنجاح</string>
     <string name="backup_failed">فشل النسخ الاحتياطي!</string>
     <string name="delete_failed">فشل الحذف!</string>
@@ -84,13 +82,10 @@
     <string name="status_wallet_unloaded">تم حفظ المحفظة</string>
     <string name="status_wallet_unload_failed">فشل حفظ المحفظة!</string>
     <string name="status_wallet_connecting">جار الاتصال ...</string>
-    <string name="status_wallet_connect_failed">فشل في الاتصال بالعقدة!
-تحقق من اسم المستخدم / كلمة المرور</string>
+    <string name="status_wallet_connect_failed">فشل في الاتصال بالعقدة! تحقق من اسم المستخدم / كلمة المرور</string>
     <string name="status_wallet_connect_wrongversion">إصدار العقدة غير متوافق - يرجى الترقية!</string>
-    <string name="status_wallet_node_invalid">العقدة غير صالحة!
-حاول مرة أخرى.</string>
-    <string name="status_wallet_connect_ioex">لا يمكن الوصول إلى العقدة!
-حاول مرة أخرى أو غيرها.</string>
+    <string name="status_wallet_node_invalid">العقدة غير صالحة! حاول مرة أخرى.</string>
+    <string name="status_wallet_connect_ioex">لا يمكن الوصول إلى العقدة! حاول مرة أخرى أو غيرها.</string>
     <string name="status_wallet_disconnected">انقطع الاتصال</string>
     <string name="status_transaction_failed">فشلت المعاملة: %1$s</string>
     <string name="send_xmrto_timeout">لقد انتظرت طويلاً يا صديقي!</string>
@@ -99,13 +94,11 @@
     <string name="prompt_changepw">عبارة مرور جديدة لـ %1$s</string>
     <string name="prompt_changepwB">كرر عبارة المرور لـ %1$s</string>
     <string name="prompt_password">كلمة المرور لـ %1$s</string>
-    <string name="prompt_fingerprint_auth">يمكنك أيضًا فتح المحفظة باستخدام بصمة الإصبع.
- يرجى لمس الاستشعار.</string>
+    <string name="prompt_fingerprint_auth">يمكنك أيضًا فتح المحفظة باستخدام بصمة الإصبع. يرجى لمس الاستشعار.</string>
     <string name="prompt_open_wallet">جاري فتح المحفظة...</string>
     <string name="bad_fingerprint">لم يتم التعرف على البصمة. حاول مرة أخرى.</string>
     <string name="bad_password">كلمة المرور غير صحيحة!</string>
-    <string name="bad_saved_password">كلمة المرور المحفوظة غير صحيحة.
- الرجاء إدخال كلمة المرور يدويا.</string>
+    <string name="bad_saved_password">كلمة المرور المحفوظة غير صحيحة. الرجاء إدخال كلمة المرور يدويا.</string>
     <string name="bad_wallet">المحفظة غير موجودة!</string>
     <string name="prompt_daemon_missing">يجب تعيين العقدة!</string>
     <string name="prompt_wrong_net">المحفظة لا تتطابق مع الشبكة المحددة</string>
@@ -126,8 +119,7 @@
     <string name="message_copy_address">تم نسخ عنوان المحفظة إلى الحافظة!</string>
     <string name="message_copy_txid">تم نسخ معرّف المعاملة (id) إلى الحافظة!</string>
     <string name="message_nocopy">تم تعطيل النسخ لأسباب أمنية!</string>
-    <string name="message_exchange_failed">لا يمكن الحصول على سعر التبادل!
-استخدم XMR/XMR أو حاول مرة أخرى</string>
+    <string name="message_exchange_failed">لا يمكن الحصول على سعر التبادل! استخدم XMR/XMR أو حاول مرة أخرى</string>
     <string name="generate_title">إنشاء محفظة</string>
     <string name="generate_name_hint">اسم المحفظة</string>
     <string name="generate_password_hint">عبارة مرور المحفظة</string>
@@ -193,14 +185,14 @@
     <string name="send_fee_label">رسوم</string>
     <string name="send_total_btc_label">الإجمالي (XMR)</string>
     <string name="send_total_label">المجموع</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+ رسوم %1$s</string>
     <string name="send_create_tx_error_title">خطأ في إنشاء المعاملة</string>
     <string name="tx_list_fee">رسوم %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">فشل</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">الطابع الزمني</string>
     <string name="tx_id">معرّف TX</string>
     <string name="tx_key">مفتاح TX</string>
@@ -223,8 +215,7 @@
     <string name="receive_amount_nan">XMR ليس رقما</string>
     <string name="copy_receive_address">انسخ عنوان الاستلام</string>
     <string name="paste_give_address">ألصق عنوان المتلقي</string>
-    <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن.
- أنظر خلفك!</string>
+    <string name="details_alert_message">سيتم الآن عرض بيانات حساسة. تأكد انك في مكان أمن. أنظر خلفك!</string>
     <string name="details_alert_yes">انا بآمن متابعة</string>
     <string name="details_alert_no">تراجع</string>
     <string name="details_title">التفاصيل</string>
@@ -311,8 +302,7 @@
         <item>نهار</item>
         <item>ليلي</item>
     </string-array>
-    <string name="gunther_says">لا يوجد شيء هنا
-يرجى إنشاء أو استعادة محفظة</string>
+    <string name="gunther_says">لا يوجد شيء هنا يرجى إنشاء أو استعادة محفظة</string>
     <string name="menu_default_nodes">استعادة العقد الافتراضية</string>
     <string name="toast_default_nodes">الاستعادة جارية بالفعل...</string>
     <string name="node_updated_now">الكتلة الأخيرة: %1$d ثوانٍ مضت</string>
@@ -346,10 +336,9 @@
     <string name="menu_deletecache">إعادة ضبط المحفظة!</string>
     <string name="deletecache_alert_message">سيتم إعادة تعيين هذه المحفظة، مما يؤدي إلى فقدان جميع البيانات خارج السلسلة (مثل الملاحظات، أسماء الحسابات والعناوين الفرعية، مفاتيح المعاملات الخاصة، ...)! استخدم هذا فقط إذا كانت هذه المحفظة تالفة ولا تعمل!</string>
     <string name="node_tor_error">مطلوب تور</string>
-    <string name="node_waiting">\u00A0في انتظار العقدة\u00A0</string>
+    <string name="node_waiting"> في انتظار العقدة </string>
     <string name="tor_enable_background">فعل \"السماح بالبدء في الخلفية\" في إعدادات Orbot لاستخدام تور!</string>
-    <string name="tor_noshift">لا يدعم SideShift.ai ل تور.
-عطل تور لتبديل XMR.</string>
+    <string name="tor_noshift">لا يدعم SideShift.ai ل تور. عطل تور لتبديل XMR.</string>
     <string name="tor_enable" tools:ignore="MissingTranslation">تشغيل تور</string>
     <string name="label_seed_offset_encrypt">تشفير البذور (تجريبي)</string>
     <string name="seed_offset_hint">عبارة إزاحة البذور (اختياري)</string>
@@ -364,8 +353,7 @@
     </string-array>
     <string name="message_qr_failed">فشل في إنشاء QR للمشاركة!</string>
     <string name="tx_locked">مبلغ المعاملة مقفل حتى الكتلة %1$d (في %2$d كتل ≈ %3$,.2f أيام)</string>
-    <string name="label_streetmode">تم تفعيل وضع الشارع
-سيتم عرض المعاملات الجديدة فقط</string>
+    <string name="label_streetmode">تم تفعيل وضع الشارع سيتم عرض المعاملات الجديدة فقط</string>
     <string name="pocketchange_info">لتقليل وقت الانتظار عند الإنفاق المتكرر، يمكن لـ مونيروجو إنشاء عملات فكه احتياطية على حساب رسوم اعلى. سيحاول إنشاء والحفاظ على ما لا يقل عن 6 عملات من القيمة المحددة.</string>
     <string name="pocketchange_create_title">أنشئ تغييرا</string>
     <string name="label_apply">تطبيق</string>

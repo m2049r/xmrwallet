@@ -23,7 +23,7 @@
     <string name="label_send_success">Успішно відправлено</string>
     <string name="label_send_done">Готово</string>
     <string name="label_receive_info_gen_qr_code">Натисніть для використання QR-коду</string>
-    <string name="info_xmrto_enabled">Доступні перекази в BTC, натисніть для доп. інформації</string>
+    <string name="info_xmrto_enabled">Ви можете конвертувати XMR в інші монети, натисніть, щоб дізнатися більше.</string>
     <string name="info_ledger_enabled">Доступний Ledger, натисніть для доп. інформації</string>
     <string name="info_xmrto"><![CDATA[
         <b>Ви ввели %1$s адресу.</b><br/>
@@ -99,7 +99,7 @@
     <string name="label_wallet_receive">Отримати</string>
     <string name="label_wallet_send">Відправити</string>
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s непідтверджено</string>
-    <string name="service_description">Служба monerujo</string>
+    <string name="service_description">Гаманець відкрито</string>
     <string name="status_synced">Синхронізовано:</string>
     <string name="status_remaining">Блоків залишилось</string>
     <string name="status_syncing">Проскановано:</string>
@@ -174,14 +174,14 @@
     <string name="send_fee_label">Комісія</string>
     <string name="send_total_btc_label">Всього (XMR)</string>
     <string name="send_total_label">Всього</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Комісія</string>
     <string name="send_create_tx_error_title">Помилка створення транзакції</string>
     <string name="tx_list_fee">Комісія %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">Не вдалося</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Відмітка часу</string>
     <string name="tx_id">TX ID</string>
     <string name="tx_key">Ключ TX</string>
@@ -205,7 +205,7 @@
     <string name="details_alert_yes">Я в безпеці</string>
     <string name="details_alert_no">Поверніть мене назад!</string>
     <string name="details_title">Детальна інформація</string>
-    <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення. </string>
+    <string name="delete_alert_message">Цей гаманець буде знищено. Ваші кошти назавжди зникнуть, якщо у вас немає насіння або діючої резервної копії для його відновлення.</string>
     <string name="delete_alert_yes">Так, зроби це!</string>
     <string name="delete_alert_no">Ні, дякую!</string>
     <string name="fab_create_new">Створити новий гаманець</string>
@@ -244,7 +244,7 @@
     <string name="node_height">Останній блок: %1$s</string>
     <string name="label_nodes">Вузли</string>
     <string name="node_name_hint">Ім\'я вузла (опційно)</string>
-    <string name="node_address_hint">Ім\'я хоста</string>
+    <string name="node_address_hint">Ім\'я хоста або IP-адреса</string>
     <string name="node_port_hint">Порт</string>
     <string name="node_user_hint">Ім\'я користувача (опційно)</string>
     <string name="node_pass_hint">Пароль (опційно)</string>
@@ -314,7 +314,7 @@
     <string name="bluetooth_permissions">Щоб підключити Sidekick Wallet, потрібні дозволи Bluetooth!</string>
     <string name="label_apply">ЗАСТОСУВАТИСЯ</string>
     <string name="shift_checkamount">Перевірте суму та повторіть спробу</string>
-    <string name="node_waiting"> ОЧІКУВАННЯ ВУЗЛА </string>
+    <string name="node_waiting">ОЧІКУВАННЯ ВУЗЛА</string>
     <string name="menu_default_nodes">Відновити вузли за замовчуванням</string>
     <string name="menu_back">Назад</string>
     <string name="setting_stickyfiat">Липкий Фіат</string>
@@ -373,4 +373,5 @@
     <string name="sidekick_not_connected">[не підключено]</string>
     <string name="sidekick_confirm_tx">Підтвердити транзакцію</string>
     <string name="fab_restore_sidekick">Відновити з Sidekick</string>
+    <string name="node_use_ssl">Використовуйте SSL-код</string>
 </resources>

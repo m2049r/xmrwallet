@@ -1,149 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wallet_activity_name">ウォレット</string>
-
     <string name="menu_about">Monerujoについて</string>
     <string name="menu_privacy">プライバシーポリシー</string>
-
     <string name="menu_share">共有</string>
     <string name="menu_help">ヘルプ</string>
     <string name="menu_receive">受取り</string>
     <string name="menu_rename">名前の変更</string>
     <string name="menu_backup">バックアップ</string>
     <string name="menu_changepw">パスフレーズの変更</string>
-
     <string name="password_weak">もっと入力してください -</string>
     <string name="password_fair">うーん -</string>
     <string name="password_good">あなたならもっと頑張れるはずだよ!</string>
     <string name="password_strong">いい調子だね -</string>
     <string name="password_very_strong">やったぜ、ハッカー並だ!</string>
-
     <string name="label_login_wallets">ウォレット</string>
     <string name="label_credits">クレジット</string>
     <string name="label_ok">OK</string>
     <string name="label_cancel">キャンセル</string>
     <string name="label_close">閉じる</string>
-
     <string name="label_send_success">送金成功</string>
     <string name="label_send_done">完了</string>
-
     <string name="label_receive_info_gen_qr_code">タッチしてQRコードを表示</string>
-
     <string name="info_xmrto_enabled">BTC支払いは有効化されています。詳細はタップしてください。</string>
     <string name="info_ledger_enabled">レッジャーは有効化されています。詳細はタップしてください。</string>
-
     <string name="info_xmrto"><![CDATA[
         <b>あなたが入力したのは%1$sのアドレスです。</b><br/>
         <i>あなたはXMRを送金し、受け手は <b>%3$s</b> のサービスを利用して%2$sを受取ります。</i>
     ]]></string>
-
     <string name="info_send_xmrto_success_order_label">%1$s の注文</string>
-
     <string name="info_send_xmrto_success_btc">%1$s %2$s</string>
-
     <string name="info_send_xmrto_paid">承認を待っています</string>
     <string name="info_send_xmrto_unpaid">支払いを待っています</string>
     <string name="info_send_xmrto_error">%1$s のエラー (%2$s)</string>
     <string name="info_send_xmrto_sent">%1$sが送金されました!</string>
-    <string name="info_send_xmrto_query">問い合わせ中 &#8230;</string>
-
+    <string name="info_send_xmrto_query">問い合わせ中 …</string>
     <string name="info_send_xmrto_parms"><![CDATA[
         <b>%1$s から %2$s %4$s を送金することができます。</b><br/>
         <i><b>%5$s</b> での交換レートは<u>現在</u><b>%3$s %4$s/XMR</b>です。</i>
     ]]></string>
-
     <string name="send_available_btc">残高: %1$s XMR (~%2$s %3$s)</string>
-
-    <string name="info_paymentid_integrated">&#x2714; ペイメントID組み込み済み</string>
+    <string name="info_paymentid_integrated">✔ ペイメントID組み込み済み</string>
     <string name="info_prepare_tx">取引を準備しています</string>
-
     <string name="label_send_progress_xmrto_create">注文を作成しています</string>
     <string name="label_send_progress_xmrto_query">注文を問い合わせています</string>
     <string name="label_send_progress_create_tx">モネロの取引を準備しています</string>
-
     <string name="label_send_progress_queryparms">パラメータを問い合わせています</string>
-
     <string name="label_generic_xmrto_error">エラー</string>
     <string name="text_generic_xmrto_error">コード: %1$d</string>
-
     <string name="text_retry">タッチして再試行</string>
     <string name="text_noretry_monero">私達はここで立ち往生のようです!</string>
     <string name="text_noretry">あーあ、 %1$s は現在利用不能のようです!</string>
-
     <string name="text_send_btc_amount">%1$s %3$s = %2$s XMR</string>
     <string name="text_send_btc_rate">(レート: %1$s %2$s/XMR)</string>
-
     <string name="label_send_btc_xmrto_info">サポートと追跡については %1$s をご覧ください</string>
     <string name="label_send_btc_xmrto_key_lb">シークレットキー\n%1$s</string>
     <string name="label_send_btc_xmrto_key">%1$s のシークレットキー</string>
     <string name="label_send_btc_address">支払先の %1$s アドレス</string>
     <string name="label_send_btc_amount">数量</string>
-
     <string name="label_send_txid">取引ID</string>
     <string name="label_send_address">送金先アドレス</string>
     <string name="label_send_notes">メモ</string>
-
     <string name="backup_progress">バックアップ中</string>
     <string name="archive_progress">アーカイブ中</string>
     <string name="rename_progress">名前の変更中</string>
     <string name="changepw_progress">パスワードの変更中</string>
-
-    <string name="service_progress">準備中 &#8230;\nしばらく時間がかかるかもしれません!</string>
-
+    <string name="service_progress">準備中 …\nしばらく時間がかかるかもしれません!</string>
     <string name="backup_failed">バックアップに失敗しました!</string>
     <string name="rename_failed">名前の変更に失敗しました!</string>
     <string name="changepw_failed">パスワード変更に失敗しました!</string>
     <string name="changepw_success">パスワードが変更されました</string>
-
     <string name="label_daemon">ノード</string>
     <string name="connect_stagenet" translatable="false">ステージネット</string>
     <string name="connect_testnet" translatable="false">テストネット</string>
-    <string name="status_wallet_loading">ウォレットをロード中 &#8230;</string>
+    <string name="status_wallet_loading">ウォレットをロード中 …</string>
     <string name="status_wallet_unloaded">ウォレットが保存されました</string>
     <string name="status_wallet_unload_failed">ウォレットの保存に失敗しました!</string>
-    <string name="status_wallet_connecting">接続中 &#8230;</string>
+    <string name="status_wallet_connecting">接続中 …</string>
     <string name="status_wallet_connect_failed">ノードの接続に失敗しました!\nユーザ名/パスワードを確認してください</string>
     <string name="status_wallet_connect_wrongversion">互換性のないバージョンのノードです - アップグレードしてください!</string>
     <string name="status_wallet_node_invalid">無効なノードです!\n別のを試してください。</string>
     <string name="status_wallet_connect_ioex">ノードに到達できません!\nもう一度試すか、別のを試してください</string>
-
     <string name="status_wallet_disconnected">接続が切断されました</string>
-
     <string name="status_transaction_failed">取引に失敗しました: %1$s</string>
-
     <string name="send_xmrto_timeout">時間がかかりすぎているようです!</string>
-
-    <string name="service_busy">まだ前のウォレットの処理をしています &#8230;</string>
-
+    <string name="service_busy">まだ前のウォレットの処理をしています …</string>
     <string name="prompt_rename">%1$s の名称変更</string>
-
     <string name="prompt_changepw">%1$s の新しいパスフレーズ</string>
     <string name="prompt_changepwB">%1$s の新しいパスフレーズを再入力</string>
     <string name="prompt_password">%1$s のパスワード</string>
     <string name="prompt_fingerprint_auth">あなたは指紋でもウォレットを開くことができます。\nセンサーにタッチしてください。</string>
-    <string name="prompt_open_wallet">ウォレットを開いています&#8230;</string>
+    <string name="prompt_open_wallet">ウォレットを開いています…</string>
     <string name="bad_fingerprint">指紋が認識できません。もう一度試してください。</string>
     <string name="bad_password">パスワードが違います!</string>
     <string name="bad_saved_password">保存されたパスワードは不正確です。\n手動でパスワードを入力してください。</string>
     <string name="bad_wallet">ウォレットは存在しません!</string>
     <string name="prompt_daemon_missing">ノードを設定する必要があります!</string>
     <string name="prompt_wrong_net">選択されたネットワークとウォレットが一致しません</string>
-
     <string name="label_watchonly">(閲覧専用)</string>
-
     <string name="label_wallet_receive">受取り</string>
     <string name="label_wallet_send">送金</string>
-
     <string name="xmr_unconfirmed_amount">+ %1$s %2$s が未承認</string>
-
     <string name="service_description">monerujo のサービス</string>
-
     <string name="status_synced">同期済み:</string>
     <string name="status_remaining">残りのブロック</string>
     <string name="status_syncing">スキャン中:</string>
-
     <string name="message_camera_not_permitted">カメラがありません = QRコードのスキャニングもできません!</string>
-
     <string name="label_copy_viewkey">表示用キー</string>
     <string name="label_copy_address">公開アドレス</string>
     <string name="label_copy_xmrtokey">キー</string>
@@ -152,9 +114,7 @@
     <string name="message_copy_address">ウォレットアドレスがクリップボードにコピーされました!</string>
     <string name="message_copy_txid">取引IDがクリップボードにコピーされました!</string>
     <string name="message_nocopy">セキュリティ上の理由でコピーは無効化されています!</string>
-
     <string name="message_exchange_failed">取引レートを取得できません!\nXMR/XMR を使うかもう一度試してください</string>
-
     <string name="generate_title">ウォレット作成</string>
     <string name="generate_name_hint">ウォレットの名前</string>
     <string name="generate_password_hint">ウォレットのパスフレーズ</string>
@@ -172,37 +132,30 @@
     <string name="generate_empty_passwordB">パスフレーズは空白ではいけません</string>
     <string name="generate_buttonGenerate">ウォレットを作成します!</string>
     <string name="generate_button_accept">ニーモニック・シードをメモしました</string>
-
     <string name="generate_wallet_name">名前をつけてください!</string>
     <string name="generate_wallet_exists">ウォレットが存在します!</string>
     <string name="generate_wallet_dot">ドット(.)から始まることはできません</string>
     <string name="generate_wallet_creating">ウォレット作成中</string>
     <string name="generate_wallet_created">ウォレットが作成されました</string>
-
     <string name="generate_restoreheight_error">数字か日付（年4桁-月2桁-日2桁）を入力してください</string>
-
     <string name="generate_wallet_type_key">キー</string>
     <string name="generate_wallet_type_new">新規</string>
     <string name="generate_wallet_type_seed">シード</string>
     <string name="generate_wallet_type_view">閲覧</string>
     <string name="generate_wallet_type_ledger" translatable="false">レッジャー</string>
-
     <string name="generate_address_hint">公開アドレス</string>
     <string name="generate_viewkey_hint">表示用キー</string>
     <string name="generate_spendkey_hint">送金用キー</string>
     <string name="generate_mnemonic_hint">25単語のニーモニック・シード</string>
     <string name="generate_restoreheight_hint">復元するブロック長または日付（年4桁-月2桁-日2桁）</string>
-
     <string name="generate_address_label">公開アドレス</string>
     <string name="generate_viewkey_label">表示用キー</string>
     <string name="generate_spendkey_label">送金用キー</string>
     <string name="generate_mnemonic_label">ニーモニック・シード</string>
     <string name="generate_crazypass_label">ウォレットファイル復元パスワード</string>
-
     <string name="generate_check_key">有効なキーを入力してください</string>
     <string name="generate_check_address">有効なアドレスを入力してください</string>
     <string name="generate_check_mnemonic">25 単語のシードを入力してください</string>
-
     <string name="send_notes_hint">プライベートノート (オプション)</string>
     <string name="send_generate_paymentid_hint">生成</string>
     <string name="send_qr_hint" translatable="false">スキャン</string>
@@ -212,8 +165,8 @@
     <string name="send_qr_address_invalid">有効な支払いQRコードではありません</string>
     <string name="send_address_invalid">有効なアドレスではありません</string>
     <string name="send_address_not_openalias">OpenAlias アドレスは利用不可能です</string>
-    <string name="send_address_openalias">OpenAlias はセキュアです &#x2714;</string>
-    <string name="send_address_resolve_openalias">OpenAliasを解決しています&#8230;</string>
+    <string name="send_address_openalias">OpenAlias はセキュアです ✔</string>
+    <string name="send_address_resolve_openalias">OpenAliasを解決しています…</string>
     <string name="send_address_no_dnssec">DNSSECのないOpenAliasです - アドレスが偽造されているかもしれません</string>
     <string name="send_title">送金</string>
     <string name="send_available">残高: %1$s XMR</string>
@@ -221,24 +174,19 @@
     <string name="send_amount_title">数量</string>
     <string name="send_confirm_title">確認</string>
     <string name="send_success_title">完了</string>
-
     <string name="send_amount_label">数量</string>
     <string name="send_fee_btc_label">手数料 (XMR)</string>
     <string name="send_fee_label">手数料</string>
     <string name="send_total_btc_label">合計 (XMR)</string>
     <string name="send_total_label">合計</string>
-
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s 手数料</string>
-
     <string name="send_create_tx_error_title">取引作成エラー</string>
-
     <string name="tx_list_fee">手数料 %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">失敗</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
-
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">タイムスタンプ</string>
     <string name="tx_id">取引ID</string>
     <string name="tx_key">取引キー</string>
@@ -251,44 +199,33 @@
     <string name="tx_notes">メモ</string>
     <string name="tx_notes_hint">(オプション)</string>
     <string name="tx_title">取引詳細</string>
-
     <string name="tx_pending">待機中</string>
     <string name="tx_failed">失敗</string>
-
     <string name="receive_amount_hint">数量</string>
     <string name="receive_desc_hint">説明 (オプション)</string>
     <string name="receive_cannot_open">ウォレットを開けませんでした!</string>
-
     <string name="receive_amount_too_big">最大. %1$s</string>
     <string name="receive_amount_negative">最小. 0</string>
     <string name="receive_amount_nan">XMR が数字ではありません</string>
-
     <string name="details_alert_message">機密データは表示されません\n背後に人がいないことを確認してください!</string>
     <string name="details_alert_yes">私は安全です</string>
     <string name="details_alert_no">戻ります!</string>
     <string name="details_title">詳細</string>
-
     <string name="delete_alert_yes">はい、お願いします!</string>
     <string name="delete_alert_no">いいえ、結構です!</string>
-
     <string name="fab_create_new">新しいウォレットの作成</string>
     <string name="fab_restore_viewonly">閲覧専用ウォレットを復元</string>
     <string name="fab_restore_key">秘密鍵からウォレットを復元</string>
     <string name="fab_restore_seed">25単語のシードからウォレットを復元</string>
-
     <string name="accounts_drawer_new">アカウントを作成</string>
     <string name="accounts_new">新しいアカウントを追加 #%1$d</string>
     <string name="tx_account">アカウント #</string>
-
     <string name="send_sweepall">このアカウントの承認された資産をすべて送金する!</string>
     <string name="tx_subaddress">サブアドレス</string>
     <string name="generate_address_label_sub">公開サブアドレス #%1$d: %2$s</string>
-
     <string name="menu_language">言語</string>
     <string name="language_system_default">システムの言語を使う</string>
-
     <string name="fab_restore_ledger">レッジャーナノから復元</string>
-
     <string name="progress_ledger_progress">レッジャーと通信中</string>
     <string name="progress_ledger_confirm">レッジャーでの承認が必要です!</string>
     <string name="progress_ledger_lookahead">サブアドレスを取得中</string>
@@ -296,17 +233,12 @@
     <string name="progress_ledger_opentx">ヤバイ数学を実行中</string>
     <string name="progress_ledger_mlsag">諸々をハッシュ化中</string>
     <string name="open_wallet_ledger_missing">レッジャーデバイスを（再）接続してください</string>
-
     <string name="accounts_progress_new">アカウント作成中</string>
-
     <string name="toast_ledger_attached">%1$s が取り付けられました</string>
     <string name="toast_ledger_detached">%1$s が取り外されました</string>
-
     <string name="menu_info">シークレットを見せてください!</string>
     <string name="menu_streetmode">ストリートモード</string>
-
     <string name="node_wrong_net" translatable="false">ノードのスキャンはメインネット専用です!</string>
-
     <string name="info_nodes_enabled">ノードは有効です。詳細はタップしてください</string>
     <string name="node_height">最新のアップデートされたブロック: %1$s</string>
     <string name="label_nodes">ノード</string>
@@ -318,7 +250,7 @@
     <string name="node_host_unresolved">ホストを解決できません</string>
     <string name="node_host_empty">これは必須項目です!</string>
     <string name="node_port_numeric">数字でなければなりません</string>
-    <string name="node_port_range">1&#8211;65535 でなければなりません</string>
+    <string name="node_port_range">1–65535 でなければなりません</string>
     <string name="node_fab_add">ノードを追加</string>
     <string name="node_refresh_hint">タッチして更新!</string>
     <string name="node_test_error">接続エラー %1$d</string>
@@ -326,20 +258,20 @@
     <string name="node_auth_error">認証失敗</string>
     <string name="node_result_label">テスト結果:</string>
     <string name="node_result">ブロック長: %1$s (v%2$d), Ping: %3$.0fms, IP: %4$s</string>
-    <string name="node_testing">IPをテスト中: %1$s &#8230;</string>
+    <string name="node_testing">IPをテスト中: %1$s …</string>
     <string name="node_refresh_wait">スキャンが終わるまでお待ちください</string>
     <string name="node_create_hint">タッチしてノードを追加または選択してください</string>
     <string name="node_pull_hint">ノードを手動で追加するか、プルダウンしてスキャンしてください</string>
-    <string name="node_scanning">ネットワークをスキャン中&#8230;</string>
+    <string name="node_scanning">ネットワークをスキャン中…</string>
     <string name="node_nobookmark">最良の %1$d ノードを自動でブックマークしました</string>
-    <string name="label_test">テスト</string><!--note: as in "Test a network connection"-->
+    <string name="label_test">テスト</string>
+    <!--note: as in "Test a network connection"-->
 
     <string name="backup_success">バックアップ成功</string>
-
     <!-- please verify this means "Receiver" or "Recipient" as in "Receiver in the transaction" -->
     <string name="send_address_hint">受け取り手</string>
-
-    <string name="street_sweep_amount">残高合計！</string> <!-- as in: "everything in the account" = "all the money" -->
+    <string name="street_sweep_amount">残高合計！</string>
+    <!-- as in: "everything in the account" = "all the money" -->
 
     <string name="menu_ledger_seed">Ledgerシードを転換</string>
     <string name="prompt_ledger_seed">Ledgerのニーモニックシード</string>

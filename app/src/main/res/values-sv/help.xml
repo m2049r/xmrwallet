@@ -18,7 +18,6 @@
         att du bevarar ditt Mnemoniska Frö genom att skriva ner det och förvara det i <em>flera</em> säkra
         platser.</p>
     ]]></string>
-
     <string name="help_create_seed"><![CDATA[
         <h1>Skapa Plånbok - Frö</h1>
         <p>Om du redan har en Monero-adress och vill återställa dess transaktioner från blockkedjan!</p>
@@ -29,7 +28,6 @@
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
         transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
-
     <string name="help_create_keys"><![CDATA[
         <h1>Skapa Plånbok - Nycklar</h1>
         <p>Om du återställer en plånbok med dina nycklar!</p>
@@ -40,7 +38,6 @@
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
         transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
-
     <string name="help_create_view"><![CDATA[
         <h1>Skapa Plånbok - Visa</h1>
         <p>Om du bara vill hålla ett öga på inkommande transaktioner till en plånbok!</p>
@@ -51,7 +48,6 @@
         \"Återställningshöjd\" fältet - om du lämnar fältet tomt kommer <em>hela</em> blockkedjan för
         transaktioner som tillhör din adress skannas. Det tar en väldigt lång tid.</p>
     ]]></string>
-
     <string name="help_details"><![CDATA[
         <h1>Plånboksinformation</h1>
         <h2>Offentlig adress</h2>
@@ -70,7 +66,6 @@
         Din spenderingsnyckel ger vem som helst tillgång att spendera all Monero i din plånbok, så
         ge inte denna nyckeln till någon, förvara den säkert som ditt Mnemoniska Frö.
     ]]></string>
-
     <string name="help_list"><![CDATA[
         <h1>Plånbokslista</h1>
         <h2>Nod</h2>
@@ -106,7 +101,6 @@
         eller säker databorttagnings-app.
         </p>
     ]]></string>
-
     <string name="help_tx_details"><![CDATA[
         <h1>Transaktionsdetaljer</h1>
         <h2>Destination</h2>
@@ -124,7 +118,6 @@
         <h2>Block</h2>
         Det här är blocket som din transaktion blev inkluderad i.
     ]]></string>
-
     <string name="help_xmrto"><![CDATA[
         <h1>Skicka BTC</h1>
         <h2>Exolix</h2>

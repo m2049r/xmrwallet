@@ -15,7 +15,7 @@
     <string name="menu_cancel">Annuler</string>
     <string name="password_weak">Continuez de taper …</string>
     <string name="password_fair">Bof …</string>
-    <string name="password_good">Allez, vous pouvez mieux faire !</string>
+    <string name="password_good">Allez, vous pouvez mieux faire !</string>
     <string name="password_strong">On y arrive …</string>
     <string name="password_very_strong">Oh oui, h4ck3r style !</string>
     <string name="label_login_wallets">Portefeuilles</string>
@@ -186,14 +186,14 @@
     <string name="send_fee_label">Frais</string>
     <string name="send_total_btc_label">Total (XMR)</string>
     <string name="send_total_label">Total</string>
-    <string name="send_amount">%1$s XMR</string>
+    <string name="send_amount" translatable="false">%1$s XMR</string>
     <string name="send_fee">+%1$s Frais</string>
     <string name="send_create_tx_error_title">Erreur de Création de Transaction</string>
     <string name="tx_list_fee">Frais %1$s</string>
-    <string name="tx_list_amount_failed">(%1$s)</string>
+    <string name="tx_list_amount_failed" translatable="false">(%1$s)</string>
     <string name="tx_list_failed_text">Échoué</string>
-    <string name="tx_list_amount_negative">- %1$s</string>
-    <string name="tx_list_amount_positive">+ %1$s</string>
+    <string name="tx_list_amount_negative" translatable="false">- %1$s</string>
+    <string name="tx_list_amount_positive" translatable="false">+ %1$s</string>
     <string name="tx_timestamp">Horodatage</string>
     <string name="tx_id">ID TX</string>
     <string name="tx_key">Clef TX</string>
@@ -253,7 +253,7 @@
     <string name="node_height">Dernier bloc mis à jour : %1$s</string>
     <string name="label_nodes">Nœuds</string>
     <string name="node_name_hint">Nom du Nœud (Optionnel)</string>
-    <string name="node_address_hint">Nom d\'hôte</string>
+    <string name="node_address_hint">Nom d\'hôte ou IP</string>
     <string name="node_port_hint">Port</string>
     <string name="node_user_hint">Nom d\'utilisateur (Optionnel)</string>
     <string name="node_pass_hint">Mot de passe (Optionnel)</string>
@@ -316,8 +316,8 @@
     <string name="toast_default_nodes">Restauration déjà en cours…</string>
     <string name="node_updated_now">Dernier bloc : il y a %1$d secondes</string>
     <string name="node_updated_mins">Dernier bloc : il y a %1$d minutes</string>
-    <string name="node_updated_hours">Dernier bloc  : il y a %1$d heures</string>
-    <string name="node_updated_days">Dernier bloc : il y a  %1$d jours</string>
+    <string name="node_updated_hours">Dernier bloc : il y a %1$d heures</string>
+    <string name="node_updated_days">Dernier bloc : il y a %1$d jours</string>
     <string name="shift_noquote">Impossible d\'obtenir un devis</string>
     <string name="shift_checkamount">Veuillez vérifier le montant et réessayez</string>
     <string name="info_xmrto_ambiguous"><![CDATA[
@@ -335,7 +335,7 @@
     <string name="subbaddress_name_hint">Nom de la sous-adresse</string>
     <string name="max_subaddress_warning">Trop d\'adresse non utilisées - utilisez-en certaines pour permettre d\'en créer davantage !</string>
     <string name="max_account_warning">Trop de comptes inutilisés - utilisez-en certains pour permettre d\'en créer davantage !</string>
-    <string name="subaddress_tx_label">Transactions pour cette sous-adresse  :</string>
+    <string name="subaddress_tx_label">Transactions pour cette sous-adresse :</string>
     <string name="subaddress_notx_label">Aucune transaction pour cette sous-adresse pour l\'instant</string>
     <string name="subaddress_select_label">Choisissez une sous-adresse</string>
     <string name="subaddress_details_hint">Appuyez longtemps pour les détails</string>
@@ -345,8 +345,8 @@
     <string name="menu_deletecache">Réinitialiser le porte-monnaie !</string>
     <string name="deletecache_alert_message">Ce porte-monnaie sera réinitialisé, perdant toutes les données qui ne sont pas sur la chaîne (telles que les notes, les noms des comptes et des sous-adresses, les clefs des transactions privées …) ! Utilisez ceci SEULEMENT si le porte-monnaie est corrompu et ne se charge pas !</string>
     <string name="node_tor_error">Tor requis</string>
-    <string name="node_waiting">\u00A0EN ATTENTE POUR LE NŒUD\u00A0</string>
-    <string name="tor_enable_background">"Autoriser les démarrages en arrière-plan" dans les réglages d\'Orbot pour utiliser Tor !</string>
+    <string name="node_waiting"> EN ATTENTE POUR LE NŒUD </string>
+    <string name="tor_enable_background">Autoriser les démarrages en arrière-plan dans les réglages d\'Orbot pour utiliser Tor !</string>
     <string name="tor_noshift">%1$s ne prend pas en charge Tor.\nDésactivez Tor pour échanger des XMR.</string>
     <string name="tor_enable">Activer Tor</string>
     <string name="label_seed_offset_encrypt">Chiffrement de la phrase mnémonique (EXPÉRIMENTAL)</string>
@@ -378,12 +378,12 @@
     <string name="sidekick_pin">PIN : %1$s</string>
     <string name="sidekick_not_connected">[déconnecté]</string>
     <string name="sidekick_confirm_tx">Confirmer la transaction</string>
-    <string name="sidekick_network_warning">Le réseau est activé - c\'est un risque de sécurité. Il est recommandé
-        d\'activer le mode avion et de redémarrer l\'application en activant seulement Bluetooth !</string>
+    <string name="sidekick_network_warning">Le réseau est activé - c\'est un risque de sécurité. Il est recommandé d\'activer le mode avion et de redémarrer l\'application en activant seulement Bluetooth !</string>
     <string name="open_wallet_sidekick_missing">Veuillez connecter l\'appareil Sidekick</string>
     <string name="fab_restore_sidekick">Restaurer depuis Sidekick</string>
     <string name="sidekick_connected">Sidekick connecté</string>
     <string name="setting_stickyfiat">Fiat collant</string>
     <string name="setting_stickyfiat_summary">Se souvenir de la dernière devise fiat utilisée</string>
     <string name="send_qr_hint">Analyser</string>
+    <string name="node_use_ssl">Utiliser le SSL</string>
 </resources>
